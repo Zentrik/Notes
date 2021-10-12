@@ -1,5 +1,7 @@
 # Elementary Number Theory
 
+## The natural numbers
+
 Intuitively, the natural numbers consist of $1, 1 + 1, 1+ 1 + 1, \ldots$
 
 How do you know you have captured all natural numbers? How do you know they are all distinct?
@@ -41,3 +43,95 @@ Similarly, we can define multiplication, powers, etc. You may check that the "no
     &4.\ \forall \; a, b, c \in \mathbb{N} & &a (b c) = (a b) c & &(\times \text{ is associative}); \\
     &5.\ \forall \; a, b, c \in \mathbb{N} & &a (b + c) = ab + ac & &(\times \text{ is distributive over }+);
 \end{align} 
+
+**Lecture 3**
+
+We can define $a < b$ if $a + c = b$ for some $c \in \mathbb{N}$. You may want to check
+
+\begin{align}
+    &6.\ \forall \; a, b, c & a < b &\implies a + c < b + c \\
+    &7.\ \forall \; a, b, c & a < b &\implies a c < b c \\
+    &8.\ \forall \; a, b, c & a < b \text{ and } b < c &\implies a < c \\
+    &9.\ \forall \; a & &\lnot (a < a).
+\end{align} 
+
+Recall the induction axiom: if $P(1)$ holds and $\forall \; n \in \mathbb{N}, P(n) \implies P(n+1)$, then $P(n)$ holds $\forall \; n \in \mathbb{N}$.
+This is also known as the *(weak) principle of induction (WPI)*. A more useful form is the *Strong Principle of Induction (SPI)*: if
+
+1. $P(1)$ holds and
+2. $\forall \; n \in \mathbb{N}$, we have $P(m) \;\forall \; m \leq n \implies P(n + 1)$, then $P(n)$ holds $\forall \; n \in \mathbb{N}$.
+
+In fact, WPI and SPI are equivalent. SPI $\implies$ WPI should be fairly clear. To see WPI $\implies$ SPI, apply the former to $Q(n) = `P(m) \; \forall \; m \leq n'$
+
+*Well-ordering Principle (WOP)*: If $P(n)$ holds for some $n \in \mathbb{N}$, then there is a least $n \in \mathbb{N}$ s.t. $P(n)$ holds.
+An alternative phrasing is "every non-empty subset of $\mathbb{N}$ has a minimal element".
+
+::: {.theorem}
+SPI is equivalent to the WOP.
+:::
+
+::: {.proof}
+To show that WOP implies SPI, we assume 1 and 2 from SPI, and show that $P(n)$ holds $\forall \; n \in \mathbb{N}$ using WOP.
+
+Suppose, on the contrary, that $P(n)$ is not true $\forall \; n \in \mathbb{N}$.
+Then $C = {n \in \mathbb{N}: P(n) \text{ is false}} \neq \emptyset$.
+By WOP, $C$ has a minimal element, $m$.
+Now $\forall \; k < m$, $k \notin C$ (by minimality of $m$), so $P(k)$ holds $\forall \; k < m$.
+But by 2 of SPI, $P(m)$ holds, so contradicting $m \in C$. Hence SPI holds.
+
+To show that SPI implies WOP, suppose there is no least $n \in \mathbb{N}$ s.t. $P(n)$ holds.
+We want to show that $P(n)$ does not hold for any $n \in \mathbb{N}$, using SPI.
+
+Consider $Q(n) = `\lnot P(n)'$. 
+Certainly $P(1)$ is false (else $1$ would be the minimal element), so $Q(1)$ holds.
+
+Given $n \in \mathbb{N}$, suppose that $Q(k)$ is true $\forall \; k < n$.
+Then $P(k)$ is false $\forall \; k < n$.
+So $P(n)$ is false as otherwise $n$ would be the minimal element for which $P$ holds.
+Hence $Q(n)$ is true, and 2 of SPI holds, so $Q(n)$ is true $\forall \; n \in \mathbb{N}$. 
+Thus $P(n)$ is false $\forall \; n \in \mathbb{N}$.
+:::
+
+WOP enables us to prove $P(n)$ is true $\forall \; n \in \mathbb{N}$ as follows: If not, then there is a minimal counterexample, and we try and derive a contradiction.
+
+## The integers
+
+The integers, written $\mathbb{Z}$, consist of all symbols $n, -n$, where $n \in \mathbb{N}$, and $0$.
+
+We can define $+$ and $\times$ etc on $\mathbb{Z}$ using $\mathbb{N}$, and check that the usual rules of arithmetic hold.
+We also have
+\begin{align*}
+    &10.\ \forall \; a \in \mathbb{Z} & a + 0 &= a & &(\text{identity for } +) \\
+    &11.\ \forall \; a \in \mathbb{Z}, & \exists \; b \in \mathbb{Z} \text{ s.t. } a + b &= 0 & &(\text{inverses for } + ) \\
+\end{align*} 
+
+Define '$a < b$' if $a + c = b$ for some $c \in \mathbb{N}$. Rules 6, 8, 9 continue to hold, but 7 must be modified
+
+7'. $\forall \; a, b, c \in \mathbb{Z}, a < b \text{ and } c > 0 \implies ac < bc.$
+
+## The rationals
+The rationals, written $\mathbb{Q}$, consist of all expressions $\frac{a}{b}$ (note this is not division as we have not defined division, it just looks the same), where $a, b \in \mathbb{Z}$, $b \neq 0$, and $\frac{a}{b}$ and $\frac{c}{d}$ are regarded as the same if $ad = bc$.
+
+Define $\frac{a}{b} + \frac{c}{d} = \frac{ad + bc}{bd}$, and check it does not matter how we wrote $\frac{a}{b}$ or $\frac{c}{d}$.
+
+We similarly define multiplication, and '$\frac{a}{b} < \frac{c}{d}$' where $b, d > 0$ if $ad < bc$. 
+You can check all preceding rules apply.
+
+In addition
+\begin{align*}
+    &12.\ \forall \; a \in \mathbb{Q},\ a \neq 0,\ \exists \; b \text{ s.t. } ab &= 1 & &(\text{inverses for } \times)
+\end{align*} 
+
+*Note*. $\mathbb{N} \subset \mathbb{Z} \subset \mathbb{Q}$.
+
+## Primes
+Given $a, b \in \mathbb{Z}$ we say "$a$ divides $b$" if $\exists \; c \in \mathbb{Z}$ s.t. $b = ac$. We might also say "$a$ is a divisor/ factor of $b$" or "$b$ is a multiple of $a$". We write $a | b$ for $a$ divides $b$.
+
+For any $b \in \mathbb{Z}$, $\pm 1$ and $\pm b$ are always factors; all others are called *proper*.
+
+A natural number $n \geq 2$ is *prime* if its only factors are $\pm 1$ and $\pm n$.^[We don't allow $1$ to be a prime as we want to have unique prime factorisations and it would require every statement to say let $n$ be a prime not equal to $1$.]
+If $n \geq 2$ is not prime, then it is *composite*.
+
+::: {.proposition}
+Every natural number $n \geq 2$
+:::

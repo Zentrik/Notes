@@ -1,0 +1,91 @@
+# Vectors in 3 Dimensions
+
+A vector is a quantity with magnitude and direction (e.g. force, electric and magnetic fields) - all examples modelled on *position*. 
+We take a geometrical approach to position vectors in 3d space based on standard (Euclidean) notions of points, lines, planes, length, angle etc.
+Chose point $O$ as origin, the points $A$, $B$ have position vectors
+\begin{align*}
+    \underline{a} = \overrightarrow{OA},\ \underline{b} = \overrightarrow{OB}
+\end{align*} 
+```{r vector, echo = FALSE, fig.cap = "", fig.align="center"} 
+knitr::include_graphics("figures/02-vector.svg") 
+```
+lengths denoted by $|\underline{a}| = | \overrightarrow{OA}|$, $\underline{O}$ is the position vector for $O$.
+
+::: {.definition name="Vector Addition and Scalar Multiplication"}
+\ 
+
+i. *Scalar Multiplication*
+Given $\underline{a}$, position vector for $A$ and a *scalar* $\lambda \in \mathbb{R}$, $\lambda \underline{a}$ is position vector of point $A'$ on $OA$ with
+\begin{align*}
+    |\lambda \underline{a}| = |\overrightarrow{OA'}| = |\lambda| |\underline{a}|
+\end{align*} 
+as shown
+```{r multiplication, echo = FALSE, fig.cap = "", fig.align="center"} 
+knitr::include_graphics("figures/02-multiplication.svg") 
+```
+Say $\underline{a}$ and $\underline{b}$ are *parallel*, $\underline{a} \parallel \underline{b} \iff \underline{a} = \lambda \underline{b}$ or $\underline{b} = \lambda \underline{a}$.
+Definition allows $\lambda \leq 0$ so $\underline{a} \parallel \underline{0}$ for any $\underline{a}$.
+
+ii. *Addition* Given $\underline{a}, \underline{b}$ position vectors of $A, B$ construct a parallelogram $OACB$
+```{r addition, echo = FALSE, fig.cap = "", fig.align="center"} 
+knitr::include_graphics("figures/02-addition.svg") 
+```
+and define $\underline{a} + \underline{b} = \underline{c}$, position vector of point $C$, provided $\underline{a} \nparallel \underline{b}$; if $\underline{a} \parallel \underline{b}$ then we can write $\underline{a} = \alpha \underline{u}$, $\underline{b} = \beta \underline{u}$ for some $\underline{u}$ and then $\underline{a} + \underline{b} = (\alpha + \beta) \underline{u}$.
+
+iii. *Properties* For any vectors $\underline{a}, \underline{b}, \underline{c}$
+\begin{align*}
+    \underline{a} + \underline{0} &= \underline{0} + \underline{a} = \underline{a} & &(\underline{0} \text{ is identity for } +) \\
+    \exists \; a \text{ such that } \\
+    \underline{a} + (- \underline{a}) &= (- \underline{a}) + \underline{a} = \underline{0} & &(-\underline{a} \text{ is the inverse for } \underline{a}) \\
+    \underline{a} + \underline{b} &= \underline{b} + \underline{a} & &(+ \text{ is commutative}) \\
+    \underline{a} + (\underline{b} + \underline{c} ) &= ( \underline{a} + \underline{b} ) + \underline{c} & &(+ \text{ is associative}) \\
+    \lambda ( \underline{a} + \underline{b}) &= \lambda \underline{a} + \lambda \underline{b} &&\\
+    (\lambda + \mu) \underline{a} &= \lambda \underline{a} + \mu \underline{a} &&\\
+    \lambda (\mu \underline{a}) &= (\lambda \mu) \underline{a}, & &\lambda, \mu \in \mathbb{R}
+\end{align*} 
+All of these can be checked geometrically, e.g. associativity of vector addition using a parallelepiped
+
+iv. *Linear Combinations and Span*
+A *linear combination* of vectors $\underline{a}, \underline{b}, \ldots, \underline{c}$ is an expression
+\begin{align*}
+    \alpha \underline{a} + \beta \underline{b} + \ldots + \gamma \underline{c} \text{ for some } \alpha, \beta, \ldots, \gamma \in \mathbb{R}.
+\end{align*} 
+The *span* of a set of vectors is $\operatorname{span} \{ \underline{a}, \underline{b}, \ldots, \underline{c} \} = \{\alpha \underline{a} + \beta \underline{b} + \ldots + \gamma \underline{c} : \alpha, \beta, \ldots, \gamma \in \mathbb{R} \}$.
+
+If $a \neq 0$ then $\operatorname{span} \{ \underline{a} \} = \{ \lambda \underline{a} \}$, which is a line through $O$ and $A$.
+
+If $\underline{a} \nparallel \underline{b}$ (this also means $\underline{a}, \underline{b} \neq \underline{0}$) then $\operatorname{span} \{ \underline{a}, \underline{b}\} = \{ \alpha \underline{a} + \beta \underline{b} : \alpha, \beta \in \mathbb{R}\}$, which is a *plane* through $O, A, B$.
+:::
+
+## Scalar or Dot Product
+i. 
+::: {.definition}
+Given $\underline{a}$ and $\underline{b}$ let $\theta$ be the angle between them; then
+\begin{align*}
+    \underline{a} \cdot \underline{b} = | \underline{a} | | \underline{b} | \cos \theta
+\end{align*} 
+*scalar* or *dot product* or *inner product*
+```{r dot, echo = FALSE, fig.cap = "$\\theta$ defined unless $|\\underline{a}|$ or $| \\underline{b}| = 0$ and then $\\underline{a} \\cdot \\underline{b} = 0$", fig.align="center"} 
+knitr::include_graphics("figures/02-dot.svg") 
+```
+:::
+
+ii. *Properties*
+\begin{align*}
+    \underline{a} \cdot \underline{b} &= \underline{b} \cdot \underline{a} \\
+    \underline{a} \cdot \underline{a} = |\underline{a}|^2 &\geq 0 \text{ and } = 0 \iff \underline{a} = \underline{0} \\
+    (\lambda \underline{a}) \cdot \underline{b} &= \lambda (\underline{a} \cdot \underline{b}) = \underline{a} \cdot (\lambda \underline{b}) \\
+    \underline{a} \cdot ( \underline{b} \cdot \underline{c}) &= \underline{a} \cdot \underline{b} + \underline{a} \cdot \underline{c}
+\end{align*} 
+
+iii. *Interpretation*
+For $\underline{a} \neq \underline{0}$, consider $\underline{u} = \frac{\underline{a}}{|\underline{a}|}$
+\begin{align*}
+    \underline{u} \cdot \underline{b} = \frac{1}{\underline{a}} \underline{a} \cdot \underline{b}
+\end{align*} 
+is the *component* of $\underline{b}$ along $\underline{a}$
+```{r interpretation, echo = FALSE, fig.cap = "", fig.align="center"} 
+knitr::include_graphics("figures/02-interpretation.svg") 
+```
+We can *resolve* $\underline{b} = \underline{b}_\parallel + \underline{b}_\bot$ where $\underline{a} \bot \underline{b} \iff \underline{a} \cdot \underline{b} = 0$.
+Note $\underline{a} \cdot \underline{b} =  \underline{a} \cdot \underline{b}_\parallel$

@@ -24,6 +24,8 @@ Start from FTC
     &= f(0) + xf'(0) - \frac{1}{2} [(t-x)^2 f''(t)]^{t = x}_{t = 0} - \int_{0}^{t} + \frac{1}{2} \int_{0}^{t} (t - x)^2 f'''(t) \,dt \\
     &= f(0) + xf'(0) + \frac{1}{2} x^2 f''(0) + \frac{1}{2} \int_{0}^{t} (t - x)^2 f'''(t) \,dt \\
     &\;\;\vdots \\
-    &= f(0) + xf'(0) + \frac{x^2}{2!} f''(0) + \ldots + \frac{x^n}{n!} f^{(n)}(0) + \frac{1}{n!} \int_{0}^{x}  \,d
+    &= f(0) + xf'(0) + \frac{x^2}{2!} f''(0) + \ldots + \frac{x^n}{n!} f^{(n)}(0) + \frac{1}{n!} \int_{0}^{x} (t - x)^n f^{(n + 1)}(t) \,dt \\
+    &\text{By MVT the remainder = somehow} \\
+    &= \frac{x^{(n+1)}}{(n + 1)!} f^{(n + 1)}(x_n) \text{ where } x_n \in [0, x]
 \end{align*} 
-:::
+:::'
