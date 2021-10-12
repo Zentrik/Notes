@@ -1,0 +1,45 @@
+--- 
+title: "Numbers and Sets 2021 - 2022" 
+author: ""
+date: "07/10/2021"
+site: bookdown::bookdown_site
+documentclass: book
+# url: your book url like https://bookdown.org/yihui/bookdown
+# cover-image: path to the social sharing image like images/cover.jpg
+description: |
+  Notes
+link-citations: yes
+---
+
+
+# Lecture 1 {-}
+
+Lectures notes will be posted on moodle after 24 hours, to encourage note taking.
+
+Wait till after lecture 3/4 before starting example sheet 1.
+
+## Contents
+
+**Chapter 1.** Elementary (Introductory) Number Theory
+
+- Primes, modular arithmetic. 
+- No knowledge will be assumed except the meaning of these terms
+
+**Chapter 2.** The Reals
+
+**Chapter 3.** Sets and functions
+
+- Some important terminilogy will be introduced.
+
+**Chapter 4.** Countability
+
+**Chapter 0.** Proofs
+
+- A proof is a sequence of true statements without logical gaps, that establishes some conclusion.
+- We haven't defined logical gaps etc ..., we have to start somewhere and have agreed upon assumptions (axioms)
+
+We want to prove things because 
+
+- we want to know they are true;
+- We hope to gain insight into why they are true;
+- we might be lucky and the proof is beautiful.

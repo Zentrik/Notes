@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Differential Equations</title>
+  <meta name="description" content="Notes" />
+  <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Differential Equations" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Notes" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Differential Equations" />
+  
+  <meta name="twitter:description" content="Notes" />
+  
+
+<meta name="author" content="" />
+
+
+<meta name="date" content="2021-10-12" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+
+<link rel="next" href="basic-calculus.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction Video</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#schedule"><i class="fa fa-check"></i><b>0.1</b> Schedule</a></li>
+<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#introduction"><i class="fa fa-check"></i><b>0.2</b> Introduction</a></li>
+<li class="chapter" data-level="0.3" data-path="index.html"><a href="index.html#limits"><i class="fa fa-check"></i><b>0.3</b> Limits</a>
+<ul>
+<li class="chapter" data-level="0.3.1" data-path="index.html"><a href="index.html#properties"><i class="fa fa-check"></i><b>0.3.1</b> Properties</a></li>
+<li class="chapter" data-level="0.3.2" data-path="index.html"><a href="index.html#proof-of-uniqueness-of-limits"><i class="fa fa-check"></i><b>0.3.2</b> Proof of uniqueness of limits</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="basic-calculus.html"><a href="basic-calculus.html"><i class="fa fa-check"></i><b>1</b> Basic Calculus</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Differential Equations</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">Differential Equations</h1>
+<p class="author"><em></em></p>
+<p class="date"><em>2021-10-12</em></p>
+</div>
+<div id="introduction-video" class="section level1 unnumbered">
+<h1>Introduction Video</h1>
+<p>Full notes will be provided on moodle, small typefont indicates an aside, either because the material is non examinable or will be covered in greater detail in a later course.</p>
+<p>Four example sheets.</p>
+<div id="schedule" class="section level2" number="0.1">
+<h2><span class="header-section-number">0.1</span> Schedule</h2>
+<ol style="list-style-type: decimal">
+<li>Basic Calculus (5 lectures)</li>
+<li>First-order linear differential equations (2)</li>
+<li>Nonlinear first-order differential equations (4)</li>
+<li>Higher-order linear differential equations (8)</li>
+<li>Multivariate functions: applications (5)</li>
+</ol>
+</div>
+<div id="introduction" class="section level2" number="0.2">
+<h2><span class="header-section-number">0.2</span> Introduction</h2>
+<p>They describe the rate of change of the <span colour="red" style="color: red;">dependant variable</span> wrt the <span colour="red" style="color: red;">independent variable</span>.</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-1" class="example"><strong>Example 0.1  (Newton's 2nd law) </strong></span><span class="math display">\[\begin{align*}
+  m \frac{d^2 x}{d t^2} = F
+\end{align*}\]</span>
+If <span class="math inline">\(F\)</span> depends only on <span class="math inline">\(t\)</span>, then we can simply integrate twice. However, if <span class="math inline">\(F\)</span> is a function of <span class="math inline">\(x\)</span> (such as a charged particle in a electric field which varied over space).</p>
+</div>
+<p><strong>Applied course</strong> - emphasises <span colour="red" style="color: red;">methods</span> and <span colour="red" style="color: red;">results</span> rather than <span colour="red" style="color: red;">proof</span> or <span colour="red" style="color: red;">existence</span>.</p>
+</div>
+<div id="limits" class="section level2" number="0.3">
+<h2><span class="header-section-number">0.3</span> Limits</h2>
+<ul>
+<li>Informally, if <span class="math inline">\(\lim_{x \to x_0} f(x) = A\)</span>, then <span class="math inline">\(f(Px)\)</span> can be made arbitrarily close to <span class="math inline">\(A\)</span> by making <span class="math inline">\(x\)</span> sufficiently close to <span class="math inline">\(x_0\)</span>
+<ul>
+<li>Note, does not require <span class="math inline">\(f(x_0)\)</span> to equal <span class="math inline">\(A\)</span> (or even to exist) – a limit is a statement about the behaviour of a function in the vicinity of <span class="math inline">\(x_0\)</span>, but not at that point.</li>
+</ul></li>
+<li>More formally, for a function <span class="math inline">\(f(x)\)</span> defined on some open interval containing <span class="math inline">\(x_0\)</span> (but not necessarily at <span class="math inline">\(x_0\)</span>), <span class="math inline">\(\lim_{x \to x_0} f(x) = A\)</span> means that
+<ul>
+<li>for any <span class="math inline">\(\epsilon &gt; 0\)</span>, there exists <span class="math inline">\(\delta &gt;0\)</span> such that <span class="math inline">\(|f(x) - A| &lt; \epsilon\)</span> for all <span class="math inline">\(0 &lt; |x - x_0| &lt; \delta\)</span>.</li>
+<li>Right hand limit, for example, defined similarly but with <span class="math inline">\(0 &lt; |x - x_0| &lt; \delta\)</span> replaced with <span class="math inline">\(0 &lt; x - x_0 &lt; \delta\)</span>. A similar procedure can be done for left hand Limits
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:1"></span>
+<img src="figures/1.png" alt="Right hand limit" width="1920" />
+<p class="caption">
+Figure 0.1: Right hand limit
+</p>
+</div></li>
+</ul></li>
+<li>We can also define limits at infinity, e.g. <span class="math inline">\(\lim_{x \to x_0} f(x) = A\)</span> means that
+<ul>
+<li>for any <span class="math inline">\(\epsilon &gt; 0\)</span>, there exists <span class="math inline">\(X &gt;0\)</span> such that <span class="math inline">\(|f(x) - A| &lt; \epsilon\)</span> for all <span class="math inline">\(x &gt; X\)</span>.</li>
+</ul></li>
+</ul>
+<div id="properties" class="section level3" number="0.3.1">
+<h3><span class="header-section-number">0.3.1</span> Properties</h3>
+<ul>
+<li>if <span class="math inline">\(f(x)\)</span> has a limit at a point, it is unique</li>
+<li>If <span class="math inline">\(\lim_{x \to x_0} f(x) = A\)</span> and <span class="math inline">\(\lim_{x \to x_0} g(x) = B\)</span>, then:
+<ul>
+<li><span class="math inline">\(\lim_{x \to x_0} [f(x) + g(x)] = A + B\)</span><br />
+</li>
+<li><span class="math inline">\(\lim_{x \to x_0} [f(x)g(x)] = AB\)</span><br />
+</li>
+<li><span class="math inline">\(\lim_{x \to x_0} [f(x) / g(x)] = A / B\)</span>. If <span class="math inline">\(B = 0\)</span>, the limit of the quotient does not exist if <span class="math inline">\(A \neq 0\)</span>, but <span colour="red" style="color: red;">may</span> exist in the <span colour="red" style="color: red;">indeterminate</span> case <span class="math inline">\(A = B = 0\)</span></li>
+</ul></li>
+</ul>
+<p>These properties will be proved carefully in the Analysis 1 course next term, but will be used as without proof in this course.</p>
+</div>
+<div id="proof-of-uniqueness-of-limits" class="section level3" number="0.3.2">
+<h3><span class="header-section-number">0.3.2</span> Proof of uniqueness of limits</h3>
+<p>Suppose that <span class="math inline">\(\lim_{x \to x_0} f(x) = A\)</span> <span colour="red" style="color: red;">and</span> <span class="math inline">\(\lim_{x \to x_0} f(x) = B\)</span>.</p>
+<p>In terms of our epsilon-delta definition, this means that for any <span class="math inline">\(\epsilon &gt; 0\)</span>h there exists <span class="math inline">\(\delta_A &gt; 0\)</span> and <span class="math inline">\(\delta_B &gt; 0\)</span> such that</p>
+<p><span class="math display">\[\begin{align*}
+  &amp;\text{for }0 &lt; |x -x_0| &lt; \delta_A,\ |f(x) - A| &lt; \epsilon / 2 \text{, where } \epsilon / 2 \text{ is an arbitrary positive quantity.} \\
+  \color{red}{and} &amp;\text{ for } 0 &lt; |x -x_0| &lt; \delta_A, |f(x) - B| &lt; \epsilon / 2
+\end{align*}\]</span></p>
+<p>Now let <span class="math inline">\(\delta = min(\delta_A, \delta_B)\)</span> and consider <span class="math inline">\(0 &lt; |x -x_0| &lt; \delta\)</span> - follows that
+<span class="math display">\[\begin{align*}
+  |A - B| &amp;= |[A - f(x)] - [B - f(x)]| \\
+  &amp;\leq |A - f(x)| + |B - f(x)| \\
+  &amp;\leq \epsilon
+\end{align*}\]</span></p>
+<p>Since this holds <span colour="red" style="color: red;">for all</span> <span class="math inline">\(\epsilon &gt; 0\)</span>, we must have <span class="math inline">\(A = B\)</span>.</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+<a href="basic-calculus.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "lunr",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

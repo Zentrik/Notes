@@ -1,0 +1,194 @@
+# Introduction
+
+**Lecture 1**
+
+## Examples and remarks of statements
+:::{.example}
+There are infinitely many primes $p$ s.t. $2p + 1$ is also prime.
+
+- No-one knows if it's true.
+:::
+
+:::{.example}
+There are infinitely many primes $p$ s.t. one of $p+2,\ p+ 4,\ \ldots,\ p + 246$ is also prime.
+
+- Proved in 2014.
+:::
+
+:::{.example}
+There is always a prime between $n$ and $2n$ for any integer $n$.
+
+- True however non-obvious.
+:::
+
+:::{.example}
+There is no computer algorithm which will factor an $n$-digit integer in at most $n^3$ steps
+
+- Hopefully true.
+:::
+
+:::{.example}
+Every non-constant polynomial with complex coefficients has a root (in the complex numbers).
+
+- The Fundamental Theorem of Algebra.
+:::
+
+:::{.example}
+$m \times n = n \times m$ for all integers $m,\ n$.
+
+- Worth thinking about ...
+:::
+
+:::{.example}
+$1 + 1 = 2$
+
+- Does it need proving?
+:::
+
+## Some proofs and non-proofs
+
+*Assertion*. For all positive integers $n$, $n^3 - n$ is a multiple of $3$.
+
+- Try $n = 2, 3$ to check it's not obviously false.
+
+:::{.proof}
+For any positive integer $n$, we have $n^3 - n = n(n^2 - 1) = n(n + 1)(n - 1) = (n - 1) n (n + 1)$.
+
+One of these consecutive integers $n - 1,\ n,\ n + 1$ must be a multiple of $3$, and hence, so must their product.
+:::
+
+*Assertion*. For any positive integer $n$, if $n^2$ is even then so is $n$.
+
+:::{.proof}
+Given a positive integer $n$, which is even, we can write $n = 2k$ for some positive integer $k$.
+Hence, $n^2 = (2k)^2 = 2(2k^2)$, which is even.
+
+- Nonsense! We wanted to show "if A then B" but we have shown "if B then A".
+
+Suppose on the contrary that $n$ is **not** even. Then $n$ is odd, so $n = 2k + 1$ for some integer $k$. Thus
+\begin{align*}
+  n^2 &= (2k+1)^2 \\
+  &= 4k^2 + 4k + 1 \\
+  &= 4(k^2 + k) + 1,
+\end{align*} 
+which is odd, contradicting the assumption that $n^2$ is even.
+⨳ (contradiction symbol)
+
+"Proof by contradiction"
+:::
+
+To show that "if A then B" is true, we showed that there is no case where A is true and B is false. In other words A $\implies$ B, is the same as showing NOT B $\implies$ NOT A.
+
+*Assertion*. For any positive integer $n$, if $n^2$ is a multiple of $9$, then so is $n$.
+
+This assertion is simply false: e.g. take $n = 6$.
+To show that "if A then B" is false, **one** instance where A is true and B is false is satisfactory.
+
+**Lecture 2**
+
+*Assertion*. The solution to $x^2 - 5x + 6 = 0$ is $x = 2$ or $x = 3$. This is fact two assertions:
+
+i. $x = 2$ and $x = 3$ are solutions;
+ii. there are no other solutions.
+
+:::{.proof name="i"}
+If $x = 2$ or $x = 3$,
+
+then $x = 2 = 0$ or $x - 3 = 0$
+
+so $(x-2)(x-3) = 0$
+
+so $x^2 - 5x + 6 = 0$.
+:::
+
+::: {.proof name="ii"}
+If $x^2 - 5x + 6 = 0$
+
+then $(x-2)(x-3) = 0$
+
+so $x - 2= 0$ or $x -3 = 0$
+so $x = 2$ or $x = 3$.
+:::
+
+We could have simplified both proofs into a single one.
+
+::: {.proof name="Alternative proof"}
+\begin{align*}
+  &x = 2 \text{ or } x = 3 \\
+  \iff &x - 2 = 0 \text{ or } x - 3 = 0 \\
+  \iff &(x-2)(x-3) = 0 \\
+  \iff &x^2 - 5x + 6 = 0.
+\end{align*} 
+
+It is vital that every step is $\iff$
+:::
+
+*Assertion*. Every positive real is $\geq 1$
+
+::: {.proof}
+let $r$ be the least positive integer.
+
+Either $r = 1$ or $r < 1$ or $r > 1$ ("trichotomy" - three different cases)
+
+If $r < 1$, then $0 < r^2 < r$,
+this contradicts the assumption that $r$ is the least positive real.
+
+If $r > 1$, then $0 < \sqrt{r} < r$, again ⨳.
+
+Hence $r = 1$.
+:::
+
+Nonsense! We don't know that there is a smallest positive real.
+
+*Moral*: Every claim must be justified
+
+## Combining assertions
+
+If $A$ and $B$ are assertions, we can (but we usually don't) write $A \land B$ for "$A$ AND $B$", $A \lor B$ for "$A$ OR $B$", and $\lnot A$ for "NOT $A$".
+
+The truth of these assertions depends on the truth of A and B, summarised in the *truth table*.
+
+\begin{array}{cc|c}
+  A & B & A \land B \\
+  \hline
+  F & F & F \\
+  F & T & F \\
+  T & F & F \\
+  T & T & T \\
+\end{array} \hspace{1cm}
+\begin{array}{cc|c}
+  A & B & A \lor B \\
+  \hline
+  F & F & F \\
+  F & T & T \\
+  T & F & T \\
+  T & T & T \\
+\end{array} \hspace{1cm}
+\begin{array}{c|c}
+  A & \lnot A \\
+  \hline
+  T & F \\
+  F & T
+\end{array} \hspace{1cm}
+\begin{array}{cc|c}
+  A & B & A \implies B \\
+  \hline
+  F & F & T \\
+  F & T & T \\
+  T & F & F \\
+  T & T & T \\
+\end{array}
+
+Note, for example, that $\lnot (A \land B)$ is equivalent to $(\lnot A) \lor (\lnot B)$ by comparing truth tables.
+
+Also $A \implies B$ is equivalent to $(\lnot A) \lor B$ and hence this is equivalent to $B \lor (\lnot A)$ (as the or table doesn't depend on the order of $A$ and $B$), and hence to $(\lnot B) \implies (\lnot A)$ (follows from the same argument used for $A \implies B$).
+
+An assertion may involve "quantifiers", e.g. $\forall \; n,\ \exists x$.
+
+## Negating Quantifiers
+
+$\lnot (\forall \; x \ \ A(x))$^[it is false that for all $x$ the assertion $A(x)$ is true] means $\exists x  \ \ \lnot A(x)$^[there exists an $x$ such that $A(x)$ is false]. E.g. if it not true that all my socks are blue, then there is a sock that is not blue.
+
+$\lnot (\exists x \  B(x))$^[it is false that there exists an $x$ for which $B(x)$ is true] means $\forall \; x \ \lnot B(x)$^[for all $x$ $B(x)$ is false].
+
+The order of quantifiers matters!

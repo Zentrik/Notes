@@ -1,0 +1,26 @@
+--- 
+title: "Vectors and Matrices 2021 - 2022" 
+author: ""
+date: "07/10/2021"
+site: bookdown::bookdown_site
+documentclass: book
+# url: your book url like https://bookdown.org/yihui/bookdown
+# cover-image: path to the social sharing image like images/cover.jpg
+description: |
+  Notes
+link-citations: yes
+---
+
+
+# Lecture 1 {-}
+
+## Contents
+
+1. Complex Numbers
+2. Vectors in 3d
+3. Vectors in General, $\mathbb{R}^n \times \mathbb{C}^n$
+4. Matrices and Linear Maps
+5. Determinants and Inverses
+6. Eigenvalues and Eigenvectors
+7. Changing Bases, Canonical Forms and Symmetries
+

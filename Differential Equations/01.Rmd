@@ -1,0 +1,29 @@
+# Basic Calculus
+
+Basic Calculus - Topic 1.pdf
+
+[test]("Basic Calculus - Topic 1.pdf")
+
+```{r test, echo = FALSE, fig.cap = "", fig.align="center"} 
+knitr::include_graphics("Basic Calculus - Topic 1.pdf") 
+```
+
+If $f(x) = o(g(x))$ as $x \to x_0$, then $af(x) = o(g(x))$ as $x \to x_0$ for finite $a$.
+
+*Aside*: (Non examinable)
+
+
+::: {.proof name="Sketch proof of Taylor's Theorem"}
+Start from FTC
+\begin{align*}
+    \int_{0}^{x} f'(t) \,dt &= f(x) - f(0) \\
+    \implies f(x) &= f(0) + \int_{0}^{x} f'(t) \,dt \\
+    &= f(0) + \int_{0}^{x} \frac{d (t - x)}{d t} * f'(t) \,dt \\
+    &= f(0) + [ (t - x) f'(t)]^{t = x}_{t = 0} - \int_{0}^{t} (t - x) f''(t) \,dt \\
+    &= f(0) + xf'(0) - \frac{1}{2} \int_{0}^{t} \frac{d (t-x)^2}{d t} f''(t) \,dt \\
+    &= f(0) + xf'(0) - \frac{1}{2} [(t-x)^2 f''(t)]^{t = x}_{t = 0} - \int_{0}^{t} + \frac{1}{2} \int_{0}^{t} (t - x)^2 f'''(t) \,dt \\
+    &= f(0) + xf'(0) + \frac{1}{2} x^2 f''(0) + \frac{1}{2} \int_{0}^{t} (t - x)^2 f'''(t) \,dt \\
+    &\;\;\vdots \\
+    &= f(0) + xf'(0) + \frac{x^2}{2!} f''(0) + \ldots + \frac{x^n}{n!} f^{(n)}(0) + \frac{1}{n!} \int_{0}^{x}  \,d
+\end{align*} 
+:::

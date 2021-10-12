@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>1 Lecture 1 | Groups 2021 - 2022</title>
+  <meta name="description" content="Notes" />
+  <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="1 Lecture 1 | Groups 2021 - 2022" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Notes" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="1 Lecture 1 | Groups 2021 - 2022" />
+  
+  <meta name="twitter:description" content="Notes" />
+  
+
+<meta name="author" content="" />
+
+
+<meta name="date" content="2021-07-10" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Lecture 1</a></li>
+<li class="chapter" data-level="1" data-path="lecture-1-1.html"><a href="lecture-1-1.html"><i class="fa fa-check"></i><b>1</b> Lecture 1</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="lecture-1-1.html"><a href="lecture-1-1.html#motivation"><i class="fa fa-check"></i><b>1.1</b> Motivation</a></li>
+<li class="chapter" data-level="1.2" data-path="lecture-1-1.html"><a href="lecture-1-1.html#basic-definitions-and-examples"><i class="fa fa-check"></i><b>1.2</b> Basic Definitions and Examples</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Groups 2021 - 2022</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="lecture-1-1" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> Lecture 1</h1>
+<div id="motivation" class="section level2" number="1.1">
+<h2><span class="header-section-number">1.1</span> Motivation</h2>
+<p>Groups are the abstractions of symmetries, a unified way to investigate symmetries.</p>
+</div>
+<div id="basic-definitions-and-examples" class="section level2" number="1.2">
+<h2><span class="header-section-number">1.2</span> Basic Definitions and Examples</h2>
+<p>A binary operation, *, on a set <span class="math inline">\(X\)</span> is a way of combining two elements of <span class="math inline">\(X\)</span> to unambiguously give another element of <span class="math inline">\(X\)</span>,
+i.e. <span class="math inline">\(*: X \times X \to X\)</span>.</p>
+<div class="definition">
+<p><span id="def:unlabeled-div-1" class="definition"><strong>Definition 1.1  </strong></span>If <span class="math inline">\(G\)</span> is a set and <span class="math inline">\(*\)</span> is a binary operation on <span class="math inline">\(G\)</span> then <span class="math inline">\((G, *)\)</span> is a <em>group</em> if the following four axioms hold:</p>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(x, y \in G \implies x * y \in G\)</span>  <span style="float:right">(closure)</span></li>
+<li><span class="math inline">\(\exists\)</span> an element <span class="math inline">\(e \in G \text{ satisfying } x * e = x = e * x\)</span>  <span style="float:right">(existence of an identity)</span></li>
+<li>for every <span class="math inline">\(x \in G\)</span> there is a <span class="math inline">\(y \in G\)</span> s.t. <span class="math inline">\(x * y = e = y * x\)</span>  <span style="float:right">(existence of inverses)</span></li>
+<li>for every <span class="math inline">\(x, y, z \in G\)</span>, <span class="math inline">\(x * (y * z) = (x * y) * z\)</span>  <span style="float:right">(the associative law)</span></li>
+</ol>
+</div>
+<div class="remark">
+<p><span id="unlabeled-div-2" class="remark"><em>Remark</em>. </span><span class="math inline">\(e\)</span> is called the identity of <span class="math inline">\(G\)</span> - see @ref{lem:one} for why it is unique.
+We will show in @ref{lem:one} that inverses are unique and we will write <span class="math inline">\(x^{-1}\)</span> for the inverse of <span class="math inline">\(x\)</span>.</p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-3" class="example"><strong>Example 1.1  </strong></span><span class="math inline">\((\mathbb{Z}, +)\)</span>, <span class="math inline">\(e = 0\)</span>, <span class="math inline">\(x^{-1} = -x\)</span></p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-4" class="example"><strong>Example 1.2  </strong></span><span class="math inline">\((\mathbb{Q}, +)\)</span>, <span class="math inline">\((\mathbb{R}, +)\)</span></p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-5" class="example"><strong>Example 1.3  </strong></span><span class="math inline">\((\mathbb{Q} \setminus \{ 0 \}, *)\)</span></p>
+</div>
+<p><strong>Non Example 1.1</strong> <span class="math inline">\((\mathbb{Z}, -)\)</span> - associativity fails</p>
+<p><strong>Non Example 1.2</strong> <span class="math inline">\((\mathbb{Z}, *)\)</span> - no inverses</p>
+<p><strong>Non Example 1.3</strong> <span class="math inline">\((\mathbb{Q}, *)\)</span> - <span class="math inline">\(0^{-1}\)</span> does not exist</p>
+<p>These have all had an infinite number of elements, so onto some finite groups.</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-6" class="example"><strong>Example 1.4  (The trivial group) </strong></span><span class="math inline">\((e, *)\)</span></p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-7" class="example"><strong>Example 1.5  </strong></span><span class="math inline">\((\{\pm 1\}, \times)\)</span>. A nice way to look at a group is to look at a multiplication table.</p>
+<span class="math display">\[\begin{array}{c|cc}
+    \times &amp; 1 &amp; -1 \\
+    \hline
+    1 &amp; 1 &amp; -1 \\
+    -1 &amp; -1 &amp; 1 
+\end{array}\]</span>
+<p>We can see <span class="math inline">\(e = 1\)</span> and <span class="math inline">\((-1)^{-1} = -1\)</span></p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-8" class="example"><strong>Example 1.6  </strong></span><span class="math inline">\((\{0, 1, 2\}, +_3)\)</span>. <span class="math inline">\(+_3\)</span> is addition modulo 3.</p>
+<span class="math display">\[\begin{array}{c|ccc}
+    +_3 &amp; 0 &amp; 1 &amp; 2 \\
+    \hline
+    0 &amp; 0 &amp; 1 &amp; 2\\
+    1 &amp; 1 &amp; 2 &amp; 0 \\
+    2 &amp; 2 &amp; 0 &amp; 1
+\end{array}\]</span>
+<p>We can see <span class="math inline">\(e = 0\)</span> and <span class="math inline">\(1^{-1} = 2\)</span></p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-9" class="example"><strong>Example 1.7  </strong></span><span class="math inline">\((\{e, a, b, c\}, *)\)</span></p>
+<span class="math display">\[\begin{array}{c|cccc}
+    * &amp; e &amp; a &amp; b &amp; c \\
+    \hline
+    e &amp; e &amp; a &amp; b &amp; c \\
+    a &amp; a &amp; e &amp; c &amp; b \\
+    b &amp; b &amp; c &amp; e &amp; a \\
+    c &amp; c &amp; b &amp; a &amp; e
+\end{array}\]</span>
+<p>You may notice in any row no element is repeated, this is due to the cancellation law (bottom of page).</p>
+</div>
+<p>```</p>
+<div class="example">
+<p><span id="exm:triangle" class="example"><strong>Example 1.8  </strong></span>Rotations and reflections of an equilateral triangle.</p>
+<p><img src="figures/01-triangle.svg" style="display: block; margin: auto;" /></p>
+<p>operation <span class="math inline">\(\circ =\)</span> do right transformation then left transformation</p>
+<p><strong>Claim</strong>: This defines a group with 6 elements</p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-10" class="example"><strong>Example 1.9  </strong></span><span class="math display">\[\begin{align*}
+    M_2(\mathbb{R}) &amp;= \{ 2 \times 2 \text{ matrices with entries in } \mathbb{R} \} \\
+    &amp;= \left[ \begin{pmatrix} a &amp; b \\ c &amp; d \end{pmatrix} : a, b, c, d \in \mathbb{R} \right] \\
+    \text{under addition} \\
+    \begin{pmatrix}
+    a &amp; b \\
+    c &amp; d
+    \end{pmatrix} + 
+    \begin{pmatrix}
+    \alpha &amp; \beta \\
+    \gamma &amp; \delta
+    \end{pmatrix} &amp;=
+    \begin{pmatrix}
+    a + \alpha &amp; b + \beta \\
+    c + \gamma &amp; d + \delta
+    \end{pmatrix}
+\end{align*}\]</span></p>
+</div>
+<p>A more interesting example is</p>
+<div class="example">
+<p><span id="exm:glg" class="example"><strong>Example 1.10  </strong></span><span class="math display">\[\begin{align*}
+    GL_2 (\mathbb{R}) &amp;= \{ \text{ invertible $2 \times 2$ matrices with entries in } \mathbb{R}. \\
+    A &amp;= \begin{pmatrix}
+    a &amp; b \\
+    c &amp; d
+    \end{pmatrix},\ \det A = ad - bc \neq 0  \\
+    A^{-1} &amp;= \frac{1}{\det A} \begin{pmatrix}
+    d &amp; -b \\
+    -c &amp; -a
+    \end{pmatrix}
+\end{align*}\]</span></p>
+<p>Under multiplication this is a group. <span class="math inline">\(GL\)</span> stands for general linear group.</p>
+</div>
+<div class="lemma">
+<p><span id="lem:one" class="lemma"><strong>Lemma 1.1  </strong></span>Let <span class="math inline">\((G, *)\)</span> be a group.</p>
+<ol style="list-style-type: lower-roman">
+<li>The identity element is unique.</li>
+<li>Inverses are unique.</li>
+</ol>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-11" class="proof"><em>Proof</em> (i). </span>Suppose <span class="math inline">\(e\)</span> and <span class="math inline">\(\hat{e}\)</span> are both identities, so
+<span class="math display">\[\begin{align*}
+    a * e = a = e * a,\ \ a * \hat{e} = a = \hat{e} * a \hspace{0.4cm }\forall a \in G \\
+\end{align*}\]</span>
+In particular <span class="math display">\[\begin{align*}
+    e = e * \hat{e} = \hat{e}
+\end{align*}\]</span>.</p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-12" class="proof"><em>Proof</em> (ii). </span>Suppose both <span class="math inline">\(y\)</span> and <span class="math inline">\(z\)</span> are inverses for <span class="math inline">\(x\)</span>, so
+<span class="math display">\[\begin{align*}
+    x * y &amp;= e = y * x,\ \ x * z = e = z * x \\
+    \text{Then, } y &amp;= y * e \\
+    &amp;= y * (x * z) \\
+    &amp;= (y * x) * z \hspace{2cm} \text{(associative law)} \\
+    &amp;= e * z \\
+    &amp;= z
+\end{align*}\]</span></p>
+</div>
+<div class="remark">
+<p><span id="unlabeled-div-13" class="remark"><em>Remark</em> (i). </span>Associativity means we don’t need brackets, <span class="math inline">\(x * y * z\)</span> is unambiguous.
+Furthermore, by induction, <span class="math inline">\(x_1 * x_2 * \ldots * x_n\)</span> is unambiguous.</p>
+<p>We know the statement is true for the case <span class="math inline">\(n = 3\)</span>.</p>
+<p><span class="math display">\[\begin{align*}
+    x_1 * (x_2 * \ldots * x_n) &amp;= (x_1 * x_2) * (x_3 * \ldots * x_n) \\
+    &amp;= (x_1 * x_2 * x_3) * (x_4 * \ldots * x_n) \\
+    &amp;= \ldots \\
+    &amp;= (x_1 * x_2 * \ldots * x_{n-1}) * x_n
+\end{align*}\]</span></p>
+</div>
+<div class="remark">
+<p><span id="unlabeled-div-14" class="remark"><em>Remark</em> (ii). </span>We often omit ‘<span class="math inline">\(*\)</span>’ and write <span class="math inline">\(x y\)</span> for <span class="math inline">\(x * y\)</span> and <span class="math inline">\(G\)</span> for <span class="math inline">\((G, *)\)</span>.</p>
+</div>
+<div class="remark">
+<p><span id="unlabeled-div-15" class="remark"><em>Remark</em> (iii). </span><span class="math inline">\((xy)^{-1} = y^{-1} x^{-1}\)</span>. Since it works:
+<span class="math display">\[\begin{align*}
+    (xy)y^{-1}x^{-1} &amp;= x(y y^{-1})x^{-1} \\
+    &amp;= x e x^{-1} \\
+    &amp;= x x^{-1} \\
+    &amp;= e
+\end{align*}\]</span></p>
+</div>
+<p>Note, inverses are unique</p>
+<div class="remark">
+<p><span id="unlabeled-div-16" class="remark"><em>Remark</em> (iv). </span><span class="math inline">\((x^{-1})^{-1} = x\)</span></p>
+</div>
+<div class="remark">
+<p><span id="one" class="remark"><em>Remark</em> (v). </span><span class="math display">\[\begin{align*}
+    x, y, z \in G &amp;\text{ and } xy = xz \\
+    \implies x^{-1} x y &amp;= x^{-1} x z \\
+    \implies \hspace{1cm} y &amp;= z \hspace{3cm} \text{(cancellation law)}
+\end{align*}\]</span></p>
+</div>
+<p>Lecture 2</p>
+<div class="definition">
+<p><span id="def:unlabeled-div-17" class="definition"><strong>Definition 1.2  </strong></span>A group <span class="math inline">\(G\)</span> is <em>abelian</em> (or commutative) if <span class="math inline">\(xy = yx\)</span> for all <span class="math inline">\(x, y \in G\)</span>.</p>
+</div>
+<p>Note all our examples above are abelian except <a href="lecture-1-1.html#exm:triangle">1.8</a> and <a href="lecture-1-1.html#exm:glg">1.10</a>.</p>
+<div class="definition">
+<p><span id="def:unlabeled-div-18" class="definition"><strong>Definition 1.3  </strong></span>Let <span class="math inline">\(G\)</span> be a group. If the number of elements in the set <span class="math inline">\(G\)</span> is finite, then <span class="math inline">\(G\)</span> is called a <em>finite group</em>. Otherwise, <span class="math inline">\(G\)</span> is called an <em>infinite group</em>. If <span class="math inline">\(G\)</span> is a finite group denote the number of elements in the set <span class="math inline">\(G\)</span> by <span class="math inline">\(|G|\)</span> and call this the <em>order</em> of <span class="math inline">\(G\)</span>.</p>
+</div>
+<div class="definition">
+<p><span id="def:unlabeled-div-19" class="definition"><strong>Definition 1.4  </strong></span>Let <span class="math inline">\((G, *)\)</span> be a group and <span class="math inline">\(H\)</span> a subset of <span class="math inline">\(G\)</span> (<span class="math inline">\(H \subseteq G\)</span> i.e. <span class="math inline">\(h \in H \implies h \in G\)</span>). Then <span class="math inline">\((H, *)\)</span> is a <em>subgroup</em> of <span class="math inline">\((G, *)\)</span> if <span class="math inline">\((H, *)\)</span> is a group (with same operation) i.e. if</p>
+<ol style="list-style-type: lower-alpha">
+<li><span class="math inline">\(h, k \in H \implies h * k \in H\)</span></li>
+<li><span class="math inline">\(e_G \in H\)</span></li>
+<li><span class="math inline">\(h \in H \implies h^{-1} \in H\)</span></li>
+</ol>
+<p>(Note associativity is inherited)</p>
+<p>i.e restricting operation to <span class="math inline">\(H\)</span> still gives a group. We write <span class="math inline">\(H \leq G\)</span>.</p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-20" class="example"><strong>Example 1.11  </strong></span><span class="math display">\[\begin{align*}
+    (\mathbb{Z}, +) \leq (\mathbb{Q}, +) \leq (\mathbb{R}, +)
+\end{align*}\]</span></p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-21" class="example"><strong>Example 1.12  </strong></span><span class="math display">\[\begin{align*}
+    (\{\pm 1\}, \times) \leq (\mathbb{Q} \setminus \{ 0 \}, \times) 
+\end{align*}\]</span></p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-22" class="example"><strong>Example 1.13  </strong></span>In <a href="lecture-1-1.html#exm:triangle">1.8</a> if we just take the rotations we get a subgroup, <span class="math inline">\(\{ 1, \sigma, \sigma^2 \}\)</span> is a subgroup.</p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-23" class="example"><strong>Example 1.14  </strong></span>In <a href="lecture-1-1.html#exm:glg">1.10</a>, we can take the matrices with determinant 1 which is <span class="math inline">\(SL_2(\mathbb{R})\)</span> (<span class="math inline">\(SL\)</span> stands for the special linear group).
+<span class="math display">\[\begin{align*}
+    SL_2(\mathbb{R}) &amp;= \{ A \in GL_2(\mathbb{R}) : \det A = 1 \} \\
+    &amp;\leq GL_2(\mathbb{R})
+\end{align*}\]</span></p>
+</div>
+<p>We always have identity subgroup and whole thing.</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-24" class="example"><strong>Example 1.15  </strong></span>If <span class="math inline">\(G\)</span> is a group then <span class="math inline">\(\{ e \} \leq G\)</span> is the trivial subgroup.</p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-25" class="example"><strong>Example 1.16  </strong></span>If <span class="math inline">\(G\)</span> is a group then <span class="math inline">\(G \leq G\)</span> is the improper subgroup.</p>
+</div>
+<div class="proposition">
+<p><span id="prp:unlabeled-div-26" class="proposition"><strong>Proposition 1.1  </strong></span>Subgroups of <span class="math inline">\(\mathbb{Z}\)</span> are exactly <span class="math inline">\(n \mathbb{Z} = {nk : k \in \mathbb{Z}}\)</span> where <span class="math inline">\(n \in \mathbb{Z}_{\geq 0}\)</span> (under addition?).</p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-27" class="proof"><em>Proof</em>. </span>First note <span class="math inline">\(n \mathbb{Z}\)</span> is a subgroup of <span class="math inline">\(\mathbb{Z}\)</span>.</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>If <span class="math inline">\(a, b \in n \mathbb{Z}\)</span> then <span class="math inline">\(a = na&#39;\)</span> and <span class="math inline">\(b = nb&#39;\)</span> for some <span class="math inline">\(a&#39;, b&#39; \in \mathbb{Z}\)</span>.
+Then <span class="math inline">\(a + b = na&#39; + nb&#39; = n (a&#39; + b&#39;) \in n \mathbb{Z}\)</span></p></li>
+<li><p><span class="math inline">\(0 \in n \mathbb{Z}\)</span>.</p></li>
+<li><p>If we have <span class="math inline">\(a = na&#39; \in n \mathbb{Z}\)</span> then <span class="math inline">\(a^{-1} = -a = n(-a&#39;) \in n \mathbb{Z}\)</span>.</p></li>
+</ol>
+<p>Conversely assume <span class="math inline">\(H \leq \mathbb{Z}\)</span>.</p>
+<p>If <span class="math inline">\(H = \{ 0 \} = 0 \mathbb{Z}\)</span>.</p>
+<p>Otherwise choose <span class="math inline">\(0 &lt; n \in H\)</span> with <span class="math inline">\(n\)</span> minimal (smallest positive element of <span class="math inline">\(H\)</span>).
+Then <span class="math inline">\(n \mathbb{Z} \in H\)</span> by closure and inverses. We show <span class="math inline">\(H = n \mathbb{Z}\)</span>. Suppose <span class="math inline">\(\exists h \in H \setminus n \mathbb{Z}\)</span>, then we can write <span class="math inline">\(h = nk + h&#39;\)</span> with <span class="math inline">\(h&#39; \in \{ 1, 2, \ldots, n -1 \}\)</span>. But <span class="math inline">\(h&#39; = h - nk \in H\)</span>, contradicting minimality of <span class="math inline">\(n\)</span>. Thus <span class="math inline">\(H = n \mathbb{Z}\)</span>.</p>
+</div>
+<p><em>Aside</em>: We need the notion of functions.
+<span class="math inline">\(f\)</span> is a <em>function</em> between sets <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> if it assigns each element of <span class="math inline">\(A\)</span> a unique element of <span class="math inline">\(B\)</span>.
+<span class="math display">\[\begin{align*}
+    f: A &amp;\to B \\
+    a &amp;\mapsto f(a)
+\end{align*}\]</span>
+<span class="math display">\[\begin{align*}
+    \text{eg: }\ f: \mathbb{Z} &amp;\to \mathbb{Z} &amp; g: \mathbb{Z} &amp;\to \mathbb{Z} \\
+    x &amp;\mapsto x + 1 &amp; x &amp;\mapsto 2x.
+\end{align*}\]</span></p>
+<p><em>composition of functions</em>:
+suppose <span class="math inline">\(g: A \to B\)</span> and <span class="math inline">\(f: B \to C\)</span>, define <span class="math inline">\(f \circ g: A \to C\)</span> <span class="math inline">\(a \mapsto (f \circ g)(a) = f(g(a))\)</span>.</p>
+<p>e.g. <span class="math inline">\((f \circ g)(x) = 2x + 1\)</span> and <span class="math inline">\((g \circ f)(x) = 2x + 2\)</span>.</p>
+<p>Suppose <span class="math inline">\(f_1: A \to B\)</span> and <span class="math inline">\(f_2: A \to B\)</span> then <span class="math inline">\(f_1 = f_2\)</span> if <span class="math inline">\(f_1(a) = f_2(a) \; \forall \; a \in A\)</span>.</p>
+<p><span class="math inline">\(f: A \to B\)</span> is a <em>bijection</em> if it defines a paring between elements of <span class="math inline">\(A\)</span> and elements of <span class="math inline">\(B\)</span>. That is given <span class="math inline">\(b \in B \ \exists\)</span> unique <span class="math inline">\(a \in A\)</span> s.t. <span class="math inline">\(f(a) = b\)</span>.</p>
+<p><span class="math display">\[\begin{align*}
+    \text{eg: }\ f: \mathbb{Z} &amp;\to \mathbb{Z} \\
+    x &amp;\mapsto x + 1
+\end{align*}\]</span></p>
+<p>If we have a bijection we can define
+<span class="math display">\[\begin{align*}
+    f^{-1}: B &amp;\to A \\
+    b &amp;\mapsto A \text{ where } f(a) = b. \\
+    \text{Then } f \circ f^{-1} &amp;= id_B &amp; f^{-1} \circ f &amp;= id_A\\
+    id_B(b) &amp;= b
+\end{align*}\]</span></p>
+<div class="lemma">
+<p><span id="lem:unlabeled-div-28" class="lemma"><strong>Lemma 1.2  </strong></span>If <span class="math inline">\(g: A \to B\)</span> and <span class="math inline">\(f: B \to C\)</span> are bijections then so is <span class="math inline">\(f \circ g: A \to C\)</span>.</p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-29" class="proof"><em>Proof</em>. </span>See Numbers and Sets</p>
+</div>
+<div class="definition">
+<p><span id="def:unlabeled-div-30" class="definition"><strong>Definition 1.5  </strong></span>Let <span class="math inline">\((G, *G)\)</span> and <span class="math inline">\((H, *_H)\)</span> be groups. Then the function
+<span class="math display">\[\begin{align*}
+    \theta : G \to H
+\end{align*}\]</span> is a <em>homomorphism</em> if
+<span class="math display">\[\begin{align*}
+    \theta(x *_G y) = \theta(x) *_H \theta(y) \; \forall \; x, y \in G.
+\end{align*}\]</span>
+‘A map which respect the group operation’.</p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-31" class="example"><strong>Example 1.17  </strong></span><span class="math inline">\(G = (\{ 0, 1, 2, 3 \}, +_4)\)</span>, <span class="math inline">\(H = (\{1, e^{\pi i/2}, e^{\pi i}, e^{3\pi i/2}, \times)\)</span> (the 4th roots of unity).</p>
+<p><span class="math display">\[\begin{align*}
+    \theta: G &amp;\to H \\
+    n &amp;\mapsto e^{n \pi i /2} \\
+    \theta(n +_4 m) &amp;= e^{(n +_4 m) \pi i /2} \\
+    &amp;= e^{(n +_4 m) \pi i /2} \text{ since $n + m = n +_4 m + 4k$ and $e^{4k \pi i /2} = 1$} \\
+    &amp;= e^{n \pi i /2} \times e^{m \pi i /2} \\
+    &amp;= \theta(n) \times \theta(m)
+\end{align*}\]</span></p>
+</div>
+<div class="lemma">
+<p><span id="lem:unlabeled-div-32" class="lemma"><strong>Lemma 1.3  </strong></span>Let <span class="math inline">\(G\)</span> and <span class="math inline">\(H\)</span> be groups and suppose we have a homomorphism <span class="math inline">\(\theta : G \to H\)</span>. Then <span class="math inline">\(\theta(G) = \{ \theta(g) : g \in G\}\)</span>, the <em>image</em> of <span class="math inline">\(\theta\)</span>, is a subgroup of <span class="math inline">\(H\)</span>, written <span class="math inline">\(\theta(G) \leq H\)</span>.</p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-33" class="proof"><em>Proof</em>. </span><span class="math inline">\(\theta(G) \subseteq H\)</span> by definition of <span class="math inline">\(\theta\)</span>.</p>
+<p><em>closure</em>: Let <span class="math inline">\(x, y \in \theta(G)\)</span>. Then <span class="math inline">\(x = \theta(g)\)</span> and <span class="math inline">\(y = \theta(h)\)</span> for some <span class="math inline">\(h, g \in G\)</span>.
+<span class="math display">\[\begin{align*}
+    x *_H y &amp;= \theta(g) *_H \theta(h) \\
+    &amp;= \theta(g *_G h) \text{ as } \theta \text{ is a homomorphism} \\
+    &amp;= \theta(G).
+\end{align*}\]</span></p>
+</div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "lunr",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

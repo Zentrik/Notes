@@ -1,0 +1,43 @@
+# Elementary Number Theory
+
+Intuitively, the natural numbers consist of $1, 1 + 1, 1+ 1 + 1, \ldots$
+
+How do you know you have captured all natural numbers? How do you know they are all distinct?
+
+We shall assume:
+
+::: {.definition name="Peano Axioms"}
+
+The natural numbers, $\mathbb{N}$, is a set containing a special element '$1$' with an operation '$+1$' satisfying
+
+i. $\forall \; n \in \mathbb{N},\ n + 1 \neq 1$;
+ii. $\forall \; m, n \in \mathbb{N},\ \text{ if } m \neq n,\ \text{ then } m + 1 \neq n + 1$
+iii. for any property $P(n)$, if $P(1)$ is true and $\forall \; n \in \mathbb{N}, P(n) \implies P(n + 1),$ then $P(n)$ is true for all natural numbers
+:::
+
+iii is called the induction axiom.
+
+i and ii capture the idea that any two natural numbers are distinct; iii captures our intuitive notion that the list^[$1, 1 + 1, 1+ 1 + 1, \ldots$] is complete (i.e. encompasses all natural numbers).^[to see this rigorously, take $P(n)$ = "$n$ is on this list]
+
+Now we can write 2 for $1 + 1$, 3 for $1 + 1 + 1$, etc, and we can define an operation '$+k$' for any natural number $k$:
+    
+$\hspace{1cm}$ for every natural number $n$, we know$n + (k + 1) = (n + k) + 1$;
+
+$\hspace{1cm}$ and so by induction, taking $P(k)$ = "'$+k$' is defined", proved.
+
+Similarly, we can define multiplication, powers, etc. You may check that the "normal" rules of arithmetic apply:
+
+<!--
+1. $\forall \; a, b, \in \mathbb{N} \hspace{1cm} a + b = b + a$ [($+$ is commutative);]{style="float:right"}
+2. $\forall \; a, b, \in \mathbb{N} \hspace{1.2cm} a b = b a$ ($\times$ is commutative);
+3. $\forall \; a, b, c \in \mathbb{N} \hspace{1cm} a + (b + c) = (a + b) + c$ ($+$ is associative);
+4. $\forall \; a, b, c \in \mathbb{N} \hspace{1cm} a (b c) = (a b) c$ ($\times$ is associative);
+4. $\forall \; a, b, c \in \mathbb{N} \hspace{1cm} a (b + c) = ab + ac$ ($\times$ is distributive over $+$); -->
+
+\begin{align}
+    &1.\ \forall \; a, b, \in \mathbb{N}  & &a + b = b + a & &(+ \text{ is commutative}); \\
+    &2.\ \forall \; a, b, \in \mathbb{N}  & &ab = ba & &(\times \text{ is commutative}); \\
+    &3.\ \forall \; a, b, c \in \mathbb{N} & &a + (b + c) = (a + b) + c & &(+ \text{ is associative}); \\
+    &4.\ \forall \; a, b, c \in \mathbb{N} & &a (b c) = (a b) c & &(\times \text{ is associative}); \\
+    &5.\ \forall \; a, b, c \in \mathbb{N} & &a (b + c) = ab + ac & &(\times \text{ is distributive over }+);
+\end{align} 
