@@ -159,7 +159,7 @@ Note for $z \neq 0$, $z^0 = 1$ and $z^{-n} = (z^{-1})^n$ for $n > 0$.
 :::
 
 ::: {.proof}
-Use \@ref{prp:polar-form} and induction
+Use \@ref(prp:polar-form) and induction
 :::
 
 ## Exponential and Trigonometric Functions
@@ -196,7 +196,7 @@ iii. \begin{align*}
 \end{align*} 
 :::
 
-Returning to polar form \@ref{prp:polar-form}, this can be written 
+Returning to polar form \@ref(prp:polar-form), this can be written 
 $z = r ( \cos \theta + i \sin \theta) = re^{i \theta}$ for $r = |z|$ and $\theta = \arg z$. De Moivre's Theorem \@ref(thm:de) now follows from $(e^{i \theta})^n = e^{i n \theta}$.
 
 ### Roots of units

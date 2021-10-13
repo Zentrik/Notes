@@ -19,8 +19,8 @@ If $G$ is a set and $*$ is a binary operation on $G$ then $(G, *)$ is a *group* 
 :::
 
 :::{.remark} 
-$e$ is called the identity of $G$ - see \@ref{lem:one} for why it is unique.
-We will show in \@ref{lem:one} that inverses are unique and we will write $x^{-1}$ for the inverse of $x$.
+$e$ is called the identity of $G$ - see \@ref(lem:one) for why it is unique.
+We will show in \@ref(lem:one) that inverses are unique and we will write $x^{-1}$ for the inverse of $x$.
 :::
 
 :::{.example}
@@ -271,8 +271,8 @@ If $G$ is a group then $\{ e \} \leq G$ is the trivial subgroup.
 If $G$ is a group then $G \leq G$ is the improper subgroup.
 :::
 
-::: {.proposition} 
-Subgroups of $\mathbb{Z}$ are exactly $n \mathbb{Z} = {nk : k \in \mathbb{Z}}$ where $n \in \mathbb{Z}_{\geq 0}$ (under addition?).
+::: {.proposition #nZ} 
+Subgroups of $\mathbb{Z}$ are exactly $n \mathbb{Z} = {nk : k \in \mathbb{Z}}$ where $n \in \mathbb{Z}_{\geq 0}$ (under addition).
 :::
 
 ::: {.proof}
@@ -342,10 +342,10 @@ Let $(G, *G)$ and $(H, *_H)$ be groups. Then the function
 \begin{align*}
     \theta(x *_G y) = \theta(x) *_H \theta(y) \; \forall \; x, y \in G.
 \end{align*}
-'A map which respect the group operation'.
+'A map which respects the group operation'.
 :::
 
-::: {.example}
+::: {.example #isomorphism}
 $G = (\{ 0, 1, 2, 3 \}, +_4)$, $H = (\{1, e^{\pi i/2}, e^{\pi i}, e^{3\pi i/2}, \times)$ (the 4th roots of unity).
 
 \begin{align*}
@@ -365,10 +365,153 @@ Let $G$ and $H$ be groups and suppose we have a homomorphism $\theta : G \to H$.
 ::: {.proof}
 $\theta(G) \subseteq H$ by definition of $\theta$.
 
-*closure*: Let $x, y \in \theta(G)$. Then $x = \theta(g)$ and $y = \theta(h)$ for some $h, g \in G$.
+*Closure*: Let $x, y \in \theta(G)$. Then $x = \theta(g)$ and $y = \theta(h)$ for some $h, g \in G$.
 \begin{align*}
     x *_H y &= \theta(g) *_H \theta(h) \\
     &= \theta(g *_G h) \text{ as } \theta \text{ is a homomorphism} \\
     &= \theta(G).
 \end{align*} 
+
+*Identity*:
+\begin{align*}
+    \theta(e_G) &= \theta(e_G *_G e_G) \\
+    &= \theta(e_G) *_H \theta(e_G) \\
+    \text{premultiplying by } &\theta(e_G)^{-1} \in H \\
+    \boldsymbol{e_H} &\boldsymbol = \boldsymbol{\theta(e_G)} \in \theta{G}
+\end{align*} 
+
+*Inverses*:
+\begin{align*}
+    \text{Let } x &= \theta(g) \in \theta(G) \\
+    e_H = \theta(e_G) &= \theta(g *_G g^{-1}) \\
+    &= \theta(g) *_H \theta(g^{-1}) \\
+    &= x *_H \theta(g^{-1}) \\
+    \text{also } \hspace{1cm} &= \theta(g^{-1} *_G g) \\
+    &= \theta(g^{-1}) *_H x \\
+    \text{Inverses }&\text{are unique} \\
+    \implies \boldsymbol{\theta(g)^{-1}} &\boldsymbol{= \theta(g^{-1})} \in \theta(G)
+\end{align*} 
+
+Associativity is inherited.
+:::
+
+::: {.definition}
+A bijective homomorphism is called an isomorphism. If $G$ and $H$ are groups and $\theta : G \to H$ is an isomorphism we say $G$ and $H$ are isomorphic and write $G \cong H$. The bijective part tells us the sets are the same and the homomorphism tells us the group operation is the same so an isomorphism tells us the groups are the "essentially the same".
+:::
+
+See Example \@ref(exm:isomorphism)
+\begin{align*}
+    G = (\{ 0, 1, 2, 3 \}, +_4) &\cong \{1, e^{\pi i/2}, e^{\pi i}, e^{3\pi i/2}, \times) = H \\
+    \theta: G &\to H \\
+    n &\mapsto e^{n \pi i /2} \\
+\end{align*} 
+$\theta$ is an isomorphism.
+
+::: {.lemma}
+\ i. The composition of two homomorphisms is a homomorphism, similarly for isomorphisms, thus if $G_1 \cong G_2$ and $G_2 \cong G_3$ then $G_1 \cong G_3$.
+
+ii. If $\theta : G_1 \to G_2$ is an isomorphism then so is its inverse $\theta^{1} : G_2 \to G_1$.
+So $G_1 \cong G_2 \implies G_2 \cong G_1$.
+:::
+
+::: {.proof}
+\ 
+i. Suppose
+\begin{align*}
+    \theta_1 : (G_1, *_1) &\to (G_2, *_2) \\
+    \theta_2 : (G_2, *_2) &\to (G_3, *_3) \\
+\end{align*} 
+are isomorphisms.
+Thus $\theta_2 \circ \theta_1$ is a function from $G_1$ to $G_3$, we need to check if its a homomorphism.
+\begin{align*}
+    \text{Let } x, y &\in G_1 && \\
+    \theta_2 \circ \theta_1 (x *_1 y) &= \theta_2(\theta_1(x) *_2 \theta_1(y)) & &\text{ since $\theta_1$ is a homomorphism} \\
+    &= \theta_2(\theta_1(x)) *_3 \theta_2(\theta_1(y)) & &\text{ since $\theta_2$ is a homomorphism} \\
+    &= (\theta_2 \circ \theta_1)(x) *_3 (\theta_2 \circ \theta_1)(y) &&
+\end{align*} 
+
+ii. $\theta$ is a bijection so $\theta^{-1}$ exists, we need to show its a homomorphism. 
+\begin{align*}
+    \text{Let } y, z &\in G_2. \\
+    \text{Then } \exists \; x, k &\in G_1, \text{ s.t.} \\
+    \theta^{-1}(y) = x,\ &\theta^{-1}(z) = k \\
+    \text{Note, } \theta(x *_1 k) &= \theta(x) *_2 \theta(k) \\
+    &= y *_2 z \\
+    \implies \theta^{-1}(y *_2 z) &= x *_1 k \\
+    &= \theta^{-1}(y) *_1 \theta^{-1}(z)
+\end{align*} 
+:::
+
+Notation: If $x \in (G, *)$, $n \in \mathbb{Z}$.
+Then 
+\begin{align*}
+    x^n &= \begin{cases}
+        x * x * \ldots * x & n > 0 \\
+        e & n = 0 \\
+        x^{-1} * x^{-1} * \ldots * x^{-1} & n < 0 \\
+    \end{cases}
+\end{align*} 
+
+::: {.definition}
+A group $H$ is *cyclic* if $\exists \; h \in H$ such that each element of $H$ is a power of $h$, i.e. for each $x \in H \; \exists m \in \mathbb{Z}$ s.t. $x = h^m$.
+Then $h$ is called a *generator* of $H$ and we write $H = \left\langle h \right\rangle$. 
+:::
+
+::: {.example}
+$(\mathbb{Z}, +) = \left\langle 1 \right\rangle = \left\langle -1 \right\rangle$, the infinite cyclic group.
+We showed all subgroups of $(\mathbb{Z}, +)$ are cyclic in \@ref(prp:nZ).
+:::
+
+::: {.example}
+$(\{ \pm 1 \}, +) = \left\langle -1 \right\rangle$
+:::
+
+::: {.example}
+$(\{ 0, 1, 2, 3\}, +_4) = \left\langle 1 \right\rangle = \left\langle 3 \right\rangle$
+:::
+
+Note a cyclic group is abelian.
+
+::: {.definition}
+Let $G$ be a group and $g \in G$. The *order* of $g$, written as $o(g)$, is the least positive integer $n$ such that $g^n = e$, if it exists. Otherwise $g$ has infinite order.
+:::
+
+::: {.lemma}
+Suppose $G$ is a group, $g \in G$ and $o(g) = m$. Let $n \in \mathbb{N}_{>0}$. Then
+\begin{align*}
+    g^n = e \iff m \mid n
+\end{align*} 
+:::
+
+::: {.proof}
+($\Longleftarrow$) Suppose $m \mid n$, then $n = qm$ for some $q \in \mathbb{N}$.
+\begin{align*}
+    \implies g^n = g^{qm} = (g^m)^q = e^q = e
+\end{align*} 
+($\implies$) Suppose $g^n = e$. Write $n = qm + r$ with $0 \leq r < m$, $q \in \mathbb{N}$.
+\begin{align*}
+    &\implies & e = g^n &= g^{qm + r} \\
+    && &= (g^m)^q + g^r \\
+    && &= e^q g^r \\
+    && &= e g^r \\
+    && &= g^r \\
+    &\implies & r &= 0 \text{ by minimality of m} \implies n = qm \text{ as required.} 
+\end{align*} 
+:::
+
+::: {.remark}
+\ 
+
+i. Suppose $g \in G$. Then $\{ g^n : n \in \mathbb{Z} \}$ is a subgroup of $G$, in fact it is the smallest subgroup of $G$ containing $g$.
+We call it the subgroup of $G$ generated by $g$ and write $\left\langle g \right\rangle = \{ g^n : n \in \mathbb{Z} \}$. Also $|\left\langle g \right\rangle| = o(g)$ if finite.
+Since if $o(g) = m$, $\left\langle g \right\rangle = \{ e, g, g^2, \ldots, g^{n-1} = g^{-1 }\}$.
+Otherwise both infinite.
+
+ii. We can define the abstract cyclic group of order $n$
+\begin{align*}
+    C_n = \left\langle x \right\rangle,\ \text{ where } o(x) = n.
+\end{align*} 
+Then $( \{ 0, 1, \ldots, n-1 \}, +_n)$ and $( \{ n^{\text{th}} \text{ roots of unity}\}, \times)$ are realisations of this group, they are all isomorphic.
+
+iii. Let $G$ be a group and $g_1 \to g_k \in G$. Then the subgroup of $G$ generated by $g_1 \to g_k$ denoted $\left\langle g_1 \to g_k \right\rangle$ is the smallest subgroup of $G$ containing all the $g_i$'s. $H$ is the intersection of all the subgroups of $G$ containing all the $g_i$'s.
 :::
