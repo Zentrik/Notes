@@ -132,6 +132,107 @@ For any $b \in \mathbb{Z}$, $\pm 1$ and $\pm b$ are always factors; all others a
 A natural number $n \geq 2$ is *prime* if its only factors are $\pm 1$ and $\pm n$.^[We don't allow $1$ to be a prime as we want to have unique prime factorisations and it would require every statement to say let $n$ be a prime not equal to $1$.]
 If $n \geq 2$ is not prime, then it is *composite*.
 
+::: {.proposition #two}
+Every natural number $n \geq 2$ can be written as a product of primes.
+:::
+
+**Lecture 4**
+
+::: {.proof}
+By induction on $n$. True for $n = 2$.
+Let $n > 2$ and suppose that the claim holds up to and including $n - 1$ (SPI). If $n$ is a prime, we are done. If $n$ is composite, then $n = a b$ for some $1 < a, b < n$.
+By the induction hypothesis, have $a = p_1 \ldots p_k$, $b = q_1 \ldots q_l$ for some primes $p_1 \ldots p_k, q_1 \ldots q_l$.
+Hence $n = ab = p_1 \ldots p_k q_1 \ldots q_l$ is a product of primes.
+:::
+
+::: {.theorem}
+There are infinitely many primes.
+:::
+
+::: {.proof name="Euclid 300 BC"}
+Suppose there are finitely many primes, say $p_1, \ldots, p_k$. Let $N = p_1 \ldots p_k + 1$.
+Then $p_1 \nmid N$, else $p_1 \mid (N - p_1 \ldots p_k) = 1$. 
+Clearly $p_1 \mid 1$ is false.
+Likewise, none of $p_2, p_3 \ldots, p_k$ divide $N$, contradicting the fact that $N$ can be written as a product of primes.
+:::
+
+Can a number have more than one factorisation in its primes? Our proof of \@ref(prp:2) does not give uniqueness.
+
+Clearly, $21 = 3 \cdot 7$ is unique.
+Why is $9049 \cdot 40099 \neq 6701 \cdot 54151$?
+
+We shall need:
+
 ::: {.proposition}
-Every natural number $n \geq 2$
+If $p$ is a prime and $p \mid ab$ then $p \mid a$ or $p \mid b$.
+:::
+
+## Highest Common Factors
+Given $a, b \in \mathbb{N}$, a natural number $c$ is the *highest common factor (hcf)*, or *greatest common divisor (gcd)* of $a$ and $b$ if 
+
+i. $c \mid a$ and $c \mid b$ "c is a common divisor of $a$ and $b$"
+ii. $d \mid a$ and $d \mid b \implies d \mid c$ "every common factor of $a$ and $b$ divides $c$"
+
+We write $c = \operatorname{hcf}(a, b)$ or $c = \operatorname{g\cdot}(a, b)$, or simply $c = (a, b)$
+\begin{align*}
+    \text{E.g. the factors of } &12 \text{ are } & &1, 2, 3, 4, 6, 12
+    &18 & &1, 2, 3, 6, 9, 18
+\end{align*} 
+So the common factors are $1, 2, 3, 6$, hence $\operatorname{hcf}(12, 18) = 6$. 
+But if $a$ and $b$ had common factors $1, 2, 3, 4, 6$ then $a$ and $b$ would have no $\operatorname{hcf}$ (according to ii).
+Therefore, we will need to show that $\operatorname{hcf}(a, b)$ always exists.
+
+::: {.proposition name="Division Algorithm"}
+Let $n, k \in \mathbb{N}$. Then we can write $n = qk + r$, where $q$ and $r$ are integers with $0 \leq r \leq k - 1$.
+:::
+
+::: {.proof}
+By induction on $n$. True for $n = 1$.
+
+Suppose $n - 1 = q k + r$ for some $q, r \in \mathbb{Z}$, $0 \leq r \leq k - 1$.
+
+If $r < k - 1$ then $n = (n - 1) + 1 = qk + (r + 1)$.
+
+If $r = k - 1$ then $n = (n - 1) + 1 = qk + (k - 1) + 1 = (q + 1)k$.
+:::
+
+## Euclid's Algorithm
+
+\begin{array}{c|cc|c}
+    \text{INPUT} & a & b & a = 372,\ b = 162 \\
+    \hline
+    \text{STEP } 1& a = q_1 b + r_1 & q_1, r_1 \in \mathbb{Z} & 372 = 2 \cdot 162 + 48 \\
+    & & 0 \leq r \leq b - 1 & \\
+    \text{STEP } 2& b = q_2 r_1 + r_2 & 0 \leq r_2 < r_1 & 162 = 3 \cdot 48 + 18 \\
+    & r_1 = q_3 r_2 + r_3 & 0 < r_3 < r_2 & 48 = 2 \cdot 18 + 12 \\
+    & \vdots &  & 18 = 1 \cdot 12 + 6 \\
+    \text{STEP } n& r_{n - 2} = q_n r_{n-1} + r_{n} & 0 \leq r_n < r_{n - 1} & 12 = 2 \cdot 6 \\
+    \text{STEP } n + 1& r_{n - 1} = q_{n + 1} r_n + r_{n + 1} & r_{n + 1} = 0 & 0 \leq r_n < r_{n - 1} & \\
+    \hline
+    \text{OUTPUT} & r_n &&&
+\end{array} 
+Note that the algorithm terminates in $\leq b$ steps, since $b > r_1 > r_2 > \ldots \geq 0$.
+
+::: {.theorem}
+The output of Euclid's algorithm with input $a, b$ is $\operatorname{hcf}(a, b)$.
+:::
+::: {.proof}
+\ 
+
+i. We can see $r_n / r_{n - 1}$ (as $r_{n + 1} = 0$ at STEP $n + 1$)
+so $r_{n - 1} / r_{n - 2}$  STEP $n$
+\begin{align*}
+    \text{We can see } &r_n \mid r_{n - 1} \text{ (as } r_{n + 1} = 0 \text{  at STEP } n + 1 \\
+    \text{so } &r_n \mid r_{n - 2} \ ( \text{STEP } n) \\
+    \text{so } &r_n \mid r_i \; \forall \; i = 1, \ldots n - 1 \text{ (by induction)}
+\end{align*} 
+Hence $r_n \mid b$ (STEP $2$) and $r_n \mid a$ (STEP $1$).
+
+ii. Given $d$ s.t. $d \mid a$ and $d \mid b$,
+\begin{align*}
+    \text{we have } &d \mid r_1 \text{ (STEP 1) } \\
+    \text{so } &d \mid r_2 \text{ (STEP 1) } \\
+    \text{so } &d \mid r_i \; \forall \; i = 1, \ldots n \text{ (by induction)}
+\end{align*} 
+Therefore, $r_n = \operatorname{hcf}(a, b)$.
 :::

@@ -11,8 +11,7 @@ knitr::include_graphics("figures/02-vector.svg")
 ```
 lengths denoted by $|\underline{a}| = | \overrightarrow{OA}|$, $\underline{O}$ is the position vector for $O$.
 
-::: {.definition name="Vector Addition and Scalar Multiplication"}
-\ 
+## Vector Addition and Scalar Multiplication
 
 i. *Scalar Multiplication*
 Given $\underline{a}$, position vector for $A$ and a *scalar* $\lambda \in \mathbb{R}$, $\lambda \underline{a}$ is position vector of point $A'$ on $OA$ with
@@ -55,7 +54,6 @@ The *span* of a set of vectors is $\operatorname{span} \{ \underline{a}, \underl
 If $a \neq 0$ then $\operatorname{span} \{ \underline{a} \} = \{ \lambda \underline{a} \}$, which is a line through $O$ and $A$.
 
 If $\underline{a} \nparallel \underline{b}$ (this also means $\underline{a}, \underline{b} \neq \underline{0}$) then $\operatorname{span} \{ \underline{a}, \underline{b}\} = \{ \alpha \underline{a} + \beta \underline{b} : \alpha, \beta \in \mathbb{R}\}$, which is a *plane* through $O, A, B$.
-:::
 
 ## Scalar or Dot Product
 i. 
@@ -87,5 +85,140 @@ is the *component* of $\underline{b}$ along $\underline{a}$
 ```{r interpretation, echo = FALSE, fig.cap = "", fig.align="center"} 
 knitr::include_graphics("figures/02-interpretation.svg") 
 ```
-We can *resolve* $\underline{b} = \underline{b}_\parallel + \underline{b}_\bot$ where $\underline{a} \bot \underline{b} \iff \underline{a} \cdot \underline{b} = 0$.
-Note $\underline{a} \cdot \underline{b} =  \underline{a} \cdot \underline{b}_\parallel$
+We can *resolve* $\underline{b} = \underline{b}_\parallel + \underline{b}_\bot$.
+$\underline{b}_\parallel = (\underline{b} \cdot \underline{u}),\ \underline{b}_\bot = b - (\underline{b} \cdot \underline{u})$ where $\underline{u} = \frac{\underline{a}}{|\underline{a}|}$.
+Note $\underline{a} \cdot \underline{b} =  \underline{a} \cdot \underline{b}_\parallel$. \ 
+In general, vectors $\underline{a}$ and $\underline{b}$ are *orthogonal* or *perpendicular*, written $\underline{a} \bot \underline{b} \iff \underline{a} \cdot \underline{b} = 0$.
+
+## Orthonormal Bases and Components
+
+Choose vectors $\underline{e}_1, \underline{e}_2, \underline{e}_3$ that are *orthonormal* i.e. each of unit length and mutually perpendicular.
+\begin{align*}
+    \underline{e}_i \cdot \underline{e}_j = \begin{cases}
+        1 & \text{if } i = j \\
+        0 & \text{if } i \neq j
+    \end{cases}
+\end{align*}
+This is equivalent to choosing Cartesian axes along these directions, $\{ \underline{e}_i \}$ is a *basis*: any vector can be expressed 
+\begin{align*}
+    \underline{a} = \sum_{i} a_i \underline{e}_i = a_1 \underline{e}_1 + a_2 \underline{e}_2 + a_3 \underline{e}_3 
+\end{align*} 
+and each component is *uniquely* determined 
+\begin{align*}
+    a_i = \underline{e}_i \cdot \underline{a}.
+\end{align*}
+
+```{r 02-bases, echo = FALSE, fig.cap = "", fig.align="center", out.width="50%"} 
+knitr::include_graphics("figures/02-bases.png") 
+```
+
+Each $\underline{a}$ can now be identified with a set of components in 
+\begin{align*}
+    \begin{pmatrix} a_1 & a_2 & a_3 \end{pmatrix} \text{ or } \begin{pmatrix}
+    a_1 \\
+    a_2 \\
+    a_3
+    \end{pmatrix}
+\end{align*} 
+
+Note \begin{align*}
+    \underline{a} \cdot \underline{b} &= (\sum_i a_i \underline{e}_i) \cdot (\sum_j b_j \underline{e}_j) \\
+    &= a_1 b_1 + a_2 b_2 + a_3 b_3 
+    |\underline{a}|^2 = a_1^2 a_2^2 a_3^2 \text{(Pythagoras)}
+\end{align*} 
+$\underline{e}_1, \underline{e}_2, \underline{e}_3$ are also often written $\underline{i}, \underline{j}, \underline{k}$.
+
+## Vector or Cross Product
+i. 
+::: {.definition}
+Given $\underline{a}$ and $\underline{b}$, let $\theta$ be the angle between them measure in the sense shown relative to a unit normal $\underline{n}$ to the plane they span;
+```{r cross, echo = FALSE, fig.cap = "", fig.align="center", out.width="50%"} 
+knitr::include_graphics("figures/02-cross.svg") 
+```
+then \begin{align*}
+    \underline{a} \wedge \underline{b} = \underline{a} \times \underline{b} = |\underline{a}| | \underline{b}| \sin \theta \underline{n}
+\end{align*} is *vector* or *cross* product.^[$\underline{n}$ is defined up to a choice of sign if $\underline{a} \nparallel \underline{b}$, but changing the sign of $\underline{n}$ means changing $\theta$ to $2\pi - \theta$ so definition is unchanged; $\underline{n}$ is not defined if $\underline{a} \parallel \underline{b}$ and $\theta$ is not defined if $\underline{a}$ or $\underline{b} = 0$, but $\underline{a} \wedge \underline{b} = \underline{0}$ in these cases.]
+:::
+
+ii. *Properties*
+
+\begin{align*}
+    \underline{a} \wedge \underline{b} &= - \underline{b} \wedge \underline{a} \\
+    (\lambda \underline{a}) \wedge \underline{b} &= \lambda (\underline{a} \wedge \underline{b}) = \underline{a} \wedge (\lambda \underline{b}) \\
+    \underline{a} \wedge (\underline{b} + \underline{c}) &= \underline{a} \wedge \underline{b} + \underline{a} \wedge \underline{c} \\
+    \underline{a} \wedge \underline{b} &= \underline{0} \iff \underline{a} \parallel \underline{b} \\
+    \underline{a} \wedge \underline{b} &\bot \underline{a} \text{ and } \underline{b} \\
+    \underline{a} \cdot (\underline{a} \wedge \underline{b}) &= \underline{b} \cdot (\underline{a} \wedge \underline{b}) = 0
+\end{align*} 
+
+iii. *Interpretations*
+- $\underline{a} \wedge \underline{b}$ is the *vector* area shown:
+```{r vector-area, echo = FALSE, fig.cap = "", fig.align="center", out.width="50%"} 
+knitr::include_graphics("figures/02-vector-area.svg") 
+```
+$|\underline{a} \wedge \underline{b}|$ is the *scalar* area. The direction of the normal $\underline{n}$ gives orientation of the parallelogram in space.
+
+- Fix $\underline{a}$ and consider $\underline{x} \bot \underline{a}$; then $\underline{x} \mapsto \underline{a} \wedge \underline{x}$ scales $| \underline{x} |$ by a factor $|\underline{a}|$ and rotates $\underline{x}$ by $\pi / 2$ in the plane $\bot \; \underline{a}$ as shown:
+```{r perp-cross, echo = FALSE, fig.cap = "", fig.align="center", out.width="50%"} 
+knitr::include_graphics("figures/02-perp-cross.svg") 
+```
+
+iv. *Component expressions*
+Consider $\underline{e}_1, \underline{e}_2, \underline{e}_3$  orthonormal basis as in [Orthonormal Bases and Components] but assume in addition
+\begin{align*}
+    \underline{e}_1 \wedge \underline{e}_2 = \underline{e}_3 = \underline{e}_2 \wedge \underline{e}_1 \\
+    \underline{e}_2 \wedge \underline{e}_3 = \underline{e}_1 = \underline{e}_3 \wedge \underline{e}_2 \\
+    \underline{e}_3 \wedge \underline{e}_1 = \underline{e}_2 = \underline{e}_1 \wedge \underline{e}_3 \\
+\end{align*} (all equalities follow from any one). 
+This is called a *right-handed* orthonormal basis.
+
+Now for \begin{align*}
+    \underline{a} &= \sum_{i} a_i \underline{e}_i = a_1 \underline{e}_1 + a_2 \underline{e}_2 + a_3 \underline{e}_3  \\
+    \underline{b} &= \sum_j b_j \underline{e}_j = b_1 \underline{e}_1 + b_2 \underline{e}_2 + b_3 \underline{e}_3  \\
+    \underline{a} \wedge \underline{b} &= (a_2 b_3 - a_3 b_2)\underline{e}_1 + (a_3 b_1 - a_1 b_3) \underline{e}_2 + (a_1 b_2 - a_2 b_1) \underline{e}_3
+\end{align*}
+
+## Triple products
+
+a. *Scalar Triple Product*
+
+::: {.definition}
+\begin{align*}
+    \underline{a} \cdot (\underline{b} \wedge \underline{c}) &= \underline{b} \cdot (\underline{c} \wedge \underline{a}) = \underline{c} \cdot ( \underline{a} \wedge \underline{b}) \\
+    &= - \underline{a} \cdot (\underline{c} \wedge \underline{b}) = - \underline{b} \cdot (\underline{a} \wedge \underline{c}) = - \underline{c} \cdot (\underline{b} \wedge \underline{a}) \\
+    &= \left[ \underline{a}, \underline{b}, \underline{c} \right]
+\end{align*} 
+:::
+
+Interpretation: $|\underline{c} \cdot \underline{a} \wedge \underline{b}|$ is the volume of a parallelepiped shown
+```{r parallelepiped, echo = FALSE, fig.cap = "", fig.align="center", out.width="50%"} 
+knitr::include_graphics("figures/02-parallelepiped.svg") 
+```
+The "signed volume" is $\underline{c} \cdot \underline{a} \wedge \underline{b}$; if
+$\underline{c} \cdot \underline{a} \wedge \underline{b} > 0$ then we say $\underline{a}, \underline{b}, \underline{c}$ is a right-handed set
+
+Note: $\underline{a} \cdot \underline{b} \wedge \underline{c}$ iff $\underline{a}, \underline{b}, \underline{c}$ are *co-planar* meaning one of them lies in the plane spanned by the other two.
+e.g. $\underline{c} = \alpha \underline{a} + \beta \underline{b}$ belonging to $\operatorname{span} \{ a, b \}$
+
+::: {.example}
+\begin{align*}
+    \underline{a} &= \begin{pmatrix}2 & 0 & -1\end{pmatrix} \\
+    \underline{b} &= \begin{pmatrix}7 & -3 & 5 \end{pmatrix} \\
+    \implies \underline{a} \wedge \underline{b} &= (0.5 - (-1)(-3)) \underline{e}_1 + ((-1)7 - 2.5) \underline{e}_2 + (2(-3) - 0.7) \underline{e}_3 \\
+    &= \begin{pmatrix}-3 & -17 & -6 \end{pmatrix}
+\end{align*}
+To test whether $\underline{a}, \underline{b}, \underline{c}$ are co-planar with $\underline{c} = \begin{pmatrix}7 3 -3 & 7 \end{pmatrix}$.
+\begin{align*}
+    \underline{c} \cdot \underline{a} \wedge \underline{b} &= 3(-3) + (-3)(-17) + 7(-6) \\
+    &= 0;
+\end{align*} 
+consistent with $\underline{c} = \underline{b} - 2 \underline{a}$.
+:::
+
+b. *Vector Triple Product*
+\begin{align*}
+    \underline{a} \wedge (\underline{b} \wedge \underline{c}) &= (\underline{a} \cdot \underline{c}) \underline{b} - (\underline{a} \cdot \underline{b}) \underline{c} \\
+    (\underline{a} \wedge \underline{b}) \wedge \underline{c} &= (\underline{a} \cdot \underline{c}) \underline{b} - (\underline{b} \cdot \underline{c}) \underline{a}
+\end{align*} 
+
+Forms of RHS is constrained by definitions above, and we could check explicitly. We will return to these formulae using index notation and summation convention.
