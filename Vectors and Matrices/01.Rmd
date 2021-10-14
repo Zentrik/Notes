@@ -246,7 +246,7 @@ Consider a general point on a circle in $\mathbb{C}$ with centre $c \in \mathbb{
 \begin{align*}
     z = c + \rho &e^{i \alpha}, \text{ for any } \alpha \in \mathbb{R} \\
     \text{Equivalently} \\
-    |z - c| &= \rho
+    |z - c| &= \rho \\
     \text{or } \\
     |z - c|^2 &= \rho^2 \\
     |z|^2 - \overline{c}z - c \overline{z} &= \rho^2 - |c|^2
