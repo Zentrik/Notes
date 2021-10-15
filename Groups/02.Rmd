@@ -1,0 +1,96 @@
+# The Dihedral and Symmetric Groups
+**Lecture 2**
+
+First note composition of functions is associative
+\begin{align*}
+    f, g, h: X \to X, \text{ let } x \in X \\
+    (f \circ (g \circ h))(x) &= f((g \circ h)(x)) \\
+    &= f(g(h(x))) \\
+    &= (f \circ g)(h(x)) \\
+    &= ((f \circ g) \circ h)(x) \\
+    \implies f \circ \circ (g \circ h) = (f \circ g) \circ h.
+\end{align*} 
+
+## Dihedral Groups
+Let $P$ be a regular polygon with $n$ sides and $V$ its set of vertices.
+We can assume 
+\begin{align*}
+    V = \{ e^{2\pi i k /n} : 0 \leq k < n \}   
+\end{align*} (nth roots of unity in $\mathbb{C}$).
+Then the symmetries of $P$ are the isometries (i.e. distance preserving maps of $\mathbb{C}$ that map $V$ to $V$).
+
+We will show that:
+for $n \geq 3$ the set of symmetries of $P$, under composition, form a nonabelian group of order $2n$. This group is called the *dihedral group* of order $2n$ and denoted $D_{2n}$.
+
+*Warning* - sometimes $D_{2n}$ is denoted $D_n$
+
+We have already met $D_6$ in Example \@ref(exm:triangle).
+
+Consider $D_8$
+```{r 02-D8, echo = FALSE, fig.cap = "", fig.align="center"} 
+knitr::include_graphics("figures/02-D8.png") 
+```
+\begin{align*}
+    \text{Let } r: P &\to P \\
+    z &\mapsto e^{2\pi i / n}z \\
+    t : P &\to P \\
+    z &\mapsto \overline{z}
+\end{align*} 
+These are both isometries
+
+\begin{align*}
+    |r(z) - r(w)| &= |e^{2\pi i / n}z -e^{2\pi i / n}w| \\
+    &= |e^{2\pi i / n}||z - w| \\
+    &= |z - w| \\
+    |t(z) - t(w)|^2 &= |\overline{z} - \overline{w}|^2 \\
+    &=(\overline{z} - \overline{w})(z - w) \\
+    &= |z - w|^2 \\
+    \implies |t(z) - t(w)| &= |z - w|
+\end{align*} 
+
+Note, $r^n = \operatorname{id} = \text{identity} \implies r^{-1} = r^{n - 1}$.
+\begin{align*}
+    \text{Note, } r^n &= \operatorname{id} = \text{identity} \\
+    \implies r^{-1} &= r^{n - 1} \\
+    t^2 &= \operatorname{id} \\
+    \implies t^{-1} &= t \\
+    tr(z) &= e^{-2\pi i / n} \overline{z} = r^{-1}t(z) \\
+    \implies tr &= r^{-1}t
+\end{align*} 
+
+We show that the set of symmetries of $P$ is precisely $\{\underbrace{e, r, r^2, \ldots, r^{n-1}}_\text{rotations}, \underbrace{t, rt \ldots, r^{n-1}t}_\text{reflections} \}$.
+Then this set under composition of functions gives the group $D_{2n}$.
+
+Let $f$ be a symmetry of $P$. Then $f(1) = e^{2 \pi i k /n}$ for some $k$ ($f(1)$ is mapping to some vertex, so some element of $V$).
+\begin{align*}
+    \implies \underbrace{r^{-k} \circ f}_\text{$g$, symmetry of $P$ fixing $1$}(1) = 1
+\end{align*} 
+
+So, $g(e^{2 \pi i /n}) = e^{2 \pi i /n}$ or $e^{-2 \pi i /n}$. 
+
+If $g(e^{2 \pi i /n}) = e^{2 \pi i /n}$ then $g$ fixes the points $1$ and $e^{2 \pi i / n}$.
+Also $g$ interchanges the vertices of $P$ so fixes $P$'s centre of mass
+\begin{align*}
+    \frac{1}{n} \sum_{k=0}^{n-1} e^{2 \pi i k /n} = 0
+\end{align*} 
+So $g$ fixes $0, 1$ and $e^{2 \pi i / n} \implies g = \text{id} \implies f = r^{k}$.
+
+If $g(e^{2 \pi i /n}) = e^{-2 \pi i /n}$ then $t \circ g(e^{2 \pi i / n}) = e^{2 \pi i / n}$
+\begin{align*}
+    && t \circ g(e^{2 \pi i / n}) &= e^{2 \pi i / n} \\
+    && t \circ g (1) &= 1 \\
+    && t \circ g (0) &= 0 \\
+    &\implies & t \circ g &= \text{id} \\
+    &\implies & t \circ r^{-k} \circ f &= \text{id} \\
+    &\implies & f &= r^{k} \circ t^{-1} \\
+    && &= r^k \circ t
+\end{align*} 
+
+Algebraically we write, 
+\begin{align*}
+    D_{2n} = \left\langle \underbrace{r,\ t}_\text{generators} | \underbrace{r^n = e,\ t^2 = e,\ trt = r^{-1}}_\text{relations} \right\rangle 
+\end{align*} 
+
+Finally, $D_2 \cong C_2$ and $D_4$ is \@ref(exm:nine) (example 1.7). 
+Both are abelian.
+Also $D_\infty$ exists.
