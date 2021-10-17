@@ -123,8 +123,8 @@ Each $\underline{a}$ can now be identified with a set of components in
 
 Note \begin{align*}
     \underline{a} \cdot \underline{b} &= (\sum_i a_i \underline{e}_i) \cdot (\sum_j b_j \underline{e}_j) \\
-    &= a_1 b_1 + a_2 b_2 + a_3 b_3 
-    |\underline{a}|^2 = a_1^2 a_2^2 a_3^2 \text{(Pythagoras)}
+    &= a_1 b_1 + a_2 b_2 + a_3 b_3  \\
+    |\underline{a}|^2 &= a_1^2 + a_2^2 + a_3^2 \text{(Pythagoras)}
 \end{align*} 
 $\underline{e}_1, \underline{e}_2, \underline{e}_3$ are also often written $\underline{i}, \underline{j}, \underline{k}$.
 
@@ -222,3 +222,165 @@ b. *Vector Triple Product*
 \end{align*} 
 
 Forms of RHS is constrained by definitions above, and we could check explicitly. We will return to these formulae using index notation and summation convention.
+
+## Lines, Planes and Other Vector Equations
+
+### Lines
+General point on a line through $\underline{a}$ with direction $\underline{u} \neq \underline{0}$ has position vector
+\begin{align*}
+    \underline{r} = \underline{a} + \lambda \underline{u},\ \lambda \in \mathbb{R}
+\end{align*} 
+in parametric form.
+
+```{r 2-6-line, echo = FALSE, fig.cap = "", fig.align="center", out.width = "50%"} 
+knitr::include_graphics("figures/2-6-line.png") 
+```
+
+Alternative form without parameter $\lambda$ obtained by crossing with $\underline{u}$:
+\begin{align*}
+    \underline{u} \wedge \underline{r} = \underline{u} \wedge \underline{a}
+\end{align*} 
+Conversely $\underline{u} \wedge (\underline{r} - \underline{a}) = \underline{0}$ and this holds $\iff \underline{r} - \underline{a} = \lambda \underline{u}$ for some $\lambda$.
+
+Now consider 
+\begin{align*}
+    \underline{u} \wedge \underline{r} &= \underline{c} \text{ where } \underline{u}, \underline{c} \text{ are given vectors and } \underline{u} \neq \underline{0} \\
+    \text{Note } \underline{u} \cdot (\underline{u} \wedge \underline{r}) &= \underline{u} \cdot \underline{c} \\
+    &= 0
+\end{align*} 
+If $\underline{u} \cdot \underline{c} \neq 0$ then we have a contradiction i.e. no solutions.
+If $\underline{u} \cdot \underline{c} = 0$, try a particular solution by considering 
+\begin{align*}
+    \underline{u} \wedge (\underline{u} \wedge \underline{c}) &= \overbrace{(\underline{u} \cdot \underline{c})}^0 \underline{u} - (\underline{u} \cdot \underline{u}) \underline{c} \\
+    &= - |\underline{u}|^2 \underline{c}
+\end{align*} 
+
+Hence $\underline{a} = - \frac{1}{|\underline{u}|^2} (\underline{u} \wedge \underline{c})$ is a solutions. The general solution is \begin{align*}
+    \underline{r} = \underline{a} + \lambda \underline{u}
+\end{align*} as $\underline{u} \wedge (\underline{a} + \lambda \underline{u}) = \underline{u} \wedge \underline{a}$
+
+### Planes
+The general point on a plane through $\underline{a}$ with directions $\underline{u}, \underline{v}$ in plane ($\underline{u} \nparallel \underline{v}$) has position vector
+\begin{align*}
+    \underline{r} = \underline{a} + \lambda \underline{u} + \mu \underline{v}, \text{ where } \lambda, \mu \in \mathbb{R} 
+\end{align*} in parametric form.
+```{r 2-6-plane, echo = FALSE, fig.cap = "", fig.align="center", out.width = "50%"} 
+knitr::include_graphics("figures/2-6-plane.png") 
+```
+
+An alternative form without parameters is obtained by by dotting with a normal vector
+$\underline{n} = \underline{u} \wedge \underline{v} \neq 0$ (since $\underline{u} \nparallel \underline{v}$ but is not necessarily a unit vector).
+
+This gives
+\begin{align*}
+    \underline{n} \cdot \underline{r} &= \underline{n} \cdot \underline{a} \\
+    &= \kappa \text{ (a constant)}
+\end{align*}
+Note component of $\underline{r}$ along $\underline{n}$ is
+\begin{align*}
+    \frac{\underline{n} \cdot \underline{r}}{|\underline{n}|} = \frac{\kappa}{|\underline{n}|}
+\end{align*} 
+```{r 2-6-plane2, echo = FALSE, fig.cap = "Clearly a plane", fig.align="center", out.width = "50%"} 
+knitr::include_graphics("figures/2-6-plane2.png") 
+```
+
+Moreover $|\kappa| / |\underline{n}|$ is perpendicular distance of plane from $\underline{0}$.
+
+### Other Vector Equations
+
+Consider equations for $\underline{r}$ (unknown) written in vector notation with given constant vectors.
+
+Possible approaches:
+
+- We can re-write and convert to some standard form
+::: {.example}
+\begin{align*}
+    |\underline{r}|^2 + \underline{r} \cdot \underline{a} &= k \\
+    \text{Complete the square:} \\
+    |\underline{r} + \frac{1}{2} \underline{a}|^2 &= (\underline{r} + \frac{1}{2} \underline{a}) \cdot (\underline{r} + \frac{1}{2} \underline{a}) \\
+    &= k + \frac{1}{4} |\underline{a}|^2.
+\end{align*}
+This is the equation of a sphere, centre $-\frac{1}{2} \underline{a}$ and radius $(k + \frac{1}{4} |\underline{a}|^2)^{1 / 2}$ provided $k + \frac{1}{4} |\underline{a}|^2 > 0$
+:::
+
+For equations linear in $\underline{r}$
+
+- Try dotting and crossing with constant vectors to learn more (see examples in provided notes).
+
+- Can try expressing $\underline{r} = \alpha \underline{a} + \beta \underline{b} + \gamma \underline{c}$ for some non-co-planar $\underline{a}, \underline{b}, \underline{c}$ and solve for $\alpha, \beta, \gamma$.
+
+- Can choose basis and use index/ matrix notation.
+
+## Index (suffix) Notation and the Summation convention
+
+### Components; $\delta$ and $\epsilon$
+Write vectors $\underline{a}, \underline{b}, \ldots$, in terms of components $a_i, b_i, \ldots$, wrt. an orthonormal, right-handed basis
+\begin{align*}
+    \underline{e}_1, \underline{e}_2, \underline{e}_3.
+\end{align*} 
+Indices or suffices $i, j, k, l, p, q \ldots$ take values $1, 2, 3$.
+
+Then \begin{align*}
+    && \underline{c} &= \alpha \underline{a} + \beta \underline{b} \\
+    &\iff & c_i &= [\alpha \underline{a} + \beta \underline{b}] \\
+    && &= \alpha a_i + \beta b_i \text{ for } i = 1, 2, 3 \textbf{ free index} \\
+    && \underline{a} \cdot \underline{b} &= \sum_i a_i b_i = \sum_j a_j b_j \\
+    && \underline{x} &= \underline{a} + (\underline{b} \cdot \underline{c}) \underline{d} \\
+    &\iff & x_j &= a_j + (\sum_k b_k c_k) d_j \text{ for } j = 1, 2, 3 \text{ free index}
+\end{align*} 
+
+::: {.definition name="Kronecker Delta"}
+\begin{align*}
+    \delta_{ij} &= \begin{cases}
+        1 & \text{if } i = j \\
+        0 & \text{else}\\
+    \end{cases} \\
+    \delta_{ij} &= \delta_{ji} \text{ symmetric} \\ 
+    \text{Written out as an array} &\text{ or matrix}\\
+    \begin{pmatrix}
+    \delta_{11} & \delta_{12} & \delta_{13} \\
+    \delta_{21} & \delta_{22} & \delta_{23} \\
+    \delta_{31} & \delta_{32} & \delta_{33}
+    \end{pmatrix} &=
+    \begin{pmatrix}
+    1 & 0 & 0 \\
+    0 & 1 & 0 \\
+    0 & 0 & 1
+    \end{pmatrix} \\
+    \text{Then } \underline{e}_i \cdot \underline{e}_j &= \delta_{ij} \\
+    \text{and } \underline{a} \cdot \underline{b} &= (\sum_i a_i \underline{e}_i) \cdot (\sum_j b_j \underline{e}_j) \\
+    &= \sum_{ij} a_i b_j \underline{e}_i \cdot \underline{e}_j \\
+    &= \sum_{ij} a_i b_j \delta_{ij} \\
+    &= \sum_i a_i b_i
+\end{align*} 
+:::
+
+::: {.definition name="Levi-Civita Epsilon"}
+\begin{align*}
+    \epsilon_{ijk} &= \begin{cases}
+        + 1 & \text{if } (i, j, k) \text{ is an even permutation of } (1, 2, 3) \\
+        - 1 & \text{if } (i, j, k) \text{ is an odd permutation of } (1, 2, 3) \\
+        0 & \text{else}
+    \end{cases} 
+    \text{i.e. } \epsilon_{123} &= \epsilon_{231} = \epsilon_{312} = + 1 \\
+    \epsilon_{321} &= \epsilon_{213} = \epsilon_{132} = - 1 \\
+    \epsilon_{ijk} &= 0 \text{ if any two index values match} \\
+\end{align*} 
+$\epsilon_{ijk}$ is *totally* antisymmetric: exchanging any pairs of indices produces a change in sign.
+Then
+\begin{align*}
+    \underline{e}_i \wedge \underline{e}_j &= \sum_k \epsilon_{ijk} \ \underline{e}_k \\
+    \text{e.g. } \underline{e}_2 \wedge \underline{e}_1 &= \sum_k \epsilon_{21k} \ \underline{e}_k \\
+    &= \epsilon_{213} \ \underline{e}_3 \\
+    &= - \underline{e}_3 \\
+    \text{And } \underline{a} \wedge \underline{b} &= (\sum_i a_i \underline{e}_i) \wedge (\sum_j b_j \underline{e}_j) \\
+    &= \sum_{ij} a_i b_j \underline{e}_i \wedge \underline{e}_j \\
+    &= \sum_{ij} a_i b_j \left( \sum_k \epsilon_{ijk} \ \underline{e}_k \right) \\
+    &= \sum_k \left( \sum_{ij} \epsilon_{ijk} a_i b_j \right) \underline{e}_k \\
+    \text{Hence } (\underline{a} \wedge \underline{b})_k &= \sum_{ij} \epsilon_{ijk} a_i b_j \\
+    \text{e.g. } (\underline{a} \wedge \underline{b})_3 &= \sum_{ij} \epsilon_{ij3} a_i b_j \\
+    &= \epsilon_{123} a_1 b_2 + \epsilon_{213} a_2 b_1 \\
+    &= a_1 b_2 - a_2 b_1.
+\end{align*} 
+
+:::

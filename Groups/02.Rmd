@@ -3,12 +3,12 @@
 
 First note composition of functions is associative
 \begin{align*}
-    f, g, h: X \to X, \text{ let } x \in X \\
+    f, g, h: X &\to X, \text{ let } x \in X \\
     (f \circ (g \circ h))(x) &= f((g \circ h)(x)) \\
     &= f(g(h(x))) \\
     &= (f \circ g)(h(x)) \\
     &= ((f \circ g) \circ h)(x) \\
-    \implies f \circ \circ (g \circ h) = (f \circ g) \circ h.
+    \implies f \circ (g \circ h) &= (f \circ g) \circ h.
 \end{align*} 
 
 ## Dihedral Groups

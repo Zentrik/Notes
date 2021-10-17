@@ -156,18 +156,21 @@ Clearly $p_1 \mid 1$ is false.
 Likewise, none of $p_2, p_3 \ldots, p_k$ divide $N$, contradicting the fact that $N$ can be written as a product of primes.
 :::
 
-Can a number have more than one factorisation in its primes? Our proof of \@ref(prp:2) does not give uniqueness.
+Can a number have more than one factorisation in its primes? Our proof of \@ref(prp:two) does not give uniqueness.
 
 Clearly, $21 = 3 \cdot 7$ is unique.
 Why is $9049 \cdot 40099 \neq 6701 \cdot 54151$?
 
 We shall need:
 
-::: {.proposition}
+::: {.proposition #four}
 If $p$ is a prime and $p \mid ab$ then $p \mid a$ or $p \mid b$.
 :::
 
+Proof is later on.
+
 ## Highest Common Factors
+:::{.definition #hcf}
 Given $a, b \in \mathbb{N}$, a natural number $c$ is the *highest common factor (hcf)*, or *greatest common divisor (gcd)* of $a$ and $b$ if 
 
 i. $c \mid a$ and $c \mid b$ "c is a common divisor of $a$ and $b$"
@@ -181,6 +184,7 @@ We write $c = \operatorname{hcf}(a, b)$ or $c = \operatorname{g\cdot}(a, b)$, or
 So the common factors are $1, 2, 3, 6$, hence $\operatorname{hcf}(12, 18) = 6$. 
 But if $a$ and $b$ had common factors $1, 2, 3, 4, 6$ then $a$ and $b$ would have no $\operatorname{hcf}$ (according to ii).
 Therefore, we will need to show that $\operatorname{hcf}(a, b)$ always exists.
+:::
 
 ::: {.proposition name="Division Algorithm"}
 Let $n, k \in \mathbb{N}$. Then we can write $n = qk + r$, where $q$ and $r$ are integers with $0 \leq r \leq k - 1$.
@@ -235,4 +239,119 @@ ii. Given $d$ s.t. $d \mid a$ and $d \mid b$,
     \text{so } &d \mid r_i \; \forall \; i = 1, \ldots n \text{ (by induction)}
 \end{align*} 
 Therefore, $r_n = \operatorname{hcf}(a, b)$.
+:::
+
+**Lecture 5**
+
+::: {.example}
+To obtain $\operatorname{hcf}(87, 52)$ we run Euclid:
+\begin{align*}
+    87 &= 1(52) + 35 \\
+    52 &= 1(35) + 17 \\
+    35 &= 2(17) + 1 \\
+    17 &= 17(1)
+\end{align*} 
+so $\operatorname{hcf}(87, 52) = 1$.
+
+When $\operatorname{hcf}(87, 52) = 1$, we also say that $a$ and $b$ are *coprime*.
+We can reverse the algorithm:
+\begin{align*}
+    1 &= 35 - 2 * 17 \\
+    &= 35 - 2*(52 - 1(35)) \\
+    &= - 2(52) + 3(35) \\
+    &= - 2(52) + 3(87 - 1(52)) \\
+    &= -5(52) + 3(87)
+\end{align*} 
+:::
+
+::: {.theorem #seven}
+$\forall \; a, b \in \mathbb{N},\ \; \exists \; x,y \in \mathbb{Z}$ s.t. $xa + yb = \operatorname{hcf}(a, b)$. 
+"We can write $\operatorname{hcf}(a, b)$ as a linear combination of $a$ and $b$."
+:::
+
+::: {.proof name="1"}
+Run Euclid's algorithm with input $a$, $b$, to obtain an output $r_n$. At STEP $n$, we have $r_n = xr_{n-1} + yr_{n-2}$ for some $x, y \in \mathbb{Z}$. 
+But $r_{n-1}$ is expressible as $xr_{n-2} + yr_{n-3}$ for some $x, y \in \mathbb{Z}$, from STEP $n-1$, whence $r_n = xr_{n-2} + y r_{n-3}$ for some $x, y \in \mathbb{Z}$. 
+Continuing by induction, we have that $\forall \; i = 2, \ldots, n-1$, $r_n = xr_i + yr_{i - 1}$ for some $x, y \in \mathbb{Z}$.
+Thus $r_n = xa + yb$ for some $x, y \in \mathbb{Z}$, from STEP 1 and 2.
+:::
+
+::: {.remark}
+Euclid's algorithm not only proves that $x, y \in \mathbb{Z}$, but it gives us a quick way to find them.
+:::
+
+::: {.proof name="2"}
+Let $h$ be the least positive combination of $a$ and $b$, i.e. the least positive integer of the form $xa + yb$ for some $x, y \in \mathbb{Z}$.
+
+We shall show that $h = \operatorname{hcf}(a, b)$. 
+
+To see (ii) from \@ref(def:hcf), observe that a given $d$ s.t. $d \mid a$ and $d \mid b$, then we have $d = ax + by \; \forall \; x, y \in \mathbb{Z}$, so in particular $d \mid h$.
+
+To verify (i), suppose that $h \nmid a$. Then we can write $a = qh + r$ for some $q, r \in \mathbb{Z}$ with $0 < r < h$^[as $h \nmid a$].
+Hence $r = a - qh = a - q(xa + yb)$, so $r$ is also a positive linear combination of $a$ and $b$, and strictly smaller than $h$, contradicting the definition of $h$.
+Therefore, $h \mid a$ and by the same argument, $h \mid b$.
+:::
+
+::: {.remark}
+Proof (2) tells us that $\operatorname{hcf}(a,b)$ exists and is a linear combination of $a$ and $b$, *but* gives no way to find $\operatorname{hcf}(a,b)$ or the coefficients $x, y$.
+:::
+
+Is there an solution in integers $x, y$ to $320x + 72y = 33$.
+No, as LHS is always even but the RHS is odd.
+
+What about $87x + 52y = 33$?
+Yes, as we had $x', y' \in \mathbb{Z}$ s.t. $87 x' + 52 y' = 1$, so $x = 33x'$, $y = 33y'$ is an integer solution.
+
+::: {.corollary name="Bezaut's Theorem"}
+Let $a, b \in \mathbb{N}$. Then the equation $ax + by = c$ has a solution in integers $x, y$ iff $\operatorname{hcf}(a, b) \mid c$.
+:::
+
+::: {.proof}
+Let $h = \operatorname{hcf}(a, b)$.
+
+Suppose there are $x, y \in \mathbb{Z}$ s.t. $ax + by = c$. Then since $h \mid a$ and $h \mid b$, so $h \mid c$.
+
+Conversely, suppose $h \mid c$. 
+But Theorem \@ref(thm:seven) implies that there exist $x, y \in \mathbb{Z}$ s.t. $h = ax + by$.
+But then $c = \frac{c}{h} h = \frac{c}{h}(ax + by) = a(x \frac{c}{h}) + b(y \frac{c}{h})$.
+:::
+
+We will now give a proof of proposition \@ref(prp:four).
+
+::: {.proof}
+Suppose $p \mid ab$ but $p \nmid a$. We will show $p \mid b$. 
+Then since $p$ is prime, $\operatorname{hcf}(a, p) = 1$ (as $p \nmid a$).
+Thus, by Theorem \@ref(thm:seven), $\exists \; x, y \in \mathbb{Z}$ s.t. $xp + ya = 1$.
+
+It follows that $xpb + yab = b$, $p \mid ab$ so $p \mid b$.
+:::
+
+::: {.remark}
+\ 
+
+1. Similarly, $p \mid a_1 a_2 \ldots a_n \implies p \mid a_i$ for some $i = 1, \ldots, n$.
+Indeed, Proposition \@ref(prp:four) tells us that if $p \mid a_1 a_2 \ldots a_n$, then $p \mid a_1$ or $p \mid a_2 \ldots a_n$. 
+Proceed by induction on the number of terms in the product.
+
+2. We do need $p$ to be prime.
+:::
+
+::: {.theorem name="Fundamental Theorem of Arithmetic"}
+Every natural number $n \geq 2$ is expressible as a product of primes, uniquely up to reordering.
+:::
+
+::: {.proof}
+Existence of factorisation follows from Proposition \@ref(prp:two).
+To see uniqueness, use induction on $n$.
+True for $n = 2$.
+
+Given $n \geq 2$, suppose $n = p_1 p_2 \ldots p_k = q_1 q_2 \ldots q_l$, where $p_i, q_j$ are all prime.
+We want to show $k = l$ and, after reordering $p_i = q_i \; \forall \; i = 1, \ldots, k$.
+
+We have $p_1 \mid n = q_1 q_2 \ldots q_l$, so by Proposition \@ref(prp:four), $p_1 \mid q_i$ for some i.
+Relabelling the $q_i$, we may assume that $p_1 \mid q_1$.
+Since $q_1$ is prime, $p_1 = q_1$.
+So $\frac{n}{p_1} = p_2 \ldots p_k = q_2 \ldots q_l < n$.
+
+By the induction hypothesis, $k = l$, and, after reordering, $p_2 = q_2, \ldots, p_k = q_k$.
 :::
