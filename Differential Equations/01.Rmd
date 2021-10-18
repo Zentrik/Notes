@@ -28,4 +28,16 @@ Start from FTC
     &\text{By MVT the remainder = somehow} \\
     &= \frac{x^{(n+1)}}{(n + 1)!} f^{(n + 1)}(x_n) \text{ where } x_n \in [0, x]
 \end{align*} 
-:::'
+:::
+
+**3.4.3 Differentiation of an integral with respect to its parameters**
+
+::: {.example}
+Suppose we want to evaluate
+\begin{align*}
+    \int_{0}^{\infty} x^n e^{-x} \,dx \text{ where n is an integer} \\
+    \text{Let } I(\lambda) = \int_{0}^{\infty} e^{-\lambda x} \,dx = \frac{1}{\lambda} \\
+    \frac{d^n}{d \lambda^n} I = \int_{0}^{\infty} (-x)^n e^{-\lambda x} \,dx = (-1)^n \frac{n!}{\lambda^{n + 1}} \\
+    \text{set } \lambda = 1 \text{ and we get } \int_{0}^{\infty} x^n e^{-x} \,dx = n!
+\end{align*} 
+:::

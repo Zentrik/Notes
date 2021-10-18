@@ -335,7 +335,7 @@ See Numbers and Sets
 :::
 
 ::: {.definition}
-Let $(G, *G)$ and $(H, *_H)$ be groups. Then the function
+Let $(G, *_G)$ and $(H, *_H)$ be groups. Then the function
 \begin{align*}
     \theta : G \to H
 \end{align*} is a *homomorphism* if
