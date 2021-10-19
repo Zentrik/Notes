@@ -1,0 +1,64 @@
+# Vectors in General; $\mathbb{R}^n$ and $\mathbb{C}^n$
+
+## Vectors in $\mathbb{R}^n$
+
+### Definitions
+If we regard vectors as sets of components, it is easy to generalise from 3 to $n$ dimensions.
+
+::: {.definition}
+$\mathbb{R}^n = \{ \underline{x} = (x_1, x_2, \ldots, x_n) : x_i \in \mathbb{R}$
+:::
+
+::: {.definition}
+\ 
+
+i. *addition* $\underline{x} + \underline{y} = (x_1 + y_1, \ldots, x_n + y_n)$
+for any $\underline{x}, \underline{y} \in \mathbb{R}^n$
+
+ii. *scalar multiplication* $\lambda x = (\lambda x_1, \ldots, \lambda x_n)$ for any $\underline{x} \mathbb{R}^n$ and $\lambda \in \mathbb{R}$
+:::
+
+::: {.definition name="Inner/ scalar product"} 
+$\underline{x} \cdot \underline{y} = \sum_i x_i y_i = x_1 y_1 + \ldots + x_n y_n$
+
+i. Symmetric $\underline{x} \cdot \underline{y} = \underline{y} \cdot \underline{x}$
+
+ii. Bilinear (linear in each vector)
+\begin{align*}
+    (\lambda \underline{x} + \lambda' \underline{x}) \cdot \underline{y} &= \lambda (\underline{x} \cdot \underline{y}) + \lambda' (\underline{x}' \cdot \underline{y}) \\
+    (\lambda \underline{y} + \lambda' \underline{y}) \cdot \underline{x} &= \lambda (\underline{y} \cdot \underline{x}) + \lambda' (\underline{y}' \cdot \underline{x}) \\
+\end{align*} 
+
+iii. Positive definite
+$\underline{x} \cdot \underline{x} = \sum_i x^2_i \geq 0$ and $= 0 \iff \underline{x} = \underline{0}$.
+The *length* or *norm* of vector $\underline{x}$ is $| \underline{x} | \geq 0$ defined by $| \underline{x} |^2 = \underline{x} \cdot \underline{x}$.
+:::
+
+For $\underline{x} \in \mathbb{R}^n$ we can write $\underline{x} = \sum_i x_i \underline{e}_i$ where 
+\begin{align*}
+    \underline{e}_1 &= (1, 0, \ldots, 0) \\
+    \underline{e}_2 &= (0, 1, \ldots, 0) \\
+    &\;\;\vdots \\
+    \underline{e}_n &= (0, 0, \ldots, 1).    
+\end{align*}
+We call $\{ \underline{e}_i \}$ the *standard basis* for $\mathbb{R}^n$.
+Note it is orthonormal:
+\begin{align*}
+    \underline{e}_i \cdot \underline{e}_j = \delta_{ij} = \begin{cases}
+        1 & \text{ if } i = j \\
+        0 & \text{ if } i \neq j
+    \end{cases} 
+\end{align*} 
+
+## Cauchy-Schwarz and Triangle Inequalities
+::: {.proposition name="Cauchy-Schwarz"}
+$|\underline{x} \cdot \underline{y}| \leq |\underline{x}| | \underline{y}|$ for some $\underline{x}, \underline{y} \in \mathbb{R}^n$ \
+and equality holds iff \
+$\underline{x} = \lambda \underline{y}$ or $\underline{y} = \lambda \underline{x}$ $(\underline{x} \parallel \underline{y})$ for some $\lambda \in \mathbb{R}$.
+:::
+
+Deductions reveal geometrical aspects of the inner product:
+
+i. Set $\underline{x} \cdot \underline{y} = |\underline{x}| |\underline{y}| \cos \theta$ to define angle $\theta$ between $\underline{x}$ and $\underline{y}$
+
+ii. Triangle inequality holds $| \underline{x} + \underline{y} | \leq |\underline{x}| |\underline{y}|$.

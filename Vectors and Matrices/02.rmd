@@ -361,7 +361,7 @@ Then \begin{align*}
         + 1 & \text{if } (i, j, k) \text{ is an even permutation of } (1, 2, 3) \\
         - 1 & \text{if } (i, j, k) \text{ is an odd permutation of } (1, 2, 3) \\
         0 & \text{else}
-    \end{cases} 
+    \end{cases} \\
     \text{i.e. } \epsilon_{123} &= \epsilon_{231} = \epsilon_{312} = + 1 \\
     \epsilon_{321} &= \epsilon_{213} = \epsilon_{132} = - 1 \\
     \epsilon_{ijk} &= 0 \text{ if any two index values match} \\
@@ -382,5 +382,122 @@ Then
     &= \epsilon_{123} a_1 b_2 + \epsilon_{213} a_2 b_1 \\
     &= a_1 b_2 - a_2 b_1.
 \end{align*} 
-
 :::
+
+### Summation Convention
+With component/ index notation, we observe that indices that appear *twice* in a given term are (usually) summed over.
+In the summation convention we *omit* $\sum$ signs for repeated indices: the sum is understood.
+
+::: {.example}
+\begin{align*}
+    a_i \delta_{ij} &= a_1 \delta_{1j} + a_2 \delta_{2j} + a_3 \delta_{3j} \\
+    &= \begin{cases}
+        a_1 & \text{if} j = 1 \\
+        a_2 & \text{if} j = 2 \\
+        a_3 & \text{if} j = 3
+    \end{cases} \\
+    a_i \delta_{ij} &= a_j
+\end{align*}
+:::
+
+::: {.example}
+\begin{align*}
+    \underline{a} \cdot \underline{b} &= \delta_{ij} a_i b_j \\
+    &= a_i b_i
+\end{align*}
+:::
+
+::: {.example}
+$(\underline{a} \wedge \underline{b})_i = \epsilon_{ijk} a_j b_k$
+:::
+
+::: {.example}
+\begin{align*}
+    \underline{a} \cdot \underline{b} \wedge c &= \epsilon_{ijk} a_j b_k c_k \\
+    &= a_i b_i
+\end{align*}
+:::
+
+::: {.example}
+\begin{align*}
+    \underline{a} \cdot \underline{b} \wedge c &= \epsilon_{ijk} a_j b_k c_k \\
+    &= a_i b_i
+\end{align*}
+:::
+
+::: {.example}
+$\delta_{ii} = \delta_{11} + \delta_{22} + \delta_{33} = 3$
+:::
+
+::: {.example}
+\begin{align*}
+    \delta_{ii} = \delta_{11} + \delta_{22} + \delta_{33} = 3
+\end{align*}
+:::
+::: {.example}
+\begin{align*}
+    \left[ (\underline{a} \cdot \underline{c}) \underline{b} - (\underline{a} \cdot \underline{b}) \underline{c} \right]_i &= (\underline{a} \cdot \underline{c}) \underline{b}_i - (\underline{a} \cdot \underline{b}) \underline{c}_i \\
+    &= a_j c_j b_i - a_j b_j c_i
+\end{align*}
+:::
+
+### Rules
+i. An index that occurs exactly *once* in any term must appear once in *every* term and it can take any value - a *free* index.
+
+ii. An index occurring exactly *twice* in a given term is summed over - a *repeated*/ *contracted* or *dummy* index.
+
+iii. No index can occur more than twice.
+
+### Application
+Proof of the vector triple product identity. Consider
+
+::: {.proof}
+\begin{align*}
+    \left[ \underline{a} \wedge (\underline{b} \wedge \underline{c}) \right]_i &= \epsilon_{ijk} a_j (\underline{b} \wedge \underline{c})_k \\
+    &= \epsilon_{ijk} a_j \epsilon_{kpq} b_p c_q \\
+    &= \epsilon_{ijk} \epsilon_{pqk} a_j b_p c_q \\
+    \epsilon_{ijk} \epsilon_{pqk} &= \delta_{ip}\delta_{jq} - \delta_{iq} \delta_{jp} \text{ see below} \\
+    \left[ \underline{a} \wedge (\underline{b} \wedge \underline{c}) \right]_i &= (\delta_{ip}\delta_{jq} - \delta_{iq}\delta_{jp}) a_j b_p c_q \\
+    &= a_j \delta_{ip} b_p \delta_{jq} c_q - a_j \delta_{jp} b_p \delta_{iq} c_q \\
+    &= a_j b_i c_j - a_j b_j c_i,\ \delta_{ij} x_j = x_i = \delta_{ji} x_j \\
+    &= (a_j c_j) b_i - (a_j b_j) c_i \\
+    &= (\underline{a} \cdot \underline{c}) b_i - (\underline{a} \cdot \underline{b}) c_i \\
+    &= \left[ (\underline{a} \cdot \underline{c}) \underline{b} - (\underline{a} \cdot \underline{b}) \underline{c} \right]_i \\
+    \text{True for } i &= 1, 2, 3 \text{ hence} \\
+    \underline{a} \wedge (\underline{b} \wedge \underline{c}) &= (\underline{a} \cdot \underline{c}) \underline{b} - (\underline{a} \cdot \underline{b}) \underline{c}
+\end{align*} 
+:::
+
+### $\epsilon \epsilon$ identities
+
+1. \begin{align*}
+    \epsilon_{ijk} \epsilon_{pqk} &= \sum_k \epsilon_{ijk} \epsilon_{pqk} \\
+    &= \delta_{ip}\delta_{jq} - \delta_{iq} \delta_{jp} \\
+    &= \epsilon_{kij} \epsilon_{kpq}
+\end{align*}^[expected to know this and quote it]
+
+Check: RHS and LHS are both antisymmetric under $i \leftrightarrow j$ or $p \leftrightarrow q$.
+So both sides vanish if $i = j$ or $p = q$.
+Now suffices to check e.g. $i = p = 1$ and $j = q = 2$
+\begin{align*}
+    LHS &= \epsilon_{123} \epsilon_{123} = 1 \\
+    RHS &= \delta_{11} \delta_{22} - \delta_{12} \delta_{21} = 1
+\end{align*} 
+
+or $i = q = 1$ and $j = p = 2$
+\begin{align*}
+    LHS &= \epsilon_{123} \epsilon_{213} = 1(-1) = -1 \\
+    RHS &= \delta_{12} \delta_{21} - \delta_{11} \delta_{22} = -1
+\end{align*} 
+
+All other index choices work similarly, proof by exhaustion.
+
+2. $\epsilon_{ijk} \epsilon_{pjk} &= 2\delta_{ip}$
+*contract* result above
+\begin{align*}
+    \epsilon_{ijk} \epsilon_{pqk} &= \delta_{ip}\delta_{jj} - \delta_{ij} \delta_{jp} \\
+    &= 3\delta_{ip} - \delta_{ip} \\
+    &= 2 \delta_{ip}
+\end{align*} 
+
+3. $\epsilon_{ijk} \epsilon_{ijk} = 6$
