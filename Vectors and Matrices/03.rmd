@@ -50,7 +50,7 @@ Note it is orthonormal:
     \end{cases} 
 \end{align*} 
 
-## Cauchy-Schwarz and Triangle Inequalities
+### Cauchy-Schwarz and Triangle Inequalities
 ::: {.proposition name="Cauchy-Schwarz"}
 $|\underline{x} \cdot \underline{y}| \leq |\underline{x}| | \underline{y}|$ for some $\underline{x}, \underline{y} \in \mathbb{R}^n$ \
 and equality holds iff \
@@ -62,3 +62,127 @@ Deductions reveal geometrical aspects of the inner product:
 i. Set $\underline{x} \cdot \underline{y} = |\underline{x}| |\underline{y}| \cos \theta$ to define angle $\theta$ between $\underline{x}$ and $\underline{y}$
 
 ii. Triangle inequality holds $| \underline{x} + \underline{y} | \leq |\underline{x}| |\underline{y}|$.
+
+::: {.proof name="Cauchy-Schwarz"}
+If $\underline{y} = 0$, the result is immediate.
+If $\underline{y} \neq 0$, consider
+\begin{align*}
+    |\underline{x} - \lambda \underline{y}|^2 &= (\underline{x} - \lambda \underline{y}) \cdot (\underline{x} - \lambda \underline{y}) \\
+    &= |\underline{x}|^2 - 2 \lambda \underline{x} \cdot \underline{y} + \lambda^2 | \underline{y} | \geq 0
+\end{align*} 
+This is a quadratic in $\lambda \in \mathbb{R}$ with at most one real root, so discriminant satisfies $(-2 \underline{x} \cdot \underline{y})^2 - 4 |\underline{x}|^2 |\underline{y}|^" \leq 0$ as required.
+Equality holds iff discriminant $= 0$ iff $\lambda \underline{y} = \underline{x}$ for some $\lambda \in \mathbb{R}$. 
+:::
+
+::: {.proof name="Triangle inequality"}
+\begin{align*}
+    LHS^2 &= |\underline{x} + \underline{y}|^2 = |\underline{x}|^2 + 2 \underline{x} \cdot \underline{y} + |\underline{y}|^2 \\
+    RHS^2 &= (|\underline{x}| + |\underline{y}|)^2 = |\underline{x}|^2 + 2 |\underline{x}| |\underline{y}| + |\underline{y}|^2
+\end{align*} and compare using Cauchy-Schwarz.
+:::
+
+### Comments
+Inner product on $\mathbb{R}^n$ 
+\begin{align*}
+    \underline{a} \cdot \underline{b} = \delta_{ij} a_i b_j \hspace{0.5cm} (\sum \text{ convention and } i, j = 1, \ldots, n) \\
+\end{align*} 
+Component definition matches geometrical definition for n = 3 [Scalar or Dot Product].
+
+In $\mathbb{R}^3$ we also have a cross product with component definition $(\underline{a} \wedge \underline{b})_i = \epsilon_{ijk} a_j b_k$ (geometric definition given in [Vector or Cross Product]) \
+In $\mathbb{R}^n$ we have $\epsilon_{\underbrace{ij...l}_\text{$n$ indices}}$ (totally antisymmetric).
+Cannot use this to define vector-valued product except in $n = 3$.
+But in $\mathbb{R}^2$ we have $\epsilon_{ij}$ with $\epsilon_{12} = \epsilon_{21} = 1$ and we can use this to define an additional scalar cross product in 2d.
+
+\begin{align*}
+    [\underline{a}, \underline{b}] &= \epsilon_{ij} a_i b_j \\
+    &= a_1 b_2 - a_2 b_1 \text{ for } \underline{a}, \underline{b} \in \mathbb{R}^2 \\
+\end{align*} 
+Geometrically, this gives (signed) area of parallelogram $[\underline{a}, \underline{b}] = |\underline{a}| |\underline{b}| \sin \theta$.
+```{r 03-2d-cross, echo = FALSE, fig.cap = "", fig.align="center", out.width="50%"} 
+knitr::include_graphics("figures/03-2d-cross.png") 
+```
+Compare with $[\underline{a}, \underline{b}, \underline{c}] = \underline{a} \cdot \underline{b} \wedge \underline{c} = \epsilon_{ijk} a_i b_j c_k$ which is the (signed) volume of a parallelepiped.
+
+## Vector Spaces
+
+### Axioms; span; subspaces
+Let $V$ be a set of objects called *vectors* with operations
+
+\begin{align*}
+    \left.\begin{aligned}
+            &i. & \underline{v} + \underline{w} &\in V \\
+            &ii. & \lambda \underline{v} &\in V
+    \end{aligned}\right\}
+    \text{defined } \forall \; v, w \in V, \text{ and } \forall \; \lambda \in \mathbb{R}.
+\end{align*} 
+Then $V$ is a *real vector space* if $V$ is an abelian group under addition and 
+\begin{align*}
+    \lambda ( \underline{v} + \underline{w}) &= \lambda \underline{v} + \lambda \underline{w} \\
+    (\lambda + \mu) \underline{v} &= \lambda \underline{v} + \mu \underline{v} \\
+    \lambda (\mu \underline{v}) &= (\lambda \mu) \underline{v} \\
+    1 \underline{v} &= \underline{v}
+\end{align*}^[don't need to state these in tripos] (the first three are same as [Vector Addition and Scalar Multiplication])
+
+These axioms or key properties apply to geometrical vectors with $V$ being a 3d space or to vectors in $V = \mathbb{R}^n$, as above, as well as other examples.
+
+For vectors $\underline{v}_1, \underline{v}_2, \ldots, \underline{v}_r \in V$ we can form a *linear combination* $\lambda_1 \underline{v}_1 + \lambda_2 \underline{v}_2 + \ldots + \lambda_r \underline{v}_r \in V$ for any $\lambda_i \in \mathbb{R}$; the span is defined $\operatorname{span} \{ \underline{v}_1, \underline{v}_2, \ldots, \underline{v}_r \} = \{ \sum_i \lambda_i \underline{v}_i : \lambda_i \in \mathbb{R} \}$. \
+A *subspace* of $V$ is a subset that is itself a vector space. \
+Note $V$ and $\{ 0 \}$ are subspaces. \
+$\operatorname{span} \{ \underline{v}_1, \underline{v}_2, \ldots, \underline{v}_r \}$ is a subspace for any vectors $\underline{v}_1, \underline{v}_2, \ldots, \underline{v}_r$. \
+Note: a non-empty subset $U \subseteq V$ is a subspace iff 
+\begin{align*}
+    \underline{v}, \underline{w} \in U \implies \lambda \underline{v} + \mu \underline{w} \in U \; \forall \; \lambda, \mu \in \mathbb{R}.
+\end{align*} 
+
+::: {.example}
+In $\mathbb{R}^3$, a line or plane through $\underline{0}$ is a subspace but if it doesn't contain $\underline{0}$ it is not a subspace.
+e.g. \begin{align*}
+    \underline{v}_1 = \begin{pmatrix}1 \\0 \\-1\end{pmatrix}, 
+    \underline{v}_2 = \begin{pmatrix}1 \\1 \\-2\end{pmatrix},
+    \underline{n} = \begin{pmatrix}1 \\1 \\1\end{pmatrix} \\
+    \operatorname{span} \{ \underline{v}_1, \underline{v}_2\} = \{ \underline{r} : \underline{n} \cdot \underline{r} = 0 \} \text{ this is a plane and subspace} \\
+    \text{But } \{ \underline{r} : \underline{n} \cdot \underline{r} = 1 \} \text{ this is a plane but not a subspace } [\underline{r}, \underline{r}' \text{ on plane then } (\underline{r} + \underline{r}') \cdot \underline{n} = 2] \\
+\end{align*} 
+:::
+
+### Linear Dependence and Independence
+For vectors $\underline{v}_1, \underline{v}_2, \ldots, \underline{v}_r \in V$ (where $V$ is a real vector space) consider the *linear relation* 
+\begin{align*}
+    \lambda_1 \underline{v}_1 + \lambda_2 \underline{v}_2 + \ldots + \lambda_r \underline{v}_r = \underline{0} (\#eq:ein)
+\end{align*} 
+
+If \@ref(eq:ein) $\implies \lambda_i = 0$ for every $i$ then the vectors form a *linearly independent* set (they obey only the *trivial* linear relation with $\lambda_i = 0$).\
+If \@ref(eq:ein) holds with at least one $\lambda_i \neq 0$ then the vectors form a *linearly dependent* set (they obey a *non-trivial* linear relation).
+
+::: {.example}
+\begin{align*}
+    \left\{ \begin{pmatrix}1 \\0\end{pmatrix}, \begin{pmatrix}0 \\1\end{pmatrix}, \begin{pmatrix}0 \\2\end{pmatrix} \right\} \text{ are linearly dependent because:} \\
+    0 \begin{pmatrix}1 \\0\end{pmatrix} + 2 \begin{pmatrix}0 \\1\end{pmatrix} + (-1) \begin{pmatrix}0 \\2\end{pmatrix} = \underline{0}
+\end{align*} 
+Note we cannot express $\begin{pmatrix}1 \\0\end{pmatrix}$ in terms of the others.
+:::
+
+::: {.example}
+Any set containing $\underline{0}$ is linearly dependent.\
+e.g. \begin{align*}
+    \left\{ \begin{pmatrix}1 \\0\end{pmatrix}, \begin{pmatrix}0 \\0\end{pmatrix}\right\} \text{ have} \\
+    0 \begin{pmatrix}1 \\0\end{pmatrix} + 412 \begin{pmatrix}0 \\0\end{pmatrix}= \underline{0}
+\end{align*} which is a non-trivial linear relation.
+:::
+
+::: {.example}
+$\left\{ \underline{a}, \underline{b}, \underline{c} \right\}$ in $\mathbb{R}^3$ are linearly independent if $\underline{a} \cdot \underline{b} \wedge \underline{c} \neq 0$. 
+Consider $\alpha \underline{a} + \beta \underline{b} + \gamma \underline{c} = \underline{0}$.
+Take dot with $\underline{b} \wedge \underline{c}$ to get $\alpha \underline{a} \cdot \underline{b} \wedge \underline{c} = 0 \implies \alpha = 0$ and $\beta = \gamma = 0$ similarly.
+:::
+
+### Inner product
+This is an additional structure on a real vector space $V$, also characterised by axioms.
+For $\underline{v}, \underline{w} \in V$ write inner product $\underline{v} \cdot \underline{w}$ or $(\underline{v}, \underline{w}) \in \mathbb{R}$.
+This satisfies axioms corresponding to the properties in [Definitions]
+
+i. Symmetric
+
+ii. Bilinear
+
+ii. Positive definite
