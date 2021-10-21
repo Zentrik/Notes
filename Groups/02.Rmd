@@ -281,7 +281,7 @@ iv. a 2-cycle is called a *transposition*.
 Two cycles $\sigma = (a_1, \ldots, a_k)$ and $\tau = (b_1, \ldots, b_l)$ are *disjoint* if $\{ a_1, \ldots, a_k \} \land \{ b_1, \ldots, b_k \} = \emptyset$.
 :::
 
-::: {.lemma}
+::: {.lemma #six}
 If $\sigma, \tau \in S_n$ are disjoint then $\sigma \tau = \tau \sigma$
 :::
 
@@ -319,5 +319,137 @@ However this is not necessarily true if two cycles are not disjoint.
     \sigma \circ \tau(4) &= \sigma(2) = 3 \\
     \sigma \circ \tau &= \begin{pmatrix}1 & 2 & 4 & 3\end{pmatrix} \\
     \text{But } \tau \circ \sigma &= \begin{pmatrix} 1 & 4 & 2 & 3 \end{pmatrix}
+\end{align*} 
+:::
+
+::: {.example}
+\begin{align*}
+    \begin{pmatrix}1 & 2 & 3\end{pmatrix} \begin{pmatrix}2 & 3\end{pmatrix} &= \begin{pmatrix}1 & 2\end{pmatrix} \begin{pmatrix} 3 \end{pmatrix} \\
+    &= \begin{pmatrix}1 & 2\end{pmatrix} \text{ suppress 1-cycles.} \\
+    \begin{pmatrix}2 & 3\end{pmatrix} \begin{pmatrix}1 & 2 & 3\end{pmatrix} &= \begin{pmatrix}1 & 3\end{pmatrix} 
+\end{align*} 
+:::
+
+::: {.theorem #one}
+Every permutation can be written as a product of disjoint cycles (in an essentially unique way).
+:::
+
+::: {.example}
+\begin{align*}
+    \sigma &= \begin{pmatrix}
+    1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 \\
+    2 & 4 & 5 & 7 & 6 & 3 & 1 & 9 & 8
+    \end{pmatrix} \\
+    &= \begin{pmatrix} 1 & 2 & 4 & 7 \end{pmatrix} \begin{pmatrix}3 & 5 & 6\end{pmatrix} \begin{pmatrix}8 & 9\end{pmatrix}
+\end{align*} 
+:::
+
+::: {.proof}
+Let $a_1 \in \{ 1, 2, \ldots, n \} = X$.
+Consider $a_1, \sigma(a_1), \sigma^2(a_1), \ldots$ \
+Since $X$ is finite $\exists$ minimal $j$ such that $\sigma^j(a_1) \in \{ a_1, \sigma(a_1), \sigma^2(a_1), \ldots, \sigma^{j-1}(a_1) \}$.
+We claim: $\sigma^j(a_1) = a_1$.
+Since if not \begin{align*}
+    \sigma^j(a_1) &= \sigma^i(a_1),\ j > i \geq 1 \\
+    \implies \sigma^{j - i}(a_1) &= a_1 \ ↯ \text{ of minimality of j.}
+\end{align*} 
+So $\{ a_1, \sigma(a_1), \sigma^2(a_1), \ldots, \sigma^{j-1}(a_1) \}$ is a cycle in $\sigma$. \
+If $\exists \; b \in X \setminus \{ a_1, \sigma(a_1), \sigma^2(a_1), \ldots, \sigma^{j-1}(a_1) \}$.
+Consider $b, \sigma(b), \ldots$ \
+Note $\left(b, \sigma(b), \sigma^2(b), \ldots, \sigma^{j-1}(b) \right)$ is disjoint from $\left( a_1, \sigma(a_1), \sigma^2(a_1), \ldots, \sigma^{j-1}(a_1) \right)$ because $\sigma$ is a bijection.^[If $\sigma^i(b) = \sigma^j(a_1)$ then $b = \sigma^{j - i}(a_1)$ which contradicts $b \in X \setminus \{ a_1, \sigma(a_1), \sigma^2(a_1), \ldots, \sigma^{j-1}(a_1) \}$.] \
+Continue in this way until all elements of $X$ are reached.
+:::
+
+::: {.lemma}
+Let $\sigma, \tau$ be disjoint cycles in $S_n$.
+Then $o(\sigma \tau) = \operatorname{lcm} \{ o(\sigma), o(\tau) \}$
+:::
+
+::: {.proof}
+Let $k = \operatorname{lcm} \{ o(\sigma), o(\tau) \}$ so $o(\sigma) \mid k$ and $o(\tau) \mid k$.
+Then \begin{align*}
+    (\sigma \tau)^k &= \sigma \tau \sigma \tau \ldots \sigma \tau \\
+    &= \sigma^k \tau^k \text{ Lemma 2.1} \\
+    &= e \cdot e \text{ Lemma 1.5} \\
+    &= e \\
+    \implies o(\sigma \tau) &\mid k \text{ Lemma 1.5}
+\end{align*} 
+Now suppose $o(\sigma \tau) = n$ so $(\sigma \tau)^n = e \implies \sigma^n \tau^n = e$.
+But $\sigma, \tau$ move different elements of $X \implies \sigma^n = e,\ \tau^n = e$.
+By \@ref(lem:five) 
+\begin{align*}
+    \implies o(\sigma) &\mid n \text{ and } o(\tau) \mid n \\
+    \implies k &= \operatorname{lcm} \{ o(\sigma), o(\tau) \} \\
+    &\mid n \\
+    \implies o(\sigma \tau) &= \operatorname{lcm} \{ o(\sigma), o(\tau) \}
+\end{align*}  
+:::
+
+::: {.proposition}
+Any $\sigma \in S_n \ (n \geq 2)$ can be written as a product of transpositions.
+:::
+
+::: {.proof}
+By Theorem \@ref(thm:one) it is enough to show a k-cycle can be written as a product of transpositions.
+\begin{align*}
+    \begin{pmatrix}a_1 & a_2 & \ldots & a_k \end{pmatrix} \\
+    &= \begin{pmatrix}a_1 & a_2\end{pmatrix} \begin{pmatrix}a_2 & a_3\end{pmatrix} \ldots \begin{pmatrix}a_{k-2} & a_{k-1}\end{pmatrix} \begin{pmatrix}a_{k-1} & a_k\end{pmatrix}
+\end{align*} 
+:::
+
+::: {.example}
+\begin{align*}
+    \begin{pmatrix}1 & 2 & 3 & 4 & 5\end{pmatrix} &= \begin{pmatrix}1 & 2\end{pmatrix} \begin{pmatrix}2 & 3\end{pmatrix} \begin{pmatrix}3 & 4\end{pmatrix} \begin{pmatrix}4 & 5\end{pmatrix} \\
+    &= \begin{pmatrix}1 & 2\end{pmatrix} \begin{pmatrix}1 & 2\end{pmatrix} \begin{pmatrix}1 & 2\end{pmatrix} \begin{pmatrix}2 & 3\end{pmatrix} \begin{pmatrix}3 & 4\end{pmatrix} \begin{pmatrix}4 & 5\end{pmatrix} \\
+    &= \begin{pmatrix}1 & 5\end{pmatrix} \begin{pmatrix}1 & 4\end{pmatrix} \begin{pmatrix}1 & 3\end{pmatrix} \begin{pmatrix}1 & 2\end{pmatrix}
+\end{align*} 
+*not unique*.
+:::
+
+::: {.definition}
+Let $\sigma \in S_n \ (n \geq 2)$. 
+Then the *sign* of $\sigma$, written $\operatorname{sgn}(\sigma)$, is $(-1)^k$ is the number of transpositions in some expression of $\sigma$ as a product of transpositions.
+:::
+
+::: {.lemma #eight}
+The function \begin{align*}
+    \operatorname{sgn} : S_n &\to \{ \pm 1 \} \\
+    \sigma &\mapsto \operatorname{sgn}(\sigma)
+\end{align*} is well defined. \
+i.e. if $\sigma = \tau_1 \ldots \tau_a = \tau_1' \ldots \tau_b'$ with $\tau_i$ and $\tau_i'$ transpositions then $(-1)^a = (-1)^b$.
+\begin{align*}
+    \operatorname{sgn}\left(\begin{pmatrix}1 & 2 & 3 & 4 & 5\end{pmatrix}\right) &= (-1)^4 = (-1)^6 \\
+    &= 1
+\end{align*} 
+:::
+
+::: {.proof}
+Let $c(\sigma)$ denote the number of cycles in a disjoint cycle decomposition of $\sigma$ including 1-cycles, so $c(\text{id}) = n$. \
+Let $\tau$ be a transposition.
+Claim: $c(\sigma \tau) = c(\sigma) \pm 1 \equiv c(\sigma) + 1 \mod 2$. \
+Let $\tau = \begin{pmatrix}k & l\end{pmatrix}$.\
+2 cases: 
+
+i. $k, l$ lie in different cycles of $\sigma$: 
+\begin{align*}
+    \begin{pmatrix}k & a_1 & \ldots & a_r \end{pmatrix} \begin{pmatrix}l & b_1 & \ldots & b_s \end{pmatrix} \begin{pmatrix} k & l\end{pmatrix}
+    &= \begin{pmatrix}k & b_1 & b_2 & \ldots & b_s & l & a_1 & \ldots & a_r \end{pmatrix} \\
+    \implies c(\sigma \tau) &= c(\sigma) - 1
+\end{align*} 
+
+ii. i. $k, l$ lie in the same cycle in $\sigma$: 
+\begin{align*}
+    \begin{pmatrix}k & a_1 & \ldots & a_r & l & b_1 & \ldots & b_s \end{pmatrix} \begin{pmatrix} k & l\end{pmatrix}
+    &= \begin{pmatrix}k & b_1 & b_2 & \ldots & b_s \end{pmatrix} \begin{pmatrix}l & a_1 & \ldots & a_r \end{pmatrix} \\
+    \implies c(\sigma \tau) &= c(\sigma) + 1
+\end{align*} 
+
+Assume \begin{align*}
+    \sigma &= \text{id} \tau_1 \ldots \tau_a \\
+    &= \text{id} \tau_1' \ldots \tau_b' \\
+    \implies c(\sigma) &\equiv n + a \mod 2 \\
+    &\equiv n + b \mod 2 \\
+    \implies a &\equiv b \mod 2 \\
+    \implies (-1)^a &= (-1)^b
 \end{align*} 
 :::

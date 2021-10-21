@@ -326,7 +326,7 @@ If we have a bijection we can define
     id_B(b) &= b
 \end{align*}
 
-::: {.lemma}
+::: {.lemma #two}
 If $g: A \to B$ and $f: B \to C$ are bijections then so is $f \circ g: A \to C$. 
 :::
 
@@ -476,7 +476,7 @@ Note a cyclic group is abelian.
 Let $G$ be a group and $g \in G$. The *order* of $g$, written as $o(g)$, is the least positive integer $n$ such that $g^n = e$, if it exists. Otherwise $g$ has infinite order.
 :::
 
-::: {.lemma}
+::: {.lemma #five}
 Suppose $G$ is a group, $g \in G$ and $o(g) = m$. Let $n \in \mathbb{N}_{>0}$. Then
 \begin{align*}
     g^n = e \iff m \mid n
