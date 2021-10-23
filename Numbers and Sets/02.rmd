@@ -495,7 +495,7 @@ Note $(a', b') = 1$. \
 So if $(a, n) = d > 1$, the congruence $ax \equiv b \mod n$ has no solutions unless $d \mid b$, in which case the solutions are exactly those of $\frac{a}{d}x = \frac{b}{d} \mod \frac{n}{d}$.
 
 ::: {.example}
-$7x \equiv 4 \pod 30$. \
+$7x \equiv 4 \pod {30}$. \
 We have $(7, 30) = 1$, so by Euclid $13 \cdot 7 - 3 \cdot 30 = 1$.
 Hence $13 \cdot 7 \equiv 1 \mod 30$, whence $x \equiv 4 \cdot 13 \mod 30 = 22 \mod 30$.
 
@@ -542,7 +542,99 @@ What about \begin{align*}
     \end{cases}?
 \end{align*} 
 
-::: {.theorem name="Chinese Remainder Theorem"}
+::: {.theorem name="Chinese Remainder Theorem" #twelve}
 Let $m, n$ be coprime, and $a, b \in \mathbb{Z}$.
-Then there is a unique solution modulo $mn$ to the simultaneous equations $x \equiv a \mod m$ and $x \equiv b \mod n$.
+Then there is a unique solution modulo $mn$ to the simultaneous equations $x \equiv a \mod m$ and $x \equiv b \mod n$.\
+That is, there is a solution $x$ to $x \equiv a \mod m$ and $x \equiv b \mod n$, and y is a solution iff $x \equiv y \mod mn$.
+:::
+
+::: {.proof}
+Existence:
+Since $(m, n) = 1,\; \exists \; s, t \in \mathbb{Z}$ with $sm + tn = 1$.\
+Not $sm \equiv 1 \mod n$ as $tn \equiv 0 \mod n$ and $tn \equiv 1 \mod m$ as $sm \equiv 0 \mod m$. \
+Hence $x = a(tn) + b(sm) \equiv a \mod m \equiv b \mod n$.
+
+Uniqueness:
+Suppose $y$ is also a solution, that is, $y \equiv a \mod m$ and $y \equiv b \mod n$.
+\begin{align*}
+    &\;\;\; y \equiv a \mod m \text{ and } y \equiv b \mod n \\
+    &\iff y \equiv \mod m \text{ and } y \equiv x \mod n \\
+    &\iff m \mid y - x \text { and } n \mid y - x \\
+    &\iff mn \mid y - x \hspace{0.5cm} \text{since } (m, n) = 1 \\
+    &\iff y \equiv x \mod mn
+\end{align*} 
+:::
+
+::: {.remark}
+Theorem \@ref(thm:twelve) can be extended by induction, to more than two moduli: if $m_1, m_2, \ldots, m_k$ are pairwise coprime, then $\forall \; a_1, a_2, \ldots, a_k \in \mathbb{Z},\ \exists\; x \in \mathbb{Z}$ s.t.\begin{align*}
+    x &\equiv a_1 \mod m_1 \\
+    x &\equiv a_2 \mod m_2 \\
+    &\;\; \vdots \\
+    x &\equiv a_k \mod m_k
+\end{align*} 
+:::
+
+We denote by $\phi(m)$ the number of integers $a$ s.t. $a \leq a \leq m$ s.t $(a, m) = 1$, that is, the number of units modulo $m$.
+We call $\phi$ the *Euler totient function*.
+Define $\phi(1) = 1$. \
+E.g. when $p$ is prime, $\phi(p) = p - 1$, and $\phi(p^2) = p^2 - p$ (there are $p$ multiples of $p$ that are $\leq p^2$).\
+When $p, q$ are distinct primes, $\phi(pq) = pq - p - q + 1$ (we subtracted $pq$ twice).
+
+How do powers of an integer behave modulo $p$?
+
+::: {.example}
+Modulo $7$, $2^1 \equiv 2$, $2^2 \equiv 4$, $2^3 \equiv 1$, $2^4 \equiv 2$ then repeat $4, 1, 2, 4, 1, 2, \ldots$. \
+Modulo 11, $2^1 \equiv 2$, $2^2 \equiv 4$, $2^3 \equiv 8$, $2^4 \equiv 5$, $2^5 \equiv 10$, $2^6 \equiv 9$, $2^7 \equiv 7$, $2^8 \equiv 3$, $2^9 \equiv 6$, $2^{10} \equiv 1$ then repeat.
+:::
+
+::: {.theorem name="Fermat's Little Theorem" #thirteen}
+Let $p$ be a prime.
+Then $a^p \equiv a \mod p$ for all $a \in \mathbb{Z}$.
+Equivalently, $a^{p-1} \equiv 1 \mod p$ for all $a \not\equiv 0 \mod p$.
+
+Multiply second statement by $a$ and check case of $a \equiv 0 \mod p$ to get first.
+$a \not\equiv 0 \mod p$ means $a$ is a unit modulo $p$ and so first statement gives second.
+:::
+
+We are going to be a bit general in this proof so we can take the same arguments and apply to composite $p$.
+
+::: {.proof}
+If $a \neq 0 \mod p$, then $a$ is a unit mod $p$. \
+Thus $ax \equiv ay \mod p$ iff $x \equiv y \mod p$ (multiply by a to go from right to left, and by $a^{-1}$ for converse). 
+Hence the numbers $a, 2a, 3a, \ldots, (p - 1)a$ are pairwise incongruent (distinct) modulo $p$ and $\not\equiv 0 \mod p$, so they are $1, 2, 3, \ldots p - 1$ in some order.
+
+Hence
+\begin{align*}
+    a \cdot 2a \cdot 3a \cdot \ldots \cdot (p - 1)a &\equiv 1 \cdot 2 \cdot 3 \ldots \cdot (p - 1) \mod p \\
+    a^{p-1} (p - 1)! &= (p - 1)! \mod p. \\
+\end{align*} 
+But $(p - 1)!$ is a unit mod $p$ (since it is a product of units), so we can cancel it to obtain $a^{p-1} \equiv 1 \mod p$.
+:::
+
+::: {.theorem name="Fermat-Euler Theorem" #thirteenprime}
+Let $(a, m) = 1$.
+Then $a^{\phi(m)} \equiv 1 \mod m$ .
+:::
+
+::: {.proof}
+Let $U = \{ x \in \mathbb{N} : 0 < x < m : (x, m) = 1 \}$, be the set of units modulo $m$.
+Label the elements $u_1, u_2, \ldots u_{\phi(m)}$.
+Then $a u_1, a u_2, \ldots, a u_{\phi(m)}$ are all distinct and invertible modulo $m$ (since $a$ and $u_i$ are units), and hence they are $u_1, u_2, \ldots u_{\phi(m)}$ is some order.
+
+It follows that
+\begin{align*}
+    a u_1 \cdot a u_2 \cdot \ldots \cdot a u_{\phi(m)} &\equiv u_1 \cdot u_2 \cdot \ldots u_{\phi(m)} \mod m,
+    \text{that is, }a^{\phi(m)} z &= z \mod p. \\
+\end{align*} 
+that is $a^{\phi(m)} z &= z \mod m$ where $z = u_1 \cdot u_2 \cdot \ldots u_{\phi(m)}$ is a product of units modulo $m$, therefore it itself is a unit.
+So we may cancel it to obtain $a^{\phi(m)} &= 1 \mod m$ 
+:::
+
+::: {.example}
+Where $p = 5,\ 4! = 24 \equiv \mod 5$.\
+$p = 5,\ 4! = 24 \equiv \mod 5$.
+\begin{align*}
+    \text{Where } p &= 5,\ 4! = 24 \equiv -1 \mod 5 \\
+    p &= 7,\ 6! = 720 \equiv -1 \mod 7
+\end{align*} 
 :::

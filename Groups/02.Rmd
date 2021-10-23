@@ -453,3 +453,91 @@ Assume \begin{align*}
     \implies (-1)^a &= (-1)^b
 \end{align*} 
 :::
+
+*Aside*: Subgroup lattice of $D_6 = \{ e, r, r^2, t, rt, r^2t \}$
+```{r, echo=FALSE, engine='tikz', fig.ext=if (knitr:::is_latex_output()) 'pdf' else 'png', fig.align = 'center', cache = TRUE}
+\begin{tikzpicture}[node distance=2.5cm, line width=1pt]
+    \node(A4) at (0,0)     {$D_6$};
+    \node(C32)      [below left of=A4]       {$\langle t \rangle$};
+    \node(C31)      [left of=C32]  {$\langle r \rangle$};
+    \node(C33)      [below right of=A4]       {$\langle rt \rangle$};
+    \node(C34)      [right of=C33]       {$\langle r^2t \rangle$};
+    
+    \node(1)        [below=3cm,at=(A4.south)]   {$\left\{e\right\}$};
+    \draw(A4)       -- (C31);
+    \draw(A4)       -- (C32);
+    \draw(A4)       -- (C33);
+    \draw(A4)       -- (C34);
+    \draw(C31)      --  (1);
+    \draw(C32)      --  (1);
+    \draw(C33)      --  (1);
+    \draw(C34)      --  (1);
+    \end{tikzpicture}   
+```
+
+::: {.theorem #two}
+Let $n \geq 2$.
+The map 
+\begin{align*}
+    \operatorname{sgn} : (S_n, \circ) &\to \left( \{ \pm 1 \}, \times \right) \\
+    \sigma *\mapsto \operatorname{sgn}(\sigma)
+\end{align*} 
+is a well-defined non-trivial (doesn't just map to identity) homomorphism.
+:::
+
+::: {.proof}
+\ 
+
+- We know its well-defined by \@ref(lem:eight)
+
+- $\operatorname{sgn}\left( \begin{pmatrix}1 & 2\end{pmatrix} \right) = -1$, so non-trivial
+- homomorphism:
+
+Let $\alpha, \beta \in S_n$ with $\operatorname{sgn} (\alpha) = (-1)^k$, $\operatorname{sgn} (\alpha) = (-1)$.
+So $\exists$ transpositions $\tau_i$ and $\tau_i'$ such that $\alpha = \tau_1 \ldots \tau_k$ and $\beta = \tau_1' \ldots \tau_l'$.
+This implies 
+\begin{align*}
+    \alpha \beta &= \tau_1 \ldots \tau_k \tau_1' \ldots \tau_l' \\
+    \implies \operatorname{sgn}(\alpha \beta) &= (-1)^{k + l} \\
+    &= (-1)^k (-1)^l \\
+    &= \operatorname{sgn}(\alpha) \operatorname{sgn}(\beta)
+\end{align*}
+:::
+
+::: {.definition #eleven}
+$\sigma$ is an *even* permutation if $\operatorname{sgn}(\sigma) = 1$ and an odd permutation if $\operatorname{sgn}(\sigma) = -1$.
+:::
+
+::: {.corollary}
+The even permutations of $S_n$ ($n \geq 2$) form a subgroup called the *alternating group* and we denote it by $A_n$.
+:::
+
+::: {.proof}
+id $= \begin{pmatrix}1 & 2\end{pmatrix} \begin{pmatrix}1 & 2\end{pmatrix} \in A_n$
+
+- $\operatorname{sgn}(\sigma) = 1 = \operatorname{sgn}(\rho) \implies \operatorname{sgn}(\sigma \rho) = $
+\begin{align*}
+    \operatorname{sgn}(\sigma) &= 1 = \operatorname{sgn}(\rho) \\ 
+    \implies \operatorname{sgn}(\sigma \rho) &= \operatorname{sgn}(\sigma) \operatorname{sgn}(\rho) \\
+    &= 1
+\end{align*} by Theorem \@ref(thm:two)
+
+- $\sigma = \tau_1 \ldots \tau_k$ where $\tau_i$ are transpositions. 
+Then $\sigma^{-1} = \tau_k \ldots \tau_1 \implies \operatorname{sgn}(\sigma) = \operatorname{sgn}(\sigma^{-1})$
+
+- associativity is inherited
+:::
+
+::: {.example}
+$A_4 = \{ e, \begin{pmatrix}1 & 2\end{pmatrix} \begin{pmatrix}3 & 4\end{pmatrix}, \begin{pmatrix}1 & 3\end{pmatrix} \begin{pmatrix}2 & 4\end{pmatrix}, \begin{pmatrix}1 & 4\end{pmatrix} \begin{pmatrix}2 & 3\end{pmatrix},$ $\begin{pmatrix}1 & 2 & 3\end{pmatrix}, \begin{pmatrix}1 & 3 & 2\end{pmatrix}, \begin{pmatrix}1 & 2 & 4\end{pmatrix}, \begin{pmatrix}1 & 4 & 2\end{pmatrix},$ $\begin{pmatrix}2 & 3 & 4\end{pmatrix}, \begin{pmatrix}2 & 4 & 3\end{pmatrix}, \begin{pmatrix}1 & 3 & 4\end{pmatrix}, \begin{pmatrix}1 & 4 & 3\end{pmatrix} \}$.
+:::
+
+::: {.remark}
+\ 
+
+i. $|A_n| = \frac{|S_n|}{2} = \frac{n!}{2}$ (will be proved later on)
+
+ii. cycles of even length are odd and cycles of odd length are even.
+
+iii. $A_n = \ker (\text{sgn})$, hence a subgroup (q9 - sheet 1).
+:::

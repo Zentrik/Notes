@@ -1,0 +1,111 @@
+# Cosets and Lagrange
+
+::: {.definition}
+Let $H \leq G$ and $g \in G$.
+The *left coset $gH$* is defined to be $\{ gh : h \in H \}$.
+Similarly the *right coset* $Hg = \{ hg : h \in H \}$
+:::
+
+::: {.example}
+\begin{align*}
+    S_3 &= \{ e, \begin{pmatrix}1 & 2 & 3\end{pmatrix}, \begin{pmatrix}1 & 3 & 2\end{pmatrix}, \begin{pmatrix}1 & 2\end{pmatrix}, \begin{pmatrix}1 & 3\end{pmatrix}, \begin{pmatrix}2 & 3\end{pmatrix} \} \\
+    H &= \{ \text{id}, \begin{pmatrix}1 & 2 & 3\end{pmatrix}, \begin{pmatrix}1 & 3 & 2\end{pmatrix} \} = A_3 \\
+    \begin{pmatrix}1 & 2\end{pmatrix}H &= \left\{ \begin{pmatrix}1 & 2\end{pmatrix}, \begin{pmatrix}1 & 2\end{pmatrix}\begin{pmatrix}1 & 2 & 3\end{pmatrix}, \begin{pmatrix}1 & 2\end{pmatrix}\begin{pmatrix}1 & 3 & 2\end{pmatrix} \right\} \\
+    &= \left\{ \begin{pmatrix}1 & 2\end{pmatrix}, \begin{pmatrix}2 & 3\end{pmatrix}, \begin{pmatrix}1 & 3\end{pmatrix} \right\} \\
+    \begin{pmatrix}1 & 2 & 3\end{pmatrix}H &= H \ (\text{since H is a subgroup})
+\end{align*} 
+Note, $H \dot{\cup} \begin{pmatrix}1 & 2\end{pmatrix}H = S_3$
+:::
+
+::: {.lemma #nine}
+Let $H \leq G$ and $g \in G$.
+Then there is a bijection between $H$ and $gH$.
+In particular if $H$ is finite then $|H| = |gH|$.
+:::
+
+::: {.proof}
+Define $\theta_g : H$
+\begin{align*}
+    \theta_g : H &\to gH \\
+    h &\mapsto gh.
+\end{align*}
+We show $\theta_g$ is a bijection.
+
+Surjectivity: if $gh \in gH$ then $\theta_g(h) = gh$.
+
+Injectivity: \begin{align*}
+    \theta_g(h_1) &= \theta_g(h_2) \\
+    g h_1 &= g h_2 \\
+    \implies h_1 &= h_2 \ (\text{cancellation law})
+\end{align*} 
+:::
+
+::: {.lemma #ten}
+The left cosets of $H$ in $G$ form a partition of $G$ i.e.
+
+i. each $g \in G$ lies in some left coset of $H$ in G.
+
+ii. if $aH \cup bH \neq \emptyset$ (for some $a, b \in G$) $\implies aH = bH$.
+:::
+
+```{r 03-cosets, echo = FALSE, fig.cap = "", fig.align="center"} 
+knitr::include_graphics("figures/03-cosets.png") 
+```
+
+::: {.proof}
+\ 
+
+i. $g \in gH$ as $e \in H$
+
+ii. Suppose $c \in aH \cup bH$. \
+Claim: $aH = cH = bH$.
+
+Now $c \in aH$ so $c = ak$ for some $k \in H$.
+\begin{align*}
+    \implies cH &= \{ c h : h \in H \} \\
+    &= \{ a k h : h \in H \} \subseteq aH.
+\end{align*} 
+
+Similarly, $a = c k^{-1} \in cH$
+\begin{align*}
+    \implies aH \subseteq cH.
+\end{align*} 
+So $aH = cH$. \
+Similarly $cH = bH$
+:::
+
+::: {.example}
+$S_n = \underbrace{A_n}_\text{even elements} \dot{\cup} \underbrace{\begin{pmatrix}1 & 2\end{pmatrix} A_n}_\text{odd elements}$
+:::
+
+::: {.lemma #eleven}
+Let $H \leq G$, $a, b \in G$.
+Then $aH = bH \iff a^{-1} b \in H$.
+:::
+
+::: {.proof}
+
+$(\implies)$:
+\begin{align*}
+    b &\in bH = aH \\
+    \implies b &= ah \text{ for some } h \in H \\
+    \implies a^{-1} b &= h \in H
+\end{align*} 
+
+$(\Longleftarrow)$:
+\begin{align*}
+    \text{Suppose } a^{-1}b &= k \in H \\
+    \implies b &= ak \in aH \\
+    \text{also } b &\in bH. \\
+    \implies aH &= bH
+\end{align*} by Lemma \@ref(lem:ten)
+:::
+
+::: {.theorem #three name="Lagrange's Theorem"}
+Let $H$ be a subgroup of the finite group $G$.
+Then the order of $H$ divides the order of $G$ (i.e. $|H| \mid |G|$).
+:::
+
+::: {.proof}
+a
+:::
