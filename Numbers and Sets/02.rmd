@@ -574,7 +574,7 @@ Theorem \@ref(thm:twelve) can be extended by induction, to more than two moduli:
 \end{align*} 
 :::
 
-We denote by $\phi(m)$ the number of integers $a$ s.t. $a \leq a \leq m$ s.t $(a, m) = 1$, that is, the number of units modulo $m$.
+We denote by $\phi(m)$ the number of integers $a$ s.t. $1 \leq a \leq m$ s.t $(a, m) = 1$, that is, the number of units modulo $m$.
 We call $\phi$ the *Euler totient function*.
 Define $\phi(1) = 1$. \
 E.g. when $p$ is prime, $\phi(p) = p - 1$, and $\phi(p^2) = p^2 - p$ (there are $p$ multiples of $p$ that are $\leq p^2$).\

@@ -2,7 +2,7 @@
 
 ## Vectors in $\mathbb{R}^n$
 
-### Definitions
+### Definitions {#Rn}
 If we regard vectors as sets of components, it is easy to generalise from 3 to $n$ dimensions.
 
 ::: {.definition}
@@ -179,10 +179,162 @@ Take dot with $\underline{b} \wedge \underline{c}$ to get $\alpha \underline{a} 
 ### Inner product
 This is an additional structure on a real vector space $V$, also characterised by axioms.
 For $\underline{v}, \underline{w} \in V$ write inner product $\underline{v} \cdot \underline{w}$ or $(\underline{v}, \underline{w}) \in \mathbb{R}$.
-This satisfies axioms corresponding to the properties in [Definitions]
+This satisfies axioms corresponding to the properties in [Definitions](#Rn)
 
 i. Symmetric
 
 ii. Bilinear
 
 ii. Positive definite
+
+::: {.lemma}
+In a real vector space $V$ with inner product, if $\underline{v}_1, \ldots, \underline{v}_r$ are non-zero and orthogonal:
+\begin{align*}
+    (\underline{v}_i, \underline{v}_i) \neq 0 \text { and } (\underline{v}_i, \underline{v}_j) = 0 \text{ where } i \neq j \text{ and for fixed } i.
+\end{align*} 
+then $\underline{v}_1, \ldots, \underline{v}_r$ are linearly independent.
+:::
+::: {.proof}
+\begin{align*}
+    \text{Consider } \sum_i \alpha_i \underline{v}_i &= \underline{0} \\
+    (\underline{v}_j, \sum_i \alpha_i \underline{v}_i) &= \sum_i \alpha_i (\underline{v}_j, \underline{v}_i) \\
+    0 &= \alpha_j (\underline{v}_j, \underline{v}_j) \text{ all fixed j} \\
+    \implies \alpha_j &= 0.
+\end{align*} 
+:::
+
+## Bases and Dimension
+
+For a vector space $V$, a basis is a set 
+\begin{align*}
+    \mathcal{B} = \{ \underline{e}_1, \ldots, \underline{e}_n \}
+\end{align*}  such that
+
+i. $\mathcal{B}$ spans $V$, i.e. any $\underline{v} \in V$ can be written $\underline{v} = \sum_{i=1}^{n} v_i \underline{e_i}$
+
+ii. $\mathcal{B}$ is linearly independent. 
+Given ii., the coefficients $v_i$ in i. are unique since 
+\begin{align*}
+    \sum_i v_i \underline{e}_i &= \sum v_i' \underline{e}_i \\
+    \implies \sum_i (v_i - v_i') \underline{e}_i &= \underline{0} \\
+    \implies v_i &= v_i'
+\end{align*} 
+
+$v_i$ are *components* of $\underline{v}$ w.r.t. $\mathfrak{B}$
+
+::: {.example}
+Standard basis for $\mathbb{R}^n$ consisting of 
+\begin{align*}
+    \underline{e}_1 &= (1, 0, \ldots, 0) \\
+    \underline{e}_2 &= (0, 1, \ldots, 0) \\
+    &\;\;\vdots \\
+    \underline{e}_n &= (0, 0, \ldots, 1).    
+\end{align*} is a basis according to general definition.
+
+i. \begin{align*}
+    \underline{x} = \begin{pmatrix}x_1 \\\vdots \\x_n\end{pmatrix} = x_1 \underline{e}_1 + \ldots + x_n \underline{e}_n \\
+\end{align*} 
+
+ii. $\underline{x} = \underline{0} \iff x_1 = x_2 = \ldots = x_n = 0$
+:::
+
+Many other bases can be chosen
+
+::: {.example}
+In $\mathbb{R}^2$ we have bases
+\begin{align*}
+    \left\{ \begin{pmatrix}0 \\1\end{pmatrix}, \begin{pmatrix}1 \\1\end{pmatrix} \right\} \text{ or } \left\{ \begin{pmatrix}1 \\1\end{pmatrix}, \begin{pmatrix}1 \\ -1\end{pmatrix} \right\}
+\end{align*} or $\{ \underline{a}, \underline{b} \}$ for any $\underline{a}, \underline{b} \in \mathbb{R}^2$ with $\underline{a} \nparallel \underline{b}$.
+:::
+
+::: {.example}
+In $\mathbb{R}^3, \{ \underline{a}, \underline{b}, \underline{c} \}$ is a basis iff $\underline{a} \cdot \underline{b} \wedge \underline{c} \neq 0$.
+:::
+
+Consider previous example of plane through $\underline{0}$, subspace in $\mathbb{R}^3$
+\begin{align*}
+    \underline{n} \cdot \underline{r} = 0 \text{ with } \underline{n} = \begin{pmatrix}1 \\1 \\1\end{pmatrix}
+\end{align*} 
+we have \begin{align*}
+    \{ \underline{v}_1, \underline{v}_2 \} \text{ basis with } \underline{v}_1 = \begin{pmatrix}1 \\0 \\-1\end{pmatrix}, \underline{v}_2 = \begin{pmatrix}1 \\1 \\-2\end{pmatrix}
+\end{align*} 
+not normalised or orthogonal. \
+But we could choose orthonormal basis
+\begin{align*}
+    \{ \underline{u}_1, \underline{u}_2 \} \text{ with } \underline{u}_1 = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 \\-1 \\ 0 \end{pmatrix} \text{ and } \underline{u}_2 = \frac{1}{\sqrt{6}} \begin{pmatrix} 1 \\1 \\ -2 \end{pmatrix}.
+\end{align*} 
+
+::: {.theorem}
+If $\{ \underline{e}_1, \ldots, \underline{e}_n \}$ and $\{ \underline{f}_1, \ldots, \underline{f}_m \}$ are bases for a real vector space $V$, then $n = m$.
+:::
+
+::: {.definition}
+The number of vectors in any basis is the *dimension* of $V$, $\dim V$.\
+Note: $\mathbb{R}^n$ has dimension $n$.
+:::
+
+::: {.proof}
+\begin{align*}
+    \underline{f}_a &= \sum_i A_{ai} \underline{e}_i \\
+    \text{and } \underline{e}_i &= \sum_i B_{ia} \underline{f}_a \\
+\end{align*} for constants $A_{ai}$ and $B_{ia}$ and we use ranges of indices $i, j = 1, \ldots, n$ and $a, b = 1, \ldots, m$.^[This is true since $\{ \underline{e}_i\}$ and $\{ \underline{f}_a \}$ are bases]
+\begin{align*}
+    \implies \underline{f}_a &= \sum_i A_{ai} \left( \sum_b B_{ib} \underline{f}_b \right) \\
+    &= \sum_b \left( \sum_i A_{ai} B_{ib} \right) \underline{f}_b.
+\end{align*} 
+But coeffs w.r.t a basis are unique so $\sum_i A_{ai} B_{ib} = \delta_{ab}$.
+
+Similarly, 
+\begin{align*}
+    \underline{e}_i &= \sum_j \left( \sum_a B_{ia} A_{aj} \right) \underline{e}_j
+\end{align*} and hence 
+\begin{align*}
+    \sum_a B_{ia} A_{aj} = \delta_{ij}.
+\end{align*}
+Now \begin{align*}
+    \sum_{ia} A_{ai} B_{ia} &= \sum_a \delta_{aa} = m \\
+    &= \sum_{ia} B_{ia} A_{ai} = \sum_i \delta_{ii} = n \\
+    \implies m &= n
+\end{align*} 
+:::
+^[Don't need to memorise proof but you there may be a question where you are lead through the proof]
+
+Note: by convention the vector space $\{ 0 \}$ has dimension $0$. \
+Not every vector space is finite dimensional.
+
+::: {.proposition}
+Let $V$ be a vector space of dimension $n$
+
+i. If $Y = \{ \underline{w}_1, \ldots, \underline{w}_m \}$ spans V, then $m \geq n$ and if $m > n$ vectors can be removed from $Y$ to get a basis.
+
+ii. If $X = \{ \underline{u}_1, \ldots, \underline{u}_k \}$ are linearly independent then $k \leq n$ and if $k < n$ vectors can be added to $X$ to get a basis. 
+:::
+
+## Vectors in $\mathbb{C}^n$
+
+### Definitions {#Cn}
+
+::: {.definition} 
+$\mathbb{C}^n = \{ \underline{z} = (z_1, \ldots, z_n) : z_j \in \mathbb{C} \}$
+:::
+
+::: {.definition}
+
+*addition*: $\underline{z} + \underline{w} = \left( z_1 + w_1, \ldots, z_n + w_n \right)$
+
+*scalar multiplication*: $\lambda \underline{z} = (\lambda z_1, \ldots, \lambda z_n)$ for any $\underline{z}, \underline{w} \in \mathbb{C}^n$. 
+Taking *real* scalars $\lambda, \mu \in \mathbb{R}$, $\mathbb{C}^n$ is a real vector space obeying axioms or key properties in [Axioms; span; subspaces].\
+Taking *complex* scalars $\lambda, \mu \in \mathbb{C}$, $\mathbb{C}^n$ is a *complex* vector space - same axioms/ key properties hold, and definitions of linear combinations, linear (in)dependence, span, bases, dimension all generalise to complex scalars.
+
+The distinction matters
+\begin{align*}
+    e.g. \ \underline{z} &= (z_1, \ldots, z_n) \in \mathbb{C}^n \\
+    \text{with } z_j &= x_j + i y_j \hspace{0.5cm} x_j, y_j \in \mathbb{R} \\
+    \text{then } \underline{z} &= \sum_j x_j \underline{e}_j + \sum_j y_j \underline{f}_j \text{ is a real linear combination} \\
+    \text{where } \underline{e}_j &= \begin{pmatrix}0 & \ldots & 1 & \ldots & 0\end{pmatrix} \\
+    \underline{f}_j &= \begin{pmatrix}0 & \ldots & i & \ldots & 0\end{pmatrix} \\
+\end{align*} 
+$\therefore \{\underline{e}_1, \ldots, \underline{e}_n, \underline{f}_1, \ldots, \underline{f}_n \}$ is a basis for $\mathbb{C}^n$ as a *real* vector space. 
+So the real dimension is $2n$.\
+But $\underline{z} = \sum_j z_j \underline{e}_j$ and $\{ \underline{e}_1, \ldots, \underline{e}_n \}$ is a basis for $\mathbb{C}^n$ as a complex vector space, dimension $n$ (over $\mathbb{C}$).
+:::
