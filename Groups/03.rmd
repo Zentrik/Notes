@@ -103,9 +103,108 @@ $(\Longleftarrow)$:
 
 ::: {.theorem #three name="Lagrange's Theorem"}
 Let $H$ be a subgroup of the finite group $G$.
-Then the order of $H$ divides the order of $G$ (i.e. $|H| \mid |G|$).
+Then the order of $H$ divides the order of $G$ (i.e. $|H| \bigg| |G|$).
 :::
 
 ::: {.proof}
-a
+By Lemma \@ref(lem:ten) $G$ is partitioned into distinct cosets of $H$, say $G = g_1 H \dot{\cup} g_2 H \dot{\cup} \ldots \dot{\cup} g_k H$ (say $g_1 = e$).\
+By Lemma \@ref(lem:nine)
+\begin{align*}
+    |g_i H| &= |H| \hspace{.5cm} 1 \leq i \leq k \\
+    \implies |G| &= |H|k
+\end{align*} 
+:::
+^[You would need to prove these lemma's in an exam q.]
+
+::: {.definition #fourteen}
+Let $H \leq G$.
+The *index* of $H$ in $G$ is the number of left cosets of $H$ in $G$, denoted $|G : H|$.
+:::
+
+::: {.remark}
+\ 
+
+i. If $G$ is finite, $|G : H| = \frac{|G|}{|H|}$.
+But we can have $|G : H|$ finite, even if $G$ and $H$ are infinite, e.g. $\mathbb{Z}$ and $n\mathbb{Z}$ where $|G : H| = n$.
+
+ii. We write $(G : H)$ for the set of left cosets of $H$ in $G$.
+:::
+
+::: {.corollary #two name="Lagrange's Corollary"}
+$G$ is a finite group, $g \in G$.
+Then $o(g) \bigg| |G|$.
+In particular, $g^{|G|} = e$.
+:::
+
+::: {.proof}
+\begin{align*}
+    \text{Note } \left\langle g\right\rangle &= \{ e, g, \ldots, g^{n-1} \} \text{ where } o(g) = n. \\
+    \text{Then } o(g) &= | \left\langle g\right\rangle | \bigg| |G| \text{ by Lagrange} \\
+    \implies g^{|G|} &= e \text{ by Lemma }
+\end{align*} \@ref(lem:five) 
+:::
+
+::: {.corollary #three}
+If $|G| = p$ for some prime $p$, then $G$ is cyclic.
+:::
+
+::: {.proof}
+Let $e \neq g \in G$.
+Then $\{ e \} \neq \langle g \rangle \leq G$.
+By Lagrange 
+\begin{align*}
+    1 &\neq | \langle g \rangle | \;\bigg|\; |G| = p \\
+    \implies | \langle g \rangle | &= p = |G| \\
+    \implies \langle g \rangle &= G
+\end{align*} 
+i.e. $G$ cyclic.
+:::
+
+Euler's totient function.\
+Let $n \in \mathbb{N}$ and $\phi(n) = \left| \left\{ a \leq a \leq n : \operatorname{hcf}(a, n) = 1 \right\} \right|$ so $\phi(12) = \left| \left\{ 1, 5, 7, 11 \right\} \right| = 4$.
+
+::: {.theorem name="Fermat-Euler Theorem" #four}
+Let $n \in \mathbb{N},\ a \in \mathbb{Z}$ and $\operatorname{hcf}(a, n) = 1$.\
+Then $a^{\phi(n)} \equiv 1 \pmod n$.
+:::
+
+
+We can prove this by using Lagrange, but first we need to set it up.\
+Let $n \in \mathbb{N}$,
+\begin{align*}
+    R_n &= \{ 0, 1, \ldots, n-1 \} \\
+    R_n^* &= \{ a \in R_n : \operatorname{hcf}(a, n) = 1 \}
+\end{align*}
+Define $\times_n$ to be multiplication mod $n$.\
+Claim: $(R_n^*, \times_n)$ is a group.
+Notation, $n \in \mathbb{Z}$ then $\bar{u} \in R_n$ such that $u \equiv \bar{u} \pmod n$.
+
+Closure:
+\begin{align*}
+    \operatorname{hcf}(a, n) &= 1 = \operatorname{hcf}(b, n)
+    \implies \operatorname{hcf}(ab, n) = 1 \\
+    \implies \operatorname{hcf}(\bar{ab}, n) = 1 \\
+\end{align*} 
+
+Identity = 1
+
+Associativity is fine.
+
+Inverses: Let $a \in R_n^*$, $\operatorname{hcf}(a, n) = 1$
+\begin{align*}
+    \implies \exists \; u, v \in \mathbb{Z} s.t. a u + v n = 1 \text{ (Bezout's Theorem)} \\
+    \implies au \equiv 1 \pmod n
+\end{align*} 
+Then $\bar{u} \in R_n^*$ is $a^{-1}$
+
+::: {.proof}
+Note $|R_n^*| = \phi(n)$.
+\begin{align*}
+    a \equiv \bar{a} \pmod n,\ \bar{a} \in R_n^*
+\end{align*} 
+By Corollary \@ref(cor:two)
+\begin{align*}
+    \bar{a}^{\phi(n)} &= \bar{a}^{|R_n^*|} = 1 \in R_n^* \\
+    \implies a^{\phi(n)} &\equiv 1 \pmod n
+\end{align*} 
 :::

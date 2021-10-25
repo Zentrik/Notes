@@ -1,0 +1,78 @@
+# Normal Subgroups, Quotient groups and Homomorphisms
+
+Given a group $G$, subgroup $H$ of $G$ and the set of left cosets of $H$ in $G$, $(G : H)$.
+We would like to define a group operation on the cosets $\circ$, so that $((G : H), \circ)$ is a group.
+Would like:
+\begin{align*}
+    (gH) \circ (k H) = gkH.
+\end{align*} 
+When does this work?
+Consider $gH kH$ if $Hk = kH$ then we get $gkHH = gkH$.\
+This motivates the following definition.
+
+::: {.definition}
+A subgroup $K$ of $G$ is called *normal* if $gK = Kg$ for all $g \in G$.
+We write $K \trianglelefteq G$.
+:::
+
+::: {.example}
+\begin{align*}
+    K &= \{ \text{id}, \begin{pmatrix}1 & 2 & 3\end{pmatrix}, \begin{pmatrix}1 & 3 & 2\end{pmatrix} \} \trianglelefteq S_3 \\
+    \begin{pmatrix}1 & 2\end{pmatrix} K &= \{ \begin{pmatrix}1 & 2\end{pmatrix}, \begin{pmatrix}2 & 3\end{pmatrix}, \begin{pmatrix}1 & 3\end{pmatrix} \} = K \begin{pmatrix}1 & 2\end{pmatrix} \\
+    \begin{pmatrix}1 & 3\end{pmatrix} K &= K \begin{pmatrix}1 & 3\end{pmatrix} \\
+    \begin{pmatrix}2 & 3\end{pmatrix} K &= K \begin{pmatrix}2 & 3\end{pmatrix} \\
+    \begin{pmatrix}1 & 2 & 3\end{pmatrix} K &= K = K \begin{pmatrix}1 & 2 & 3\end{pmatrix}
+\end{align*} 
+But $H = \{ 1, \begin{pmatrix}1 & 2\end{pmatrix} \}$ is not normal in $S_3$.
+\begin{align*}
+    \begin{pmatrix}1 & 3\end{pmatrix} H &= \{ \begin{pmatrix}1 & 3\end{pmatrix}, \begin{pmatrix}1 & 2 & 3\end{pmatrix} \} \\
+    H \begin{pmatrix}1 & 3\end{pmatrix} &= \{ \begin{pmatrix}1 & 3\end{pmatrix}, \begin{pmatrix}1 & 3 & 2\end{pmatrix} \}
+\end{align*} 
+:::
+
+::: {.proposition #four}
+Let $K \leq G$.
+TFAE (The following are equivalent):
+
+i. $gK = Kg \; \forall \; g \in G$
+
+ii. $gKg^{-1} = K \; \forall \; g \in G$
+
+iii. $gkg^{-1} \in K \; \forall \; k \in K,\ g \in G$
+:::
+
+::: {.proof}
+\begin{align*}
+    (i) &\implies (ii) \\
+    gKg^{-1} &= \{gkg^{-1} : k \in K \} \\
+    &= (gK) g^{-1} \\
+    &= (Kg)g^{-1} \\
+    &= K.
+\end{align*} 
+
+$(ii) \implies (iii)$
+
+$(iii) \implies (i)$ For any $k \in K,\ g \in G \; \exists \; k' \in K$ s.t. $gkg^{-1} = k'$
+\begin{align*}
+    \implies gk &= k'g \in Kg \\
+    \implies gK &\subseteq Kg \\
+\end{align*} 
+
+Similarly $g^{-1}kg = k''$ for some $k'' \in K$
+\begin{align*}
+    \implies kg &= gk'' \\
+    \implies Kg &\subseteq gK \\
+    \implies gK &= Kg.
+\end{align*} 
+:::
+
+::: {.example}
+\ 
+
+- $\{ e \} \trianglelefteq G,\ G \trianglelefteq G$.
+
+- If $G$ is abelian, all subgroups are normal. 
+Since if $k \in K,\ g \in G$ and $K \leq G$ then $gkg^{-1} = gg^{-1} k = k \in K$.
+
+- 
+:::
