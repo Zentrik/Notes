@@ -433,7 +433,7 @@ If there is a solution, then $2a^2 \equiv \mod 3$, but $2 \cdot 0^2 \equiv 0$, $
 ## Solving congruences
 ::: {.example}
 Solve $7x \equiv 2 \mod 10$.
-We note $3 \cdot 7 \equiv \mod 10$, so $3 \cdot 7 x \equiv 3 \cdot 2 \mod 10$ so $x \equiv 6 \mod 10$.
+We note $3 \cdot 7 \equiv 1 \mod 10$, so $3 \cdot 7 x \equiv 3 \cdot 2 \mod 10$ so $x \equiv 6 \mod 10$.
 :::
 
 Given $a, b \in \mathbb{Z}$, we say that b is an *inverse of a modulo $n$* if $a b \equiv 1 \mod n$. 
@@ -492,7 +492,7 @@ Conversely, if $d \mid b$, then $n = d \cdot n'$, $a = d \cdot a'$, $b = d \cdot
     &\iff a'x \equiv b' \mod n'.
 \end{align*} 
 Note $(a', b') = 1$. \
-So if $(a, n) = d > 1$, the congruence $ax \equiv b \mod n$ has no solutions unless $d \mid b$, in which case the solutions are exactly those of $\frac{a}{d}x = \frac{b}{d} \mod \frac{n}{d}$.
+So if $(a, n) = d > 1$, the congruence $ax \equiv b \mod n$ has no solutions unless $d \mid b$, in which case the solutions are exactly those of $\frac{a}{d}x \equiv \frac{b}{d} \mod \frac{n}{d}$.
 
 ::: {.example}
 $7x \equiv 4 \pod {30}$. \

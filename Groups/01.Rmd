@@ -453,7 +453,7 @@ Then
 \end{align*} 
 
 ::: {.definition}
-A group $H$ is *cyclic* if $\exists \; h \in H$ such that each element of $H$ is a power of $h$, i.e. for each $x \in H \; \exists m \in \mathbb{Z}$ s.t. $x = h^m$.
+A group $H$ is *cyclic* if $\exists \; h \in H$ such that each element of $H$ is a power of $h$, i.e. for each $x \in H \; \exists m \; \in \mathbb{Z}$ s.t. $x = h^m$.
 Then $h$ is called a *generator* of $H$ and we write $H = \left\langle h \right\rangle$. 
 :::
 
