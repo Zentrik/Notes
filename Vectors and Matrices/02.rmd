@@ -492,7 +492,7 @@ or $i = q = 1$ and $j = p = 2$
 
 All other index choices work similarly, proof by exhaustion.
 
-2. $\epsilon_{ijk} \epsilon_{pjk} &= 2\delta_{ip}$
+2. $\epsilon_{ijk} \epsilon_{pjk} = 2\delta_{ip}$
 *contract* result above
 \begin{align*}
     \epsilon_{ijk} \epsilon_{pqk} &= \delta_{ip}\delta_{jj} - \delta_{ij} \delta_{jp} \\

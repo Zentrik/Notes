@@ -338,3 +338,48 @@ $\therefore \{\underline{e}_1, \ldots, \underline{e}_n, \underline{f}_1, \ldots,
 So the real dimension is $2n$.\
 But $\underline{z} = \sum_j z_j \underline{e}_j$ and $\{ \underline{e}_1, \ldots, \underline{e}_n \}$ is a basis for $\mathbb{C}^n$ as a complex vector space, dimension $n$ (over $\mathbb{C}$).
 :::
+
+### Inner Product
+Inner product or scalar product on $\mathbb{C}^n$ is defined by 
+\begin{align*}
+    (\underline{z}, \underline{w}) &= \sum_j \bar{z}_j w_j = \bar{z}_1 w_1 + \ldots + \bar{z}_n w_n \\
+\end{align*} 
+
+#### Properties
+
+i. *hermitian* 
+\begin{align*}
+    (\underline{w}, \underline{z}) = \overline{(\underline{z}, \underline{w})}
+\end{align*} 
+
+ii. *linear/ anti-linear*
+\begin{align*}
+    (\underline{z}, \lambda \underline{w} + \lambda' \underline{w}') &= \lambda (\underline{z}, \underline{w}) + \lambda' (\underline{z}, \underline{w}') \\
+    (\mu \underline{z} + \mu' \underline{z}', \underline{w}) &= \bar{\mu} (\underline{z}, \underline{w}) + \overline{\mu}' (\underline{z}', \underline{w})    
+\end{align*} 
+
+iii. *positive definite* 
+\begin{align*}
+    (\underline{z}, \underline{z}) &= \sum_i |z_i|^2 \in \mathbb{R}_{\geq 0} \\
+    &= 0 \iff \underline{z} = \underline{0}
+\end{align*} 
+Define *length* or *norm* of $\underline{z}$ to be $|\underline{z}| \geq 0$ with $|\underline{z}|^2 = (\underline{z}, \underline{z})$.
+
+Define $\underline{z}, \underline{w} \in \mathbb{C}^n$ to be *orthogonal* if $(\underline{z}, \underline{w}) = 0$.\
+Note, the standard basis $\{ \underline{e}_j \}$ for $\mathbb{C}^n$ (see [definitions](#Cn)) is orthonormal
+\begin{align*}
+    (\underline{e}_i, \underline{e}_j) = \delta_{ij}.
+\end{align*} 
+Also if $\underline{z}_1, \underline{z}_2, \ldots, \underline{z}_k$ are non-zero and orthogonal in sense above, then they are linearly independent over $\mathbb{C}$ (same argument as in real case).
+
+::: {.example}
+Complex inner product on $\mathbb{C}$ ($n = 1$) is 
+\begin{align*}
+    (z, w) &= \bar{z} w \\
+    \text{Let } z &= a_1 + i a_2,\ w = b_1 + b_2 \\
+    \text{Then } \underline{a} &= (a_1, a_2) \in \mathbb{R}^2,\ \underline{b} = (b_1, b_2) \in \mathbb{R}^2 \text{ the corresponding vectors} \\
+    \bar{z} w &= (a_1 b_1 + a_2 b_2) + i (a_1 b_2 - a_2 b_1) \\
+    &= \underline{a} \cdot \underline{b} + i [\underline{a}, \underline{b}]
+\end{align*} 
+recover scalar dot and scalar cross product in $\mathbb{R}^2$.
+:::

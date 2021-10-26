@@ -1,0 +1,119 @@
+# Matrices and Linear Maps
+
+## Introduction
+
+### Definitions
+
+::: {.definition #lmp}
+A *linear map* or *linear transformation* is a function
+\begin{align*}
+    T : V \to W
+\end{align*} between vector spaces $V\ (\dim n)$ and $W\ (\dim m)$ such that 
+\begin{align*}
+    T(\lambda \underline{x} + \mu \underline{y}) &= \lambda T(\underline{x}) + \mu T(\underline{y}) \\
+    \forall \; \underline{x}, \underline{y} \in V \\
+    \forall \; \lambda, \mu \in \mathbb{R} \text{ or } \mathbb{C} \\
+\end{align*} 
+for $V, W$ both real or complex vector spaces.^[Mostly concerned with $V = \mathbb{R}^n,\ W = \mathbb{R}^m$ or $V = \mathbb{C}^n,\ W = \mathbb{C}^m$]
+:::
+
+*Note*: a linear map is completely determined by its action on a basis $\{ \underline{e}_1, \ldots, \underline{e}_n \}$ for $V$, since \begin{align*}
+    T\left( \sum_i x_i \underline{e}_i \right) = \sum_i x_i T(\underline{e}_i)
+\end{align*} 
+
+$\underline{x}' = T(\underline{x}) \in W$ is the *image* of $\underline{x} \in V$ under T.\
+$\operatorname{Im}(T) = \{ \underline{x}' \in W: \underline{x}' = T(\underline{x}) \text{ for some } \underline{x} \in V \}$ is the *image* of $T$.\
+$\ker(T) = \{ \underline{x} \in V: \underline{x}' = T(\underline{x}) = \underline{0} \}$ is the *kernel* of $T$.\
+
+::: {.lemma}
+$\ker(T)$ is a subspace of $V$ and $\operatorname{Im}(T)$ is a subspace of $W$.
+:::
+
+::: {.proof}
+$\underline{x}, \underline{y} \in \ker(T) \implies T(\lambda \underline{x} + \mu \underline{y}) = \lambda T(\underline{x}) + \mu T(\underline{y}) = \underline{0}$ and $\underline{0} \in \ker(T)$, so results follows.
+
+Also $\underline{0} \in \operatorname{Im}(T)$ and $\underline{x}', \underline{y}' \in \operatorname{Im}(T)$ then $T(\lambda \underline{x} + \mu \underline{y}) = \lambda T(\underline{x}) + \mu T(\underline{y}) = \lambda \underline{x}' + \mu \underline{y}' \in \operatorname{Im}(T)$ for some $\underline{x}, \underline{y} \in V$.
+:::
+
+::: {.example}
+Zero linear map $T : V \to W$ is given by $T(\underline{x}) = \underline{0} \; \forall \; \underline{x} \in V$.
+$\operatorname{Im}(T) = \{ \underline{0} \}$ and $\ker(T) = V$
+:::
+
+::: {.example}
+For $V = W$, the identity linear map $T: V \to V$ is given by $T(\underline{x}) = \underline{x} \; \forall \; x \in V$.
+$\operatorname{Im}(T) = V$ and $\ker(T) = \{ \underline{0} \}$
+:::
+
+::: {.example}
+$V = W = \mathbb{R}^3$, $\underline{x}' = T(\underline{x})$ given by
+\begin{align*}
+    x_1' &= 3 x_1 + x_2 + 5 x_3 \\
+    x_2' &= - x_1 - 2 x_3 \\
+    x_3' &= 2 x_1 + x_2 + 3 x_3 \\
+    \ker(T) &= \left\{ \lambda \begin{pmatrix}2 \\-1 \\-1\end{pmatrix} \right\} \hspace{0.5cm} (\dim 1) \\
+    \operatorname{Im}(T) &= \left\{ \lambda \begin{pmatrix}3 \\-1 \\2\end{pmatrix} + \mu \begin{pmatrix}1 \\0 \\1\end{pmatrix} \right\} \hspace{0.5cm} (\dim 2)
+\end{align*} 
+:::
+
+### Rank and Nullity
+$\dim \operatorname{Im}(T)$ is the *rank* of $T$ ($\leq m$).\
+$\dim \ker(T)$ is the *nullity* of $T$ ($\leq n$).\
+
+::: {.theorem name="rank-nullity"}
+For $T : V \to W$ a linear map, \@ref(def:lmp)
+\begin{align*}
+    \operatorname{rank}(T) + \operatorname{null}(T) &= n = \dim V
+\end{align*} 
+:::
+
+
+::: {.example}
+same as those in [Definitions]
+
+i. $\operatorname{rank}(T) + \operatorname{null}(T) = 0 + n = n$
+
+ii. $\operatorname{rank}(T) + \operatorname{null}(T) = n + 0 = n$
+
+iii. $\operatorname{rank}(T) + \operatorname{null}(T) = 2 + 1 = 3$
+:::
+
+Non-examinable
+
+::: {.proof}
+Let $\underline{e}_1, \ldots, \underline{e}_k$ be a basis for $\ker(T)$ so $T(\underline{e}_i) = 0$ for $i = 1, \ldots, k$.\
+Extend by $\underline{e}_{k + 1}, \ldots, \underline{e}_n$ to get a basis for $V$. 
+Claim 
+\begin{align*}
+    \mathcal{B} &= \{ T(\underline{e}_{k + 1}), \ldots, T(\underline{e}_n) \}
+\end{align*} is the basis for $\operatorname{Im}(T)$.
+The result then follows since $\operatorname{null}(T) = k$ and $\operatorname{rank}(T) = n - k$, implying $\operatorname{null}(T) + \operatorname{rank}(T) = n$.
+
+To check claim:\
+$\mathcal{B}$ spans $\operatorname{Im}(T)$ since $\underline{x} = \sum_{i=1}^{n} x_i \underline{e}_i$
+\begin{align*}
+    \implies T(\underline{x}) = \sum_{i=1}^{n} x_i T(\underline{e}_i) = \sum_{i = k + 1}^{n} x_i T(\underline{e}_i)
+\end{align*} 
+$\mathcal{B}$ is linearly independent since 
+\begin{align*}
+    \sum_{i=k+1}^{n} \lambda_i T(\underline{e}_i) &= \underline{0} \\
+    \implies T(\sum_{i=k+1}^{n} \lambda_i \underline{e}_i) &= \underline{0} \\
+    \implies \sum_{i=k+1}^{n} \lambda_i \underline{e}_i &\in \ker(T) \\
+    \implies \sum_{i=k+1}^{n} \lambda_i \underline{e}_i &= \sum_{i=1}^{k} \mu_i \underline{e}_i \\
+\end{align*} 
+But $\underline{e}_1, \ldots, \underline{e}_n$ are linearly independent in $V$
+\begin{align*}
+    \implies \lambda_i &= 0 \\
+    \mu_i &= 0
+\end{align*} 
+:::
+
+## Geometrical Examples
+
+### Rotations
+
+In $\mathbb{R}^2$, a rotation about $\underline{0}$ through angle $\theta$ is defined by
+\begin{align*}
+    \underline{e}_1 \mapsto \underline{e}_1' = \cos \theta \underline{e}_1 + \sin \theta \underline{e}_2 \\
+    \underline{e}_2 \mapsto\underline{e}_1' = \cos \theta \underline{e}_1 + \sin \theta \underline{e}_2
+\end{align*} 

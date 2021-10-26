@@ -626,8 +626,8 @@ It follows that
     a u_1 \cdot a u_2 \cdot \ldots \cdot a u_{\phi(m)} &\equiv u_1 \cdot u_2 \cdot \ldots u_{\phi(m)} \mod m,
     \text{that is, }a^{\phi(m)} z &= z \mod p. \\
 \end{align*} 
-that is $a^{\phi(m)} z &= z \mod m$ where $z = u_1 \cdot u_2 \cdot \ldots u_{\phi(m)}$ is a product of units modulo $m$, therefore it itself is a unit.
-So we may cancel it to obtain $a^{\phi(m)} &= 1 \mod m$ 
+that is $a^{\phi(m)} z = z \mod m$ where $z = u_1 \cdot u_2 \cdot \ldots u_{\phi(m)}$ is a product of units modulo $m$, therefore it itself is a unit.
+So we may cancel it to obtain $a^{\phi(m)} = 1 \mod m$ 
 :::
 
 ::: {.example}
@@ -638,3 +638,101 @@ $p = 5,\ 4! = 24 \equiv \mod 5$.
     p &= 7,\ 6! = 720 \equiv -1 \mod 7
 \end{align*} 
 :::
+
+::: {.lemma #fourteen}
+Let $p$ be prime.
+Then $x^2 \equiv 1 \mod p \iff x \equiv \pm 1 \mod p$.
+:::
+
+*Note* Modulo $8$, $1^2 = 3^2 = 5^2 = 7^2 = 1$. 
+This make us think that $p$ being prime is important.
+
+::: {.proof}
+\begin{align*}
+    x^2 \equiv \mod p &\iff x^2 - 1 \equiv 0 \mod p \\
+    &\iff (x + 1) (x - 1) \equiv 0 \mod p
+\end{align*} 
+Recall Proposition \@ref(prp:four), if $p$ is prime and $p \mid a b$, then $p \mid a$ or $p \mid b$, so if $p$ is prime, then $ab \equiv 0 \mod p \iff a \equiv 0 \mod p$ or $b \equiv 0 \mod p$.
+Hence
+\begin{align*}
+    x^2 \equiv 1 \mod p &\iff x + 1 \equiv 0 \mod p \text{ or } x - 1 \equiv 0 \mod p \\
+    &\iff x \equiv \pm 1 \mod p
+\end{align*} 
+:::
+
+::: {.remark}
+More generally, a non-zero polynomial of degree $k$ over $\mathbb{Z}_p$ has at most k roots.
+:::
+
+::: {.theorem #fifteen name="Wilson's Theorem"}
+Let $p$ be prime.
+Then $(p - 1)! \equiv -1 \mod p$.
+:::
+
+::: {.proof}
+True for $p = 2$, so assume $p > 2$.\
+Note that the units modulo $p$ come in pairs whose product is $1$, together with some elements that are self-inverse, i.e. $x$ s.t. $x^2 \equiv 1 \mod p$.\
+But by lemma \@ref(lem:fourteen), the elements of $\mathbb{Z}_p$ that are self-inverse are $+ 1$ and $- 1$, so the remaining $p - 3$ elements of $\mathbb{Z}_p$ come in inverse pairs.
+[E.g. when $p = 1$, $1, 10$ are self inverses and the pairs are $(2, 6),\ (3, 4),\ (5, 9),\ (7, 8)$].\
+Hence $(p - 1)!$ is the product of $\frac{p - 3}{2}$ pairs of inverses together with $+ 1$ and $- 1$, so $(p - 1)! \equiv 1 \mod p$.
+:::
+
+When is $-1$ a square modulo $p$? (If ever.)
+
+::: {.example}
+When $p = 5, 2^2 \equiv 4 \equiv - 1 \mod 5$.\
+When $p = 7, 0^2 = 0, 1^2 = 1, 2^2 = 4, 3^2 = 2 \mod 7$ and we don't need to check $4, 5, 6$ as $(-x)^2 = x^2$.\
+When $p = 13, 5^2 \equiv -1 \mod 13$.\
+No luck when $p = 19$.
+:::
+
+::: {.proposition #sixteen}
+Let $p$ be an odd prime.
+Then $-1$ is a square modulo $p$ iff $p \equiv 1 \mod 4$.
+:::
+
+::: {.proof}
+Suppose $p \equiv 1 \mod 4$.
+By Wilson's Theorem, \@ref(thm:fifteen),
+\begin{align*}
+    -1 \equiv (p - 1)! &\equiv 1 \cdot 2 \cdot 3 \cdot \ldots \cdot \frac{p - 1}{2} \cdot - \frac{p - 1}{2} \cdot \ldots -3 \cdot -2 \cdot -1 \mod p \\
+    &\equiv (-1)^{\frac{p-1}{2}} \left( \left(\frac{p-1}{2} \right)! \right)^2 \mod p \\
+\end{align*} 
+But if $p = 4k + 1$ for some $k \in \mathbb{Z}$, then
+\begin{align*}
+    -1 \equiv (-1)^{2k} \left( (2k)! \right)^2 \mod p
+\end{align*} 
+so $-1$ is a square mod $p$.
+
+Suppose, on the other hand, that $p \equiv -1 \mod 4$, i.e. $p = 4k + 3$ for some $k \in \mathbb{Z}$.
+If $-1$ were a square mod $p$, i.e. if there were $z \in \mathbb{Z}$ s.t. $z^2 \equiv -1 \mod p$, then by Fermat's little Theorem, \@ref(thm:thirteen),
+\begin{align*}
+    1 \equiv z^{p-1} \equiv z^{4k+2} \equiv z^{2(2k + 1)} &\equiv (-1)^{2k + 1} \mod p \\
+    &= \equiv -1 \mod p,
+\end{align*} 
+a contradiction.
+:::
+
+::: {.remark}
+When $p \equiv 1 \mod 4$, Wilson's Theorem, \@ref(thm:fifteen), tells us a solution to $x^2 \equiv 1 \mod p$.\
+E.g. When $p = 29 = 4 \cdot 7 + 1$, $x = (2 \cdot 7)!$ works.
+:::
+
+## Public Key Cryptography
+Let us agree to write messages as sequences of numbers, e.g. $A \to 00,\ B \to 1, \ldots, Z \to 25, ! \to 26, \ldots$
+I wish for my IA students to be able to send me encrypted messages in such a way that I can decrypt them easily but the same in not true for any third-party observer. 
+We use the 
+
+### RSA Scheme (Rivest, Shamir, Adleman)
+
+I think of two large[on the order of a hundred digits] prime $p, q$^.
+Let $n = pq$, and pick an *encoding exponent* $e$ coprime to $\phi(n) = (p - 1)(q - 1)$.
+I publish the pair $(n, e)$ (not the hcf).\
+To send me a message (i.e. a sequence of numbers), you chop it into pieces/ numbers $M < n$ and send me $M^e \mod n$, computed quickly by repeated squaring.
+
+To decrypt, I work out $d$ s.t. $ed \equiv 1 \mod \phi(n)$ (by Euclid's algorithm).
+Then I compute $(M^e)^d = M^{k \phi(n) + 1}$ for some $k \in \mathbb{Z}$ which is $\equiv M \mod n$ by Fermat-Euler, \@ref(thm:thirteenprime).
+
+Note that in order to decrypt this message in this way, I needed $n$ and $d$, or $n, e$ and $\phi(n)$.
+Finding $\phi(n)$ is as hard as finding the prime factors of $n$, which is believed to be computationally hard.\
+It is not know if RSA can be broken without factorisation.
