@@ -35,17 +35,17 @@ $\underline{x}, \underline{y} \in \ker(T) \implies T(\lambda \underline{x} + \mu
 Also $\underline{0} \in \operatorname{Im}(T)$ and $\underline{x}', \underline{y}' \in \operatorname{Im}(T)$ then $T(\lambda \underline{x} + \mu \underline{y}) = \lambda T(\underline{x}) + \mu T(\underline{y}) = \lambda \underline{x}' + \mu \underline{y}' \in \operatorname{Im}(T)$ for some $\underline{x}, \underline{y} \in V$.
 :::
 
-::: {.example}
+::: {.example #f-one}
 Zero linear map $T : V \to W$ is given by $T(\underline{x}) = \underline{0} \; \forall \; \underline{x} \in V$.
 $\operatorname{Im}(T) = \{ \underline{0} \}$ and $\ker(T) = V$
 :::
 
-::: {.example}
+::: {.example #f-two}
 For $V = W$, the identity linear map $T: V \to V$ is given by $T(\underline{x}) = \underline{x} \; \forall \; x \in V$.
 $\operatorname{Im}(T) = V$ and $\ker(T) = \{ \underline{0} \}$
 :::
 
-::: {.example}
+::: {.example #f-three}
 $V = W = \mathbb{R}^3$, $\underline{x}' = T(\underline{x})$ given by
 \begin{align*}
     x_1' &= 3 x_1 + x_2 + 5 x_3 \\
@@ -57,7 +57,7 @@ $V = W = \mathbb{R}^3$, $\underline{x}' = T(\underline{x})$ given by
 :::
 
 ### Rank and Nullity
-$\dim \operatorname{Im}(T)$ is the *rank* of $T$ ($\leq m$).\
+$\dim \operatorname{Im}(T)$ is the *rank* of $T$ ($\leq n$).\
 $\dim \ker(T)$ is the *nullity* of $T$ ($\leq n$).\
 
 ::: {.theorem name="rank-nullity"}
@@ -68,7 +68,7 @@ For $T : V \to W$ a linear map, \@ref(def:lmp)
 :::
 
 
-::: {.example}
+::: {.example #f-four}
 same as those in [Definitions]
 
 i. $\operatorname{rank}(T) + \operatorname{null}(T) = 0 + n = n$
@@ -114,6 +114,217 @@ But $\underline{e}_1, \ldots, \underline{e}_n$ are linearly independent in $V$
 
 In $\mathbb{R}^2$, a rotation about $\underline{0}$ through angle $\theta$ is defined by
 \begin{align*}
-    \underline{e}_1 \mapsto \underline{e}_1' = \cos \theta \underline{e}_1 + \sin \theta \underline{e}_2 \\
-    \underline{e}_2 \mapsto\underline{e}_1' = \cos \theta \underline{e}_1 + \sin \theta \underline{e}_2
+    \underline{e}_1 &\mapsto \underline{e}_1' = \ \; (\cos \theta) \underline{e}_1 + (\sin \theta) \underline{e}_2 \\
+    \underline{e}_2 &\mapsto \underline{e}_2' = -(\sin \theta) \underline{e}_1 + (\cos \theta) \underline{e}_2
 \end{align*} 
+
+```{r 04-rotations, echo = FALSE, fig.cap = "", fig.align="center", out.height = "300cm"} 
+knitr::include_graphics("figures/04-rotations.png") 
+```
+
+In $\mathbb{R}^3$, rotation about axis given by $\underline{e}_3$ is defined as above, with
+\begin{align*}
+    \underline{e}_3 \mapsto \underline{e}_3' = \underline{e}_3
+\end{align*} 
+
+Now consider rotation about any axis $\underline{n}$ (a unit vector).
+Given $\underline{x}$, resolve $\parallel$ and $\bot$ $\underline{n}$:
+\begin{align*}
+    \underline{x} &= \underline{x}_\parallel + \underline{x}_\bot \hspace{0.5cm} \text{with } \underline{x}_\parallel = (\underline{x} \cdot \underline{n}) \underline{n} \ (\implies \underline{n} \cdot \underline{x}_\bot = \underline{0}) \\
+    \text{Under rotation} \\
+    \underline{x}_\parallel &\mapsto \underline{x}_\parallel' = \underline{x}_\parallel \\
+    \underline{x}_\bot &\mapsto \underline{x}_\bot' = (\cos \theta) \underline{x}_\bot + (\sin \theta) \underline{n} \wedge \underline{x},
+\end{align*} by considering plane $\bot \underline{n}$, comparing to rotation in $\mathbb{R}^2$ and noting that $|\underline{x}_\bot| = | \underline{n} \wedge \underline{x} |$.
+
+```{r 04-3d-rotation, echo = FALSE, fig.cap = "", fig.align="center", out.height = "300cm"} 
+knitr::include_graphics("figures/04-3d-rotation.png") 
+```
+
+\begin{align*}
+    \underline{x} \mapsto \underline{x}' &= \underline{x}_\parallel' + \underline{x}_\bot' \\
+    &= (\cos \theta) \underline{x} + (1 - \cos \theta) (\underline{n} \cdot \underline{x}) \underline{n} + \sin \theta \underline{n} \wedge \underline{x}.
+\end{align*} 
+
+### Reflections
+
+Consider a *reflection* in a plane in $\mathbb{R}^3$ (or line in $\mathbb{R}^2$) through $\underline{0}$ with unit normal $\underline{n}$.\
+Given $\underline{x}$, resolve  resolve $\parallel$ and $\bot$ $\underline{n}$:
+\begin{align*}
+    \underline{x}_\parallel &\mapsto \underline{x}_\parallel' = -\underline{x}_\parallel \\
+    \underline{x}_\bot &\mapsto \underline{x}_\bot' = \underline{x}_\bot
+\end{align*}
+
+```{r 04-reflection-3d, echo = FALSE, fig.cap = "", fig.align="center", out.height = "300cm"} 
+knitr::include_graphics("figures/04-reflection-3d.png") 
+```
+
+\begin{align*}
+    \underline{x} &\mapsto \underline{x}' = \underline{x} - 2 (\underline{x} \cdot \underline{n}) \underline{n} \\
+\end{align*} 
+
+### Dilations
+
+A dilation by scale factors $\alpha, \beta, \gamma$ (real, $> 0$) along axes $\underline{e}_1, \underline{e}_2, \underline{e}_3$ in $\mathbb{R}^3$ is defined by
+\begin{align*}
+    \underline{x} &= x_1 \underline{e}_1 + x_2 \underline{e}_2 + x_3 \underline{e}_3 \\
+    \mapsto \underline{x}' &= \alpha x_1 \underline{e}_1 + \beta x_2 \underline{e}_2 + \gamma x_3 \underline{e}_3.
+\end{align*}
+
+A dilation maps a unit cube to a cuboid.
+
+### Shears
+
+Given $\underline{a}, \underline{b}$ orthogonal unit vectors define a shear with parameter $\lambda$ by 
+\begin{align*}
+    \underline{x} &\mapsto \underline{x}' = \underline{x} + \lambda (\underline{x} \cdot \underline{b}) \underline{a}
+\end{align*} 
+
+```{r 04-shear, echo = FALSE, fig.cap = "", fig.align="center", out.height = "300cm"} 
+knitr::include_graphics("figures/04-shear.png") 
+```
+
+Definition applies in $\mathbb{R}^n$ and $\underline{u}' = u$ for any vector $\underline{u} \bot \underline{b}$.
+
+## Matrices as Linear Maps $\mathbb{R}^n \to \mathbb{R}^m$
+### Definitions
+Consider a linear map $T : \mathbb{R}^n \to \mathbb{R}^m$ and standard bases $\{ \underline{e}_i \}$ and $\{ \underline{f}_a \}$ respectively.\
+Let $\underline{x}' = T(\underline{x})$ with 
+\begin{align*}
+    \underline{x} = \sum_i x_i \underline{e}_i = \begin{pmatrix}x_1 \\ \vdots \\ x_n\end{pmatrix},\ \underline{x}' = \sum_a x_a' \underline{f}_a = \begin{pmatrix}x_1' \\ \vdots \\ x_m'\end{pmatrix}
+\end{align*} 
+Linearity implies $T$ is determined by $T(\underline{e}_i) = \underline{e}_i' = \underline{C}_i \in \mathbb{R}^m \ (i = 1, \ldots, n)$; take these ase *columns* of a $m \times n$ *array* or *matrix* $M$ with *rows*
+\begin{align*}
+    \underline{R}_a \in \mathbb{R}^n \ (a = 1, \ldots, m).
+\end{align*} 
+$M$ has entries $M_{ai} \in \mathbb{R}$ where $a$ labels rows and $i$ labels columns.
+
+\begin{align*}
+    \begin{pmatrix}
+    \uparrow &  & \uparrow \\
+    \underline{C}_1 & \ldots & \underline{C}_n \\
+    \downarrow &  & \downarrow
+    \end{pmatrix} = M = 
+    \begin{pmatrix}
+    \leftarrow & \underline{R}_1 & \rightarrow \\
+     & \vdots &  \\
+    \leftarrow & \underline{R}_m & \rightarrow
+    \end{pmatrix}
+\end{align*} 
+
+$(\underline{C}_i)_a = M_{ai} = (\underline{R}_a)_i$.
+
+Action of $T$ is given by matrix $M$ multiplying vector $\underline{x}$,
+
+::: {.bluebox}
+$\underline{x}' = M \underline{x}$ defined by $x_a' = M_ai x_i$ ($\sum$ convention).
+:::
+
+This follows from definitions above since 
+\begin{align*}
+    \underline{x}' &= T\left( \sum_i x_i \underline{e}_i \right) = \sum_i x_i \underline{C}_i \\
+    \implies (\underline{x}')_a &= \sum_i x_i (\underline{C}_i)_a \\
+    &= \sum_i M_{ai} x_i \\
+    &= \sum_i (\underline{R}_a) x_i \\
+    &= \underline{R}_a \cdot x
+\end{align*} 
+
+Now regard properties of $T$ as properties of $M$.\
+$\operatorname{Im}(T) = \operatorname{Im}(M) = \operatorname{span} \{ \underline{C}_1, \ldots, \underline{C}_n \}$, the *image of M* (or T) is the span of the columns.\
+$\ker(T) = \ker(M) = \{\underline{x} : \underline{R}_a \cdot \underline{x} = 0 \; \forall \; a \}$, *kernel of M* is subspace $\bot$ all rows.
+
+### Examples
+Refer to Examples \@ref(exm:f-one), \@ref(exm:f-two), \@ref(exm:f-three), \@ref(exm:f-four).
+
+::: {.example}
+Zero map $\mathbb{R}^n \to \mathbb{R}^m$ corresponds to *zero matrix* $M = 0$ with $M_{ai} = 0$.
+:::
+
+::: {.example}
+Identity map $\mathbb{R}^n \to \mathbb{R}^n$ corresponds to *identity matrix*
+\begin{align*}
+    M = I = \begin{pmatrix}
+    1 &  &  & \smash{\huge 0} \\
+     & 1 & &  \\
+     &  & \ddots &  \\
+    \huge 0 &  &  & 1
+    \end{pmatrix}
+\end{align*} with $I_{ij} = \delta_{ij}$.
+:::
+
+::: {.example}
+$\mathbb{R}^3 \to \mathbb{R}^3$, $\underline{x}' = T(\underline{x}) = M \underline{x}$ with 
+\begin{align*}
+    M &= \begin{pmatrix}
+    3 & 1 & 5 \\
+    -1 & 0 & -2 \\
+    2 & 1 & 3
+    \end{pmatrix}, 
+    \underline{C}_1 = \begin{pmatrix}3 \\-1 \\2\end{pmatrix}, 
+    \underline{C}_2 = \begin{pmatrix}1 \\0 \\1\end{pmatrix}, 
+    \underline{C}_3 = \begin{pmatrix}5 \\-2 \\3\end{pmatrix} \\
+    \operatorname{T} &= \operatorname{M} \\
+    &= \operatorname{span} \{ \underline{C}_1, \underline{C}_2, \underline{C}_3 \} \\
+    &= \operatorname{span} \{ \underline{C}_1, \underline{C}_2 \} \text{ since } \underline{C}_3 = 2 \underline{C}_1 - \underline{C}_2 \\
+    \underline{R}_1 &= \begin{pmatrix}3 & 1 & 5\end{pmatrix} \\
+    \underline{R}_2 &= \begin{pmatrix}-1 & 0 & 2\end{pmatrix} \\
+    \underline{R}_3 &= \begin{pmatrix}2 & 1 & 3\end{pmatrix} \\
+    \underline{R}_2 \wedge \underline{R}_3 &= \begin{pmatrix}2 & -1 & -1\end{pmatrix} \\
+    &= \underline{u}, \text{ say } \bot \text{ all rows (in fact)} \\
+    \ker (T) &= \ker (M) = \{ \lambda \underline{u} \}
+\end{align*} 
+:::
+
+::: {.example}
+Rotation through $\theta$ about $\underline{0}$ in $\mathbb{R}^2$
+\begin{align*}
+    \underline{e}_1 &= \begin{pmatrix}1 \\0\end{pmatrix} \mapsto \begin{pmatrix} \cos \theta \\ \sin \theta\end{pmatrix} = \underline{C}_1 \\
+    \underline{e}_2 &= \begin{pmatrix}0 \\1\end{pmatrix} \mapsto \begin{pmatrix}- \sin \theta \\ \cos \theta\end{pmatrix} = \underline{C}_2 \\
+    \implies M &= \begin{pmatrix}
+    \cos \theta & - \sin \theta \\
+    \sin \theta & \cos \theta
+    \end{pmatrix}.
+\end{align*} 
+:::
+
+::: {.example}
+Dilation $\underline{x}' = M \underline{x}$ with scale factors $\alpha, \beta, \gamma$ along axes in $\mathbb{R}^3$.
+\begin{align*}
+    M = \begin{pmatrix}
+    \alpha & 0 & 0 \\
+    0 & \beta & 0 \\
+    0 & 0 & \gamma
+    \end{pmatrix}.
+\end{align*} 
+:::
+
+::: {.example}
+Reflection in plane $\bot \underline{n}$ (a unit vector).
+\begin{align*}
+    \underline{x}' &= H \underline{x} = \underline{x} - 2 (\underline{x} \cdot \underline{n}) \underline{n} \\
+    x_i' &= x_i - 2 x_j n_j n_i \\
+    &= (\delta_{ij} - 2 n_j n_i) x_j \\
+    H_{ij} &= \delta_{ij} - 2 n_j n_i \\
+    \text{e.g. } \underline{n} &= \frac{1}{\sqrt{3}} \begin{pmatrix} \\1 \\1\end{pmatrix},\ n_i n_j = \frac{1}{3} \; \forall \; i, j \\
+    H &= \frac{1}{3} \begin{pmatrix}
+    1 & -2 & -2 \\
+    -2 & 1 & -2 \\
+    -2 & -2 & 1
+    \end{pmatrix}
+\end{align*} 
+:::
+
+::: {.example}
+Shear
+\begin{align*}
+    \underline{x}' &= S \underline{x} = \underline{x} + \lambda (\underline{b} \cdot \underline{x})\underline{a} \\
+    x_i' &= S_{ij} x_j \\
+    \text{with } S_{ij} &= \delta_{ij} + \lambda a_i b_j
+\end{align*} 
+e.g. in $\mathbb{R}^2$ with $\underline{a} = \begin{pmatrix}1 \\0\end{pmatrix}$ and $\underline{b} = \begin{pmatrix}0 \\1\end{pmatrix}$, 
+\begin{align*}
+    S = \begin{pmatrix}
+    1 & \lambda \\
+    0 & 1
+    \end{pmatrix}.
+\end{align*} 
+:::

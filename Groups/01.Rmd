@@ -334,7 +334,7 @@ If $g: A \to B$ and $f: B \to C$ are bijections then so is $f \circ g: A \to C$.
 See Numbers and Sets
 :::
 
-::: {.definition}
+::: {.definition #homomorphism}
 Let $(G, *_G)$ and $(H, *_H)$ be groups. Then the function
 \begin{align*}
     \theta : G \to H

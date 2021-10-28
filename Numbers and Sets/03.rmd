@@ -1,0 +1,108 @@
+# The Reals
+
+We have seen $\mathbb{N} \subset \mathbb{Z} \subset \mathbb{Q}$ ($\mathbb{N} \to \mathbb{Z}$ lets us subtract and $\mathbb{Z} \to \mathbb{Q}$ gives us division).
+Why stop here?
+
+::: {.proposition #t-one}
+There is no rational $x$ with $x^2 = 2$.
+:::
+
+::: {.proof}
+Suppose $x^2 = 2$.
+Note we may assume $x > 0$ since $(-x)^2 = x^2$.
+If $x$ is rational then $x = \frac{a}{b}$ for some $a, b \in \mathbb{N}$.
+Thus $x^2 = \frac{a^2}{b^2} = 2$, or $a^2 = 2 b^2$.
+But the exponent of $2$ in the prime factorisation of $a^2$ is even while the exponent of $2$ in the prime factorisation of $2 b^2$ is odd, contradicting the Fundamental Theorem of Arithmetic, \@ref(thm:fta).
+:::
+
+*Note*: The same proof shows that if $\exists \; x \in \mathbb{Q}$ with $x^2 = n$ for some $n \in \mathbb{N}$, then $n$ must be a square.
+
+::: {.proof name="Alternative proof"}
+Suppose $x^2 = 2$ for some $x = \frac{a}{b}$ with $a, b \in \mathbb{N}$.
+Then for any $c, d \in \mathbb{Z}$, $cx + d$ is of the form $\frac{e}{b}$ for some $e \in \mathbb{Z}$.
+Thus if $cx + d > 0$, then $cx + d \geq \frac{1}{b}$.
+But $0 < x - 1 < 1$ as $1 < x < 2$ so if $n$ is sufficiently large, $0 < (x - 1)^n < \frac{1}{b}$.
+But for any $n \in \mathbb{N}$, $(x - 1)^n$ is of the form $cx + d$ for some $c, d \in \mathbb{Z}$, since $x^2 = 2$.
+This is a contradiction.
+:::
+
+So "$\mathbb{Q}$ has a gap".
+How do we express the fact making reference only to $\mathbb{Q}$?
+
+```{r 03-number-line, echo = FALSE, fig.cap = "", fig.align="center"} 
+knitr::include_graphics("figures/03-number-line.png") 
+```
+
+2 is an upper bound for the set of $x$ s.t. $x^2 < 2$, but so is $1.5$, and 1.42, ... \
+*Crucial point*: In $\mathbb{Q}$, there is no least upper bound.
+
+## The Reals
+The real numbers, written $\mathbb{R}$, are a set with elements $0$ and $1$ ($0 \neq 1$), equipped with operations $+$ and $\cdot$, and an ordering $<$ such that
+
+1. $+$ is commutative and associative with identity $0$, and every $x$ has an inverse under $+$;
+
+2. $\cdot$ is commutative and associative with identity $1$, and every $x \neq 0$ has an inverse under $\cdot$;
+
+3. $\cdot$ is distributive over $+$, that is, $\forall \; a, b, c$
+\begin{align*}
+    a (b + c) = ab + ac
+\end{align*} 
+
+4. $\forall \; a, b$, exactly one of $a < b$ or $a = b$ or $b < a$ holds, and $\forall \; a, b, c$, 
+\begin{align*}
+    a < b \text{ and } b < c \implies a < c;
+\end{align*} 
+
+5. $\forall \; a, b, c$ 
+\begin{align*}
+    \forall \; a, b, c & a < b &\implies a + c < b + c \\
+    \text{and } & a < b &\implies ac < bc \text{ if } c > 0.
+\end{align*} 
+
+(The above all hold for the rationals)
+
+6. Given any set $S$ of reals that is non-empty and bounded above $S$ has a least upper bound.
+
+6 is known as the *least upper bound axiom*
+
+We say that a set $S$ is bounded above if $\exists \; x \in \mathbb{R}$ s.t. $x \geq y \; \forall \; y \in S$.
+Such an $x$ is called an *upper bound for $S$*. 
+$x$ is the *least upper bound for $S$* if $x$ is an upper bound for $S$ and every other upper bound $x'$ satisfies $x' \geq x$.\
+When $x$ is a least upper bound for $S$, we may write "$\operatorname{LUB}(S) = x$" or "$\operatorname{supremum}(S) = x$" or "$\sup(S) = x$".
+
+::: {.remark}
+\ 
+
+i. From (1) - (5), we can check, for example, that $0 < 1$ (we have just let $0$ and $1$ represent the identities).
+Indeed, if not, then $1 < 0$ ($0 \neq 1$) so $0 = 1 - 1 < 0 - 1 = -1$ ($-1 > 0$) so $0 (-1) < (-1) (-1) = 1$, a contradiction.
+
+ii. We may consider $\mathbb{Q}$ as contained in $\mathbb{R}$, by identity $\frac{a}{b} \in \mathbb{Q}$ with $a \cdot b^{-1} \in \mathbb{R}$ ($b^{-1}$ is the multiplicative inverse we have not shown that $b^{-1} = \frac{1}{b}$ yet).
+
+iii. $\mathbb{Q}$ doesn't satisfy (6) as e.g. the set of $x$ s.t. $x^2 < 2$ does not have a supremum.
+
+iv. In (6), the words "non-empty" and "bounded above" are crucial:\
+If $S$ is empty then every $x \in \mathbb{R}$ is an upper bound for $S$, so there is no least upper bound.\
+If $S$ is not bounded above, then it has no upper bound, and certainly no *least* upper bound.
+
+v. It is possible to construct $\mathbb{R}$ "out of" $\mathbb{Q}$ and check that (1) - (6), but it takes a lot of effort.
+:::
+
+::: {.example}
+$S = \{ x \in \mathbb{R} : 0 \leq x \leq \mathbb{R} \}$
+```{r 03-exm-1, echo = FALSE, fig.cap = "", fig.align="center"} 
+knitr::include_graphics("figures/03-exm-1.png") 
+```
+
+Is $2$ an upper bound for $S$?
+Yes: $\forall \; x \in S, x \leq 2$.\
+Is $3$ an upper bound for $S$?
+No: $\frac{7}{8} \in S, \frac{7}{8} \leq \frac{3}{4}$.
+
+The least upper bound of $S$ is $1$ because 
+
+- 1 is an upper bound (as $\forall \; x \in S, x \leq 1$)
+
+- every other upper bounds has $y \geq 1$ (as $1 \in S$).
+
+Hence $\sup (S) = 1$
+:::

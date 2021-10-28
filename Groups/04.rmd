@@ -74,5 +74,154 @@ Similarly $g^{-1}kg = k''$ for some $k'' \in K$
 - If $G$ is abelian, all subgroups are normal. 
 Since if $k \in K,\ g \in G$ and $K \leq G$ then $gkg^{-1} = gg^{-1} k = k \in K$.
 
-- 
+- Kernels of homomorphisms are normal subgroups (Sheet 1, q9) $\implies A_n \trianglelefteq S_n$ since $A_n = \ker sgn$
+
+- $D_{2n} = \left\langle \underbrace{r,\ t}_\text{generators} | \underbrace{r^n = e,\ t^2 = e,\ trt = r^{-1}}_\text{relations} \right\rangle$. 
+Then $\langle r \rangle \trianglelefteq D_{2n}$.\
+Clearly $r^i r^j r^-i = r^j \in \langle r \rangle$.
+Also, $(r^i t) r^j (r^i t)^{-1} = r^i t r^j t r^{-i}$
+\begin{align*}
+    (r^i t) r^j (r^i t)^{-1} &= r^i t r^j t r^{-i} \\
+    &= r^i r^{-j} t t r^{-i} \\
+    &= r^{-j} \in \langle r \rangle.
+\end{align*}
+Or use following lemma.
+:::
+
+::: {.lemma #twelve}
+If $K \leq G$ and the index, \@ref(def:fourteen) of $K$ in $G$ is 2, then $K \trianglelefteq G$.
+:::
+
+::: {.proof}
+$G = K \dot{\cup} gK$ for any $g \in G \setminus K$.
+\begin{align*}
+    G &= K \dot{\cup} gK \text{ for any } g \in G \setminus K \\
+    &= K \dot{\cup} Kg \text{ by Lemma below} \\
+    \implies gK &= Kg \; \forall \; g \in G.
+\end{align*} Lemma \@ref(lem:ten)
+:::
+
+::: {.theorem #five}
+If $K \trianglelefteq G$, the set $(G : K)$ of the left cosets of $K$ in $G$ is a group under coset multiplication i.e. $gK \circ hK = ghK$.\
+This group is called the *quotient group* (or factor group) of $G$ by $K$ and denoted $G / K$.
+:::
+
+::: {.proof}
+We need to check that coset multiplication is well defined.
+\begin{align*}
+    \text{i.e. } gK &= \hat{g}K \\
+    \text{and } hK &= \hat{h}K \\
+    \text{then } ghK &= \hat{g} \hat{h} K.
+\end{align*} 
+By Lemma \@ref(lem:eleven),
+\begin{align*}
+    gK &= \hat{g} K \implies \hat{g}^{-1} g \in K \\
+    hK &= \hat{h} K \implies \hat{h}^{-1} h \in K \\
+    \text{Now } \hat{g}^{-1} g &\in K \\
+    \implies h^{-1} \hat{g}^{-1} g h &\in K \text{ since } K \trianglelefteq G \\
+    \implies (\hat{h}^{-1} h) (h^{-1} \hat{g}^{-1} g h) &\in K \\
+    \implies \hat{h}^{-1}\hat{g}^{-1} g h &\in K \\
+    \implies ghK &= \hat{g} \hat{h} K \text{ by Lemma below}.
+\end{align*} Lemma \@ref(lem:eleven)
+
+So coset multiplication is well-defined.
+Group axioms now follow easily.
+
+- By construction coset multiplication is closed as $ghK \in (G : H)$ for $g, h \in G$.
+
+- Identity given by $eK = K$
+
+- $(gK)^{-1} = g^{-1} K$
+
+- Associativity holds since it does in $G$, to check:
+$(gK hK) lK = (gh)l K = g(hl)K = gK (hK lK)$.
+:::
+
+::: {.example}
+\ 
+
+i.
+\begin{align*}
+    S_n / A_n &= \left( \left\{ A_n, \begin{pmatrix}1 & 2\end{pmatrix} A_n \right\}, \circ \right) \\
+    &\cong C_2.
+\end{align*} 
+
+ii. \begin{align*}
+    D_8 = \langle a, b : a^4 = e = b^2,\ bab = a^{-1} \rangle
+\end{align*} 
+Let $K = \{1, a^2 \}$.\
+Claim: $K \trianglelefteq D_8$.
+\begin{align*}
+    (a^i b) a^2 (a^i b)^{-1} =& a^i b a^2 b a^{-i} \\
+    &= a^{-2} = a^2 \in K \\
+    a^i a^2 a^{-i} &= a^2 \in K.
+\end{align*} 
+$|D_8| / |K| = 4 = |(D_8 : K)|$.\
+4 distinct left cosets:
+\begin{align*}
+    K &= \{ 1, a^2 \} \\
+    aK &= \{ a, a^3 \} \\
+    bK &= \{ b, ba^2 \} = \{ b, a^2 b \} \\
+    abK &= \{ ab, aba^2 \} = \{ ab, a^3 b \}.
+\end{align*} 
+
+\begin{array}{c|cccc}
+    \circ & K & aK & bK & abK \\
+    \hline
+    K   & K   & aK   & bK  & abK \\
+    aK  & aK  & K & abK & bK  \\
+    bK  & bK  & abK  & K   & aK  \\
+    abK & abK & bK   & aK  & K
+\end{array} 
+
+Note $aK aK = a^2 K = K$
+This is isomorphic to \@ref(exm:nine).
+
+iii. Recall the subgroups of $(\mathbb{Z}, +)$ are precisely the groups $(n \mathbb{Z}, +)$ where $n \in N \cup \{ 0 \}$, $n \mathbb{Z} = \{ nk : k \in \mathbb{Z} \}$.
+Since $(\mathbb{Z}, +)$ is abelian, all subgroups are normal, $n \mathbb{Z} \trianglelefteq Z$.\
+Suppose $n = 5$, cosets given by,
+\begin{align*}
+    5 \mathbb{Z} &= \{ 5k : k \in \mathbb{Z} \} \\
+    1 + 5 \mathbb{Z} &= \{ 1 + 5k : k \in \mathbb{Z} \} \\
+    2 + 5 \mathbb{Z} &= \{ 2 + 5k : k \in \mathbb{Z} \} \\
+    3 + 5 \mathbb{Z} &= \{ 3 + 5k : k \in \mathbb{Z} \} \\
+    4 + 5 \mathbb{Z} &= \{ 4 + 5k : k \in \mathbb{Z} \}. \\
+    (1 + 5 \mathbb{Z}) + (2 + 5 \mathbb{Z}) &= 3 + 5 \mathbb{Z}. \\
+    (3 + 5 \mathbb{Z}) + (4 + 5 \mathbb{Z}) &= 2 + 5 \mathbb{Z}. \\
+\end{align*} 
+
+$( \mathbb{Z} / 5 \mathbb{Z}, \underbrace{\circ}_\text{coset 'addition'}) \cong \left( \{ 0, 1, 2, 3, 4 \}, +_5 \right)$^[It is coset 'addition' as it is abelian]
+
+$n + 5 \mathbb{Z} \to \bar{n}$ where $n \equiv \bar{n} \mod 5$ and $\bar{n} \in \{ 0, 1, 2, 3, 4 \}$.
+
+Well-defined map:
+if $n + 5 \mathbb{Z} = m + 5 \mathbb{Z}$
+\begin{align*}
+    \text{if } n + 5 \mathbb{Z} &= m + 5 \mathbb{Z} \\
+    \implies - m + n &\in 5 \mathbb{Z} \text{ by Lemma below} \\
+    \implies - m + n &\equiv 0 \pmod 5 \\
+    \implies n &\equiv m \pmod 5 \\
+    \implies \bar{n} &\equiv \bar{m} \\
+\end{align*} Lemma \@ref(lem:eleven)
+
+homomorphism:
+\begin{align*}
+    \theta\left( (n + 5 \mathbb{Z}) + (m + 5 \mathbb{Z}) \right) &= \theta( n + m + 5 \mathbb{Z}) \\
+    &= \bar{n + m} \\
+    &= \bar{n} +_5 \bar{m} \\
+    &= \theta(n + 5 \mathbb{Z}) + \theta(m + 5 \mathbb{Z}).
+\end{align*} 
+In general $(\mathbb{Z} / n \mathbb{Z}, \circ) \cong \left( \{ 0, 1, \ldots, n - 1 \}, +_n \right)$.
+:::
+
+Recall the definition of a homomorphism, \@ref(def:homophorism), $\operatorname{Im}(\theta) = \{ \theta g : g \in G \} \leq H$ (Lemma \@ref(lem:three))\
+$\ker(\theta) = \{ g \in G : \theta g = e_H \} \trianglelefteq G$ (Sheet 1).
+
+::: {.theorem name="1st Isomorphism Theorem" #six}
+Let $G, H$ be groups and $\theta : G \to H$ a group homomorphism.
+Then \begin{align*}
+    \operatorname{Im} \theta &\leq H \\
+    \ker \theta &\trianglelefteq G \\
+    \text{and } G / \ker \theta &\cong \operatorname{Im} \theta.
+\end{align*} 
 :::
