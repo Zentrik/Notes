@@ -454,6 +454,8 @@ Assume \begin{align*}
 \end{align*} 
 :::
 
+***
+
 *Aside*: Subgroup lattice of $D_6 = \{ e, r, r^2, t, rt, r^2t \}$
 ```{r, echo=FALSE, engine='tikz', fig.ext=if (knitr:::is_latex_output()) 'pdf' else 'png', fig.align = 'center', cache = TRUE}
 \begin{tikzpicture}[node distance=2.5cm, line width=1pt]
@@ -474,6 +476,8 @@ Assume \begin{align*}
     \draw(C34)      --  (1);
     \end{tikzpicture}   
 ```
+
+***
 
 ::: {.theorem #two}
 Let $n \geq 2$.
@@ -515,8 +519,7 @@ The even permutations of $S_n$ ($n \geq 2$) form a subgroup called the *alternat
 ::: {.proof}
 id $= \begin{pmatrix}1 & 2\end{pmatrix} \begin{pmatrix}1 & 2\end{pmatrix} \in A_n$
 
-- $\operatorname{sgn}(\sigma) = 1 = \operatorname{sgn}(\rho) \implies \operatorname{sgn}(\sigma \rho) = $
-\begin{align*}
+- \begin{align*}
     \operatorname{sgn}(\sigma) &= 1 = \operatorname{sgn}(\rho) \\ 
     \implies \operatorname{sgn}(\sigma \rho) &= \operatorname{sgn}(\sigma) \operatorname{sgn}(\rho) \\
     &= 1

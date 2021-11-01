@@ -165,14 +165,16 @@ $|D_8| / |K| = 4 = |(D_8 : K)|$.\
     abK &= \{ ab, aba^2 \} = \{ ab, a^3 b \}.
 \end{align*} 
 
-\begin{array}{c|cccc}
-    \circ & K & aK & bK & abK \\
-    \hline
-    K   & K   & aK   & bK  & abK \\
-    aK  & aK  & K & abK & bK  \\
-    bK  & bK  & abK  & K   & aK  \\
-    abK & abK & bK   & aK  & K
-\end{array} 
+\begin{align*}
+    \begin{array}{c|cccc}
+        \circ & K & aK & bK & abK \\
+        \hline
+        K   & K   & aK   & bK  & abK \\
+        aK  & aK  & K & abK & bK  \\
+        bK  & bK  & abK  & K   & aK  \\
+        abK & abK & bK   & aK  & K
+    \end{array} 
+\end{align*} 
 
 Note $aK aK = a^2 K = K$
 This is isomorphic to \@ref(exm:nine).
@@ -214,7 +216,7 @@ homomorphism:
 In general $(\mathbb{Z} / n \mathbb{Z}, \circ) \cong \left( \{ 0, 1, \ldots, n - 1 \}, +_n \right)$.
 :::
 
-Recall the definition of a homomorphism, \@ref(def:homophorism), $\operatorname{Im}(\theta) = \{ \theta g : g \in G \} \leq H$ (Lemma \@ref(lem:three))\
+Recall the definition of a homomorphism, \@ref(def:homomorphism), $\operatorname{Im}(\theta) = \{ \theta g : g \in G \} \leq H$ (Lemma \@ref(lem:three))\
 $\ker(\theta) = \{ g \in G : \theta g = e_H \} \trianglelefteq G$ (Sheet 1).
 
 ::: {.theorem name="1st Isomorphism Theorem" #six}
@@ -223,5 +225,190 @@ Then \begin{align*}
     \operatorname{Im} \theta &\leq H \\
     \ker \theta &\trianglelefteq G \\
     \text{and } G / \ker \theta &\cong \operatorname{Im} \theta.
+\end{align*} 
+:::
+
+::: {.definition #sixteen}
+A group is called *simple* if its only normal subgroups are $\{ e \}$ and $G$.
+e.g. $C_p$ where $p$ is prime.
+:::
+
+***
+
+*Aside*
+
+::: {.definition}
+Suppose $f : A \to B$
+
+i. $f$ is an *injective* map if $a_1, a_2 \in A$, $f(a_1) = f(a_2) \implies a_1 = a_2$ (each element of $A$ maps to a different element of $B$).
+
+ii. $f$ is *surjective* (onto) if given $b \in B \; \exists \; a \in A$ such that $f(a) = b$ (every element in $B$ is 'hit').
+
+iii. $f$ is *bijective* if $f$ is both injective and surjective.
+:::
+
+***
+
+::: {.proof name="1st Isomorphism Theorem"}
+We need to construct an isomorphism
+\begin{align*}
+    \phi : G / \ker \theta &\to \operatorname{Im} \theta \\
+    \text{Let } K = \ker \theta,\ gK &\mapsto \theta(g).
+\end{align*}
+
+```{r 04-iso-thm, echo = FALSE, fig.cap = "", fig.align="center", out.height = "300px"} 
+knitr::include_graphics("figures/04-iso-thm.png") 
+```
+Need $\phi$ well-defined:
+\begin{align*}
+    \text{Suppose } gK &= hK \\
+    \implies h^{-1}g &\in H \text{ see Lemma \@ref(lem:eleven)} \\
+    \implies \theta(h^{-1}g) &= e_H \\
+    \theta(h)^{-1} \theta(g) &= e_H \text{ since $\theta$ is a homomorphism} \\
+    \implies \theta(g) &= \theta(h) \\
+    \implies \phi(gK) &= \phi(hK)
+\end{align*} \@ref(lem:eleven)
+
+Need $\phi$ to be a homomorphism:
+\begin{align*}
+    \phi(gK hK) &= \phi(gh K) \\
+    &= \theta(gh) \\
+    &= \theta(g) \theta(h) \text{ since $\theta$ is a homomorphism} \\
+    &= \phi(gK) \phi(hK).
+\end{align*}
+
+$\phi$ surjective:
+If $\theta(g) \in \operatorname{Im} \theta$ then $\phi(gK) = \theta(g)$.
+
+$\phi$ injective:
+Suppose $\phi(gK) = \phi(hK)$
+\begin{align*}
+    \text{Suppose } \phi(gK) &= \phi(hK) \\
+    \implies \theta(g) &= \theta(h) \\
+    \implies \theta(h)^{-1} \theta(g) &= e_H \\
+    \theta(h^{-1}g) &= e_H \\
+    \implies h^{-1} g &\in K \\
+    \implies gK = hK. 
+\end{align*} 
+:::
+
+## Examples
+
+::: {.example}
+\begin{align*}
+    \operatorname{sgn} : S_n &\to ( \{ \pm 1 \}, \times) \\
+    \sigma &\mapsto \operatorname{sgn}(\sigma). \\
+    \operatorname{Im}(\text{sgn}) &= ( \{ \pm 1 \}, \times) \\
+    \ker(\text{sgn}) &= A_n \\
+    \implies S_n / A_n &\cong ( \{ \pm 1 \}, \times) \cong C_2 \\
+    \implies |A_n| &= \frac{|S_n|}{2}
+\end{align*}
+:::
+
+::: {.example}
+\begin{align*}
+    \theta : (\mathbb{R}, +) &\to (\mathbb{C} \setminus \{ 0 \}, \times) \\
+    r &\mapsto e^{2 \pi i r} \\
+    \text{Note, } \theta(r + s) &= \theta(r) \theta(s) \\
+    \operatorname{Im}(\theta) &= S^1 = \{ z \in \mathbb{C} : |z| = 1 \} \text{ unit circle} \\
+    \ker (\theta) &= (\mathbb{Z}, +) \trianglelefteq  (\mathbb{R}, +) . \\
+    (\mathbb{R}, +) / (\mathbb{Z}, +) &\cong S^1.
+\end{align*} 
+:::
+
+::: {.example}
+Recall examples \@ref(exm:glg) and \@ref(exm:sltwo).
+\begin{align*}
+    GL_2 (\mathbb{R}) &= \{ 2 \times 2 \text{ matrices with entries in } \mathbb{R}, \det \neq 0 \}. \\
+    \det : GL_2 (\mathbb{R}) &\to (\mathbb{R} \setminus, \{0 \}, \times) \\
+    M &\mapsto \det (M) \\
+    \det (AB) = \det A \det B \text{ so is a homomorphism}. \\
+    \operatorname{Im} \det &= (\mathbb{R} \setminus \{ 0 \}, \times) \\
+    \text{since } \det \begin{pmatrix}
+        \alpha &  &  & \smash{\huge 0} \\
+         & 1 & &  \\
+         &  & \ddots &  \\
+        \huge 0 &  &  & 1
+    \end{pmatrix} &= \alpha \in \mathbb{R} \setminus \{ 0 \} \\
+    \ker \det &= SL_2 (\mathbb{R}) = = \{ 2 \times 2 \text{ matrices with entries in } \mathbb{R}, \det = 1 \}. \\
+    \implies SL_2(\mathbb{R}) \trianglelefteq GL_2(\mathbb{R}) \\
+    \text{and } GL_2 (\mathbb{R}) / SL_2 (\mathbb{R}) &\cong ( \mathbb{R} \setminus \{ 0 \}, \times)
+\end{align*}  
+:::
+
+::: {.example}
+\begin{align*}
+    \theta : (\mathbb{Z}, +) &\to ( \{ 0, 1, \ldots, n-1), +_n) \\
+    n &\mapsto \bar{n} \\
+    \ker \theta = n \mathbb{Z}.
+\end{align*} 
+:::
+
+::: {.remark}
+Let $K \trianglelefteq G$. 
+Then $K$ is the kernel of the natural surjective homomorphism
+\begin{align*}
+    \theta : G &\to G / K \\
+    g &\mapsto gK.
+\end{align*} 
+Thus homomorphic images of $G$ are equivalent to quotients of $G$.
+:::
+
+::: {.lemma #thirteen}
+A homomorphism $\theta : G \to H$ is injective iff $\ker \theta = \{ e_G \}$.
+::: 
+
+::: {.proof}
+
+($\implies$): Suppose $\theta(g) = e_H = \theta (e_G)$.
+So injectivity $\implies g = e_G$.
+
+($\longleftarrow$): \begin{align*}
+    \theta(g) &= \theta(h) \\
+    \implies \theta(h)^{-1} \theta(g) &= e_H \\
+    \implies \theta(h^{-1} g) &= e_H \\
+    \implies h^{-1} g \in \ker \theta &= \{ e_G \}
+    \implies h^{-1} g &= e_G \\
+    \implies h &= g.
+\end{align*} 
+:::
+
+Recall $N \trianglelefteq G$
+\begin{align*}
+    \text{Recall } N \trianglelefteq G, g \in G, n \in N \\
+    \implies gng^{-1} \in N \\
+    \implies gng^{-1} = \hat{n} \text{ for some } \hat{n} \in N \\
+    \implies gn = \hat{n} g.
+\end{align*} 
+
+::: {.lemma #fourteen}
+\ 
+
+i. Let $N \trianglelefteq G, H \leq G$.
+Then $NH = \{ nh : n \in N, h \in H \} \leq G$.
+
+ii. Let $N \trianglelefteq G, M \trianglelefteq G$ then $NM \trianglelefteq G$.
+:::
+
+::: {.proof}
+\ 
+
+i. Closure, $nh, \bar{n} \bar{h} \in NH$
+\begin{align*}
+    n \underbrace{h \bar{n}}_{\hat{n} h} \bar{h} = n \hat{n} h \bar{h} \in NH
+\end{align*}  
+
+$\text{id} = e = \exists  \in NH$
+
+inverse:
+\begin{align*}
+    (nh)^{-1} &= h^{-1} n^{-1} \\
+    &= \hat{n} h^{-1} \text{ for some } \hat{n} \in N. \\
+    &\in NH
+\end{align*}
+
+ii. we need to check normality
+\begin{align*}
+    g (nm) g^{-1} &= \underbrace{g n g^{-1}}_{\in N} \underbrace{g m g^{-1}}_{\in M} \in NM.
 \end{align*} 
 :::

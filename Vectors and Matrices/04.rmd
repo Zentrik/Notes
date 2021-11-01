@@ -297,7 +297,7 @@ Dilation $\underline{x}' = M \underline{x}$ with scale factors $\alpha, \beta, \
 \end{align*} 
 :::
 
-::: {.example}
+::: {.example #reflection-matrix}
 Reflection in plane $\bot \underline{n}$ (a unit vector).
 \begin{align*}
     \underline{x}' &= H \underline{x} = \underline{x} - 2 (\underline{x} \cdot \underline{n}) \underline{n} \\
@@ -328,3 +328,160 @@ e.g. in $\mathbb{R}^2$ with $\underline{a} = \begin{pmatrix}1 \\0\end{pmatrix}$ 
     \end{pmatrix}.
 \end{align*} 
 :::
+
+::: {.example}
+Rotation in $\mathbb{R}^3$ with axis $\underline{n}$ and angle $\theta$,
+\begin{align*}
+    \underline{x}' &= R \underline{x} \hspace{1cm} x_i' = R_{ij} x_j \\
+    \text{where } R_{ij} = \delta_{ij} \cos \theta + (1 - \cos \theta) n_i n_j - (\sin \theta) \epsilon_{ijk} n_k
+\end{align*} (see Example Sheet 2).
+:::
+
+### Isometries, area and determinants in $\mathbb{R}^2$
+
+Consider a linear map $\mathbb{R}^2 \to \mathbb{R}^2$ given by $2 \times 2$ matrix $M$:
+\begin{align*}
+    \underline{x} \mapsto \underline{x}' = M \underline{x}
+\end{align*} 
+
+i. When is $M$ an *isometry*, preserving lengths $|\underline{x}'| = |\underline{x}|$?
+
+This is equivalent to preserving inner products $\underline{x}' \cdot \underline{y}' = \underline{x} \cdot \underline{y}$ [since $\underline{x} \cdot \underline{y} = \frac{1}{2} ( |\underline{x} + \underline{y}|^2 - |\underline{x}|^2 - |\underline{y}|^2)$].\
+Necessary conditions are
+\begin{align*}
+    M \begin{pmatrix}
+    1 \\
+    0
+    \end{pmatrix} &= \begin{pmatrix}\cos \theta \\\sin \theta\end{pmatrix} \text{ for some $\theta$; most general unit vector in $\mathbb{R}^2$} \\
+    M \begin{pmatrix}0 \\1\end{pmatrix} = \pm \begin{pmatrix}- \sin \theta \\ \cos \theta\end{pmatrix} \text{ general unit vector $\bot M (1\ 0)^T$}.
+\end{align*}
+Simple to check that these conditions are also sufficient and have two cases
+\begin{align*}
+    M = R = \begin{pmatrix}
+    \cos \theta & - \sin \theta \\
+    \sin \theta & \cos \theta
+    \end{pmatrix}
+\end{align*}, a *rotation*
+or \begin{align*}
+    M = H = \begin{pmatrix}
+    \cos \theta & \sin \theta \\
+    \sin \theta & - \cos \theta
+    \end{pmatrix}
+\end{align*}, a *reflection*.
+
+Compare with expression for reflection in \@ref(exm:reflection-matrix)
+
+\begin{align*}
+    H_{ij} &= \delta_{ij} - 2 n_i n_j \\
+    \text{and note for } \underline{n} &= \begin{pmatrix}n_1 \\n_2\end{pmatrix} = \begin{pmatrix} -\sin \frac{\theta}{2} \\ \cos \frac{\theta}{}2\end{pmatrix} \\
+    \text{we get } H &= \begin{pmatrix}
+    1 - 2 \sin^2 \frac{\theta}{2} & 2 \sin \frac{\theta}{2} \cos \frac{\theta}{2} \\
+    2 \sin \frac{\theta}{2} \cos \frac{\theta}{2} & 1 - 2 \cos^2 \frac{\theta}{2}
+    \end{pmatrix}
+\end{align*} agreeing with H above.
+This is reflection in a line in $\mathbb{R}^2$ as shown
+
+```{r 04-isometry, echo = FALSE, fig.cap = "", fig.align="center", out.height=300} 
+knitr::include_graphics("figures/04-isometry.png") 
+```
+
+ii. How does $M$ change *areas* in $\mathbb{R}^2$ (in general)?
+
+Consider unit square in $\mathbb{R}^2$, mapped to parallelogram as shown, with signed area $[M \underline{e}_1, M \underline{e}_1]$ "scalar cross product".
+
+```{r 04-area, echo = FALSE, fig.cap = "", fig.align="center", out.height=300} 
+knitr::include_graphics("figures/04-area.png") 
+```
+
+\begin{align*}
+    \left[ \begin{pmatrix} M_{11} \\M_{21}\end{pmatrix}, \begin{pmatrix}M_{12} \\M_{22}\end{pmatrix} \right] &= M_{11} M_{22} - M_{12} M_{21} \\
+    &= \det M 
+\end{align*}, the determinant of $2 \times 2$ matrix.
+
+This is the factor (with a sign) by which areas are scaled under $M$.
+
+Now compare with (i):
+\begin{align*}
+    \det R = + 1,\ \det H = -1.
+\end{align*}
+In either case $| \det M | = + 1$.
+Consider shear $S = \begin{pmatrix}1 & \lambda \\0 & 1\end{pmatrix}$; this has $\det S = + 1$ but it does not preserve lengths.
+
+## Matrices for Linear Maps in General
+
+Consider a linear map
+\begin{align*}
+    T : V \to W
+\end{align*} between real or complex vector spaces of $\dim n, m$ respectively and choose bases $\{ \underline{e}_i \}$ with $i = 1, \ldots, n$ for $V$ and $\{ \underline{f}_a \}$ with $a = 1, \ldots, m$ for $W$.\
+The matrix $M$ for $T$ wrt the bases in an $m \times n$ array with entries $M_{ai} \in \mathbb{R}$ or $\mathbb{C}$.
+It is defined by 
+\begin{align*}
+    T(\underline{e}_i) &= \sum_a \underline{f}_a M_{ai} \text{ note index positions}.
+\end{align*}
+This is chose to ensure that $T(\underline{x}) = \underline{x}'$ where $\underline{x} = \sum_i x_i \underline{e}_i$ and $\underline{x}' = \sum_a x_a' \underline{f}_a$ iff $x_a' = \sum_i M_{ai} x_i$.\
+\begin{align*}
+    \text{i.e. } \begin{pmatrix}x_1' \\ \vdots \\ x_m'\end{pmatrix} = \begin{pmatrix}
+    M_{11} & \ldots & M_{1n} \\
+    \vdots &  & \vdots \\
+    M_{m1} & \ldots & M_{mn} 
+    \end{pmatrix} 
+    \begin{pmatrix}x_1 \\ \vdots \\ x_n\end{pmatrix}.
+\end{align*} 
+
+*Moral*: given choice of bases $\{ \underline{e}_i \}$ and $\{ \underline{f}_a \}$\
+$V$ is identified with $\mathbb{R}^n$ (or $\mathbb{C}^n$)\
+$W$ is identified with $\mathbb{R}^m$ (or $\mathbb{C}^m$)\
+$T$ is identified with $m \times n$ matrix $M$.
+
+*Note*: there are natural ways to combine linear maps.\
+If $S : V \to W$ is also linear, then so is $\alpha T + \beta S : V \to W$ defined by $(\alpha T + \beta S) (\underline{x}) = \alpha T(\underline{x}) + \beta S(\underline{x})$.\
+Or if $S : U \to V$ is also linear, then so is $T \circ S : U \to W$ (composition of maps).
+
+## Matrix Algebra
+
+### Linear Combinations
+
+If $M$ and $N$ are $m \times n$ matrices then $\alpha M + \beta N$ is an $m \times n$ matrix defined by 
+\begin{align*}
+    (\alpha M + \beta N)_{ai} &= \alpha M_{ai} + \beta N_{ai} \\
+    (a = 1, \ldots, m&; i = 1, \ldots, n)
+\end{align*} [If $M, N$ represent linear maps $T, S : V \to W$, then $\alpha M + \beta N$ represents $\alpha T + \beta S$, all w.r.t. same choice of bases].
+
+### Matrix multiplication
+
+If $A$ is an $m \times n$ matrix, entries $A_{ai} \in \mathbb{R}$ or $\mathbb{C}$\
+and $B$ is an  $n \times p$ matrix, entries $B_{ir}$ then $AB$ is an $m \times p$ matrix defined by $(AB)_{ar} = A_{ai} B_{ir}$ ($\sum$ convention).
+The product $AB$ is not defined unless no. of cols of $A = $ no. of rows of B.
+\begin{align*}
+    a &= 1, \ldots, m \\
+    i &= 1, \ldots, n \\
+    r &= 1, \ldots, p.
+\end{align*} 
+
+Matrix multiplication corresponds to the composition of linear maps.
+\begin{align*}
+    [(AB) \underline{x}]_a &= (AB)_{ar} x_r \text{ and compare} \\
+    [A(B \underline{x})]_a &= A_{ai}(B \underline{x})_i = A_{ai} (B_{ir} x_r) \\
+    &= (A_{ai} B_{ir}) x_r 
+\end{align*} 
+
+::: {.example}
+\begin{align*}
+    A &= \begin{pmatrix}1 & 3 \\-5 & 0 \\2 & 1\end{pmatrix},\ B = \begin{pmatrix}1 & 0 & -1 \\2 & -1 & 3\end{pmatrix} \\
+    AB &= \begin{pmatrix}
+    7 & -3 & 8 \\
+    -5 & 0 & 5 \\
+    4 & -1 & 1
+    \end{pmatrix} \\
+    BA &= \begin{pmatrix}
+    -1 & 2 \\
+    13 & 9
+    \end{pmatrix}
+\end{align*} 
+:::
+
+### Helpful points of view
+
+i. Regarding $\underline{x} \in \mathbb{R}^n$ as a col vec or $n \times 1$ matrix, definition on matrix multiplication a matrix or vector agree.
+
+ii. For product of $\underbrace{A}_{m \times n} \underbrace{B}_{n \times p}$ have columns $\underline{C}_r (B) \in \mathbb{R}^n$ and $\underline{C}_r (AB) \in \mathbb{R}^m$ related by $\underline{C}_r (AB) = A \underline{C}_r (B)$

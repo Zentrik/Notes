@@ -95,7 +95,7 @@ knitr::include_graphics("figures/03-exm-1.png")
 
 Is $2$ an upper bound for $S$?
 Yes: $\forall \; x \in S, x \leq 2$.\
-Is $3$ an upper bound for $S$?
+Is $\frac{3}{4}$ an upper bound for $S$?
 No: $\frac{7}{8} \in S, \frac{7}{8} \leq \frac{3}{4}$.
 
 The least upper bound of $S$ is $1$ because 
@@ -105,4 +105,122 @@ The least upper bound of $S$ is $1$ because
 - every other upper bounds has $y \geq 1$ (as $1 \in S$).
 
 Hence $\sup (S) = 1$
+
+\begin{align*}
+    S &= \{ x \in \mathbb{R} : 0 \leq x \leq 1 \} \\
+    &= [0, 1]
+\end{align*} 
+:::
+
+::: {.example}
+\begin{align*}
+    S &= \{ x \in \mathbb{R} : 0 < x < 1 \} \\
+    &= (0, 1)
+\end{align*} 
+
+```{r 03-exm-2, echo = FALSE, fig.cap = "", fig.align="center"} 
+knitr::include_graphics("figures/03-exm-2.png") 
+```
+
+Is $2$ an upper bound for $S$?
+Yes: $\forall \; x \in S, x \leq 2$.\
+Is $\frac{3}{4}$ an upper bound for $S$?
+No: $\frac{7}{8} \in S, \frac{7}{8} \leq \frac{3}{4}$.
+
+We have $\sup (S) = 1$ because 
+
+- $1$ is an upper bound: $\forall \; x \in S \ x \leq 1$;
+
+- no upper bound $c$ is s.t. $c < 1$.
+Indeed, c is certainly greater than 0 (in fact $c \geq \frac{1}{2}$ since $\frac{1}{2} \in S$), so if $c < 1$, then $0 < c < 1$, so $\frac{c + 1}{2} \in S$ with $\frac{c + 1}{2} > c$ ⨳.
+```{r 03-exm-2-2, echo = FALSE, fig.cap = "", fig.align="center"} 
+knitr::include_graphics("figures/03-exm-2-2.png") 
+```
+
+*Warning* If $S$ has a greatest element, then $\sup (S) = \max (S) \in S$.
+But $\sup (S)$ can exist when $\max (S)$ does not, in which case $\sup (S) \in S$.
+:::
+
+::: {.example #three}
+\begin{align*}
+    S &= \{ 1 - \frac{1}{n} : n \in \mathbb{N} \} \\
+    &= \{ 0, \frac{1}{2}, \frac{2}{3}, \frac{3}{4}, \ldots \}
+\end{align*} 
+
+```{r 03-exm-3, echo = FALSE, fig.cap = "", fig.align="center"} 
+knitr::include_graphics("figures/03-exm-3.png") 
+```
+
+Clearly $1$ is an upper bound.\
+Is there an upper bound $< 1$?
+:::
+
+::: {.proposition #two name="Axiom of Archimedes"}
+$\mathbb{N}$ is not bounded above in $\mathbb{R}$.
+:::
+
+::: {.proof}
+Suppose on the contrary that $\mathbb{N}$ is bounded above.
+Let $c = \sup \mathbb{N}$.\
+By definition, $c - 1$ is not an upper bound for $\mathbb{N}$, so $\exists \; n \in \mathbb{N}$ s.t. $n > c - 1$.\
+But then $n + 1 \in \mathbb{N}$ with $n + 1 > c$, contradicting the fact that $c$ was an upper bound.
+:::
+
+::: {.corollary #three}
+For all $t > 0, \exists \; n \in \mathbb{N}$ with $\frac{1}{n} < t$.
+```{r 03-corr-1, echo = FALSE, fig.cap = "", fig.align="center"} 
+knitr::include_graphics("figures/03-corr-1.png") 
+```
+:::
+
+::: {.proof}
+Given $t > 0$, by Proposition \@ref(prp:two), $\exists \; n \in N$ s.t. $n > \frac{1}{t}$.
+Hence $\frac{1}{n} < t$.
+:::
+
+A set $S$ is said to be bounded below if $\exists \; x$ s.t. $x \leq y \; \forall \; y \in S$.
+Such an $x$ is called a *lower bound for $S$*.
+If $S$ is non-empty and bounded below, then $-S = \{ y: y \in S \}$ is non-empty and bounded above, so it has a least upper bound, $c$ say.
+Hence $-c$ is the *greatest lower bound of $S$*.
+We denote it by "$\operatorname{GLB}(S)$", or "$\operatorname{infimum} (S)$", or "$\inf (S)$".
+
+Corollary \@ref(cor:three) immediately implies that $\inf ( \{ \frac{1}{n} : n \in \mathbb{N} \}) = 0$.
+
+Proposition \@ref(prp:two) and Corollary \@ref(cor:three) show that there are no "infinitely large" or "infinitely small" numbers in $\mathbb{R}$.
+
+Back to Example \@ref(exm:three): we have $\sup (S) = 1$, for suppose $c < 1$ is an upper bound for $S$.
+Then $1 - \frac{1}{n} < c \; \forall \; n \in \mathbb{N}$, so $0 < 1 - c < \frac{1}{n}$ contradicting Corollary \@ref(cor:three).
+
+::: {.theorem #t-four} 
+There exists $x \in \mathbb{R}$ with $x^2 = 2$.
+:::
+
+::: {.proof}
+Let $S = \{ x \in \mathbb{R}: x^2 < 2 \}$.
+
+```{r 03-thm-4, echo = FALSE, fig.cap = "", fig.align="center"} 
+knitr::include_graphics("figures/03-thm-4.png") 
+```
+
+Note that $S$ is non-empty since e.g. $1 \in S$.
+It is also bounded above e.g. by $2$.
+Hence $S$ has a supremum, which we denote by $c$.
+
+Observe that $1 < c < 2$.
+We claim that $c^2 = 2$.
+Suppose on the contrary that $c^2 < 2$.\
+For $0 < t < 1$, have $(c + t)^2 = c^2 + 2ct + t^2 \leq c^2 + 4t + t  = c^2 + 5t < 2$ for small t (namely, $t = \frac{2 - c^2}{5}$).
+But this contradicts the assumption that $c$ was an upper bound for $S$ (since $c + t \in S$).
+Suppose now that $c^2 > 2$.\
+For $0 < t < 1$, have $(c - t)^2 = c^2 - 2ct + t^2 \geq c^2 - 4t > 2$ for small t (namely, $t = \frac{c^2 - 2}{4}$).\
+This contradicts the assumption that $c$ is the *least* upper bound for $S$ (since $c - t$ is an upper bound for $S$).
+:::
+
+::: {.remark}
+The same proof shows that $x^{\frac{1}{n}}$ exists $\forall \; n \in N, \forall \; x \in \mathbb{R}, x > 0$. 
+[i.e. $\forall \; n \in \mathbb{N}, \forall \; x \in \mathbb{R}, x > 0, \exists \; y \in \mathbb{R}$ s.t. $y^n = x$.]\
+A real that is not rational is called *irrational*. 
+E.g. $\sqrt{2}, \sqrt{3}, \sqrt{5}, \sqrt{6}$ are irrational.\
+Also $2 + 3\sqrt{5}$ is irrational.
+Indeed if $2 + 3\sqrt{5} = \frac{a}{b}$ with $\frac{a}{b} \in \mathbb{Q}$ then $\sqrt{5} = \frac{a  - 2b}{3b} \in \mathbb{Q}$ which is bad?
 :::
