@@ -1,0 +1,169 @@
+\section{Direct Products and Small Groups}
+
+\subsection{Direct Products}
+
+Let $H$ and $K$ be groups.
+We construct the (external) \emph{direct product}, $H \times K$, as follows:
+
+elements: $(h, k),\ h \in H, k \in K$.
+
+operation: \begin{align*}
+  (h_1, k_1) * (h_2, k_2) &= (h_1 *_H h_2, k_1 *_K k_2) \\
+  &= (h_1 h_2, k_1 k_2)
+\end{align*} 
+i.e. component wise multiplication.
+Then $(H \times K, *)$ is a group:
+
+closure: 
+H is a group $\implies h_1 h_2 \in H$ 
+K is a group $\implies k_1 k_2 \in K$
+
+identity: $(e_H, e_K)$
+
+inverse: $(h, k)^{-1} = (h^{-1}, k^{-1})$
+
+associativity since group operation in both $H$ and $K$ are associative.
+
+\begin{remark}
+
+  ~
+
+  \begin{enumerate}
+    \item If $H$ and $K$ are both finite, $| H \times K| = |H| |K|$.
+    \item $H \times K$ is abelian iff $(h_1, k_1) * (h_2, k_2) = (h_2, k_2) * (h_1, k_1) \; \forall \; h_1, h_2 \in H \; \forall \; k_1, k_2 \in K$ \\
+    iff $(h_1 h_2, k_1 k_2) = (h_2 h_1, k_2 k_1)$ \\
+    iff $h_1 h_2 = h_2 h_1$ and $k_1 k_2 = k_2 k_1$ \\
+    iff $H$ is abelian and $K$ is abelian.
+    \item 
+    \begin{align*}
+      H &\cong \{ (h, e_K) : h \in H \} \leq H \times K \\
+      K &\cong \{ (e_H, k) : k \in K \} \leq H \times K
+    \end{align*}
+  \end{enumerate}
+\end{remark} 
+
+\begin{example}
+  
+  ~
+
+  i.
+  \begin{align*}
+    C_2 \times C_2 &= \langle x \rangle \times \langle y \rangle \\
+    &= \{ e, x \} \times {e, y} \\
+    \text{elements :} &\ (e, e),\ (x, e), (e, y),\ (x, y)
+  \end{align*} 
+  \begin{align*}
+    \begin{array}{c | cccc}
+      \circ & (e, e) & (x, e) & (e, y) & (x, y) \\
+      \hline
+      (e, e) & (e, e) & (x, e) & (e, y) & (x, y) \\
+      (x, e) & (x, e) & (e, e) & (x, y) & (e, y) \\
+      (e, y) & (e, y) & (x, y) & (e, e) & (x, e) \\
+      (x, y) & (x, y) & (e, y) & (x, e) & (e, e)
+    \end{array}
+  \end{align*} 
+  This is the called the Klein 4-group and is $\cong$ to \Cref{exm:nine}.\\
+  Note $o\left( (x, e) \right) = o\left( (e, y) \right) = o\left( (x, y) \right) = 2$. So $C_2 \times C_2 \ncong C_4$.
+
+  ii. However, $C_2 \times C_3 \cong C_6$ (Sheet 2, qn 10).
+\end{example} 
+
+\begin{lemma}
+    Let $(h, k) \in H \times K$ where $H, K$ are groups. 
+    Then $o\left( (h, k) \right) = \operatorname{lcm} \left( o(h), o(k) \right)$.
+\end{lemma} 
+
+\begin{proof}
+  Let $n = o\left( (h, k) \right)$ and $m = \operatorname{lcm} \left( o(h), o(k) \right)$.\\
+  Then $h^m = e_H, k^m = e_K$ by \Cref{lem:five}.
+  \begin{align*}
+    \text{So } (h, k)^m &= (h^m, k^m) \\
+    &= (e_H, e_K) \\
+    \implies n &\mid m \text{ by } \ref{lem:five}. \\
+    \text{Also, } (e_H, e_K) &= (h, k)^n \\
+    &= (h^n, k^n) \\
+    \implies o(h) &\mid n \text{ and } o(k) \mid n \text{ by } \ref{lem:five}. \\
+    \implies m &\mid n.
+  \end{align*} 
+  Thus we know when $C_m \times C_n \cong C_{mn}$ (Sheet 2, qn 10).
+\end{proof} 
+
+Recognising when a group can be written as a direct product of subgroups is trickier.
+
+\begin{proposition}
+  Let $G$ be a group with subgroups $H$ and $K$, if:
+  \begin{enumerate}
+    \item each element of $G$ can be written as $hk$, for some $h \in H$, $k \in K$, \label{5.1-1}
+    \item $H \cap  K = \{ e \}$ \label{5.1-2}
+    \item $hk = kh \; \forall \; h \in H,\ k \in K$ \label{5.1-3}
+  \end{enumerate} 
+  Then $G \cong H \times K$ and we call $G$ the (internal) direct product of $H$ and $K$.
+\end{proposition} 
+
+\begin{proof}
+  \begin{align*}
+    \text{Let } \theta : H \times K &\to G \\
+    (h, k) &\mapsto hk.
+  \end{align*} 
+  $\theta$ is a homomorphism:
+  \begin{align*}
+    \theta \left( (h_1, k_1), (h_2, k_2) \right) &= \theta \left( (h_1 h_2, k_1 k_2) \right) \\
+    &= h_1 h_2 k_1 k_2 \\
+    &= h_1 k_1 h_2 k_2 \text{ by } \ref{5.1-3} \\
+    &= \theta \left( (h_1, k_1) \right) \theta \left( (h_2, k_2) \right)
+  \end{align*} 
+  $\theta$ is injective:
+  \begin{align*}
+    \theta \left( (h_1, h_2) \right) &= \theta \left( (h_2, k_2) \right) \\
+    h_1 k_1 &= h_2 k_2 \\
+    h_2^{-1} h_1 &= k_2 k_1^{-1} \in H \cap K = \{ e \} \text{ by } \ref{5.1-2} \\
+    \implies h_1 = h_2 &\text{ and } k_1 = k_2 \\
+    \text{So } (h_1, k_1) &= (h_2, k_2)
+  \end{align*} 
+  $\theta$ is surjective by \ref{5.1-1}. \\
+  So $\theta$ is an isomorphism as required.
+\end{proof} 
+
+\begin{remark}
+  There are alternative equivalent definitions of internal direction product.
+  $G$ is the internal direction product of subgroups $H$ and $K$ if:
+  \begin{symenum}
+    \itemsymbol{'} $H \trianglelefteq G, K \trianglelefteq G$ \label{5.1-1'}
+    \itemsymbol{'} $H \cap K = \{ e \}$ \label{5.1-2'}
+    \itemsymbol{'} $HK = G$ \label{5.1-3'}
+  \end{symenum} 
+\end{remark} 
+
+\begin{proof}
+  We need to show \ref{5.1-1}, \ref{5.1-2}, \ref{5.1-3} $\iff$ \ref{5.1-1'}, \ref{5.1-2'}, \ref{5.1-3'}.
+
+  $(\implies)$ we show $K \trianglelefteq G$.\\
+  Let $k \in K$, $g = h_1 k_1 \in G$ by \ref{5.1-1}.
+  $g k g^{-1} = h_1 \underbrace{k_1 k k_1^{-1}}_{\bar{k} \in K} h_1^{-1}$
+  \begin{align*}
+    g k g^{-1} &= h_1 \underbrace{k_1 k k_1^{-1}}_{\bar{k} \in K} h_1^{-1} \\
+    &= \bar{k} \in K \text{ by } \ref{5.1-3}
+  \end{align*} 
+  Similarly $H \trianglelefteq G$. \\
+  And \ref{5.1-1} $\implies$ \ref{5.1-3'}.
+
+  $(\Longleftarrow)$ need to show \ref{5.1-3}.
+  \begin{align*}
+    h \in H, k \in K \text{ consider} \\
+    h^{-1} \underbrace{k^{-1} h k}_{\in H} &\in H, \text{ since } H \trianglelefteq G \\
+    &\in K, \text{ since } K \trianglelefteq G \\
+    \implies h^{-1}k^{-1} h k &= H \cap K = \{ e \} \ \ \ref{5.1-2'} \\
+    \implies hk &= kh 
+  \end{align*} 
+\end{proof} 
+
+\begin{example}
+  $G = \langle a \rangle = C_{15}$.
+  \begin{align*}
+    C_5 &\cong \angle a^3 \rangle = H \trianglelefteq G \text{ (as $G$ is abelian)}. \\
+    C_3 &\cong \angle a^5 \rangle = K \trianglelefteq G. \\
+    H \cap K &= a^{15n} = \{ e \} \\
+    a^k &= (a^3)^{2k} (a^5)^{-k} \in HK \\
+    \implies C_{15} &\cong K \times H \cong C_3 \times C_5.
+  \end{align*} 
+\end{example} 

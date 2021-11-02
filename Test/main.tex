@@ -1,0 +1,12 @@
+%&preamble
+
+\def\encodingdefault{TU}\normalfont
+\usetikzlibrary{external}
+\tikzset{external/system call={xelatex --shell-escape --fmt preamble --halt-on-error --output-directory ./out -jobname "\image" "\endofdump\texsource"}}
+
+\tikzexternalize
+\begin{document}
+    \begin{tikzpicture}
+        \node[draw, circle, minimum width=1cm] {};
+    \end{tikzpicture}
+\end{document}

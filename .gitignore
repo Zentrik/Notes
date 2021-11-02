@@ -1,2 +1,11 @@
 _book/
-_bookdown_files/
+_bookdown_files/Paper/*
+
+*.aux
+*.toc
+*.log
+*.md5
+*.synctex.gz
+*.auxlock
+*.dpth
+*.kra~
