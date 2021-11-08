@@ -2,32 +2,27 @@
 
 \subsection{Direct Products}
 
-Let $H$ and $K$ be groups.
-We construct the (external) \emph{direct product}, $H \times K$, as follows:
+\begin{definition}[(External) direct product of groups]
+  Let $H$ and $K$ be groups. We can construct the (external) \emph{direct product}, $H \times K$, with a set $\{ (h, k),\ h \in H, k \in K \}$ and an operation:
+  \begin{align*}
+    (h_1, k_1) * (h_2, k_2) &= (h_1 *_H h_2, k_1 *_K k_2) \\
+    &= (h_1 h_2, k_1 k_2)
+  \end{align*} i.e. component wise multiplication. 
+  Then $(H \times K, *)$ is a group
+\end{definition}
 
-elements: $(h, k),\ h \in H, k \in K$.
-
-operation: \begin{align*}
-  (h_1, k_1) * (h_2, k_2) &= (h_1 *_H h_2, k_1 *_K k_2) \\
-  &= (h_1 h_2, k_1 k_2)
-\end{align*} 
-i.e. component wise multiplication.
-Then $(H \times K, *)$ is a group:
-
-closure: 
-H is a group $\implies h_1 h_2 \in H$ 
-K is a group $\implies k_1 k_2 \in K$
+\begin{proof} \mbox{}
+closure: H is a group $\implies h_1 h_2 \in H$, K is a group $\implies k_1 k_2 \in K$
 
 identity: $(e_H, e_K)$
 
 inverse: $(h, k)^{-1} = (h^{-1}, k^{-1})$
 
 associativity since group operation in both $H$ and $K$ are associative.
+\end{proof} 
 
-\begin{remark}
 
-  ~
-
+\begin{remark} \mbox{}
   \begin{enumerate}
     \item If $H$ and $K$ are both finite, $| H \times K| = |H| |K|$.
     \item $H \times K$ is abelian iff $(h_1, k_1) * (h_2, k_2) = (h_2, k_2) * (h_1, k_1) \; \forall \; h_1, h_2 \in H \; \forall \; k_1, k_2 \in K$ \\
@@ -42,30 +37,29 @@ associativity since group operation in both $H$ and $K$ are associative.
   \end{enumerate}
 \end{remark} 
 
-\begin{example}
-  
-  ~
-
-  i.
-  \begin{align*}
-    C_2 \times C_2 &= \langle x \rangle \times \langle y \rangle \\
-    &= \{ e, x \} \times {e, y} \\
-    \text{elements :} &\ (e, e),\ (x, e), (e, y),\ (x, y)
-  \end{align*} 
-  \begin{align*}
-    \begin{array}{c | cccc}
-      \circ & (e, e) & (x, e) & (e, y) & (x, y) \\
-      \hline
-      (e, e) & (e, e) & (x, e) & (e, y) & (x, y) \\
-      (x, e) & (x, e) & (e, e) & (x, y) & (e, y) \\
-      (e, y) & (e, y) & (x, y) & (e, e) & (x, e) \\
-      (x, y) & (x, y) & (e, y) & (x, e) & (e, e)
-    \end{array}
-  \end{align*} 
-  This is the called the Klein 4-group and is $\cong$ to \Cref{exm:nine}.\\
-  Note $o\left( (x, e) \right) = o\left( (e, y) \right) = o\left( (x, y) \right) = 2$. So $C_2 \times C_2 \ncong C_4$.
-
-  ii. However, $C_2 \times C_3 \cong C_6$ (Sheet 2, qn 10).
+\begin{example} \mbox{}
+  \begin{enumerate}
+    \item 
+      \begin{align*}
+        C_2 \times C_2 &= \langle x \rangle \times \langle y \rangle \\
+        &= \{ e, x \} \times \{e, y\} \\
+        \text{elements :} &\ (e, e),\ (x, e), (e, y),\ (x, y)
+      \end{align*} 
+      \begin{align*}
+        \begin{array}{c | cccc}
+          \circ & (e, e) & (x, e) & (e, y) & (x, y) \\
+          \hline
+          (e, e) & (e, e) & (x, e) & (e, y) & (x, y) \\
+          (x, e) & (x, e) & (e, e) & (x, y) & (e, y) \\
+          (e, y) & (e, y) & (x, y) & (e, e) & (x, e) \\
+          (x, y) & (x, y) & (e, y) & (x, e) & (e, e)
+        \end{array}
+      \end{align*} 
+      This is the called the Klein 4-group and is $\cong$ to \Cref{exm:nine}.\\
+      Note $o\left( (x, e) \right) = o\left( (e, y) \right) = o\left( (x, y) \right) = 2$. So $C_2 \times C_2 \ncong C_4$, as there is no element of order $4$.
+    %
+    \item However, $C_2 \times C_3 \cong C_6$ (Sheet 2, qn 10).
+  \end{enumerate} 
 \end{example} 
 
 \begin{lemma}
@@ -79,11 +73,11 @@ associativity since group operation in both $H$ and $K$ are associative.
   \begin{align*}
     \text{So } (h, k)^m &= (h^m, k^m) \\
     &= (e_H, e_K) \\
-    \implies n &\mid m \text{ by } \ref{lem:five}. \\
-    \text{Also, } (e_H, e_K) &= (h, k)^n \\
-    &= (h^n, k^n) \\
-    \implies o(h) &\mid n \text{ and } o(k) \mid n \text{ by } \ref{lem:five}. \\
-    \implies m &\mid n.
+    \implies n &\;\mid m \text{ by \Cref{lem:five}}. \\
+    \text{Also, } (h, k)^n &= (h^n, k^n) \\
+    &= (e_H, e_K) \\
+    \implies o(h) &\;\mid n \text{ and } o(k) \mid n \text{ by \Cref{lem:five}}. \\
+    \implies m &\;\mid n.
   \end{align*} 
   Thus we know when $C_m \times C_n \cong C_{mn}$ (Sheet 2, qn 10).
 \end{proof} 
@@ -94,7 +88,7 @@ Recognising when a group can be written as a direct product of subgroups is tric
   Let $G$ be a group with subgroups $H$ and $K$, if:
   \begin{enumerate}
     \item each element of $G$ can be written as $hk$, for some $h \in H$, $k \in K$, \label{5.1-1}
-    \item $H \cap  K = \{ e \}$ \label{5.1-2}
+    \item $H \cap K = \{ e \}$ \label{5.1-2}
     \item $hk = kh \; \forall \; h \in H,\ k \in K$ \label{5.1-3}
   \end{enumerate} 
   Then $G \cong H \times K$ and we call $G$ the (internal) direct product of $H$ and $K$.
@@ -109,22 +103,22 @@ Recognising when a group can be written as a direct product of subgroups is tric
   \begin{align*}
     \theta \left( (h_1, k_1), (h_2, k_2) \right) &= \theta \left( (h_1 h_2, k_1 k_2) \right) \\
     &= h_1 h_2 k_1 k_2 \\
-    &= h_1 k_1 h_2 k_2 \text{ by } \ref{5.1-3} \\
+    &= h_1 k_1 h_2 k_2 \text{ by } \Cref{5.1-3} \\
     &= \theta \left( (h_1, k_1) \right) \theta \left( (h_2, k_2) \right)
   \end{align*} 
   $\theta$ is injective:
   \begin{align*}
     \theta \left( (h_1, h_2) \right) &= \theta \left( (h_2, k_2) \right) \\
     h_1 k_1 &= h_2 k_2 \\
-    h_2^{-1} h_1 &= k_2 k_1^{-1} \in H \cap K = \{ e \} \text{ by } \ref{5.1-2} \\
+    h_2^{-1} h_1 &= k_2 k_1^{-1} \in H \cap K = \{ e \} \text{ by \Cref{5.1-2}} \\
     \implies h_1 = h_2 &\text{ and } k_1 = k_2 \\
     \text{So } (h_1, k_1) &= (h_2, k_2)
   \end{align*} 
-  $\theta$ is surjective by \ref{5.1-1}. \\
+  $\theta$ is surjective by \Cref{5.1-1}. \\
   So $\theta$ is an isomorphism as required.
 \end{proof} 
 
-\begin{remark}
+\begin{remark} \label{rem:internal2}
   There are alternative equivalent definitions of internal direction product.
   $G$ is the internal direction product of subgroups $H$ and $K$ if:
   \begin{symenum}
@@ -135,24 +129,24 @@ Recognising when a group can be written as a direct product of subgroups is tric
 \end{remark} 
 
 \begin{proof}
-  We need to show \ref{5.1-1}, \ref{5.1-2}, \ref{5.1-3} $\iff$ \ref{5.1-1'}, \ref{5.1-2'}, \ref{5.1-3'}.
+  We need to show \Cref{5.1-1}, \ref{5.1-2}, \ref{5.1-3} $\iff$ \Cref{5.1-1'}, \ref{5.1-2'}, \ref{5.1-3'}.
 
   $(\implies)$ we show $K \trianglelefteq G$.\\
-  Let $k \in K$, $g = h_1 k_1 \in G$ by \ref{5.1-1}.
-  $g k g^{-1} = h_1 \underbrace{k_1 k k_1^{-1}}_{\bar{k} \in K} h_1^{-1}$
+  Let $k \in K$, $g = h_1 k_1 \in G$ by \Cref{5.1-1}.
+  $g k g^{-1} = h_1 \underbrace{k_1 k k_1^{-1}}_{\overline{k} \in K} h_1^{-1}$
   \begin{align*}
-    g k g^{-1} &= h_1 \underbrace{k_1 k k_1^{-1}}_{\bar{k} \in K} h_1^{-1} \\
-    &= \bar{k} \in K \text{ by } \ref{5.1-3}
+    g k g^{-1} &= h_1 \underbrace{k_1 k k_1^{-1}}_{\overline{k} \in K} h_1^{-1} \\
+    &= \overline{k} \in K \text{ by } \Cref{5.1-3}
   \end{align*} 
   Similarly $H \trianglelefteq G$. \\
-  And \ref{5.1-1} $\implies$ \ref{5.1-3'}.
+  And \Cref{5.1-1} $\implies$ \Cref{5.1-3'}.
 
-  $(\Longleftarrow)$ need to show \ref{5.1-3}.
+  $(\Longleftarrow)$ need to show \Cref{5.1-3}.
   \begin{align*}
     h \in H, k \in K \text{ consider} \\
     h^{-1} \underbrace{k^{-1} h k}_{\in H} &\in H, \text{ since } H \trianglelefteq G \\
     &\in K, \text{ since } K \trianglelefteq G \\
-    \implies h^{-1}k^{-1} h k &= H \cap K = \{ e \} \ \ \ref{5.1-2'} \\
+    \implies h^{-1}k^{-1} h k &= H \cap K = \{ e \} \text{ by \Cref{5.1-2'}} \\
     \implies hk &= kh 
   \end{align*} 
 \end{proof} 
@@ -160,10 +154,282 @@ Recognising when a group can be written as a direct product of subgroups is tric
 \begin{example}
   $G = \langle a \rangle = C_{15}$.
   \begin{align*}
-    C_5 &\cong \angle a^3 \rangle = H \trianglelefteq G \text{ (as $G$ is abelian)}. \\
-    C_3 &\cong \angle a^5 \rangle = K \trianglelefteq G. \\
+    C_5 &\cong \langle a^3 \rangle = H \trianglelefteq G \text{ (as $G$ is abelian)}. \\
+    C_3 &\cong \langle a^5 \rangle = K \trianglelefteq G. \\
     H \cap K &= a^{15n} = \{ e \} \\
     a^k &= (a^3)^{2k} (a^5)^{-k} \in HK \\
     \implies C_{15} &\cong K \times H \cong C_3 \times C_5.
   \end{align*} 
 \end{example} 
+
+\subsection{Small Groups}
+
+Recall $D_{2n}$, the symmetries of a regular n-gon, generated by 
+\begin{align*}
+  r : z &\mapsto e^{2 \pi i / n} z \\
+  t : z &\mapsto \overline{z} 
+\end{align*} 
+elements of \begin{align*}
+  D_{2n} = \{e, \underbrace{r, r^2, \ldots, r^{n-1}}_\text{rotations}, \underbrace{t, rt \ldots, r^{n-1}t}_\text{reflections} \}.
+\end{align*}
+
+\begin{lemma}
+  Now suppose $G$ is a group, $n \geq 3$, with $|G| = 2n$, and $\exists \; b \in G$ with $o(b) = n$ and $a \in G$, $o(a) = 2$ and $aba = b^{-1}$.
+  Then $G \cong D_{2n}$.
+\end{lemma} 
+
+\begin{proof}
+  Note $\langle b \rangle \trianglelefteq G$ since of index two, \Cref{lem:twelve}. \\
+  Also $a \notin \langle b \rangle$, since $aba = aa b = b$ as $a \in \langle b \rangle \implies ab = ba$.
+  \begin{align*}
+    \text{So } G &= \langle b \rangle \cup \langle b \rangle a \\
+    &= \{e, b, \ldots, b^{n-1}, a, ba, \ldots, b^{n-1}a \}
+    \intertext{Furthermore}
+    ab &= b^{-1} a \\
+    \implies ab^k &= (ab) b^{k-1} \\
+    &= b^{-1} a b^{k-1} \\
+    &= b^{-2} a b^{k - 2} \\
+    &\;\;\vdots \\
+    &= b^{-k} a \\
+    \text{So } (b^k a) (b^k a) &= b^k b^{-k} a a \\
+    &= e.
+  \end{align*} 
+  We can check 
+  \begin{align*}
+    \theta : D_{2n} &\to G \\
+    r &\mapsto b \\
+    t &\mapsto a 
+  \end{align*} is an isomorphism.
+\end{proof} 
+
+\subsection{Classifying groups of small order}
+
+\begin{example} \mbox{}
+  \begin{itemize}
+    \item If $|G| = 1$, $G = \{ e \}$
+    \item If $|G| = 2 \implies G \cong C_2$, as we have identity and an another element which must be a self inverse or we can prove by \nameref{cor:two}.
+    \item If $|G| = 3 \implies G \cong C_3$ by \Cref{cor:three} ($3$ is prime). 
+    \item If $|G| = 5 \implies G \cong C_5$ by \Cref{cor:three} ($5$ is prime).
+    \item If $|G| = 7 \implies G \cong C_7$ by \Cref{cor:three} ($7$ is prime).
+  \end{itemize}
+\end{example}
+
+\begin{lemma}
+  If $|G| = 4$, $G$ is isomorphic to $C_4$ and $C_2 \times C_2$, both abelian.
+\end{lemma} 
+
+\begin{proof}
+  By \nameref{thm:three}, if $1 \neq g \in G$ then $o(g) \mid 4$.
+  \begin{align*}
+    \text{If } \exists \; g &\in G \text{ s.t. } o(g) = 4 \\
+    \implies G &\cong C_4
+    \intertext{Suppose not, then let}
+    1 \neq a \in G &\implies o(a) = 2 \\
+    &\implies G \text{ is abelian (qn 7, sheet 1)} \\
+    &\implies C_2 \cong \langle a \rangle \trianglelefteq G.
+  \end{align*}
+  Let $b \in G \setminus \langle a \rangle$, then $1 \neq b \in G$ so $C_2 \cong \langle b \rangle \trianglelefteq G$. \\
+  Also, $\langle a \rangle \cap \langle b \rangle = \{ e \}$. \\
+  Consider the element $ab$: \\
+  if $ab = e \implies a = b^{-1} = b$ \Lightning. \\
+  if $ab = a \implies b = e$ \Lightning. \\
+  if $ab = b \implies a = e$ \Lightning. \\
+  So \begin{align*}
+    G &= \{ e, a, b, ab \} \\
+    &= \langle a \rangle \langle b \rangle \\
+    &\cong \langle a \rangle \times \langle b \rangle \text{ by \Cref{rem:internal2}} \\
+    &\cong C_2 \times C_2.
+  \end{align*}
+\end{proof} 
+
+\begin{lemma}
+  If $|G| = 6$, $G$ is isomorphic to $C_6$ and $D_6 \cong S_3$.
+  Note $C_6 \ncong D_6$ as $C_6$ is abelian and $D_6$ is not.
+\end{lemma} 
+
+\begin{proof}
+  If $|G| = 6$. \\
+  Let $1 \neq g \in G \implies o(g) = 2, 3 \text{ or } 6$ by \Cref{cor:two}.
+  If all non-identity elements have order $2 \implies |G|$ is a $2$-power \Lightning (qn 7, Sheet 1). \\
+  So $\exists \; b \in G, o(b) = 3$ (Note if $o(g) = 6$ then $o(g^2) = 3$). \\
+  $C_3 \cong \langle b \rangle \trianglelefteq G$, RHS by \Cref{lem:twelve} (since of index 2).
+
+  Let $a \in G \setminus \langle b \rangle$.
+  \begin{align*}
+    \implies a^2 \in \langle b \rangle.
+  \end{align*} 
+  As $a \langle b \rangle \in G / \langle b \rangle$ and $|G : \langle b \rangle| = 2$, the group has order $2$. 
+  So $(a \langle b \rangle)^2 = a^2 \langle b \rangle = e = \langle b \rangle$ by \Cref{cor:two}.
+  Then $a^2 \in \langle b \rangle$ by \Cref{lem:eleven}.
+
+  If $a^2 = b$ or $b^2$ then $o(a) = 6$, as if $a^2 = b$, $a^3 = ab$ and if $ab = e$, $a = b^{-1} \in \langle b \rangle$ \Lightning. \\
+  $o(a) = 6 \implies G \cong C_6$. 
+
+  Suppose $a^2 = 1$.\\
+  Also, $a b a^{-1} = aba \in \langle b \rangle$ as $\langle b \rangle \trianglelefteq G$.
+  \begin{align*}
+    \text{If } aba^{-1} &= e\implies b = e \text{\Lightning} \\
+    &= b \implies ab = ba \\
+    &\hspace{3.3ex}\ \implies o(ab) = 6 \\
+    &\hspace{3.3ex}\ \implies G \cong C_6. \\
+    &= b^2 = b^{-1}.
+  \end{align*} 
+  So $o(a) = 2$, $o(b) = 3$, $aba^{-1} = b^{-1} \implies G \cong D_6$.
+\end{proof} 
+
+\subsection{Groups of order 8}
+
+\begin{lemma}
+  If $G$ has order 8, then either $G$ is abelian (i.e.\ $\cong C_8, C_4\times C_2$ or $C_2\times C_2\times C_2$), or $G$ is not abelian and isomorphic to $D_8$ or $Q_8$ (dihedral or quaternion).
+\end{lemma}
+
+\begin{proof}
+  Consider the different possible cases:
+  \begin{itemize}
+    \item If $G$ contains an element of order 8, then $G\cong C_8$.
+    \item If all non-identity elements have order 2, then $G$ is abelian (Sheet 1, Q8). Let $a\not= b\in G\setminus\{e\}$. By the direct product theorem, $\langle a, b\rangle = \langle a\rangle\times\langle b\rangle$. Then take $c\not\in \langle a, b\rangle$. By the direct product theorem, we obtain $\langle a, b, c\rangle = \langle a\rangle\times\langle b\rangle\times\langle c\rangle = C_2\times C_2\times C_2$. Since $\langle a, b, c\rangle\subseteq G$ and $|\langle a, b, c\rangle| = |G|$, $G = \langle a, b, c\rangle \cong C_2\times C_2\times C_2$.
+    \item $G$ has no element of order 8 but has an order 4 element $a\in G$. Let $H = \langle a\rangle$. Since $H$ has index 2, it is normal in $G$. So $G/H \cong C_2$ since $|G/H| = 2$. This means that for any $b\not\in H$, $bH$ generates $G/H$. Then $(bH)^2 = b^2H = H$. So $b^2\in H$. Since $b^2\in \langle a\rangle$ and $\langle a\rangle$ is a cyclic group, $b^2$ commutes with $a$.
+
+      If $b^2 = a$ or $a^3$, then $b$ has order 8. Contradiction. So $b^2 = e$ or $a^2$.
+
+      We also know that $H$ is normal, so $bab^{-1}\in H$. Let $bab^{-1} = a^\ell$. Since $a$ and $b^2$ commute, we know that $a = b^2 ab^{-2} = b(bab^{-1})b^{-1} = ba^\ell b^{-1} = (bab^{-1})^{\ell} = a^{\ell^2}$. So $\ell^2 \equiv 1\pmod 4$. So $\ell \equiv \pm 1 \pmod 4$.
+
+      \begin{itemize}
+        \item When $l\equiv 1\pmod 4$, $bab^{-1} = a$, i.e.\ $ba = ab$. So $G$ is abelian.
+          \begin{itemize}
+            \item If $b^2 = e$, then $G = \langle a, b\rangle \cong \langle a\rangle \times \langle b\rangle \cong C_4\times C_2$.
+            \item If $b^2 = a^2$, then $(ba^{-1})^2 = e$. So $G = \langle a, ba^{-1}\rangle \cong C_4\times C_2$.
+          \end{itemize}
+        \item If $l \equiv -1\pmod 4$, then $bab^{-1} = a^{-1}$.
+          \begin{itemize}
+            \item If $b^2 = e$, then $G = \langle a, b: a^4 = e = b^2, bab^{-1} = a^{-1}\rangle$. So $G\cong D_8$ by definition.
+            \item If $b^2 = a^2$, then we have $G\cong Q_8$.\qedhere
+          \end{itemize}
+      \end{itemize}%\qedhere
+  \end{itemize}
+\end{proof}
+
+\begin{proof}
+  If $|G| = 8$
+  Let $1 \neq g \in G \implies o(g) = 2, 4 \text{ or } 8$ by \Cref{cor:two}.
+  If all non-identity elements have order $2 \implies G$ abelian (qn7, Sheet 1).
+  Let $1 \neq a \in G$, then $C_2 \cong \langle a \rangle \trianglelefteq G$, RHS as $G$ is abelian.
+  Choose $b \notin \langle a \rangle$, $\langle a, b \rangle = \{1, a, b, ab \}$ 
+  \begin{align*}
+    \text{Choose } b &\notin \langle a \rangle, \\
+    \langle a, b \rangle &= \{1, a, b, ab \} \\
+    &= \langle a \rangle \langle b \rangle \\
+    &\cong \langle a \rangle \times \langle b \rangle.
+  \end{align*} 
+  Choose $c \in G \setminus \langle a, b \rangle$ 
+  \begin{align*}
+    G &= \langle a, b \rangle \cup \langle a, b \rangle c \\
+    &= \langle a, b \rangle \langle c \rangle \\
+    &\cong \langle a, b \rangle \times \langle c \rangle \\
+    &\cong \langle a \rangle \times \langle b \rangle \times \langle c \rangle \\
+    &\cong C_2 \times C_2 \times C_2
+  \end{align*} 
+
+  Now suppose $\exists \; g \in G, o(g) > 2 \implies \exists \; a \in G, o(a) = 4$ (if we have $o(a) = 8$, then $o(a^2) = 4$). 
+  $C_4 \cong \langle a \rangle \trianglelefteq G$, RHS by \Cref{lem:twelve} (since of index 2).
+  \begin{align*}
+    \text{Let } b &\in G \setminus \langle a \rangle \\
+    \implies b^2 &\in \langle a \rangle.
+  \end{align*} (Same reasoning as in $n = 6$, alternative proof is $b^2 \in \langle a \rangle$ or $b^2 \in b \langle a \rangle$, if $b^2 = b a^n \implies b = a^n$ \Lightning \ so $b^2 \in \langle a \rangle$).
+  \begin{align*}
+    \text{If } b^2 &= a \text{ or } a^3 \\
+    \implies o(b) &= 8 \implies G \cong C_8. \\ \\
+    \text{Now } b a b^{-1} &\in \langle a \rangle \text{ since } \langle a \rangle \trianglelefteq G \\
+    &= a^i \text{ for some } i. \\
+    \implies b^2 a b^{-2} &= b (b a b^{-1}) b^{-1} \\
+    &= b a^i b^{-1} \\
+    &= (b a b^{-1})^i \text{ as } (b a b^{-1}) (b a b^{-1}) = ba^2b \\
+    &= a^{i^2} \\
+    \text{But } b^2 &\in \langle a \rangle \implies b^2 a b^{-2} = a 
+    \intertext{ as $b^2 = a^m$ so must commute with $a$.}
+    \implies i^2 &\equiv 1 \pmod 4 \\
+    \implies i &\equiv \pm 1 \pmod 4. \\
+    \\
+    \text{If } bab^{-1} &= a \implies ba = ab \\
+    \implies G &= \langle a \rangle \cup b \langle a \rangle \text{ is abelian}. \\
+    \\
+    \text{If } b^2 &= e \\
+    \implies G &= \langle a \rangle \cup \langle a \rangle b \\
+    &= \langle a \rangle \langle b \rangle \\
+    &\cong \langle a \rangle \times \langle b \rangle \\
+    &\cong C_4 \times C_2. \\
+    \\
+    \text{If } b^2 &= a^2 \implies (ba^{-1})^2 = e. \\
+    \implies G &\cong \langle a \rangle \times \langle ba^{-1} \rangle \\
+    &\cong C_4 \times C_2. \\
+    \\
+    \text{Suppose } bab^{-1} = a^{-1} \\
+    \text{If } b^2 = e \implies G &\cong D_8 \ (o(a) = 2, o(b) = 4)
+  \end{align*} 
+  However if $b^2 = a^2$, we have a new group $Q_8$, quaternion group.
+
+  To show all 5 groups are different, $C_8$ has an element of order $8$, $C_4 \times C_2$ does not.
+  $C_4 \times C_2$ has an element of order $4$ whilst $C_2 \times C_2 \times C_2$ does not have elements of order 2 or 4.
+  Because the abelian that means they are not isomorphic?
+
+  $D_8$ and $Q_8$, $Q_8$ has 6 elements of order 4, but $D_8$ only has 2, so non-isomorphic.
+\end{proof} 
+
+\subsubsection{Realisations of \texorpdfstring{$Q_8$}{Q₈}}
+
+\begin{enumerate}
+  \item \begin{align*}
+    Q_8 &= \{ \pm 1, \pm i, \pm j, \pm k \} \\
+    \text{with } ij &= k, jk = i, ki = j \\
+    ji &= -k, kj = -i, ik = -j \\
+    i^2 &= j^2 = k^2 = -1 \\
+    \text{so } o(i) &= o(j) = o(k) = 4, o(-1) = 2.
+  \end{align*} 
+  \item \begin{align*}
+    \bigg\{ \begin{pmatrix}
+      1&0\\0&1
+    \end{pmatrix},
+    \begin{pmatrix}
+      i & 0\\0&-i
+    \end{pmatrix},
+    \begin{pmatrix}
+      0&1\\-1&0
+    \end{pmatrix},
+    \begin{pmatrix}
+      0&i\\i&0
+    \end{pmatrix}
+    \\
+    \begin{pmatrix}
+      -1&0\\0&-1
+    \end{pmatrix},
+    \begin{pmatrix}
+      -i & 0\\0&i
+    \end{pmatrix},
+    \begin{pmatrix}
+      0&-1\\1&0
+    \end{pmatrix},
+    \begin{pmatrix}
+      0&-i\\-i&0
+    \end{pmatrix} \bigg\} \leq \mathrm{SL}_2(\mathbb{C})
+  \end{align*}
+  \item \begin{align*}
+    Q_8 = \langle a, b \mid a^4 = e, b^2 = a^2, b a b^{-1} = a^{-1} \rangle
+  \end{align*} 
+\end{enumerate} 
+
+If $|G| = 9$, we will show later that groups of order $p^2$ (where $p$ is prime) are abelian, so either $G \cong C_9$. \\
+Or all non-identity elements have order 3 by \nameref{cor:two}
+Choose $e \neq a \in G, b \in G \setminus \langle a \rangle$
+\begin{align*}
+  G &= \langle a \rangle \cup \langle a \rangle b \cup \langle a \langle b^2 \\
+  &= \langle a \rangle \langle b \rangle \\
+  &\cong \langle a \rangle \times \langle b \rangle \\
+  &\cong C_3 \times C_3.
+\end{align*} 
+
+If $|G| = 10 \implies G \cong C_{10} \text{ or } D_{10}$ (qn 12, Sheet 2, use proof similar to order 8 not 6).
+
+\begin{remark}
+  There are lots of groups of order $2^k$.
+  e.g. 10 of order 16 and approximately 50,000,000,000 of order $2^{10}$.
+\end{remark} 

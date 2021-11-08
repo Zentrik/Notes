@@ -222,5 +222,111 @@ The same proof shows that $x^{\frac{1}{n}}$ exists $\forall \; n \in N, \forall 
 A real that is not rational is called *irrational*. 
 E.g. $\sqrt{2}, \sqrt{3}, \sqrt{5}, \sqrt{6}$ are irrational.\
 Also $2 + 3\sqrt{5}$ is irrational.
-Indeed if $2 + 3\sqrt{5} = \frac{a}{b}$ with $\frac{a}{b} \in \mathbb{Q}$ then $\sqrt{5} = \frac{a  - 2b}{3b} \in \mathbb{Q}$ which is bad?
+Indeed if $2 + 3\sqrt{5} = \frac{a}{b}$ with $\frac{a}{b} \in \mathbb{N}$ then $\sqrt{5} = \frac{a  - 2b}{3b} \in \mathbb{Q}$, ⨳. $\Box$
+:::
+
+The rationals are *dense* in $\mathbb{R}$, in the sense that $\forall \; a < b \in \mathbb{R}, \exists \; c \in Q$ with $a < c < b$.
+
+::: {.proof}
+Indeed, we may assume $a \geq 0$ (we can just add an integer, find the rational and subtract the integer).
+
+By Corollary \@ref(cor:three), $\exists \; n \in \mathbb{N}$ with $\frac{1}{n} < b - a$.
+By the Axiom of Archimedes \@ref(prp:two), $\exists \; N \in \mathbb{N}$ s.t. $N > b$.
+Let $T = \{ k \in \mathbb{N} : \frac{k}{n} \geq b \}$,\
+then $Nn \in T$, so $T \neq \emptyset$.\
+By the Well-Ordering Principle, $T$ has a least element $m$.
+Set $c = (m - 1) \cdot \frac{1}{n}$.
+Since $m - 1 \notin T$, $c < b$.\
+If $c \leq a$ then $\frac{m}{n} = c + \frac{1}{n} < a + b - a = b$, ⨳ of $m \in T$. 
+Hence $a < c < b$.
+:::
+
+The irrationals are also dense in $\mathbb{R}$, i.e. $\forall \; a < b \in \mathbb{R}, \exists \; c \in \mathbb{R} \setminus \mathbb{Q}$ with $a < c < b$.\
+Indeed, take a rational $c$ with $a \sqrt{2} < c < b \sqrt{2}$ then $a < \frac{c}{\sqrt{2}} < b$.
+
+## Sequences
+
+A *sequence* is an enumerated collection of objects in which repetitions are allowed and order matters.\
+Write $a_1, a_2, a_3, \ldots$ or $(a_n)_{n = 1}^\infty$.\
+What does it mean for a sequence $a_1, a_2, \ldots$ to tend to a limit $l$?\
+It is *not* enough that the terms $a_n$ get closer to $l$, e.g. we would not want $\frac{1}{2}, \frac{3}{4}, \frac{4}{5}, \ldots$ to tend to $37$.\
+And it is *not* enough that the $a_n$ get arbitrarily close to $l$, $\forall \; \epsilon > 0, \exists \; n \in \mathbb{N}$ s.t. $l - \epsilon < a_n < l + \epsilon$, e.g. we would not want $\frac{1}{2}, 10, \frac{2}{3}, 10, \frac{3}{4}, 10, \ldots$ to tend to $1$.\
+We want the sequence to get *and stay* with $\epsilon$ of $l$.
+
+We say that the *sequence $a_1, a_2, \ldots$ tends to the limit $l \in \mathbb{R}$ as $n$ tends to infinity* if, $\forall \; \epsilon > 0, \exists \; N \in \mathbb{N}$ s.t. $\forall \; n \geq N, \lambda - \epsilon < a_n < \lambda + \epsilon$.
+
+```{r 03-limit-sequence, echo = FALSE, fig.cap = "", fig.align="center"} 
+knitr::include_graphics("figures/03-limit-sequence.png") 
+```
+
+More compactly: $\forall \; \epsilon > 0, \exists \; N \in \mathbb{N}$ s.t. $\forall \; n \geq N, | a_n - l | < \epsilon$, where the *absolute value* $|x|$ of $x \in \mathbb{R}$ is defined by 
+\begin{align*}
+    |x| = \begin{cases}
+        x & \text{if } x \geq 0 \\
+        -x & \text{if } x < 0
+    \end{cases}.
+\end{align*} 
+We think of $|a - b|$ as the "distance between $a$ and $b$ on the number line", e.g. $|2 - 9| = |9 - 2| = 7$.
+It is easy to check the triangle inequality $|a - b| \leq |a- c| + |c - b|$.
+
+When $a_n$ tends to $l$ as $n$ tends to infinity, we also write "$a_n \to l$ as $n \to \infty$" or "$\lim_{n \to \infty} a_n = l$" or "$(a_n)_{n = 1}^\infty$ converges to $l$".\
+If there is a limit $l$ but it is not specified we simply say "$(a_n)_{n = 1}^\infty$ converges".
+
+If $(a_n)_{n = 1}^\infty$ does not converge, then we say it *diverges*.
+
+::: {.example}
+\
+
+1. $\frac{1}{2}, \frac{2}{3}, \frac{3}{4}, \frac{4}{5}, \ldots$\
+$a_n = 1 - \frac{1}{n}$.\
+Given $\epsilon > 0$, choose $N > \frac{1}{\epsilon}$ (by the Axiom of Archimedes, \@ref(prp:two)).
+If $n \geq N$, then 
+\begin{align*}
+    |a_n - 1| &= |1 - \frac{1}{n} - 1| \\
+    &= \frac{1}{n} \\
+    &\leq \frac{1}{N} \\
+    &< \epsilon.
+\end{align*} 
+Hence $a_n \to 1$ as $n \to \infty$.
+
+2. $0, \frac{1}{2}, \frac{1}{4}, 0, \frac{1}{6}, \ldots$\
+\begin{align*}
+    a_n = \begin{cases}
+        \frac{1}{n} & n \text{ even} \\
+        0 & n \text{ odd}
+    \end{cases} 
+\end{align*} 
+Given $\epsilon > 0$, pick $N > \frac{1}{\epsilon}$.\
+If $n \geq N$, then 
+\begin{align*}
+    |a_n - 0| &\leq \frac{1}{n} \\
+    &\leq \frac{1}{N} \\
+    &< \epsilon.
+\end{align*} 
+Hence $a_n \to 0$ as $n \to \infty$.
+
+3. $\frac{1}{2}, \frac{1}{2} + \frac{1}{4}, \frac{1}{2} + \frac{1}{4} + \frac{1}{8}, \ldots$\
+$a_n = 1 - \frac{1}{2^n}$ (by induction)\
+Given $\epsilon > 0$, choose $N > \frac{1}{\epsilon}$.
+If $n \geq N$, then 
+\begin{align*}
+    |a_n - 1| &= |1 - \frac{1}{2^n} - 1| \\
+    &= \frac{1}{2^n} \\
+    &\leq \frac{1}{n} \\
+    &\leq \frac{1}{N} \\
+    &< \epsilon.
+\end{align*} 
+Hence $a_n \to 1$ as $n \to \infty$.
+
+4. $-1, 1, -1, 1, -1, 1, \ldots$\
+$a_n = (-1)^n$
+
+If $a_n$ does not tend to $l$, we write "$a_n \not\to l$".
+This mean $\exists \epsilon > 0 \; \forall \; N \in \mathbb{N} \exists n \geq N |a_n - l| \geq \epsilon$.\
+Indeed, in 4, we show that e.g. $a_n \not\to 0$.
+Let $\epsilon = 1$.
+Then $|a_n - 0| = 1 \; \forall \; n \in N$.
+In fact, $a_n$ does not converge to any limit $l \in \mathbb{R}$.
+For suppose $a_n \to l$ as $n \to \infty$, for some $l \in \mathbb{R}$.
+Let $\epsilon = 1$.
 :::

@@ -4,10 +4,14 @@
   \usepackage[utf8]{inputenc}
   \usepackage{textcomp} % provide euro and other symbols
 \else % if luatex or xetex
-  \usepackage{unicode-math}
-  \defaultfontfeatures{Scale=MatchLowercase}
-  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+  % \usepackage{unicode-math}
+  % \defaultfontfeatures{Scale=MatchLowercase}
+  % \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+  % \DeclareMathAlphabet{\mathcal}{OMS}{cmsy}{m}{n}
+  % \let\mathbb\relax % remove the definition by unicode-math
+  % \DeclareMathAlphabet{\mathbb}{U}{msb}{m}{n}
 \fi
+
 
 \usetikzlibrary{external}
 \tikzset{external/system call={xelatex -fmt=preamble.fmt \tikzexternalcheckshellescape -halt-on-error -interaction=batchmode -jobname "\image" "\texsource"}}

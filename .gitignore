@@ -9,3 +9,5 @@ _bookdown_files/Paper/*
 *.auxlock
 *.dpth
 *.kra~
+*.synctex
+*.kra-autosave.kra

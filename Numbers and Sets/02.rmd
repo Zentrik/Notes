@@ -302,7 +302,7 @@ No, as LHS is always even but the RHS is odd.
 What about $87x + 52y = 33$?
 Yes, as we had $x', y' \in \mathbb{Z}$ s.t. $87 x' + 52 y' = 1$, so $x = 33x'$, $y = 33y'$ is an integer solution.
 
-::: {.corollary name="Bezaut's Theorem"}
+::: {.corollary name="Bezout's Theorem"}
 Let $a, b \in \mathbb{N}$. Then the equation $ax + by = c$ has a solution in integers $x, y$ iff $\operatorname{hcf}(a, b) \mid c$.
 :::
 

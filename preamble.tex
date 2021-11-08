@@ -6,10 +6,11 @@
 \PassOptionsToPackage{hyphens}{url}
 %
 \def\encodingdefault{OT1}\normalfont
-\documentclass[final]{article}
+\documentclass[]{article}
 
-\usepackage{amsmath,amssymb}
-\usepackage{mlmodern}
+\usepackage{amsmath,amssymb, amsfonts}
+\usepackage{mathtools}
+\usepackage{lmodern}
 \usepackage{ifxetex,ifluatex}
 
 % Use upquote if available, for straight quotes in verbatim environments
@@ -30,7 +31,7 @@
 \usepackage{xcolor}
 \usepackage{xurl} % add URL line breaks if available
 \IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
-\usepackage{cleveref}
+\usepackage{nameref,cleveref}
 \urlstyle{same} % disable monospaced font for URLs
 \usepackage{longtable,booktabs,array}
 \usepackage{calc} % for calculating minipage widths
@@ -66,6 +67,7 @@
 \bibliographystyle{plainnat}
 
 \usepackage{amsthm}
+\usepackage{thmtools}
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}{Lemma}[section]
 \newtheorem{corollary}{Corollary}[section]
@@ -80,8 +82,11 @@
 \theoremstyle{definition}
 \newtheorem{hypothesis}{Hypothesis}[section]
 \theoremstyle{remark}
-\newtheorem*{remark}{Remark}
+\newtheorem{remark}{Remark}
 \newtheorem*{solution}{Solution}
+
+\theoremstyle{definition}
+\newtheorem*{notation}{Notation}
 
 \usepackage{tikz}
 
@@ -97,4 +102,5 @@
   \item
 }
 
-\usepackage{pdfpages}
+\usepackage{nicematrix}
+\usepackage{tcolorbox}

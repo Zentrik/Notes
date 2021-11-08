@@ -1,0 +1,284 @@
+# Determinants and inverses
+
+## Introduction
+
+Consider a linear map 
+\begin{align*}
+    T : \mathbb{R}^n \to \mathbb{R}^n.
+\end{align*} 
+If $T$ is invertible then 
+\begin{align*}
+    \underbrace{\ker T = \{ \underline{0} \}}_\text{because $T$ is one-to-one} \text{ and } \underbrace{\operatorname{Im} T = \mathbb{R}^n}_\text{$T$ is onto}.
+\end{align*}
+These conditions are equivalent by rank-nullity theorem \@ref(thm:rank).
+Conversely, if these conditions hold, then 
+\begin{align*}
+    \underline{e}_1' &= T(\underline{e}_1), \ldots, \underline{e}_n' = T(\underline{e}_n) \\
+\end{align*} is a basis (where $\{ \underline{e}_i \}$ is the standard basis) and we can define a linear map $T^{-1}$ by $T^{^-1}(\underline{e}_1') = \underline{e}_1, \ldots, T^{-1}(\underline{e}_n') = \underline{e}_n$.
+
+How can we test whether the conditions holds from matrix $M$ representing $T$: $T(\underline{x}) = M \underline{x}$ and how can we find $M^{-1}$ when they do hold?
+
+For any $M$ ($n \times n$) we will define a related matrix $\widetilde{M}$ ($n \times n$) and a scalar, the *determinant* $\det M$ or $| M |$ such that 
+\begin{align}
+    \widetilde{M} M = (\det M )I (\#eq:inverse)
+\end{align}
+Then if $\det M \neq 0$, $M$ is invertible with 
+\begin{align*}
+    M^{-1} = \frac{1}{\det M} \widetilde{M}.
+\end{align*} 
+
+*For $n = 2$* we found in [Matrix Inverses] that \@ref(eq:inverse) holds with 
+\begin{align*}
+    M &= \begin{pmatrix}
+    M_{11} & M_{12} \\
+    M_{21} & M_{22}
+    \end{pmatrix} \text{ and } \widetilde{M} = \begin{pmatrix}
+    M_{22} & -M_{12} \\
+    -M_{21} & M_{11}
+    \end{pmatrix} \\
+    \det M &= \begin{vmatrix}
+    M_{11} & M_{12} \\
+    M_{21} & M_{22}
+    \end{vmatrix} = M_{11} M_{22} - M_{12} M_{21} \\
+    &= [M \underline{e}_1, M \underline{e}_2] \\
+    &= [\underline{C}_1 (M), \underline{C}_2 (M)] \\
+    &= \epsilon_{ijk} M_{i1} M_{j2} \\
+    \text{The factor by which areas are scaled under $M$} \\
+    \det M \neq 0 &\iff \{ M \underline{e}_1, M \underline{e}_2 \} \text{ are linearly independent} \\
+    &\iff \operatorname{Im}(M) = \mathbb{R}^2 \\
+\end{align*} 
+
+*For $n = 3$* consider similarly
+\begin{align*}
+    [M \underline{e}_1, M \underline{e}_2, M \underline{e}_3] \text{ (scalar triple product)} \\
+    &= [\underline{C}_1 (M), \underline{C}_2 (M), \underline{C}_3 (M)] \\
+    &= \epsilon_{ijk} M_{i1} M_{j2} M_{k3} \\
+    &= \det M, \text{ defn for $n = 3$}. \\
+    \text{This is the factor by which volumes are scaled under $M$ and} \\
+    \det M \neq 0 &\iff  [M \underline{e}_1, M \underline{e}_2, M \underline{e}_3] \text{ are linearly independent} \\
+    &\iff \operatorname{Im}(M) = \mathbb{R}^3 \\
+\end{align*} 
+
+Now define $\widetilde{M}$ from $M$ using row/ column notation 
+\begin{align*}
+    \underline{R}_1 (\widetilde{M}) &= \underline{C}_2 (M) \wedge \underline{C}_3 (M) \\
+    \underline{R}_2 (\widetilde{M}) &= \underline{C}_3 (M) \wedge \underline{C}_1 (M) \\
+    \underline{R}_3 (\widetilde{M}) &= \underline{C}_1 (M) \wedge \underline{C}_2 (M) \\
+    \text{and note that} \\
+    (\widetilde{M} M)_{ij} &= \underline{R}_i (\widetilde{M}) \cdot \underline{C}_j (M) \\
+    &= \underbrace{(\underline{C}_1 (M) \cdot \underline{C}_2 (M) \wedge \underline{C}_3 (M))}_{\det M} \delta_{ij}
+\end{align*} 
+
+::: {.example}
+\begin{align*}
+    M &= \begin{pmatrix}
+    1 & 3 & 0 \\
+    0 & -1 & 2 \\
+    4 & 1 & -1
+    \end{pmatrix} \\
+    \underline{C}_2 \wedge \underline{C}_3 &= \begin{pmatrix}3 \\-1 \\1\end{pmatrix} \wedge \begin{pmatrix}
+    0 \\
+    2 \\
+    -1
+    \end{pmatrix} = \begin{pmatrix}
+    -1 \\
+    3 \\
+    6
+    \end{pmatrix} \\
+    \underline{C}_3 \wedge \underline{C}_1 &= \begin{pmatrix}
+    0 \\
+    2 \\
+    -1
+    \end{pmatrix} \wedge \begin{pmatrix}1 \\0 \\4\end{pmatrix} = \begin{pmatrix}
+    8 \\
+    -1 \\
+    -2
+    \end{pmatrix} \\
+    \underline{C}_1 \wedge \underline{C}_2 &= \begin{pmatrix}
+    1 \\
+    0 \\
+    4
+    \end{pmatrix} \wedge \begin{pmatrix}3 \\-1 \\1\end{pmatrix} = \begin{pmatrix}
+    4 \\
+    11 \\
+    -1
+    \end{pmatrix} \\
+    \widetilde{M} &= \begin{pmatrix}
+    -1 & 3 & 6 \\
+    8 & -1 & -2 \\
+    4 & 11 & -1
+    \end{pmatrix} \\
+    \widetilde{M} M &= (\det M) I \text{ where} \\
+    \det M &= \underline{C}_1 \cdot \underline{C}_2 \wedge \underline{C}_3 = 23.
+\end{align*} 
+:::
+
+## $\epsilon$ and Alternating Forms
+
+### $\epsilon$ and Permutation
+
+Recall: a permutation $\sigma$ on the set $\{1, 2, \ldots, n \}$ is a bijection from this set to itself, specified by list $\sigma(1), \sigma(2), \sigma(n)$.
+Permutation $\sigma$ form a group, the symmetric group $S_n$ of order $n!$. 
+The *sign* or *signature* $\epsilon(\sigma) = (-1)^k$ where $k$ is the number of transpositions (two cycles, this is well defined).
+The *alternating* or $\epsilon$ symbol in $\mathbb{R}^n$ or $\mathbb{C}^n$ is defined by
+\begin{align*}
+    \epsilon_{ij \ldots l} &= \begin{cases}
+        +1 & \text{if } i, j, \ldots, l \text{ is an even permutation} \\
+        -1 & \text{if } i, j, \ldots, l \text{ is an odd permutation} \\
+        0 & \text{else}
+    \end{cases} \\
+    \epsilon(\sigma) &= (-1)^k \text{ with $\sigma$ product of $k$ transpositions} \\
+    &= \pm 1.
+\end{align*} 
+If $\sigma$ is any permutation of $1, 2, \ldots, n$ then 
+\begin{align*}
+    \epsilon_{\sigma(1) \sigma(2) \ldots \sigma(n)} &= \epsilon(\sigma).
+\end{align*} 
+
+::: {.lemma}
+\begin{align*}
+    \epsilon_{\sigma(i) \sigma(j) \ldots \sigma(l)} = \epsilon(\sigma) \epsilon_{ij \ldots l}
+\end{align*} 
+$\epsilon$ is totally antisymmetric.
+:::
+
+::: {.proof}
+If $i, j, \ldots l$ is *not* a permutation of $1, 2, \ldots, n$ then $RHS = LHS = 0$. \
+If $i = \rho(1), j = \rho(2), \ldots, l = \rho(n)$ for some permutation $\rho$ then
+\begin{align*}
+    RHS &= \epsilon(\sigma) \epsilon (\rho) = \epsilon (\sigma \rho) = LHS.
+\end{align*} 
+(???)
+:::
+
+### Alternating Forms and Linear (In)dependence
+ 
+Given $\underline{v}_1, \ldots, \underline{v}_n \in \mathbb{R}^n$ or $\mathbb{C}^n$ (these are $n$ vectors) the *alternating form* combines them to produce a scalar, defined by 
+\begin{align*}
+    [\underline{v}_1, \underline{v}_2, \ldots, \underline{v}_n] &= \epsilon_{ij \ldots l}(\underline{v}_1)_i (\underline{v}_2)_j \ldots (\underline{v}_n)_l \ \left(\sum \text{ convention}\right) \\
+    &= \sum_\sigma \epsilon(\sigma) (\underline{v}_1)_{\sigma(1)} (\underline{v}_2)_{\sigma(2)} \ldots (\underline{v}_n)_{\sigma(n)} \ \left[\sum_\sigma \text{ means sum over all } \sigma \in S_n \right]
+\end{align*} 
+
+#### Properties
+i. *Multilinear* 
+\begin{align*}
+    [\underline{v}_1, \ldots, \underline{v}_{p-1}, \alpha \underline{u} + \beta \underline{w}, \underline{v}_{p+1}, \underline{v}_n] &= \alpha [\underline{v}_1, \ldots, \underline{v}_{p-1}, \underline{u}, \underline{v}_{p+1}, \underline{v}_n] + \beta [\underline{v}_1, \ldots, \underline{w}, \underline{v}_{p+1}, \underline{v}_n]
+\end{align*} 
+
+ii. *Totally antisymmetric*
+\begin{align*}
+    [\underline{v}_{\sigma(1)}, \underline{v}_{\sigma(2)}, \ldots \underline{v}_{\sigma(n)}] &= \epsilon (\sigma) [\underline{v}_1, \underline{v}_2, \ldots, \underline{v}_n] 
+\end{align*} 
+
+iii. \begin{align*}
+    [\underline{e}_1, \underline{e}_2, \ldots, \underline{e}_n] = 1
+\end{align*} for $\underline{e}_i$ standard basis vectors.
+
+Properties i, ii, iii fix the alternating form, and they also imply iv
+
+iv. If $\underline{v}_p = \underline{v}_q$ for some $p \neq q$ then 
+\begin{align*}
+    [\underline{v}_1, \ldots, \underline{v}_p, \ldots, \underline{v}_q, \ldots, \underline{v}_n] &= 0
+\end{align*} (from ii, exchanging $\underline{v}_p \leftrightarrow \underline{v}_q$ changes sign of alternating from).
+
+v. If $\underline{v}_p = \sum_{i \neq p} \lambda_i \underline{v}$ then 
+\begin{align*}
+    [\underline{v}_1, \ldots, \underline{v}_p, \ldots, \underline{v}_n] &= 0
+\end{align*} (sub in and use i and iv).
+
+::: {.example #fone}
+\begin{align*} \require{cancel}
+    \text{In } \mathbb{C}^4, \underline{v}_1 &= \begin{pmatrix}i \\0 \\0 \\2\end{pmatrix}, \underline{v}_2 = \begin{pmatrix}0 \\0 \\5i \\0\end{pmatrix}, \\
+    \underline{v}_3 &= \begin{pmatrix}3 \\2i \\0 \\0\end{pmatrix}, \begin{pmatrix}0 \\0 \\-i \\1\end{pmatrix} \\
+    \implies [\underline{v}_1, \underline{v}_2, \underline{v}_3, \underline{v}_4] &= 5i [\underline{v}_1, \underline{e}_3, \underline{v}_3, \underline{v}_4] \\
+    &= 5i [i \underline{e}_1 + \cancel{2 \underline{e}_4}, \underline{e}_3, \cancel{3 \underline{e}_1} + 2i \underline{e}_2, \cancel{-i \underline{e}_3} + \underline{e}_4] \\
+    &= 5i \cdot i \cdot 2i) [\underline{e}_1, \underline{e}_3, \underline{e}_2, \underline{e}_4] \\
+    &= (- 10 i) \cdot (-1) \\
+    &= 10i
+\end{align*} (in cancelling, we first cancel $i \underline{e}_3$ as there is another lone $\underline{e}_3$, then the $2\underline{e}_4$ and finally the $3\underline{e}_1$)
+:::
+
+Note: properties i and iii follow immediately from definition
+
+::: {.proof name="Property ii"}
+\begin{align*}
+    [\underline{v}_{\sigma(1)}, \underline{v}_{\sigma(2)}, \ldots \underline{v}_{\sigma(n)}] &= \sum_\rho \epsilon (\rho) \underbrace{[\underline{v}_{\sigma(1)}]_{\rho(1)} \ldots [\underline{v}_{\sigma(n)}]_{\rho(n)}}_\text{each term can be re-written as: } \text{ ($\sigma$ fixed)} \\
+    & [\underline{v}_1]_{\rho \sigma^{-1} (1)} \ldots [\underline{v}_n]_{\rho \sigma^{-1} (n)} \\
+    &= \sum_\rho \epsilon (\sigma) \epsilon(\rho') [\underline{v}_1]_{\rho'(1)} \ldots [\underline{v}_n]_{\rho'(n)} \text{ where } \rho' = \rho \sigma^{-1} \\
+    \text{ and } \sum_\rho &\text{ is equivalent to } \sum_{\rho'} \\
+    &= \epsilon(\sigma) [\underline{v}_1, \underline{v}_2, \ldots, \underline{v}_n]
+\end{align*} 
+:::
+
+::: {.proposition}
+\begin{align*}
+    [\underline{v}_1, \underline{v}_2, \ldots, \underline{v}_n] \neq 0 \iff \underline{v}_1, \ldots, \underline{v}_n \text{ are linearly independent}.
+\end{align*} 
+:::
+
+::: {.proof}
+$\implies$: \
+Use property v.
+If $\underline{v}_1, \ldots \underline{v}_n$ are linearly dependent then $\sum \alpha_i \underline{v}_i = \underline{0}$ where not all coefficients are zero.
+Suppose wlog that $\alpha_p \neq 0$, then express $\underline{v}_p$ as a linear combination of $\underline{v}_i (i \neq p)$ and so
+\begin{align*}
+    [\underline{v}_1, \underline{v}_2, \ldots, \underline{v}_n] = 0.
+\end{align*} 
+
+$\Longleftarrow$: \
+Note that $\underline{v}_1, \ldots, \underline{v}_n$ being linearly independent means that they span (in $\mathbb{R}^n$ or $\mathbb{C}^n$) so we can write the standard basis vectors as 
+\begin{align*}
+    \underline{e}_i &= A_{ai} \underline{v}_a \text{ for some } A_{ai} \in \mathbb{R} \text{ or } \mathbb{C}. \\
+    \text{But then} & \\
+    [\underline{e_1}, \ldots, \underline{e}_n] &= [A_{a1} \underline{v}_a, A_{b2} \underline{v}_b, \ldots, A_{cn} \underline{v}_c] \\
+    &= A_{a1} A_{b2} \ldots A_{cn} [\underline{v}_a, \underline{v}_b, \ldots, \underline{v}_c] \\
+    &= A_{a1} A_{b2} \ldots A_{cn} \epsilon_{ab \ldots c} [\underline{v}_1, \underline{v}_2, \ldots, \underline{v}_n] \text{ from property ii} \\
+    LHS &= 1 \implies [\underline{v}_1, \underline{v}_2, \ldots, \underline{v}_n] \neq 0.
+\end{align*}
+:::
+
+Example \@ref(exm:fone) are linearly independent.
+
+## Determinants in $\mathbb{R}^n$ and $\mathbb{C}^n$
+
+### Definition
+
+:::{.definition name="Determinant"}
+For an $n \times n$ matrix $M$ with columns
+\begin{align*}
+    \underline{C}_a &= M \underline{e}_a
+\end{align*} 
+the *determinant* $\det M$ or $|M| \in \mathbb{R}$ or $\mathbb{C}$ if defined by 
+\begin{align*}
+    \det M &= [\underline{C}_1, \underline{C}_2, \ldots, \underline{C}_n] \\
+    &= [M \underline{e}_1, M \underline{e}_2, \ldots, M \underline{e}_n] \\
+    &= \epsilon_{ij \ldots l} M_{i1} M_{j2} \ldots M_{ln} \\
+    &= \sum_\sigma \epsilon(\sigma) M_{\sigma(1) 1} M_{\sigma(2) 2} \ldots M_{\sigma(n) n}
+\end{align*} 
+:::
+
+::: {.proposition name="Transpose Property"}
+\begin{align*}
+    \det M &= \det M^T \\
+    \text{so } \det M &= [\underline{R}_1, \underline{R}_2, \ldots, \underline{R}_n] \\
+    &= \epsilon_{ij \ldots l} M_{1i} M_{2j} \ldots M_{nl} \\
+    &= \sum_\sigma \epsilon(\sigma) M_{1 \sigma(1)} M_{2 \sigma(2)} \ldots M_{n \sigma(n)}
+\end{align*} 
+:::
+
+::: {.example}
+In $\mathbb{R}^3$ or $\mathbb{C}^3$
+\begin{align*}
+    \det M &= \epsilon_{ijk} M_{i1} M_{j2} M_{k3} \\
+    &= M_{11} \begin{bmatrix}
+    M_{22} & M_{23} \\
+    M_{32} & M_{33}
+    \end{bmatrix} - M_{21} \begin{bmatrix}
+    M_{12} & M_{13} \\
+    M_{32} & M_{33}
+    \end{bmatrix} + M_{31} \begin{bmatrix}
+    M_{12} & M_{13} \\
+    M_{22} & M_{23}
+    \end{bmatrix}
+\end{align*} 
+:::
