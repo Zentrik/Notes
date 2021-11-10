@@ -73,6 +73,24 @@ Start from FTC
 \end{align*}
 \end{proof}
 
+
+(q12, sheet 1)
+
+i. 
+\begin{align*}
+    p(V, S): \\
+    dp &= \left. \frac{\partial p}{\partial V} \right|_S dV + \left. \frac{\partial p}{\partial S} \right|_V dS \\
+    \text{Actually } S &= S(V, T) \\
+    \text{so, } dS &= \left. \frac{\partial S}{\partial V} \right|_{T} dV + \left. \frac{\partial S}{\partial T} \right|_{V} dT \\
+    \implies dp &= \left( \left. \frac{\partial p}{\partial V} \right|_{S} + \left. \frac{\partial p}{\partial S} \right|_{V} \left. \frac{\partial S}{\partial V} \right|_{T} \right) dV + \left. \frac{\partial p}{\partial S} \right|_{V} \left. \frac{\partial S}{\partial T} \right|_{V} dT
+\end{align*} 
+
+ii. \begin{align*}
+    \text{We want } \left. \frac{\partial U}{\partial V} \right|_{T} \text{ and } \left. \frac{\partial U}{\partial T} \right|_{V} : U(V, T) \\
+    \text{We are given } dU &= TdS - pdV \\
+    &= \underbrace{T \left. \frac{\partial S}{\partial T} \right|_{V}}_{\equiv \left. \frac{\partial U}{\partial T} \right|_{V}} dT + \underbrace{ \left( T \left. \frac{\partial S}{\partial V} \right|_{T} - p \right)}_{\equiv \left. \frac{\partial U}{\partial V} \right|_{T}} dV
+\end{align*} 
+
 \textbf{3.4.3 Differentiation of an integral with respect to its parameters}
 
 \begin{example}

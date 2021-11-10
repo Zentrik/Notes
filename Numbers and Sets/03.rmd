@@ -249,7 +249,7 @@ Indeed, take a rational $c$ with $a \sqrt{2} < c < b \sqrt{2}$ then $a < \frac{c
 A *sequence* is an enumerated collection of objects in which repetitions are allowed and order matters.\
 Write $a_1, a_2, a_3, \ldots$ or $(a_n)_{n = 1}^\infty$.\
 What does it mean for a sequence $a_1, a_2, \ldots$ to tend to a limit $l$?\
-It is *not* enough that the terms $a_n$ get closer to $l$, e.g. we would not want $\frac{1}{2}, \frac{3}{4}, \frac{4}{5}, \ldots$ to tend to $37$.\
+It is *not* enough that the terms $a_n$ get closer to $l$, e.g. we would not want $\frac{1}{2}, \frac{2}{3}, \frac{3}{4}, \frac{4}{5}, \ldots$ to tend to $37$.\
 And it is *not* enough that the $a_n$ get arbitrarily close to $l$, $\forall \; \epsilon > 0, \exists \; n \in \mathbb{N}$ s.t. $l - \epsilon < a_n < l + \epsilon$, e.g. we would not want $\frac{1}{2}, 10, \frac{2}{3}, 10, \frac{3}{4}, 10, \ldots$ to tend to $1$.\
 We want the sequence to get *and stay* with $\epsilon$ of $l$.
 
@@ -322,11 +322,240 @@ Hence $a_n \to 1$ as $n \to \infty$.
 $a_n = (-1)^n$
 
 If $a_n$ does not tend to $l$, we write "$a_n \not\to l$".
-This mean $\exists \epsilon > 0 \; \forall \; N \in \mathbb{N} \exists n \geq N |a_n - l| \geq \epsilon$.\
+This mean $\exists \; \epsilon > 0 \; \forall \; N \in \mathbb{N} \; \exists \; n \geq N \ |a_n - l| \geq \epsilon$.\
 Indeed, in 4, we show that e.g. $a_n \not\to 0$.
 Let $\epsilon = 1$.
 Then $|a_n - 0| = 1 \; \forall \; n \in N$.
-In fact, $a_n$ does not converge to any limit $l \in \mathbb{R}$.
+In fact, $a_n$ does not converge to any limit $l \in \mathbb{R}$. \
 For suppose $a_n \to l$ as $n \to \infty$, for some $l \in \mathbb{R}$.
 Let $\epsilon = 1$.
+So $\exists \; N \in \mathbb{N}$ s.t. $\forall \; n \geq N$, $|a_n - l| < 1$.
+In particular, $|1 - l| < 1$ and $|-1-l| < 1$.
+But then $2 = | 1 - (-1)| \leq |1 - l| + |-1 - l| < 2.$ ⨳
+
+We have shown that $((-1)^n)_{n = 1}^\infty$ does not converge to any $l \in \mathbb{R}$, hence it is divergent (note: it does not mean "goes off to infinity").
 :::
+
+We implicitly assumed that if a limit exists, then it is unique.
+
+```{r 03-two-limits, echo = FALSE, fig.cap = "", fig.align="center"} 
+knitr::include_graphics("figures/03-two-limits.png") 
+```
+
+::: {.proof}
+Indeed, suppose that $a_n \to l$ and $a_n \to k$ as $n \to \infty$, with $l \neq k$.
+Choose $\epsilon = \frac{1}{2} |l - k|$.
+Then $\exists \; N \in \mathbb{N}$ s.t. $|a_n - l| < \epsilon \; \forall \; n \geq N$ and $\exists \; M \in \mathbb{N}$ s.t. $|a_n - k| < \epsilon \; \forall \; n \geq M$.\
+But then for any $n \geq \max \{N, M \}$,
+\begin{align*}
+    2 \epsilon = |l - k| \leq |a_n - l| + |a_n - k| < 2 \epsilon. ⨳
+\end{align*}
+:::
+
+A sequence is *bounded* if there is a real number $B$ s.t. $|a_n| \leq B$ for all $n \in \mathbb{N}$.
+
+Notice that a convergent sequence is bounded: \
+for if $a_n \to l$ as $n \to \infty$, then $\exists \; N \in \mathbb{N}$ s.t. $\forall \; n \geq N$, $|a_n - l| < 1$.
+Hence $|a_n| \leq \max \{ |a_1|, |a_2|, \ldots, |a_{N-1}|, |l| + 1 \}$ (bound of the entire sequence).
+
+We say a sequence $(a_n)^\infty_{n = 1}$ is *monotonic* if it is either increasing or decreasing.
+It is *increasing* if $a_{n + 1} \geq a_n \; \forall \; n \in N$.
+
+::: {.theorem #five}
+Every bounded monotonic sequence converges.^[Is this statement true in the rationals? No, consider approximations to $\sqrt{2}$, that is an bounded increasing sequence but it has no limit as $\sqrt{2}\notin \mathbb{Q}$.] 
+^[An increasing sequence converges iff it is bounded.]
+:::
+
+```{r 03-bounded, echo = FALSE, fig.cap = "", fig.align="center"} 
+knitr::include_graphics("figures/03-bounded.png") 
+```
+
+:::{.proof}
+Suppose $(a_n)$ (we will drop super and subscript from now on) is increasing.
+Then the set $\{a_n : n \geq 1\}$ is non-empty and is bounded above (because $(a_n)$ is bounded), so it has a supremum $l$.
+Given $\epsilon > 0$, $l - \epsilon$ is not an least upper bound for $\{a_n : N \geq 1\}$, so there is some $N \in \mathbb{N}$ s.t. $a_n > l - \epsilon \; \forall \; n \in N$. 
+Thus $l - \epsilon < a_n \leq l \; \forall \; n \geq N$.
+Hence for all $n \geq N, |a_n - l| < \epsilon$, so $a_n \to l$.
+
+```{r 03-proof-bounded, echo = FALSE, fig.cap = "", fig.align="center"} 
+knitr::include_graphics("figures/03-proof-bounded.png") 
+```
+
+Decreasing case is similar.
+:::
+
+::: {.remark}
+
+\
+
+1. Note that for an increasing sequence to converge, we only need to know that it is bounded above.
+
+2. The sequence $(a_n)$ with $a_n = n$ is increasing but not bounded (an in fact, it diverges).
+
+3. Theorem \@ref(thm:five) is equivalent to the least Upper Bound Axiom.
+
+4. We can show that every sequence has a monotonic subsequence.
+:::
+
+::: {.proposition}
+If $a_n \leq d \; \forall \; n$ and $a_n \to c$ as $n \to \infty$, then $c \leq d$.
+:::
+
+::: {.proof}
+Suppose $c > d$, let $\epsilon = |c - d|$.
+Then $\exists \; N \in \mathbb{N}$ s.t. $\forall \; n \geq N, |a_n - c| < \epsilon$.
+But $|a_n - c| < \epsilon \implies a_n > d$. ⨳
+
+```{r 03-prp-6, echo = FALSE, fig.cap = "", fig.align="center"} 
+knitr::include_graphics("figures/03-prp-6.png") 
+```
+:::
+
+*Warning*: If $a_n < d \; \forall \; n$ and $a_n \to c$ as $n \to \infty$, we need *not* have $c < d$.
+E.g. $\frac{1}{2}, \frac{1}{2} + \frac{1}{4}, \frac{1}{2} + \frac{1}{4} + \frac{1}{8}, \ldots$
+Each term is $< 1$, but $\lim_{n \to \infty} a_n = 1$.
+
+::: {.proposition #tsix}
+If $a_n \to c$ as $n \to \infty$ and $b_n \to d$ as $n \to \infty$, then $a_n + b_n \to c + d$ as $n \to \infty$.
+:::
+
+```{r 03-add-limits, echo = FALSE, fig.cap = "", fig.align="center"} 
+knitr::include_graphics("figures/03-add-limits.png") 
+```
+
+::: {.proof}
+Given $\epsilon > 0$.\
+$\exists N \in \mathbb{N}$ s.t. $\forall \; n \geq N$, $|a_n - c| < \frac{\epsilon}{2}$ and $\exists M \in \mathbb{N}$ s.t. $\forall \; n \geq M$, $|b_n - d| < \frac{\epsilon}{2}$.\
+Choose $N^* = \max \{M, N \}$.
+\begin{align*}
+    \text{Then } \forall \; n \in N, | a_n + b_n - (c + d)| &\leq |a_n - c| + |b_n - d| \\
+    &\leq \frac{\epsilon}{2} + \frac{\epsilon}{2} \\
+    &\leq \epsilon.
+\end{align*} 
+:::
+
+## Series
+In the reals, the sum of two numbers is defined, so by induction, finite sums are defined. 
+But infinite sums are not!
+Nevertheless e.g. $1 - \frac{1}{2} + \frac{1}{3} - \frac{1}{4} + \frac{1}{5} - \ldots = \log 2$.
+Let $(a_n)$ be a sequence. 
+Then $s_k = \sum_{n=1}^{k} a_n$ is the $k$th partial sum of the *series* whose $n$th terms is $a_n$.
+We write $\sum_{n=1}^{\infty} a_n = \lim_{k \to \infty}$ iff the limit exists.
+
+::: {.example #tone}
+The series whose $n$th term is $a_n = r^n$ for some $|r| < 1$, is known as the *geometric series*.
+\begin{align*}
+    s_k &= r + r^2 + r^3 + \ldots + r^k \\
+    &= r \cdot \frac{1 - r^k}{1 - r} \to \frac{r}{1 - r} \text{ as } k \to \infty \text{ since } r^k \to 0.
+\end{align*}
+Hence $\sum_{n=1}^{\infty} r^n = \frac{r}{1-r}$
+:::
+
+::: {.example #ttwo}
+The series whose $n$th term is $a_n = \frac{1}{n}$ is known as the *harmonic series*.
+\begin{align*}
+    s_{2^k} &= 1 + \frac{1}{2} + \underbrace{\frac{1}{3} + \frac{1}{4}}_{\text{each } \geq \frac{1}{4}} + \underbrace{\frac{1}{5} + \frac{1}{6} + \frac{1}{7} + \frac{1}{8}}_{\text{each } \geq \frac{1}{8}} + \frac{1}{9} \ldots + \frac{1}{2^k} \\
+    &\geq 1 + \frac{1}{2} + \frac{1}{4} + \frac{1}{4} + \frac{1}{8} + \frac{1}{8} + \frac{1}{8} + \frac{1}{8} + \frac{1}{16} \ldots + \frac{1}{2^k} \\
+    \text{In general, } &\frac{1}{2^m + 1} + \frac{1}{2^m + 2} + \ldots + \frac{1}{2^{m + 1}} \geq 2^{m} \frac{1}{2^{m + 1}} = \frac{1}{2} \\
+    \text{Hence } s_{2^k} &\geq 1 + \frac{k}{2}.
+\end{align*} 
+So the partial sums are increasing and unbounded, so the $\sum_{n=1}^{\infty} \frac{1}{n}$ diverges.
+:::
+
+::: {.example #tthree}
+$a_n = \frac{1}{n^2}$
+
+\begin{align*}
+    s_{2^k - 1} &= 1 + \underbrace{\frac{1}{2^2} + \frac{1}{3^2}}_{\leq 2 \cdot \frac{1}{2^2}} + \underbrace{\frac{1}{4^2} + \frac{1}{5^2} + \frac{1}{6^2} + \frac{1}{7^2}}_{\leq 4 \frac{\cdot_1}{4}^2} + \ldots + \frac{1}{(2^k - 1)^2} \\
+    \text{In general, } &\frac{1}{(2^m)^2} \frac{1}{(2^m + 1)^2} + \frac{1}({2^m + 2)^2} + \ldots + \frac{1}{(2^{m + 1} - 1)^2} \leq 2^{m} \frac{1}{(2^{m})^2} = \frac{1}{2^m}, \\
+    \text{so } s_{2^k - 1} &\leq 1 + \frac{1}{2} + \frac{1}{2^2} + \ldots + \frac{1}{2^{k - 1}} < 2 \text{ (e.g. by example )}.
+\end{align*} \@ref(exm:tone)
+By Theorem \@ref(thm:five), $\sum_{n=1}^{\infty} \frac{1}{n^2}$ converges as partial sums are increasing and bounded above.
+In fact $\sum_{n=1}^{\infty} \frac{1}{n^2} = \frac{\pi^2}{6}$.
+:::
+
+Examples \@ref(exm:ttwo) and \@ref(exm:tthree) are extremely important and you should understand them well.
+You should not try and write down inequalities between infinite sum until you have established the limits exist using partial sums.
+
+## Decimal expansion
+Let $(d_n)$ be a sequence with $d_n \in \{0, 1, 2, \ldots, 9\}$.
+Then $\sum_{n=1}^{\infty} \frac{d_n}{10^n}$ converges to some limit $r$, where $0 \leq r < 1$, because the partial sums $s_m = \sum_{n=1}^{m} \frac{d_n}{10^n}$ are increasing and bounded above by $\sum_{n=1}^{\infty} \frac{9}{10^n} = \frac{9}{10} \cdot \frac{1}{1 - \frac{1}{10}} = 1$.\
+We say that $0. d_1 d_2 d_3 \ldots$ is the *decimal expansion* of $r$.
+
+Does every $x, 0 \leq x < 1$, have a decimal expansion?
+
+Pick $d_1 \in \mathbb{Z}$ maximal s.t. $\frac{d_1}{10} \leq x < 1$.
+Then $d_1 \leq 9$ because $x < 1$ and $x - \frac{d_1}{10} < \frac{1}{10}$ because $d_1$ maximal.\
+Pick $d_2 \in \mathbb{Z}$ maximal s.t. $\frac{d_2}{10^2} \leq x - \frac{d_1}{10}$.
+Then $d_2 \leq 9$ because $x - \frac{d_1}{10} < \frac{1}{10}$ and $x - \frac{d_1}{10} - \frac{d_2}{10^2} < \frac{1}{10^2}$ because $d_2$ maximal.\
+Inductively, pick $d_n \in \mathbb{Z}$ maximal with $\frac{d_n}{10^n} < x - \sum_{j=1}^{n - 1} \frac{d_j}{10^j}$ so $0 \leq x - \sum_{j=1}^{n - 1} \frac{d_j}{10^j} < \frac{1}{10^n}$. \
+Since $\frac{1}{10^n} \to 0$ as $n \to \infty$, $x - \sum_{j=1}^{n} \frac{d_j}{10^j} \to 0$, i.e. $x = \sum_{j=1}^{\infty} \frac{d_j}{10^j} = 0.d_1 d_2 d_3 \ldots$
+
+::: {.remark}
+
+\
+
+1. Decimal expansions need not be unique, e.g. $0.47999 \ldots = 0.48000 \ldots$
+Suppose $0. a_1 a_2 a_3 \ldots = 0. b_1 b_2 b_3 \ldots$
+We may suppose $a_j = b_j$ for $j < K$ for some $K$ and $a_K < b_K$.
+Then $\sum_{j=K+1}^{\infty} \frac{a_j}{10^j} \leq \sum_{j=k+1}^{\infty} \frac{9}{10^j} = \frac{9}{10^{k + 1}} \frac{1}{1 - \frac{1}{10}} = \frac{1}{10^k}$.
+Hence we must have $b_K = a_K + 1$ (if $b_K > a_K + 1$, then $0.b_1 b_2 \ldots b_K - 0.a_1 a_2 \ldots a_K > \frac{1}{10^k}$ and $\sum_{j=K+1}^{\infty} \frac{a_j}{10^j} \leq \frac{1}{10^k}$ so $0.b_1 b_2 \ldots > 0.a_1 a_2 \ldots$) and $a_j = 9, b_j = 0 \; \forall \; j > k$.
+
+2. A decimal expansion is *periodic* if, after a finite number of terms, say $\ell$ digits, it repeats in blocks, of length $k$. 
+I.e. $\exists \; \ell, k$ s.t. $d_{n + k} = d_n \; \forall \; n > \ell$. \
+A periodic decimal is rational, e.g. $x = 0.7832147147147 \ldots$, $10^4 x - 7832 = 0.147147 \ldots$
+\begin{align*}
+    x &= 0.7832147147147 \ldots \\
+    10^4 x - 7832 &= 0.147147 \ldots
+    &= 147 \sum_{j=1}^{\infty} \frac{1}{10^{3j}} \\
+    &= 147 \cdot \frac{1}{10^3} \cdot \frac{1}{1 - 10^3}
+\end{align*} so $x \in \mathbb{Q}$. \
+Conversely, if $x \in \mathbb{Q}$, then $x$ has a periodic decimal expansion.
+To see this, we write $x = \frac{p}{2^a 5^b q}$ where $a, b, p, q \in \mathbb{Z}$, $a, b, q \geq 0$ and $(q, 10) = 1$.\
+Then $10^{max(a, b)}x = \frac{t}{q} = n + \frac{c}{q}$, where $n, c \in \mathbb{Z}$ and $0 \leq c < 9$.
+By Fermat-Euler \@ref(thm:thirteenprime), $10^{\phi(q)} \equiv 1 \mod q$, or $10^{\phi(q)} - 1 = kq$ for some $k \in \mathbb{N}$.\
+Hence $\frac{c}{q} = \frac{kc}{kq} = \frac{kc}{10^{\phi(q)} - 1} = kc \sum_{j=1}^{\infty} \frac{1}{(10^{\phi(q)})^j}$.\
+Since $0 \leq kc < kq$, we can write $kc$ as a $\phi(q)$-digit numbers $d_1 d_2 \ldots d_{\phi(q)}$.
+Then $\frac{c}{q} = 0.d_1 d_2 \ldots d_{\phi(q)} d_1 d_2 \ldots d_{\phi(q)} \ldots$ and so $x$ is periodic.
+:::
+
+## Euler's number $e$
+
+Define $e = 1 + \frac{1}{1!} + \underbrace{\frac{1}{2!}}_{= \frac{1}{2}} + \underbrace{\frac{1}{3!}}_{\leq \frac{1}{4}} + \underbrace{\frac{1}{4!}}_{\leq \frac{1}{8}} + \ldots$ \
+Note that by Theorem \@ref(thm:five) this series converges because the partial sums are increasing and bounded above by 
+\begin{align*}
+    1 + 1 + \frac{1}{2} + \frac{1}{4} \ldots &= 3
+\end{align*} 
+If we define $0! = 1$, then $e = \sum_{j=0}^{\infty} \frac{1}{j!}$.
+
+::: {.proposition #tseven}
+$e$ is irrational
+:::
+
+::: {.proof}
+Suppose $e$ were rational, i.e. $e = \frac{p}{q}$ where $p, q \in \mathbb{N}$ and $q > 1$ (since $2 < e < 3$). \
+Then $q! e \in \mathbb{N}$.
+\begin{align*}
+    \text{But } q! e &= \underbrace{q! + \frac{q!}{1!} + \frac{q!}{2} + \frac{q!}{3!} + \ldots + \frac{q!}{q!}}_{\text{The idea is: } \in \mathbb{N}} + \underbrace{\frac{q!}{(q+1)!} + \frac{q!}{(q+2)!} + \ldots}_{\text{We want to show: } < 1} \\
+    &= N + x \text{ for some $N \in \mathbb{N}$} \\
+    \text{and } x &= \sum_{j=q+1}^{\infty}  \frac{q!}{j!} \\
+    &= \sum_{j=1}^{\infty} \frac{q!}{(q + j)!} \\
+    &= \frac{1}{q+1} + \underbrace{\frac{1}{(q + 1)(q + 2)}}_{\leq \frac{1}{(q + 1)^2}} + \underbrace{\frac{q}{(q + 1)(q + 2)(q + 3)}}_{\leq \frac{1}{(q + 1)^3}} + \ldots \\
+    \text{and in general, } \frac{q!}{(q + j)!} &\leq \frac{1}{(q + 1)^j}, \\
+    \text{so } x &\leq \frac{1}{q + 1} + \frac{1}{(q + 1)^2} + \frac{1}{(q + 1)^3} + \ldots = \frac{1}{q} < 1 \text{ as } q \geq 2.
+\end{align*}^[Implicitly we are making the assumption that we can multiply $q!$ term by term, we can do this as we have established that the sequence converges. When the sequences tends to a limit, any constant multiple of the sequence will tend to a constant multiple of the limit.]
+Hence $0 < x < 1$, contradicting that $q! e \in \mathbb{N}$, so $e$ is irrational.
+:::
+
+We say a real number $x$ is *algebraic* if it is a root of a (non-zero) polynomial with integer coefficients (or rational coefficients - same thing!).
+
+::: {.example}
+
+\
+
+1. Every rational number is algebraic: $x = \frac{p}{q} \implies qx - p = 0$.
+
+2. $\sqrt{2}$ is algebraic: it satisfies $x^2 - 2 = 0$.
+:::
+
+A real number is *transcendental* if it is not algebraic.

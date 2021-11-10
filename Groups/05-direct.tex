@@ -29,8 +29,7 @@ associativity since group operation in both $H$ and $K$ are associative.
     iff $(h_1 h_2, k_1 k_2) = (h_2 h_1, k_2 k_1)$ \\
     iff $h_1 h_2 = h_2 h_1$ and $k_1 k_2 = k_2 k_1$ \\
     iff $H$ is abelian and $K$ is abelian.
-    \item 
-    \begin{align*}
+    \item \begin{align*}
       H &\cong \{ (h, e_K) : h \in H \} \leq H \times K \\
       K &\cong \{ (e_H, k) : k \in K \} \leq H \times K
     \end{align*}
@@ -119,8 +118,8 @@ Recognising when a group can be written as a direct product of subgroups is tric
 \end{proof} 
 
 \begin{remark} \label{rem:internal2}
-  There are alternative equivalent definitions of internal direction product.
-  $G$ is the internal direction product of subgroups $H$ and $K$ if:
+  There are alternative equivalent definitions of internal direct product.
+  $G$ is the internal direct product of subgroups $H$ and $K$ if:
   \begin{symenum}
     \itemsymbol{'} $H \trianglelefteq G, K \trianglelefteq G$ \label{5.1-1'}
     \itemsymbol{'} $H \cap K = \{ e \}$ \label{5.1-2'}
@@ -202,7 +201,7 @@ elements of \begin{align*}
   \end{align*} is an isomorphism.
 \end{proof} 
 
-\subsection{Classifying groups of small order}
+\subsubsection{Classifying groups of small order}
 
 \begin{example} \mbox{}
   \begin{itemize}
@@ -248,18 +247,17 @@ elements of \begin{align*}
 \end{lemma} 
 
 \begin{proof}
-  If $|G| = 6$. \\
   Let $1 \neq g \in G \implies o(g) = 2, 3 \text{ or } 6$ by \Cref{cor:two}.
   If all non-identity elements have order $2 \implies |G|$ is a $2$-power \Lightning (qn 7, Sheet 1). \\
   So $\exists \; b \in G, o(b) = 3$ (Note if $o(g) = 6$ then $o(g^2) = 3$). \\
   $C_3 \cong \langle b \rangle \trianglelefteq G$, RHS by \Cref{lem:twelve} (since of index 2).
 
-  Let $a \in G \setminus \langle b \rangle$.
+  Let $a \in G \setminus \langle b \rangle$,
   \begin{align*}
     \implies a^2 \in \langle b \rangle.
   \end{align*} 
   As $a \langle b \rangle \in G / \langle b \rangle$ and $|G : \langle b \rangle| = 2$, the group has order $2$. 
-  So $(a \langle b \rangle)^2 = a^2 \langle b \rangle = e = \langle b \rangle$ by \Cref{cor:two}.
+  So $(a \langle b \rangle)^2 = a^2 \langle b \rangle = e = \langle b \rangle$ by \nameref{cor:two}.
   Then $a^2 \in \langle b \rangle$ by \Cref{lem:eleven}.
 
   If $a^2 = b$ or $b^2$ then $o(a) = 6$, as if $a^2 = b$, $a^3 = ab$ and if $ab = e$, $a = b^{-1} \in \langle b \rangle$ \Lightning. \\
@@ -268,7 +266,7 @@ elements of \begin{align*}
   Suppose $a^2 = 1$.\\
   Also, $a b a^{-1} = aba \in \langle b \rangle$ as $\langle b \rangle \trianglelefteq G$.
   \begin{align*}
-    \text{If } aba^{-1} &= e\implies b = e \text{\Lightning} \\
+    \text{If } aba^{-1} &= e\implies b = e \text{ \Lightning} \\
     &= b \implies ab = ba \\
     &\hspace{3.3ex}\ \implies o(ab) = 6 \\
     &\hspace{3.3ex}\ \implies G \cong C_6. \\
@@ -277,7 +275,7 @@ elements of \begin{align*}
   So $o(a) = 2$, $o(b) = 3$, $aba^{-1} = b^{-1} \implies G \cong D_6$.
 \end{proof} 
 
-\subsection{Groups of order 8}
+\subsubsection{Groups of order 8}
 
 \begin{lemma}
   If $G$ has order 8, then either $G$ is abelian (i.e.\ $\cong C_8, C_4\times C_2$ or $C_2\times C_2\times C_2$), or $G$ is not abelian and isomorphic to $D_8$ or $Q_8$ (dihedral or quaternion).
@@ -287,93 +285,68 @@ elements of \begin{align*}
   Consider the different possible cases:
   \begin{itemize}
     \item If $G$ contains an element of order 8, then $G\cong C_8$.
-    \item If all non-identity elements have order 2, then $G$ is abelian (Sheet 1, Q8). Let $a\not= b\in G\setminus\{e\}$. By the direct product theorem, $\langle a, b\rangle = \langle a\rangle\times\langle b\rangle$. Then take $c\not\in \langle a, b\rangle$. By the direct product theorem, we obtain $\langle a, b, c\rangle = \langle a\rangle\times\langle b\rangle\times\langle c\rangle = C_2\times C_2\times C_2$. Since $\langle a, b, c\rangle\subseteq G$ and $|\langle a, b, c\rangle| = |G|$, $G = \langle a, b, c\rangle \cong C_2\times C_2\times C_2$.
-    \item $G$ has no element of order 8 but has an order 4 element $a\in G$. Let $H = \langle a\rangle$. Since $H$ has index 2, it is normal in $G$. So $G/H \cong C_2$ since $|G/H| = 2$. This means that for any $b\not\in H$, $bH$ generates $G/H$. Then $(bH)^2 = b^2H = H$. So $b^2\in H$. Since $b^2\in \langle a\rangle$ and $\langle a\rangle$ is a cyclic group, $b^2$ commutes with $a$.
+    \item If all non-identity elements have order 2 $\implies G$ is abelian (Sheet 1, Q7). 
+    If all non-identity elements have order $2 \implies G$ abelian (qn7, Sheet 1).
+    Let $1 \neq a \in G$, then $C_2 \cong \langle a \rangle \trianglelefteq G$, RHS as $G$ is abelian.
+    Choose $b \notin \langle a \rangle$, $\langle a, b \rangle = \{1, a, b, ab \}$ 
+    \begin{align*}
+      \text{Choose } b &\notin \langle a \rangle, \\
+      \langle a, b \rangle &= \{1, a, b, ab \} \\
+      &= \langle a \rangle \langle b \rangle \\
+      &\cong \langle a \rangle \times \langle b \rangle \text{ by \Cref{rem:internal2}.}
+    \end{align*} 
+    Choose $c \in G \setminus \langle a, b \rangle$ 
+    \begin{align*}
+      G &= \langle a, b \rangle \cup \langle a, b \rangle c \\
+      &= \langle a, b \rangle \langle c \rangle \\
+      &\cong \langle a, b \rangle \times \langle c \rangle \text{ by \Cref{rem:internal2}}\\
+      &\cong \langle a \rangle \times \langle b \rangle \times \langle c \rangle \\
+      &\cong C_2 \times C_2 \times C_2
+    \end{align*} 
+    \item Now suppose $\exists \; g \in G, o(g) > 2 \implies \exists \; a \in G, o(a) = 4$ (if we have $o(a) = 8$, then $o(a^2) = 4$). 
+    $C_4 \cong \langle a \rangle \trianglelefteq G$, RHS by \Cref{lem:twelve} (since of index 2).
+    \begin{align*}
+      \text{Let } b &\in G \setminus \langle a \rangle \\
+      \implies b^2 &\in \langle a \rangle.
+    \end{align*} (Same reasoning as in $n = 6$, alternative proof is $b^2 \in \langle a \rangle$ or $b^2 \in b \langle a \rangle$, if $b^2 = b a^n \implies b = a^n$ \Lightning \ so $b^2 \in \langle a \rangle$).
+    
+    \begin{align*}
+      \text{If } b^2 &= a \text{ or } a^3 \\
+      \implies o(b) &= 8 \implies G \cong C_8.
+    \end{align*}
 
-      If $b^2 = a$ or $a^3$, then $b$ has order 8. Contradiction. So $b^2 = e$ or $a^2$.
-
-      We also know that $H$ is normal, so $bab^{-1}\in H$. Let $bab^{-1} = a^\ell$. Since $a$ and $b^2$ commute, we know that $a = b^2 ab^{-2} = b(bab^{-1})b^{-1} = ba^\ell b^{-1} = (bab^{-1})^{\ell} = a^{\ell^2}$. So $\ell^2 \equiv 1\pmod 4$. So $\ell \equiv \pm 1 \pmod 4$.
+    \begin{align*}
+      \text{Else } b^2 &= e \text{ or } a^2 \\
+      \text{Now } b a b^{-1} &\in \langle a \rangle \text{ since } \langle a \rangle \trianglelefteq G \\
+      &= a^i \text{ for some } i. \\
+      \implies b^2 a b^{-2} &= b (b a b^{-1}) b^{-1} \\
+      &= b a^i b^{-1} \\
+      &= (b a b^{-1})^i \text{ as } (b a b^{-1}) (b a b^{-1}) = ba^2b \\
+      &= a^{i^2} \\
+      \text{But } b^2 &\in \langle a \rangle \implies b^2 a b^{-2} = a 
+      \intertext{ as $b^2 = a^m$ so must commute with $a$.}
+      \implies i^2 &\equiv 1 \pmod 4 \\
+      \implies i &\equiv \pm 1 \pmod 4.
+    \end{align*}
 
       \begin{itemize}
-        \item When $l\equiv 1\pmod 4$, $bab^{-1} = a$, i.e.\ $ba = ab$. So $G$ is abelian.
+        \item When $i \equiv 1 \pmod 4$, $bab^{-1} = a \implies ba = ab$. So $G = \langle a \rangle \cup b \langle a \rangle$ is abelian.
           \begin{itemize}
-            \item If $b^2 = e$, then $G = \langle a, b\rangle \cong \langle a\rangle \times \langle b\rangle \cong C_4\times C_2$.
+            \item If $b^2 = e$, then $G = \langle a \rangle \langle b \rangle \cong \langle a\rangle \times \langle b\rangle \cong C_4\times C_2$.
             \item If $b^2 = a^2$, then $(ba^{-1})^2 = e$. So $G = \langle a, ba^{-1}\rangle \cong C_4\times C_2$.
           \end{itemize}
-        \item If $l \equiv -1\pmod 4$, then $bab^{-1} = a^{-1}$.
+        \item If $i \equiv -1 \pmod 4$, then $bab^{-1} = a^{-1}$.
           \begin{itemize}
             \item If $b^2 = e$, then $G = \langle a, b: a^4 = e = b^2, bab^{-1} = a^{-1}\rangle$. So $G\cong D_8$ by definition.
-            \item If $b^2 = a^2$, then we have $G\cong Q_8$.\qedhere
+            \item If $b^2 = a^2$, then we have $G\cong Q_8$, a new group called the quaternion group.
           \end{itemize}
       \end{itemize}%\qedhere
   \end{itemize}
-\end{proof}
-
-\begin{proof}
-  If $|G| = 8$
-  Let $1 \neq g \in G \implies o(g) = 2, 4 \text{ or } 8$ by \Cref{cor:two}.
-  If all non-identity elements have order $2 \implies G$ abelian (qn7, Sheet 1).
-  Let $1 \neq a \in G$, then $C_2 \cong \langle a \rangle \trianglelefteq G$, RHS as $G$ is abelian.
-  Choose $b \notin \langle a \rangle$, $\langle a, b \rangle = \{1, a, b, ab \}$ 
-  \begin{align*}
-    \text{Choose } b &\notin \langle a \rangle, \\
-    \langle a, b \rangle &= \{1, a, b, ab \} \\
-    &= \langle a \rangle \langle b \rangle \\
-    &\cong \langle a \rangle \times \langle b \rangle.
-  \end{align*} 
-  Choose $c \in G \setminus \langle a, b \rangle$ 
-  \begin{align*}
-    G &= \langle a, b \rangle \cup \langle a, b \rangle c \\
-    &= \langle a, b \rangle \langle c \rangle \\
-    &\cong \langle a, b \rangle \times \langle c \rangle \\
-    &\cong \langle a \rangle \times \langle b \rangle \times \langle c \rangle \\
-    &\cong C_2 \times C_2 \times C_2
-  \end{align*} 
-
-  Now suppose $\exists \; g \in G, o(g) > 2 \implies \exists \; a \in G, o(a) = 4$ (if we have $o(a) = 8$, then $o(a^2) = 4$). 
-  $C_4 \cong \langle a \rangle \trianglelefteq G$, RHS by \Cref{lem:twelve} (since of index 2).
-  \begin{align*}
-    \text{Let } b &\in G \setminus \langle a \rangle \\
-    \implies b^2 &\in \langle a \rangle.
-  \end{align*} (Same reasoning as in $n = 6$, alternative proof is $b^2 \in \langle a \rangle$ or $b^2 \in b \langle a \rangle$, if $b^2 = b a^n \implies b = a^n$ \Lightning \ so $b^2 \in \langle a \rangle$).
-  \begin{align*}
-    \text{If } b^2 &= a \text{ or } a^3 \\
-    \implies o(b) &= 8 \implies G \cong C_8. \\ \\
-    \text{Now } b a b^{-1} &\in \langle a \rangle \text{ since } \langle a \rangle \trianglelefteq G \\
-    &= a^i \text{ for some } i. \\
-    \implies b^2 a b^{-2} &= b (b a b^{-1}) b^{-1} \\
-    &= b a^i b^{-1} \\
-    &= (b a b^{-1})^i \text{ as } (b a b^{-1}) (b a b^{-1}) = ba^2b \\
-    &= a^{i^2} \\
-    \text{But } b^2 &\in \langle a \rangle \implies b^2 a b^{-2} = a 
-    \intertext{ as $b^2 = a^m$ so must commute with $a$.}
-    \implies i^2 &\equiv 1 \pmod 4 \\
-    \implies i &\equiv \pm 1 \pmod 4. \\
-    \\
-    \text{If } bab^{-1} &= a \implies ba = ab \\
-    \implies G &= \langle a \rangle \cup b \langle a \rangle \text{ is abelian}. \\
-    \\
-    \text{If } b^2 &= e \\
-    \implies G &= \langle a \rangle \cup \langle a \rangle b \\
-    &= \langle a \rangle \langle b \rangle \\
-    &\cong \langle a \rangle \times \langle b \rangle \\
-    &\cong C_4 \times C_2. \\
-    \\
-    \text{If } b^2 &= a^2 \implies (ba^{-1})^2 = e. \\
-    \implies G &\cong \langle a \rangle \times \langle ba^{-1} \rangle \\
-    &\cong C_4 \times C_2. \\
-    \\
-    \text{Suppose } bab^{-1} = a^{-1} \\
-    \text{If } b^2 = e \implies G &\cong D_8 \ (o(a) = 2, o(b) = 4)
-  \end{align*} 
-  However if $b^2 = a^2$, we have a new group $Q_8$, quaternion group.
-
   To show all 5 groups are different, $C_8$ has an element of order $8$, $C_4 \times C_2$ does not.
   $C_4 \times C_2$ has an element of order $4$ whilst $C_2 \times C_2 \times C_2$ does not have elements of order 2 or 4.
-  Because the abelian that means they are not isomorphic?
 
   $D_8$ and $Q_8$, $Q_8$ has 6 elements of order 4, but $D_8$ only has 2, so non-isomorphic.
-\end{proof} 
+\end{proof}
 
 \subsubsection{Realisations of \texorpdfstring{$Q_8$}{Q₈}}
 

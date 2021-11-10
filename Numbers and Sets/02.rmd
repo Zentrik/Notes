@@ -697,7 +697,7 @@ By Wilson's Theorem, \@ref(thm:fifteen),
 \begin{align*}
     -1 \equiv (p - 1)! &\equiv 1 \cdot 2 \cdot 3 \cdot \ldots \cdot \frac{p - 1}{2} \cdot - \frac{p - 1}{2} \cdot \ldots -3 \cdot -2 \cdot -1 \mod p \\
     &\equiv (-1)^{\frac{p-1}{2}} \left( \left(\frac{p-1}{2} \right)! \right)^2 \mod p \\
-\end{align*} 
+\end{align*} ($p-2 \equiv -1 \mod p$)
 But if $p = 4k + 1$ for some $k \in \mathbb{Z}$, then
 \begin{align*}
     -1 \equiv (-1)^{2k} \left( (2k)! \right)^2 \mod p

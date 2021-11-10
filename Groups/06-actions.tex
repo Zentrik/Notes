@@ -17,9 +17,9 @@ It is often easier to understand a group if it's doing something, permuting elem
     When $G$ acts on a set it maps elements of $X$ to $X$ in a way that the multiplication of $G$ is respected.
 \end{definition} 
 
-\begin{example}
+\begin{example} \label{exm:actions} \mbox{}
     \begin{enumerate} \def\labelenumi{\roman{enumi}.} \def\labelenumii{\arabic{enumii}.} 
-        \item trivial action $\rho(g, x) = x \; \forall \; x_in X, g \in G$.
+        \item trivial action $\rho(g, x) = x \; \forall \; x \in X, g \in G$.
         \item $S_n$ acts on $X = \{ 1, 2, \ldots, n \}$ by permuting the elements of $X$.
         e.g. $S_3$ acts on $\{1, 2, 3\}$, $\sigma = \begin{pmatrix}1 & 2\end{pmatrix} \in S_3 : \sigma(1) = 2, \sigma(2) = 1, \sigma(3) = 3$.
         $\tau = \begin{pmatrix}1 & 3\end{pmatrix} \in S_3$, $\tau \sigma = \begin{pmatrix}1 & 3\end{pmatrix} \begin{pmatrix}1 & 2\end{pmatrix} = \begin{pmatrix}1 & 2 & 3\end{pmatrix}$ \\
@@ -42,7 +42,7 @@ It is often easier to understand a group if it's doing something, permuting elem
         \end{figure} 
         \begin{align*}
             t(1) &= 4 & t(4) &= 1 \\
-            t(2) &= 3 & t(d) &= 2. \\
+            t(2) &= 3 & t(d) &= 2.
         \end{align*} 
         \item $G$ acts on itself by left multiplication.
         This is called the \emph{left regular action}
@@ -80,7 +80,7 @@ It is often easier to understand a group if it's doing something, permuting elem
             \begin{align*}
                 \rho(gh, k) &= ghk(gh)^{-1} \\
                 &= gh k h^{-1} g^{-1}
-                \rho(g, \rho(h, k)) &= \rho(g, hkh^{-1}) = g (h k h^{-1}) g^{-1} \\
+                \rho(g, \rho(h, k)) &= \rho(g, hkh^{-1}) = g (h k h^{-1}) g^{-1}
             \end{align*} 
             \item $\rho(e, k) = ek e^{-1} = k$.
         \end{enumerate} 
@@ -89,7 +89,7 @@ It is often easier to understand a group if it's doing something, permuting elem
             G \times N &\to N \\
             (g, n) &\mapsto gng^{-1}.
         \end{align*} 
-        0.  $gng^{-1} \in G$ since $N \trianglelefteq G$
+        0.  $gng^{-1} \in G$ since $N \trianglelefteq G$. \\
         (1) and (2) as above.
         \item Let $H \leq G$, then $G$ acts on the set of left cosets, $(G : H)$, if $H$ in $G$.
         Called the \emph{left coset action}.
@@ -103,7 +103,7 @@ It is often easier to understand a group if it's doing something, permuting elem
             \begin{align*}
                 \rho(gh, kH) &= (gh)kH = gh kH. \\
                 \rho(g, \rho(h, kH)) &= \rho(g, hkH) \\
-                &= g h k H \\
+                &= g h k H
             \end{align*} 
             \item $\rho(e, kH) = ek H = kH$.
         \end{enumerate} 
@@ -118,9 +118,154 @@ It is often easier to understand a group if it's doing something, permuting elem
         g \circ f (x) &= x \; \forall \; x \in X.
     \end{align*}
     Conversely if $f : X \to X$ is a map with a 2-sided inverse then $f$ is a bijection.
-    \begin{align*}
-        f \circ g(x) &= x \; \forall \; x \in X \implies f \text{ is surjective, as $f$ is mapping to all elements in $X$} \\
-        g \circ f (x) &= x \; \forall \; x \in X \implies f \text{ is injective, as if $f$ took two elements to the same place then $g$ wouldn't be able to split them up}.
-    \end{align*} 
+
+    $f \circ g(x) = x \; \forall \; x \in X \implies f$ is surjective, as $f$ is mapping to all elements in $X$ \\
+    $g \circ f(x) = x \; \forall \; x \in X \implies f$ is injective, as if $f$ took two elements to the same place then $g$ wouldn't be able to split them up.
+
     Note 2-sided is necessary:
+    \begin{align*}
+        \phi : \mathbb{Z} &\to \mathbb{Z} & \psi : \mathbb{Z} &\to \mathbb{Z}\\
+        x &\mapsto 2x & 2x & \mapsto x \\
+        && 2x + 1 &\mapsto 0 \\
+        \phi \psi &= \operatorname{id} &&.
+    \end{align*} 
 \end{remark} 
+
+\begin{lemma} \label{lem:16}
+    Suppose the group $G$ acts on the non-empty set $X$.
+    Fix $g \in G$, then the 
+    \begin{align*}
+        \phi_g : X &\to X \\
+        x &\mapsto \rho(g, x) = g(x)
+    \end{align*} is a permutation of $X$, i.e. $\phi_g = \operatorname{Sym}(X)$.
+\end{lemma} 
+
+\begin{proof}
+    Clearly $\phi_g$ is a map from $X$ to $X$.
+    We need to show $\phi_g$ is a bijection, enough to show it has a 2-sided inverse.
+    %
+    \begin{align*}
+        \phi_{g^{-1}} \circ \phi_g (x) &= \phi_{g^{-1}} \left( \rho (g, x) \right) \\
+        &= \rho(g^{-1}, \rho(g, x)) \\
+        &= \rho(g^{-1} g, x) \text{ since $\rho$ is a group action, \ref{action-1}} \\
+        &= \rho(e, x) \\
+        &= x \; \forall \; x.
+    \end{align*} 
+    Similarly, $\phi_g \circ \phi_{g^{-1}}(x) = x \; \forall \; x \in X$.
+\end{proof} 
+
+\begin{proposition} \label{prp:6}
+    Suppose $G$ acts on the set $X$.
+    Then the map 
+    \begin{align*}
+        \Phi : G &\to \operatorname{Sym}(x) \\
+        g &\mapsto \phi_g
+    \end{align*} as in \Cref{lem:16}, is a homomorphism.
+\end{proposition}  
+
+\begin{proof}
+    We need to show $\Phi$ is a homomorphism i.e. need
+    \begin{align*}
+        \Phi(gh) &= \Phi(g) \circ \Phi(h) \\
+        \text{i.e. } \phi_{gh} &= \phi_g \circ \phi_h.
+    \end{align*}  
+    Let $x \in X$
+    \begin{align*}
+        \phi_{gh}(x) &= \rho(gh, x) \\
+        &= \rho(g, \rho(h, x)) \\
+        &= \phi_g \circ \phi_h (x).
+    \end{align*} 
+    This is true $\forall \; x \in X$.
+\end{proof} 
+
+\begin{remark} \mbox{}
+    \begin{enumerate} \def\labelenumii{\roman{enumii}.} 
+        \item \Cref{prp:6} gives us an equivalent definition of a group action.
+        If $G$ is a group and $X$ a set such that $\Phi: G \to \operatorname{Sym}(X)$ is a group homomorphism, then 
+        \begin{align*}
+            \rho : G \times X &\to X \\
+            (g, x) &\mapsto \phi_g(x)
+        \end{align*} where $\Phi(g) = \phi_g$, is group action.
+        \item Using notation of \Cref{prp:6}, by \nameref{thm:six} 
+        \begin{align*}
+            G / \ker \Phi &\cong \operatorname{Im} \Phi \leq \operatorname{Sym}(X).
+            \intertext{Note}
+            \ker \Phi &= \{g \in G : \Phi(g) = \text{id}_X \in \operatorname{Sym}(X) \\
+            &= \{ g \in G : \phi_g(x) = \rho(g, x) = x \ \forall \; x \in X \} \\
+            &\trianglelefteq G \text{ Kernels of homomorphisms are normal subgroups (Sheet 1, q9)}. 
+        \end{align*} 
+        I.e. all those elements that fix every elements of $X$, that act 'trivially'.
+
+        We say the action is \emph{faithful} if $\ker \Phi = \{ e \}$.
+
+        e.g. the kernels of \Cref{exm:actions}
+        \begin{enumerate}
+            \item trivial action - $\ker \Phi = \{ e \}$.
+            \item $S_n$ acts on $\{1, \ldots, n\}$ - faithful.
+            \item $D_8$ acts on the edges of a square - faithful.
+            \item left regular action - faithful.
+            \item conjugation - $\ker \Phi = \{g \in G : \underbrace{g k g^{-1} = k}_{gk = kg} \ \forall \; k \in G\} = Z(G)$, the \emph{the centre of} $G$. 'the elements that commute with everything'.
+            \item conjugation of $N \trianglelefteq G$. $\ker \Phi = \{ g \in g : g n g^{-1} = n \ \forall \; n \in N\} = C_G(N)$, the \emph{centraliser of $N$ in $G$}.
+            \item left coset action -
+            \begin{align*}
+                \ker \Phi &= \{ g \in G: g kH = kH \ \forall \; k \in G\} \\
+                &= \{ g \in G: k^{-1}gk \in H \ \forall \; k \in G\} \\
+                &= \{g \in G : g \in k H k^{-1} \ \forall \; k \in G\} \\
+                &= \bigcap_{k \in G} k H k^{-1}  \\
+                &= \operatorname{Core}_G(H) \trianglelefteq G \\
+                \text{and } \underbrace{\operatorname{Core}_G(H)}_\text{core of $H$} &\leq H \text{ (we can set $k = e$)}.
+            \end{align*} 
+            \emph{Useful Note for exm sheet:} If $\ker \Phi = \{ e \}$, then $G$ is isomorphic to a subgroup of $\operatorname{Sym}(X)$, we write $G \lesssim \operatorname{Sym}(X)$.
+            So if $|G| \nmid |\operatorname{Sym}(X)|$ then $\ker \Phi \neq \{e\}$.
+        \end{enumerate} 
+    \end{enumerate} 
+\end{remark} 
+
+\begin{theorem}[Cayley's Theorem] \label{thm:7}
+    Any group $G$ is isomorphic to a subgroup of $\operatorname{Sym}(X)$ for some non-empty set $X$.
+\end{theorem} 
+
+\begin{proof}
+    We take $X$ to be $G$ and consider the left regular action
+    \begin{align*}
+        G \times G &\to G \\
+        (g, h) &\mapsto gh.
+    \end{align*} 
+    This is a faithful action as $gh = h \; \forall \; h \in G \implies g = e$.
+    Thus we have an injective homomorphism 
+    \begin{align*}
+        \Phi : G &\to \operatorname{Sym}(G)
+    \end{align*} and $G \lesssim \operatorname{Sym}(G)$.
+\end{proof} 
+
+\begin{definition}[Orbit] \label{def:17}
+    Let $G$ act on a set $X$ and $x \in X$.
+    The \emph{orbit} of $x \in X$ is given by 
+    \begin{align*}
+        \operatorname{Orb}_G (x) = \{g(x) : g \in G \} \subseteq X.
+    \end{align*} 
+    I.e. the set of points in $X$ which $x$ can be mapped to.
+\end{definition} 
+
+\begin{example} \mbox{}
+    The orbits of \Cref{exm:actions}.
+    \begin{enumerate}
+        \item trivial action, $\operatorname{Orb}_G (x) = \{ x \}$
+        \item $S_n$ acts on $\{1, \ldots, n\}$ - $\operatorname{Orb}_G(1) = X$ (we can get $(1\ a)$ which maps $x$ to any $a$). \\
+        If $H = \langle (1\ 2) (3\ 4\ 5) \rangle \leq S_n$ acting on $X = \{ 1, 2, 3, 4, 5\}$ then $\operatorname{Orb}_G(1) = \{1, 2\}$ and $\operatorname{Orb}_G(3) = \{3, 4, 5\}$.
+        \item $D_8$ acts on the edges of a square - $\operatorname{Orb}_{D_8}(a) = \{a, b, c, d\}$.
+        \item left regular action - $\operatorname{Orb}_G(k) = G$, since $g = g(k^{-1}k) = (gk^{-1})k$ for any $g \in G$.
+        \item conjugation - $\operatorname{Orb}_G(k)$
+        \begin{align*}
+            \operatorname{Orb}_G(k) &= \{g(k) : g \in G\} \\
+            &= \{ gkg^{-1} : g \in G \} \\
+            &= \operatorname{ccl}_G(k)
+        \end{align*}, the \emph{conjugacy class of $k$ in $G$}.
+        \item conjugation of $N \trianglelefteq G$. $\ker \Phi = \{ g \in g : g n g^{-1} = n \ \forall \; n \in N\} = C_G(N)$, the \emph{centraliser of $N$ in $G$}.
+        \item left coset action -
+    \end{enumerate} 
+\end{example} 
+
+\begin{definition}[Stabiliser] \label{def:18}
+    
+\end{definition} 
