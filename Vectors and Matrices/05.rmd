@@ -282,3 +282,251 @@ In $\mathbb{R}^3$ or $\mathbb{C}^3$
     \end{bmatrix}
 \end{align*} 
 :::
+
+::: {.properties}
+$\det M$ is a function of rows or columns of $M$ that is 
+
+i. multilinear
+
+ii. totally anti-symmetric (or alternating)
+
+iii. $\det I = 1$
+:::
+
+::: {.theorem}
+$\det M \neq 0 \iff$ columns of $M$ are linearly independent.
+$\iff$ row of $M$ are linearly independent
+$\iff \operatorname{rank} M = n \ (M n \times n)$
+
+\begin{align*}
+    \det M \neq 0 &\iff \text{ columns of $M$ are linearly independent} \\
+    &\iff \text{ row of $M$ are linearly independent} \\
+    &\iff \operatorname{rank} M = n \ (M n \times n) \\
+    &\iff \ker M = \{ \underline{0} \} \\
+    &\iff M^{-1} \text{ exists}
+\end{align*} 
+:::
+
+::: {.proof}
+All equivalences follow immediately from earlier results including the discussion in [Introduction].
+:::
+
+::: {.proof name="Transpose property"}
+Suffices to show 
+\begin{align*}
+    \sum_\sigma \epsilon(\sigma) M_{\sigma(1) 1} \ldots M_{\sigma(n) n} &= \sum_\sigma \epsilon(\sigma) M_{1 \sigma(1)} \ldots M_{n \sigma(n)}
+\end{align*}
+But in a given term on LHS
+\begin{align*}
+    M_{\sigma(1) 1} \ldots M_{\sigma(n) n} &= M_{1 \rho(1)} \ldots M_{n \rho(n)}
+\end{align*} by reordering factors, where $\rho = \sigma^{-1}$.
+Then $\epsilon(\sigma) = \epsilon(\rho)$ and $\sum_\sigma$ is equivalent to $\sum_\rho$, so result follows.
+:::
+
+### Evaluating determinants: expanding by rows or columns
+
+For $M$, $n \times n$, for each entry $M_{ia}$ define the *minor* $M^{ia}$ to be the determinant of $(n - 1) \times (n - 1)$ matrix obtained from deleting row $i$ and column $a$ from $M$.
+
+::: {.proposition}
+\begin{align*}
+    \det M &= \sum_i (-1)^{i + a} M_{ia} M^{ia} \hspace{.5cm} a \text{ fixed} \\
+    &= \sum_a (-1)^{i + a} M_{ia} M^{ia} \hspace{.5cm} i \text{ fixed}
+\end{align*} called expanding by (or about) column $a$ or row $i$ respectively.
+:::
+
+::: {.proof}
+See section 5.4
+:::
+
+::: {.example}
+\begin{align*}
+    M &= \begin{pmatrix}
+    i & 0 & 3 & 0 \\
+    0 & 0 & 2i & 0 \\
+    0 & 5i & 0 & -i \\
+    2 & 0 & 0 & 1
+    \end{pmatrix}.
+\end{align*} Expand by row $3$ to find 
+\begin{align*}
+    \det M &= \sum_a (-1)^{3 + a} M_{3a} M^{3a} \\
+    M_{31} &= M_{33} = 0 \\
+    M_{32} &= 5i,\ M^{32} = \begin{vmatrix}
+    i & 3 & 0 \\
+    0 & 2i & 0 \\
+    2 & 0 & 1
+    \end{vmatrix} \\
+    M_{34} &= -i, M^{34} = \begin{vmatrix}
+    i & 0 & 3 \\
+    0 & 0 & 2i \\
+    2 & 0 & 0
+    \end{vmatrix} \\
+    M^{32} &= i \begin{vmatrix}2i & 0 \\0 & 1\end{vmatrix} - 3 \begin{vmatrix}
+    0 & 0 \\
+    2 & 1
+    \end{vmatrix} \text{ (row 1)} \\
+    &= i (2i) \\
+    &= -2 \\
+    M_{34} &= i \begin{vmatrix}
+    0 & 2i \\
+    0 & 0
+    \end{vmatrix} + 3 \begin{vmatrix}
+    0 & 0 \\
+    2 & 0
+    \end{vmatrix} \text{ (row 1)}\\
+    &= 0 \\
+    \det M &= (-1)^{3 + 2} 5i (-2) \\
+    &= 10i \\
+    \emph{or } \text{expand by column 2}: \\
+    \det M &= \sum_i (-1)^{2 + i} M_{i2} M^{i2} \\
+    &= (-1)^{2 + 3} M_{32} M^{32} \\
+    &= 10i.
+\end{align*} 
+(Calculated this previously as example of alternating form in $\mathbb{C}^4$)
+:::
+
+::: {.lemma #block}
+If $M = \left(
+    \begin{array}{c|c} 
+      A & O \\ 
+      \hline 
+      O & I 
+    \end{array} \right)$ 
+block form with $A$ a $r \times r$ matrix; $I \ (n - r) \times (n - r)$ identity, then $\det M = \det A$.
+:::
+
+::: {.proof}
+For $r = 1$, result follows by expanding about column $n$ or row $n$, and for $r > 1$, continue process.
+:::
+
+### Simplifying determinants: Row and Column Operations:
+
+From the definitions of $\det M$ in terms of columns (a) or rows (i) and the properties above (including [Alternating Forms and Linear (In)dependence]) we note the following
+
+#### Row or column Scalings
+
+If $\underline{R}_i \mapsto \lambda \underline{R}_i$ for some (fixed) $i$ \
+or $\underline{C}_i \mapsto \lambda \underline{C}_i$ for some (fixed) $a$ \
+then $\det M \mapsto \lambda \det M$.
+
+If *all* rows or columns are scaled
+\begin{align*}
+    M &\mapsto \lambda M, \\
+    \text{then } 
+\end{align*} 
+
+#### Row or column Operations
+
+If $\underline{R}_i \mapsto \underline{R}_i + \lambda \underline{R}_j$ for $i \neq j$ \
+or $\underline{C}_a \mapsto \underline{C}_a + \lambda \underline{C}_b$ for $a \neq b$ \
+then $\det M \mapsto \det M$ as we can use multilinearity and then we have two rows being the same in one term so its 0.
+
+#### Row or Column Exchanges
+
+\begin{align*}
+    \text{If } \underline{R}_i &\leftrightarrow \underline{R}_j \hspace{0.5cm} \text{for } i \neq j \\
+    \text{If } \underline{C}_a &\leftrightarrow \underline{C}_b \hspace{0.5cm} \text{for } a \neq b \\
+    \text{then } \det M &\mapsto -\det M.
+\end{align*} 
+
+::: {.example}
+\begin{align*}
+    A &= \begin{pmatrix}
+    1 & 1 & a \\
+    a & 1 & 1 \\
+    1 & a & 1
+    \end{pmatrix},\ a \in \mathbb{C} \\
+    \underline{C}_1 &\mapsto \underline{C}_1 - \underline{C}_3 \\
+    \det A &= \det \begin{pmatrix}
+    1 - a & 1 & a \\
+    a - 1 & 1 & 1 \\
+    0 & a & 1
+    \end{pmatrix} \\
+    &= (1 - a) \det \begin{pmatrix}
+    1 & 1 & a \\
+    -1 & 1 & 1 \\
+    0 & a & 1
+    \end{pmatrix} \\
+    \underline{C}_2 &\mapsto \underline{C}_2 - \underline{C}_3 \\
+    \det A &= (1 - a) \det \begin{pmatrix}
+    1 & 1-a & a \\
+    -1 & 0 & 1 \\
+    0 & a-1 & 1
+    \end{pmatrix} \\
+    &= (1 - a)^2 \det \begin{pmatrix}
+    1 & 1 & a \\
+    -1 & 0 & 1 \\
+    0 & -1 & 1
+    \end{pmatrix} \\
+    \underline{R}_1 &\mapsto \underline{R}_1 + \underline{R}_2 + \underline{R}_3 \\
+    \det A &= (1 - a)^2 \det \begin{pmatrix}
+    0 & 0 & a + 2 \\
+    -1 & 0 & 1 \\
+    0 & -1 & 1
+    \end{pmatrix} \\
+    &= (1 - a)^2 (a + 2) \begin{vmatrix}
+    -1 & 0 \\
+    0 & -1
+    \end{vmatrix} \\
+    &= (1 - a)^2 (a + 2)
+\end{align*} 
+:::
+
+### Multiplicative Property
+
+::: {.theorem}
+For $n \times n$ matrices $M$ and $N$
+\begin{align*}
+    \det (MN) = \det M \det N
+\end{align*}  
+This is based on the following lemma
+:::
+
+::: {.lemma}
+\begin{align*}
+    \epsilon_{i_1 \ldots i_n} M_{i_1 a_1} \ldots M_{i_n a_n} &= (\det M) \epsilon_{a_1 \ldots a_n}
+\end{align*} 
+:::
+
+:::{.proof name="Proof of Theorem"}
+\begin{align*}
+    \det (MN) &= \epsilon_{i_1 \ldots i_n} (MN)_{i_1 1} \ldots (MN)_{i_n n} \\ 
+    &= \epsilon_{i_1 \ldots i_n} M_{i_1 k_1} N_{k_1 1} \ldots  M_{i_n k_n} N_{k_n n} \\ 
+    &= \epsilon_{i_1 \ldots i_n} M_{i_1 k_1} \ldots  M_{i_n k_n} N_{k_1 1} \ldots N_{k_n n} \\ 
+    &= (\det M)  \epsilon_{k_1 \ldots k_n} N_{k_1 1} \ldots N_{k_n n} \text{by lemma } \\
+    &= (\det M) (\det N)
+\end{align*}  
+:::
+
+:::{.proof name="Proof of Lemma"}
+Use total antisymmetry of LHS and RHS and then check taking $a_1 = 1, \ldots, a_n = n$.
+:::
+
+::: {.example}
+
+\
+
+i. If $M = \left(
+    \begin{array}{c|c} 
+      A & O \\ 
+      \hline 
+      O & B 
+    \end{array} \right)$ 
+block form, with $A$ $r \times r$ and $B$ $(n - r) \times (n - r)$ then $\det M = \det A \det B$.
+Since $\left(
+    \begin{array}{c|c} 
+      A & O \\ 
+      \hline 
+      O & B 
+    \end{array} \right) = \left(
+    \begin{array}{c|c} 
+        A & O \\ 
+        \hline 
+        O & I 
+    \end{array} \right) \left(
+    \begin{array}{c|c} 
+        I & O \\ 
+        \hline 
+        O & B 
+    \end{array} \right)$
+and we can use Lemma \@ref(lem:block) above.
+:::

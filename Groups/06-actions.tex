@@ -200,7 +200,7 @@ It is often easier to understand a group if it's doing something, permuting elem
 
         e.g. the kernels of \Cref{exm:actions}
         \begin{enumerate}
-            \item trivial action - $\ker \Phi = \{ e \}$.
+            \item trivial action - $\ker \Phi = G$.
             \item $S_n$ acts on $\{1, \ldots, n\}$ - faithful.
             \item $D_8$ acts on the edges of a square - faithful.
             \item left regular action - faithful.
@@ -260,12 +260,150 @@ It is often easier to understand a group if it's doing something, permuting elem
             \operatorname{Orb}_G(k) &= \{g(k) : g \in G\} \\
             &= \{ gkg^{-1} : g \in G \} \\
             &= \operatorname{ccl}_G(k)
-        \end{align*}, the \emph{conjugacy class of $k$ in $G$}.
-        \item conjugation of $N \trianglelefteq G$. $\ker \Phi = \{ g \in g : g n g^{-1} = n \ \forall \; n \in N\} = C_G(N)$, the \emph{centraliser of $N$ in $G$}.
-        \item left coset action -
+        \end{align*}, the \emph{conjugacy class of $k$ in $G$}. If $h \in \operatorname{ccl}_G(k)$ we say $h$ and $k$ are \emph{conjugate}.
     \end{enumerate} 
 \end{example} 
 
-\begin{definition}[Stabiliser] \label{def:18}
-    
+\begin{definition}[Transitive orbits] \label{def:18}
+    We say $G$ acts \emph{transitively} on $X$ if for any $x \in X$, $\operatorname{Orb}_G(x) = X$.
+    Equivalently, if given any pair $x_1, x_2 \in X \; \exists \; g \in G$ s.t. $g(x_1) = x_2$.
+
+    So the left regular action is a transitive action.
 \end{definition} 
+
+\begin{lemma} \label{lem:17}
+    The distinct $G$-orbits form a partition of $X$
+\end{lemma} 
+
+\begin{proof}
+    Let $x \in X$, then $x \in \operatorname{Orb}_G(x)$ since $x = ex$. \\
+    Suppose $z \in \operatorname{Orb}_G(x) \cap \operatorname{Orb}_G(y)$, we show $\operatorname{Orb}_G(x) = \operatorname{Orb}_G(z) = \operatorname{Orb}_G(y)$. \\
+    $z \in \operatorname{Orb}_G(x) \implies \exists \; g \in G$ s.t. $g(x) = z$.
+    \begin{align*}
+        \text{Suppose } t \in \operatorname{Orb}_G(z) \implies \exists \; h &\in G \text{ s.t. } h(z) = t \\
+        \implies t &= h(g(x)) = (hg)(x) \\
+        \implies t &\in \operatorname{Orb}_G(x)
+        \implies \operatorname{Orb}_G(z) \subseteq \operatorname{Orb}_G(x)
+        \text{Similarly } g(x) &= z \\
+        x &= e(x) = (g^{-1} g)(x) = g^{-1}(z) \\
+        \implies \operatorname{Orb}_G(x) \subseteq \operatorname{Orb}_G(z).
+    \end{align*} 
+    Thus $\operatorname{Orb}_G(x) = \operatorname{Orb}_G(z)$.
+    Similarly, $\operatorname{Orb}_G(z) = \operatorname{Orb}_G(y)$.
+\end{proof} 
+
+\begin{remark} \mbox{}
+    \begin{enumerate}
+        \item We could have proved \Cref{lem:17} by noticing that $x_1 \sim x_2$ if $\exists \; g \in G$ s.t. $g(x_1) = x_2$ is an equivalence relation.
+        \item $\operatorname{Orb}_G(x)$ is $G$-invariant, i.e. $g \left( \operatorname{Orb}_G(x) \right) \subseteq \operatorname{Orb}_G(x)$.
+        Since if $y \in \operatorname{Orb}_G(x), y = hx$ for some $h \in G \implies g(y) = g(h(x)) = (gh)(x) \in \operatorname{Orb}_G(x)$.
+        \item $G$ is transitive on $\operatorname{Orb}_G(x)$.
+        \begin{align*}
+            \text{Let } y, z &\in \operatorname{Orb}_G(x) \\
+            y &= g(x), z = h(x), \text{ for some } g, h \in G. \\
+            \text{Then } z &= h(g^{-1}(y)).
+        \end{align*} 
+    \end{enumerate} 
+\end{remark} 
+
+\begin{definition}[Stabiliser] \label{def:19}
+    Let $G$ act on $X$ and $x \in X$.
+    The \emph{stabiliser} of $x$ in $G$ is given by
+    \begin{align*}
+        \operatorname{Stab}_G(x) &= \{ g \in G : g(x) = x \} \\
+        &\subseteq G.
+    \end{align*} 
+    i.e. all those elements in $G$ that fix $x$.
+\end{definition} 
+
+\begin{example} \mbox{}
+    The stabilisers of \Cref{exm:actions}.
+    \begin{enumerate}
+        \item trivial action - $\operatorname{Stab}_G(x) = G$.
+        \item $S_n$ on $X = \{1, 2, \ldots, n\}$ - $\operatorname{Stab}_G(1) \cong S_{n-1}$.
+        \item $H = \langle \begin{pmatrix}1 & 2\end{pmatrix} \begin{pmatrix}3 & 4 & 5\end{pmatrix} \rangle$ on $X$ - $\operatorname{Stab}_H(1) = \langle \begin{pmatrix}3 & 4 & 5\end{pmatrix} \rangle$.
+        \item $D_8$ - $\operatorname{Stab}_{D_8}(b) = \{e, t\}$. \\
+        \item left regular action - $\operatorname{Stab}_G(k) = \{e\}$, $gk = k \implies g = e$.
+        \item conjugation - \begin{align*}
+            \operatorname{Stab}_G(k) &= \{g \in G : g(k) = k\} \\
+            &= \{g \in G : g k g^{-1} = k\} \\
+            &= \{g \in G : g k = kg \} \\
+            &= C_G(k), \emph{ centraliser of $k$ in $G$}.
+        \end{align*} I.e. all those elements of $G$ that commute with $k$.
+    \end{enumerate} 
+\end{example} 
+
+\begin{lemma} \label{lem:18}
+    $\operatorname{Stab}_G(x)$ is a subgroup of $G$.
+\end{lemma} 
+
+\begin{proof} \mbox{}
+    \begin{itemize} 
+        \item $e(x) = x \implies e \in \operatorname{Stab}_G(x)$.
+        \item \begin{align*}
+            \text{if } g, h &\in \operatorname{Stab}_G(x) \\
+            (gh)(x) &= g(h(x)) \\
+            &= g(x) \\
+            &= x \implies gh \in \operatorname{Stab}_G(x).
+            \end{align*} 
+        \item \begin{align*}
+            g &\in \operatorname{Stab}_G(x) \\
+            g(x) &= x \\
+            x &= e(x) = (g^{-1} g)(x) = g^{-1}(gx) \\
+            &= g^{-1}(x) \\
+            \implies g^{-1} &\in \operatorname{Stab}_G(x).
+        \end{align*} 
+        \item Associativity is inherited from $G$.
+    \end{itemize} 
+\end{proof} 
+
+\begin{remark} 
+    Recall, \Cref{prp:6} \begin{align*}
+        \Phi : G &\to \operatorname{Sym}(X) \\
+        \ker \Phi &= \{ g \in G : g(x) = x \; \forall \; x \in X \} \\
+        &= \bigcap \operatorname{Stab}_G(x).
+    \end{align*}
+\end{remark} 
+
+\begin{theorem}[Orbit-Stabiliser Theorem]
+    Let $G$ be a finite group acting on a non-empty set $X$.
+    Then $\operatorname{Stab}_G(x) \leq G$ and 
+    \begin{align*}
+        |G| = |\operatorname{Stab}_G(x)| |\operatorname{Orb}_G(x)|.
+    \end{align*} 
+\end{theorem} 
+
+\begin{remark}
+    We actually prove that $|G : \operatorname{Stab}_G(x)|$, the number of left cosets of $\operatorname{Stab}_G(x)$ in $G$, is equal to $|\operatorname{Orb}_G(x)|$, a more general statement.
+\end{remark} 
+
+\begin{proof}
+    $(G : \operatorname{Stab}_G(x))$ is the set of left cosets of $\operatorname{Stab}_G(x)$ in $G$.
+    Consider the map 
+    \begin{align*}
+        \theta : \operatorname{Orb}_G(x) &\to (G : \operatorname{Stab}_G(x)) \\
+        g(x) &\mapsto g \operatorname{Stab}_G(x).
+    \end{align*}  
+    $\theta$ is well-defined: 
+    \begin{align*}
+        g(x) = h(x) \implies h^{-1}g(x) (x) &= x \\
+        \implies h^{-1}g &\in \operatorname{Stab}_G(x) \\
+        \implies g \operatorname{Stab}_G(x) &= h \operatorname{Stab}_G(x) \text{ by \Cref{lem:eleven}} \\
+        \implies \theta(g(x)) &= \theta(h(x)).
+    \end{align*} 
+    $\theta$ is injective: 
+    \begin{align*}
+        \theta(g(x)) &= \theta(h(x)) \\
+        \implies g \operatorname{Stab}_G(x) &= h \operatorname{Stab}_G(x) \\
+        \implies h^{-1}g &\in \operatorname{Stab}_G(x) \text{ by \Cref{lem:eleven}} \\
+        \implies h^{-1}g(x) &= x \\
+        \implies g(x) &= h(x).
+    \end{align*}
+    $\theta$ is surjective:
+    \begin{align*}
+        \text{Given } g \operatorname{Stab}_G(x) &\in (G : \operatorname{Stab}_G(x)) \\
+        \text{then } g(x) &\in \operatorname{Orb}_G(x) \\
+        \text{ and } \theta(g(x)) &= g \operatorname{Stab}_G(x).
+    \end{align*} 
+    Thus $\theta$ is a well-defined bijection.
+\end{proof} 
