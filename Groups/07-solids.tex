@@ -1,12 +1,19 @@
 \section{Application to Symmetry Groups of Regular Solids}
 Let $S$ be a regular solid and $V$ its vertices.
-The the symmetries of $S$ are the isometries (distance preseving maps) of $\mathbb{R}^2$ or $\mathbb{R}^3$ that maps $S$ to itself.
+The the symmetries of $S$ are the isometries (distance preserving maps) of $\mathbb{R}^2$ or $\mathbb{R}^3$ that maps $S$ to itself.
 
 \subsection{Tetrahedron (self-dual)}
 
 \begin{figure}
     \centering 
     \includegraphics[height=5cm]{figures/07-tetrahedron}
-\end{figure} faces are $4$ equilateral trinagles.
+\end{figure} faces are $4$ equilateral triangles.
 
 Let $G$ be group of symmetries of $T$, and $X = \{\text{vertices of } T\} = \{1, 2, 3, 4\}$.
+Then $\exists$ a homomorphism
+\begin{align*}
+    \Phi : G &\to \operatorname{Sym} X \cong S_4 \text{ \Cref{prp:6}}
+\end{align*} 
+Note $\ker \Phi = \{ e \}$, if all vertices are fixed, then $T$ fixed. \\
+Consider $G^+ \leq G$ be the subgroup of all rotations.
+

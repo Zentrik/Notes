@@ -408,7 +408,9 @@ In the summation convention we *omit* $\sum$ signs for repeated indices: the sum
 :::
 
 ::: {.example}
-$(\underline{a} \wedge \underline{b})_i = \epsilon_{ijk} a_j b_k$
+\begin{align*}
+    (\underline{a} \wedge \underline{b})_i = \epsilon_{ijk} a_j b_k
+\end{align*} 
 :::
 
 ::: {.example}
@@ -416,17 +418,6 @@ $(\underline{a} \wedge \underline{b})_i = \epsilon_{ijk} a_j b_k$
     \underline{a} \cdot \underline{b} \wedge c &= \epsilon_{ijk} a_j b_k c_k \\
     &= a_i b_i
 \end{align*}
-:::
-
-::: {.example}
-\begin{align*}
-    \underline{a} \cdot \underline{b} \wedge c &= \epsilon_{ijk} a_j b_k c_k \\
-    &= a_i b_i
-\end{align*}
-:::
-
-::: {.example}
-$\delta_{ii} = \delta_{11} + \delta_{22} + \delta_{33} = 3$
 :::
 
 ::: {.example}

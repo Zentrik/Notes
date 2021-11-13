@@ -1,0 +1,92 @@
+# Eigenvalues and Eigenvectors
+
+## Introduction
+
+### Definitions
+
+::: {.definition name="Eigenvector and eigenvalue"}
+For a linear map $T : V \to V$ ($V$ a real vector or complex vector space) a vector $\underline{v} \in V$ with $\underline{v} \neq \underline{0}$ is an *eigenvector* of $T$ with eigenvalue $\lambda$ if \begin{align*}
+    T(\underline{v}) = \lambda \underline{v}.
+\end{align*} 
+:::
+
+If $V = \mathbb{R}^n$ or $\mathbb{C}^n$ and $T$ is given by an $n \times n$ matrix $A$ then
+\begin{align*}
+    A \underline{v} = \lambda \underline{v} \iff  (A - \lambda I) \underline{v} = \underline{0}
+\end{align*} and for a given $\lambda$ this holds for some $\underline{v} \neq 0 \iff \det(A - \lambda I) = 0$, the *characteristic equation*, i.e. $\lambda$ is an eigenvalue iff it is a root of $\chi_A (t) = \det (A - tI)$, the *characteristic polynomial*.
+$\chi_A (t)$ is a polynomial of degree $n$ for $A$ ($n \times n$).
+We find eigenvalues as roots of the characteristic equation/ polynomial and then determine corresponding eigenvectors.
+
+### Examples
+
+::: {.example}
+\begin{align*}
+    V &= \mathbb{C}^2 \text{ and } A = \begin{pmatrix}
+    2 & i \\
+    -i & 2
+    \end{pmatrix} \\
+    \det (A - \lambda I) &= \begin{vmatrix}
+    2 - \lambda & i \\
+    -i & 2 - \lambda
+    \end{vmatrix} \\
+    &= (2 - \lambda)^2 - 1 \\
+    &= 0 \iff \lambda = 1 \text{ or } 3.
+\end{align*} 
+To find eigenvectors $\underline{v} = \begin{pmatrix}v_1 \\v_2\end{pmatrix}$:
+
+- $\lambda = 1$:
+\begin{align*}
+    (A - I) \underline{v} &= \begin{pmatrix}
+        1 & i \\
+        -i & 1
+        \end{pmatrix} \begin{pmatrix}v_1 \\v_2\end{pmatrix} = \underline{0} \\
+    \implies \underline{v} &= \alpha \begin{pmatrix}1 \\i\end{pmatrix} \text{ any } \alpha \neq 0 
+\end{align*} 
+
+- $\lambda = 3$:
+\begin{align*}
+    (A - 3I) \underline{v} &= \begin{pmatrix}
+        -1 & i \\
+        -i & -1
+        \end{pmatrix} \begin{pmatrix}v_1 \\v_2\end{pmatrix} = \underline{0} \\
+    \implies \underline{v} &= \beta \begin{pmatrix}1 \\ -i\end{pmatrix} \text{ any } \beta \neq 0 
+\end{align*} 
+:::
+
+::: {.example}
+\begin{align*}
+    V &= \mathbb{R}^2 \text{ and } A = \begin{pmatrix}
+    1 & 1 \\
+    0 & 1
+    \end{pmatrix} \\
+    \det (A - \lambda I) &= \begin{vmatrix}
+    1 - \lambda & 1 \\
+    0 & 1 - \lambda
+    \end{vmatrix} \\
+    &= (1 - \lambda)^2\\
+    &= 0 \iff \lambda = 1.
+\end{align*} 
+To find eigenvectors $\underline{v} = \begin{pmatrix}v_1 \\v_2\end{pmatrix}$:
+
+\begin{align*}
+    (A - I) \underline{v} &= \begin{pmatrix}
+        0 & 1 \\
+        0 & 0
+        \end{pmatrix} \begin{pmatrix}v_1 \\v_2\end{pmatrix} = \underline{0} \\
+    \implies \underline{v} &= \alpha \begin{pmatrix}1 \\ 0\end{pmatrix} \text{ any } \alpha \neq 0 
+\end{align*} 
+:::
+
+::: {.example}
+\begin{align*}
+    V &= \mathbb{R}^2 \text{ or } \mathbb{C}^2\\
+    U &= \begin{pmatrix}
+    \cos \theta & - \sin \theta \\
+    \sin \theta & \cos \theta
+    \end{pmatrix} \\
+    \chi_U (t) &= \det (U - t I) \\
+    &= t^2 - 2t \cos \theta + 1 \\
+    \implies \lambda &= e^{\pm i \theta} \\
+    \implies \underline{v} &= \theta \begin{pmatrix}1 \\ \mp i\end{pmatrix} \ (\alpha \neq 0 )
+\end{align*} 
+:::

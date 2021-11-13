@@ -335,7 +335,7 @@ For $M$, $n \times n$, for each entry $M_{ia}$ define the *minor* $M^{ia}$ to be
 :::
 
 ::: {.proof}
-See section 5.4
+See [Cofactors and Determinants].
 :::
 
 ::: {.example}
@@ -395,7 +395,7 @@ block form with $A$ a $r \times r$ matrix; $I \ (n - r) \times (n - r)$ identity
 :::
 
 ::: {.proof}
-For $r = 1$, result follows by expanding about column $n$ or row $n$, and for $r > 1$, continue process.
+For $r = n - 1$, result follows by expanding about column $n$ or row $n$, and for $r < n - 1$, continue process.
 :::
 
 ### Simplifying determinants: Row and Column Operations:
@@ -411,7 +411,7 @@ then $\det M \mapsto \lambda \det M$.
 If *all* rows or columns are scaled
 \begin{align*}
     M &\mapsto \lambda M, \\
-    \text{then } 
+    \text{then } \det M &\mapsto \lambda^n \det M
 \end{align*} 
 
 #### Row or column Operations
@@ -428,7 +428,7 @@ then $\det M \mapsto \det M$ as we can use multilinearity and then we have two r
     \text{then } \det M &\mapsto -\det M.
 \end{align*} 
 
-::: {.example}
+::: {.example #exchanges}
 \begin{align*}
     A &= \begin{pmatrix}
     1 & 1 & a \\
@@ -529,4 +529,324 @@ Since $\left(
         O & B 
     \end{array} \right)$
 and we can use Lemma \@ref(lem:block) above.
+
+ii. \begin{align*}
+    M^{-1}M &= I \implies \det(M^{-1}) \det M = \det I = 1 \\
+    \text{so } \det(M^{-1}) &= (\det M)^{-1}
+\end{align*} 
+
+iii. For $R$ real and orthogonal,
+\begin{align*}
+    R^T R &= I \implies \det(R^T) \det R = (\det R)^2 = 1 \\
+    \implies \det R &= \pm 1
+\end{align*} 
+
+iv. For $U$ complex and unitary,
+\begin{align*}
+    U^\dagger U = I &\implies \det(U^\dagger) \det U \\
+    &= \overline{\det(U)} \det(U) \\
+    &= |\det U|^2 = 1 \\
+    \implies |\det U| &= 1.
+\end{align*} 
 :::
+
+## Minors, Cofactors and Inverses
+
+### Cofactors and Determinants
+
+Consider column $\underline{C}_a$ of matrix $M$ ($a$ fixed) and write $\underline{C}_a = \sum_i M_{ia} \underline{e}_i$ in definition of $\det$:
+\begin{align*}
+    \det M &= [\underline{C}_1, \ldots, \underline{C}_{a - 1}, \underline{C}_a, \underline{C}_{a + 1}, \ldots, \underline{C}_n] \\
+    &= [\underline{C}_1, \ldots, \underline{C}_{a - 1}, \sum_i M_{ia} \underline{e}_i, \underline{C}_{a + 1}, \ldots, \underline{C}_n] \\
+    &= \sum_i M_{ia} \Delta_{ia} \hspace{0.5cm} \text{(no sum over $a$)} \\
+    \text{where the } &\emph{cofactor } \Delta_{ia} \text{ is defined by} \\
+    \Delta_{ia} &= [\underline{C}_1, \underline{C}_2, \ldots, \underline{C}_{a- 1}, \underline{e}_i, \underline{C}_{a + 1}, \ldots, \underline{C}_n] \\
+    &= \det \left( \begin{array}{c|c|c} 
+        A & \begin{array}{c} 
+            0 \\  
+            \vdots \\
+            0
+        \end{array} & B \\ 
+        \hline 
+        \begin{array}{ccc} 
+            0 & \ldots & 0
+        \end{array} & 1 & \begin{array}{ccc} 
+            0 & \ldots & 0
+        \end{array} \\
+        \hline
+        C & \begin{array}{c} 
+            0 \\  
+            \vdots \\
+            0
+        \end{array} & D
+    \end{array} \right) \\
+    &= (-1)^{n - a} (-1)^{n - i} \det 
+    \left(
+    \begin{array}{c|c} 
+        \begin{array}{c|c} 
+            A & B \\ 
+            \hline 
+            C & D 
+        \end{array} & \begin{array}{c} 
+            0 \\  
+            \vdots \\
+            0
+        \end{array} \\ 
+        \hline 
+        \begin{array}{ccc} 
+            0 & \ldots & 0
+        \end{array} & 1
+    \end{array} \right) \\
+    &= (-1)^{a + i} M^{i a} \\
+    \text{where } M^{ia} &= \det \left( \begin{array}{c|c} 
+        A & B \\ 
+        \hline 
+        C & D 
+    \end{array} \right) \text{by lemma } \\
+    \therefore \det M &= \sum_i M_{ia} \Delta_{ia} \\
+    &= \sum_i M_{ia} (-1)^{i + a} M^{ia}
+\end{align*}[Similarly, considering row $i$, find other expression]. \@ref(lem:block).
+To get $\Delta_{ia}$ we subtract column $a$ with all other columns to get the row $i$ as shown.
+
+### Adjugates and Inverses
+
+Reasoning as in [Cofactors and Determinants] with $\underline{C}_b = \sum_i M_{ib} \underline{e}_i$
+\begin{align*}
+    [\underline{C}_1, \ldots, \underline{C}_{a - 1}, \underline{C}_b, \underline{a + 1}, \ldots, \underline{C_n}] &= \sum_i M_{ib} \delta_{ia} \\
+    &= \begin{cases}
+        \det M & \text{if } a = b \\
+        0 & \text{if } a \neq b
+    \end{cases} \\
+    \text{Hence } \sum_i M_{ib} \delta_{ia} &= \delta_{ab} \det M \\
+    \text{And similarly} \sum_a M_{ja} \delta_{ia} &= \delta_{ij} \det M.
+\end{align*} 
+Let $\Delta$ be the *matrix* of cofactors with entries $\Delta_{ia}$, and define the *adjugate* $\widetilde{M} = \operatorname{adj}(M) = \Delta^T$.
+Then the relations above become
+\begin{align*}
+    \Delta_{ia} M_{ib} &= (\Delta^T)_{ai} M_{ib} \\
+    &= (\Delta^T M)_{ab} \\
+    &= (\widetilde{M} M)_{ab} \\
+    &= \delta_{ab} \det M \\
+    M_{ja} \Delta_{ia} &= (\widetilde{M} M)_{ji} \\
+    &= \delta_{ij} \det M.
+\end{align*} 
+This justifies \@ref(eq:inverse) with
+\begin{align*}
+    \widetilde{M} &= \Delta^T \\
+    \Delta_{ia} &= (-1)^{i + a} M^{ia} \\
+    \text{we have } \widetilde{M}M &= M \widetilde{M} = (\det M) I.
+\end{align*}^[Would probably be guided through this proof in an exam and even then probably wouldn't come up.]
+
+Hence if $\det M \neq 0$ then $M$ is invertible and 
+\begin{align*}
+    M^{-1} = \frac{1}{\det M} \widetilde{M}.
+\end{align*} 
+
+::: {.example #inverse}
+Consider \begin{align*}
+    A &= \begin{pmatrix}
+    1 & 1 & a \\
+    a & 1 & 1 \\
+    1 & a & 1
+    \end{pmatrix},\ a \in \mathbb{C} \\
+\end{align*}, previously found in Example \@ref(exm:exchanges) $\det A = (1 - a)^2 (a + 2)$.
+Hence $A^{-1}$ exists if $a \neq 1$, $a \neq - 2$.
+
+Matrix of cofactors is \begin{align*}
+    \Delta &= \begin{pmatrix}
+    1 - a & 1 - a & a^2 - 1 \\
+    a^2 -1 & 1 - a & 1 - a \\
+    1 - a & a^2 - 1 & 1 - a
+    \end{pmatrix} \\
+    \text{e.g. } A^{12} &= \begin{vmatrix}
+    a & 1 \\
+    1 & 1
+    \end{vmatrix} \\
+    &= a - 1 \\
+    \Delta_{12} &= (-1)^{1 + 2} A^{12} \\
+    &= 1 - a \\
+    \widetilde{A} &= \Delta^T \\
+    A^{-1} &= \frac{1}{\det A} \widetilde{A} \\
+    &= \frac{1}{(1 -a) ( a + 2)} \begin{pmatrix}
+    1 & -(1 + a) & 1 \\
+    1 & 1 & - (1 + a) \\
+    - (1 + a) & 1 & 1
+    \end{pmatrix}.
+\end{align*} 
+:::
+
+## System of Linear Equations
+
+### Introduction and Nature of Solutions
+
+Consider a system of $n$ linear equations in $n$ unknowns $x_i$ written in vector/ matrix form
+\begin{align*}
+    A \underline{x} &= \underline{b}, \hspace{0.5cm} \underline{x}, \underline{b} \in \mathbb{R}^n \text{ and } A \ n \times n \text{ matrix} \\
+    \text{i.e. } A_{11} x_1 + \ldots + A_{1n} x_n &= b_1 \\
+    &\;\;\vdots \\
+    A_{n1} x_1 + \ldots + A_{nn} x_n &= b_n
+\end{align*} 
+
+There are three possibilities:
+
+i. $\det A \neq 0 \implies A^{-1}$ exists $\implies$ unique solution, $\underline{x} = A^{-1} \underline{b}$
+
+ii. $\det A = 0$ and $\underline{b} \notin \operatorname{Im} A \implies$ no solution.
+
+iii. $\det A = 0$ and $\underline{b} \in \operatorname{Im} A \implies \infty$ many solutions. 
+
+*Elaboration*: a solution exists iff $A \underline{x}_0 = \underline{b}$ for some $\underline{x}_0 \iff \underline{b} \in \operatorname{Im} A$.
+Then $\underline{x}$ is also a solution iff $\underline{u} = \underline{x} - \underline{x}_0$ satisfies
+\begin{align*}
+    A \underline{u} &= \underline{0} \emph{ homogenous problem}.
+    \text{Now } \det A \neq 0 &\iff \operatorname{Im} A = \mathbb{R}^n \\
+    &\iff \ker A = \{ \underline{0} \}.
+\end{align*} 
+So in (i) there is a unique solutions and it can be found using $A^{-1}$.
+\begin{align*}
+    \text{But } \det A = 0 &\iff \operatorname{rank} A < n \\
+    &\iff \operatorname{null} A > 0
+\end{align*} 
+and then either $\underline{b} \notin \operatorname{Im} A$ as in case (ii) or $\underline{b} \in \operatorname{Im} A$ as in case (iii).
+If $\underline{u}_1, \ldots, \underline{u}_k$ is a basis for $\ker A$ then general solution of homogenous problem is $\underline{u} = \sum_{i=1}^{k} \lambda_i \underline{u}_i$.
+
+::: {.example}
+$A \underline{x} = \underline{b}$ with $A$ as in Example \@ref(exm:inverse) and $\underline{b} = \begin{pmatrix}1 \\c \\1\end{pmatrix}$, $a, c \in \mathbb{R}$.
+
+- $a \neq 1, -2$ \
+Then $A^{-1}$ exists and we have a solutions for any $c$:
+\begin{align*}
+    \underline{x} &= A^{-1} \underline{b} \\
+    &= \frac{1}{(1- a)(a + 2)} \begin{pmatrix}2 - c - ca \\c - a \\c - a \end{pmatrix}
+\end{align*} 
+
+- $a = 1$,
+\begin{align*}
+    A &= \begin{pmatrix}1 & 1 & 1 \\1 & 1 & 1 \\1 & 1 & 1\end{pmatrix} \\
+    \operatorname{Im} A &= \left\{ \lambda \begin{pmatrix}1 \\1 \\1\end{pmatrix} \right\} \\
+    \ker A &= \operatorname{span} \left\{ \begin{pmatrix}-1 \\1 \\0\end{pmatrix}, \begin{pmatrix}-1 \\0 \\1\end{pmatrix} \right\} \\
+    b &\in \operatorname{Im} A \iff c = 1; \\
+    \text{particular solution } \underline{x}_0 &= \begin{pmatrix}1 \\0 \\0\end{pmatrix} \\
+    \text{general solution } \underline{x} &= \underline{x}_0 + \underline{u} \\
+    &= \begin{pmatrix}1 - \lambda - \mu \\ \lambda \\ \mu \end{pmatrix} \\
+\end{align*} This is case (iii), and forms a plane of solutions.
+For $a = 1, c \neq 1$ we have no solutions - case (ii).
+
+- $a = -2$
+\begin{align*}
+    A &= \begin{pmatrix}
+    1 & 1 & -2 \\
+    -2 & 1 & 1 \\
+    1 & -2 & 1
+    \end{pmatrix} \\
+    \operatorname{Im} A &= \operatorname{span} \left\{ \begin{pmatrix}1 \\-2 \\1\end{pmatrix}, \begin{pmatrix}1 \\1 \\-2\end{pmatrix} \right\} \\
+    \ker A &= \left \{ \lambda \begin{pmatrix}1 \\1 \\1\end{pmatrix} \right \} \\
+    \underline{b} &\in \operatorname{Im} A \iff c = 2, \text{ (case (iii))} \\
+    \text{particular solution } \underline{x}_0 &= \begin{pmatrix}1 \\0 \\0\end{pmatrix} \\
+    \text{general solution } \underline{x} &= \underline{x}_0 + \underline{u} \\
+    &= \begin{pmatrix}1 + \lambda \\ \lambda \\ \lambda \end{pmatrix} \\
+\end{align*} If $c \neq 2$, no solution, case (ii).
+:::
+
+### Geometric Interpretation in $\mathbb{R}^3$
+
+Let $\underline{R}_1, \underline{R}_2, \underline{R}_3$ be rows of $A$ ($3 \times 3$).
+
+\begin{align*}
+    A \underline{u} = \underline{0} \iff \begin{cases}
+        \underline{R}_1 \cdot \underline{u} = 0 \\
+        \underline{R}_2 \cdot \underline{u} = 0 \\
+        \underline{R}_3 \cdot \underline{u} = 0 
+    \end{cases} \text{planes through $\underline{0}$, normals $\underline{R}_i (\neq \underline{0})$}
+\end{align*} 
+So solutions of homogenous problem (finding $\ker A$) is given by intersection of these planes.
+
+- $\operatorname{rank}(A) = 3 \implies$ normals are linearly independent and planes intersect in $\underline{0}$.
+
+- $\operatorname{rank}(A) = 3 \implies 2$ normals span a plane and planes intersect in a line and $\dim \ker A = 1$.
+```{r 05-sheaf, echo = FALSE, fig.cap = "looking *along* line of intersection of planes", fig.align="center", out.height="300"} 
+knitr::include_graphics("figures/05-sheaf.png") 
+```
+
+- $\operatorname{rank}(A) = 1 \implies$ normals are parallel and planes coincide and $\dim \ker A = 2$
+```{r 05-rank-1, echo = FALSE, fig.cap = "Three identical planes", fig.align="center", out.height="300"} 
+knitr::include_graphics("figures/05-rank-1.png") 
+```
+
+Now consider instead 
+\begin{align*}
+    A \underline{x} &= \underline{b} \iff \begin{cases}
+        \underline{R}_1 \cdot \underline{x} = b_1 \\
+        \underline{R}_2 \cdot \underline{x} = b_2 \\
+        \underline{R}_3 \cdot \underline{x} = b_3 
+    \end{cases}
+\end{align*} planes with normals $\underline{R}_i$ but not passing through $\underline{0}$ unless $b_i = 0$.
+
+- $\operatorname{rank}(A) = 3 \iff \det A \neq 0$, normals are linearly independent; planes intersect in a point and get unique solution for any $b$.
+
+- $\operatorname{rank}(A) = 2 \implies$ planes may intersect in a line (as in homogenous case) *but* they may not:
+```{r 05-prism, echo = FALSE, fig.cap = "No solutions", fig.align="center", out.height="300"} 
+knitr::include_graphics("figures/05-prism.png") 
+```
+
+- $\operatorname{rank}(A) = 1 \implies$ planes may coincide (as in homogenous case) *but* they may not:
+```{r 05-parallel, echo = FALSE, fig.cap = "Three parallel or two identical and another parallel", fig.align="center", out.height="300"} 
+knitr::include_graphics("figures/05-parallel.png") 
+```
+
+```{r 05-R3-solutions-1, echo = FALSE, fig.cap = "", fig.align="center", out.height="300"} 
+knitr::include_graphics("figures/05-R3-solutions-1.png") 
+```
+
+```{r 05-R3-solutions-2, echo = FALSE, fig.cap = "", fig.align="center", out.height="300"} 
+knitr::include_graphics("figures/05-R3-solutions-2.png") 
+```
+
+### Gaussian Elimination and Echelon Form
+
+Consider $A \underline{x} = \underline{b}$ with $\underline{x} \in \mathbb{R}^n$, $\underline{b} \in R^m$ and $A \ m \times n$ matrix.\
+Gaussian elimination is a direct approach to solving system of equations:
+\begin{align*}
+    A_{11} x_1 + \ldots + A_{1n} x_n &= b_1 \\
+    &\;\;\vdots \\
+    A_{m1} x_1 + \ldots + A_{mn} x_n &= b_m
+\end{align*} 
+
+*Example*
+
+\begin{align*} 
+    3 x_1 + 2 x_2 + x_3 &= b_1 (\#eq:gauss-1) \\
+    6 x_1 + 3 x_2 + 3 x_3 &= b_2 (\#eq:gauss-2) \\
+    6 x_1 + 2 x_2 + 4 x_3 &= b_3 (\#eq:gauss-3)
+\end{align*} 
+
+Steps
+
+1. subtract multiples of \@ref(eq:gauss-1) from \@ref(eq:gauss-2) and \@ref(eq:gauss-3) to eliminate $x_1$
+\begin{align*}
+    0 - x_2 + x_3 &= b_2 - 2 b_1 (\#eq:gauss-22) \\
+    0 - 2 x_2 + 2 x_3 &= b_3 - 2 b_1 (\#eq:gauss-32)
+\end{align*} 
+
+2. repeat this using \@ref(eq:gauss-22) to eliminate $x_2$ from \@ref(eq:gauss-32):
+\begin{align*}
+    0 + 0 + 0 &= b_3 - 2 b_2 + 2 b_1 (\#eq:gauss-33)
+\end{align*} 
+Now consider new system \@ref(eq:gauss-1), \@ref(eq:gauss-22), \@ref(eq:gauss-33).
+
+- $b_3 - 2 b_2 + 2 b_1 \neq 0 \implies$ no solutions
+
+- $b_3 - 2 b_2 + 2 b_1 = 0 \implies \infty$ solutions, $x_3$ is arbitrary and then $x_2$ and $x_1$ determined from \@ref(eq:gauss-1), \@ref(eq:gauss-22).
+
+In general case we aim to carry out steps as in example until we obtain an equivalent system
+```{r 05-replace, echo = FALSE, fig.cap = "", fig.align="center", out.height="300"} 
+knitr::include_graphics("figures/05-replace.png") 
+```
+$M$ is obtained from $A$ by row operations including row exchanges and column exchanges which relabel variables $x_i$.
+
+Note $x_{r + 1}, \ldots, x_n$ are undetermined \
+$d_{r + 1}, \ldots, d_m = 0$ else no solution \
+and if this is satisfied then $x_1, \ldots, x_r$ can be determined successively.\
+$r = \operatorname{rank} M = \operatorname{rank} A$.\
+If $n = m$ then $\det A = \pm det M$ and if $r = n = m$ then $\det M = M_{11} \ldots M_{rr} \neq 0 \implies A$ and $M$ are invertible. \
+$M$ as above is an example of *echelon form*.

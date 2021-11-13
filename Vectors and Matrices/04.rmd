@@ -614,7 +614,7 @@ If $A$ is $3 \times 3$ antisymmetric, then it can be rewritten in terms of vec $
 \end{align*} 
 :::
 
-iii. If $M$ is a $m \times n$ matrix the *hermitian conjugate* $M \dagger$ is defined by $(M \dagger)_{ia} = \overline{M_ai}$ or $M \dagger = \overline{M}^T = \overline{M^T}$
+iii. If $M$ is a $m \times n$ matrix the *hermitian conjugate* $M \dagger$ is defined by $(M \dagger)_{ia} = \overline{M}_{ai}$ or $M \dagger = \overline{M}^T = \overline{M^T}$
 
 #### Properties
 
@@ -627,7 +627,7 @@ iii. If $M$ is a $m \times n$ matrix the *hermitian conjugate* $M \dagger$ is de
 $\implies \underline{z}^\dagger = \begin{pmatrix}x_1 & \ldots & x_n\end{pmatrix}$ is a row vector or $1 \times n$ matrix.\
 Inner product on $\mathbb{C}^n$ is $(\underline{z}, \underline{w}) = \underline{z}^\dagger \underline{w}$, a scalar or $1 \times 1$ matrix.
 
-iv. If $M$ is *square* $n \times n$ then $M$ is *hermitian* if $M^\dagger = M$ or $M_{ij} = \overline{M}_ji$ and *anti-hermitian* if $M^\dagger = - M$ or $M_{ij} = - \overline{M_ji}$.
+iv. If $M$ is *square* $n \times n$ then $M$ is *hermitian* if $M^\dagger = M$ or $M_{ij} = \overline{M}_{ji}$ and *anti-hermitian* if $M^\dagger = - M$ or $M_{ij} = - \overline{M}_{ji}$.
 
 e. *Trace* 
 
