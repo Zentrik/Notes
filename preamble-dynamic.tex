@@ -14,7 +14,7 @@
 
 
 \usetikzlibrary{external}
-\tikzset{external/system call={xelatex -fmt=preamble.fmt \tikzexternalcheckshellescape -halt-on-error -interaction=batchmode -jobname "\image" "\texsource"}}
+\tikzset{external/system call={xelatex -fmt=../preamble.fmt \tikzexternalcheckshellescape -halt-on-error -interaction=batchmode -jobname "\image" "\texsource"}} % path is relative to file that includes preamble
 \tikzexternalize
 
 \hypersetup{

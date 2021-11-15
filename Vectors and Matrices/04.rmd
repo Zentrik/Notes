@@ -573,7 +573,7 @@ Reflection.
 
 i. If $M$ is an $m \times n$ matrix, the transpose $M^T$ is an $n \times m$ matrix defined by 
 \begin{align*}
-    (M^T)_{ia} &= M_{ai} \text{ ``exchange rows and columns"} \\
+    (M^T)_{ia} &= M_{ai} \text{ "exchange rows and columns"} \\
     [a &= 1, \ldots, m;\ i = 1, \ldots, n]
 \end{align*}
 
@@ -614,7 +614,7 @@ If $A$ is $3 \times 3$ antisymmetric, then it can be rewritten in terms of vec $
 \end{align*} 
 :::
 
-iii. If $M$ is a $m \times n$ matrix the *hermitian conjugate* $M \dagger$ is defined by $(M \dagger)_{ia} = \overline{M}_{ai}$ or $M \dagger = \overline{M}^T = \overline{M^T}$
+iii. If $M$ is a $m \times n$ matrix the *hermitian conjugate* $M \dagger$ is defined by $(M^\dagger)_{ia} = \overline{M}_{ai}$ or $M^\dagger = \overline{M}^T = \overline{M^T}$
 
 #### Properties
 
