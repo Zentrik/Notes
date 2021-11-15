@@ -127,7 +127,7 @@ It is often easier to understand a group if it's doing something, permuting elem
         \phi : \mathbb{Z} &\to \mathbb{Z} & \psi : \mathbb{Z} &\to \mathbb{Z}\\
         x &\mapsto 2x & 2x & \mapsto x \\
         && 2x + 1 &\mapsto 0 \\
-        \phi \psi &= \operatorname{id} &&.
+        \phi \psi &= \operatorname{id}. &&
     \end{align*} 
 \end{remark} 
 
@@ -407,3 +407,403 @@ It is often easier to understand a group if it's doing something, permuting elem
     \end{align*} 
     Thus $\theta$ is a well-defined bijection.
 \end{proof} 
+
+\subsection{Application to Symmetry Groups of Regular Solids}
+Let $S$ be a regular solid and $V$ its vertices.
+The the symmetries of $S$ are the isometries (distance preserving maps) of $\mathbb{R}^2$ or $\mathbb{R}^3$ that maps $S$ to itself.
+The dual is the solid with vertices in the middle of each face of the input.
+
+\subsubsection{Tetrahedron (self-dual)}
+
+\begin{figure}
+    \centering 
+    \includegraphics[height=5cm]{figures/07-tetrahedron}
+\end{figure} faces are $4$ equilateral triangles.
+
+Let $G$ be group of symmetries of $T$, and $X = \{\text{vertices of } T\} = \{1, 2, 3, 4\}$.
+Then $\exists$ a homomorphism
+\begin{align*}
+    \Phi : G &\to \operatorname{Sym} X \cong S_4 \text{ \Cref{prp:6}}
+\end{align*} 
+Note $\ker \Phi = \{ e \}$, if all vertices are fixed, then $T$ fixed. \\
+Consider $G^+ \leq G$ be the subgroup of all rotations.
+The elements of $G^+$ are as follows:
+
+\begin{figure}
+    \centering 
+    \includegraphics[height=5cm]{figures/07-tetrahedron-rotations} 
+    \caption{Rotation of $2 \pi / 3$, a 3-cycle $\begin{pmatrix}2 & 3 & 4\end{pmatrix}$, and $4 \pi / 3$ gives $\begin{pmatrix}2 & 4 & 3\end{pmatrix}$.}
+\end{figure}
+
+There are $4$ such axes, giving $8$ rotations of order $3$ (these are all the $3$-cycles in $S_4$).
+
+\begin{figure} 
+    \centering 
+    \includegraphics[height=5cm]{figures/07-tetrahedron-double-transposition} 
+    \caption{Rotation of $\pi$, a double transposition $\begin{pmatrix}1 & 4\end{pmatrix} \begin{pmatrix}2 & 3\end{pmatrix}$. We have one rotation for each pair of axes and we have $6$ axes, so $3$ such double transpositions.}
+\end{figure}
+
+and identity, 
+\begin{align*}
+    \implies G^+ \cong A_4.
+\end{align*} (only subgroup of order $12$)
+
+Now consider $G$ (all symmetries).
+Clearly $\operatorname{Orb}_G(1) = \{1, 2, 3, 4\} = \operatorname{Orb}_{G^+}(1)$. \\
+Consider $\operatorname{Stab}_G(1)$.
+
+\begin{itemize}
+    \item Note if $3$ vertices are fixed then $T$ is fixed.
+
+    \item Suppose vertices $1$ and $2$ are fixed
+    \begin{figure} 
+        \centering 
+        \includegraphics[height=5cm]{figures/07-tetrahedron-12-fixed} 
+        \caption{reflection through $1, 2$ giving $\begin{pmatrix}3 & 4\end{pmatrix} = \tau$. We have such a reflection for each of the $6$ edges.}
+    \end{figure}
+
+    \item If just $1$ is fixed we have order $3$ rotation from before, $\sigma$.
+\end{itemize} 
+These are all elements in $G$
+\begin{align*}
+    \operatorname{Stab}_G(1) &= \langle \sigma, \tau \rangle \cong D_6 \\
+    \implies |G| &= |\operatorname{Orb}_G(1)| |\operatorname{Stab}_G(1)| \text{ \nameref{thm:orbit}}\\
+    &= 4 \times 6 = 24 \\
+    \implies G &\cong S_4.
+\end{align*} (consider the effects of $\sigma$ and $\tau$ on the bottom face to see why $\langle \sigma, \tau \rangle \cong D_6$).
+
+Note $\operatorname{Stab}_{G^+}(1) = \langle G \rangle$.
+Also $\begin{pmatrix}1 & 2 & 3 & 4\end{pmatrix} = \begin{pmatrix}1 & 2\end{pmatrix} \begin{pmatrix}2 & 3 & 4\end{pmatrix}$.
+
+\subsubsection{Cube (dual to octahedron)}
+
+\begin{figure} 
+    \centering 
+    \includegraphics[height=5cm]{figures/07-cube} 
+\end{figure}
+
+Let $G^+$ be the group of rotations of $C$.
+Then $G^+$ acts on set of diagonals $X = \{D_1, D_2, D_3, D_4\}$.
+
+If a rotation, $\sigma$, that fixes all the diagonals, then $\sigma = \text{id}$.
+So we have an injective homomorphism
+\begin{align*}
+    \Phi : G^+ &\to \operatorname{Sym}(X) \cong S_4.
+\end{align*} 
+Rotations: 
+\begin{itemize}
+    \item $\text{id}$
+    \item \begin{figure} 
+        \centering 
+        \includegraphics[height=5cm]{figures/04-cube-rotated}
+        \caption{$\sigma$ rotation of $\pi / 2$ corresponds to $\begin{pmatrix}1 & 2 & 3 & 4\end{pmatrix}$ in action on diagonals. There are $3$ such axes giving $6$ elements of order $4$ and $3$ of order $2$.}
+    \end{figure}
+    \item \begin{figure} 
+        \centering 
+        \includegraphics[height=5cm]{figures/07-cube-rotated-fixed-axis} 
+        \caption{$o(\rho) = 3$ corresponds to $\begin{pmatrix}2 & 3 & 4\end{pmatrix}$, we have 4 such axes giving eight elements of order $3$ ($\rho, \rho^2$).}
+    \end{figure}
+    \item \begin{figure} 
+        \centering 
+        \includegraphics[height=5cm]{figures/07-cube-transpositions}
+        \caption{rotation of $\pi$, $o(\tau) = 2$ corresponds to $\begin{pmatrix}1 & 3\end{pmatrix}$. There are 6 such axes}
+    \end{figure}
+\end{itemize}
+I.e. $G^+ \cong S_4$.
+Note $\operatorname{Orb}_{G^+}(D_1) = \{ D_1, D_2, D_3, D_4 \}$.
+$\operatorname{Stab}_{G^+}(D_1) = \{\rho, \tau'\}$
+or consider $G^+$ acting on vertex $1$
+\begin{align*}
+    |\operatorname{Orb}_{G^+}(1)| &= 8 \\
+    |\operatorname{Stab}_{G^+}(1)| &= |\langle \rho \rangle| = 3. \\
+    \implies |G^+| &= 24.
+\end{align*} 
+
+Now consider full symmetry group of $C$, call it $G$.
+
+Consider action on faces $F_1, \ldots, F_6$, this yields an injective (or faithful) homomorphism as fixing all the faces fixes everything.
+
+\begin{align*}
+    \Phi: G &\to \operatorname{Sym}(F_i) \cong S_6. \\
+    |\operatorname{Orb}(F_1)| &= 6. \\
+    \operatorname{Stab}(F_1) &\cong D_8. \text{ Consider the opposite face} \\
+    \implies |G| &= 6 \times 8 = 48.
+\end{align*} 
+So, action on diagonals is not faithful; $\exists \; g \in G \ g(D_i) = D_i \ 1 \leq i \leq 4$ but $g \neq \text{id}$. 
+$g$ can swap vertex $i$ with $i'$, the diagonals will stay unchanged however.
+Alternatively, label vertices of $C$ as $\{(\pm 1, \pm 1, \pm 1)\}$, then 
+\begin{align*}
+    g : (x, y, z) &\mapsto (-x, -y, -z).
+\end{align*} 
+If we label the faces of the cube like a dice (1 opposite 6, 2 opposite 5, 3 opposite 4) then $g = \begin{pmatrix} 1 & 6\end{pmatrix} \begin{pmatrix}2 & 5\end{pmatrix} \begin{pmatrix}3 & 4\end{pmatrix}$.
+
+Then $G \cong G^+ \times \langle g \rangle$.
+\begin{proof}
+    \begin{align*}
+        G^+ &\trianglelefteq G \text{ by \Cref{lem:twelve} (since of index 2)} \\
+        \langle g \rangle &\trianglelefteq G \text{ commutes with all rotations} \\
+        G^+ \cap \langle g \rangle &= \{ e \} \\
+        | G^+ \langle g \rangle | &= 48 = |G|.
+    \end{align*} 
+\end{proof} 
+
+In fact, we have also proved that the group of symmetries of an octahedron is $S_4\times C_2$ since the octahedron is the dual of the cube. (if you join the centers of each face of the cube, you get an octahedron)
+\begin{center}
+  \begin{tikzpicture}[z = -5.5, scale = 1.5]
+    \coordinate (O1) at (0, 0, -1);
+    \coordinate (O2) at (-1, 0, 0);
+    \coordinate (O3) at (0, 0, 1);
+    \coordinate (O4) at (1, 0, 0);
+    \coordinate (O5) at (0, 1, 0);
+    \coordinate (O6) at (0, -1, 0);
+
+    \draw [draw = blue, dashed] (O1) -- (O2) -- (O5) -- cycle;
+    \draw [draw = blue, dashed] (O4) -- (O1) -- (O5) -- cycle;
+    \draw [draw = blue, dashed] (O1) -- (O2) -- (O6) -- cycle;
+    \draw [draw = blue, dashed] (O4) -- (O1) -- (O6) -- cycle;
+    \draw [draw = blue] (O2) -- (O3) -- (O5) -- cycle;
+    \draw [draw = blue] (O3) -- (O4) -- (O5) -- cycle;
+    \draw [draw = blue] (O2) -- (O3) -- (O6) -- cycle;
+    \draw [draw = blue] (O3) -- (O4) -- (O6) -- cycle;
+
+    \coordinate (C1) at (-1, -1, -1);
+    \coordinate (C2) at (-1, -1, 1);
+    \coordinate (C3) at (-1, 1, 1);
+    \coordinate (C4) at (-1, 1, -1);
+    \coordinate (C5) at (1, -1, -1);
+    \coordinate (C6) at (1, -1, 1);
+    \coordinate (C7) at (1, 1, 1);
+    \coordinate (C8) at (1, 1, -1);
+
+    \draw [draw = red, dashed] (C1) -- (C2);
+    \draw [draw = red] (C2) -- (C3);
+    \draw [draw = red] (C3) -- (C4);
+    \draw [draw = red, dashed] (C4) -- (C1);
+    \draw [draw = red] (C5) -- (C6) -- (C7) -- (C8) -- cycle;
+    \draw [draw = red, dashed] (C1) -- (C5);
+    \draw [draw = red] (C2) -- (C6);
+    \draw [draw = red] (C3) -- (C7);
+    \draw [draw = red] (C4) -- (C8);
+  \end{tikzpicture}
+\end{center}
+
+\subsubsection{Dodecahedron (dual to Icosahedron) - Non examinable}
+
+Let $D$ be the dodecahedron.
+
+\begin{itemize}
+    \item 12 regular pentagonal faces
+    \item 30 edges
+    \item 20 vertices
+\end{itemize} 
+
+Let $G^+ =$ group of rotations of $D$. \\
+Let $F$ be a face of $D$.
+\begin{align*}
+    | \operatorname{Orb}_{G^+}(F)| &= 12 \\
+    | \operatorname{Stab}_{G^+}(F) | &= 5 \text{ just rotating about face} \\
+    \implies |G^+| &= 5 \times 12 = 60 \text{ by \nameref{thm:orbit}.}
+\end{align*} 
+
+There are five cubes embedded in $D$.
+
+\begin{figure}
+    \centering
+    \includegraphics[height=5cm]{figures/07-cube-dodecahedron}
+\end{figure} 
+
+15 pairs of edges, 3 pairs per cube $\implies$ 5 cubes.
+
+$G^+$ acts faithfully on cubes, giving us an injective map $\Phi : G^+ \to S_5$.
+And $|G^+| = 60 \implies G^+ \cong A_5$ ($A_5$ is the only subgroup of order 60 of $S_5$).
+The smallest non-abelian simple group comes up as the rotational group of a dodecahedron.
+
+We can find the elements of $A_5$
+\begin{itemize}
+    \item Rotations through opposite faces - 5 cycles (6 axes, 4 elements per axis giving 24 elements).
+    \item Rotations through opposite vertices - 3 cycles.
+    \item Rotations through opposite edges - double transpositions (15 such).
+\end{itemize} 
+
+(New section?)
+
+Another Application of \nameref{thm:orbit}
+
+\begin{theorem}[Cauchy's Theorem] \label{thm:8}
+    Let $G$ be a finite group and $p$ a prime that divides $|G|$.
+    Then there exists an elements in $G$ of order $p$.
+\end{theorem} 
+
+\begin{proof}
+    Let
+    \begin{align*}
+        X &= \{ (x_1, x_2, \ldots, x_p) : x_1 x_2 \ldots x_p = e, x_i \in G \}.
+    \end{align*} 
+    Let $H = \langle h : o(h) = p \rangle \cong C_p$ acts on $X$ as follows:
+    \begin{align*}
+        H \times X &\to X \\
+        (h, (x_1, x_2, \ldots, x_p)) &\mapsto (x_2, x_3, \ldots, x_p, x_1) \\
+        \intertext{in general}
+        (h^i, (x_1, x_2, \ldots, x_p)) &\mapsto (x_{1 + i}, x_{2 + i}, \ldots, x_{p + i}) \\
+        \text{suffices are taken modulo p.}
+    \end{align*}
+    Check this is a group action
+    \begin{enumerate} \addtocounter{enumi}{-1}
+        \item \begin{align*}
+            x_1 x_2 \ldots x_p &= e \\
+            x_{i + 1} x_{2 + i} \ldots, x_{p + i} &= [(x_1 x_2 \ldots x_i)^{-1} (x_1 x_2 \ldots x_i)] x_{i + 1} x_{2 + i} \ldots, x_{p} x_1 x_2 \ldots x_i \\ 
+            &= (x_1 x_2 \ldots x_i)^{-1} x_1 x_2 \ldots x_p (x_1 x_2 \ldots x_i) \\
+            &= (x_1 x_2 \ldots x_i)^{-1} e (x_1 x_2 \ldots x_i) \\
+            &= e.
+        \end{align*} 
+        \item \begin{align*}
+            h^{i + j} (x_1, \ldots, x_p) &= (x_{1 + i + j}, \ldots, x_{p + i + j}) \\
+            &= h^i (h^j (x_1, \ldots, x_p)).
+        \end{align*} 
+        \item \begin{align*}
+            e (x_1, \ldots, x_p) &= h^p (x_1, \ldots, x_p) \\
+            &= (x_1, \ldots, x_p).
+        \end{align*} 
+    \end{enumerate} 
+\end{proof} 
+
+Let $\overline{x} = (x_1, x_2, \ldots, x_p) \in X$.
+As distinct orbits partition $X$ (\Cref{lem:17})
+\begin{align*}
+    \implies \sum_{\text{distinct orbits}} |\operatorname{Orb}_H(\overline{x})| = |X|. 
+\end{align*} 
+Note $|X| = |G|^{p - 1}$ (choose $x_1, \ldots, x_{p-1}$ then $x_p$ is determined, we have $|G|$ choices for each free variable).
+\begin{align*}
+    p \mid |G| \implies p &\mid |X| \\
+    \implies p &\mid \sum_{\text{distinct orbits}} |\operatorname{Orb}_H(\overline{x})| \stepcounter{equation}\tag{\theequation}\label{myeq1} \\
+\end{align*} 
+But by \nameref{thm:orbit}
+\begin{align*}
+    |\operatorname{Orb}_H(\overline{x})| \bigg| |H| &= p \\
+    \implies |\operatorname{Orb}_H(\overline{x})| &= 1 \text{ or } p.
+\end{align*} 
+Now, $\overline{e} = (e, e, \ldots, e) \in X$ and $|\operatorname{Orb}_H(\overline{e}) | = 1$.
+So $\exists$ at least $p - 1$ other orbits of length $1$ by \eqref{myeq1}.
+So $\exists \; \overline{x} \in X$ s.t $\operatorname{Orb}_H(\overline{x}) = 1 \implies \overline{x} = (x, x, \ldots, x)$ (has to look the same after permutation) with $x \neq e$ and $x^p = e$.
+
+\subsection{Conjugacy Action}
+
+\begin{align*}
+    G \times G &\to G \\
+    (g, h) &\mapsto g h g^{-1}.
+\end{align*} 
+Orbits are called conjugacy classes
+\begin{align*}
+    \operatorname{ccl}_G(h) = \{ g h g^{-1} : g \in G\}
+\end{align*} 
+stabilisers are called centralisers
+\begin{align*}
+    C_G(h) = \{g \in G : g h g^{-1} = h\}.
+\end{align*} 
+
+\begin{remark} \mbox{}
+    \begin{enumerate}
+        \item By \Cref{lem:17} the conjugacy classes partition $G$.
+        \item By \nameref{thm:orbit}, $h \in G$
+        \begin{align*}
+            |G| = |C_G(h)| |\operatorname{ccl}_G(h)|.
+        \end{align*} 
+        In particular ($C_G(h)$ is a subgroup)
+        \begin{align*}
+            |\operatorname{ccl}_G(h)| \bigg| |G|.
+        \end{align*} 
+        \item If $k \in \operatorname{ccl}_G(h)$ then $o(k) = o(h)$.
+        \begin{proof}
+            Since $k = ghg^{-1}$ for some $g \in G$, so
+        \begin{align*}
+            k^{o(h)} &= (ghg^{-1})^{o(h)} \\
+            &= g h^{o(h)} g^{-1} \\
+            &= e \\
+            \implies o(k) \mid o(h)
+        \end{align*} 
+        Similarly, $h = g^{-1} k g \implies o(h) \mid o(h)$.
+        \end{proof} 
+        \item \label{conjugacy-4}
+        Recall the centre of $G$ is
+        \begin{align*}
+            Z(G) &= \{g \in G : gh = hg \; \forall \; h \in G\} \\
+            &\trianglelefteq G. \\
+            \text{And } Z(G) &= \bigcap_{h \in G} C_G(h)
+        \end{align*} 
+        Note $z \in Z(G) \iff |\operatorname{ccl}_G(z)| = 1$.
+        \begin{proof}
+            If $z \in Z(G)$
+            \begin{align*}
+                \implies \operatorname{ccl}_G(z) &= \{ \underbrace{gzg^{-1}}_{gg^{-1} z = z} : g \in G\} \\
+                &= \{z\} \\
+            \end{align*} 
+            If $|\operatorname{ccl}_G(z)| = 1$, note $z = e z e^{-1} \in \operatorname{ccl}_G(z)$.
+            So $gzg^{-1} = z \ \forall \; g \in G$.
+        \end{proof} 
+        \item Let $H \leq G$, then $H$ is normal iff it is a union of conjugacy classes (Sheet 3, Q3).
+        \item $G$ is abelian iff $G = Z(G)$.
+    \end{enumerate} 
+\end{remark} 
+
+\begin{proposition}\label{prp:7}
+    Let $p$ be a prime and $G$ a group of order $p^n$.
+    Then $Z(G)$ is nontrivial, i.e. $Z(G) > \{e\}$ (not equal to).
+\end{proposition} 
+
+\begin{proof}
+    Let $G$ act on $G$ by conjugation.
+    Then the conjugacy classes of $G$ partition $G$,
+    \begin{align*}
+        G = \mathbin{\dot{\bigcup}}_{\text{distinct conj classes}} \operatorname{ccl}_G(x) \text{ by \Cref{lem:17}}.
+    \end{align*} 
+    By \nameref{thm:orbit} 
+    \begin{align*}
+        |\operatorname{ccl}_G(x)| \bigg| |G| = p^n.
+    \end{align*} 
+    Either $|\operatorname{ccl}_G(x)| = 1$ or $p \bigg| |\operatorname{ccl}_G(x)|$.
+    By \Cref{conjugacy-4}, 
+    \begin{align*}
+        |G| = \sum_{x \in Z(G)} |\operatorname{ccl}_G(x)| + \sum_{\substack{\text{distinct} \\ \text{conj classes} \\ \text{with } p \bigm| |\operatorname{ccl}_G(x)|}} |\operatorname{ccl}_G(x)|
+    \end{align*} 
+    Now $p \mid |G|$ and $p \mid RHS$
+    \begin{align*}
+        \implies p \bigg| \sum_{x \in Z(G)} |\operatorname{ccl}_G(x)| = |Z(G)|
+    \end{align*} 
+\end{proof} 
+
+\begin{lemma} \label{lem:19}
+    Let $G$ be a finite group and $Z(G)$ the centre of $G$.
+    If $G / Z(G)$ is cyclic then $G$ is abelian (so $G = Z(G)$).
+\end{lemma} 
+
+\begin{proof}
+    Let $Z = Z(G)$.
+    $G / Z$ is cyclic, so $G / Z = \langle y Z \rangle$ for some $y \in G$.
+    Let $g, h \in G$. \\
+    Then $gZ = y^i Z$ for some $i$ $\implies g = y^i z_1$ for some $z_1 \in Z$. \\
+    Similarly, $hZ = y^j Z$ for some $j$ $\implies h = y^j z_2$ for some $z_2 \in Z$. \\
+    Now, 
+    \begin{align*}
+        gh &= y^i z_1 y^j z_2 \\
+        &= y^i y^j z_1 z_2 \text{ as $z_1, z_2 \in Z$} \\
+        &= y^j y^i z_2 z_1 \\
+        &= y^j z_2 y^i z_1 \\
+        &= hg \\
+        \implies G &\text{ is abelian}.
+    \end{align*} 
+\end{proof} 
+
+\begin{corollary}\label{cor:5}
+    Suppose $|G| = p^2$ for some prime $p$.
+    Then $G$ is abelian and there are, up to isomorphism, just two groups of order $p^2$, namely $C_{p^2}$ and $C_p \times C_p$.
+\end{corollary}  
+
+\begin{proof}
+    (Q10, Sheet 3).
+\end{proof} 
+
+\begin{remark} \mbox{}
+    \item A group of order $p^n$ for a prime $p$ is called a finite $p$-group.
+    \item If all the elements have $p$-power order, $G$ is called a $p$-group.
+    E.g. $C_{p^\infty}$ is the Pr\"ufer group.
+\end{remark} 
