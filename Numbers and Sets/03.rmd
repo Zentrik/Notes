@@ -573,7 +573,7 @@ We will need two facts about polynomials.
 :::{.proof}
 Indeed, suppose $p(x) = a_d x^d + a_{d-1}x^{d-1} + \ldots + a_1 x + a_0$.
 \begin{align*}
-    \text{Then} p(x) - p(y) &= a_d (x^d - y^d) + a_{d-1} (x^{d-1} - y^{d-1}) + \ldots + a_1 (x - y) \\
+    \text{Then } p(x) - p(y) &= a_d (x^d - y^d) + a_{d-1} (x^{d-1} - y^{d-1}) + \ldots + a_1 (x - y) \\
     &= (x - y) [a_d (x^{d- 1} + x^{d-2} y + \ldots + y^{d-1}) + \ldots + \ldots a_1] \\
     \text{so } |p(x) - p(y)| &\leq |x - y| | d \cdot (|a_d| + |a_{d-1} + \ldots + |a_1|) |
 \end{align*} 

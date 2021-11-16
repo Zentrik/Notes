@@ -246,3 +246,247 @@ Thus the number of times $x$ is counted on the RHS is
     &= 1 \text{ for } k \geq 1.
 \end{align*} 
 :::
+
+## Functions
+
+:::{.definition name="Function"}
+Given sets $A$ and $B$, a function $f$ from $A$ to $B$ is a "rule" that assigns to every $x \in A$ a unique element $f(x) \in B$.
+
+More formally, a *function* from $A$ to $B$ is a subset $f \subseteq A \times B$ s.t. for all $x \in A$, there is a unique $y \in B$ s.t. $(x, y) \in f$. \
+If $f$ is a function from $A$ to $B$, we write $f : A \to B$.
+If $(x, y) \in f$, we can write $f(x) = y$, or $x \mapsto y$^[we use $\mapsto$ for the assignment of individual elements].
+:::
+
+::: {.example}
+
+\
+
+1. \begin{align*}
+    f : \mathbb{R} &\to \mathbb{R} \text{ is a function} \\
+    x &\mapsto x^2.
+\end{align*} 
+
+2. \begin{align*}
+    f : \mathbb{R} &\to \mathbb{R} \text{ is } \textit{not} \text{ a function, } f(0) = ? \\
+    x &\mapsto \frac{1}{x}
+\end{align*} 
+
+3. \begin{align*}
+    f : \mathbb{R} &\to \mathbb{R} \text{ is } \textit{not} \text{ a function, } \\
+    x &\mapsto \pm \sqrt{x}.
+\end{align*}
+
+4. \begin{align*}
+    f : \mathbb{R} &\to \mathbb{R} \text{ is a function} \\
+    x &\mapsto \begin{cases}
+        1 & \text{if } x \text{ is rational} \\
+        0 & \text{otherwise}.
+    \end{cases}
+\end{align*} 
+
+5. $f : \{1, 2, 3, 4, 5\} \to \{1, 2, 3, 4\}$ is given by
+```{r 04-function5, echo = FALSE, fig.cap = "", fig.align="center", out.height="300"} 
+knitr::include_graphics("figures/04-function5.png") 
+```
+
+6. $f: \{1, 2, 3\} \to \{1, 2, 3\}$
+```{r 04-function6, echo = FALSE, fig.cap = "", fig.align="center", out.height="300"} 
+knitr::include_graphics("figures/04-function6.png") 
+```
+
+7. $f: \{1, 2, 3\} \to \{1, 2, 3, 4\}$
+```{r 04-function7, echo = FALSE, fig.cap = "", fig.align="center", out.height="300"} 
+knitr::include_graphics("figures/04-function7.png") 
+```
+
+8. $f : \{1, 2, 3, 4\} \to \{1, 2, 3\}$
+```{r 04-function8, echo = FALSE, fig.cap = "", fig.align="center", out.height="300"} 
+knitr::include_graphics("figures/04-function8.png") 
+```
+
+5 - 8 are all functions
+:::
+
+::: {.definition name="Injective function"}
+We say $f : A \to B$ is *injective* if $\forall \; a, a' \in A, a \neq a' \implies f(a) \neq f(a')$. \
+Equivalently, $f$ is injective if $f(a) = f(a') \implies a = a'$.
+
+Examples 6, 7 are injective whilst 5, 8 are not.
+:::
+
+::: {.definition name="Surjective function"}
+We say $f : A \to B$ is *surjective* if $\forall \; b \in B, \exists \; a \in A$ s.t. $f(a) = b$. \
+
+Examples 6, 8 are surjective whilst 5, 7 are not.
+:::
+
+::: {.definition name="Bijective function"}
+We say $f : A \to B$ is *bijective* if it is both injective and surjective.
+
+If $f : A \to B$ is a bijection, then everything in $B$ is hit (surjective) exactly once (injective) (that is $f$ pairs the elements of $A$ and $B$).
+
+Example 6 is the only bijection.
+:::
+
+::: {.definition name="Permutation}
+A *permutation* of a set $A$ is a bijection from $A \to A$.
+:::
+
+Given $f : A \to B$, we say $A$ is the *domain* of $f$ and $B$ is its *range*.
+The *image* of $f$, sometime denoted $\operatorname{im}(f)$, is the set 
+\begin{align*}
+    f(A) &= \{f(a) : a \in A \} \\
+    &= \{b \in B : f(a) = b \text{ for some } a \in A\}.
+\end{align*} 
+
+::: {.example}
+If \begin{align*}
+    f : \mathbb{R} &\to \mathbb{R} \\
+    x &\mapsto x^2 \\
+    \operatorname{im}(f) = \{y \in \mathbb{R} : y \geq 0\}.
+\end{align*} 
+:::
+
+When specifying a function we must specify its domain and range.
+E.g. "Is the function $f(x) = x^2$ injective?" is meaningless, as $f : \mathbb{N} to \mathbb{N}$ is injective but $f : \mathbb{Z} \to \mathbb{Z}$ is not.
+
+### Observations
+
+1. $f$ is surjective iff $f(A) = B$.
+In particular, if $|B| > |A|$, then there can be no surjective from $A$ to $B$.
+
+2. There can be no injection from $A$ to $B$ if $|A| > |B|$.
+
+3. If $f: A \to A$, then $f$ is injective $\iff$ $f$ is surjective.
+
+4. There is no bijection from $A$ to any proper subset of $A$.
+
+Note that (3) and (4) do *not* hold for infinite sets: \
+a) \begin{align*}
+    f: \mathbb{N} &\to \mathbb{N} \\
+    x &\mapsto x + 1
+\end{align*} is injective but not surjective.
+```{r 04-function-infinite, echo = FALSE, fig.cap = "", fig.align="center", out.height="300"} 
+knitr::include_graphics("figures/04-function-infinite.png") 
+```
+
+b) \begin{align*}
+    g : \mathbb{N} &\to \mathbb{N} \\
+    x &\mapsto \begin{cases}
+        x - 1 & \text{if } x \neq 1 \\
+        1 & \text{if } x = 1
+    \end{cases} 
+\end{align*} is surjective but not injective
+```{r 04-function-infinite2, echo = FALSE, fig.cap = "", fig.align="center", out.height="300"} 
+knitr::include_graphics("figures/04-function-infinite2.png") 
+```
+
+c) \begin{align*}
+    h : \mathbb{N} &\to \mathbb{N} \setminus \{1\} \\
+    x &\mapsto x + 1
+\end{align*} is a bijection from $\mathbb{N}$ to a proper subset of $\mathbb{N}$.
+```{r 04-function-infinite-3, echo = FALSE, fig.cap = "", fig.align="center", out.height="300"} 
+knitr::include_graphics("figures/04-function-infinite-3.png") 
+```
+
+::: {.example name="Further examples"}
+
+\
+
+i. For any set $X$, we have the *identity function*
+\begin{align*}
+    \text{id}_X : X &\to X \\
+    x &\mapsto x.
+\end{align*} 
+
+ii. Given a set $X$ and $A \subseteq X$, we have the *indicator function* (or *characteristic function*) of $A$
+\begin{align*}
+    1_A : X &\to \{0, 1\} \\
+    x &\mapsto \begin{cases}
+        1 & \text{if } x \in A \\
+        0 & \text{if } x \notin A.
+    \end{cases}  
+\end{align*} 
+
+iii. A sequence of reals $x_1, x_2, \ldots$ is a function from the natural numbers to the reals
+\begin{align*}
+    \mathbb{N} &\to \mathbb{R} \\
+    n &\mapsto x_n.
+\end{align*} 
+
+iv. The operation $+$ on $\mathbb{N}$ is a function
+\begin{align*}
+    \mathbb{N} \times \mathbb{N} &\to \mathbb{N} \\
+    (a, b) &\mapsto a + b.
+\end{align*} 
+
+v. A set $X$ has size $n$ iff there is a bijection
+\begin{align*}
+    \{1, 2, \ldots, n\} &\to X = \{a_1, \ldots, a_n\} \\
+    i &\mapsto a_i
+\end{align*} 
+::: 
+
+:::{.definition name="Composition of functions"}
+Given $f : A \to B$ and $g: B \to C$ the *composition* is
+\begin{align*}
+    g \circ f : A &\to C \\
+    a &\mapsto g(f(a)).
+\end{align*} ("g composed with f", "g circle f" or "g after f").
+:::
+```{r 04-function-composition, echo = FALSE, fig.cap = "", fig.align="center", out.height="300"} 
+knitr::include_graphics("figures/04-function-composition.png") 
+```
+
+::: {.example}
+
+\begin{align*}
+    \text{If } f : \mathbb{R} &\to \mathbb{R} & \text{ and } g : \mathbb{R} &\to \mathbb{R} \\
+    x &\mapsto 2x & x &\mapsto x + 1
+\end{align*} 
+then $g \circ f(x) = g(f(x)) = g(2x) = 2x + 1$ \
+and $f \circ g(x) = f(g(x)) = f(x + 1) = 2x + 2$. \
+:::
+
+So in general, $\circ$ is *not* commutative.\
+In the example above, $f \circ g \neq g \circ f$ since $f \circ g(1) = 4 \neq 3 = g \circ f(1)$.
+
+However, $\circ$ is associative, i.e. given $f: A \to B$, $g: B \to C$, $h: C \to D$, we have $h \circ (g \circ f) = (h \circ g) \circ f$.
+
+```{r 04-composition-associative, echo = FALSE, fig.cap = "", fig.align="center", out.height="300"} 
+knitr::include_graphics("figures/04-composition-associative.png") 
+```
+
+::: {.proof}
+Indeed, for every $x \in A$,
+\begin{align*}
+    (h \circ (g \circ f))(x) &= h ((g \circ f)(x)) \\
+    &= h(g(f(x))) \\
+    \text{and } ((h \circ g) \circ f)(x) &= h \circ g(f(x)) \\
+    &= h(g(f(x))).
+\end{align*} 
+:::
+We may therefore drop the brackets and write $h \circ g \circ f$ without ambiguity.
+
+::: {.definition name="Inverse function"}
+We say $f: A \to B$ is *invertible* if $\exists \; g : B \to A$ s.t. $g \circ f = \text{id}_A$ and $f \circ g = \text{id}_B$.
+:::
+
+::: {.example}
+\begin{align*}
+    f : \mathbb{R} &\to \mathbb{R} & g : \mathbb{R} &\to \mathbb{R} \\
+    x &\mapsto 2x + 1 & x &\mapsto \frac{x - 1}{2}.
+\end{align*} 
+Indeed, $\forall \; x \in \mathbb{R}, (g \circ f)(x) = g(2x + 1) = \frac{2x + 1 - 1}{2} = x$ so $g \circ f = \text{id}_\mathbb{R}$.\
+Also $\forall \; x \in \mathbb{R}, (f \circ g)(x) = f\left(\frac{x - 1}{2}\right) = 2 \frac{x - 1}{2} + 1 = x$ so $f \circ g = \text{id}_\mathbb{R}$.
+Hence $f$ is invertible with inverse $g$.
+:::
+
+*Warning* For example,
+\begin{align*}
+    f : \mathbb{N} &\to \mathbb{N} & g : \mathbb{N} &\to \mathbb{N} \\
+    x &\mapsto x + 1 & x &\mapsto  \begin{cases}
+        x - 1 & \text{if } x \neq 1 \\
+        1 & \text{if } x = 1
+    \end{cases} 
+\end{align*} have $g \circ f = \text{id}_\mathbb{N}$ but $f \circ g \neq \text{id}_\mathbb{N}$ because $f \circ g(1) \neq 1$.
