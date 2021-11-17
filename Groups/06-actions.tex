@@ -807,3 +807,114 @@ stabilisers are called centralisers
     \item If all the elements have $p$-power order, $G$ is called a $p$-group.
     E.g. $C_{p^\infty}$ is the Pr\"ufer group.
 \end{remark} 
+
+\subsubsection{Conjugation in $S_n$}
+
+\begin{definition}[Cycle type] \label{def:20}
+    Let $\sigma \in S_n$ and write $\sigma$ as a product of disjoint cycles including $1-$cycles.
+    Then the *cycle type* of $\sigma$ is $(n_1, n_2, \ldots, n_k)$ where $n_1 \geq n_2 \geq \ldots \geq n_k \geq 1$ and the cycles in $\sigma$ have length $n_i$. \\
+    Note $n = n_1 + n_2 + \ldots + n_k$.
+\end{definition} 
+
+\begin{example}
+    \begin{align*}
+        \begin{pmatrix}1 & 2 & 3 & 4\end{pmatrix} \begin{pmatrix}5 & 6 & 7\end{pmatrix} &= \begin{pmatrix}1 & 2 & 3 & 4\end{pmatrix} \begin{pmatrix}5 & 6 & 7\end{pmatrix} \begin{pmatrix}8\end{pmatrix} \\
+        &= S_8
+    \end{align*}
+    has cycle type $(4, 3, 1)$. \\
+    $e \in S_5$ has cycle type $(1, 1, 1, 1, 1)$.
+\end{example} 
+
+\begin{theorem} \label{thm:9}
+    The permutations $\pi$ and $\sigma$ in $S_n$ are conjugate \emph{in $S_n$} (i.e. $\exists \; g \in S_n$ s.t. $g \pi g^{-1} = \sigma$) iff they have the cycle type.
+\end{theorem} 
+
+\begin{proof}
+    Suppose $\sigma$ has cycle type $(n_1, n_2, \ldots, n_k)$.
+    Write \begin{align*}
+        \sigma &= \begin{pmatrix}a_{11} & a_{12} & \ldots & a_{1 n_1}\end{pmatrix} \begin{pmatrix}a_{21} & a_{22} & \ldots & a_{2 n_2}\end{pmatrix} \ldots \begin{pmatrix}a_{k 1} & a_{k 2} & \ldots & a_{k n_k}\end{pmatrix}.
+    \end{align*} 
+    Let $\tau \in S_n$. \\
+    Then
+    \begin{align*}
+        \tau \sigma \tau^{-1} (\tau (a_{ij})) &= \tau \sigma (a_{ij}) \\
+        &= \begin{cases}
+            \tau(a_{i j + 1}) & j < n_i \\
+            \tau(a_{i 1}) & j = n_i
+        \end{cases}.
+    \intertext{So }
+        \tau \sigma \tau^{-1} &= \begin{pmatrix} \tau(a_{11}) & \tau(a_{12}) & \ldots & \tau(a_{1 n_1})\end{pmatrix} \\ &\begin{pmatrix} \tau(a_{21}) & \tau(a_{22}) & \ldots & \tau(a_{2 n_2})\end{pmatrix} \ldots \begin{pmatrix} \tau(a_{k 1}) & \tau(a_{k 2}) & \ldots & \tau(a_{k n_k})\end{pmatrix}.
+    \end{align*} 
+    So if two elements of $S_n$ are conjugate they have the same cycle type. \\
+    Furthermore if $\pi$ has the same cycle type as $\sigma$, we can write
+    \begin{align*}
+        \pi = \begin{pmatrix} b_{11} & b_{12} & \ldots & b_{1 n_1} \end{pmatrix} \ldots \begin{pmatrix} b_{k 1} & b_{k 2} & \ldots & b_{k n_k}\end{pmatrix}. 
+    \end{align*} 
+    Define $\tau(a_{ij}) = b_{ij}$ then $\pi = \tau \sigma \tau^{-1}$.
+    Thus $2$ permutations of the same cycle type are conjugate.
+\end{proof} 
+
+\begin{example}
+    \begin{align*}
+        \begin{pmatrix}1 & 4\end{pmatrix} \begin{pmatrix}1 & 2 & 3\end{pmatrix} \begin{pmatrix}1 & 4\end{pmatrix}^{-1} &= \begin{pmatrix}4 & 2 & 3\end{pmatrix} \\
+        \begin{pmatrix}1 & l\end{pmatrix} \begin{pmatrix}1 & k\end{pmatrix} \begin{pmatrix}1 & l\end{pmatrix} &= \begin{pmatrix}l & k\end{pmatrix}
+    \end{align*} 
+\end{example} 
+
+\emph{Consider $S_4$}: Let $x \in S_4$, recall 
+\begin{align*}
+    24 &= |S_4| = |\operatorname{ccl}_{S_4} (x)| |C_{S_4}(x)| \text{ by \nameref{thm:orbit}}.
+\end{align*} 
+
+\begin{align*}
+    \begin{array}{cccccc}
+        \text{example member}, x & \text{cycle type} & \text{no. of} & \operatorname{sgn} & |C_{S_4}(x)| & C_{S_4}(x) \\
+        e & (1, 1, 1, 1) & 1 & 1 & 24 & S_4 \\
+        \begin{pmatrix}1 & 2\end{pmatrix} (3)(4) & (2, 1, 1) & 6 & -1 & 4 & \langle (1\ 2) (3\ 4) \rangle \cong C_2 \times C_2 \\
+        (1\ 2\ 3)(4) & (3, 1) & 8 & 1 & 3 & \langle (1\ 2\ 3) \rangle \cong C_3 \\
+        (1\ 2) (3\ 4) & (2, 2) & 3 & 1 & 8 & \langle (1\ 3\ 2\ 4), (1\ 2) \rangle \cong D_8 \\
+        (1\ 2\ 3\ 4) & (4) & 6 & -1 & 4 & \langle (1, 2, 3, 4) \rangle \cong C_4.
+    \end{array}  
+\end{align*} 
+
+\begin{corollary} \label{cor:6}
+    The number of distinct conjugacy classes of $S_n$ is given by $p(n)$, the number of partitions of $n$ into positive integers, i.e. $n = n_1 + \ldots + n_k$ with $n_1 \geq n_2 \geq \ldots \geq n_k \geq 1$.
+\end{corollary} 
+
+However in $A_n$ conjugation is less clear. 
+Certainly \begin{align*}
+    \operatorname{ccl}_{A_n}(x) &= \{g x g^{-1} : g \in A_n\} \\
+    &\subseteq \{g x g^{-1} : g \in S_n\} = \operatorname{ccl}_{S_n}(x)
+\end{align*} since $A_n \leq S_n$.
+So if two elements are conjugate in $A_n$ they have the same cycle type. 
+But having the same cycle type in $A_n$ does not guarantee being conjugate.
+
+E.g. $(1\; 2\; 3)$ is not conjugate to $(1\; 3\; 2)$ in $A_4$.\\
+If $\tau (1\; 2\; 3) \tau^{-1} = (1\; 3\; 2)$ then $\tau = (1\; 2)$ or $(3\; 2)$ or $(1\; 3) \in S_4 \setminus A_4$.
+
+Or consider 
+\begin{align*}
+    C_{A_4} \left( (1\; 2\; 3) \right) &= C_{S_4} \left( (1\; 2\; 3) \right) \cup A_4 \\
+    C_{S_4} \left( (1\; 2\; 3) \right) &= \langle (1\; 2\; 3) \rangle \leq A_4 \\
+    \text{So, } C_{A_4} \left( (1\; 2\; 3) \right) &= C_{S_4} \left( (1\; 2\; 3) \right) \\
+    \implies \left| \operatorname{ccl}_{A_4} \left( (1\; 2\; 3) \right) \right| &= \frac{|A_4|}{\left| C_{A_4} \left( (1\; 2\; 3) \right) \right|} \text{ by \nameref{thm:orbit}} \\
+    &= \frac{|S_4| / 2}{\left| C_{S_4} \left( (1\; 2\; 3) \right) \right|} \\
+    &= \frac{\left| \operatorname{ccl}_{S_4} \left( (1\; 2\; 3) \right) \right|}{2}.
+\end{align*} 
+So the conjugacy class of 8 $3$-cycles in $S_4$ splits into 2 conjugacy classes in $A_4$.
+
+\emph{Key point} Let $x \in A_n$.
+If $C_{A_n}(x) = C_{S_n}(x) \implies \operatorname{ccl}_{A_n}(x) = \frac{| \operatorname{ccl}_{S_n}(x) |}{2}$ by \nameref{thm:orbit}. \\
+If $C_{A_n}(x) < C_{S_n}(x)$, then $C_{S_n}$ contains an odd permutation and $|C_{A_n}(x)| = |C_{S_n} \cup A_n| = \frac{|C_{S_n}|}{2}$ (Q4, Sheet 2) $\implies |\operatorname{ccl}_{A_n}(x)| = |\operatorname{ccl}_{S_n}(x)|$.
+
+\emph{$A_4$}:
+
+\begin{align*}
+    \begin{array}{cccc}
+        \text{example member}, x & \text{cycle type} & C_{A_4}(x) & \text{size of cong class} \\
+        e & (1, 1, 1, 1) & A_4 & 1 \\
+        (1\ 2\ 3) & (3, 1) & \langle (1\ 2\ 3) \rangle & 4\\
+        (1\ 3\ 2) & (3, 1) & \langle (1\ 3\ 2) \rangle & 4 \\
+        (1\; 2)(3\; 4) & (2, 2) & \{e, (1\; 2)(2\; 4), (1\; 4)(2\; 3) \} \cong C_2 \times C_2 & 3
+    \end{array}  
+\end{align*} 
