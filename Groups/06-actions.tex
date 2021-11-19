@@ -625,13 +625,11 @@ We can find the elements of $A_5$
     \item Rotations through opposite edges - double transpositions (15 such).
 \end{itemize} 
 
-(New section?)
-
-Another Application of \nameref{thm:orbit}
+\subsubsection{Another Application of \nameref{thm:orbit}}
 
 \begin{theorem}[Cauchy's Theorem] \label{thm:8}
     Let $G$ be a finite group and $p$ a prime that divides $|G|$.
-    Then there exists an elements in $G$ of order $p$.
+    Then there exists an element in $G$ of order $p$.
 \end{theorem} 
 
 \begin{proof}
@@ -911,10 +909,73 @@ If $C_{A_n}(x) < C_{S_n}(x)$, then $C_{S_n}$ contains an odd permutation and $|C
 
 \begin{align*}
     \begin{array}{cccc}
-        \text{example member}, x & \text{cycle type} & C_{A_4}(x) & \text{size of cong class} \\
+        \text{example member}, x & \text{cycle type} & C_{A_4}(x) & \text{size of ccl} \\
         e & (1, 1, 1, 1) & A_4 & 1 \\
         (1\ 2\ 3) & (3, 1) & \langle (1\ 2\ 3) \rangle & 4\\
         (1\ 3\ 2) & (3, 1) & \langle (1\ 3\ 2) \rangle & 4 \\
         (1\; 2)(3\; 4) & (2, 2) & \{e, (1\; 2)(2\; 4), (1\; 4)(2\; 3) \} \cong C_2 \times C_2 & 3
     \end{array}  
 \end{align*} 
+
+\begin{remark}
+    The number of elements in $S_n$ with $k_l$ cycles of length $l$ is given by 
+    \begin{align*}
+        \frac{n!}{\Pi_l k_l! \, l^{k_l}}.
+    \end{align*} 
+    Think of cycles as trays, put in elements of $X = \{1, 2, \ldots, n\}$.
+    This gives $n!$ options, but we've overcounted.
+    Eah cycle of length $l$ can be written $l$ ways, this given $l^{k_l}$ factor.
+    Also $k_l$ cycle of length $l$ can be permuted in $k_l !$ ways.
+\end{remark} 
+
+Let us consider $S_5$, $|S_5| = 120$.
+\begin{align*}
+    \begin{array}{cccccc}
+        \text{example member}, x & \text{cycle type} & \text{no. of} & \operatorname{sgn} & |C_{S_5}(x)| & C_{S_5}(x) \\
+        e & (1, 1, 1, 1, 1) & 1 & 1 & 120 & S_5 \\
+        (1\ 2) & (2, 1, 1, 1) & 10 & -1 & 12 & \langle (1\ 2) \rangle \times \operatorname{Sym}\{3, 4, 5\} \cong C_2 \times S_3 \\
+        (1\ 2) (3\ 4) & (2, 2, 1) & 15 & 1 & 8 & \langle (1\ 3\ 2\ 4), (1\ 2) \rangle \cong D_8 \\
+        (1\ 2\ 3) & (3, 1, 1) & 20 & 1 & 6 & \langle (1\ 2\ 3), (4\ 5) \rangle \cong C_6 \\
+        (1\ 2\ 3) (4\ 5) & (3, 2) & 20 & -1 & 6 & " \\
+        (1\ 2\ 3\ 4) & (4, 1) & 30 & -1 & 4 & \langle (1\ 2\ 3\ 4) \rangle \\
+        (1\ 2\ 3\ 4\ 5) & (5) & 24 & 1 & 5 & \langle (1\ 2\ 3\ 4\ 5) \rangle
+    \end{array}  
+\end{align*} 
+Now consider $A_5$, $|A_5| = 60$.
+\begin{align*}
+    \begin{array}{ccccc}
+        \text{example member}, x & \text{cycle type} & C_{A_5}(x) & |\operatorname{ccl}_{A_5}(x)| \\
+        e & (1, 1, 1, 1, 1) & A_5 & 1\\
+        (1\ 2) (3\ 4) & (2, 2, 1) & \langle (1\ 2) (3\ 4), (1\ 3) (2\ 4)\rangle & 15\\
+        (1\ 2\ 3) & (3, 1, 1) & \langle (1\ 2\ 3) \rangle & 20 \\
+        (1\ 2\ 3\ 4\ 5) & (5) & \langle (1\ 2\ 3\ 4\ 5) \rangle & 12 \\
+        (2\ 1\ 3\ 4\ 5) & (5) & \langle (2\ 1\ 3\ 4\ 5) \rangle & 12 \\
+    \end{array}  
+\end{align*} 
+
+Recall \Cref{def:sixteen}, a group is \emph{simple} if it has no non-trivial proper normal subgroups, i.e. if the only normal subgroups are $\{e\}$ and the group itself. 
+
+\begin{theorem} \label{thm:10}
+    $A_5$ is a simple group.
+\end{theorem} 
+
+\begin{proof}
+    Suppose $N \trianglelefteq A$.
+    Then $N$ is a union of conjugacy classes (Sheet 3, Q3(a)). \\
+    $\implies |N| = 1 + 15a + 20b + 12c + 12d$ where $a, b, c, d \in \{0, 1\}$.
+    But by \nameref{thm:three} $|N| \bigg| |A_5| = 60 \implies |N| = 1 \text{ or } 60$.
+\end{proof} 
+
+\emph{Comments}
+
+\begin{enumerate}
+    \item $A_5$ is the smallest non-abelian simple group.
+    \item $A_n$ is simple $\forall \; n \geq 5$ (GRM), but $A_4$ is not simple.
+    \item Classification of finite simple groups exists, includes $\infty$ families
+    \begin{itemize}
+        \item $C_p$ where $p$ is prime (only abelian simple groups) 
+        \item $A_n$ for $n \geq 5$
+        \item groups of `Lie type', matrix groups
+        \item 26 sporadic groups, include Monster and Baby Monster
+    \end{itemize} 
+\end{enumerate} 
