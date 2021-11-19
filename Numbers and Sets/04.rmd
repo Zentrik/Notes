@@ -490,3 +490,109 @@ Hence $f$ is invertible with inverse $g$.
         1 & \text{if } x = 1
     \end{cases} 
 \end{align*} have $g \circ f = \text{id}_\mathbb{N}$ but $f \circ g \neq \text{id}_\mathbb{N}$ because $f \circ g(1) \neq 1$.
+
+Given $f: A \to B$, when is there a map $g : B \to A$ s.t. $g \circ f = \text{id}_A$?\
+If such a $g$ exists, and $a, a' \in A$ are s.t. $f(a) = f(a')$, then $gf(a) = gf(a')$ so $a = a'$.
+Therefore $f$ must be injective. \
+Conversely, if $f$ is injective, we can find $g$ s.t. $g \circ f = \text{id}_A$: if $b \in f(A)$, let $g(b) = a$, where $a$ is the unique element of $A$ with $f(a) = b$; if $b \neq f(A)$, let $g(b)$ be anything you like^[as $g \circ f$ will never lead to $g(b)$ if $b \neq f(A)$].
+
+Given $f : A \to B$, when is there a map $g : B \to A$ s.t. $f \circ g = \text{id}_B$?\
+$f \circ g = \text{id}_B \implies f(g(b)) = b \forall \; b \in B$ so we need $f(g(B)) = B$, so $f$ must be surjective.\
+Conversely, if $f$ is surjective, we can find $g: B \to A$ with $f \circ g = \text{id}_B$: for each $b \in B$, pick some $a \in A$ with $f(a) = b$ and put $g(b) = a$.
+
+It follows that $f : A \to B$ is invertible iff $f$ is bijective.
+We write $f^{-1} : B \to A$ for the inverse of $f$ when it exists.
+
+*Note*: Given $f : A \to B$ and $U \subseteq B$, we sometime write $f^{-1}(U) = \{a \in A : f(a) \in U\}$ for the *preimage* of $U$.
+This does *not* mean that $f$ has an inverse!
+```{r 04-preimage, echo = FALSE, fig.cap = "", fig.align="center", out.height="300"} 
+knitr::include_graphics("figures/04-preimage.png") 
+```
+
+## Relations
+
+A *relation* on a set $X$ is a subset $R \subseteq X \times X$.
+We usually write $aRb$ ("$a$ is related to $b$") for $(a, b) \in R$.
+
+::: {.example name="Relations on $\mathbb{N}$"}
+
+\
+
+1. $aRb$ if $a, b$ have the same final digit;
+2. $aRb$ if $a \mid b$;
+3. $aRb$ if $a \neq b$;
+4. $aRb$ if $a = b = 1$;
+5. $aRb$ if $|a - b| \leq 3$;
+6. $aRb$ if either $a, b \leq 4$ or $a, b \geq 5$.
+:::
+
+There are three properties that a relation might have that are of special interest.
+
+::: {.definition name="Reflexive relation"}
+$R$ is *reflexive* if $\forall \; x \in X, xRx$.
+:::
+::: {.definition name="Symmetric relation"}
+$R$ is *symmetric* if $\forall \; x, y, xRy \implies yRx$ (swapping $x, y$ gives $\iff$).
+:::
+::: {.definition name="Transitive relation"}
+$R$ is *transitive* if $\forall \; x, y, z \in X, xRy$ and $yRz \implies xRz$.
+:::
+
+::: {.example}
+With regards to the examples above,
+\begin{array}{lcccccc}
+    \hline
+    \text{Examples } & 1 & 2 & 3 & 4 & 5 & 6 \\
+    \hline
+    \text{Reflexive } & \checkmark & \checkmark & \times & \times & \checkmark & \checkmark \\
+    \text{Symmetric } & \checkmark & \times & \checkmark & \checkmark & \checkmark & \checkmark \\
+    \text{Transitive } & \checkmark & \checkmark & \times & \checkmark & \times & \checkmark \\
+    \hline
+\end{array}
+:::
+
+::: {.definition name="Equivalence relation"}
+A relation $R$ ir an *equivalence relation" if it reflexive, symmetric and transitive.
+We often write $a \sim b$ for $aRb$.
+:::
+So (1) and (6) are equivalence relations.
+We have already seen another one:\
+(7). $X = \mathbb{Z}$ with $a \sim b$ if $a \equiv b \mod 5$.
+This equivalence relations partitions $\mathbb{Z}$ into "pieces" consisting of related elements, namely $\{x \in \mathbb{Z} : x \equiv 0 \mod 5\}, \{x \in \mathbb{Z} : x \equiv 1 \mod 5\}, \ldots, \{x \in \mathbb{Z} : x \equiv 4 \mod 5\}$.
+
+::: {.definition name="Partition of set"}
+Given a set $X$, a *partition* of $X$ is a collection of pairwise disjoint subsets (called "parts") whose union is $X$.
+:::
+
+::: {.definition name="Equivalence class"}
+If $\sim$ is an equivalence relation on $X$, then the *equivalence class* of $x \in X$ is
+\begin{align*}
+    [x] = \{y \in X : y \sim X\}.
+\end{align*} 
+:::
+E.g. in (1), $[376] = \{$all natural numbers ending in $6\}$. \
+in (7), $[12] = \{y : y \equiv 2 \mod 5\}$.
+
+*Important observation*
+Given a partition of $X$, there is an equivalence relation $R$ whose equivalence classes are precisely the parts of the partition: just define $a \sim b$ if $a$ and $b$ lie in the same part.
+```{r 04-partition, echo = FALSE, fig.cap = "", fig.align="center", out.height="300"} 
+knitr::include_graphics("figures/04-partition.png") 
+```
+
+::: {.theorem #ffive}
+Let $\sim$ be any equivalence relation on $X$.
+Then the equivalences classes for a partition of $X$.
+::: 
+
+::: {.proof}
+Since $\sim$ is reflexive, we have $x \in [x] \; \forall \; x \in X$.
+Thus $\bigcap_{x \in X} [x] = X$.
+It remains to show that $\forall \; x, y \in X$, either $[x] \cap [y] = \emptyset$ or $[x] = [y]$.
+Suppose $[x] \cap [y] \neq \emptyset$, and let $z \in [x] \cap [y]$.\
+Then $z \sim x$, so by symmetry $x \sim z$, and $z \sim y$.
+Then by transitivity, $x \sim y$.
+Let $w \in [y]$, so $y \sim w$.
+Since $x \sim y$ and $y \sim w$ by transitivity, $x \sim w$.
+Thus $w \in [x]$.\
+Hence if $[x] \cap [y] = \emptyset$, then $[y] \subseteq [x]$.
+:::
