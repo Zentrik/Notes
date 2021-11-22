@@ -1,0 +1,68 @@
+# Countability
+
+We would like to talk about sizes of infinite sets e.g. $\mathbb{N}$ "looks smaller than" $\mathbb{Z}$, and a lot smaller than $\mathbb{Q}$, which in turn looks smaller that $\mathbb{R}$.
+
+::: {.definition name="Countable sets"}
+We say a set $X$ is *countable* if $X$ is finite or there is a bijection $X \to \mathbb{N}$.
+That is $X$ is countable iff we can list the elements of $X$ as $x_1, x_2, x_3, \ldots$ (will terminate if finite set).
+:::
+
+::: {.example}
+
+\
+
+1. Any finite set is countable.
+
+2. $\mathbb{N}$ is countable.
+
+3. $\mathbb{Z}$ is countable, as we may $\mathbb{Z}$ as $0, 1, -1, 2, -2, 3 \ldots$ i.e. $x_n = \begin{cases}
+    \frac{n}{2} & \text{if $n$ is even} \\
+    -\frac{n - 1}{2} & \text{if $n$ is odd}.
+\end{cases}$
+:::
+
+::: {.lemma #vone}
+Any subset of $\mathbb{N}$ is countable.
+:::
+
+::: {.proof}
+If $S \subseteq N$ is non-empty, by WOP (well ordering principle) there is a least element $s_1 \in S$.
+If $S \setminus \{s_1\} \neq \emptyset$, by WOP there is a least element $s_2 \in S_1 \setminus \{s_1, s_2\} \neq \emptyset \ldots$
+If at some point this process stops, then $S = \{s_1, s_2, \ldots, s_m\}$ is finite.
+If it goes on forever, the map $g : \mathbb{N} \to S$ given by $g(n) = s_n$ is well defined (for every $n$, there is a unique $s_n$) and is injective.
+It is also surjective because if $k \in S$, then $k \in \mathbb{N}$, and there are $< k$ elements of $S$ less than $k$, so $k = s_n$ for some $n \leq k$.
+:::
+
+*Warning* In $\mathbb{R}$, let $S = \left\{\frac{1}{2}, \frac{2}{3}, \frac{3}{4}, \ldots\right\} \cup \{1\}$, then $S$ is countable as we can list it as $1, \frac{1}{2}, \frac{3}{4}, \ldots$ but if we have tried to list the elements in increasing order (as in the proof of Lemma \@ref(lem:vone) then $1$ would not be on the list).
+
+::: {.theorem #vtwo}
+The following statements are equivalent:
+
+1. $X$ is countable;
+
+2. There is an injection $X \to \mathbb{N}$;
+
+3. $X = \emptyset$ or there is a surjection $\mathbb{N} \to X$.
+:::
+
+::: {.proof}
+Plainly (i) $\implies$ (ii) for if $X$ is finite, it obviously injects into $\mathbb{N}$, and if $X$ bijects with $\mathbb{N}$, then it certainly injects into $\mathbb{N}$.\
+Conversely, if there is an injection $f : X \to \mathbb{N}$, then $f$ is a bijection between $X$ and $S = f(X)$.
+If $S$ is finite, then so is $X$.
+If $S$ is infinite, then by Lemma \@ref(lem:vone), there is a bijection $g : S \to \mathbb{N}$, and thus $X \overset{f}{\to} S = f(X) \overset{g}{\to} \mathbb{N}$ is a bijection.
+So (ii) $\implies$ (i).
+Plainly (i) $\implies$ (iii), if $X \neq \emptyset$ and there is a surjection $f : \mathbb{N} \to X$, define $g : X \to \mathbb{N}$ by $g(a) = \min f^{-1}(\{a\})$, which exists by WOP.
+$g$ is injective, so by (ii), $X$ is countable, i.e. (iii) $\implies$ (i).
+:::
+
+::: {.corollary #vthree}
+Any subset of a countable set is countable.
+:::
+
+::: {.proof}
+If $Y \subseteq X$ and $X$ is countable, then take the injection $X \to \mathbb{N}$ restricted to $Y$.
+:::
+
+We may thus view "countable" as meaning as saying a set is "at most as big as $\mathbb{N}$".
+
+

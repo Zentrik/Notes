@@ -91,3 +91,176 @@ Furthermore, by \nameref{thm:six}
     $\mathbb{R}, \mathbb{C}, \mathbb{Q}, \mathbb{F}_p$ where $\mathbb{F}_p = \left( \{0, 1, 2, \ldots, p- 1\}, +_p, \times_p \right)$ and $p$ is prime.
     Note $\operatorname{GL}_n(\mathbb{F}_p)$ and $\operatorname{SL}_n(\mathbb{F}_p)$ are finite groups.
 \end{remark} 
+
+What is $|GL_3(\mathbb{F}_p)|$? \\
+Non-zero determinant means we have linearly independent columns.
+The no. of choices for the first column is $p^3 - 1$ (can't be $\begin{pmatrix}0 & 0 & 0\end{pmatrix}^T$).
+The second column is not a multiple of first so $p^3 - p$ (there are $p$ multiples of first column).
+Third column not in space spanned by first two columns, this space has size $p^2$ (consider $\alpha c_1 + \beta c_2$ with $\alpha, \beta \in \mathbb{F}_p$), so $p^3 - p^2$. \\
+$\implies |GL_3(\mathbb{F}_p)| = (p^3 - 1)(p^3 - p)(p^3 - p^2)$.
+
+We can still consider 
+\begin{align*}
+    \mathrm{Det} : \operatorname{GL}_3(\mathbb{F}_p) &\to (\mathbb{F}_p \setminus \{0\}, \times) \\
+    A &\mapsto \det(A).
+\end{align*} 
+Note $(\mathbb{F}_p \setminus \{0\}, \times)$ is a group: we have closure, identity $= 1$ and associativity.
+Let $a \in \mathbb{F}_p \setminus \{0\}$, by Bezout's Thm $\exists \; x, y$ s.t.
+\begin{align*}
+    ax + py &= 1 \\
+    \therefore ax &\equiv 1 \pmod p \\
+    \text{Choose } \bar{x} &\equiv x \pmod p, \\
+    1 \leq \bar{x} &\leq p - 1,\ a^{-1} = x
+\end{align*} 
+Det is a surjective homomorphism to $(\mathbb{F}_p \setminus \{0\}, \times)$ so by \nameref{thm:six}
+\begin{align*}
+    |\operatorname{GL}_3(\mathbb{F}_p)| / |\operatorname{SL}_3(\mathbb{F}_p)| &= p - 1 \\
+    \implies |\operatorname{SL}_3(\mathbb{F}_p)| &= \frac{(p^3 - 1)(p^3 - p)(p^3 - p^2)}{p - 1}.
+\end{align*} 
+
+\subsection{Actions of $\operatorname{GL}_n(\mathbb{C})$}
+
+\begin{enumerate}
+    \item Let $\mathbb{C}^n$ denote vectors of length $n$ with entries in $\mathbb{C}$:
+    \begin{align*}
+        \operatorname{GL}_n(\mathbb{C}) \times \mathbb{C}^n &\to \mathbb{C}^n \\
+        (A, v) &\mapsto Av.
+    \end{align*} 
+    Note $Iv = v$, $(AB)v = A(B(v))$.
+    This action is faithful: $Av = v \forall \; v \in \mathbb{C}^n \implies A = I_n$ (consider $v = e_i$).
+    The action has two orbits
+    \begin{align*}
+        \operatorname{Orb}_{\operatorname{GL}_n(\mathbb{C})}(\underline{0}) &= \{\underline{0}\} \\
+        \operatorname{Orb}_{\operatorname{GL}_n(\mathbb{C})}(v) &= \mathbb{C}^n \setminus \{0\} \text{ for } v \neq \underline{0},
+    \end{align*} i.e. given $w \neq 0 \; \exists \; A \in \operatorname{GL}_n(\mathbb{C})$ s.t. $Av = w$.
+    \item Conjugation action of $\operatorname{GL}_n(\mathbb{C})$ on $M_n(\mathbb{C})$ (set of all matrices)
+    \begin{align*}
+        \operatorname{GL}_n(\mathbb{C}) \times M_n(\mathbb{C}) &\to M_n(\mathbb{C}) \\
+        (P, A) &\mapsto P A P^{-1}. \\
+    \text{Note: } PQ(A) &= PQ A (PQ)^{-1} \\
+        &= PQ A Q^{-1} P^{-1} \\
+        &= P(Q(A)).
+    \end{align*} 
+\end{enumerate} 
+
+\begin{remark}
+    Matrices $A$ and $B$ are conjugate if they represent the same linear map. 
+    If $PAP^{-1} = B$, then $P$ represents a change of basis matrix. (See LA next year)
+\end{remark} 
+
+\begin{example}
+    \begin{align*}
+        A : e_1 &\mapsto 2 e_1 \\
+        e_2 &\mapsto 3e_2 \\
+        A &= \begin{pmatrix}
+        2 & 0 \\
+        0 & 3
+        \end{pmatrix} \\
+        \text{Let } P : e_1 &\mapsto e_2 \\
+        e_2 &\mapsto e_1 \\
+        P &= \begin{pmatrix}
+        0 & 1 \\
+        1 & 0
+        \end{pmatrix} \\
+        &= P^{-1} \\
+        \intertext{$P$ is a change of basis}
+        PAP^{-1} &= \begin{pmatrix}
+            0 & 1 \\
+            1 & 0
+            \end{pmatrix} \begin{pmatrix}
+                2 & 0 \\
+                0 & 3
+                \end{pmatrix} \begin{pmatrix}
+                0 & 1 \\
+                1 & 0
+                \end{pmatrix} \\
+            &= \begin{pmatrix}
+            3 & 0 \\
+            0 & 2
+            \end{pmatrix} \\
+        \text{i.e. } e_2 &\mapsto 3e_2 \\
+        e_1 &\mapsto 2 e_1.
+    \end{align*}
+\end{example} 
+
+We will use the following result from V\&M when investigating M\"obius groups.
+
+\emph{Result}
+Let $A \in M_2(\mathbb{C})$ and consider conjugation action of $\operatorname{GL}_2(\mathbb{R})$ on $M_2(\mathbb{C})$.
+Then precisely one of the following occurs
+\begin{enumerate}
+    \item The orbit of $A$ contains a diagonal matrix $\begin{pmatrix}\lambda & 0 \\0 & \mu\end{pmatrix}$ with $\lambda \neq \mu$.
+    \item The orbit of $A$ is $\begin{pmatrix}\lambda & 0 \\0 & \lambda\end{pmatrix} = \lambda I$ for some $\lambda$.
+    \item The orbit of $A$ contains a matrix $\begin{pmatrix}\lambda & 1 \\0 & \lambda\end{pmatrix}$ for some $\lambda$.
+\end{enumerate} 
+
+\begin{proof}
+    See V\&M but essentially 
+    \begin{enumerate}
+        \item In this case $A$ has $2$ distinct eigenvalues $\lambda \neq u$, take a basis consisting of an eigenvector for $\lambda$ and an eigenvector for $\mu$.
+        Distinct pairs given distinct orbits.
+        \item $PAP^{-1} = \lambda I \implies A = P \lambda I P^{-1} = \lambda I$, eigenvalues $\lambda, \lambda$, 2 linearly independent eigenvectors.
+        \item In this case $A$ has a repeated eigenvalue, but just one linearly independent eigenvector.
+    \end{enumerate} 
+\end{proof} 
+
+\begin{center}\rule{\linewidth}{0.5pt}\end{center}
+
+\emph{Aside - Recalling transpose properties}
+
+Recall if $A \in M_n(\mathbb{R})$, $A^T$ is defined by $(A^T)_{ij} = A_{ji}$, i.e. the $ij$-th entry of $A^T$ is the $ji$-th entry of $A$
+\begin{align*}
+    A &= \begin{pmatrix}2 & 4 \\3 & 5\end{pmatrix} \\
+    A^T &= \begin{pmatrix}2 & 3 \\4 & 5\end{pmatrix}
+\end{align*} 
+
+\emph{Note}
+\begin{enumerate}
+    \item
+    \begin{align*}
+        (AB)^T &= B^T A^T \\
+        [(AB)^T]_{ij} &= (AB)_{ji} \\
+        &= A_{jk}B_{ki} \\
+        [B^T A^T]_{ij} &= B^T_{ik} A^T_{kj} \\
+        &= B_{ki} A_{jk} \checkmark
+    \end{align*} 
+    \item \begin{align*}
+        A A^T &= I \\
+        \implies 1 &= \det (A^T A) \\
+        &= \det A^T \det A \\
+        &= (\det A)^2 \\
+        \implies \det A &\neq 0 \\
+    \end{align*}
+    \item \begin{align*}
+        A A^T &= I \iff A^T A = I. \\
+        \implies A^T A &= A^{-1} \underbrace{A A^T}_I A \\
+        &= A^{-1} A \\
+        &= I.
+    \end{align*} 
+    \item
+    \begin{align*}
+        (A^T)^{-1} &= (A^{-1})^T \\
+        \text{Since } I_n &= (A A^{-1})^T \\
+        &= (A^{-1})^T A^T
+    \end{align*} 
+    \item \begin{align*}
+        \det A^T &= \det A.
+    \end{align*} 
+\end{enumerate} 
+
+\begin{center}\rule{\linewidth}{0.5pt}\end{center}
+
+Define \begin{align*}
+    O_n(\mathbb{R}) &= \{ A \in M_n(\mathbb{R}) : A^T A = I\}
+\end{align*} (so columns of $A$ form an orthonormal basis for $\mathbb{R}^n$).
+
+\begin{proposition}\label{prp:10}
+    $O_n(\mathbb{R})$ is a subgroup of $\operatorname{GL}_n(\mathbb{R})$ called the \emph{orthogonal group}.
+\end{proposition} 
+
+\begin{proof}
+    \begin{align*}
+        \det A &\neq 0 \implies O_n(\mathbb{R}) \subseteq \operatorname{GL}_n(\mathbb{R}).
+    \end{align*} 
+    Associativity is inherited.
+\end{proof} 

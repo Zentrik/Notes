@@ -567,7 +567,7 @@ Given a set $X$, a *partition* of $X$ is a collection of pairwise disjoint subse
 ::: {.definition name="Equivalence class"}
 If $\sim$ is an equivalence relation on $X$, then the *equivalence class* of $x \in X$ is
 \begin{align*}
-    [x] = \{y \in X : y \sim X\}.
+    [x] = \{y \in X : y \sim x\}.
 \end{align*} 
 :::
 E.g. in (1), $[376] = \{$all natural numbers ending in $6\}$. \
@@ -595,4 +595,33 @@ Let $w \in [y]$, so $y \sim w$.
 Since $x \sim y$ and $y \sim w$ by transitivity, $x \sim w$.
 Thus $w \in [x]$.\
 Hence if $[x] \cap [y] = \emptyset$, then $[y] \subseteq [x]$.
+:::
+
+This is a useful viewpoint: it is not easy to see that there is an equivalence relation on $\mathbb{N}$ with $3$ equivalence classes, of which $2$ are infinite and $1$ is finite - simply take a partition of $\mathbb{N}$ with this property.
+
+::: {.definition name="Quotient"}
+Given an equivalence relations $R$ on a set $X$, the *quotient of $X$ by $R$* is 
+\begin{align*}
+    X / R = \{ [x] : x \in X\}
+\end{align*} 
+:::
+
+E.g. in (7), $X / R$ has size $5$, in (1) has size $10$.
+In fact, this explains why we sometimes write $\mathbb{Z} / 5 \mathbb{Z}$ (the relation is whether two integers if their difference is a multiple of 5) instead of $\mathbb{Z}_5$.
+
+::: {.definition name="Quotient map"}
+The map \begin{align*}
+    q : &\to X / R \\
+    x &\mapsto [x]
+\end{align*} is the *quotient map* (or *projection map*).
+:::
+
+::: {.example}
+On $\mathbb{Z} \times \mathbb{N}$, define $(a, b) R (c, d)$ if $ad = bc$.
+It is easy to see that $B$ is an equivalence relation. \\
+E.g. $[(1, 2)] = \{(1, 2), (2, 4), (3, 6) \ldots \}$ so we can regard $\mathbb{Z} \times \mathbb{N} / R$ as a copy of $Q$ by identifying $[(a, b)]$ with $\frac{a}{b} \in \mathbb{Q}$.
+The quotient map \begin{align*}
+    q : \mathbb{Z} \times \mathbb{N} &\to \mathbb{Z} \times \mathbb{N} / R \\
+    (a, b) &\to \frac{a}{b}.
+\end{align*} 
 :::
