@@ -65,4 +65,90 @@ If $Y \subseteq X$ and $X$ is countable, then take the injection $X \to \mathbb{
 
 We may thus view "countable" as meaning as saying a set is "at most as big as $\mathbb{N}$".
 
+::: {.theorem #vfour}
+$\mathbb{N} \times \mathbb{N}$ is countable.
+:::
 
+::: {.proof name="1"}
+Define $a_1 = (1, 1)$ and $a_n$ inductively by, writing $a_{n-1} = (p, q)$, 
+\begin{align*}
+    a_n = \begin{cases}
+        (p - 1, q + 1) & p \neq 1 \\
+        (p + q, 1) & \text{otherwise.}
+    \end{cases}
+\end{align*} 
+This list includes every point $(x, y) \in \mathbb{N} \times \mathbb{N}$ by induction on $x + y$.
+:::
+
+::: {.proof name="2"}
+Define
+\begin{align*}
+    f : \mathbb{N} \times \mathbb{N} &\to \mathbb{N} \\
+    (x, y) &\mapsto 2^x 3^y.
+\end{align*}
+Then $f$ is injective by \@ref(thm:fta)
+:::
+
+::: {.corollary}
+$\mathbb{Z} \times \mathbb{Z}$ is countable
+:::
+::: {.proof}
+Since $\mathbb{Z}$ is countable, there is an injection $\mathbb{Z} \to \mathbb{N}$, so because $\mathbb{N} \to \mathbb{N}$ is countable, we have an injection $\mathbb{Z} \times \mathbb{Z} \to \mathbb{N} \times \mathbb{N} \to \mathbb{N}$.
+:::
+
+By induction $\mathbb{Z}^k$ is countable for any $k \in \mathbb{N}$.
+
+::: {.theorem #vsix}
+A countable union of countable sets is countable (a countable union is a union of sets that are indexed by a countable set)
+:::
+::: {.proof name="1"}
+We may assume that our countable sets are indexed by $\mathbb{N}$, so given countable sets $A_1, A_2 A_3, \ldots$ we wish to show $\bigcup_{n \in \mathbb{N}} A_n$ is countable. \
+For each $i \in \mathbb{N}$, since $A_i$ is countable, we may list its elements as $a_1^{(i)}, a_2^{(i)}, a_3^{(i)}$ (might terminate).
+Define \begin{align*}
+    f : \bigcup_{n \in \mathbb{N}} A_n &\to \mathbb{N} \\
+    x &\mapsto 2^i 3^j
+\end{align*} where $x = a_j^{(i)}$ for the least $i$ s.t. $x \in A_i$ (as $x$ could be in more than of the $A_i$'s).
+This is an injection.
+:::
+::: {.proof name="2"}
+Let $I$ be a countable index set, and for each $i \in I$, $A_i$ is a countable set.
+Since $I$ is countable, there is an injection $f : I \to \mathbb{N}$ and for each $i \in I$, since $A$ is countable, there is an injection $g_i :A_i \to \mathbb{N}$. \
+We construct an injection $h : A = \bigcup_{i \in I} A_i \to \mathbb{N} \times \mathbb{N}$ as follows for each $x \in A$, pick $m_x = \min \{j \in \mathbb{N},\ x \in A_i,\ f(i) = j\}$, which exists by WOP.
+Let $i_x$ be such that $f(i_x) = m_x$ ($i_x$ is unique as $f$ is injective).
+Set $h(x) = (m_x, g_{i_x}(x))$.
+Then $h$ is an injection.
+:::
+
+::: {.example}
+$\mathbb{Q} = \bigcup_{n \in \mathbb{N}} \frac{1}{n} \mathbb{Z} = \bigcup_{n \in \mathbb{N}} \left\{ \frac{m}{n} : m \in \mathbb{Z} \right\}$, so $\mathbb{Q}$ is a countable union of countable sets, hence countable.
+:::
+
+::: {.theorem #vseven}
+The set $\mathbb{A}$ of algebraic numbers is countable.
+:::
+::: {.proof}
+It suffices to show that the set of all polynomials with integer coefficients is countable as then $\mathbb{A}$ is a countable union of finite sets, so by Theorem \@ref(thm:vsix), is countable.
+In fact, it suffices to show that for each $d \in \mathbb{N}$, the set $P_d$ of all integer polynomials of degree $d$ is countable, again by Theorem \@ref(thm:vsix).
+But the map $P_d \to \mathbb{Z}^{d + 1}$, $p(x) = a_d x^d + a_{d-1}x^{d-1} + \ldots + a_1 x + a_0 \mapsto (a_d, a_{d-1}, \ldots, a_1, a_0)$ is an injection, so since $\mathbb{Z}^{d + 1}$ is countable, $P_d$ is countable.
+:::
+A set is *uncountable* if it is not countable.
+Do uncountable sets exist?
+
+::: {.theorem #veight}
+$\mathbb{R}$ is uncountable.
+:::
+::: {.proof}
+If $\mathbb{R}$ were countable, we would be able to list all the reals as $r_1, r_2, r_3, \ldots$
+Write each $r_n$ in decimal form in some way.
+\begin{align*}
+    r_1 &= n_1.d_{11} d_{12} d_{13} d_{14} \ldots \\
+    r_2 &= n_2.d_{21} d_{22} d_{23} d_{24} \ldots \\
+    r_3 &= n_3.d_{31} d_{32} d_{33} d_{34} \ldots \\
+    &\;\;\vdots
+\end{align*} 
+Define $r = 0.d_1 d_2 d_3 \ldots$ by $d_n = \begin{cases}
+    1 & \text{if } d_{nn} \neq 1 \\
+    2 & \text{if } d_{nn} = 1
+\end{cases}.$
+This $r$ has only one decimal expansion and is not on the list (because $\forall \; n \in \mathbb{N}, r \neq r_n$) which is a contradiction.
+:::
