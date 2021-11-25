@@ -206,6 +206,8 @@ Then precisely one of the following occurs
 
 \begin{center}\rule{\linewidth}{0.5pt}\end{center}
 
+\subsection{Orthogonal Group}
+
 \emph{Aside - Recalling transpose properties}
 
 Recall if $A \in M_n(\mathbb{R})$, $A^T$ is defined by $(A^T)_{ij} = A_{ji}$, i.e. the $ij$-th entry of $A^T$ is the $ji$-th entry of $A$
@@ -259,8 +261,174 @@ Define \begin{align*}
 \end{proposition} 
 
 \begin{proof}
-    \begin{align*}
-        \det A &\neq 0 \implies O_n(\mathbb{R}) \subseteq \operatorname{GL}_n(\mathbb{R}).
-    \end{align*} 
-    Associativity is inherited.
+    \begin{itemize}
+        \item $\det A \neq 0 \implies O_n(\mathbb{R}) \subseteq \operatorname{GL}_n(\mathbb{R})$.
+        \item closure: \begin{align*}
+            A, B &\in O_n(\mathbb{R}) \\
+            (AB)^T (AB) &= B^T A^T A B \\
+            &= B^T B = I \\
+            \implies AB \in O_n(\mathbb{R})
+        \end{align*} 
+        \item $I_n \in O_n(\mathbb{R})$
+        \item Associativity is inherited.
+        \item inverse: $A^T A = I_n \implies A^T = A^{-1}$ and $A^T \in O_n(\mathbb{R})$ since $(A^T)^T = A$ and $A A^T = I$.
+    \end{itemize} 
 \end{proof} 
+
+Note $1 = (\det A)^2 \implies \det A = \pm 1$ if $A \in O_n(\mathbb{R})$. \\
+So, \begin{align*}
+    \text{Det} : O_n(\mathbb{R}) &\to \left( \{ \pm 1 \}, \times \right) \\
+    A &\mapsto \det A
+\end{align*} is a surjective homomorphism as, $\begin{pNiceMatrix}
+    -1 &       & \Block{2-3}<\huge>{0} \\
+        &   1   &        &      &       \\
+        &       &   1    &      &       \\
+    \Block{2-3}<\huge>{0}
+        &       &       & \Ddots    &   \\
+        &       &       &      &   1   \\
+  \end{pNiceMatrix} \in O_n(\mathbb{R})$.
+\begin{align*}
+    \text{So } \ker (\text{Det}) &= \{ A \in O_n(\mathbb{R}) : \det A = 1\} \\
+    &= SO_n(\mathbb{R}) \trianglelefteq O_n(\mathbb{R}).
+\intertext{By \nameref{thm:six}:}
+    O_n(\mathbb{R}) / SO_n(\mathbb{R}) &\cong C_2.
+\end{align*} 
+
+\begin{lemma}\label{lem:20}
+    Let $A \in O_n(\mathbb{R})$ and $\underline{x}, \underline{y} \in \mathbb{R}^n$. Then
+    \begin{enumerate}
+        \item $A \underline{x} \cdot A \underline{y} = \underline{x} \cdot \underline{y}$
+        \item $|A \underline{x}| = |\underline{x}|$. \label{07-itm-2}
+    \end{enumerate} 
+    So $A$ is an isometry (distance preserving map) of Euclidean space $\mathbb{R}^n$.
+\end{lemma} 
+
+\begin{proof}
+    \begin{enumerate}
+        \item \begin{align*}
+            A \underline{x} \cdot A \underline{y} &= (A \underline{x})^T (A \underline{y}) \\
+            &= \underline{x}^T A^T A \underline{y} \\
+            &= \underline{x}^T \underline{y} \\
+            &= \underline{x} \cdot \underline{y}.
+        \end{align*} 
+        \item \begin{align*}
+            |A \underline{x}|^2 &= A \underline{x} \cdot A \underline{x} \\
+            &= \underline{x} \cdot \underline{x} \\
+            &= |\underline{x}|^2
+        \end{align*} 
+    \end{enumerate} 
+\end{proof} 
+
+Note by \Cref{07-itm-2} if $\lambda$ is an eigenvalue of $A$, $A \underline{x} = \lambda \underline{x} \implies |\lambda \underline{x}| = |\underline{x}|$ i.e. $|\lambda| = 1$.
+
+\subsubsection{In 2 dimensions}
+Let $A = \begin{pmatrix}a & b \\c & d\end{pmatrix} \in \operatorname{GL}_2(\mathbb{R})$ and
+\begin{align*}
+    I &= A A^T \\
+    &= \begin{pmatrix}a & b \\c & d\end{pmatrix} \begin{pmatrix}a & c \\b & d\end{pmatrix} \\
+    \implies 1 &= a^2 + b^2 = c^2 + d^2 \\
+    0 &= ac + bd. \\
+    I &= A^T A \\
+    &= \begin{pmatrix}a & c \\b & d\end{pmatrix}  \begin{pmatrix}a & b \\c & d\end{pmatrix} \\
+    \implies 1 &= a^2 + c^2 = b^2 + d^2 \\
+    0 &= ab + cd. \\
+\end{align*}
+
+For $0 \leq \theta < 2 \pi$ let 
+\begin{align*}
+    \begin{pmatrix}a \\c\end{pmatrix} &= \begin{pmatrix}\cos \theta \\ \sin \theta\end{pmatrix} \\
+    \text{so } \begin{pmatrix}b \\ d\end{pmatrix} &= \begin{pmatrix}\mp \sin \theta \\ \pm \cos \theta\end{pmatrix}. \\
+    A &= \begin{pmatrix}
+    \cos \theta & -\sin \theta \\
+    \sin \theta & \cos \theta 
+    \end{pmatrix} \\ 
+    \det A &= 1 \text{ so a rotation and all elements of $SO_2(\mathbb{R})$ are of this form}. \\
+    \text{Or } A &= \begin{pmatrix}
+        \cos \theta & \sin \theta \\
+        \sin \theta & - \cos \theta 
+        \end{pmatrix} \\
+    \det A &= - 1 \\
+    A \begin{pmatrix}x \\y\end{pmatrix} &= e^{i \theta} \overline{x + iy} = e^{i \theta} \bar{z}
+    \intertext{What are the fixed points?}
+    z = e^{i \theta} \bar{z} &\iff e^{- i \theta / 2} z = e^{i \theta / 2} \bar{z} \\
+    &\iff e^{- i \theta / 2} z = t \in \mathbb{R} \\
+    &\iff z = e^{i \theta / 2} t. \\
+    &\implies \text{ a reflection in line } e^{i \theta / 2} \\
+    \intertext{All elmenents of $O_2(\mathbb{R}) \setminus SO_2(\mathbb{R})$ of this form.}
+    \text{So, } O_2(\mathbb{R}) &= \underbrace{SO_2(\mathbb{R})}_\text{rotations} \mathbin{\dot{\cup}} \underbrace{\begin{pmatrix}1 & 0 \\0 & -1\end{pmatrix} SO_2(\mathbb{R})}_\text{reflections} 
+\end{align*} 
+Note any element of $O_2(\mathbb{R})$ is a product of at most two reflections.
+Since if $A \in SO_2(\mathbb{R})$ then $A = \underbrace{\left( A \begin{pmatrix}1 & 0 \\0 & -1\end{pmatrix} \right)}_\text{reflection} \underbrace{\begin{pmatrix}1 & 0 \\0 & -1\end{pmatrix}}_\text{reflection}$.
+
+\subsubsection{In 3 dimension}
+\begin{proposition}\label{prp:11}
+    Let $A \in SO_3(\mathbb{R})$.
+    Then $A$ has an eigenvector with eigenvalue $1$.
+\end{proposition} 
+
+\begin{proof}
+    \begin{align*}
+        \det (A - I) &= \det  (A - A A^T) \\
+        &= \det A \det (I - A^T) \\
+        &= 1 \cdot \det (I - A)^t \\
+        &= \det (I - A) \\
+        &= (-1)^3 \det (A - I) \\
+        &= - \det (A - I) \\
+        \implies \det (A - I) &= 0 \text{ and $A$ has an eigenvalue $= 1$}.
+    \end{align*} 
+\end{proof} 
+
+\begin{proof}[Alternative Proof]
+    Consider $\chi_A(x)$ (characteristic poly of $A$), it is a cubic in $\mathbb{R}$.
+    Thus it has a real root, and $|\lambda| = 1 \implies \lambda = \pm 1$. 
+    But the other eigenvalues are either a complex conjugate pair, then $\lambda = 1$ as product of eigenvalues give $\det A = 1$, or all are real so either $1, -1, -1$ or $1, 1, 1$.
+\end{proof} 
+
+\begin{theorem} \label{thm:11}
+    Let $A \in SO_3(\mathbb{R})$ then $A$ is conjugate (i.e. there is a change of basis) to a matrix of the form $\begin{pmatrix}
+    \cos \theta & -\sin \theta & 0 \\
+    \sin \theta & \cos \theta & 0 \\
+    0 & 0 & 1
+    \end{pmatrix}$ for some $\theta \in [0, 2 \pi]$.
+    In particular, $A$ is a rotation around an axis through the origin.
+\end{theorem} 
+
+\begin{proof}
+    By \Cref{prp:11} $\exists \; \underline{v} \in \mathbb{R}^3$ with $A \underline{v} = \underline{v}$, we can assume $|\underline{v}| = 1$.
+    Let $\{e_1, e_2, e_3\}$ be the standard orthonormal basis for $\mathbb{R}^3$.
+    There exists $P \in SO_3(\mathbb{R})$ s.t. $P \underline{v} = e_3$.
+    So $PAP^{-1}(e_3) = e_3$ and for $\Pi$ plane perpendicular to $e_3$ then $PAP^{-1}(\Pi)$ is perpendicular to $e_3$.
+    So, 
+    \begin{align*}
+        PAP^{-1} &= \begin{pNiceArray}{cc|c}[margin]
+            \Block{2-2}{\text{action} \\ \text{on $\Pi$}} & & 0 \\
+            & & 0 \\
+            \hline
+            0 & 0 & 0
+            \end{pNiceArray} \\
+            &= \begin{pNiceArray}{cc|c}[margin]
+                \Block{2-2}<\Large>{Q} & & 0 \\
+                & & 0 \\
+                \hline
+                0 & 0 & 0
+                \end{pNiceArray} \\
+            \det (P A P^{-1}) &= \det A = 1 \\
+            \implies \det Q &= 1 \\
+            (P A P^{-1}) (P A P^{-1})^T &= I \implies Q Q^T = I.\\
+            \text{So, } Q \in& SO_2(\mathbb{R}).
+    \end{align*} 
+\end{proof}  
+
+Suppose $\underline{r}$ is a reflection in a plane $\Pi$ through 0.
+Let $\underline{n}$ be a unit vector perpendicular to $\Pi$.
+Then $r(\underline{x}) = \underline{x} - 2 (\underline{x} \cdot \underline{n}) \underline{n}$, $\underline{n} \mapsto - \underline{n}$, $\Pi$ is fixed.
+So $\underline{r}$ is conjugate to $\begin{pmatrix}-1 & 0 & 0 \\0 & 1 & 0 \\0 & 0 & 1\end{pmatrix} \in O_3(\mathbb{R})$ by taking basis $\underline{n}$ and two orthogonal unit vectors in $\Pi$.
+\begin{align*}
+    O_3(\mathbb{R}) = \underbrace{SO_3(\mathbb{R})}_\text{rotations, $\det = 1$} \mathbin{\dot{\cup}} \underbrace{\begin{pmatrix}-1 & 0 & 0 \\0 & 1 & 0 \\0 & 0 & 1\end{pmatrix} SO_3(\mathbb{R})}_{\det = -1}
+\end{align*} 
+$\begin{pmatrix}-1 & 0 & 0 \\0 & 1 & 0 \\0 & 0 & 1\end{pmatrix} SO_3(\mathbb{R})$ includes
+\begin{itemize}
+    \item rotations
+    \item inversion in origin, $-I_3$
+    \item combinations of rotations and reflections
+\end{itemize} 
