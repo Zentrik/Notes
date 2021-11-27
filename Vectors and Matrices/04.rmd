@@ -17,7 +17,7 @@ A *linear map* or *linear transformation* is a function
 for $V, W$ both real or complex vector spaces.^[Mostly concerned with $V = \mathbb{R}^n,\ W = \mathbb{R}^m$ or $V = \mathbb{C}^n,\ W = \mathbb{C}^m$]
 :::
 
-*Note*: a linear map is completely determined by its action on a basis $\{ \underline{e}_1, \ldots, \underline{e}_n \}$ for $V$, since \begin{align*}
+*Note*: a linear map is completely determined by its action on a basis $\{ \underline{e}_1, \dots, \underline{e}_n \}$ for $V$, since \begin{align*}
     T\left( \sum_i x_i \underline{e}_i \right) = \sum_i x_i T(\underline{e}_i)
 \end{align*} 
 
@@ -81,11 +81,11 @@ iii. $\operatorname{rank}(T) + \operatorname{null}(T) = 2 + 1 = 3$
 Non-examinable
 
 ::: {.proof}
-Let $\underline{e}_1, \ldots, \underline{e}_k$ be a basis for $\ker(T)$ so $T(\underline{e}_i) = 0$ for $i = 1, \ldots, k$.\
-Extend by $\underline{e}_{k + 1}, \ldots, \underline{e}_n$ to get a basis for $V$. 
+Let $\underline{e}_1, \dots, \underline{e}_k$ be a basis for $\ker(T)$ so $T(\underline{e}_i) = 0$ for $i = 1, \dots, k$.\
+Extend by $\underline{e}_{k + 1}, \dots, \underline{e}_n$ to get a basis for $V$. 
 Claim 
 \begin{align*}
-    \mathcal{B} &= \{ T(\underline{e}_{k + 1}), \ldots, T(\underline{e}_n) \}
+    \mathcal{B} &= \{ T(\underline{e}_{k + 1}), \dots, T(\underline{e}_n) \}
 \end{align*} is the basis for $\operatorname{Im}(T)$.
 The result then follows since $\operatorname{null}(T) = k$ and $\operatorname{rank}(T) = n - k$, implying $\operatorname{null}(T) + \operatorname{rank}(T) = n$.
 
@@ -101,7 +101,7 @@ $\mathcal{B}$ is linearly independent since
     \implies \sum_{i=k+1}^{n} \lambda_i \underline{e}_i &\in \ker(T) \\
     \implies \sum_{i=k+1}^{n} \lambda_i \underline{e}_i &= \sum_{i=1}^{k} \mu_i \underline{e}_i \\
 \end{align*} 
-But $\underline{e}_1, \ldots, \underline{e}_n$ are linearly independent in $V$
+But $\underline{e}_1, \dots, \underline{e}_n$ are linearly independent in $V$
 \begin{align*}
     \implies \lambda_i &= 0 \\
     \mu_i &= 0
@@ -192,16 +192,16 @@ Let $\underline{x}' = T(\underline{x})$ with
 \begin{align*}
     \underline{x} = \sum_i x_i \underline{e}_i = \begin{pmatrix}x_1 \\ \vdots \\ x_n\end{pmatrix},\ \underline{x}' = \sum_a x_a' \underline{f}_a = \begin{pmatrix}x_1' \\ \vdots \\ x_m'\end{pmatrix}
 \end{align*} 
-Linearity implies $T$ is determined by $T(\underline{e}_i) = \underline{e}_i' = \underline{C}_i \in \mathbb{R}^m \ (i = 1, \ldots, n)$; take these ase *columns* of a $m \times n$ *array* or *matrix* $M$ with *rows*
+Linearity implies $T$ is determined by $T(\underline{e}_i) = \underline{e}_i' = \underline{C}_i \in \mathbb{R}^m \ (i = 1, \dots, n)$; take these ase *columns* of a $m \times n$ *array* or *matrix* $M$ with *rows*
 \begin{align*}
-    \underline{R}_a \in \mathbb{R}^n \ (a = 1, \ldots, m).
+    \underline{R}_a \in \mathbb{R}^n \ (a = 1, \dots, m).
 \end{align*} 
 $M$ has entries $M_{ai} \in \mathbb{R}$ where $a$ labels rows and $i$ labels columns.
 
 \begin{align*}
     \begin{pmatrix}
     \uparrow &  & \uparrow \\
-    \underline{C}_1 & \ldots & \underline{C}_n \\
+    \underline{C}_1 & \dots & \underline{C}_n \\
     \downarrow &  & \downarrow
     \end{pmatrix} = M = 
     \begin{pmatrix}
@@ -229,7 +229,7 @@ This follows from definitions above since
 \end{align*} 
 
 Now regard properties of $T$ as properties of $M$.\
-$\operatorname{Im}(T) = \operatorname{Im}(M) = \operatorname{span} \{ \underline{C}_1, \ldots, \underline{C}_n \}$, the *image of M* (or T) is the span of the columns.\
+$\operatorname{Im}(T) = \operatorname{Im}(M) = \operatorname{span} \{ \underline{C}_1, \dots, \underline{C}_n \}$, the *image of M* (or T) is the span of the columns.\
 $\ker(T) = \ker(M) = \{\underline{x} : \underline{R}_a \cdot \underline{x} = 0 \; \forall \; a \}$, *kernel of M* is subspace $\bot$ all rows.
 
 ### Examples
@@ -412,7 +412,7 @@ Consider shear $S = \begin{pmatrix}1 & \lambda \\0 & 1\end{pmatrix}$; this has $
 Consider a linear map
 \begin{align*}
     T : V \to W
-\end{align*} between real or complex vector spaces of $\dim n, m$ respectively and choose bases $\{ \underline{e}_i \}$ with $i = 1, \ldots, n$ for $V$ and $\{ \underline{f}_a \}$ with $a = 1, \ldots, m$ for $W$.\
+\end{align*} between real or complex vector spaces of $\dim n, m$ respectively and choose bases $\{ \underline{e}_i \}$ with $i = 1, \dots, n$ for $V$ and $\{ \underline{f}_a \}$ with $a = 1, \dots, m$ for $W$.\
 The matrix $M$ for $T$ wrt the bases in an $m \times n$ array with entries $M_{ai} \in \mathbb{R}$ or $\mathbb{C}$.
 It is defined by 
 \begin{align*}
@@ -421,9 +421,9 @@ It is defined by
 This is chose to ensure that $T(\underline{x}) = \underline{x}'$ where $\underline{x} = \sum_i x_i \underline{e}_i$ and $\underline{x}' = \sum_a x_a' \underline{f}_a$ iff $x_a' = \sum_i M_{ai} x_i$.\
 \begin{align*}
     \text{i.e. } \begin{pmatrix}x_1' \\ \vdots \\ x_m'\end{pmatrix} = \begin{pmatrix}
-    M_{11} & \ldots & M_{1n} \\
+    M_{11} & \dots & M_{1n} \\
     \vdots &  & \vdots \\
-    M_{m1} & \ldots & M_{mn} 
+    M_{m1} & \dots & M_{mn} 
     \end{pmatrix} 
     \begin{pmatrix}x_1 \\ \vdots \\ x_n\end{pmatrix}.
 \end{align*} 
@@ -444,7 +444,7 @@ Or if $S : U \to V$ is also linear, then so is $T \circ S : U \to W$ (compositio
 If $M$ and $N$ are $m \times n$ matrices then $\alpha M + \beta N$ is an $m \times n$ matrix defined by 
 \begin{align*}
     (\alpha M + \beta N)_{ai} &= \alpha M_{ai} + \beta N_{ai} \\
-    (a = 1, \ldots, m&; i = 1, \ldots, n)
+    (a = 1, \dots, m&; i = 1, \dots, n)
 \end{align*} [If $M, N$ represent linear maps $T, S : V \to W$, then $\alpha M + \beta N$ represents $\alpha T + \beta S$, all w.r.t. same choice of bases].
 
 ### Matrix multiplication
@@ -453,9 +453,9 @@ If $A$ is an $m \times n$ matrix, entries $A_{ai} \in \mathbb{R}$ or $\mathbb{C}
 and $B$ is an  $n \times p$ matrix, entries $B_{ir}$ then $AB$ is an $m \times p$ matrix defined by $(AB)_{ar} = A_{ai} B_{ir}$ ($\sum$ convention).
 The product $AB$ is not defined unless no. of cols of $A = $ no. of rows of B.
 \begin{align*}
-    a &= 1, \ldots, m \\
-    i &= 1, \ldots, n \\
-    r &= 1, \ldots, p.
+    a &= 1, \dots, m \\
+    i &= 1, \dots, n \\
+    r &= 1, \dots, p.
 \end{align*} 
 
 Matrix multiplication corresponds to the composition of linear maps.
@@ -493,7 +493,7 @@ iii. \begin{align*}
      & \vdots & 
     \end{pmatrix} \begin{pmatrix}
      & \big\uparrow &  \\
-    \ldots & \underline{C}_r(B) & \ldots \\
+    \dots & \underline{C}_r(B) & \dots \\
      & \big\downarrow & 
     \end{pmatrix} \\
     (AB)_{ar} &= [\underline{R}_a (A)]_i [\underline{C}_r (B)]_i \\
@@ -574,7 +574,7 @@ Reflection.
 i. If $M$ is an $m \times n$ matrix, the transpose $M^T$ is an $n \times m$ matrix defined by 
 \begin{align*}
     (M^T)_{ia} &= M_{ai} \text{ "exchange rows and columns"} \\
-    [a &= 1, \ldots, m;\ i = 1, \ldots, n]
+    [a &= 1, \dots, m;\ i = 1, \dots, n]
 \end{align*}
 
 #### Properties
@@ -590,7 +590,7 @@ i. If $M$ is an $m \times n$ matrix, the transpose $M^T$ is an $n \times m$ matr
 \end{align*} 
 
 *Note*: $\underline{x} = \begin{pmatrix}x_1 \\\vdots \\x_n\end{pmatrix}$ is a column vector or a $n \times 1$ matrix.\
-$\implies \underline{x}^T = \begin{pmatrix}x_1 & \ldots & x_n\end{pmatrix}$ is a row vector or $1 \times n$ matrix.\
+$\implies \underline{x}^T = \begin{pmatrix}x_1 & \dots & x_n\end{pmatrix}$ is a row vector or $1 \times n$ matrix.\
 Inner product on $\mathbb{R}^n$ is $\underline{x} \cdot \underline{y} = \underline{x}^T \underline{y}$, a scalar or $1 \times 1$ matrix, but $\underline{y} \underline{x}^T = M$, a $n \times n$ matrix with $M_{ij} = y_i x_j$.
 
 ii. If $M$ is square, $n \times n$, then $M$ is *symmetric* iff $M^T = M$ or $M_{ij} = M_{ji}$ and *antisymmetric* iff $M^T = - M$ or $M_{ij} = - M_{ji}$.
@@ -624,7 +624,7 @@ iii. If $M$ is a $m \times n$ matrix the *hermitian conjugate* $M \dagger$ is de
 \end{align*} 
 
 *Note*: $\underline{z} = \begin{pmatrix}x_1 \\\vdots \\x_n\end{pmatrix}$ is a column vector or a $n \times 1$ matrix.\
-$\implies \underline{z}^\dagger = \begin{pmatrix}x_1 & \ldots & x_n\end{pmatrix}$ is a row vector or $1 \times n$ matrix.\
+$\implies \underline{z}^\dagger = \begin{pmatrix}x_1 & \dots & x_n\end{pmatrix}$ is a row vector or $1 \times n$ matrix.\
 Inner product on $\mathbb{C}^n$ is $(\underline{z}, \underline{w}) = \underline{z}^\dagger \underline{w}$, a scalar or $1 \times 1$ matrix.
 
 iv. If $M$ is *square* $n \times n$ then $M$ is *hermitian* if $M^\dagger = M$ or $M_{ij} = \overline{M}_{ji}$ and *anti-hermitian* if $M^\dagger = - M$ or $M_{ij} = - \overline{M}_{ji}$.
@@ -704,7 +704,7 @@ These conditions can be written
     \end{pmatrix}}_{u^T}
     \underbrace{\begin{pmatrix}
         & \big\uparrow &  \\
-       \ldots & \underline{C}_j & \ldots \\
+       \dots & \underline{C}_j & \dots \\
         & \big\downarrow & 
     \end{pmatrix}}_{u} &= I \\
     \underline{C}_i \cdot \underline{C}_j = \delta_{ij}

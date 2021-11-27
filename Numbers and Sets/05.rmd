@@ -4,7 +4,7 @@ We would like to talk about sizes of infinite sets e.g. $\mathbb{N}$ "looks smal
 
 ::: {.definition name="Countable sets"}
 We say a set $X$ is *countable* if $X$ is finite or there is a bijection $X \to \mathbb{N}$.
-That is $X$ is countable iff we can list the elements of $X$ as $x_1, x_2, x_3, \ldots$ (will terminate if finite set).
+That is $X$ is countable iff we can list the elements of $X$ as $x_1, x_2, x_3, \dots$ (will terminate if finite set).
 :::
 
 ::: {.example}
@@ -15,7 +15,7 @@ That is $X$ is countable iff we can list the elements of $X$ as $x_1, x_2, x_3, 
 
 2. $\mathbb{N}$ is countable.
 
-3. $\mathbb{Z}$ is countable, as we may $\mathbb{Z}$ as $0, 1, -1, 2, -2, 3 \ldots$ i.e. $x_n = \begin{cases}
+3. $\mathbb{Z}$ is countable, as we may $\mathbb{Z}$ as $0, 1, -1, 2, -2, 3 \dots$ i.e. $x_n = \begin{cases}
     \frac{n}{2} & \text{if $n$ is even} \\
     -\frac{n - 1}{2} & \text{if $n$ is odd}.
 \end{cases}$
@@ -27,13 +27,13 @@ Any subset of $\mathbb{N}$ is countable.
 
 ::: {.proof}
 If $S \subseteq N$ is non-empty, by WOP (well ordering principle) there is a least element $s_1 \in S$.
-If $S \setminus \{s_1\} \neq \emptyset$, by WOP there is a least element $s_2 \in S_1 \setminus \{s_1, s_2\} \neq \emptyset \ldots$
-If at some point this process stops, then $S = \{s_1, s_2, \ldots, s_m\}$ is finite.
+If $S \setminus \{s_1\} \neq \emptyset$, by WOP there is a least element $s_2 \in S_1 \setminus \{s_1, s_2\} \neq \emptyset \dots$
+If at some point this process stops, then $S = \{s_1, s_2, \dots, s_m\}$ is finite.
 If it goes on forever, the map $g : \mathbb{N} \to S$ given by $g(n) = s_n$ is well defined (for every $n$, there is a unique $s_n$) and is injective.
 It is also surjective because if $k \in S$, then $k \in \mathbb{N}$, and there are $< k$ elements of $S$ less than $k$, so $k = s_n$ for some $n \leq k$.
 :::
 
-*Warning* In $\mathbb{R}$, let $S = \left\{\frac{1}{2}, \frac{2}{3}, \frac{3}{4}, \ldots\right\} \cup \{1\}$, then $S$ is countable as we can list it as $1, \frac{1}{2}, \frac{3}{4}, \ldots$ but if we have tried to list the elements in increasing order (as in the proof of Lemma \@ref(lem:vone) then $1$ would not be on the list).
+*Warning* In $\mathbb{R}$, let $S = \left\{\frac{1}{2}, \frac{2}{3}, \frac{3}{4}, \dots\right\} \cup \{1\}$, then $S$ is countable as we can list it as $1, \frac{1}{2}, \frac{3}{4}, \dots$ but if we have tried to list the elements in increasing order (as in the proof of Lemma \@ref(lem:vone) then $1$ would not be on the list).
 
 ::: {.theorem #vtwo}
 The following statements are equivalent:
@@ -79,6 +79,28 @@ Define $a_1 = (1, 1)$ and $a_n$ inductively by, writing $a_{n-1} = (p, q)$,
 \end{align*} 
 This list includes every point $(x, y) \in \mathbb{N} \times \mathbb{N}$ by induction on $x + y$.
 :::
+```{r, echo=FALSE, engine='tikz', fig.ext=if (knitr:::is_latex_output()) 'pdf' else 'png', fig.align = 'center', cache = TRUE}
+\begin{tikzpicture}[scale=1.8]
+    \tikzset{circ/.style = {fill, circle, inner sep = 0, minimum size = 3}}
+    \draw (0, 0) -- (0, 3.5);
+    \draw (0, 0) -- (3.8, 0);
+    \foreach \i in {1, 2, 3, 4} {
+    \node [left] at (0, \i - 1) {\i};
+    \node [below] at (\i - 1, 0) {\i};
+    }
+    \foreach \i in {1, 2, 3, 4} {
+    \foreach \j in {1, 2, 3, 4} {
+        \node [circ] at (\i - 1, \j - 1) {};
+        \node [anchor = south west] at (\i - 1, \j - 1) {\pgfmathparse{(\i + \j)*(\i + \j - 1) / 2 - \i + 1}\pgfmathprintnumber{\pgfmathresult}};
+    }
+    }
+    \draw [dashed] (1, 0) -- (0, 1);
+    \draw [dashed] (2, 0) -- (0, 2);
+    \draw [dashed] (3, 0) -- (0, 3);
+    \draw [dashed] (3.8, 0.2) -- (.5, 3.5);
+    \draw [dashed] (3.8, 1.2) -- (1.5, 3.5);
+\end{tikzpicture}
+```
 
 ::: {.proof name="2"}
 Define
@@ -102,7 +124,7 @@ By induction $\mathbb{Z}^k$ is countable for any $k \in \mathbb{N}$.
 A countable union of countable sets is countable (a countable union is a union of sets that are indexed by a countable set)
 :::
 ::: {.proof name="1"}
-We may assume that our countable sets are indexed by $\mathbb{N}$, so given countable sets $A_1, A_2 A_3, \ldots$ we wish to show $\bigcup_{n \in \mathbb{N}} A_n$ is countable. \
+We may assume that our countable sets are indexed by $\mathbb{N}$, so given countable sets $A_1, A_2 A_3, \dots$ we wish to show $\bigcup_{n \in \mathbb{N}} A_n$ is countable. \
 For each $i \in \mathbb{N}$, since $A_i$ is countable, we may list its elements as $a_1^{(i)}, a_2^{(i)}, a_3^{(i)}$ (might terminate).
 Define \begin{align*}
     f : \bigcup_{n \in \mathbb{N}} A_n &\to \mathbb{N} \\
@@ -129,7 +151,7 @@ The set $\mathbb{A}$ of algebraic numbers is countable.
 ::: {.proof}
 It suffices to show that the set of all polynomials with integer coefficients is countable as then $\mathbb{A}$ is a countable union of finite sets, so by Theorem \@ref(thm:vsix), is countable.
 In fact, it suffices to show that for each $d \in \mathbb{N}$, the set $P_d$ of all integer polynomials of degree $d$ is countable, again by Theorem \@ref(thm:vsix).
-But the map $P_d \to \mathbb{Z}^{d + 1}$, $p(x) = a_d x^d + a_{d-1}x^{d-1} + \ldots + a_1 x + a_0 \mapsto (a_d, a_{d-1}, \ldots, a_1, a_0)$ is an injection, so since $\mathbb{Z}^{d + 1}$ is countable, $P_d$ is countable.
+But the map $P_d \to \mathbb{Z}^{d + 1}$, $p(x) = a_d x^d + a_{d-1}x^{d-1} + \dots + a_1 x + a_0 \mapsto (a_d, a_{d-1}, \dots, a_1, a_0)$ is an injection, so since $\mathbb{Z}^{d + 1}$ is countable, $P_d$ is countable.
 :::
 A set is *uncountable* if it is not countable.
 Do uncountable sets exist?
@@ -138,17 +160,196 @@ Do uncountable sets exist?
 $\mathbb{R}$ is uncountable.
 :::
 ::: {.proof}
-If $\mathbb{R}$ were countable, we would be able to list all the reals as $r_1, r_2, r_3, \ldots$
+If $\mathbb{R}$ were countable, we would be able to list all the reals as $r_1, r_2, r_3, \dots$
 Write each $r_n$ in decimal form in some way.
 \begin{align*}
-    r_1 &= n_1.d_{11} d_{12} d_{13} d_{14} \ldots \\
-    r_2 &= n_2.d_{21} d_{22} d_{23} d_{24} \ldots \\
-    r_3 &= n_3.d_{31} d_{32} d_{33} d_{34} \ldots \\
+    r_1 &= n_1.d_{11} d_{12} d_{13} d_{14} \dots \\
+    r_2 &= n_2.d_{21} d_{22} d_{23} d_{24} \dots \\
+    r_3 &= n_3.d_{31} d_{32} d_{33} d_{34} \dots \\
     &\;\;\vdots
 \end{align*} 
-Define $r = 0.d_1 d_2 d_3 \ldots$ by $d_n = \begin{cases}
+Define $r = 0.d_1 d_2 d_3 \dots$ by $d_n = \begin{cases}
     1 & \text{if } d_{nn} \neq 1 \\
     2 & \text{if } d_{nn} = 1
 \end{cases}.$
 This $r$ has only one decimal expansion and is not on the list (because $\forall \; n \in \mathbb{N}, r \neq r_n$) which is a contradiction.
 :::
+This is known as a "diagonal argument", due to Cantor (1870s).
+Note that it in fact shows that $(0, 1)$ is uncountable.
+
+::: {.corollary}
+There are uncountably many transcendental numbers.
+:::
+
+::: {.proof}
+If $\mathbb{R} \setminus \mathbb{A}$ were countable, then since $\mathbb{A}$ is countable, $\mathbb{R} = \mathbb{R} \setminus \mathbb{A} \cup \mathbb{A}$ would be countable. ⨳
+:::
+
+::: {.theorem #vten}
+$\mathcal{P} (\mathbb{N})$, \@ref(def:powset), is uncountable.
+:::
+
+::: {.proof name="1"}
+If $\mathcal{P}(\mathbb{N})$ were countable, we could list the subsets of $\mathbb{N}$ as $S_1, S_2, S_3, \dots$ \
+Let $S = \{ n \in \mathbb{N} : n \in S_n \}$ (it includes $1$ if $1 \notin S_1$ ...).
+Then $S$ is not on our list since $\forall \; n \in \mathbb{N}$, $S \neq S_n$ (as $S$ and $S_n$ differ in their membership of the element $n$). ⨳ \
+Hence $\mathcal{P}(\mathbb{N})$ is uncountable.
+:::
+Note that this is again a "diagonal argument".
+
+::: {.proof name="2"}
+Note that there is an injection from $(0, 1)$ into $\mathcal{P}(\mathbb{N})$ : write $x \in (0, 1)$ in binary $0.x_1 x_2 x_3 \dots$ with each $x_i \in \{0, 1\}$ (not ending in $0.111 \dots$) and set $f(x) = \{n : x_n = 1\}$.
+E.g. $0.11101000 \dots \mapsto \{1, 2, 3, 5\}$.
+This is an injection.
+:::
+
+In fact, Proof 1 of Theorem \@ref(thm:vten) shows the following.
+
+::: {.theorem #veleven}
+For any set $X$, there is no bijection between $X$ and $\mathcal{P}(X)$.
+:::
+::: {.proof}
+Given any function $f : X \to \mathcal{P}(X)$, we shall show that $f$ is not a surjection.
+Indeed, let $S = \{x \in X : x \notin f(x)\}$ ($f(x)$ is a subset).
+Then $S$ does not belong to the image of $f$, since $\forall \; x \in X, S$ and $f(x)$ differ in the element $x$, and thus $S \neq f(x)$.
+:::
+::: {.remark}
+
+\
+
+1. This is reminiscent of Russel's paradox.
+
+2. In fact, Theorem \@ref(thm:veleven) gives another proof that there is no universal set.
+Suppose we had such a universal set $V$, then $\mathcal{P}(V) \subseteq V$, in which case there would be a surjection from $V$ to $\mathcal{P}(V)$ (as there is always a surjection from a set to any subset of it). 
+:::
+
+::: {.example}
+Let $\{A_i : i \in I\}$ be a family of open intervals of $\mathbb{R}$ which are pairwise disjoint.
+Must the family be countable?
+```{r 05-disjoint, echo = FALSE, fig.cap = "", fig.align="center"} 
+knitr::include_graphics("figures/05-disjoint.png") 
+```
+*Warning*: There is no "next" interval after $(a, b)$.
+The family $\{A_i : i \in I\}$ is nevertheless countable.
+:::
+::: {.proof name="1"}
+Each interval $A_i$ contains a rational, and $\mathbb{Q}$ is countable, so since the intervals are disjoint, we have an injection from $I$ into $\mathbb{Q}$.
+Hence the family $\{A_i : i \in I\}$ is countable.
+:::
+
+::: {.proof name="2"}
+The set $\{i \in I : A_i \text{ has length }\geq 1 \}$ is countable as it injects into $\mathbb{Z}$.
+```{r 05-disjoint-2, echo = FALSE, fig.cap = "", fig.align="center"} 
+knitr::include_graphics("figures/05-disjoint-2.png") 
+```
+Similarly, the set $\{i \in I : A_i \text{ has length } \geq \frac{1}{2} \}$ is countable as it injects into $\frac{1}{2} \mathbb{Z}$.\
+More generally, for each $n \in \mathbb{N}$, $\{i \in I : A_i \text{ has length } \geq \frac{1}{n} \}$ is countable. \
+Now $\{A_i : i \in I\}$ is countable as it is a countable union of countable sets.
+:::
+
+*Summary*
+
+To show that $X$ is uncountable
+
+1. Run a diagonal argument on $X$;
+
+2. Inject your favourite uncountable set into $X$.
+
+To show that $X$ is countable
+
+1. List it (may be fiddly);
+
+2. Inject it into $\mathbb{N}$;
+
+3. Use "countable union of countable sets is countable", Theorem \@ref(thm:vsix);
+
+4. If "in/ near" $\mathbb{R}$, consider $\mathbb{Q}$.
+
+Intuitively, we think of "A injects B" as saying that "A and B" are of the same size, "A injects into B" as saying that "A is at most as big as B", and "A surjects onto B" as saying that "A is at least as big as B" (for $B \neq \emptyset$).
+
+For these interpretations to make sense, we need that if "A is at most as big as B", then "B is at least as big as A", and conversely.
+
+::: {.lemma #vtwelve}
+Given non-empty sets $A$ and $B$, $\exists$ injection $f : A \to B \iff \exists$ surjection $g : B \to A$.
+:::
+
+::: {.proof}
+Suppose $f : A \to B$ is injective.
+Fix $a_0 \in A$.
+\begin{align*}
+    \text{Define } g : B &\to A \\
+    b &\mapsto \begin{cases}
+        \text{unique $a \in A$ s.t. $f(a) = b$ if it exists} \\
+        a_0 \text{ otherwise}.
+    \end{cases} 
+\end{align*} 
+Then $g$ is surjective (i.e. take the inverse of $f$ from $f(A) \to A$ and set any $b \in B \setminus f(A)$ to $a_0$). \
+Conversely, suppose $g : B \to A$ is surjective. 
+\begin{align*}
+    \text{Let } f : A &\to B \\
+    a &\mapsto \text{ some $b \in B$ s.t. $g(b) = a$}.
+\end{align*} Then $f$ is injective (the subsets in $A$ that map to $b$ are disjoint).
+:::
+
+::: {.theorem name="Schröder-Bernstein Theorem" #vthirteen}
+If $f : A \to B$ and $g : B \to A$ are injections, then $\exists$ bijection $h : A \to B$.
+:::
+
+::: {.proof}
+For $a \in A$, write $g^{-1}(a)$ for the $b \in B$ (if it exists) s.t. $g(b) = a$.
+Similarly, for $b \in A$, write $f^{-1}(b)$ for the $a \in A$ (if it exists) s.t. $f(a) = b$. \
+We call $g^{-1}(a), f^{-1}(g^{-1}(a)), g^{-1}(f^{-1}(g^{-1}(a))), \dots$ the ancestor sequence of $a \in A$ (it may terminate).
+Similarly, we can define the ancestor sequence of $b \in B$.
+```{r 05-schroder, echo = FALSE, fig.cap = "", fig.align="center", out.height="300"} 
+knitr::include_graphics("figures/05-schroder.png") 
+```
+Let $A_0 = \{ a \in A :$ ancestor sequence of a stops at an even time, i.e. the last point is in $A\}.$ \
+$A_1 = \{a \in A:$ " " at an odd time, i.e. the last point is in $B\}$. \
+$A_\infty = \{a \in A:$ ancestor sequence does not stop$\}$. \
+Similarly, define $B_0, B_1, B_\infty$. \
+Note that $f$ bijects $A_0$ with $B_1$ (observing that every $b \in B_1$ has at least one ancestor, so is $f(a)$ for some $a \in A_0$; $f(A_0) \subseteq B_1$ and $f^{-1}(B_1) \subseteq A_0$), and similarly, $g$ bijects $B_0$ with $A_1$.
+And $f$ (or $g$) biject $A_\infty$ with $B_\infty$. \
+Taking the function $h : A \to B$ taking $a \mapsto \begin{cases}
+    f(a) & \text{if } a \in A_0 \\
+    g^{-1}(a) & \text{if } a \in A_1 \\
+    f(a) & \text{if } a \in A_\infty
+\end{cases}$ is a bijection.
+:::
+
+This means that we have that if "A is at most as big as B" and "B is at most as big as A", then "A is of the same size as B".
+
+::: {.example}
+Is there a bijection from $[0, 1]$ to $[0, 1] \cup [2, 3]$?
+Observe we have an injection
+\begin{align*}
+    f : [0, 1] &\to [0, 1] \cup [2, 3] \\
+    x &\mapsto x \\
+    g : [0, 1] \cup [2, 3] &\to [0, 1] \\
+    x &\mapsto \frac{x}{3}.
+\end{align*} 
+so by Schröder-Bernstein Theorem, \@ref(thm:vthirteen), there is a bijection between $[0, 1]$ and $[2, 3]$.
+:::
+
+It would also be nice to be able to say that for any two sets $A$ and $B$, either $A$ injects into $B$ or $B$ injects into $A$.
+This is true, but harder to prove (see Part II Logic and Set Theory).
+
+## Question
+Does every set $X$ into one of $\mathbb{N}, \mathcal{P}(\mathbb{N}), \mathcal{P}(\mathcal{P}(\mathbb{N})), \mathcal{P}(\mathcal{P}(\mathcal{P}(\mathbb{N}))), \dots$? \
+No, e.g. $X = \mathbb{N} \cup \mathcal{P}(\mathbb{N}) \cup \mathcal{P}(\mathcal{P}(\mathbb{N})) \cup \dots$. \
+Does every set $X'$ into one of $X, \mathcal{P}(X), \mathcal{P}(\mathcal{P}(X)), \mathcal{P}(\mathcal{P}(\mathcal{P}(X))), \dots$? \
+No, e.g. $X' = X \cup \mathcal{P}(X) \cup \mathcal{P}(\mathcal{P}(X)) \cup \dots$. \
+Does every set $X''$ into one of $X', \mathcal{P}(X'), \mathcal{P}(\mathcal{P}(X')), \mathcal{P}(\mathcal{P}(\mathcal{P}(X'))), \dots$? \
+No, e.g. $X'' = X' \cup \mathcal{P}(X') \cup \mathcal{P}(\mathcal{P}(X')) \cup \dots$.
+
+Does every set $Y$ inject into $X, X', X'', \dots$? \
+No, e.g. $Y = X \cup X' \cup X'' \cup \dots$
+
+# Panorama
+
+- II Logic and Set Theory - We will explore the cardinalities of infinite sets in more details and will learn about the axiomatic system upon which modern mathematics is built.
+
+- IA Analysis - We will see much more about convergence of sequences and series and formally define the derivative.
+
+- 1B Groups, Rings and Modules - We will see generalisations of the modulo groups
+
+- II Number theory - We will learn more about distribution of primes, squares modulo p (quadratic residues), factorisation and associated algorithms and cryptographic schemes.

@@ -2,7 +2,7 @@
 
 ## The natural numbers
 
-Intuitively, the natural numbers consist of $1, 1 + 1, 1+ 1 + 1, \ldots$
+Intuitively, the natural numbers consist of $1, 1 + 1, 1+ 1 + 1, \dots$
 
 How do you know you have captured all natural numbers? How do you know they are all distinct?
 
@@ -19,7 +19,7 @@ iii. for any property $P(n)$, if $P(1)$ is true and $\forall \; n \in \mathbb{N}
 
 iii is called the induction axiom.
 
-i and ii capture the idea that any two natural numbers are distinct; iii captures our intuitive notion that the list^[$1, 1 + 1, 1+ 1 + 1, \ldots$] is complete (i.e. encompasses all natural numbers).^[to see this rigorously, take $P(n)$ = "$n$ is on this list]
+i and ii capture the idea that any two natural numbers are distinct; iii captures our intuitive notion that the list^[$1, 1 + 1, 1+ 1 + 1, \dots$] is complete (i.e. encompasses all natural numbers).^[to see this rigorously, take $P(n)$ = "$n$ is on this list]
 
 Now we can write 2 for $1 + 1$, 3 for $1 + 1 + 1$, etc, and we can define an operation '$+k$' for any natural number $k$:
     
@@ -141,8 +141,8 @@ Every natural number $n \geq 2$ can be written as a product of primes.
 ::: {.proof}
 By induction on $n$. True for $n = 2$.
 Let $n > 2$ and suppose that the claim holds up to and including $n - 1$ (SPI). If $n$ is a prime, we are done. If $n$ is composite, then $n = a b$ for some $1 < a, b < n$.
-By the induction hypothesis, have $a = p_1 \ldots p_k$, $b = q_1 \ldots q_l$ for some primes $p_1 \ldots p_k, q_1 \ldots q_l$.
-Hence $n = ab = p_1 \ldots p_k q_1 \ldots q_l$ is a product of primes.
+By the induction hypothesis, have $a = p_1 \dots p_k$, $b = q_1 \dots q_l$ for some primes $p_1 \dots p_k, q_1 \dots q_l$.
+Hence $n = ab = p_1 \dots p_k q_1 \dots q_l$ is a product of primes.
 :::
 
 ::: {.theorem #three}
@@ -150,10 +150,10 @@ There are infinitely many primes.
 :::
 
 ::: {.proof name="Euclid 300 BC"}
-Suppose there are finitely many primes, say $p_1, \ldots, p_k$. Let $N = p_1 \ldots p_k + 1$.
-Then $p_1 \nmid N$, else $p_1 \mid (N - p_1 \ldots p_k) = 1$. 
+Suppose there are finitely many primes, say $p_1, \dots, p_k$. Let $N = p_1 \dots p_k + 1$.
+Then $p_1 \nmid N$, else $p_1 \mid (N - p_1 \dots p_k) = 1$. 
 Clearly $p_1 \mid 1$ is false.
-Likewise, none of $p_2, p_3 \ldots, p_k$ divide $N$, contradicting the fact that $N$ can be written as a product of primes.
+Likewise, none of $p_2, p_3 \dots, p_k$ divide $N$, contradicting the fact that $N$ can be written as a product of primes.
 :::
 
 Can a number have more than one factorisation in its primes? Our proof of \@ref(prp:two) does not give uniqueness.
@@ -215,7 +215,7 @@ If $r = k - 1$ then $n = (n - 1) + 1 = qk + (k - 1) + 1 = (q + 1)k$.
     \hline
     \text{OUTPUT} & r_n &&&
 \end{array} 
-Note that the algorithm terminates in $\leq b$ steps, since $b > r_1 > r_2 > \ldots \geq 0$.
+Note that the algorithm terminates in $\leq b$ steps, since $b > r_1 > r_2 > \dots \geq 0$.
 
 ::: {.theorem}
 The output of Euclid's algorithm with input $a, b$ is $\operatorname{hcf}(a, b)$.
@@ -228,7 +228,7 @@ so $r_{n - 1} / r_{n - 2}$  STEP $n$
 \begin{align*}
     \text{We can see } &r_n \mid r_{n - 1} \text{ (as } r_{n + 1} = 0 \text{  at STEP } n + 1 \\
     \text{so } &r_n \mid r_{n - 2} \ ( \text{STEP } n) \\
-    \text{so } &r_n \mid r_i \; \forall \; i = 1, \ldots n - 1 \text{ (by induction)}
+    \text{so } &r_n \mid r_i \; \forall \; i = 1, \dots n - 1 \text{ (by induction)}
 \end{align*} 
 Hence $r_n \mid b$ (STEP $2$) and $r_n \mid a$ (STEP $1$).
 
@@ -236,7 +236,7 @@ ii. Given $d$ s.t. $d \mid a$ and $d \mid b$,
 \begin{align*}
     \text{we have } &d \mid r_1 \text{ (STEP 1) } \\
     \text{so } &d \mid r_2 \text{ (STEP 1) } \\
-    \text{so } &d \mid r_i \; \forall \; i = 1, \ldots n \text{ (by induction)}
+    \text{so } &d \mid r_i \; \forall \; i = 1, \dots n \text{ (by induction)}
 \end{align*} 
 Therefore, $r_n = \operatorname{hcf}(a, b)$.
 :::
@@ -272,7 +272,7 @@ $\forall \; a, b \in \mathbb{N},\ \; \exists \; x,y \in \mathbb{Z}$ s.t. $xa + y
 ::: {.proof name="1"}
 Run Euclid's algorithm with input $a$, $b$, to obtain an output $r_n$. At STEP $n$, we have $r_n = xr_{n-1} + yr_{n-2}$ for some $x, y \in \mathbb{Z}$. 
 But $r_{n-1}$ is expressible as $xr_{n-2} + yr_{n-3}$ for some $x, y \in \mathbb{Z}$, from STEP $n-1$, whence $r_n = xr_{n-2} + y r_{n-3}$ for some $x, y \in \mathbb{Z}$. 
-Continuing by induction, we have that $\forall \; i = 2, \ldots, n-1$, $r_n = xr_i + yr_{i - 1}$ for some $x, y \in \mathbb{Z}$.
+Continuing by induction, we have that $\forall \; i = 2, \dots, n-1$, $r_n = xr_i + yr_{i - 1}$ for some $x, y \in \mathbb{Z}$.
 Thus $r_n = xa + yb$ for some $x, y \in \mathbb{Z}$, from STEP 1 and 2.
 :::
 
@@ -329,8 +329,8 @@ It follows that $xpb + yab = b$, $p \mid ab$ so $p \mid b$.
 ::: {.remark}
 \ 
 
-1. Similarly, $p \mid a_1 a_2 \ldots a_n \implies p \mid a_i$ for some $i = 1, \ldots, n$.
-Indeed, Proposition \@ref(prp:four) tells us that if $p \mid a_1 a_2 \ldots a_n$, then $p \mid a_1$ or $p \mid a_2 \ldots a_n$. 
+1. Similarly, $p \mid a_1 a_2 \dots a_n \implies p \mid a_i$ for some $i = 1, \dots, n$.
+Indeed, Proposition \@ref(prp:four) tells us that if $p \mid a_1 a_2 \dots a_n$, then $p \mid a_1$ or $p \mid a_2 \dots a_n$. 
 Proceed by induction on the number of terms in the product.
 
 2. We do need $p$ to be prime.
@@ -345,15 +345,15 @@ Existence of factorisation follows from Proposition \@ref(prp:two).
 To see uniqueness, use induction on $n$.
 True for $n = 2$.
 
-Given $n \geq 2$, suppose $n = p_1 p_2 \ldots p_k = q_1 q_2 \ldots q_l$, where $p_i, q_j$ are all prime.
-We want to show $k = l$ and, after reordering $p_i = q_i \; \forall \; i = 1, \ldots, k$.
+Given $n \geq 2$, suppose $n = p_1 p_2 \dots p_k = q_1 q_2 \dots q_l$, where $p_i, q_j$ are all prime.
+We want to show $k = l$ and, after reordering $p_i = q_i \; \forall \; i = 1, \dots, k$.
 
-We have $p_1 \mid n = q_1 q_2 \ldots q_l$, so by Proposition \@ref(prp:four), $p_1 \mid q_i$ for some i.
+We have $p_1 \mid n = q_1 q_2 \dots q_l$, so by Proposition \@ref(prp:four), $p_1 \mid q_i$ for some i.
 Relabelling the $q_i$, we may assume that $p_1 \mid q_1$.
 Since $q_1$ is prime, $p_1 = q_1$.
-So $\frac{n}{p_1} = p_2 \ldots p_k = q_2 \ldots q_l < n$.
+So $\frac{n}{p_1} = p_2 \dots p_k = q_2 \dots q_l < n$.
 
-By the induction hypothesis, $k = l$, and, after reordering, $p_2 = q_2, \ldots, p_k = q_k$.
+By the induction hypothesis, $k = l$, and, after reordering, $p_2 = q_2, \dots, p_k = q_k$.
 :::
 
 ::: {.remark}
@@ -370,32 +370,32 @@ But we can also write $4 = 2 \cdot 2$, so factorisation is not unique.
 1. What are the factors of $n = 2^3 \cdot 3^7 \cdot 11$? \
 All numbers of the form $2^a 3^b 11^c$, where $0 \leq a \leq 3,\ 0 \leq b \leq 7,\ 0 \leq c \leq 1$.
 There are no other factors, for example if $7 \mid n$ then we would have a factorisation of $n$ involving $7$, contradicting uniqueness. \
-More generally, the factors of $n = p_1^{a_1} \ldots p_k^{a_k}$ are precisely the numbers of the form $p_1^{b_1} \ldots p_k^{b_k}$, with $0 \leq b_i \leq a_i \; \forall \; i = 1, \ldots, k$.
+More generally, the factors of $n = p_1^{a_1} \dots p_k^{a_k}$ are precisely the numbers of the form $p_1^{b_1} \dots p_k^{b_k}$, with $0 \leq b_i \leq a_i \; \forall \; i = 1, \dots, k$.
 
 2. What are the common factors of $2^3 \cdot 3^7 \cdot 5 \cdot 11$ and $2^4 \cdot 3^2 \cdot 11 \cdot 13$? \
 All numbers of the form $2^a \cdot 3^b \cdot 5^c \cdot 11^d \cdot 13^e$, where $c = e = 0$ and $0 \leq a \leq 3,\ 0 \leq b \leq 2,\ 0 \leq d \leq 1$. 
 Thus the hcf is $2^3 \cdot 3^2 \cdot 11$. \
 \
-In general, the hcf of $p_1^{a_1} \ldots p_k^{a_k}$ and $p_1^{b_1} \ldots p_k^{b_k}$, where $a_i, b_i \geq 0$, is $p_1^{\min \{ a_1, b_1 \}} \ldots p_k^{\min \{ a_k, b_k \}}$.
+In general, the hcf of $p_1^{a_1} \dots p_k^{a_k}$ and $p_1^{b_1} \dots p_k^{b_k}$, where $a_i, b_i \geq 0$, is $p_1^{\min \{ a_1, b_1 \}} \dots p_k^{\min \{ a_k, b_k \}}$.
 
 3. What are the common multiples of the two numbers in (2)?
 All numbers of the form $2^a 3^b 5^c 11^d 13^e$, where $a \geq 4, b \geq 7, c \geq 1, d \geq 3, e \geq 1$, *times* any integer!\
 Hence $2^4 3^7 5 11^3 13$ is a common multiple, and any other common multiple is a multiple of it.
 We say that it is the *least common multiple* (lcm) of our two numbers. \
 \
-In general, the lcm of $p_1^{a_1} \ldots p_k^{a_k}$ and $p_1^{b_1} \ldots p_k^{b_k}$, where $a_i, b_i \geq 0$, is $p_1^{\max \{ a_1, b_1 \}} \ldots p_k^{\max \{ a_k, b_k \}}$. \
+In general, the lcm of $p_1^{a_1} \dots p_k^{a_k}$ and $p_1^{b_1} \dots p_k^{b_k}$, where $a_i, b_i \geq 0$, is $p_1^{\max \{ a_1, b_1 \}} \dots p_k^{\max \{ a_k, b_k \}}$. \
 \
 Since $\min \{ a_i, b_i \} + \max \{ a_i, b_i \} = a_i + b_i$, so we have $\operatorname{hcf}(x, y) \cdot \operatorname{lcm}(x, y) = x \cdot y$ for any $x, y$.
 
 4. Another proof of Theorem \@ref(thm:three), due to Erdos (1930): 
 
 ::: {.proof}
-let $p_1, \ldots, p_k$ be primes.
-Any number which is a product of just these primes is of the form $p_1^{j_1} p_2^{j_2}, \ldots p_k^{j_k} = m^2 p_1^{i_1} p_2^{i_2} \ldots p_k^{i_k} (*)$ where $i_x = 0, 1$. \
+let $p_1, \dots, p_k$ be primes.
+Any number which is a product of just these primes is of the form $p_1^{j_1} p_2^{j_2}, \dots p_k^{j_k} = m^2 p_1^{i_1} p_2^{i_2} \dots p_k^{i_k} (*)$ where $i_x = 0, 1$. \
 Let $M \in \mathbb{N}$.
 If a number $\leq M$ is of the form (\*), then $m^2 \leq M$, i.e. $m \leq \sqrt{M}$.
 So there are at most $\sqrt{M} 2^k$ of the form (\*) that are $\leq M$.\
-If $M > \sqrt{M} 2^k$, i.e $M > 4^k$, then there must be a number $\leq M$ which is *not* of the form (\*), which must have a prime factor not amongst $p_1, \ldots, p_k$.
+If $M > \sqrt{M} 2^k$, i.e $M > 4^k$, then there must be a number $\leq M$ which is *not* of the form (\*), which must have a prime factor not amongst $p_1, \dots, p_k$.
 ::: 
 
 Proof 1 tells us the kth prime is $< 2^{2^k}$. \
@@ -566,7 +566,7 @@ Suppose $y$ is also a solution, that is, $y \equiv a \mod m$ and $y \equiv b \mo
 :::
 
 ::: {.remark}
-Theorem \@ref(thm:twelve) can be extended by induction, to more than two moduli: if $m_1, m_2, \ldots, m_k$ are pairwise coprime, then $\forall \; a_1, a_2, \ldots, a_k \in \mathbb{Z},\ \exists\; x \in \mathbb{Z}$ s.t.\begin{align*}
+Theorem \@ref(thm:twelve) can be extended by induction, to more than two moduli: if $m_1, m_2, \dots, m_k$ are pairwise coprime, then $\forall \; a_1, a_2, \dots, a_k \in \mathbb{Z},\ \exists\; x \in \mathbb{Z}$ s.t.\begin{align*}
     x &\equiv a_1 \mod m_1 \\
     x &\equiv a_2 \mod m_2 \\
     &\;\; \vdots \\
@@ -583,7 +583,7 @@ When $p, q$ are distinct primes, $\phi(pq) = pq - p - q + 1$ (we subtracted $pq$
 How do powers of an integer behave modulo $p$?
 
 ::: {.example}
-Modulo $7$, $2^1 \equiv 2$, $2^2 \equiv 4$, $2^3 \equiv 1$, $2^4 \equiv 2$ then repeat $4, 1, 2, 4, 1, 2, \ldots$. \
+Modulo $7$, $2^1 \equiv 2$, $2^2 \equiv 4$, $2^3 \equiv 1$, $2^4 \equiv 2$ then repeat $4, 1, 2, 4, 1, 2, \dots$. \
 Modulo 11, $2^1 \equiv 2$, $2^2 \equiv 4$, $2^3 \equiv 8$, $2^4 \equiv 5$, $2^5 \equiv 10$, $2^6 \equiv 9$, $2^7 \equiv 7$, $2^8 \equiv 3$, $2^9 \equiv 6$, $2^{10} \equiv 1$ then repeat.
 :::
 
@@ -601,11 +601,11 @@ We are going to be a bit general in this proof so we can take the same arguments
 ::: {.proof}
 If $a \neq 0 \mod p$, then $a$ is a unit mod $p$. \
 Thus $ax \equiv ay \mod p$ iff $x \equiv y \mod p$ (multiply by a to go from right to left, and by $a^{-1}$ for converse). 
-Hence the numbers $a, 2a, 3a, \ldots, (p - 1)a$ are pairwise incongruent (distinct) modulo $p$ and $\not\equiv 0 \mod p$, so they are $1, 2, 3, \ldots p - 1$ in some order.
+Hence the numbers $a, 2a, 3a, \dots, (p - 1)a$ are pairwise incongruent (distinct) modulo $p$ and $\not\equiv 0 \mod p$, so they are $1, 2, 3, \dots p - 1$ in some order.
 
 Hence
 \begin{align*}
-    a \cdot 2a \cdot 3a \cdot \ldots \cdot (p - 1)a &\equiv 1 \cdot 2 \cdot 3 \ldots \cdot (p - 1) \mod p \\
+    a \cdot 2a \cdot 3a \cdot \dots \cdot (p - 1)a &\equiv 1 \cdot 2 \cdot 3 \dots \cdot (p - 1) \mod p \\
     a^{p-1} (p - 1)! &= (p - 1)! \mod p. \\
 \end{align*} 
 But $(p - 1)!$ is a unit mod $p$ (since it is a product of units), so we can cancel it to obtain $a^{p-1} \equiv 1 \mod p$.
@@ -618,15 +618,15 @@ Then $a^{\phi(m)} \equiv 1 \mod m$ .
 
 ::: {.proof}
 Let $U = \{ x \in \mathbb{N} : 0 < x < m : (x, m) = 1 \}$, be the set of units modulo $m$.
-Label the elements $u_1, u_2, \ldots u_{\phi(m)}$.
-Then $a u_1, a u_2, \ldots, a u_{\phi(m)}$ are all distinct and invertible modulo $m$ (since $a$ and $u_i$ are units), and hence they are $u_1, u_2, \ldots u_{\phi(m)}$ is some order.
+Label the elements $u_1, u_2, \dots u_{\phi(m)}$.
+Then $a u_1, a u_2, \dots, a u_{\phi(m)}$ are all distinct and invertible modulo $m$ (since $a$ and $u_i$ are units), and hence they are $u_1, u_2, \dots u_{\phi(m)}$ is some order.
 
 It follows that
 \begin{align*}
-    a u_1 \cdot a u_2 \cdot \ldots \cdot a u_{\phi(m)} &\equiv u_1 \cdot u_2 \cdot \ldots u_{\phi(m)} \mod m,
+    a u_1 \cdot a u_2 \cdot \dots \cdot a u_{\phi(m)} &\equiv u_1 \cdot u_2 \cdot \dots u_{\phi(m)} \mod m,
     \text{that is, }a^{\phi(m)} z &= z \mod p. \\
 \end{align*} 
-that is $a^{\phi(m)} z = z \mod m$ where $z = u_1 \cdot u_2 \cdot \ldots u_{\phi(m)}$ is a product of units modulo $m$, therefore it itself is a unit.
+that is $a^{\phi(m)} z = z \mod m$ where $z = u_1 \cdot u_2 \cdot \dots u_{\phi(m)}$ is a product of units modulo $m$, therefore it itself is a unit.
 So we may cancel it to obtain $a^{\phi(m)} = 1 \mod m$ 
 :::
 
@@ -695,7 +695,7 @@ Then $-1$ is a square modulo $p$ iff $p \equiv 1 \mod 4$.
 Suppose $p \equiv 1 \mod 4$.
 By Wilson's Theorem, \@ref(thm:fifteen),
 \begin{align*}
-    -1 \equiv (p - 1)! &\equiv 1 \cdot 2 \cdot 3 \cdot \ldots \cdot \frac{p - 1}{2} \cdot - \frac{p - 1}{2} \cdot \ldots -3 \cdot -2 \cdot -1 \mod p \\
+    -1 \equiv (p - 1)! &\equiv 1 \cdot 2 \cdot 3 \cdot \dots \cdot \frac{p - 1}{2} \cdot - \frac{p - 1}{2} \cdot \dots -3 \cdot -2 \cdot -1 \mod p \\
     &\equiv (-1)^{\frac{p-1}{2}} \left( \left(\frac{p-1}{2} \right)! \right)^2 \mod p \\
 \end{align*} ($p-2 \equiv -1 \mod p$)
 But if $p = 4k + 1$ for some $k \in \mathbb{Z}$, then
@@ -719,7 +719,7 @@ E.g. When $p = 29 = 4 \cdot 7 + 1$, $x = (2 \cdot 7)!$ works.
 :::
 
 ## Public Key Cryptography
-Let us agree to write messages as sequences of numbers, e.g. $A \to 00,\ B \to 1, \ldots, Z \to 25, ! \to 26, \ldots$
+Let us agree to write messages as sequences of numbers, e.g. $A \to 00,\ B \to 1, \dots, Z \to 25, ! \to 26, \dots$
 I wish for my IA students to be able to send me encrypted messages in such a way that I can decrypt them easily but the same in not true for any third-party observer. 
 We use the 
 

@@ -260,7 +260,7 @@ Define \begin{align*}
     $O_n(\mathbb{R})$ is a subgroup of $\operatorname{GL}_n(\mathbb{R})$ called the \emph{orthogonal group}.
 \end{proposition} 
 
-\begin{proof}
+\begin{proof} \mbox{}
     \begin{itemize}
         \item $\det A \neq 0 \implies O_n(\mathbb{R}) \subseteq \operatorname{GL}_n(\mathbb{R})$.
         \item closure: \begin{align*}
@@ -360,7 +360,7 @@ For $0 \leq \theta < 2 \pi$ let
 Note any element of $O_2(\mathbb{R})$ is a product of at most two reflections.
 Since if $A \in SO_2(\mathbb{R})$ then $A = \underbrace{\left( A \begin{pmatrix}1 & 0 \\0 & -1\end{pmatrix} \right)}_\text{reflection} \underbrace{\begin{pmatrix}1 & 0 \\0 & -1\end{pmatrix}}_\text{reflection}$.
 
-\subsubsection{In 3 dimension}
+\subsubsection{In 3 dimensions}
 \begin{proposition}\label{prp:11}
     Let $A \in SO_3(\mathbb{R})$.
     Then $A$ has an eigenvector with eigenvalue $1$.
@@ -415,7 +415,7 @@ Since if $A \in SO_2(\mathbb{R})$ then $A = \underbrace{\left( A \begin{pmatrix}
             \det (P A P^{-1}) &= \det A = 1 \\
             \implies \det Q &= 1 \\
             (P A P^{-1}) (P A P^{-1})^T &= I \implies Q Q^T = I.\\
-            \text{So, } Q \in& SO_2(\mathbb{R}).
+            \text{So, } Q &\in SO_2(\mathbb{R}).
     \end{align*} 
 \end{proof}  
 
@@ -432,3 +432,27 @@ $\begin{pmatrix}-1 & 0 & 0 \\0 & 1 & 0 \\0 & 0 & 1\end{pmatrix} SO_3(\mathbb{R})
     \item inversion in origin, $-I_3$
     \item combinations of rotations and reflections
 \end{itemize} 
+
+\begin{theorem}\label{thm:13}
+    Any element of $O_3(\mathbb{R})$ is a product of at most 3 reflections.
+\end{theorem} 
+
+\begin{proof}
+    Let $\{e_1, e_2, e_3\}$ be the standard orthonormal basis for $\mathbb{R}^3$.
+    Let $A \in O_3(\mathbb{R})$.
+    \begin{align*}
+        |A e_3| = |e_3| = 1 \text{ Since $A$ is an isometry.}
+    \end{align*} 
+    So $\exists$ a reflection $r_1$ s.t. $r_1 A(e_3) = e_3$.
+    Let $\Pi = \langle e_1, e_2 \rangle \mathbin{\bot} e_3$.
+    So $r_1 A(\Pi) = \Pi$, as angles are preserved. \\
+    $\exists$ a reflection $r_2$ s.t. $r_2(e_3) = e_3,\ r_2(r_1 A (e_2)) = e_2$.
+    So $r_2 r_1 A$ fixes $e_2$ and $e_3$. \\
+    So $r_2 rq A (e_1) = \pm e_1$, if $e_1 = e_1$, set $r_3 = \text{id}$.
+    Else $e_1 = - e_1$, let $r_3$ be the reflection in the plane $\bot$ to $e_1$. \\
+    So $r_3 r_2 r_1 A$ fixes $e_1, e_2, e_3$, so $r_3 r_2 r_1 A = \text{id} \implies A = r_1^{-1} r_2^{-1} r_3^{-1} = r_1 r_2 r_3$.
+\end{proof} 
+
+Alternatively, any element in $SO_3(\mathbb{R})$ is a product of at most 2 reflections, via 2-dimensional case.
+Thus any element of $\begin{pmatrix}-1 & 0 & 0 \\0 & 1 & 0 \\0 & 0 & 1\end{pmatrix} SO_3(\mathbb{R})$ is a product of at most 3 reflections.
+Note we do need $3$, e.g. $-I_3$.

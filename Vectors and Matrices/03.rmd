@@ -6,20 +6,20 @@
 If we regard vectors as sets of components, it is easy to generalise from 3 to $n$ dimensions.
 
 ::: {.definition}
-$\mathbb{R}^n = \{ \underline{x} = (x_1, x_2, \ldots, x_n) : x_i \in \mathbb{R}$
+$\mathbb{R}^n = \{ \underline{x} = (x_1, x_2, \dots, x_n) : x_i \in \mathbb{R}$
 :::
 
 ::: {.definition}
 \ 
 
-i. *addition* $\underline{x} + \underline{y} = (x_1 + y_1, \ldots, x_n + y_n)$
+i. *addition* $\underline{x} + \underline{y} = (x_1 + y_1, \dots, x_n + y_n)$
 for any $\underline{x}, \underline{y} \in \mathbb{R}^n$
 
-ii. *scalar multiplication* $\lambda x = (\lambda x_1, \ldots, \lambda x_n)$ for any $\underline{x} \mathbb{R}^n$ and $\lambda \in \mathbb{R}$
+ii. *scalar multiplication* $\lambda x = (\lambda x_1, \dots, \lambda x_n)$ for any $\underline{x} \mathbb{R}^n$ and $\lambda \in \mathbb{R}$
 :::
 
 ::: {.definition name="Inner/ scalar product"} 
-$\underline{x} \cdot \underline{y} = \sum_i x_i y_i = x_1 y_1 + \ldots + x_n y_n$
+$\underline{x} \cdot \underline{y} = \sum_i x_i y_i = x_1 y_1 + \dots + x_n y_n$
 
 i. Symmetric $\underline{x} \cdot \underline{y} = \underline{y} \cdot \underline{x}$
 
@@ -36,10 +36,10 @@ The *length* or *norm* of vector $\underline{x}$ is $| \underline{x} | \geq 0$ d
 
 For $\underline{x} \in \mathbb{R}^n$ we can write $\underline{x} = \sum_i x_i \underline{e}_i$ where 
 \begin{align*}
-    \underline{e}_1 &= (1, 0, \ldots, 0) \\
-    \underline{e}_2 &= (0, 1, \ldots, 0) \\
+    \underline{e}_1 &= (1, 0, \dots, 0) \\
+    \underline{e}_2 &= (0, 1, \dots, 0) \\
     &\;\;\vdots \\
-    \underline{e}_n &= (0, 0, \ldots, 1).    
+    \underline{e}_n &= (0, 0, \dots, 1).    
 \end{align*}
 We call $\{ \underline{e}_i \}$ the *standard basis* for $\mathbb{R}^n$.
 Note it is orthonormal:
@@ -84,7 +84,7 @@ Equality holds iff discriminant $= 0$ iff $\lambda \underline{y} = \underline{x}
 ### Comments
 Inner product on $\mathbb{R}^n$ 
 \begin{align*}
-    \underline{a} \cdot \underline{b} = \delta_{ij} a_i b_j \hspace{0.5cm} (\sum \text{ convention and } i, j = 1, \ldots, n) \\
+    \underline{a} \cdot \underline{b} = \delta_{ij} a_i b_j \hspace{0.5cm} (\sum \text{ convention and } i, j = 1, \dots, n) \\
 \end{align*} 
 Component definition matches geometrical definition for n = 3 [Scalar or Dot Product].
 
@@ -125,10 +125,10 @@ Then $V$ is a *real vector space* if $V$ is an abelian group under addition and
 
 These axioms or key properties apply to geometrical vectors with $V$ being a 3d space or to vectors in $V = \mathbb{R}^n$, as above, as well as other examples.
 
-For vectors $\underline{v}_1, \underline{v}_2, \ldots, \underline{v}_r \in V$ we can form a *linear combination* $\lambda_1 \underline{v}_1 + \lambda_2 \underline{v}_2 + \ldots + \lambda_r \underline{v}_r \in V$ for any $\lambda_i \in \mathbb{R}$; the span is defined $\operatorname{span} \{ \underline{v}_1, \underline{v}_2, \ldots, \underline{v}_r \} = \{ \sum_i \lambda_i \underline{v}_i : \lambda_i \in \mathbb{R} \}$. \
+For vectors $\underline{v}_1, \underline{v}_2, \dots, \underline{v}_r \in V$ we can form a *linear combination* $\lambda_1 \underline{v}_1 + \lambda_2 \underline{v}_2 + \dots + \lambda_r \underline{v}_r \in V$ for any $\lambda_i \in \mathbb{R}$; the span is defined $\operatorname{span} \{ \underline{v}_1, \underline{v}_2, \dots, \underline{v}_r \} = \{ \sum_i \lambda_i \underline{v}_i : \lambda_i \in \mathbb{R} \}$. \
 A *subspace* of $V$ is a subset that is itself a vector space. \
 Note $V$ and $\{ 0 \}$ are subspaces. \
-$\operatorname{span} \{ \underline{v}_1, \underline{v}_2, \ldots, \underline{v}_r \}$ is a subspace for any vectors $\underline{v}_1, \underline{v}_2, \ldots, \underline{v}_r$. \
+$\operatorname{span} \{ \underline{v}_1, \underline{v}_2, \dots, \underline{v}_r \}$ is a subspace for any vectors $\underline{v}_1, \underline{v}_2, \dots, \underline{v}_r$. \
 Note: a non-empty subset $U \subseteq V$ is a subspace iff 
 \begin{align*}
     \underline{v}, \underline{w} \in U \implies \lambda \underline{v} + \mu \underline{w} \in U \; \forall \; \lambda, \mu \in \mathbb{R}.
@@ -146,9 +146,9 @@ e.g. \begin{align*}
 :::
 
 ### Linear Dependence and Independence
-For vectors $\underline{v}_1, \underline{v}_2, \ldots, \underline{v}_r \in V$ (where $V$ is a real vector space) consider the *linear relation* 
+For vectors $\underline{v}_1, \underline{v}_2, \dots, \underline{v}_r \in V$ (where $V$ is a real vector space) consider the *linear relation* 
 \begin{align*}
-    \lambda_1 \underline{v}_1 + \lambda_2 \underline{v}_2 + \ldots + \lambda_r \underline{v}_r = \underline{0} (\#eq:ein)
+    \lambda_1 \underline{v}_1 + \lambda_2 \underline{v}_2 + \dots + \lambda_r \underline{v}_r = \underline{0} (\#eq:ein)
 \end{align*} 
 
 If \@ref(eq:ein) $\implies \lambda_i = 0$ for every $i$ then the vectors form a *linearly independent* set (they obey only the *trivial* linear relation with $\lambda_i = 0$).\
@@ -188,11 +188,11 @@ ii. Bilinear
 ii. Positive definite
 
 ::: {.lemma}
-In a real vector space $V$ with inner product, if $\underline{v}_1, \ldots, \underline{v}_r$ are non-zero and orthogonal:
+In a real vector space $V$ with inner product, if $\underline{v}_1, \dots, \underline{v}_r$ are non-zero and orthogonal:
 \begin{align*}
     (\underline{v}_i, \underline{v}_i) \neq 0 \text { and } (\underline{v}_i, \underline{v}_j) = 0 \text{ where } i \neq j \text{ and for fixed } i.
 \end{align*} 
-then $\underline{v}_1, \ldots, \underline{v}_r$ are linearly independent.
+then $\underline{v}_1, \dots, \underline{v}_r$ are linearly independent.
 :::
 ::: {.proof}
 \begin{align*}
@@ -207,7 +207,7 @@ then $\underline{v}_1, \ldots, \underline{v}_r$ are linearly independent.
 
 For a vector space $V$, a basis is a set 
 \begin{align*}
-    \mathcal{B} = \{ \underline{e}_1, \ldots, \underline{e}_n \}
+    \mathcal{B} = \{ \underline{e}_1, \dots, \underline{e}_n \}
 \end{align*}  such that
 
 i. $\mathcal{B}$ spans $V$, i.e. any $\underline{v} \in V$ can be written $\underline{v} = \sum_{i=1}^{n} v_i \underline{e_i}$
@@ -225,17 +225,17 @@ $v_i$ are *components* of $\underline{v}$ w.r.t. $\mathfrak{B}$
 ::: {.example}
 Standard basis for $\mathbb{R}^n$ consisting of 
 \begin{align*}
-    \underline{e}_1 &= (1, 0, \ldots, 0) \\
-    \underline{e}_2 &= (0, 1, \ldots, 0) \\
+    \underline{e}_1 &= (1, 0, \dots, 0) \\
+    \underline{e}_2 &= (0, 1, \dots, 0) \\
     &\;\;\vdots \\
-    \underline{e}_n &= (0, 0, \ldots, 1).    
+    \underline{e}_n &= (0, 0, \dots, 1).    
 \end{align*} is a basis according to general definition.
 
 i. \begin{align*}
-    \underline{x} = \begin{pmatrix}x_1 \\\vdots \\x_n\end{pmatrix} = x_1 \underline{e}_1 + \ldots + x_n \underline{e}_n \\
+    \underline{x} = \begin{pmatrix}x_1 \\\vdots \\x_n\end{pmatrix} = x_1 \underline{e}_1 + \dots + x_n \underline{e}_n \\
 \end{align*} 
 
-ii. $\underline{x} = \underline{0} \iff x_1 = x_2 = \ldots = x_n = 0$
+ii. $\underline{x} = \underline{0} \iff x_1 = x_2 = \dots = x_n = 0$
 :::
 
 Many other bases can be chosen
@@ -265,7 +265,7 @@ But we could choose orthonormal basis
 \end{align*} 
 
 ::: {.theorem}
-If $\{ \underline{e}_1, \ldots, \underline{e}_n \}$ and $\{ \underline{f}_1, \ldots, \underline{f}_m \}$ are bases for a real vector space $V$, then $n = m$.
+If $\{ \underline{e}_1, \dots, \underline{e}_n \}$ and $\{ \underline{f}_1, \dots, \underline{f}_m \}$ are bases for a real vector space $V$, then $n = m$.
 :::
 
 ::: {.definition}
@@ -277,7 +277,7 @@ Note: $\mathbb{R}^n$ has dimension $n$.
 \begin{align*}
     \underline{f}_a &= \sum_i A_{ai} \underline{e}_i \\
     \text{and } \underline{e}_i &= \sum_i B_{ia} \underline{f}_a \\
-\end{align*} for constants $A_{ai}$ and $B_{ia}$ and we use ranges of indices $i, j = 1, \ldots, n$ and $a, b = 1, \ldots, m$.^[This is true since $\{ \underline{e}_i\}$ and $\{ \underline{f}_a \}$ are bases]
+\end{align*} for constants $A_{ai}$ and $B_{ia}$ and we use ranges of indices $i, j = 1, \dots, n$ and $a, b = 1, \dots, m$.^[This is true since $\{ \underline{e}_i\}$ and $\{ \underline{f}_a \}$ are bases]
 \begin{align*}
     \implies \underline{f}_a &= \sum_i A_{ai} \left( \sum_b B_{ib} \underline{f}_b \right) \\
     &= \sum_b \left( \sum_i A_{ai} B_{ib} \right) \underline{f}_b.
@@ -305,9 +305,9 @@ Not every vector space is finite dimensional.
 ::: {.proposition}
 Let $V$ be a vector space of dimension $n$
 
-i. If $Y = \{ \underline{w}_1, \ldots, \underline{w}_m \}$ spans V, then $m \geq n$ and if $m > n$ vectors can be removed from $Y$ to get a basis.
+i. If $Y = \{ \underline{w}_1, \dots, \underline{w}_m \}$ spans V, then $m \geq n$ and if $m > n$ vectors can be removed from $Y$ to get a basis.
 
-ii. If $X = \{ \underline{u}_1, \ldots, \underline{u}_k \}$ are linearly independent then $k \leq n$ and if $k < n$ vectors can be added to $X$ to get a basis. 
+ii. If $X = \{ \underline{u}_1, \dots, \underline{u}_k \}$ are linearly independent then $k \leq n$ and if $k < n$ vectors can be added to $X$ to get a basis. 
 :::
 
 ## Vectors in $\mathbb{C}^n$
@@ -315,34 +315,34 @@ ii. If $X = \{ \underline{u}_1, \ldots, \underline{u}_k \}$ are linearly indepen
 ### Definitions {#Cn}
 
 ::: {.definition} 
-$\mathbb{C}^n = \{ \underline{z} = (z_1, \ldots, z_n) : z_j \in \mathbb{C} \}$
+$\mathbb{C}^n = \{ \underline{z} = (z_1, \dots, z_n) : z_j \in \mathbb{C} \}$
 :::
 
 ::: {.definition}
 
-*addition*: $\underline{z} + \underline{w} = \left( z_1 + w_1, \ldots, z_n + w_n \right)$
+*addition*: $\underline{z} + \underline{w} = \left( z_1 + w_1, \dots, z_n + w_n \right)$
 
-*scalar multiplication*: $\lambda \underline{z} = (\lambda z_1, \ldots, \lambda z_n)$ for any $\underline{z}, \underline{w} \in \mathbb{C}^n$. 
+*scalar multiplication*: $\lambda \underline{z} = (\lambda z_1, \dots, \lambda z_n)$ for any $\underline{z}, \underline{w} \in \mathbb{C}^n$. 
 Taking *real* scalars $\lambda, \mu \in \mathbb{R}$, $\mathbb{C}^n$ is a real vector space obeying axioms or key properties in [Axioms; span; subspaces].\
 Taking *complex* scalars $\lambda, \mu \in \mathbb{C}$, $\mathbb{C}^n$ is a *complex* vector space - same axioms/ key properties hold, and definitions of linear combinations, linear (in)dependence, span, bases, dimension all generalise to complex scalars.
 
 The distinction matters
 \begin{align*}
-    e.g. \ \underline{z} &= (z_1, \ldots, z_n) \in \mathbb{C}^n \\
+    e.g. \ \underline{z} &= (z_1, \dots, z_n) \in \mathbb{C}^n \\
     \text{with } z_j &= x_j + i y_j \hspace{0.5cm} x_j, y_j \in \mathbb{R} \\
     \text{then } \underline{z} &= \sum_j x_j \underline{e}_j + \sum_j y_j \underline{f}_j \text{ is a real linear combination} \\
-    \text{where } \underline{e}_j &= \begin{pmatrix}0 & \ldots & 1 & \ldots & 0\end{pmatrix} \\
-    \underline{f}_j &= \begin{pmatrix}0 & \ldots & i & \ldots & 0\end{pmatrix} \\
+    \text{where } \underline{e}_j &= \begin{pmatrix}0 & \dots & 1 & \dots & 0\end{pmatrix} \\
+    \underline{f}_j &= \begin{pmatrix}0 & \dots & i & \dots & 0\end{pmatrix} \\
 \end{align*} 
-$\therefore \{\underline{e}_1, \ldots, \underline{e}_n, \underline{f}_1, \ldots, \underline{f}_n \}$ is a basis for $\mathbb{C}^n$ as a *real* vector space. 
+$\therefore \{\underline{e}_1, \dots, \underline{e}_n, \underline{f}_1, \dots, \underline{f}_n \}$ is a basis for $\mathbb{C}^n$ as a *real* vector space. 
 So the real dimension is $2n$.\
-But $\underline{z} = \sum_j z_j \underline{e}_j$ and $\{ \underline{e}_1, \ldots, \underline{e}_n \}$ is a basis for $\mathbb{C}^n$ as a complex vector space, dimension $n$ (over $\mathbb{C}$).
+But $\underline{z} = \sum_j z_j \underline{e}_j$ and $\{ \underline{e}_1, \dots, \underline{e}_n \}$ is a basis for $\mathbb{C}^n$ as a complex vector space, dimension $n$ (over $\mathbb{C}$).
 :::
 
 ### Inner Product
 Inner product or scalar product on $\mathbb{C}^n$ is defined by 
 \begin{align*}
-    (\underline{z}, \underline{w}) &= \sum_j \bar{z}_j w_j = \bar{z}_1 w_1 + \ldots + \bar{z}_n w_n \\
+    (\underline{z}, \underline{w}) &= \sum_j \bar{z}_j w_j = \bar{z}_1 w_1 + \dots + \bar{z}_n w_n \\
 \end{align*} 
 
 #### Properties
@@ -370,7 +370,7 @@ Note, the standard basis $\{ \underline{e}_j \}$ for $\mathbb{C}^n$ (see [defini
 \begin{align*}
     (\underline{e}_i, \underline{e}_j) = \delta_{ij}.
 \end{align*} 
-Also if $\underline{z}_1, \underline{z}_2, \ldots, \underline{z}_k$ are non-zero and orthogonal in sense above, then they are linearly independent over $\mathbb{C}$ (same argument as in real case).
+Also if $\underline{z}_1, \underline{z}_2, \dots, \underline{z}_k$ are non-zero and orthogonal in sense above, then they are linearly independent over $\mathbb{C}$ (same argument as in real case).
 
 ::: {.example}
 Complex inner product on $\mathbb{C}$ ($n = 1$) is 

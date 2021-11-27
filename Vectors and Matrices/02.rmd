@@ -45,11 +45,11 @@ iii. *Properties* For any vectors $\underline{a}, \underline{b}, \underline{c}$
 All of these can be checked geometrically, e.g. associativity of vector addition using a parallelepiped
 
 iv. *Linear Combinations and Span*
-A *linear combination* of vectors $\underline{a}, \underline{b}, \ldots, \underline{c}$ is an expression
+A *linear combination* of vectors $\underline{a}, \underline{b}, \dots, \underline{c}$ is an expression
 \begin{align*}
-    \alpha \underline{a} + \beta \underline{b} + \ldots + \gamma \underline{c} \text{ for some } \alpha, \beta, \ldots, \gamma \in \mathbb{R}.
+    \alpha \underline{a} + \beta \underline{b} + \dots + \gamma \underline{c} \text{ for some } \alpha, \beta, \dots, \gamma \in \mathbb{R}.
 \end{align*} 
-The *span* of a set of vectors is $\operatorname{span} \{ \underline{a}, \underline{b}, \ldots, \underline{c} \} = \{\alpha \underline{a} + \beta \underline{b} + \ldots + \gamma \underline{c} : \alpha, \beta, \ldots, \gamma \in \mathbb{R} \}$.
+The *span* of a set of vectors is $\operatorname{span} \{ \underline{a}, \underline{b}, \dots, \underline{c} \} = \{\alpha \underline{a} + \beta \underline{b} + \dots + \gamma \underline{c} : \alpha, \beta, \dots, \gamma \in \mathbb{R} \}$.
 
 If $a \neq 0$ then $\operatorname{span} \{ \underline{a} \} = \{ \lambda \underline{a} \}$, which is a line through $O$ and $A$.
 
@@ -314,11 +314,11 @@ For equations linear in $\underline{r}$
 ## Index (suffix) Notation and the Summation convention
 
 ### Components; $\delta$ and $\epsilon$
-Write vectors $\underline{a}, \underline{b}, \ldots$, in terms of components $a_i, b_i, \ldots$, wrt. an orthonormal, right-handed basis
+Write vectors $\underline{a}, \underline{b}, \dots$, in terms of components $a_i, b_i, \dots$, wrt. an orthonormal, right-handed basis
 \begin{align*}
     \underline{e}_1, \underline{e}_2, \underline{e}_3.
 \end{align*} 
-Indices or suffices $i, j, k, l, p, q \ldots$ take values $1, 2, 3$.
+Indices or suffices $i, j, k, l, p, q \dots$ take values $1, 2, 3$.
 
 Then \begin{align*}
     && \underline{c} &= \alpha \underline{a} + \beta \underline{b} \\

@@ -96,13 +96,13 @@ To find eigenvectors $\underline{v} = \begin{pmatrix}v_1 \\v_2\end{pmatrix}$:
 For $A$ $n \times n$, characteristic polynomial has degree $n$
 \begin{align*}
     \chi_A(t) &= \det \begin{pmatrix}
-    A_{11} - t & A_{12} & \ldots & A_{1n} \\
-    A_{21} & A_{22} - t & \ldots & A_{2n} \\
+    A_{11} - t & A_{12} & \dots & A_{1n} \\
+    A_{21} & A_{22} - t & \dots & A_{2n} \\
     \vdots & \vdots &  & \vdots \\
-    A_{n1} & A_{n2} & \ldots & A_{nn} - t 
+    A_{n1} & A_{n2} & \dots & A_{nn} - t 
     \end{pmatrix} \\
     &= \sum_{j=0}^{n} c_j t^j, \text{ for some } c_j \in \mathbb{C} \\
-    &= (-1)^n (t - \lambda_1) \ldots (t - \lambda_n)
+    &= (-1)^n (t - \lambda_1) \dots (t - \lambda_n)
 \end{align*} 
 
 i. $\exists$ at least one eigenvalue (one root of $\chi_A$); in fact $\exists$ $n$ roots counted with multiplicity (FTA).
@@ -216,12 +216,12 @@ ii. \begin{align*}
 
 \
 
-i. Let $\underline{v}_1, \ldots, \underline{v}_r$ be eigenvectors of matrix $A$ ($n \times n$) with eigenvalues $\lambda_1, \ldots, \lambda_r$.
+i. Let $\underline{v}_1, \dots, \underline{v}_r$ be eigenvectors of matrix $A$ ($n \times n$) with eigenvalues $\lambda_1, \dots, \lambda_r$.
 If the eigenvalues are distinct, $\lambda_i \neq \lambda_j$ for $i \neq j$, then the eigenvectors are linearly independent.
 
 ii. With conditions as in (i), let $\mathcal{B}_{\lambda_i}$ be a basis for $E_{\lambda_i}$, then 
 \begin{align*}
-    \mathcal{B}_{\lambda_1} \cup \mathcal{B}_{\lambda_2} \cup \ldots \cup \mathcal{B}_{\lambda_r}
+    \mathcal{B}_{\lambda_1} \cup \mathcal{B}_{\lambda_2} \cup \dots \cup \mathcal{B}_{\lambda_r}
 \end{align*} is linearly independent.
 :::
 
@@ -246,7 +246,7 @@ Or secondly,
     \implies \alpha_k &= 0
 \end{align*} hence eigenvectors are linearly independent.
 
-ii. It suffices to show that if $\underline{w} = \underline{w}_1 + \underline{w}_2 + \ldots + \underline{w}_r = \underline{0}$ with $\underline{w}_i \in E_{\lambda_i}$
+ii. It suffices to show that if $\underline{w} = \underline{w}_1 + \underline{w}_2 + \dots + \underline{w}_r = \underline{0}$ with $\underline{w}_i \in E_{\lambda_i}$
 \begin{align*}
     \implies \underline{w}_i = \underline{0}.
 \end{align*} 
@@ -260,7 +260,7 @@ This follows by same arguments as in (i).
 ::: {.proposition}
 For a $n \times n$ matrix $A$ acting on $V = \mathbb{R}^n$ or $\mathbb{C}^n$, the following conditions are equivalent:
 
-i. There exists a basis of eigenvectors for $V$, $\underline{v}_1, \underline{v}_2, \ldots, \underline{v}_n$ with $A \underline{v}_i = \lambda_i \underline{v}_i$ (not $\sum_i$ and $\lambda_i$ need not be distinct).
+i. There exists a basis of eigenvectors for $V$, $\underline{v}_1, \underline{v}_2, \dots, \underline{v}_n$ with $A \underline{v}_i = \lambda_i \underline{v}_i$ (not $\sum_i$ and $\lambda_i$ need not be distinct).
 
 ii. There exists an $n \times n$ invertible matrix $P$ with 
 \begin{align*}
@@ -305,12 +305,12 @@ $U$ is diagonalisable over $\mathbb{C}$ but not over $\mathbb{R}$.
 ### Criteria for Diagonalisability 
 
 ::: {.theorem}
-Let $A$ be a $n \times n$ matrix and $\lambda_1, \ldots, \lambda_r$ all its distinct eigenvalues.
+Let $A$ be a $n \times n$ matrix and $\lambda_1, \dots, \lambda_r$ all its distinct eigenvalues.
 
 i. A necessary and sufficient condition:
 $A$ is diagonalisable iff 
 \begin{align*}
-    M_{\lambda_i} = m_{\lambda_i} \text{ for } i = 1, \ldots, r
+    M_{\lambda_i} = m_{\lambda_i} \text{ for } i = 1, \dots, r
 \end{align*} 
 
 ii. A sufficient condition:
@@ -324,13 +324,13 @@ ii. If $r = n$ we have $n$ distinct eigenvalues and hence $n$ linearly independe
 
 i. Choosing bases $\mathcal{B}_{\lambda_i}$ for each eigenspace,
 \begin{align*}
-    \mathcal{B}_{\lambda_1} \cup \mathcal{B}_{\lambda_2} \cup \ldots \cup \mathcal{B}_{\lambda_r}
-\end{align*} is a linearly independent set of $m_{\lambda_1} + m_{\lambda_2} + \ldots + m_{\lambda_r}$ vectors.
+    \mathcal{B}_{\lambda_1} \cup \mathcal{B}_{\lambda_2} \cup \dots \cup \mathcal{B}_{\lambda_r}
+\end{align*} is a linearly independent set of $m_{\lambda_1} + m_{\lambda_2} + \dots + m_{\lambda_r}$ vectors.
 It is a basis (for $\mathbb{R}^n$ or $\mathbb{C}^n$) iff we have $n$ vectors.
 But
 \begin{align*}
     m_{\lambda_i} &\leq M_{\lambda_i} \\
-    \text{and } M_{\lambda_1} + M_{\lambda_2} + \ldots + M_{\lambda_r} &= n. \text{ (as there are n roots)}
+    \text{and } M_{\lambda_1} + M_{\lambda_2} + \dots + M_{\lambda_r} &= n. \text{ (as there are n roots)}
 \end{align*}
 Hence we have a basis iff
 \begin{align*}
@@ -502,6 +502,128 @@ But $\mu \neq \lambda$ so $\underline{v}^\dagger \underline{w} = 0$.
 
 iii. Given $A \underline{v} = \lambda \underline{v}$ with $\underline{v} \in \mathbb{C}^n$ and $A, \lambda$ real, let $\underline{v} = \underline{u} + i \underline{u'}$ with $\underline{u}, \underline{u'} \in \mathbb{R}^n$.
 Then $A \underline{u} = \lambda \underline{u}$ and $A \underline{u'} = \lambda \underline{u'}$ but $\underline{v} \neq \underline{0} \implies$ one of $\underline{u}, \underline{u'} \neq 0$ so there is at least one real eigenvector.
+:::
+
+### Unitary and Orthogonal Diagonalisation
+
+::: {.theorem}
+Any $n \times n$ hermitian matrix $A$ is diagonalisable (as in [Introduction])
+
+i. $\exists$ a basis of eigenvectors $\underline{u}_1, \dots, \underline{u}_n \in \mathbb{C}^n$ with $A \underline{u}_i = \lambda_i \underline{u}_i$; equivalently
+
+ii. $\exists \; n \times n$ invertible matrix $P$ with $P^{-1} A P = D = \begin{pmatrix}\lambda_1 &  &  \\ & \ddots &  \\ &  & \lambda_n\end{pmatrix}$; columns of $P$ are eigenvectors $\underline{u}_i$.
+
+In addition: these eigenvectors $\underline{u}_i$ can be chosen to be orthonormal $\underline{u}_i^\dagger \underline{u}_j = \delta_{ij}$; equivalently the matrix $P$ can be chosen to be unitary $P^\dagger = P^{-1}$ so $P^\dagger A P = D$.
+
+Special case: for $n \times n$ real symmetric $A$, can choose eigenvectors $\underline{u}_1, \dots, \underline{u}_n \in \mathbb{R}^n$ with $\underline{u}_i^T \underline{u}_j = \underline{u}_i \underline{u}_j = \delta_{ij}$; equivalently the matrix $P$ can be chosen to be orthogonal $P^T = P^{-1}$ so $P^T A P = D$.
+:::
+
+Proof of diagonalisability is *not examinable* and remaining statements follow by combining results of [Eigenspaces and Multiplicities] and [Diagonalisability and Similarity] and choosing *orthonormal* basis for each eigenspace.
+
+::: {.example #stwo}
+
 \
 
+1. $A = \begin{pmatrix}2 & i \\-i & 2\end{pmatrix}, A^\dagger = A$ so hermitian (as in [Examples]).
+$\lambda_1 = 1, \lambda_2 = 3$ and choose
+\begin{align*}
+    \underline{u}_1 = \frac{1}{\sqrt{2}} \begin{pmatrix}1 \\i\end{pmatrix}, \underline{u}_2 = \frac{1}{\sqrt{2}} \begin{pmatrix}1 \\-i\end{pmatrix}
+\end{align*} to ensure $\underline{u}_1^\dagger \underline{u}_1 = \underline{u}_2^\dagger \underline{u}_1 = 1$ and note $\underline{u}_1^\dagger \underline{u}_2 = \frac{1}{2} (1 - i) \begin{pmatrix}1 \\-i\end{pmatrix} = 0$.
+Let $P = \frac{1}{\sqrt{2}} \begin{pmatrix}1 & 1 \\i & -i\end{pmatrix}$ then $P^\dagger = P^{-1}$ so unitary and $P^\dagger A P = \begin{pmatrix}1 & 0 \\0 & 3\end{pmatrix}$.
+
+2. $A = \begin{pmatrix}0 & 1 & 1 \\1 & 0 & 1 \\1 & 1 & 0\end{pmatrix}, A^T = A$ so real and symmetric.
+$\lambda_1 = \lambda_2 = -1, \lambda_3 = 2$ and can choose 
+\begin{align*}
+    \underline{u}_1 = \frac{1}{\sqrt{2}}  \begin{pmatrix}1 \\-1 \\0\end{pmatrix}, \underline{u}_2 = \frac{1}{\sqrt{6}} \begin{pmatrix}1 \\1 \\-2\end{pmatrix}, \underline{u}_3 = \frac{1}{\sqrt{3}} \begin{pmatrix}1 \\1 \\1\end{pmatrix}.
+\end{align*}^[For symmetric $3 \times 3$ matrices, we may guess that $\begin{pmatrix}1 & 1 & 1\end{pmatrix}^T$ is an eigenvector.]
+Let $P$ be the matrix with columns $\underline{u}_1, \underline{u}_2, \underline{u}_3$ then $P^T = P^{-1}$ so $P$ is orthogonal and $P^T A P = \begin{pmatrix}-1 & 0 & 0 \\0 & -1 & 0 \\0 & 0 & 2\end{pmatrix}$.
 :::
+
+## Quadratic Forms
+Consider $\mathcal{F} : \mathbb{R}^2 \to \mathbb{R}$ defined by $\mathcal{F}(\underline{x}) = 2 x_1^2 - 4 x_1 x_2 + 5 x_2^2$.
+This can be expressed as $\mathcal{F}(\underline{x}) = x_1'^2 + 6 x_2'^2$ where 
+\begin{align*}
+    x_1' &= \frac{1}{\sqrt{5}} (2 x_1 + x_2) \\
+    x_2' &= \frac{1}{\sqrt{5}} (- x_1 + 2 x_2)
+\end{align*} with $x_1'^2 + x_2'^2 = x_1^2 + x_2^2$.
+To understand this better, note $\mathcal{F}(\underline{x}) = \underline{x}^T A \underline{x}$ where $A = \begin{pmatrix}2 & -2 \\-2 & 5\end{pmatrix}$ and we can diagonalise $A$: $\lambda_1 = 1, \lambda_2 = 6$ and orthonormal eigenvectors 
+\begin{align*}
+    \underline{u}_1 &= \frac{1}{\sqrt{5}} \begin{pmatrix}2 \\1\end{pmatrix}, \underline{u}_2 = \frac{1}{\sqrt{5}} \begin{pmatrix}-1 \\2\end{pmatrix} \\
+    \text{Then } x_1' &= \underline{u}_1 \cdot \underline{x} \\
+    x_2' &= \underline{u}_2 \cdot \underline{x}
+\end{align*} give the simplified form for $\mathcal{F}$.
+
+In general, a *quadratic form* is a function
+\begin{align*}
+    \mathcal{F} : \mathbb{R}^n &\to \mathbb{R} \\
+    \underline{x} &\mapsto \underline{x}^T A \underline{x} = x_i A_{ij} x_j
+\end{align*} where $A$ is a $n \times n$ real symmetric matrix.
+From [Hermitian and Symmetric Matrices] \begin{align*}
+    P^T A P &= D = \begin{pmatrix}\lambda_1 &  &  \\ & \ddots &  \\ &  & \lambda_n\end{pmatrix}
+\end{align*} where $\lambda_i$ are the eigenvalues of $A$ and $P$ is orthogonal with columns $\underline{u}_i$, the orthonormal eigenvectors. \
+Let $\underline{x}' = P^T \underline{x}$ or $\underline{x} = P \underline{x}'$, then
+\begin{align*}
+    \mathcal{F}(\underline{x}) &= \underline{x}^T A \underline{x} \\
+    &= (P \underline{x}')^T A (P \underline{x}') \\
+    &= (\underline{x}')^T (P^T A P) \underline{x}' \\
+    &=  (\underline{x}')^T D \underline{x}' \\
+    &= \sum_i \lambda_i x_i'^2 \\
+    &= \lambda_1 x_1'^2 + \dots + \lambda_n x_n'^2.
+\end{align*} 
+$\mathcal{F}$ has been *diagonalised*.
+\begin{align*}
+    \text{Now } \underline{x}' &= x_1' + \underline{e}_1 + \dots + x_n' \underline{e}_n \\
+    \underline{x} &= x_1 \underline{e}_1 + \dots + x_n  \underline{e}_n \\
+    &= x_1' \underline{u}_1 + \dots + x_2 \underline{u}_n \\
+    \text{since } x_i' &= \underline{u}_i \cdot \underline{x} \iff \underline{x}' = P^T \underline{x}
+\end{align*}
+Thus, $x_i'$ are coordinates w.r.t new axes given by orthonormal basis vectors $\underline{u}_i$, these are called the *principal axes* of $\mathcal{F}$.
+Relation to original axes along standard basis vectors $\underline{e}_i$ and coordinates $x_i$ is given by an orthogonal transformations
+\begin{align*}
+    |\underline{x}|^2 &= x_i x_i = x_i' x_i'.
+\end{align*} 
+
+### Examples in $\mathbb{R}^2$ and $\mathbb{R}^3$
+
+#### In $\mathbb{R}^2$
+\begin{align*}
+    \mathcal{F}(\underline{x}) &= \underline{x}^T A \underline{x} \\
+    \text{with } A &= \begin{pmatrix}\alpha & \beta \\\beta & \alpha\end{pmatrix} \\
+    \text{Eigenvalues: } \lambda_1 &= \alpha + \beta, \lambda_2 &= \alpha - \beta \\
+    \text{Eigenvectors: } \underline{u}_1 &= \frac{1}{\sqrt{2}} \begin{pmatrix}1 \\1\end{pmatrix}, \underline{u}_2 = \begin{pmatrix}-1 \\1\end{pmatrix} \\
+    \mathcal{F}(\underline{x}) &= \alpha x_1^2 + 2 \beta x_1 x_2 + \alpha x_2^2 \\
+    &= (\alpha + \beta) x_1'^2 + (\alpha - \beta) x_2'^2 \\
+    \text{with } x_1' &= \frac{1}{\sqrt{2}} (x_1 + x_2) \\
+    x_2' &= \frac{1}{\sqrt{2}} (-x_1 + x_2)
+\end{align*} 
+
+i.
+\begin{align*}
+    \alpha &= \frac{3}{2}, \beta = - \frac{1}{2} \\
+    \implies \lambda_1 &= 1, \lambda_2 = 2 \\
+    \mathcal{F}(x) &= x_1'^2 + 2 x_2'^2 = 1
+\end{align*} defines an ellipse
+```{r 06-quadratic-R2-1, echo = FALSE, fig.cap = "", fig.align="center", out.height="300"} 
+knitr::include_graphics("figures/06-quadratic-R2-1.png") 
+```
+
+ii. \begin{align*}
+    \alpha &= -\frac{1}{2}, \beta = \frac{3}{2} \\
+    \implies \lambda_1 &= 1, \lambda_2 = - 2 \\
+    \mathcal{F}(x) &= x_1'^2 - 2 x_2'^2 = 1
+\end{align*} defines an hyperbola
+
+#### In $\mathbb{R}^3$
+$\mathcal{F}(x) = \underline{x}^T A \underline{x} = \lambda_1 x_1'^2 + \lambda_2 x_2'^2 + \lambda_3 x_3'$ after diagonalisation.
+
+i. If $A$ has eigenvalues $\lambda_1, \lambda_2, \lambda_3 > 0$ then $\mathcal{F} = 1$ defines an ellipsoid.
+
+ii. $A = \begin{pmatrix}0 & 1 & 1 \\1 & 0 & 1 \\1 & 1 & 0\end{pmatrix}$ (from example \@ref(exm:stwo)), $\lambda_1 = \lambda_2 = -1, \lambda_3 = 2$.
+Hence
+\begin{align*}
+    \mathcal{F} &= 2 x_1 x_2 + 2 x_2 x_3 + 2 x_3 x_1 \\
+    &= - x_1'^2 - x_2'^2 + 2 x_3'^2 \\
+    \mathcal{F} &= 1 \iff 2 x_3'^2 = 1 + x_1'^2 + x_2'^2
+\end{align*} defines a hyperboloid (2 sheeted)
+
+$\mathcal{F} = -1 \iff x_1'^2 + x_2'^2 = 1 + 2 x_3'^2$ defined a hyperboloid (2 sheeted).
