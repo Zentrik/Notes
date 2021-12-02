@@ -98,7 +98,7 @@ For $A$ $n \times n$, characteristic polynomial has degree $n$
     \chi_A(t) &= \det \begin{pmatrix}
     A_{11} - t & A_{12} & \dots & A_{1n} \\
     A_{21} & A_{22} - t & \dots & A_{2n} \\
-    \vdots & \vdots &  & \vdots \\
+    \vdots & \vdots & \ddots & \vdots \\
     A_{n1} & A_{n2} & \dots & A_{nn} - t 
     \end{pmatrix} \\
     &= \sum_{j=0}^{n} c_j t^j, \text{ for some } c_j \in \mathbb{C} \\
@@ -107,7 +107,7 @@ For $A$ $n \times n$, characteristic polynomial has degree $n$
 
 i. $\exists$ at least one eigenvalue (one root of $\chi_A$); in fact $\exists$ $n$ roots counted with multiplicity (FTA).
 
-ii. $\operatorname{tr}(A) = A_{ii} = \sum_i \lambda_i$, sum of eigenvalues, by comparing terms of order $n - 1$ in $t$. (???)
+ii. $\operatorname{tr}(A) = A_{ii} = \sum_i \lambda_i$, sum of eigenvalues, by comparing terms of order $n - 1$ in $t$.
 
 iii. $\det A = \chi_A(0) = \Pi_i \lambda_i$, product of eigenvalues.
 
@@ -612,6 +612,9 @@ ii. \begin{align*}
     \implies \lambda_1 &= 1, \lambda_2 = - 2 \\
     \mathcal{F}(x) &= x_1'^2 - 2 x_2'^2 = 1
 \end{align*} defines an hyperbola
+```{r 06-quadratic-R2-2, echo = FALSE, fig.cap = "", fig.align="center", out.height="300"} 
+knitr::include_graphics("figures/06-quadratic-R2-2.png") 
+```
 
 #### In $\mathbb{R}^3$
 $\mathcal{F}(x) = \underline{x}^T A \underline{x} = \lambda_1 x_1'^2 + \lambda_2 x_2'^2 + \lambda_3 x_3'$ after diagonalisation.
@@ -626,4 +629,63 @@ Hence
     \mathcal{F} &= 1 \iff 2 x_3'^2 = 1 + x_1'^2 + x_2'^2
 \end{align*} defines a hyperboloid (2 sheeted)
 
+```{r 06-hyperboloid-1, echo = FALSE, fig.cap = "", fig.align="center", out.height="300"} 
+knitr::include_graphics("figures/06-hyperboloid-1.png") 
+```
+
 $\mathcal{F} = -1 \iff x_1'^2 + x_2'^2 = 1 + 2 x_3'^2$ defined a hyperboloid (2 sheeted).
+
+```{r 06-hyperboloid-2, echo = FALSE, fig.cap = "", fig.align="center", out.height="300"} 
+knitr::include_graphics("figures/06-hyperboloid-2.png") 
+```
+
+## Cayley-Hamilton Theorem
+
+If $A$ is a $n \times n$ complex matrix and 
+$f(t) = c_0 + c_1 t + \dots + c_k t^k$ is a poly of degree k, then
+\begin{align*}
+    f(A) = c_0 I + c_1 A + \dots + c_k A^k.
+\end{align*} 
+We can also define power series of matrices subject to convergence
+\begin{align*}
+    \text{e.g. } \exp A = I + A + \dots + \frac{1}{r!} A^r + \dots
+\end{align*} converges for any $A$. \
+Note 
+
+i. If $D = \begin{pmatrix}\lambda_1 &  &  \\ & \ddots &  \\ &  & \lambda_n\end{pmatrix}$ is diagonal then $D^r = \begin{pmatrix}\lambda_1^r &  &  \\ & \ddots &  \\ &  & \lambda_n^r\end{pmatrix}$ and $f(D) = \begin{pmatrix}f(\lambda_1) &  &  \\ & \ddots &  \\ &  & f(\lambda_n)\end{pmatrix}$.
+
+ii. If $B = P^{-1} A P$ for invertible $P$, i.e. $A$ and $B$ are similar then $B^r = P^{-1} A^r P$ and $f(B) = f(P^{-1} A P) = P^{-1} f(A) P$. \
+Recall the characteristic polynomial is $\chi_A(t) = \det (A - tI) = c_0 + c_1 t + \dots + c_n t^n$ where $c_0 = \det A$ and $c_n = (-1)^n$, [Deductions involving $\chi_A(t)$].
+
+::: {.theorem name="Cayley-Hamilton" #CH}
+\begin{align*}
+    \chi_A(t) &= c_0 I + c_1 A + \dots + c_n A^n = 0
+\end{align*} 
+"a matrix satisfies its own characteristic equation"
+:::
+Note Cayley-Hamilton, \@ref(thm:CH), implies 
+\begin{align*}
+    c_0 I = - A \left(c_1 I + \dots + c_n A^{n-1} \right) 
+\end{align*} and if $c_0 = \det A \neq 0$ then 
+\begin{align*}
+    A^{-1} &= - \frac{1}{c_0} \left(c_1 I + \dots + c_n A^{n-1} \right)
+\end{align*} 
+
+::: {.proof}
+
+\
+
+i. General $2 \times 2$ matrix
+\begin{align*}
+    A = \begin{pmatrix}a & b \\c & d\end{pmatrix} \implies \chi_A(t) = t^2 - (a + d)t + (ad - bc)
+\end{align*} then check by substitution that $\chi_A(A) = 0$. (Sheet 4)
+
+ii. Diagonalisable $n \times n$ matrix: consider $A$ with evals $\lambda_i$ and invertible $P$ s.t.
+\begin{align*}
+    PAP^{-1} &= D = \begin{pmatrix}\lambda_1 &  &  \\ & \ddots &  \\ &  & \lambda_n\end{pmatrix}.\\
+    \text{Now } \chi_A(D) &= \begin{pmatrix}\chi_A(\lambda_1) &  & \\ & \ddots & \\ &  & \chi_A(\lambda_n) \end{pmatrix} = 0 \text{since $\chi_A$ is poly and $\lambda_i$ evals} \\
+    \text{Then } \chi_A(A) &= \chi_A(P^{-1} D P) \\
+    &= P^{-1} \chi_A(D) P \\
+    &= 0
+\end{align*} 
+:::

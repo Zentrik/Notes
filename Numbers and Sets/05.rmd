@@ -344,7 +344,7 @@ No, e.g. $X'' = X' \cup \mathcal{P}(X') \cup \mathcal{P}(\mathcal{P}(X')) \cup \
 Does every set $Y$ inject into $X, X', X'', \dots$? \
 No, e.g. $Y = X \cup X' \cup X'' \cup \dots$
 
-# Panorama
+## Panorama
 
 - II Logic and Set Theory - We will explore the cardinalities of infinite sets in more details and will learn about the axiomatic system upon which modern mathematics is built.
 

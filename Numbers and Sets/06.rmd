@@ -1,0 +1,96 @@
+# More about primes (non-examinable)
+
+Bertrand postulated in 1845 that for every $n \in \mathbb{N}$ there is always a prime between $n$ and $2n$ ($n \leq p < 2n$). \
+The primes $2, 5, 11, 23, 47, 89, 179, 359, 719, 1439, 2879$ show it to be true for $n \leq 2^{11}$.
+Bertrand checked it for $n < 3\,000\,000$.
+Chebychev (1850) gave a proof.
+Erd\H{o}s (1932) gave an elementary proof based on the properties of $\binom{2n}{n}$.
+
+::: {.lemma #sone}
+\begin{align*}
+    \binom{2n}{n} \geq \frac{2^{2n}}{2n + 1}.
+\end{align*} 
+:::
+::: {.proof}
+Since $\binom{n}{k + 1} / \binom{n}{k} = \frac{n - k}{k + 1}$, it is evident that $\binom{n}{k}$ increases for $k < \frac{n}{2}$, and decreases for $k > \frac{n}{2}$.
+In particular, $\binom{2n}{n} \geq \frac{2^{2n}}{2n + 1}$, the maximum element is at least as big as the average ($2^{2n}$ is the sum and we have $2n + 1$ elements). 
+:::
+
+::: {.lemma #stwo}
+If $p \leq n$ is a prime dividing $\binom{2n}{n}$, then $p \leq \frac{2n}{3}$.
+:::
+::: {.proof}
+Suppose $\frac{2n}{3} < p \leq n$, then $p \leq n < \frac{3}{2}p < 2p \leq 2n < 3p$, so the numerator and denominator of 
+\begin{align*}
+    \frac{2n (2n - 1) \dots (n + 1)}{n (n - 1) \dots 3 \cdot 2 \cdot 1}
+\end{align*} 
+are divisible by exactly one copy of $p$. ⨳ as it can then not divide it.
+:::
+
+::: {.lemma #sthree}
+If $p$ is a prime and $p^k \mid \binom{2n}{n}$, then $p^k \leq 2n$.
+:::
+::: {.proof}
+The greatest power of $p$ dividing $n! = n (n-1) \dots 3 \cdot 2 \cdot 1$.
+$\left \lfloor \frac{n}{p} \right \rfloor$ is the no. of multiples of $p$ upto $n$, $\left \lfloor \frac{n}{p^2} \right \rfloor$ is the no. of multiples of $p^2$ upto $n$.
+So the greatest power is $\left \lfloor \frac{n}{p} \right \rfloor +\left \lfloor \frac{n}{p^2} \right \rfloor +\left \lfloor \frac{n}{p^3} \right \rfloor \dots = \sum_{i \geq 1}\left \lfloor \frac{n}{p^i} \right \rfloor$.
+:::
+Hence, if $k$ is a power of $p$ dividing $\binom{2n}{n} = \frac{2n !}{(n!)^2}$, then
+\begin{align*}
+    k &\leq \sum_{i \geq 1}\left \lfloor \frac{2n}{p^i} \right \rfloor - 2 \sum_{i \geq 1}\left \lfloor \frac{n}{p^i} \right \rfloor\\
+    &= \sum^l_{i = 1} \left(\left \lfloor \frac{2n}{p^i} \right \rfloor - 2\left \lfloor \frac{n}{p^i} \right \rfloor \right) \text{ where $l$ is the greatest power of $p$ s.t. $p^l \leq 2n$} \\
+    &\leq \sum_{i = 1}^k 1 \text{ since } \left \lfloor 2x \right \rfloor - 2 \left \lfloor x \right \rfloor \leq 1 \\
+    &= l \\
+    \text{so $k \leq l$ and thus $p^k \leq p^l \leq 2n$}.
+\end{align*} 
+
+::: {.lemma #sfour}
+For all $m \in \mathbb{N}, \underset{p \leq m \\ \text{$p$ prime}}{\prod} p \leq 4^m$.
+:::
+::: {.proof}
+By induction on $m$.
+True for $m = 2$.
+If $m > 2$ is even, then
+\begin{align*}
+    \prod_{p \leq m} p = \prod_{p \leq m - 1} p \leq 4^{m - 1} < 4^m.
+\end{align*} 
+If $m = 2k + 1$ is odd, then all primes $k + 2 \leq p \leq 2k + 1$ divide $\binom{2k + 1}{k} = \frac{(2k + 1)!}{k! (k + 1)!} = \frac{(2k + 1) 2k \dots (k + 2)}{k (k - 1) \dots 3 \cdot 2 \cdot 1}$ (as they divide the numerator but not denominator).
+Thus $\prod_{k + 2 \leq p \leq 2k + 1} p \leq \binom{2k + 1}{k} = \binom{2k + 1}{k + 1} \leq \frac{2^{2k + 1}}{2} = 4^k$.
+By the inductive hypothesis,
+\begin{align*}
+    \prod_{p \leq m} p = \prod_{p < k + 1} p \cdot \prod_{k + 2 \leq p \leq 2k + 1} p \leq 4^{k + 1} \cdot 4^k = 4^{2k + 1}
+\end{align*} 
+:::
+
+::: {.theorem #sfive name="Bertrand's Postulate"}
+For all $n \in \mathbb{N}$ s.t. $n \geq 2$, $\exists$ prime $p$ with $n \leq p < 2n$.
+:::
+::: {.proof}
+Clearly the prime factors of $\binom{2n}{n}$ are all $< 2n$.
+Suppose the theorem fails.
+Then all prime factors of $\binom{2n}{n}$ are in fact $< n$. \
+By Lemma \@ref(lem:stwo), they are all $< \frac{2}{3} n$. \
+Consider the prime factorisation of $\binom{2n}{n}$.
+By Lemma \@ref(lem:sthree), each prime contributes $\leq 2n$ to the factorisation.
+Moreover, if $p > \sqrt{2n}$, then $p$ contributes at most $p$ to the factorisation (since $p^2 > 2$).
+Now by Lemma \@ref(lem:sone) and \@ref(lem:sfour)
+\begin{align*}
+    \frac{2^{2n}}{2n + 1} \leq \binom{2n}{n} &\leq \Pi_{p \leq \sqrt{2n}} p \Pi_{\sqrt{2n} < p < \frac{2}{3} n} p \\
+    &\leq (2n)^{\sqrt{2n}} \cdot \Pi_{p < \frac{2}{3} n} p \\
+    \text{by Lemma \@ref(lem:sfour), } \Pi_{p < \frac{2}{3} n} p &\leq 4^{\frac{2}{3} n} \\
+    &\leq (2n)^{\sqrt{2n}} \cdot  4^{\frac{2}{3}n} \\
+    \frac{4^n}{2n + 1} &\leq (2n)^{\sqrt{2n}} \cdot 4^{\frac{2}{3} n},
+\end{align*} which fails when $n$ is large.
+
+How large?
+\begin{align*}
+    4^{\frac{n}{3}} &\leq (2n + 1)(2n)^{\sqrt{2n}} \\
+    \text{and } (2n + 1) &\leq (2n)^2 \leq (2n)^{\sqrt{2n}/3} \text{ for } n \geq 18 \\
+    \text{so } 4^\frac{n}{3} &\leq (2n)^{\frac{4}{3} \sqrt{2n}} \\
+    \text{or } 4^n &\leq (2n)^{4 \sqrt{2n}} \\
+    \text{with } r &= \sqrt{2n}, \text{ this is} \\
+    4^{\frac{r^2}{2}} &\leq r^{8r} \\
+    \text{or } 4^r &\leq r^{16}
+\end{align*} which fails when $r \geq 2^6 = 64$.
+So proof holds when $n \geq 2^{11}$, and also true for smaller values of $n$ as discussed at the beginning of the lecture.
+:::
