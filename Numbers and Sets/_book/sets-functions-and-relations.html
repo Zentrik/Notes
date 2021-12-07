@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>4 Sets, Functions and Relations | Numbers and Sets 2021 - 2022</title>
+  <meta name="description" content="Notes" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="4 Sets, Functions and Relations | Numbers and Sets 2021 - 2022" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Notes" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="4 Sets, Functions and Relations | Numbers and Sets 2021 - 2022" />
+  
+  <meta name="twitter:description" content="Notes" />
+  
+
+<meta name="author" content="" />
+
+
+<meta name="date" content="2021-07-10" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="the-reals.html"/>
+<link rel="next" href="countability.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Lecture 1</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#contents"><i class="fa fa-check"></i><b>0.1</b> Contents</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#examples-and-remarks-of-statements"><i class="fa fa-check"></i><b>1.1</b> Examples and remarks of statements</a></li>
+<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#some-proofs-and-non-proofs"><i class="fa fa-check"></i><b>1.2</b> Some proofs and non-proofs</a></li>
+<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#combining-assertions"><i class="fa fa-check"></i><b>1.3</b> Combining assertions</a></li>
+<li class="chapter" data-level="1.4" data-path="introduction.html"><a href="introduction.html#negating-quantifiers"><i class="fa fa-check"></i><b>1.4</b> Negating Quantifiers</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="elementary-number-theory.html"><a href="elementary-number-theory.html"><i class="fa fa-check"></i><b>2</b> Elementary Number Theory</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="elementary-number-theory.html"><a href="elementary-number-theory.html#the-natural-numbers"><i class="fa fa-check"></i><b>2.1</b> The natural numbers</a></li>
+<li class="chapter" data-level="2.2" data-path="elementary-number-theory.html"><a href="elementary-number-theory.html#the-integers"><i class="fa fa-check"></i><b>2.2</b> The integers</a></li>
+<li class="chapter" data-level="2.3" data-path="elementary-number-theory.html"><a href="elementary-number-theory.html#the-rationals"><i class="fa fa-check"></i><b>2.3</b> The rationals</a></li>
+<li class="chapter" data-level="2.4" data-path="elementary-number-theory.html"><a href="elementary-number-theory.html#primes"><i class="fa fa-check"></i><b>2.4</b> Primes</a></li>
+<li class="chapter" data-level="2.5" data-path="elementary-number-theory.html"><a href="elementary-number-theory.html#highest-common-factors"><i class="fa fa-check"></i><b>2.5</b> Highest Common Factors</a></li>
+<li class="chapter" data-level="2.6" data-path="elementary-number-theory.html"><a href="elementary-number-theory.html#euclids-algorithm"><i class="fa fa-check"></i><b>2.6</b> Euclid’s Algorithm</a></li>
+<li class="chapter" data-level="2.7" data-path="elementary-number-theory.html"><a href="elementary-number-theory.html#some-applications-of-theorem-refthmfta"><i class="fa fa-check"></i><b>2.7</b> Some Applications of Theorem @ref(thm:fta)</a></li>
+<li class="chapter" data-level="2.8" data-path="elementary-number-theory.html"><a href="elementary-number-theory.html#modular-arithmetic"><i class="fa fa-check"></i><b>2.8</b> Modular arithmetic</a></li>
+<li class="chapter" data-level="2.9" data-path="elementary-number-theory.html"><a href="elementary-number-theory.html#solving-congruences"><i class="fa fa-check"></i><b>2.9</b> Solving congruences</a></li>
+<li class="chapter" data-level="2.10" data-path="elementary-number-theory.html"><a href="elementary-number-theory.html#solving-simultaneous-congruences"><i class="fa fa-check"></i><b>2.10</b> Solving simultaneous congruences</a></li>
+<li class="chapter" data-level="2.11" data-path="elementary-number-theory.html"><a href="elementary-number-theory.html#public-key-cryptography"><i class="fa fa-check"></i><b>2.11</b> Public Key Cryptography</a>
+<ul>
+<li class="chapter" data-level="2.11.1" data-path="elementary-number-theory.html"><a href="elementary-number-theory.html#rsa-scheme-rivest-shamir-adleman"><i class="fa fa-check"></i><b>2.11.1</b> RSA Scheme (Rivest, Shamir, Adleman)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="the-reals.html"><a href="the-reals.html"><i class="fa fa-check"></i><b>3</b> The Reals</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="the-reals.html"><a href="the-reals.html#the-reals-1"><i class="fa fa-check"></i><b>3.1</b> The Reals</a></li>
+<li class="chapter" data-level="3.2" data-path="the-reals.html"><a href="the-reals.html#sequences"><i class="fa fa-check"></i><b>3.2</b> Sequences</a></li>
+<li class="chapter" data-level="3.3" data-path="the-reals.html"><a href="the-reals.html#series"><i class="fa fa-check"></i><b>3.3</b> Series</a></li>
+<li class="chapter" data-level="3.4" data-path="the-reals.html"><a href="the-reals.html#decimal-expansion"><i class="fa fa-check"></i><b>3.4</b> Decimal expansion</a></li>
+<li class="chapter" data-level="3.5" data-path="the-reals.html"><a href="the-reals.html#eulers-number-e"><i class="fa fa-check"></i><b>3.5</b> Euler’s number <span class="math inline">\(e\)</span></a></li>
+<li class="chapter" data-level="3.6" data-path="the-reals.html"><a href="the-reals.html#algebraic-and-transcendental-numbers"><i class="fa fa-check"></i><b>3.6</b> Algebraic and Transcendental Numbers</a></li>
+<li class="chapter" data-level="3.7" data-path="the-reals.html"><a href="the-reals.html#the-complex-numbers"><i class="fa fa-check"></i><b>3.7</b> The Complex Numbers</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="sets-functions-and-relations.html"><a href="sets-functions-and-relations.html"><i class="fa fa-check"></i><b>4</b> Sets, Functions and Relations</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="sets-functions-and-relations.html"><a href="sets-functions-and-relations.html#finite-sets"><i class="fa fa-check"></i><b>4.1</b> Finite Sets</a></li>
+<li class="chapter" data-level="4.2" data-path="sets-functions-and-relations.html"><a href="sets-functions-and-relations.html#functions"><i class="fa fa-check"></i><b>4.2</b> Functions</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="sets-functions-and-relations.html"><a href="sets-functions-and-relations.html#observations"><i class="fa fa-check"></i><b>4.2.1</b> Observations</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="sets-functions-and-relations.html"><a href="sets-functions-and-relations.html#relations"><i class="fa fa-check"></i><b>4.3</b> Relations</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="countability.html"><a href="countability.html"><i class="fa fa-check"></i><b>5</b> Countability</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="countability.html"><a href="countability.html#question"><i class="fa fa-check"></i><b>5.1</b> Question</a></li>
+<li class="chapter" data-level="5.2" data-path="countability.html"><a href="countability.html#panorama"><i class="fa fa-check"></i><b>5.2</b> Panorama</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="more-about-primes-non-examinable.html"><a href="more-about-primes-non-examinable.html"><i class="fa fa-check"></i><b>6</b> More about primes (non-examinable)</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Numbers and Sets 2021 - 2022</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="sets-functions-and-relations" class="section level1" number="4">
+<h1><span class="header-section-number">4</span> Sets, Functions and Relations</h1>
+<p>A set is a collection of mathematical objects.<br />
+E.g. <span class="math inline">\(\mathbb{R}, \mathbb{N}, \{1, 5, 9\}, [-2, 3]\)</span>.<br />
+The order of the elements in the set is immaterial, and elements are counted only once (unlike sequences).<br />
+E.g. <span class="math inline">\(\{1, 3, 7\} = \{1, 7, 3\}\)</span> and <span class="math inline">\(\{3, 4, 4, 8\} = \{3, 4, 8\}\)</span>.</p>
+<p>We write <span class="math inline">\(x \in A\)</span> if <span class="math inline">\(x\)</span> is an element of the set <span class="math inline">\(A\)</span>, and <span class="math inline">\(x \notin A\)</span> if not.<br />
+Two sets are equal if they have the same elements.
+That is, if <span class="math inline">\(\forall \; x, x \in A \iff x \in B\)</span>, then <span class="math inline">\(A = B\)</span>.
+In particular, there is only one empty set <span class="math inline">\(\emptyset\)</span>.</p>
+<p>A set <span class="math inline">\(B\)</span> is a subset of <span class="math inline">\(A\)</span>, written “<span class="math inline">\(B \subseteq A\)</span> or”<span class="math inline">\(B \subset A\)</span>“, if every element of <span class="math inline">\(B\)</span> is an element of <span class="math inline">\(A\)</span>.
+<img src="figures/04-subset.png" height="300" style="display: block; margin: auto;" />
+<span class="math inline">\(B\)</span> is said to be a <em>proper</em> subset of <span class="math inline">\(A\)</span> if <span class="math inline">\(B \subseteq A\)</span> and <span class="math inline">\(B \neq A\)</span> (also write <span class="math inline">\(B \subsetneq A\)</span>).</p>
+<p>Note that <span class="math inline">\(A = B\)</span> iff <span class="math inline">\(A \subseteq B\)</span> and <span class="math inline">\(B \subseteq A\)</span>.</p>
+<p>If <span class="math inline">\(A\)</span> is a set and <span class="math inline">\(P\)</span> is a property of (some) elements of <span class="math inline">\(A\)</span>, we can write <span class="math inline">\(\{x \in A : P(x)\}\)</span> for the subset of <span class="math inline">\(A\)</span> comprising of those elements for which <span class="math inline">\(P(x)\)</span> holds, this is called subset selection.
+E.g. <span class="math inline">\(\{n \in \mathbb{N} : n \text{ is prime}\} = \{2, 3, 5, 7, 11, \dots\} \subseteq \mathbb{N}\)</span>.</p>
+<p>If <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are sets, then their <em>union</em> <span class="math inline">\(A \cup B\)</span> is
+<span class="math display">\[\begin{align*}
+    A \cup B = \{x : x \in A \text{ or } x \in B\}.
+\end{align*}\]</span>
+<img src="figures/04-union.png" height="300" style="display: block; margin: auto;" /></p>
+<p>Their <em>intersection</em> <span class="math inline">\(A \cap B\)</span> is defined to be
+<span class="math display">\[\begin{align*}
+    A \cap B = \{x: x \in A \text{ and } x \in B\}.
+\end{align*}\]</span>
+<img src="figures/04-intersect.png" height="300" style="display: block; margin: auto;" /></p>
+<p>We say <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are <em>disjoint</em> if <span class="math inline">\(A \cap B = \emptyset\)</span><a href="more-about-primes-non-examinable.html#fn13" class="footnote-ref" id="fnref13"><sup>13</sup></a>
+Note that we can view intersection as a special case of subset selection: <span class="math inline">\(A \cap B = \{x \in A : x \in B\}\)</span>.</p>
+<p>Similarly, we have the <em>set difference</em> <span class="math inline">\(A \setminus B = \{x \in A : x \notin B\}\)</span>.</p>
+<p>Note that <span class="math inline">\(\cup\)</span> and <span class="math inline">\(\cap\)</span> are both commutative and associative.
+Also, <span class="math inline">\(\cup\)</span> is distributive over <span class="math inline">\(\cap\)</span>, i.e.
+<span class="math display">\[\begin{align*}
+    A \cup (B \cap C) = (A \cup B) \cap (A \cup C),
+\end{align*}\]</span>
+<em>and</em> <span class="math inline">\(\cap\)</span> is distributive over <span class="math inline">\(\cup\)</span>, i.e.
+<span class="math display">\[\begin{align*}
+    A \cap (B \cup C) = (A \cap B) \cup (A \cap C).
+\end{align*}\]</span></p>
+<div class="proof">
+<p><span id="unlabeled-div-80" class="proof"><em>Proof</em>. </span>To prove <span class="math inline">\(A \cap (B \cup C) = (A \cap B) \cup (A \cap C)\)</span>, show that LHS <span class="math inline">\(\subseteq\)</span> RHS and RHS <span class="math inline">\(\subseteq\)</span> LHS, so LHS <span class="math inline">\(=\)</span> RHS.</p>
+<p>If <span class="math inline">\(x \in A \cap (B \cup C)\)</span>, then <span class="math inline">\(x \in A\)</span> and <span class="math inline">\(x \in B \cup C\)</span>, so <span class="math inline">\(x \in A\)</span> and (<span class="math inline">\(x \in B\)</span> or <span class="math inline">\(x \in C\)</span>).<br />
+If <span class="math inline">\(x \in B\)</span>, then <span class="math inline">\(x \in A \cap B\)</span>, and if <span class="math inline">\(x \in C\)</span>, then <span class="math inline">\(x \in A \cap C\)</span>.
+Hence, in any case <span class="math inline">\(x \in (A \cap B) \cup (A \cap C)\)</span>.</p>
+<p>Conversely, suppose <span class="math inline">\(x \in (A \cap B) \cup (A \cap C)\)</span>, then <span class="math inline">\(x \in A \cap B\)</span> or <span class="math inline">\(x \in A \cap C\)</span>.<br />
+If <span class="math inline">\(x \in A \cap B\)</span>, then <span class="math inline">\(x \in A\)</span> and <span class="math inline">\(x \in B \cup C\)</span>.<br />
+If <span class="math inline">\(x \in A \cap C\)</span>, then <span class="math inline">\(x \in A\)</span> and <span class="math inline">\(x \in B \cup C\)</span>, so in any case <span class="math inline">\(x \in A \cap (B \cup C)\)</span>.</p>
+</div>
+<p>If <span class="math inline">\(A_1, A_2, A_3, \dots\)</span> are sets, then
+<span class="math display">\[\begin{align*}
+    \bigcap_{n = 1}^\infty A_n &amp;= A_1 \cap A_2 \cap A_3 \cap \dots \\
+    &amp;= \{x : x \in A_n \text{ for all } n \in \mathbb{N}\}. \\
+    \text{Similarly } \bigcup_{n = 1}^\infty A_n &amp;= A_1 \cup A_2 \cup A_3 \cup \dots \\
+    &amp;= \{x : x \in A_n \text{ for some } n \in \mathbb{N}\}. \\
+\end{align*}\]</span>
+<em>Warning</em>: <span class="math inline">\(\bigcup_{n = 1}^\infty A_n\)</span> is <em>not</em> the “limit” of anything!</p>
+<p>More generally, given an index set <span class="math inline">\(I\)</span> and a collection of sets <span class="math inline">\(A_i\)</span> indexed by <span class="math inline">\(I\)</span> (we have a <span class="math inline">\(A_i\)</span> for every <span class="math inline">\(i \in I\)</span>), we write
+<span class="math display">\[\begin{align*}
+    \bigcap_{i \in I} A_i &amp;= \{x : x \in A_i \; \forall \; i \in I\} \\
+    \text{and } \bigcup_{i \in I} A_i &amp;= \{x : x \in A_i \text{ for some } i \in I\}. \\
+\end{align*}\]</span></p>
+<p>Given sets <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, we can form their <em>Cartesian product</em> <span class="math inline">\(A \times B = \{(a, b) : a \in A, b \in B\}\)</span> (“<span class="math inline">\(A\)</span> cross <span class="math inline">\(B\)</span>”), which is the set of <em>ordered pairs</em> <span class="math inline">\((a, b)\)</span> with <span class="math inline">\(a \in A, b \in B\)</span>.<br />
+Here <span class="math inline">\((a, b) = (a&#39;, b&#39;) \iff a = a&#39; \text{ and } b = b&#39;\)</span>.<a href="more-about-primes-non-examinable.html#fn14" class="footnote-ref" id="fnref14"><sup>14</sup></a>
+We can extend this to ordered triples and so on, e.g. <span class="math inline">\(\mathbb{R}^3 = \mathbb{R} \times \mathbb{R} \times \mathbb{R}\)</span>
+<span class="math display">\[\begin{align*}
+    \mathbb{R}^3 &amp;= \mathbb{R} \times \mathbb{R} \times \mathbb{R} \\
+    &amp;= \{(x, y, z) : x \in \mathbb{R}, y \in \mathbb{R}, z \in \mathbb{R}\}.
+\end{align*}\]</span></p>
+<div class="definition">
+<p><span id="def:powset" class="definition"><strong>Definition 4.1  (Power set) </strong></span>For any set <span class="math inline">\(X\)</span>, we can form the <em>power set</em> <span class="math inline">\(\mathcal{P}(X)\)</span> consisting of all subsets of <span class="math inline">\(X\)</span>, that is,
+<span class="math display">\[\begin{align*}
+    \mathcal{P}(X) = \{Y : Y \subseteq X\}.
+\end{align*}\]</span></p>
+</div>
+<p>E.g. if <span class="math inline">\(X = \{1, 2\}\)</span>, then <span class="math inline">\(\mathcal{P}(X) = \left\{\emptyset, \{1\}, \{2\}, \{1, 2\} \right\}\)</span>.</p>
+<p><em>Warning</em>: Given a set <span class="math inline">\(A\)</span>, we can form <span class="math inline">\(\{x \in A: P(x)\}\)</span> for any property <span class="math inline">\(P\)</span>.
+But we <em>cannot</em> form <span class="math inline">\(\{x : P(x)\}\)</span>.
+Indeed, suppose <span class="math inline">\(X = \{x : x \text{ is a set and } x \notin x\}\)</span> were a set.<br />
+Then <span class="math inline">\(X \in X\)</span> implies that <span class="math inline">\(X \notin X\)</span> ⨳<br />
+while <span class="math inline">\(X \notin X\)</span> implies that <span class="math inline">\(X \in X\)</span> ⨳.<br />
+This is know as <em>Russell’s Paradox</em>.</p>
+<p>Similarly, there is no “universal” set <span class="math inline">\(Y\)</span>, meaning that <span class="math inline">\(\forall \; x, x \in Y\)</span>.
+Otherwise we could form <span class="math inline">\(X\)</span> above by subset selection:
+<span class="math display">\[\begin{align*}
+    X = \{ x \in Y: x \notin x\}.
+\end{align*}\]</span></p>
+<p><em>Moral</em>: To guarantee that a given set exists, it should be obtained from known sets (e.g. <span class="math inline">\(\mathbb{N}, \mathbb{R}\)</span>) in one of the ways described above.</p>
+<div id="finite-sets" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Finite Sets</h2>
+<p>Write <span class="math inline">\(\mathbb{N}_0 = \mathbb{N} \cup \{0\}\)</span>, i.e. <span class="math inline">\(\{0, 1, 2, 3, \dots\}\)</span><a href="more-about-primes-non-examinable.html#fn15" class="footnote-ref" id="fnref15"><sup>15</sup></a>.<br />
+Given <span class="math inline">\(n \in \mathbb{N}_0\)</span>, we say a set <span class="math inline">\(A\)</span> has size <span class="math inline">\(n\)</span> if we can write <span class="math inline">\(A = \{a_1, a_2, \dots, a_n\}\)</span> with the elements <span class="math inline">\(a_i\)</span> distinct.
+E.g. <span class="math inline">\(\{1, 3, 7\}\)</span> has size <span class="math inline">\(3\)</span>, <span class="math inline">\(\emptyset\)</span> has size <span class="math inline">\(0\)</span>.</p>
+<p>We say <span class="math inline">\(A\)</span> is <em>finite</em> if <span class="math inline">\(\exists \; n \in \mathbb{N}_0\)</span> s.t. <span class="math inline">\(A\)</span> has size <span class="math inline">\(n\)</span>, and <span class="math inline">\(A\)</span> is <em>infinite</em> otherwise.</p>
+<div class="proposition">
+<p><span id="prp:fone" class="proposition"><strong>Proposition 4.1  </strong></span>A set of size <span class="math inline">\(n\)</span> has exactly <span class="math inline">\(2^n\)</span> subsets.</p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-81" class="proof"><em>Proof</em> (1). </span>We may assume that our set is <span class="math inline">\(\{1, 2, \dots, n\}\)</span>.<br />
+To specify a subset <span class="math inline">\(S\)</span> of <span class="math inline">\(\{1, 2, \dots, n\}\)</span>, we must say if <span class="math inline">\(1 \in S\)</span> or <span class="math inline">\(1 \notin S\)</span>, then if <span class="math inline">\(2 \in S\)</span> or <span class="math inline">\(2 \notin S\)</span>, and so on.<br />
+Hence the number of choices for <span class="math inline">\(S\)</span> is
+<span class="math display">\[\begin{align*}
+    \underbrace{2}_{1 \in S?} \cdot \underbrace{2}_{2 \in S?} \dots \cdot \underbrace{2}_{n \in S?}= 2^n
+\end{align*}\]</span></p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-82" class="proof"><em>Proof</em> (2). </span>By induction on <span class="math inline">\(n\)</span>.
+Clearly true for <span class="math inline">\(n = 0\)</span>.
+Given <span class="math inline">\(n &gt; 0\)</span>, and <span class="math inline">\(T \subseteq \{1, 2, \dots, n - 1\}\)</span>, how many sets <span class="math inline">\(S \subseteq \{1, 2, \dots, n\}\)</span> are there s.t. <span class="math inline">\(S \cap \{1, \dots, n - 1\} = T?\)</span>.</p>
+<p><img src="figures/04-no-of-subsets.png" height="300" style="display: block; margin: auto;" /></p>
+<p>There are exactly <span class="math inline">\(2\)</span>, namely <span class="math inline">\(T\)</span> and <span class="math inline">\(T \cup \{n\}\)</span>.<br />
+Hence the no. of subsets of <span class="math inline">\(\{1, 2, \dots, n\}\)</span>
+<span class="math display">\[\begin{align*}
+    \{1, 2, \dots, n\} &amp;= 2 \times \text{ no. of subsets of } \{1, 2, \dots, n - 1\} \\
+    &amp;= 2 \cdot 2^{n - 1} \\
+    &amp;= 2^n.
+\end{align*}\]</span></p>
+</div>
+<p>If <span class="math inline">\(A\)</span> has size <span class="math inline">\(n\)</span>, we write “<span class="math inline">\(|A| = n\)</span>” or “<span class="math inline">\(\# A = n\)</span>”.</p>
+<p>So Proposition <a href="sets-functions-and-relations.html#prp:fone">4.1</a> says that <span class="math inline">\(|A| = n \implies |\mathcal{P}(A)| = 2^n\)</span>.</p>
+<p>Given <span class="math inline">\(n \in \mathbb{N}_0\)</span> and <span class="math inline">\(0 \leq k \leq n\)</span>, we write <span class="math inline">\(\binom{n}{k}\)</span> for the number of subsets of an <span class="math inline">\(n\)</span>-element set that are of size <span class="math inline">\(k\)</span>.
+In other words
+<span class="math display">\[\begin{align*}
+    \binom{n}{k} = \left| \{ S \subseteq {1, 2, \dots, n} : |S| = k \right|.
+\end{align*}\]</span>
+<span class="math inline">\(\binom{n}{k}\)</span> is called a <em>binomial coefficient</em>.</p>
+<p>E.g. the subsets of size <span class="math inline">\(2\)</span> of <span class="math inline">\(\{1, 2, 3, 4\}\)</span> are precisely <span class="math inline">\(\{1, 2\}, \{1, 3\}, \{1, 4\}, \{2, 3\}, \{2, 4\}, \{3, 4\}\)</span> so <span class="math inline">\(\binom{4}{2} = 6\)</span>.</p>
+<p>Note that by definition <span class="math inline">\(\binom{n}{0} = 1, \binom{n}{n} = 1, \binom{n}{1} = n\)</span> (<span class="math inline">\(n &gt; 0\)</span>) and <span class="math inline">\(\binom{n}{0} + \binom{n}{1} + \binom{n}{2} + \dots + \binom{n}{n-1} + \binom{n}{n} = 2^n\)</span> (the sum of the number of subsets for each size possible).
+Also, we have <span class="math inline">\(\binom{n}{k} = \binom{n}{n - k} \ \forall \; n \in \mathbb{N}_0, 0 \leq k \leq n\)</span>.
+E.g. <span class="math inline">\(\binom{8}{3} = \binom{8}{5}\)</span>
+<img src="figures/04-choose.png" height="300" style="display: block; margin: auto;" />
+Indeed, specifying which <span class="math inline">\(k\)</span> elements to pick is the same as specifying which <span class="math inline">\(n - k\)</span> elements <em>not</em> to pick.</p>
+<p>Moreover, <span class="math inline">\(\binom{n}{k} = \binom{n - 1}{k - 1} + \binom{n - 1}{k} \ \forall \; n \in \mathbb{N}, 1 \leq k \leq n - 1\)</span>.
+E.g. <span class="math inline">\(\binom{8}{3} = \binom{7}{2} + \binom{7}{3}\)</span>.
+<img src="figures/04-pascal.png" height="300" style="display: block; margin: auto;" />
+Indeed, the number of subsets of <span class="math inline">\(\{1, 2, \dots, n\}\)</span> of size <span class="math inline">\(k\)</span> that do not include <span class="math inline">\(n\)</span> is <span class="math inline">\(\binom{n - 1}{k}\)</span>, while the number of subsets that do include <span class="math inline">\(n\)</span> is <span class="math inline">\(\binom{n - 1}{k - 1}\)</span>.
+We obtain <em>Pascal’s triangle</em>.
+<img src="figures/04-pascal-triangle.png" height="300" style="display: block; margin: auto;" />
+Each row starts and ends with a <span class="math inline">\(1\)</span>, and the remaining entities are the sum of the two terms immediately above.</p>
+<div class="proposition">
+<p><span id="prp:ftwo" class="proposition"><strong>Proposition 4.2  </strong></span><span class="math display">\[\begin{align*}
+    \binom{n}{k} &amp;= \frac{n (n - 1) (n - 2) \dots (n - k + 1)}{k (k - 1) (k - 2) \dots 2 \cdot 1} \\ 
+    &amp;= \frac{n!}{k! (n - k)!}
+\end{align*}\]</span></p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-83" class="proof"><em>Proof</em>. </span>Given a set of size <span class="math inline">\(n\)</span>, there are <span class="math inline">\(n (n - 1) (n - 2) \dots (n - k + 1)\)</span> ways to pick <span class="math inline">\(k\)</span> elements, one by one, with unique orders.
+Each subset of size <span class="math inline">\(k\)</span> if picked in <span class="math inline">\(k (k - 1) (k - 2) \dots 2 \cdot 1\)</span> ways by this method.
+Hence the no. of subsets of size <span class="math inline">\(k\)</span> in {1, 2, , n} is <span class="math inline">\(\binom{n}{k} = \frac{n (n - 1) (n - 2) \dots (n - k + 1)}{k (k - 1) (k - 2) \dots 2 \cdot 1}\)</span>.</p>
+</div>
+<p>Note that the formula tells us, for example, that
+<span class="math display">\[\begin{align*}
+    \binom{n}{2} &amp;= \frac{n (n - 1)}{2} \sim \frac{n^2}{2} \\
+    \binom{n}{3} &amp;= \frac{n (n - 1) (n - 2)}{6} \sim \frac{n^3}{6} \text{ for large } n.
+\end{align*}\]</span></p>
+<div class="theorem">
+<p><span id="thm:fthree" class="theorem"><strong>Theorem 4.1  (Binomial Theorem) </strong></span>For all <span class="math inline">\(a, b \in \mathbb{R}, n \in \mathbb{N}\)</span>
+<span class="math display">\[\begin{align*}
+    (a + b)^n &amp;= \binom{n}{0} a^n + \binom{n}{1} a^{n - 1} b + \binom{n}{2} a^{n - 2} b^2 + \dots + \binom{n}{n - 1} a b^{n-1} + \binom{n}{n} b^n.
+\end{align*}\]</span></p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-84" class="proof"><em>Proof</em>. </span>When we expand <span class="math inline">\((a + b)^n = (a + b) (a + b) \dots (a + b)\)</span> we obtain terms of the form <span class="math inline">\(a^{n - k} b^k\)</span> <span class="math inline">\(0 \leq k \leq n\)</span>, and the number of terms of the form <span class="math inline">\(a^{n -k} b^k\)</span> is <span class="math inline">\(\binom{n}{k}\)</span> as we must specify <span class="math inline">\(k\)</span> brackets from which to pick <span class="math inline">\(b\)</span>.
+<span class="math display">\[\begin{align*}
+    \text{Hence } (a + b)^n = \sum_{k=0}^{n} \binom{n}{k} a^{n-k} b^k
+\end{align*}\]</span></p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-85" class="example"><strong>Example 4.1  </strong></span><span class="math inline">\((1 + x)^n = 1 + nx + \frac{n (n - 1)}{2} x^2 + \binom{n}{3} x^3 + \dots + \binom{n}{n - 1} + x^n\)</span> so for small <span class="math inline">\(x\)</span>, a good approximation is <span class="math inline">\(1 + nx\)</span>.
+E.g. <span class="math inline">\((1.00001)^8 \sim 1.00008\)</span>.<br />
+A better approximation is <span class="math inline">\(1 + nx + \frac{n(n-1)}{2}x^2\)</span>, e.g. <span class="math inline">\((1.00001)^8 \sim + 1.00008 + 28 (1.00008)^2\)</span>.</p>
+</div>
+<p>What can we say about the relationship between sizes of unions and intersections of finite sets?</p>
+<p>For example <span class="math inline">\(|A \cup B| = |A| + |B| - |A \cap B|\)</span> (otherwise elements in the intersection are counted twice.)</p>
+<p>Also <span class="math inline">\(|A \cup B \cup C| = |A| + |B| + |C| - |A \cap B| - |B \cap C| - |A \cap C| + |A \cap B \cap C|\)</span>.</p>
+<div class="theorem">
+<p><span id="thm:unlabeled-div-86" class="theorem"><strong>Theorem 4.2  (Inclusion-Exclusion Principle) </strong></span>Let <span class="math inline">\(S_1, S_2, \dots, S_n\)</span> be finite sets.
+Then <span class="math display">\[\begin{align*}
+    |S_1 \cup S_2 \cup \dots \cup S_n| &amp;= \sum_{|A|=1} |S_A| - \sum_{|A| = 2 } |S_A| + \sum_{|A| = 3 } |S_A| + \dots + (-1)^{n + 1} \sum_{|A| = n } |S_A| \\
+    \text{where } S_A &amp;= \bigcap_{i \in A} S_i \\
+    \text{ and } \sum_{|A| = k } |S_A| &amp;\text{ is taken over all } A \subseteq \{1, 2, \dots, n\} \text{ of size } k. \\
+    \text{Equivalently } \left | \bigcap{i = 1}^n S_i \right| &amp;= \sum_{k=1}^{n} (-1)^{k + 1} \sum_{A \subseteq \{1, 2, \dots, n\}, |A| = k} \left | \bigcap_{i \in A} S_i \right |.
+\end{align*}\]</span></p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-87" class="proof"><em>Proof</em>. </span>Let <span class="math inline">\(x \in S_1 \cup S_2 \cup \dots \cup S_n\)</span>, suppose <span class="math inline">\(x \in S_i\)</span> for <span class="math inline">\(k\)</span> of the <span class="math inline">\(S_i\)</span>.
+We want <span class="math inline">\(x\)</span> to be counted exactly once in the RHS.<br />
+Indeed, <span class="math inline">\(\# \{A : |A| = 1 \text{ with } x \in S_A\} = k\)</span> (gets counted <span class="math inline">\(k\)</span> times in the first term of the sum) and <span class="math inline">\(\# \{A : |A| = 2 \text{ with } x \in S_A\} = \binom{k}{2}\)</span>.
+In general, <span class="math inline">\(\# \{A : |A| = r \text{ with } x \in S_A\} = \binom{k}{r}\)</span> for <span class="math inline">\(r \leq k\)</span> and <span class="math inline">\(0\)</span> for <span class="math inline">\(r &gt; k\)</span>.<br />
+Thus the number of times <span class="math inline">\(x\)</span> is counted on the RHS is
+<span class="math display">\[\begin{align*}
+    k - \binom{k}{2} + \binom{k}{3} - \dots + (-1)^{k + 1} \binom{k}{k} &amp;= 1 - \underbrace{\left( 1 - k + \binom{k}{2} - \binom{k}{3} + \dots - (-1)^{k + 1} \binom{k}{k} \right)}_{= (1 + (-1))^k \text{ by the Binomial Theorem}} \\
+    &amp;= 1 \text{ for } k \geq 1.
+\end{align*}\]</span></p>
+</div>
+</div>
+<div id="functions" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> Functions</h2>
+<div class="definition">
+<p><span id="def:unlabeled-div-88" class="definition"><strong>Definition 4.2  (Function) </strong></span>Given sets <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, a function <span class="math inline">\(f\)</span> from <span class="math inline">\(A\)</span> to <span class="math inline">\(B\)</span> is a “rule” that assigns to every <span class="math inline">\(x \in A\)</span> a unique element <span class="math inline">\(f(x) \in B\)</span>.</p>
+<p>More formally, a <em>function</em> from <span class="math inline">\(A\)</span> to <span class="math inline">\(B\)</span> is a subset <span class="math inline">\(f \subseteq A \times B\)</span> s.t. for all <span class="math inline">\(x \in A\)</span>, there is a unique <span class="math inline">\(y \in B\)</span> s.t. <span class="math inline">\((x, y) \in f\)</span>.<br />
+If <span class="math inline">\(f\)</span> is a function from <span class="math inline">\(A\)</span> to <span class="math inline">\(B\)</span>, we write <span class="math inline">\(f : A \to B\)</span>.
+If <span class="math inline">\((x, y) \in f\)</span>, we can write <span class="math inline">\(f(x) = y\)</span>, or <span class="math inline">\(x \mapsto y\)</span><a href="more-about-primes-non-examinable.html#fn16" class="footnote-ref" id="fnref16"><sup>16</sup></a>.</p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-89" class="example"><strong>Example 4.2  </strong></span><br />
+</p>
+<ol style="list-style-type: decimal">
+<li><p><span class="math display">\[\begin{align*}
+ f : \mathbb{R} &amp;\to \mathbb{R} \text{ is a function} \\
+ x &amp;\mapsto x^2.
+\end{align*}\]</span></p></li>
+<li><p><span class="math display">\[\begin{align*}
+ f : \mathbb{R} &amp;\to \mathbb{R} \text{ is } \textit{not} \text{ a function, } f(0) = ? \\
+ x &amp;\mapsto \frac{1}{x}
+\end{align*}\]</span></p></li>
+<li><p><span class="math display">\[\begin{align*}
+ f : \mathbb{R} &amp;\to \mathbb{R} \text{ is } \textit{not} \text{ a function, } \\
+ x &amp;\mapsto \pm \sqrt{x}.
+\end{align*}\]</span></p></li>
+<li><p><span class="math display">\[\begin{align*}
+ f : \mathbb{R} &amp;\to \mathbb{R} \text{ is a function} \\
+ x &amp;\mapsto \begin{cases}
+     1 &amp; \text{if } x \text{ is rational} \\
+     0 &amp; \text{otherwise}.
+ \end{cases}
+\end{align*}\]</span></p></li>
+<li><p><span class="math inline">\(f : \{1, 2, 3, 4, 5\} \to \{1, 2, 3, 4\}\)</span> is given by
+<img src="figures/04-function5.png" height="300" style="display: block; margin: auto;" /></p></li>
+<li><p><span class="math inline">\(f: \{1, 2, 3\} \to \{1, 2, 3\}\)</span>
+<img src="figures/04-function6.png" height="300" style="display: block; margin: auto;" /></p></li>
+<li><p><span class="math inline">\(f: \{1, 2, 3\} \to \{1, 2, 3, 4\}\)</span>
+<img src="figures/04-function7.png" height="300" style="display: block; margin: auto;" /></p></li>
+<li><p><span class="math inline">\(f : \{1, 2, 3, 4\} \to \{1, 2, 3\}\)</span>
+<img src="figures/04-function8.png" height="300" style="display: block; margin: auto;" /></p></li>
+</ol>
+<p>5 - 8 are all functions</p>
+</div>
+<div class="definition">
+<p><span id="def:unlabeled-div-90" class="definition"><strong>Definition 4.3  (Injective function) </strong></span>We say <span class="math inline">\(f : A \to B\)</span> is <em>injective</em> if <span class="math inline">\(\forall \; a, a&#39; \in A, a \neq a&#39; \implies f(a) \neq f(a&#39;)\)</span>.<br />
+Equivalently, <span class="math inline">\(f\)</span> is injective if <span class="math inline">\(f(a) = f(a&#39;) \implies a = a&#39;\)</span>.</p>
+<p>Examples 6, 7 are injective whilst 5, 8 are not.</p>
+</div>
+<div class="definition">
+<p><span id="def:unlabeled-div-91" class="definition"><strong>Definition 4.4  (Surjective function) </strong></span>We say <span class="math inline">\(f : A \to B\)</span> is <em>surjective</em> if <span class="math inline">\(\forall \; b \in B, \exists \; a \in A\)</span> s.t. <span class="math inline">\(f(a) = b\)</span>.<br />
+</p>
+<p>Examples 6, 8 are surjective whilst 5, 7 are not.</p>
+</div>
+<div class="definition">
+<p><span id="def:unlabeled-div-92" class="definition"><strong>Definition 4.5  (Bijective function) </strong></span>We say <span class="math inline">\(f : A \to B\)</span> is <em>bijective</em> if it is both injective and surjective.</p>
+<p>If <span class="math inline">\(f : A \to B\)</span> is a bijection, then everything in <span class="math inline">\(B\)</span> is hit (surjective) exactly once (injective) (that is <span class="math inline">\(f\)</span> pairs the elements of <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>).</p>
+<p>Example 6 is the only bijection.</p>
+</div>
+<div class="definition">
+<p><span id="def:unlabeled-div-93" class="definition"><strong>Definition 4.6  ("Permutation) </strong></span>A <em>permutation</em> of a set <span class="math inline">\(A\)</span> is a bijection from <span class="math inline">\(A \to A\)</span>.</p>
+</div>
+<p>Given <span class="math inline">\(f : A \to B\)</span>, we say <span class="math inline">\(A\)</span> is the <em>domain</em> of <span class="math inline">\(f\)</span> and <span class="math inline">\(B\)</span> is its <em>range</em>.
+The <em>image</em> of <span class="math inline">\(f\)</span>, sometime denoted <span class="math inline">\(\operatorname{im}(f)\)</span>, is the set
+<span class="math display">\[\begin{align*}
+    f(A) &amp;= \{f(a) : a \in A \} \\
+    &amp;= \{b \in B : f(a) = b \text{ for some } a \in A\}.
+\end{align*}\]</span></p>
+<div class="example">
+<p><span id="exm:unlabeled-div-94" class="example"><strong>Example 4.3  </strong></span>If <span class="math display">\[\begin{align*}
+    f : \mathbb{R} &amp;\to \mathbb{R} \\
+    x &amp;\mapsto x^2 \\
+    \operatorname{im}(f) = \{y \in \mathbb{R} : y \geq 0\}.
+\end{align*}\]</span></p>
+</div>
+<p>When specifying a function we must specify its domain and range.
+E.g. “Is the function <span class="math inline">\(f(x) = x^2\)</span> injective?” is meaningless, as <span class="math inline">\(f : \mathbb{N} to \mathbb{N}\)</span> is injective but <span class="math inline">\(f : \mathbb{Z} \to \mathbb{Z}\)</span> is not.</p>
+<div id="observations" class="section level3" number="4.2.1">
+<h3><span class="header-section-number">4.2.1</span> Observations</h3>
+<ol style="list-style-type: decimal">
+<li><p><span class="math inline">\(f\)</span> is surjective iff <span class="math inline">\(f(A) = B\)</span>.
+In particular, if <span class="math inline">\(|B| &gt; |A|\)</span>, then there can be no surjective from <span class="math inline">\(A\)</span> to <span class="math inline">\(B\)</span>.</p></li>
+<li><p>There can be no injection from <span class="math inline">\(A\)</span> to <span class="math inline">\(B\)</span> if <span class="math inline">\(|A| &gt; |B|\)</span>.</p></li>
+<li><p>If <span class="math inline">\(f: A \to A\)</span>, then <span class="math inline">\(f\)</span> is injective <span class="math inline">\(\iff\)</span> <span class="math inline">\(f\)</span> is surjective.</p></li>
+<li><p>There is no bijection from <span class="math inline">\(A\)</span> to any proper subset of <span class="math inline">\(A\)</span>.</p></li>
+</ol>
+<p>Note that (3) and (4) do <em>not</em> hold for infinite sets:<br />
+a) <span class="math display">\[\begin{align*}
+    f: \mathbb{N} &amp;\to \mathbb{N} \\
+    x &amp;\mapsto x + 1
+\end{align*}\]</span> is injective but not surjective.
+<img src="figures/04-function-infinite.png" height="300" style="display: block; margin: auto;" /></p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li><p><span class="math display">\[\begin{align*}
+ g : \mathbb{N} &amp;\to \mathbb{N} \\
+ x &amp;\mapsto \begin{cases}
+     x - 1 &amp; \text{if } x \neq 1 \\
+     1 &amp; \text{if } x = 1
+ \end{cases} 
+\end{align*}\]</span> is surjective but not injective
+<img src="figures/04-function-infinite2.png" height="300" style="display: block; margin: auto;" /></p></li>
+<li><p><span class="math display">\[\begin{align*}
+ h : \mathbb{N} &amp;\to \mathbb{N} \setminus \{1\} \\
+ x &amp;\mapsto x + 1
+\end{align*}\]</span> is a bijection from <span class="math inline">\(\mathbb{N}\)</span> to a proper subset of <span class="math inline">\(\mathbb{N}\)</span>.
+<img src="figures/04-function-infinite-3.png" height="300" style="display: block; margin: auto;" /></p></li>
+</ol>
+<div class="example">
+<p><span id="exm:unlabeled-div-95" class="example"><strong>Example 4.4  (Further examples) </strong></span><br />
+</p>
+<ol style="list-style-type: lower-roman">
+<li><p>For any set <span class="math inline">\(X\)</span>, we have the <em>identity function</em>
+<span class="math display">\[\begin{align*}
+ \text{id}_X : X &amp;\to X \\
+ x &amp;\mapsto x.
+\end{align*}\]</span></p></li>
+<li><p>Given a set <span class="math inline">\(X\)</span> and <span class="math inline">\(A \subseteq X\)</span>, we have the <em>indicator function</em> (or <em>characteristic function</em>) of <span class="math inline">\(A\)</span>
+<span class="math display">\[\begin{align*}
+1_A : X &amp;\to \{0, 1\} \\
+x &amp;\mapsto \begin{cases}
+    1 &amp; \text{if } x \in A \\
+    0 &amp; \text{if } x \notin A.
+\end{cases}  
+\end{align*}\]</span></p></li>
+<li><p>A sequence of reals <span class="math inline">\(x_1, x_2, \dots\)</span> is a function from the natural numbers to the reals
+<span class="math display">\[\begin{align*}
+    \mathbb{N} &amp;\to \mathbb{R} \\
+    n &amp;\mapsto x_n.
+\end{align*}\]</span></p></li>
+<li><p>The operation <span class="math inline">\(+\)</span> on <span class="math inline">\(\mathbb{N}\)</span> is a function
+<span class="math display">\[\begin{align*}
+\mathbb{N} \times \mathbb{N} &amp;\to \mathbb{N} \\
+(a, b) &amp;\mapsto a + b.
+\end{align*}\]</span></p></li>
+<li><p>A set <span class="math inline">\(X\)</span> has size <span class="math inline">\(n\)</span> iff there is a bijection
+<span class="math display">\[\begin{align*}
+ \{1, 2, \dots, n\} &amp;\to X = \{a_1, \dots, a_n\} \\
+ i &amp;\mapsto a_i
+\end{align*}\]</span></p></li>
+</ol>
+</div>
+<div class="definition">
+<p><span id="def:unlabeled-div-96" class="definition"><strong>Definition 4.7  (Composition of functions) </strong></span>Given <span class="math inline">\(f : A \to B\)</span> and <span class="math inline">\(g: B \to C\)</span> the <em>composition</em> is
+<span class="math display">\[\begin{align*}
+    g \circ f : A &amp;\to C \\
+    a &amp;\mapsto g(f(a)).
+\end{align*}\]</span> (“g composed with f”, “g circle f” or “g after f”).</p>
+</div>
+<p><img src="figures/04-function-composition.png" height="300" style="display: block; margin: auto;" /></p>
+<div class="example">
+<p><span id="exm:unlabeled-div-97" class="example"><strong>Example 4.5  </strong></span><span class="math display">\[\begin{align*}
+    \text{If } f : \mathbb{R} &amp;\to \mathbb{R} &amp; \text{ and } g : \mathbb{R} &amp;\to \mathbb{R} \\
+    x &amp;\mapsto 2x &amp; x &amp;\mapsto x + 1
+\end{align*}\]</span>
+then <span class="math inline">\(g \circ f(x) = g(f(x)) = g(2x) = 2x + 1\)</span><br />
+and <span class="math inline">\(f \circ g(x) = f(g(x)) = f(x + 1) = 2x + 2\)</span>.<br />
+</p>
+</div>
+<p>So in general, <span class="math inline">\(\circ\)</span> is <em>not</em> commutative.<br />
+In the example above, <span class="math inline">\(f \circ g \neq g \circ f\)</span> since <span class="math inline">\(f \circ g(1) = 4 \neq 3 = g \circ f(1)\)</span>.</p>
+<p>However, <span class="math inline">\(\circ\)</span> is associative, i.e. given <span class="math inline">\(f: A \to B\)</span>, <span class="math inline">\(g: B \to C\)</span>, <span class="math inline">\(h: C \to D\)</span>, we have <span class="math inline">\(h \circ (g \circ f) = (h \circ g) \circ f\)</span>.</p>
+<p><img src="figures/04-composition-associative.png" height="300" style="display: block; margin: auto;" /></p>
+<div class="proof">
+<p><span id="unlabeled-div-98" class="proof"><em>Proof</em>. </span>Indeed, for every <span class="math inline">\(x \in A\)</span>,
+<span class="math display">\[\begin{align*}
+    (h \circ (g \circ f))(x) &amp;= h ((g \circ f)(x)) \\
+    &amp;= h(g(f(x))) \\
+    \text{and } ((h \circ g) \circ f)(x) &amp;= h \circ g(f(x)) \\
+    &amp;= h(g(f(x))).
+\end{align*}\]</span></p>
+</div>
+<p>We may therefore drop the brackets and write <span class="math inline">\(h \circ g \circ f\)</span> without ambiguity.</p>
+<div class="definition">
+<p><span id="def:unlabeled-div-99" class="definition"><strong>Definition 4.8  (Inverse function) </strong></span>We say <span class="math inline">\(f: A \to B\)</span> is <em>invertible</em> if <span class="math inline">\(\exists \; g : B \to A\)</span> s.t. <span class="math inline">\(g \circ f = \text{id}_A\)</span> and <span class="math inline">\(f \circ g = \text{id}_B\)</span>.</p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-100" class="example"><strong>Example 4.6  </strong></span><span class="math display">\[\begin{align*}
+    f : \mathbb{R} &amp;\to \mathbb{R} &amp; g : \mathbb{R} &amp;\to \mathbb{R} \\
+    x &amp;\mapsto 2x + 1 &amp; x &amp;\mapsto \frac{x - 1}{2}.
+\end{align*}\]</span>
+Indeed, <span class="math inline">\(\forall \; x \in \mathbb{R}, (g \circ f)(x) = g(2x + 1) = \frac{2x + 1 - 1}{2} = x\)</span> so <span class="math inline">\(g \circ f = \text{id}_\mathbb{R}\)</span>.<br />
+Also <span class="math inline">\(\forall \; x \in \mathbb{R}, (f \circ g)(x) = f\left(\frac{x - 1}{2}\right) = 2 \frac{x - 1}{2} + 1 = x\)</span> so <span class="math inline">\(f \circ g = \text{id}_\mathbb{R}\)</span>.
+Hence <span class="math inline">\(f\)</span> is invertible with inverse <span class="math inline">\(g\)</span>.</p>
+</div>
+<p><em>Warning</em> For example,
+<span class="math display">\[\begin{align*}
+    f : \mathbb{N} &amp;\to \mathbb{N} &amp; g : \mathbb{N} &amp;\to \mathbb{N} \\
+    x &amp;\mapsto x + 1 &amp; x &amp;\mapsto  \begin{cases}
+        x - 1 &amp; \text{if } x \neq 1 \\
+        1 &amp; \text{if } x = 1
+    \end{cases} 
+\end{align*}\]</span> have <span class="math inline">\(g \circ f = \text{id}_\mathbb{N}\)</span> but <span class="math inline">\(f \circ g \neq \text{id}_\mathbb{N}\)</span> because <span class="math inline">\(f \circ g(1) \neq 1\)</span>.</p>
+<p>Given <span class="math inline">\(f: A \to B\)</span>, when is there a map <span class="math inline">\(g : B \to A\)</span> s.t. <span class="math inline">\(g \circ f = \text{id}_A\)</span>?<br />
+If such a <span class="math inline">\(g\)</span> exists, and <span class="math inline">\(a, a&#39; \in A\)</span> are s.t. <span class="math inline">\(f(a) = f(a&#39;)\)</span>, then <span class="math inline">\(gf(a) = gf(a&#39;)\)</span> so <span class="math inline">\(a = a&#39;\)</span>.
+Therefore <span class="math inline">\(f\)</span> must be injective.<br />
+Conversely, if <span class="math inline">\(f\)</span> is injective, we can find <span class="math inline">\(g\)</span> s.t. <span class="math inline">\(g \circ f = \text{id}_A\)</span>: if <span class="math inline">\(b \in f(A)\)</span>, let <span class="math inline">\(g(b) = a\)</span>, where <span class="math inline">\(a\)</span> is the unique element of <span class="math inline">\(A\)</span> with <span class="math inline">\(f(a) = b\)</span>; if <span class="math inline">\(b \neq f(A)\)</span>, let <span class="math inline">\(g(b)\)</span> be anything you like<a href="more-about-primes-non-examinable.html#fn17" class="footnote-ref" id="fnref17"><sup>17</sup></a>.</p>
+<p>Given <span class="math inline">\(f : A \to B\)</span>, when is there a map <span class="math inline">\(g : B \to A\)</span> s.t. <span class="math inline">\(f \circ g = \text{id}_B\)</span>?<br />
+<span class="math inline">\(f \circ g = \text{id}_B \implies f(g(b)) = b \forall \; b \in B\)</span> so we need <span class="math inline">\(f(g(B)) = B\)</span>, so <span class="math inline">\(f\)</span> must be surjective.<br />
+Conversely, if <span class="math inline">\(f\)</span> is surjective, we can find <span class="math inline">\(g: B \to A\)</span> with <span class="math inline">\(f \circ g = \text{id}_B\)</span>: for each <span class="math inline">\(b \in B\)</span>, pick some <span class="math inline">\(a \in A\)</span> with <span class="math inline">\(f(a) = b\)</span> and put <span class="math inline">\(g(b) = a\)</span>.</p>
+<p>It follows that <span class="math inline">\(f : A \to B\)</span> is invertible iff <span class="math inline">\(f\)</span> is bijective.
+We write <span class="math inline">\(f^{-1} : B \to A\)</span> for the inverse of <span class="math inline">\(f\)</span> when it exists.</p>
+<p><em>Note</em>: Given <span class="math inline">\(f : A \to B\)</span> and <span class="math inline">\(U \subseteq B\)</span>, we sometime write <span class="math inline">\(f^{-1}(U) = \{a \in A : f(a) \in U\}\)</span> for the <em>preimage</em> of <span class="math inline">\(U\)</span>.
+This does <em>not</em> mean that <span class="math inline">\(f\)</span> has an inverse!
+<img src="figures/04-preimage.png" height="300" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="relations" class="section level2" number="4.3">
+<h2><span class="header-section-number">4.3</span> Relations</h2>
+<p>A <em>relation</em> on a set <span class="math inline">\(X\)</span> is a subset <span class="math inline">\(R \subseteq X \times X\)</span>.
+We usually write <span class="math inline">\(aRb\)</span> (“<span class="math inline">\(a\)</span> is related to <span class="math inline">\(b\)</span>”) for <span class="math inline">\((a, b) \in R\)</span>.</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-101" class="example"><strong>Example 4.7  (Relations on $\mathbb{N}$) </strong></span><br />
+</p>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(aRb\)</span> if <span class="math inline">\(a, b\)</span> have the same final digit;</li>
+<li><span class="math inline">\(aRb\)</span> if <span class="math inline">\(a \mid b\)</span>;</li>
+<li><span class="math inline">\(aRb\)</span> if <span class="math inline">\(a \neq b\)</span>;</li>
+<li><span class="math inline">\(aRb\)</span> if <span class="math inline">\(a = b = 1\)</span>;</li>
+<li><span class="math inline">\(aRb\)</span> if <span class="math inline">\(|a - b| \leq 3\)</span>;</li>
+<li><span class="math inline">\(aRb\)</span> if either <span class="math inline">\(a, b \leq 4\)</span> or <span class="math inline">\(a, b \geq 5\)</span>.</li>
+</ol>
+</div>
+<p>There are three properties that a relation might have that are of special interest.</p>
+<div class="definition">
+<p><span id="def:unlabeled-div-102" class="definition"><strong>Definition 4.9  (Reflexive relation) </strong></span><span class="math inline">\(R\)</span> is <em>reflexive</em> if <span class="math inline">\(\forall \; x \in X, xRx\)</span>.</p>
+</div>
+<div class="definition">
+<p><span id="def:unlabeled-div-103" class="definition"><strong>Definition 4.10  (Symmetric relation) </strong></span><span class="math inline">\(R\)</span> is <em>symmetric</em> if <span class="math inline">\(\forall \; x, y, xRy \implies yRx\)</span> (swapping <span class="math inline">\(x, y\)</span> gives <span class="math inline">\(\iff\)</span>).</p>
+</div>
+<div class="definition">
+<p><span id="def:unlabeled-div-104" class="definition"><strong>Definition 4.11  (Transitive relation) </strong></span><span class="math inline">\(R\)</span> is <em>transitive</em> if <span class="math inline">\(\forall \; x, y, z \in X, xRy\)</span> and <span class="math inline">\(yRz \implies xRz\)</span>.</p>
+</div>
+<div class="example">
+<span id="exm:unlabeled-div-105" class="example"><strong>Example 4.8  </strong></span>With regards to the examples above,
+<span class="math display">\[\begin{array}{lcccccc}
+    \hline
+    \text{Examples } &amp; 1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 &amp; 6 \\
+    \hline
+    \text{Reflexive } &amp; \checkmark &amp; \checkmark &amp; \times &amp; \times &amp; \checkmark &amp; \checkmark \\
+    \text{Symmetric } &amp; \checkmark &amp; \times &amp; \checkmark &amp; \checkmark &amp; \checkmark &amp; \checkmark \\
+    \text{Transitive } &amp; \checkmark &amp; \checkmark &amp; \times &amp; \checkmark &amp; \times &amp; \checkmark \\
+    \hline
+\end{array}\]</span>
+</div>
+<div class="definition">
+<p><span id="def:unlabeled-div-106" class="definition"><strong>Definition 4.12  (Equivalence relation) </strong></span>A relation <span class="math inline">\(R\)</span> ir an *equivalence relation” if it reflexive, symmetric and transitive.
+We often write <span class="math inline">\(a \sim b\)</span> for <span class="math inline">\(aRb\)</span>.</p>
+</div>
+<p>So (1) and (6) are equivalence relations.
+We have already seen another one:<br />
+(7). <span class="math inline">\(X = \mathbb{Z}\)</span> with <span class="math inline">\(a \sim b\)</span> if <span class="math inline">\(a \equiv b \mod 5\)</span>.
+This equivalence relations partitions <span class="math inline">\(\mathbb{Z}\)</span> into “pieces” consisting of related elements, namely <span class="math inline">\(\{x \in \mathbb{Z} : x \equiv 0 \mod 5\}, \{x \in \mathbb{Z} : x \equiv 1 \mod 5\}, \dots, \{x \in \mathbb{Z} : x \equiv 4 \mod 5\}\)</span>.</p>
+<div class="definition">
+<p><span id="def:unlabeled-div-107" class="definition"><strong>Definition 4.13  (Partition of set) </strong></span>Given a set <span class="math inline">\(X\)</span>, a <em>partition</em> of <span class="math inline">\(X\)</span> is a collection of pairwise disjoint subsets (called “parts”) whose union is <span class="math inline">\(X\)</span>.</p>
+</div>
+<div class="definition">
+<p><span id="def:unlabeled-div-108" class="definition"><strong>Definition 4.14  (Equivalence class) </strong></span>If <span class="math inline">\(\sim\)</span> is an equivalence relation on <span class="math inline">\(X\)</span>, then the <em>equivalence class</em> of <span class="math inline">\(x \in X\)</span> is
+<span class="math display">\[\begin{align*}
+    [x] = \{y \in X : y \sim x\}.
+\end{align*}\]</span></p>
+</div>
+<p>E.g. in (1), <span class="math inline">\([376] = \{\)</span>all natural numbers ending in <span class="math inline">\(6\}\)</span>.<br />
+in (7), <span class="math inline">\([12] = \{y : y \equiv 2 \mod 5\}\)</span>.</p>
+<p><em>Important observation</em>
+Given a partition of <span class="math inline">\(X\)</span>, there is an equivalence relation <span class="math inline">\(R\)</span> whose equivalence classes are precisely the parts of the partition: just define <span class="math inline">\(a \sim b\)</span> if <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> lie in the same part.
+<img src="figures/04-partition.png" height="300" style="display: block; margin: auto;" /></p>
+<div class="theorem">
+<p><span id="thm:ffive" class="theorem"><strong>Theorem 4.3  </strong></span>Let <span class="math inline">\(\sim\)</span> be any equivalence relation on <span class="math inline">\(X\)</span>.
+Then the equivalences classes for a partition of <span class="math inline">\(X\)</span>.</p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-109" class="proof"><em>Proof</em>. </span>Since <span class="math inline">\(\sim\)</span> is reflexive, we have <span class="math inline">\(x \in [x] \; \forall \; x \in X\)</span>.
+Thus <span class="math inline">\(\bigcap_{x \in X} [x] = X\)</span>.
+It remains to show that <span class="math inline">\(\forall \; x, y \in X\)</span>, either <span class="math inline">\([x] \cap [y] = \emptyset\)</span> or <span class="math inline">\([x] = [y]\)</span>.
+Suppose <span class="math inline">\([x] \cap [y] \neq \emptyset\)</span>, and let <span class="math inline">\(z \in [x] \cap [y]\)</span>.<br />
+Then <span class="math inline">\(z \sim x\)</span>, so by symmetry <span class="math inline">\(x \sim z\)</span>, and <span class="math inline">\(z \sim y\)</span>.
+Then by transitivity, <span class="math inline">\(x \sim y\)</span>.
+Let <span class="math inline">\(w \in [y]\)</span>, so <span class="math inline">\(y \sim w\)</span>.
+Since <span class="math inline">\(x \sim y\)</span> and <span class="math inline">\(y \sim w\)</span> by transitivity, <span class="math inline">\(x \sim w\)</span>.
+Thus <span class="math inline">\(w \in [x]\)</span>.<br />
+Hence if <span class="math inline">\([x] \cap [y] = \emptyset\)</span>, then <span class="math inline">\([y] \subseteq [x]\)</span>.</p>
+</div>
+<p>This is a useful viewpoint: it is not easy to see that there is an equivalence relation on <span class="math inline">\(\mathbb{N}\)</span> with <span class="math inline">\(3\)</span> equivalence classes, of which <span class="math inline">\(2\)</span> are infinite and <span class="math inline">\(1\)</span> is finite - simply take a partition of <span class="math inline">\(\mathbb{N}\)</span> with this property.</p>
+<div class="definition">
+<p><span id="def:unlabeled-div-110" class="definition"><strong>Definition 4.15  (Quotient) </strong></span>Given an equivalence relations <span class="math inline">\(R\)</span> on a set <span class="math inline">\(X\)</span>, the <em>quotient of <span class="math inline">\(X\)</span> by <span class="math inline">\(R\)</span></em> is
+<span class="math display">\[\begin{align*}
+    X / R = \{ [x] : x \in X\}
+\end{align*}\]</span></p>
+</div>
+<p>E.g. in (7), <span class="math inline">\(X / R\)</span> has size <span class="math inline">\(5\)</span>, in (1) has size <span class="math inline">\(10\)</span>.
+In fact, this explains why we sometimes write <span class="math inline">\(\mathbb{Z} / 5 \mathbb{Z}\)</span> (the relation is whether two integers if their difference is a multiple of 5) instead of <span class="math inline">\(\mathbb{Z}_5\)</span>.</p>
+<div class="definition">
+<p><span id="def:unlabeled-div-111" class="definition"><strong>Definition 4.16  (Quotient map) </strong></span>The map <span class="math display">\[\begin{align*}
+    q : &amp;\to X / R \\
+    x &amp;\mapsto [x]
+\end{align*}\]</span> is the <em>quotient map</em> (or <em>projection map</em>).</p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-112" class="example"><strong>Example 4.9  </strong></span>On <span class="math inline">\(\mathbb{Z} \times \mathbb{N}\)</span>, define <span class="math inline">\((a, b) R (c, d)\)</span> if <span class="math inline">\(ad = bc\)</span>.
+It is easy to see that <span class="math inline">\(B\)</span> is an equivalence relation. \
+E.g. <span class="math inline">\([(1, 2)] = \{(1, 2), (2, 4), (3, 6) \dots \}\)</span> so we can regard <span class="math inline">\(\mathbb{Z} \times \mathbb{N} / R\)</span> as a copy of <span class="math inline">\(Q\)</span> by identifying <span class="math inline">\([(a, b)]\)</span> with <span class="math inline">\(\frac{a}{b} \in \mathbb{Q}\)</span>.
+The quotient map <span class="math display">\[\begin{align*}
+    q : \mathbb{Z} \times \mathbb{N} &amp;\to \mathbb{Z} \times \mathbb{N} / R \\
+    (a, b) &amp;\to \frac{a}{b}.
+\end{align*}\]</span></p>
+</div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="the-reals.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="countability.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

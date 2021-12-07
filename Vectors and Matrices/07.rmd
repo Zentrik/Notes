@@ -1,0 +1,174 @@
+# Changing Bases, Canonical Forms and Symmetries
+
+## Changing Bases in General
+
+### Definition and Proposition
+
+Recall [Matrices for Linear Maps in General] given linear map $T : V \to W$ (real or complex vector spaces) and choice of bases
+\begin{align*}
+    \{\underline{e}_i\} \hspace{0.5cm} i &= 1, \dots, n \text{ for } V \\
+    \{\underline{f}_a\} \hspace{0.5cm} a &= 1, \dots, m \text{ for } W
+\end{align*} the matrix $A$ ($m \times n$) w.r.t these bases is defined by 
+\begin{align*}
+    T(\underline{e}_i) &= \sum_a \underline{f}_a A_{ai}.
+\end{align*} 
+
+This definition is chosen to ensure
+\begin{align*}
+    \underline{y} = T(\underline{x}) \iff y_a &= \sum_i A_{ai} x_i \\
+    &= A_{ai} x_i \ (\sum \text{ convention}) \\
+    \text{where } \underline{x} = \sum_i x_i \underline{e}_i,\ \underline{y} &= \sum_a y_a \underline{f}_a \\
+    \text{which holds since } T\left(\sum_i x_i \underline{e}_i \right) &= \sum_i x_i T(\underline{e}_i) \\
+    &= \sum_i x_i \left( \sum_a \underline{f}_a A_{ai} \right) \\
+    &= \sum_a \underbrace{\left( \sum_i A_{ai} x_i \right)}_{y_a} \underline{f}_a.
+\end{align*} 
+The same linear map $T$ has matrix $A'$ w.r.t bases
+\begin{align*}
+    \{\underline{e}'_i\} \hspace{0.5cm} i &= 1, \dots, n \text{ for } V \\
+    \{\underline{f}'_a\} \hspace{0.5cm} a &= 1, \dots, m \text{ for } W
+\end{align*} 
+defined by 
+\begin{align*}
+    T(\underline{e}'_i) &= \sum_a \underline{f}'_a A'_{ai}.
+\end{align*} 
+To relate $A$ and $A'$ we need to say how bases are related, and *change of base* matrices $P$ ($n \times n$) and $Q$ ($m \times m$) are defined by
+\begin{align*}
+    \underline{e}'_i &= \sum_j \underline{e}_j P_{ji},\ \underline{f}'_a = \sum_b \underline{f}_b Q_{ba}
+\end{align*} 
+Note: $P$ and $Q$ are invertible; in relation above we can exchange $\underline{e}_i$ and $\underline{e}'_i$ with $P \to P^{-1}$ and similarly for $Q$.
+
+::: {.proposition}
+With definitions as above
+\begin{align*}
+    A' = Q^{-1} A P
+\end{align*}  which is the change of basis formula for matrix of a linear map.
+:::
+
+::: {.example}
+$n = 2,\ m = 3$
+\begin{align*}
+    T(\underline{e}_1) &= \underline{f_1} + 2 \underline{f}_2 - \underline{f}_3 = \sum_a \underline{f}_a A_{a 1} \\
+    T(\underline{e}_2) &= -\underline{f_1} + 2 \underline{f}_2 + \underline{f}_3 = \sum_a \underline{f}_a A_{a 2} \\
+    \implies A &= \begin{pmatrix}1 & -1 \\2 & 2 \\-1 & 1\end{pmatrix}
+\end{align*} 
+New basis for $V$
+\begin{align*}
+    \underline{e}'_1 &= \underline{e}_1 - \underline{e}_2 = \sum_i \underline{e}_i P_{i 1} \\
+    \underline{e}'_2 &= \underline{e}_1 + \underline{e}_2 = \sum_i \underline{e}_i P_{i 2} \\
+    \implies P &= \begin{pmatrix}1 & 1 \\-1 & 1\end{pmatrix}
+\end{align*} 
+New basis for $W$
+\begin{align*}
+    \underline{f}'_1 &= \underline{f}_1 - \underline{f}_3 = \sum_i \underline{e}_i P_{i 1} \\
+    \underline{f}'_2 &= \underline{f}_2 = \sum_i \underline{e}_i P_{i 2} \\
+    \underline{f}'_3 &= \underline{f}_1 + \underline{f}_3 = \sum_i \underline{e}_i P_{i 3} \\
+    \implies Q &= \begin{pmatrix}
+    1 & 0 & 1 \\
+    0 & 1 & 0 \\
+    -1 & 0 & 1
+    \end{pmatrix}
+\end{align*} 
+Change of basis formula:
+\begin{align*}
+    A' &= Q^{-1} A P \\
+    &= \begin{pmatrix}
+    \frac{1}{2} & 0 & -\frac{1}{2} \\
+    0 & 1 & 0 \\
+    \frac{1}{2} & 0 & \frac{1}{2}
+    \end{pmatrix} \begin{pmatrix}1 & -1 \\2 & 2 \\-1 & 1\end{pmatrix} \begin{pmatrix}1 & 1 \\-1 & 1\end{pmatrix} \\
+    &= \begin{pmatrix}2 & 0 \\4 & 0 \\0 & 0\end{pmatrix}.
+\end{align*} 
+Direct check:
+\begin{align*}
+    T(\underline{e}'_1) &= 2 \underline{f}'_1 \\
+    T(\underline{e}'_2) &= 4 \underline{f}'_2 \ \checkmark.
+\end{align*} 
+:::
+
+### Proof of proposition
+
+::: {.proof}
+\begin{align*}
+    T(\underline{e}'_i) &= T\left( \sum_j \underline{e}_j P_{ji} \right) \ \text{ definition of $P$} \\
+    &= \sum_j T(\underline{e}_j) P_{ji} \ \text{ linearity of $T$} \\
+    &= \sum_j \sum_a \underline{f}_a A_{aj} P_{ji} \ \text{ definition of $A$} \\
+    T(\underline{e}'_i) &= \sum_b \underline{f}'_b A'_{bi} \ \text{definition of $A'$} \\
+    &= \sum_b \sum_a \underline{f}_a Q_{ab} A'_{bi} \ \text{ definition of $Q$}
+\end{align*} 
+Comparing coefficients of $\underline{f}_a$ as it is a basis
+\begin{align*}
+    \sum_j A_{aj} P_{ji} = \sum_b Q_{ab} A'_{bi} \\
+    \text{or } AP = QA'.
+\end{align*} 
+:::
+
+### Approach using vector components
+
+Consider 
+\begin{align*}
+    \underline{x} &= \sum_j x_j \underline{e}_j \\
+    &= \sum_i x'_i \underline{e}'_i \\
+    &= \sum_j \left( \sum_i P_{ji} x'_i \right) \underline{e}_j \\
+    \implies x_j &= P_{ji} x'_i \\
+    \text{Write } X &= \begin{pmatrix}x_1 \\\vdots \\x_n\end{pmatrix},\ X' = \begin{pmatrix}x'_1 \\ \vdots \\ x'_n \end{pmatrix} \\
+    \text{then } X &= PX' \text{ or } X' = P^{-1} X
+\end{align*} 
+Note: some care needed if $V = \mathbb{R}^n$, e.g. $n = 2$ with $\underline{e}_1 = \begin{pmatrix}1 \\1\end{pmatrix},\ \underline{e}_2 = \begin{pmatrix}1 \\-1\end{pmatrix}$ then $\underline{x} = \begin{pmatrix}5 \\1\end{pmatrix} \in \mathbb{R}^2$ has $\underline{x} = 3 \underline{e}_1 + 2 \underline{e}_2$ so $X = \begin{pmatrix}3 \\2\end{pmatrix}$. \
+Similarly
+\begin{align*}
+    \underline{y} &= \sum_b y_j \underline{f}_b \\
+    &= \sum_a y'_a \underline{f}'_a \\
+    \implies y_b &= Q_{ba} y'_a \\
+    \text{Then } Y &= QY' \text{ or } Y' = Q^{-1} Y \\
+    \text{where } Y &= \begin{pmatrix}y_1 \\\vdots \\y_m \end{pmatrix},\ Y' = \begin{pmatrix}y'_1 \\ \vdots \\ y'_m \end{pmatrix}
+\end{align*} 
+Now, matrices $A, A'$ are defined to ensure $Y = AX$ and $Y' = A' X'$.
+
+\begin{align*}
+    \text{But } Y' &= Q^{-1} Y = Q^{-1} A X \\
+    &= (Q^{-1} A P) X' \\
+    &= A' X'
+\end{align*} which is true $\forall \; \underline{x}$, so $A' = Q^{-1} A P$. 
+
+### Comments
+
+i. Definition of matrix $A$ for $T : V \to W$ w.r.t. bases $\{ \underline{e}_i \}$ and $\{ \underline{f}_a \}$ can be expressed: column $i$ of $A$ consists of components of $T(\underline{e}_i)$ w.r.t. basis $\{ \underline{f}_a \}$ [For $T : \mathbb{R}^n \to \mathbb{R}^m$ with standard bases, columns of $A$ are images of standard basis vectors]. \
+Similarly, definitions of $P$ and $Q$ say: columns consist of components of new basis vectors w.r.t. old.
+
+ii. With $V = W$ and same bases and $\underline{e}_i = \underline{f}_i,\ \underline{e}'_i = \underline{f}'_i$ we have $P = Q$ and $A' = P^{-1} A P$.
+Matrices representing the same linear map w.r.t. different bases are similar; conversely if $A$ and $A'$ are similar then we can regard them as representing the same linear map with $P$ defining the change of basis. \
+In [Diagonalisability and Similarity] we observed
+\begin{align*}
+    \operatorname{tr}(A') &= \operatorname{tr}(A) \\
+    \det(A') &= \det A \\
+    \chi_{A'}(t) &= \chi_A(t) 
+\end{align*} so these are properties of the linear map.
+
+iii. $V = W = \mathbb{R}^n$ or $\mathbb{C}^n$, with $\underline{e}_i$ the standard basis - matrix $A$ is diagonalisable iff $\exists$ basis of eigenvectors $\underline{e}'_i = \underline{v}_i$ with $A \underline{v}_i = \lambda_i \underline{v}_i$ (not $\sum$) and then $A' = P^{-1} A P = D = \begin{pmatrix}\lambda_1 &  &  \\ & \ddots &  \\ &  & \lambda_n\end{pmatrix}$ and $\underline{v}_i = \sum_j \underline{e}_j P_{ji}$ so the eigenvectors are the columns of $P$. \
+Specialising further $A^\dagger = A \implies \exists$ basis of orthonormal eigenvectors $\underline{e}'_i = \underline{u}_i$ and $P^\dagger = P^{-1}$.
+
+## Jordan Canonical/ Normal Form
+
+This results classifies $n \times n$ complex matrices up to similarity.
+
+::: {.proposition}
+Any $2 \times 2$ complex matrix $A$ is similar to one of the following:
+
+i. $A' = \begin{pmatrix}\lambda_1 & 0 \\0 & \lambda_2\end{pmatrix}$ with $\lambda_1 \neq \lambda_2,\ \chi_A = (t - \lambda_1) (t - \lambda_2)$.
+
+ii. $A' = \begin{pmatrix}\lambda & 0 \\0 & \lambda\end{pmatrix}$ with $\chi_A = (t - \lambda)^2$.
+
+iii. $A' = \begin{pmatrix}\lambda & 1 \\0 & \lambda\end{pmatrix}$ with $\chi_A = (t - \lambda)^2$.
+:::
+
+::: {.proof}
+$\chi_A(t)$ has 2 roots over $\mathbb{C}$.
+
+i. For distinct roots/ evals $\lambda_1, \lambda_2$ we have $M_1 = m_1 = M_2 = m_2 = 1$ and eigenvectors $\underline{v}_1, \underline{v}_2$ provide a basis.
+Hence $A' = P^{-1} A P$ where eigenvectors are columns of $P$.
+:::
+
+
+## Quadric and Conics
+
+## Symmetries and Transformation Groups.

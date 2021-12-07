@@ -1,4 +1,5 @@
 _book/
+!Numbers and Sets/_book/
 _bookdown_files/Paper/*
 
 *.aux
@@ -11,3 +12,5 @@ _bookdown_files/Paper/*
 *.kra~
 *.synctex
 *.kra-autosave.kra
+
+*/_main.tex
