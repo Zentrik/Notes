@@ -237,11 +237,3 @@ orthogonal-transformations-and-rotations-in-mathbbrn
 active-and-passive-points-of-view
 d-minkowski-space-and-lorentz-transformations
 application-to-special-relativity
-prp:unlabeled-div-1
-exm:unlabeled-div-2
-prp:unlabeled-div-4
-exm:unlabeled-div-6
-thm:unlabeled-div-7
-def:unlabeled-div-9
-exm:unlabeled-div-10
-exm:unlabeled-div-11

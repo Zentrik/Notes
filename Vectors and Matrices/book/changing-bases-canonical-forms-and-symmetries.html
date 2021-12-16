@@ -21,7 +21,7 @@
   <meta name="twitter:description" content="Notes" />
   
 
-<meta name="author" content="Rahul Garg" />
+<meta name="author" content="Author" />
 
 
 <meta name="date" content="2021-07-10" />
@@ -293,13 +293,13 @@ To relate <span class="math inline">\(A\)</span> and <span class="math inline">\
 \end{align*}\]</span>
 Note: <span class="math inline">\(P\)</span> and <span class="math inline">\(Q\)</span> are invertible; in relation above we can exchange <span class="math inline">\(\underline{e}_i\)</span> and <span class="math inline">\(\underline{e}&#39;_i\)</span> with <span class="math inline">\(P \to P^{-1}\)</span> and similarly for <span class="math inline">\(Q\)</span>.</p>
 <div class="proposition">
-<p><span id="prp:unlabeled-div-1" class="proposition"><strong>Proposition 7.1  </strong></span>With definitions as above
+<p><span id="prp:unlabeled-div-105" class="proposition"><strong>Proposition 7.1  </strong></span>With definitions as above
 <span class="math display">\[\begin{align*}
     A&#39; = Q^{-1} A P
 \end{align*}\]</span> which is the change of basis formula for matrix of a linear map.</p>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-2" class="example"><strong>Example 7.1  </strong></span><span class="math inline">\(n = 2,\ m = 3\)</span>
+<p><span id="exm:unlabeled-div-106" class="example"><strong>Example 7.1  </strong></span><span class="math inline">\(n = 2,\ m = 3\)</span>
 <span class="math display">\[\begin{align*}
     T(\underline{e}_1) &amp;= \underline{f_1} + 2 \underline{f}_2 - \underline{f}_3 = \sum_a \underline{f}_a A_{a 1} \\
     T(\underline{e}_2) &amp;= -\underline{f_1} + 2 \underline{f}_2 + \underline{f}_3 = \sum_a \underline{f}_a A_{a 2} \\
@@ -342,7 +342,7 @@ Direct check:
 <div id="proof-of-proposition" class="section level3" number="7.1.2">
 <h3><span class="header-section-number">7.1.2</span> Proof of proposition</h3>
 <div class="proof">
-<p><span id="unlabeled-div-3" class="proof"><em>Proof</em>. </span><span class="math display">\[\begin{align*}
+<p><span id="unlabeled-div-107" class="proof"><em>Proof</em>. </span><span class="math display">\[\begin{align*}
     T(\underline{e}&#39;_i) &amp;= T\left( \sum_j \underline{e}_j P_{ji} \right) \ \text{ definition of $P$} \\
     &amp;= \sum_j T(\underline{e}_j) P_{ji} \ \text{ linearity of $T$} \\
     &amp;= \sum_j \sum_a \underline{f}_a A_{aj} P_{ji} \ \text{ definition of $A$} \\
@@ -405,7 +405,7 @@ Specialising further <span class="math inline">\(A^\dagger = A \implies \exists\
 <h2><span class="header-section-number">7.2</span> Jordan Canonical/ Normal Form</h2>
 <p>This results classifies <span class="math inline">\(n \times n\)</span> complex matrices up to similarity.</p>
 <div class="proposition">
-<p><span id="prp:unlabeled-div-4" class="proposition"><strong>Proposition 7.2  </strong></span>Any <span class="math inline">\(2 \times 2\)</span> complex matrix <span class="math inline">\(A\)</span> is similar to one of the following:</p>
+<p><span id="prp:unlabeled-div-108" class="proposition"><strong>Proposition 7.2  </strong></span>Any <span class="math inline">\(2 \times 2\)</span> complex matrix <span class="math inline">\(A\)</span> is similar to one of the following:</p>
 <ol style="list-style-type: lower-roman">
 <li><p><span class="math inline">\(A&#39; = \begin{pmatrix}\lambda_1 &amp; 0 \\0 &amp; \lambda_2\end{pmatrix}\)</span> with <span class="math inline">\(\lambda_1 \neq \lambda_2,\ \chi_A = (t - \lambda_1) (t - \lambda_2)\)</span>.</p></li>
 <li><p><span class="math inline">\(A&#39; = \begin{pmatrix}\lambda &amp; 0 \\0 &amp; \lambda\end{pmatrix}\)</span> with <span class="math inline">\(\chi_A = (t - \lambda)^2\)</span>.</p></li>
@@ -413,7 +413,7 @@ Specialising further <span class="math inline">\(A^\dagger = A \implies \exists\
 </ol>
 </div>
 <div class="proof">
-<p><span id="unlabeled-div-5" class="proof"><em>Proof</em>. </span><span class="math inline">\(\chi_A(t)\)</span> has 2 roots over <span class="math inline">\(\mathbb{C}\)</span>.</p>
+<p><span id="unlabeled-div-109" class="proof"><em>Proof</em>. </span><span class="math inline">\(\chi_A(t)\)</span> has 2 roots over <span class="math inline">\(\mathbb{C}\)</span>.</p>
 <ol style="list-style-type: lower-roman">
 <li><p>For distinct roots/ evals <span class="math inline">\(\lambda_1, \lambda_2\)</span> we have <span class="math inline">\(M_1 = m_1 = M_2 = m_2 = 1\)</span> and eigenvectors <span class="math inline">\(\underline{v}_1, \underline{v}_2\)</span> provide a basis.
 Hence <span class="math inline">\(A&#39; = P^{-1} A P\)</span> where eigenvectors are columns of <span class="math inline">\(P\)</span>.</p></li>
@@ -438,13 +438,13 @@ Now set <span class="math inline">\(\underline{u} = \alpha \underline{v}\)</span
 </ol>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-6" class="example"><strong>Example 7.2  ((using a slightly different approach)) </strong></span><span class="math display">\[\begin{align*}
+<p><span id="exm:unlabeled-div-110" class="example"><strong>Example 7.2  ((using a slightly different approach)) </strong></span><span class="math display">\[\begin{align*}
     A &amp;= \begin{pmatrix}1 &amp; 4 \\-1 &amp; 5\end{pmatrix} \\
     \implies \chi_A(t) &amp;= (t - 3)^2 \\
     A - 3 I &amp;= \begin{pmatrix}-2 &amp; 4 \\-1 &amp; 2\end{pmatrix}.
 \end{align*}\]</span>
 Choose <span class="math inline">\(\underline{w} = \begin{pmatrix}1 \\0\end{pmatrix}\)</span> which is <em>not</em> an eigenvector and then <span class="math inline">\(\underline{u} = (A - 3I) \underline{w} = \begin{pmatrix}-2 \\-1\end{pmatrix}\)</span>.
-But <span class="math inline">\((A - 3I)^2 = 0\)</span> by Cayley-Hamilton Theorem, <a href="#thm:CH"><strong>??</strong></a>, so <span class="math inline">\((A - 3I)^2 \underline{w} = (A - 3I) \underline{u} = 0\)</span> so
+But <span class="math inline">\((A - 3I)^2 = 0\)</span> by Cayley-Hamilton Theorem, <a href="eigenvalues-and-eigenvectors.html#thm:CH">6.4</a>, so <span class="math inline">\((A - 3I)^2 \underline{w} = (A - 3I) \underline{u} = 0\)</span> so
 <span class="math display">\[\begin{align*}
     A \underline{u} &amp;= 3 \underline{u} \\
     A \underline{w} &amp;= \underline{u} + 3 \underline{w}
@@ -455,7 +455,7 @@ Check: <span class="math inline">\(P = \begin{pmatrix}-2 &amp; 1 \\-1 &amp; 0\en
 <p>Generalisation to larger matrices can be considered, starting with <span class="math inline">\(N = \begin{pmatrix}0 &amp; 1 &amp; &amp; \\ &amp; 0 &amp; \ddots &amp; \\ &amp; &amp; \ddots &amp; 1 \\ &amp; &amp; &amp; 0\end{pmatrix}\)</span> (<span class="math inline">\(n \times n\)</span>) when applied to standard basis vectors gives <span class="math inline">\(\underline{e}_n \mapsto \underline{e}_{n-1} \mapsto \dots \mapsto \underline{e}_1 \mapsto \underline{0}\)</span>.
 Note <span class="math inline">\(J = \lambda I + N\)</span> then <span class="math inline">\(\chi_J(t) = (\lambda - t)^n\)</span> but <span class="math inline">\(m_\lambda = 1\)</span> (<span class="math inline">\(M_\lambda = n\)</span>).</p>
 <div class="theorem">
-<p><span id="thm:unlabeled-div-7" class="theorem"><strong>Theorem 7.1  </strong></span>Any <span class="math inline">\(n \times n\)</span> complex matrix <span class="math inline">\(A\)</span> is similar to a matrix <span class="math inline">\(A&#39;\)</span> with block form
+<p><span id="thm:unlabeled-div-111" class="theorem"><strong>Theorem 7.1  </strong></span>Any <span class="math inline">\(n \times n\)</span> complex matrix <span class="math inline">\(A\)</span> is similar to a matrix <span class="math inline">\(A&#39;\)</span> with block form
 <span class="math display">\[\begin{align*}
     A&#39; &amp;= \begin{pmatrix}
     \boxed{J_{n_1}(\lambda_1)} &amp;  &amp;  &amp;  \\
@@ -476,7 +476,7 @@ Note <span class="math inline">\(J = \lambda I + N\)</span> then <span class="ma
 <p><span class="math inline">\(A\)</span> is diagonalisable iff <span class="math inline">\(A&#39;\)</span> consists of <span class="math inline">\(1 \times 1\)</span> <em>Jordan blocks</em> only.</p>
 </div>
 <div class="proof">
-<p><span id="unlabeled-div-8" class="proof"><em>Proof</em>. </span>See Linear Algebra and GRM in Part IB.</p>
+<p><span id="unlabeled-div-112" class="proof"><em>Proof</em>. </span>See Linear Algebra and GRM in Part IB.</p>
 </div>
 </div>
 <div id="conics-and-quadrics" class="section level2" number="7.3">
@@ -484,7 +484,7 @@ Note <span class="math inline">\(J = \lambda I + N\)</span> then <span class="ma
 <div id="quadrics-in-general" class="section level3" number="7.3.1">
 <h3><span class="header-section-number">7.3.1</span> Quadrics in General</h3>
 <div class="definition">
-<p><span id="def:unlabeled-div-9" class="definition"><strong>Definition 7.1  (Quadric) </strong></span>A quadric in <span class="math inline">\(\mathbb{R}^n\)</span> is a hypersurface defined by
+<p><span id="def:unlabeled-div-113" class="definition"><strong>Definition 7.1  (Quadric) </strong></span>A quadric in <span class="math inline">\(\mathbb{R}^n\)</span> is a hypersurface defined by
 <span class="math display">\[\begin{align*}
     Q(\underline{x}) = \underline{x}^T A \underline{x} + \underline{b}^T \underline{x} + c = 0
 \end{align*}\]</span> for some <span class="math inline">\(A\)</span>, <span class="math inline">\(n \times n\)</span> real symmetric, non-zero matrix, <span class="math inline">\(\underline{b} \in \mathbb{R}^n\)</span>, <span class="math inline">\(c \in \mathbb{R}\)</span>.
@@ -564,12 +564,12 @@ For a specific <span class="math inline">\(H \in O(n) \setminus SO(n)\)</span>, 
 \end{align*}\]</span> can be viewed in two ways.</p>
 <p><em>Active view point</em>: rotation transforms vectors, i.e. <span class="math inline">\(x_i&#39;\)</span> are the components of the new vector so <span class="math inline">\(\underline{x}&#39; = R \underline{x}\)</span> w.r.t. standard basis <span class="math inline">\(\{ \underline{e}_i \}\)</span>.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-10" class="example"><strong>Example 7.3  ($\mathbb{R}^2$) </strong></span><img src="figures/07-active.png" width="500" style="display: block; margin: auto;" /></p>
+<p><span id="exm:unlabeled-div-114" class="example"><strong>Example 7.3  ($\mathbb{R}^2$) </strong></span><img src="figures/07-active.png" width="500" style="display: block; margin: auto;" /></p>
 </div>
 <p><span class="math inline">\(|\underline{x}&#39;|^2 = |\underline{x}|^2\)</span></p>
 <p><em>Passive view point</em>: rotation changes basis, i.e. <span class="math inline">\(x_i&#39;\)</span> are the components of same vector <span class="math inline">\(\underline{x}\)</span> but w.r.t. new basis <span class="math inline">\(\{\underline{u}_i\}\)</span>.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-11" class="example"><strong>Example 7.4  ($\mathbb{R}^2$) </strong></span><img src="figures/07-passive.png" width="500" style="display: block; margin: auto;" /></p>
+<p><span id="exm:unlabeled-div-115" class="example"><strong>Example 7.4  ($\mathbb{R}^2$) </strong></span><img src="figures/07-passive.png" width="500" style="display: block; margin: auto;" /></p>
 </div>
 <p><span class="math display">\[\begin{align*}
     \underline{u}_i &amp;= \sum_j R_{ij} \underline{e}_j \\
@@ -630,7 +630,7 @@ For the other column,
         \sinh \theta \\
         \cosh \theta
     \end{pmatrix}
-\end{align*}\]</span><a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>
+\end{align*}\]</span><a href="#fn10" class="footnote-ref" id="fnref10"><sup>10</sup></a>
 The sign is fixed to be positive by the condition that <span class="math inline">\(\det M = +1\)</span>.
 <span class="math display">\[\begin{align*}
     M(\theta) = \begin{pmatrix}
@@ -684,10 +684,19 @@ This is consistent with the fact that all velocities are less than the speed of 
 
 
 
+
+
+
+
+
+
+
+
+
 <div class="footnotes">
 <hr />
-<ol start="1">
-<li id="fn1"><p>for standard inner product to get normal vector swap <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> values and make one negative, here we don’t need to make one component negative.<a href="changing-bases-canonical-forms-and-symmetries.html#fnref1" class="footnote-back">↩︎</a></p></li>
+<ol start="10">
+<li id="fn10"><p>for standard inner product to get normal vector swap <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> values and make one negative, here we don’t need to make one component negative.<a href="changing-bases-canonical-forms-and-symmetries.html#fnref10" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>

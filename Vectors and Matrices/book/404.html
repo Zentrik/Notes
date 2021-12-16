@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>1 Complex Numbers | Vectors and Matrices 2021 - 2022</title>
+  <title>Page not found | Vectors and Matrices 2021 - 2022</title>
   <meta name="description" content="Notes" />
   <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="1 Complex Numbers | Vectors and Matrices 2021 - 2022" />
+  <meta property="og:title" content="Page not found | Vectors and Matrices 2021 - 2022" />
   <meta property="og:type" content="book" />
   
   
@@ -16,12 +16,12 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="1 Complex Numbers | Vectors and Matrices 2021 - 2022" />
+  <meta name="twitter:title" content="Page not found | Vectors and Matrices 2021 - 2022" />
   
   <meta name="twitter:description" content="Notes" />
   
 
-<meta name="author" content="Rahul Garg" />
+<meta name="author" content="Author" />
 
 
 <meta name="date" content="2021-07-10" />
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html"/>
-<link rel="next" href="vectors-in-3-dimensions.html"/>
+
+
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -255,298 +255,19 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="complex-numbers" class="section level1" number="1">
-<h1><span class="header-section-number">1</span> Complex Numbers</h1>
-<div id="definitions" class="section level2" number="1.1">
-<h2><span class="header-section-number">1.1</span> Definitions</h2>
-<p>Construct <span class="math inline">\(\mathbb{C}\)</span> by adding an element <span class="math inline">\(i\)</span> to real numbers <span class="math inline">\(\mathbb{R}\)</span>, with <span class="math display">\[\begin{align*}
-    i^2 = -1.
-\end{align*}\]</span>
-Any complex numbers <span class="math inline">\(z \in \mathbb{C}\)</span> has the form <span class="math inline">\(z = x + iy\)</span> with <span class="math inline">\(x, y \in \mathbb{R}\)</span>;
-<span class="math inline">\(x = \operatorname{Re}(z)\)</span>, real part; <span class="math inline">\(y = \operatorname{Im}(z)\)</span>, imaginary part.</p>
-<p><span class="math inline">\(\mathbb{R} \subset \mathbb{C}\)</span> consisting of elements <span class="math inline">\(x + i 0 = x\)</span></p>
-<p>In the following, use the notation above and <span class="math inline">\(z_1 = x_1 + i y_1\)</span>, <span class="math inline">\(z_2 = x_2 + i y_2\)</span> etc.</p>
-<ol style="list-style-type: lower-roman">
-<li><p><strong>Addition</strong> ( and subtraction)
-<span class="math display">\[\begin{align*}
-z_1 \pm z_2 = (x_1 \pm x_2) + i (y_1 \pm y_2)
-\end{align*}\]</span></p></li>
-<li><p><strong>Multiplication</strong>
-<span class="math display">\[\begin{align*}
-    z_1 z_2 = (x_1 x_2 - y_1 y_2) + i(x_1 y_2 + x_2 y_1)
-\end{align*}\]</span></p></li>
-</ol>
-<p>If <span class="math inline">\(z \neq 0\)</span>, observe from the definition
-<span class="math display">\[\begin{align*}
-    z^{\text{-}1} = \frac{x}{x^2 + y^2} - i \frac{y}{x^2 + y^2}
-\end{align*}\]</span> satisfies <span class="math inline">\(z z^{\text{-}1} = 1\)</span></p>
-<ol start="3" style="list-style-type: lower-roman">
-<li><p><strong>Complex conjugate</strong>
-<span class="math display">\[\begin{align*}
-    \overline{z} &amp;= z^{*} = x - iy \\
-    \operatorname{Re}(z) &amp;= \frac{1}{2} (z + \overline{z}) \\
-    \operatorname{Im}(z) &amp;= \frac{1}{2i} (z - \overline{z}) \\
-    \overline{(\overline{z})} &amp;= z \\
-    \overline{z_1 + z_2} &amp;= \overline{z_1} + \overline{z_2} \\
-    \overline{z_1 z_2} &amp;= (\overline{z_1}) (\overline{z_2})
-\end{align*}\]</span></p></li>
-<li><p><strong>Modulus</strong> is defined by <span class="math inline">\(r = |z|\)</span>, real and <span class="math inline">\(\geq 0\)</span>, with
-<span class="math display">\[\begin{align*}
-    r^2  = |z|^2 = z \overline{z} = x^2 + y^2
-\end{align*}\]</span></p></li>
-<li><p><strong>Argument</strong> <span class="math inline">\(\theta = \arg{z}\)</span>, real, defined for <span class="math inline">\(z \neq 0\)</span> by
-<span class="math display">\[\begin{align*}
- z = r(\cos \theta + i \sin \theta) \hspace{2cm} \textbf{polar form}
-\end{align*}\]</span>
-for some real <span class="math inline">\(\theta\)</span></p></li>
-</ol>
-<p><span class="math display">\[\begin{align*}
-    \cos \theta &amp;= \frac{x}{(x^2 + y^2)^{1/2}},\ \sin \theta = \frac{y}{(x^2 + y^2)^{1/2}}, \\
-    &amp; \implies \tan \theta = \frac{y}{x}
-\end{align*}\]</span></p>
-<p><span class="math inline">\(\arg(z)\)</span> is determined only <span class="math inline">\(\operatorname{mod} 2 \pi\)</span>, i.e. can change <span class="math inline">\(\theta \to \theta + 2n \pi\)</span> where <span class="math inline">\(n \in \mathbb{Z}\)</span>.
-To make it unique we can restrict the range, e.g. <strong>principal value</strong> defined by <span class="math inline">\(- \pi &lt; \theta \leq \pi\)</span></p>
-<ol start="6" style="list-style-type: lower-roman">
-<li><strong>Argand diagram and Complex Plane</strong>
-Plot <span class="math inline">\(\operatorname{Re}(z)\)</span> and <span class="math inline">\(\operatorname{Im}(z)\)</span> on orthogonal axes, then <span class="math inline">\(r = |z|\)</span> and <span class="math inline">\(\theta = \arg(z)\)</span> are the length and angle shown.</li>
-</ol>
-<p><img src="figures/1.png" width="1920" style="display: block; margin: auto;" /></p>
-<div class="example">
-<p><span id="exm:unlabeled-div-1" class="example"><strong>Example 1.1  </strong></span>For <span class="math inline">\(z = -1 + i \sqrt{3} = 2 (- \frac{1}{2} + i \frac{\sqrt{3}}{2})\)</span>, we have <span class="math inline">\(|z| = 2\)</span> and <span class="math inline">\(\arg(z) = \frac{2 \pi}{3} + 2 n \pi\)</span> where <span class="math inline">\(n \in \mathbb{Z}\)</span>.</p>
-<p><img src="figures/2.png" width="1920" style="display: block; margin: auto;" /></p>
-<p>Note
-<span class="math display">\[\begin{align*}
-    \tan \theta = - \sqrt{3} \\
-    \implies \theta = \frac{2 \pi}{3} + 2 n \pi \\
-    = \arg(z) \\
-    \textbf{or } \theta = - \frac{\pi}{3} + 2 n \pi \\
-    = \arg(-z)
-\end{align*}\]</span></p>
-</div>
-</div>
-<div id="basic-properties-and-consequences" class="section level2" number="1.2">
-<h2><span class="header-section-number">1.2</span> Basic properties and Consequences</h2>
-<ol style="list-style-type: lower-roman">
-<li><span class="math inline">\(\mathbb{C}\)</span> with operations <span class="math inline">\(+, \times\)</span> is a <strong>field</strong>, i.e. 
-<ol style="list-style-type: decimal">
-<li><span class="math inline">\(\mathbb{C}\)</span> with <span class="math inline">\(+\)</span> is an abelian group.</li>
-<li><span class="math inline">\(\mathbb{C} \setminus \{0\}\)</span> with <span class="math inline">\(\times\)</span> is an abelian group.</li>
-<li>distributive laws hold, e.g. <span class="math inline">\(z_1(z_2 + z_3) = z_1 z_2 + z_1 z_3\)</span>.</li>
-</ol></li>
-<li><strong>Fundamental Theorem of Algebra</strong><br />
-A polynomial of degree <span class="math inline">\(n\)</span> with coefficients in <span class="math inline">\(\mathbb{C}\)</span> can be written as a product of <span class="math inline">\(n\)</span> linear factors.
-<span class="math display">\[\begin{align*}
-    p(z) &amp;= c_n z^n + \ldots + c_1 z + c_0 \ \ \text{ where } c_i \in \mathbb{C}, c_n \neq 0 \\ 
-    &amp;= c_n ( z - \alpha_1) \ldots (z - \alpha_n) \text{ where } \alpha_i \in \mathbb{C}.
-\end{align*}\]</span></li>
-</ol>
-<p>Hence <span class="math inline">\(p(z) = 0\)</span> has at least one root and <span class="math inline">\(n\)</span> roots connected with multiplicity (if we count duplicates as separate).</p>
-<ol start="3" style="list-style-type: lower-roman">
-<li>Addition and subtraction can be viewed as parallelogram constructions</li>
-</ol>
-<p><img src="figures/3.png" width="1920" style="display: block; margin: auto;" /></p>
-<p>Complex conjugation is reflection in real axis
-<img src="figures/4.png" width="1920" style="display: block; margin: auto;" /></p>
-<ol start="4" style="list-style-type: lower-roman">
-<li><div class="proposition">
-<p><span id="prp:unlabeled-div-2" class="proposition"><strong>Proposition 1.1  </strong></span>Modulus/ length obeys composition property <span class="math inline">\(|z_1 z_2| = |z_1| |z_2|\)</span>. Triangle inequality <span class="math inline">\(|z_1 + z_2| \leq |z_1| + |z_2|\)</span></p>
-</div></li>
-</ol>
-<div class="proof">
-<p><span id="unlabeled-div-3" class="proof"><em>Proof</em> (Triangle inequality). </span>Compare
-<span class="math display">\[\begin{align*}
-\text{LHS}^2 &amp;= (z_1 + z_2) \overline{z_1 + z_2} \\
-\text{RHS}^2 &amp;= |z_1|^2 + 2|z_1||z_2| + |z_2|^2
-\end{align*}\]</span></p>
-<p>Compare “cross terms”:
-<span class="math display">\[\begin{align*}
-    &amp; z_1\overline{z_2} + z_2 \overline{z_1} \leq 2 |z_1| |z_2| \\
-    &amp; \iff \frac{1}{2} (z_1 \overline{z_2} + \overline{(z_1 \overline{z_2})}) \leq |z_1| |\overline{z_2}| \\
-    &amp; \iff \operatorname{Re}(z_1 \overline{z_2}) \leq |z_1 \overline{z_2}| 
-\end{align*}\]</span></p>
-</div>
-<p>An alternative form of the triangle inequality:
-replace <span class="math inline">\(z_2\)</span> by <span class="math inline">\(z_2 - z_1\)</span> and rearrange to get
-<span class="math display">\[\begin{align*}
-    | z_2 - z_1 | &amp;\geq |z_2| - |z_1| \\
-    \text{or} &amp;\geq |z_1| - |z_2| \\
-    \text{So } |z_2 - z_1| &amp;\geq \left| |z_2| - |z_1| \right|
-\end{align*}\]</span></p>
-<ol start="22" style="list-style-type: lower-alpha">
-<li><div class="proposition">
-<p><span id="prp:polar-form" class="proposition"><strong>Proposition 1.2  </strong></span><span class="math display">\[\begin{align*}
- &amp;z_1 = r_1 (\cos \theta_1 + i \sin \theta_1),\ z_2 = r_2 (\cos \theta_2 + i \sin \theta_2) \\
- &amp;\implies z_1 z_2 = r_1 r_2 (\cos (\theta_1 + \theta_2) + i \sin (\theta_1 + \theta_2))
-\end{align*}\]</span></p>
-</div>
-i.e. moduli multiply and args add</li>
-</ol>
-<p><img src="figures/21.png" width="50%" style="display: block; margin: auto;" /></p>
-<div class="proof">
-<p><span id="unlabeled-div-4" class="proof"><em>Proof</em>. </span>Direct check: calculate <span class="math inline">\(z_1 z_2\)</span> and use standard trig formulas.</p>
-</div>
-<div class="theorem">
-<p><span id="thm:de" class="theorem"><strong>Theorem 1.1  (De Moivre's Theorem) </strong></span><span class="math display">\[\begin{align*}
-    (\cos \theta + i \sin \theta)^n = \cos n \theta + i \sin n \theta,\ \text{ for } n \in \mathbb{Z}
-\end{align*}\]</span>
-Note for <span class="math inline">\(z \neq 0\)</span>, <span class="math inline">\(z^0 = 1\)</span> and <span class="math inline">\(z^{-n} = (z^{-1})^n\)</span> for <span class="math inline">\(n &gt; 0\)</span>.</p>
-</div>
-<div class="proof">
-<p><span id="unlabeled-div-5" class="proof"><em>Proof</em>. </span>Use <a href="complex-numbers.html#prp:polar-form">1.2</a> and induction</p>
-</div>
-</div>
-<div id="exponential-and-trigonometric-functions" class="section level2" number="1.3">
-<h2><span class="header-section-number">1.3</span> Exponential and Trigonometric Functions</h2>
-<p>Define <span class="math inline">\(\exp, \cos, \sin\)</span> as functions on <span class="math inline">\(\mathbb{C}\)</span> by
-<span class="math display">\[\begin{align*}
-    \exp(z) &amp;= e^z = \sum_{n=0}^{\infty} \frac{1}{n!} z^n  \\
-    \cos(z) &amp;= \frac{1}{2} (e^{iz} + e^{-iz}) \\
-    &amp;= 1 - \frac{1}{2!}z^2 + \frac{1}{4!}z^4 \ldots \\
-    \sin(z) &amp;= \frac{1}{2i} (e^{iz} - e^{-iz}) \\
-    &amp;= z - \frac{1}{3!}z^{3} + \frac{1}{5!}z^5 + \ldots
-\end{align*}\]</span></p>
-<p>These series converge <span class="math inline">\(\forall \; z \in \mathbb{C}\)</span> and such series can be multiplied, rearranged and differentiated.
-Furthermore <span class="math inline">\(e^{z}e^{w} = e^{z + w}\)</span> and from this we can see <span class="math inline">\(e^{0} = 1\)</span> and <span class="math inline">\((e^{z})^{n} = e^{nz}\)</span> for <span class="math inline">\(n \in \mathbb{Z}\)</span>. For the positive integers this is trivial and for the negative integers we can know that <span class="math inline">\(e^z e^{-z} = 1\)</span> so <span class="math inline">\(e^{-z} = (e^{z})^{-1}\)</span>.</p>
-<div class="lemma">
-<p><span id="lem:juicy" class="lemma"><strong>Lemma 1.1  </strong></span>For <span class="math inline">\(z = x + iy\)</span>:</p>
-<ol style="list-style-type: lower-roman">
-<li><span class="math inline">\(e^z = e^x ( \cos y + i \sin y)\)</span></li>
-<li><span class="math inline">\(\exp\)</span> on <span class="math inline">\(\mathbb{C}\)</span> takes all complex values except <span class="math inline">\(0\)</span>.</li>
-<li><span class="math inline">\(e^z = 1 \iff z = 2n \pi i,\ n \in \mathbb{Z}\)</span></li>
-</ol>
-</div>
-<div class="proof">
-<p><span id="unlabeled-div-6" class="proof"><em>Proof</em>. </span> i. <span class="math inline">\(e^{x + iy} = e^x e^{iy}\)</span>
-but <span class="math inline">\(e^{iy} = \cos y + i \sin y\)</span></p>
-<ol start="2" style="list-style-type: lower-roman">
-<li><p><span class="math inline">\(|e^z| = e^x\)</span>, so <span class="math inline">\(|e^z|\)</span> take all real values <span class="math inline">\(&gt; 0\)</span>. <span class="math inline">\(\arg{e^z} = y\)</span> taking all possible values.</p></li>
-<li><p><span class="math display">\[\begin{align*}
-    e^z = 1 &amp;\iff e^x = 1, \cos y = 1, \sin y = 0 \\
-    &amp;\iff x = 0, y = 2 \pi n
-\end{align*}\]</span></p></li>
-</ol>
-</div>
-<p>Returning to polar form <a href="complex-numbers.html#prp:polar-form">1.2</a>, this can be written
-<span class="math inline">\(z = r ( \cos \theta + i \sin \theta) = re^{i \theta}\)</span> for <span class="math inline">\(r = |z|\)</span> and <span class="math inline">\(\theta = \arg z\)</span>. De Moivre’s Theorem <a href="complex-numbers.html#thm:de">1.1</a> now follows from <span class="math inline">\((e^{i \theta})^n = e^{i n \theta}\)</span>.</p>
-<div id="roots-of-units" class="section level3" number="1.3.1">
-<h3><span class="header-section-number">1.3.1</span> Roots of units</h3>
-<p><span class="math inline">\(z\)</span> is an Nth root of unity if <span class="math inline">\(z^n = 1\)</span>. To find all solutions:
-<span class="math display">\[\begin{align*}
-    &amp;&amp; z &amp;= r e^{i \theta} \text{ satisfying } z^N = 1 \\
-    &amp;\iff &amp; r^N e^{i N \theta} &amp;= 1 \\
-    &amp;\iff &amp; r^N &amp;= 1 \text{ and } N \theta = 2n \pi,\ n \in \mathbb{Z}
-\end{align*}\]</span></p>
-<p>This gives N distinct solutions.
-<span class="math display">\[\begin{align*}
-    z &amp;= e^{2 \pi i n/N} \\
-    &amp;= \cos \frac{2\pi n}{N} + i \sin \frac{2 \pi n}{N} \\
-    \text{The only distinct cases are when } n &amp;= 0, 1, 2 \ldots N - 1 \text{ due to periodicity} \\
-    &amp;= \omega^n, \text{ where } \omega = e^{2 \pi i / N} \\
-\end{align*}\]</span>
-These solutions lie at vertices of a regular N-gon.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:rootsofunity"></span>
-<img src="figures/01-roots_of_unity.svg" alt="N = 6"  />
-<p class="caption">
-Figure 1.1: N = 6
-</p>
-</div>
-</div>
-</div>
-<div id="transformations-lines-and-circles" class="section level2" number="1.4">
-<h2><span class="header-section-number">1.4</span> Transformations; lines and circles</h2>
-<p>Consider the following transformations on <span class="math inline">\(\mathbb{C}\)</span> (maps <span class="math inline">\(\mathbb{C} \to \mathbb{C}\)</span>)
-<span class="math display">\[\begin{align*}
-    z &amp;\mapsto z + a &amp; &amp;(\text{translation}) \\
-    z &amp;\mapsto \lambda z &amp; &amp;(\text{scaling by } \lambda \in \mathbb{R}) \\
-    z &amp;\mapsto e^{i \alpha} z &amp; &amp;(\text{rotation by } \alpha \in \mathbb{R}) \\
-    z &amp;\mapsto \overline{z} &amp; &amp;(\text{ reflection in the real axis}) \\
-    z &amp;\mapsto \frac{1}{z} &amp; &amp;(\text{inversion})
-\end{align*}\]</span></p>
-<p>Consider a general point on a line in <span class="math inline">\(\mathbb{C}\)</span> through <span class="math inline">\(z_0\)</span> and parallel to <span class="math inline">\(w \neq 0\)</span> (fixed <span class="math inline">\(z_0, w \in \mathbb{C}\)</span>):</p>
-<p><span class="math display">\[\begin{align*}
-    z = z_0 + \lambda w,\ \lambda \in \mathbb{R}
-\end{align*}\]</span></p>
-<p>To eliminate <span class="math inline">\(\lambda\)</span>, take the conjugate to get <span class="math inline">\(\overline{z} = \overline{z_0} + \lambda \overline{w}\)</span> and equate <span class="math inline">\(\lambda\)</span> to get <span class="math inline">\(\overline{w}z - w\overline{z} = \overline{w} z_0 - w \overline{z_0}\)</span>.</p>
-<p><img src="figures/01-line.svg" width="50%" style="display: block; margin: auto;" /></p>
-<p>Consider a general point on a circle in <span class="math inline">\(\mathbb{C}\)</span> with centre <span class="math inline">\(c \in \mathbb{C}\)</span> and radius <span class="math inline">\(\rho \in \mathbb{R}^{++}\)</span>.
-<span class="math display">\[\begin{align*}
-    z = c + \rho &amp;e^{i \alpha}, \text{ for any } \alpha \in \mathbb{R} \\
-    \text{Equivalently} \\
-    |z - c| &amp;= \rho \\
-    \text{or } \\
-    |z - c|^2 &amp;= \rho^2 \\
-    |z|^2 - \overline{c}z - c \overline{z} &amp;= \rho^2 - |c|^2
-\end{align*}\]</span></p>
-<p><img src="figures/01-circle.svg" width="50%" style="display: block; margin: auto;" /></p>
-<p>Möbius transformations are generated by translations, scalings, rotations and inversion. They can be viewed as acting on <span class="math inline">\(\mathbb{C}_\infty = \mathbb{C} \cup \{ \infty \}\)</span> - geometrically a sphere (see IA Groups). We add <span class="math inline">\(\infty\)</span> to deal with <span class="math inline">\(0^{-1}\)</span>?</p>
-</div>
-<div id="logarithms-and-complex-powers" class="section level2" number="1.5">
-<h2><span class="header-section-number">1.5</span> Logarithms and Complex Powers</h2>
-<p>Define <span class="math inline">\(w = \log z,\ z \in \mathbb{C},\ z \neq 0\)</span> by <span class="math inline">\(e^w = \exp w = z\)</span> i.e. <span class="math inline">\(\log\)</span> is the inverse of <span class="math inline">\(\exp\)</span>, but <span class="math inline">\(\exp\)</span> is many-to-one (<span class="math inline">\(e^z = e^{z + 2n \pi i}\)</span>) and so <span class="math inline">\(\log\)</span> is <em>multi-valued</em>.
-<span class="math display">\[\begin{align*}
-    z &amp;= r e^{i \theta} \\
-    &amp;= e^{\log r} e^{i \theta} \\
-    &amp;= e^{\log r + i \theta} \\
-    \implies \log z &amp;= \log r + i \theta \\
-    &amp;= \log |z| + i \arg z
-\end{align*}\]</span>
-Multiple values of <span class="math inline">\(\arg\)</span> and <span class="math inline">\(\log\)</span> are related:
-<span class="math display">\[\begin{align*}
-    \theta &amp;\to \theta + 2n \pi,\ n \in \mathbb{Z} \\
-    \log z &amp;\to \log z + 2n \pi i,\ n \in \mathbb{Z}
-\end{align*}\]</span>
-To make them single valued we can restrict e.g. <span class="math inline">\(0 \leq \theta &lt; 2 \pi\)</span> or <span class="math inline">\(-\pi &lt; \theta \leq \pi\)</span> (<em>principal value</em>).</p>
-<div class="example">
-<p><span id="exm:unlabeled-div-7" class="example"><strong>Example 1.2  </strong></span><span class="math display">\[\begin{align*}
-    z &amp;= -3i = 3 (-i) \\
-    &amp;= e^{\log 3}e^{-i \pi / 2 + 2n \pi i} \\
-    &amp;= e^{\log 3 -i \pi / 2 + 2n \pi i} \\
-    \log z &amp;= \log 3 -i \pi / 2 + 2n \pi i \\
-    \arg z &amp;= 3 \pi / 2 \\
-    &amp;\text{or } - \pi / 2 \text{ with the restrictions above}
-\end{align*}\]</span></p>
-</div>
-<p>Define <em>complex powers</em> by
-<span class="math display">\[\begin{align*}
-    z^\alpha = e^{\alpha \log z},\ z \in \mathbb{C},\ z \neq 0,\ \alpha \in \mathbb{C}
-\end{align*}\]</span>
-This is multi-valued in general under the change <span class="math inline">\(\arg z \to \arg z + 2n\pi\)</span>
-<span class="math display">\[\begin{align*}
-    z^\alpha \to z^\alpha e^{2 \pi i n \alpha}
-\end{align*}\]</span></p>
-<ol style="list-style-type: lower-roman">
-<li>If <span class="math inline">\(\alpha = p \in \mathbb{Z}\)</span> then <span class="math inline">\(z^\alpha = z^p\)</span> is unique</li>
-<li>If <span class="math inline">\(\alpha = \frac{p}{q} \in \mathbb{Q}\)</span> then <span class="math inline">\(z^\alpha = z^{\frac{p}{q}}\)</span> takes finitely many values.</li>
-</ol>
-<p>But in general we have <em>infinitely</em> many values</p>
-<div class="example">
-<p><span id="exm:unlabeled-div-8" class="example"><strong>Example 1.3  </strong></span><span class="math display">\[\begin{align*}
-    (1 + i)^{\frac{1}{2}}: 1 + i &amp;= \sqrt{2} e^{i \pi /4} \\
-    &amp;= e^{\frac{1}{2} \log 2 + i \pi /4} \\
-    \log(1 + i) &amp;= \frac{1}{2} \log 2 + i \pi / 4 + 2 n \pi i \\
-    \implies (1 + i)^{\frac{1}{2}} &amp;= e^{\frac{1}{2} \log (1 + i)} \\
-    &amp;= e^{\frac{1}{4} \log 2 + i \pi / 8 + n \pi i} \\
-    &amp;= 2^{\frac{1}{4}} e^{i \pi / 8} (-1)^n
-\end{align*}\]</span></p>
-<p><img src="figures/01-powers.svg" style="display: block; margin: auto;" /></p>
-</div>
-<div class="example">
-<p><span id="exm:unlabeled-div-9" class="example"><strong>Example 1.4  </strong></span><span class="math display">\[\begin{align*}
-    (-3i)^i &amp;= e^{i \log (-3i)} \\
-    &amp;= e^{i (\log 3 - i \pi /2 + 2 n \pi i)} \\
-    &amp;= e^{i \log 3} e^{\pi /2 - 2 n \pi},\ n \in \mathbb{Z}
-\end{align*}\]</span></p>
-</div>
-
-</div>
+<div id="page-not-found" class="section level1">
+<h1>Page not found</h1>
+<p>The page you requested cannot be found (perhaps it was moved or renamed).</p>
+<p>You may want to try searching to find the page's new location, or use
+the table of contents to find the page you are looking for.</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="vectors-in-3-dimensions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
