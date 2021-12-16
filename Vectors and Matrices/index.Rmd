@@ -1,6 +1,6 @@
 --- 
 title: "Vectors and Matrices 2021 - 2022" 
-author: ""
+author: "Author"
 date: "07/10/2021"
 site: bookdown::bookdown_site
 documentclass: book

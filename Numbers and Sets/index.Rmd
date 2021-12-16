@@ -1,11 +1,9 @@
 --- 
 title: "Numbers and Sets 2021 - 2022" 
-author: ""
+author: "Author"
 date: "07/10/2021"
 site: bookdown::bookdown_site
 documentclass: book
-# url: your book url like https://bookdown.org/yihui/bookdown
-# cover-image: path to the social sharing image like images/cover.jpg
 description: |
   Notes
 link-citations: yes
@@ -29,7 +27,7 @@ Wait till after lecture 3/4 before starting example sheet 1.
 
 **Chapter 3.** Sets and functions
 
-- Some important terminilogy will be introduced.
+- Some important terminology will be introduced.
 
 **Chapter 4.** Countability
 

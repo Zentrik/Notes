@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>1 Introduction | Numbers and Sets 2021 - 2022</title>
   <meta name="description" content="Notes" />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
 
   <meta property="og:title" content="1 Introduction | Numbers and Sets 2021 - 2022" />
   <meta property="og:type" content="book" />
@@ -21,7 +21,7 @@
   <meta name="twitter:description" content="Notes" />
   
 
-<meta name="author" content="" />
+<meta name="author" content="Author" />
 
 
 <meta name="date" content="2021-07-10" />
@@ -35,7 +35,6 @@
 <link rel="next" href="elementary-number-theory.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -43,6 +42,7 @@
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
 
 
 
@@ -299,11 +299,20 @@ this contradicts the assumption that <span class="math inline">\(r\)</span> is t
 </div>
 <div id="negating-quantifiers" class="section level2" number="1.4">
 <h2><span class="header-section-number">1.4</span> Negating Quantifiers</h2>
-<p><span class="math inline">\(\lnot (\forall \; x \ \ A(x))\)</span><a href="more-about-primes-non-examinable.html#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> means <span class="math inline">\(\exists x \ \ \lnot A(x)\)</span><a href="more-about-primes-non-examinable.html#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>. E.g. if it not true that all my socks are blue, then there is a sock that is not blue.</p>
-<p><span class="math inline">\(\lnot (\exists x \  B(x))\)</span><a href="more-about-primes-non-examinable.html#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a> means <span class="math inline">\(\forall \; x \ \lnot B(x)\)</span><a href="more-about-primes-non-examinable.html#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>.</p>
+<p><span class="math inline">\(\lnot (\forall \; x \ \ A(x))\)</span><a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> means <span class="math inline">\(\exists x \ \ \lnot A(x)\)</span><a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>. E.g. if it not true that all my socks are blue, then there is a sock that is not blue.</p>
+<p><span class="math inline">\(\lnot (\exists x \  B(x))\)</span><a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a> means <span class="math inline">\(\forall \; x \ \lnot B(x)\)</span><a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>.</p>
 <p>The order of quantifiers matters!</p>
 
 </div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>it is false that for all <span class="math inline">\(x\)</span> the assertion <span class="math inline">\(A(x)\)</span> is true<a href="introduction.html#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>there exists an <span class="math inline">\(x\)</span> such that <span class="math inline">\(A(x)\)</span> is false<a href="introduction.html#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p>it is false that there exists an <span class="math inline">\(x\)</span> for which <span class="math inline">\(B(x)\)</span> is true<a href="introduction.html#fnref3" class="footnote-back">↩︎</a></p></li>
+<li id="fn4"><p>for all <span class="math inline">\(x\)</span> <span class="math inline">\(B(x)\)</span> is false<a href="introduction.html#fnref4" class="footnote-back">↩︎</a></p></li>
+</ol>
 </div>
             </section>
 
@@ -315,6 +324,7 @@ this contradicts the assumption that <span class="math inline">\(r\)</span> is t
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -355,7 +365,7 @@ gitbook.start({
 },
 "download": ["_main.pdf", "_main.epub"],
 "search": {
-"engine": "fuse",
+"engine": "lunr",
 "options": null
 },
 "toc": {

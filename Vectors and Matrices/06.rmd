@@ -603,7 +603,7 @@ i.
     \implies \lambda_1 &= 1, \lambda_2 = 2 \\
     \mathcal{F}(x) &= x_1'^2 + 2 x_2'^2 = 1
 \end{align*} defines an ellipse
-```{r 06-quadratic-R2-1, echo = FALSE, fig.cap = "", fig.align="center", out.height="300"} 
+```{r 06-quadratic-R2-1, echo = FALSE, fig.cap = "", fig.align="center", out.width="500"} 
 knitr::include_graphics("figures/06-quadratic-R2-1.png") 
 ```
 
@@ -612,7 +612,7 @@ ii. \begin{align*}
     \implies \lambda_1 &= 1, \lambda_2 = - 2 \\
     \mathcal{F}(x) &= x_1'^2 - 2 x_2'^2 = 1
 \end{align*} defines an hyperbola
-```{r 06-quadratic-R2-2, echo = FALSE, fig.cap = "", fig.align="center", out.height="300"} 
+```{r 06-quadratic-R2-2, echo = FALSE, fig.cap = "", fig.align="center", out.width="500"} 
 knitr::include_graphics("figures/06-quadratic-R2-2.png") 
 ```
 
@@ -629,13 +629,13 @@ Hence
     \mathcal{F} &= 1 \iff 2 x_3'^2 = 1 + x_1'^2 + x_2'^2
 \end{align*} defines a hyperboloid (2 sheeted)
 
-```{r 06-hyperboloid-1, echo = FALSE, fig.cap = "", fig.align="center", out.height="300"} 
+```{r 06-hyperboloid-1, echo = FALSE, fig.cap = "", fig.align="center", out.width="500"} 
 knitr::include_graphics("figures/06-hyperboloid-1.png") 
 ```
 
 $\mathcal{F} = -1 \iff x_1'^2 + x_2'^2 = 1 + 2 x_3'^2$ defined a hyperboloid (2 sheeted).
 
-```{r 06-hyperboloid-2, echo = FALSE, fig.cap = "", fig.align="center", out.height="300"} 
+```{r 06-hyperboloid-2, echo = FALSE, fig.cap = "", fig.align="center", out.width="500"} 
 knitr::include_graphics("figures/06-hyperboloid-2.png") 
 ```
 

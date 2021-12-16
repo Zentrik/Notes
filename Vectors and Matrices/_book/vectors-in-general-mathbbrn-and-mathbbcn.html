@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>3 Vectors in General; \(\mathbb{R}^n\) and \(\mathbb{C}^n\) | Vectors and Matrices 2021 - 2022</title>
+  <meta name="description" content="Notes" />
+  <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="3 Vectors in General; \(\mathbb{R}^n\) and \(\mathbb{C}^n\) | Vectors and Matrices 2021 - 2022" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Notes" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="3 Vectors in General; \(\mathbb{R}^n\) and \(\mathbb{C}^n\) | Vectors and Matrices 2021 - 2022" />
+  
+  <meta name="twitter:description" content="Notes" />
+  
+
+<meta name="author" content="" />
+
+
+<meta name="date" content="2021-07-10" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="vectors-in-3-dimensions.html"/>
+<link rel="next" href="matrices-and-linear-maps.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Lecture 1</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#contents"><i class="fa fa-check"></i><b>0.1</b> Contents</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="complex-numbers.html"><a href="complex-numbers.html"><i class="fa fa-check"></i><b>1</b> Complex Numbers</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="complex-numbers.html"><a href="complex-numbers.html#definitions"><i class="fa fa-check"></i><b>1.1</b> Definitions</a></li>
+<li class="chapter" data-level="1.2" data-path="complex-numbers.html"><a href="complex-numbers.html#basic-properties-and-consequences"><i class="fa fa-check"></i><b>1.2</b> Basic properties and Consequences</a></li>
+<li class="chapter" data-level="1.3" data-path="complex-numbers.html"><a href="complex-numbers.html#exponential-and-trigonometric-functions"><i class="fa fa-check"></i><b>1.3</b> Exponential and Trigonometric Functions</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="complex-numbers.html"><a href="complex-numbers.html#roots-of-units"><i class="fa fa-check"></i><b>1.3.1</b> Roots of units</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="complex-numbers.html"><a href="complex-numbers.html#transformations-lines-and-circles"><i class="fa fa-check"></i><b>1.4</b> Transformations; lines and circles</a></li>
+<li class="chapter" data-level="1.5" data-path="complex-numbers.html"><a href="complex-numbers.html#logarithms-and-complex-powers"><i class="fa fa-check"></i><b>1.5</b> Logarithms and Complex Powers</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html"><i class="fa fa-check"></i><b>2</b> Vectors in 3 Dimensions</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html#vector-addition-and-scalar-multiplication"><i class="fa fa-check"></i><b>2.1</b> Vector Addition and Scalar Multiplication</a></li>
+<li class="chapter" data-level="2.2" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html#scalar-or-dot-product"><i class="fa fa-check"></i><b>2.2</b> Scalar or Dot Product</a></li>
+<li class="chapter" data-level="2.3" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html#orthonormal-bases-and-components"><i class="fa fa-check"></i><b>2.3</b> Orthonormal Bases and Components</a></li>
+<li class="chapter" data-level="2.4" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html#vector-or-cross-product"><i class="fa fa-check"></i><b>2.4</b> Vector or Cross Product</a></li>
+<li class="chapter" data-level="2.5" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html#triple-products"><i class="fa fa-check"></i><b>2.5</b> Triple products</a></li>
+<li class="chapter" data-level="2.6" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html#lines-planes-and-other-vector-equations"><i class="fa fa-check"></i><b>2.6</b> Lines, Planes and Other Vector Equations</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html#lines"><i class="fa fa-check"></i><b>2.6.1</b> Lines</a></li>
+<li class="chapter" data-level="2.6.2" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html#planes"><i class="fa fa-check"></i><b>2.6.2</b> Planes</a></li>
+<li class="chapter" data-level="2.6.3" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html#other-vector-equations"><i class="fa fa-check"></i><b>2.6.3</b> Other Vector Equations</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html#index-suffix-notation-and-the-summation-convention"><i class="fa fa-check"></i><b>2.7</b> Index (suffix) Notation and the Summation convention</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html#components-delta-and-epsilon"><i class="fa fa-check"></i><b>2.7.1</b> Components; <span class="math inline">\(\delta\)</span> and <span class="math inline">\(\epsilon\)</span></a></li>
+<li class="chapter" data-level="2.7.2" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html#summation-convention"><i class="fa fa-check"></i><b>2.7.2</b> Summation Convention</a></li>
+<li class="chapter" data-level="2.7.3" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html#rules"><i class="fa fa-check"></i><b>2.7.3</b> Rules</a></li>
+<li class="chapter" data-level="2.7.4" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html#application"><i class="fa fa-check"></i><b>2.7.4</b> Application</a></li>
+<li class="chapter" data-level="2.7.5" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html#epsilon-epsilon-identities"><i class="fa fa-check"></i><b>2.7.5</b> <span class="math inline">\(\epsilon \epsilon\)</span> identities</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="vectors-in-general-mathbbrn-and-mathbbcn.html"><a href="vectors-in-general-mathbbrn-and-mathbbcn.html"><i class="fa fa-check"></i><b>3</b> Vectors in General; <span class="math inline">\(\mathbb{R}^n\)</span> and <span class="math inline">\(\mathbb{C}^n\)</span></a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="vectors-in-general-mathbbrn-and-mathbbcn.html"><a href="vectors-in-general-mathbbrn-and-mathbbcn.html#vectors-in-mathbbrn"><i class="fa fa-check"></i><b>3.1</b> Vectors in <span class="math inline">\(\mathbb{R}^n\)</span></a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="vectors-in-general-mathbbrn-and-mathbbcn.html"><a href="vectors-in-general-mathbbrn-and-mathbbcn.html#Rn"><i class="fa fa-check"></i><b>3.1.1</b> Definitions</a></li>
+<li class="chapter" data-level="3.1.2" data-path="vectors-in-general-mathbbrn-and-mathbbcn.html"><a href="vectors-in-general-mathbbrn-and-mathbbcn.html#cauchy-schwarz-and-triangle-inequalities"><i class="fa fa-check"></i><b>3.1.2</b> Cauchy-Schwarz and Triangle Inequalities</a></li>
+<li class="chapter" data-level="3.1.3" data-path="vectors-in-general-mathbbrn-and-mathbbcn.html"><a href="vectors-in-general-mathbbrn-and-mathbbcn.html#comments"><i class="fa fa-check"></i><b>3.1.3</b> Comments</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="vectors-in-general-mathbbrn-and-mathbbcn.html"><a href="vectors-in-general-mathbbrn-and-mathbbcn.html#vector-spaces"><i class="fa fa-check"></i><b>3.2</b> Vector Spaces</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="vectors-in-general-mathbbrn-and-mathbbcn.html"><a href="vectors-in-general-mathbbrn-and-mathbbcn.html#axioms-span-subspaces"><i class="fa fa-check"></i><b>3.2.1</b> Axioms; span; subspaces</a></li>
+<li class="chapter" data-level="3.2.2" data-path="vectors-in-general-mathbbrn-and-mathbbcn.html"><a href="vectors-in-general-mathbbrn-and-mathbbcn.html#linear-dependence-and-independence"><i class="fa fa-check"></i><b>3.2.2</b> Linear Dependence and Independence</a></li>
+<li class="chapter" data-level="3.2.3" data-path="vectors-in-general-mathbbrn-and-mathbbcn.html"><a href="vectors-in-general-mathbbrn-and-mathbbcn.html#inner-product"><i class="fa fa-check"></i><b>3.2.3</b> Inner product</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="vectors-in-general-mathbbrn-and-mathbbcn.html"><a href="vectors-in-general-mathbbrn-and-mathbbcn.html#bases-and-dimension"><i class="fa fa-check"></i><b>3.3</b> Bases and Dimension</a></li>
+<li class="chapter" data-level="3.4" data-path="vectors-in-general-mathbbrn-and-mathbbcn.html"><a href="vectors-in-general-mathbbrn-and-mathbbcn.html#vectors-in-mathbbcn"><i class="fa fa-check"></i><b>3.4</b> Vectors in <span class="math inline">\(\mathbb{C}^n\)</span></a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="vectors-in-general-mathbbrn-and-mathbbcn.html"><a href="vectors-in-general-mathbbrn-and-mathbbcn.html#Cn"><i class="fa fa-check"></i><b>3.4.1</b> Definitions</a></li>
+<li class="chapter" data-level="3.4.2" data-path="vectors-in-general-mathbbrn-and-mathbbcn.html"><a href="vectors-in-general-mathbbrn-and-mathbbcn.html#inner-product-1"><i class="fa fa-check"></i><b>3.4.2</b> Inner Product</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html"><i class="fa fa-check"></i><b>4</b> Matrices and Linear Maps</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#introduction"><i class="fa fa-check"></i><b>4.1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#definitions-1"><i class="fa fa-check"></i><b>4.1.1</b> Definitions</a></li>
+<li class="chapter" data-level="4.1.2" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#rank-and-nullity"><i class="fa fa-check"></i><b>4.1.2</b> Rank and Nullity</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#geometrical-examples"><i class="fa fa-check"></i><b>4.2</b> Geometrical Examples</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#rotations"><i class="fa fa-check"></i><b>4.2.1</b> Rotations</a></li>
+<li class="chapter" data-level="4.2.2" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#reflections"><i class="fa fa-check"></i><b>4.2.2</b> Reflections</a></li>
+<li class="chapter" data-level="4.2.3" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#dilations"><i class="fa fa-check"></i><b>4.2.3</b> Dilations</a></li>
+<li class="chapter" data-level="4.2.4" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#shears"><i class="fa fa-check"></i><b>4.2.4</b> Shears</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#matrices-as-linear-maps-mathbbrn-to-mathbbrm"><i class="fa fa-check"></i><b>4.3</b> Matrices as Linear Maps <span class="math inline">\(\mathbb{R}^n \to \mathbb{R}^m\)</span></a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#definitions-2"><i class="fa fa-check"></i><b>4.3.1</b> Definitions</a></li>
+<li class="chapter" data-level="4.3.2" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#examples"><i class="fa fa-check"></i><b>4.3.2</b> Examples</a></li>
+<li class="chapter" data-level="4.3.3" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#isometries-area-and-determinants-in-mathbbr2"><i class="fa fa-check"></i><b>4.3.3</b> Isometries, area and determinants in <span class="math inline">\(\mathbb{R}^2\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#matrices-for-linear-maps-in-general"><i class="fa fa-check"></i><b>4.4</b> Matrices for Linear Maps in General</a></li>
+<li class="chapter" data-level="4.5" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#matrix-algebra"><i class="fa fa-check"></i><b>4.5</b> Matrix Algebra</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#linear-combinations"><i class="fa fa-check"></i><b>4.5.1</b> Linear Combinations</a></li>
+<li class="chapter" data-level="4.5.2" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#matrix-multiplication"><i class="fa fa-check"></i><b>4.5.2</b> Matrix multiplication</a></li>
+<li class="chapter" data-level="4.5.3" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#matrix-inverses"><i class="fa fa-check"></i><b>4.5.3</b> Matrix Inverses</a></li>
+<li class="chapter" data-level="4.5.4" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#transpose-and-hermitian-conjugate"><i class="fa fa-check"></i><b>4.5.4</b> Transpose and Hermitian Conjugate</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#orthogonal-and-unitary-matrices"><i class="fa fa-check"></i><b>4.6</b> Orthogonal and Unitary Matrices</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html"><i class="fa fa-check"></i><b>5</b> Determinants and inverses</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#introduction-1"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
+<li class="chapter" data-level="5.2" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#epsilon-and-alternating-forms"><i class="fa fa-check"></i><b>5.2</b> <span class="math inline">\(\epsilon\)</span> and Alternating Forms</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#epsilon-and-permutation"><i class="fa fa-check"></i><b>5.2.1</b> <span class="math inline">\(\epsilon\)</span> and Permutation</a></li>
+<li class="chapter" data-level="5.2.2" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#alternating-forms-and-linear-independence"><i class="fa fa-check"></i><b>5.2.2</b> Alternating Forms and Linear (In)dependence</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#determinants-in-mathbbrn-and-mathbbcn"><i class="fa fa-check"></i><b>5.3</b> Determinants in <span class="math inline">\(\mathbb{R}^n\)</span> and <span class="math inline">\(\mathbb{C}^n\)</span></a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#definition"><i class="fa fa-check"></i><b>5.3.1</b> Definition</a></li>
+<li class="chapter" data-level="5.3.2" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#evaluating-determinants-expanding-by-rows-or-columns"><i class="fa fa-check"></i><b>5.3.2</b> Evaluating determinants: expanding by rows or columns</a></li>
+<li class="chapter" data-level="5.3.3" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#simplifying-determinants-row-and-column-operations"><i class="fa fa-check"></i><b>5.3.3</b> Simplifying determinants: Row and Column Operations:</a></li>
+<li class="chapter" data-level="5.3.4" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#multiplicative-property"><i class="fa fa-check"></i><b>5.3.4</b> Multiplicative Property</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#minors-cofactors-and-inverses"><i class="fa fa-check"></i><b>5.4</b> Minors, Cofactors and Inverses</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#cofactors-and-determinants"><i class="fa fa-check"></i><b>5.4.1</b> Cofactors and Determinants</a></li>
+<li class="chapter" data-level="5.4.2" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#adjugates-and-inverses"><i class="fa fa-check"></i><b>5.4.2</b> Adjugates and Inverses</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#system-of-linear-equations"><i class="fa fa-check"></i><b>5.5</b> System of Linear Equations</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#introduction-and-nature-of-solutions"><i class="fa fa-check"></i><b>5.5.1</b> Introduction and Nature of Solutions</a></li>
+<li class="chapter" data-level="5.5.2" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#geometric-interpretation-in-mathbbr3"><i class="fa fa-check"></i><b>5.5.2</b> Geometric Interpretation in <span class="math inline">\(\mathbb{R}^3\)</span></a></li>
+<li class="chapter" data-level="5.5.3" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#gaussian-elimination-and-echelon-form"><i class="fa fa-check"></i><b>5.5.3</b> Gaussian Elimination and Echelon Form</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html"><i class="fa fa-check"></i><b>6</b> Eigenvalues and Eigenvectors</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#introduction-2"><i class="fa fa-check"></i><b>6.1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#definitions-3"><i class="fa fa-check"></i><b>6.1.1</b> Definitions</a></li>
+<li class="chapter" data-level="6.1.2" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#examples-1"><i class="fa fa-check"></i><b>6.1.2</b> Examples</a></li>
+<li class="chapter" data-level="6.1.3" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#deductions-involving-chi_at"><i class="fa fa-check"></i><b>6.1.3</b> Deductions involving <span class="math inline">\(\chi_A(t)\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#eigenspaces-and-multiplicities"><i class="fa fa-check"></i><b>6.2</b> Eigenspaces and Multiplicities</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#definitions-4"><i class="fa fa-check"></i><b>6.2.1</b> Definitions</a></li>
+<li class="chapter" data-level="6.2.2" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#examples-2"><i class="fa fa-check"></i><b>6.2.2</b> Examples</a></li>
+<li class="chapter" data-level="6.2.3" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#linear-independence-of-eigenvectors"><i class="fa fa-check"></i><b>6.2.3</b> Linear Independence of Eigenvectors</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#diagonalisability-and-similarity"><i class="fa fa-check"></i><b>6.3</b> Diagonalisability and Similarity</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#introduction-3"><i class="fa fa-check"></i><b>6.3.1</b> Introduction</a></li>
+<li class="chapter" data-level="6.3.2" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#criteria-for-diagonalisability"><i class="fa fa-check"></i><b>6.3.2</b> Criteria for Diagonalisability</a></li>
+<li class="chapter" data-level="6.3.3" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#similarity"><i class="fa fa-check"></i><b>6.3.3</b> Similarity</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#hermitian-and-symmetric-matrices"><i class="fa fa-check"></i><b>6.4</b> Hermitian and Symmetric Matrices</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#real-eigenvalues-and-orthogonal-eigenvectors"><i class="fa fa-check"></i><b>6.4.1</b> Real Eigenvalues and Orthogonal Eigenvectors</a></li>
+<li class="chapter" data-level="6.4.2" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#unitary-and-orthogonal-diagonalisation"><i class="fa fa-check"></i><b>6.4.2</b> Unitary and Orthogonal Diagonalisation</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#quadratic-forms"><i class="fa fa-check"></i><b>6.5</b> Quadratic Forms</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#examples-in-mathbbr2-and-mathbbr3"><i class="fa fa-check"></i><b>6.5.1</b> Examples in <span class="math inline">\(\mathbb{R}^2\)</span> and <span class="math inline">\(\mathbb{R}^3\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#cayley-hamilton-theorem"><i class="fa fa-check"></i><b>6.6</b> Cayley-Hamilton Theorem</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="changing-bases-canonical-forms-and-symmetries.html"><a href="changing-bases-canonical-forms-and-symmetries.html"><i class="fa fa-check"></i><b>7</b> Changing Bases, Canonical Forms and Symmetries</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="changing-bases-canonical-forms-and-symmetries.html"><a href="changing-bases-canonical-forms-and-symmetries.html#changing-bases-in-general"><i class="fa fa-check"></i><b>7.1</b> Changing Bases in General</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="changing-bases-canonical-forms-and-symmetries.html"><a href="changing-bases-canonical-forms-and-symmetries.html#definition-and-proposition"><i class="fa fa-check"></i><b>7.1.1</b> Definition and Proposition</a></li>
+<li class="chapter" data-level="7.1.2" data-path="changing-bases-canonical-forms-and-symmetries.html"><a href="changing-bases-canonical-forms-and-symmetries.html#proof-of-proposition"><i class="fa fa-check"></i><b>7.1.2</b> Proof of proposition</a></li>
+<li class="chapter" data-level="7.1.3" data-path="changing-bases-canonical-forms-and-symmetries.html"><a href="changing-bases-canonical-forms-and-symmetries.html#approach-using-vector-components"><i class="fa fa-check"></i><b>7.1.3</b> Approach using vector components</a></li>
+<li class="chapter" data-level="7.1.4" data-path="changing-bases-canonical-forms-and-symmetries.html"><a href="changing-bases-canonical-forms-and-symmetries.html#comments-1"><i class="fa fa-check"></i><b>7.1.4</b> Comments</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="changing-bases-canonical-forms-and-symmetries.html"><a href="changing-bases-canonical-forms-and-symmetries.html#jordan-canonical-normal-form"><i class="fa fa-check"></i><b>7.2</b> Jordan Canonical/ Normal Form</a></li>
+<li class="chapter" data-level="7.3" data-path="changing-bases-canonical-forms-and-symmetries.html"><a href="changing-bases-canonical-forms-and-symmetries.html#conics-and-quadrics"><i class="fa fa-check"></i><b>7.3</b> Conics and Quadrics</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="changing-bases-canonical-forms-and-symmetries.html"><a href="changing-bases-canonical-forms-and-symmetries.html#quadrics-in-general"><i class="fa fa-check"></i><b>7.3.1</b> Quadrics in General</a></li>
+<li class="chapter" data-level="7.3.2" data-path="changing-bases-canonical-forms-and-symmetries.html"><a href="changing-bases-canonical-forms-and-symmetries.html#conics"><i class="fa fa-check"></i><b>7.3.2</b> Conics</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="changing-bases-canonical-forms-and-symmetries.html"><a href="changing-bases-canonical-forms-and-symmetries.html#symmetries-and-transformation-groups."><i class="fa fa-check"></i><b>7.4</b> Symmetries and Transformation Groups.</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="changing-bases-canonical-forms-and-symmetries.html"><a href="changing-bases-canonical-forms-and-symmetries.html#orthogonal-transformations-and-rotations-in-mathbbrn"><i class="fa fa-check"></i><b>7.4.1</b> Orthogonal Transformations and Rotations in <span class="math inline">\(\mathbb{R}^n\)</span></a></li>
+<li class="chapter" data-level="7.4.2" data-path="changing-bases-canonical-forms-and-symmetries.html"><a href="changing-bases-canonical-forms-and-symmetries.html#d-minkowski-space-and-lorentz-transformations"><i class="fa fa-check"></i><b>7.4.2</b> 2d Minkowski Space and Lorentz Transformations</a></li>
+<li class="chapter" data-level="7.4.3" data-path="changing-bases-canonical-forms-and-symmetries.html"><a href="changing-bases-canonical-forms-and-symmetries.html#application-to-special-relativity"><i class="fa fa-check"></i><b>7.4.3</b> Application to special relativity</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Vectors and Matrices 2021 - 2022</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="vectors-in-general-mathbbrn-and-mathbbcn" class="section level1" number="3">
+<h1><span class="header-section-number">3</span> Vectors in General; <span class="math inline">\(\mathbb{R}^n\)</span> and <span class="math inline">\(\mathbb{C}^n\)</span></h1>
+<div id="vectors-in-mathbbrn" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> Vectors in <span class="math inline">\(\mathbb{R}^n\)</span></h2>
+<div id="Rn" class="section level3" number="3.1.1">
+<h3><span class="header-section-number">3.1.1</span> Definitions</h3>
+<p>If we regard vectors as sets of components, it is easy to generalise from 3 to <span class="math inline">\(n\)</span> dimensions.</p>
+<div class="definition">
+<p><span id="def:unlabeled-div-23" class="definition"><strong>Definition 3.1  </strong></span><span class="math inline">\(\mathbb{R}^n = \{ \underline{x} = (x_1, x_2, \dots, x_n) : x_i \in \mathbb{R}\)</span></p>
+</div>
+<div class="definition">
+<p><span id="def:unlabeled-div-24" class="definition"><strong>Definition 3.2  </strong></span> </p>
+<ol style="list-style-type: lower-roman">
+<li><p><em>addition</em> <span class="math inline">\(\underline{x} + \underline{y} = (x_1 + y_1, \dots, x_n + y_n)\)</span>
+for any <span class="math inline">\(\underline{x}, \underline{y} \in \mathbb{R}^n\)</span></p></li>
+<li><p><em>scalar multiplication</em> <span class="math inline">\(\lambda x = (\lambda x_1, \dots, \lambda x_n)\)</span> for any <span class="math inline">\(\underline{x} \mathbb{R}^n\)</span> and <span class="math inline">\(\lambda \in \mathbb{R}\)</span></p></li>
+</ol>
+</div>
+<div class="definition">
+<p><span id="def:unlabeled-div-25" class="definition"><strong>Definition 3.3  (Inner/ scalar product) </strong></span><span class="math inline">\(\underline{x} \cdot \underline{y} = \sum_i x_i y_i = x_1 y_1 + \dots + x_n y_n\)</span></p>
+<ol style="list-style-type: lower-roman">
+<li><p>Symmetric <span class="math inline">\(\underline{x} \cdot \underline{y} = \underline{y} \cdot \underline{x}\)</span></p></li>
+<li><p>Bilinear (linear in each vector)
+<span class="math display">\[\begin{align*}
+(\lambda \underline{x} + \lambda&#39; \underline{x}) \cdot \underline{y} &amp;= \lambda (\underline{x} \cdot \underline{y}) + \lambda&#39; (\underline{x}&#39; \cdot \underline{y}) \\
+(\lambda \underline{y} + \lambda&#39; \underline{y}) \cdot \underline{x} &amp;= \lambda (\underline{y} \cdot \underline{x}) + \lambda&#39; (\underline{y}&#39; \cdot \underline{x}) \\
+\end{align*}\]</span></p></li>
+<li><p>Positive definite
+<span class="math inline">\(\underline{x} \cdot \underline{x} = \sum_i x^2_i \geq 0\)</span> and <span class="math inline">\(= 0 \iff \underline{x} = \underline{0}\)</span>.
+The <em>length</em> or <em>norm</em> of vector <span class="math inline">\(\underline{x}\)</span> is <span class="math inline">\(| \underline{x} | \geq 0\)</span> defined by <span class="math inline">\(| \underline{x} |^2 = \underline{x} \cdot \underline{x}\)</span>.</p></li>
+</ol>
+</div>
+<p>For <span class="math inline">\(\underline{x} \in \mathbb{R}^n\)</span> we can write <span class="math inline">\(\underline{x} = \sum_i x_i \underline{e}_i\)</span> where
+<span class="math display">\[\begin{align*}
+    \underline{e}_1 &amp;= (1, 0, \dots, 0) \\
+    \underline{e}_2 &amp;= (0, 1, \dots, 0) \\
+    &amp;\;\;\vdots \\
+    \underline{e}_n &amp;= (0, 0, \dots, 1).    
+\end{align*}\]</span>
+We call <span class="math inline">\(\{ \underline{e}_i \}\)</span> the <em>standard basis</em> for <span class="math inline">\(\mathbb{R}^n\)</span>.
+Note it is orthonormal:
+<span class="math display">\[\begin{align*}
+    \underline{e}_i \cdot \underline{e}_j = \delta_{ij} = \begin{cases}
+        1 &amp; \text{ if } i = j \\
+        0 &amp; \text{ if } i \neq j
+    \end{cases} 
+\end{align*}\]</span></p>
+</div>
+<div id="cauchy-schwarz-and-triangle-inequalities" class="section level3" number="3.1.2">
+<h3><span class="header-section-number">3.1.2</span> Cauchy-Schwarz and Triangle Inequalities</h3>
+<div class="proposition">
+<p><span id="prp:unlabeled-div-26" class="proposition"><strong>Proposition 3.1  (Cauchy-Schwarz) </strong></span><span class="math inline">\(|\underline{x} \cdot \underline{y}| \leq |\underline{x}| | \underline{y}|\)</span> for some <span class="math inline">\(\underline{x}, \underline{y} \in \mathbb{R}^n\)</span><br />
+and equality holds iff<br />
+<span class="math inline">\(\underline{x} = \lambda \underline{y}\)</span> or <span class="math inline">\(\underline{y} = \lambda \underline{x}\)</span> <span class="math inline">\((\underline{x} \parallel \underline{y})\)</span> for some <span class="math inline">\(\lambda \in \mathbb{R}\)</span>.</p>
+</div>
+<p>Deductions reveal geometrical aspects of the inner product:</p>
+<ol style="list-style-type: lower-roman">
+<li><p>Set <span class="math inline">\(\underline{x} \cdot \underline{y} = |\underline{x}| |\underline{y}| \cos \theta\)</span> to define angle <span class="math inline">\(\theta\)</span> between <span class="math inline">\(\underline{x}\)</span> and <span class="math inline">\(\underline{y}\)</span></p></li>
+<li><p>Triangle inequality holds <span class="math inline">\(| \underline{x} + \underline{y} | \leq |\underline{x}| |\underline{y}|\)</span>.</p></li>
+</ol>
+<div class="proof">
+<p><span id="unlabeled-div-27" class="proof"><em>Proof</em> (Cauchy-Schwarz). </span>If <span class="math inline">\(\underline{y} = 0\)</span>, the result is immediate.
+If <span class="math inline">\(\underline{y} \neq 0\)</span>, consider
+<span class="math display">\[\begin{align*}
+    |\underline{x} - \lambda \underline{y}|^2 &amp;= (\underline{x} - \lambda \underline{y}) \cdot (\underline{x} - \lambda \underline{y}) \\
+    &amp;= |\underline{x}|^2 - 2 \lambda \underline{x} \cdot \underline{y} + \lambda^2 | \underline{y} | \geq 0
+\end{align*}\]</span>
+This is a quadratic in <span class="math inline">\(\lambda \in \mathbb{R}\)</span> with at most one real root, so discriminant satisfies <span class="math inline">\((-2 \underline{x} \cdot \underline{y})^2 - 4 |\underline{x}|^2 |\underline{y}|^&quot; \leq 0\)</span> as required.
+Equality holds iff discriminant <span class="math inline">\(= 0\)</span> iff <span class="math inline">\(\lambda \underline{y} = \underline{x}\)</span> for some <span class="math inline">\(\lambda \in \mathbb{R}\)</span>.</p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-28" class="proof"><em>Proof</em> (Triangle inequality). </span><span class="math display">\[\begin{align*}
+    LHS^2 &amp;= |\underline{x} + \underline{y}|^2 = |\underline{x}|^2 + 2 \underline{x} \cdot \underline{y} + |\underline{y}|^2 \\
+    RHS^2 &amp;= (|\underline{x}| + |\underline{y}|)^2 = |\underline{x}|^2 + 2 |\underline{x}| |\underline{y}| + |\underline{y}|^2
+\end{align*}\]</span> and compare using Cauchy-Schwarz.</p>
+</div>
+</div>
+<div id="comments" class="section level3" number="3.1.3">
+<h3><span class="header-section-number">3.1.3</span> Comments</h3>
+<p>Inner product on <span class="math inline">\(\mathbb{R}^n\)</span>
+<span class="math display">\[\begin{align*}
+    \underline{a} \cdot \underline{b} = \delta_{ij} a_i b_j \hspace{0.5cm} (\sum \text{ convention and } i, j = 1, \dots, n) \\
+\end{align*}\]</span>
+Component definition matches geometrical definition for n = 3 <a href="vectors-in-3-dimensions.html#scalar-or-dot-product">Scalar or Dot Product</a>.</p>
+<p>In <span class="math inline">\(\mathbb{R}^3\)</span> we also have a cross product with component definition <span class="math inline">\((\underline{a} \wedge \underline{b})_i = \epsilon_{ijk} a_j b_k\)</span> (geometric definition given in <a href="vectors-in-3-dimensions.html#vector-or-cross-product">Vector or Cross Product</a>)<br />
+In <span class="math inline">\(\mathbb{R}^n\)</span> we have <span class="math inline">\(\epsilon_{\underbrace{ij...l}_\text{$n$ indices}}\)</span> (totally antisymmetric).
+Cannot use this to define vector-valued product except in <span class="math inline">\(n = 3\)</span>.
+But in <span class="math inline">\(\mathbb{R}^2\)</span> we have <span class="math inline">\(\epsilon_{ij}\)</span> with <span class="math inline">\(\epsilon_{12} = \epsilon_{21} = 1\)</span> and we can use this to define an additional scalar cross product in 2d.</p>
+<p><span class="math display">\[\begin{align*}
+    [\underline{a}, \underline{b}] &amp;= \epsilon_{ij} a_i b_j \\
+    &amp;= a_1 b_2 - a_2 b_1 \text{ for } \underline{a}, \underline{b} \in \mathbb{R}^2 \\
+\end{align*}\]</span>
+Geometrically, this gives (signed) area of parallelogram <span class="math inline">\([\underline{a}, \underline{b}] = |\underline{a}| |\underline{b}| \sin \theta\)</span>.
+<img src="figures/03-2d-cross.png" width="50%" style="display: block; margin: auto;" />
+Compare with <span class="math inline">\([\underline{a}, \underline{b}, \underline{c}] = \underline{a} \cdot \underline{b} \wedge \underline{c} = \epsilon_{ijk} a_i b_j c_k\)</span> which is the (signed) volume of a parallelepiped.</p>
+</div>
+</div>
+<div id="vector-spaces" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> Vector Spaces</h2>
+<div id="axioms-span-subspaces" class="section level3" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> Axioms; span; subspaces</h3>
+<p>Let <span class="math inline">\(V\)</span> be a set of objects called <em>vectors</em> with operations</p>
+<p><span class="math display">\[\begin{align*}
+    \left.\begin{aligned}
+            &amp;i. &amp; \underline{v} + \underline{w} &amp;\in V \\
+            &amp;ii. &amp; \lambda \underline{v} &amp;\in V
+    \end{aligned}\right\}
+    \text{defined } \forall \; v, w \in V, \text{ and } \forall \; \lambda \in \mathbb{R}.
+\end{align*}\]</span>
+Then <span class="math inline">\(V\)</span> is a <em>real vector space</em> if <span class="math inline">\(V\)</span> is an abelian group under addition and
+<span class="math display">\[\begin{align*}
+    \lambda ( \underline{v} + \underline{w}) &amp;= \lambda \underline{v} + \lambda \underline{w} \\
+    (\lambda + \mu) \underline{v} &amp;= \lambda \underline{v} + \mu \underline{v} \\
+    \lambda (\mu \underline{v}) &amp;= (\lambda \mu) \underline{v} \\
+    1 \underline{v} &amp;= \underline{v}
+\end{align*}\]</span><a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a> (the first three are same as <a href="vectors-in-3-dimensions.html#vector-addition-and-scalar-multiplication">Vector Addition and Scalar Multiplication</a>)</p>
+<p>These axioms or key properties apply to geometrical vectors with <span class="math inline">\(V\)</span> being a 3d space or to vectors in <span class="math inline">\(V = \mathbb{R}^n\)</span>, as above, as well as other examples.</p>
+<p>For vectors <span class="math inline">\(\underline{v}_1, \underline{v}_2, \dots, \underline{v}_r \in V\)</span> we can form a <em>linear combination</em> <span class="math inline">\(\lambda_1 \underline{v}_1 + \lambda_2 \underline{v}_2 + \dots + \lambda_r \underline{v}_r \in V\)</span> for any <span class="math inline">\(\lambda_i \in \mathbb{R}\)</span>; the span is defined <span class="math inline">\(\operatorname{span} \{ \underline{v}_1, \underline{v}_2, \dots, \underline{v}_r \} = \{ \sum_i \lambda_i \underline{v}_i : \lambda_i \in \mathbb{R} \}\)</span>.<br />
+A <em>subspace</em> of <span class="math inline">\(V\)</span> is a subset that is itself a vector space.<br />
+Note <span class="math inline">\(V\)</span> and <span class="math inline">\(\{ 0 \}\)</span> are subspaces.<br />
+<span class="math inline">\(\operatorname{span} \{ \underline{v}_1, \underline{v}_2, \dots, \underline{v}_r \}\)</span> is a subspace for any vectors <span class="math inline">\(\underline{v}_1, \underline{v}_2, \dots, \underline{v}_r\)</span>.<br />
+Note: a non-empty subset <span class="math inline">\(U \subseteq V\)</span> is a subspace iff
+<span class="math display">\[\begin{align*}
+    \underline{v}, \underline{w} \in U \implies \lambda \underline{v} + \mu \underline{w} \in U \; \forall \; \lambda, \mu \in \mathbb{R}.
+\end{align*}\]</span></p>
+<div class="example">
+<p><span id="exm:unlabeled-div-29" class="example"><strong>Example 3.1  </strong></span>In <span class="math inline">\(\mathbb{R}^3\)</span>, a line or plane through <span class="math inline">\(\underline{0}\)</span> is a subspace but if it doesn’t contain <span class="math inline">\(\underline{0}\)</span> it is not a subspace.
+e.g. <span class="math display">\[\begin{align*}
+    \underline{v}_1 = \begin{pmatrix}1 \\0 \\-1\end{pmatrix}, 
+    \underline{v}_2 = \begin{pmatrix}1 \\1 \\-2\end{pmatrix},
+    \underline{n} = \begin{pmatrix}1 \\1 \\1\end{pmatrix} \\
+    \operatorname{span} \{ \underline{v}_1, \underline{v}_2\} = \{ \underline{r} : \underline{n} \cdot \underline{r} = 0 \} \text{ this is a plane and subspace} \\
+    \text{But } \{ \underline{r} : \underline{n} \cdot \underline{r} = 1 \} \text{ this is a plane but not a subspace } [\underline{r}, \underline{r}&#39; \text{ on plane then } (\underline{r} + \underline{r}&#39;) \cdot \underline{n} = 2] \\
+\end{align*}\]</span></p>
+</div>
+</div>
+<div id="linear-dependence-and-independence" class="section level3" number="3.2.2">
+<h3><span class="header-section-number">3.2.2</span> Linear Dependence and Independence</h3>
+<p>For vectors <span class="math inline">\(\underline{v}_1, \underline{v}_2, \dots, \underline{v}_r \in V\)</span> (where <span class="math inline">\(V\)</span> is a real vector space) consider the <em>linear relation</em>
+<span class="math display" id="eq:ein">\[\begin{align*}
+    \lambda_1 \underline{v}_1 + \lambda_2 \underline{v}_2 + \dots + \lambda_r \underline{v}_r = \underline{0} \tag{3.1}
+\end{align*}\]</span></p>
+<p>If <a href="vectors-in-general-mathbbrn-and-mathbbcn.html#eq:ein">(3.1)</a> <span class="math inline">\(\implies \lambda_i = 0\)</span> for every <span class="math inline">\(i\)</span> then the vectors form a <em>linearly independent</em> set (they obey only the <em>trivial</em> linear relation with <span class="math inline">\(\lambda_i = 0\)</span>).<br />
+If <a href="vectors-in-general-mathbbrn-and-mathbbcn.html#eq:ein">(3.1)</a> holds with at least one <span class="math inline">\(\lambda_i \neq 0\)</span> then the vectors form a <em>linearly dependent</em> set (they obey a <em>non-trivial</em> linear relation).</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-30" class="example"><strong>Example 3.2  </strong></span><span class="math display">\[\begin{align*}
+    \left\{ \begin{pmatrix}1 \\0\end{pmatrix}, \begin{pmatrix}0 \\1\end{pmatrix}, \begin{pmatrix}0 \\2\end{pmatrix} \right\} \text{ are linearly dependent because:} \\
+    0 \begin{pmatrix}1 \\0\end{pmatrix} + 2 \begin{pmatrix}0 \\1\end{pmatrix} + (-1) \begin{pmatrix}0 \\2\end{pmatrix} = \underline{0}
+\end{align*}\]</span>
+Note we cannot express <span class="math inline">\(\begin{pmatrix}1 \\0\end{pmatrix}\)</span> in terms of the others.</p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-31" class="example"><strong>Example 3.3  </strong></span>Any set containing <span class="math inline">\(\underline{0}\)</span> is linearly dependent.<br />
+e.g. <span class="math display">\[\begin{align*}
+    \left\{ \begin{pmatrix}1 \\0\end{pmatrix}, \begin{pmatrix}0 \\0\end{pmatrix}\right\} \text{ have} \\
+    0 \begin{pmatrix}1 \\0\end{pmatrix} + 412 \begin{pmatrix}0 \\0\end{pmatrix}= \underline{0}
+\end{align*}\]</span> which is a non-trivial linear relation.</p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-32" class="example"><strong>Example 3.4  </strong></span><span class="math inline">\(\left\{ \underline{a}, \underline{b}, \underline{c} \right\}\)</span> in <span class="math inline">\(\mathbb{R}^3\)</span> are linearly independent if <span class="math inline">\(\underline{a} \cdot \underline{b} \wedge \underline{c} \neq 0\)</span>.
+Consider <span class="math inline">\(\alpha \underline{a} + \beta \underline{b} + \gamma \underline{c} = \underline{0}\)</span>.
+Take dot with <span class="math inline">\(\underline{b} \wedge \underline{c}\)</span> to get <span class="math inline">\(\alpha \underline{a} \cdot \underline{b} \wedge \underline{c} = 0 \implies \alpha = 0\)</span> and <span class="math inline">\(\beta = \gamma = 0\)</span> similarly.</p>
+</div>
+</div>
+<div id="inner-product" class="section level3" number="3.2.3">
+<h3><span class="header-section-number">3.2.3</span> Inner product</h3>
+<p>This is an additional structure on a real vector space <span class="math inline">\(V\)</span>, also characterised by axioms.
+For <span class="math inline">\(\underline{v}, \underline{w} \in V\)</span> write inner product <span class="math inline">\(\underline{v} \cdot \underline{w}\)</span> or <span class="math inline">\((\underline{v}, \underline{w}) \in \mathbb{R}\)</span>.
+This satisfies axioms corresponding to the properties in <a href="vectors-in-general-mathbbrn-and-mathbbcn.html#Rn">Definitions</a></p>
+<ol style="list-style-type: lower-roman">
+<li><p>Symmetric</p></li>
+<li><p>Bilinear</p></li>
+<li><p>Positive definite</p></li>
+</ol>
+<div class="lemma">
+<p><span id="lem:unlabeled-div-33" class="lemma"><strong>Lemma 3.1  </strong></span>In a real vector space <span class="math inline">\(V\)</span> with inner product, if <span class="math inline">\(\underline{v}_1, \dots, \underline{v}_r\)</span> are non-zero and orthogonal:
+<span class="math display">\[\begin{align*}
+    (\underline{v}_i, \underline{v}_i) \neq 0 \text { and } (\underline{v}_i, \underline{v}_j) = 0 \text{ where } i \neq j \text{ and for fixed } i.
+\end{align*}\]</span>
+then <span class="math inline">\(\underline{v}_1, \dots, \underline{v}_r\)</span> are linearly independent.</p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-34" class="proof"><em>Proof</em>. </span><span class="math display">\[\begin{align*}
+    \text{Consider } \sum_i \alpha_i \underline{v}_i &amp;= \underline{0} \\
+    (\underline{v}_j, \sum_i \alpha_i \underline{v}_i) &amp;= \sum_i \alpha_i (\underline{v}_j, \underline{v}_i) \\
+    0 &amp;= \alpha_j (\underline{v}_j, \underline{v}_j) \text{ all fixed j} \\
+    \implies \alpha_j &amp;= 0.
+\end{align*}\]</span></p>
+</div>
+</div>
+</div>
+<div id="bases-and-dimension" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> Bases and Dimension</h2>
+<p>For a vector space <span class="math inline">\(V\)</span>, a basis is a set
+<span class="math display">\[\begin{align*}
+    \mathcal{B} = \{ \underline{e}_1, \dots, \underline{e}_n \}
+\end{align*}\]</span> such that</p>
+<ol style="list-style-type: lower-roman">
+<li><p><span class="math inline">\(\mathcal{B}\)</span> spans <span class="math inline">\(V\)</span>, i.e. any <span class="math inline">\(\underline{v} \in V\)</span> can be written <span class="math inline">\(\underline{v} = \sum_{i=1}^{n} v_i \underline{e_i}\)</span></p></li>
+<li><p><span class="math inline">\(\mathcal{B}\)</span> is linearly independent.
+Given ii., the coefficients <span class="math inline">\(v_i\)</span> in i. are unique since
+<span class="math display">\[\begin{align*}
+\sum_i v_i \underline{e}_i &amp;= \sum v_i&#39; \underline{e}_i \\
+\implies \sum_i (v_i - v_i&#39;) \underline{e}_i &amp;= \underline{0} \\
+\implies v_i &amp;= v_i&#39;
+\end{align*}\]</span></p></li>
+</ol>
+<p><span class="math inline">\(v_i\)</span> are <em>components</em> of <span class="math inline">\(\underline{v}\)</span> w.r.t. <span class="math inline">\(\mathfrak{B}\)</span></p>
+<div class="example">
+<p><span id="exm:unlabeled-div-35" class="example"><strong>Example 3.5  </strong></span>Standard basis for <span class="math inline">\(\mathbb{R}^n\)</span> consisting of
+<span class="math display">\[\begin{align*}
+    \underline{e}_1 &amp;= (1, 0, \dots, 0) \\
+    \underline{e}_2 &amp;= (0, 1, \dots, 0) \\
+    &amp;\;\;\vdots \\
+    \underline{e}_n &amp;= (0, 0, \dots, 1).    
+\end{align*}\]</span> is a basis according to general definition.</p>
+<ol style="list-style-type: lower-roman">
+<li><p><span class="math display">\[\begin{align*}
+ \underline{x} = \begin{pmatrix}x_1 \\\vdots \\x_n\end{pmatrix} = x_1 \underline{e}_1 + \dots + x_n \underline{e}_n \\
+\end{align*}\]</span></p></li>
+<li><p><span class="math inline">\(\underline{x} = \underline{0} \iff x_1 = x_2 = \dots = x_n = 0\)</span></p></li>
+</ol>
+</div>
+<p>Many other bases can be chosen</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-36" class="example"><strong>Example 3.6  </strong></span>In <span class="math inline">\(\mathbb{R}^2\)</span> we have bases
+<span class="math display">\[\begin{align*}
+    \left\{ \begin{pmatrix}0 \\1\end{pmatrix}, \begin{pmatrix}1 \\1\end{pmatrix} \right\} \text{ or } \left\{ \begin{pmatrix}1 \\1\end{pmatrix}, \begin{pmatrix}1 \\ -1\end{pmatrix} \right\}
+\end{align*}\]</span> or <span class="math inline">\(\{ \underline{a}, \underline{b} \}\)</span> for any <span class="math inline">\(\underline{a}, \underline{b} \in \mathbb{R}^2\)</span> with <span class="math inline">\(\underline{a} \nparallel \underline{b}\)</span>.</p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-37" class="example"><strong>Example 3.7  </strong></span>In <span class="math inline">\(\mathbb{R}^3, \{ \underline{a}, \underline{b}, \underline{c} \}\)</span> is a basis iff <span class="math inline">\(\underline{a} \cdot \underline{b} \wedge \underline{c} \neq 0\)</span>.</p>
+</div>
+<p>Consider previous example of plane through <span class="math inline">\(\underline{0}\)</span>, subspace in <span class="math inline">\(\mathbb{R}^3\)</span>
+<span class="math display">\[\begin{align*}
+    \underline{n} \cdot \underline{r} = 0 \text{ with } \underline{n} = \begin{pmatrix}1 \\1 \\1\end{pmatrix}
+\end{align*}\]</span>
+we have <span class="math display">\[\begin{align*}
+    \{ \underline{v}_1, \underline{v}_2 \} \text{ basis with } \underline{v}_1 = \begin{pmatrix}1 \\0 \\-1\end{pmatrix}, \underline{v}_2 = \begin{pmatrix}1 \\1 \\-2\end{pmatrix}
+\end{align*}\]</span>
+not normalised or orthogonal.<br />
+But we could choose orthonormal basis
+<span class="math display">\[\begin{align*}
+    \{ \underline{u}_1, \underline{u}_2 \} \text{ with } \underline{u}_1 = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 \\-1 \\ 0 \end{pmatrix} \text{ and } \underline{u}_2 = \frac{1}{\sqrt{6}} \begin{pmatrix} 1 \\1 \\ -2 \end{pmatrix}.
+\end{align*}\]</span></p>
+<div class="theorem">
+<p><span id="thm:unlabeled-div-38" class="theorem"><strong>Theorem 3.1  </strong></span>If <span class="math inline">\(\{ \underline{e}_1, \dots, \underline{e}_n \}\)</span> and <span class="math inline">\(\{ \underline{f}_1, \dots, \underline{f}_m \}\)</span> are bases for a real vector space <span class="math inline">\(V\)</span>, then <span class="math inline">\(n = m\)</span>.</p>
+</div>
+<div class="definition">
+<p><span id="def:unlabeled-div-39" class="definition"><strong>Definition 3.4  </strong></span>The number of vectors in any basis is the <em>dimension</em> of <span class="math inline">\(V\)</span>, <span class="math inline">\(\dim V\)</span>.<br />
+Note: <span class="math inline">\(\mathbb{R}^n\)</span> has dimension <span class="math inline">\(n\)</span>.</p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-40" class="proof"><em>Proof</em>. </span><span class="math display">\[\begin{align*}
+    \underline{f}_a &amp;= \sum_i A_{ai} \underline{e}_i \\
+    \text{and } \underline{e}_i &amp;= \sum_i B_{ia} \underline{f}_a \\
+\end{align*}\]</span> for constants <span class="math inline">\(A_{ai}\)</span> and <span class="math inline">\(B_{ia}\)</span> and we use ranges of indices <span class="math inline">\(i, j = 1, \dots, n\)</span> and <span class="math inline">\(a, b = 1, \dots, m\)</span>.<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>
+<span class="math display">\[\begin{align*}
+    \implies \underline{f}_a &amp;= \sum_i A_{ai} \left( \sum_b B_{ib} \underline{f}_b \right) \\
+    &amp;= \sum_b \left( \sum_i A_{ai} B_{ib} \right) \underline{f}_b.
+\end{align*}\]</span>
+But coeffs w.r.t a basis are unique so <span class="math inline">\(\sum_i A_{ai} B_{ib} = \delta_{ab}\)</span>.</p>
+<p>Similarly,
+<span class="math display">\[\begin{align*}
+    \underline{e}_i &amp;= \sum_j \left( \sum_a B_{ia} A_{aj} \right) \underline{e}_j
+\end{align*}\]</span> and hence
+<span class="math display">\[\begin{align*}
+    \sum_a B_{ia} A_{aj} = \delta_{ij}.
+\end{align*}\]</span>
+Now <span class="math display">\[\begin{align*}
+    \sum_{ia} A_{ai} B_{ia} &amp;= \sum_a \delta_{aa} = m \\
+    &amp;= \sum_{ia} B_{ia} A_{ai} = \sum_i \delta_{ii} = n \\
+    \implies m &amp;= n
+\end{align*}\]</span></p>
+</div>
+<p><a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a></p>
+<p>Note: by convention the vector space <span class="math inline">\(\{ 0 \}\)</span> has dimension <span class="math inline">\(0\)</span>.<br />
+Not every vector space is finite dimensional.</p>
+<div class="proposition">
+<p><span id="prp:unlabeled-div-41" class="proposition"><strong>Proposition 3.2  </strong></span>Let <span class="math inline">\(V\)</span> be a vector space of dimension <span class="math inline">\(n\)</span></p>
+<ol style="list-style-type: lower-roman">
+<li><p>If <span class="math inline">\(Y = \{ \underline{w}_1, \dots, \underline{w}_m \}\)</span> spans V, then <span class="math inline">\(m \geq n\)</span> and if <span class="math inline">\(m &gt; n\)</span> vectors can be removed from <span class="math inline">\(Y\)</span> to get a basis.</p></li>
+<li><p>If <span class="math inline">\(X = \{ \underline{u}_1, \dots, \underline{u}_k \}\)</span> are linearly independent then <span class="math inline">\(k \leq n\)</span> and if <span class="math inline">\(k &lt; n\)</span> vectors can be added to <span class="math inline">\(X\)</span> to get a basis.</p></li>
+</ol>
+</div>
+</div>
+<div id="vectors-in-mathbbcn" class="section level2" number="3.4">
+<h2><span class="header-section-number">3.4</span> Vectors in <span class="math inline">\(\mathbb{C}^n\)</span></h2>
+<div id="Cn" class="section level3" number="3.4.1">
+<h3><span class="header-section-number">3.4.1</span> Definitions</h3>
+<div class="definition">
+<p><span id="def:unlabeled-div-42" class="definition"><strong>Definition 3.5  </strong></span><span class="math inline">\(\mathbb{C}^n = \{ \underline{z} = (z_1, \dots, z_n) : z_j \in \mathbb{C} \}\)</span></p>
+</div>
+<div class="definition">
+<p><span id="def:unlabeled-div-43" class="definition"><strong>Definition 3.6  </strong></span><em>addition</em>: <span class="math inline">\(\underline{z} + \underline{w} = \left( z_1 + w_1, \dots, z_n + w_n \right)\)</span></p>
+<p><em>scalar multiplication</em>: <span class="math inline">\(\lambda \underline{z} = (\lambda z_1, \dots, \lambda z_n)\)</span> for any <span class="math inline">\(\underline{z}, \underline{w} \in \mathbb{C}^n\)</span>.
+Taking <em>real</em> scalars <span class="math inline">\(\lambda, \mu \in \mathbb{R}\)</span>, <span class="math inline">\(\mathbb{C}^n\)</span> is a real vector space obeying axioms or key properties in <a href="vectors-in-general-mathbbrn-and-mathbbcn.html#axioms-span-subspaces">Axioms; span; subspaces</a>.<br />
+Taking <em>complex</em> scalars <span class="math inline">\(\lambda, \mu \in \mathbb{C}\)</span>, <span class="math inline">\(\mathbb{C}^n\)</span> is a <em>complex</em> vector space - same axioms/ key properties hold, and definitions of linear combinations, linear (in)dependence, span, bases, dimension all generalise to complex scalars.</p>
+<p>The distinction matters
+<span class="math display">\[\begin{align*}
+    e.g. \ \underline{z} &amp;= (z_1, \dots, z_n) \in \mathbb{C}^n \\
+    \text{with } z_j &amp;= x_j + i y_j \hspace{0.5cm} x_j, y_j \in \mathbb{R} \\
+    \text{then } \underline{z} &amp;= \sum_j x_j \underline{e}_j + \sum_j y_j \underline{f}_j \text{ is a real linear combination} \\
+    \text{where } \underline{e}_j &amp;= \begin{pmatrix}0 &amp; \dots &amp; 1 &amp; \dots &amp; 0\end{pmatrix} \\
+    \underline{f}_j &amp;= \begin{pmatrix}0 &amp; \dots &amp; i &amp; \dots &amp; 0\end{pmatrix} \\
+\end{align*}\]</span>
+<span class="math inline">\(\therefore \{\underline{e}_1, \dots, \underline{e}_n, \underline{f}_1, \dots, \underline{f}_n \}\)</span> is a basis for <span class="math inline">\(\mathbb{C}^n\)</span> as a <em>real</em> vector space.
+So the real dimension is <span class="math inline">\(2n\)</span>.<br />
+But <span class="math inline">\(\underline{z} = \sum_j z_j \underline{e}_j\)</span> and <span class="math inline">\(\{ \underline{e}_1, \dots, \underline{e}_n \}\)</span> is a basis for <span class="math inline">\(\mathbb{C}^n\)</span> as a complex vector space, dimension <span class="math inline">\(n\)</span> (over <span class="math inline">\(\mathbb{C}\)</span>).</p>
+</div>
+</div>
+<div id="inner-product-1" class="section level3" number="3.4.2">
+<h3><span class="header-section-number">3.4.2</span> Inner Product</h3>
+<p>Inner product or scalar product on <span class="math inline">\(\mathbb{C}^n\)</span> is defined by
+<span class="math display">\[\begin{align*}
+    (\underline{z}, \underline{w}) &amp;= \sum_j \bar{z}_j w_j = \bar{z}_1 w_1 + \dots + \bar{z}_n w_n \\
+\end{align*}\]</span></p>
+<div id="properties" class="section level4" number="3.4.2.1">
+<h4><span class="header-section-number">3.4.2.1</span> Properties</h4>
+<ol style="list-style-type: lower-roman">
+<li><p><em>hermitian</em>
+<span class="math display">\[\begin{align*}
+ (\underline{w}, \underline{z}) = \overline{(\underline{z}, \underline{w})}
+\end{align*}\]</span></p></li>
+<li><p><em>linear/ anti-linear</em>
+<span class="math display">\[\begin{align*}
+(\underline{z}, \lambda \underline{w} + \lambda&#39; \underline{w}&#39;) &amp;= \lambda (\underline{z}, \underline{w}) + \lambda&#39; (\underline{z}, \underline{w}&#39;) \\
+(\mu \underline{z} + \mu&#39; \underline{z}&#39;, \underline{w}) &amp;= \bar{\mu} (\underline{z}, \underline{w}) + \overline{\mu}&#39; (\underline{z}&#39;, \underline{w})    
+\end{align*}\]</span></p></li>
+<li><p><em>positive definite</em>
+<span class="math display">\[\begin{align*}
+    (\underline{z}, \underline{z}) &amp;= \sum_i |z_i|^2 \in \mathbb{R}_{\geq 0} \\
+    &amp;= 0 \iff \underline{z} = \underline{0}
+\end{align*}\]</span>
+Define <em>length</em> or <em>norm</em> of <span class="math inline">\(\underline{z}\)</span> to be <span class="math inline">\(|\underline{z}| \geq 0\)</span> with <span class="math inline">\(|\underline{z}|^2 = (\underline{z}, \underline{z})\)</span>.</p></li>
+</ol>
+<p>Define <span class="math inline">\(\underline{z}, \underline{w} \in \mathbb{C}^n\)</span> to be <em>orthogonal</em> if <span class="math inline">\((\underline{z}, \underline{w}) = 0\)</span>.<br />
+Note, the standard basis <span class="math inline">\(\{ \underline{e}_j \}\)</span> for <span class="math inline">\(\mathbb{C}^n\)</span> (see <a href="vectors-in-general-mathbbrn-and-mathbbcn.html#Cn">definitions</a>) is orthonormal
+<span class="math display">\[\begin{align*}
+    (\underline{e}_i, \underline{e}_j) = \delta_{ij}.
+\end{align*}\]</span>
+Also if <span class="math inline">\(\underline{z}_1, \underline{z}_2, \dots, \underline{z}_k\)</span> are non-zero and orthogonal in sense above, then they are linearly independent over <span class="math inline">\(\mathbb{C}\)</span> (same argument as in real case).</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-44" class="example"><strong>Example 3.8  </strong></span>Complex inner product on <span class="math inline">\(\mathbb{C}\)</span> (<span class="math inline">\(n = 1\)</span>) is
+<span class="math display">\[\begin{align*}
+    (z, w) &amp;= \bar{z} w \\
+    \text{Let } z &amp;= a_1 + i a_2,\ w = b_1 + b_2 \\
+    \text{Then } \underline{a} &amp;= (a_1, a_2) \in \mathbb{R}^2,\ \underline{b} = (b_1, b_2) \in \mathbb{R}^2 \text{ the corresponding vectors} \\
+    \bar{z} w &amp;= (a_1 b_1 + a_2 b_2) + i (a_1 b_2 - a_2 b_1) \\
+    &amp;= \underline{a} \cdot \underline{b} + i [\underline{a}, \underline{b}]
+\end{align*}\]</span>
+recover scalar dot and scalar cross product in <span class="math inline">\(\mathbb{R}^2\)</span>.</p>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="3">
+<li id="fn3"><p>don’t need to state these in tripos<a href="vectors-in-general-mathbbrn-and-mathbbcn.html#fnref3" class="footnote-back">↩︎</a></p></li>
+<li id="fn4"><p>This is true since <span class="math inline">\(\{ \underline{e}_i\}\)</span> and <span class="math inline">\(\{ \underline{f}_a \}\)</span> are bases<a href="vectors-in-general-mathbbrn-and-mathbbcn.html#fnref4" class="footnote-back">↩︎</a></p></li>
+<li id="fn5"><p>Don’t need to memorise proof but you there may be a question where you are lead through the proof<a href="vectors-in-general-mathbbrn-and-mathbbcn.html#fnref5" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="vectors-in-3-dimensions.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="matrices-and-linear-maps.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "lunr",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

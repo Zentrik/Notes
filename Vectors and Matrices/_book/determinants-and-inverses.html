@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>5 Determinants and inverses | Vectors and Matrices 2021 - 2022</title>
+  <meta name="description" content="Notes" />
+  <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="5 Determinants and inverses | Vectors and Matrices 2021 - 2022" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Notes" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="5 Determinants and inverses | Vectors and Matrices 2021 - 2022" />
+  
+  <meta name="twitter:description" content="Notes" />
+  
+
+<meta name="author" content="" />
+
+
+<meta name="date" content="2021-07-10" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="matrices-and-linear-maps.html"/>
+<link rel="next" href="eigenvalues-and-eigenvectors.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Lecture 1</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#contents"><i class="fa fa-check"></i><b>0.1</b> Contents</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="complex-numbers.html"><a href="complex-numbers.html"><i class="fa fa-check"></i><b>1</b> Complex Numbers</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="complex-numbers.html"><a href="complex-numbers.html#definitions"><i class="fa fa-check"></i><b>1.1</b> Definitions</a></li>
+<li class="chapter" data-level="1.2" data-path="complex-numbers.html"><a href="complex-numbers.html#basic-properties-and-consequences"><i class="fa fa-check"></i><b>1.2</b> Basic properties and Consequences</a></li>
+<li class="chapter" data-level="1.3" data-path="complex-numbers.html"><a href="complex-numbers.html#exponential-and-trigonometric-functions"><i class="fa fa-check"></i><b>1.3</b> Exponential and Trigonometric Functions</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="complex-numbers.html"><a href="complex-numbers.html#roots-of-units"><i class="fa fa-check"></i><b>1.3.1</b> Roots of units</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="complex-numbers.html"><a href="complex-numbers.html#transformations-lines-and-circles"><i class="fa fa-check"></i><b>1.4</b> Transformations; lines and circles</a></li>
+<li class="chapter" data-level="1.5" data-path="complex-numbers.html"><a href="complex-numbers.html#logarithms-and-complex-powers"><i class="fa fa-check"></i><b>1.5</b> Logarithms and Complex Powers</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html"><i class="fa fa-check"></i><b>2</b> Vectors in 3 Dimensions</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html#vector-addition-and-scalar-multiplication"><i class="fa fa-check"></i><b>2.1</b> Vector Addition and Scalar Multiplication</a></li>
+<li class="chapter" data-level="2.2" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html#scalar-or-dot-product"><i class="fa fa-check"></i><b>2.2</b> Scalar or Dot Product</a></li>
+<li class="chapter" data-level="2.3" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html#orthonormal-bases-and-components"><i class="fa fa-check"></i><b>2.3</b> Orthonormal Bases and Components</a></li>
+<li class="chapter" data-level="2.4" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html#vector-or-cross-product"><i class="fa fa-check"></i><b>2.4</b> Vector or Cross Product</a></li>
+<li class="chapter" data-level="2.5" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html#triple-products"><i class="fa fa-check"></i><b>2.5</b> Triple products</a></li>
+<li class="chapter" data-level="2.6" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html#lines-planes-and-other-vector-equations"><i class="fa fa-check"></i><b>2.6</b> Lines, Planes and Other Vector Equations</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html#lines"><i class="fa fa-check"></i><b>2.6.1</b> Lines</a></li>
+<li class="chapter" data-level="2.6.2" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html#planes"><i class="fa fa-check"></i><b>2.6.2</b> Planes</a></li>
+<li class="chapter" data-level="2.6.3" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html#other-vector-equations"><i class="fa fa-check"></i><b>2.6.3</b> Other Vector Equations</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html#index-suffix-notation-and-the-summation-convention"><i class="fa fa-check"></i><b>2.7</b> Index (suffix) Notation and the Summation convention</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html#components-delta-and-epsilon"><i class="fa fa-check"></i><b>2.7.1</b> Components; <span class="math inline">\(\delta\)</span> and <span class="math inline">\(\epsilon\)</span></a></li>
+<li class="chapter" data-level="2.7.2" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html#summation-convention"><i class="fa fa-check"></i><b>2.7.2</b> Summation Convention</a></li>
+<li class="chapter" data-level="2.7.3" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html#rules"><i class="fa fa-check"></i><b>2.7.3</b> Rules</a></li>
+<li class="chapter" data-level="2.7.4" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html#application"><i class="fa fa-check"></i><b>2.7.4</b> Application</a></li>
+<li class="chapter" data-level="2.7.5" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html#epsilon-epsilon-identities"><i class="fa fa-check"></i><b>2.7.5</b> <span class="math inline">\(\epsilon \epsilon\)</span> identities</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="vectors-in-general-mathbbrn-and-mathbbcn.html"><a href="vectors-in-general-mathbbrn-and-mathbbcn.html"><i class="fa fa-check"></i><b>3</b> Vectors in General; <span class="math inline">\(\mathbb{R}^n\)</span> and <span class="math inline">\(\mathbb{C}^n\)</span></a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="vectors-in-general-mathbbrn-and-mathbbcn.html"><a href="vectors-in-general-mathbbrn-and-mathbbcn.html#vectors-in-mathbbrn"><i class="fa fa-check"></i><b>3.1</b> Vectors in <span class="math inline">\(\mathbb{R}^n\)</span></a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="vectors-in-general-mathbbrn-and-mathbbcn.html"><a href="vectors-in-general-mathbbrn-and-mathbbcn.html#Rn"><i class="fa fa-check"></i><b>3.1.1</b> Definitions</a></li>
+<li class="chapter" data-level="3.1.2" data-path="vectors-in-general-mathbbrn-and-mathbbcn.html"><a href="vectors-in-general-mathbbrn-and-mathbbcn.html#cauchy-schwarz-and-triangle-inequalities"><i class="fa fa-check"></i><b>3.1.2</b> Cauchy-Schwarz and Triangle Inequalities</a></li>
+<li class="chapter" data-level="3.1.3" data-path="vectors-in-general-mathbbrn-and-mathbbcn.html"><a href="vectors-in-general-mathbbrn-and-mathbbcn.html#comments"><i class="fa fa-check"></i><b>3.1.3</b> Comments</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="vectors-in-general-mathbbrn-and-mathbbcn.html"><a href="vectors-in-general-mathbbrn-and-mathbbcn.html#vector-spaces"><i class="fa fa-check"></i><b>3.2</b> Vector Spaces</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="vectors-in-general-mathbbrn-and-mathbbcn.html"><a href="vectors-in-general-mathbbrn-and-mathbbcn.html#axioms-span-subspaces"><i class="fa fa-check"></i><b>3.2.1</b> Axioms; span; subspaces</a></li>
+<li class="chapter" data-level="3.2.2" data-path="vectors-in-general-mathbbrn-and-mathbbcn.html"><a href="vectors-in-general-mathbbrn-and-mathbbcn.html#linear-dependence-and-independence"><i class="fa fa-check"></i><b>3.2.2</b> Linear Dependence and Independence</a></li>
+<li class="chapter" data-level="3.2.3" data-path="vectors-in-general-mathbbrn-and-mathbbcn.html"><a href="vectors-in-general-mathbbrn-and-mathbbcn.html#inner-product"><i class="fa fa-check"></i><b>3.2.3</b> Inner product</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="vectors-in-general-mathbbrn-and-mathbbcn.html"><a href="vectors-in-general-mathbbrn-and-mathbbcn.html#bases-and-dimension"><i class="fa fa-check"></i><b>3.3</b> Bases and Dimension</a></li>
+<li class="chapter" data-level="3.4" data-path="vectors-in-general-mathbbrn-and-mathbbcn.html"><a href="vectors-in-general-mathbbrn-and-mathbbcn.html#vectors-in-mathbbcn"><i class="fa fa-check"></i><b>3.4</b> Vectors in <span class="math inline">\(\mathbb{C}^n\)</span></a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="vectors-in-general-mathbbrn-and-mathbbcn.html"><a href="vectors-in-general-mathbbrn-and-mathbbcn.html#Cn"><i class="fa fa-check"></i><b>3.4.1</b> Definitions</a></li>
+<li class="chapter" data-level="3.4.2" data-path="vectors-in-general-mathbbrn-and-mathbbcn.html"><a href="vectors-in-general-mathbbrn-and-mathbbcn.html#inner-product-1"><i class="fa fa-check"></i><b>3.4.2</b> Inner Product</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html"><i class="fa fa-check"></i><b>4</b> Matrices and Linear Maps</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#introduction"><i class="fa fa-check"></i><b>4.1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#definitions-1"><i class="fa fa-check"></i><b>4.1.1</b> Definitions</a></li>
+<li class="chapter" data-level="4.1.2" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#rank-and-nullity"><i class="fa fa-check"></i><b>4.1.2</b> Rank and Nullity</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#geometrical-examples"><i class="fa fa-check"></i><b>4.2</b> Geometrical Examples</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#rotations"><i class="fa fa-check"></i><b>4.2.1</b> Rotations</a></li>
+<li class="chapter" data-level="4.2.2" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#reflections"><i class="fa fa-check"></i><b>4.2.2</b> Reflections</a></li>
+<li class="chapter" data-level="4.2.3" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#dilations"><i class="fa fa-check"></i><b>4.2.3</b> Dilations</a></li>
+<li class="chapter" data-level="4.2.4" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#shears"><i class="fa fa-check"></i><b>4.2.4</b> Shears</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#matrices-as-linear-maps-mathbbrn-to-mathbbrm"><i class="fa fa-check"></i><b>4.3</b> Matrices as Linear Maps <span class="math inline">\(\mathbb{R}^n \to \mathbb{R}^m\)</span></a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#definitions-2"><i class="fa fa-check"></i><b>4.3.1</b> Definitions</a></li>
+<li class="chapter" data-level="4.3.2" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#examples"><i class="fa fa-check"></i><b>4.3.2</b> Examples</a></li>
+<li class="chapter" data-level="4.3.3" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#isometries-area-and-determinants-in-mathbbr2"><i class="fa fa-check"></i><b>4.3.3</b> Isometries, area and determinants in <span class="math inline">\(\mathbb{R}^2\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#matrices-for-linear-maps-in-general"><i class="fa fa-check"></i><b>4.4</b> Matrices for Linear Maps in General</a></li>
+<li class="chapter" data-level="4.5" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#matrix-algebra"><i class="fa fa-check"></i><b>4.5</b> Matrix Algebra</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#linear-combinations"><i class="fa fa-check"></i><b>4.5.1</b> Linear Combinations</a></li>
+<li class="chapter" data-level="4.5.2" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#matrix-multiplication"><i class="fa fa-check"></i><b>4.5.2</b> Matrix multiplication</a></li>
+<li class="chapter" data-level="4.5.3" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#matrix-inverses"><i class="fa fa-check"></i><b>4.5.3</b> Matrix Inverses</a></li>
+<li class="chapter" data-level="4.5.4" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#transpose-and-hermitian-conjugate"><i class="fa fa-check"></i><b>4.5.4</b> Transpose and Hermitian Conjugate</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#orthogonal-and-unitary-matrices"><i class="fa fa-check"></i><b>4.6</b> Orthogonal and Unitary Matrices</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html"><i class="fa fa-check"></i><b>5</b> Determinants and inverses</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#introduction-1"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
+<li class="chapter" data-level="5.2" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#epsilon-and-alternating-forms"><i class="fa fa-check"></i><b>5.2</b> <span class="math inline">\(\epsilon\)</span> and Alternating Forms</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#epsilon-and-permutation"><i class="fa fa-check"></i><b>5.2.1</b> <span class="math inline">\(\epsilon\)</span> and Permutation</a></li>
+<li class="chapter" data-level="5.2.2" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#alternating-forms-and-linear-independence"><i class="fa fa-check"></i><b>5.2.2</b> Alternating Forms and Linear (In)dependence</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#determinants-in-mathbbrn-and-mathbbcn"><i class="fa fa-check"></i><b>5.3</b> Determinants in <span class="math inline">\(\mathbb{R}^n\)</span> and <span class="math inline">\(\mathbb{C}^n\)</span></a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#definition"><i class="fa fa-check"></i><b>5.3.1</b> Definition</a></li>
+<li class="chapter" data-level="5.3.2" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#evaluating-determinants-expanding-by-rows-or-columns"><i class="fa fa-check"></i><b>5.3.2</b> Evaluating determinants: expanding by rows or columns</a></li>
+<li class="chapter" data-level="5.3.3" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#simplifying-determinants-row-and-column-operations"><i class="fa fa-check"></i><b>5.3.3</b> Simplifying determinants: Row and Column Operations:</a></li>
+<li class="chapter" data-level="5.3.4" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#multiplicative-property"><i class="fa fa-check"></i><b>5.3.4</b> Multiplicative Property</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#minors-cofactors-and-inverses"><i class="fa fa-check"></i><b>5.4</b> Minors, Cofactors and Inverses</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#cofactors-and-determinants"><i class="fa fa-check"></i><b>5.4.1</b> Cofactors and Determinants</a></li>
+<li class="chapter" data-level="5.4.2" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#adjugates-and-inverses"><i class="fa fa-check"></i><b>5.4.2</b> Adjugates and Inverses</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#system-of-linear-equations"><i class="fa fa-check"></i><b>5.5</b> System of Linear Equations</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#introduction-and-nature-of-solutions"><i class="fa fa-check"></i><b>5.5.1</b> Introduction and Nature of Solutions</a></li>
+<li class="chapter" data-level="5.5.2" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#geometric-interpretation-in-mathbbr3"><i class="fa fa-check"></i><b>5.5.2</b> Geometric Interpretation in <span class="math inline">\(\mathbb{R}^3\)</span></a></li>
+<li class="chapter" data-level="5.5.3" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#gaussian-elimination-and-echelon-form"><i class="fa fa-check"></i><b>5.5.3</b> Gaussian Elimination and Echelon Form</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html"><i class="fa fa-check"></i><b>6</b> Eigenvalues and Eigenvectors</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#introduction-2"><i class="fa fa-check"></i><b>6.1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#definitions-3"><i class="fa fa-check"></i><b>6.1.1</b> Definitions</a></li>
+<li class="chapter" data-level="6.1.2" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#examples-1"><i class="fa fa-check"></i><b>6.1.2</b> Examples</a></li>
+<li class="chapter" data-level="6.1.3" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#deductions-involving-chi_at"><i class="fa fa-check"></i><b>6.1.3</b> Deductions involving <span class="math inline">\(\chi_A(t)\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#eigenspaces-and-multiplicities"><i class="fa fa-check"></i><b>6.2</b> Eigenspaces and Multiplicities</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#definitions-4"><i class="fa fa-check"></i><b>6.2.1</b> Definitions</a></li>
+<li class="chapter" data-level="6.2.2" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#examples-2"><i class="fa fa-check"></i><b>6.2.2</b> Examples</a></li>
+<li class="chapter" data-level="6.2.3" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#linear-independence-of-eigenvectors"><i class="fa fa-check"></i><b>6.2.3</b> Linear Independence of Eigenvectors</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#diagonalisability-and-similarity"><i class="fa fa-check"></i><b>6.3</b> Diagonalisability and Similarity</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#introduction-3"><i class="fa fa-check"></i><b>6.3.1</b> Introduction</a></li>
+<li class="chapter" data-level="6.3.2" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#criteria-for-diagonalisability"><i class="fa fa-check"></i><b>6.3.2</b> Criteria for Diagonalisability</a></li>
+<li class="chapter" data-level="6.3.3" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#similarity"><i class="fa fa-check"></i><b>6.3.3</b> Similarity</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#hermitian-and-symmetric-matrices"><i class="fa fa-check"></i><b>6.4</b> Hermitian and Symmetric Matrices</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#real-eigenvalues-and-orthogonal-eigenvectors"><i class="fa fa-check"></i><b>6.4.1</b> Real Eigenvalues and Orthogonal Eigenvectors</a></li>
+<li class="chapter" data-level="6.4.2" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#unitary-and-orthogonal-diagonalisation"><i class="fa fa-check"></i><b>6.4.2</b> Unitary and Orthogonal Diagonalisation</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#quadratic-forms"><i class="fa fa-check"></i><b>6.5</b> Quadratic Forms</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#examples-in-mathbbr2-and-mathbbr3"><i class="fa fa-check"></i><b>6.5.1</b> Examples in <span class="math inline">\(\mathbb{R}^2\)</span> and <span class="math inline">\(\mathbb{R}^3\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#cayley-hamilton-theorem"><i class="fa fa-check"></i><b>6.6</b> Cayley-Hamilton Theorem</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="changing-bases-canonical-forms-and-symmetries.html"><a href="changing-bases-canonical-forms-and-symmetries.html"><i class="fa fa-check"></i><b>7</b> Changing Bases, Canonical Forms and Symmetries</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="changing-bases-canonical-forms-and-symmetries.html"><a href="changing-bases-canonical-forms-and-symmetries.html#changing-bases-in-general"><i class="fa fa-check"></i><b>7.1</b> Changing Bases in General</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="changing-bases-canonical-forms-and-symmetries.html"><a href="changing-bases-canonical-forms-and-symmetries.html#definition-and-proposition"><i class="fa fa-check"></i><b>7.1.1</b> Definition and Proposition</a></li>
+<li class="chapter" data-level="7.1.2" data-path="changing-bases-canonical-forms-and-symmetries.html"><a href="changing-bases-canonical-forms-and-symmetries.html#proof-of-proposition"><i class="fa fa-check"></i><b>7.1.2</b> Proof of proposition</a></li>
+<li class="chapter" data-level="7.1.3" data-path="changing-bases-canonical-forms-and-symmetries.html"><a href="changing-bases-canonical-forms-and-symmetries.html#approach-using-vector-components"><i class="fa fa-check"></i><b>7.1.3</b> Approach using vector components</a></li>
+<li class="chapter" data-level="7.1.4" data-path="changing-bases-canonical-forms-and-symmetries.html"><a href="changing-bases-canonical-forms-and-symmetries.html#comments-1"><i class="fa fa-check"></i><b>7.1.4</b> Comments</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="changing-bases-canonical-forms-and-symmetries.html"><a href="changing-bases-canonical-forms-and-symmetries.html#jordan-canonical-normal-form"><i class="fa fa-check"></i><b>7.2</b> Jordan Canonical/ Normal Form</a></li>
+<li class="chapter" data-level="7.3" data-path="changing-bases-canonical-forms-and-symmetries.html"><a href="changing-bases-canonical-forms-and-symmetries.html#conics-and-quadrics"><i class="fa fa-check"></i><b>7.3</b> Conics and Quadrics</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="changing-bases-canonical-forms-and-symmetries.html"><a href="changing-bases-canonical-forms-and-symmetries.html#quadrics-in-general"><i class="fa fa-check"></i><b>7.3.1</b> Quadrics in General</a></li>
+<li class="chapter" data-level="7.3.2" data-path="changing-bases-canonical-forms-and-symmetries.html"><a href="changing-bases-canonical-forms-and-symmetries.html#conics"><i class="fa fa-check"></i><b>7.3.2</b> Conics</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="changing-bases-canonical-forms-and-symmetries.html"><a href="changing-bases-canonical-forms-and-symmetries.html#symmetries-and-transformation-groups."><i class="fa fa-check"></i><b>7.4</b> Symmetries and Transformation Groups.</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="changing-bases-canonical-forms-and-symmetries.html"><a href="changing-bases-canonical-forms-and-symmetries.html#orthogonal-transformations-and-rotations-in-mathbbrn"><i class="fa fa-check"></i><b>7.4.1</b> Orthogonal Transformations and Rotations in <span class="math inline">\(\mathbb{R}^n\)</span></a></li>
+<li class="chapter" data-level="7.4.2" data-path="changing-bases-canonical-forms-and-symmetries.html"><a href="changing-bases-canonical-forms-and-symmetries.html#d-minkowski-space-and-lorentz-transformations"><i class="fa fa-check"></i><b>7.4.2</b> 2d Minkowski Space and Lorentz Transformations</a></li>
+<li class="chapter" data-level="7.4.3" data-path="changing-bases-canonical-forms-and-symmetries.html"><a href="changing-bases-canonical-forms-and-symmetries.html#application-to-special-relativity"><i class="fa fa-check"></i><b>7.4.3</b> Application to special relativity</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Vectors and Matrices 2021 - 2022</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="determinants-and-inverses" class="section level1" number="5">
+<h1><span class="header-section-number">5</span> Determinants and inverses</h1>
+<div id="introduction-1" class="section level2" number="5.1">
+<h2><span class="header-section-number">5.1</span> Introduction</h2>
+<p>Consider a linear map
+<span class="math display">\[\begin{align*}
+    T : \mathbb{R}^n \to \mathbb{R}^n.
+\end{align*}\]</span>
+If <span class="math inline">\(T\)</span> is invertible then
+<span class="math display">\[\begin{align*}
+    \underbrace{\ker T = \{ \underline{0} \}}_\text{because $T$ is one-to-one} \text{ and } \underbrace{\operatorname{Im} T = \mathbb{R}^n}_\text{$T$ is onto}.
+\end{align*}\]</span>
+These conditions are equivalent by rank-nullity theorem <a href="matrices-and-linear-maps.html#thm:rank">4.1</a>.
+Conversely, if these conditions hold, then
+<span class="math display">\[\begin{align*}
+    \underline{e}_1&#39; &amp;= T(\underline{e}_1), \dots, \underline{e}_n&#39; = T(\underline{e}_n) \\
+\end{align*}\]</span> is a basis (where <span class="math inline">\(\{ \underline{e}_i \}\)</span> is the standard basis) and we can define a linear map <span class="math inline">\(T^{-1}\)</span> by <span class="math inline">\(T^{^-1}(\underline{e}_1&#39;) = \underline{e}_1, \dots, T^{-1}(\underline{e}_n&#39;) = \underline{e}_n\)</span>.</p>
+<p>How can we test whether the conditions holds from matrix <span class="math inline">\(M\)</span> representing <span class="math inline">\(T\)</span>: <span class="math inline">\(T(\underline{x}) = M \underline{x}\)</span> and how can we find <span class="math inline">\(M^{-1}\)</span> when they do hold?</p>
+<p>For any <span class="math inline">\(M\)</span> (<span class="math inline">\(n \times n\)</span>) we will define a related matrix <span class="math inline">\(\widetilde{M}\)</span> (<span class="math inline">\(n \times n\)</span>) and a scalar, the <em>determinant</em> <span class="math inline">\(\det M\)</span> or <span class="math inline">\(| M |\)</span> such that
+<span class="math display" id="eq:inverse">\[\begin{align}
+    \widetilde{M} M = (\det M )I \tag{5.1}
+\end{align}\]</span>
+Then if <span class="math inline">\(\det M \neq 0\)</span>, <span class="math inline">\(M\)</span> is invertible with
+<span class="math display">\[\begin{align*}
+    M^{-1} = \frac{1}{\det M} \widetilde{M}.
+\end{align*}\]</span></p>
+<p><em>For <span class="math inline">\(n = 2\)</span></em> we found in <a href="matrices-and-linear-maps.html#matrix-inverses">Matrix Inverses</a> that <a href="determinants-and-inverses.html#eq:inverse">(5.1)</a> holds with
+<span class="math display">\[\begin{align*}
+    M &amp;= \begin{pmatrix}
+    M_{11} &amp; M_{12} \\
+    M_{21} &amp; M_{22}
+    \end{pmatrix} \text{ and } \widetilde{M} = \begin{pmatrix}
+    M_{22} &amp; -M_{12} \\
+    -M_{21} &amp; M_{11}
+    \end{pmatrix} \\
+    \det M &amp;= \begin{vmatrix}
+    M_{11} &amp; M_{12} \\
+    M_{21} &amp; M_{22}
+    \end{vmatrix} = M_{11} M_{22} - M_{12} M_{21} \\
+    &amp;= [M \underline{e}_1, M \underline{e}_2] \\
+    &amp;= [\underline{C}_1 (M), \underline{C}_2 (M)] \\
+    &amp;= \epsilon_{ijk} M_{i1} M_{j2} \\
+    \text{The factor by which areas are scaled under $M$} \\
+    \det M \neq 0 &amp;\iff \{ M \underline{e}_1, M \underline{e}_2 \} \text{ are linearly independent} \\
+    &amp;\iff \operatorname{Im}(M) = \mathbb{R}^2 \\
+\end{align*}\]</span></p>
+<p><em>For <span class="math inline">\(n = 3\)</span></em> consider similarly
+<span class="math display">\[\begin{align*}
+    [M \underline{e}_1, M \underline{e}_2, M \underline{e}_3] \text{ (scalar triple product)} \\
+    &amp;= [\underline{C}_1 (M), \underline{C}_2 (M), \underline{C}_3 (M)] \\
+    &amp;= \epsilon_{ijk} M_{i1} M_{j2} M_{k3} \\
+    &amp;= \det M, \text{ defn for $n = 3$}. \\
+    \text{This is the factor by which volumes are scaled under $M$ and} \\
+    \det M \neq 0 &amp;\iff  [M \underline{e}_1, M \underline{e}_2, M \underline{e}_3] \text{ are linearly independent} \\
+    &amp;\iff \operatorname{Im}(M) = \mathbb{R}^3 \\
+\end{align*}\]</span></p>
+<p>Now define <span class="math inline">\(\widetilde{M}\)</span> from <span class="math inline">\(M\)</span> using row/ column notation
+<span class="math display">\[\begin{align*}
+    \underline{R}_1 (\widetilde{M}) &amp;= \underline{C}_2 (M) \wedge \underline{C}_3 (M) \\
+    \underline{R}_2 (\widetilde{M}) &amp;= \underline{C}_3 (M) \wedge \underline{C}_1 (M) \\
+    \underline{R}_3 (\widetilde{M}) &amp;= \underline{C}_1 (M) \wedge \underline{C}_2 (M) \\
+    \text{and note that} \\
+    (\widetilde{M} M)_{ij} &amp;= \underline{R}_i (\widetilde{M}) \cdot \underline{C}_j (M) \\
+    &amp;= \underbrace{(\underline{C}_1 (M) \cdot \underline{C}_2 (M) \wedge \underline{C}_3 (M))}_{\det M} \delta_{ij}
+\end{align*}\]</span></p>
+<div class="example">
+<p><span id="exm:unlabeled-div-62" class="example"><strong>Example 5.1  </strong></span><span class="math display">\[\begin{align*}
+    M &amp;= \begin{pmatrix}
+    1 &amp; 3 &amp; 0 \\
+    0 &amp; -1 &amp; 2 \\
+    4 &amp; 1 &amp; -1
+    \end{pmatrix} \\
+    \underline{C}_2 \wedge \underline{C}_3 &amp;= \begin{pmatrix}3 \\-1 \\1\end{pmatrix} \wedge \begin{pmatrix}
+    0 \\
+    2 \\
+    -1
+    \end{pmatrix} = \begin{pmatrix}
+    -1 \\
+    3 \\
+    6
+    \end{pmatrix} \\
+    \underline{C}_3 \wedge \underline{C}_1 &amp;= \begin{pmatrix}
+    0 \\
+    2 \\
+    -1
+    \end{pmatrix} \wedge \begin{pmatrix}1 \\0 \\4\end{pmatrix} = \begin{pmatrix}
+    8 \\
+    -1 \\
+    -2
+    \end{pmatrix} \\
+    \underline{C}_1 \wedge \underline{C}_2 &amp;= \begin{pmatrix}
+    1 \\
+    0 \\
+    4
+    \end{pmatrix} \wedge \begin{pmatrix}3 \\-1 \\1\end{pmatrix} = \begin{pmatrix}
+    4 \\
+    11 \\
+    -1
+    \end{pmatrix} \\
+    \widetilde{M} &amp;= \begin{pmatrix}
+    -1 &amp; 3 &amp; 6 \\
+    8 &amp; -1 &amp; -2 \\
+    4 &amp; 11 &amp; -1
+    \end{pmatrix} \\
+    \widetilde{M} M &amp;= (\det M) I \text{ where} \\
+    \det M &amp;= \underline{C}_1 \cdot \underline{C}_2 \wedge \underline{C}_3 = 23.
+\end{align*}\]</span></p>
+</div>
+</div>
+<div id="epsilon-and-alternating-forms" class="section level2" number="5.2">
+<h2><span class="header-section-number">5.2</span> <span class="math inline">\(\epsilon\)</span> and Alternating Forms</h2>
+<div id="epsilon-and-permutation" class="section level3" number="5.2.1">
+<h3><span class="header-section-number">5.2.1</span> <span class="math inline">\(\epsilon\)</span> and Permutation</h3>
+<p>Recall: a permutation <span class="math inline">\(\sigma\)</span> on the set <span class="math inline">\(\{1, 2, \dots, n \}\)</span> is a bijection from this set to itself, specified by list <span class="math inline">\(\sigma(1), \sigma(2), \sigma(n)\)</span>.
+Permutation <span class="math inline">\(\sigma\)</span> form a group, the symmetric group <span class="math inline">\(S_n\)</span> of order <span class="math inline">\(n!\)</span>.
+The <em>sign</em> or <em>signature</em> <span class="math inline">\(\epsilon(\sigma) = (-1)^k\)</span> where <span class="math inline">\(k\)</span> is the number of transpositions (two cycles, this is well defined).
+The <em>alternating</em> or <span class="math inline">\(\epsilon\)</span> symbol in <span class="math inline">\(\mathbb{R}^n\)</span> or <span class="math inline">\(\mathbb{C}^n\)</span> is defined by
+<span class="math display">\[\begin{align*}
+    \epsilon_{ij \dots l} &amp;= \begin{cases}
+        +1 &amp; \text{if } i, j, \dots, l \text{ is an even permutation} \\
+        -1 &amp; \text{if } i, j, \dots, l \text{ is an odd permutation} \\
+        0 &amp; \text{else}
+    \end{cases} \\
+    \epsilon(\sigma) &amp;= (-1)^k \text{ with $\sigma$ product of $k$ transpositions} \\
+    &amp;= \pm 1.
+\end{align*}\]</span>
+If <span class="math inline">\(\sigma\)</span> is any permutation of <span class="math inline">\(1, 2, \dots, n\)</span> then
+<span class="math display">\[\begin{align*}
+    \epsilon_{\sigma(1) \sigma(2) \dots \sigma(n)} &amp;= \epsilon(\sigma).
+\end{align*}\]</span></p>
+<div class="lemma">
+<p><span id="lem:unlabeled-div-63" class="lemma"><strong>Lemma 5.1  </strong></span><span class="math display">\[\begin{align*}
+    \epsilon_{\sigma(i) \sigma(j) \dots \sigma(l)} = \epsilon(\sigma) \epsilon_{ij \dots l}
+\end{align*}\]</span>
+<span class="math inline">\(\epsilon\)</span> is totally antisymmetric.</p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-64" class="proof"><em>Proof</em>. </span>If <span class="math inline">\(i, j, \dots l\)</span> is <em>not</em> a permutation of <span class="math inline">\(1, 2, \dots, n\)</span> then <span class="math inline">\(RHS = LHS = 0\)</span>.<br />
+If <span class="math inline">\(i = \rho(1), j = \rho(2), \dots, l = \rho(n)\)</span> for some permutation <span class="math inline">\(\rho\)</span> then
+<span class="math display">\[\begin{align*}
+    RHS &amp;= \epsilon(\sigma) \epsilon (\rho) = \epsilon (\sigma \rho) = LHS.
+\end{align*}\]</span>
+(???)</p>
+</div>
+</div>
+<div id="alternating-forms-and-linear-independence" class="section level3" number="5.2.2">
+<h3><span class="header-section-number">5.2.2</span> Alternating Forms and Linear (In)dependence</h3>
+<p>Given <span class="math inline">\(\underline{v}_1, \dots, \underline{v}_n \in \mathbb{R}^n\)</span> or <span class="math inline">\(\mathbb{C}^n\)</span> (these are <span class="math inline">\(n\)</span> vectors) the <em>alternating form</em> combines them to produce a scalar, defined by
+<span class="math display">\[\begin{align*}
+    [\underline{v}_1, \underline{v}_2, \dots, \underline{v}_n] &amp;= \epsilon_{ij \dots l}(\underline{v}_1)_i (\underline{v}_2)_j \dots (\underline{v}_n)_l \ \left(\sum \text{ convention}\right) \\
+    &amp;= \sum_\sigma \epsilon(\sigma) (\underline{v}_1)_{\sigma(1)} (\underline{v}_2)_{\sigma(2)} \dots (\underline{v}_n)_{\sigma(n)} \ \left[\sum_\sigma \text{ means sum over all } \sigma \in S_n \right]
+\end{align*}\]</span></p>
+<div id="properties-4" class="section level4" number="5.2.2.1">
+<h4><span class="header-section-number">5.2.2.1</span> Properties</h4>
+<ol style="list-style-type: lower-roman">
+<li><p><em>Multilinear</em>
+<span class="math display">\[\begin{align*}
+ [\underline{v}_1, \dots, \underline{v}_{p-1}, \alpha \underline{u} + \beta \underline{w}, \underline{v}_{p+1}, \underline{v}_n] &amp;= \alpha [\underline{v}_1, \dots, \underline{v}_{p-1}, \underline{u}, \underline{v}_{p+1}, \underline{v}_n] + \beta [\underline{v}_1, \dots, \underline{w}, \underline{v}_{p+1}, \underline{v}_n]
+\end{align*}\]</span></p></li>
+<li><p><em>Totally antisymmetric</em>
+<span class="math display">\[\begin{align*}
+[\underline{v}_{\sigma(1)}, \underline{v}_{\sigma(2)}, \dots \underline{v}_{\sigma(n)}] &amp;= \epsilon (\sigma) [\underline{v}_1, \underline{v}_2, \dots, \underline{v}_n] 
+\end{align*}\]</span></p></li>
+<li><p><span class="math display">\[\begin{align*}
+    [\underline{e}_1, \underline{e}_2, \dots, \underline{e}_n] = 1
+\end{align*}\]</span> for <span class="math inline">\(\underline{e}_i\)</span> standard basis vectors.</p></li>
+</ol>
+<p>Properties i, ii, iii fix the alternating form, and they also imply iv</p>
+<ol start="4" style="list-style-type: lower-roman">
+<li><p>If <span class="math inline">\(\underline{v}_p = \underline{v}_q\)</span> for some <span class="math inline">\(p \neq q\)</span> then
+<span class="math display">\[\begin{align*}
+[\underline{v}_1, \dots, \underline{v}_p, \dots, \underline{v}_q, \dots, \underline{v}_n] &amp;= 0
+\end{align*}\]</span> (from ii, exchanging <span class="math inline">\(\underline{v}_p \leftrightarrow \underline{v}_q\)</span> changes sign of alternating from).</p></li>
+<li><p>If <span class="math inline">\(\underline{v}_p = \sum_{i \neq p} \lambda_i \underline{v}\)</span> then
+<span class="math display">\[\begin{align*}
+ [\underline{v}_1, \dots, \underline{v}_p, \dots, \underline{v}_n] &amp;= 0
+\end{align*}\]</span> (sub in and use i and iv).</p></li>
+</ol>
+<div class="example">
+<p><span id="exm:fone" class="example"><strong>Example 5.2  </strong></span><span class="math display">\[\begin{align*} \require{cancel}
+    \text{In } \mathbb{C}^4, \underline{v}_1 &amp;= \begin{pmatrix}i \\0 \\0 \\2\end{pmatrix}, \underline{v}_2 = \begin{pmatrix}0 \\0 \\5i \\0\end{pmatrix}, \\
+    \underline{v}_3 &amp;= \begin{pmatrix}3 \\2i \\0 \\0\end{pmatrix}, \begin{pmatrix}0 \\0 \\-i \\1\end{pmatrix} \\
+    \implies [\underline{v}_1, \underline{v}_2, \underline{v}_3, \underline{v}_4] &amp;= 5i [\underline{v}_1, \underline{e}_3, \underline{v}_3, \underline{v}_4] \\
+    &amp;= 5i [i \underline{e}_1 + \cancel{2 \underline{e}_4}, \underline{e}_3, \cancel{3 \underline{e}_1} + 2i \underline{e}_2, \cancel{-i \underline{e}_3} + \underline{e}_4] \\
+    &amp;= 5i \cdot i \cdot 2i) [\underline{e}_1, \underline{e}_3, \underline{e}_2, \underline{e}_4] \\
+    &amp;= (- 10 i) \cdot (-1) \\
+    &amp;= 10i
+\end{align*}\]</span> (in cancelling, we first cancel <span class="math inline">\(i \underline{e}_3\)</span> as there is another lone <span class="math inline">\(\underline{e}_3\)</span>, then the <span class="math inline">\(2\underline{e}_4\)</span> and finally the <span class="math inline">\(3\underline{e}_1\)</span>)</p>
+</div>
+<p>Note: properties i and iii follow immediately from definition</p>
+<div class="proof">
+<p><span id="unlabeled-div-65" class="proof"><em>Proof</em> (Property ii). </span><span class="math display">\[\begin{align*}
+    [\underline{v}_{\sigma(1)}, \underline{v}_{\sigma(2)}, \dots \underline{v}_{\sigma(n)}] &amp;= \sum_\rho \epsilon (\rho) \underbrace{[\underline{v}_{\sigma(1)}]_{\rho(1)} \dots [\underline{v}_{\sigma(n)}]_{\rho(n)}}_\text{each term can be re-written as: } \text{ ($\sigma$ fixed)} \\
+    &amp; [\underline{v}_1]_{\rho \sigma^{-1} (1)} \dots [\underline{v}_n]_{\rho \sigma^{-1} (n)} \\
+    &amp;= \sum_\rho \epsilon (\sigma) \epsilon(\rho&#39;) [\underline{v}_1]_{\rho&#39;(1)} \dots [\underline{v}_n]_{\rho&#39;(n)} \text{ where } \rho&#39; = \rho \sigma^{-1} \\
+    \text{ and } \sum_\rho &amp;\text{ is equivalent to } \sum_{\rho&#39;} \\
+    &amp;= \epsilon(\sigma) [\underline{v}_1, \underline{v}_2, \dots, \underline{v}_n]
+\end{align*}\]</span></p>
+</div>
+<div class="proposition">
+<p><span id="prp:unlabeled-div-66" class="proposition"><strong>Proposition 5.1  </strong></span><span class="math display">\[\begin{align*}
+    [\underline{v}_1, \underline{v}_2, \dots, \underline{v}_n] \neq 0 \iff \underline{v}_1, \dots, \underline{v}_n \text{ are linearly independent}.
+\end{align*}\]</span></p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-67" class="proof"><em>Proof</em>. </span><span class="math inline">\(\implies\)</span>:<br />
+Use property v.
+If <span class="math inline">\(\underline{v}_1, \dots \underline{v}_n\)</span> are linearly dependent then <span class="math inline">\(\sum \alpha_i \underline{v}_i = \underline{0}\)</span> where not all coefficients are zero.
+Suppose wlog that <span class="math inline">\(\alpha_p \neq 0\)</span>, then express <span class="math inline">\(\underline{v}_p\)</span> as a linear combination of <span class="math inline">\(\underline{v}_i (i \neq p)\)</span> and so
+<span class="math display">\[\begin{align*}
+    [\underline{v}_1, \underline{v}_2, \dots, \underline{v}_n] = 0.
+\end{align*}\]</span></p>
+<p><span class="math inline">\(\Longleftarrow\)</span>:<br />
+Note that <span class="math inline">\(\underline{v}_1, \dots, \underline{v}_n\)</span> being linearly independent means that they span (in <span class="math inline">\(\mathbb{R}^n\)</span> or <span class="math inline">\(\mathbb{C}^n\)</span>) so we can write the standard basis vectors as
+<span class="math display">\[\begin{align*}
+    \underline{e}_i &amp;= A_{ai} \underline{v}_a \text{ for some } A_{ai} \in \mathbb{R} \text{ or } \mathbb{C}. \\
+    \text{But then} &amp; \\
+    [\underline{e_1}, \dots, \underline{e}_n] &amp;= [A_{a1} \underline{v}_a, A_{b2} \underline{v}_b, \dots, A_{cn} \underline{v}_c] \\
+    &amp;= A_{a1} A_{b2} \dots A_{cn} [\underline{v}_a, \underline{v}_b, \dots, \underline{v}_c] \\
+    &amp;= A_{a1} A_{b2} \dots A_{cn} \epsilon_{ab \dots c} [\underline{v}_1, \underline{v}_2, \dots, \underline{v}_n] \text{ from property ii} \\
+    LHS &amp;= 1 \implies [\underline{v}_1, \underline{v}_2, \dots, \underline{v}_n] \neq 0.
+\end{align*}\]</span></p>
+</div>
+<p>Example <a href="determinants-and-inverses.html#exm:fone">5.2</a> are linearly independent.</p>
+</div>
+</div>
+</div>
+<div id="determinants-in-mathbbrn-and-mathbbcn" class="section level2" number="5.3">
+<h2><span class="header-section-number">5.3</span> Determinants in <span class="math inline">\(\mathbb{R}^n\)</span> and <span class="math inline">\(\mathbb{C}^n\)</span></h2>
+<div id="definition" class="section level3" number="5.3.1">
+<h3><span class="header-section-number">5.3.1</span> Definition</h3>
+<div class="definition">
+<p><span id="def:unlabeled-div-68" class="definition"><strong>Definition 5.1  (Determinant) </strong></span>For an <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(M\)</span> with columns
+<span class="math display">\[\begin{align*}
+    \underline{C}_a &amp;= M \underline{e}_a
+\end{align*}\]</span>
+the <em>determinant</em> <span class="math inline">\(\det M\)</span> or <span class="math inline">\(|M| \in \mathbb{R}\)</span> or <span class="math inline">\(\mathbb{C}\)</span> if defined by
+<span class="math display">\[\begin{align*}
+    \det M &amp;= [\underline{C}_1, \underline{C}_2, \dots, \underline{C}_n] \\
+    &amp;= [M \underline{e}_1, M \underline{e}_2, \dots, M \underline{e}_n] \\
+    &amp;= \epsilon_{ij \dots l} M_{i1} M_{j2} \dots M_{ln} \\
+    &amp;= \sum_\sigma \epsilon(\sigma) M_{\sigma(1) 1} M_{\sigma(2) 2} \dots M_{\sigma(n) n}
+\end{align*}\]</span></p>
+</div>
+<div class="proposition">
+<p><span id="prp:unlabeled-div-69" class="proposition"><strong>Proposition 5.2  (Transpose Property) </strong></span><span class="math display">\[\begin{align*}
+    \det M &amp;= \det M^T \\
+    \text{so } \det M &amp;= [\underline{R}_1, \underline{R}_2, \dots, \underline{R}_n] \\
+    &amp;= \epsilon_{ij \dots l} M_{1i} M_{2j} \dots M_{nl} \\
+    &amp;= \sum_\sigma \epsilon(\sigma) M_{1 \sigma(1)} M_{2 \sigma(2)} \dots M_{n \sigma(n)}
+\end{align*}\]</span></p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-70" class="example"><strong>Example 5.3  </strong></span>In <span class="math inline">\(\mathbb{R}^3\)</span> or <span class="math inline">\(\mathbb{C}^3\)</span>
+<span class="math display">\[\begin{align*}
+    \det M &amp;= \epsilon_{ijk} M_{i1} M_{j2} M_{k3} \\
+    &amp;= M_{11} \begin{bmatrix}
+    M_{22} &amp; M_{23} \\
+    M_{32} &amp; M_{33}
+    \end{bmatrix} - M_{21} \begin{bmatrix}
+    M_{12} &amp; M_{13} \\
+    M_{32} &amp; M_{33}
+    \end{bmatrix} + M_{31} \begin{bmatrix}
+    M_{12} &amp; M_{13} \\
+    M_{22} &amp; M_{23}
+    \end{bmatrix}
+\end{align*}\]</span></p>
+</div>
+<div class="properties">
+<p><span class="math inline">\(\det M\)</span> is a function of rows or columns of <span class="math inline">\(M\)</span> that is</p>
+<ol style="list-style-type: lower-roman">
+<li><p>multilinear</p></li>
+<li><p>totally anti-symmetric (or alternating)</p></li>
+<li><p><span class="math inline">\(\det I = 1\)</span></p></li>
+</ol>
+</div>
+<div class="theorem">
+<p><span id="thm:unlabeled-div-71" class="theorem"><strong>Theorem 5.1  </strong></span><span class="math inline">\(\det M \neq 0 \iff\)</span> columns of <span class="math inline">\(M\)</span> are linearly independent.
+<span class="math inline">\(\iff\)</span> row of <span class="math inline">\(M\)</span> are linearly independent
+<span class="math inline">\(\iff \operatorname{rank} M = n \ (M n \times n)\)</span></p>
+<p><span class="math display">\[\begin{align*}
+    \det M \neq 0 &amp;\iff \text{ columns of $M$ are linearly independent} \\
+    &amp;\iff \text{ row of $M$ are linearly independent} \\
+    &amp;\iff \operatorname{rank} M = n \ (M n \times n) \\
+    &amp;\iff \ker M = \{ \underline{0} \} \\
+    &amp;\iff M^{-1} \text{ exists}
+\end{align*}\]</span></p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-72" class="proof"><em>Proof</em>. </span>All equivalences follow immediately from earlier results including the discussion in <a href="eigenvalues-and-eigenvectors.html#introduction-3">Introduction</a>.</p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-73" class="proof"><em>Proof</em> (Transpose property). </span>Suffices to show
+<span class="math display">\[\begin{align*}
+    \sum_\sigma \epsilon(\sigma) M_{\sigma(1) 1} \dots M_{\sigma(n) n} &amp;= \sum_\sigma \epsilon(\sigma) M_{1 \sigma(1)} \dots M_{n \sigma(n)}
+\end{align*}\]</span>
+But in a given term on LHS
+<span class="math display">\[\begin{align*}
+    M_{\sigma(1) 1} \dots M_{\sigma(n) n} &amp;= M_{1 \rho(1)} \dots M_{n \rho(n)}
+\end{align*}\]</span> by reordering factors, where <span class="math inline">\(\rho = \sigma^{-1}\)</span>.
+Then <span class="math inline">\(\epsilon(\sigma) = \epsilon(\rho)\)</span> and <span class="math inline">\(\sum_\sigma\)</span> is equivalent to <span class="math inline">\(\sum_\rho\)</span>, so result follows.</p>
+</div>
+</div>
+<div id="evaluating-determinants-expanding-by-rows-or-columns" class="section level3" number="5.3.2">
+<h3><span class="header-section-number">5.3.2</span> Evaluating determinants: expanding by rows or columns</h3>
+<p>For <span class="math inline">\(M\)</span>, <span class="math inline">\(n \times n\)</span>, for each entry <span class="math inline">\(M_{ia}\)</span> define the <em>minor</em> <span class="math inline">\(M^{ia}\)</span> to be the determinant of <span class="math inline">\((n - 1) \times (n - 1)\)</span> matrix obtained from deleting row <span class="math inline">\(i\)</span> and column <span class="math inline">\(a\)</span> from <span class="math inline">\(M\)</span>.</p>
+<div class="proposition">
+<p><span id="prp:unlabeled-div-74" class="proposition"><strong>Proposition 5.3  </strong></span><span class="math display">\[\begin{align*}
+    \det M &amp;= \sum_i (-1)^{i + a} M_{ia} M^{ia} \hspace{.5cm} a \text{ fixed} \\
+    &amp;= \sum_a (-1)^{i + a} M_{ia} M^{ia} \hspace{.5cm} i \text{ fixed}
+\end{align*}\]</span> called expanding by (or about) column <span class="math inline">\(a\)</span> or row <span class="math inline">\(i\)</span> respectively.</p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-75" class="proof"><em>Proof</em>. </span>See <a href="determinants-and-inverses.html#cofactors-and-determinants">Cofactors and Determinants</a>.</p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-76" class="example"><strong>Example 5.4  </strong></span><span class="math display">\[\begin{align*}
+    M &amp;= \begin{pmatrix}
+    i &amp; 0 &amp; 3 &amp; 0 \\
+    0 &amp; 0 &amp; 2i &amp; 0 \\
+    0 &amp; 5i &amp; 0 &amp; -i \\
+    2 &amp; 0 &amp; 0 &amp; 1
+    \end{pmatrix}.
+\end{align*}\]</span> Expand by row <span class="math inline">\(3\)</span> to find
+<span class="math display">\[\begin{align*}
+    \det M &amp;= \sum_a (-1)^{3 + a} M_{3a} M^{3a} \\
+    M_{31} &amp;= M_{33} = 0 \\
+    M_{32} &amp;= 5i,\ M^{32} = \begin{vmatrix}
+    i &amp; 3 &amp; 0 \\
+    0 &amp; 2i &amp; 0 \\
+    2 &amp; 0 &amp; 1
+    \end{vmatrix} \\
+    M_{34} &amp;= -i, M^{34} = \begin{vmatrix}
+    i &amp; 0 &amp; 3 \\
+    0 &amp; 0 &amp; 2i \\
+    2 &amp; 0 &amp; 0
+    \end{vmatrix} \\
+    M^{32} &amp;= i \begin{vmatrix}2i &amp; 0 \\0 &amp; 1\end{vmatrix} - 3 \begin{vmatrix}
+    0 &amp; 0 \\
+    2 &amp; 1
+    \end{vmatrix} \text{ (row 1)} \\
+    &amp;= i (2i) \\
+    &amp;= -2 \\
+    M_{34} &amp;= i \begin{vmatrix}
+    0 &amp; 2i \\
+    0 &amp; 0
+    \end{vmatrix} + 3 \begin{vmatrix}
+    0 &amp; 0 \\
+    2 &amp; 0
+    \end{vmatrix} \text{ (row 1)}\\
+    &amp;= 0 \\
+    \det M &amp;= (-1)^{3 + 2} 5i (-2) \\
+    &amp;= 10i \\
+    \emph{or } \text{expand by column 2}: \\
+    \det M &amp;= \sum_i (-1)^{2 + i} M_{i2} M^{i2} \\
+    &amp;= (-1)^{2 + 3} M_{32} M^{32} \\
+    &amp;= 10i.
+\end{align*}\]</span>
+(Calculated this previously as example of alternating form in <span class="math inline">\(\mathbb{C}^4\)</span>)</p>
+</div>
+<div class="lemma">
+<p><span id="lem:block" class="lemma"><strong>Lemma 5.2  </strong></span>If <span class="math inline">\(M = \left(  \begin{array}{c|c}  A &amp; O \\  \hline  O &amp; I  \end{array} \right)\)</span>
+block form with <span class="math inline">\(A\)</span> a <span class="math inline">\(r \times r\)</span> matrix; <span class="math inline">\(I \ (n - r) \times (n - r)\)</span> identity, then <span class="math inline">\(\det M = \det A\)</span>.</p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-77" class="proof"><em>Proof</em>. </span>For <span class="math inline">\(r = n - 1\)</span>, result follows by expanding about column <span class="math inline">\(n\)</span> or row <span class="math inline">\(n\)</span>, and for <span class="math inline">\(r &lt; n - 1\)</span>, continue process.</p>
+</div>
+</div>
+<div id="simplifying-determinants-row-and-column-operations" class="section level3" number="5.3.3">
+<h3><span class="header-section-number">5.3.3</span> Simplifying determinants: Row and Column Operations:</h3>
+<p>From the definitions of <span class="math inline">\(\det M\)</span> in terms of columns (a) or rows (i) and the properties above (including <a href="determinants-and-inverses.html#alternating-forms-and-linear-independence">Alternating Forms and Linear (In)dependence</a>) we note the following</p>
+<div id="row-or-column-scalings" class="section level4" number="5.3.3.1">
+<h4><span class="header-section-number">5.3.3.1</span> Row or column Scalings</h4>
+<p>If <span class="math inline">\(\underline{R}_i \mapsto \lambda \underline{R}_i\)</span> for some (fixed) <span class="math inline">\(i\)</span><br />
+or <span class="math inline">\(\underline{C}_i \mapsto \lambda \underline{C}_i\)</span> for some (fixed) <span class="math inline">\(a\)</span><br />
+then <span class="math inline">\(\det M \mapsto \lambda \det M\)</span>.</p>
+<p>If <em>all</em> rows or columns are scaled
+<span class="math display">\[\begin{align*}
+    M &amp;\mapsto \lambda M, \\
+    \text{then } \det M &amp;\mapsto \lambda^n \det M
+\end{align*}\]</span></p>
+</div>
+<div id="row-or-column-operations" class="section level4" number="5.3.3.2">
+<h4><span class="header-section-number">5.3.3.2</span> Row or column Operations</h4>
+<p>If <span class="math inline">\(\underline{R}_i \mapsto \underline{R}_i + \lambda \underline{R}_j\)</span> for <span class="math inline">\(i \neq j\)</span><br />
+or <span class="math inline">\(\underline{C}_a \mapsto \underline{C}_a + \lambda \underline{C}_b\)</span> for <span class="math inline">\(a \neq b\)</span><br />
+then <span class="math inline">\(\det M \mapsto \det M\)</span> as we can use multilinearity and then we have two rows being the same in one term so its 0.</p>
+</div>
+<div id="row-or-column-exchanges" class="section level4" number="5.3.3.3">
+<h4><span class="header-section-number">5.3.3.3</span> Row or Column Exchanges</h4>
+<p><span class="math display">\[\begin{align*}
+    \text{If } \underline{R}_i &amp;\leftrightarrow \underline{R}_j \hspace{0.5cm} \text{for } i \neq j \\
+    \text{If } \underline{C}_a &amp;\leftrightarrow \underline{C}_b \hspace{0.5cm} \text{for } a \neq b \\
+    \text{then } \det M &amp;\mapsto -\det M.
+\end{align*}\]</span></p>
+<div class="example">
+<p><span id="exm:exchanges" class="example"><strong>Example 5.5  </strong></span><span class="math display">\[\begin{align*}
+    A &amp;= \begin{pmatrix}
+    1 &amp; 1 &amp; a \\
+    a &amp; 1 &amp; 1 \\
+    1 &amp; a &amp; 1
+    \end{pmatrix},\ a \in \mathbb{C} \\
+    \underline{C}_1 &amp;\mapsto \underline{C}_1 - \underline{C}_3 \\
+    \det A &amp;= \det \begin{pmatrix}
+    1 - a &amp; 1 &amp; a \\
+    a - 1 &amp; 1 &amp; 1 \\
+    0 &amp; a &amp; 1
+    \end{pmatrix} \\
+    &amp;= (1 - a) \det \begin{pmatrix}
+    1 &amp; 1 &amp; a \\
+    -1 &amp; 1 &amp; 1 \\
+    0 &amp; a &amp; 1
+    \end{pmatrix} \\
+    \underline{C}_2 &amp;\mapsto \underline{C}_2 - \underline{C}_3 \\
+    \det A &amp;= (1 - a) \det \begin{pmatrix}
+    1 &amp; 1-a &amp; a \\
+    -1 &amp; 0 &amp; 1 \\
+    0 &amp; a-1 &amp; 1
+    \end{pmatrix} \\
+    &amp;= (1 - a)^2 \det \begin{pmatrix}
+    1 &amp; 1 &amp; a \\
+    -1 &amp; 0 &amp; 1 \\
+    0 &amp; -1 &amp; 1
+    \end{pmatrix} \\
+    \underline{R}_1 &amp;\mapsto \underline{R}_1 + \underline{R}_2 + \underline{R}_3 \\
+    \det A &amp;= (1 - a)^2 \det \begin{pmatrix}
+    0 &amp; 0 &amp; a + 2 \\
+    -1 &amp; 0 &amp; 1 \\
+    0 &amp; -1 &amp; 1
+    \end{pmatrix} \\
+    &amp;= (1 - a)^2 (a + 2) \begin{vmatrix}
+    -1 &amp; 0 \\
+    0 &amp; -1
+    \end{vmatrix} \\
+    &amp;= (1 - a)^2 (a + 2)
+\end{align*}\]</span></p>
+</div>
+</div>
+</div>
+<div id="multiplicative-property" class="section level3" number="5.3.4">
+<h3><span class="header-section-number">5.3.4</span> Multiplicative Property</h3>
+<div class="theorem">
+<p><span id="thm:unlabeled-div-78" class="theorem"><strong>Theorem 5.2  </strong></span>For <span class="math inline">\(n \times n\)</span> matrices <span class="math inline">\(M\)</span> and <span class="math inline">\(N\)</span>
+<span class="math display">\[\begin{align*}
+    \det (MN) = \det M \det N
+\end{align*}\]</span><br />
+This is based on the following lemma</p>
+</div>
+<div class="lemma">
+<p><span id="lem:unlabeled-div-79" class="lemma"><strong>Lemma 5.3  </strong></span><span class="math display">\[\begin{align*}
+    \epsilon_{i_1 \dots i_n} M_{i_1 a_1} \dots M_{i_n a_n} &amp;= (\det M) \epsilon_{a_1 \dots a_n}
+\end{align*}\]</span></p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-80" class="proof"><em>Proof</em> (Proof of Theorem). </span><span class="math display">\[\begin{align*}
+    \det (MN) &amp;= \epsilon_{i_1 \dots i_n} (MN)_{i_1 1} \dots (MN)_{i_n n} \\ 
+    &amp;= \epsilon_{i_1 \dots i_n} M_{i_1 k_1} N_{k_1 1} \dots  M_{i_n k_n} N_{k_n n} \\ 
+    &amp;= \epsilon_{i_1 \dots i_n} M_{i_1 k_1} \dots  M_{i_n k_n} N_{k_1 1} \dots N_{k_n n} \\ 
+    &amp;= (\det M)  \epsilon_{k_1 \dots k_n} N_{k_1 1} \dots N_{k_n n} \text{by lemma } \\
+    &amp;= (\det M) (\det N)
+\end{align*}\]</span></p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-81" class="proof"><em>Proof</em> (Proof of Lemma). </span>Use total antisymmetry of LHS and RHS and then check taking <span class="math inline">\(a_1 = 1, \dots, a_n = n\)</span>.</p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-82" class="example"><strong>Example 5.6  </strong></span><br />
+</p>
+<ol style="list-style-type: lower-roman">
+<li><p>If <span class="math inline">\(M = \left(  \begin{array}{c|c}  A &amp; O \\  \hline  O &amp; B  \end{array} \right)\)</span>
+block form, with <span class="math inline">\(A\)</span> <span class="math inline">\(r \times r\)</span> and <span class="math inline">\(B\)</span> <span class="math inline">\((n - r) \times (n - r)\)</span> then <span class="math inline">\(\det M = \det A \det B\)</span>.
+Since <span class="math inline">\(\left(  \begin{array}{c|c}  A &amp; O \\  \hline  O &amp; B  \end{array} \right) = \left(  \begin{array}{c|c}  A &amp; O \\  \hline  O &amp; I  \end{array} \right) \left(  \begin{array}{c|c}  I &amp; O \\  \hline  O &amp; B  \end{array} \right)\)</span>
+and we can use Lemma <a href="determinants-and-inverses.html#lem:block">5.2</a> above.</p></li>
+<li><p><span class="math display">\[\begin{align*}
+M^{-1}M &amp;= I \implies \det(M^{-1}) \det M = \det I = 1 \\
+\text{so } \det(M^{-1}) &amp;= (\det M)^{-1}
+\end{align*}\]</span></p></li>
+<li><p>For <span class="math inline">\(R\)</span> real and orthogonal,
+<span class="math display">\[\begin{align*}
+    R^T R &amp;= I \implies \det(R^T) \det R = (\det R)^2 = 1 \\
+    \implies \det R &amp;= \pm 1
+\end{align*}\]</span></p></li>
+<li><p>For <span class="math inline">\(U\)</span> complex and unitary,
+<span class="math display">\[\begin{align*}
+U^\dagger U = I &amp;\implies \det(U^\dagger) \det U \\
+&amp;= \overline{\det(U)} \det(U) \\
+&amp;= |\det U|^2 = 1 \\
+\implies |\det U| &amp;= 1.
+\end{align*}\]</span></p></li>
+</ol>
+</div>
+</div>
+</div>
+<div id="minors-cofactors-and-inverses" class="section level2" number="5.4">
+<h2><span class="header-section-number">5.4</span> Minors, Cofactors and Inverses</h2>
+<div id="cofactors-and-determinants" class="section level3" number="5.4.1">
+<h3><span class="header-section-number">5.4.1</span> Cofactors and Determinants</h3>
+<p>Consider column <span class="math inline">\(\underline{C}_a\)</span> of matrix <span class="math inline">\(M\)</span> (<span class="math inline">\(a\)</span> fixed) and write <span class="math inline">\(\underline{C}_a = \sum_i M_{ia} \underline{e}_i\)</span> in definition of <span class="math inline">\(\det\)</span>:
+<span class="math display">\[\begin{align*}
+    \det M &amp;= [\underline{C}_1, \dots, \underline{C}_{a - 1}, \underline{C}_a, \underline{C}_{a + 1}, \dots, \underline{C}_n] \\
+    &amp;= [\underline{C}_1, \dots, \underline{C}_{a - 1}, \sum_i M_{ia} \underline{e}_i, \underline{C}_{a + 1}, \dots, \underline{C}_n] \\
+    &amp;= \sum_i M_{ia} \Delta_{ia} \hspace{0.5cm} \text{(no sum over $a$)} \\
+    \text{where the } &amp;\emph{cofactor } \Delta_{ia} \text{ is defined by} \\
+    \Delta_{ia} &amp;= [\underline{C}_1, \underline{C}_2, \dots, \underline{C}_{a- 1}, \underline{e}_i, \underline{C}_{a + 1}, \dots, \underline{C}_n] \\
+    &amp;= \det \left( \begin{array}{c|c|c} 
+        A &amp; \begin{array}{c} 
+            0 \\  
+            \vdots \\
+            0
+        \end{array} &amp; B \\ 
+        \hline 
+        \begin{array}{ccc} 
+            0 &amp; \dots &amp; 0
+        \end{array} &amp; 1 &amp; \begin{array}{ccc} 
+            0 &amp; \dots &amp; 0
+        \end{array} \\
+        \hline
+        C &amp; \begin{array}{c} 
+            0 \\  
+            \vdots \\
+            0
+        \end{array} &amp; D
+    \end{array} \right) \\
+    &amp;= (-1)^{n - a} (-1)^{n - i} \det 
+    \left(
+    \begin{array}{c|c} 
+        \begin{array}{c|c} 
+            A &amp; B \\ 
+            \hline 
+            C &amp; D 
+        \end{array} &amp; \begin{array}{c} 
+            0 \\  
+            \vdots \\
+            0
+        \end{array} \\ 
+        \hline 
+        \begin{array}{ccc} 
+            0 &amp; \dots &amp; 0
+        \end{array} &amp; 1
+    \end{array} \right) \\
+    &amp;= (-1)^{a + i} M^{i a} \\
+    \text{where } M^{ia} &amp;= \det \left( \begin{array}{c|c} 
+        A &amp; B \\ 
+        \hline 
+        C &amp; D 
+    \end{array} \right) \text{by lemma } \\
+    \therefore \det M &amp;= \sum_i M_{ia} \Delta_{ia} \\
+    &amp;= \sum_i M_{ia} (-1)^{i + a} M^{ia}
+\end{align*}\]</span>[Similarly, considering row <span class="math inline">\(i\)</span>, find other expression]. <a href="determinants-and-inverses.html#lem:block">5.2</a>.
+To get <span class="math inline">\(\Delta_{ia}\)</span> we subtract column <span class="math inline">\(a\)</span> with all other columns to get the row <span class="math inline">\(i\)</span> as shown.</p>
+</div>
+<div id="adjugates-and-inverses" class="section level3" number="5.4.2">
+<h3><span class="header-section-number">5.4.2</span> Adjugates and Inverses</h3>
+<p>Reasoning as in <a href="determinants-and-inverses.html#cofactors-and-determinants">Cofactors and Determinants</a> with <span class="math inline">\(\underline{C}_b = \sum_i M_{ib} \underline{e}_i\)</span>
+<span class="math display">\[\begin{align*}
+    [\underline{C}_1, \dots, \underline{C}_{a - 1}, \underline{C}_b, \underline{a + 1}, \dots, \underline{C_n}] &amp;= \sum_i M_{ib} \delta_{ia} \\
+    &amp;= \begin{cases}
+        \det M &amp; \text{if } a = b \\
+        0 &amp; \text{if } a \neq b
+    \end{cases} \\
+    \text{Hence } \sum_i M_{ib} \delta_{ia} &amp;= \delta_{ab} \det M \\
+    \text{And similarly} \sum_a M_{ja} \delta_{ia} &amp;= \delta_{ij} \det M.
+\end{align*}\]</span>
+Let <span class="math inline">\(\Delta\)</span> be the <em>matrix</em> of cofactors with entries <span class="math inline">\(\Delta_{ia}\)</span>, and define the <em>adjugate</em> <span class="math inline">\(\widetilde{M} = \operatorname{adj}(M) = \Delta^T\)</span>.
+Then the relations above become
+<span class="math display">\[\begin{align*}
+    \Delta_{ia} M_{ib} &amp;= (\Delta^T)_{ai} M_{ib} \\
+    &amp;= (\Delta^T M)_{ab} \\
+    &amp;= (\widetilde{M} M)_{ab} \\
+    &amp;= \delta_{ab} \det M \\
+    M_{ja} \Delta_{ia} &amp;= (\widetilde{M} M)_{ji} \\
+    &amp;= \delta_{ij} \det M.
+\end{align*}\]</span>
+This justifies <a href="determinants-and-inverses.html#eq:inverse">(5.1)</a> with
+<span class="math display">\[\begin{align*}
+    \widetilde{M} &amp;= \Delta^T \\
+    \Delta_{ia} &amp;= (-1)^{i + a} M^{ia} \\
+    \text{we have } \widetilde{M}M &amp;= M \widetilde{M} = (\det M) I.
+\end{align*}\]</span><a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a></p>
+<p>Hence if <span class="math inline">\(\det M \neq 0\)</span> then <span class="math inline">\(M\)</span> is invertible and
+<span class="math display">\[\begin{align*}
+    M^{-1} = \frac{1}{\det M} \widetilde{M}.
+\end{align*}\]</span></p>
+<div class="example">
+<p><span id="exm:inverse" class="example"><strong>Example 5.7  </strong></span>Consider <span class="math display">\[\begin{align*}
+    A &amp;= \begin{pmatrix}
+    1 &amp; 1 &amp; a \\
+    a &amp; 1 &amp; 1 \\
+    1 &amp; a &amp; 1
+    \end{pmatrix},\ a \in \mathbb{C} \\
+\end{align*}\]</span>, previously found in Example <a href="determinants-and-inverses.html#exm:exchanges">5.5</a> <span class="math inline">\(\det A = (1 - a)^2 (a + 2)\)</span>.
+Hence <span class="math inline">\(A^{-1}\)</span> exists if <span class="math inline">\(a \neq 1\)</span>, <span class="math inline">\(a \neq - 2\)</span>.</p>
+<p>Matrix of cofactors is <span class="math display">\[\begin{align*}
+    \Delta &amp;= \begin{pmatrix}
+    1 - a &amp; 1 - a &amp; a^2 - 1 \\
+    a^2 -1 &amp; 1 - a &amp; 1 - a \\
+    1 - a &amp; a^2 - 1 &amp; 1 - a
+    \end{pmatrix} \\
+    \text{e.g. } A^{12} &amp;= \begin{vmatrix}
+    a &amp; 1 \\
+    1 &amp; 1
+    \end{vmatrix} \\
+    &amp;= a - 1 \\
+    \Delta_{12} &amp;= (-1)^{1 + 2} A^{12} \\
+    &amp;= 1 - a \\
+    \widetilde{A} &amp;= \Delta^T \\
+    A^{-1} &amp;= \frac{1}{\det A} \widetilde{A} \\
+    &amp;= \frac{1}{(1 -a) ( a + 2)} \begin{pmatrix}
+    1 &amp; -(1 + a) &amp; 1 \\
+    1 &amp; 1 &amp; - (1 + a) \\
+    - (1 + a) &amp; 1 &amp; 1
+    \end{pmatrix}.
+\end{align*}\]</span></p>
+</div>
+</div>
+</div>
+<div id="system-of-linear-equations" class="section level2" number="5.5">
+<h2><span class="header-section-number">5.5</span> System of Linear Equations</h2>
+<div id="introduction-and-nature-of-solutions" class="section level3" number="5.5.1">
+<h3><span class="header-section-number">5.5.1</span> Introduction and Nature of Solutions</h3>
+<p>Consider a system of <span class="math inline">\(n\)</span> linear equations in <span class="math inline">\(n\)</span> unknowns <span class="math inline">\(x_i\)</span> written in vector/ matrix form
+<span class="math display">\[\begin{align*}
+    A \underline{x} &amp;= \underline{b}, \hspace{0.5cm} \underline{x}, \underline{b} \in \mathbb{R}^n \text{ and } A \ n \times n \text{ matrix} \\
+    \text{i.e. } A_{11} x_1 + \dots + A_{1n} x_n &amp;= b_1 \\
+    &amp;\;\;\vdots \\
+    A_{n1} x_1 + \dots + A_{nn} x_n &amp;= b_n
+\end{align*}\]</span></p>
+<p>There are three possibilities:</p>
+<ol style="list-style-type: lower-roman">
+<li><p><span class="math inline">\(\det A \neq 0 \implies A^{-1}\)</span> exists <span class="math inline">\(\implies\)</span> unique solution, <span class="math inline">\(\underline{x} = A^{-1} \underline{b}\)</span></p></li>
+<li><p><span class="math inline">\(\det A = 0\)</span> and <span class="math inline">\(\underline{b} \notin \operatorname{Im} A \implies\)</span> no solution.</p></li>
+<li><p><span class="math inline">\(\det A = 0\)</span> and <span class="math inline">\(\underline{b} \in \operatorname{Im} A \implies \infty\)</span> many solutions.</p></li>
+</ol>
+<p><em>Elaboration</em>: a solution exists iff <span class="math inline">\(A \underline{x}_0 = \underline{b}\)</span> for some <span class="math inline">\(\underline{x}_0 \iff \underline{b} \in \operatorname{Im} A\)</span>.
+Then <span class="math inline">\(\underline{x}\)</span> is also a solution iff <span class="math inline">\(\underline{u} = \underline{x} - \underline{x}_0\)</span> satisfies
+<span class="math display">\[\begin{align*}
+    A \underline{u} &amp;= \underline{0} \emph{ homogenous problem}.
+    \text{Now } \det A \neq 0 &amp;\iff \operatorname{Im} A = \mathbb{R}^n \\
+    &amp;\iff \ker A = \{ \underline{0} \}.
+\end{align*}\]</span>
+So in (i) there is a unique solutions and it can be found using <span class="math inline">\(A^{-1}\)</span>.
+<span class="math display">\[\begin{align*}
+    \text{But } \det A = 0 &amp;\iff \operatorname{rank} A &lt; n \\
+    &amp;\iff \operatorname{null} A &gt; 0
+\end{align*}\]</span>
+and then either <span class="math inline">\(\underline{b} \notin \operatorname{Im} A\)</span> as in case (ii) or <span class="math inline">\(\underline{b} \in \operatorname{Im} A\)</span> as in case (iii).
+If <span class="math inline">\(\underline{u}_1, \dots, \underline{u}_k\)</span> is a basis for <span class="math inline">\(\ker A\)</span> then general solution of homogenous problem is <span class="math inline">\(\underline{u} = \sum_{i=1}^{k} \lambda_i \underline{u}_i\)</span>.</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-83" class="example"><strong>Example 5.8  </strong></span><span class="math inline">\(A \underline{x} = \underline{b}\)</span> with <span class="math inline">\(A\)</span> as in Example <a href="determinants-and-inverses.html#exm:inverse">5.7</a> and <span class="math inline">\(\underline{b} = \begin{pmatrix}1 \\c \\1\end{pmatrix}\)</span>, <span class="math inline">\(a, c \in \mathbb{R}\)</span>.</p>
+<ul>
+<li><p><span class="math inline">\(a \neq 1, -2\)</span><br />
+Then <span class="math inline">\(A^{-1}\)</span> exists and we have a solutions for any <span class="math inline">\(c\)</span>:
+<span class="math display">\[\begin{align*}
+  \underline{x} &amp;= A^{-1} \underline{b} \\
+  &amp;= \frac{1}{(1- a)(a + 2)} \begin{pmatrix}2 - c - ca \\c - a \\c - a \end{pmatrix}
+\end{align*}\]</span></p></li>
+<li><p><span class="math inline">\(a = 1\)</span>,
+<span class="math display">\[\begin{align*}
+  A &amp;= \begin{pmatrix}1 &amp; 1 &amp; 1 \\1 &amp; 1 &amp; 1 \\1 &amp; 1 &amp; 1\end{pmatrix} \\
+  \operatorname{Im} A &amp;= \left\{ \lambda \begin{pmatrix}1 \\1 \\1\end{pmatrix} \right\} \\
+  \ker A &amp;= \operatorname{span} \left\{ \begin{pmatrix}-1 \\1 \\0\end{pmatrix}, \begin{pmatrix}-1 \\0 \\1\end{pmatrix} \right\} \\
+  b &amp;\in \operatorname{Im} A \iff c = 1; \\
+  \text{particular solution } \underline{x}_0 &amp;= \begin{pmatrix}1 \\0 \\0\end{pmatrix} \\
+  \text{general solution } \underline{x} &amp;= \underline{x}_0 + \underline{u} \\
+  &amp;= \begin{pmatrix}1 - \lambda - \mu \\ \lambda \\ \mu \end{pmatrix} \\
+\end{align*}\]</span> This is case (iii), and forms a plane of solutions.
+For <span class="math inline">\(a = 1, c \neq 1\)</span> we have no solutions - case (ii).</p></li>
+<li><p><span class="math inline">\(a = -2\)</span>
+<span class="math display">\[\begin{align*}
+  A &amp;= \begin{pmatrix}
+  1 &amp; 1 &amp; -2 \\
+  -2 &amp; 1 &amp; 1 \\
+  1 &amp; -2 &amp; 1
+  \end{pmatrix} \\
+  \operatorname{Im} A &amp;= \operatorname{span} \left\{ \begin{pmatrix}1 \\-2 \\1\end{pmatrix}, \begin{pmatrix}1 \\1 \\-2\end{pmatrix} \right\} \\
+  \ker A &amp;= \left \{ \lambda \begin{pmatrix}1 \\1 \\1\end{pmatrix} \right \} \\
+  \underline{b} &amp;\in \operatorname{Im} A \iff c = 2, \text{ (case (iii))} \\
+  \text{particular solution } \underline{x}_0 &amp;= \begin{pmatrix}1 \\0 \\0\end{pmatrix} \\
+  \text{general solution } \underline{x} &amp;= \underline{x}_0 + \underline{u} \\
+  &amp;= \begin{pmatrix}1 + \lambda \\ \lambda \\ \lambda \end{pmatrix} \\
+\end{align*}\]</span> If <span class="math inline">\(c \neq 2\)</span>, no solution, case (ii).</p></li>
+</ul>
+</div>
+</div>
+<div id="geometric-interpretation-in-mathbbr3" class="section level3" number="5.5.2">
+<h3><span class="header-section-number">5.5.2</span> Geometric Interpretation in <span class="math inline">\(\mathbb{R}^3\)</span></h3>
+<p>Let <span class="math inline">\(\underline{R}_1, \underline{R}_2, \underline{R}_3\)</span> be rows of <span class="math inline">\(A\)</span> (<span class="math inline">\(3 \times 3\)</span>).</p>
+<p><span class="math display">\[\begin{align*}
+    A \underline{u} = \underline{0} \iff \begin{cases}
+        \underline{R}_1 \cdot \underline{u} = 0 \\
+        \underline{R}_2 \cdot \underline{u} = 0 \\
+        \underline{R}_3 \cdot \underline{u} = 0 
+    \end{cases} \text{planes through $\underline{0}$, normals $\underline{R}_i (\neq \underline{0})$}
+\end{align*}\]</span>
+So solutions of homogenous problem (finding <span class="math inline">\(\ker A\)</span>) is given by intersection of these planes.</p>
+<ul>
+<li><p><span class="math inline">\(\operatorname{rank}(A) = 3 \implies\)</span> normals are linearly independent and planes intersect in <span class="math inline">\(\underline{0}\)</span>.</p></li>
+<li><p><span class="math inline">\(\operatorname{rank}(A) = 3 \implies 2\)</span> normals span a plane and planes intersect in a line and <span class="math inline">\(\dim \ker A = 1\)</span>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:05-sheaf"></span>
+<img src="figures/05-sheaf.png" alt="looking *along* line of intersection of planes" width="1696" height="300" />
+<p class="caption">
+Figure 5.1: looking <em>along</em> line of intersection of planes
+</p>
+</div></li>
+<li><p><span class="math inline">\(\operatorname{rank}(A) = 1 \implies\)</span> normals are parallel and planes coincide and <span class="math inline">\(\dim \ker A = 2\)</span></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:05-rank-1"></span>
+<img src="figures/05-rank-1.png" alt="Three identical planes" width="782" height="300" />
+<p class="caption">
+Figure 5.2: Three identical planes
+</p>
+</div></li>
+</ul>
+<p>Now consider instead
+<span class="math display">\[\begin{align*}
+    A \underline{x} &amp;= \underline{b} \iff \begin{cases}
+        \underline{R}_1 \cdot \underline{x} = b_1 \\
+        \underline{R}_2 \cdot \underline{x} = b_2 \\
+        \underline{R}_3 \cdot \underline{x} = b_3 
+    \end{cases}
+\end{align*}\]</span> planes with normals <span class="math inline">\(\underline{R}_i\)</span> but not passing through <span class="math inline">\(\underline{0}\)</span> unless <span class="math inline">\(b_i = 0\)</span>.</p>
+<ul>
+<li><p><span class="math inline">\(\operatorname{rank}(A) = 3 \iff \det A \neq 0\)</span>, normals are linearly independent; planes intersect in a point and get unique solution for any <span class="math inline">\(b\)</span>.</p></li>
+<li><p><span class="math inline">\(\operatorname{rank}(A) = 2 \implies\)</span> planes may intersect in a line (as in homogenous case) <em>but</em> they may not:</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:05-prism"></span>
+<img src="figures/05-prism.png" alt="No solutions" width="1722" height="300" />
+<p class="caption">
+Figure 5.3: No solutions
+</p>
+</div></li>
+<li><p><span class="math inline">\(\operatorname{rank}(A) = 1 \implies\)</span> planes may coincide (as in homogenous case) <em>but</em> they may not:</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:05-parallel"></span>
+<img src="figures/05-parallel.png" alt="Three parallel or two identical and another parallel" width="1784" height="300" />
+<p class="caption">
+Figure 5.4: Three parallel or two identical and another parallel
+</p>
+</div></li>
+</ul>
+<p><img src="figures/05-R3-solutions-1.png" width="837" height="300" style="display: block; margin: auto;" /></p>
+<p><img src="figures/05-R3-solutions-2.png" width="630" height="300" style="display: block; margin: auto;" /></p>
+</div>
+<div id="gaussian-elimination-and-echelon-form" class="section level3" number="5.5.3">
+<h3><span class="header-section-number">5.5.3</span> Gaussian Elimination and Echelon Form</h3>
+<p>Consider <span class="math inline">\(A \underline{x} = \underline{b}\)</span> with <span class="math inline">\(\underline{x} \in \mathbb{R}^n\)</span>, <span class="math inline">\(\underline{b} \in R^m\)</span> and <span class="math inline">\(A \ m \times n\)</span> matrix.<br />
+Gaussian elimination is a direct approach to solving system of equations:
+<span class="math display">\[\begin{align*}
+    A_{11} x_1 + \dots + A_{1n} x_n &amp;= b_1 \\
+    &amp;\;\;\vdots \\
+    A_{m1} x_1 + \dots + A_{mn} x_n &amp;= b_m
+\end{align*}\]</span></p>
+<p><em>Example</em></p>
+<p><span class="math display" id="eq:gauss-3" id="eq:gauss-2" id="eq:gauss-1">\[\begin{align*} 
+    3 x_1 + 2 x_2 + x_3 &amp;= b_1 \tag{5.2} \\
+    6 x_1 + 3 x_2 + 3 x_3 &amp;= b_2 \tag{5.3} \\
+    6 x_1 + 2 x_2 + 4 x_3 &amp;= b_3 \tag{5.4}
+\end{align*}\]</span></p>
+<p>Steps</p>
+<ol style="list-style-type: decimal">
+<li><p>subtract multiples of <a href="determinants-and-inverses.html#eq:gauss-1">(5.2)</a> from <a href="determinants-and-inverses.html#eq:gauss-2">(5.3)</a> and <a href="determinants-and-inverses.html#eq:gauss-3">(5.4)</a> to eliminate <span class="math inline">\(x_1\)</span>
+<span class="math display" id="eq:gauss-32" id="eq:gauss-22">\[\begin{align*}
+ 0 - x_2 + x_3 &amp;= b_2 - 2 b_1 \tag{5.5} \\
+ 0 - 2 x_2 + 2 x_3 &amp;= b_3 - 2 b_1 \tag{5.6}
+\end{align*}\]</span></p></li>
+<li><p>repeat this using <a href="determinants-and-inverses.html#eq:gauss-22">(5.5)</a> to eliminate <span class="math inline">\(x_2\)</span> from <a href="determinants-and-inverses.html#eq:gauss-32">(5.6)</a>:
+<span class="math display" id="eq:gauss-33">\[\begin{align*}
+ 0 + 0 + 0 &amp;= b_3 - 2 b_2 + 2 b_1 \tag{5.7}
+\end{align*}\]</span>
+Now consider new system <a href="determinants-and-inverses.html#eq:gauss-1">(5.2)</a>, <a href="determinants-and-inverses.html#eq:gauss-22">(5.5)</a>, <a href="determinants-and-inverses.html#eq:gauss-33">(5.7)</a>.</p></li>
+</ol>
+<ul>
+<li><p><span class="math inline">\(b_3 - 2 b_2 + 2 b_1 \neq 0 \implies\)</span> no solutions</p></li>
+<li><p><span class="math inline">\(b_3 - 2 b_2 + 2 b_1 = 0 \implies \infty\)</span> solutions, <span class="math inline">\(x_3\)</span> is arbitrary and then <span class="math inline">\(x_2\)</span> and <span class="math inline">\(x_1\)</span> determined from <a href="determinants-and-inverses.html#eq:gauss-1">(5.2)</a>, <a href="determinants-and-inverses.html#eq:gauss-22">(5.5)</a>.</p></li>
+</ul>
+<p>In general case we aim to carry out steps as in example until we obtain an equivalent system
+<img src="figures/05-replace.png" width="552" height="300" style="display: block; margin: auto;" />
+<span class="math inline">\(M\)</span> is obtained from <span class="math inline">\(A\)</span> by row operations including row exchanges and column exchanges which relabel variables <span class="math inline">\(x_i\)</span>.</p>
+<p>Note <span class="math inline">\(x_{r + 1}, \dots, x_n\)</span> are undetermined<br />
+<span class="math inline">\(d_{r + 1}, \dots, d_m = 0\)</span> else no solution<br />
+and if this is satisfied then <span class="math inline">\(x_1, \dots, x_r\)</span> can be determined successively.<br />
+<span class="math inline">\(r = \operatorname{rank} M = \operatorname{rank} A\)</span>.<br />
+If <span class="math inline">\(n = m\)</span> then <span class="math inline">\(\det A = \pm det M\)</span> and if <span class="math inline">\(r = n = m\)</span> then <span class="math inline">\(\det M = M_{11} \dots M_{rr} \neq 0 \implies A\)</span> and <span class="math inline">\(M\)</span> are invertible.<br />
+<span class="math inline">\(M\)</span> as above is an example of <em>echelon form</em>.</p>
+
+</div>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="8">
+<li id="fn8"><p>Would probably be guided through this proof in an exam and even then probably wouldn’t come up.<a href="determinants-and-inverses.html#fnref8" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="matrices-and-linear-maps.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="eigenvalues-and-eigenvectors.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "lunr",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

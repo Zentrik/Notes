@@ -1,0 +1,29 @@
+p.caption {
+  color: #777;
+  margin-top: 10px;
+}
+p code {
+  white-space: inherit;
+}
+pre {
+  word-break: normal;
+  word-wrap: normal;
+}
+pre code {
+  white-space: inherit;
+}
+
+.bluebox {
+  padding: 1em;
+  background: rgba(103, 103, 204, 0.568);
+  color: black;
+  border: 4px solid black;
+  border-radius: 10px;
+  width: fit-content;
+  block-size:fit-content;
+  margin: auto;
+}
+
+.centre {
+  text-align: center;
+}

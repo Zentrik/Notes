@@ -138,7 +138,7 @@ knitr::include_graphics("figures/03-exm-2-2.png")
 ```
 
 *Warning* If $S$ has a greatest element, then $\sup (S) = \max (S) \in S$.
-But $\sup (S)$ can exist when $\max (S)$ does not, in which case $\sup (S) \in S$.
+But $\sup (S)$ can exist when $\max (S)$ does not, in which case $\sup (S) \notin S$.
 :::
 
 ::: {.example #three}
@@ -499,7 +499,7 @@ Since $\frac{1}{10^n} \to 0$ as $n \to \infty$, $x - \sum_{j=1}^{n} \frac{d_j}{1
 Suppose $0. a_1 a_2 a_3 \dots = 0. b_1 b_2 b_3 \dots$
 We may suppose $a_j = b_j$ for $j < K$ for some $K$ and $a_K < b_K$.
 Then $\sum_{j=K+1}^{\infty} \frac{a_j}{10^j} \leq \sum_{j=k+1}^{\infty} \frac{9}{10^j} = \frac{9}{10^{k + 1}} \frac{1}{1 - \frac{1}{10}} = \frac{1}{10^k}$.
-Hence we must have $b_K = a_K + 1$ (if $b_K > a_K + 1$, then $0.b_1 b_2 \dots b_K - 0.a_1 a_2 \dots a_K > \frac{1}{10^k}$ and $\sum_{j=K+1}^{\infty} \frac{a_j}{10^j} \leq \frac{1}{10^k}$ so $0.b_1 b_2 \dots > 0.a_1 a_2 \dots$) and $a_j = 9, b_j = 0 \; \forall \; j > k$.
+Hence we must have $b_K = a_K + 1$^[if $b_K > a_K + 1$, then $0.b_1 b_2 \dots b_K - 0.a_1 a_2 \dots a_K > \frac{1}{10^k}$ and $\sum_{j=K+1}^{\infty} \frac{a_j}{10^j} \leq \frac{1}{10^k}$ so $0.b_1 b_2 \dots > 0.a_1 a_2 \dots$.] and $a_j = 9, b_j = 0 \; \forall \; j > K$.
 
 2. A decimal expansion is *periodic* if, after a finite number of terms, say $\ell$ digits, it repeats in blocks, of length $k$. 
 I.e. $\exists \; \ell, k$ s.t. $d_{n + k} = d_n \; \forall \; n > \ell$. \

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>5 Countability | Numbers and Sets 2021 - 2022</title>
   <meta name="description" content="Notes" />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
 
   <meta property="og:title" content="5 Countability | Numbers and Sets 2021 - 2022" />
   <meta property="og:type" content="book" />
@@ -21,7 +21,7 @@
   <meta name="twitter:description" content="Notes" />
   
 
-<meta name="author" content="" />
+<meta name="author" content="Author" />
 
 
 <meta name="date" content="2021-07-10" />
@@ -35,7 +35,6 @@
 <link rel="next" href="more-about-primes-non-examinable.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -43,6 +42,7 @@
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
 
 
 
@@ -160,7 +160,7 @@ That is <span class="math inline">\(X\)</span> is countable iff we can list the 
 <p><span id="lem:vone" class="lemma"><strong>Lemma 5.1  </strong></span>Any subset of <span class="math inline">\(\mathbb{N}\)</span> is countable.</p>
 </div>
 <div class="proof">
-<p><span id="unlabeled-div-115" class="proof"><em>Proof</em>. </span>If <span class="math inline">\(S \subseteq N\)</span> is non-empty, by WOP (well ordering principle) there is a least element <span class="math inline">\(s_1 \in S\)</span>.
+<p><span id="unlabeled-div-115" class="proof"><em>Proof</em>. </span>If <span class="math inline">\(S \subseteq \mathbb{N}\)</span> is non-empty, by WOP (well ordering principle) there is a least element <span class="math inline">\(s_1 \in S\)</span>.
 If <span class="math inline">\(S \setminus \{s_1\} \neq \emptyset\)</span>, by WOP there is a least element <span class="math inline">\(s_2 \in S_1 \setminus \{s_1, s_2\} \neq \emptyset \dots\)</span>
 If at some point this process stops, then <span class="math inline">\(S = \{s_1, s_2, \dots, s_m\}\)</span> is finite.
 If it goes on forever, the map <span class="math inline">\(g : \mathbb{N} \to S\)</span> given by <span class="math inline">\(g(n) = s_n\)</span> is well defined (for every <span class="math inline">\(n\)</span>, there is a unique <span class="math inline">\(s_n\)</span>) and is injective.
@@ -217,7 +217,7 @@ Then <span class="math inline">\(f\)</span> is injective by <a href="elementary-
 <p><span id="cor:unlabeled-div-120" class="corollary"><strong>Corollary 5.2  </strong></span><span class="math inline">\(\mathbb{Z} \times \mathbb{Z}\)</span> is countable</p>
 </div>
 <div class="proof">
-<p><span id="unlabeled-div-121" class="proof"><em>Proof</em>. </span>Since <span class="math inline">\(\mathbb{Z}\)</span> is countable, there is an injection <span class="math inline">\(\mathbb{Z} \to \mathbb{N}\)</span>, so because <span class="math inline">\(\mathbb{N} \to \mathbb{N}\)</span> is countable, we have an injection <span class="math inline">\(\mathbb{Z} \times \mathbb{Z} \to \mathbb{N} \times \mathbb{N} \to \mathbb{N}\)</span>.</p>
+<p><span id="unlabeled-div-121" class="proof"><em>Proof</em>. </span>Since <span class="math inline">\(\mathbb{Z}\)</span> is countable, there is an injection <span class="math inline">\(\mathbb{Z} \to \mathbb{N}\)</span>, so because <span class="math inline">\(\mathbb{N} \times \mathbb{N}\)</span> is countable, we have an injection <span class="math inline">\(\mathbb{Z} \times \mathbb{Z} \to \mathbb{N} \times \mathbb{N} \to \mathbb{N}\)</span>.</p>
 </div>
 <p>By induction <span class="math inline">\(\mathbb{Z}^k\)</span> is countable for any <span class="math inline">\(k \in \mathbb{N}\)</span>.</p>
 <div class="theorem">
@@ -281,7 +281,7 @@ Note that it in fact shows that <span class="math inline">\((0, 1)\)</span> is u
 </div>
 <div class="proof">
 <p><span id="unlabeled-div-129" class="proof"><em>Proof</em> (1). </span>If <span class="math inline">\(\mathcal{P}(\mathbb{N})\)</span> were countable, we could list the subsets of <span class="math inline">\(\mathbb{N}\)</span> as <span class="math inline">\(S_1, S_2, S_3, \dots\)</span><br />
-Let <span class="math inline">\(S = \{ n \in \mathbb{N} : n \in S_n \}\)</span> (it includes <span class="math inline">\(1\)</span> if <span class="math inline">\(1 \notin S_1\)</span> …).
+Let <span class="math inline">\(S = \{ n \in \mathbb{N} : n \notin S_n \}\)</span> (it includes <span class="math inline">\(1\)</span> if <span class="math inline">\(1 \notin S_1\)</span> …).
 Then <span class="math inline">\(S\)</span> is not on our list since <span class="math inline">\(\forall \; n \in \mathbb{N}\)</span>, <span class="math inline">\(S \neq S_n\)</span> (as <span class="math inline">\(S\)</span> and <span class="math inline">\(S_n\)</span> differ in their membership of the element <span class="math inline">\(n\)</span>). ⨳<br />
 Hence <span class="math inline">\(\mathcal{P}(\mathbb{N})\)</span> is uncountable.</p>
 </div>
@@ -312,7 +312,7 @@ Suppose we had such a universal set <span class="math inline">\(V\)</span>, then
 <div class="example">
 <p><span id="exm:unlabeled-div-133" class="example"><strong>Example 5.3  </strong></span>Let <span class="math inline">\(\{A_i : i \in I\}\)</span> be a family of open intervals of <span class="math inline">\(\mathbb{R}\)</span> which are pairwise disjoint.
 Must the family be countable?
-<img src="figures/05-disjoint.png" style="display: block; margin: auto;" />
+<img src="figures/05-disjoint.png" width="1409" style="display: block; margin: auto;" />
 <em>Warning</em>: There is no “next” interval after <span class="math inline">\((a, b)\)</span>.
 The family <span class="math inline">\(\{A_i : i \in I\}\)</span> is nevertheless countable.</p>
 </div>
@@ -322,7 +322,7 @@ Hence the family <span class="math inline">\(\{A_i : i \in I\}\)</span> is count
 </div>
 <div class="proof">
 <p><span id="unlabeled-div-135" class="proof"><em>Proof</em> (2). </span>The set <span class="math inline">\(\{i \in I : A_i \text{ has length }\geq 1 \}\)</span> is countable as it injects into <span class="math inline">\(\mathbb{Z}\)</span>.
-<img src="figures/05-disjoint-2.png" style="display: block; margin: auto;" />
+<img src="figures/05-disjoint-2.png" width="1178" style="display: block; margin: auto;" />
 Similarly, the set <span class="math inline">\(\{i \in I : A_i \text{ has length } \geq \frac{1}{2} \}\)</span> is countable as it injects into <span class="math inline">\(\frac{1}{2} \mathbb{Z}\)</span>.<br />
 More generally, for each <span class="math inline">\(n \in \mathbb{N}\)</span>, <span class="math inline">\(\{i \in I : A_i \text{ has length } \geq \frac{1}{n} \}\)</span> is countable.<br />
 Now <span class="math inline">\(\{A_i : i \in I\}\)</span> is countable as it is a countable union of countable sets.</p>
@@ -340,7 +340,7 @@ Now <span class="math inline">\(\{A_i : i \in I\}\)</span> is countable as it is
 <li><p>Use “countable union of countable sets is countable”, Theorem <a href="countability.html#thm:vsix">5.3</a>;</p></li>
 <li><p>If “in/ near” <span class="math inline">\(\mathbb{R}\)</span>, consider <span class="math inline">\(\mathbb{Q}\)</span>.</p></li>
 </ol>
-<p>Intuitively, we think of “A injects B” as saying that “A and B” are of the same size, “A injects into B” as saying that “A is at most as big as B”, and “A surjects onto B” as saying that “A is at least as big as B” (for <span class="math inline">\(B \neq \emptyset\)</span>).</p>
+<p>Intuitively, we think of “A bijects B” as saying that “A and B” are of the same size, “A injects into B” as saying that “A is at most as big as B”, and “A surjects onto B” as saying that “A is at least as big as B” (for <span class="math inline">\(B \neq \emptyset\)</span>).</p>
 <p>For these interpretations to make sense, we need that if “A is at most as big as B”, then “B is at least as big as A”, and conversely.</p>
 <div class="lemma">
 <p><span id="lem:vtwelve" class="lemma"><strong>Lemma 5.2  </strong></span>Given non-empty sets <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, <span class="math inline">\(\exists\)</span> injection <span class="math inline">\(f : A \to B \iff \exists\)</span> surjection <span class="math inline">\(g : B \to A\)</span>.</p>
@@ -370,12 +370,12 @@ Conversely, suppose <span class="math inline">\(g : B \to A\)</span> is surjecti
 Similarly, for <span class="math inline">\(b \in A\)</span>, write <span class="math inline">\(f^{-1}(b)\)</span> for the <span class="math inline">\(a \in A\)</span> (if it exists) s.t. <span class="math inline">\(f(a) = b\)</span>.<br />
 We call <span class="math inline">\(g^{-1}(a), f^{-1}(g^{-1}(a)), g^{-1}(f^{-1}(g^{-1}(a))), \dots\)</span> the ancestor sequence of <span class="math inline">\(a \in A\)</span> (it may terminate).
 Similarly, we can define the ancestor sequence of <span class="math inline">\(b \in B\)</span>.
-<img src="figures/05-schroder.png" height="300" style="display: block; margin: auto;" />
+<img src="figures/05-schroder.png" width="300" style="display: block; margin: auto;" />
 Let <span class="math inline">\(A_0 = \{ a \in A :\)</span> ancestor sequence of a stops at an even time, i.e. the last point is in <span class="math inline">\(A\}.\)</span><br />
 <span class="math inline">\(A_1 = \{a \in A:\)</span> ” ” at an odd time, i.e. the last point is in <span class="math inline">\(B\}\)</span>.<br />
 <span class="math inline">\(A_\infty = \{a \in A:\)</span> ancestor sequence does not stop<span class="math inline">\(\}\)</span>.<br />
 Similarly, define <span class="math inline">\(B_0, B_1, B_\infty\)</span>.<br />
-Note that <span class="math inline">\(f\)</span> bijects <span class="math inline">\(A_0\)</span> with <span class="math inline">\(B_1\)</span> (observing that every <span class="math inline">\(b \in B_1\)</span> has at least one ancestor, so is <span class="math inline">\(f(a)\)</span> for some <span class="math inline">\(a \in A_0\)</span>; <span class="math inline">\(f(A_0) \subseteq B_1\)</span> and <span class="math inline">\(f^{-1}(B_1) \subseteq A_0\)</span>), and similarly, <span class="math inline">\(g\)</span> bijects <span class="math inline">\(B_0\)</span> with <span class="math inline">\(A_1\)</span>.
+Note that <span class="math inline">\(f\)</span> bijects <span class="math inline">\(A_0\)</span> with <span class="math inline">\(B_1\)</span> (<span class="math inline">\(f(A_0) \subseteq B_1\)</span> and <span class="math inline">\(f^{-1}(B_1) \subseteq A_0\)</span> as every <span class="math inline">\(b \in B_1\)</span> has at least one ancestor, so is <span class="math inline">\(f(a)\)</span> for some <span class="math inline">\(a \in A_0\)</span>), and similarly, <span class="math inline">\(g\)</span> bijects <span class="math inline">\(B_0\)</span> with <span class="math inline">\(A_1\)</span>.
 And <span class="math inline">\(f\)</span> (or <span class="math inline">\(g\)</span>) biject <span class="math inline">\(A_\infty\)</span> with <span class="math inline">\(B_\infty\)</span>.<br />
 Taking the function <span class="math inline">\(h : A \to B\)</span> taking <span class="math inline">\(a \mapsto \begin{cases}  f(a) &amp; \text{if } a \in A_0 \\  g^{-1}(a) &amp; \text{if } a \in A_1 \\  f(a) &amp; \text{if } a \in A_\infty \end{cases}\)</span> is a bijection.</p>
 </div>
@@ -395,11 +395,11 @@ so by Schröder-Bernstein Theorem, <a href="countability.html#thm:vthirteen">5.8
 This is true, but harder to prove (see Part II Logic and Set Theory).</p>
 <div id="question" class="section level2" number="5.1">
 <h2><span class="header-section-number">5.1</span> Question</h2>
-<p>Does every set <span class="math inline">\(X\)</span> into one of <span class="math inline">\(\mathbb{N}, \mathcal{P}(\mathbb{N}), \mathcal{P}(\mathcal{P}(\mathbb{N})), \mathcal{P}(\mathcal{P}(\mathcal{P}(\mathbb{N}))), \dots\)</span>?<br />
+<p>Does every set <span class="math inline">\(X\)</span> inject into one of <span class="math inline">\(\mathbb{N}, \mathcal{P}(\mathbb{N}), \mathcal{P}(\mathcal{P}(\mathbb{N})), \mathcal{P}(\mathcal{P}(\mathcal{P}(\mathbb{N}))), \dots\)</span>?<br />
 No, e.g. <span class="math inline">\(X = \mathbb{N} \cup \mathcal{P}(\mathbb{N}) \cup \mathcal{P}(\mathcal{P}(\mathbb{N})) \cup \dots\)</span>.<br />
-Does every set <span class="math inline">\(X&#39;\)</span> into one of <span class="math inline">\(X, \mathcal{P}(X), \mathcal{P}(\mathcal{P}(X)), \mathcal{P}(\mathcal{P}(\mathcal{P}(X))), \dots\)</span>?<br />
+Does every set <span class="math inline">\(X&#39;\)</span> inject into one of <span class="math inline">\(X, \mathcal{P}(X), \mathcal{P}(\mathcal{P}(X)), \mathcal{P}(\mathcal{P}(\mathcal{P}(X))), \dots\)</span>?<br />
 No, e.g. <span class="math inline">\(X&#39; = X \cup \mathcal{P}(X) \cup \mathcal{P}(\mathcal{P}(X)) \cup \dots\)</span>.<br />
-Does every set <span class="math inline">\(X&#39;&#39;\)</span> into one of <span class="math inline">\(X&#39;, \mathcal{P}(X&#39;), \mathcal{P}(\mathcal{P}(X&#39;)), \mathcal{P}(\mathcal{P}(\mathcal{P}(X&#39;))), \dots\)</span>?<br />
+Does every set <span class="math inline">\(X&#39;&#39;\)</span> inject into one of <span class="math inline">\(X&#39;, \mathcal{P}(X&#39;), \mathcal{P}(\mathcal{P}(X&#39;)), \mathcal{P}(\mathcal{P}(\mathcal{P}(X&#39;))), \dots\)</span>?<br />
 No, e.g. <span class="math inline">\(X&#39;&#39; = X&#39; \cup \mathcal{P}(X&#39;) \cup \mathcal{P}(\mathcal{P}(X&#39;)) \cup \dots\)</span>.</p>
 <p>Does every set <span class="math inline">\(Y\)</span> inject into <span class="math inline">\(X, X&#39;, X&#39;&#39;, \dots\)</span>?<br />
 No, e.g. <span class="math inline">\(Y = X \cup X&#39; \cup X&#39;&#39; \cup \dots\)</span></p>
@@ -425,6 +425,7 @@ No, e.g. <span class="math inline">\(Y = X \cup X&#39; \cup X&#39;&#39; \cup \d
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -465,7 +466,7 @@ gitbook.start({
 },
 "download": ["_main.pdf", "_main.epub"],
 "search": {
-"engine": "fuse",
+"engine": "lunr",
 "options": null
 },
 "toc": {

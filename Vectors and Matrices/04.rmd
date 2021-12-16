@@ -573,7 +573,7 @@ Reflection.
 
 i. If $M$ is an $m \times n$ matrix, the transpose $M^T$ is an $n \times m$ matrix defined by 
 \begin{align*}
-    (M^T)_{ia} &= M_{ai} \text{ "exchange rows and columns"} \\
+    (M^T)_{ia} &= M_{ai} \ ``\text{exchange rows and columns"} \\
     [a &= 1, \dots, m;\ i = 1, \dots, n]
 \end{align*}
 
@@ -717,7 +717,7 @@ These conditions can be written
 To check equivalence, write this as 
 \begin{align*}
     (u \underline{x}) \cdot (u \underline{y}) &= x^T (u^T u) y \\
-    &= x^T y \iff u^T u = I
+    &= x^T y \iff u^T u = I \\
     &= \underline{x} \cdot \underline{y} \ \forall \; x, y \in \mathbb{R}^n
 \end{align*} 
 Note, since $\underline{C}_i = u \underline{e}_i$, columns being orthonormal $\iff (u \underline{e}_i) \cdot (u \underline{e}_j) = \underline{e}_i \cdot \underline{e}_j = \delta_{ij}$.

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>2 Elementary Number Theory | Numbers and Sets 2021 - 2022</title>
   <meta name="description" content="Notes" />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
 
   <meta property="og:title" content="2 Elementary Number Theory | Numbers and Sets 2021 - 2022" />
   <meta property="og:type" content="book" />
@@ -21,7 +21,7 @@
   <meta name="twitter:description" content="Notes" />
   
 
-<meta name="author" content="" />
+<meta name="author" content="Author" />
 
 
 <meta name="date" content="2021-07-10" />
@@ -35,7 +35,6 @@
 <link rel="next" href="the-reals.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -43,6 +42,7 @@
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
 
 
 
@@ -156,7 +156,7 @@
 </ol>
 </div>
 <p>iii is called the induction axiom.</p>
-<p>i and ii capture the idea that any two natural numbers are distinct; iii captures our intuitive notion that the list<a href="more-about-primes-non-examinable.html#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a> is complete (i.e. encompasses all natural numbers).<a href="more-about-primes-non-examinable.html#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a></p>
+<p>i and ii capture the idea that any two natural numbers are distinct; iii captures our intuitive notion that the list<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a> is complete (i.e. encompasses all natural numbers).<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a></p>
 <p>Now we can write 2 for <span class="math inline">\(1 + 1\)</span>, 3 for <span class="math inline">\(1 + 1 + 1\)</span>, etc, and we can define an operation ‘<span class="math inline">\(+k\)</span>’ for any natural number <span class="math inline">\(k\)</span>:</p>
 <p><span class="math inline">\(\hspace{1cm}\)</span> for every natural number <span class="math inline">\(n\)</span>, we know<span class="math inline">\(n + (k + 1) = (n + k) + 1\)</span>;</p>
 <p><span class="math inline">\(\hspace{1cm}\)</span> and so by induction, taking <span class="math inline">\(P(k)\)</span> = “‘<span class="math inline">\(+k\)</span>’ is defined”, proved.</p>
@@ -241,7 +241,7 @@ You can check all preceding rules apply.</p>
 <h2><span class="header-section-number">2.4</span> Primes</h2>
 <p>Given <span class="math inline">\(a, b \in \mathbb{Z}\)</span> we say “<span class="math inline">\(a\)</span> divides <span class="math inline">\(b\)</span>” if <span class="math inline">\(\exists \; c \in \mathbb{Z}\)</span> s.t. <span class="math inline">\(b = ac\)</span>. We might also say “<span class="math inline">\(a\)</span> is a divisor/ factor of <span class="math inline">\(b\)</span>” or “<span class="math inline">\(b\)</span> is a multiple of <span class="math inline">\(a\)</span>”. We write <span class="math inline">\(a \mid b\)</span> for <span class="math inline">\(a\)</span> divides <span class="math inline">\(b\)</span>.</p>
 <p>For any <span class="math inline">\(b \in \mathbb{Z}\)</span>, <span class="math inline">\(\pm 1\)</span> and <span class="math inline">\(\pm b\)</span> are always factors; all others are called <em>proper</em>.</p>
-<p>A natural number <span class="math inline">\(n \geq 2\)</span> is <em>prime</em> if its only factors are <span class="math inline">\(\pm 1\)</span> and <span class="math inline">\(\pm n\)</span>.<a href="more-about-primes-non-examinable.html#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a>
+<p>A natural number <span class="math inline">\(n \geq 2\)</span> is <em>prime</em> if its only factors are <span class="math inline">\(\pm 1\)</span> and <span class="math inline">\(\pm n\)</span>.<a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a>
 If <span class="math inline">\(n \geq 2\)</span> is not prime, then it is <em>composite</em>.</p>
 <div class="proposition">
 <p><span id="prp:two" class="proposition"><strong>Proposition 2.1  </strong></span>Every natural number <span class="math inline">\(n \geq 2\)</span> can be written as a product of primes.</p>
@@ -374,7 +374,7 @@ Thus <span class="math inline">\(r_n = xa + yb\)</span> for some <span class="ma
 <p><span id="unlabeled-div-26" class="proof"><em>Proof</em> (2). </span>Let <span class="math inline">\(h\)</span> be the least positive combination of <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>, i.e. the least positive integer of the form <span class="math inline">\(xa + yb\)</span> for some <span class="math inline">\(x, y \in \mathbb{Z}\)</span>.</p>
 <p>We shall show that <span class="math inline">\(h = \operatorname{hcf}(a, b)\)</span>.</p>
 <p>To see (ii) from <a href="elementary-number-theory.html#def:hcf">2.2</a>, observe that a given <span class="math inline">\(d\)</span> s.t. <span class="math inline">\(d \mid a\)</span> and <span class="math inline">\(d \mid b\)</span>, then we have <span class="math inline">\(d = ax + by \; \forall \; x, y \in \mathbb{Z}\)</span>, so in particular <span class="math inline">\(d \mid h\)</span>.</p>
-<p>To verify (i), suppose that <span class="math inline">\(h \nmid a\)</span>. Then we can write <span class="math inline">\(a = qh + r\)</span> for some <span class="math inline">\(q, r \in \mathbb{Z}\)</span> with <span class="math inline">\(0 &lt; r &lt; h\)</span><a href="more-about-primes-non-examinable.html#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a>.
+<p>To verify (i), suppose that <span class="math inline">\(h \nmid a\)</span>. Then we can write <span class="math inline">\(a = qh + r\)</span> for some <span class="math inline">\(q, r \in \mathbb{Z}\)</span> with <span class="math inline">\(0 &lt; r &lt; h\)</span><a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a>.
 Hence <span class="math inline">\(r = a - qh = a - q(xa + yb)\)</span>, so <span class="math inline">\(r\)</span> is also a positive linear combination of <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>, and strictly smaller than <span class="math inline">\(h\)</span>, contradicting the definition of <span class="math inline">\(h\)</span>.
 Therefore, <span class="math inline">\(h \mid a\)</span> and by the same argument, <span class="math inline">\(h \mid b\)</span>.</p>
 </div>
@@ -517,7 +517,7 @@ This is <em>not</em> true in general: <span class="math inline">\(4 \cdot 3 \equ
 Then every <span class="math inline">\(a \not\equiv 0 \mod p\)</span> is a unit modulo <span class="math inline">\(p\)</span>.</p>
 </div>
 <div class="proof">
-<p><span id="unlabeled-div-38" class="proof"><em>Proof</em>. </span>Have <span class="math inline">\((a, p) = 1\)</span><a href="more-about-primes-non-examinable.html#fn9" class="footnote-ref" id="fnref9"><sup>9</sup></a>, so <span class="math inline">\(\exists \; x, y \in \mathbb{Z}\)</span> s.t. <span class="math inline">\(ax + py = 1\)</span>.
+<p><span id="unlabeled-div-38" class="proof"><em>Proof</em>. </span>Have <span class="math inline">\((a, p) = 1\)</span><a href="#fn9" class="footnote-ref" id="fnref9"><sup>9</sup></a>, so <span class="math inline">\(\exists \; x, y \in \mathbb{Z}\)</span> s.t. <span class="math inline">\(ax + py = 1\)</span>.
 Hence <span class="math inline">\(ax = 1 - py\)</span>, so <span class="math inline">\(ax \equiv 1 \mod p\)</span> for some <span class="math inline">\(x \in \mathbb{Z}\)</span>.</p>
 </div>
 <div class="proposition">
@@ -760,6 +760,16 @@ It is not know if RSA can be broken without factorisation.</p>
 </div>
 </div>
 </div>
+<div class="footnotes">
+<hr />
+<ol start="5">
+<li id="fn5"><p><span class="math inline">\(1, 1 + 1, 1+ 1 + 1, \dots\)</span><a href="elementary-number-theory.html#fnref5" class="footnote-back">↩︎</a></p></li>
+<li id="fn6"><p>to see this rigorously, take <span class="math inline">\(P(n)\)</span> = “<span class="math inline">\(n\)</span> is on this list<a href="elementary-number-theory.html#fnref6" class="footnote-back">↩︎</a></p></li>
+<li id="fn7"><p>We don’t allow <span class="math inline">\(1\)</span> to be a prime as we want to have unique prime factorisations and it would require every statement to say let <span class="math inline">\(n\)</span> be a prime not equal to <span class="math inline">\(1\)</span>.<a href="elementary-number-theory.html#fnref7" class="footnote-back">↩︎</a></p></li>
+<li id="fn8"><p>as <span class="math inline">\(h \nmid a\)</span><a href="elementary-number-theory.html#fnref8" class="footnote-back">↩︎</a></p></li>
+<li id="fn9"><p>the hcf of <span class="math inline">\(a\)</span> and <span class="math inline">\(p\)</span> is 1<a href="elementary-number-theory.html#fnref9" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
             </section>
 
           </div>
@@ -770,6 +780,7 @@ It is not know if RSA can be broken without factorisation.</p>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -810,7 +821,7 @@ gitbook.start({
 },
 "download": ["_main.pdf", "_main.epub"],
 "search": {
-"engine": "fuse",
+"engine": "lunr",
 "options": null
 },
 "toc": {

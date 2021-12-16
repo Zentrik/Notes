@@ -1,0 +1,24 @@
+{
+    "cSpell.ignoreWords": [
+        "bigcup",
+        "circ",
+        "emptyset",
+        "knitr",
+        "mapsto",
+        "mathbb",
+        "pgfmathparse",
+        "pgfmathprintnumber",
+        "pgfmathresult",
+        "setminus",
+        "subseteq",
+        "tikz",
+        "veight",
+        "vone"
+    ],
+    "cSpell.enableFiletypes": [
+        "latex-expl3",
+        "markdown-math",
+        "markdown_latex_combined",
+        "rmd"
+    ]
+}
