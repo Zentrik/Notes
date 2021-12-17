@@ -260,7 +260,7 @@ This follows by same arguments as in (i).
 ::: {.proposition}
 For a $n \times n$ matrix $A$ acting on $V = \mathbb{R}^n$ or $\mathbb{C}^n$, the following conditions are equivalent:
 
-i. There exists a basis of eigenvectors for $V$, $\underline{v}_1, \underline{v}_2, \dots, \underline{v}_n$ with $A \underline{v}_i = \lambda_i \underline{v}_i$ (not $\sum_i$ and $\lambda_i$ need not be distinct).
+i. There exists a basis of eigenvectors for $V$, $\underline{v}_1, \underline{v}_2, \dots, \underline{v}_n$ with $A \underline{v}_i = \lambda_i \underline{v}_i$ (not summation notation and $\lambda_i$ need not be distinct).
 
 ii. There exists an $n \times n$ invertible matrix $P$ with 
 \begin{align*}
@@ -374,8 +374,8 @@ ii. \begin{align*}
     \end{pmatrix} \\
     \lambda &= -2 \\
     M_{-2} &= 3 > m_{-2} = 2 \\
-    \implies A &\text{ is not diagonalisable}
-    \text{Check: if it was } P^{-1} A P &= - 2 I \\
+    \implies A &\text{ is not diagonalisable} \\
+    \text{Check: if it was } &P^{-1} A P = - 2 I \\
     \implies A &= P (-2 I) P^{-1} = - 2I ⨳.
 \end{align*} 
 :::
