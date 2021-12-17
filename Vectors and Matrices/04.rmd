@@ -614,7 +614,7 @@ If $A$ is $3 \times 3$ antisymmetric, then it can be rewritten in terms of vec $
 \end{align*} 
 :::
 
-iii. If $M$ is a $m \times n$ matrix the *hermitian conjugate* $M \dagger$ is defined by $(M^\dagger)_{ia} = \overline{M}_{ai}$ or $M^\dagger = \overline{M}^T = \overline{M^T}$
+iii. If $M$ is a $m \times n$ matrix the *hermitian conjugate* $M^\dagger$ is defined by $(M^\dagger)_{ia} = \overline{M}_{ai}$ or $M^\dagger = \overline{M}^T = \overline{M^T}$
 
 #### Properties
 
@@ -736,12 +736,12 @@ Clearly $R(\theta)^T = R(-\theta) = R(\theta)^{-1}$.
 In $\mathbb{R}^3$ we found the matrix $R(\theta)$ for rotation through $\theta$ about axis $\underline{n}$, \@ref(exm:threedrotatation).
 \begin{align*}
     R(\theta)^T &= R(-\theta) \\
-    \text{Since } R(\theta)_{ij} = R(-\theta)_{ji}
+    \text{Since } R(\theta)_{ij} &= R(-\theta)_{ji}
 \end{align*} 
 and can check explicitly
 \begin{align*}
     R(\theta)^T R(\theta) &= R(-\theta)R(\theta) = I \\
-    \text{or } R(\theta)_{ki} R(\theta)_{kj} = \delta_{ij}
+    \text{or } R(\theta)_{ki} R(\theta)_{kj} &= \delta_{ij}
 \end{align*} 
 :::
 
