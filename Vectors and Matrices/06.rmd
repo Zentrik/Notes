@@ -572,7 +572,7 @@ Let $\underline{x}' = P^T \underline{x}$ or $\underline{x} = P \underline{x}'$, 
 \end{align*} 
 $\mathcal{F}$ has been *diagonalised*.
 \begin{align*}
-    \text{Now } \underline{x}' &= x_1' + \underline{e}_1 + \dots + x_n' \underline{e}_n \\
+    \text{Now } \underline{x}' &= x_1' \underline{e}_1 + \dots + x_n' \underline{e}_n \\
     \underline{x} &= x_1 \underline{e}_1 + \dots + x_n  \underline{e}_n \\
     &= x_1' \underline{u}_1 + \dots + x_2 \underline{u}_n \\
     \text{since } x_i' &= \underline{u}_i \cdot \underline{x} \iff \underline{x}' = P^T \underline{x}
@@ -659,7 +659,7 @@ Recall the characteristic polynomial is $\chi_A(t) = \det (A - tI) = c_0 + c_1 t
 
 ::: {.theorem name="Cayley-Hamilton" #CH}
 \begin{align*}
-    \chi_A(t) &= c_0 I + c_1 A + \dots + c_n A^n = 0
+    \chi_A(A) &= c_0 I + c_1 A + \dots + c_n A^n = 0
 \end{align*} 
 "a matrix satisfies its own characteristic equation"
 :::
@@ -683,7 +683,7 @@ i. General $2 \times 2$ matrix
 ii. Diagonalisable $n \times n$ matrix: consider $A$ with evals $\lambda_i$ and invertible $P$ s.t.
 \begin{align*}
     PAP^{-1} &= D = \begin{pmatrix}\lambda_1 &  &  \\ & \ddots &  \\ &  & \lambda_n\end{pmatrix}.\\
-    \text{Now } \chi_A(D) &= \begin{pmatrix}\chi_A(\lambda_1) &  & \\ & \ddots & \\ &  & \chi_A(\lambda_n) \end{pmatrix} = 0 \text{since $\chi_A$ is poly and $\lambda_i$ evals} \\
+    \text{Now } \chi_A(D) &= \begin{pmatrix}\chi_A(\lambda_1) &  & \\ & \ddots & \\ &  & \chi_A(\lambda_n) \end{pmatrix} = 0 \quad \text{since $\chi_A$ is poly and $\lambda_i$ evals} \\
     \text{Then } \chi_A(A) &= \chi_A(P^{-1} D P) \\
     &= P^{-1} \chi_A(D) P \\
     &= 0

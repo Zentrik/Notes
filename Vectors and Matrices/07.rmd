@@ -298,7 +298,6 @@ Suppose $\lambda_1 > 0$ and $\lambda_2 = 0$; diagonalise $A$ in original formula
 
 ### Orthogonal Transformations and Rotations in $\mathbb{R}^n$
 
-$R$ ($n \times n$) is orthogonal $\iff$
 \begin{align*}
     \underset{n \times n}{R} \text{ is orthogonal} &\iff R^T R = R R^T = I \\
     &\iff (R \underline{x}) \cdot (R \underline{y}) = \underline{x} \cdot \underline{y} \ \forall \; \underline{x}, \underline{y} \\

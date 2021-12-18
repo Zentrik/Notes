@@ -36,7 +36,7 @@ Also $\underline{0} \in \operatorname{Im}(T)$ and $\underline{x}', \underline{y}
 :::
 
 ::: {.example #f-one}
-Zero linear map $T : V \to W$ is given by $T(\underline{x}) = \underline{0} \; \forall \; \underline{x} \in V$.
+Zero linear map $T : V \to W$ is given by $T(\underline{x}) = \underline{0} \ \forall \; \underline{x} \in V$.
 $\operatorname{Im}(T) = \{ \underline{0} \}$ and $\ker(T) = V$
 :::
 
@@ -118,7 +118,7 @@ In $\mathbb{R}^2$, a rotation about $\underline{0}$ through angle $\theta$ is de
     \underline{e}_2 &\mapsto \underline{e}_2' = -(\sin \theta) \underline{e}_1 + (\cos \theta) \underline{e}_2
 \end{align*} 
 
-```{r 04-rotations, echo = FALSE, fig.cap = "", fig.align="center", out.height = "300cm"} 
+```{r 04-rotations, echo = FALSE, fig.cap = "", fig.align="center", out.width = "500cm"} 
 knitr::include_graphics("figures/04-rotations.png") 
 ```
 
@@ -128,15 +128,15 @@ In $\mathbb{R}^3$, rotation about axis given by $\underline{e}_3$ is defined as 
 \end{align*} 
 
 Now consider rotation about any axis $\underline{n}$ (a unit vector).
-Given $\underline{x}$, resolve $\parallel$ and $\bot$ $\underline{n}$:
+Given $\underline{x}$, resolve $\parallel$ and $\bot$ to $\underline{n}$:
 \begin{align*}
     \underline{x} &= \underline{x}_\parallel + \underline{x}_\bot \hspace{0.5cm} \text{with } \underline{x}_\parallel = (\underline{x} \cdot \underline{n}) \underline{n} \ (\implies \underline{n} \cdot \underline{x}_\bot = \underline{0}) \\
     \text{Under rotation} \\
     \underline{x}_\parallel &\mapsto \underline{x}_\parallel' = \underline{x}_\parallel \\
     \underline{x}_\bot &\mapsto \underline{x}_\bot' = (\cos \theta) \underline{x}_\bot + (\sin \theta) \underline{n} \wedge \underline{x},
-\end{align*} by considering plane $\bot \underline{n}$, comparing to rotation in $\mathbb{R}^2$ and noting that $|\underline{x}_\bot| = | \underline{n} \wedge \underline{x} |$.
+\end{align*} by considering plane $\mathrel{\bot} \underline{n}$, comparing to rotation in $\mathbb{R}^2$ and noting that $|\underline{x}_\bot| = | \underline{n} \wedge \underline{x} |$.
 
-```{r 04-3d-rotation, echo = FALSE, fig.cap = "", fig.align="center", out.height = "300cm"} 
+```{r 04-3d-rotation, echo = FALSE, fig.cap = "", fig.align="center", out.width = "300cm"} 
 knitr::include_graphics("figures/04-3d-rotation.png") 
 ```
 
@@ -148,13 +148,13 @@ knitr::include_graphics("figures/04-3d-rotation.png")
 ### Reflections
 
 Consider a *reflection* in a plane in $\mathbb{R}^3$ (or line in $\mathbb{R}^2$) through $\underline{0}$ with unit normal $\underline{n}$.\
-Given $\underline{x}$, resolve  resolve $\parallel$ and $\bot$ $\underline{n}$:
+Given $\underline{x}$, resolve $\parallel$ and $\bot$ to $\underline{n}$:
 \begin{align*}
     \underline{x}_\parallel &\mapsto \underline{x}_\parallel' = -\underline{x}_\parallel \\
     \underline{x}_\bot &\mapsto \underline{x}_\bot' = \underline{x}_\bot
 \end{align*}
 
-```{r 04-reflection-3d, echo = FALSE, fig.cap = "", fig.align="center", out.height = "300cm"} 
+```{r 04-reflection-3d, echo = FALSE, fig.cap = "", fig.align="center", out.width = "600"} 
 knitr::include_graphics("figures/04-reflection-3d.png") 
 ```
 
@@ -179,7 +179,7 @@ Given $\underline{a}, \underline{b}$ orthogonal unit vectors define a shear with
     \underline{x} &\mapsto \underline{x}' = \underline{x} + \lambda (\underline{x} \cdot \underline{b}) \underline{a}
 \end{align*} 
 
-```{r 04-shear, echo = FALSE, fig.cap = "", fig.align="center", out.height = "300cm"} 
+```{r 04-shear, echo = FALSE, fig.cap = "", fig.align="center", out.width = "500cm"} 
 knitr::include_graphics("figures/04-shear.png") 
 ```
 
@@ -216,7 +216,7 @@ $(\underline{C}_i)_a = M_{ai} = (\underline{R}_a)_i$.
 Action of $T$ is given by matrix $M$ multiplying vector $\underline{x}$,
 
 ::: {.bluebox}
-$\underline{x}' = M \underline{x}$ defined by $x_a' = M_ai x_i$ ($\sum$ convention).
+$\underline{x}' = M \underline{x}$ defined by $x_a' = M_{ai} x_i$ ($\sum$ convention).
 :::
 
 This follows from definitions above since 
@@ -298,13 +298,13 @@ Dilation $\underline{x}' = M \underline{x}$ with scale factors $\alpha, \beta, \
 :::
 
 ::: {.example #reflection-matrix}
-Reflection in plane $\bot \underline{n}$ (a unit vector).
+Reflection in plane $\mathrel{\bot} \underline{n}$ (a unit vector).
 \begin{align*}
     \underline{x}' &= H \underline{x} = \underline{x} - 2 (\underline{x} \cdot \underline{n}) \underline{n} \\
     x_i' &= x_i - 2 x_j n_j n_i \\
     &= (\delta_{ij} - 2 n_j n_i) x_j \\
     H_{ij} &= \delta_{ij} - 2 n_j n_i \\
-    \text{e.g. } \underline{n} &= \frac{1}{\sqrt{3}} \begin{pmatrix} \\1 \\1\end{pmatrix},\ n_i n_j = \frac{1}{3} \; \forall \; i, j \\
+    \text{e.g. } \underline{n} &= \frac{1}{\sqrt{3}} \begin{pmatrix}1 \\1 \\1\end{pmatrix},\ n_i n_j = \frac{1}{3} \quad \forall \; i, j \\
     H &= \frac{1}{3} \begin{pmatrix}
     1 & -2 & -2 \\
     -2 & 1 & -2 \\
@@ -353,27 +353,27 @@ Necessary conditions are
     1 \\
     0
     \end{pmatrix} &= \begin{pmatrix}\cos \theta \\\sin \theta\end{pmatrix} \text{ for some $\theta$; most general unit vector in $\mathbb{R}^2$} \\
-    M \begin{pmatrix}0 \\1\end{pmatrix} = \pm \begin{pmatrix}- \sin \theta \\ \cos \theta\end{pmatrix} \text{ general unit vector $\bot M (1\ 0)^T$}.
+    M \begin{pmatrix}0 \\1\end{pmatrix} &= \pm \begin{pmatrix}- \sin \theta \\ \cos \theta\end{pmatrix} \text{ general unit vector $\mathrel{\bot} M (1\ 0)^T$}.
 \end{align*}
 Simple to check that these conditions are also sufficient and have two cases
 \begin{align*}
     M = R = \begin{pmatrix}
     \cos \theta & - \sin \theta \\
     \sin \theta & \cos \theta
-    \end{pmatrix}
-\end{align*}, a *rotation*
+    \end{pmatrix},
+\end{align*} a *rotation*,
 or \begin{align*}
     M = H = \begin{pmatrix}
     \cos \theta & \sin \theta \\
     \sin \theta & - \cos \theta
-    \end{pmatrix}
-\end{align*}, a *reflection*.
+    \end{pmatrix},
+\end{align*} a *reflection*.
 
 Compare with expression for reflection in \@ref(exm:reflection-matrix)
 
 \begin{align*}
     H_{ij} &= \delta_{ij} - 2 n_i n_j \\
-    \text{and note for } \underline{n} &= \begin{pmatrix}n_1 \\n_2\end{pmatrix} = \begin{pmatrix} -\sin \frac{\theta}{2} \\ \cos \frac{\theta}{}2\end{pmatrix} \\
+    \text{and note for } \underline{n} &= \begin{pmatrix}n_1 \\n_2\end{pmatrix} = \begin{pmatrix} -\sin \frac{\theta}{2} \\ \cos \frac{\theta}{2}\end{pmatrix} \\
     \text{we get } H &= \begin{pmatrix}
     1 - 2 \sin^2 \frac{\theta}{2} & 2 \sin \frac{\theta}{2} \cos \frac{\theta}{2} \\
     2 \sin \frac{\theta}{2} \cos \frac{\theta}{2} & 1 - 2 \cos^2 \frac{\theta}{2}
@@ -381,7 +381,7 @@ Compare with expression for reflection in \@ref(exm:reflection-matrix)
 \end{align*} agreeing with H above.
 This is reflection in a line in $\mathbb{R}^2$ as shown
 
-```{r 04-isometry, echo = FALSE, fig.cap = "", fig.align="center", out.height=300} 
+```{r 04-isometry, echo = FALSE, fig.cap = "", fig.align="center", out.width=500} 
 knitr::include_graphics("figures/04-isometry.png") 
 ```
 
@@ -389,14 +389,14 @@ ii. How does $M$ change *areas* in $\mathbb{R}^2$ (in general)?
 
 Consider unit square in $\mathbb{R}^2$, mapped to parallelogram as shown, with signed area $[M \underline{e}_1, M \underline{e}_1]$ "scalar cross product".
 
-```{r 04-area, echo = FALSE, fig.cap = "", fig.align="center", out.height=300} 
+```{r 04-area, echo = FALSE, fig.cap = "", fig.align="center", out.width=500} 
 knitr::include_graphics("figures/04-area.png") 
 ```
 
 \begin{align*}
     \left[ \begin{pmatrix} M_{11} \\M_{21}\end{pmatrix}, \begin{pmatrix}M_{12} \\M_{22}\end{pmatrix} \right] &= M_{11} M_{22} - M_{12} M_{21} \\
-    &= \det M 
-\end{align*}, the determinant of $2 \times 2$ matrix.
+    &= \det M,
+\end{align*} the determinant of $2 \times 2$ matrix.
 
 This is the factor (with a sign) by which areas are scaled under $M$.
 
@@ -571,13 +571,17 @@ Reflection.
 
 ### Transpose and Hermitian Conjugate
 
-i. If $M$ is an $m \times n$ matrix, the transpose $M^T$ is an $n \times m$ matrix defined by 
+#### Transpose
+
+::: {.definition name="Transpose"}
+If $M$ is an $m \times n$ matrix, the transpose $M^T$ is an $n \times m$ matrix defined by 
 \begin{align*}
     (M^T)_{ia} &= M_{ai} \ ``\text{exchange rows and columns"} \\
     [a &= 1, \dots, m;\ i = 1, \dots, n]
 \end{align*}
+:::
 
-#### Properties
+##### Properties
 
 \begin{align*}
     (\alpha A + \beta B)^T &= \alpha A^T + \beta B^T \ (A, B \ m \times n) \\
@@ -593,7 +597,10 @@ i. If $M$ is an $m \times n$ matrix, the transpose $M^T$ is an $n \times m$ matr
 $\implies \underline{x}^T = \begin{pmatrix}x_1 & \dots & x_n\end{pmatrix}$ is a row vector or $1 \times n$ matrix.\
 Inner product on $\mathbb{R}^n$ is $\underline{x} \cdot \underline{y} = \underline{x}^T \underline{y}$, a scalar or $1 \times 1$ matrix, but $\underline{y} \underline{x}^T = M$, a $n \times n$ matrix with $M_{ij} = y_i x_j$.
 
-ii. If $M$ is square, $n \times n$, then $M$ is *symmetric* iff $M^T = M$ or $M_{ij} = M_{ji}$ and *antisymmetric* iff $M^T = - M$ or $M_{ij} = - M_{ji}$.
+::: {.definition name="Symmetric and Antisymmetric matrix"}
+If $M$ is square, $n \times n$, then $M$ is *symmetric* iff $M^T = M$ or $M_{ij} = M_{ji}$ and *antisymmetric* iff $M^T = - M$ or $M_{ij} = - M_{ji}$.
+:::
+ 
 Any square matrix can be written as a sum of a symmetric and antisymmetric parts:
 \begin{align*}
     M = S + A \text{ where } S &= \frac{1}{2} (M + M^T) \\
@@ -614,9 +621,13 @@ If $A$ is $3 \times 3$ antisymmetric, then it can be rewritten in terms of vec $
 \end{align*} 
 :::
 
-iii. If $M$ is a $m \times n$ matrix the *hermitian conjugate* $M^\dagger$ is defined by $(M^\dagger)_{ia} = \overline{M}_{ai}$ or $M^\dagger = \overline{M}^T = \overline{M^T}$
+#### Hermitian Conjugate
 
-#### Properties
+::: {.definition name="Hermitian Conjugate"}
+If $M$ is a $m \times n$ matrix the *hermitian conjugate* $M^\dagger$ is defined by $(M^\dagger)_{ia} = \overline{M}_{ai}$ or $M^\dagger = \overline{M}^T = \overline{M^T}$
+:::
+
+##### Properties
 
 \begin{align*}
     (\alpha A + \beta B)^\dagger &= \overline{\alpha} A^\dagger + \overline{\beta} B^\dagger \\
@@ -627,18 +638,20 @@ iii. If $M$ is a $m \times n$ matrix the *hermitian conjugate* $M^\dagger$ is de
 $\implies \underline{z}^\dagger = \begin{pmatrix}x_1 & \dots & x_n\end{pmatrix}$ is a row vector or $1 \times n$ matrix.\
 Inner product on $\mathbb{C}^n$ is $(\underline{z}, \underline{w}) = \underline{z}^\dagger \underline{w}$, a scalar or $1 \times 1$ matrix.
 
-iv. If $M$ is *square* $n \times n$ then $M$ is *hermitian* if $M^\dagger = M$ or $M_{ij} = \overline{M}_{ji}$ and *anti-hermitian* if $M^\dagger = - M$ or $M_{ij} = - \overline{M}_{ji}$.
+::: {.definition name="Hermitian and Anti-Hermitian matrix"}
+If $M$ is *square* $n \times n$ then $M$ is *hermitian* if $M^\dagger = M$ or $M_{ij} = \overline{M}_{ji}$ and *anti-hermitian* if $M^\dagger = - M$ or $M_{ij} = - \overline{M}_{ji}$.
+:::
 
-e. *Trace* 
+#### Trace
 
-::: {.definition}
+::: {.definition name="Trace"}
 For any square $n \times n$ matrix $M$, the *trace* is defined by 
 \begin{align*}
     \operatorname{tr} (M) = M_{ii} \text{ (the sum of diagonal entries.)}
 \end{align*} 
 :::
 
-#### Properties
+##### Properties
 \begin{align*}
     \operatorname{tr} (\alpha M + \beta N) &= \alpha \operatorname{tr} (M) + \beta \operatorname{tr}(N) \\
     \operatorname{tr} (MN) &= \operatorname{tr} (NM) \\
@@ -684,11 +697,14 @@ So $M = \underset{\text{symm and traceless}}{T} + \underset{\text{antisymm part}
 
 ## Orthogonal and Unitary Matrices
 
+::: {.definition name="Orthogonal matrix"}
 A real $n \times n$ matrix is *orthogonal* iff
 \begin{align*}
     u^T u &= u u^T = I \\
     \text{i.e. } u^T &= u^{-1}.
 \end{align*} 
+:::
+
 These conditions can be written 
 \begin{align*}
     (u^T u)_{ij} &= (u u^T)_{ij} = I_{ij} \\
@@ -712,13 +728,13 @@ These conditions can be written
 
 *Equivalent definition*: u is orthogonal iff it preserves the inner product on $\mathbb{R}^n$.
 \begin{align*}
-    (u \underline{x}) \cdot (u \underline{y}) &= \underline{x} \cdot \underline{y} \ \forall \; x, y \in \mathbb{R}^n
+    (u \underline{x}) \cdot (u \underline{y}) &= \underline{x} \cdot \underline{y} \quad \forall \; x, y \in \mathbb{R}^n
 \end{align*} 
 To check equivalence, write this as 
 \begin{align*}
     (u \underline{x}) \cdot (u \underline{y}) &= x^T (u^T u) y \\
     &= x^T y \iff u^T u = I \\
-    &= \underline{x} \cdot \underline{y} \ \forall \; x, y \in \mathbb{R}^n
+    &= \underline{x} \cdot \underline{y} \quad \forall \; x, y \in \mathbb{R}^n
 \end{align*} 
 Note, since $\underline{C}_i = u \underline{e}_i$, columns being orthonormal $\iff (u \underline{e}_i) \cdot (u \underline{e}_j) = \underline{e}_i \cdot \underline{e}_j = \delta_{ij}$.
 
@@ -745,22 +761,23 @@ and can check explicitly
 \end{align*} 
 :::
 
+::: {.definition name="Unitary matrix"}
 A complex $n \times n$ matrix $u$ is *unitary* iff
-
 \begin{align*}
     u^\dagger u &= u u^\dagger = I \\
     \text{i.e. } u^\dagger &= u^{-1}.
 \end{align*} 
+:::
 
 *Equivalent definition*: u is unitary iff it preserves the inner product on $\mathbb{C}^n$.
 \begin{align*}
-    (u \underline{z}, u \underline{w}) &= (\underline{z}, \underline{w}) \ \forall \; z, w \in \mathbb{C}^n
+    (u \underline{z}, u \underline{w}) &= (\underline{z}, \underline{w}) \quad \forall \; z, w \in \mathbb{C}^n
 \end{align*} 
 
 To check equivalence, write this as 
 \begin{align*}
     (u \underline{z})^\dagger (u \underline{w}) &= \underline{z}^\dagger (u^\dagger u) \underline{w} \\
     &= \underline{z}^\dagger \underline{w} \iff u^\dagger u = I \\
-    &= (\underline{z}, \underline{w}) \ \forall \; \underline{z}, \underline{w}
+    &= (\underline{z}, \underline{w}) \quad \forall \; \underline{z}, \underline{w}
 \end{align*} 
 Note, since $\underline{C}_i = u \underline{e}_i$, columns being orthonormal $\iff (u \underline{e}_i) \cdot (u \underline{e}_j) = \underline{e}_i \cdot \underline{e}_j = \delta_{ij}$.
