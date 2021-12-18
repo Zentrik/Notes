@@ -8,6 +8,6 @@
 
 [Vectors and Matrices](Vectors%20and%20Matrices/book/index.html)
 
-[Groups](Groups/Groups.pdf)
+[Groups](Groups/groups.pdf)
 
 [Differential Equations](Differential%20Equations/de.pdf)
