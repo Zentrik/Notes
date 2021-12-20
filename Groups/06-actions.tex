@@ -810,7 +810,7 @@ stabilisers are called centralisers
 
 \begin{definition}[Cycle type] \label{def:20}
     Let $\sigma \in S_n$ and write $\sigma$ as a product of disjoint cycles including $1-$cycles.
-    Then the *cycle type* of $\sigma$ is $(n_1, n_2, \ldots, n_k)$ where $n_1 \geq n_2 \geq \ldots \geq n_k \geq 1$ and the cycles in $\sigma$ have length $n_i$. \\
+    Then the \emph{cycle type} of $\sigma$ is $(n_1, n_2, \ldots, n_k)$ where $n_1 \geq n_2 \geq \ldots \geq n_k \geq 1$ and the cycles in $\sigma$ have length $n_i$. \\
     Note $n = n_1 + n_2 + \ldots + n_k$.
 \end{definition} 
 
@@ -892,7 +892,7 @@ If $\tau (1\; 2\; 3) \tau^{-1} = (1\; 3\; 2)$ then $\tau = (1\; 2)$ or $(3\; 2)$
 
 Or consider 
 \begin{align*}
-    C_{A_4} \left( (1\; 2\; 3) \right) &= C_{S_4} \left( (1\; 2\; 3) \right) \cup A_4 \\
+    C_{A_4} \left( (1\; 2\; 3) \right) &= C_{S_4} \left( (1\; 2\; 3) \right) \cap A_4 \\
     C_{S_4} \left( (1\; 2\; 3) \right) &= \langle (1\; 2\; 3) \rangle \leq A_4 \\
     \text{So, } C_{A_4} \left( (1\; 2\; 3) \right) &= C_{S_4} \left( (1\; 2\; 3) \right) \\
     \implies \left| \operatorname{ccl}_{A_4} \left( (1\; 2\; 3) \right) \right| &= \frac{|A_4|}{\left| C_{A_4} \left( (1\; 2\; 3) \right) \right|} \text{ by \nameref{thm:orbit}} \\
@@ -903,10 +903,9 @@ So the conjugacy class of 8 $3$-cycles in $S_4$ splits into 2 conjugacy classes 
 
 \emph{Key point} Let $x \in A_n$.
 If $C_{A_n}(x) = C_{S_n}(x) \implies \operatorname{ccl}_{A_n}(x) = \frac{| \operatorname{ccl}_{S_n}(x) |}{2}$ by \nameref{thm:orbit}. \\
-If $C_{A_n}(x) < C_{S_n}(x)$, then $C_{S_n}$ contains an odd permutation and $|C_{A_n}(x)| = |C_{S_n} \cup A_n| = \frac{|C_{S_n}|}{2}$ (Q4, Sheet 2) $\implies |\operatorname{ccl}_{A_n}(x)| = |\operatorname{ccl}_{S_n}(x)|$.
+If $C_{A_n}(x) \lneq C_{S_n}(x)$, then $C_{S_n}$ contains an odd permutation and $|C_{A_n}(x)| = |C_{S_n} \cap A_n| = \frac{|C_{S_n}|}{2}$ (Q4, Sheet 2) $\implies |\operatorname{ccl}_{A_n}(x)| = |\operatorname{ccl}_{S_n}(x)|$.
 
 \emph{$A_4$}:
-
 \begin{align*}
     \begin{array}{cccc}
         \text{example member}, x & \text{cycle type} & C_{A_4}(x) & \text{size of ccl} \\
