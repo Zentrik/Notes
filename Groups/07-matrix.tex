@@ -252,9 +252,11 @@ Recall if $A \in M_n(\mathbb{R})$, $A^T$ is defined by $(A^T)_{ij} = A_{ji}$, i.
 
 \begin{center}\rule{\linewidth}{0.5pt}\end{center}
 
-Define \begin{align*}
-    O_n(\mathbb{R}) &= \{ A \in M_n(\mathbb{R}) : A^T A = I\}
-\end{align*} (so columns of $A$ form an orthonormal basis for $\mathbb{R}^n$).
+\begin{definition}[Orthogonal group]
+    \begin{align*}
+        O_n(\mathbb{R}) &= \{ A \in M_n(\mathbb{R}) : A^T A = I\}
+    \end{align*} (so columns of $A$ form an orthonormal basis for $\mathbb{R}^n$).  
+\end{definition} 
 
 \begin{proposition}\label{prp:10}
     $O_n(\mathbb{R})$ is a subgroup of $\operatorname{GL}_n(\mathbb{R})$ called the \emph{orthogonal group}.
@@ -267,7 +269,7 @@ Define \begin{align*}
             A, B &\in O_n(\mathbb{R}) \\
             (AB)^T (AB) &= B^T A^T A B \\
             &= B^T B = I \\
-            \implies AB \in O_n(\mathbb{R})
+            \implies AB &\in O_n(\mathbb{R})
         \end{align*} 
         \item $I_n \in O_n(\mathbb{R})$
         \item Associativity is inherited.

@@ -574,7 +574,7 @@ $\mathcal{F}$ has been *diagonalised*.
 \begin{align*}
     \text{Now } \underline{x}' &= x_1' \underline{e}_1 + \dots + x_n' \underline{e}_n \\
     \underline{x} &= x_1 \underline{e}_1 + \dots + x_n  \underline{e}_n \\
-    &= x_1' \underline{u}_1 + \dots + x_2 \underline{u}_n \\
+    &= x_1' \underline{u}_1 + \dots + x_n' \underline{u}_n \\
     \text{since } x_i' &= \underline{u}_i \cdot \underline{x} \iff \underline{x}' = P^T \underline{x}
 \end{align*}
 Thus, $x_i'$ are coordinates w.r.t new axes given by orthonormal basis vectors $\underline{u}_i$, these are called the *principal axes* of $\mathcal{F}$.
