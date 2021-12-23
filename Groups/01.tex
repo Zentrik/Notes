@@ -56,13 +56,14 @@ We will show in \Cref{lem:one} that inverses are unique and we will write \(x^{-
 
 These have all had an infinite number of elements, so onto some finite groups.
 
-\begin{example}[The trivial group]
-\((e, *)\)
+\begin{example}[The trivial group] ~\vspace*{-1.5\baselineskip}
+  \begin{align*}
+    (e, *)
+  \end{align*} 
 \end{example}
 
 \begin{example}
 \((\{\pm 1\}, \times)\). A nice way to look at a group is to look at a multiplication table.
-
 \begin{align*}
     \begin{array}{c|cc}
         \times & 1 & -1 \\
@@ -77,7 +78,6 @@ We can see \(e = 1\) and \((-1)^{-1} = -1\)
 
 \begin{example}
 \((\{0, 1, 2\}, +_3)\). \(+_3\) is addition modulo 3.
-
 \begin{align*}
     \begin{array}{c|ccc}
         +_3 & 0 & 1 & 2 \\
@@ -92,9 +92,10 @@ We can see \(e = 0\) and \(1^{-1} = 2\)
 \end{example}
 
 \begin{example}
-\protect\hypertarget{exm:nine}{}\label{exm:nine}\((\{e, a, b, c\}, *)\)
+\protect\hypertarget{exm:nine}{}\label{exm:nine}
 
 \begin{align*}
+    (\{e, a, b, c\}, *) \\
     \begin{array}{c|cccc}
         * & e & a & b & c \\
         \hline
@@ -120,7 +121,7 @@ operation \(\circ =\) do right transformation then left transformation
 \textbf{Claim}: This defines a group with 6 elements
 \end{example}
 
-\begin{example}
+\begin{example} ~\vspace*{-1.5\baselineskip}
 \begin{align*}
     M_2(\mathbb{R}) &= \{ 2 \times 2 \text{ matrices with entries in } \mathbb{R} \} \\
     &= \left[ \begin{pmatrix} a & b \\ c & d \end{pmatrix} : a, b, c, d \in \mathbb{R} \right] \\
@@ -267,16 +268,16 @@ Let \((G, *)\) be a group and \(H\) a subset of \(G\) (\(H \subseteq G\) i.e.~\(
 i.e restricting operation to \(H\) still gives a group. We write \(H \leq G\).
 \end{definition}
 
-\begin{example}
+\begin{example} ~\vspace*{-1.5\baselineskip}
 \begin{align*}
     (\mathbb{Z}, +) \leq (\mathbb{Q}, +) \leq (\mathbb{R}, +)
 \end{align*}
 \end{example}
 
-\begin{example}
+\begin{example} ~\vspace*{-1.5\baselineskip}
 \begin{align*}
     (\{\pm 1\}, \times) \leq (\mathbb{Q} \setminus \{ 0 \}, \times) 
-\end{align*}
+    there is a bijection bet\end{align*}
 \end{example}
 
 \begin{example}
@@ -338,7 +339,7 @@ We need the notion of functions.
 \end{align*}
 \end{definition} 
 
-\begin{example}
+\begin{example}  ~\vspace*{-1.5\baselineskip}
   \begin{align*}
     \text{eg: }\ f: \mathbb{Z} &\to \mathbb{Z} & g: \mathbb{Z} &\to \mathbb{Z} \\
     x &\mapsto x + 1 & x &\mapsto 2x.
@@ -353,7 +354,7 @@ We need the notion of functions.
   \end{align*} 
 \end{definition} 
 
-\begin{example}
+\begin{example} ~\vspace*{-1.5\baselineskip}
   \begin{align*}
     (f \circ g)(x) &= 2x + 1 \\
     (g \circ f)(x) &= 2x + 2.
@@ -366,7 +367,8 @@ Suppose \(f_1: A \to B\) and \(f_2: A \to B\) then \(f_1 = f_2\) if \(f_1(a) = f
   \(f: A \to B\) is a \emph{bijection} if it defines a paring between elements of \(A\) and elements of \(B\). That is given \(b \in B \ \exists\) unique \(a \in A\) s.t. \(f(a) = b\).
 \end{definition} 
 
-\begin{example}
+\begin{example}~
+\vspace*{-1.5\baselineskip} % ~ adds 1 \baslineskip I think and exm has 0.5 at begginning
   \begin{align*}
     f: \mathbb{Z} &\to \mathbb{Z} \\
     x &\mapsto x + 1
@@ -462,7 +464,8 @@ See \Cref{exm:isomorphism}
 \end{align*}
 \(\theta\) is an isomorphism.
 
-\begin{lemma} \mbox{} 
+\begin{lemma}~
+  \vspace*{-1.5\baselineskip}
 \begin{enumerate}
 \def\labelenumi{\roman{enumi}.}
   \item The composition of two homomorphisms is a homomorphism, similarly for isomorphisms, thus if \(G_1 \cong G_2\) and \(G_2 \cong G_3\) then \(G_1 \cong G_3\).
@@ -470,7 +473,6 @@ See \Cref{exm:isomorphism}
     If \(\theta : G_1 \to G_2\) is on a set it maps elemenan isomorphism then so is its inverse \(\theta^{-1} : G_2 \to G_1\).
     So \(G_1 \cong G_2 \implies G_2 \cong G_1\).
 \end{enumerate}
-
 \end{lemma}
 
 \begin{proof} \mbox{} 
