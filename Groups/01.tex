@@ -109,12 +109,11 @@ You may notice that in any row no element is repeated, this is due to the cancel
 \end{example}
 
 \begin{example}
-\protect\hypertarget{exm:triangle}{}\label{exm:triangle}Rotations and reflections of an equilateral triangle.
+\protect\hypertarget{exm:triangle}{}\label{exm:triangle}
+Rotations and reflections of an equilateral triangle.
 
-\begin{figure}
-  \centering
-  \includegraphics[height=10cm]{01-triangle.pdf}
-\end{figure}
+{\centering
+\includegraphics[height=10cm]{01-triangle.pdf}}
 
 operation \(\circ =\) do right transformation then left transformation
 
@@ -329,9 +328,8 @@ Otherwise choose \(0 < n \in H\) with \(n\) minimal (smallest positive element o
 Then \(n \mathbb{Z} \in H\) by closure and inverses. We show \(H = n \mathbb{Z}\). Suppose \(\exists \; h \in H \setminus n \mathbb{Z}\), then we can write \(h = nk + h'\) with \(h' \in \{ 1, 2, \ldots, n -1 \}\). But \(h' = h - nk \in H\), contradicting minimality of \(n\). Thus \(H = n \mathbb{Z}\).
 \end{proof}
 
-\begin{center}\rule{\linewidth}{0.5pt}\end{center}
-
-\emph{Aside}: We need the notion of functions.
+\begin{aside}{Aside: Functions}
+We need the notion of functions.
 \begin{definition}[Function]
   \(f\) is a \emph{function} between sets \(A\) and \(B\) if it assigns each element of \(A\) a unique element of \(B\).
 \begin{align*}
@@ -362,7 +360,7 @@ Then \(n \mathbb{Z} \in H\) by closure and inverses. We show \(H = n \mathbb{Z}\
   \end{align*} 
 \end{example} 
 
-Suppose \(f_1: A \to B\) and \(f_2: A \to B\) then \(f_1 = f_2\) if \(f_1(a) = f_2(a) \; \forall \; a \in A\).
+Suppose \(f_1: A \to B\) and \(f_2: A \to B\) then \(f_1 = f_2\) if \(f_1(a) = f_2(a) \quad \forall \; a \in A\).
 
 \begin{definition}[Bijective functions]
   \(f: A \to B\) is a \emph{bijection} if it defines a paring between elements of \(A\) and elements of \(B\). That is given \(b \in B \ \exists\) unique \(a \in A\) s.t. \(f(a) = b\).
@@ -393,7 +391,7 @@ Suppose \(f_1: A \to B\) and \(f_2: A \to B\) then \(f_1 = f_2\) if \(f_1(a) = f
 See Numbers and Sets
 \end{proof}
 
-\begin{center}\rule{\linewidth}{0.5pt}\end{center}
+\end{aside}
 
 \begin{definition}[Group homomorphism]
 \protect\hypertarget{def:homomorphism}{}\label{def:homomorphism}
@@ -469,7 +467,7 @@ See \Cref{exm:isomorphism}
 \def\labelenumi{\roman{enumi}.}
   \item The composition of two homomorphisms is a homomorphism, similarly for isomorphisms, thus if \(G_1 \cong G_2\) and \(G_2 \cong G_3\) then \(G_1 \cong G_3\).
   \item
-    If \(\theta : G_1 \to G_2\) is an isomorphism then so is its inverse \(\theta^{-1} : G_2 \to G_1\).
+    If \(\theta : G_1 \to G_2\) is on a set it maps elemenan isomorphism then so is its inverse \(\theta^{-1} : G_2 \to G_1\).
     So \(G_1 \cong G_2 \implies G_2 \cong G_1\).
 \end{enumerate}
 

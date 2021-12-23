@@ -11,3 +11,9 @@
 [Groups](Groups/groups.pdf)
 
 [Differential Equations](Differential%20Equations/de.pdf)
+
+
+## Other Recent IA Notes
+
+http://ak2316.user.srcf.net/lecture-notes/
+https://thirdsgames.co.uk/maths.html
