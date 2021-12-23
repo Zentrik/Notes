@@ -15,14 +15,14 @@
 
 ## Other Recent IA Notes
 
-http://ak2316.user.srcf.net/lecture-notes/
+[Adam Kelly](http://ak2316.user.srcf.net/lecture-notes/)
 
-https://thirdsgames.co.uk/maths.html
+[Thirds](https://thirdsgames.co.uk/maths.html)
 
-http://mhb45.user.srcf.net/
+[Hasan Baig](http://mhb45.user.srcf.net/)
 
 ### Summaries
 
-http://mhb45.user.srcf.net/
+[Hasan Baig](http://mhb45.user.srcf.net/)
 
-https://github.com/jywtang/Maths-Summary
+[Jason Tang](https://github.com/jywtang/Maths-Summary)
