@@ -160,15 +160,15 @@
 
 \ifadamfancytheorems
     \declaretheorem[style=thmtheorembox,name=Theorem,numberwithin=section]{theorem}
-    \declaretheorem[style=thmtheorembox,name=Lemma,sibling=theorem]{lemma}
-    \declaretheorem[style=thmtheorembox,name=Fact,sibling=theorem]{fact}
-    \declaretheorem[style=thmtheorembox,name=Proposition,sibling=theorem]{proposition}
-    \declaretheorem[style=thmtheorembox,name=Corollary,sibling=theorem]{corollary}
-    \declaretheorem[style=thmexamplebox,name=Example,sibling=theorem]{example}
-    \declaretheorem[style=thmdefinitionbox,name=Definition,sibling=theorem]{definition}
-    \declaretheorem[style=thmdefinitionbox,name=Axiom,sibling=theorem]{axiom}
-    \declaretheorem[style=thmtheorembox,name=Axiom,sibling=theorem]{axiomthm}
-    \declaretheorem[style=thmdefinitionbox,name=Law,sibling=theorem]{law}
+    \declaretheorem[style=thmtheorembox,name=Lemma,numberwithin=section]{lemma}
+    \declaretheorem[style=thmtheorembox,name=Fact,numberwithin=section]{fact}
+    \declaretheorem[style=thmtheorembox,name=Proposition,numberwithin=section]{proposition}
+    \declaretheorem[style=thmtheorembox,name=Corollary,numberwithin=section]{corollary}
+    \declaretheorem[style=thmexamplebox,name=Example,numberwithin=section]{example}
+    \declaretheorem[style=thmdefinitionbox,name=Definition,numberwithin=section]{definition}
+    \declaretheorem[style=thmdefinitionbox,name=Axiom,numberwithin=section]{axiom}
+    \declaretheorem[style=thmtheorembox,name=Axiom,numberwithin=section]{axiomthm}
+    \declaretheorem[style=thmdefinitionbox,name=Law,numberwithin=section]{law}
     \declaretheorem[style=thmtheorembox,name=Theorem,numbered=no]{theorem*}
     \declaretheorem[style=thmtheorembox,name=Lemma,numbered=no]{lemma*}
     \declaretheorem[style=thmtheorembox,name=Claim,numbered=no]{claim*}
@@ -227,7 +227,9 @@
 \newtheorem*{question*}{Question}
 \newtheorem*{exercise*}{Exercise}
 \newtheorem*{notation}{Notation}
-\newtheorem*{remark}{Remark}
+
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
 
 % Fancy Section and Chapter Heads 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
