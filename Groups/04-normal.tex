@@ -1,19 +1,19 @@
 \hypertarget{normal-subgroups-quotient-groups-and-homomorphisms}{%
 \section{Normal Subgroups, Quotient groups and Homomorphisms}\label{normal-subgroups-quotient-groups-and-homomorphisms}}
 
-Given a group \(G\), subgroup \(H\) of \(G\) and the set of left cosets of \(H\) in \(G\), \((G : H)\).
-We would like to define a group operation on the cosets \(\circ\), so that \(((G : H), \circ)\) is a group.
+Given a group $G$, subgroup $H$ of $G$ and the set of left cosets of $H$ in $G$, $(G : H)$.
+We would like to define a group operation on the cosets $\circ$, so that $((G : H), \circ)$ is a group.
 Would like:
 \begin{align*}
     (gH) \circ (k H) = gkH.
 \end{align*}
 When does this work?
-Consider \(gH kH\) if \(Hk = kH\) then we get \(gkHH = gkH\).\\
+Consider $gH kH$ if $Hk = kH$ then we get $gkHH = gkH$.\\
 This motivates the following definition.
 
 \begin{definition}[Normal subgroup]
-A subgroup \(K\) of \(G\) is called \emph{normal} if \(gK = Kg\) for all \(g \in G\).
-We write \(K \trianglelefteq G\).
+A subgroup $K$ of $G$ is called \emph{normal} if $gK = Kg$ for all $g \in G$.
+We write $K \trianglelefteq G$.
 \end{definition}
 
 \begin{example} ~\vspace*{-1.5\baselineskip}
@@ -24,7 +24,7 @@ We write \(K \trianglelefteq G\).
     \begin{pmatrix}2 & 3\end{pmatrix} K &= K \begin{pmatrix}2 & 3\end{pmatrix} \\
     \begin{pmatrix}1 & 2 & 3\end{pmatrix} K &= K = K \begin{pmatrix}1 & 2 & 3\end{pmatrix}
 \end{align*}
-But \(H = \{ 1, \begin{pmatrix}1 & 2\end{pmatrix} \}\) is not normal in \(S_3\).
+But $H = \{ 1, \begin{pmatrix}1 & 2\end{pmatrix} \}$ is not normal in $S_3$.
 \begin{align*}
     \begin{pmatrix}1 & 3\end{pmatrix} H &= \{ \begin{pmatrix}1 & 3\end{pmatrix}, \begin{pmatrix}1 & 2 & 3\end{pmatrix} \} \\
     H \begin{pmatrix}1 & 3\end{pmatrix} &= \{ \begin{pmatrix}1 & 3\end{pmatrix}, \begin{pmatrix}1 & 3 & 2\end{pmatrix} \}
@@ -34,17 +34,17 @@ But \(H = \{ 1, \begin{pmatrix}1 & 2\end{pmatrix} \}\) is not normal in \(S_3\).
 \begin{proposition}
 \protect\hypertarget{prp:four}{}\label{prp:four}
 
-Let \(K \trianglelefteq G\).
+Let $K \trianglelefteq G$.
 TFAE (The following are equivalent):
 
 \begin{enumerate}
 \def\labelenumi{\roman{enumi}.}
 \item
-  \(gK = Kg \; \forall \; g \in G\)
+  $gK = Kg \; \forall \; g \in G$
 \item
-  \(gKg^{-1} = K \; \forall \; g \in G\)
+  $gKg^{-1} = K \; \forall \; g \in G$
 \item
-  \(gkg^{-1} \in K \; \forall \; k \in K,\ g \in G\)
+  $gkg^{-1} \in K \; \forall \; k \in K,\ g \in G$
 \end{enumerate}
 
 \end{proposition}
@@ -58,14 +58,14 @@ TFAE (The following are equivalent):
     &= K.
 \end{align*}
 
-\((ii) \implies (iii)\)
+$(ii) \implies (iii)$
 
-\((iii) \implies (i)\) \\
-For any \(k \in K,\ g \in G \; \exists \; k' \in K\) s.t. \(gkg^{-1} = k'\)
+$(iii) \implies (i)$ \\
+For any $k \in K,\ g \in G \; \exists \; k' \in K$ s.t. $gkg^{-1} = k'$
   \begin{align*}
     \implies gk &= k'g \in Kg \\
     \implies gK &\subseteq Kg \\
-    \intertext{Similarly \(g^{-1}kg = k''\) for some \(k'' \in K\)}
+    \intertext{Similarly $g^{-1}kg = k''$ for some $k'' \in K$}
     \implies kg &= gk'' \\
     \implies Kg &\subseteq gK \\
     \implies gK &= Kg.
@@ -75,15 +75,15 @@ For any \(k \in K,\ g \in G \; \exists \; k' \in K\) s.t. \(gkg^{-1} = k'\)
 \begin{example} ~\vspace*{-1.5\baselineskip}
   \begin{itemize}
   \item
-    \(\{ e \} \trianglelefteq G,\ G \trianglelefteq G\).
+    $\{ e \} \trianglelefteq G,\ G \trianglelefteq G$.
   \item
-    If \(G\) is abelian, all subgroups are normal.
-    Since if \(k \in K,\ g \in G\) and \(K \leq G\) then \(gkg^{-1} = gg^{-1} k = k \in K\).
+    If $G$ is abelian, all subgroups are normal.
+    Since if $k \in K,\ g \in G$ and $K \leq G$ then $gkg^{-1} = gg^{-1} k = k \in K$.
   \item
-    Kernels of homomorphisms are normal subgroups (Sheet 1, q9) \(\implies A_n \trianglelefteq S_n\) since \(A_n = \ker sgn\)
+    Kernels of homomorphisms are normal subgroups (Sheet 1, q9) $\implies A_n \trianglelefteq S_n$ since $A_n = \ker sgn$
   \item
-    \(D_{2n} = \left\langle \underbrace{r,\ t}_\text{generators} | \underbrace{r^n = e,\ t^2 = e,\ trt = r^{-1}}_\text{relations} \right\rangle\).
-    Then \(\langle r \rangle \trianglelefteq D_{2n}\).
+    $D_{2n} = \left\langle \underbrace{r,\ t}_\text{generators} | \underbrace{r^n = e,\ t^2 = e,\ trt = r^{-1}}_\text{relations} \right\rangle$.
+    Then $\langle r \rangle \trianglelefteq D_{2n}$.
     \begin{align*}
       \text{Clearly } r^i r^j r^{-i} &= r^j \in \langle r \rangle. \\
       \text{Also, } (r^i t) r^j (r^i t)^{-1} &= r^i t r^j t r^{-i} \\
@@ -96,7 +96,7 @@ For any \(k \in K,\ g \in G \; \exists \; k' \in K\) s.t. \(gkg^{-1} = k'\)
 
 \begin{lemma}
 \protect\hypertarget{lem:twelve}{}\label{lem:twelve}
-If \(K \leq G\) and the index, \Cref{def:fourteen}, of \(K\) in \(G\) is 2, then \(K \trianglelefteq G\).
+If $K \leq G$ and the index, \Cref{def:fourteen}, of $K$ in $G$ is 2, then $K \trianglelefteq G$.
 \end{lemma}
 
 \begin{proof}
@@ -111,8 +111,8 @@ If \(K \leq G\) and the index, \Cref{def:fourteen}, of \(K\) in \(G\) is 2, then
 
 \begin{theorem}
 \protect\hypertarget{thm:five}{}\label{thm:five}
-If \(K \trianglelefteq G\), the set \((G : K)\) of the left cosets of \(K\) in \(G\) is a group under coset multiplication i.e.~\(gK \circ hK = ghK\).\\
-This group is called the \emph{quotient group} (or factor group) of \(G\) by \(K\) and denoted \(G / K\).
+If $K \trianglelefteq G$, the set $(G : K)$ of the left cosets of $K$ in $G$ is a group under coset multiplication i.e.~$gK \circ hK = ghK$.\\
+This group is called the \emph{quotient group} (or factor group) of $G$ by $K$ and denoted $G / K$.
 \end{theorem}
 
 \begin{proof}
@@ -138,14 +138,14 @@ Group axioms now follow easily.
 
 \begin{itemize}
 \item
-  By construction coset multiplication is closed as \(ghK \in (G : H)\) for \(g, h \in G\).
+  By construction coset multiplication is closed as $ghK \in (G : H)$ for $g, h \in G$.
 \item
-  Identity given by \(eK = K\)
+  Identity given by $eK = K$
 \item
-  \((gK)^{-1} = g^{-1} K\)
+  $(gK)^{-1} = g^{-1} K$
 \item
-  Associativity holds since it does in \(G\), to check:
-  \((gK hK) lK = (gh)l K = g(hl)K = gK (hK lK)\).
+  Associativity holds since it does in $G$, to check:
+  $(gK hK) lK = (gh)l K = g(hl)K = gK (hK lK)$.
 \end{itemize}
 
 \end{proof}
@@ -162,8 +162,8 @@ Group axioms now follow easily.
     \begin{align*}
       D_8 = \langle a, b : a^4 = e = b^2,\ bab = a^{-1} \rangle
       \end{align*}
-      Let \(K = \{1, a^2 \}\).\\
-      Claim: \(K \trianglelefteq D_8\).
+      Let $K = \{1, a^2 \}$.\\
+      Claim: $K \trianglelefteq D_8$.
       \begin{align*}
       (a^i b) a^2 (a^i b)^{-1} &= a^i b a^2 b a^{-i} \\
       &= a^i a^{-2} b b a^{-i} \text{ as } ba^2 = a^{-1}ba = a^{-2}b \\
@@ -188,12 +188,12 @@ Group axioms now follow easily.
         \end{array} 
     \end{align*}
     %
-    Note \(aK aK = a^2 K = K\)
+    Note $aK aK = a^2 K = K$
     This is isomorphic to \Cref{exm:nine}.
   \item
-    Recall the subgroups of \((\mathbb{Z}, +)\) are precisely the groups \((n \mathbb{Z}, +)\) where \(n \in N \cup \{ 0 \}\), \(n \mathbb{Z} = \{ nk : k \in \mathbb{Z} \}\).
-    Since \((\mathbb{Z}, +)\) is abelian, all subgroups are normal, \(n \mathbb{Z} \trianglelefteq Z\).\\
-    Suppose \(n = 5\), cosets given by,
+    Recall the subgroups of $(\mathbb{Z}, +)$ are precisely the groups $(n \mathbb{Z}, +)$ where $n \in N \cup \{ 0 \}$, $n \mathbb{Z} = \{ nk : k \in \mathbb{Z} \}$.
+    Since $(\mathbb{Z}, +)$ is abelian, all subgroups are normal, $n \mathbb{Z} \trianglelefteq Z$.\\
+    Suppose $n = 5$, cosets given by,
     \begin{align*}
         5 \mathbb{Z} &= \{ 5k : k \in \mathbb{Z} \} \\
         1 + 5 \mathbb{Z} &= \{ 1 + 5k : k \in \mathbb{Z} \} \\
@@ -204,9 +204,9 @@ Group axioms now follow easily.
         (3 + 5 \mathbb{Z}) + (4 + 5 \mathbb{Z}) &= 2 + 5 \mathbb{Z}. \\
     \end{align*}
     %
-    \emph{Claim}: \(( \mathbb{Z} / 5 \mathbb{Z}, \underbrace{\circ}_\text{coset \\ `addition'}) \cong \left( \{ 0, 1, 2, 3, 4 \}, +_5 \right)\)\footnote{It is coset `addition' as it is abelian}
+    \emph{Claim}: $( \mathbb{Z} / 5 \mathbb{Z}, \underbrace{\circ}_\text{coset \\ `addition'}) \cong \left( \{ 0, 1, 2, 3, 4 \}, +_5 \right)$\footnote{It is coset `addition' as it is abelian}
 
-    We define a map \(\theta : n + 5 \mathbb{Z} \to \overline{n}\) where \(n \equiv \overline{n} \mod 5\) and \(\overline{n} \in \{ 0, 1, 2, 3, 4 \}\).
+    We define a map $\theta : n + 5 \mathbb{Z} \to \overline{n}$ where $n \equiv \overline{n} \mod 5$ and $\overline{n} \in \{ 0, 1, 2, 3, 4 \}$.
 
     Well-defined map:
     \begin{align*}
@@ -222,19 +222,19 @@ Group axioms now follow easily.
         &= \theta(n + 5 \mathbb{Z}) + \theta(m + 5 \mathbb{Z}).
     \end{align*}
     %
-    In general \((\mathbb{Z} / n \mathbb{Z}, \circ) \cong \left( \{ 0, 1, \ldots, n - 1 \}, +_n \right)\).
+    In general $(\mathbb{Z} / n \mathbb{Z}, \circ) \cong \left( \{ 0, 1, \ldots, n - 1 \}, +_n \right)$.
   \end{enumerate}
 \end{example} 
 
 \medskip
 
 Recall the definition of a homomorphism, \Cref{def:homomorphism}, \\
-\(\operatorname{Im}(\theta) = \{ \theta (g) : g \in G \} \leq H\) (\Cref{lem:three}).
-\(\ker(\theta) = \{ g \in G : \theta (g) = e_H \} \trianglelefteq G\) (Sheet 1).
+$\operatorname{Im}(\theta) = \{ \theta (g) : g \in G \} \leq H$ (\Cref{lem:three}).
+$\ker(\theta) = \{ g \in G : \theta (g) = e_H \} \trianglelefteq G$ (Sheet 1).
 
 \begin{theorem}[1st Isomorphism Theorem]
 \protect\hypertarget{thm:six}{}\label{thm:six}
-Let \(G, H\) be groups and \(\theta : G \to H\) a group homomorphism.
+Let $G, H$ be groups and $\theta : G \to H$ a group homomorphism.
 Then \begin{align*}
     \operatorname{Im} \theta &\leq H \\
     \ker \theta &\trianglelefteq G \\
@@ -244,8 +244,8 @@ Then \begin{align*}
 
 \begin{definition}[Simple group]
 \protect\hypertarget{def:sixteen}{}\label{def:sixteen}
-A group is called \emph{simple} if its only normal subgroups are \(\{ e \}\) and \(G\),
-e.g.~\(C_p\) where \(p\) is prime.
+A group is called \emph{simple} if its only normal subgroups are $\{ e \}$ and $G$,
+e.g.~$C_p$ where $p$ is prime.
 \end{definition}
 
 \begin{center}\rule{\linewidth}{0.5pt}\end{center}
@@ -253,16 +253,16 @@ e.g.~\(C_p\) where \(p\) is prime.
 \emph{Aside}
 
 \begin{definition}
-  Suppose \(f : A \to B\)
+  Suppose $f : A \to B$
 
   \begin{enumerate}
   \def\labelenumi{\roman{enumi}.}
   \item
-    \(f\) is \emph{injective} (one-to-one) if \(a_1, a_2 \in A\), \(f(a_1) = f(a_2) \implies a_1 = a_2\) (each element of \(A\) maps to a different element of \(B\)).
+    $f$ is \emph{injective} (one-to-one) if $a_1, a_2 \in A$, $f(a_1) = f(a_2) \implies a_1 = a_2$ (each element of $A$ maps to a different element of $B$).
   \item
-    \(f\) is \emph{surjective} (onto) if given \(b \in B \; \exists \; a \in A\) such that \(f(a) = b\) (every element in \(B\) is `hit').
+    $f$ is \emph{surjective} (onto) if given $b \in B \; \exists \; a \in A$ such that $f(a) = b$ (every element in $B$ is `hit').
   \item
-    \(f\) is \emph{bijective} if \(f\) is both injective and surjective.
+    $f$ is \emph{bijective} if $f$ is both injective and surjective.
   \end{enumerate}
 \end{definition}
 
@@ -277,7 +277,7 @@ Let $K = \ker \theta$, we need to construct an isomorphism
 
 {\centering \includegraphics[height=5cm]{04-iso-thm} \par}
 
-Need \(\phi\) well-defined:
+Need $\phi$ well-defined:
 \begin{align*}
     \text{Suppose } gK &= hK \\
     \implies h^{-1}g &\in K \text{ see \Cref{lem:eleven}} \\
@@ -287,7 +287,7 @@ Need \(\phi\) well-defined:
     \implies \phi(gK) &= \phi(hK)
 \end{align*}
 %
-Need \(\phi\) to be a homomorphism:
+Need $\phi$ to be a homomorphism:
 \begin{align*}
     \phi(gK hK) &= \phi(gh K) \\
     &= \theta(gh) \\
@@ -295,11 +295,11 @@ Need \(\phi\) to be a homomorphism:
     &= \phi(gK) \phi(hK).
 \end{align*}
 %
-\(\phi\) surjective:
-If \(\theta(g) \in \operatorname{Im} \theta\) then \(\phi(gK) = \theta(g)\).
+$\phi$ surjective:
+If $\theta(g) \in \operatorname{Im} \theta$ then $\phi(gK) = \theta(g)$.
 
-\(\phi\) injective:
-Suppose \(\phi(gK) = \phi(hK)\)
+$\phi$ injective:
+Suppose $\phi(gK) = \phi(hK)$
 \begin{align*}
     \text{Suppose } \phi(gK) &= \phi(hK) \\
     \implies \theta(g) &= \theta(h) \\
@@ -380,14 +380,14 @@ Recall \cref{exm:glg} and \ref{exm:sltwo}.
 Note that the kernel of the quotient map is $K$ itself.
 
 \begin{lemma}
-\protect\hypertarget{lem:thirteen}{}\label{lem:thirteen}A homomorphism \(\theta : G \to H\) is injective iff \(\ker \theta = \{ e_G \}\).
+\protect\hypertarget{lem:thirteen}{}\label{lem:thirteen}A homomorphism $\theta : G \to H$ is injective iff $\ker \theta = \{ e_G \}$.
 \end{lemma}
 
 \begin{proof}
-(\(\implies\)): Suppose \(\theta(g) = e_H = \theta (e_G)\).
-So injectivity \(\implies g = e_G\).
+($\implies$): Suppose $\theta(g) = e_H = \theta (e_G)$.
+So injectivity $\implies g = e_G$.
 
-(\(\Longleftarrow\)): \begin{align*}
+($\Longleftarrow$): \begin{align*}
     \theta(g) &= \theta(h) \\
     \implies \theta(h)^{-1} \theta(g) &= e_H \\
     \implies \theta(h^{-1} g) &= e_H \\
@@ -411,22 +411,22 @@ This allows us to reorder our elements and helps in proving the following lemma.
   \begin{enumerate}
   \def\labelenumi{\roman{enumi}.}
   \item
-    Let \(N \trianglelefteq G, H \leq G\).
-    Then \(NH = \{ nh : n \in N, h \in H \} \leq G\).
+    Let $N \trianglelefteq G, H \leq G$.
+    Then $NH = \{ nh : n \in N, h \in H \} \leq G$.
   \item
-    Let \(N \trianglelefteq G, M \trianglelefteq G\) then \(NM \trianglelefteq G\).
+    Let $N \trianglelefteq G, M \trianglelefteq G$ then $NM \trianglelefteq G$.
   \end{enumerate}
 \end{lemma}
 
 \begin{proof} \mbox{}
   \begin{enumerate} \def\labelenumi{\roman{enumi}.}
   \item
-    Closure, \(nh, \overline{n} \overline{h} \in NH\)
+    Closure, $nh, \overline{n} \overline{h} \in NH$
     \begin{align*}
       n \underbrace{h \overline{n}}_{\hat{n} h} \overline{h} = n \hat{n} h \overline{h} \in NH
     \end{align*}
 
-    \(\text{id} = e = \exists \in NH\)
+    $\text{id} = e = \exists \in NH$
 
     inverse:
     \begin{align*}
