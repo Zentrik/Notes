@@ -204,7 +204,7 @@ If $c \neq 0;\ f(\infty) = \frac{a}{c};\ f(-\frac{d}{c}) = \infty$ else $c = 0;\
 Recall $\Phi : \operatorname{GL}_2(\mathbb{C}) \twoheadrightarrow \mathcal{M}$ from proof of \Cref{thm:15} ($\twoheadrightarrow$ means its a surjective homomorphism).
 Suppose $A, B$ are conjugate in $\operatorname{GL}_2(\mathbb{C})$, i.e. $\exists \; P \in \operatorname{GL}_2(\mathbb{C})$ s.t. $PAP^{-1} = B$ then
 \begin{align*}
-    \Phi(P) \Phi(A) \Phi(P)^{-1} &= \phi(PAP^{-1}) \\
+    \Phi(P) \Phi(A) \Phi(P)^{-1} &= \Phi(PAP^{-1}) \\
     &= \Phi(B) \in \mathcal{M}
 \end{align*} 
 i.e. $\Phi(A)$ and $\Phi(B)$ are conjugate in $\mathcal{M}$.
@@ -215,17 +215,17 @@ Use knowledge of conjugacy classes in $\operatorname{GL}_2(\mathbb{C})$.
     Any non-identity M\"obius map is conjugate to $f(z) = \nu z$ for some $\nu \neq 0, 1$ or to $f(z) = z + 1$.
 \end{theorem} 
 
-\begin{proof}
+\begin{proof} \mbox{}
     \begin{enumerate}
         \item
         \begin{align*}
             \begin{pmatrix}\lambda & 0 \\0 & \mu\end{pmatrix} \text{ where } \lambda &\neq \mu,\ \lambda \neq 0 \neq \mu. \\
-            \Phi \left( \begin{pmatrix}\lambda & 0 \\0 & \mu\end{pmatrix} \right) &= f,\ f(z) = \frac{\lambda}{\mu} z = \nu z,\ \nu \neq 0, 1. \\
+            \Phi \left( \begin{pmatrix}\lambda & 0 \\0 & \mu\end{pmatrix} \right) &= f,\ f(z) = \frac{\lambda}{\mu} z = \nu z,\ \nu \neq 0, 1.
         \end{align*}
         \item
         \begin{align*}
             \begin{pmatrix}\lambda & 0 \\0 & \mu\end{pmatrix} \text{ where } \lambda &\neq 0 \\
-            \Phi \left( \begin{pmatrix}\lambda & 0 \\0 & \lambda \end{pmatrix} \right) &= \text{id}. \\
+            \Phi \left( \begin{pmatrix}\lambda & 0 \\0 & \lambda \end{pmatrix} \right) &= \text{id}.
         \end{align*}
         \item \begin{align*}
             \begin{pmatrix}\lambda & 1 \\0 & \lambda\end{pmatrix} \text{ where } \lambda &\neq 0 \\
