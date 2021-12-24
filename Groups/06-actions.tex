@@ -17,7 +17,7 @@ It is often easier to understand a group if it's doing something, permuting elem
     When $G$ acts on a set it maps elements of $X$ to $X$ in a way that the multiplication of $G$ is respected.
 \end{definition} 
 
-\begin{example} \label{exm:actions} \mbox{}
+\begin{example} \label{exm:actions} ~\vspace*{-1.5\baselineskip}
     \begin{enumerate} \def\labelenumi{\roman{enumi}.} \def\labelenumii{\arabic{enumii}.} 
         \item trivial action $\rho(g, x) = x \; \forall \; x \in X, g \in G$.
         \item $S_n$ acts on $X = \{ 1, 2, \ldots, n \}$ by permuting the elements of $X$.
@@ -35,7 +35,7 @@ It is often easier to understand a group if it's doing something, permuting elem
             r(a) &= b.
         \end{align*} 
         Also acts on the vertices of a square.
-        {\centering \includegraphics[height=5cm]{06-square-action-vertex} \par}
+        {\par \centering \includegraphics[height=5cm]{06-square-action-vertex} \par}
         \begin{align*}
             t(1) &= 4 & t(4) &= 1 \\
             t(2) &= 3 & t(d) &= 2.
@@ -174,7 +174,7 @@ It is often easier to understand a group if it's doing something, permuting elem
     This is true $\forall \; x \in X$.
 \end{proof} 
 
-\begin{remark} \mbox{}
+\begin{remark} ~
     \begin{enumerate} \def\labelenumii{\roman{enumii}.} 
         \item \Cref{prp:6} gives us an equivalent definition of a group action.
         If $G$ is a group and $X$ a set such that $\Phi: G \to \operatorname{Sym}(X)$ is a group homomorphism, then 
@@ -243,7 +243,7 @@ It is often easier to understand a group if it's doing something, permuting elem
     I.e. the set of points in $X$ which $x$ can be mapped to.
 \end{definition} 
 
-\begin{example} \mbox{}
+\begin{example} ~
     The orbits of \Cref{exm:actions}.
     \begin{enumerate}
         \item trivial action, $\operatorname{Orb}_G (x) = \{ x \}$
@@ -255,8 +255,8 @@ It is often easier to understand a group if it's doing something, permuting elem
         \begin{align*}
             \operatorname{Orb}_G(k) &= \{g(k) : g \in G\} \\
             &= \{ gkg^{-1} : g \in G \} \\
-            &= \operatorname{ccl}_G(k)
-        \end{align*}, the \emph{conjugacy class of $k$ in $G$}. If $h \in \operatorname{ccl}_G(k)$ we say $h$ and $k$ are \emph{conjugate}.
+            &= \operatorname{ccl}_G(k),
+        \end{align*} the \emph{conjugacy class of $k$ in $G$}. If $h \in \operatorname{ccl}_G(k)$ we say $h$ and $k$ are \emph{conjugate}.
     \end{enumerate} 
 \end{example} 
 
@@ -288,7 +288,7 @@ It is often easier to understand a group if it's doing something, permuting elem
     Similarly, $\operatorname{Orb}_G(z) = \operatorname{Orb}_G(y)$.
 \end{proof} 
 
-\begin{remark} \mbox{}
+\begin{remark} ~
     \begin{enumerate}
         \item We could have proved \Cref{lem:17} by noticing that $x_1 \sim x_2$ if $\exists \; g \in G$ s.t. $g(x_1) = x_2$ is an equivalence relation.
         \item $\operatorname{Orb}_G(x)$ is $G$-invariant, i.e. $g \left( \operatorname{Orb}_G(x) \right) \subseteq \operatorname{Orb}_G(x)$.
@@ -312,7 +312,7 @@ It is often easier to understand a group if it's doing something, permuting elem
     i.e. all those elements in $G$ that fix $x$.
 \end{definition} 
 
-\begin{example} \mbox{}
+\begin{example} ~
     The stabilisers of \Cref{exm:actions}.
     \begin{enumerate}
         \item trivial action - $\operatorname{Stab}_G(x) = G$.
@@ -333,7 +333,7 @@ It is often easier to understand a group if it's doing something, permuting elem
     $\operatorname{Stab}_G(x)$ is a subgroup of $G$.
 \end{lemma} 
 
-\begin{proof} \mbox{}
+\begin{proof} ~
     \begin{itemize} 
         \item $e(x) = x \implies e \in \operatorname{Stab}_G(x)$.
         \item \begin{align*}
@@ -695,7 +695,7 @@ stabilisers are called centralisers
     C_G(h) = \{g \in G : g h g^{-1} = h\}.
 \end{align*} 
 
-\begin{remark} \mbox{}
+\begin{remark} ~
     \begin{enumerate}
         \item By \Cref{lem:17} the conjugacy classes partition $G$.
         \item By \nameref{thm:orbit}, $h \in G$
@@ -796,7 +796,7 @@ stabilisers are called centralisers
     (Q10, Sheet 3).
 \end{proof} 
 
-\begin{remark} \mbox{}
+\begin{remark} ~
     \item A group of order $p^n$ for a prime $p$ is called a finite $p$-group.
     \item If all the elements have $p$-power order, $G$ is called a $p$-group.
     E.g. $C_{p^\infty}$ is the Pr\"ufer group.
@@ -810,7 +810,7 @@ stabilisers are called centralisers
     Note $n = n_1 + n_2 + \ldots + n_k$.
 \end{definition} 
 
-\begin{example}
+\begin{example} ~\vspace*{-1.5\baselineskip}
     \begin{align*}
         \begin{pmatrix}1 & 2 & 3 & 4\end{pmatrix} \begin{pmatrix}5 & 6 & 7\end{pmatrix} &= \begin{pmatrix}1 & 2 & 3 & 4\end{pmatrix} \begin{pmatrix}5 & 6 & 7\end{pmatrix} \begin{pmatrix}8\end{pmatrix} \\
         &= S_8
@@ -848,7 +848,7 @@ stabilisers are called centralisers
     Thus $2$ permutations of the same cycle type are conjugate.
 \end{proof} 
 
-\begin{example}
+\begin{example} ~\vspace*{-1.5\baselineskip}
     \begin{align*}
         \begin{pmatrix}1 & 4\end{pmatrix} \begin{pmatrix}1 & 2 & 3\end{pmatrix} \begin{pmatrix}1 & 4\end{pmatrix}^{-1} &= \begin{pmatrix}4 & 2 & 3\end{pmatrix} \\
         \begin{pmatrix}1 & l\end{pmatrix} \begin{pmatrix}1 & k\end{pmatrix} \begin{pmatrix}1 & l\end{pmatrix} &= \begin{pmatrix}l & k\end{pmatrix}
