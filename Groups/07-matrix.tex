@@ -1,9 +1,11 @@
 \section{Matrix Groups}
 
-Let $M_n(\mathbb{R})$ denote the set of all $n \times n$ matrices with entries in $\mathbb{R}$. Define
-\begin{align*}
-    \operatorname{GL}_n(\mathbb{R}) = \{A \in M_n(\mathbb{R}) : \det A \neq 0\}.
-\end{align*} 
+Let $M_n(\mathbb{R})$ denote the set of all $n \times n$ matrices with entries in $\mathbb{R}$. 
+\begin{definition}[General Linear Group] ~\vspace*{-1.5\baselineskip}
+    \begin{align*}
+        \operatorname{GL}_n(\mathbb{R}) = \{A \in M_n(\mathbb{R}) : \det A \neq 0\}.
+    \end{align*} 
+\end{definition} 
 
 \begin{proposition} \label{prp:8}
     $\operatorname{GL}_n(\mathbb{R})$ is a group under matrix multiplication.
@@ -30,7 +32,7 @@ Let $M_n(\mathbb{R})$ denote the set of all $n \times n$ matrices with entries i
     \end{align*} 
 \end{proof} 
 
-\begin{example}
+\begin{example} ~\vspace*{-1.5\baselineskip}
     \begin{align*}
         \operatorname{GL}_2(\mathbb{R}) &= \left\{ \begin{pmatrix}
         a & b \\
@@ -46,7 +48,7 @@ Let $M_n(\mathbb{R})$ denote the set of all $n \times n$ matrices with entries i
     \end{align*}
 \end{example} 
 
-\begin{proposition}\label{prp:9}
+\begin{proposition}\label{prp:9} ~\vspace*{-1.5\baselineskip}
     \begin{align*}
         \operatorname{Det} : \operatorname{GL}_n(\mathbb{R}) &\to (\mathbb{R} \setminus \{0\}, \times) \\
         A &\mapsto \det A.
@@ -148,7 +150,7 @@ Det is a surjective homomorphism to $(\mathbb{F}_p \setminus \{0\}, \times)$ so 
     If $PAP^{-1} = B$, then $P$ represents a change of basis matrix. (See LA next year)
 \end{remark} 
 
-\begin{example}
+\begin{example} ~\vspace*{-1.5\baselineskip}
     \begin{align*}
         A : e_1 &\mapsto 2 e_1 \\
         e_2 &\mapsto 3e_2 \\
@@ -303,7 +305,7 @@ So, \begin{align*}
     So $A$ is an isometry (distance preserving map) of Euclidean space $\mathbb{R}^n$.
 \end{lemma} 
 
-\begin{proof}
+\begin{proof} \mbox{}
     \begin{enumerate}
         \item \begin{align*}
             A \underline{x} \cdot A \underline{y} &= (A \underline{x})^T (A \underline{y}) \\
@@ -379,7 +381,7 @@ Since if $A \in SO_2(\mathbb{R})$ then $A = \underbrace{\left( A \begin{pmatrix}
 \end{proof} 
 
 \begin{proof}[Alternative Proof]
-    Consider $\chi_A(x)$ (characteristic poly of $A$), it is a cubic in $\mathbb{R}$.
+    Consider $\chi_A(x)$ (characteristic poly of $A$), it is a cubic in $\mathbb{R}$ and its roots multiply to 1 ($\det A = 1 = \Pi_i \lambda_i$).
     Thus it has a real root, and $|\lambda| = 1 \implies \lambda = \pm 1$. 
     But the other eigenvalues are either a complex conjugate pair, then $\lambda = 1$ as product of eigenvalues give $\det A = 1$, or all are real so either $1, -1, -1$ or $1, 1, 1$.
 \end{proof} 
