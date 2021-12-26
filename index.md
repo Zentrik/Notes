@@ -21,6 +21,8 @@
 
 [Hasan Baig](http://mhb45.user.srcf.net/)
 
+[Zhiyuan Bai](https://zb260.user.srcf.net/notes/)
+
 ### Summaries
 
 [Hasan Baig](http://mhb45.user.srcf.net/)

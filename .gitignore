@@ -1,4 +1,5 @@
 _bookdown_files/Paper/*
+*.obsidian
 
 *.aux
 *.toc
