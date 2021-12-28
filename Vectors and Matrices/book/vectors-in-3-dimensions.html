@@ -306,7 +306,7 @@ The <em>span</em> of a set of vectors is <span class="math inline">\(\operatorna
 <h2><span class="header-section-number">2.2</span> Scalar or Dot Product</h2>
 <ol style="list-style-type: lower-roman">
 <li><div class="definition">
-<span id="def:unlabeled-div-10" class="definition"><strong>Definition 2.1  </strong></span>Given <span class="math inline">\(\underline{a}\)</span> and <span class="math inline">\(\underline{b}\)</span> let <span class="math inline">\(\theta\)</span> be the angle between them; then
+<span id="def:unlabeled-div-1" class="definition"><strong>Definition 2.1  </strong></span>Given <span class="math inline">\(\underline{a}\)</span> and <span class="math inline">\(\underline{b}\)</span> let <span class="math inline">\(\theta\)</span> be the angle between them; then
 <span class="math display">\[\begin{align*}
  \underline{a} \cdot \underline{b} = | \underline{a} | | \underline{b} | \cos \theta
 \end{align*}\]</span>
@@ -375,7 +375,7 @@ and each component is <em>uniquely</em> determined
 <h2><span class="header-section-number">2.4</span> Vector or Cross Product</h2>
 <ol style="list-style-type: lower-roman">
 <li><div class="definition">
-<p><span id="def:unlabeled-div-11" class="definition"><strong>Definition 2.2  </strong></span>Given <span class="math inline">\(\underline{a}\)</span> and <span class="math inline">\(\underline{b}\)</span>, let <span class="math inline">\(\theta\)</span> be the angle between them measure in the sense shown relative to a unit normal <span class="math inline">\(\underline{n}\)</span> to the plane they span;
+<p><span id="def:unlabeled-div-2" class="definition"><strong>Definition 2.2  </strong></span>Given <span class="math inline">\(\underline{a}\)</span> and <span class="math inline">\(\underline{b}\)</span>, let <span class="math inline">\(\theta\)</span> be the angle between them measure in the sense shown relative to a unit normal <span class="math inline">\(\underline{n}\)</span> to the plane they span;
 <img src="figures/02-cross.svg" width="50%" style="display: block; margin: auto;" />
 then <span class="math display">\[\begin{align*}
  \underline{a} \wedge \underline{b} = \underline{a} \times \underline{b} = |\underline{a}| | \underline{b}| \sin \theta \underline{n}
@@ -423,7 +423,7 @@ This is called a <em>right-handed</em> orthonormal basis.</li>
 <li><em>Scalar Triple Product</em></li>
 </ol>
 <div class="definition">
-<p><span id="def:unlabeled-div-12" class="definition"><strong>Definition 2.3  </strong></span><span class="math display">\[\begin{align*}
+<p><span id="def:unlabeled-div-3" class="definition"><strong>Definition 2.3  </strong></span><span class="math display">\[\begin{align*}
     \underline{a} \cdot (\underline{b} \wedge \underline{c}) &amp;= \underline{b} \cdot (\underline{c} \wedge \underline{a}) = \underline{c} \cdot ( \underline{a} \wedge \underline{b}) \\
     &amp;= - \underline{a} \cdot (\underline{c} \wedge \underline{b}) = - \underline{b} \cdot (\underline{a} \wedge \underline{c}) = - \underline{c} \cdot (\underline{b} \wedge \underline{a}) \\
     &amp;= \left[ \underline{a}, \underline{b}, \underline{c} \right]
@@ -436,7 +436,7 @@ The “signed volume” is <span class="math inline">\(\underline{c} \cdot \unde
 <p>Note: <span class="math inline">\(\underline{a} \cdot \underline{b} \wedge \underline{c}\)</span> iff <span class="math inline">\(\underline{a}, \underline{b}, \underline{c}\)</span> are <em>co-planar</em> meaning one of them lies in the plane spanned by the other two.
 e.g. <span class="math inline">\(\underline{c} = \alpha \underline{a} + \beta \underline{b}\)</span> belonging to <span class="math inline">\(\operatorname{span} \{ a, b \}\)</span></p>
 <div class="example">
-<p><span id="exm:unlabeled-div-13" class="example"><strong>Example 2.1  </strong></span><span class="math display">\[\begin{align*}
+<p><span id="exm:unlabeled-div-4" class="example"><strong>Example 2.1  </strong></span><span class="math display">\[\begin{align*}
     \underline{a} &amp;= \begin{pmatrix}2 &amp; 0 &amp; -1\end{pmatrix} \\
     \underline{b} &amp;= \begin{pmatrix}7 &amp; -3 &amp; 5 \end{pmatrix} \\
     \implies \underline{a} \wedge \underline{b} &amp;= (0.5 - (-1)(-3)) \underline{e}_1 + ((-1)7 - 2.5) \underline{e}_2 + (2(-3) - 0.7) \underline{e}_3 \\
@@ -520,20 +520,54 @@ Figure 2.2: Clearly a plane
 <p>Consider equations for <span class="math inline">\(\underline{r}\)</span> (unknown) written in vector notation with given constant vectors.</p>
 <p>Possible approaches:</p>
 <ul>
-<li>We can re-write and convert to some standard form
-::: {.example}
-<span class="math display">\[\begin{align*}
-  |\underline{r}|^2 + \underline{r} \cdot \underline{a} &amp;= k \\
-  \text{Complete the square:} \\
-  |\underline{r} + \frac{1}{2} \underline{a}|^2 &amp;= (\underline{r} + \frac{1}{2} \underline{a}) \cdot (\underline{r} + \frac{1}{2} \underline{a}) \\
-  &amp;= k + \frac{1}{4} |\underline{a}|^2.
-\end{align*}\]</span>
-This is the equation of a sphere, centre <span class="math inline">\(-\frac{1}{2} \underline{a}\)</span> and radius <span class="math inline">\((k + \frac{1}{4} |\underline{a}|^2)^{1 / 2}\)</span> provided <span class="math inline">\(k + \frac{1}{4} |\underline{a}|^2 &gt; 0\)</span>
-:::</li>
+<li>We can re-write and convert to some standard form</li>
 </ul>
+<div class="example">
+<p><span id="exm:unlabeled-div-5" class="example"><strong>Example 2.2  </strong></span><span class="math display">\[\begin{align*}
+    |\underline{r}|^2 + \underline{r} \cdot \underline{a} &amp;= k \\
+    \text{Complete the square:} \\
+    \left| \underline{r} + \frac{1}{2} \underline{a} \right|^2 &amp;= \left( \underline{r} + \frac{1}{2} \underline{a} \right) \cdot \left( \underline{r} + \frac{1}{2} \underline{a} \right) \\
+    &amp;= k + \frac{1}{4} |\underline{a}|^2.
+\end{align*}\]</span>
+This is the equation of a sphere, centre <span class="math inline">\(-\frac{1}{2} \underline{a}\)</span> and radius <span class="math inline">\((k + \frac{1}{4} |\underline{a}|^2)^{1 / 2}\)</span> provided <span class="math inline">\(k + \frac{1}{4} |\underline{a}|^2 &gt; 0\)</span></p>
+</div>
 <p>For equations linear in <span class="math inline">\(\underline{r}\)</span></p>
 <ul>
-<li><p>Try dotting and crossing with constant vectors to learn more (see examples in provided notes).</p></li>
+<li>Try dotting and crossing with constant vectors to learn more.</li>
+</ul>
+<div class="example">
+<p><span id="exm:unlabeled-div-6" class="example"><strong>Example 2.3  </strong></span>Another example of a vector equation is
+<span class="math display" id="eq:one">\[\begin{align}
+    \underline r + \underline a \times (\underline b \times \underline r) = \underline c \tag{2.1}
+\end{align}\]</span>
+where <span class="math inline">\(\underline a, \underline b, \underline c\)</span> are fixed.
+We can dot with <span class="math inline">\(\underline a\)</span> to eliminate the second term:
+<span class="math display" id="eq:two">\[\begin{align}
+    \underline a \cdot \underline r = \underline a \cdot \underline c \tag{2.2}
+\end{align}\]</span>
+Note that using the dot product loses information — this is simply a tool to make deductions; <a href="vectors-in-3-dimensions.html#eq:two">(2.2)</a> does not contain the full information of <a href="vectors-in-3-dimensions.html#eq:one">(2.1)</a>, i.e. <a href="vectors-in-3-dimensions.html#eq:two">(2.2)</a> <span class="math inline">\(\ \not\!\!\!\!\implies\)</span> <a href="vectors-in-3-dimensions.html#eq:one">(2.1)</a>.
+Combining <a href="vectors-in-3-dimensions.html#eq:one">(2.1)</a> and <a href="vectors-in-3-dimensions.html#eq:two">(2.2)</a>, and using the formula for the vector triple product, we get
+<span class="math display" id="eq:three">\[\begin{align}
+    \underline r + (\underline a \cdot \underline r) \underline b - (\underline a \cdot \underline b) \underline r          &amp; = \underline c \tag{2.3} \\
+    \implies \underline r + (\underline a \cdot \underline c) \underline b - (\underline a \cdot \underline b) \underline r &amp; = \underline c \notag
+\end{align}\]</span>
+This eliminates the dependency on <span class="math inline">\(\underline r\)</span> inside the dot product.
+Now, we can factorise, leaving
+<span class="math display" id="eq:four">\[\begin{align}
+        (1 - \underline a \cdot \underline b) \underline r = \underline c - (\underline a \cdot \underline c) \underline b \tag{2.4}
+\end{align}\]</span></p>
+<ol style="list-style-type: lower-roman">
+<li><p>If <span class="math inline">\(1 - \underline a \cdot \underline b \neq 0\)</span> then <span class="math inline">\(\underline r\)</span> has a single solution, <span class="math inline">\(\underline{r} = (\underline{c} - (\underline{a} \cdot \underline{c}) \underline{b} ) / (1 - \underline{a} \cdot b)\)</span>, a point.</p></li>
+<li><p>If <span class="math inline">\(1 - \underline{a} \cdot \underline{b} = 0\)</span> and <span class="math inline">\(\underline c - (\underline a \cdot \underline c) \underline b \neq 0\)</span> implies <a href="vectors-in-3-dimensions.html#eq:four">(2.4)</a> is inconsistent so <em>no solution</em></p></li>
+<li><p>If <span class="math inline">\(1 - \underline{a} \cdot \underline{b} = 0\)</span> and <span class="math inline">\(\underline c - (\underline a \cdot \underline c) \underline b = 0\)</span>
+We can now combine this expression for <span class="math inline">\(\underline c\)</span> into <a href="vectors-in-3-dimensions.html#eq:three">(2.3)</a> and eliminate the <span class="math inline">\((1- \underline a \cdot \underline b)\)</span> term, to get
+<span class="math display">\[\begin{align*}
+    (\underline a \cdot \underline r - \underline a \cdot \underline c) \underline b = \underline 0
+\end{align*}\]</span>
+This shows us that (given that <span class="math inline">\(\underline b\)</span> is non-zero) the solutions to the equation are given by <a href="vectors-in-3-dimensions.html#eq:two">(2.2)</a>, which is the equation of a plane, so <a href="vectors-in-3-dimensions.html#eq:two">(2.2)</a> <span class="math inline">\(\implies\)</span> <a href="vectors-in-3-dimensions.html#eq:one">(2.1)</a>.</p></li>
+</ol>
+</div>
+<ul>
 <li><p>Can try expressing <span class="math inline">\(\underline{r} = \alpha \underline{a} + \beta \underline{b} + \gamma \underline{c}\)</span> for some non-co-planar <span class="math inline">\(\underline{a}, \underline{b}, \underline{c}\)</span> and solve for <span class="math inline">\(\alpha, \beta, \gamma\)</span>.</p></li>
 <li><p>Can choose basis and use index/ matrix notation.</p></li>
 </ul>
@@ -557,7 +591,7 @@ Indices or suffices <span class="math inline">\(i, j, k, l, p, q \dots\)</span> 
     &amp;\iff &amp; x_j &amp;= a_j + (\sum_k b_k c_k) d_j \text{ for } j = 1, 2, 3 \text{ free index}
 \end{align*}\]</span></p>
 <div class="definition">
-<p><span id="def:unlabeled-div-14" class="definition"><strong>Definition 2.4  (Kronecker Delta) </strong></span><span class="math display">\[\begin{align*}
+<p><span id="def:unlabeled-div-7" class="definition"><strong>Definition 2.4  (Kronecker Delta) </strong></span><span class="math display">\[\begin{align*}
     \delta_{ij} &amp;= \begin{cases}
         1 &amp; \text{if } i = j \\
         0 &amp; \text{else}\\
@@ -575,14 +609,14 @@ Indices or suffices <span class="math inline">\(i, j, k, l, p, q \dots\)</span> 
     0 &amp; 0 &amp; 1
     \end{pmatrix} \\
     \text{Then } \underline{e}_i \cdot \underline{e}_j &amp;= \delta_{ij} \\
-    \text{and } \underline{a} \cdot \underline{b} &amp;= (\sum_i a_i \underline{e}_i) \cdot (\sum_j b_j \underline{e}_j) \\
+    \text{and } \underline{a} \cdot \underline{b} &amp;= \left( \sum_i a_i \underline{e}_i) \cdot (\sum_j b_j \underline{e}_j \right) \\
     &amp;= \sum_{ij} a_i b_j \underline{e}_i \cdot \underline{e}_j \\
     &amp;= \sum_{ij} a_i b_j \delta_{ij} \\
     &amp;= \sum_i a_i b_i
 \end{align*}\]</span></p>
 </div>
 <div class="definition">
-<p><span id="def:unlabeled-div-15" class="definition"><strong>Definition 2.5  (Levi-Civita Epsilon) </strong></span><span class="math display">\[\begin{align*}
+<p><span id="def:unlabeled-div-8" class="definition"><strong>Definition 2.5  (Levi-Civita Epsilon) </strong></span><span class="math display">\[\begin{align*}
     \epsilon_{ijk} &amp;= \begin{cases}
         + 1 &amp; \text{if } (i, j, k) \text{ is an even permutation of } (1, 2, 3) \\
         - 1 &amp; \text{if } (i, j, k) \text{ is an odd permutation of } (1, 2, 3) \\
@@ -599,7 +633,7 @@ Then
     \text{e.g. } \underline{e}_2 \wedge \underline{e}_1 &amp;= \sum_k \epsilon_{21k} \ \underline{e}_k \\
     &amp;= \epsilon_{213} \ \underline{e}_3 \\
     &amp;= - \underline{e}_3 \\
-    \text{And } \underline{a} \wedge \underline{b} &amp;= (\sum_i a_i \underline{e}_i) \wedge (\sum_j b_j \underline{e}_j) \\
+    \text{And } \underline{a} \wedge \underline{b} &amp;= \left( \sum_i a_i \underline{e}_i \right) \wedge \left( \sum_j b_j \underline{e}_j \right) \\
     &amp;= \sum_{ij} a_i b_j \underline{e}_i \wedge \underline{e}_j \\
     &amp;= \sum_{ij} a_i b_j \left( \sum_k \epsilon_{ijk} \ \underline{e}_k \right) \\
     &amp;= \sum_k \left( \sum_{ij} \epsilon_{ijk} a_i b_j \right) \underline{e}_k \\
@@ -615,7 +649,7 @@ Then
 <p>With component/ index notation, we observe that indices that appear <em>twice</em> in a given term are (usually) summed over.
 In the summation convention we <em>omit</em> <span class="math inline">\(\sum\)</span> signs for repeated indices: the sum is understood.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-16" class="example"><strong>Example 2.2  </strong></span><span class="math display">\[\begin{align*}
+<p><span id="exm:unlabeled-div-9" class="example"><strong>Example 2.4  </strong></span><span class="math display">\[\begin{align*}
     a_i \delta_{ij} &amp;= a_1 \delta_{1j} + a_2 \delta_{2j} + a_3 \delta_{3j} \\
     &amp;= \begin{cases}
         a_1 &amp; \text{if} j = 1 \\
@@ -626,29 +660,29 @@ In the summation convention we <em>omit</em> <span class="math inline">\(\sum\)<
 \end{align*}\]</span></p>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-17" class="example"><strong>Example 2.3  </strong></span><span class="math display">\[\begin{align*}
+<p><span id="exm:unlabeled-div-10" class="example"><strong>Example 2.5  </strong></span><span class="math display">\[\begin{align*}
     \underline{a} \cdot \underline{b} &amp;= \delta_{ij} a_i b_j \\
     &amp;= a_i b_i
 \end{align*}\]</span></p>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-18" class="example"><strong>Example 2.4  </strong></span><span class="math display">\[\begin{align*}
+<p><span id="exm:unlabeled-div-11" class="example"><strong>Example 2.6  </strong></span><span class="math display">\[\begin{align*}
     (\underline{a} \wedge \underline{b})_i = \epsilon_{ijk} a_j b_k
 \end{align*}\]</span></p>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-19" class="example"><strong>Example 2.5  </strong></span><span class="math display">\[\begin{align*}
+<p><span id="exm:unlabeled-div-12" class="example"><strong>Example 2.7  </strong></span><span class="math display">\[\begin{align*}
     \underline{a} \cdot \underline{b} \wedge c &amp;= \epsilon_{ijk} a_j b_k c_k \\
     &amp;= a_i b_i
 \end{align*}\]</span></p>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-20" class="example"><strong>Example 2.6  </strong></span><span class="math display">\[\begin{align*}
+<p><span id="exm:unlabeled-div-13" class="example"><strong>Example 2.8  </strong></span><span class="math display">\[\begin{align*}
     \delta_{ii} = \delta_{11} + \delta_{22} + \delta_{33} = 3
 \end{align*}\]</span></p>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-21" class="example"><strong>Example 2.7  </strong></span><span class="math display">\[\begin{align*}
+<p><span id="exm:unlabeled-div-14" class="example"><strong>Example 2.9  </strong></span><span class="math display">\[\begin{align*}
     \left[ (\underline{a} \cdot \underline{c}) \underline{b} - (\underline{a} \cdot \underline{b}) \underline{c} \right]_i &amp;= (\underline{a} \cdot \underline{c}) \underline{b}_i - (\underline{a} \cdot \underline{b}) \underline{c}_i \\
     &amp;= a_j c_j b_i - a_j b_j c_i
 \end{align*}\]</span></p>
@@ -666,7 +700,7 @@ In the summation convention we <em>omit</em> <span class="math inline">\(\sum\)<
 <h3><span class="header-section-number">2.7.4</span> Application</h3>
 <p>Proof of the vector triple product identity. Consider</p>
 <div class="proof">
-<p><span id="unlabeled-div-22" class="proof"><em>Proof</em>. </span><span class="math display">\[\begin{align*}
+<p><span id="unlabeled-div-15" class="proof"><em>Proof</em>. </span><span class="math display">\[\begin{align*}
     \left[ \underline{a} \wedge (\underline{b} \wedge \underline{c}) \right]_i &amp;= \epsilon_{ijk} a_j (\underline{b} \wedge \underline{c})_k \\
     &amp;= \epsilon_{ijk} a_j \epsilon_{kpq} b_p c_q \\
     &amp;= \epsilon_{ijk} \epsilon_{pqk} a_j b_p c_q \\
@@ -685,26 +719,24 @@ In the summation convention we <em>omit</em> <span class="math inline">\(\sum\)<
 <div id="epsilon-epsilon-identities" class="section level3" number="2.7.5">
 <h3><span class="header-section-number">2.7.5</span> <span class="math inline">\(\epsilon \epsilon\)</span> identities</h3>
 <ol style="list-style-type: decimal">
-<li><span class="math display">\[\begin{align*}
+<li><p><span class="math display">\[\begin{align*}
  \epsilon_{ijk} \epsilon_{pqk} &amp;= \sum_k \epsilon_{ijk} \epsilon_{pqk} \\
  &amp;= \delta_{ip}\delta_{jq} - \delta_{iq} \delta_{jp} \\
  &amp;= \epsilon_{kij} \epsilon_{kpq}
-\end{align*}\]</span><a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></li>
-</ol>
-<p>Check: RHS and LHS are both antisymmetric under <span class="math inline">\(i \leftrightarrow j\)</span> or <span class="math inline">\(p \leftrightarrow q\)</span>.
+\end{align*}\]</span><a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>
+Check: RHS and LHS are both antisymmetric under <span class="math inline">\(i \leftrightarrow j\)</span> or <span class="math inline">\(p \leftrightarrow q\)</span>.
 So both sides vanish if <span class="math inline">\(i = j\)</span> or <span class="math inline">\(p = q\)</span>.
 Now suffices to check e.g. <span class="math inline">\(i = p = 1\)</span> and <span class="math inline">\(j = q = 2\)</span>
 <span class="math display">\[\begin{align*}
-    LHS &amp;= \epsilon_{123} \epsilon_{123} = 1 \\
-    RHS &amp;= \delta_{11} \delta_{22} - \delta_{12} \delta_{21} = 1
-\end{align*}\]</span></p>
-<p>or <span class="math inline">\(i = q = 1\)</span> and <span class="math inline">\(j = p = 2\)</span>
+ LHS &amp;= \epsilon_{123} \epsilon_{123} = 1 \\
+ RHS &amp;= \delta_{11} \delta_{22} - \delta_{12} \delta_{21} = 1
+\end{align*}\]</span>
+or <span class="math inline">\(i = q = 1\)</span> and <span class="math inline">\(j = p = 2\)</span>
 <span class="math display">\[\begin{align*}
-    LHS &amp;= \epsilon_{123} \epsilon_{213} = 1(-1) = -1 \\
-    RHS &amp;= \delta_{12} \delta_{21} - \delta_{11} \delta_{22} = -1
-\end{align*}\]</span></p>
-<p>All other index choices work similarly, proof by exhaustion.</p>
-<ol start="2" style="list-style-type: decimal">
+ LHS &amp;= \epsilon_{123} \epsilon_{213} = 1(-1) = -1 \\
+ RHS &amp;= \delta_{12} \delta_{21} - \delta_{11} \delta_{22} = -1
+\end{align*}\]</span>
+All other index choices work similarly, proof by exhaustion.</p></li>
 <li><p><span class="math inline">\(\epsilon_{ijk} \epsilon_{pjk} = 2\delta_{ip}\)</span>
 <em>contract</em> result above
 <span class="math display">\[\begin{align*}

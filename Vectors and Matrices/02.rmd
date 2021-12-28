@@ -293,11 +293,12 @@ Consider equations for $\underline{r}$ (unknown) written in vector notation with
 Possible approaches:
 
 - We can re-write and convert to some standard form
+
 ::: {.example}
 \begin{align*}
     |\underline{r}|^2 + \underline{r} \cdot \underline{a} &= k \\
     \text{Complete the square:} \\
-    |\underline{r} + \frac{1}{2} \underline{a}|^2 &= (\underline{r} + \frac{1}{2} \underline{a}) \cdot (\underline{r} + \frac{1}{2} \underline{a}) \\
+    \left| \underline{r} + \frac{1}{2} \underline{a} \right|^2 &= \left( \underline{r} + \frac{1}{2} \underline{a} \right) \cdot \left( \underline{r} + \frac{1}{2} \underline{a} \right) \\
     &= k + \frac{1}{4} |\underline{a}|^2.
 \end{align*}
 This is the equation of a sphere, centre $-\frac{1}{2} \underline{a}$ and radius $(k + \frac{1}{4} |\underline{a}|^2)^{1 / 2}$ provided $k + \frac{1}{4} |\underline{a}|^2 > 0$
@@ -305,7 +306,41 @@ This is the equation of a sphere, centre $-\frac{1}{2} \underline{a}$ and radius
 
 For equations linear in $\underline{r}$
 
-- Try dotting and crossing with constant vectors to learn more (see examples in provided notes).
+- Try dotting and crossing with constant vectors to learn more.
+
+::: {.example}
+Another example of a vector equation is
+\begin{align}
+	\underline r + \underline a \times (\underline b \times \underline r) = \underline c (\#eq:one)
+\end{align}
+where \(\underline a, \underline b, \underline c\) are fixed.
+We can dot with \(\underline a\) to eliminate the second term:
+\begin{align}
+	\underline a \cdot \underline r = \underline a \cdot \underline c (\#eq:two)
+\end{align}
+Note that using the dot product loses information --- this is simply a tool to make deductions; \@ref(eq:two) does not contain the full information of \@ref(eq:one), i.e. \@ref(eq:two) $\ \not\!\!\!\!\implies$ \@ref(eq:one).
+Combining \@ref(eq:one) and \@ref(eq:two), and using the formula for the vector triple product, we get
+\begin{align}
+	\underline r + (\underline a \cdot \underline r) \underline b - (\underline a \cdot \underline b) \underline r          & = \underline c (\#eq:three) \\
+	\implies \underline r + (\underline a \cdot \underline c) \underline b - (\underline a \cdot \underline b) \underline r & = \underline c \notag
+\end{align}
+This eliminates the dependency on \(\underline r\) inside the dot product.
+Now, we can factorise, leaving
+\begin{align}
+    	(1 - \underline a \cdot \underline b) \underline r = \underline c - (\underline a \cdot \underline c) \underline b (\#eq:four)
+\end{align}
+
+i. If \(1 - \underline a \cdot \underline b \neq 0\) then \(\underline r\) has a single solution, $\underline{r} = (\underline{c} - (\underline{a} \cdot \underline{c}) \underline{b} ) / (1 - \underline{a} \cdot b)$, a point.
+
+ii. If $1 - \underline{a} \cdot \underline{b} = 0$ and $\underline c - (\underline a \cdot \underline c) \underline b \neq 0$ implies \@ref(eq:four) is inconsistent so *no solution*
+
+iii. If $1 - \underline{a} \cdot \underline{b} = 0$ and $\underline c - (\underline a \cdot \underline c) \underline b = 0$
+We can now combine this expression for \(\underline c\) into \@ref(eq:three) and eliminate the \((1- \underline a \cdot \underline b)\) term, to get
+\begin{align*}
+	(\underline a \cdot \underline r - \underline a \cdot \underline c) \underline b = \underline 0
+\end{align*}
+This shows us that (given that \(\underline b\) is non-zero) the solutions to the equation are given by \@ref(eq:two), which is the equation of a plane, so  \@ref(eq:two) $\implies$ \@ref(eq:one).
+:::
 
 - Can try expressing $\underline{r} = \alpha \underline{a} + \beta \underline{b} + \gamma \underline{c}$ for some non-co-planar $\underline{a}, \underline{b}, \underline{c}$ and solve for $\alpha, \beta, \gamma$.
 
@@ -348,7 +383,7 @@ Then \begin{align*}
     0 & 0 & 1
     \end{pmatrix} \\
     \text{Then } \underline{e}_i \cdot \underline{e}_j &= \delta_{ij} \\
-    \text{and } \underline{a} \cdot \underline{b} &= (\sum_i a_i \underline{e}_i) \cdot (\sum_j b_j \underline{e}_j) \\
+    \text{and } \underline{a} \cdot \underline{b} &= \left( \sum_i a_i \underline{e}_i) \cdot (\sum_j b_j \underline{e}_j \right) \\
     &= \sum_{ij} a_i b_j \underline{e}_i \cdot \underline{e}_j \\
     &= \sum_{ij} a_i b_j \delta_{ij} \\
     &= \sum_i a_i b_i
@@ -373,7 +408,7 @@ Then
     \text{e.g. } \underline{e}_2 \wedge \underline{e}_1 &= \sum_k \epsilon_{21k} \ \underline{e}_k \\
     &= \epsilon_{213} \ \underline{e}_3 \\
     &= - \underline{e}_3 \\
-    \text{And } \underline{a} \wedge \underline{b} &= (\sum_i a_i \underline{e}_i) \wedge (\sum_j b_j \underline{e}_j) \\
+    \text{And } \underline{a} \wedge \underline{b} &= \left( \sum_i a_i \underline{e}_i \right) \wedge \left( \sum_j b_j \underline{e}_j \right) \\
     &= \sum_{ij} a_i b_j \underline{e}_i \wedge \underline{e}_j \\
     &= \sum_{ij} a_i b_j \left( \sum_k \epsilon_{ijk} \ \underline{e}_k \right) \\
     &= \sum_k \left( \sum_{ij} \epsilon_{ijk} a_i b_j \right) \underline{e}_k \\
@@ -466,7 +501,6 @@ Proof of the vector triple product identity. Consider
     &= \delta_{ip}\delta_{jq} - \delta_{iq} \delta_{jp} \\
     &= \epsilon_{kij} \epsilon_{kpq}
 \end{align*}^[expected to know this and quote it]
-
 Check: RHS and LHS are both antisymmetric under $i \leftrightarrow j$ or $p \leftrightarrow q$.
 So both sides vanish if $i = j$ or $p = q$.
 Now suffices to check e.g. $i = p = 1$ and $j = q = 2$
@@ -474,13 +508,11 @@ Now suffices to check e.g. $i = p = 1$ and $j = q = 2$
     LHS &= \epsilon_{123} \epsilon_{123} = 1 \\
     RHS &= \delta_{11} \delta_{22} - \delta_{12} \delta_{21} = 1
 \end{align*} 
-
 or $i = q = 1$ and $j = p = 2$
 \begin{align*}
     LHS &= \epsilon_{123} \epsilon_{213} = 1(-1) = -1 \\
     RHS &= \delta_{12} \delta_{21} - \delta_{11} \delta_{22} = -1
 \end{align*} 
-
 All other index choices work similarly, proof by exhaustion.
 
 2. $\epsilon_{ijk} \epsilon_{pjk} = 2\delta_{ip}$
