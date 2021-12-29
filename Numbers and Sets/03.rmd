@@ -643,7 +643,7 @@ Indeed, $(a, b) = a (1, 0) + b (0, 1) = a + bi$.
 \
 
 1. $\mathbb{C}$ obeys all the usual rules of arithmetic.
-In particular it obeys (1) - (3) as set out in [The Reals], including that $\forall \; z \neq 0, \; \exists w$ s.t. $zw = 1$. \
+In particular it obeys (1) - (3) as set out in [The Reals], including that $\forall \; z \neq 0, \; \exists \; w$ s.t. $zw = 1$. \
 Indeed, given $z = a + bi$, note that
 \begin{align*}
     (a + bi)(a- bi) &= a^2 + b^2 \text{ so } (a + bi) \frac{a - bi}{a^2 + b^2} = 1.

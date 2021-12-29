@@ -1,4 +1,4 @@
-_bookdown_files/Paper/*
+_bookdown_files
 *.obsidian
 
 *.aux
@@ -13,3 +13,5 @@ _bookdown_files/Paper/*
 *.kra-autosave.kra
 
 */_main.tex
+
+tikz*.pdf
