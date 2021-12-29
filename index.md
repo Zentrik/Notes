@@ -1,4 +1,6 @@
-# Cambridge 2021 Maths Notes
+--- 
+title: "Cambridge 2021 Maths Notes"
+---
 
 ## IA
 
