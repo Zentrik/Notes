@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>3 The Reals | Numbers and Sets 2021 - 2022</title>
+  <meta name="description" content="Notes" />
+  <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="3 The Reals | Numbers and Sets 2021 - 2022" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Notes" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="3 The Reals | Numbers and Sets 2021 - 2022" />
+  
+  <meta name="twitter:description" content="Notes" />
+  
+
+<meta name="author" content="Author" />
+
+
+<meta name="date" content="2021-07-10" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="elementary-number-theory.html"/>
+<link rel="next" href="sets-functions-and-relations.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Lecture 1</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#contents"><i class="fa fa-check"></i><b>0.1</b> Contents</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#examples-and-remarks-of-statements"><i class="fa fa-check"></i><b>1.1</b> Examples and remarks of statements</a></li>
+<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#some-proofs-and-non-proofs"><i class="fa fa-check"></i><b>1.2</b> Some proofs and non-proofs</a></li>
+<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#combining-assertions"><i class="fa fa-check"></i><b>1.3</b> Combining assertions</a></li>
+<li class="chapter" data-level="1.4" data-path="introduction.html"><a href="introduction.html#negating-quantifiers"><i class="fa fa-check"></i><b>1.4</b> Negating Quantifiers</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="elementary-number-theory.html"><a href="elementary-number-theory.html"><i class="fa fa-check"></i><b>2</b> Elementary Number Theory</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="elementary-number-theory.html"><a href="elementary-number-theory.html#the-natural-numbers"><i class="fa fa-check"></i><b>2.1</b> The natural numbers</a></li>
+<li class="chapter" data-level="2.2" data-path="elementary-number-theory.html"><a href="elementary-number-theory.html#the-integers"><i class="fa fa-check"></i><b>2.2</b> The integers</a></li>
+<li class="chapter" data-level="2.3" data-path="elementary-number-theory.html"><a href="elementary-number-theory.html#the-rationals"><i class="fa fa-check"></i><b>2.3</b> The rationals</a></li>
+<li class="chapter" data-level="2.4" data-path="elementary-number-theory.html"><a href="elementary-number-theory.html#primes"><i class="fa fa-check"></i><b>2.4</b> Primes</a></li>
+<li class="chapter" data-level="2.5" data-path="elementary-number-theory.html"><a href="elementary-number-theory.html#highest-common-factors"><i class="fa fa-check"></i><b>2.5</b> Highest Common Factors</a></li>
+<li class="chapter" data-level="2.6" data-path="elementary-number-theory.html"><a href="elementary-number-theory.html#euclids-algorithm"><i class="fa fa-check"></i><b>2.6</b> Euclid’s Algorithm</a></li>
+<li class="chapter" data-level="2.7" data-path="elementary-number-theory.html"><a href="elementary-number-theory.html#some-applications-of-theorem-refthmfta"><i class="fa fa-check"></i><b>2.7</b> Some Applications of Theorem @ref(thm:fta)</a></li>
+<li class="chapter" data-level="2.8" data-path="elementary-number-theory.html"><a href="elementary-number-theory.html#modular-arithmetic"><i class="fa fa-check"></i><b>2.8</b> Modular arithmetic</a></li>
+<li class="chapter" data-level="2.9" data-path="elementary-number-theory.html"><a href="elementary-number-theory.html#solving-congruences"><i class="fa fa-check"></i><b>2.9</b> Solving congruences</a></li>
+<li class="chapter" data-level="2.10" data-path="elementary-number-theory.html"><a href="elementary-number-theory.html#solving-simultaneous-congruences"><i class="fa fa-check"></i><b>2.10</b> Solving simultaneous congruences</a></li>
+<li class="chapter" data-level="2.11" data-path="elementary-number-theory.html"><a href="elementary-number-theory.html#public-key-cryptography"><i class="fa fa-check"></i><b>2.11</b> Public Key Cryptography</a>
+<ul>
+<li class="chapter" data-level="2.11.1" data-path="elementary-number-theory.html"><a href="elementary-number-theory.html#rsa-scheme-rivest-shamir-adleman"><i class="fa fa-check"></i><b>2.11.1</b> RSA Scheme (Rivest, Shamir, Adleman)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="the-reals.html"><a href="the-reals.html"><i class="fa fa-check"></i><b>3</b> The Reals</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="the-reals.html"><a href="the-reals.html#the-reals-1"><i class="fa fa-check"></i><b>3.1</b> The Reals</a></li>
+<li class="chapter" data-level="3.2" data-path="the-reals.html"><a href="the-reals.html#sequences"><i class="fa fa-check"></i><b>3.2</b> Sequences</a></li>
+<li class="chapter" data-level="3.3" data-path="the-reals.html"><a href="the-reals.html#series"><i class="fa fa-check"></i><b>3.3</b> Series</a></li>
+<li class="chapter" data-level="3.4" data-path="the-reals.html"><a href="the-reals.html#decimal-expansion"><i class="fa fa-check"></i><b>3.4</b> Decimal expansion</a></li>
+<li class="chapter" data-level="3.5" data-path="the-reals.html"><a href="the-reals.html#eulers-number-e"><i class="fa fa-check"></i><b>3.5</b> Euler’s number <span class="math inline">\(e\)</span></a></li>
+<li class="chapter" data-level="3.6" data-path="the-reals.html"><a href="the-reals.html#algebraic-and-transcendental-numbers"><i class="fa fa-check"></i><b>3.6</b> Algebraic and Transcendental Numbers</a></li>
+<li class="chapter" data-level="3.7" data-path="the-reals.html"><a href="the-reals.html#the-complex-numbers"><i class="fa fa-check"></i><b>3.7</b> The Complex Numbers</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="sets-functions-and-relations.html"><a href="sets-functions-and-relations.html"><i class="fa fa-check"></i><b>4</b> Sets, Functions and Relations</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="sets-functions-and-relations.html"><a href="sets-functions-and-relations.html#finite-sets"><i class="fa fa-check"></i><b>4.1</b> Finite Sets</a></li>
+<li class="chapter" data-level="4.2" data-path="sets-functions-and-relations.html"><a href="sets-functions-and-relations.html#functions"><i class="fa fa-check"></i><b>4.2</b> Functions</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="sets-functions-and-relations.html"><a href="sets-functions-and-relations.html#observations"><i class="fa fa-check"></i><b>4.2.1</b> Observations</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="sets-functions-and-relations.html"><a href="sets-functions-and-relations.html#relations"><i class="fa fa-check"></i><b>4.3</b> Relations</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="countability.html"><a href="countability.html"><i class="fa fa-check"></i><b>5</b> Countability</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="countability.html"><a href="countability.html#question"><i class="fa fa-check"></i><b>5.1</b> Question</a></li>
+<li class="chapter" data-level="5.2" data-path="countability.html"><a href="countability.html#panorama"><i class="fa fa-check"></i><b>5.2</b> Panorama</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="more-about-primes-non-examinable.html"><a href="more-about-primes-non-examinable.html"><i class="fa fa-check"></i><b>6</b> More about primes (non-examinable)</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Numbers and Sets 2021 - 2022</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="the-reals" class="section level1" number="3">
+<h1><span class="header-section-number">3</span> The Reals</h1>
+<p>We have seen <span class="math inline">\(\mathbb{N} \subset \mathbb{Z} \subset \mathbb{Q}\)</span> (<span class="math inline">\(\mathbb{N} \to \mathbb{Z}\)</span> lets us subtract and <span class="math inline">\(\mathbb{Z} \to \mathbb{Q}\)</span> gives us division).
+Why stop here?</p>
+<div class="proposition">
+<p><span id="prp:t-one" class="proposition"><strong>Proposition 3.1  </strong></span>There is no rational <span class="math inline">\(x\)</span> with <span class="math inline">\(x^2 = 2\)</span>.</p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-55" class="proof"><em>Proof</em>. </span>Suppose <span class="math inline">\(x^2 = 2\)</span>.
+Note we may assume <span class="math inline">\(x &gt; 0\)</span> since <span class="math inline">\((-x)^2 = x^2\)</span>.
+If <span class="math inline">\(x\)</span> is rational then <span class="math inline">\(x = \frac{a}{b}\)</span> for some <span class="math inline">\(a, b \in \mathbb{N}\)</span>.
+Thus <span class="math inline">\(x^2 = \frac{a^2}{b^2} = 2\)</span>, or <span class="math inline">\(a^2 = 2 b^2\)</span>.
+But the exponent of <span class="math inline">\(2\)</span> in the prime factorisation of <span class="math inline">\(a^2\)</span> is even while the exponent of <span class="math inline">\(2\)</span> in the prime factorisation of <span class="math inline">\(2 b^2\)</span> is odd, contradicting the Fundamental Theorem of Arithmetic, <a href="elementary-number-theory.html#thm:fta">2.5</a>.</p>
+</div>
+<p><em>Note</em>: The same proof shows that if <span class="math inline">\(\exists \; x \in \mathbb{Q}\)</span> with <span class="math inline">\(x^2 = n\)</span> for some <span class="math inline">\(n \in \mathbb{N}\)</span>, then <span class="math inline">\(n\)</span> must be a square.</p>
+<div class="proof">
+<p><span id="unlabeled-div-56" class="proof"><em>Proof</em> (Alternative proof). </span>Suppose <span class="math inline">\(x^2 = 2\)</span> for some <span class="math inline">\(x = \frac{a}{b}\)</span> with <span class="math inline">\(a, b \in \mathbb{N}\)</span>.
+Then for any <span class="math inline">\(c, d \in \mathbb{Z}\)</span>, <span class="math inline">\(cx + d\)</span> is of the form <span class="math inline">\(\frac{e}{b}\)</span> for some <span class="math inline">\(e \in \mathbb{Z}\)</span>.
+Thus if <span class="math inline">\(cx + d &gt; 0\)</span>, then <span class="math inline">\(cx + d \geq \frac{1}{b}\)</span>.
+But <span class="math inline">\(0 &lt; x - 1 &lt; 1\)</span> as <span class="math inline">\(1 &lt; x &lt; 2\)</span> so if <span class="math inline">\(n\)</span> is sufficiently large, <span class="math inline">\(0 &lt; (x - 1)^n &lt; \frac{1}{b}\)</span>.
+But for any <span class="math inline">\(n \in \mathbb{N}\)</span>, <span class="math inline">\((x - 1)^n\)</span> is of the form <span class="math inline">\(cx + d\)</span> for some <span class="math inline">\(c, d \in \mathbb{Z}\)</span>, since <span class="math inline">\(x^2 = 2\)</span>.
+This is a contradiction.</p>
+</div>
+<p>So “<span class="math inline">\(\mathbb{Q}\)</span> has a gap”.
+How do we express the fact making reference only to <span class="math inline">\(\mathbb{Q}\)</span>?</p>
+<p><img src="figures/03-number-line.png" width="1480" style="display: block; margin: auto;" /></p>
+<p>2 is an upper bound for the set of <span class="math inline">\(x\)</span> s.t. <span class="math inline">\(x^2 &lt; 2\)</span>, but so is <span class="math inline">\(1.5\)</span>, and 1.42, …<br />
+<em>Crucial point</em>: In <span class="math inline">\(\mathbb{Q}\)</span>, there is no least upper bound.</p>
+<div id="the-reals-1" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> The Reals</h2>
+<p>The real numbers, written <span class="math inline">\(\mathbb{R}\)</span>, are a set with elements <span class="math inline">\(0\)</span> and <span class="math inline">\(1\)</span> (<span class="math inline">\(0 \neq 1\)</span>), equipped with operations <span class="math inline">\(+\)</span> and <span class="math inline">\(\cdot\)</span>, and an ordering <span class="math inline">\(&lt;\)</span> such that</p>
+<ol style="list-style-type: decimal">
+<li><p><span class="math inline">\(+\)</span> is commutative and associative with identity <span class="math inline">\(0\)</span>, and every <span class="math inline">\(x\)</span> has an inverse under <span class="math inline">\(+\)</span>;</p></li>
+<li><p><span class="math inline">\(\cdot\)</span> is commutative and associative with identity <span class="math inline">\(1\)</span>, and every <span class="math inline">\(x \neq 0\)</span> has an inverse under <span class="math inline">\(\cdot\)</span>;</p></li>
+<li><p><span class="math inline">\(\cdot\)</span> is distributive over <span class="math inline">\(+\)</span>, that is, <span class="math inline">\(\forall \; a, b, c\)</span>
+<span class="math display">\[\begin{align*}
+ a (b + c) = ab + ac
+\end{align*}\]</span></p></li>
+<li><p><span class="math inline">\(\forall \; a, b\)</span>, exactly one of <span class="math inline">\(a &lt; b\)</span> or <span class="math inline">\(a = b\)</span> or <span class="math inline">\(b &lt; a\)</span> holds, and <span class="math inline">\(\forall \; a, b, c\)</span>,
+<span class="math display">\[\begin{align*}
+ a &lt; b \text{ and } b &lt; c \implies a &lt; c;
+\end{align*}\]</span></p></li>
+<li><p><span class="math inline">\(\forall \; a, b, c\)</span>
+<span class="math display">\[\begin{align*}
+ \forall \; a, b, c &amp; a &lt; b &amp;\implies a + c &lt; b + c \\
+ \text{and } &amp; a &lt; b &amp;\implies ac &lt; bc \text{ if } c &gt; 0.
+\end{align*}\]</span></p></li>
+</ol>
+<p>(The above all hold for the rationals)</p>
+<ol start="6" style="list-style-type: decimal">
+<li>Given any set <span class="math inline">\(S\)</span> of reals that is non-empty and bounded above <span class="math inline">\(S\)</span> has a least upper bound.</li>
+</ol>
+<p>6 is known as the <em>least upper bound axiom</em></p>
+<p>We say that a set <span class="math inline">\(S\)</span> is bounded above if <span class="math inline">\(\exists \; x \in \mathbb{R}\)</span> s.t. <span class="math inline">\(x \geq y \; \forall \; y \in S\)</span>.
+Such an <span class="math inline">\(x\)</span> is called an <em>upper bound for <span class="math inline">\(S\)</span></em>.
+<span class="math inline">\(x\)</span> is the <em>least upper bound for <span class="math inline">\(S\)</span></em> if <span class="math inline">\(x\)</span> is an upper bound for <span class="math inline">\(S\)</span> and every other upper bound <span class="math inline">\(x&#39;\)</span> satisfies <span class="math inline">\(x&#39; \geq x\)</span>.<br />
+When <span class="math inline">\(x\)</span> is a least upper bound for <span class="math inline">\(S\)</span>, we may write “<span class="math inline">\(\operatorname{LUB}(S) = x\)</span>” or “<span class="math inline">\(\operatorname{supremum}(S) = x\)</span>” or “<span class="math inline">\(\sup(S) = x\)</span>”.</p>
+<div class="remark">
+<p><span id="unlabeled-div-57" class="remark"><em>Remark</em>. </span> </p>
+<ol style="list-style-type: lower-roman">
+<li><p>From (1) - (5), we can check, for example, that <span class="math inline">\(0 &lt; 1\)</span> (we have just let <span class="math inline">\(0\)</span> and <span class="math inline">\(1\)</span> represent the identities).
+Indeed, if not, then <span class="math inline">\(1 &lt; 0\)</span> (<span class="math inline">\(0 \neq 1\)</span>) so <span class="math inline">\(0 = 1 - 1 &lt; 0 - 1 = -1\)</span> (<span class="math inline">\(-1 &gt; 0\)</span>) so <span class="math inline">\(0 (-1) &lt; (-1) (-1) = 1\)</span>, a contradiction.</p></li>
+<li><p>We may consider <span class="math inline">\(\mathbb{Q}\)</span> as contained in <span class="math inline">\(\mathbb{R}\)</span>, by identity <span class="math inline">\(\frac{a}{b} \in \mathbb{Q}\)</span> with <span class="math inline">\(a \cdot b^{-1} \in \mathbb{R}\)</span> (<span class="math inline">\(b^{-1}\)</span> is the multiplicative inverse we have not shown that <span class="math inline">\(b^{-1} = \frac{1}{b}\)</span> yet).</p></li>
+<li><p><span class="math inline">\(\mathbb{Q}\)</span> doesn’t satisfy (6) as e.g. the set of <span class="math inline">\(x\)</span> s.t. <span class="math inline">\(x^2 &lt; 2\)</span> does not have a supremum.</p></li>
+<li><p>In (6), the words “non-empty” and “bounded above” are crucial:<br />
+If <span class="math inline">\(S\)</span> is empty then every <span class="math inline">\(x \in \mathbb{R}\)</span> is an upper bound for <span class="math inline">\(S\)</span>, so there is no least upper bound.<br />
+If <span class="math inline">\(S\)</span> is not bounded above, then it has no upper bound, and certainly no <em>least</em> upper bound.</p></li>
+<li><p>It is possible to construct <span class="math inline">\(\mathbb{R}\)</span> “out of” <span class="math inline">\(\mathbb{Q}\)</span> and check that (1) - (6), but it takes a lot of effort.</p></li>
+</ol>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-58" class="example"><strong>Example 3.1  </strong></span><span class="math inline">\(S = \{ x \in \mathbb{R} : 0 \leq x \leq \mathbb{R} \}\)</span>
+<img src="figures/03-exm-1.png" width="1449" style="display: block; margin: auto;" /></p>
+<p>Is <span class="math inline">\(2\)</span> an upper bound for <span class="math inline">\(S\)</span>?
+Yes: <span class="math inline">\(\forall \; x \in S, x \leq 2\)</span>.<br />
+Is <span class="math inline">\(\frac{3}{4}\)</span> an upper bound for <span class="math inline">\(S\)</span>?
+No: <span class="math inline">\(\frac{7}{8} \in S, \frac{7}{8} \leq \frac{3}{4}\)</span>.</p>
+<p>The least upper bound of <span class="math inline">\(S\)</span> is <span class="math inline">\(1\)</span> because</p>
+<ul>
+<li><p>1 is an upper bound (as <span class="math inline">\(\forall \; x \in S, x \leq 1\)</span>)</p></li>
+<li><p>every other upper bounds has <span class="math inline">\(y \geq 1\)</span> (as <span class="math inline">\(1 \in S\)</span>).</p></li>
+</ul>
+<p>Hence <span class="math inline">\(\sup (S) = 1\)</span></p>
+<p><span class="math display">\[\begin{align*}
+    S &amp;= \{ x \in \mathbb{R} : 0 \leq x \leq 1 \} \\
+    &amp;= [0, 1]
+\end{align*}\]</span></p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-59" class="example"><strong>Example 3.2  </strong></span><span class="math display">\[\begin{align*}
+    S &amp;= \{ x \in \mathbb{R} : 0 &lt; x &lt; 1 \} \\
+    &amp;= (0, 1)
+\end{align*}\]</span></p>
+<p><img src="figures/03-exm-2.png" width="1512" style="display: block; margin: auto;" /></p>
+<p>Is <span class="math inline">\(2\)</span> an upper bound for <span class="math inline">\(S\)</span>?
+Yes: <span class="math inline">\(\forall \; x \in S, x \leq 2\)</span>.<br />
+Is <span class="math inline">\(\frac{3}{4}\)</span> an upper bound for <span class="math inline">\(S\)</span>?
+No: <span class="math inline">\(\frac{7}{8} \in S, \frac{7}{8} \leq \frac{3}{4}\)</span>.</p>
+<p>We have <span class="math inline">\(\sup (S) = 1\)</span> because</p>
+<ul>
+<li><p><span class="math inline">\(1\)</span> is an upper bound: <span class="math inline">\(\forall \; x \in S \ x \leq 1\)</span>;</p></li>
+<li><p>no upper bound <span class="math inline">\(c\)</span> is s.t. <span class="math inline">\(c &lt; 1\)</span>.
+Indeed, c is certainly greater than 0 (in fact <span class="math inline">\(c \geq \frac{1}{2}\)</span> since <span class="math inline">\(\frac{1}{2} \in S\)</span>), so if <span class="math inline">\(c &lt; 1\)</span>, then <span class="math inline">\(0 &lt; c &lt; 1\)</span>, so <span class="math inline">\(\frac{c + 1}{2} \in S\)</span> with <span class="math inline">\(\frac{c + 1}{2} &gt; c\)</span> ⨳.
+<img src="figures/03-exm-2-2.png" width="1380" style="display: block; margin: auto;" /></p></li>
+</ul>
+<p><em>Warning</em> If <span class="math inline">\(S\)</span> has a greatest element, then <span class="math inline">\(\sup (S) = \max (S) \in S\)</span>.
+But <span class="math inline">\(\sup (S)\)</span> can exist when <span class="math inline">\(\max (S)\)</span> does not, in which case <span class="math inline">\(\sup (S) \notin S\)</span>.</p>
+</div>
+<div class="example">
+<p><span id="exm:three" class="example"><strong>Example 3.3  </strong></span><span class="math display">\[\begin{align*}
+    S &amp;= \{ 1 - \frac{1}{n} : n \in \mathbb{N} \} \\
+    &amp;= \{ 0, \frac{1}{2}, \frac{2}{3}, \frac{3}{4}, \dots \}
+\end{align*}\]</span></p>
+<p><img src="figures/03-exm-3.png" width="1022" style="display: block; margin: auto;" /></p>
+<p>Clearly <span class="math inline">\(1\)</span> is an upper bound.<br />
+Is there an upper bound <span class="math inline">\(&lt; 1\)</span>?</p>
+</div>
+<div class="proposition">
+<p><span id="prp:two" class="proposition"><strong>Proposition 2.1  (Axiom of Archimedes) </strong></span><span class="math inline">\(\mathbb{N}\)</span> is not bounded above in <span class="math inline">\(\mathbb{R}\)</span>.</p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-60" class="proof"><em>Proof</em>. </span>Suppose on the contrary that <span class="math inline">\(\mathbb{N}\)</span> is bounded above.
+Let <span class="math inline">\(c = \sup \mathbb{N}\)</span>.<br />
+By definition, <span class="math inline">\(c - 1\)</span> is not an upper bound for <span class="math inline">\(\mathbb{N}\)</span>, so <span class="math inline">\(\exists \; n \in \mathbb{N}\)</span> s.t. <span class="math inline">\(n &gt; c - 1\)</span>.<br />
+But then <span class="math inline">\(n + 1 \in \mathbb{N}\)</span> with <span class="math inline">\(n + 1 &gt; c\)</span>, contradicting the fact that <span class="math inline">\(c\)</span> was an upper bound.</p>
+</div>
+<div class="corollary">
+<p><span id="cor:three" class="corollary"><strong>Corollary 3.1  </strong></span>For all <span class="math inline">\(t &gt; 0, \exists \; n \in \mathbb{N}\)</span> with <span class="math inline">\(\frac{1}{n} &lt; t\)</span>.
+<img src="figures/03-corr-1.png" width="901" style="display: block; margin: auto;" /></p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-61" class="proof"><em>Proof</em>. </span>Given <span class="math inline">\(t &gt; 0\)</span>, by Proposition <a href="elementary-number-theory.html#prp:two">2.1</a>, <span class="math inline">\(\exists \; n \in N\)</span> s.t. <span class="math inline">\(n &gt; \frac{1}{t}\)</span>.
+Hence <span class="math inline">\(\frac{1}{n} &lt; t\)</span>.</p>
+</div>
+<p>A set <span class="math inline">\(S\)</span> is said to be bounded below if <span class="math inline">\(\exists \; x\)</span> s.t. <span class="math inline">\(x \leq y \; \forall \; y \in S\)</span>.
+Such an <span class="math inline">\(x\)</span> is called a <em>lower bound for <span class="math inline">\(S\)</span></em>.
+If <span class="math inline">\(S\)</span> is non-empty and bounded below, then <span class="math inline">\(-S = \{ y: y \in S \}\)</span> is non-empty and bounded above, so it has a least upper bound, <span class="math inline">\(c\)</span> say.
+Hence <span class="math inline">\(-c\)</span> is the <em>greatest lower bound of <span class="math inline">\(S\)</span></em>.
+We denote it by “<span class="math inline">\(\operatorname{GLB}(S)\)</span>”, or “<span class="math inline">\(\operatorname{infimum} (S)\)</span>”, or “<span class="math inline">\(\inf (S)\)</span>”.</p>
+<p>Corollary <a href="the-reals.html#cor:three">3.1</a> immediately implies that <span class="math inline">\(\inf ( \{ \frac{1}{n} : n \in \mathbb{N} \}) = 0\)</span>.</p>
+<p>Proposition <a href="elementary-number-theory.html#prp:two">2.1</a> and Corollary <a href="the-reals.html#cor:three">3.1</a> show that there are no “infinitely large” or “infinitely small” numbers in <span class="math inline">\(\mathbb{R}\)</span>.</p>
+<p>Back to Example <a href="the-reals.html#exm:three">3.3</a>: we have <span class="math inline">\(\sup (S) = 1\)</span>, for suppose <span class="math inline">\(c &lt; 1\)</span> is an upper bound for <span class="math inline">\(S\)</span>.
+Then <span class="math inline">\(1 - \frac{1}{n} &lt; c \; \forall \; n \in \mathbb{N}\)</span>, so <span class="math inline">\(0 &lt; 1 - c &lt; \frac{1}{n}\)</span> contradicting Corollary <a href="the-reals.html#cor:three">3.1</a>.</p>
+<div class="theorem">
+<p><span id="thm:t-four" class="theorem"><strong>Theorem 3.1  </strong></span>There exists <span class="math inline">\(x \in \mathbb{R}\)</span> with <span class="math inline">\(x^2 = 2\)</span>.</p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-62" class="proof"><em>Proof</em>. </span>Let <span class="math inline">\(S = \{ x \in \mathbb{R}: x^2 &lt; 2 \}\)</span>.</p>
+<p><img src="figures/03-thm-4.png" width="1379" style="display: block; margin: auto;" /></p>
+<p>Note that <span class="math inline">\(S\)</span> is non-empty since e.g. <span class="math inline">\(1 \in S\)</span>.
+It is also bounded above e.g. by <span class="math inline">\(2\)</span>.
+Hence <span class="math inline">\(S\)</span> has a supremum, which we denote by <span class="math inline">\(c\)</span>.</p>
+<p>Observe that <span class="math inline">\(1 &lt; c &lt; 2\)</span>.
+We claim that <span class="math inline">\(c^2 = 2\)</span>.
+Suppose on the contrary that <span class="math inline">\(c^2 &lt; 2\)</span>.<br />
+For <span class="math inline">\(0 &lt; t &lt; 1\)</span>, have <span class="math inline">\((c + t)^2 = c^2 + 2ct + t^2 \leq c^2 + 4t + t = c^2 + 5t &lt; 2\)</span> for small t (namely, <span class="math inline">\(t = \frac{2 - c^2}{5}\)</span>).
+But this contradicts the assumption that <span class="math inline">\(c\)</span> was an upper bound for <span class="math inline">\(S\)</span> (since <span class="math inline">\(c + t \in S\)</span>).
+Suppose now that <span class="math inline">\(c^2 &gt; 2\)</span>.<br />
+For <span class="math inline">\(0 &lt; t &lt; 1\)</span>, have <span class="math inline">\((c - t)^2 = c^2 - 2ct + t^2 \geq c^2 - 4t &gt; 2\)</span> for small t (namely, <span class="math inline">\(t = \frac{c^2 - 2}{4}\)</span>).<br />
+This contradicts the assumption that <span class="math inline">\(c\)</span> is the <em>least</em> upper bound for <span class="math inline">\(S\)</span> (since <span class="math inline">\(c - t\)</span> is an upper bound for <span class="math inline">\(S\)</span>).</p>
+</div>
+<div class="remark">
+<p><span id="unlabeled-div-63" class="remark"><em>Remark</em>. </span>The same proof shows that <span class="math inline">\(x^{\frac{1}{n}}\)</span> exists <span class="math inline">\(\forall \; n \in N, \forall \; x \in \mathbb{R}, x &gt; 0\)</span>.
+[i.e. <span class="math inline">\(\forall \; n \in \mathbb{N}, \forall \; x \in \mathbb{R}, x &gt; 0, \exists \; y \in \mathbb{R}\)</span> s.t. <span class="math inline">\(y^n = x\)</span>.]<br />
+A real that is not rational is called <em>irrational</em>.
+E.g. <span class="math inline">\(\sqrt{2}, \sqrt{3}, \sqrt{5}, \sqrt{6}\)</span> are irrational.<br />
+Also <span class="math inline">\(2 + 3\sqrt{5}\)</span> is irrational.
+Indeed if <span class="math inline">\(2 + 3\sqrt{5} = \frac{a}{b}\)</span> with <span class="math inline">\(\frac{a}{b} \in \mathbb{N}\)</span> then <span class="math inline">\(\sqrt{5} = \frac{a - 2b}{3b} \in \mathbb{Q}\)</span>, ⨳. <span class="math inline">\(\Box\)</span></p>
+</div>
+<p>The rationals are <em>dense</em> in <span class="math inline">\(\mathbb{R}\)</span>, in the sense that <span class="math inline">\(\forall \; a &lt; b \in \mathbb{R}, \exists \; c \in Q\)</span> with <span class="math inline">\(a &lt; c &lt; b\)</span>.</p>
+<div class="proof">
+<p><span id="unlabeled-div-64" class="proof"><em>Proof</em>. </span>Indeed, we may assume <span class="math inline">\(a \geq 0\)</span> (we can just add an integer, find the rational and subtract the integer).</p>
+<p>By Corollary <a href="the-reals.html#cor:three">3.1</a>, <span class="math inline">\(\exists \; n \in \mathbb{N}\)</span> with <span class="math inline">\(\frac{1}{n} &lt; b - a\)</span>.
+By the Axiom of Archimedes <a href="elementary-number-theory.html#prp:two">2.1</a>, <span class="math inline">\(\exists \; N \in \mathbb{N}\)</span> s.t. <span class="math inline">\(N &gt; b\)</span>.
+Let <span class="math inline">\(T = \{ k \in \mathbb{N} : \frac{k}{n} \geq b \}\)</span>,<br />
+then <span class="math inline">\(Nn \in T\)</span>, so <span class="math inline">\(T \neq \emptyset\)</span>.<br />
+By the Well-Ordering Principle, <span class="math inline">\(T\)</span> has a least element <span class="math inline">\(m\)</span>.
+Set <span class="math inline">\(c = (m - 1) \cdot \frac{1}{n}\)</span>.
+Since <span class="math inline">\(m - 1 \notin T\)</span>, <span class="math inline">\(c &lt; b\)</span>.<br />
+If <span class="math inline">\(c \leq a\)</span> then <span class="math inline">\(\frac{m}{n} = c + \frac{1}{n} &lt; a + b - a = b\)</span>, ⨳ of <span class="math inline">\(m \in T\)</span>.
+Hence <span class="math inline">\(a &lt; c &lt; b\)</span>.</p>
+</div>
+<p>The irrationals are also dense in <span class="math inline">\(\mathbb{R}\)</span>, i.e. <span class="math inline">\(\forall \; a &lt; b \in \mathbb{R}, \exists \; c \in \mathbb{R} \setminus \mathbb{Q}\)</span> with <span class="math inline">\(a &lt; c &lt; b\)</span>.<br />
+Indeed, take a rational <span class="math inline">\(c\)</span> with <span class="math inline">\(a \sqrt{2} &lt; c &lt; b \sqrt{2}\)</span> then <span class="math inline">\(a &lt; \frac{c}{\sqrt{2}} &lt; b\)</span>.</p>
+</div>
+<div id="sequences" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> Sequences</h2>
+<p>A <em>sequence</em> is an enumerated collection of objects in which repetitions are allowed and order matters.<br />
+Write <span class="math inline">\(a_1, a_2, a_3, \dots\)</span> or <span class="math inline">\((a_n)_{n = 1}^\infty\)</span>.<br />
+What does it mean for a sequence <span class="math inline">\(a_1, a_2, \dots\)</span> to tend to a limit <span class="math inline">\(l\)</span>?<br />
+It is <em>not</em> enough that the terms <span class="math inline">\(a_n\)</span> get closer to <span class="math inline">\(l\)</span>, e.g. we would not want <span class="math inline">\(\frac{1}{2}, \frac{2}{3}, \frac{3}{4}, \frac{4}{5}, \dots\)</span> to tend to <span class="math inline">\(37\)</span>.<br />
+And it is <em>not</em> enough that the <span class="math inline">\(a_n\)</span> get arbitrarily close to <span class="math inline">\(l\)</span>, <span class="math inline">\(\forall \; \epsilon &gt; 0, \exists \; n \in \mathbb{N}\)</span> s.t. <span class="math inline">\(l - \epsilon &lt; a_n &lt; l + \epsilon\)</span>, e.g. we would not want <span class="math inline">\(\frac{1}{2}, 10, \frac{2}{3}, 10, \frac{3}{4}, 10, \dots\)</span> to tend to <span class="math inline">\(1\)</span>.<br />
+We want the sequence to get <em>and stay</em> with <span class="math inline">\(\epsilon\)</span> of <span class="math inline">\(l\)</span>.</p>
+<p>We say that the <em>sequence <span class="math inline">\(a_1, a_2, \dots\)</span> tends to the limit <span class="math inline">\(l \in \mathbb{R}\)</span> as <span class="math inline">\(n\)</span> tends to infinity</em> if, <span class="math inline">\(\forall \; \epsilon &gt; 0, \exists \; N \in \mathbb{N}\)</span> s.t. <span class="math inline">\(\forall \; n \geq N, \lambda - \epsilon &lt; a_n &lt; \lambda + \epsilon\)</span>.</p>
+<p><img src="figures/03-limit-sequence.png" width="1243" style="display: block; margin: auto;" /></p>
+<p>More compactly: <span class="math inline">\(\forall \; \epsilon &gt; 0, \exists \; N \in \mathbb{N}\)</span> s.t. <span class="math inline">\(\forall \; n \geq N, | a_n - l | &lt; \epsilon\)</span>, where the <em>absolute value</em> <span class="math inline">\(|x|\)</span> of <span class="math inline">\(x \in \mathbb{R}\)</span> is defined by
+<span class="math display">\[\begin{align*}
+    |x| = \begin{cases}
+        x &amp; \text{if } x \geq 0 \\
+        -x &amp; \text{if } x &lt; 0
+    \end{cases}.
+\end{align*}\]</span>
+We think of <span class="math inline">\(|a - b|\)</span> as the “distance between <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> on the number line”, e.g. <span class="math inline">\(|2 - 9| = |9 - 2| = 7\)</span>.
+It is easy to check the triangle inequality <span class="math inline">\(|a - b| \leq |a- c| + |c - b|\)</span>.</p>
+<p>When <span class="math inline">\(a_n\)</span> tends to <span class="math inline">\(l\)</span> as <span class="math inline">\(n\)</span> tends to infinity, we also write “<span class="math inline">\(a_n \to l\)</span> as <span class="math inline">\(n \to \infty\)</span>” or “<span class="math inline">\(\lim_{n \to \infty} a_n = l\)</span>” or “<span class="math inline">\((a_n)_{n = 1}^\infty\)</span> converges to <span class="math inline">\(l\)</span>”.<br />
+If there is a limit <span class="math inline">\(l\)</span> but it is not specified we simply say “<span class="math inline">\((a_n)_{n = 1}^\infty\)</span> converges”.</p>
+<p>If <span class="math inline">\((a_n)_{n = 1}^\infty\)</span> does not converge, then we say it <em>diverges</em>.</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-65" class="example"><strong>Example 3.4  </strong></span><br />
+</p>
+<ol style="list-style-type: decimal">
+<li><p><span class="math inline">\(\frac{1}{2}, \frac{2}{3}, \frac{3}{4}, \frac{4}{5}, \dots\)</span><br />
+<span class="math inline">\(a_n = 1 - \frac{1}{n}\)</span>.<br />
+Given <span class="math inline">\(\epsilon &gt; 0\)</span>, choose <span class="math inline">\(N &gt; \frac{1}{\epsilon}\)</span> (by the Axiom of Archimedes, <a href="elementary-number-theory.html#prp:two">2.1</a>).
+If <span class="math inline">\(n \geq N\)</span>, then
+<span class="math display">\[\begin{align*}
+ |a_n - 1| &amp;= |1 - \frac{1}{n} - 1| \\
+ &amp;= \frac{1}{n} \\
+ &amp;\leq \frac{1}{N} \\
+ &amp;&lt; \epsilon.
+\end{align*}\]</span>
+Hence <span class="math inline">\(a_n \to 1\)</span> as <span class="math inline">\(n \to \infty\)</span>.</p></li>
+<li><p><span class="math inline">\(0, \frac{1}{2}, \frac{1}{4}, 0, \frac{1}{6}, \dots\)</span><br />
+<span class="math display">\[\begin{align*}
+ a_n = \begin{cases}
+     \frac{1}{n} &amp; n \text{ even} \\
+     0 &amp; n \text{ odd}
+ \end{cases} 
+\end{align*}\]</span>
+Given <span class="math inline">\(\epsilon &gt; 0\)</span>, pick <span class="math inline">\(N &gt; \frac{1}{\epsilon}\)</span>.<br />
+If <span class="math inline">\(n \geq N\)</span>, then
+<span class="math display">\[\begin{align*}
+ |a_n - 0| &amp;\leq \frac{1}{n} \\
+ &amp;\leq \frac{1}{N} \\
+ &amp;&lt; \epsilon.
+\end{align*}\]</span>
+Hence <span class="math inline">\(a_n \to 0\)</span> as <span class="math inline">\(n \to \infty\)</span>.</p></li>
+<li><p><span class="math inline">\(\frac{1}{2}, \frac{1}{2} + \frac{1}{4}, \frac{1}{2} + \frac{1}{4} + \frac{1}{8}, \dots\)</span><br />
+<span class="math inline">\(a_n = 1 - \frac{1}{2^n}\)</span> (by induction)<br />
+Given <span class="math inline">\(\epsilon &gt; 0\)</span>, choose <span class="math inline">\(N &gt; \frac{1}{\epsilon}\)</span>.
+If <span class="math inline">\(n \geq N\)</span>, then
+<span class="math display">\[\begin{align*}
+ |a_n - 1| &amp;= |1 - \frac{1}{2^n} - 1| \\
+ &amp;= \frac{1}{2^n} \\
+ &amp;\leq \frac{1}{n} \\
+ &amp;\leq \frac{1}{N} \\
+ &amp;&lt; \epsilon.
+\end{align*}\]</span>
+Hence <span class="math inline">\(a_n \to 1\)</span> as <span class="math inline">\(n \to \infty\)</span>.</p></li>
+<li><p><span class="math inline">\(-1, 1, -1, 1, -1, 1, \dots\)</span><br />
+<span class="math inline">\(a_n = (-1)^n\)</span></p></li>
+</ol>
+<p>If <span class="math inline">\(a_n\)</span> does not tend to <span class="math inline">\(l\)</span>, we write “<span class="math inline">\(a_n \not\to l\)</span>”.
+This mean <span class="math inline">\(\exists \; \epsilon &gt; 0 \; \forall \; N \in \mathbb{N} \; \exists \; n \geq N \ |a_n - l| \geq \epsilon\)</span>.<br />
+Indeed, in 4, we show that e.g. <span class="math inline">\(a_n \not\to 0\)</span>.
+Let <span class="math inline">\(\epsilon = 1\)</span>.
+Then <span class="math inline">\(|a_n - 0| = 1 \; \forall \; n \in N\)</span>.
+In fact, <span class="math inline">\(a_n\)</span> does not converge to any limit <span class="math inline">\(l \in \mathbb{R}\)</span>.<br />
+For suppose <span class="math inline">\(a_n \to l\)</span> as <span class="math inline">\(n \to \infty\)</span>, for some <span class="math inline">\(l \in \mathbb{R}\)</span>.
+Let <span class="math inline">\(\epsilon = 1\)</span>.
+So <span class="math inline">\(\exists \; N \in \mathbb{N}\)</span> s.t. <span class="math inline">\(\forall \; n \geq N\)</span>, <span class="math inline">\(|a_n - l| &lt; 1\)</span>.
+In particular, <span class="math inline">\(|1 - l| &lt; 1\)</span> and <span class="math inline">\(|-1-l| &lt; 1\)</span>.
+But then <span class="math inline">\(2 = | 1 - (-1)| \leq |1 - l| + |-1 - l| &lt; 2.\)</span> ⨳</p>
+<p>We have shown that <span class="math inline">\(((-1)^n)_{n = 1}^\infty\)</span> does not converge to any <span class="math inline">\(l \in \mathbb{R}\)</span>, hence it is divergent (note: it does not mean “goes off to infinity”).</p>
+</div>
+<p>We implicitly assumed that if a limit exists, then it is unique.</p>
+<p><img src="figures/03-two-limits.png" width="666" style="display: block; margin: auto;" /></p>
+<div class="proof">
+<p><span id="unlabeled-div-66" class="proof"><em>Proof</em>. </span>Indeed, suppose that <span class="math inline">\(a_n \to l\)</span> and <span class="math inline">\(a_n \to k\)</span> as <span class="math inline">\(n \to \infty\)</span>, with <span class="math inline">\(l \neq k\)</span>.
+Choose <span class="math inline">\(\epsilon = \frac{1}{2} |l - k|\)</span>.
+Then <span class="math inline">\(\exists \; N \in \mathbb{N}\)</span> s.t. <span class="math inline">\(|a_n - l| &lt; \epsilon \; \forall \; n \geq N\)</span> and <span class="math inline">\(\exists \; M \in \mathbb{N}\)</span> s.t. <span class="math inline">\(|a_n - k| &lt; \epsilon \; \forall \; n \geq M\)</span>.<br />
+But then for any <span class="math inline">\(n \geq \max \{N, M \}\)</span>,
+<span class="math display">\[\begin{align*}
+    2 \epsilon = |l - k| \leq |a_n - l| + |a_n - k| &lt; 2 \epsilon. ⨳
+\end{align*}\]</span></p>
+</div>
+<p>A sequence is <em>bounded</em> if there is a real number <span class="math inline">\(B\)</span> s.t. <span class="math inline">\(|a_n| \leq B\)</span> for all <span class="math inline">\(n \in \mathbb{N}\)</span>.</p>
+<p>Notice that a convergent sequence is bounded:<br />
+for if <span class="math inline">\(a_n \to l\)</span> as <span class="math inline">\(n \to \infty\)</span>, then <span class="math inline">\(\exists \; N \in \mathbb{N}\)</span> s.t. <span class="math inline">\(\forall \; n \geq N\)</span>, <span class="math inline">\(|a_n - l| &lt; 1\)</span>.
+Hence <span class="math inline">\(|a_n| \leq \max \{ |a_1|, |a_2|, \dots, |a_{N-1}|, |l| + 1 \}\)</span> (bound of the entire sequence).</p>
+<p>We say a sequence <span class="math inline">\((a_n)^\infty_{n = 1}\)</span> is <em>monotonic</em> if it is either increasing or decreasing.
+It is <em>increasing</em> if <span class="math inline">\(a_{n + 1} \geq a_n \; \forall \; n \in N\)</span>.</p>
+<div class="theorem">
+<p><span id="thm:five" class="theorem"><strong>Theorem 3.2  </strong></span>Every bounded monotonic sequence converges.<a href="#fn10" class="footnote-ref" id="fnref10"><sup>10</sup></a>
+<a href="#fn11" class="footnote-ref" id="fnref11"><sup>11</sup></a></p>
+</div>
+<p><img src="figures/03-bounded.png" width="1234" style="display: block; margin: auto;" /></p>
+<div class="proof">
+<p><span id="unlabeled-div-67" class="proof"><em>Proof</em>. </span>Suppose <span class="math inline">\((a_n)\)</span> (we will drop super and subscript from now on) is increasing.
+Then the set <span class="math inline">\(\{a_n : n \geq 1\}\)</span> is non-empty and is bounded above (because <span class="math inline">\((a_n)\)</span> is bounded), so it has a supremum <span class="math inline">\(l\)</span>.
+Given <span class="math inline">\(\epsilon &gt; 0\)</span>, <span class="math inline">\(l - \epsilon\)</span> is not an least upper bound for <span class="math inline">\(\{a_n : N \geq 1\}\)</span>, so there is some <span class="math inline">\(N \in \mathbb{N}\)</span> s.t. <span class="math inline">\(a_n &gt; l - \epsilon \; \forall \; n \in N\)</span>.
+Thus <span class="math inline">\(l - \epsilon &lt; a_n \leq l \; \forall \; n \geq N\)</span>.
+Hence for all <span class="math inline">\(n \geq N, |a_n - l| &lt; \epsilon\)</span>, so <span class="math inline">\(a_n \to l\)</span>.</p>
+<p><img src="figures/03-proof-bounded.png" width="1197" style="display: block; margin: auto;" /></p>
+<p>Decreasing case is similar.</p>
+</div>
+<div class="remark">
+<p><span id="unlabeled-div-68" class="remark"><em>Remark</em>. </span><br />
+</p>
+<ol style="list-style-type: decimal">
+<li><p>Note that for an increasing sequence to converge, we only need to know that it is bounded above.</p></li>
+<li><p>The sequence <span class="math inline">\((a_n)\)</span> with <span class="math inline">\(a_n = n\)</span> is increasing but not bounded (an in fact, it diverges).</p></li>
+<li><p>Theorem <a href="the-reals.html#thm:five">3.2</a> is equivalent to the least Upper Bound Axiom.</p></li>
+<li><p>We can show that every sequence has a monotonic subsequence.</p></li>
+</ol>
+</div>
+<div class="proposition">
+<p><span id="prp:unlabeled-div-69" class="proposition"><strong>Proposition 3.2  </strong></span>If <span class="math inline">\(a_n \leq d \; \forall \; n\)</span> and <span class="math inline">\(a_n \to c\)</span> as <span class="math inline">\(n \to \infty\)</span>, then <span class="math inline">\(c \leq d\)</span>.</p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-70" class="proof"><em>Proof</em>. </span>Suppose <span class="math inline">\(c &gt; d\)</span>, let <span class="math inline">\(\epsilon = |c - d|\)</span>.
+Then <span class="math inline">\(\exists \; N \in \mathbb{N}\)</span> s.t. <span class="math inline">\(\forall \; n \geq N, |a_n - c| &lt; \epsilon\)</span>.
+But <span class="math inline">\(|a_n - c| &lt; \epsilon \implies a_n &gt; d\)</span>. ⨳</p>
+<p><img src="figures/03-prp-6.png" width="1204" style="display: block; margin: auto;" /></p>
+</div>
+<p><em>Warning</em>: If <span class="math inline">\(a_n &lt; d \; \forall \; n\)</span> and <span class="math inline">\(a_n \to c\)</span> as <span class="math inline">\(n \to \infty\)</span>, we need <em>not</em> have <span class="math inline">\(c &lt; d\)</span>.
+E.g. <span class="math inline">\(\frac{1}{2}, \frac{1}{2} + \frac{1}{4}, \frac{1}{2} + \frac{1}{4} + \frac{1}{8}, \dots\)</span>
+Each term is <span class="math inline">\(&lt; 1\)</span>, but <span class="math inline">\(\lim_{n \to \infty} a_n = 1\)</span>.</p>
+<div class="proposition">
+<p><span id="prp:tsix" class="proposition"><strong>Proposition 3.3  </strong></span>If <span class="math inline">\(a_n \to c\)</span> as <span class="math inline">\(n \to \infty\)</span> and <span class="math inline">\(b_n \to d\)</span> as <span class="math inline">\(n \to \infty\)</span>, then <span class="math inline">\(a_n + b_n \to c + d\)</span> as <span class="math inline">\(n \to \infty\)</span>.</p>
+</div>
+<p><img src="figures/03-add-limits.png" width="940" style="display: block; margin: auto;" /></p>
+<div class="proof">
+<p><span id="unlabeled-div-71" class="proof"><em>Proof</em>. </span>Given <span class="math inline">\(\epsilon &gt; 0\)</span>.<br />
+<span class="math inline">\(\exists N \in \mathbb{N}\)</span> s.t. <span class="math inline">\(\forall \; n \geq N\)</span>, <span class="math inline">\(|a_n - c| &lt; \frac{\epsilon}{2}\)</span> and <span class="math inline">\(\exists M \in \mathbb{N}\)</span> s.t. <span class="math inline">\(\forall \; n \geq M\)</span>, <span class="math inline">\(|b_n - d| &lt; \frac{\epsilon}{2}\)</span>.<br />
+Choose <span class="math inline">\(N^* = \max \{M, N \}\)</span>.
+<span class="math display">\[\begin{align*}
+    \text{Then } \forall \; n \in N, | a_n + b_n - (c + d)| &amp;\leq |a_n - c| + |b_n - d| \\
+    &amp;\leq \frac{\epsilon}{2} + \frac{\epsilon}{2} \\
+    &amp;\leq \epsilon.
+\end{align*}\]</span></p>
+</div>
+</div>
+<div id="series" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> Series</h2>
+<p>In the reals, the sum of two numbers is defined, so by induction, finite sums are defined.
+But infinite sums are not!
+Nevertheless e.g. <span class="math inline">\(1 - \frac{1}{2} + \frac{1}{3} - \frac{1}{4} + \frac{1}{5} - \dots = \log 2\)</span>.
+Let <span class="math inline">\((a_n)\)</span> be a sequence.
+Then <span class="math inline">\(s_k = \sum_{n=1}^{k} a_n\)</span> is the <span class="math inline">\(k\)</span>th partial sum of the <em>series</em> whose <span class="math inline">\(n\)</span>th terms is <span class="math inline">\(a_n\)</span>.
+We write <span class="math inline">\(\sum_{n=1}^{\infty} a_n = \lim_{k \to \infty}\)</span> iff the limit exists.</p>
+<div class="example">
+<p><span id="exm:tone" class="example"><strong>Example 3.5  </strong></span>The series whose <span class="math inline">\(n\)</span>th term is <span class="math inline">\(a_n = r^n\)</span> for some <span class="math inline">\(|r| &lt; 1\)</span>, is known as the <em>geometric series</em>.
+<span class="math display">\[\begin{align*}
+    s_k &amp;= r + r^2 + r^3 + \dots + r^k \\
+    &amp;= r \cdot \frac{1 - r^k}{1 - r} \to \frac{r}{1 - r} \text{ as } k \to \infty \text{ since } r^k \to 0.
+\end{align*}\]</span>
+Hence <span class="math inline">\(\sum_{n=1}^{\infty} r^n = \frac{r}{1-r}\)</span></p>
+</div>
+<div class="example">
+<p><span id="exm:ttwo" class="example"><strong>Example 3.6  </strong></span>The series whose <span class="math inline">\(n\)</span>th term is <span class="math inline">\(a_n = \frac{1}{n}\)</span> is known as the <em>harmonic series</em>.
+<span class="math display">\[\begin{align*}
+    s_{2^k} &amp;= 1 + \frac{1}{2} + \underbrace{\frac{1}{3} + \frac{1}{4}}_{\text{each } \geq \frac{1}{4}} + \underbrace{\frac{1}{5} + \frac{1}{6} + \frac{1}{7} + \frac{1}{8}}_{\text{each } \geq \frac{1}{8}} + \frac{1}{9} \dots + \frac{1}{2^k} \\
+    &amp;\geq 1 + \frac{1}{2} + \frac{1}{4} + \frac{1}{4} + \frac{1}{8} + \frac{1}{8} + \frac{1}{8} + \frac{1}{8} + \frac{1}{16} \dots + \frac{1}{2^k} \\
+    \text{In general, } &amp;\frac{1}{2^m + 1} + \frac{1}{2^m + 2} + \dots + \frac{1}{2^{m + 1}} \geq 2^{m} \frac{1}{2^{m + 1}} = \frac{1}{2} \\
+    \text{Hence } s_{2^k} &amp;\geq 1 + \frac{k}{2}.
+\end{align*}\]</span>
+So the partial sums are increasing and unbounded, so the <span class="math inline">\(\sum_{n=1}^{\infty} \frac{1}{n}\)</span> diverges.</p>
+</div>
+<div class="example">
+<p><span id="exm:tthree" class="example"><strong>Example 3.7  </strong></span><span class="math inline">\(a_n = \frac{1}{n^2}\)</span></p>
+<p><span class="math display">\[\begin{align*}
+    s_{2^k - 1} &amp;= 1 + \underbrace{\frac{1}{2^2} + \frac{1}{3^2}}_{\leq 2 \cdot \frac{1}{2^2}} + \underbrace{\frac{1}{4^2} + \frac{1}{5^2} + \frac{1}{6^2} + \frac{1}{7^2}}_{\leq 4 \frac{\cdot_1}{4}^2} + \dots + \frac{1}{(2^k - 1)^2} \\
+    \text{In general, } &amp;\frac{1}{(2^m)^2} + \frac{1}{(2^m + 1)^2} + \frac{1}{(2^m + 2)^2} + \dots + \frac{1}{(2^{m + 1} - 1)^2} \leq 2^{m} \frac{1}{(2^{m})^2} = \frac{1}{2^m}, \\
+    \text{so } s_{2^k - 1} &amp;\leq 1 + \frac{1}{2} + \frac{1}{2^2} + \dots + \frac{1}{2^{k - 1}} &lt; 2 \text{ (e.g. by example )}.
+\end{align*}\]</span> <a href="the-reals.html#exm:tone">3.5</a>
+By Theorem <a href="the-reals.html#thm:five">3.2</a>, <span class="math inline">\(\sum_{n=1}^{\infty} \frac{1}{n^2}\)</span> converges as partial sums are increasing and bounded above.
+In fact <span class="math inline">\(\sum_{n=1}^{\infty} \frac{1}{n^2} = \frac{\pi^2}{6}\)</span>.</p>
+</div>
+<p>Examples <a href="the-reals.html#exm:ttwo">3.6</a> and <a href="the-reals.html#exm:tthree">3.7</a> are extremely important and you should understand them well.
+You should not try and write down inequalities between infinite sum until you have established the limits exist using partial sums.</p>
+</div>
+<div id="decimal-expansion" class="section level2" number="3.4">
+<h2><span class="header-section-number">3.4</span> Decimal expansion</h2>
+<p>Let <span class="math inline">\((d_n)\)</span> be a sequence with <span class="math inline">\(d_n \in \{0, 1, 2, \dots, 9\}\)</span>.
+Then <span class="math inline">\(\sum_{n=1}^{\infty} \frac{d_n}{10^n}\)</span> converges to some limit <span class="math inline">\(r\)</span>, where <span class="math inline">\(0 \leq r &lt; 1\)</span>, because the partial sums <span class="math inline">\(s_m = \sum_{n=1}^{m} \frac{d_n}{10^n}\)</span> are increasing and bounded above by <span class="math inline">\(\sum_{n=1}^{\infty} \frac{9}{10^n} = \frac{9}{10} \cdot \frac{1}{1 - \frac{1}{10}} = 1\)</span>.<br />
+We say that <span class="math inline">\(0. d_1 d_2 d_3 \dots\)</span> is the <em>decimal expansion</em> of <span class="math inline">\(r\)</span>.</p>
+<p>Does every <span class="math inline">\(x, 0 \leq x &lt; 1\)</span>, have a decimal expansion?</p>
+<p>Pick <span class="math inline">\(d_1 \in \mathbb{Z}\)</span> maximal s.t. <span class="math inline">\(\frac{d_1}{10} \leq x &lt; 1\)</span>.
+Then <span class="math inline">\(d_1 \leq 9\)</span> because <span class="math inline">\(x &lt; 1\)</span> and <span class="math inline">\(x - \frac{d_1}{10} &lt; \frac{1}{10}\)</span> because <span class="math inline">\(d_1\)</span> maximal.<br />
+Pick <span class="math inline">\(d_2 \in \mathbb{Z}\)</span> maximal s.t. <span class="math inline">\(\frac{d_2}{10^2} \leq x - \frac{d_1}{10}\)</span>.
+Then <span class="math inline">\(d_2 \leq 9\)</span> because <span class="math inline">\(x - \frac{d_1}{10} &lt; \frac{1}{10}\)</span> and <span class="math inline">\(x - \frac{d_1}{10} - \frac{d_2}{10^2} &lt; \frac{1}{10^2}\)</span> because <span class="math inline">\(d_2\)</span> maximal.<br />
+Inductively, pick <span class="math inline">\(d_n \in \mathbb{Z}\)</span> maximal with <span class="math inline">\(\frac{d_n}{10^n} &lt; x - \sum_{j=1}^{n - 1} \frac{d_j}{10^j}\)</span> so <span class="math inline">\(0 \leq x - \sum_{j=1}^{n - 1} \frac{d_j}{10^j} &lt; \frac{1}{10^n}\)</span>.<br />
+Since <span class="math inline">\(\frac{1}{10^n} \to 0\)</span> as <span class="math inline">\(n \to \infty\)</span>, <span class="math inline">\(x - \sum_{j=1}^{n} \frac{d_j}{10^j} \to 0\)</span>, i.e. <span class="math inline">\(x = \sum_{j=1}^{\infty} \frac{d_j}{10^j} = 0.d_1 d_2 d_3 \dots\)</span></p>
+<div class="remark">
+<p><span id="unlabeled-div-72" class="remark"><em>Remark</em>. </span><br />
+</p>
+<ol style="list-style-type: decimal">
+<li><p>Decimal expansions need not be unique, e.g. <span class="math inline">\(0.47999 \dots = 0.48000 \dots\)</span>
+Suppose <span class="math inline">\(0. a_1 a_2 a_3 \dots = 0. b_1 b_2 b_3 \dots\)</span>
+We may suppose <span class="math inline">\(a_j = b_j\)</span> for <span class="math inline">\(j &lt; K\)</span> for some <span class="math inline">\(K\)</span> and <span class="math inline">\(a_K &lt; b_K\)</span>.
+Then <span class="math inline">\(\sum_{j=K+1}^{\infty} \frac{a_j}{10^j} \leq \sum_{j=k+1}^{\infty} \frac{9}{10^j} = \frac{9}{10^{k + 1}} \frac{1}{1 - \frac{1}{10}} = \frac{1}{10^k}\)</span>.
+Hence we must have <span class="math inline">\(b_K = a_K + 1\)</span><a href="#fn12" class="footnote-ref" id="fnref12"><sup>12</sup></a> and <span class="math inline">\(a_j = 9, b_j = 0 \; \forall \; j &gt; K\)</span>.</p></li>
+<li><p>A decimal expansion is <em>periodic</em> if, after a finite number of terms, say <span class="math inline">\(\ell\)</span> digits, it repeats in blocks, of length <span class="math inline">\(k\)</span>.
+I.e. <span class="math inline">\(\exists \; \ell, k\)</span> s.t. <span class="math inline">\(d_{n + k} = d_n \; \forall \; n &gt; \ell\)</span>.<br />
+A periodic decimal is rational, e.g. <span class="math inline">\(x = 0.7832147147147 \dots\)</span>, <span class="math inline">\(10^4 x - 7832 = 0.147147 \dots\)</span>
+<span class="math display">\[\begin{align*}
+ x &amp;= 0.7832147147147 \dots \\
+ 10^4 x - 7832 &amp;= 0.147147 \dots
+ &amp;= 147 \sum_{j=1}^{\infty} \frac{1}{10^{3j}} \\
+ &amp;= 147 \cdot \frac{1}{10^3} \cdot \frac{1}{1 - 10^3}
+\end{align*}\]</span> so <span class="math inline">\(x \in \mathbb{Q}\)</span>.<br />
+Conversely, if <span class="math inline">\(x \in \mathbb{Q}\)</span>, then <span class="math inline">\(x\)</span> has a periodic decimal expansion.
+To see this, we write <span class="math inline">\(x = \frac{p}{2^a 5^b q}\)</span> where <span class="math inline">\(a, b, p, q \in \mathbb{Z}\)</span>, <span class="math inline">\(a, b, q \geq 0\)</span> and <span class="math inline">\((q, 10) = 1\)</span>.<br />
+Then <span class="math inline">\(10^{max(a, b)}x = \frac{t}{q} = n + \frac{c}{q}\)</span>, where <span class="math inline">\(n, c \in \mathbb{Z}\)</span> and <span class="math inline">\(0 \leq c &lt; 9\)</span>.
+By Fermat-Euler <a href="elementary-number-theory.html#thm:thirteenprime">2.8</a>, <span class="math inline">\(10^{\phi(q)} \equiv 1 \mod q\)</span>, or <span class="math inline">\(10^{\phi(q)} - 1 = kq\)</span> for some <span class="math inline">\(k \in \mathbb{N}\)</span>.<br />
+Hence <span class="math inline">\(\frac{c}{q} = \frac{kc}{kq} = \frac{kc}{10^{\phi(q)} - 1} = kc \sum_{j=1}^{\infty} \frac{1}{(10^{\phi(q)})^j}\)</span>.<br />
+Since <span class="math inline">\(0 \leq kc &lt; kq\)</span>, we can write <span class="math inline">\(kc\)</span> as a <span class="math inline">\(\phi(q)\)</span>-digit numbers <span class="math inline">\(d_1 d_2 \dots d_{\phi(q)}\)</span>.
+Then <span class="math inline">\(\frac{c}{q} = 0.d_1 d_2 \dots d_{\phi(q)} d_1 d_2 \dots d_{\phi(q)} \dots\)</span> and so <span class="math inline">\(x\)</span> is periodic.</p></li>
+</ol>
+</div>
+</div>
+<div id="eulers-number-e" class="section level2" number="3.5">
+<h2><span class="header-section-number">3.5</span> Euler’s number <span class="math inline">\(e\)</span></h2>
+<p>Define <span class="math inline">\(e = 1 + \frac{1}{1!} + \underbrace{\frac{1}{2!}}_{= \frac{1}{2}} + \underbrace{\frac{1}{3!}}_{\leq \frac{1}{4}} + \underbrace{\frac{1}{4!}}_{\leq \frac{1}{8}} + \dots\)</span><br />
+Note that by Theorem <a href="the-reals.html#thm:five">3.2</a> this series converges because the partial sums are increasing and bounded above by
+<span class="math display">\[\begin{align*}
+    1 + 1 + \frac{1}{2} + \frac{1}{4} \dots &amp;= 3
+\end{align*}\]</span>
+If we define <span class="math inline">\(0! = 1\)</span>, then <span class="math inline">\(e = \sum_{j=0}^{\infty} \frac{1}{j!}\)</span>.</p>
+<div class="proposition">
+<p><span id="prp:tseven" class="proposition"><strong>Proposition 3.4  </strong></span><span class="math inline">\(e\)</span> is irrational</p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-73" class="proof"><em>Proof</em>. </span>Suppose <span class="math inline">\(e\)</span> were rational, i.e. <span class="math inline">\(e = \frac{p}{q}\)</span> where <span class="math inline">\(p, q \in \mathbb{N}\)</span> and <span class="math inline">\(q &gt; 1\)</span> (since <span class="math inline">\(2 &lt; e &lt; 3\)</span>).<br />
+Then <span class="math inline">\(q! e \in \mathbb{N}\)</span>.
+<span class="math display">\[\begin{align*}
+    \text{But } q! e &amp;= \underbrace{q! + \frac{q!}{1!} + \frac{q!}{2} + \frac{q!}{3!} + \dots + \frac{q!}{q!}}_{\text{The idea is: } \in \mathbb{N}} + \underbrace{\frac{q!}{(q+1)!} + \frac{q!}{(q+2)!} + \dots}_{\text{We want to show: } &lt; 1} \\
+    &amp;= N + x \text{ for some $N \in \mathbb{N}$} \\
+    \text{and } x &amp;= \sum_{j=q+1}^{\infty}  \frac{q!}{j!} \\
+    &amp;= \sum_{j=1}^{\infty} \frac{q!}{(q + j)!} \\
+    &amp;= \frac{1}{q+1} + \underbrace{\frac{1}{(q + 1)(q + 2)}}_{\leq \frac{1}{(q + 1)^2}} + \underbrace{\frac{q}{(q + 1)(q + 2)(q + 3)}}_{\leq \frac{1}{(q + 1)^3}} + \dots \\
+    \text{and in general, } \frac{q!}{(q + j)!} &amp;\leq \frac{1}{(q + 1)^j}, \\
+    \text{so } x &amp;\leq \frac{1}{q + 1} + \frac{1}{(q + 1)^2} + \frac{1}{(q + 1)^3} + \dots = \frac{1}{q} &lt; 1 \text{ as } q \geq 2.
+\end{align*}\]</span><a href="#fn13" class="footnote-ref" id="fnref13"><sup>13</sup></a>
+Hence <span class="math inline">\(0 &lt; x &lt; 1\)</span>, contradicting that <span class="math inline">\(q! e \in \mathbb{N}\)</span>, so <span class="math inline">\(e\)</span> is irrational.</p>
+</div>
+</div>
+<div id="algebraic-and-transcendental-numbers" class="section level2" number="3.6">
+<h2><span class="header-section-number">3.6</span> Algebraic and Transcendental Numbers</h2>
+<p>We say a real number <span class="math inline">\(x\)</span> is <em>algebraic</em> if it is a root of a (non-zero) polynomial with integer coefficients (or rational coefficients - same thing!).</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-74" class="example"><strong>Example 3.8  </strong></span><br />
+</p>
+<ol style="list-style-type: decimal">
+<li><p>Every rational number is algebraic: <span class="math inline">\(x = \frac{p}{q} \implies qx - p = 0\)</span>.</p></li>
+<li><p><span class="math inline">\(\sqrt{2}\)</span> is algebraic: it satisfies <span class="math inline">\(x^2 - 2 = 0\)</span>.</p></li>
+</ol>
+</div>
+<p>A real number is <em>transcendental</em> if it is not algebraic.</p>
+<div class="theorem">
+<p><span id="thm:nine" class="theorem"><strong>Theorem 3.3  (Liouville 1851) </strong></span>The number <span class="math inline">\(L = \sum_{n=1}^{\infty} \frac{1}{10^{n!}}\)</span> is transcendental.</p>
+</div>
+<p>We will need two facts about polynomials.</p>
+<p><em>Fact A</em>: For any polynomial <span class="math inline">\(p, \; \exists\)</span> constant <span class="math inline">\(k\)</span> s.t. <span class="math inline">\(|p(x) - p(y)| \leq k |x - y| \; \forall \; 0 \leq x, y \leq 1\)</span>.</p>
+<div class="proof">
+<p><span id="unlabeled-div-75" class="proof"><em>Proof</em>. </span>Indeed, suppose <span class="math inline">\(p(x) = a_d x^d + a_{d-1}x^{d-1} + \dots + a_1 x + a_0\)</span>.
+<span class="math display">\[\begin{align*}
+    \text{Then } p(x) - p(y) &amp;= a_d (x^d - y^d) + a_{d-1} (x^{d-1} - y^{d-1}) + \dots + a_1 (x - y) \\
+    &amp;= (x - y) [a_d (x^{d- 1} + x^{d-2} y + \dots + y^{d-1}) + \dots + \dots a_1] \\
+    \text{so } |p(x) - p(y)| &amp;\leq |x - y| | d \cdot (|a_d| + |a_{d-1} + \dots + |a_1|) |
+\end{align*}\]</span></p>
+</div>
+<p><em>Fact B</em>: A non-zero polynomial of degree <span class="math inline">\(d\)</span> has at most <span class="math inline">\(d\)</span> roots.<br />
+</p>
+<div class="proof">
+<p><span id="unlabeled-div-76" class="proof"><em>Proof</em>. </span>Indeed, given a polynomial <span class="math inline">\(p\)</span> of degree <span class="math inline">\(d\)</span>, we may assume that the fact holds for all polynomial of degree <span class="math inline">\(&lt; d\)</span> and that <span class="math inline">\(p\)</span> has a root <span class="math inline">\(a\)</span> (otherwise, we’re done).<br />
+By long division, we write <span class="math inline">\(p(x) = (x-a) q(x)\)</span> for some polynomial <span class="math inline">\(q\)</span> of degree <span class="math inline">\(d - 1\)</span>.
+So each root of <span class="math inline">\(p\)</span> is either <span class="math inline">\(a\)</span> or a root of <span class="math inline">\(q\)</span>.
+But by the induction hypothesis, <span class="math inline">\(q\)</span> has at most <span class="math inline">\(d - 1\)</span> roots.</p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-77" class="proof"><em>Proof</em> (Theorem <a href="the-reals.html#thm:nine">3.3</a>). </span>Write <span class="math inline">\(L_n = \sum_{k=0}^{n} \frac{1}{10^{k!}}\)</span>, so <span class="math inline">\(L_n \to L\)</span>. (? 0)
+Suppose there is a polynomial <span class="math inline">\(p\)</span> of which <span class="math inline">\(L\)</span> is a root.
+Then by Fact A, there exists <span class="math inline">\(k\)</span> s.t. <span class="math inline">\(|p(x) - p(y)| \leq k |x - y| \; \forall \; 0 \leq x, y \leq 1\)</span>.
+<img src="figures/03-louville.png" width="886" style="display: block; margin: auto;" />
+<span class="math display">\[\begin{align*}
+    \text{Note } |L - L_n| = \sum_{k=n + 1}^{\infty} \frac{1}{10^{k!}} &amp;\leq \frac{1}{10^{(n + 1)!}} (1 + \frac{1}{2} + \frac{1}{2}^2 \dots) \\
+    &amp;= \frac{2}{10^{(n + 1)!}}
+\end{align*}\]</span>
+Suppose <span class="math inline">\(p\)</span> has degree <span class="math inline">\(d\)</span>, i.e. <span class="math inline">\(p(x) = a_d x^d + a_{d-1}x^{d-1} + \dots + a_1 x + a_0\)</span> with <span class="math inline">\(a_i \in \mathbb{Z}\)</span>, <span class="math inline">\(a_d \neq 0\)</span>.<br />
+Notice that <span class="math inline">\(L_n = s / 10^{n!}\)</span> for some <span class="math inline">\(s \in \mathbb{N}\)</span>, so <span class="math inline">\(p(L_n) = t / 10^{n! d}\)</span> for some <span class="math inline">\(t \in \mathbb{Z}\)</span> (as largest denominator is <span class="math inline">\(1 / 10^{n!}\)</span> and <span class="math inline">\(1 / 10^{n! d}\)</span> respectively).</p>
+<p>By Fact B, for sufficiently large <span class="math inline">\(n\)</span>, <span class="math inline">\(L_n\)</span> is not a root of <span class="math inline">\(p\)</span>.(?)
+Hence <span class="math inline">\(|p(L_n)| \geq 1 / 10^{n! d}\)</span>, i.e. <span class="math inline">\(|p(L_n) - p(L)| \geq 1 / 10^{n! d}\)</span>.
+Therefore <span class="math inline">\(1 / 10^{n! d} \leq K \frac{2}{10^{(n + 1)!}} = K \frac{2}{10^{n!} 10^{n + 1}}\)</span>, which is a contradiction for sufficiently large <span class="math inline">\(n\)</span>.</p>
+</div>
+<div class="remark">
+<p><span id="unlabeled-div-78" class="remark"><em>Remark</em>. </span><br />
+</p>
+<ol style="list-style-type: decimal">
+<li><p>The same proof shows that any real number <span class="math inline">\(x\)</span> s.t. <span class="math inline">\(\forall \; n \in \mathbb{N}, \; \exists\)</span> rational <span class="math inline">\(\frac{p}{q}\)</span> with <span class="math inline">\(0 &lt; |x - \frac{p}{q}| &lt; \frac{1}{q^n}\)</span> is transcendental.
+“<span class="math inline">\(x\)</span> has a very good rational approximation <span class="math inline">\(\implies\)</span> transcendental”.</p></li>
+<li><p>Such <span class="math inline">\(x\)</span> are knows are <em>Liouville numbers</em>.</p></li>
+<li><p>This proof does not show that <span class="math inline">\(e\)</span> is transcendental, but in fact it is.</p></li>
+<li><p>We will give another proof of the existence of transcendental numbers in Section 4.</p></li>
+</ol>
+</div>
+</div>
+<div id="the-complex-numbers" class="section level2" number="3.7">
+<h2><span class="header-section-number">3.7</span> The Complex Numbers</h2>
+<p>Some polynomials have no real roots, e.g. <span class="math inline">\(x^2 + 1\)</span>.
+We will try to define <span class="math inline">\(x\)</span> with <span class="math inline">\(x^2 = -1\)</span> “into existence”.</p>
+<p>The <em>complex numbers</em>, <span class="math inline">\(\mathbb{C}\)</span>, consist of <span class="math inline">\(\mathbb{R}^2\)</span> (the set of all ordered pairs <span class="math inline">\((a, b)\)</span> with <span class="math inline">\(a, b \in \mathbb{R}\)</span>) together with operations <span class="math inline">\(+\)</span> and <span class="math inline">\(\cdot\)</span> defined by
+<span class="math display">\[\begin{align*}
+    (a, b) + (c, d) &amp;= (a + c, b + d) \\
+    (a, b) \cdot (c, d) &amp;= (ac - bd, ad + bc)
+\end{align*}\]</span>
+We can view <span class="math inline">\(\mathbb{R}\)</span> as contained in <span class="math inline">\(\mathbb{C}\)</span> by identifying <span class="math inline">\(a \in \mathbb{R}\)</span> with <span class="math inline">\((a, 0) \in \mathbb{C}\)</span>.
+Note that <span class="math inline">\((a, 0) + (b, 0) = (a + b, 0)\)</span> and <span class="math inline">\((a, 0) \cdot (b, 0) = (ab, 0)\)</span>.<br />
+Now let <span class="math inline">\(i = (0, 1)\)</span>.
+Then <span class="math inline">\(i^2 = (0, 1) \cdot (0, 1) = (-1, 0)\)</span>.
+Note every <span class="math inline">\(z \in \mathbb{C}\)</span> is of the form <span class="math inline">\(a + bi\)</span> with <span class="math inline">\(a, b \in \mathbb{R}\)</span>.
+Indeed, <span class="math inline">\((a, b) = a (1, 0) + b (0, 1) = a + bi\)</span>.</p>
+<div class="remark">
+<p><span id="unlabeled-div-79" class="remark"><em>Remark</em>. </span><br />
+</p>
+<ol style="list-style-type: decimal">
+<li><p><span class="math inline">\(\mathbb{C}\)</span> obeys all the usual rules of arithmetic.
+In particular it obeys (1) - (3) as set out in <a href="the-reals.html#the-reals-1">The Reals</a>, including that <span class="math inline">\(\forall \; z \neq 0, \; \exists \; w\)</span> s.t. <span class="math inline">\(zw = 1\)</span>.<br />
+Indeed, given <span class="math inline">\(z = a + bi\)</span>, note that
+<span class="math display">\[\begin{align*}
+ (a + bi)(a- bi) &amp;= a^2 + b^2 \text{ so } (a + bi) \frac{a - bi}{a^2 + b^2} = 1.
+\end{align*}\]</span>
+A structure obeying rules (1) - (3) is called a <em>field</em>, e.g. <span class="math inline">\(\mathbb{C}, \mathbb{R}, \mathbb{Q}, \mathbb{Z}_p\)</span> with <span class="math inline">\(p\)</span> a prime, but <em>not</em> <span class="math inline">\(\mathbb{Z}\)</span>!</p></li>
+<li><p>Every non-zero polynomial (even allowing complex coefficients) has a root in <span class="math inline">\(\mathbb{C}\)</span>.
+This is know of that Fundamental Theorem of Algebra.</p></li>
+</ol>
+</div>
+
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="10">
+<li id="fn10"><p>Is this statement true in the rationals? No, consider approximations to <span class="math inline">\(\sqrt{2}\)</span>, that is an bounded increasing sequence but it has no limit as <span class="math inline">\(\sqrt{2}\notin \mathbb{Q}\)</span>.<a href="the-reals.html#fnref10" class="footnote-back">↩︎</a></p></li>
+<li id="fn11"><p>An increasing sequence converges iff it is bounded.<a href="the-reals.html#fnref11" class="footnote-back">↩︎</a></p></li>
+<li id="fn12"><p>if <span class="math inline">\(b_K &gt; a_K + 1\)</span>, then <span class="math inline">\(0.b_1 b_2 \dots b_K - 0.a_1 a_2 \dots a_K &gt; \frac{1}{10^k}\)</span> and <span class="math inline">\(\sum_{j=K+1}^{\infty} \frac{a_j}{10^j} \leq \frac{1}{10^k}\)</span> so <span class="math inline">\(0.b_1 b_2 \dots &gt; 0.a_1 a_2 \dots\)</span>.<a href="the-reals.html#fnref12" class="footnote-back">↩︎</a></p></li>
+<li id="fn13"><p>Implicitly we are making the assumption that we can multiply <span class="math inline">\(q!\)</span> term by term, we can do this as we have established that the sequence converges. When the sequences tends to a limit, any constant multiple of the sequence will tend to a constant multiple of the limit.<a href="the-reals.html#fnref13" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="elementary-number-theory.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="sets-functions-and-relations.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "lunr",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

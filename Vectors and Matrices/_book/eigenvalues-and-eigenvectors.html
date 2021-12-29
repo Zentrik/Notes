@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>6 Eigenvalues and Eigenvectors | Vectors and Matrices 2021 - 2022</title>
+  <meta name="description" content="Notes" />
+  <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="6 Eigenvalues and Eigenvectors | Vectors and Matrices 2021 - 2022" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Notes" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="6 Eigenvalues and Eigenvectors | Vectors and Matrices 2021 - 2022" />
+  
+  <meta name="twitter:description" content="Notes" />
+  
+
+<meta name="author" content="Author" />
+
+
+<meta name="date" content="2021-07-10" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="determinants-and-inverses.html"/>
+<link rel="next" href="changing-bases-canonical-forms-and-symmetries.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Lecture 1</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#contents"><i class="fa fa-check"></i><b>0.1</b> Contents</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="complex-numbers.html"><a href="complex-numbers.html"><i class="fa fa-check"></i><b>1</b> Complex Numbers</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="complex-numbers.html"><a href="complex-numbers.html#definitions"><i class="fa fa-check"></i><b>1.1</b> Definitions</a></li>
+<li class="chapter" data-level="1.2" data-path="complex-numbers.html"><a href="complex-numbers.html#basic-properties-and-consequences"><i class="fa fa-check"></i><b>1.2</b> Basic properties and Consequences</a></li>
+<li class="chapter" data-level="1.3" data-path="complex-numbers.html"><a href="complex-numbers.html#exponential-and-trigonometric-functions"><i class="fa fa-check"></i><b>1.3</b> Exponential and Trigonometric Functions</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="complex-numbers.html"><a href="complex-numbers.html#roots-of-units"><i class="fa fa-check"></i><b>1.3.1</b> Roots of units</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="complex-numbers.html"><a href="complex-numbers.html#transformations-lines-and-circles"><i class="fa fa-check"></i><b>1.4</b> Transformations; lines and circles</a></li>
+<li class="chapter" data-level="1.5" data-path="complex-numbers.html"><a href="complex-numbers.html#logarithms-and-complex-powers"><i class="fa fa-check"></i><b>1.5</b> Logarithms and Complex Powers</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html"><i class="fa fa-check"></i><b>2</b> Vectors in 3 Dimensions</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html#vector-addition-and-scalar-multiplication"><i class="fa fa-check"></i><b>2.1</b> Vector Addition and Scalar Multiplication</a></li>
+<li class="chapter" data-level="2.2" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html#scalar-or-dot-product"><i class="fa fa-check"></i><b>2.2</b> Scalar or Dot Product</a></li>
+<li class="chapter" data-level="2.3" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html#orthonormal-bases-and-components"><i class="fa fa-check"></i><b>2.3</b> Orthonormal Bases and Components</a></li>
+<li class="chapter" data-level="2.4" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html#vector-or-cross-product"><i class="fa fa-check"></i><b>2.4</b> Vector or Cross Product</a></li>
+<li class="chapter" data-level="2.5" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html#triple-products"><i class="fa fa-check"></i><b>2.5</b> Triple products</a></li>
+<li class="chapter" data-level="2.6" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html#lines-planes-and-other-vector-equations"><i class="fa fa-check"></i><b>2.6</b> Lines, Planes and Other Vector Equations</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html#lines"><i class="fa fa-check"></i><b>2.6.1</b> Lines</a></li>
+<li class="chapter" data-level="2.6.2" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html#planes"><i class="fa fa-check"></i><b>2.6.2</b> Planes</a></li>
+<li class="chapter" data-level="2.6.3" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html#other-vector-equations"><i class="fa fa-check"></i><b>2.6.3</b> Other Vector Equations</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html#index-suffix-notation-and-the-summation-convention"><i class="fa fa-check"></i><b>2.7</b> Index (suffix) Notation and the Summation convention</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html#components-delta-and-epsilon"><i class="fa fa-check"></i><b>2.7.1</b> Components; <span class="math inline">\(\delta\)</span> and <span class="math inline">\(\epsilon\)</span></a></li>
+<li class="chapter" data-level="2.7.2" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html#summation-convention"><i class="fa fa-check"></i><b>2.7.2</b> Summation Convention</a></li>
+<li class="chapter" data-level="2.7.3" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html#rules"><i class="fa fa-check"></i><b>2.7.3</b> Rules</a></li>
+<li class="chapter" data-level="2.7.4" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html#application"><i class="fa fa-check"></i><b>2.7.4</b> Application</a></li>
+<li class="chapter" data-level="2.7.5" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html#epsilon-epsilon-identities"><i class="fa fa-check"></i><b>2.7.5</b> <span class="math inline">\(\epsilon \epsilon\)</span> identities</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="vectors-in-general-mathbbrn-and-mathbbcn.html"><a href="vectors-in-general-mathbbrn-and-mathbbcn.html"><i class="fa fa-check"></i><b>3</b> Vectors in General; <span class="math inline">\(\mathbb{R}^n\)</span> and <span class="math inline">\(\mathbb{C}^n\)</span></a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="vectors-in-general-mathbbrn-and-mathbbcn.html"><a href="vectors-in-general-mathbbrn-and-mathbbcn.html#vectors-in-mathbbrn"><i class="fa fa-check"></i><b>3.1</b> Vectors in <span class="math inline">\(\mathbb{R}^n\)</span></a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="vectors-in-general-mathbbrn-and-mathbbcn.html"><a href="vectors-in-general-mathbbrn-and-mathbbcn.html#Rn"><i class="fa fa-check"></i><b>3.1.1</b> Definitions</a></li>
+<li class="chapter" data-level="3.1.2" data-path="vectors-in-general-mathbbrn-and-mathbbcn.html"><a href="vectors-in-general-mathbbrn-and-mathbbcn.html#cauchy-schwarz-and-triangle-inequalities"><i class="fa fa-check"></i><b>3.1.2</b> Cauchy-Schwarz and Triangle Inequalities</a></li>
+<li class="chapter" data-level="3.1.3" data-path="vectors-in-general-mathbbrn-and-mathbbcn.html"><a href="vectors-in-general-mathbbrn-and-mathbbcn.html#comments"><i class="fa fa-check"></i><b>3.1.3</b> Comments</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="vectors-in-general-mathbbrn-and-mathbbcn.html"><a href="vectors-in-general-mathbbrn-and-mathbbcn.html#vector-spaces"><i class="fa fa-check"></i><b>3.2</b> Vector Spaces</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="vectors-in-general-mathbbrn-and-mathbbcn.html"><a href="vectors-in-general-mathbbrn-and-mathbbcn.html#axioms-span-subspaces"><i class="fa fa-check"></i><b>3.2.1</b> Axioms; span; subspaces</a></li>
+<li class="chapter" data-level="3.2.2" data-path="vectors-in-general-mathbbrn-and-mathbbcn.html"><a href="vectors-in-general-mathbbrn-and-mathbbcn.html#linear-dependence-and-independence"><i class="fa fa-check"></i><b>3.2.2</b> Linear Dependence and Independence</a></li>
+<li class="chapter" data-level="3.2.3" data-path="vectors-in-general-mathbbrn-and-mathbbcn.html"><a href="vectors-in-general-mathbbrn-and-mathbbcn.html#inner-product"><i class="fa fa-check"></i><b>3.2.3</b> Inner product</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="vectors-in-general-mathbbrn-and-mathbbcn.html"><a href="vectors-in-general-mathbbrn-and-mathbbcn.html#bases-and-dimension"><i class="fa fa-check"></i><b>3.3</b> Bases and Dimension</a></li>
+<li class="chapter" data-level="3.4" data-path="vectors-in-general-mathbbrn-and-mathbbcn.html"><a href="vectors-in-general-mathbbrn-and-mathbbcn.html#vectors-in-mathbbcn"><i class="fa fa-check"></i><b>3.4</b> Vectors in <span class="math inline">\(\mathbb{C}^n\)</span></a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="vectors-in-general-mathbbrn-and-mathbbcn.html"><a href="vectors-in-general-mathbbrn-and-mathbbcn.html#Cn"><i class="fa fa-check"></i><b>3.4.1</b> Definitions</a></li>
+<li class="chapter" data-level="3.4.2" data-path="vectors-in-general-mathbbrn-and-mathbbcn.html"><a href="vectors-in-general-mathbbrn-and-mathbbcn.html#inner-product-1"><i class="fa fa-check"></i><b>3.4.2</b> Inner Product</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html"><i class="fa fa-check"></i><b>4</b> Matrices and Linear Maps</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#introduction"><i class="fa fa-check"></i><b>4.1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#definitions-1"><i class="fa fa-check"></i><b>4.1.1</b> Definitions</a></li>
+<li class="chapter" data-level="4.1.2" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#rank-and-nullity"><i class="fa fa-check"></i><b>4.1.2</b> Rank and Nullity</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#geometrical-examples"><i class="fa fa-check"></i><b>4.2</b> Geometrical Examples</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#rotations"><i class="fa fa-check"></i><b>4.2.1</b> Rotations</a></li>
+<li class="chapter" data-level="4.2.2" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#reflections"><i class="fa fa-check"></i><b>4.2.2</b> Reflections</a></li>
+<li class="chapter" data-level="4.2.3" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#dilations"><i class="fa fa-check"></i><b>4.2.3</b> Dilations</a></li>
+<li class="chapter" data-level="4.2.4" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#shears"><i class="fa fa-check"></i><b>4.2.4</b> Shears</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#matrices-as-linear-maps-mathbbrn-to-mathbbrm"><i class="fa fa-check"></i><b>4.3</b> Matrices as Linear Maps <span class="math inline">\(\mathbb{R}^n \to \mathbb{R}^m\)</span></a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#definitions-2"><i class="fa fa-check"></i><b>4.3.1</b> Definitions</a></li>
+<li class="chapter" data-level="4.3.2" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#examples"><i class="fa fa-check"></i><b>4.3.2</b> Examples</a></li>
+<li class="chapter" data-level="4.3.3" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#isometries-area-and-determinants-in-mathbbr2"><i class="fa fa-check"></i><b>4.3.3</b> Isometries, area and determinants in <span class="math inline">\(\mathbb{R}^2\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#matrices-for-linear-maps-in-general"><i class="fa fa-check"></i><b>4.4</b> Matrices for Linear Maps in General</a></li>
+<li class="chapter" data-level="4.5" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#matrix-algebra"><i class="fa fa-check"></i><b>4.5</b> Matrix Algebra</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#linear-combinations"><i class="fa fa-check"></i><b>4.5.1</b> Linear Combinations</a></li>
+<li class="chapter" data-level="4.5.2" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#matrix-multiplication"><i class="fa fa-check"></i><b>4.5.2</b> Matrix multiplication</a></li>
+<li class="chapter" data-level="4.5.3" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#matrix-inverses"><i class="fa fa-check"></i><b>4.5.3</b> Matrix Inverses</a></li>
+<li class="chapter" data-level="4.5.4" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#transpose-and-hermitian-conjugate"><i class="fa fa-check"></i><b>4.5.4</b> Transpose and Hermitian Conjugate</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#orthogonal-and-unitary-matrices"><i class="fa fa-check"></i><b>4.6</b> Orthogonal and Unitary Matrices</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html"><i class="fa fa-check"></i><b>5</b> Determinants and inverses</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#introduction-1"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
+<li class="chapter" data-level="5.2" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#epsilon-and-alternating-forms"><i class="fa fa-check"></i><b>5.2</b> <span class="math inline">\(\epsilon\)</span> and Alternating Forms</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#epsilon-and-permutation"><i class="fa fa-check"></i><b>5.2.1</b> <span class="math inline">\(\epsilon\)</span> and Permutation</a></li>
+<li class="chapter" data-level="5.2.2" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#alternating-forms-and-linear-independence"><i class="fa fa-check"></i><b>5.2.2</b> Alternating Forms and Linear (In)dependence</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#determinants-in-mathbbrn-and-mathbbcn"><i class="fa fa-check"></i><b>5.3</b> Determinants in <span class="math inline">\(\mathbb{R}^n\)</span> and <span class="math inline">\(\mathbb{C}^n\)</span></a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#definition"><i class="fa fa-check"></i><b>5.3.1</b> Definition</a></li>
+<li class="chapter" data-level="5.3.2" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#evaluating-determinants-expanding-by-rows-or-columns"><i class="fa fa-check"></i><b>5.3.2</b> Evaluating determinants: expanding by rows or columns</a></li>
+<li class="chapter" data-level="5.3.3" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#simplifying-determinants-row-and-column-operations"><i class="fa fa-check"></i><b>5.3.3</b> Simplifying determinants: Row and Column Operations:</a></li>
+<li class="chapter" data-level="5.3.4" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#multiplicative-property"><i class="fa fa-check"></i><b>5.3.4</b> Multiplicative Property</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#minors-cofactors-and-inverses"><i class="fa fa-check"></i><b>5.4</b> Minors, Cofactors and Inverses</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#cofactors-and-determinants"><i class="fa fa-check"></i><b>5.4.1</b> Cofactors and Determinants</a></li>
+<li class="chapter" data-level="5.4.2" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#adjugates-and-inverses"><i class="fa fa-check"></i><b>5.4.2</b> Adjugates and Inverses</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#system-of-linear-equations"><i class="fa fa-check"></i><b>5.5</b> System of Linear Equations</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#introduction-and-nature-of-solutions"><i class="fa fa-check"></i><b>5.5.1</b> Introduction and Nature of Solutions</a></li>
+<li class="chapter" data-level="5.5.2" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#geometric-interpretation-in-mathbbr3"><i class="fa fa-check"></i><b>5.5.2</b> Geometric Interpretation in <span class="math inline">\(\mathbb{R}^3\)</span></a></li>
+<li class="chapter" data-level="5.5.3" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#gaussian-elimination-and-echelon-form"><i class="fa fa-check"></i><b>5.5.3</b> Gaussian Elimination and Echelon Form</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html"><i class="fa fa-check"></i><b>6</b> Eigenvalues and Eigenvectors</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#introduction-2"><i class="fa fa-check"></i><b>6.1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#definitions-3"><i class="fa fa-check"></i><b>6.1.1</b> Definitions</a></li>
+<li class="chapter" data-level="6.1.2" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#examples-1"><i class="fa fa-check"></i><b>6.1.2</b> Examples</a></li>
+<li class="chapter" data-level="6.1.3" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#deductions-involving-chi_at"><i class="fa fa-check"></i><b>6.1.3</b> Deductions involving <span class="math inline">\(\chi_A(t)\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#eigenspaces-and-multiplicities"><i class="fa fa-check"></i><b>6.2</b> Eigenspaces and Multiplicities</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#definitions-4"><i class="fa fa-check"></i><b>6.2.1</b> Definitions</a></li>
+<li class="chapter" data-level="6.2.2" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#examples-2"><i class="fa fa-check"></i><b>6.2.2</b> Examples</a></li>
+<li class="chapter" data-level="6.2.3" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#linear-independence-of-eigenvectors"><i class="fa fa-check"></i><b>6.2.3</b> Linear Independence of Eigenvectors</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#diagonalisability-and-similarity"><i class="fa fa-check"></i><b>6.3</b> Diagonalisability and Similarity</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#introduction-3"><i class="fa fa-check"></i><b>6.3.1</b> Introduction</a></li>
+<li class="chapter" data-level="6.3.2" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#criteria-for-diagonalisability"><i class="fa fa-check"></i><b>6.3.2</b> Criteria for Diagonalisability</a></li>
+<li class="chapter" data-level="6.3.3" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#similarity"><i class="fa fa-check"></i><b>6.3.3</b> Similarity</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#hermitian-and-symmetric-matrices"><i class="fa fa-check"></i><b>6.4</b> Hermitian and Symmetric Matrices</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#real-eigenvalues-and-orthogonal-eigenvectors"><i class="fa fa-check"></i><b>6.4.1</b> Real Eigenvalues and Orthogonal Eigenvectors</a></li>
+<li class="chapter" data-level="6.4.2" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#unitary-and-orthogonal-diagonalisation"><i class="fa fa-check"></i><b>6.4.2</b> Unitary and Orthogonal Diagonalisation</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#quadratic-forms"><i class="fa fa-check"></i><b>6.5</b> Quadratic Forms</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#examples-in-mathbbr2-and-mathbbr3"><i class="fa fa-check"></i><b>6.5.1</b> Examples in <span class="math inline">\(\mathbb{R}^2\)</span> and <span class="math inline">\(\mathbb{R}^3\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#cayley-hamilton-theorem"><i class="fa fa-check"></i><b>6.6</b> Cayley-Hamilton Theorem</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="changing-bases-canonical-forms-and-symmetries.html"><a href="changing-bases-canonical-forms-and-symmetries.html"><i class="fa fa-check"></i><b>7</b> Changing Bases, Canonical Forms and Symmetries</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="changing-bases-canonical-forms-and-symmetries.html"><a href="changing-bases-canonical-forms-and-symmetries.html#changing-bases-in-general"><i class="fa fa-check"></i><b>7.1</b> Changing Bases in General</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="changing-bases-canonical-forms-and-symmetries.html"><a href="changing-bases-canonical-forms-and-symmetries.html#definition-and-proposition"><i class="fa fa-check"></i><b>7.1.1</b> Definition and Proposition</a></li>
+<li class="chapter" data-level="7.1.2" data-path="changing-bases-canonical-forms-and-symmetries.html"><a href="changing-bases-canonical-forms-and-symmetries.html#proof-of-proposition"><i class="fa fa-check"></i><b>7.1.2</b> Proof of proposition</a></li>
+<li class="chapter" data-level="7.1.3" data-path="changing-bases-canonical-forms-and-symmetries.html"><a href="changing-bases-canonical-forms-and-symmetries.html#approach-using-vector-components"><i class="fa fa-check"></i><b>7.1.3</b> Approach using vector components</a></li>
+<li class="chapter" data-level="7.1.4" data-path="changing-bases-canonical-forms-and-symmetries.html"><a href="changing-bases-canonical-forms-and-symmetries.html#comments-1"><i class="fa fa-check"></i><b>7.1.4</b> Comments</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="changing-bases-canonical-forms-and-symmetries.html"><a href="changing-bases-canonical-forms-and-symmetries.html#jordan-canonical-normal-form"><i class="fa fa-check"></i><b>7.2</b> Jordan Canonical/ Normal Form</a></li>
+<li class="chapter" data-level="7.3" data-path="changing-bases-canonical-forms-and-symmetries.html"><a href="changing-bases-canonical-forms-and-symmetries.html#conics-and-quadrics"><i class="fa fa-check"></i><b>7.3</b> Conics and Quadrics</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="changing-bases-canonical-forms-and-symmetries.html"><a href="changing-bases-canonical-forms-and-symmetries.html#quadrics-in-general"><i class="fa fa-check"></i><b>7.3.1</b> Quadrics in General</a></li>
+<li class="chapter" data-level="7.3.2" data-path="changing-bases-canonical-forms-and-symmetries.html"><a href="changing-bases-canonical-forms-and-symmetries.html#conics"><i class="fa fa-check"></i><b>7.3.2</b> Conics</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="changing-bases-canonical-forms-and-symmetries.html"><a href="changing-bases-canonical-forms-and-symmetries.html#symmetries-and-transformation-groups."><i class="fa fa-check"></i><b>7.4</b> Symmetries and Transformation Groups.</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="changing-bases-canonical-forms-and-symmetries.html"><a href="changing-bases-canonical-forms-and-symmetries.html#orthogonal-transformations-and-rotations-in-mathbbrn"><i class="fa fa-check"></i><b>7.4.1</b> Orthogonal Transformations and Rotations in <span class="math inline">\(\mathbb{R}^n\)</span></a></li>
+<li class="chapter" data-level="7.4.2" data-path="changing-bases-canonical-forms-and-symmetries.html"><a href="changing-bases-canonical-forms-and-symmetries.html#d-minkowski-space-and-lorentz-transformations"><i class="fa fa-check"></i><b>7.4.2</b> 2d Minkowski Space and Lorentz Transformations</a></li>
+<li class="chapter" data-level="7.4.3" data-path="changing-bases-canonical-forms-and-symmetries.html"><a href="changing-bases-canonical-forms-and-symmetries.html#application-to-special-relativity"><i class="fa fa-check"></i><b>7.4.3</b> Application to special relativity</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Vectors and Matrices 2021 - 2022</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="eigenvalues-and-eigenvectors" class="section level1" number="6">
+<h1><span class="header-section-number">6</span> Eigenvalues and Eigenvectors</h1>
+<div id="introduction-2" class="section level2" number="6.1">
+<h2><span class="header-section-number">6.1</span> Introduction</h2>
+<div id="definitions-3" class="section level3" number="6.1.1">
+<h3><span class="header-section-number">6.1.1</span> Definitions</h3>
+<div class="definition">
+<p><span id="def:unlabeled-div-92" class="definition"><strong>Definition 6.1  (Eigenvector and eigenvalue) </strong></span>For a linear map <span class="math inline">\(T : V \to V\)</span> (<span class="math inline">\(V\)</span> a real vector or complex vector space) a vector <span class="math inline">\(\underline{v} \in V\)</span> with <span class="math inline">\(\underline{v} \neq \underline{0}\)</span> is an <em>eigenvector</em> of <span class="math inline">\(T\)</span> with eigenvalue <span class="math inline">\(\lambda\)</span> if <span class="math display">\[\begin{align*}
+    T(\underline{v}) = \lambda \underline{v}.
+\end{align*}\]</span></p>
+</div>
+<p>If <span class="math inline">\(V = \mathbb{R}^n\)</span> or <span class="math inline">\(\mathbb{C}^n\)</span> and <span class="math inline">\(T\)</span> is given by an <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(A\)</span> then
+<span class="math display">\[\begin{align*}
+    A \underline{v} = \lambda \underline{v} \iff  (A - \lambda I) \underline{v} = \underline{0}
+\end{align*}\]</span> and for a given <span class="math inline">\(\lambda\)</span> this holds for some <span class="math inline">\(\underline{v} \neq 0 \iff \det(A - \lambda I) = 0\)</span>, the <em>characteristic equation</em>, i.e. <span class="math inline">\(\lambda\)</span> is an eigenvalue iff it is a root of <span class="math inline">\(\chi_A (t) = \det (A - tI)\)</span>, the <em>characteristic polynomial</em>.
+<span class="math inline">\(\chi_A (t)\)</span> is a polynomial of degree <span class="math inline">\(n\)</span> for <span class="math inline">\(A\)</span> (<span class="math inline">\(n \times n\)</span>).
+We find eigenvalues as roots of the characteristic equation/ polynomial and then determine corresponding eigenvectors.</p>
+</div>
+<div id="examples-1" class="section level3" number="6.1.2">
+<h3><span class="header-section-number">6.1.2</span> Examples</h3>
+<div class="example">
+<p><span id="exm:unlabeled-div-93" class="example"><strong>Example 6.1  </strong></span><span class="math display">\[\begin{align*}
+    V &amp;= \mathbb{C}^2 \text{ and } A = \begin{pmatrix}
+    2 &amp; i \\
+    -i &amp; 2
+    \end{pmatrix} \\
+    \det (A - \lambda I) &amp;= \begin{vmatrix}
+    2 - \lambda &amp; i \\
+    -i &amp; 2 - \lambda
+    \end{vmatrix} \\
+    &amp;= (2 - \lambda)^2 - 1 \\
+    &amp;= 0 \iff \lambda = 1 \text{ or } 3.
+\end{align*}\]</span>
+To find eigenvectors <span class="math inline">\(\underline{v} = \begin{pmatrix}v_1 \\v_2\end{pmatrix}\)</span>:</p>
+<ul>
+<li><p><span class="math inline">\(\lambda = 1\)</span>:
+<span class="math display">\[\begin{align*}
+  (A - I) \underline{v} &amp;= \begin{pmatrix}
+      1 &amp; i \\
+      -i &amp; 1
+      \end{pmatrix} \begin{pmatrix}v_1 \\v_2\end{pmatrix} = \underline{0} \\
+  \implies \underline{v} &amp;= \alpha \begin{pmatrix}1 \\i\end{pmatrix} \text{ any } \alpha \neq 0 
+\end{align*}\]</span></p></li>
+<li><p><span class="math inline">\(\lambda = 3\)</span>:
+<span class="math display">\[\begin{align*}
+  (A - 3I) \underline{v} &amp;= \begin{pmatrix}
+      -1 &amp; i \\
+      -i &amp; -1
+      \end{pmatrix} \begin{pmatrix}v_1 \\v_2\end{pmatrix} = \underline{0} \\
+  \implies \underline{v} &amp;= \beta \begin{pmatrix}1 \\ -i\end{pmatrix} \text{ any } \beta \neq 0 
+\end{align*}\]</span></p></li>
+</ul>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-94" class="example"><strong>Example 6.2  </strong></span><span class="math display">\[\begin{align*}
+    V &amp;= \mathbb{R}^2 \text{ and } A = \begin{pmatrix}
+    1 &amp; 1 \\
+    0 &amp; 1
+    \end{pmatrix} \\
+    \det (A - \lambda I) &amp;= \begin{vmatrix}
+    1 - \lambda &amp; 1 \\
+    0 &amp; 1 - \lambda
+    \end{vmatrix} \\
+    &amp;= (1 - \lambda)^2\\
+    &amp;= 0 \iff \lambda = 1.
+\end{align*}\]</span>
+To find eigenvectors <span class="math inline">\(\underline{v} = \begin{pmatrix}v_1 \\v_2\end{pmatrix}\)</span>:</p>
+<p><span class="math display">\[\begin{align*}
+    (A - I) \underline{v} &amp;= \begin{pmatrix}
+        0 &amp; 1 \\
+        0 &amp; 0
+        \end{pmatrix} \begin{pmatrix}v_1 \\v_2\end{pmatrix} = \underline{0} \\
+    \implies \underline{v} &amp;= \alpha \begin{pmatrix}1 \\ 0\end{pmatrix} \text{ any } \alpha \neq 0 
+\end{align*}\]</span></p>
+</div>
+<div class="example">
+<p><span id="exm:sone" class="example"><strong>Example 6.3  </strong></span><span class="math display">\[\begin{align*}
+    V &amp;= \mathbb{R}^2 \text{ or } \mathbb{C}^2\\
+    U &amp;= \begin{pmatrix}
+    \cos \theta &amp; - \sin \theta \\
+    \sin \theta &amp; \cos \theta
+    \end{pmatrix} \\
+    \chi_U (t) &amp;= \det (U - t I) \\
+    &amp;= t^2 - 2t \cos \theta + 1 \\
+    \implies \lambda &amp;= e^{\pm i \theta} \\
+    \implies \underline{v} &amp;= \theta \begin{pmatrix}1 \\ \mp i\end{pmatrix} \ (\alpha \neq 0 )
+\end{align*}\]</span></p>
+</div>
+</div>
+<div id="deductions-involving-chi_at" class="section level3" number="6.1.3">
+<h3><span class="header-section-number">6.1.3</span> Deductions involving <span class="math inline">\(\chi_A(t)\)</span></h3>
+<p>For <span class="math inline">\(A\)</span> <span class="math inline">\(n \times n\)</span>, characteristic polynomial has degree <span class="math inline">\(n\)</span>
+<span class="math display">\[\begin{align*}
+    \chi_A(t) &amp;= \det \begin{pmatrix}
+    A_{11} - t &amp; A_{12} &amp; \dots &amp; A_{1n} \\
+    A_{21} &amp; A_{22} - t &amp; \dots &amp; A_{2n} \\
+    \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+    A_{n1} &amp; A_{n2} &amp; \dots &amp; A_{nn} - t 
+    \end{pmatrix} \\
+    &amp;= \sum_{j=0}^{n} c_j t^j, \text{ for some } c_j \in \mathbb{C} \\
+    &amp;= (-1)^n (t - \lambda_1) \dots (t - \lambda_n)
+\end{align*}\]</span></p>
+<ol style="list-style-type: lower-roman">
+<li><p><span class="math inline">\(\exists\)</span> at least one eigenvalue (one root of <span class="math inline">\(\chi_A\)</span>); in fact <span class="math inline">\(\exists\)</span> <span class="math inline">\(n\)</span> roots counted with multiplicity (FTA).</p></li>
+<li><p><span class="math inline">\(\operatorname{tr}(A) = A_{ii} = \sum_i \lambda_i\)</span>, sum of eigenvalues, by comparing terms of order <span class="math inline">\(n - 1\)</span> in <span class="math inline">\(t\)</span>.</p></li>
+<li><p><span class="math inline">\(\det A = \chi_A(0) = \Pi_i \lambda_i\)</span>, product of eigenvalues.</p></li>
+<li><p>If <span class="math inline">\(A\)</span> is diagonal:
+<span class="math display">\[\begin{align*}
+A = \begin{pmatrix}
+\lambda_1 &amp; &amp; \\
+&amp; \ddots &amp; \\
+&amp; &amp; \lambda_n
+\end{pmatrix}
+\end{align*}\]</span> with the diagonal entries being the eigenvalues; (ii) and (iii) are then immediate.</p></li>
+<li><p>If <span class="math inline">\(A\)</span> is real, then coefficients <span class="math inline">\(c_j\)</span> are real and <span class="math inline">\(\chi_A(\lambda) = 0 \iff \chi_A(\overline{\lambda}) = 0\)</span>: non-real roots occur in conjugate pairs.</p></li>
+</ol>
+</div>
+</div>
+<div id="eigenspaces-and-multiplicities" class="section level2" number="6.2">
+<h2><span class="header-section-number">6.2</span> Eigenspaces and Multiplicities</h2>
+<div id="definitions-4" class="section level3" number="6.2.1">
+<h3><span class="header-section-number">6.2.1</span> Definitions</h3>
+<div class="definition">
+<p><span id="def:unlabeled-div-95" class="definition"><strong>Definition 6.2  (Eigenspace) </strong></span>For an eigenvalue <span class="math inline">\(\lambda\)</span> of matrix <span class="math inline">\(A\)</span>, define the <em>eigenspace</em>
+<span class="math display">\[\begin{align*}
+    E_\lambda = \{ \underline{v} : A \underline{v} = \lambda \underline{v}\} = \ker (A - \lambda I),
+\end{align*}\]</span> this is the subspace consisting of the eigenvectors and <span class="math inline">\(\underline{0}\)</span>.</p>
+</div>
+<div class="definition">
+<p><span id="def:unlabeled-div-96" class="definition"><strong>Definition 6.3  (Geometric multiplicity) </strong></span>The <em>geometric multiplicity</em>
+<span class="math display">\[\begin{align*}
+    m_\lambda = \dim E_\lambda = \operatorname{null}(A - \lambda I),
+\end{align*}\]</span> the number of linearly independent eigenvectors with eigenvalue <span class="math inline">\(\lambda\)</span>.</p>
+</div>
+<div class="definition">
+<p><span id="def:unlabeled-div-97" class="definition"><strong>Definition 6.4  (Algebraic multiplicity) </strong></span>The <em>algebraic multiplicity</em> <span class="math inline">\(M_\Lambda\)</span> is the multiplicity of <span class="math inline">\(\lambda\)</span> as a root of <span class="math inline">\(\chi_A\)</span>, i.e. <span class="math inline">\(\chi_A(t) = (t-\lambda)^{M_\lambda} f(t)\)</span> (with <span class="math inline">\(f(\lambda) \neq 0\)</span>).</p>
+</div>
+<div class="proposition">
+<p><span id="prp:unlabeled-div-98" class="proposition"><strong>Proposition 6.1  </strong></span><span class="math display">\[\begin{align*}
+    M_\lambda \geq m_\lambda
+\end{align*}\]</span>
+Further discussion in 6.3.</p>
+</div>
+</div>
+<div id="examples-2" class="section level3" number="6.2.2">
+<h3><span class="header-section-number">6.2.2</span> Examples</h3>
+<div class="example">
+<p><span id="exm:unlabeled-div-99" class="example"><strong>Example 6.4  </strong></span><br />
+</p>
+<ol style="list-style-type: lower-roman">
+<li><p><span class="math display">\[\begin{align*}
+ A &amp;= \begin{pmatrix}
+ -2 &amp; 2 &amp; -3 \\
+ 2 &amp; 1 &amp; -6 \\
+ -1 &amp; -2 &amp; 0
+ \end{pmatrix} \\
+ \chi_A(t) &amp;= \det (A - tI) \\
+ &amp;= (5 - t) (t + 3)^2 \\
+ \text{roots } \lambda &amp;= 5, - 3 \\
+ M_5 &amp;= 1, M_{-3} = 2. \\ \\
+ \underline{\lambda = 5:} \\
+ (A - 5I)\underline{x} &amp;= \begin{pmatrix}
+ -7 &amp; 2 &amp; -3 \\
+ 2 &amp; -4 &amp; -6 \\
+ -1 &amp; -2 &amp; -5
+ \end{pmatrix}\begin{pmatrix}x_1 \\x_2 \\x_3\end{pmatrix} = \underline{0} \\
+ \implies E_5 &amp;= \left\{ \alpha \begin{pmatrix}1 \\2 \\-1\end{pmatrix} \right\} \\ \\
+ \underline{\lambda = -3:} \\
+ (A + 3I)\underline{x} &amp;= \begin{pmatrix}
+ 1 &amp; 2 &amp; -3 \\
+ 2 &amp; 4 &amp; -6 \\
+ -1 &amp; -2 &amp; 3
+ \end{pmatrix}\begin{pmatrix}x_1 \\x_2 \\x_3\end{pmatrix} = \underline{0} \\
+ \text{Solve to find} \\
+ \underline{x} &amp;= \begin{pmatrix}-2 x_1 + 3 x_3 \\x_2 \\x_3\end{pmatrix} \\
+ \implies E_{-3} &amp;= \left\{ \alpha \begin{pmatrix}-2 \\1 \\0\end{pmatrix} + \beta \begin{pmatrix}3 \\0 \\1\end{pmatrix} \right\} \\ \\
+ m_5 &amp;= \dim E_5 = 1 = M_5 \\
+ m_{-3} &amp;= \dim E_{-3} = 2 = M_{-3}
+\end{align*}\]</span></p></li>
+<li><p><span class="math display">\[\begin{align*}
+A &amp;= \begin{pmatrix}
+-3 &amp; -1 &amp; 1 \\
+-1 &amp; -3 &amp; 1 \\
+-2 &amp; -2 &amp; 0
+\end{pmatrix} \\
+\chi_A(t) &amp;= \det (A - tI) \\
+&amp;= - (t + 2)^3 \\
+\text{root } \lambda &amp;= -2 \\
+M_{-2} &amp;= 3 \\
+\text{To find eigenvectors:} \\
+(A + 2I)\underline{x} &amp;= \begin{pmatrix}
+-1 &amp; -1 &amp; 1 \\
+-1 &amp; -1 &amp; 1 \\
+-2 &amp; -2 &amp; 2
+\end{pmatrix} \begin{pmatrix}x_1 \\x_2 \\x_3\end{pmatrix} = \underline{0} \\
+\implies \underline{x} &amp;= \begin{pmatrix}- x_2 + x_3 \\ x_2\\ x_3\end{pmatrix} \\
+\implies E_{-2} &amp;= \left\{ \alpha \begin{pmatrix}-1 \\1 \\0\end{pmatrix} + \beta \begin{pmatrix}1 \\0 \\1\end{pmatrix} \right\} \\
+m_{-2} &amp;= \dim E_{-2} = 2 \\
+\text{but } M_{-2} &amp;= 3
+\end{align*}\]</span></p></li>
+</ol>
+</div>
+</div>
+<div id="linear-independence-of-eigenvectors" class="section level3" number="6.2.3">
+<h3><span class="header-section-number">6.2.3</span> Linear Independence of Eigenvectors</h3>
+<div class="proposition">
+<p><span id="prp:sone" class="proposition"><strong>Proposition 6.2  </strong></span><br />
+</p>
+<ol style="list-style-type: lower-roman">
+<li><p>Let <span class="math inline">\(\underline{v}_1, \dots, \underline{v}_r\)</span> be eigenvectors of matrix <span class="math inline">\(A\)</span> (<span class="math inline">\(n \times n\)</span>) with eigenvalues <span class="math inline">\(\lambda_1, \dots, \lambda_r\)</span>.
+If the eigenvalues are distinct, <span class="math inline">\(\lambda_i \neq \lambda_j\)</span> for <span class="math inline">\(i \neq j\)</span>, then the eigenvectors are linearly independent.</p></li>
+<li><p>With conditions as in (i), let <span class="math inline">\(\mathcal{B}_{\lambda_i}\)</span> be a basis for <span class="math inline">\(E_{\lambda_i}\)</span>, then
+<span class="math display">\[\begin{align*}
+\mathcal{B}_{\lambda_1} \cup \mathcal{B}_{\lambda_2} \cup \dots \cup \mathcal{B}_{\lambda_r}
+\end{align*}\]</span> is linearly independent.</p></li>
+</ol>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-100" class="proof"><em>Proof</em>. </span><br />
+</p>
+<ol style="list-style-type: lower-roman">
+<li><span class="math display">\[\begin{align*}
+ \text{Note } \underline{w} &amp;= \sum_{j=1}^{r} \alpha_j \underline{v}_j \\
+ \implies (A - \lambda I) \underline{w} &amp;= \sum_{j=1}^{r} \alpha_j (\lambda_j - \lambda) \underline{v}_j, \text{ as } A \underline{v}_j = \lambda_j \underline{v}_j \\
+\end{align*}\]</span></li>
+</ol>
+<p>First, suppose the eigenvectors are linear dependent, so <span class="math inline">\(\exists\)</span> linear relations <span class="math inline">\(\underline{w} = 0\)</span> with a number of non-zero coefficients <span class="math inline">\(p \geq 2\)</span>.
+Pick a <span class="math inline">\(\underline{w}\)</span> for which <span class="math inline">\(p\)</span> is least and assume (wlog) <span class="math inline">\(\alpha_1 \neq 0\)</span>.
+Then <span class="math inline">\((A - \lambda_1 I) \underline{w} = \sum_{j&gt;1} \alpha_j (\lambda_j - \lambda_1) \underline{v}_j = \underline{0}\)</span> is a linear relation with <span class="math inline">\(p - 1\)</span> non-zero coefficients ⨳.</p>
+<p>Or secondly,
+<span class="math display">\[\begin{align*}
+    \underline{w} &amp;= \underline{0} \implies \Pi_{j \neq k} (A - \lambda_j I) \underline{w} \text{ for some chosen } k \\
+    &amp;= \alpha_k (\Pi_{j \neq k} (\lambda_k - \lambda_j)) \underline{v}_k = \underline{0},
+    \implies \alpha_k &amp;= 0
+\end{align*}\]</span> hence eigenvectors are linearly independent.</p>
+<ol start="2" style="list-style-type: lower-roman">
+<li>It suffices to show that if <span class="math inline">\(\underline{w} = \underline{w}_1 + \underline{w}_2 + \dots + \underline{w}_r = \underline{0}\)</span> with <span class="math inline">\(\underline{w}_i \in E_{\lambda_i}\)</span>
+<span class="math display">\[\begin{align*}
+\implies \underline{w}_i = \underline{0}.
+\end{align*}\]</span>
+This follows by same arguments as in (i).</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="diagonalisability-and-similarity" class="section level2" number="6.3">
+<h2><span class="header-section-number">6.3</span> Diagonalisability and Similarity</h2>
+<div id="introduction-3" class="section level3" number="6.3.1">
+<h3><span class="header-section-number">6.3.1</span> Introduction</h3>
+<div class="proposition">
+<p><span id="prp:unlabeled-div-101" class="proposition"><strong>Proposition 6.3  </strong></span>For a <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(A\)</span> acting on <span class="math inline">\(V = \mathbb{R}^n\)</span> or <span class="math inline">\(\mathbb{C}^n\)</span>, the following conditions are equivalent:</p>
+<ol style="list-style-type: lower-roman">
+<li><p>There exists a basis of eigenvectors for <span class="math inline">\(V\)</span>, <span class="math inline">\(\underline{v}_1, \underline{v}_2, \dots, \underline{v}_n\)</span> with <span class="math inline">\(A \underline{v}_i = \lambda_i \underline{v}_i\)</span> (not summation notation and <span class="math inline">\(\lambda_i\)</span> need not be distinct).</p></li>
+<li><p>There exists an <span class="math inline">\(n \times n\)</span> invertible matrix <span class="math inline">\(P\)</span> with
+<span class="math display">\[\begin{align*}
+P^{-1} A P = D = \begin{pmatrix}
+\lambda_1 &amp;  &amp;  \\
+ &amp; \ddots &amp;  \\
+ &amp;  &amp; \lambda_n
+\end{pmatrix}
+\end{align*}\]</span></p></li>
+</ol>
+<p>If either of these conditions holds, <span class="math inline">\(A\)</span> is <em>diagonalisable</em>.</p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-102" class="proof"><em>Proof</em>. </span>Note that for any matrix <span class="math inline">\(P\)</span>, <span class="math inline">\(AP\)</span> has columns <span class="math inline">\(A \underline{C}_i(P)\)</span> and <span class="math inline">\(PD\)</span> has columns <span class="math inline">\(\lambda_i \underline{C}_i(P)\)</span> for each <span class="math inline">\(i\)</span>.
+Then (i) and (ii) are related by
+<span class="math display">\[\begin{align*}
+    \underline{v}_i &amp;= \underline{C}_i(P): \\
+    P^{-1} A P &amp;= D \iff AP = PD \iff A \underline{v}_i = \lambda_i \underline{v}_i.
+\end{align*}\]</span></p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-103" class="example"><strong>Example 6.5  </strong></span>Refer to <a href="eigenvalues-and-eigenvectors.html#exm:sone">6.3</a>:
+Eigenvalues <span class="math inline">\(e^{\pm i \theta}\)</span> and eigenvectors <span class="math inline">\(\begin{pmatrix}1 \\ \mp i\end{pmatrix}\)</span>, the eigenvectors are linearly independent over <span class="math inline">\(\mathbb{C}\)</span>.
+<span class="math display">\[\begin{align*}
+    P &amp;= \begin{pmatrix}
+    1 &amp; 1 \\
+    -i &amp; i
+    \end{pmatrix} \implies P^{-1} = \frac{1}{2} \begin{pmatrix}
+    1 &amp; i \\
+    1 &amp; -i
+    \end{pmatrix} \\
+    P^{-1} U P &amp;= \begin{pmatrix}
+    e^{i\theta} &amp; 0 \\
+    0 &amp; e^{-i \theta}
+    \end{pmatrix}
+\end{align*}\]</span>
+<span class="math inline">\(U\)</span> is diagonalisable over <span class="math inline">\(\mathbb{C}\)</span> but not over <span class="math inline">\(\mathbb{R}\)</span>.</p>
+</div>
+</div>
+<div id="criteria-for-diagonalisability" class="section level3" number="6.3.2">
+<h3><span class="header-section-number">6.3.2</span> Criteria for Diagonalisability</h3>
+<div class="theorem">
+<p><span id="thm:unlabeled-div-104" class="theorem"><strong>Theorem 6.1  </strong></span>Let <span class="math inline">\(A\)</span> be a <span class="math inline">\(n \times n\)</span> matrix and <span class="math inline">\(\lambda_1, \dots, \lambda_r\)</span> all its distinct eigenvalues.</p>
+<ol style="list-style-type: lower-roman">
+<li><p>A necessary and sufficient condition:
+<span class="math inline">\(A\)</span> is diagonalisable iff
+<span class="math display">\[\begin{align*}
+ M_{\lambda_i} = m_{\lambda_i} \text{ for } i = 1, \dots, r
+\end{align*}\]</span></p></li>
+<li><p>A sufficient condition:
+<span class="math inline">\(A\)</span> is diagonalisable if there are <span class="math inline">\(n\)</span> distinct eigenvalues, i.e. <span class="math inline">\(r = n\)</span>.</p></li>
+</ol>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-105" class="proof"><em>Proof</em>. </span>Use Proposition <a href="eigenvalues-and-eigenvectors.html#prp:sone">6.2</a></p>
+<ol start="2" style="list-style-type: lower-roman">
+<li><p>If <span class="math inline">\(r = n\)</span> we have <span class="math inline">\(n\)</span> distinct eigenvalues and hence <span class="math inline">\(n\)</span> linearly independent eigenvectors, which form a basis (for <span class="math inline">\(\mathbb{R}^n\)</span> or <span class="math inline">\(\mathbb{C}^n\)</span>).</p></li>
+<li><p>Choosing bases <span class="math inline">\(\mathcal{B}_{\lambda_i}\)</span> for each eigenspace,
+<span class="math display">\[\begin{align*}
+ \mathcal{B}_{\lambda_1} \cup \mathcal{B}_{\lambda_2} \cup \dots \cup \mathcal{B}_{\lambda_r}
+\end{align*}\]</span> is a linearly independent set of <span class="math inline">\(m_{\lambda_1} + m_{\lambda_2} + \dots + m_{\lambda_r}\)</span> vectors.
+It is a basis (for <span class="math inline">\(\mathbb{R}^n\)</span> or <span class="math inline">\(\mathbb{C}^n\)</span>) iff we have <span class="math inline">\(n\)</span> vectors.
+But
+<span class="math display">\[\begin{align*}
+ m_{\lambda_i} &amp;\leq M_{\lambda_i} \\
+ \text{and } M_{\lambda_1} + M_{\lambda_2} + \dots + M_{\lambda_r} &amp;= n. \text{ (as there are n roots)}
+\end{align*}\]</span>
+Hence we have a basis iff
+<span class="math display">\[\begin{align*}
+ M_{\lambda_i} = m_{\lambda_i} \text{ for each } i.
+\end{align*}\]</span></p></li>
+</ol>
+</div>
+<div class="examples">
+<p>Refer to <a href="eigenvalues-and-eigenvectors.html#examples-2">Examples</a>
+i. <span class="math display">\[\begin{align*}
+    A &amp;= \begin{pmatrix}
+    -2 &amp; 2 &amp; -3 \\
+    2 &amp; 1 &amp; -6 \\
+    -1 &amp; -2 &amp; 0
+    \end{pmatrix} \\
+    \lambda &amp;= 5, - 3 \\
+    m_5 &amp;= 1 = M_5 \\
+    m_{-3} &amp;= 2 = M_{-3} \\
+    \implies A &amp;\text{ is diagonalisable} \\
+    P &amp;= \begin{pmatrix}
+    1 &amp; -2 &amp; 3 \\
+    2 &amp; 1 &amp; 0 \\
+    -1 &amp; 0 &amp; 1
+    \end{pmatrix}, P^{-1} = \frac{1}{8} \begin{pmatrix}
+    1 &amp; 2 &amp; -3 \\
+    -2 &amp; 4 &amp; 6 \\
+    1 &amp; 2 &amp; 5
+    \end{pmatrix} \\
+    P^{-1} A P &amp;= \begin{pmatrix}
+    5 &amp; 0 &amp; 0 \\
+    0 &amp; -3 &amp; 0 \\
+    0 &amp; 0 &amp; -3
+    \end{pmatrix} \text{ as expected}.
+\end{align*}\]</span></p>
+<ol start="2" style="list-style-type: lower-roman">
+<li><span class="math display">\[\begin{align*}
+A &amp;= \begin{pmatrix}
+-3 &amp; -1 &amp; 1 \\
+-1 &amp; -3 &amp; 1 \\
+-2 &amp; -2 &amp; 0
+\end{pmatrix} \\
+\lambda &amp;= -2 \\
+M_{-2} &amp;= 3 &gt; m_{-2} = 2 \\
+\implies A &amp;\text{ is not diagonalisable} \\
+\text{Check: if it was } &amp;P^{-1} A P = - 2 I \\
+\implies A &amp;= P (-2 I) P^{-1} = - 2I ⨳.
+\end{align*}\]</span></li>
+</ol>
+</div>
+</div>
+<div id="similarity" class="section level3" number="6.3.3">
+<h3><span class="header-section-number">6.3.3</span> Similarity</h3>
+<p>Matrices <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> (<span class="math inline">\(n \times n\)</span>) are <em>similar</em> if
+<span class="math display">\[\begin{align*}
+    B = P^{-1} A P
+\end{align*}\]</span> for some invertible <span class="math inline">\(P\)</span> (<span class="math inline">\(n \times n\)</span>).
+This is an equivalence relation.</p>
+<div class="proposition">
+<p><span id="prp:unlabeled-div-106" class="proposition"><strong>Proposition 6.4  </strong></span>If <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are similar, then</p>
+<ol style="list-style-type: lower-roman">
+<li><p><span class="math inline">\(B^r = P^{-1} A^r P\)</span> for <span class="math inline">\(r \geq 0\)</span></p></li>
+<li><p><span class="math inline">\(B^{-1} = P^{-1} A^{-1} P\)</span> (if either <span class="math inline">\(A\)</span> or <span class="math inline">\(B\)</span> is invertible, so is the other)</p></li>
+<li><p><span class="math inline">\(\operatorname{tr}(B) = \operatorname{tr}(A)\)</span></p></li>
+<li><p><span class="math inline">\(\det B = \det A\)</span></p></li>
+<li><p><span class="math inline">\(\chi_B(t) = \chi_A(t)\)</span></p></li>
+</ol>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-107" class="proof"><em>Proof</em>. </span><br />
+</p>
+<ol style="list-style-type: lower-roman">
+<li>is immediate.</li>
+</ol>
+<ol start="2" style="list-style-type: lower-roman">
+<li>is immediate.</li>
+</ol>
+<ol start="3" style="list-style-type: lower-roman">
+<li><p><span class="math display">\[\begin{align*}
+    \operatorname{tr}(B) &amp;= \operatorname{tr}(P^{-1} A P) \\
+    &amp;= \operatorname{tr}(APP^{-1}) \\
+    &amp;= \operatorname{tr}(A).
+\end{align*}\]</span></p></li>
+<li><p><span class="math display">\[\begin{align*}
+    \det(B) &amp;= \det(P^{-1} A P) \\
+    &amp;= \det(P^{-1}) \det(A) \det(P) \\
+    &amp;= \det A.
+\end{align*}\]</span></p></li>
+<li><p><span class="math display">\[\begin{align*}
+\det(B - tI) &amp;= \det(P^{-1}AP - tI) \\
+&amp;= \det(P^{-1} (A - tI) P) \\
+&amp;= \det(A - tI) \text{ as in (iv)}.
+\end{align*}\]</span></p></li>
+</ol>
+</div>
+</div>
+</div>
+<div id="hermitian-and-symmetric-matrices" class="section level2" number="6.4">
+<h2><span class="header-section-number">6.4</span> Hermitian and Symmetric Matrices</h2>
+<div id="real-eigenvalues-and-orthogonal-eigenvectors" class="section level3" number="6.4.1">
+<h3><span class="header-section-number">6.4.1</span> Real Eigenvalues and Orthogonal Eigenvectors</h3>
+<p>Recall: matrix <span class="math inline">\(A\)</span> (<span class="math inline">\(n \times n\)</span>) is hermitian if
+<span class="math display">\[\begin{align*}
+    A^\dagger = \overline{A}^T = A \text{ or } A_{ij} + \overline{A}_{ji}
+\end{align*}\]</span>
+special case: <span class="math inline">\(A\)</span> is real and symmetric
+<span class="math display">\[\begin{align*}
+    \overline{A} = A \text{ and } A^T = A \text{ or } \begin{cases}
+        A_{ij} &amp;= \overline{A}_{ij} \\
+        A_{ij} &amp;= A_{ji}
+    \end{cases}. 
+\end{align*}\]</span>
+Recall: complex inner-product for <span class="math inline">\(\underline{v}, \underline{w} \in \mathbb{C}^n\)</span> is
+<span class="math display">\[\begin{align*}
+    \underline{v}^\dagger \underline{w} &amp;= \sum_i \overline{v}_i w_i
+\end{align*}\]</span> and for <span class="math inline">\(\underline{v}, \underline{w} \in \mathbb{R}^n\)</span> this reduces to
+<span class="math display">\[\begin{align*}
+    \underline{v}^T \underline{w} = \underline{v} \cdot \underline{w} = \sum_i v_i w_i
+\end{align*}\]</span>
+<em>Observation</em>: If <span class="math inline">\(A\)</span> is hermitian then
+<span class="math display">\[\begin{align*}
+    (A \underline{v})^\dagger \underline{w} &amp;= \underline{v}^\dagger (A \underline{w}) \ \forall \; \underline{v}, \underline{w} \in \mathbb{C}^n \\
+\end{align*}\]</span></p>
+<div class="proof">
+<p><span id="unlabeled-div-108" class="proof"><em>Proof</em>. </span><span class="math display">\[\begin{align*}
+    (A \underline{v})^\dagger \underline{w} &amp;= (\underline{v}^\dagger A^\dagger) \underline{w} \\
+    &amp;= \underline{v}^\dagger A \underline{w} \\
+    &amp;= \underline{v}^\dagger (A \underline{w})
+\end{align*}\]</span></p>
+</div>
+<div class="theorem">
+<p><span id="thm:unlabeled-div-109" class="theorem"><strong>Theorem 6.2  </strong></span>For a matrix <span class="math inline">\(A\)</span> (<span class="math inline">\(n \times n\)</span>) that is hermitian</p>
+<ol style="list-style-type: lower-roman">
+<li><p>Every eigenvalue <span class="math inline">\(\lambda\)</span> is real</p></li>
+<li><p>Eigenvectors <span class="math inline">\(\underline{v}, \underline{w}\)</span> with distinct eigenvalues <span class="math inline">\(\lambda, \mu\)</span> respectively (<span class="math inline">\(\lambda \neq \mu\)</span>) are orthogonal
+<span class="math display">\[\begin{align*}
+\underline{v}^\dagger \underline{w} = 0
+\end{align*}\]</span></p></li>
+<li><p>If <span class="math inline">\(A\)</span> is real and symmetric then for each <span class="math inline">\(\lambda\)</span> in (i) we can choose a real eigenvector <span class="math inline">\(\underline{v}\)</span> and (ii) becomes
+<span class="math display">\[\begin{align*}
+    \underline{v}^T \underline{w} = \underline{v} \cdot \underline{w} = 0
+\end{align*}\]</span></p></li>
+</ol>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-110" class="proof"><em>Proof</em>. </span><br />
+</p>
+<ol style="list-style-type: lower-roman">
+<li><p><span class="math display">\[\begin{align*}
+ \underline{v}^\dagger (A \underline{v}) &amp;= (A \underline{v}^\dagger) \underline{v} \\
+ \implies \underline{v}^\dagger (\lambda \underline{v}) &amp;= (\lambda \underline{v})^\dagger \underline{v} \\
+ \implies \lambda \underline{v}^\dagger \underline{v} &amp;= \overline{\lambda} \underline{v}^\dagger \underline{v} \\
+\end{align*}\]</span>
+for <span class="math inline">\(\underline{v}\)</span> an eigenvector with eigenvalue <span class="math inline">\(\lambda\)</span>.
+But <span class="math inline">\(\underline{v} \neq 0\)</span> so <span class="math inline">\(\underline{v}^\dagger \underline{v} \neq 0\)</span> and so <span class="math inline">\(\lambda = \overline{\lambda}\)</span>.</p></li>
+<li><p><span class="math display">\[\begin{align*}
+\underline{v}^\dagger (A \underline{w}) &amp;= (A \underline{v})^\dagger \underline{w} \\
+\implies \underline{v}^\dagger (\mu \underline{w}) &amp;= (\lambda \underline{v})^\dagger \underline{w} \\
+\implies \mu \underline{v}^\dagger \underline{w} &amp;= \overline{\lambda} \underline{v}^\dagger \underline{w} \\
+&amp;= \lambda \underline{v}^\dagger \underline{w} \text{ (from (i))}
+\end{align*}\]</span><br />
+But <span class="math inline">\(\mu \neq \lambda\)</span> so <span class="math inline">\(\underline{v}^\dagger \underline{w} = 0\)</span>.</p></li>
+<li><p>Given <span class="math inline">\(A \underline{v} = \lambda \underline{v}\)</span> with <span class="math inline">\(\underline{v} \in \mathbb{C}^n\)</span> and <span class="math inline">\(A, \lambda\)</span> real, let <span class="math inline">\(\underline{v} = \underline{u} + i \underline{u&#39;}\)</span> with <span class="math inline">\(\underline{u}, \underline{u&#39;} \in \mathbb{R}^n\)</span>.
+Then <span class="math inline">\(A \underline{u} = \lambda \underline{u}\)</span> and <span class="math inline">\(A \underline{u&#39;} = \lambda \underline{u&#39;}\)</span> but <span class="math inline">\(\underline{v} \neq \underline{0} \implies\)</span> one of <span class="math inline">\(\underline{u}, \underline{u&#39;} \neq 0\)</span> so there is at least one real eigenvector.</p></li>
+</ol>
+</div>
+</div>
+<div id="unitary-and-orthogonal-diagonalisation" class="section level3" number="6.4.2">
+<h3><span class="header-section-number">6.4.2</span> Unitary and Orthogonal Diagonalisation</h3>
+<div class="theorem">
+<p><span id="thm:unlabeled-div-111" class="theorem"><strong>Theorem 6.3  </strong></span>Any <span class="math inline">\(n \times n\)</span> hermitian matrix <span class="math inline">\(A\)</span> is diagonalisable (as in <a href="eigenvalues-and-eigenvectors.html#introduction-3">Introduction</a>)</p>
+<ol style="list-style-type: lower-roman">
+<li><p><span class="math inline">\(\exists\)</span> a basis of eigenvectors <span class="math inline">\(\underline{u}_1, \dots, \underline{u}_n \in \mathbb{C}^n\)</span> with <span class="math inline">\(A \underline{u}_i = \lambda_i \underline{u}_i\)</span>; equivalently</p></li>
+<li><p><span class="math inline">\(\exists \; n \times n\)</span> invertible matrix <span class="math inline">\(P\)</span> with <span class="math inline">\(P^{-1} A P = D = \begin{pmatrix}\lambda_1 &amp; &amp; \\ &amp; \ddots &amp; \\ &amp; &amp; \lambda_n\end{pmatrix}\)</span>; columns of <span class="math inline">\(P\)</span> are eigenvectors <span class="math inline">\(\underline{u}_i\)</span>.</p></li>
+</ol>
+<p>In addition: these eigenvectors <span class="math inline">\(\underline{u}_i\)</span> can be chosen to be orthonormal <span class="math inline">\(\underline{u}_i^\dagger \underline{u}_j = \delta_{ij}\)</span>; equivalently the matrix <span class="math inline">\(P\)</span> can be chosen to be unitary <span class="math inline">\(P^\dagger = P^{-1}\)</span> so <span class="math inline">\(P^\dagger A P = D\)</span>.</p>
+<p>Special case: for <span class="math inline">\(n \times n\)</span> real symmetric <span class="math inline">\(A\)</span>, can choose eigenvectors <span class="math inline">\(\underline{u}_1, \dots, \underline{u}_n \in \mathbb{R}^n\)</span> with <span class="math inline">\(\underline{u}_i^T \underline{u}_j = \underline{u}_i \underline{u}_j = \delta_{ij}\)</span>; equivalently the matrix <span class="math inline">\(P\)</span> can be chosen to be orthogonal <span class="math inline">\(P^T = P^{-1}\)</span> so <span class="math inline">\(P^T A P = D\)</span>.</p>
+</div>
+<p>Proof of diagonalisability is <em>not examinable</em> and remaining statements follow by combining results of <a href="eigenvalues-and-eigenvectors.html#eigenspaces-and-multiplicities">Eigenspaces and Multiplicities</a> and <a href="eigenvalues-and-eigenvectors.html#diagonalisability-and-similarity">Diagonalisability and Similarity</a> and choosing <em>orthonormal</em> basis for each eigenspace.</p>
+<div class="example">
+<p><span id="exm:stwo" class="example"><strong>Example 6.6  </strong></span><br />
+</p>
+<ol style="list-style-type: decimal">
+<li><p><span class="math inline">\(A = \begin{pmatrix}2 &amp; i \\-i &amp; 2\end{pmatrix}, A^\dagger = A\)</span> so hermitian (as in <a href="eigenvalues-and-eigenvectors.html#examples-2">Examples</a>).
+<span class="math inline">\(\lambda_1 = 1, \lambda_2 = 3\)</span> and choose
+<span class="math display">\[\begin{align*}
+ \underline{u}_1 = \frac{1}{\sqrt{2}} \begin{pmatrix}1 \\i\end{pmatrix}, \underline{u}_2 = \frac{1}{\sqrt{2}} \begin{pmatrix}1 \\-i\end{pmatrix}
+\end{align*}\]</span> to ensure <span class="math inline">\(\underline{u}_1^\dagger \underline{u}_1 = \underline{u}_2^\dagger \underline{u}_1 = 1\)</span> and note <span class="math inline">\(\underline{u}_1^\dagger \underline{u}_2 = \frac{1}{2} (1 - i) \begin{pmatrix}1 \\-i\end{pmatrix} = 0\)</span>.
+Let <span class="math inline">\(P = \frac{1}{\sqrt{2}} \begin{pmatrix}1 &amp; 1 \\i &amp; -i\end{pmatrix}\)</span> then <span class="math inline">\(P^\dagger = P^{-1}\)</span> so unitary and <span class="math inline">\(P^\dagger A P = \begin{pmatrix}1 &amp; 0 \\0 &amp; 3\end{pmatrix}\)</span>.</p></li>
+<li><p><span class="math inline">\(A = \begin{pmatrix}0 &amp; 1 &amp; 1 \\1 &amp; 0 &amp; 1 \\1 &amp; 1 &amp; 0\end{pmatrix}, A^T = A\)</span> so real and symmetric.
+<span class="math inline">\(\lambda_1 = \lambda_2 = -1, \lambda_3 = 2\)</span> and can choose
+<span class="math display">\[\begin{align*}
+ \underline{u}_1 = \frac{1}{\sqrt{2}}  \begin{pmatrix}1 \\-1 \\0\end{pmatrix}, \underline{u}_2 = \frac{1}{\sqrt{6}} \begin{pmatrix}1 \\1 \\-2\end{pmatrix}, \underline{u}_3 = \frac{1}{\sqrt{3}} \begin{pmatrix}1 \\1 \\1\end{pmatrix}.
+\end{align*}\]</span><a href="#fn9" class="footnote-ref" id="fnref9"><sup>9</sup></a>
+Let <span class="math inline">\(P\)</span> be the matrix with columns <span class="math inline">\(\underline{u}_1, \underline{u}_2, \underline{u}_3\)</span> then <span class="math inline">\(P^T = P^{-1}\)</span> so <span class="math inline">\(P\)</span> is orthogonal and <span class="math inline">\(P^T A P = \begin{pmatrix}-1 &amp; 0 &amp; 0 \\0 &amp; -1 &amp; 0 \\0 &amp; 0 &amp; 2\end{pmatrix}\)</span>.</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div id="quadratic-forms" class="section level2" number="6.5">
+<h2><span class="header-section-number">6.5</span> Quadratic Forms</h2>
+<p>Consider <span class="math inline">\(\mathcal{F} : \mathbb{R}^2 \to \mathbb{R}\)</span> defined by <span class="math inline">\(\mathcal{F}(\underline{x}) = 2 x_1^2 - 4 x_1 x_2 + 5 x_2^2\)</span>.
+This can be expressed as <span class="math inline">\(\mathcal{F}(\underline{x}) = x_1&#39;^2 + 6 x_2&#39;^2\)</span> where
+<span class="math display">\[\begin{align*}
+    x_1&#39; &amp;= \frac{1}{\sqrt{5}} (2 x_1 + x_2) \\
+    x_2&#39; &amp;= \frac{1}{\sqrt{5}} (- x_1 + 2 x_2)
+\end{align*}\]</span> with <span class="math inline">\(x_1&#39;^2 + x_2&#39;^2 = x_1^2 + x_2^2\)</span>.
+To understand this better, note <span class="math inline">\(\mathcal{F}(\underline{x}) = \underline{x}^T A \underline{x}\)</span> where <span class="math inline">\(A = \begin{pmatrix}2 &amp; -2 \\-2 &amp; 5\end{pmatrix}\)</span> and we can diagonalise <span class="math inline">\(A\)</span>: <span class="math inline">\(\lambda_1 = 1, \lambda_2 = 6\)</span> and orthonormal eigenvectors
+<span class="math display">\[\begin{align*}
+    \underline{u}_1 &amp;= \frac{1}{\sqrt{5}} \begin{pmatrix}2 \\1\end{pmatrix}, \underline{u}_2 = \frac{1}{\sqrt{5}} \begin{pmatrix}-1 \\2\end{pmatrix} \\
+    \text{Then } x_1&#39; &amp;= \underline{u}_1 \cdot \underline{x} \\
+    x_2&#39; &amp;= \underline{u}_2 \cdot \underline{x}
+\end{align*}\]</span> give the simplified form for <span class="math inline">\(\mathcal{F}\)</span>.</p>
+<p>In general, a <em>quadratic form</em> is a function
+<span class="math display">\[\begin{align*}
+    \mathcal{F} : \mathbb{R}^n &amp;\to \mathbb{R} \\
+    \underline{x} &amp;\mapsto \underline{x}^T A \underline{x} = x_i A_{ij} x_j
+\end{align*}\]</span> where <span class="math inline">\(A\)</span> is a <span class="math inline">\(n \times n\)</span> real symmetric matrix.
+From <a href="eigenvalues-and-eigenvectors.html#hermitian-and-symmetric-matrices">Hermitian and Symmetric Matrices</a> <span class="math display">\[\begin{align*}
+    P^T A P &amp;= D = \begin{pmatrix}\lambda_1 &amp;  &amp;  \\ &amp; \ddots &amp;  \\ &amp;  &amp; \lambda_n\end{pmatrix}
+\end{align*}\]</span> where <span class="math inline">\(\lambda_i\)</span> are the eigenvalues of <span class="math inline">\(A\)</span> and <span class="math inline">\(P\)</span> is orthogonal with columns <span class="math inline">\(\underline{u}_i\)</span>, the orthonormal eigenvectors.<br />
+Let <span class="math inline">\(\underline{x}&#39; = P^T \underline{x}\)</span> or <span class="math inline">\(\underline{x} = P \underline{x}&#39;\)</span>, then
+<span class="math display">\[\begin{align*}
+    \mathcal{F}(\underline{x}) &amp;= \underline{x}^T A \underline{x} \\
+    &amp;= (P \underline{x}&#39;)^T A (P \underline{x}&#39;) \\
+    &amp;= (\underline{x}&#39;)^T (P^T A P) \underline{x}&#39; \\
+    &amp;=  (\underline{x}&#39;)^T D \underline{x}&#39; \\
+    &amp;= \sum_i \lambda_i x_i&#39;^2 \\
+    &amp;= \lambda_1 x_1&#39;^2 + \dots + \lambda_n x_n&#39;^2.
+\end{align*}\]</span>
+<span class="math inline">\(\mathcal{F}\)</span> has been <em>diagonalised</em>.
+<span class="math display">\[\begin{align*}
+    \text{Now } \underline{x}&#39; &amp;= x_1&#39; \underline{e}_1 + \dots + x_n&#39; \underline{e}_n \\
+    \underline{x} &amp;= x_1 \underline{e}_1 + \dots + x_n  \underline{e}_n \\
+    &amp;= x_1&#39; \underline{u}_1 + \dots + x_n&#39; \underline{u}_n \\
+    \text{since } x_i&#39; &amp;= \underline{u}_i \cdot \underline{x} \iff \underline{x}&#39; = P^T \underline{x}
+\end{align*}\]</span>
+Thus, <span class="math inline">\(x_i&#39;\)</span> are coordinates w.r.t new axes given by orthonormal basis vectors <span class="math inline">\(\underline{u}_i\)</span>, these are called the <em>principal axes</em> of <span class="math inline">\(\mathcal{F}\)</span>.
+Relation to original axes along standard basis vectors <span class="math inline">\(\underline{e}_i\)</span> and coordinates <span class="math inline">\(x_i\)</span> is given by an orthogonal transformations
+<span class="math display">\[\begin{align*}
+    |\underline{x}|^2 &amp;= x_i x_i = x_i&#39; x_i&#39;.
+\end{align*}\]</span></p>
+<div id="examples-in-mathbbr2-and-mathbbr3" class="section level3" number="6.5.1">
+<h3><span class="header-section-number">6.5.1</span> Examples in <span class="math inline">\(\mathbb{R}^2\)</span> and <span class="math inline">\(\mathbb{R}^3\)</span></h3>
+<div id="in-mathbbr2" class="section level4" number="6.5.1.1">
+<h4><span class="header-section-number">6.5.1.1</span> In <span class="math inline">\(\mathbb{R}^2\)</span></h4>
+<p><span class="math display">\[\begin{align*}
+    \mathcal{F}(\underline{x}) &amp;= \underline{x}^T A \underline{x} \\
+    \text{with } A &amp;= \begin{pmatrix}\alpha &amp; \beta \\\beta &amp; \alpha\end{pmatrix} \\
+    \text{Eigenvalues: } \lambda_1 &amp;= \alpha + \beta, \lambda_2 &amp;= \alpha - \beta \\
+    \text{Eigenvectors: } \underline{u}_1 &amp;= \frac{1}{\sqrt{2}} \begin{pmatrix}1 \\1\end{pmatrix}, \underline{u}_2 = \begin{pmatrix}-1 \\1\end{pmatrix} \\
+    \mathcal{F}(\underline{x}) &amp;= \alpha x_1^2 + 2 \beta x_1 x_2 + \alpha x_2^2 \\
+    &amp;= (\alpha + \beta) x_1&#39;^2 + (\alpha - \beta) x_2&#39;^2 \\
+    \text{with } x_1&#39; &amp;= \frac{1}{\sqrt{2}} (x_1 + x_2) \\
+    x_2&#39; &amp;= \frac{1}{\sqrt{2}} (-x_1 + x_2)
+\end{align*}\]</span></p>
+<ol style="list-style-type: lower-roman">
+<li><p><span class="math display">\[\begin{align*}
+  \alpha &amp;= \frac{3}{2}, \beta = - \frac{1}{2} \\
+  \implies \lambda_1 &amp;= 1, \lambda_2 = 2 \\
+  \mathcal{F}(x) &amp;= x_1&#39;^2 + 2 x_2&#39;^2 = 1
+\end{align*}\]</span> defines an ellipse
+<img src="figures/06-quadratic-R2-1.png" width="500" style="display: block; margin: auto;" /></p></li>
+<li><p><span class="math display">\[\begin{align*}
+\alpha &amp;= -\frac{1}{2}, \beta = \frac{3}{2} \\
+\implies \lambda_1 &amp;= 1, \lambda_2 = - 2 \\
+\mathcal{F}(x) &amp;= x_1&#39;^2 - 2 x_2&#39;^2 = 1
+\end{align*}\]</span> defines an hyperbola
+<img src="figures/06-quadratic-R2-2.png" width="500" style="display: block; margin: auto;" /></p></li>
+</ol>
+</div>
+<div id="in-mathbbr3" class="section level4" number="6.5.1.2">
+<h4><span class="header-section-number">6.5.1.2</span> In <span class="math inline">\(\mathbb{R}^3\)</span></h4>
+<p><span class="math inline">\(\mathcal{F}(x) = \underline{x}^T A \underline{x} = \lambda_1 x_1&#39;^2 + \lambda_2 x_2&#39;^2 + \lambda_3 x_3&#39;\)</span> after diagonalisation.</p>
+<ol style="list-style-type: lower-roman">
+<li><p>If <span class="math inline">\(A\)</span> has eigenvalues <span class="math inline">\(\lambda_1, \lambda_2, \lambda_3 &gt; 0\)</span> then <span class="math inline">\(\mathcal{F} = 1\)</span> defines an ellipsoid.</p></li>
+<li><p><span class="math inline">\(A = \begin{pmatrix}0 &amp; 1 &amp; 1 \\1 &amp; 0 &amp; 1 \\1 &amp; 1 &amp; 0\end{pmatrix}\)</span> (from example <a href="eigenvalues-and-eigenvectors.html#exm:stwo">6.6</a>), <span class="math inline">\(\lambda_1 = \lambda_2 = -1, \lambda_3 = 2\)</span>.
+Hence
+<span class="math display">\[\begin{align*}
+\mathcal{F} &amp;= 2 x_1 x_2 + 2 x_2 x_3 + 2 x_3 x_1 \\
+&amp;= - x_1&#39;^2 - x_2&#39;^2 + 2 x_3&#39;^2 \\
+\mathcal{F} &amp;= 1 \iff 2 x_3&#39;^2 = 1 + x_1&#39;^2 + x_2&#39;^2
+\end{align*}\]</span> defines a hyperboloid (2 sheeted)</p></li>
+</ol>
+<p><img src="figures/06-hyperboloid-1.png" width="500" style="display: block; margin: auto;" /></p>
+<p><span class="math inline">\(\mathcal{F} = -1 \iff x_1&#39;^2 + x_2&#39;^2 = 1 + 2 x_3&#39;^2\)</span> defined a hyperboloid (2 sheeted).</p>
+<p><img src="figures/06-hyperboloid-2.png" width="500" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+</div>
+<div id="cayley-hamilton-theorem" class="section level2" number="6.6">
+<h2><span class="header-section-number">6.6</span> Cayley-Hamilton Theorem</h2>
+<p>If <span class="math inline">\(A\)</span> is a <span class="math inline">\(n \times n\)</span> complex matrix and
+<span class="math inline">\(f(t) = c_0 + c_1 t + \dots + c_k t^k\)</span> is a poly of degree k, then
+<span class="math display">\[\begin{align*}
+    f(A) = c_0 I + c_1 A + \dots + c_k A^k.
+\end{align*}\]</span>
+We can also define power series of matrices subject to convergence
+<span class="math display">\[\begin{align*}
+    \text{e.g. } \exp A = I + A + \dots + \frac{1}{r!} A^r + \dots
+\end{align*}\]</span> converges for any <span class="math inline">\(A\)</span>.<br />
+Note</p>
+<ol style="list-style-type: lower-roman">
+<li><p>If <span class="math inline">\(D = \begin{pmatrix}\lambda_1 &amp; &amp; \\ &amp; \ddots &amp; \\ &amp; &amp; \lambda_n\end{pmatrix}\)</span> is diagonal then <span class="math inline">\(D^r = \begin{pmatrix}\lambda_1^r &amp; &amp; \\ &amp; \ddots &amp; \\ &amp; &amp; \lambda_n^r\end{pmatrix}\)</span> and <span class="math inline">\(f(D) = \begin{pmatrix}f(\lambda_1) &amp; &amp; \\ &amp; \ddots &amp; \\ &amp; &amp; f(\lambda_n)\end{pmatrix}\)</span>.</p></li>
+<li><p>If <span class="math inline">\(B = P^{-1} A P\)</span> for invertible <span class="math inline">\(P\)</span>, i.e. <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are similar then <span class="math inline">\(B^r = P^{-1} A^r P\)</span> and <span class="math inline">\(f(B) = f(P^{-1} A P) = P^{-1} f(A) P\)</span>.<br />
+Recall the characteristic polynomial is <span class="math inline">\(\chi_A(t) = \det (A - tI) = c_0 + c_1 t + \dots + c_n t^n\)</span> where <span class="math inline">\(c_0 = \det A\)</span> and <span class="math inline">\(c_n = (-1)^n\)</span>, <a href="eigenvalues-and-eigenvectors.html#deductions-involving-chi_at">Deductions involving <span class="math inline">\(\chi_A(t)\)</span></a>.</p></li>
+</ol>
+<div class="theorem">
+<p><span id="thm:CH" class="theorem"><strong>Theorem 6.4  (Cayley-Hamilton) </strong></span><span class="math display">\[\begin{align*}
+    \chi_A(A) &amp;= c_0 I + c_1 A + \dots + c_n A^n = 0
+\end{align*}\]</span>
+“a matrix satisfies its own characteristic equation”</p>
+</div>
+<p>Note Cayley-Hamilton, <a href="eigenvalues-and-eigenvectors.html#thm:CH">6.4</a>, implies
+<span class="math display">\[\begin{align*}
+    c_0 I = - A \left(c_1 I + \dots + c_n A^{n-1} \right) 
+\end{align*}\]</span> and if <span class="math inline">\(c_0 = \det A \neq 0\)</span> then
+<span class="math display">\[\begin{align*}
+    A^{-1} &amp;= - \frac{1}{c_0} \left(c_1 I + \dots + c_n A^{n-1} \right)
+\end{align*}\]</span></p>
+<div class="proof">
+<p><span id="unlabeled-div-112" class="proof"><em>Proof</em>. </span><br />
+</p>
+<ol style="list-style-type: lower-roman">
+<li><p>General <span class="math inline">\(2 \times 2\)</span> matrix
+<span class="math display">\[\begin{align*}
+ A = \begin{pmatrix}a &amp; b \\c &amp; d\end{pmatrix} \implies \chi_A(t) = t^2 - (a + d)t + (ad - bc)
+\end{align*}\]</span> then check by substitution that <span class="math inline">\(\chi_A(A) = 0\)</span>. (Sheet 4)</p></li>
+<li><p>Diagonalisable <span class="math inline">\(n \times n\)</span> matrix: consider <span class="math inline">\(A\)</span> with evals <span class="math inline">\(\lambda_i\)</span> and invertible <span class="math inline">\(P\)</span> s.t.
+<span class="math display">\[\begin{align*}
+PAP^{-1} &amp;= D = \begin{pmatrix}\lambda_1 &amp;  &amp;  \\ &amp; \ddots &amp;  \\ &amp;  &amp; \lambda_n\end{pmatrix}.\\
+\text{Now } \chi_A(D) &amp;= \begin{pmatrix}\chi_A(\lambda_1) &amp;  &amp; \\ &amp; \ddots &amp; \\ &amp;  &amp; \chi_A(\lambda_n) \end{pmatrix} = 0 \quad \text{since $\chi_A$ is poly and $\lambda_i$ evals} \\
+\text{Then } \chi_A(A) &amp;= \chi_A(P^{-1} D P) \\
+&amp;= P^{-1} \chi_A(D) P \\
+&amp;= 0
+\end{align*}\]</span></p></li>
+</ol>
+</div>
+
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="9">
+<li id="fn9"><p>For symmetric <span class="math inline">\(3 \times 3\)</span> matrices, we may guess that <span class="math inline">\(\begin{pmatrix}1 &amp; 1 &amp; 1\end{pmatrix}^T\)</span> is an eigenvector.<a href="eigenvalues-and-eigenvectors.html#fnref9" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="determinants-and-inverses.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="changing-bases-canonical-forms-and-symmetries.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "lunr",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

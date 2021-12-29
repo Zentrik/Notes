@@ -6,9 +6,9 @@ title: "Cambridge 2021 Maths Notes"
 
 ### Michaelmas 
 
-[Numbers and Sets](Numbers%20and%20Sets/book/index.html)
+[Numbers and Sets](Numbers%20and%20Sets/_book/index.html)
 
-[Vectors and Matrices](Vectors%20and%20Matrices/book/index.html)
+[Vectors and Matrices](Vectors%20and%20Matrices/_book/index.html)
 
 [Groups](Groups/groups.pdf)
 

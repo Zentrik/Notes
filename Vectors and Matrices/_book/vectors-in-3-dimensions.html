@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>2 Vectors in 3 Dimensions | Vectors and Matrices 2021 - 2022</title>
+  <meta name="description" content="Notes" />
+  <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="2 Vectors in 3 Dimensions | Vectors and Matrices 2021 - 2022" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Notes" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="2 Vectors in 3 Dimensions | Vectors and Matrices 2021 - 2022" />
+  
+  <meta name="twitter:description" content="Notes" />
+  
+
+<meta name="author" content="Author" />
+
+
+<meta name="date" content="2021-07-10" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="complex-numbers.html"/>
+<link rel="next" href="vectors-in-general-mathbbrn-and-mathbbcn.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Lecture 1</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#contents"><i class="fa fa-check"></i><b>0.1</b> Contents</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="complex-numbers.html"><a href="complex-numbers.html"><i class="fa fa-check"></i><b>1</b> Complex Numbers</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="complex-numbers.html"><a href="complex-numbers.html#definitions"><i class="fa fa-check"></i><b>1.1</b> Definitions</a></li>
+<li class="chapter" data-level="1.2" data-path="complex-numbers.html"><a href="complex-numbers.html#basic-properties-and-consequences"><i class="fa fa-check"></i><b>1.2</b> Basic properties and Consequences</a></li>
+<li class="chapter" data-level="1.3" data-path="complex-numbers.html"><a href="complex-numbers.html#exponential-and-trigonometric-functions"><i class="fa fa-check"></i><b>1.3</b> Exponential and Trigonometric Functions</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="complex-numbers.html"><a href="complex-numbers.html#roots-of-units"><i class="fa fa-check"></i><b>1.3.1</b> Roots of units</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="complex-numbers.html"><a href="complex-numbers.html#transformations-lines-and-circles"><i class="fa fa-check"></i><b>1.4</b> Transformations; lines and circles</a></li>
+<li class="chapter" data-level="1.5" data-path="complex-numbers.html"><a href="complex-numbers.html#logarithms-and-complex-powers"><i class="fa fa-check"></i><b>1.5</b> Logarithms and Complex Powers</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html"><i class="fa fa-check"></i><b>2</b> Vectors in 3 Dimensions</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html#vector-addition-and-scalar-multiplication"><i class="fa fa-check"></i><b>2.1</b> Vector Addition and Scalar Multiplication</a></li>
+<li class="chapter" data-level="2.2" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html#scalar-or-dot-product"><i class="fa fa-check"></i><b>2.2</b> Scalar or Dot Product</a></li>
+<li class="chapter" data-level="2.3" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html#orthonormal-bases-and-components"><i class="fa fa-check"></i><b>2.3</b> Orthonormal Bases and Components</a></li>
+<li class="chapter" data-level="2.4" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html#vector-or-cross-product"><i class="fa fa-check"></i><b>2.4</b> Vector or Cross Product</a></li>
+<li class="chapter" data-level="2.5" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html#triple-products"><i class="fa fa-check"></i><b>2.5</b> Triple products</a></li>
+<li class="chapter" data-level="2.6" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html#lines-planes-and-other-vector-equations"><i class="fa fa-check"></i><b>2.6</b> Lines, Planes and Other Vector Equations</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html#lines"><i class="fa fa-check"></i><b>2.6.1</b> Lines</a></li>
+<li class="chapter" data-level="2.6.2" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html#planes"><i class="fa fa-check"></i><b>2.6.2</b> Planes</a></li>
+<li class="chapter" data-level="2.6.3" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html#other-vector-equations"><i class="fa fa-check"></i><b>2.6.3</b> Other Vector Equations</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html#index-suffix-notation-and-the-summation-convention"><i class="fa fa-check"></i><b>2.7</b> Index (suffix) Notation and the Summation convention</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html#components-delta-and-epsilon"><i class="fa fa-check"></i><b>2.7.1</b> Components; <span class="math inline">\(\delta\)</span> and <span class="math inline">\(\epsilon\)</span></a></li>
+<li class="chapter" data-level="2.7.2" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html#summation-convention"><i class="fa fa-check"></i><b>2.7.2</b> Summation Convention</a></li>
+<li class="chapter" data-level="2.7.3" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html#rules"><i class="fa fa-check"></i><b>2.7.3</b> Rules</a></li>
+<li class="chapter" data-level="2.7.4" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html#application"><i class="fa fa-check"></i><b>2.7.4</b> Application</a></li>
+<li class="chapter" data-level="2.7.5" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html#epsilon-epsilon-identities"><i class="fa fa-check"></i><b>2.7.5</b> <span class="math inline">\(\epsilon \epsilon\)</span> identities</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="vectors-in-general-mathbbrn-and-mathbbcn.html"><a href="vectors-in-general-mathbbrn-and-mathbbcn.html"><i class="fa fa-check"></i><b>3</b> Vectors in General; <span class="math inline">\(\mathbb{R}^n\)</span> and <span class="math inline">\(\mathbb{C}^n\)</span></a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="vectors-in-general-mathbbrn-and-mathbbcn.html"><a href="vectors-in-general-mathbbrn-and-mathbbcn.html#vectors-in-mathbbrn"><i class="fa fa-check"></i><b>3.1</b> Vectors in <span class="math inline">\(\mathbb{R}^n\)</span></a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="vectors-in-general-mathbbrn-and-mathbbcn.html"><a href="vectors-in-general-mathbbrn-and-mathbbcn.html#Rn"><i class="fa fa-check"></i><b>3.1.1</b> Definitions</a></li>
+<li class="chapter" data-level="3.1.2" data-path="vectors-in-general-mathbbrn-and-mathbbcn.html"><a href="vectors-in-general-mathbbrn-and-mathbbcn.html#cauchy-schwarz-and-triangle-inequalities"><i class="fa fa-check"></i><b>3.1.2</b> Cauchy-Schwarz and Triangle Inequalities</a></li>
+<li class="chapter" data-level="3.1.3" data-path="vectors-in-general-mathbbrn-and-mathbbcn.html"><a href="vectors-in-general-mathbbrn-and-mathbbcn.html#comments"><i class="fa fa-check"></i><b>3.1.3</b> Comments</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="vectors-in-general-mathbbrn-and-mathbbcn.html"><a href="vectors-in-general-mathbbrn-and-mathbbcn.html#vector-spaces"><i class="fa fa-check"></i><b>3.2</b> Vector Spaces</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="vectors-in-general-mathbbrn-and-mathbbcn.html"><a href="vectors-in-general-mathbbrn-and-mathbbcn.html#axioms-span-subspaces"><i class="fa fa-check"></i><b>3.2.1</b> Axioms; span; subspaces</a></li>
+<li class="chapter" data-level="3.2.2" data-path="vectors-in-general-mathbbrn-and-mathbbcn.html"><a href="vectors-in-general-mathbbrn-and-mathbbcn.html#linear-dependence-and-independence"><i class="fa fa-check"></i><b>3.2.2</b> Linear Dependence and Independence</a></li>
+<li class="chapter" data-level="3.2.3" data-path="vectors-in-general-mathbbrn-and-mathbbcn.html"><a href="vectors-in-general-mathbbrn-and-mathbbcn.html#inner-product"><i class="fa fa-check"></i><b>3.2.3</b> Inner product</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="vectors-in-general-mathbbrn-and-mathbbcn.html"><a href="vectors-in-general-mathbbrn-and-mathbbcn.html#bases-and-dimension"><i class="fa fa-check"></i><b>3.3</b> Bases and Dimension</a></li>
+<li class="chapter" data-level="3.4" data-path="vectors-in-general-mathbbrn-and-mathbbcn.html"><a href="vectors-in-general-mathbbrn-and-mathbbcn.html#vectors-in-mathbbcn"><i class="fa fa-check"></i><b>3.4</b> Vectors in <span class="math inline">\(\mathbb{C}^n\)</span></a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="vectors-in-general-mathbbrn-and-mathbbcn.html"><a href="vectors-in-general-mathbbrn-and-mathbbcn.html#Cn"><i class="fa fa-check"></i><b>3.4.1</b> Definitions</a></li>
+<li class="chapter" data-level="3.4.2" data-path="vectors-in-general-mathbbrn-and-mathbbcn.html"><a href="vectors-in-general-mathbbrn-and-mathbbcn.html#inner-product-1"><i class="fa fa-check"></i><b>3.4.2</b> Inner Product</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html"><i class="fa fa-check"></i><b>4</b> Matrices and Linear Maps</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#introduction"><i class="fa fa-check"></i><b>4.1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#definitions-1"><i class="fa fa-check"></i><b>4.1.1</b> Definitions</a></li>
+<li class="chapter" data-level="4.1.2" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#rank-and-nullity"><i class="fa fa-check"></i><b>4.1.2</b> Rank and Nullity</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#geometrical-examples"><i class="fa fa-check"></i><b>4.2</b> Geometrical Examples</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#rotations"><i class="fa fa-check"></i><b>4.2.1</b> Rotations</a></li>
+<li class="chapter" data-level="4.2.2" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#reflections"><i class="fa fa-check"></i><b>4.2.2</b> Reflections</a></li>
+<li class="chapter" data-level="4.2.3" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#dilations"><i class="fa fa-check"></i><b>4.2.3</b> Dilations</a></li>
+<li class="chapter" data-level="4.2.4" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#shears"><i class="fa fa-check"></i><b>4.2.4</b> Shears</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#matrices-as-linear-maps-mathbbrn-to-mathbbrm"><i class="fa fa-check"></i><b>4.3</b> Matrices as Linear Maps <span class="math inline">\(\mathbb{R}^n \to \mathbb{R}^m\)</span></a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#definitions-2"><i class="fa fa-check"></i><b>4.3.1</b> Definitions</a></li>
+<li class="chapter" data-level="4.3.2" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#examples"><i class="fa fa-check"></i><b>4.3.2</b> Examples</a></li>
+<li class="chapter" data-level="4.3.3" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#isometries-area-and-determinants-in-mathbbr2"><i class="fa fa-check"></i><b>4.3.3</b> Isometries, area and determinants in <span class="math inline">\(\mathbb{R}^2\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#matrices-for-linear-maps-in-general"><i class="fa fa-check"></i><b>4.4</b> Matrices for Linear Maps in General</a></li>
+<li class="chapter" data-level="4.5" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#matrix-algebra"><i class="fa fa-check"></i><b>4.5</b> Matrix Algebra</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#linear-combinations"><i class="fa fa-check"></i><b>4.5.1</b> Linear Combinations</a></li>
+<li class="chapter" data-level="4.5.2" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#matrix-multiplication"><i class="fa fa-check"></i><b>4.5.2</b> Matrix multiplication</a></li>
+<li class="chapter" data-level="4.5.3" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#matrix-inverses"><i class="fa fa-check"></i><b>4.5.3</b> Matrix Inverses</a></li>
+<li class="chapter" data-level="4.5.4" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#transpose-and-hermitian-conjugate"><i class="fa fa-check"></i><b>4.5.4</b> Transpose and Hermitian Conjugate</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#orthogonal-and-unitary-matrices"><i class="fa fa-check"></i><b>4.6</b> Orthogonal and Unitary Matrices</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html"><i class="fa fa-check"></i><b>5</b> Determinants and inverses</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#introduction-1"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
+<li class="chapter" data-level="5.2" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#epsilon-and-alternating-forms"><i class="fa fa-check"></i><b>5.2</b> <span class="math inline">\(\epsilon\)</span> and Alternating Forms</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#epsilon-and-permutation"><i class="fa fa-check"></i><b>5.2.1</b> <span class="math inline">\(\epsilon\)</span> and Permutation</a></li>
+<li class="chapter" data-level="5.2.2" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#alternating-forms-and-linear-independence"><i class="fa fa-check"></i><b>5.2.2</b> Alternating Forms and Linear (In)dependence</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#determinants-in-mathbbrn-and-mathbbcn"><i class="fa fa-check"></i><b>5.3</b> Determinants in <span class="math inline">\(\mathbb{R}^n\)</span> and <span class="math inline">\(\mathbb{C}^n\)</span></a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#definition"><i class="fa fa-check"></i><b>5.3.1</b> Definition</a></li>
+<li class="chapter" data-level="5.3.2" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#evaluating-determinants-expanding-by-rows-or-columns"><i class="fa fa-check"></i><b>5.3.2</b> Evaluating determinants: expanding by rows or columns</a></li>
+<li class="chapter" data-level="5.3.3" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#simplifying-determinants-row-and-column-operations"><i class="fa fa-check"></i><b>5.3.3</b> Simplifying determinants: Row and Column Operations:</a></li>
+<li class="chapter" data-level="5.3.4" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#multiplicative-property"><i class="fa fa-check"></i><b>5.3.4</b> Multiplicative Property</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#minors-cofactors-and-inverses"><i class="fa fa-check"></i><b>5.4</b> Minors, Cofactors and Inverses</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#cofactors-and-determinants"><i class="fa fa-check"></i><b>5.4.1</b> Cofactors and Determinants</a></li>
+<li class="chapter" data-level="5.4.2" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#adjugates-and-inverses"><i class="fa fa-check"></i><b>5.4.2</b> Adjugates and Inverses</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#system-of-linear-equations"><i class="fa fa-check"></i><b>5.5</b> System of Linear Equations</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#introduction-and-nature-of-solutions"><i class="fa fa-check"></i><b>5.5.1</b> Introduction and Nature of Solutions</a></li>
+<li class="chapter" data-level="5.5.2" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#geometric-interpretation-in-mathbbr3"><i class="fa fa-check"></i><b>5.5.2</b> Geometric Interpretation in <span class="math inline">\(\mathbb{R}^3\)</span></a></li>
+<li class="chapter" data-level="5.5.3" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#gaussian-elimination-and-echelon-form"><i class="fa fa-check"></i><b>5.5.3</b> Gaussian Elimination and Echelon Form</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html"><i class="fa fa-check"></i><b>6</b> Eigenvalues and Eigenvectors</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#introduction-2"><i class="fa fa-check"></i><b>6.1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#definitions-3"><i class="fa fa-check"></i><b>6.1.1</b> Definitions</a></li>
+<li class="chapter" data-level="6.1.2" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#examples-1"><i class="fa fa-check"></i><b>6.1.2</b> Examples</a></li>
+<li class="chapter" data-level="6.1.3" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#deductions-involving-chi_at"><i class="fa fa-check"></i><b>6.1.3</b> Deductions involving <span class="math inline">\(\chi_A(t)\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#eigenspaces-and-multiplicities"><i class="fa fa-check"></i><b>6.2</b> Eigenspaces and Multiplicities</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#definitions-4"><i class="fa fa-check"></i><b>6.2.1</b> Definitions</a></li>
+<li class="chapter" data-level="6.2.2" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#examples-2"><i class="fa fa-check"></i><b>6.2.2</b> Examples</a></li>
+<li class="chapter" data-level="6.2.3" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#linear-independence-of-eigenvectors"><i class="fa fa-check"></i><b>6.2.3</b> Linear Independence of Eigenvectors</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#diagonalisability-and-similarity"><i class="fa fa-check"></i><b>6.3</b> Diagonalisability and Similarity</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#introduction-3"><i class="fa fa-check"></i><b>6.3.1</b> Introduction</a></li>
+<li class="chapter" data-level="6.3.2" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#criteria-for-diagonalisability"><i class="fa fa-check"></i><b>6.3.2</b> Criteria for Diagonalisability</a></li>
+<li class="chapter" data-level="6.3.3" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#similarity"><i class="fa fa-check"></i><b>6.3.3</b> Similarity</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#hermitian-and-symmetric-matrices"><i class="fa fa-check"></i><b>6.4</b> Hermitian and Symmetric Matrices</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#real-eigenvalues-and-orthogonal-eigenvectors"><i class="fa fa-check"></i><b>6.4.1</b> Real Eigenvalues and Orthogonal Eigenvectors</a></li>
+<li class="chapter" data-level="6.4.2" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#unitary-and-orthogonal-diagonalisation"><i class="fa fa-check"></i><b>6.4.2</b> Unitary and Orthogonal Diagonalisation</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#quadratic-forms"><i class="fa fa-check"></i><b>6.5</b> Quadratic Forms</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#examples-in-mathbbr2-and-mathbbr3"><i class="fa fa-check"></i><b>6.5.1</b> Examples in <span class="math inline">\(\mathbb{R}^2\)</span> and <span class="math inline">\(\mathbb{R}^3\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#cayley-hamilton-theorem"><i class="fa fa-check"></i><b>6.6</b> Cayley-Hamilton Theorem</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="changing-bases-canonical-forms-and-symmetries.html"><a href="changing-bases-canonical-forms-and-symmetries.html"><i class="fa fa-check"></i><b>7</b> Changing Bases, Canonical Forms and Symmetries</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="changing-bases-canonical-forms-and-symmetries.html"><a href="changing-bases-canonical-forms-and-symmetries.html#changing-bases-in-general"><i class="fa fa-check"></i><b>7.1</b> Changing Bases in General</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="changing-bases-canonical-forms-and-symmetries.html"><a href="changing-bases-canonical-forms-and-symmetries.html#definition-and-proposition"><i class="fa fa-check"></i><b>7.1.1</b> Definition and Proposition</a></li>
+<li class="chapter" data-level="7.1.2" data-path="changing-bases-canonical-forms-and-symmetries.html"><a href="changing-bases-canonical-forms-and-symmetries.html#proof-of-proposition"><i class="fa fa-check"></i><b>7.1.2</b> Proof of proposition</a></li>
+<li class="chapter" data-level="7.1.3" data-path="changing-bases-canonical-forms-and-symmetries.html"><a href="changing-bases-canonical-forms-and-symmetries.html#approach-using-vector-components"><i class="fa fa-check"></i><b>7.1.3</b> Approach using vector components</a></li>
+<li class="chapter" data-level="7.1.4" data-path="changing-bases-canonical-forms-and-symmetries.html"><a href="changing-bases-canonical-forms-and-symmetries.html#comments-1"><i class="fa fa-check"></i><b>7.1.4</b> Comments</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="changing-bases-canonical-forms-and-symmetries.html"><a href="changing-bases-canonical-forms-and-symmetries.html#jordan-canonical-normal-form"><i class="fa fa-check"></i><b>7.2</b> Jordan Canonical/ Normal Form</a></li>
+<li class="chapter" data-level="7.3" data-path="changing-bases-canonical-forms-and-symmetries.html"><a href="changing-bases-canonical-forms-and-symmetries.html#conics-and-quadrics"><i class="fa fa-check"></i><b>7.3</b> Conics and Quadrics</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="changing-bases-canonical-forms-and-symmetries.html"><a href="changing-bases-canonical-forms-and-symmetries.html#quadrics-in-general"><i class="fa fa-check"></i><b>7.3.1</b> Quadrics in General</a></li>
+<li class="chapter" data-level="7.3.2" data-path="changing-bases-canonical-forms-and-symmetries.html"><a href="changing-bases-canonical-forms-and-symmetries.html#conics"><i class="fa fa-check"></i><b>7.3.2</b> Conics</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="changing-bases-canonical-forms-and-symmetries.html"><a href="changing-bases-canonical-forms-and-symmetries.html#symmetries-and-transformation-groups."><i class="fa fa-check"></i><b>7.4</b> Symmetries and Transformation Groups.</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="changing-bases-canonical-forms-and-symmetries.html"><a href="changing-bases-canonical-forms-and-symmetries.html#orthogonal-transformations-and-rotations-in-mathbbrn"><i class="fa fa-check"></i><b>7.4.1</b> Orthogonal Transformations and Rotations in <span class="math inline">\(\mathbb{R}^n\)</span></a></li>
+<li class="chapter" data-level="7.4.2" data-path="changing-bases-canonical-forms-and-symmetries.html"><a href="changing-bases-canonical-forms-and-symmetries.html#d-minkowski-space-and-lorentz-transformations"><i class="fa fa-check"></i><b>7.4.2</b> 2d Minkowski Space and Lorentz Transformations</a></li>
+<li class="chapter" data-level="7.4.3" data-path="changing-bases-canonical-forms-and-symmetries.html"><a href="changing-bases-canonical-forms-and-symmetries.html#application-to-special-relativity"><i class="fa fa-check"></i><b>7.4.3</b> Application to special relativity</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Vectors and Matrices 2021 - 2022</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="vectors-in-3-dimensions" class="section level1" number="2">
+<h1><span class="header-section-number">2</span> Vectors in 3 Dimensions</h1>
+<p>A vector is a quantity with magnitude and direction (e.g. force, electric and magnetic fields) - all examples modelled on <em>position</em>.
+We take a geometrical approach to position vectors in 3d space based on standard (Euclidean) notions of points, lines, planes, length, angle etc.
+Chose point <span class="math inline">\(O\)</span> as origin, the points <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span> have position vectors
+<span class="math display">\[\begin{align*}
+    \underline{a} = \overrightarrow{OA},\ \underline{b} = \overrightarrow{OB}
+\end{align*}\]</span>
+<img src="figures/02-vector.svg" style="display: block; margin: auto;" />
+lengths denoted by <span class="math inline">\(|\underline{a}| = | \overrightarrow{OA}|\)</span>, <span class="math inline">\(\underline{O}\)</span> is the position vector for <span class="math inline">\(O\)</span>.</p>
+<div id="vector-addition-and-scalar-multiplication" class="section level2" number="2.1">
+<h2><span class="header-section-number">2.1</span> Vector Addition and Scalar Multiplication</h2>
+<ol style="list-style-type: lower-roman">
+<li><p><em>Scalar Multiplication</em>
+Given <span class="math inline">\(\underline{a}\)</span>, position vector for <span class="math inline">\(A\)</span> and a <em>scalar</em> <span class="math inline">\(\lambda \in \mathbb{R}\)</span>, <span class="math inline">\(\lambda \underline{a}\)</span> is position vector of point <span class="math inline">\(A&#39;\)</span> on <span class="math inline">\(OA\)</span> with
+<span class="math display">\[\begin{align*}
+ |\lambda \underline{a}| = |\overrightarrow{OA&#39;}| = |\lambda| |\underline{a}|
+\end{align*}\]</span>
+as shown
+<img src="figures/02-multiplication.svg" style="display: block; margin: auto;" />
+Say <span class="math inline">\(\underline{a}\)</span> and <span class="math inline">\(\underline{b}\)</span> are <em>parallel</em>, <span class="math inline">\(\underline{a} \parallel \underline{b} \iff \underline{a} = \lambda \underline{b}\)</span> or <span class="math inline">\(\underline{b} = \lambda \underline{a}\)</span>.
+Definition allows <span class="math inline">\(\lambda \leq 0\)</span> so <span class="math inline">\(\underline{a} \parallel \underline{0}\)</span> for any <span class="math inline">\(\underline{a}\)</span>.</p></li>
+<li><p><em>Addition</em> Given <span class="math inline">\(\underline{a}, \underline{b}\)</span> position vectors of <span class="math inline">\(A, B\)</span> construct a parallelogram <span class="math inline">\(OACB\)</span>
+<img src="figures/02-addition.svg" style="display: block; margin: auto;" />
+and define <span class="math inline">\(\underline{a} + \underline{b} = \underline{c}\)</span>, position vector of point <span class="math inline">\(C\)</span>, provided <span class="math inline">\(\underline{a} \nparallel \underline{b}\)</span>; if <span class="math inline">\(\underline{a} \parallel \underline{b}\)</span> then we can write <span class="math inline">\(\underline{a} = \alpha \underline{u}\)</span>, <span class="math inline">\(\underline{b} = \beta \underline{u}\)</span> for some <span class="math inline">\(\underline{u}\)</span> and then <span class="math inline">\(\underline{a} + \underline{b} = (\alpha + \beta) \underline{u}\)</span>.</p></li>
+<li><p><em>Properties</em> For any vectors <span class="math inline">\(\underline{a}, \underline{b}, \underline{c}\)</span>
+<span class="math display">\[\begin{align*}
+    \underline{a} + \underline{0} &amp;= \underline{0} + \underline{a} = \underline{a} &amp; &amp;(\underline{0} \text{ is identity for } +) \\
+    \exists \; a \text{ such that } \\
+    \underline{a} + (- \underline{a}) &amp;= (- \underline{a}) + \underline{a} = \underline{0} &amp; &amp;(-\underline{a} \text{ is the inverse for } \underline{a}) \\
+    \underline{a} + \underline{b} &amp;= \underline{b} + \underline{a} &amp; &amp;(+ \text{ is commutative}) \\
+    \underline{a} + (\underline{b} + \underline{c} ) &amp;= ( \underline{a} + \underline{b} ) + \underline{c} &amp; &amp;(+ \text{ is associative}) \\
+    \lambda ( \underline{a} + \underline{b}) &amp;= \lambda \underline{a} + \lambda \underline{b} &amp;&amp;\\
+    (\lambda + \mu) \underline{a} &amp;= \lambda \underline{a} + \mu \underline{a} &amp;&amp;\\
+    \lambda (\mu \underline{a}) &amp;= (\lambda \mu) \underline{a}, &amp; &amp;\lambda, \mu \in \mathbb{R}
+\end{align*}\]</span>
+All of these can be checked geometrically, e.g. associativity of vector addition using a parallelepiped</p></li>
+<li><p><em>Linear Combinations and Span</em>
+A <em>linear combination</em> of vectors <span class="math inline">\(\underline{a}, \underline{b}, \dots, \underline{c}\)</span> is an expression
+<span class="math display">\[\begin{align*}
+\alpha \underline{a} + \beta \underline{b} + \dots + \gamma \underline{c} \text{ for some } \alpha, \beta, \dots, \gamma \in \mathbb{R}.
+\end{align*}\]</span>
+The <em>span</em> of a set of vectors is <span class="math inline">\(\operatorname{span} \{ \underline{a}, \underline{b}, \dots, \underline{c} \} = \{\alpha \underline{a} + \beta \underline{b} + \dots + \gamma \underline{c} : \alpha, \beta, \dots, \gamma \in \mathbb{R} \}\)</span>.</p></li>
+</ol>
+<p>If <span class="math inline">\(a \neq 0\)</span> then <span class="math inline">\(\operatorname{span} \{ \underline{a} \} = \{ \lambda \underline{a} \}\)</span>, which is a line through <span class="math inline">\(O\)</span> and <span class="math inline">\(A\)</span>.</p>
+<p>If <span class="math inline">\(\underline{a} \nparallel \underline{b}\)</span> (this also means <span class="math inline">\(\underline{a}, \underline{b} \neq \underline{0}\)</span>) then <span class="math inline">\(\operatorname{span} \{ \underline{a}, \underline{b}\} = \{ \alpha \underline{a} + \beta \underline{b} : \alpha, \beta \in \mathbb{R}\}\)</span>, which is a <em>plane</em> through <span class="math inline">\(O, A, B\)</span>.</p>
+</div>
+<div id="scalar-or-dot-product" class="section level2" number="2.2">
+<h2><span class="header-section-number">2.2</span> Scalar or Dot Product</h2>
+<ol style="list-style-type: lower-roman">
+<li><div class="definition">
+<span id="def:unlabeled-div-10" class="definition"><strong>Definition 2.1  </strong></span>Given <span class="math inline">\(\underline{a}\)</span> and <span class="math inline">\(\underline{b}\)</span> let <span class="math inline">\(\theta\)</span> be the angle between them; then
+<span class="math display">\[\begin{align*}
+ \underline{a} \cdot \underline{b} = | \underline{a} | | \underline{b} | \cos \theta
+\end{align*}\]</span>
+<em>scalar</em> or <em>dot product</em> or <em>inner product</em>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:dot"></span>
+<img src="figures/02-dot.svg" alt="$\theta$ defined unless $|\underline{a}|$ or $| \underline{b}| = 0$ and then $\underline{a} \cdot \underline{b} = 0$"  />
+<p class="caption">
+Figure 2.1: <span class="math inline">\(\theta\)</span> defined unless <span class="math inline">\(|\underline{a}|\)</span> or <span class="math inline">\(| \underline{b}| = 0\)</span> and then <span class="math inline">\(\underline{a} \cdot \underline{b} = 0\)</span>
+</p>
+</div>
+</div></li>
+<li><p><em>Properties</em>
+<span class="math display">\[\begin{align*}
+\underline{a} \cdot \underline{b} &amp;= \underline{b} \cdot \underline{a} \\
+\underline{a} \cdot \underline{a} = |\underline{a}|^2 &amp;\geq 0 \text{ and } = 0 \iff \underline{a} = \underline{0} \\
+(\lambda \underline{a}) \cdot \underline{b} &amp;= \lambda (\underline{a} \cdot \underline{b}) = \underline{a} \cdot (\lambda \underline{b}) \\
+\underline{a} \cdot ( \underline{b} \cdot \underline{c}) &amp;= \underline{a} \cdot \underline{b} + \underline{a} \cdot \underline{c}
+\end{align*}\]</span></p></li>
+<li><p><em>Interpretation</em>
+For <span class="math inline">\(\underline{a} \neq \underline{0}\)</span>, consider <span class="math inline">\(\underline{u} = \frac{\underline{a}}{|\underline{a}|}\)</span>
+<span class="math display">\[\begin{align*}
+    \underline{u} \cdot \underline{b} = \frac{1}{\underline{a}} \underline{a} \cdot \underline{b}
+\end{align*}\]</span>
+is the <em>component</em> of <span class="math inline">\(\underline{b}\)</span> along <span class="math inline">\(\underline{a}\)</span>
+<img src="figures/02-interpretation.svg" style="display: block; margin: auto;" />
+We can <em>resolve</em> <span class="math inline">\(\underline{b} = \underline{b}_\parallel + \underline{b}_\bot\)</span>.
+<span class="math inline">\(\underline{b}_\parallel = (\underline{b} \cdot \underline{u}),\ \underline{b}_\bot = b - (\underline{b} \cdot \underline{u})\)</span> where <span class="math inline">\(\underline{u} = \frac{\underline{a}}{|\underline{a}|}\)</span>.
+Note <span class="math inline">\(\underline{a} \cdot \underline{b} = \underline{a} \cdot \underline{b}_\parallel\)</span>.  
+In general, vectors <span class="math inline">\(\underline{a}\)</span> and <span class="math inline">\(\underline{b}\)</span> are <em>orthogonal</em> or <em>perpendicular</em>, written <span class="math inline">\(\underline{a} \bot \underline{b} \iff \underline{a} \cdot \underline{b} = 0\)</span>.</p></li>
+</ol>
+</div>
+<div id="orthonormal-bases-and-components" class="section level2" number="2.3">
+<h2><span class="header-section-number">2.3</span> Orthonormal Bases and Components</h2>
+<p>Choose vectors <span class="math inline">\(\underline{e}_1, \underline{e}_2, \underline{e}_3\)</span> that are <em>orthonormal</em> i.e. each of unit length and mutually perpendicular.
+<span class="math display">\[\begin{align*}
+    \underline{e}_i \cdot \underline{e}_j = \begin{cases}
+        1 &amp; \text{if } i = j \\
+        0 &amp; \text{if } i \neq j
+    \end{cases}
+\end{align*}\]</span>
+This is equivalent to choosing Cartesian axes along these directions, <span class="math inline">\(\{ \underline{e}_i \}\)</span> is a <em>basis</em>: any vector can be expressed
+<span class="math display">\[\begin{align*}
+    \underline{a} = \sum_{i} a_i \underline{e}_i = a_1 \underline{e}_1 + a_2 \underline{e}_2 + a_3 \underline{e}_3 
+\end{align*}\]</span>
+and each component is <em>uniquely</em> determined
+<span class="math display">\[\begin{align*}
+    a_i = \underline{e}_i \cdot \underline{a}.
+\end{align*}\]</span></p>
+<p><img src="figures/02-bases.png" width="50%" style="display: block; margin: auto;" /></p>
+<p>Each <span class="math inline">\(\underline{a}\)</span> can now be identified with a set of components in
+<span class="math display">\[\begin{align*}
+    \begin{pmatrix} a_1 &amp; a_2 &amp; a_3 \end{pmatrix} \text{ or } \begin{pmatrix}
+    a_1 \\
+    a_2 \\
+    a_3
+    \end{pmatrix}
+\end{align*}\]</span></p>
+<p>Note <span class="math display">\[\begin{align*}
+    \underline{a} \cdot \underline{b} &amp;= (\sum_i a_i \underline{e}_i) \cdot (\sum_j b_j \underline{e}_j) \\
+    &amp;= a_1 b_1 + a_2 b_2 + a_3 b_3  \\
+    |\underline{a}|^2 &amp;= a_1^2 + a_2^2 + a_3^2 \text{(Pythagoras)}
+\end{align*}\]</span>
+<span class="math inline">\(\underline{e}_1, \underline{e}_2, \underline{e}_3\)</span> are also often written <span class="math inline">\(\underline{i}, \underline{j}, \underline{k}\)</span>.</p>
+</div>
+<div id="vector-or-cross-product" class="section level2" number="2.4">
+<h2><span class="header-section-number">2.4</span> Vector or Cross Product</h2>
+<ol style="list-style-type: lower-roman">
+<li><div class="definition">
+<p><span id="def:unlabeled-div-11" class="definition"><strong>Definition 2.2  </strong></span>Given <span class="math inline">\(\underline{a}\)</span> and <span class="math inline">\(\underline{b}\)</span>, let <span class="math inline">\(\theta\)</span> be the angle between them measure in the sense shown relative to a unit normal <span class="math inline">\(\underline{n}\)</span> to the plane they span;
+<img src="figures/02-cross.svg" width="50%" style="display: block; margin: auto;" />
+then <span class="math display">\[\begin{align*}
+ \underline{a} \wedge \underline{b} = \underline{a} \times \underline{b} = |\underline{a}| | \underline{b}| \sin \theta \underline{n}
+\end{align*}\]</span> is <em>vector</em> or <em>cross</em> product.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
+</div></li>
+<li><em>Properties</em></li>
+</ol>
+<p><span class="math display">\[\begin{align*}
+    \underline{a} \wedge \underline{b} &amp;= - \underline{b} \wedge \underline{a} \\
+    (\lambda \underline{a}) \wedge \underline{b} &amp;= \lambda (\underline{a} \wedge \underline{b}) = \underline{a} \wedge (\lambda \underline{b}) \\
+    \underline{a} \wedge (\underline{b} + \underline{c}) &amp;= \underline{a} \wedge \underline{b} + \underline{a} \wedge \underline{c} \\
+    \underline{a} \wedge \underline{b} &amp;= \underline{0} \iff \underline{a} \parallel \underline{b} \\
+    \underline{a} \wedge \underline{b} &amp;\bot \underline{a} \text{ and } \underline{b} \\
+    \underline{a} \cdot (\underline{a} \wedge \underline{b}) &amp;= \underline{b} \cdot (\underline{a} \wedge \underline{b}) = 0
+\end{align*}\]</span></p>
+<ol start="3" style="list-style-type: lower-roman">
+<li><em>Interpretations</em></li>
+</ol>
+<ul>
+<li><p><span class="math inline">\(\underline{a} \wedge \underline{b}\)</span> is the <em>vector</em> area shown:
+<img src="figures/02-vector-area.svg" width="50%" style="display: block; margin: auto;" />
+<span class="math inline">\(|\underline{a} \wedge \underline{b}|\)</span> is the <em>scalar</em> area. The direction of the normal <span class="math inline">\(\underline{n}\)</span> gives orientation of the parallelogram in space.</p></li>
+<li><p>Fix <span class="math inline">\(\underline{a}\)</span> and consider <span class="math inline">\(\underline{x} \bot \underline{a}\)</span>; then <span class="math inline">\(\underline{x} \mapsto \underline{a} \wedge \underline{x}\)</span> scales <span class="math inline">\(| \underline{x} |\)</span> by a factor <span class="math inline">\(|\underline{a}|\)</span> and rotates <span class="math inline">\(\underline{x}\)</span> by <span class="math inline">\(\pi / 2\)</span> in the plane <span class="math inline">\(\bot \; \underline{a}\)</span> as shown:
+<img src="figures/02-perp-cross.svg" width="50%" style="display: block; margin: auto;" /></p></li>
+</ul>
+<ol start="4" style="list-style-type: lower-roman">
+<li><em>Component expressions</em>
+Consider <span class="math inline">\(\underline{e}_1, \underline{e}_2, \underline{e}_3\)</span> orthonormal basis as in <a href="vectors-in-3-dimensions.html#orthonormal-bases-and-components">Orthonormal Bases and Components</a> but assume in addition
+<span class="math display">\[\begin{align*}
+\underline{e}_1 \wedge \underline{e}_2 = \underline{e}_3 = \underline{e}_2 \wedge \underline{e}_1 \\
+\underline{e}_2 \wedge \underline{e}_3 = \underline{e}_1 = \underline{e}_3 \wedge \underline{e}_2 \\
+\underline{e}_3 \wedge \underline{e}_1 = \underline{e}_2 = \underline{e}_1 \wedge \underline{e}_3 \\
+\end{align*}\]</span> (all equalities follow from any one).
+This is called a <em>right-handed</em> orthonormal basis.</li>
+</ol>
+<p>Now for <span class="math display">\[\begin{align*}
+    \underline{a} &amp;= \sum_{i} a_i \underline{e}_i = a_1 \underline{e}_1 + a_2 \underline{e}_2 + a_3 \underline{e}_3  \\
+    \underline{b} &amp;= \sum_j b_j \underline{e}_j = b_1 \underline{e}_1 + b_2 \underline{e}_2 + b_3 \underline{e}_3  \\
+    \underline{a} \wedge \underline{b} &amp;= (a_2 b_3 - a_3 b_2)\underline{e}_1 + (a_3 b_1 - a_1 b_3) \underline{e}_2 + (a_1 b_2 - a_2 b_1) \underline{e}_3
+\end{align*}\]</span></p>
+</div>
+<div id="triple-products" class="section level2" number="2.5">
+<h2><span class="header-section-number">2.5</span> Triple products</h2>
+<ol style="list-style-type: lower-alpha">
+<li><em>Scalar Triple Product</em></li>
+</ol>
+<div class="definition">
+<p><span id="def:unlabeled-div-12" class="definition"><strong>Definition 2.3  </strong></span><span class="math display">\[\begin{align*}
+    \underline{a} \cdot (\underline{b} \wedge \underline{c}) &amp;= \underline{b} \cdot (\underline{c} \wedge \underline{a}) = \underline{c} \cdot ( \underline{a} \wedge \underline{b}) \\
+    &amp;= - \underline{a} \cdot (\underline{c} \wedge \underline{b}) = - \underline{b} \cdot (\underline{a} \wedge \underline{c}) = - \underline{c} \cdot (\underline{b} \wedge \underline{a}) \\
+    &amp;= \left[ \underline{a}, \underline{b}, \underline{c} \right]
+\end{align*}\]</span></p>
+</div>
+<p>Interpretation: <span class="math inline">\(|\underline{c} \cdot \underline{a} \wedge \underline{b}|\)</span> is the volume of a parallelepiped shown
+<img src="figures/02-parallelepiped.svg" width="50%" style="display: block; margin: auto;" />
+The “signed volume” is <span class="math inline">\(\underline{c} \cdot \underline{a} \wedge \underline{b}\)</span>; if
+<span class="math inline">\(\underline{c} \cdot \underline{a} \wedge \underline{b} &gt; 0\)</span> then we say <span class="math inline">\(\underline{a}, \underline{b}, \underline{c}\)</span> is a right-handed set</p>
+<p>Note: <span class="math inline">\(\underline{a} \cdot \underline{b} \wedge \underline{c}\)</span> iff <span class="math inline">\(\underline{a}, \underline{b}, \underline{c}\)</span> are <em>co-planar</em> meaning one of them lies in the plane spanned by the other two.
+e.g. <span class="math inline">\(\underline{c} = \alpha \underline{a} + \beta \underline{b}\)</span> belonging to <span class="math inline">\(\operatorname{span} \{ a, b \}\)</span></p>
+<div class="example">
+<p><span id="exm:unlabeled-div-13" class="example"><strong>Example 2.1  </strong></span><span class="math display">\[\begin{align*}
+    \underline{a} &amp;= \begin{pmatrix}2 &amp; 0 &amp; -1\end{pmatrix} \\
+    \underline{b} &amp;= \begin{pmatrix}7 &amp; -3 &amp; 5 \end{pmatrix} \\
+    \implies \underline{a} \wedge \underline{b} &amp;= (0.5 - (-1)(-3)) \underline{e}_1 + ((-1)7 - 2.5) \underline{e}_2 + (2(-3) - 0.7) \underline{e}_3 \\
+    &amp;= \begin{pmatrix}-3 &amp; -17 &amp; -6 \end{pmatrix}
+\end{align*}\]</span>
+To test whether <span class="math inline">\(\underline{a}, \underline{b}, \underline{c}\)</span> are co-planar with <span class="math inline">\(\underline{c} = \begin{pmatrix}7 3 -3 &amp; 7 \end{pmatrix}\)</span>.
+<span class="math display">\[\begin{align*}
+    \underline{c} \cdot \underline{a} \wedge \underline{b} &amp;= 3(-3) + (-3)(-17) + 7(-6) \\
+    &amp;= 0;
+\end{align*}\]</span>
+consistent with <span class="math inline">\(\underline{c} = \underline{b} - 2 \underline{a}\)</span>.</p>
+</div>
+<ol start="2" style="list-style-type: lower-alpha">
+<li><em>Vector Triple Product</em>
+<span class="math display">\[\begin{align*}
+ \underline{a} \wedge (\underline{b} \wedge \underline{c}) &amp;= (\underline{a} \cdot \underline{c}) \underline{b} - (\underline{a} \cdot \underline{b}) \underline{c} \\
+ (\underline{a} \wedge \underline{b}) \wedge \underline{c} &amp;= (\underline{a} \cdot \underline{c}) \underline{b} - (\underline{b} \cdot \underline{c}) \underline{a}
+\end{align*}\]</span></li>
+</ol>
+<p>Forms of RHS is constrained by definitions above, and we could check explicitly. We will return to these formulae using index notation and summation convention.</p>
+</div>
+<div id="lines-planes-and-other-vector-equations" class="section level2" number="2.6">
+<h2><span class="header-section-number">2.6</span> Lines, Planes and Other Vector Equations</h2>
+<div id="lines" class="section level3" number="2.6.1">
+<h3><span class="header-section-number">2.6.1</span> Lines</h3>
+<p>General point on a line through <span class="math inline">\(\underline{a}\)</span> with direction <span class="math inline">\(\underline{u} \neq \underline{0}\)</span> has position vector
+<span class="math display">\[\begin{align*}
+    \underline{r} = \underline{a} + \lambda \underline{u},\ \lambda \in \mathbb{R}
+\end{align*}\]</span>
+in parametric form.</p>
+<p><img src="figures/2-6-line.png" width="50%" style="display: block; margin: auto;" /></p>
+<p>Alternative form without parameter <span class="math inline">\(\lambda\)</span> obtained by crossing with <span class="math inline">\(\underline{u}\)</span>:
+<span class="math display">\[\begin{align*}
+    \underline{u} \wedge \underline{r} = \underline{u} \wedge \underline{a}
+\end{align*}\]</span>
+Conversely <span class="math inline">\(\underline{u} \wedge (\underline{r} - \underline{a}) = \underline{0}\)</span> and this holds <span class="math inline">\(\iff \underline{r} - \underline{a} = \lambda \underline{u}\)</span> for some <span class="math inline">\(\lambda\)</span>.</p>
+<p>Now consider
+<span class="math display">\[\begin{align*}
+    \underline{u} \wedge \underline{r} &amp;= \underline{c} \text{ where } \underline{u}, \underline{c} \text{ are given vectors and } \underline{u} \neq \underline{0} \\
+    \text{Note } \underline{u} \cdot (\underline{u} \wedge \underline{r}) &amp;= \underline{u} \cdot \underline{c} \\
+    &amp;= 0
+\end{align*}\]</span>
+If <span class="math inline">\(\underline{u} \cdot \underline{c} \neq 0\)</span> then we have a contradiction i.e. no solutions.
+If <span class="math inline">\(\underline{u} \cdot \underline{c} = 0\)</span>, try a particular solution by considering
+<span class="math display">\[\begin{align*}
+    \underline{u} \wedge (\underline{u} \wedge \underline{c}) &amp;= \overbrace{(\underline{u} \cdot \underline{c})}^0 \underline{u} - (\underline{u} \cdot \underline{u}) \underline{c} \\
+    &amp;= - |\underline{u}|^2 \underline{c}
+\end{align*}\]</span></p>
+<p>Hence <span class="math inline">\(\underline{a} = - \frac{1}{|\underline{u}|^2} (\underline{u} \wedge \underline{c})\)</span> is a solutions. The general solution is <span class="math display">\[\begin{align*}
+    \underline{r} = \underline{a} + \lambda \underline{u}
+\end{align*}\]</span> as <span class="math inline">\(\underline{u} \wedge (\underline{a} + \lambda \underline{u}) = \underline{u} \wedge \underline{a}\)</span></p>
+</div>
+<div id="planes" class="section level3" number="2.6.2">
+<h3><span class="header-section-number">2.6.2</span> Planes</h3>
+<p>The general point on a plane through <span class="math inline">\(\underline{a}\)</span> with directions <span class="math inline">\(\underline{u}, \underline{v}\)</span> in plane (<span class="math inline">\(\underline{u} \nparallel \underline{v}\)</span>) has position vector
+<span class="math display">\[\begin{align*}
+    \underline{r} = \underline{a} + \lambda \underline{u} + \mu \underline{v}, \text{ where } \lambda, \mu \in \mathbb{R} 
+\end{align*}\]</span> in parametric form.
+<img src="figures/2-6-plane.png" width="50%" style="display: block; margin: auto;" /></p>
+<p>An alternative form without parameters is obtained by by dotting with a normal vector
+<span class="math inline">\(\underline{n} = \underline{u} \wedge \underline{v} \neq 0\)</span> (since <span class="math inline">\(\underline{u} \nparallel \underline{v}\)</span> but is not necessarily a unit vector).</p>
+This gives
+<span class="math display">\[\begin{align*}
+    \underline{n} \cdot \underline{r} &amp;= \underline{n} \cdot \underline{a} \\
+    &amp;= \kappa \text{ (a constant)}
+\end{align*}\]</span>
+Note component of <span class="math inline">\(\underline{r}\)</span> along <span class="math inline">\(\underline{n}\)</span> is
+<span class="math display">\[\begin{align*}
+    \frac{\underline{n} \cdot \underline{r}}{|\underline{n}|} = \frac{\kappa}{|\underline{n}|}
+\end{align*}\]</span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:2-6-plane2"></span>
+<img src="figures/2-6-plane2.png" alt="Clearly a plane" width="50%" />
+<p class="caption">
+Figure 2.2: Clearly a plane
+</p>
+</div>
+<p>Moreover <span class="math inline">\(|\kappa| / |\underline{n}|\)</span> is perpendicular distance of plane from <span class="math inline">\(\underline{0}\)</span>.</p>
+</div>
+<div id="other-vector-equations" class="section level3" number="2.6.3">
+<h3><span class="header-section-number">2.6.3</span> Other Vector Equations</h3>
+<p>Consider equations for <span class="math inline">\(\underline{r}\)</span> (unknown) written in vector notation with given constant vectors.</p>
+<p>Possible approaches:</p>
+<ul>
+<li>We can re-write and convert to some standard form</li>
+</ul>
+<div class="example">
+<p><span id="exm:unlabeled-div-14" class="example"><strong>Example 2.2  </strong></span><span class="math display">\[\begin{align*}
+    |\underline{r}|^2 + \underline{r} \cdot \underline{a} &amp;= k \\
+    \text{Complete the square:} \\
+    \left| \underline{r} + \frac{1}{2} \underline{a} \right|^2 &amp;= \left( \underline{r} + \frac{1}{2} \underline{a} \right) \cdot \left( \underline{r} + \frac{1}{2} \underline{a} \right) \\
+    &amp;= k + \frac{1}{4} |\underline{a}|^2.
+\end{align*}\]</span>
+This is the equation of a sphere, centre <span class="math inline">\(-\frac{1}{2} \underline{a}\)</span> and radius <span class="math inline">\((k + \frac{1}{4} |\underline{a}|^2)^{1 / 2}\)</span> provided <span class="math inline">\(k + \frac{1}{4} |\underline{a}|^2 &gt; 0\)</span></p>
+</div>
+<p>For equations linear in <span class="math inline">\(\underline{r}\)</span></p>
+<ul>
+<li>Try dotting and crossing with constant vectors to learn more.</li>
+</ul>
+<div class="example">
+<p><span id="exm:unlabeled-div-15" class="example"><strong>Example 2.3  </strong></span>Another example of a vector equation is
+<span class="math display" id="eq:one">\[\begin{align}
+    \underline r + \underline a \times (\underline b \times \underline r) = \underline c \tag{2.1}
+\end{align}\]</span>
+where <span class="math inline">\(\underline a, \underline b, \underline c\)</span> are fixed.
+We can dot with <span class="math inline">\(\underline a\)</span> to eliminate the second term:
+<span class="math display" id="eq:two">\[\begin{align}
+    \underline a \cdot \underline r = \underline a \cdot \underline c \tag{2.2}
+\end{align}\]</span>
+Note that using the dot product loses information — this is simply a tool to make deductions; <a href="vectors-in-3-dimensions.html#eq:two">(2.2)</a> does not contain the full information of <a href="vectors-in-3-dimensions.html#eq:one">(2.1)</a>, i.e. <a href="vectors-in-3-dimensions.html#eq:two">(2.2)</a> <span class="math inline">\(\ \not\!\!\!\!\implies\)</span> <a href="vectors-in-3-dimensions.html#eq:one">(2.1)</a>.
+Combining <a href="vectors-in-3-dimensions.html#eq:one">(2.1)</a> and <a href="vectors-in-3-dimensions.html#eq:two">(2.2)</a>, and using the formula for the vector triple product, we get
+<span class="math display" id="eq:three">\[\begin{align}
+    \underline r + (\underline a \cdot \underline r) \underline b - (\underline a \cdot \underline b) \underline r          &amp; = \underline c \tag{2.3} \\
+    \implies \underline r + (\underline a \cdot \underline c) \underline b - (\underline a \cdot \underline b) \underline r &amp; = \underline c \notag
+\end{align}\]</span>
+This eliminates the dependency on <span class="math inline">\(\underline r\)</span> inside the dot product.
+Now, we can factorise, leaving
+<span class="math display" id="eq:four">\[\begin{align}
+        (1 - \underline a \cdot \underline b) \underline r = \underline c - (\underline a \cdot \underline c) \underline b \tag{2.4}
+\end{align}\]</span></p>
+<ol style="list-style-type: lower-roman">
+<li><p>If <span class="math inline">\(1 - \underline a \cdot \underline b \neq 0\)</span> then <span class="math inline">\(\underline r\)</span> has a single solution, <span class="math inline">\(\underline{r} = (\underline{c} - (\underline{a} \cdot \underline{c}) \underline{b} ) / (1 - \underline{a} \cdot b)\)</span>, a point.</p></li>
+<li><p>If <span class="math inline">\(1 - \underline{a} \cdot \underline{b} = 0\)</span> and <span class="math inline">\(\underline c - (\underline a \cdot \underline c) \underline b \neq 0\)</span> implies <a href="vectors-in-3-dimensions.html#eq:four">(2.4)</a> is inconsistent so <em>no solution</em></p></li>
+<li><p>If <span class="math inline">\(1 - \underline{a} \cdot \underline{b} = 0\)</span> and <span class="math inline">\(\underline c - (\underline a \cdot \underline c) \underline b = 0\)</span>
+We can now combine this expression for <span class="math inline">\(\underline c\)</span> into <a href="vectors-in-3-dimensions.html#eq:three">(2.3)</a> and eliminate the <span class="math inline">\((1- \underline a \cdot \underline b)\)</span> term, to get
+<span class="math display">\[\begin{align*}
+    (\underline a \cdot \underline r - \underline a \cdot \underline c) \underline b = \underline 0
+\end{align*}\]</span>
+This shows us that (given that <span class="math inline">\(\underline b\)</span> is non-zero) the solutions to the equation are given by <a href="vectors-in-3-dimensions.html#eq:two">(2.2)</a>, which is the equation of a plane, so <a href="vectors-in-3-dimensions.html#eq:two">(2.2)</a> <span class="math inline">\(\implies\)</span> <a href="vectors-in-3-dimensions.html#eq:one">(2.1)</a>.</p></li>
+</ol>
+</div>
+<ul>
+<li><p>Can try expressing <span class="math inline">\(\underline{r} = \alpha \underline{a} + \beta \underline{b} + \gamma \underline{c}\)</span> for some non-co-planar <span class="math inline">\(\underline{a}, \underline{b}, \underline{c}\)</span> and solve for <span class="math inline">\(\alpha, \beta, \gamma\)</span>.</p></li>
+<li><p>Can choose basis and use index/ matrix notation.</p></li>
+</ul>
+</div>
+</div>
+<div id="index-suffix-notation-and-the-summation-convention" class="section level2" number="2.7">
+<h2><span class="header-section-number">2.7</span> Index (suffix) Notation and the Summation convention</h2>
+<div id="components-delta-and-epsilon" class="section level3" number="2.7.1">
+<h3><span class="header-section-number">2.7.1</span> Components; <span class="math inline">\(\delta\)</span> and <span class="math inline">\(\epsilon\)</span></h3>
+<p>Write vectors <span class="math inline">\(\underline{a}, \underline{b}, \dots\)</span>, in terms of components <span class="math inline">\(a_i, b_i, \dots\)</span>, wrt. an orthonormal, right-handed basis
+<span class="math display">\[\begin{align*}
+    \underline{e}_1, \underline{e}_2, \underline{e}_3.
+\end{align*}\]</span>
+Indices or suffices <span class="math inline">\(i, j, k, l, p, q \dots\)</span> take values <span class="math inline">\(1, 2, 3\)</span>.</p>
+<p>Then <span class="math display">\[\begin{align*}
+    &amp;&amp; \underline{c} &amp;= \alpha \underline{a} + \beta \underline{b} \\
+    &amp;\iff &amp; c_i &amp;= [\alpha \underline{a} + \beta \underline{b}] \\
+    &amp;&amp; &amp;= \alpha a_i + \beta b_i \text{ for } i = 1, 2, 3 \textbf{ free index} \\
+    &amp;&amp; \underline{a} \cdot \underline{b} &amp;= \sum_i a_i b_i = \sum_j a_j b_j \\
+    &amp;&amp; \underline{x} &amp;= \underline{a} + (\underline{b} \cdot \underline{c}) \underline{d} \\
+    &amp;\iff &amp; x_j &amp;= a_j + (\sum_k b_k c_k) d_j \text{ for } j = 1, 2, 3 \text{ free index}
+\end{align*}\]</span></p>
+<div class="definition">
+<p><span id="def:unlabeled-div-16" class="definition"><strong>Definition 2.4  (Kronecker Delta) </strong></span><span class="math display">\[\begin{align*}
+    \delta_{ij} &amp;= \begin{cases}
+        1 &amp; \text{if } i = j \\
+        0 &amp; \text{else}\\
+    \end{cases} \\
+    \delta_{ij} &amp;= \delta_{ji} \text{ symmetric} \\ 
+    \text{Written out as an array} &amp;\text{ or matrix}\\
+    \begin{pmatrix}
+    \delta_{11} &amp; \delta_{12} &amp; \delta_{13} \\
+    \delta_{21} &amp; \delta_{22} &amp; \delta_{23} \\
+    \delta_{31} &amp; \delta_{32} &amp; \delta_{33}
+    \end{pmatrix} &amp;=
+    \begin{pmatrix}
+    1 &amp; 0 &amp; 0 \\
+    0 &amp; 1 &amp; 0 \\
+    0 &amp; 0 &amp; 1
+    \end{pmatrix} \\
+    \text{Then } \underline{e}_i \cdot \underline{e}_j &amp;= \delta_{ij} \\
+    \text{and } \underline{a} \cdot \underline{b} &amp;= \left( \sum_i a_i \underline{e}_i) \cdot (\sum_j b_j \underline{e}_j \right) \\
+    &amp;= \sum_{ij} a_i b_j \underline{e}_i \cdot \underline{e}_j \\
+    &amp;= \sum_{ij} a_i b_j \delta_{ij} \\
+    &amp;= \sum_i a_i b_i
+\end{align*}\]</span></p>
+</div>
+<div class="definition">
+<p><span id="def:unlabeled-div-17" class="definition"><strong>Definition 2.5  (Levi-Civita Epsilon) </strong></span><span class="math display">\[\begin{align*}
+    \epsilon_{ijk} &amp;= \begin{cases}
+        + 1 &amp; \text{if } (i, j, k) \text{ is an even permutation of } (1, 2, 3) \\
+        - 1 &amp; \text{if } (i, j, k) \text{ is an odd permutation of } (1, 2, 3) \\
+        0 &amp; \text{else}
+    \end{cases} \\
+    \text{i.e. } \epsilon_{123} &amp;= \epsilon_{231} = \epsilon_{312} = + 1 \\
+    \epsilon_{321} &amp;= \epsilon_{213} = \epsilon_{132} = - 1 \\
+    \epsilon_{ijk} &amp;= 0 \text{ if any two index values match} \\
+\end{align*}\]</span>
+<span class="math inline">\(\epsilon_{ijk}\)</span> is <em>totally</em> antisymmetric: exchanging any pairs of indices produces a change in sign.
+Then
+<span class="math display">\[\begin{align*}
+    \underline{e}_i \wedge \underline{e}_j &amp;= \sum_k \epsilon_{ijk} \ \underline{e}_k \\
+    \text{e.g. } \underline{e}_2 \wedge \underline{e}_1 &amp;= \sum_k \epsilon_{21k} \ \underline{e}_k \\
+    &amp;= \epsilon_{213} \ \underline{e}_3 \\
+    &amp;= - \underline{e}_3 \\
+    \text{And } \underline{a} \wedge \underline{b} &amp;= \left( \sum_i a_i \underline{e}_i \right) \wedge \left( \sum_j b_j \underline{e}_j \right) \\
+    &amp;= \sum_{ij} a_i b_j \underline{e}_i \wedge \underline{e}_j \\
+    &amp;= \sum_{ij} a_i b_j \left( \sum_k \epsilon_{ijk} \ \underline{e}_k \right) \\
+    &amp;= \sum_k \left( \sum_{ij} \epsilon_{ijk} a_i b_j \right) \underline{e}_k \\
+    \text{Hence } (\underline{a} \wedge \underline{b})_k &amp;= \sum_{ij} \epsilon_{ijk} a_i b_j \\
+    \text{e.g. } (\underline{a} \wedge \underline{b})_3 &amp;= \sum_{ij} \epsilon_{ij3} a_i b_j \\
+    &amp;= \epsilon_{123} a_1 b_2 + \epsilon_{213} a_2 b_1 \\
+    &amp;= a_1 b_2 - a_2 b_1.
+\end{align*}\]</span></p>
+</div>
+</div>
+<div id="summation-convention" class="section level3" number="2.7.2">
+<h3><span class="header-section-number">2.7.2</span> Summation Convention</h3>
+<p>With component/ index notation, we observe that indices that appear <em>twice</em> in a given term are (usually) summed over.
+In the summation convention we <em>omit</em> <span class="math inline">\(\sum\)</span> signs for repeated indices: the sum is understood.</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-18" class="example"><strong>Example 2.4  </strong></span><span class="math display">\[\begin{align*}
+    a_i \delta_{ij} &amp;= a_1 \delta_{1j} + a_2 \delta_{2j} + a_3 \delta_{3j} \\
+    &amp;= \begin{cases}
+        a_1 &amp; \text{if} j = 1 \\
+        a_2 &amp; \text{if} j = 2 \\
+        a_3 &amp; \text{if} j = 3
+    \end{cases} \\
+    a_i \delta_{ij} &amp;= a_j
+\end{align*}\]</span></p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-19" class="example"><strong>Example 2.5  </strong></span><span class="math display">\[\begin{align*}
+    \underline{a} \cdot \underline{b} &amp;= \delta_{ij} a_i b_j \\
+    &amp;= a_i b_i
+\end{align*}\]</span></p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-20" class="example"><strong>Example 2.6  </strong></span><span class="math display">\[\begin{align*}
+    (\underline{a} \wedge \underline{b})_i = \epsilon_{ijk} a_j b_k
+\end{align*}\]</span></p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-21" class="example"><strong>Example 2.7  </strong></span><span class="math display">\[\begin{align*}
+    \underline{a} \cdot \underline{b} \wedge c &amp;= \epsilon_{ijk} a_j b_k c_k \\
+    &amp;= a_i b_i
+\end{align*}\]</span></p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-22" class="example"><strong>Example 2.8  </strong></span><span class="math display">\[\begin{align*}
+    \delta_{ii} = \delta_{11} + \delta_{22} + \delta_{33} = 3
+\end{align*}\]</span></p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-23" class="example"><strong>Example 2.9  </strong></span><span class="math display">\[\begin{align*}
+    \left[ (\underline{a} \cdot \underline{c}) \underline{b} - (\underline{a} \cdot \underline{b}) \underline{c} \right]_i &amp;= (\underline{a} \cdot \underline{c}) \underline{b}_i - (\underline{a} \cdot \underline{b}) \underline{c}_i \\
+    &amp;= a_j c_j b_i - a_j b_j c_i
+\end{align*}\]</span></p>
+</div>
+</div>
+<div id="rules" class="section level3" number="2.7.3">
+<h3><span class="header-section-number">2.7.3</span> Rules</h3>
+<ol style="list-style-type: lower-roman">
+<li><p>An index that occurs exactly <em>once</em> in any term must appear once in <em>every</em> term and it can take any value - a <em>free</em> index.</p></li>
+<li><p>An index occurring exactly <em>twice</em> in a given term is summed over - a <em>repeated</em>/ <em>contracted</em> or <em>dummy</em> index.</p></li>
+<li><p>No index can occur more than twice.</p></li>
+</ol>
+</div>
+<div id="application" class="section level3" number="2.7.4">
+<h3><span class="header-section-number">2.7.4</span> Application</h3>
+<p>Proof of the vector triple product identity. Consider</p>
+<div class="proof">
+<p><span id="unlabeled-div-24" class="proof"><em>Proof</em>. </span><span class="math display">\[\begin{align*}
+    \left[ \underline{a} \wedge (\underline{b} \wedge \underline{c}) \right]_i &amp;= \epsilon_{ijk} a_j (\underline{b} \wedge \underline{c})_k \\
+    &amp;= \epsilon_{ijk} a_j \epsilon_{kpq} b_p c_q \\
+    &amp;= \epsilon_{ijk} \epsilon_{pqk} a_j b_p c_q \\
+    \epsilon_{ijk} \epsilon_{pqk} &amp;= \delta_{ip}\delta_{jq} - \delta_{iq} \delta_{jp} \text{ see below} \\
+    \left[ \underline{a} \wedge (\underline{b} \wedge \underline{c}) \right]_i &amp;= (\delta_{ip}\delta_{jq} - \delta_{iq}\delta_{jp}) a_j b_p c_q \\
+    &amp;= a_j \delta_{ip} b_p \delta_{jq} c_q - a_j \delta_{jp} b_p \delta_{iq} c_q \\
+    &amp;= a_j b_i c_j - a_j b_j c_i,\ \delta_{ij} x_j = x_i = \delta_{ji} x_j \\
+    &amp;= (a_j c_j) b_i - (a_j b_j) c_i \\
+    &amp;= (\underline{a} \cdot \underline{c}) b_i - (\underline{a} \cdot \underline{b}) c_i \\
+    &amp;= \left[ (\underline{a} \cdot \underline{c}) \underline{b} - (\underline{a} \cdot \underline{b}) \underline{c} \right]_i \\
+    \text{True for } i &amp;= 1, 2, 3 \text{ hence} \\
+    \underline{a} \wedge (\underline{b} \wedge \underline{c}) &amp;= (\underline{a} \cdot \underline{c}) \underline{b} - (\underline{a} \cdot \underline{b}) \underline{c}
+\end{align*}\]</span></p>
+</div>
+</div>
+<div id="epsilon-epsilon-identities" class="section level3" number="2.7.5">
+<h3><span class="header-section-number">2.7.5</span> <span class="math inline">\(\epsilon \epsilon\)</span> identities</h3>
+<ol style="list-style-type: decimal">
+<li><p><span class="math display">\[\begin{align*}
+ \epsilon_{ijk} \epsilon_{pqk} &amp;= \sum_k \epsilon_{ijk} \epsilon_{pqk} \\
+ &amp;= \delta_{ip}\delta_{jq} - \delta_{iq} \delta_{jp} \\
+ &amp;= \epsilon_{kij} \epsilon_{kpq}
+\end{align*}\]</span><a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>
+Check: RHS and LHS are both antisymmetric under <span class="math inline">\(i \leftrightarrow j\)</span> or <span class="math inline">\(p \leftrightarrow q\)</span>.
+So both sides vanish if <span class="math inline">\(i = j\)</span> or <span class="math inline">\(p = q\)</span>.
+Now suffices to check e.g. <span class="math inline">\(i = p = 1\)</span> and <span class="math inline">\(j = q = 2\)</span>
+<span class="math display">\[\begin{align*}
+ LHS &amp;= \epsilon_{123} \epsilon_{123} = 1 \\
+ RHS &amp;= \delta_{11} \delta_{22} - \delta_{12} \delta_{21} = 1
+\end{align*}\]</span>
+or <span class="math inline">\(i = q = 1\)</span> and <span class="math inline">\(j = p = 2\)</span>
+<span class="math display">\[\begin{align*}
+ LHS &amp;= \epsilon_{123} \epsilon_{213} = 1(-1) = -1 \\
+ RHS &amp;= \delta_{12} \delta_{21} - \delta_{11} \delta_{22} = -1
+\end{align*}\]</span>
+All other index choices work similarly, proof by exhaustion.</p></li>
+<li><p><span class="math inline">\(\epsilon_{ijk} \epsilon_{pjk} = 2\delta_{ip}\)</span>
+<em>contract</em> result above
+<span class="math display">\[\begin{align*}
+ \epsilon_{ijk} \epsilon_{pqk} &amp;= \delta_{ip}\delta_{jj} - \delta_{ij} \delta_{jp} \\
+ &amp;= 3\delta_{ip} - \delta_{ip} \\
+ &amp;= 2 \delta_{ip}
+\end{align*}\]</span></p></li>
+<li><p><span class="math inline">\(\epsilon_{ijk} \epsilon_{ijk} = 6\)</span></p></li>
+</ol>
+
+</div>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p><span class="math inline">\(\underline{n}\)</span> is defined up to a choice of sign if <span class="math inline">\(\underline{a} \nparallel \underline{b}\)</span>, but changing the sign of <span class="math inline">\(\underline{n}\)</span> means changing <span class="math inline">\(\theta\)</span> to <span class="math inline">\(2\pi - \theta\)</span> so definition is unchanged; <span class="math inline">\(\underline{n}\)</span> is not defined if <span class="math inline">\(\underline{a} \parallel \underline{b}\)</span> and <span class="math inline">\(\theta\)</span> is not defined if <span class="math inline">\(\underline{a}\)</span> or <span class="math inline">\(\underline{b} = 0\)</span>, but <span class="math inline">\(\underline{a} \wedge \underline{b} = \underline{0}\)</span> in these cases.<a href="vectors-in-3-dimensions.html#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>expected to know this and quote it<a href="vectors-in-3-dimensions.html#fnref2" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="complex-numbers.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="vectors-in-general-mathbbrn-and-mathbbcn.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "lunr",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

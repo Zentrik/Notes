@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>4 Matrices and Linear Maps | Vectors and Matrices 2021 - 2022</title>
+  <meta name="description" content="Notes" />
+  <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="4 Matrices and Linear Maps | Vectors and Matrices 2021 - 2022" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Notes" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="4 Matrices and Linear Maps | Vectors and Matrices 2021 - 2022" />
+  
+  <meta name="twitter:description" content="Notes" />
+  
+
+<meta name="author" content="Author" />
+
+
+<meta name="date" content="2021-07-10" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="vectors-in-general-mathbbrn-and-mathbbcn.html"/>
+<link rel="next" href="determinants-and-inverses.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Lecture 1</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#contents"><i class="fa fa-check"></i><b>0.1</b> Contents</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="complex-numbers.html"><a href="complex-numbers.html"><i class="fa fa-check"></i><b>1</b> Complex Numbers</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="complex-numbers.html"><a href="complex-numbers.html#definitions"><i class="fa fa-check"></i><b>1.1</b> Definitions</a></li>
+<li class="chapter" data-level="1.2" data-path="complex-numbers.html"><a href="complex-numbers.html#basic-properties-and-consequences"><i class="fa fa-check"></i><b>1.2</b> Basic properties and Consequences</a></li>
+<li class="chapter" data-level="1.3" data-path="complex-numbers.html"><a href="complex-numbers.html#exponential-and-trigonometric-functions"><i class="fa fa-check"></i><b>1.3</b> Exponential and Trigonometric Functions</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="complex-numbers.html"><a href="complex-numbers.html#roots-of-units"><i class="fa fa-check"></i><b>1.3.1</b> Roots of units</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="complex-numbers.html"><a href="complex-numbers.html#transformations-lines-and-circles"><i class="fa fa-check"></i><b>1.4</b> Transformations; lines and circles</a></li>
+<li class="chapter" data-level="1.5" data-path="complex-numbers.html"><a href="complex-numbers.html#logarithms-and-complex-powers"><i class="fa fa-check"></i><b>1.5</b> Logarithms and Complex Powers</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html"><i class="fa fa-check"></i><b>2</b> Vectors in 3 Dimensions</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html#vector-addition-and-scalar-multiplication"><i class="fa fa-check"></i><b>2.1</b> Vector Addition and Scalar Multiplication</a></li>
+<li class="chapter" data-level="2.2" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html#scalar-or-dot-product"><i class="fa fa-check"></i><b>2.2</b> Scalar or Dot Product</a></li>
+<li class="chapter" data-level="2.3" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html#orthonormal-bases-and-components"><i class="fa fa-check"></i><b>2.3</b> Orthonormal Bases and Components</a></li>
+<li class="chapter" data-level="2.4" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html#vector-or-cross-product"><i class="fa fa-check"></i><b>2.4</b> Vector or Cross Product</a></li>
+<li class="chapter" data-level="2.5" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html#triple-products"><i class="fa fa-check"></i><b>2.5</b> Triple products</a></li>
+<li class="chapter" data-level="2.6" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html#lines-planes-and-other-vector-equations"><i class="fa fa-check"></i><b>2.6</b> Lines, Planes and Other Vector Equations</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html#lines"><i class="fa fa-check"></i><b>2.6.1</b> Lines</a></li>
+<li class="chapter" data-level="2.6.2" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html#planes"><i class="fa fa-check"></i><b>2.6.2</b> Planes</a></li>
+<li class="chapter" data-level="2.6.3" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html#other-vector-equations"><i class="fa fa-check"></i><b>2.6.3</b> Other Vector Equations</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html#index-suffix-notation-and-the-summation-convention"><i class="fa fa-check"></i><b>2.7</b> Index (suffix) Notation and the Summation convention</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html#components-delta-and-epsilon"><i class="fa fa-check"></i><b>2.7.1</b> Components; <span class="math inline">\(\delta\)</span> and <span class="math inline">\(\epsilon\)</span></a></li>
+<li class="chapter" data-level="2.7.2" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html#summation-convention"><i class="fa fa-check"></i><b>2.7.2</b> Summation Convention</a></li>
+<li class="chapter" data-level="2.7.3" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html#rules"><i class="fa fa-check"></i><b>2.7.3</b> Rules</a></li>
+<li class="chapter" data-level="2.7.4" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html#application"><i class="fa fa-check"></i><b>2.7.4</b> Application</a></li>
+<li class="chapter" data-level="2.7.5" data-path="vectors-in-3-dimensions.html"><a href="vectors-in-3-dimensions.html#epsilon-epsilon-identities"><i class="fa fa-check"></i><b>2.7.5</b> <span class="math inline">\(\epsilon \epsilon\)</span> identities</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="vectors-in-general-mathbbrn-and-mathbbcn.html"><a href="vectors-in-general-mathbbrn-and-mathbbcn.html"><i class="fa fa-check"></i><b>3</b> Vectors in General; <span class="math inline">\(\mathbb{R}^n\)</span> and <span class="math inline">\(\mathbb{C}^n\)</span></a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="vectors-in-general-mathbbrn-and-mathbbcn.html"><a href="vectors-in-general-mathbbrn-and-mathbbcn.html#vectors-in-mathbbrn"><i class="fa fa-check"></i><b>3.1</b> Vectors in <span class="math inline">\(\mathbb{R}^n\)</span></a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="vectors-in-general-mathbbrn-and-mathbbcn.html"><a href="vectors-in-general-mathbbrn-and-mathbbcn.html#Rn"><i class="fa fa-check"></i><b>3.1.1</b> Definitions</a></li>
+<li class="chapter" data-level="3.1.2" data-path="vectors-in-general-mathbbrn-and-mathbbcn.html"><a href="vectors-in-general-mathbbrn-and-mathbbcn.html#cauchy-schwarz-and-triangle-inequalities"><i class="fa fa-check"></i><b>3.1.2</b> Cauchy-Schwarz and Triangle Inequalities</a></li>
+<li class="chapter" data-level="3.1.3" data-path="vectors-in-general-mathbbrn-and-mathbbcn.html"><a href="vectors-in-general-mathbbrn-and-mathbbcn.html#comments"><i class="fa fa-check"></i><b>3.1.3</b> Comments</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="vectors-in-general-mathbbrn-and-mathbbcn.html"><a href="vectors-in-general-mathbbrn-and-mathbbcn.html#vector-spaces"><i class="fa fa-check"></i><b>3.2</b> Vector Spaces</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="vectors-in-general-mathbbrn-and-mathbbcn.html"><a href="vectors-in-general-mathbbrn-and-mathbbcn.html#axioms-span-subspaces"><i class="fa fa-check"></i><b>3.2.1</b> Axioms; span; subspaces</a></li>
+<li class="chapter" data-level="3.2.2" data-path="vectors-in-general-mathbbrn-and-mathbbcn.html"><a href="vectors-in-general-mathbbrn-and-mathbbcn.html#linear-dependence-and-independence"><i class="fa fa-check"></i><b>3.2.2</b> Linear Dependence and Independence</a></li>
+<li class="chapter" data-level="3.2.3" data-path="vectors-in-general-mathbbrn-and-mathbbcn.html"><a href="vectors-in-general-mathbbrn-and-mathbbcn.html#inner-product"><i class="fa fa-check"></i><b>3.2.3</b> Inner product</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="vectors-in-general-mathbbrn-and-mathbbcn.html"><a href="vectors-in-general-mathbbrn-and-mathbbcn.html#bases-and-dimension"><i class="fa fa-check"></i><b>3.3</b> Bases and Dimension</a></li>
+<li class="chapter" data-level="3.4" data-path="vectors-in-general-mathbbrn-and-mathbbcn.html"><a href="vectors-in-general-mathbbrn-and-mathbbcn.html#vectors-in-mathbbcn"><i class="fa fa-check"></i><b>3.4</b> Vectors in <span class="math inline">\(\mathbb{C}^n\)</span></a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="vectors-in-general-mathbbrn-and-mathbbcn.html"><a href="vectors-in-general-mathbbrn-and-mathbbcn.html#Cn"><i class="fa fa-check"></i><b>3.4.1</b> Definitions</a></li>
+<li class="chapter" data-level="3.4.2" data-path="vectors-in-general-mathbbrn-and-mathbbcn.html"><a href="vectors-in-general-mathbbrn-and-mathbbcn.html#inner-product-1"><i class="fa fa-check"></i><b>3.4.2</b> Inner Product</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html"><i class="fa fa-check"></i><b>4</b> Matrices and Linear Maps</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#introduction"><i class="fa fa-check"></i><b>4.1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#definitions-1"><i class="fa fa-check"></i><b>4.1.1</b> Definitions</a></li>
+<li class="chapter" data-level="4.1.2" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#rank-and-nullity"><i class="fa fa-check"></i><b>4.1.2</b> Rank and Nullity</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#geometrical-examples"><i class="fa fa-check"></i><b>4.2</b> Geometrical Examples</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#rotations"><i class="fa fa-check"></i><b>4.2.1</b> Rotations</a></li>
+<li class="chapter" data-level="4.2.2" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#reflections"><i class="fa fa-check"></i><b>4.2.2</b> Reflections</a></li>
+<li class="chapter" data-level="4.2.3" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#dilations"><i class="fa fa-check"></i><b>4.2.3</b> Dilations</a></li>
+<li class="chapter" data-level="4.2.4" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#shears"><i class="fa fa-check"></i><b>4.2.4</b> Shears</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#matrices-as-linear-maps-mathbbrn-to-mathbbrm"><i class="fa fa-check"></i><b>4.3</b> Matrices as Linear Maps <span class="math inline">\(\mathbb{R}^n \to \mathbb{R}^m\)</span></a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#definitions-2"><i class="fa fa-check"></i><b>4.3.1</b> Definitions</a></li>
+<li class="chapter" data-level="4.3.2" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#examples"><i class="fa fa-check"></i><b>4.3.2</b> Examples</a></li>
+<li class="chapter" data-level="4.3.3" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#isometries-area-and-determinants-in-mathbbr2"><i class="fa fa-check"></i><b>4.3.3</b> Isometries, area and determinants in <span class="math inline">\(\mathbb{R}^2\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#matrices-for-linear-maps-in-general"><i class="fa fa-check"></i><b>4.4</b> Matrices for Linear Maps in General</a></li>
+<li class="chapter" data-level="4.5" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#matrix-algebra"><i class="fa fa-check"></i><b>4.5</b> Matrix Algebra</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#linear-combinations"><i class="fa fa-check"></i><b>4.5.1</b> Linear Combinations</a></li>
+<li class="chapter" data-level="4.5.2" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#matrix-multiplication"><i class="fa fa-check"></i><b>4.5.2</b> Matrix multiplication</a></li>
+<li class="chapter" data-level="4.5.3" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#matrix-inverses"><i class="fa fa-check"></i><b>4.5.3</b> Matrix Inverses</a></li>
+<li class="chapter" data-level="4.5.4" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#transpose-and-hermitian-conjugate"><i class="fa fa-check"></i><b>4.5.4</b> Transpose and Hermitian Conjugate</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="matrices-and-linear-maps.html"><a href="matrices-and-linear-maps.html#orthogonal-and-unitary-matrices"><i class="fa fa-check"></i><b>4.6</b> Orthogonal and Unitary Matrices</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html"><i class="fa fa-check"></i><b>5</b> Determinants and inverses</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#introduction-1"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
+<li class="chapter" data-level="5.2" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#epsilon-and-alternating-forms"><i class="fa fa-check"></i><b>5.2</b> <span class="math inline">\(\epsilon\)</span> and Alternating Forms</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#epsilon-and-permutation"><i class="fa fa-check"></i><b>5.2.1</b> <span class="math inline">\(\epsilon\)</span> and Permutation</a></li>
+<li class="chapter" data-level="5.2.2" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#alternating-forms-and-linear-independence"><i class="fa fa-check"></i><b>5.2.2</b> Alternating Forms and Linear (In)dependence</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#determinants-in-mathbbrn-and-mathbbcn"><i class="fa fa-check"></i><b>5.3</b> Determinants in <span class="math inline">\(\mathbb{R}^n\)</span> and <span class="math inline">\(\mathbb{C}^n\)</span></a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#definition"><i class="fa fa-check"></i><b>5.3.1</b> Definition</a></li>
+<li class="chapter" data-level="5.3.2" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#evaluating-determinants-expanding-by-rows-or-columns"><i class="fa fa-check"></i><b>5.3.2</b> Evaluating determinants: expanding by rows or columns</a></li>
+<li class="chapter" data-level="5.3.3" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#simplifying-determinants-row-and-column-operations"><i class="fa fa-check"></i><b>5.3.3</b> Simplifying determinants: Row and Column Operations:</a></li>
+<li class="chapter" data-level="5.3.4" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#multiplicative-property"><i class="fa fa-check"></i><b>5.3.4</b> Multiplicative Property</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#minors-cofactors-and-inverses"><i class="fa fa-check"></i><b>5.4</b> Minors, Cofactors and Inverses</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#cofactors-and-determinants"><i class="fa fa-check"></i><b>5.4.1</b> Cofactors and Determinants</a></li>
+<li class="chapter" data-level="5.4.2" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#adjugates-and-inverses"><i class="fa fa-check"></i><b>5.4.2</b> Adjugates and Inverses</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#system-of-linear-equations"><i class="fa fa-check"></i><b>5.5</b> System of Linear Equations</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#introduction-and-nature-of-solutions"><i class="fa fa-check"></i><b>5.5.1</b> Introduction and Nature of Solutions</a></li>
+<li class="chapter" data-level="5.5.2" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#geometric-interpretation-in-mathbbr3"><i class="fa fa-check"></i><b>5.5.2</b> Geometric Interpretation in <span class="math inline">\(\mathbb{R}^3\)</span></a></li>
+<li class="chapter" data-level="5.5.3" data-path="determinants-and-inverses.html"><a href="determinants-and-inverses.html#gaussian-elimination-and-echelon-form"><i class="fa fa-check"></i><b>5.5.3</b> Gaussian Elimination and Echelon Form</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html"><i class="fa fa-check"></i><b>6</b> Eigenvalues and Eigenvectors</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#introduction-2"><i class="fa fa-check"></i><b>6.1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#definitions-3"><i class="fa fa-check"></i><b>6.1.1</b> Definitions</a></li>
+<li class="chapter" data-level="6.1.2" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#examples-1"><i class="fa fa-check"></i><b>6.1.2</b> Examples</a></li>
+<li class="chapter" data-level="6.1.3" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#deductions-involving-chi_at"><i class="fa fa-check"></i><b>6.1.3</b> Deductions involving <span class="math inline">\(\chi_A(t)\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#eigenspaces-and-multiplicities"><i class="fa fa-check"></i><b>6.2</b> Eigenspaces and Multiplicities</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#definitions-4"><i class="fa fa-check"></i><b>6.2.1</b> Definitions</a></li>
+<li class="chapter" data-level="6.2.2" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#examples-2"><i class="fa fa-check"></i><b>6.2.2</b> Examples</a></li>
+<li class="chapter" data-level="6.2.3" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#linear-independence-of-eigenvectors"><i class="fa fa-check"></i><b>6.2.3</b> Linear Independence of Eigenvectors</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#diagonalisability-and-similarity"><i class="fa fa-check"></i><b>6.3</b> Diagonalisability and Similarity</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#introduction-3"><i class="fa fa-check"></i><b>6.3.1</b> Introduction</a></li>
+<li class="chapter" data-level="6.3.2" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#criteria-for-diagonalisability"><i class="fa fa-check"></i><b>6.3.2</b> Criteria for Diagonalisability</a></li>
+<li class="chapter" data-level="6.3.3" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#similarity"><i class="fa fa-check"></i><b>6.3.3</b> Similarity</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#hermitian-and-symmetric-matrices"><i class="fa fa-check"></i><b>6.4</b> Hermitian and Symmetric Matrices</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#real-eigenvalues-and-orthogonal-eigenvectors"><i class="fa fa-check"></i><b>6.4.1</b> Real Eigenvalues and Orthogonal Eigenvectors</a></li>
+<li class="chapter" data-level="6.4.2" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#unitary-and-orthogonal-diagonalisation"><i class="fa fa-check"></i><b>6.4.2</b> Unitary and Orthogonal Diagonalisation</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#quadratic-forms"><i class="fa fa-check"></i><b>6.5</b> Quadratic Forms</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#examples-in-mathbbr2-and-mathbbr3"><i class="fa fa-check"></i><b>6.5.1</b> Examples in <span class="math inline">\(\mathbb{R}^2\)</span> and <span class="math inline">\(\mathbb{R}^3\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="eigenvalues-and-eigenvectors.html"><a href="eigenvalues-and-eigenvectors.html#cayley-hamilton-theorem"><i class="fa fa-check"></i><b>6.6</b> Cayley-Hamilton Theorem</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="changing-bases-canonical-forms-and-symmetries.html"><a href="changing-bases-canonical-forms-and-symmetries.html"><i class="fa fa-check"></i><b>7</b> Changing Bases, Canonical Forms and Symmetries</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="changing-bases-canonical-forms-and-symmetries.html"><a href="changing-bases-canonical-forms-and-symmetries.html#changing-bases-in-general"><i class="fa fa-check"></i><b>7.1</b> Changing Bases in General</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="changing-bases-canonical-forms-and-symmetries.html"><a href="changing-bases-canonical-forms-and-symmetries.html#definition-and-proposition"><i class="fa fa-check"></i><b>7.1.1</b> Definition and Proposition</a></li>
+<li class="chapter" data-level="7.1.2" data-path="changing-bases-canonical-forms-and-symmetries.html"><a href="changing-bases-canonical-forms-and-symmetries.html#proof-of-proposition"><i class="fa fa-check"></i><b>7.1.2</b> Proof of proposition</a></li>
+<li class="chapter" data-level="7.1.3" data-path="changing-bases-canonical-forms-and-symmetries.html"><a href="changing-bases-canonical-forms-and-symmetries.html#approach-using-vector-components"><i class="fa fa-check"></i><b>7.1.3</b> Approach using vector components</a></li>
+<li class="chapter" data-level="7.1.4" data-path="changing-bases-canonical-forms-and-symmetries.html"><a href="changing-bases-canonical-forms-and-symmetries.html#comments-1"><i class="fa fa-check"></i><b>7.1.4</b> Comments</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="changing-bases-canonical-forms-and-symmetries.html"><a href="changing-bases-canonical-forms-and-symmetries.html#jordan-canonical-normal-form"><i class="fa fa-check"></i><b>7.2</b> Jordan Canonical/ Normal Form</a></li>
+<li class="chapter" data-level="7.3" data-path="changing-bases-canonical-forms-and-symmetries.html"><a href="changing-bases-canonical-forms-and-symmetries.html#conics-and-quadrics"><i class="fa fa-check"></i><b>7.3</b> Conics and Quadrics</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="changing-bases-canonical-forms-and-symmetries.html"><a href="changing-bases-canonical-forms-and-symmetries.html#quadrics-in-general"><i class="fa fa-check"></i><b>7.3.1</b> Quadrics in General</a></li>
+<li class="chapter" data-level="7.3.2" data-path="changing-bases-canonical-forms-and-symmetries.html"><a href="changing-bases-canonical-forms-and-symmetries.html#conics"><i class="fa fa-check"></i><b>7.3.2</b> Conics</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="changing-bases-canonical-forms-and-symmetries.html"><a href="changing-bases-canonical-forms-and-symmetries.html#symmetries-and-transformation-groups."><i class="fa fa-check"></i><b>7.4</b> Symmetries and Transformation Groups.</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="changing-bases-canonical-forms-and-symmetries.html"><a href="changing-bases-canonical-forms-and-symmetries.html#orthogonal-transformations-and-rotations-in-mathbbrn"><i class="fa fa-check"></i><b>7.4.1</b> Orthogonal Transformations and Rotations in <span class="math inline">\(\mathbb{R}^n\)</span></a></li>
+<li class="chapter" data-level="7.4.2" data-path="changing-bases-canonical-forms-and-symmetries.html"><a href="changing-bases-canonical-forms-and-symmetries.html#d-minkowski-space-and-lorentz-transformations"><i class="fa fa-check"></i><b>7.4.2</b> 2d Minkowski Space and Lorentz Transformations</a></li>
+<li class="chapter" data-level="7.4.3" data-path="changing-bases-canonical-forms-and-symmetries.html"><a href="changing-bases-canonical-forms-and-symmetries.html#application-to-special-relativity"><i class="fa fa-check"></i><b>7.4.3</b> Application to special relativity</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Vectors and Matrices 2021 - 2022</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="matrices-and-linear-maps" class="section level1" number="4">
+<h1><span class="header-section-number">4</span> Matrices and Linear Maps</h1>
+<div id="introduction" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Introduction</h2>
+<div id="definitions-1" class="section level3" number="4.1.1">
+<h3><span class="header-section-number">4.1.1</span> Definitions</h3>
+<div class="definition">
+<p><span id="def:lmp" class="definition"><strong>Definition 4.1  </strong></span>A <em>linear map</em> or <em>linear transformation</em> is a function
+<span class="math display">\[\begin{align*}
+    T : V \to W
+\end{align*}\]</span> between vector spaces <span class="math inline">\(V\ (\dim n)\)</span> and <span class="math inline">\(W\ (\dim m)\)</span> such that
+<span class="math display">\[\begin{align*}
+    T(\lambda \underline{x} + \mu \underline{y}) &amp;= \lambda T(\underline{x}) + \mu T(\underline{y}) \\
+    \forall \; \underline{x}, \underline{y} \in V \\
+    \forall \; \lambda, \mu \in \mathbb{R} \text{ or } \mathbb{C} \\
+\end{align*}\]</span>
+for <span class="math inline">\(V, W\)</span> both real or complex vector spaces.<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a></p>
+</div>
+<p><em>Note</em>: a linear map is completely determined by its action on a basis <span class="math inline">\(\{ \underline{e}_1, \dots, \underline{e}_n \}\)</span> for <span class="math inline">\(V\)</span>, since <span class="math display">\[\begin{align*}
+    T\left( \sum_i x_i \underline{e}_i \right) = \sum_i x_i T(\underline{e}_i)
+\end{align*}\]</span></p>
+<p><span class="math inline">\(\underline{x}&#39; = T(\underline{x}) \in W\)</span> is the <em>image</em> of <span class="math inline">\(\underline{x} \in V\)</span> under T.<br />
+<span class="math inline">\(\operatorname{Im}(T) = \{ \underline{x}&#39; \in W: \underline{x}&#39; = T(\underline{x}) \text{ for some } \underline{x} \in V \}\)</span> is the <em>image</em> of <span class="math inline">\(T\)</span>.<br />
+<span class="math inline">\(\ker(T) = \{ \underline{x} \in V: \underline{x}&#39; = T(\underline{x}) = \underline{0} \}\)</span> is the <em>kernel</em> of <span class="math inline">\(T\)</span>.<br />
+</p>
+<div class="lemma">
+<p><span id="lem:unlabeled-div-47" class="lemma"><strong>Lemma 4.1  </strong></span><span class="math inline">\(\ker(T)\)</span> is a subspace of <span class="math inline">\(V\)</span> and <span class="math inline">\(\operatorname{Im}(T)\)</span> is a subspace of <span class="math inline">\(W\)</span>.</p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-48" class="proof"><em>Proof</em>. </span><span class="math inline">\(\underline{x}, \underline{y} \in \ker(T) \implies T(\lambda \underline{x} + \mu \underline{y}) = \lambda T(\underline{x}) + \mu T(\underline{y}) = \underline{0}\)</span> and <span class="math inline">\(\underline{0} \in \ker(T)\)</span>, so results follows.</p>
+<p>Also <span class="math inline">\(\underline{0} \in \operatorname{Im}(T)\)</span> and <span class="math inline">\(\underline{x}&#39;, \underline{y}&#39; \in \operatorname{Im}(T)\)</span> then <span class="math inline">\(T(\lambda \underline{x} + \mu \underline{y}) = \lambda T(\underline{x}) + \mu T(\underline{y}) = \lambda \underline{x}&#39; + \mu \underline{y}&#39; \in \operatorname{Im}(T)\)</span> for some <span class="math inline">\(\underline{x}, \underline{y} \in V\)</span>.</p>
+</div>
+<div class="example">
+<p><span id="exm:f-one" class="example"><strong>Example 4.1  </strong></span>Zero linear map <span class="math inline">\(T : V \to W\)</span> is given by <span class="math inline">\(T(\underline{x}) = \underline{0} \ \forall \; \underline{x} \in V\)</span>.
+<span class="math inline">\(\operatorname{Im}(T) = \{ \underline{0} \}\)</span> and <span class="math inline">\(\ker(T) = V\)</span></p>
+</div>
+<div class="example">
+<p><span id="exm:f-two" class="example"><strong>Example 4.2  </strong></span>For <span class="math inline">\(V = W\)</span>, the identity linear map <span class="math inline">\(T: V \to V\)</span> is given by <span class="math inline">\(T(\underline{x}) = \underline{x} \; \forall \; x \in V\)</span>.
+<span class="math inline">\(\operatorname{Im}(T) = V\)</span> and <span class="math inline">\(\ker(T) = \{ \underline{0} \}\)</span></p>
+</div>
+<div class="example">
+<p><span id="exm:f-three" class="example"><strong>Example 4.3  </strong></span><span class="math inline">\(V = W = \mathbb{R}^3\)</span>, <span class="math inline">\(\underline{x}&#39; = T(\underline{x})\)</span> given by
+<span class="math display">\[\begin{align*}
+    x_1&#39; &amp;= 3 x_1 + x_2 + 5 x_3 \\
+    x_2&#39; &amp;= - x_1 - 2 x_3 \\
+    x_3&#39; &amp;= 2 x_1 + x_2 + 3 x_3 \\
+    \ker(T) &amp;= \left\{ \lambda \begin{pmatrix}2 \\-1 \\-1\end{pmatrix} \right\} \hspace{0.5cm} (\dim 1) \\
+    \operatorname{Im}(T) &amp;= \left\{ \lambda \begin{pmatrix}3 \\-1 \\2\end{pmatrix} + \mu \begin{pmatrix}1 \\0 \\1\end{pmatrix} \right\} \hspace{0.5cm} (\dim 2)
+\end{align*}\]</span></p>
+</div>
+</div>
+<div id="rank-and-nullity" class="section level3" number="4.1.2">
+<h3><span class="header-section-number">4.1.2</span> Rank and Nullity</h3>
+<p><span class="math inline">\(\dim \operatorname{Im}(T)\)</span> is the <em>rank</em> of <span class="math inline">\(T\)</span> (<span class="math inline">\(\leq n\)</span>).<br />
+<span class="math inline">\(\dim \ker(T)\)</span> is the <em>nullity</em> of <span class="math inline">\(T\)</span> (<span class="math inline">\(\leq n\)</span>).<br />
+</p>
+<div class="theorem">
+<p><span id="thm:rank" class="theorem"><strong>Theorem 4.1  (rank-nullity) </strong></span>For <span class="math inline">\(T : V \to W\)</span> a linear map, <a href="matrices-and-linear-maps.html#def:lmp">4.1</a>
+<span class="math display">\[\begin{align*}
+    \operatorname{rank}(T) + \operatorname{null}(T) &amp;= n = \dim V
+\end{align*}\]</span></p>
+</div>
+<div class="example">
+<p><span id="exm:f-four" class="example"><strong>Example 4.4  </strong></span>same as those in <a href="eigenvalues-and-eigenvectors.html#definitions-4">Definitions</a></p>
+<ol style="list-style-type: lower-roman">
+<li><p><span class="math inline">\(\operatorname{rank}(T) + \operatorname{null}(T) = 0 + n = n\)</span></p></li>
+<li><p><span class="math inline">\(\operatorname{rank}(T) + \operatorname{null}(T) = n + 0 = n\)</span></p></li>
+<li><p><span class="math inline">\(\operatorname{rank}(T) + \operatorname{null}(T) = 2 + 1 = 3\)</span></p></li>
+</ol>
+</div>
+<p>Non-examinable</p>
+<div class="proof">
+<p><span id="unlabeled-div-49" class="proof"><em>Proof</em>. </span>Let <span class="math inline">\(\underline{e}_1, \dots, \underline{e}_k\)</span> be a basis for <span class="math inline">\(\ker(T)\)</span> so <span class="math inline">\(T(\underline{e}_i) = 0\)</span> for <span class="math inline">\(i = 1, \dots, k\)</span>.<br />
+Extend by <span class="math inline">\(\underline{e}_{k + 1}, \dots, \underline{e}_n\)</span> to get a basis for <span class="math inline">\(V\)</span>.
+Claim
+<span class="math display">\[\begin{align*}
+    \mathcal{B} &amp;= \{ T(\underline{e}_{k + 1}), \dots, T(\underline{e}_n) \}
+\end{align*}\]</span> is the basis for <span class="math inline">\(\operatorname{Im}(T)\)</span>.
+The result then follows since <span class="math inline">\(\operatorname{null}(T) = k\)</span> and <span class="math inline">\(\operatorname{rank}(T) = n - k\)</span>, implying <span class="math inline">\(\operatorname{null}(T) + \operatorname{rank}(T) = n\)</span>.</p>
+<p>To check claim:<br />
+<span class="math inline">\(\mathcal{B}\)</span> spans <span class="math inline">\(\operatorname{Im}(T)\)</span> since <span class="math inline">\(\underline{x} = \sum_{i=1}^{n} x_i \underline{e}_i\)</span>
+<span class="math display">\[\begin{align*}
+    \implies T(\underline{x}) = \sum_{i=1}^{n} x_i T(\underline{e}_i) = \sum_{i = k + 1}^{n} x_i T(\underline{e}_i)
+\end{align*}\]</span>
+<span class="math inline">\(\mathcal{B}\)</span> is linearly independent since
+<span class="math display">\[\begin{align*}
+    \sum_{i=k+1}^{n} \lambda_i T(\underline{e}_i) &amp;= \underline{0} \\
+    \implies T(\sum_{i=k+1}^{n} \lambda_i \underline{e}_i) &amp;= \underline{0} \\
+    \implies \sum_{i=k+1}^{n} \lambda_i \underline{e}_i &amp;\in \ker(T) \\
+    \implies \sum_{i=k+1}^{n} \lambda_i \underline{e}_i &amp;= \sum_{i=1}^{k} \mu_i \underline{e}_i \\
+\end{align*}\]</span>
+But <span class="math inline">\(\underline{e}_1, \dots, \underline{e}_n\)</span> are linearly independent in <span class="math inline">\(V\)</span>
+<span class="math display">\[\begin{align*}
+    \implies \lambda_i &amp;= 0 \\
+    \mu_i &amp;= 0
+\end{align*}\]</span></p>
+</div>
+</div>
+</div>
+<div id="geometrical-examples" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> Geometrical Examples</h2>
+<div id="rotations" class="section level3" number="4.2.1">
+<h3><span class="header-section-number">4.2.1</span> Rotations</h3>
+<p>In <span class="math inline">\(\mathbb{R}^2\)</span>, a rotation about <span class="math inline">\(\underline{0}\)</span> through angle <span class="math inline">\(\theta\)</span> is defined by
+<span class="math display">\[\begin{align*}
+    \underline{e}_1 &amp;\mapsto \underline{e}_1&#39; = \ \; (\cos \theta) \underline{e}_1 + (\sin \theta) \underline{e}_2 \\
+    \underline{e}_2 &amp;\mapsto \underline{e}_2&#39; = -(\sin \theta) \underline{e}_1 + (\cos \theta) \underline{e}_2
+\end{align*}\]</span></p>
+<p><img src="figures/04-rotations.png" width="500cm" style="display: block; margin: auto;" /></p>
+<p>In <span class="math inline">\(\mathbb{R}^3\)</span>, rotation about axis given by <span class="math inline">\(\underline{e}_3\)</span> is defined as above, with
+<span class="math display">\[\begin{align*}
+    \underline{e}_3 \mapsto \underline{e}_3&#39; = \underline{e}_3
+\end{align*}\]</span></p>
+<p>Now consider rotation about any axis <span class="math inline">\(\underline{n}\)</span> (a unit vector).
+Given <span class="math inline">\(\underline{x}\)</span>, resolve <span class="math inline">\(\parallel\)</span> and <span class="math inline">\(\bot\)</span> to <span class="math inline">\(\underline{n}\)</span>:
+<span class="math display">\[\begin{align*}
+    \underline{x} &amp;= \underline{x}_\parallel + \underline{x}_\bot \hspace{0.5cm} \text{with } \underline{x}_\parallel = (\underline{x} \cdot \underline{n}) \underline{n} \ (\implies \underline{n} \cdot \underline{x}_\bot = \underline{0}) \\
+    \text{Under rotation} \\
+    \underline{x}_\parallel &amp;\mapsto \underline{x}_\parallel&#39; = \underline{x}_\parallel \\
+    \underline{x}_\bot &amp;\mapsto \underline{x}_\bot&#39; = (\cos \theta) \underline{x}_\bot + (\sin \theta) \underline{n} \wedge \underline{x},
+\end{align*}\]</span> by considering plane <span class="math inline">\(\mathrel{\bot} \underline{n}\)</span>, comparing to rotation in <span class="math inline">\(\mathbb{R}^2\)</span> and noting that <span class="math inline">\(|\underline{x}_\bot| = | \underline{n} \wedge \underline{x} |\)</span>.</p>
+<p><img src="figures/04-3d-rotation.png" width="300cm" style="display: block; margin: auto;" /></p>
+<p><span class="math display">\[\begin{align*}
+    \underline{x} \mapsto \underline{x}&#39; &amp;= \underline{x}_\parallel&#39; + \underline{x}_\bot&#39; \\
+    &amp;= (\cos \theta) \underline{x} + (1 - \cos \theta) (\underline{n} \cdot \underline{x}) \underline{n} + \sin \theta \underline{n} \wedge \underline{x}.
+\end{align*}\]</span></p>
+</div>
+<div id="reflections" class="section level3" number="4.2.2">
+<h3><span class="header-section-number">4.2.2</span> Reflections</h3>
+<p>Consider a <em>reflection</em> in a plane in <span class="math inline">\(\mathbb{R}^3\)</span> (or line in <span class="math inline">\(\mathbb{R}^2\)</span>) through <span class="math inline">\(\underline{0}\)</span> with unit normal <span class="math inline">\(\underline{n}\)</span>.<br />
+Given <span class="math inline">\(\underline{x}\)</span>, resolve <span class="math inline">\(\parallel\)</span> and <span class="math inline">\(\bot\)</span> to <span class="math inline">\(\underline{n}\)</span>:
+<span class="math display">\[\begin{align*}
+    \underline{x}_\parallel &amp;\mapsto \underline{x}_\parallel&#39; = -\underline{x}_\parallel \\
+    \underline{x}_\bot &amp;\mapsto \underline{x}_\bot&#39; = \underline{x}_\bot
+\end{align*}\]</span></p>
+<p><img src="figures/04-reflection-3d.png" width="600" style="display: block; margin: auto;" /></p>
+<p><span class="math display">\[\begin{align*}
+    \underline{x} &amp;\mapsto \underline{x}&#39; = \underline{x} - 2 (\underline{x} \cdot \underline{n}) \underline{n} \\
+\end{align*}\]</span></p>
+</div>
+<div id="dilations" class="section level3" number="4.2.3">
+<h3><span class="header-section-number">4.2.3</span> Dilations</h3>
+<p>A dilation by scale factors <span class="math inline">\(\alpha, \beta, \gamma\)</span> (real, <span class="math inline">\(&gt; 0\)</span>) along axes <span class="math inline">\(\underline{e}_1, \underline{e}_2, \underline{e}_3\)</span> in <span class="math inline">\(\mathbb{R}^3\)</span> is defined by
+<span class="math display">\[\begin{align*}
+    \underline{x} &amp;= x_1 \underline{e}_1 + x_2 \underline{e}_2 + x_3 \underline{e}_3 \\
+    \mapsto \underline{x}&#39; &amp;= \alpha x_1 \underline{e}_1 + \beta x_2 \underline{e}_2 + \gamma x_3 \underline{e}_3.
+\end{align*}\]</span></p>
+<p>A dilation maps a unit cube to a cuboid.</p>
+</div>
+<div id="shears" class="section level3" number="4.2.4">
+<h3><span class="header-section-number">4.2.4</span> Shears</h3>
+<p>Given <span class="math inline">\(\underline{a}, \underline{b}\)</span> orthogonal unit vectors define a shear with parameter <span class="math inline">\(\lambda\)</span> by
+<span class="math display">\[\begin{align*}
+    \underline{x} &amp;\mapsto \underline{x}&#39; = \underline{x} + \lambda (\underline{x} \cdot \underline{b}) \underline{a}
+\end{align*}\]</span></p>
+<p><img src="figures/04-shear.png" width="500cm" style="display: block; margin: auto;" /></p>
+<p>Definition applies in <span class="math inline">\(\mathbb{R}^n\)</span> and <span class="math inline">\(\underline{u}&#39; = u\)</span> for any vector <span class="math inline">\(\underline{u} \bot \underline{b}\)</span>.</p>
+</div>
+</div>
+<div id="matrices-as-linear-maps-mathbbrn-to-mathbbrm" class="section level2" number="4.3">
+<h2><span class="header-section-number">4.3</span> Matrices as Linear Maps <span class="math inline">\(\mathbb{R}^n \to \mathbb{R}^m\)</span></h2>
+<div id="definitions-2" class="section level3" number="4.3.1">
+<h3><span class="header-section-number">4.3.1</span> Definitions</h3>
+<p>Consider a linear map <span class="math inline">\(T : \mathbb{R}^n \to \mathbb{R}^m\)</span> and standard bases <span class="math inline">\(\{ \underline{e}_i \}\)</span> and <span class="math inline">\(\{ \underline{f}_a \}\)</span> respectively.<br />
+Let <span class="math inline">\(\underline{x}&#39; = T(\underline{x})\)</span> with
+<span class="math display">\[\begin{align*}
+    \underline{x} = \sum_i x_i \underline{e}_i = \begin{pmatrix}x_1 \\ \vdots \\ x_n\end{pmatrix},\ \underline{x}&#39; = \sum_a x_a&#39; \underline{f}_a = \begin{pmatrix}x_1&#39; \\ \vdots \\ x_m&#39;\end{pmatrix}
+\end{align*}\]</span>
+Linearity implies <span class="math inline">\(T\)</span> is determined by <span class="math inline">\(T(\underline{e}_i) = \underline{e}_i&#39; = \underline{C}_i \in \mathbb{R}^m \ (i = 1, \dots, n)\)</span>; take these ase <em>columns</em> of a <span class="math inline">\(m \times n\)</span> <em>array</em> or <em>matrix</em> <span class="math inline">\(M\)</span> with <em>rows</em>
+<span class="math display">\[\begin{align*}
+    \underline{R}_a \in \mathbb{R}^n \ (a = 1, \dots, m).
+\end{align*}\]</span>
+<span class="math inline">\(M\)</span> has entries <span class="math inline">\(M_{ai} \in \mathbb{R}\)</span> where <span class="math inline">\(a\)</span> labels rows and <span class="math inline">\(i\)</span> labels columns.</p>
+<p><span class="math display">\[\begin{align*}
+    \begin{pmatrix}
+    \uparrow &amp;  &amp; \uparrow \\
+    \underline{C}_1 &amp; \dots &amp; \underline{C}_n \\
+    \downarrow &amp;  &amp; \downarrow
+    \end{pmatrix} = M = 
+    \begin{pmatrix}
+    \leftarrow &amp; \underline{R}_1 &amp; \rightarrow \\
+     &amp; \vdots &amp;  \\
+    \leftarrow &amp; \underline{R}_m &amp; \rightarrow
+    \end{pmatrix}
+\end{align*}\]</span></p>
+<p><span class="math inline">\((\underline{C}_i)_a = M_{ai} = (\underline{R}_a)_i\)</span>.</p>
+<p>Action of <span class="math inline">\(T\)</span> is given by matrix <span class="math inline">\(M\)</span> multiplying vector <span class="math inline">\(\underline{x}\)</span>,</p>
+<div class="bluebox">
+<p><span class="math inline">\(\underline{x}&#39; = M \underline{x}\)</span> defined by <span class="math inline">\(x_a&#39; = M_{ai} x_i\)</span> (<span class="math inline">\(\sum\)</span> convention).</p>
+</div>
+<p>This follows from definitions above since
+<span class="math display">\[\begin{align*}
+    \underline{x}&#39; &amp;= T\left( \sum_i x_i \underline{e}_i \right) = \sum_i x_i \underline{C}_i \\
+    \implies (\underline{x}&#39;)_a &amp;= \sum_i x_i (\underline{C}_i)_a \\
+    &amp;= \sum_i M_{ai} x_i \\
+    &amp;= \sum_i (\underline{R}_a) x_i \\
+    &amp;= \underline{R}_a \cdot x
+\end{align*}\]</span></p>
+<p>Now regard properties of <span class="math inline">\(T\)</span> as properties of <span class="math inline">\(M\)</span>.<br />
+<span class="math inline">\(\operatorname{Im}(T) = \operatorname{Im}(M) = \operatorname{span} \{ \underline{C}_1, \dots, \underline{C}_n \}\)</span>, the <em>image of M</em> (or T) is the span of the columns.<br />
+<span class="math inline">\(\ker(T) = \ker(M) = \{\underline{x} : \underline{R}_a \cdot \underline{x} = 0 \; \forall \; a \}\)</span>, <em>kernel of M</em> is subspace <span class="math inline">\(\bot\)</span> all rows.</p>
+</div>
+<div id="examples" class="section level3" number="4.3.2">
+<h3><span class="header-section-number">4.3.2</span> Examples</h3>
+<p>Refer to Examples <a href="matrices-and-linear-maps.html#exm:f-one">4.1</a>, <a href="matrices-and-linear-maps.html#exm:f-two">4.2</a>, <a href="matrices-and-linear-maps.html#exm:f-three">4.3</a>, <a href="matrices-and-linear-maps.html#exm:f-four">4.4</a>.</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-50" class="example"><strong>Example 4.5  </strong></span>Zero map <span class="math inline">\(\mathbb{R}^n \to \mathbb{R}^m\)</span> corresponds to <em>zero matrix</em> <span class="math inline">\(M = 0\)</span> with <span class="math inline">\(M_{ai} = 0\)</span>.</p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-51" class="example"><strong>Example 4.6  </strong></span>Identity map <span class="math inline">\(\mathbb{R}^n \to \mathbb{R}^n\)</span> corresponds to <em>identity matrix</em>
+<span class="math display">\[\begin{align*}
+    M = I = \begin{pmatrix}
+    1 &amp;  &amp;  &amp; \smash{\huge 0} \\
+     &amp; 1 &amp; &amp;  \\
+     &amp;  &amp; \ddots &amp;  \\
+    \huge 0 &amp;  &amp;  &amp; 1
+    \end{pmatrix}
+\end{align*}\]</span> with <span class="math inline">\(I_{ij} = \delta_{ij}\)</span>.</p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-52" class="example"><strong>Example 4.7  </strong></span><span class="math inline">\(\mathbb{R}^3 \to \mathbb{R}^3\)</span>, <span class="math inline">\(\underline{x}&#39; = T(\underline{x}) = M \underline{x}\)</span> with
+<span class="math display">\[\begin{align*}
+    M &amp;= \begin{pmatrix}
+    3 &amp; 1 &amp; 5 \\
+    -1 &amp; 0 &amp; -2 \\
+    2 &amp; 1 &amp; 3
+    \end{pmatrix}, 
+    \underline{C}_1 = \begin{pmatrix}3 \\-1 \\2\end{pmatrix}, 
+    \underline{C}_2 = \begin{pmatrix}1 \\0 \\1\end{pmatrix}, 
+    \underline{C}_3 = \begin{pmatrix}5 \\-2 \\3\end{pmatrix} \\
+    \operatorname{T} &amp;= \operatorname{M} \\
+    &amp;= \operatorname{span} \{ \underline{C}_1, \underline{C}_2, \underline{C}_3 \} \\
+    &amp;= \operatorname{span} \{ \underline{C}_1, \underline{C}_2 \} \text{ since } \underline{C}_3 = 2 \underline{C}_1 - \underline{C}_2 \\
+    \underline{R}_1 &amp;= \begin{pmatrix}3 &amp; 1 &amp; 5\end{pmatrix} \\
+    \underline{R}_2 &amp;= \begin{pmatrix}-1 &amp; 0 &amp; 2\end{pmatrix} \\
+    \underline{R}_3 &amp;= \begin{pmatrix}2 &amp; 1 &amp; 3\end{pmatrix} \\
+    \underline{R}_2 \wedge \underline{R}_3 &amp;= \begin{pmatrix}2 &amp; -1 &amp; -1\end{pmatrix} \\
+    &amp;= \underline{u}, \text{ say } \bot \text{ all rows (in fact)} \\
+    \ker (T) &amp;= \ker (M) = \{ \lambda \underline{u} \}
+\end{align*}\]</span></p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-53" class="example"><strong>Example 4.8  </strong></span>Rotation through <span class="math inline">\(\theta\)</span> about <span class="math inline">\(\underline{0}\)</span> in <span class="math inline">\(\mathbb{R}^2\)</span>
+<span class="math display">\[\begin{align*}
+    \underline{e}_1 &amp;= \begin{pmatrix}1 \\0\end{pmatrix} \mapsto \begin{pmatrix} \cos \theta \\ \sin \theta\end{pmatrix} = \underline{C}_1 \\
+    \underline{e}_2 &amp;= \begin{pmatrix}0 \\1\end{pmatrix} \mapsto \begin{pmatrix}- \sin \theta \\ \cos \theta\end{pmatrix} = \underline{C}_2 \\
+    \implies M &amp;= \begin{pmatrix}
+    \cos \theta &amp; - \sin \theta \\
+    \sin \theta &amp; \cos \theta
+    \end{pmatrix}.
+\end{align*}\]</span></p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-54" class="example"><strong>Example 4.9  </strong></span>Dilation <span class="math inline">\(\underline{x}&#39; = M \underline{x}\)</span> with scale factors <span class="math inline">\(\alpha, \beta, \gamma\)</span> along axes in <span class="math inline">\(\mathbb{R}^3\)</span>.
+<span class="math display">\[\begin{align*}
+    M = \begin{pmatrix}
+    \alpha &amp; 0 &amp; 0 \\
+    0 &amp; \beta &amp; 0 \\
+    0 &amp; 0 &amp; \gamma
+    \end{pmatrix}.
+\end{align*}\]</span></p>
+</div>
+<div class="example">
+<p><span id="exm:reflection-matrix" class="example"><strong>Example 4.10  </strong></span>Reflection in plane <span class="math inline">\(\mathrel{\bot} \underline{n}\)</span> (a unit vector).
+<span class="math display">\[\begin{align*}
+    \underline{x}&#39; &amp;= H \underline{x} = \underline{x} - 2 (\underline{x} \cdot \underline{n}) \underline{n} \\
+    x_i&#39; &amp;= x_i - 2 x_j n_j n_i \\
+    &amp;= (\delta_{ij} - 2 n_j n_i) x_j \\
+    H_{ij} &amp;= \delta_{ij} - 2 n_j n_i \\
+    \text{e.g. } \underline{n} &amp;= \frac{1}{\sqrt{3}} \begin{pmatrix}1 \\1 \\1\end{pmatrix},\ n_i n_j = \frac{1}{3} \quad \forall \; i, j \\
+    H &amp;= \frac{1}{3} \begin{pmatrix}
+    1 &amp; -2 &amp; -2 \\
+    -2 &amp; 1 &amp; -2 \\
+    -2 &amp; -2 &amp; 1
+    \end{pmatrix}
+\end{align*}\]</span></p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-55" class="example"><strong>Example 4.11  </strong></span>Shear
+<span class="math display">\[\begin{align*}
+    \underline{x}&#39; &amp;= S \underline{x} = \underline{x} + \lambda (\underline{b} \cdot \underline{x})\underline{a} \\
+    x_i&#39; &amp;= S_{ij} x_j \\
+    \text{with } S_{ij} &amp;= \delta_{ij} + \lambda a_i b_j
+\end{align*}\]</span>
+e.g. in <span class="math inline">\(\mathbb{R}^2\)</span> with <span class="math inline">\(\underline{a} = \begin{pmatrix}1 \\0\end{pmatrix}\)</span> and <span class="math inline">\(\underline{b} = \begin{pmatrix}0 \\1\end{pmatrix}\)</span>,
+<span class="math display">\[\begin{align*}
+    S = \begin{pmatrix}
+    1 &amp; \lambda \\
+    0 &amp; 1
+    \end{pmatrix}.
+\end{align*}\]</span></p>
+</div>
+<div class="example">
+<p><span id="exm:threedrotatation" class="example"><strong>Example 4.12  </strong></span>Rotation in <span class="math inline">\(\mathbb{R}^3\)</span> with axis <span class="math inline">\(\underline{n}\)</span> and angle <span class="math inline">\(\theta\)</span>,
+<span class="math display">\[\begin{align*}
+    \underline{x}&#39; &amp;= R \underline{x} \hspace{1cm} x_i&#39; = R_{ij} x_j \\
+    \text{where } R_{ij} &amp;= \delta_{ij} \cos \theta + (1 - \cos \theta) n_i n_j - (\sin \theta) \epsilon_{ijk} n_k
+\end{align*}\]</span> (see Example Sheet 2).</p>
+</div>
+</div>
+<div id="isometries-area-and-determinants-in-mathbbr2" class="section level3" number="4.3.3">
+<h3><span class="header-section-number">4.3.3</span> Isometries, area and determinants in <span class="math inline">\(\mathbb{R}^2\)</span></h3>
+<p>Consider a linear map <span class="math inline">\(\mathbb{R}^2 \to \mathbb{R}^2\)</span> given by <span class="math inline">\(2 \times 2\)</span> matrix <span class="math inline">\(M\)</span>:
+<span class="math display">\[\begin{align*}
+    \underline{x} \mapsto \underline{x}&#39; = M \underline{x}
+\end{align*}\]</span></p>
+<ol style="list-style-type: lower-roman">
+<li>When is <span class="math inline">\(M\)</span> an <em>isometry</em>, preserving lengths <span class="math inline">\(|\underline{x}&#39;| = |\underline{x}|\)</span>?</li>
+</ol>
+<p>This is equivalent to preserving inner products <span class="math inline">\(\underline{x}&#39; \cdot \underline{y}&#39; = \underline{x} \cdot \underline{y}\)</span> [since <span class="math inline">\(\underline{x} \cdot \underline{y} = \frac{1}{2} ( |\underline{x} + \underline{y}|^2 - |\underline{x}|^2 - |\underline{y}|^2)\)</span>].<br />
+Necessary conditions are
+<span class="math display">\[\begin{align*}
+    M \begin{pmatrix}
+    1 \\
+    0
+    \end{pmatrix} &amp;= \begin{pmatrix}\cos \theta \\\sin \theta\end{pmatrix} \text{ for some $\theta$; most general unit vector in $\mathbb{R}^2$} \\
+    M \begin{pmatrix}0 \\1\end{pmatrix} &amp;= \pm \begin{pmatrix}- \sin \theta \\ \cos \theta\end{pmatrix} \text{ general unit vector $\mathrel{\bot} M (1\ 0)^T$}.
+\end{align*}\]</span>
+Simple to check that these conditions are also sufficient and have two cases
+<span class="math display">\[\begin{align*}
+    M = R = \begin{pmatrix}
+    \cos \theta &amp; - \sin \theta \\
+    \sin \theta &amp; \cos \theta
+    \end{pmatrix},
+\end{align*}\]</span> a <em>rotation</em>,
+or <span class="math display">\[\begin{align*}
+    M = H = \begin{pmatrix}
+    \cos \theta &amp; \sin \theta \\
+    \sin \theta &amp; - \cos \theta
+    \end{pmatrix},
+\end{align*}\]</span> a <em>reflection</em>.</p>
+<p>Compare with expression for reflection in <a href="matrices-and-linear-maps.html#exm:reflection-matrix">4.10</a></p>
+<p><span class="math display">\[\begin{align*}
+    H_{ij} &amp;= \delta_{ij} - 2 n_i n_j \\
+    \text{and note for } \underline{n} &amp;= \begin{pmatrix}n_1 \\n_2\end{pmatrix} = \begin{pmatrix} -\sin \frac{\theta}{2} \\ \cos \frac{\theta}{2}\end{pmatrix} \\
+    \text{we get } H &amp;= \begin{pmatrix}
+    1 - 2 \sin^2 \frac{\theta}{2} &amp; 2 \sin \frac{\theta}{2} \cos \frac{\theta}{2} \\
+    2 \sin \frac{\theta}{2} \cos \frac{\theta}{2} &amp; 1 - 2 \cos^2 \frac{\theta}{2}
+    \end{pmatrix}
+\end{align*}\]</span> agreeing with H above.
+This is reflection in a line in <span class="math inline">\(\mathbb{R}^2\)</span> as shown</p>
+<p><img src="figures/04-isometry.png" width="500" style="display: block; margin: auto;" /></p>
+<ol start="2" style="list-style-type: lower-roman">
+<li>How does <span class="math inline">\(M\)</span> change <em>areas</em> in <span class="math inline">\(\mathbb{R}^2\)</span> (in general)?</li>
+</ol>
+<p>Consider unit square in <span class="math inline">\(\mathbb{R}^2\)</span>, mapped to parallelogram as shown, with signed area <span class="math inline">\([M \underline{e}_1, M \underline{e}_1]\)</span> “scalar cross product”.</p>
+<p><img src="figures/04-area.png" width="500" style="display: block; margin: auto;" /></p>
+<p><span class="math display">\[\begin{align*}
+    \left[ \begin{pmatrix} M_{11} \\M_{21}\end{pmatrix}, \begin{pmatrix}M_{12} \\M_{22}\end{pmatrix} \right] &amp;= M_{11} M_{22} - M_{12} M_{21} \\
+    &amp;= \det M,
+\end{align*}\]</span> the determinant of <span class="math inline">\(2 \times 2\)</span> matrix.</p>
+<p>This is the factor (with a sign) by which areas are scaled under <span class="math inline">\(M\)</span>.</p>
+<p>Now compare with (i):
+<span class="math display">\[\begin{align*}
+    \det R = + 1,\ \det H = -1.
+\end{align*}\]</span>
+In either case <span class="math inline">\(| \det M | = + 1\)</span>.
+Consider shear <span class="math inline">\(S = \begin{pmatrix}1 &amp; \lambda \\0 &amp; 1\end{pmatrix}\)</span>; this has <span class="math inline">\(\det S = + 1\)</span> but it does not preserve lengths.</p>
+</div>
+</div>
+<div id="matrices-for-linear-maps-in-general" class="section level2" number="4.4">
+<h2><span class="header-section-number">4.4</span> Matrices for Linear Maps in General</h2>
+<p>Consider a linear map
+<span class="math display">\[\begin{align*}
+    T : V \to W
+\end{align*}\]</span> between real or complex vector spaces of <span class="math inline">\(\dim n, m\)</span> respectively and choose bases <span class="math inline">\(\{ \underline{e}_i \}\)</span> with <span class="math inline">\(i = 1, \dots, n\)</span> for <span class="math inline">\(V\)</span> and <span class="math inline">\(\{ \underline{f}_a \}\)</span> with <span class="math inline">\(a = 1, \dots, m\)</span> for <span class="math inline">\(W\)</span>.<br />
+The matrix <span class="math inline">\(M\)</span> for <span class="math inline">\(T\)</span> wrt the bases in an <span class="math inline">\(m \times n\)</span> array with entries <span class="math inline">\(M_{ai} \in \mathbb{R}\)</span> or <span class="math inline">\(\mathbb{C}\)</span>.
+It is defined by
+<span class="math display">\[\begin{align*}
+    T(\underline{e}_i) &amp;= \sum_a \underline{f}_a M_{ai} \text{ note index positions}.
+\end{align*}\]</span>
+This is chose to ensure that <span class="math inline">\(T(\underline{x}) = \underline{x}&#39;\)</span> where <span class="math inline">\(\underline{x} = \sum_i x_i \underline{e}_i\)</span> and <span class="math inline">\(\underline{x}&#39; = \sum_a x_a&#39; \underline{f}_a\)</span> iff <span class="math inline">\(x_a&#39; = \sum_i M_{ai} x_i\)</span>.<br />
+<span class="math display">\[\begin{align*}
+    \text{i.e. } \begin{pmatrix}x_1&#39; \\ \vdots \\ x_m&#39;\end{pmatrix} = \begin{pmatrix}
+    M_{11} &amp; \dots &amp; M_{1n} \\
+    \vdots &amp;  &amp; \vdots \\
+    M_{m1} &amp; \dots &amp; M_{mn} 
+    \end{pmatrix} 
+    \begin{pmatrix}x_1 \\ \vdots \\ x_n\end{pmatrix}.
+\end{align*}\]</span></p>
+<p><em>Moral</em>: given choice of bases <span class="math inline">\(\{ \underline{e}_i \}\)</span> and <span class="math inline">\(\{ \underline{f}_a \}\)</span><br />
+<span class="math inline">\(V\)</span> is identified with <span class="math inline">\(\mathbb{R}^n\)</span> (or <span class="math inline">\(\mathbb{C}^n\)</span>)<br />
+<span class="math inline">\(W\)</span> is identified with <span class="math inline">\(\mathbb{R}^m\)</span> (or <span class="math inline">\(\mathbb{C}^m\)</span>)<br />
+<span class="math inline">\(T\)</span> is identified with <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(M\)</span>.</p>
+<p><em>Note</em>: there are natural ways to combine linear maps.<br />
+If <span class="math inline">\(S : V \to W\)</span> is also linear, then so is <span class="math inline">\(\alpha T + \beta S : V \to W\)</span> defined by <span class="math inline">\((\alpha T + \beta S) (\underline{x}) = \alpha T(\underline{x}) + \beta S(\underline{x})\)</span>.<br />
+Or if <span class="math inline">\(S : U \to V\)</span> is also linear, then so is <span class="math inline">\(T \circ S : U \to W\)</span> (composition of maps).</p>
+</div>
+<div id="matrix-algebra" class="section level2" number="4.5">
+<h2><span class="header-section-number">4.5</span> Matrix Algebra</h2>
+<div id="linear-combinations" class="section level3" number="4.5.1">
+<h3><span class="header-section-number">4.5.1</span> Linear Combinations</h3>
+<p>If <span class="math inline">\(M\)</span> and <span class="math inline">\(N\)</span> are <span class="math inline">\(m \times n\)</span> matrices then <span class="math inline">\(\alpha M + \beta N\)</span> is an <span class="math inline">\(m \times n\)</span> matrix defined by
+<span class="math display">\[\begin{align*}
+    (\alpha M + \beta N)_{ai} &amp;= \alpha M_{ai} + \beta N_{ai} \\
+    (a = 1, \dots, m&amp;; i = 1, \dots, n)
+\end{align*}\]</span> [If <span class="math inline">\(M, N\)</span> represent linear maps <span class="math inline">\(T, S : V \to W\)</span>, then <span class="math inline">\(\alpha M + \beta N\)</span> represents <span class="math inline">\(\alpha T + \beta S\)</span>, all w.r.t. same choice of bases].</p>
+</div>
+<div id="matrix-multiplication" class="section level3" number="4.5.2">
+<h3><span class="header-section-number">4.5.2</span> Matrix multiplication</h3>
+<p>If <span class="math inline">\(A\)</span> is an <span class="math inline">\(m \times n\)</span> matrix, entries <span class="math inline">\(A_{ai} \in \mathbb{R}\)</span> or <span class="math inline">\(\mathbb{C}\)</span><br />
+and <span class="math inline">\(B\)</span> is an <span class="math inline">\(n \times p\)</span> matrix, entries <span class="math inline">\(B_{ir}\)</span> then <span class="math inline">\(AB\)</span> is an <span class="math inline">\(m \times p\)</span> matrix defined by <span class="math inline">\((AB)_{ar} = A_{ai} B_{ir}\)</span> (<span class="math inline">\(\sum\)</span> convention).
+The product <span class="math inline">\(AB\)</span> is not defined unless no. of cols of $A = $ no. of rows of B.
+<span class="math display">\[\begin{align*}
+    a &amp;= 1, \dots, m \\
+    i &amp;= 1, \dots, n \\
+    r &amp;= 1, \dots, p.
+\end{align*}\]</span></p>
+<p>Matrix multiplication corresponds to the composition of linear maps.
+<span class="math display">\[\begin{align*}
+    [(AB) \underline{x}]_a &amp;= (AB)_{ar} x_r \text{ and compare} \\
+    [A(B \underline{x})]_a &amp;= A_{ai}(B \underline{x})_i = A_{ai} (B_{ir} x_r) \\
+    &amp;= (A_{ai} B_{ir}) x_r 
+\end{align*}\]</span></p>
+<div class="example">
+<p><span id="exm:unlabeled-div-56" class="example"><strong>Example 4.13  </strong></span><span class="math display">\[\begin{align*}
+    A &amp;= \begin{pmatrix}1 &amp; 3 \\-5 &amp; 0 \\2 &amp; 1\end{pmatrix},\ B = \begin{pmatrix}1 &amp; 0 &amp; -1 \\2 &amp; -1 &amp; 3\end{pmatrix} \\
+    AB &amp;= \begin{pmatrix}
+    7 &amp; -3 &amp; 8 \\
+    -5 &amp; 0 &amp; 5 \\
+    4 &amp; -1 &amp; 1
+    \end{pmatrix} \\
+    BA &amp;= \begin{pmatrix}
+    -1 &amp; 2 \\
+    13 &amp; 9
+    \end{pmatrix}
+\end{align*}\]</span></p>
+</div>
+<div id="helpful-points-of-view" class="section level4" number="4.5.2.1">
+<h4><span class="header-section-number">4.5.2.1</span> Helpful points of view</h4>
+<ol style="list-style-type: lower-roman">
+<li><p>Regarding <span class="math inline">\(\underline{x} \in \mathbb{R}^n\)</span> as a col vec or <span class="math inline">\(n \times 1\)</span> matrix, definition on matrix multiplication a matrix or vector agree.</p></li>
+<li><p>For product of <span class="math inline">\(\underbrace{A}_{m \times n} \underbrace{B}_{n \times p}\)</span> have columns <span class="math inline">\(\underline{C}_r (B) \in \mathbb{R}^n\)</span> and <span class="math inline">\(\underline{C}_r (AB) \in \mathbb{R}^m\)</span> related by <span class="math inline">\(\underline{C}_r (AB) = A \underline{C}_r (B)\)</span></p></li>
+<li><p><span class="math display">\[\begin{align*}
+    AB &amp;= \begin{pmatrix}
+&amp; \vdots &amp;  \\
+    \longleftarrow &amp; \underline{R}_a (A) &amp; \longrightarrow \\
+&amp; \vdots &amp; 
+    \end{pmatrix} \begin{pmatrix}
+&amp; \big\uparrow &amp;  \\
+    \dots &amp; \underline{C}_r(B) &amp; \dots \\
+&amp; \big\downarrow &amp; 
+    \end{pmatrix} \\
+    (AB)_{ar} &amp;= [\underline{R}_a (A)]_i [\underline{C}_r (B)]_i \\
+    &amp;= \underline{R}_a (A) \cdot \underline{C}_r (B) \text{ dot product in $\mathbb{R}^n$ for real matrices.}
+\end{align*}\]</span></p></li>
+</ol>
+</div>
+<div id="properties-of-matrix-products" class="section level4" number="4.5.2.2">
+<h4><span class="header-section-number">4.5.2.2</span> Properties of matrix products</h4>
+<p><span class="math display">\[\begin{align*}
+    (\lambda M + \mu N) P &amp;= \lambda (MP) + \mu (NP) \\
+    P(\lambda M + \mu N) &amp;= \lambda (PM) + \mu (PN) \\
+    (MN)P &amp;= M (NP)
+\end{align*}\]</span></p>
+</div>
+</div>
+<div id="matrix-inverses" class="section level3" number="4.5.3">
+<h3><span class="header-section-number">4.5.3</span> Matrix Inverses</h3>
+<p>Consider <span class="math inline">\(A\)</span> <span class="math inline">\(m \times n\)</span> matrix and <span class="math inline">\(B, C\)</span> <span class="math inline">\(n \times m\)</span> matrices, <span class="math inline">\(B\)</span> is a <em>left</em> inverse for <span class="math inline">\(A\)</span> if <span class="math display">\[\begin{align*}
+    BA = I_n;
+\end{align*}\]</span>
+<span class="math inline">\(C\)</span> is a right inverse for <span class="math inline">\(A\)</span> if
+<span class="math display">\[\begin{align*}
+    AC = I_m.
+\end{align*}\]</span></p>
+<p>If <span class="math inline">\(m = n\)</span>, <span class="math inline">\(A\)</span> is <em>square</em>, one of these implies the other and <span class="math inline">\(B = C = A^{-1}\)</span>, <em>the</em> inverse.
+<span class="math display">\[\begin{align*}
+    A A^{-1} = A^{-1} A = I.
+\end{align*}\]</span>
+Not every matrix has an inverse; if it does it is called <em>invertible</em> or <em>non-singular</em>.</p>
+<p>Consider map <span class="math inline">\(\mathbb{R}^n \to \mathbb{R}^n\)</span> given by real matrix <span class="math inline">\(M\)</span>.
+If <span class="math inline">\(\underline{x}&#39; = M \underline{x}\)</span> and <span class="math inline">\(M^{-1}\)</span> exists then <span class="math inline">\(\underline{x} = M^{-1} \underline{x}&#39;\)</span>.<br />
+For <span class="math inline">\(n = 2\)</span>
+<span class="math display">\[\begin{align*}
+    x_1&#39; &amp;= M_{11} x_1 + M_{12} x_2 \\
+    x_2&#39; &amp;= M_{21} x_1 + M_{22} x_2 \\
+    \implies M_{22} x_1&#39; - M_{12} x_2&#39; &amp;= (\det M) x_1 \\
+    \text{and } - M_{21} x_1&#39; + M_{11} x_2&#39; &amp;= (\det M) x_2 \\
+\end{align*}\]</span>
+So if <span class="math inline">\(\det M = M_{11} M_{22} - M_{12} M_{21} \neq 0\)</span> then <span class="math inline">\(M^{-1} = \frac{1}{\det M} \begin{pmatrix} M_{22} &amp; -M_{12} \\ -M_{21} &amp; M_{11} \end{pmatrix}\)</span>.</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-57" class="example"><strong>Example 4.14  </strong></span><span class="math display">\[\begin{align*}
+    R (\theta) &amp;= \begin{pmatrix}
+    \cos \theta &amp; - \sin \theta \\
+    \sin \theta &amp; \cos \theta
+    \end{pmatrix} \\
+    R(\theta)^{-1} &amp;= R (-\theta)
+\end{align*}\]</span></p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-58" class="example"><strong>Example 4.15  </strong></span>Reflection.
+<span class="math display">\[\begin{align*}
+    H (\theta) &amp;= \begin{pmatrix}
+    \cos \theta &amp; \sin \theta \\
+    - \sin \theta &amp; \cos \theta
+    \end{pmatrix} \\
+    H(\theta)^{-1} &amp;= H (\theta)
+\end{align*}\]</span></p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-59" class="example"><strong>Example 4.16  </strong></span><span class="math display">\[\begin{align*}
+    S (\lambda) &amp;= \begin{pmatrix}
+    1 &amp; \lambda \\
+    0 &amp; 1
+    \end{pmatrix} \\
+    S(\lambda)^{-1} &amp;= S (-\lambda)
+\end{align*}\]</span></p>
+</div>
+</div>
+<div id="transpose-and-hermitian-conjugate" class="section level3" number="4.5.4">
+<h3><span class="header-section-number">4.5.4</span> Transpose and Hermitian Conjugate</h3>
+<div id="transpose" class="section level4" number="4.5.4.1">
+<h4><span class="header-section-number">4.5.4.1</span> Transpose</h4>
+<div class="definition">
+<p><span id="def:unlabeled-div-60" class="definition"><strong>Definition 4.2  (Transpose) </strong></span>If <span class="math inline">\(M\)</span> is an <span class="math inline">\(m \times n\)</span> matrix, the transpose <span class="math inline">\(M^T\)</span> is an <span class="math inline">\(n \times m\)</span> matrix defined by
+<span class="math display">\[\begin{align*}
+    (M^T)_{ia} &amp;= M_{ai} \ ``\text{exchange rows and columns&quot;} \\
+    [a &amp;= 1, \dots, m;\ i = 1, \dots, n]
+\end{align*}\]</span></p>
+</div>
+<div id="properties-1" class="section level5" number="4.5.4.1.1">
+<h5><span class="header-section-number">4.5.4.1.1</span> Properties</h5>
+<p><span class="math display">\[\begin{align*}
+    (\alpha A + \beta B)^T &amp;= \alpha A^T + \beta B^T \ (A, B \ m \times n) \\
+    (AB)^T &amp;= B^T A^T \\
+    \text{Check: } [(AB)^T]_{ra} &amp;= (AB)_{ar} \\
+    &amp;= A_{ai} B_{ir} \ \left(\sum \text{ convention} \right) \\
+    &amp;= (A^T)_{ia} (B^T)_{ri} \\
+    &amp;= (B^T)_{ri} (A^T)_{ia} \\
+    &amp;= (B^T A^T)_{ra}
+\end{align*}\]</span></p>
+<p><em>Note</em>: <span class="math inline">\(\underline{x} = \begin{pmatrix}x_1 \\\vdots \\x_n\end{pmatrix}\)</span> is a column vector or a <span class="math inline">\(n \times 1\)</span> matrix.<br />
+<span class="math inline">\(\implies \underline{x}^T = \begin{pmatrix}x_1 &amp; \dots &amp; x_n\end{pmatrix}\)</span> is a row vector or <span class="math inline">\(1 \times n\)</span> matrix.<br />
+Inner product on <span class="math inline">\(\mathbb{R}^n\)</span> is <span class="math inline">\(\underline{x} \cdot \underline{y} = \underline{x}^T \underline{y}\)</span>, a scalar or <span class="math inline">\(1 \times 1\)</span> matrix, but <span class="math inline">\(\underline{y} \underline{x}^T = M\)</span>, a <span class="math inline">\(n \times n\)</span> matrix with <span class="math inline">\(M_{ij} = y_i x_j\)</span>.</p>
+<div class="definition">
+<p><span id="def:unlabeled-div-61" class="definition"><strong>Definition 4.3  (Symmetric and Antisymmetric matrix) </strong></span>If <span class="math inline">\(M\)</span> is square, <span class="math inline">\(n \times n\)</span>, then <span class="math inline">\(M\)</span> is <em>symmetric</em> iff <span class="math inline">\(M^T = M\)</span> or <span class="math inline">\(M_{ij} = M_{ji}\)</span> and <em>antisymmetric</em> iff <span class="math inline">\(M^T = - M\)</span> or <span class="math inline">\(M_{ij} = - M_{ji}\)</span>.</p>
+</div>
+<p>Any square matrix can be written as a sum of a symmetric and antisymmetric parts:
+<span class="math display">\[\begin{align*}
+    M = S + A \text{ where } S &amp;= \frac{1}{2} (M + M^T) \\
+    \text{and } A &amp;= \frac{1}{2} (M - M^T)
+\end{align*}\]</span></p>
+<div class="example">
+<p><span id="exm:unlabeled-div-62" class="example"><strong>Example 4.17  </strong></span>If <span class="math inline">\(A\)</span> is <span class="math inline">\(3 \times 3\)</span> antisymmetric, then it can be rewritten in terms of vec <span class="math inline">\(\underline{a}\)</span>
+<span class="math display">\[\begin{align*}
+    A &amp;= \begin{pmatrix}
+    0 &amp; a_3 &amp; -a_2 \\
+    -a_3 &amp; 0 &amp; a_1 \\
+    a_2 &amp; -a_1 &amp; 0
+    \end{pmatrix} \\
+    A_{ij} &amp;= \epsilon_{ijk} a_k \text{ and } a_k = \frac{1}{2} \epsilon_{kij} A_{ij} \\
+    \text{Then } (A \underline{x})_i &amp;= A_{ij} x_j = \epsilon_{ijk} a_k x_j \\
+    &amp;= (\underline{x} \wedge \underline{a})_i
+\end{align*}\]</span></p>
+</div>
+</div>
+</div>
+<div id="hermitian-conjugate" class="section level4" number="4.5.4.2">
+<h4><span class="header-section-number">4.5.4.2</span> Hermitian Conjugate</h4>
+<div class="definition">
+<p><span id="def:unlabeled-div-63" class="definition"><strong>Definition 4.4  (Hermitian Conjugate) </strong></span>If <span class="math inline">\(M\)</span> is a <span class="math inline">\(m \times n\)</span> matrix the <em>hermitian conjugate</em> <span class="math inline">\(M^\dagger\)</span> is defined by <span class="math inline">\((M^\dagger)_{ia} = \overline{M}_{ai}\)</span> or <span class="math inline">\(M^\dagger = \overline{M}^T = \overline{M^T}\)</span></p>
+</div>
+<div id="properties-2" class="section level5" number="4.5.4.2.1">
+<h5><span class="header-section-number">4.5.4.2.1</span> Properties</h5>
+<p><span class="math display">\[\begin{align*}
+    (\alpha A + \beta B)^\dagger &amp;= \overline{\alpha} A^\dagger + \overline{\beta} B^\dagger \\
+    (AB)^\dagger &amp;= B^\dagger A^\dagger \\
+\end{align*}\]</span></p>
+<p><em>Note</em>: <span class="math inline">\(\underline{z} = \begin{pmatrix}x_1 \\\vdots \\x_n\end{pmatrix}\)</span> is a column vector or a <span class="math inline">\(n \times 1\)</span> matrix.<br />
+<span class="math inline">\(\implies \underline{z}^\dagger = \begin{pmatrix}x_1 &amp; \dots &amp; x_n\end{pmatrix}\)</span> is a row vector or <span class="math inline">\(1 \times n\)</span> matrix.<br />
+Inner product on <span class="math inline">\(\mathbb{C}^n\)</span> is <span class="math inline">\((\underline{z}, \underline{w}) = \underline{z}^\dagger \underline{w}\)</span>, a scalar or <span class="math inline">\(1 \times 1\)</span> matrix.</p>
+<div class="definition">
+<p><span id="def:unlabeled-div-64" class="definition"><strong>Definition 4.5  (Hermitian and Anti-Hermitian matrix) </strong></span>If <span class="math inline">\(M\)</span> is <em>square</em> <span class="math inline">\(n \times n\)</span> then <span class="math inline">\(M\)</span> is <em>hermitian</em> if <span class="math inline">\(M^\dagger = M\)</span> or <span class="math inline">\(M_{ij} = \overline{M}_{ji}\)</span> and <em>anti-hermitian</em> if <span class="math inline">\(M^\dagger = - M\)</span> or <span class="math inline">\(M_{ij} = - \overline{M}_{ji}\)</span>.</p>
+</div>
+</div>
+</div>
+<div id="trace" class="section level4" number="4.5.4.3">
+<h4><span class="header-section-number">4.5.4.3</span> Trace</h4>
+<div class="definition">
+<p><span id="def:unlabeled-div-65" class="definition"><strong>Definition 4.6  (Trace) </strong></span>For any square <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(M\)</span>, the <em>trace</em> is defined by
+<span class="math display">\[\begin{align*}
+    \operatorname{tr} (M) = M_{ii} \text{ (the sum of diagonal entries.)}
+\end{align*}\]</span></p>
+</div>
+<div id="properties-3" class="section level5" number="4.5.4.3.1">
+<h5><span class="header-section-number">4.5.4.3.1</span> Properties</h5>
+<p><span class="math display">\[\begin{align*}
+    \operatorname{tr} (\alpha M + \beta N) &amp;= \alpha \operatorname{tr} (M) + \beta \operatorname{tr}(N) \\
+    \operatorname{tr} (MN) &amp;= \operatorname{tr} (NM) \\
+    [ \text{check : } (MN)_{ii} &amp;= M_{ia} N_{ai} \\
+    &amp;= N_{ai} M_{ia} \\
+    &amp;= (NM)_{aa} ] \\
+    \operatorname{tr} (M) &amp;= \operatorname{tr} (M^T) \\
+    \operatorname{tr} (I_n) &amp;= n \\
+    [I_{ij} = \delta_{ij} \text{ and } I_{ii} = \delta_{ii} = n]
+\end{align*}\]</span></p>
+<p>We previously decomposed <span class="math inline">\(M = S + A\)</span> (symmetric/ anti-symmetric parts).
+Let <span class="math inline">\(T = S - \frac{1}{n} (\operatorname{tr} (S)) I\)</span> or <span class="math inline">\(T_{ij} = S_{ij} - \frac{1}{n} \operatorname{tr} (S) \delta_{ij}\)</span>, then <span class="math inline">\(T_{ii} = \operatorname{T} = 0\)</span>; and note <span class="math inline">\(\operatorname{M} = \operatorname{S}\)</span> and <span class="math inline">\(\operatorname{A} = 0\)</span><a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a>.
+So <span class="math inline">\(M = \underset{\text{symm and traceless}}{T} + \underset{\text{antisymm part}}{A} + \underset{\text{pure trace}}{\frac{1}{n} \operatorname{tr}(M) I}\)</span></p>
+<div class="example">
+<p><span id="exm:unlabeled-div-66" class="example"><strong>Example 4.18  </strong></span><span class="math display">\[\begin{align*}
+    M &amp;= \begin{pmatrix}
+    1 &amp; 2 &amp; 3 \\
+    4 &amp; 5 &amp; 6 \\
+    1 &amp; 2 &amp; 3
+    \end{pmatrix} \\
+    S &amp;= \begin{pmatrix}
+    1 &amp; 3 &amp; 2 \\
+    3 &amp; 4 &amp; 5 \\
+    2 &amp; 4 &amp; 3
+    \end{pmatrix} \text{ and }
+    A = \begin{pmatrix}
+    0 &amp; -1 &amp; 1 \\
+    1 &amp; 0 &amp; 2 \\
+    -1 &amp; -2 &amp; 0
+    \end{pmatrix} \\
+    \operatorname{tr}(S) &amp;= \operatorname{tr}(M) = 9 \\
+    T &amp;= \begin{pmatrix}
+    -2 &amp; 3 &amp; 2 \\
+    3 &amp; 2 &amp; 4 \\
+    2 &amp; 4 &amp; 0
+    \end{pmatrix} \\
+    M &amp;= T + A + 3I \\
+    \text{Furthermore } A \underline{x} &amp;= \underline{x} \wedge \underline{a} \text{ where } \underline{a} = \begin{pmatrix}2 &amp; -1 &amp; -1\end{pmatrix}. 
+\end{align*}\]</span></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="orthogonal-and-unitary-matrices" class="section level2" number="4.6">
+<h2><span class="header-section-number">4.6</span> Orthogonal and Unitary Matrices</h2>
+<div class="definition">
+<p><span id="def:unlabeled-div-67" class="definition"><strong>Definition 4.7  (Orthogonal matrix) </strong></span>A real <span class="math inline">\(n \times n\)</span> matrix is <em>orthogonal</em> iff
+<span class="math display">\[\begin{align*}
+    u^T u &amp;= u u^T = I \\
+    \text{i.e. } u^T &amp;= u^{-1}.
+\end{align*}\]</span></p>
+</div>
+<p>These conditions can be written
+<span class="math display">\[\begin{align*}
+    (u^T u)_{ij} &amp;= (u u^T)_{ij} = I_{ij} \\
+    \underbrace{u_{ki} u_{kj}}_\text{cols of $u$ are othornormal} &amp;= \underbrace{u_{ik} u_{jk}}_\text{rows of $u$ are othornormal} = \delta_{ij}
+\end{align*}\]</span>
+[recall <span class="math inline">\([\underline{C}_i (u)]_k = u_{ki} = [R_k(u)]_i\)</span>]</p>
+<p><span class="math display">\[\begin{align*}
+    \underbrace{\begin{pmatrix}
+     &amp; \vdots &amp;  \\
+    \longleftarrow &amp; \underline{C}_i &amp; \longrightarrow \\
+     &amp; \vdots &amp; 
+    \end{pmatrix}}_{u^T}
+    \underbrace{\begin{pmatrix}
+        &amp; \big\uparrow &amp;  \\
+       \dots &amp; \underline{C}_j &amp; \dots \\
+        &amp; \big\downarrow &amp; 
+    \end{pmatrix}}_{u} &amp;= I \\
+    \underline{C}_i \cdot \underline{C}_j = \delta_{ij}
+\end{align*}\]</span></p>
+<p><em>Equivalent definition</em>: u is orthogonal iff it preserves the inner product on <span class="math inline">\(\mathbb{R}^n\)</span>.
+<span class="math display">\[\begin{align*}
+    (u \underline{x}) \cdot (u \underline{y}) &amp;= \underline{x} \cdot \underline{y} \quad \forall \; x, y \in \mathbb{R}^n
+\end{align*}\]</span>
+To check equivalence, write this as
+<span class="math display">\[\begin{align*}
+    (u \underline{x}) \cdot (u \underline{y}) &amp;= x^T (u^T u) y \\
+    &amp;= x^T y \iff u^T u = I \\
+    &amp;= \underline{x} \cdot \underline{y} \quad \forall \; x, y \in \mathbb{R}^n
+\end{align*}\]</span>
+Note, since <span class="math inline">\(\underline{C}_i = u \underline{e}_i\)</span>, columns being orthonormal <span class="math inline">\(\iff (u \underline{e}_i) \cdot (u \underline{e}_j) = \underline{e}_i \cdot \underline{e}_j = \delta_{ij}\)</span>.</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-68" class="example"><strong>Example 4.19  </strong></span>In <span class="math inline">\(\mathbb{R}^2\)</span> we found all orthogonal matrices <a href="matrices-and-linear-maps.html#isometries-area-and-determinants-in-mathbbr2">Isometries, area and determinants in <span class="math inline">\(\mathbb{R}^2\)</span></a>:<br />
+rotations <span class="math inline">\(R(\theta) = \begin{pmatrix} \cos \theta &amp; - \sin \theta \\ \sin \theta &amp; \cos \theta \end{pmatrix}\)</span> and reflections <span class="math inline">\(H(\theta) = \begin{pmatrix} \cos \theta &amp; \sin \theta \\\sin \theta &amp; - \cos \theta \end{pmatrix}\)</span>.
+Clearly <span class="math inline">\(R(\theta)^T = R(-\theta) = R(\theta)^{-1}\)</span>.
+<span class="math display">\[\begin{align*}
+    R(\theta)^T &amp;= R(-\theta) = R(\theta)^{-1} \\
+    H(\theta)^T &amp;= H(\theta) = H(\theta)^{-1}.
+\end{align*}\]</span>
+In <span class="math inline">\(\mathbb{R}^3\)</span> we found the matrix <span class="math inline">\(R(\theta)\)</span> for rotation through <span class="math inline">\(\theta\)</span> about axis <span class="math inline">\(\underline{n}\)</span>, <a href="matrices-and-linear-maps.html#exm:threedrotatation">4.12</a>.
+<span class="math display">\[\begin{align*}
+    R(\theta)^T &amp;= R(-\theta) \\
+    \text{Since } R(\theta)_{ij} &amp;= R(-\theta)_{ji}
+\end{align*}\]</span>
+and can check explicitly
+<span class="math display">\[\begin{align*}
+    R(\theta)^T R(\theta) &amp;= R(-\theta)R(\theta) = I \\
+    \text{or } R(\theta)_{ki} R(\theta)_{kj} &amp;= \delta_{ij}
+\end{align*}\]</span></p>
+</div>
+<div class="definition">
+<p><span id="def:unlabeled-div-69" class="definition"><strong>Definition 4.8  (Unitary matrix) </strong></span>A complex <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(u\)</span> is <em>unitary</em> iff
+<span class="math display">\[\begin{align*}
+    u^\dagger u &amp;= u u^\dagger = I \\
+    \text{i.e. } u^\dagger &amp;= u^{-1}.
+\end{align*}\]</span></p>
+</div>
+<p><em>Equivalent definition</em>: u is unitary iff it preserves the inner product on <span class="math inline">\(\mathbb{C}^n\)</span>.
+<span class="math display">\[\begin{align*}
+    (u \underline{z}, u \underline{w}) &amp;= (\underline{z}, \underline{w}) \quad \forall \; z, w \in \mathbb{C}^n
+\end{align*}\]</span></p>
+<p>To check equivalence, write this as
+<span class="math display">\[\begin{align*}
+    (u \underline{z})^\dagger (u \underline{w}) &amp;= \underline{z}^\dagger (u^\dagger u) \underline{w} \\
+    &amp;= \underline{z}^\dagger \underline{w} \iff u^\dagger u = I \\
+    &amp;= (\underline{z}, \underline{w}) \quad \forall \; \underline{z}, \underline{w}
+\end{align*}\]</span>
+Note, since <span class="math inline">\(\underline{C}_i = u \underline{e}_i\)</span>, columns being orthonormal <span class="math inline">\(\iff (u \underline{e}_i) \cdot (u \underline{e}_j) = \underline{e}_i \cdot \underline{e}_j = \delta_{ij}\)</span>.</p>
+
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="6">
+<li id="fn6"><p>Mostly concerned with <span class="math inline">\(V = \mathbb{R}^n,\ W = \mathbb{R}^m\)</span> or <span class="math inline">\(V = \mathbb{C}^n,\ W = \mathbb{C}^m\)</span><a href="matrices-and-linear-maps.html#fnref6" class="footnote-back">↩︎</a></p></li>
+<li id="fn7"><p><span class="math inline">\(A\)</span> has zeros on its diagonal.<a href="matrices-and-linear-maps.html#fnref7" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="vectors-in-general-mathbbrn-and-mathbbcn.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="determinants-and-inverses.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "lunr",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -619,12 +619,11 @@ Then $a^{\phi(m)} \equiv 1 \mod m$ .
 ::: {.proof}
 Let $U = \{ x \in \mathbb{N} : 0 < x < m : (x, m) = 1 \}$, be the set of units modulo $m$.
 Label the elements $u_1, u_2, \dots u_{\phi(m)}$.
-Then $a u_1, a u_2, \dots, a u_{\phi(m)}$ are all distinct and invertible modulo $m$ (since $a$ and $u_i$ are units), and hence they are $u_1, u_2, \dots u_{\phi(m)}$ is some order.
+Then $a u_1, a u_2, \dots, a u_{\phi(m)}$ are all distinct and invertible modulo $m$ (since $a$ and $u_i$ are units), and hence they are $u_1, u_2, \dots u_{\phi(m)}$ in some order.
 
 It follows that
 \begin{align*}
     a u_1 \cdot a u_2 \cdot \dots \cdot a u_{\phi(m)} &\equiv u_1 \cdot u_2 \cdot \dots u_{\phi(m)} \mod m,
-    \text{that is, }a^{\phi(m)} z &= z \mod p. \\
 \end{align*} 
 that is $a^{\phi(m)} z = z \mod m$ where $z = u_1 \cdot u_2 \cdot \dots u_{\phi(m)}$ is a product of units modulo $m$, therefore it itself is a unit.
 So we may cancel it to obtain $a^{\phi(m)} = 1 \mod m$ 
