@@ -1,4 +1,4 @@
-# Cambridge 2021 Maths Notes
+# Notes
 
 https://zentrik.github.io/Notes/
 
