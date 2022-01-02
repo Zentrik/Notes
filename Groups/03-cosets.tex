@@ -110,11 +110,11 @@ $(\Longleftarrow)$:
 \begin{theorem}[Lagrange's Theorem]
 \protect\hypertarget{thm:three}{}\label{thm:three}
 Let $H$ be a subgroup of the finite group $G$.
-Then the order of $H$ divides the order of $G$ (i.e.~$|H| \bigg| |G|$).
+Then the order of $H$ divides the order of $G$ (i.e.~$|H| \mathbin{\bigg|} |G|$).
 \end{theorem}
 
 \begin{proof}
-By \Cref{lem:ten} $G$ is partitioned into distinct cosets of $H$, say $G = g_1 H \mathbin{\dot{\cup}} g_2 H \mathbin{\dot{\cup}} \ldots \mathbin{\dot{\cup}} g_k H$ (say $g_1 = e$).\\
+By \Cref{lem:ten} $G$ is partitioned into distinct cosets of $H$, say $G = g_1 H \mathbin{\dot{\cup}} g_2 H \mathbin{\dot{\cup}} \dots \mathbin{\dot{\cup}} g_k H$ (say $g_1 = e$).\\
 By \Cref{lem:nine}\footnote{You would need to prove these lemma's in an exam q.}
 \begin{align*}
     |g_i H| &= |H| \hspace{.5cm} 1 \leq i \leq k \\
@@ -152,14 +152,14 @@ that is what you actually have to prove.'
 \begin{corollary}[Lagrange's Corollary]
 \protect\hypertarget{cor:two}{}\label{cor:two}
 $G$ is a finite group, $g \in G$.
-Then $o(g) \bigg| |G|$.
+Then $o(g) \mathbin{\bigg|} |G|$.
 In particular, $g^{|G|} = e$.
 \end{corollary}
 
 \begin{proof}
 \begin{align*}
-    \text{Note } \left\langle g\right\rangle &= \{ e, g, \ldots, g^{n-1} \} \text{ where } o(g) = n. \\
-    \text{Then } o(g) &= | \left\langle g\right\rangle | \bigg| |G| \text{ by \nameref{thm:three}} \\
+    \text{Note } \left\langle g\right\rangle &= \{ e, g, \dots, g^{n-1} \} \text{ where } o(g) = n. \\
+    \text{Then } o(g) &= |\left\langle g\right\rangle| \mathbin{\bigg|} |G| \text{ by \nameref{thm:three}} \\
     \implies g^{|G|} &= e \text{ by \Cref{lem:five}}
 \end{align*}
 \end{proof}
@@ -174,7 +174,7 @@ Let $e \neq g \in G$.
 Then $\{ e \} \neq \langle g \rangle \leq G$.
 By \nameref{cor:two}
 \begin{align*}
-    1 &\neq | \langle g \rangle | \;\bigg|\; |G| = p \\
+    1 &\neq |\langle g \rangle| \mathbin{\bigg|} |G| = p \\
     \implies | \langle g \rangle | &= p = |G| \\
     \implies \langle g \rangle &= G
 \end{align*}
@@ -197,7 +197,7 @@ Then $a^{\phi(n)} \equiv 1 \pmod n$.
 We can prove this by using Lagrange, but first we need to set it up.\\
 Let $n \in \mathbb{N}$,
 \begin{align*}
-    R_n &= \{ 0, 1, \ldots, n-1 \} \\
+    R_n &= \{ 0, 1, \dots, n-1 \} \\
     R_n^* &= \{ a \in R_n : \operatorname{hcf}(a, n) = 1 \}
 \end{align*}
 

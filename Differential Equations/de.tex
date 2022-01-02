@@ -65,7 +65,7 @@ If \(f(x) = o(g(x))\) as \(x \to x_0\), then \(af(x) = o(g(x))\) as \(x \to x_0\
             &= f(0) + xf'(0) - \frac{1}{2} [(t-x)^2 f''(t)]^{t = x}_{t = 0} - \int_{0}^{t} + \frac{1}{2} \int_{0}^{t} (t - x)^2 f'''(t) \,dt \\
             &= f(0) + xf'(0) + \frac{1}{2} x^2 f''(0) + \frac{1}{2} \int_{0}^{t} (t - x)^2 f'''(t) \,dt \\
             &\;\;\vdots \\
-            &= f(0) + xf'(0) + \frac{x^2}{2!} f''(0) + \ldots + \frac{x^n}{n!} f^{(n)}(0) + \frac{1}{n!} \int_{0}^{x} (t - x)^n f^{(n + 1)}(t) \,dt \\
+            &= f(0) + xf'(0) + \frac{x^2}{2!} f''(0) + \dots + \frac{x^n}{n!} f^{(n)}(0) + \frac{1}{n!} \int_{0}^{x} (t - x)^n f^{(n + 1)}(t) \,dt \\
             &\text{By MVT the remainder = somehow} \\
             &= \frac{x^{(n+1)}}{(n + 1)!} f^{(n + 1)}(x_n) \text{ where } x_n \in [0, x]
         \end{align*}
@@ -109,8 +109,8 @@ Suppose we want to evaluate
     \exp \left(x_1 \right) \exp \left(x_2 \right) &= \lim_{k \to \infty} \left(1 + \frac{x_1}{k}\right)^k \left(1 + \frac{x_2}{k}\right)^k \\
     &= \lim_{k \to \infty} \left[ \left(1 + \frac{x_1}{k}\right)\left(1 + \frac{x_2}{k}\right) \right]^k \\
     &= \lim_{k \to \infty} \left[ 1 + \frac{x_1 + x_2}{k} + \frac{x_1 x_2}{k^2} \right]^k \\
-    &= \lim_{k \to \infty} \left[ 1 + \binom{k}{1} \frac{1}{k} \left(x_1 + x_2 + \frac{x_1 x_2}{k} \right) + \ldots \right]^k \\
-    &= \lim_{k \to \infty} \left[ 1 + \left( x_1 + x_2 \right) + \frac{\left( x_1 + x_2 \right)^2}{2!} + \ldots \right] \\
+    &= \lim_{k \to \infty} \left[ 1 + \binom{k}{1} \frac{1}{k} \left(x_1 + x_2 + \frac{x_1 x_2}{k} \right) + \dots \right]^k \\
+    &= \lim_{k \to \infty} \left[ 1 + \left( x_1 + x_2 \right) + \frac{\left( x_1 + x_2 \right)^2}{2!} + \dots \right] \\
     &= \exp \left( x_1 + x_2 \right)
 \end{align*}
 

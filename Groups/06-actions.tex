@@ -19,8 +19,8 @@ It is often easier to understand a group if it's doing something, permuting elem
 
 \begin{example} \label{exm:actions} ~\vspace*{-1.5\baselineskip}
     \begin{enumerate} \def\labelenumi{\roman{enumi}.} \def\labelenumii{\arabic{enumii}.} 
-        \item trivial action $\rho(g, x) = x \; \forall \; x \in X, g \in G$.
-        \item $S_n$ acts on $X = \{ 1, 2, \ldots, n \}$ by permuting the elements of $X$.
+        \item trivial action $\rho(g, x) = x \quad \forall \; x \in X, g \in G$.
+        \item $S_n$ acts on $X = \{ 1, 2, \dots, n \}$ by permuting the elements of $X$.
         e.g. $S_3$ acts on $\{1, 2, 3\}$, $\sigma = \begin{pmatrix}1 & 2\end{pmatrix} \in S_3 : \sigma(1) = 2, \sigma(2) = 1, \sigma(3) = 3$.
         $\tau = \begin{pmatrix}1 & 3\end{pmatrix} \in S_3$, $\tau \sigma = \begin{pmatrix}1 & 3\end{pmatrix} \begin{pmatrix}1 & 2\end{pmatrix} = \begin{pmatrix}1 & 2 & 3\end{pmatrix}$ \\
         $(\tau \sigma)(1) = 2$, $\tau(\sigma(1)) = \tau(2) = 3$. \\
@@ -110,13 +110,13 @@ It is often easier to understand a group if it's doing something, permuting elem
     Recall a permutation of a set $X$ is a bijection of $X$, \Cref{def:permutation}.
     We have commented that a bijection $f : X \to X$ has a 2-sided inverse, i.e. $\exists \; g : X \to X$ s.t.
     \begin{align*}
-        f \circ g (x) &= x \; \forall \; x \in X \\
-        g \circ f (x) &= x \; \forall \; x \in X.
+        f \circ g (x) &= x \quad \forall \; x \in X \\
+        g \circ f (x) &= x \quad \forall \; x \in X.
     \end{align*}
     Conversely if $f : X \to X$ is a map with a 2-sided inverse then $f$ is a bijection.
 
-    $f \circ g(x) = x \; \forall \; x \in X \implies f$ is surjective, as $f$ is mapping to all elements in $X$ \\
-    $g \circ f(x) = x \; \forall \; x \in X \implies f$ is injective, as if $f$ took two elements to the same place then $g$ wouldn't be able to split them up.
+    $f \circ g(x) = x \quad \forall \; x \in X \implies f$ is surjective, as $f$ is mapping to all elements in $X$ \\
+    $g \circ f(x) = x \quad \forall \; x \in X \implies f$ is injective, as if $f$ took two elements to the same place then $g$ wouldn't be able to split them up.
 
     Note 2-sided is necessary:
     \begin{align*}
@@ -129,11 +129,11 @@ It is often easier to understand a group if it's doing something, permuting elem
 
 \begin{lemma} \label{lem:16}
     Suppose the group $G$ acts on the non-empty set $X$.
-    Fix $g \in G$, then the 
+    Fix $g \in G$, then the map
     \begin{align*}
         \phi_g : X &\to X \\
         x &\mapsto \rho(g, x) = g(x)
-    \end{align*} is a permutation of $X$, i.e. $\phi_g = \operatorname{Sym}(X)$.
+    \end{align*} is a permutation of $X$, i.e. $\phi_g \in \operatorname{Sym}(X)$.
 \end{lemma} 
 
 \begin{proof}
@@ -143,11 +143,11 @@ It is often easier to understand a group if it's doing something, permuting elem
     \begin{align*}
         \phi_{g^{-1}} \circ \phi_g (x) &= \phi_{g^{-1}} \left( \rho (g, x) \right) \\
         &= \rho(g^{-1}, \rho(g, x)) \\
-        &= \rho(g^{-1} g, x) \text{ since $\rho$ is a group action, \ref{action-1}} \\
+        &= \rho(g^{-1} g, x) \text{ since $\rho$ is a group action, \Cref{action-1}} \\
         &= \rho(e, x) \\
-        &= x \; \forall \; x.
+        &= x \quad \forall \; x.
     \end{align*} 
-    Similarly, $\phi_g \circ \phi_{g^{-1}}(x) = x \; \forall \; x \in X$.
+    Similarly, $\phi_g \circ \phi_{g^{-1}}(x) = x \quad \forall \; x \in X$.
 \end{proof} 
 
 \begin{proposition} \label{prp:6}
@@ -186,36 +186,44 @@ It is often easier to understand a group if it's doing something, permuting elem
         \begin{align*}
             G / \ker \Phi &\cong \operatorname{Im} \Phi \leq \operatorname{Sym}(X).
             \intertext{Note}
-            \ker \Phi &= \{g \in G : \Phi(g) = \text{id}_X \in \operatorname{Sym}(X) \\
+            \ker \Phi &= \{g \in G : \Phi(g) = \text{id}_X \in \operatorname{Sym}(X) \}\\
             &= \{ g \in G : \phi_g(x) = \rho(g, x) = x \ \forall \; x \in X \} \\
-            &\trianglelefteq G \text{ Kernels of homomorphisms are normal subgroups (Sheet 1, q9)}. 
+            &\trianglelefteq G, \text{ Kernels of homomorphisms are normal subgroups (Sheet 1, q9)}. 
         \end{align*} 
-        I.e. all those elements that fix every elements of $X$, that act 'trivially'.
-
-        We say the action is \emph{faithful} if $\ker \Phi = \{ e \}$.
-
-        e.g. the kernels of \Cref{exm:actions}
-        \begin{enumerate}
-            \item trivial action - $\ker \Phi = G$.
-            \item $S_n$ acts on $\{1, \ldots, n\}$ - faithful.
-            \item $D_8$ acts on the edges of a square - faithful.
-            \item left regular action - faithful.
-            \item conjugation - $\ker \Phi = \{g \in G : \underbrace{g k g^{-1} = k}_{gk = kg} \ \forall \; k \in G\} = Z(G)$, \emph{the centre of} $G$ are `the elements that commute with everything'.
-            \item conjugation of $N \trianglelefteq G$. $\ker \Phi = \{ g \in g : g n g^{-1} = n \ \forall \; n \in N\} = C_G(N)$, the \emph{centraliser of $N$ in $G$}.
-            \item left coset action -
-            \begin{align*}
-                \ker \Phi &= \{ g \in G: g kH = kH \ \forall \; k \in G\} \\
-                &= \{ g \in G: k^{-1}gk \in H \ \forall \; k \in G\} \\
-                &= \{g \in G : g \in k H k^{-1} \ \forall \; k \in G\} \\
-                &= \bigcap_{k \in G} k H k^{-1}  \\
-                &= \operatorname{Core}_G(H) \trianglelefteq G \\
-                \text{and } \underbrace{\operatorname{Core}_G(H)}_\text{core of $H$} &\leq H \text{ (we can set $k = e$)}.
-            \end{align*} 
-            \emph{Useful Note for exm sheet:} If $\ker \Phi = \{ e \}$, then $G$ is isomorphic to a subgroup of $\operatorname{Sym}(X)$, we write $G \lesssim \operatorname{Sym}(X)$.
-            So if $|G| \nmid |\operatorname{Sym}(X)|$ then $\ker \Phi \neq \{e\}$.
-        \end{enumerate} 
-    \end{enumerate} 
+        I.e. The kernel of the homomorphism is all those elements of $G$ that fix every element of $X$, that act `trivially'.
+    \end{enumerate}
 \end{remark} 
+
+\begin{definition}[Kernel of an Action]
+    The kernel of an action $\rho : G \times X \to X$ is the kernel of the homomorphism $\Phi : G \to \operatorname{Sym}(X)$.
+\end{definition} 
+
+\begin{definition}[Faithful Action]
+    An action of $G$ on $X$ is faithful if $\ker \rho = \ker \Phi = \{ e \}$.
+\end{definition} 
+
+\begin{example}
+The kernels of \Cref{exm:actions}
+    \begin{enumerate}
+        \item trivial action - $\ker \Phi = G$.
+        \item $S_n$ acts on $\{1, \dots, n\}$ - faithful.
+        \item $D_8$ acts on the edges of a square - faithful.
+        \item left regular action - faithful.
+        \item conjugation - $\ker \Phi = \{g \in G : \underbrace{g k g^{-1} = k}_{gk = kg} \ \forall \; k \in G\} = Z(G)$, \emph{the centre of} $G$ are `the elements that commute with everything'.
+        \item conjugation of $N \trianglelefteq G$. $\ker \Phi = \{ g \in g : g n g^{-1} = n \ \forall \; n \in N\} = C_G(N)$, the \emph{centraliser of $N$ in $G$}.
+        \item left coset action -
+        \begin{align*}
+            \ker \Phi &= \{ g \in G: g kH = kH \ \forall \; k \in G\} \\
+            &= \{ g \in G: k^{-1}gk \in H \ \forall \; k \in G\} \\
+            &= \{g \in G : g \in k H k^{-1} \ \forall \; k \in G\} \\
+            &= \bigcap_{k \in G} k H k^{-1}  \\
+            &= \operatorname{Core}_G(H) \trianglelefteq G \\
+            \text{and } \underbrace{\operatorname{Core}_G(H)}_\text{core of $H$} &\leq H \text{ (we can set $k = e$)}.
+        \end{align*} 
+        \emph{Useful Note for exm sheet:} If $\ker \Phi = \{ e \}$, then $G$ is isomorphic to a subgroup of $\operatorname{Sym}(X)$, we write $G \lesssim \operatorname{Sym}(X)$.
+        So if $|G| \nmid |\operatorname{Sym}(X)|$ then $\ker \Phi \neq \{e\}$.
+    \end{enumerate} 
+\end{example} 
 
 \begin{theorem}[Cayley's Theorem] \label{thm:7}
     Any group $G$ is isomorphic to a subgroup of $\operatorname{Sym}(X)$ for some non-empty set $X$.
@@ -247,7 +255,7 @@ It is often easier to understand a group if it's doing something, permuting elem
     The orbits of \Cref{exm:actions}.
     \begin{enumerate}
         \item trivial action, $\operatorname{Orb}_G (x) = \{ x \}$
-        \item $S_n$ acts on $\{1, \ldots, n\}$ - $\operatorname{Orb}_G(1) = X$ (we can get $(1\ a)$ which maps $x$ to any $a$). \\
+        \item $S_n$ acts on $\{1, \dots, n\}$ - $\operatorname{Orb}_G(1) = X$ (we can get $(1\ a)$ which maps $x$ to any $a$). \\
         If $H = \langle (1\ 2) (3\ 4\ 5) \rangle \leq S_n$ acting on $X = \{ 1, 2, 3, 4, 5\}$ then $\operatorname{Orb}_G(1) = \{1, 2\}$ and $\operatorname{Orb}_G(3) = \{3, 4, 5\}$.
         \item $D_8$ acts on the edges of a square - $\operatorname{Orb}_{D_8}(a) = \{a, b, c, d\}$.
         \item left regular action - $\operatorname{Orb}_G(k) = G$, since $g = g(k^{-1}k) = (gk^{-1})k$ for any $g \in G$.
@@ -316,7 +324,7 @@ It is often easier to understand a group if it's doing something, permuting elem
     The stabilisers of \Cref{exm:actions}.
     \begin{enumerate}
         \item trivial action - $\operatorname{Stab}_G(x) = G$.
-        \item $S_n$ on $X = \{1, 2, \ldots, n\}$ - $\operatorname{Stab}_G(1) \cong S_{n-1}$.
+        \item $S_n$ on $X = \{1, 2, \dots, n\}$ - $\operatorname{Stab}_G(1) \cong S_{n-1}$.
         \item $H = \langle \begin{pmatrix}1 & 2\end{pmatrix} \begin{pmatrix}3 & 4 & 5\end{pmatrix} \rangle$ on $X$ - $\operatorname{Stab}_H(1) = \langle \begin{pmatrix}3 & 4 & 5\end{pmatrix} \rangle$.
         \item $D_8$ - $\operatorname{Stab}_{D_8}(b) = \{e, t\}$. \\
         \item left regular action - $\operatorname{Stab}_G(k) = \{e\}$, $gk = k \implies g = e$.
@@ -473,7 +481,7 @@ Also $\begin{pmatrix}1 & 2 & 3 & 4\end{pmatrix} = \begin{pmatrix}1 & 2\end{pmatr
 
 \subsubsection{Cube (dual to octahedron)}
 
-\begin{figure} 
+\begin{figure}
     \centering 
     \includegraphics[height=5cm]{07-cube} 
 \end{figure}
@@ -494,7 +502,7 @@ Rotations:
         \includegraphics[height=5cm]{04-cube-rotated}
         \caption{$\sigma$ rotation of $\pi / 2$ corresponds to $\begin{pmatrix}1 & 2 & 3 & 4\end{pmatrix}$ in action on diagonals. There are $3$ such axes giving $6$ elements of order $4$ and $3$ of order $2$.}
     \end{figure}
-    \item \begin{figure} 
+    \item \begin{figure}
         \centering 
         \includegraphics[height=5cm]{07-cube-rotated-fixed-axis} 
         \caption{$o(\rho) = 3$ corresponds to $\begin{pmatrix}2 & 3 & 4\end{pmatrix}$, we have 4 such axes giving eight elements of order $3$ ($\rho, \rho^2$).}
@@ -517,8 +525,8 @@ or consider $G^+$ acting on vertex $1$
 
 Now consider full symmetry group of $C$, call it $G$.
 
-Consider action on faces $F_1, \ldots, F_6$, this yields an injective (or faithful) homomorphism as fixing all the faces fixes everything.
-
+Consider action on faces $F_1, \dots, F_6$, this yields an injective (or faithful) homomorphism as fixing all the faces fixes everything.
+%
 \begin{align*}
     \Phi: G &\to \operatorname{Sym}(F_i) \cong S_6. \\
     |\operatorname{Orb}(F_1)| &= 6. \\
@@ -621,7 +629,7 @@ We can find the elements of $A_5$
     \item Rotations through opposite edges - double transpositions (15 such).
 \end{itemize} 
 
-\subsubsection{Another Application of \nameref{thm:orbit}}
+\subsection{Another Application of \nameref{thm:orbit}}
 
 \begin{theorem}[Cauchy's Theorem] \label{thm:8}
     Let $G$ be a finite group and $p$ a prime that divides $|G|$.
@@ -631,54 +639,52 @@ We can find the elements of $A_5$
 \begin{proof}
     Let
     \begin{align*}
-        X &= \{ (x_1, x_2, \ldots, x_p) : x_1 x_2 \ldots x_p = e, x_i \in G \}.
+        X &= \{ (x_1, x_2, \dots, x_p) : x_1 x_2 \dots x_p = e, x_i \in G \}.
     \end{align*} 
     Let $H = \langle h : o(h) = p \rangle \cong C_p$ acts on $X$ as follows:
     \begin{align*}
         H \times X &\to X \\
-        (h, (x_1, x_2, \ldots, x_p)) &\mapsto (x_2, x_3, \ldots, x_p, x_1) \\
+        (h, (x_1, x_2, \dots, x_p)) &\mapsto (x_2, x_3, \dots, x_p, x_1) \\
         \intertext{in general}
-        (h^i, (x_1, x_2, \ldots, x_p)) &\mapsto (x_{1 + i}, x_{2 + i}, \ldots, x_{p + i}) \\
+        (h^i, (x_1, x_2, \dots, x_p)) &\mapsto (x_{1 + i}, x_{2 + i}, \dots, x_{p + i}) \\
         \text{suffices are taken modulo p.}
     \end{align*}
     Check this is a group action
     \begin{enumerate} \addtocounter{enumi}{-1}
         \item \begin{align*}
-            x_1 x_2 \ldots x_p &= e \\
-            x_{i + 1} x_{2 + i} \ldots, x_{p + i} &= [(x_1 x_2 \ldots x_i)^{-1} (x_1 x_2 \ldots x_i)] x_{i + 1} x_{2 + i} \ldots, x_{p} x_1 x_2 \ldots x_i \\ 
-            &= (x_1 x_2 \ldots x_i)^{-1} x_1 x_2 \ldots x_p (x_1 x_2 \ldots x_i) \\
-            &= (x_1 x_2 \ldots x_i)^{-1} e (x_1 x_2 \ldots x_i) \\
+            x_1 x_2 \dots x_p &= e \\
+            x_{i + 1} x_{2 + i} \dots, x_{p + i} &= [(x_1 x_2 \dots x_i)^{-1} (x_1 x_2 \dots x_i)] x_{i + 1} x_{2 + i} \dots, x_{p} x_1 x_2 \dots x_i \\ 
+            &= (x_1 x_2 \dots x_i)^{-1} x_1 x_2 \dots x_p (x_1 x_2 \dots x_i) \\
+            &= (x_1 x_2 \dots x_i)^{-1} e (x_1 x_2 \dots x_i) \\
             &= e.
         \end{align*} 
         \item \begin{align*}
-            h^{i + j} (x_1, \ldots, x_p) &= (x_{1 + i + j}, \ldots, x_{p + i + j}) \\
-            &= h^i (h^j (x_1, \ldots, x_p)).
+            h^{i + j} (x_1, \dots, x_p) &= (x_{1 + i + j}, \dots, x_{p + i + j}) \\
+            &= h^i (h^j (x_1, \dots, x_p)).
         \end{align*} 
         \item \begin{align*}
-            e (x_1, \ldots, x_p) &= h^p (x_1, \ldots, x_p) \\
-            &= (x_1, \ldots, x_p).
+            e (x_1, \dots, x_p) &= h^p (x_1, \dots, x_p) \\
+            &= (x_1, \dots, x_p).
         \end{align*} 
     \end{enumerate} 
-\end{proof} 
 
-Let $\overline{x} = (x_1, x_2, \ldots, x_p) \in X$.
+Let $\overline{x} = (x_1, x_2, \dots, x_p) \in X$.
 As distinct orbits partition $X$ (\Cref{lem:17})
 \begin{align*}
     \implies \sum_{\text{distinct orbits}} |\operatorname{Orb}_H(\overline{x})| = |X|. 
 \end{align*} 
-Note $|X| = |G|^{p - 1}$ (choose $x_1, \ldots, x_{p-1}$ then $x_p$ is determined, we have $|G|$ choices for each free variable).
+Note $|X| = |G|^{p - 1}$ (choose $x_1, \dots, x_{p-1}$ then $x_p$ is determined, we have $|G|$ choices for each free variable).
 \begin{align*}
-    p \mid |G| \implies p &\mid |X| \\
-    \implies p &\mid \sum_{\text{distinct orbits}} |\operatorname{Orb}_H(\overline{x})| \stepcounter{equation}\tag{\theequation}\label{myeq1} \\
-\end{align*} 
-But by \nameref{thm:orbit}
-\begin{align*}
-    |\operatorname{Orb}_H(\overline{x})| \bigg| |H| &= p \\
+    p \mathbin{\bigg|} |G| \implies p &\mathbin{\bigg|} |X| \\
+    \implies p &\mathbin{\bigg|} \sum_{\text{distinct orbits}} |\operatorname{Orb}_H(\overline{x})| \stepcounter{equation}\tag{\theequation}\label{myeq1} \\
+\intertext{But by \nameref{thm:orbit}}
+    |\operatorname{Orb}_H(\overline{x})| \mathbin{\bigg|} |H| &= p \\
     \implies |\operatorname{Orb}_H(\overline{x})| &= 1 \text{ or } p.
 \end{align*} 
-Now, $\overline{e} = (e, e, \ldots, e) \in X$ and $|\operatorname{Orb}_H(\overline{e}) | = 1$.
+Now, $\overline{e} = (e, e, \dots, e) \in X$ and $|\operatorname{Orb}_H(\overline{e}) | = 1$.
 So $\exists$ at least $p - 1$ other orbits of length $1$ by \eqref{myeq1}.
-So $\exists \; \overline{x} \in X$ s.t $\operatorname{Orb}_H(\overline{x}) = 1 \implies \overline{x} = (x, x, \ldots, x)$ (has to look the same after permutation) with $x \neq e$ and $x^p = e$.
+So $\exists \; \overline{x} \in X$ s.t $\operatorname{Orb}_H(\overline{x}) = 1 \implies \overline{x} = (x, x, \dots, x)$ (has to look the same after permutation) with $x \neq e$ and $x^p = e$.
+\end{proof} 
 
 \subsection{Conjugacy Action}
 
@@ -704,7 +710,7 @@ stabilisers are called centralisers
         \end{align*} 
         In particular ($C_G(h)$ is a subgroup)
         \begin{align*}
-            |\operatorname{ccl}_G(h)| \bigg| |G|.
+            |\operatorname{ccl}_G(h)| \mathbin{\bigg|} |G|.
         \end{align*} 
         \item If $k \in \operatorname{ccl}_G(h)$ then $o(k) = o(h)$.
         \begin{proof}
@@ -752,16 +758,16 @@ stabilisers are called centralisers
     \end{align*} 
     By \nameref{thm:orbit} 
     \begin{align*}
-        |\operatorname{ccl}_G(x)| \bigg| |G| = p^n.
+        |\operatorname{ccl}_G(x)| \mathbin{\bigg|} |G| = p^n.
     \end{align*} 
-    Either $|\operatorname{ccl}_G(x)| = 1$ or $p \bigg| |\operatorname{ccl}_G(x)|$.
+    Either $|\operatorname{ccl}_G(x)| = 1$ or $p \mathbin{\bigg|} |\operatorname{ccl}_G(x)|$.
     By \Cref{conjugacy-4}, 
     \begin{align*}
         |G| = \sum_{x \in Z(G)} |\operatorname{ccl}_G(x)| + \sum_{\substack{\text{distinct} \\ \text{conj classes} \\ \text{with } p \bigm| |\operatorname{ccl}_G(x)|}} |\operatorname{ccl}_G(x)|
     \end{align*} 
     Now $p \mid |G|$ and $p \mid RHS$
     \begin{align*}
-        \implies p \bigg| \sum_{x \in Z(G)} |\operatorname{ccl}_G(x)| = |Z(G)|
+        \implies p \mathbin{\bigg|} \sum_{x \in Z(G)} |\operatorname{ccl}_G(x)| = |Z(G)|
     \end{align*} 
 \end{proof} 
 
@@ -806,8 +812,8 @@ stabilisers are called centralisers
 
 \begin{definition}[Cycle type] \label{def:20}
     Let $\sigma \in S_n$ and write $\sigma$ as a product of disjoint cycles including $1-$cycles.
-    Then the \emph{cycle type} of $\sigma$ is $(n_1, n_2, \ldots, n_k)$ where $n_1 \geq n_2 \geq \ldots \geq n_k \geq 1$ and the cycles in $\sigma$ have length $n_i$. \\
-    Note $n = n_1 + n_2 + \ldots + n_k$.
+    Then the \emph{cycle type} of $\sigma$ is $(n_1, n_2, \dots, n_k)$ where $n_1 \geq n_2 \geq \dots \geq n_k \geq 1$ and the cycles in $\sigma$ have length $n_i$. \\
+    Note $n = n_1 + n_2 + \dots + n_k$.
 \end{definition} 
 
 \begin{example} ~\vspace*{-1.5\baselineskip}
@@ -824,9 +830,9 @@ stabilisers are called centralisers
 \end{theorem} 
 
 \begin{proof}
-    Suppose $\sigma$ has cycle type $(n_1, n_2, \ldots, n_k)$.
+    Suppose $\sigma$ has cycle type $(n_1, n_2, \dots, n_k)$.
     Write \begin{align*}
-        \sigma &= \begin{pmatrix}a_{11} & a_{12} & \ldots & a_{1 n_1}\end{pmatrix} \begin{pmatrix}a_{21} & a_{22} & \ldots & a_{2 n_2}\end{pmatrix} \ldots \begin{pmatrix}a_{k 1} & a_{k 2} & \ldots & a_{k n_k}\end{pmatrix}.
+        \sigma &= \begin{pmatrix}a_{11} & a_{12} & \dots & a_{1 n_1}\end{pmatrix} \begin{pmatrix}a_{21} & a_{22} & \dots & a_{2 n_2}\end{pmatrix} \dots \begin{pmatrix}a_{k 1} & a_{k 2} & \dots & a_{k n_k}\end{pmatrix}.
     \end{align*} 
     Let $\tau \in S_n$. \\
     Then
@@ -837,12 +843,12 @@ stabilisers are called centralisers
             \tau(a_{i 1}) & j = n_i
         \end{cases}.
     \intertext{So }
-        \tau \sigma \tau^{-1} &= \begin{pmatrix} \tau(a_{11}) & \tau(a_{12}) & \ldots & \tau(a_{1 n_1})\end{pmatrix} \\ &\begin{pmatrix} \tau(a_{21}) & \tau(a_{22}) & \ldots & \tau(a_{2 n_2})\end{pmatrix} \ldots \begin{pmatrix} \tau(a_{k 1}) & \tau(a_{k 2}) & \ldots & \tau(a_{k n_k})\end{pmatrix}.
+        \tau \sigma \tau^{-1} &= \begin{pmatrix} \tau(a_{11}) & \tau(a_{12}) & \dots & \tau(a_{1 n_1})\end{pmatrix} \\ &\begin{pmatrix} \tau(a_{21}) & \tau(a_{22}) & \dots & \tau(a_{2 n_2})\end{pmatrix} \dots \begin{pmatrix} \tau(a_{k 1}) & \tau(a_{k 2}) & \dots & \tau(a_{k n_k})\end{pmatrix}.
     \end{align*} 
     So if two elements of $S_n$ are conjugate they have the same cycle type. \\
     Furthermore if $\pi$ has the same cycle type as $\sigma$, we can write
     \begin{align*}
-        \pi = \begin{pmatrix} b_{11} & b_{12} & \ldots & b_{1 n_1} \end{pmatrix} \ldots \begin{pmatrix} b_{k 1} & b_{k 2} & \ldots & b_{k n_k}\end{pmatrix}. 
+        \pi = \begin{pmatrix} b_{11} & b_{12} & \dots & b_{1 n_1} \end{pmatrix} \dots \begin{pmatrix} b_{k 1} & b_{k 2} & \dots & b_{k n_k}\end{pmatrix}. 
     \end{align*} 
     Define $\tau(a_{ij}) = b_{ij}$ then $\pi = \tau \sigma \tau^{-1}$.
     Thus $2$ permutations of the same cycle type are conjugate.
@@ -872,7 +878,7 @@ stabilisers are called centralisers
 \end{align*} 
 
 \begin{corollary} \label{cor:6}
-    The number of distinct conjugacy classes of $S_n$ is given by $p(n)$, the number of partitions of $n$ into positive integers, i.e. $n = n_1 + \ldots + n_k$ with $n_1 \geq n_2 \geq \ldots \geq n_k \geq 1$.
+    The number of distinct conjugacy classes of $S_n$ is given by $p(n)$, the number of partitions of $n$ into positive integers, i.e. $n = n_1 + \dots + n_k$ with $n_1 \geq n_2 \geq \dots \geq n_k \geq 1$.
 \end{corollary} 
 
 However in $A_n$ conjugation is less clear. 
@@ -917,9 +923,9 @@ If $C_{A_n}(x) \lneq C_{S_n}(x)$, then $C_{S_n}$ contains an odd permutation and
     \begin{align*}
         \frac{n!}{\Pi_l k_l! \, l^{k_l}}.
     \end{align*} 
-    Think of cycles as trays, put in elements of $X = \{1, 2, \ldots, n\}$.
+    Think of cycles as trays, put in elements of $X = \{1, 2, \dots, n\}$.
     This gives $n!$ options, but we've overcounted.
-    Eah cycle of length $l$ can be written $l$ ways, this given $l^{k_l}$ factor.
+    Each cycle of length $l$ can be written $l$ ways, this given $l^{k_l}$ factor.
     Also $k_l$ cycle of length $l$ can be permuted in $k_l !$ ways.
 \end{remark} 
 
@@ -928,7 +934,7 @@ If $C_{A_n}(x) \lneq C_{S_n}(x)$, then $C_{S_n}$ contains an odd permutation and
     \begin{align*}
         \text{no. of} = \frac{5!}{2! \, 2^2 1! \, 1} = 15 \\ 
     \end{align*} 
-    Or $(\cdot \ \cdot \ \cdot) (\cdot \cdot)$, $k_3 = 1, k_2 = 1$
+    Or $(\cdot \ \cdot \ \cdot) (\cdot \ \cdot)$, $k_3 = 1, k_2 = 1$
     \begin{align*}
         \text{no. of} = \frac{5!}{1! \, 3^1 1! \, 2^1} = 20.
     \end{align*} 
@@ -969,7 +975,7 @@ Recall \Cref{def:sixteen}, a group is \emph{simple} if it has no non-trivial pro
     Suppose $N \trianglelefteq A_5$.
     Then $N$ is a union of conjugacy classes (Sheet 3, Q3(a)). \\
     $\implies |N| = 1 + 15a + 20b + 12c + 12d$ where $a, b, c, d \in \{0, 1\}$.
-    But by \nameref{thm:three} $|N| \bigg| |A_5| = 60 \implies |N| = 1 \text{ or } 60$.
+    But by \nameref{thm:three} $|N| \mathbin{\bigg|} |A_5| = 60 \implies |N| = 1 \text{ or } 60$.
 \end{proof} 
 
 \emph{Comments}
