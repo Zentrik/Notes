@@ -128,30 +128,30 @@ In $\mathbb{R}^3$, rotation about axis given by $\underline{e}_3$ is defined as 
 \end{align*} 
 
 Now consider rotation about any axis $\underline{n}$ (a unit vector).
-Given $\underline{x}$, resolve $\parallel$ and $\bot$ to $\underline{n}$:
+Given $\underline{x}$, resolve $\parallel$ and $\perp$ to $\underline{n}$:
 \begin{align*}
-    \underline{x} &= \underline{x}_\parallel + \underline{x}_\bot \hspace{0.5cm} \text{with } \underline{x}_\parallel = (\underline{x} \cdot \underline{n}) \underline{n} \ (\implies \underline{n} \cdot \underline{x}_\bot = \underline{0}) \\
+    \underline{x} &= \underline{x}_\parallel + \underline{x}_\perp \hspace{0.5cm} \text{with } \underline{x}_\parallel = (\underline{x} \cdot \underline{n}) \underline{n} \ (\implies \underline{n} \cdot \underline{x}_\perp = \underline{0}) \\
     \text{Under rotation} \\
     \underline{x}_\parallel &\mapsto \underline{x}_\parallel' = \underline{x}_\parallel \\
-    \underline{x}_\bot &\mapsto \underline{x}_\bot' = (\cos \theta) \underline{x}_\bot + (\sin \theta) \underline{n} \wedge \underline{x},
-\end{align*} by considering plane $\mathrel{\bot} \underline{n}$, comparing to rotation in $\mathbb{R}^2$ and noting that $|\underline{x}_\bot| = | \underline{n} \wedge \underline{x} |$.
+    \underline{x}_\perp &\mapsto \underline{x}_\perp' = (\cos \theta) \underline{x}_\perp + (\sin \theta) \underline{n} \wedge \underline{x},
+\end{align*} by considering plane $\perp \underline{n}$, comparing to rotation in $\mathbb{R}^2$ and noting that $|\underline{x}_\perp| = | \underline{n} \wedge \underline{x} |$.
 
 ```{r 04-3d-rotation, echo = FALSE, fig.cap = "", fig.align="center", out.width = "300cm"} 
 knitr::include_graphics("figures/04-3d-rotation.png") 
 ```
 
 \begin{align*}
-    \underline{x} \mapsto \underline{x}' &= \underline{x}_\parallel' + \underline{x}_\bot' \\
+    \underline{x} \mapsto \underline{x}' &= \underline{x}_\parallel' + \underline{x}_\perp' \\
     &= (\cos \theta) \underline{x} + (1 - \cos \theta) (\underline{n} \cdot \underline{x}) \underline{n} + \sin \theta \underline{n} \wedge \underline{x}.
 \end{align*} 
 
 ### Reflections
 
 Consider a *reflection* in a plane in $\mathbb{R}^3$ (or line in $\mathbb{R}^2$) through $\underline{0}$ with unit normal $\underline{n}$.\
-Given $\underline{x}$, resolve $\parallel$ and $\bot$ to $\underline{n}$:
+Given $\underline{x}$, resolve $\parallel$ and $\perp$ to $\underline{n}$:
 \begin{align*}
     \underline{x}_\parallel &\mapsto \underline{x}_\parallel' = -\underline{x}_\parallel \\
-    \underline{x}_\bot &\mapsto \underline{x}_\bot' = \underline{x}_\bot
+    \underline{x}_\perp &\mapsto \underline{x}_\perp' = \underline{x}_\perp
 \end{align*}
 
 ```{r 04-reflection-3d, echo = FALSE, fig.cap = "", fig.align="center", out.width = "600"} 
@@ -183,7 +183,7 @@ Given $\underline{a}, \underline{b}$ orthogonal unit vectors define a shear with
 knitr::include_graphics("figures/04-shear.png") 
 ```
 
-Definition applies in $\mathbb{R}^n$ and $\underline{u}' = u$ for any vector $\underline{u} \bot \underline{b}$.
+Definition applies in $\mathbb{R}^n$ and $\underline{u}' = u$ for any vector $\underline{u} \perp \underline{b}$.
 
 ## Matrices as Linear Maps $\mathbb{R}^n \to \mathbb{R}^m$
 ### Definitions
@@ -230,7 +230,7 @@ This follows from definitions above since
 
 Now regard properties of $T$ as properties of $M$.\
 $\operatorname{Im}(T) = \operatorname{Im}(M) = \operatorname{span} \{ \underline{C}_1, \dots, \underline{C}_n \}$, the *image of M* (or T) is the span of the columns.\
-$\ker(T) = \ker(M) = \{\underline{x} : \underline{R}_a \cdot \underline{x} = 0 \; \forall \; a \}$, *kernel of M* is subspace $\bot$ all rows.
+$\ker(T) = \ker(M) = \{\underline{x} : \underline{R}_a \cdot \underline{x} = 0 \; \forall \; a \}$, *kernel of M* is subspace $\perp$ all rows.
 
 ### Examples
 Refer to Examples \@ref(exm:f-one), \@ref(exm:f-two), \@ref(exm:f-three), \@ref(exm:f-four).
@@ -269,7 +269,7 @@ $\mathbb{R}^3 \to \mathbb{R}^3$, $\underline{x}' = T(\underline{x}) = M \underli
     \underline{R}_2 &= \begin{pmatrix}-1 & 0 & 2\end{pmatrix} \\
     \underline{R}_3 &= \begin{pmatrix}2 & 1 & 3\end{pmatrix} \\
     \underline{R}_2 \wedge \underline{R}_3 &= \begin{pmatrix}2 & -1 & -1\end{pmatrix} \\
-    &= \underline{u}, \text{ say } \bot \text{ all rows (in fact)} \\
+    &= \underline{u}, \text{ say } \perp \text{ all rows (in fact)} \\
     \ker (T) &= \ker (M) = \{ \lambda \underline{u} \}
 \end{align*} 
 :::
@@ -298,7 +298,7 @@ Dilation $\underline{x}' = M \underline{x}$ with scale factors $\alpha, \beta, \
 :::
 
 ::: {.example #reflection-matrix}
-Reflection in plane $\mathrel{\bot} \underline{n}$ (a unit vector).
+Reflection in plane $\perp \underline{n}$ (a unit vector).
 \begin{align*}
     \underline{x}' &= H \underline{x} = \underline{x} - 2 (\underline{x} \cdot \underline{n}) \underline{n} \\
     x_i' &= x_i - 2 x_j n_j n_i \\
@@ -353,7 +353,7 @@ Necessary conditions are
     1 \\
     0
     \end{pmatrix} &= \begin{pmatrix}\cos \theta \\\sin \theta\end{pmatrix} \text{ for some $\theta$; most general unit vector in $\mathbb{R}^2$} \\
-    M \begin{pmatrix}0 \\1\end{pmatrix} &= \pm \begin{pmatrix}- \sin \theta \\ \cos \theta\end{pmatrix} \text{ general unit vector $\mathrel{\bot} M (1\ 0)^T$}.
+    M \begin{pmatrix}0 \\1\end{pmatrix} &= \pm \begin{pmatrix}- \sin \theta \\ \cos \theta\end{pmatrix} \text{ general unit vector $\perp M (1\ 0)^T$}.
 \end{align*}
 Simple to check that these conditions are also sufficient and have two cases
 \begin{align*}

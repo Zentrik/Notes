@@ -40,11 +40,11 @@ TFAE (The following are equivalent):
 \begin{enumerate}
 \def\labelenumi{\roman{enumi}.}
 \item
-  $gK = Kg \; \forall \; g \in G$
+  $gK = Kg \quad \forall \; g \in G$
 \item
-  $gKg^{-1} = K \; \forall \; g \in G$
+  $gKg^{-1} = K \quad \forall \; g \in G$
 \item
-  $gkg^{-1} \in K \; \forall \; k \in K,\ g \in G$
+  $gkg^{-1} \in K \quad \forall \; k \in K,\; g \in G$
 \end{enumerate}
 
 \end{proposition}
@@ -248,25 +248,21 @@ A group is called \emph{simple} if its only normal subgroups are $\{ e \}$ and $
 e.g.~$C_p$ where $p$ is prime.
 \end{definition}
 
-\begin{center}\rule{\linewidth}{0.5pt}\end{center}
-
-\emph{Aside}
-
-\begin{definition}
-  Suppose $f : A \to B$
-
-  \begin{enumerate}
-  \def\labelenumi{\roman{enumi}.}
-  \item
-    $f$ is \emph{injective} (one-to-one) if $a_1, a_2 \in A$, $f(a_1) = f(a_2) \implies a_1 = a_2$ (each element of $A$ maps to a different element of $B$).
-  \item
-    $f$ is \emph{surjective} (onto) if given $b \in B \; \exists \; a \in A$ such that $f(a) = b$ (every element in $B$ is `hit').
-  \item
-    $f$ is \emph{bijective} if $f$ is both injective and surjective.
-  \end{enumerate}
-\end{definition}
-
-\begin{center}\rule{\linewidth}{0.5pt}\end{center}
+\begin{aside}{Aside}
+  \begin{definition}
+    Suppose $f : A \to B$
+  
+    \begin{enumerate}
+    \def\labelenumi{\roman{enumi}.}
+    \item
+      $f$ is \emph{injective} (one-to-one) if $a_1, a_2 \in A$, $f(a_1) = f(a_2) \implies a_1 = a_2$ (each element of $A$ maps to a different element of $B$).
+    \item
+      $f$ is \emph{surjective} (onto) if given $b \in B \; \exists \; a \in A$ such that $f(a) = b$ (every element in $B$ is `hit').
+    \item
+      $f$ is \emph{bijective} if $f$ is both injective and surjective.
+    \end{enumerate}
+  \end{definition}
+\end{aside} 
 
 \begin{proof}[Proof (1st Isomorphism Theorem).]
 Let $K = \ker \theta$, we need to construct an isomorphism
@@ -426,7 +422,7 @@ This allows us to reorder our elements and helps in proving the following lemma.
       n \underbrace{h \overline{n}}_{\hat{n} h} \overline{h} = n \hat{n} h \overline{h} \in NH
     \end{align*}
 
-    $\text{id} = e = \exists \in NH$
+    $\text{id} = e = ee \in NH$
 
     inverse:
     \begin{align*}

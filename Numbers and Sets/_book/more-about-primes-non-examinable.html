@@ -153,14 +153,14 @@ Erds (1932) gave an elementary proof based on the properties of <span class="mat
 \end{align*}\]</span></p>
 </div>
 <div class="proof">
-<p><span id="unlabeled-div-138" class="proof"><em>Proof</em>. </span>Since <span class="math inline">\(\binom{n}{k + 1} / \binom{n}{k} = \frac{n - k}{k + 1}\)</span>, it is evident that <span class="math inline">\(\binom{n}{k}\)</span> increases for <span class="math inline">\(k &lt; \frac{n}{2}\)</span>, and decreases for <span class="math inline">\(k &gt; \frac{n}{2}\)</span>.
+<p><span id="unlabeled-div-137" class="proof"><em>Proof</em>. </span>Since <span class="math inline">\(\binom{n}{k + 1} / \binom{n}{k} = \frac{n - k}{k + 1}\)</span>, it is evident that <span class="math inline">\(\binom{n}{k}\)</span> increases for <span class="math inline">\(k &lt; \frac{n}{2}\)</span>, and decreases for <span class="math inline">\(k &gt; \frac{n}{2}\)</span>.
 In particular, <span class="math inline">\(\binom{2n}{n} \geq \frac{2^{2n}}{2n + 1}\)</span>, the maximum element is at least as big as the average (<span class="math inline">\(2^{2n}\)</span> is the sum and we have <span class="math inline">\(2n + 1\)</span> elements).</p>
 </div>
 <div class="lemma">
 <p><span id="lem:stwo" class="lemma"><strong>Lemma 6.2  </strong></span>If <span class="math inline">\(p \leq n\)</span> is a prime dividing <span class="math inline">\(\binom{2n}{n}\)</span>, then <span class="math inline">\(p \leq \frac{2n}{3}\)</span>.</p>
 </div>
 <div class="proof">
-<p><span id="unlabeled-div-139" class="proof"><em>Proof</em>. </span>Suppose <span class="math inline">\(\frac{2n}{3} &lt; p \leq n\)</span>, then <span class="math inline">\(p \leq n &lt; \frac{3}{2}p &lt; 2p \leq 2n &lt; 3p\)</span>, so the numerator and denominator of
+<p><span id="unlabeled-div-138" class="proof"><em>Proof</em>. </span>Suppose <span class="math inline">\(\frac{2n}{3} &lt; p \leq n\)</span>, then <span class="math inline">\(p \leq n &lt; \frac{3}{2}p &lt; 2p \leq 2n &lt; 3p\)</span>, so the numerator and denominator of
 <span class="math display">\[\begin{align*}
     \frac{2n (2n - 1) \dots (n + 1)}{n (n - 1) \dots 3 \cdot 2 \cdot 1}
 \end{align*}\]</span>
@@ -170,7 +170,7 @@ are divisible by exactly one copy of <span class="math inline">\(p\)</span>. ⨳
 <p><span id="lem:sthree" class="lemma"><strong>Lemma 6.3  </strong></span>If <span class="math inline">\(p\)</span> is a prime and <span class="math inline">\(p^k \mid \binom{2n}{n}\)</span>, then <span class="math inline">\(p^k \leq 2n\)</span>.</p>
 </div>
 <div class="proof">
-<p><span id="unlabeled-div-140" class="proof"><em>Proof</em>. </span>The greatest power of <span class="math inline">\(p\)</span> dividing <span class="math inline">\(n! = n (n-1) \dots 3 \cdot 2 \cdot 1\)</span>.
+<p><span id="unlabeled-div-139" class="proof"><em>Proof</em>. </span>The greatest power of <span class="math inline">\(p\)</span> dividing <span class="math inline">\(n! = n (n-1) \dots 3 \cdot 2 \cdot 1\)</span>.
 <span class="math inline">\(\left \lfloor \frac{n}{p} \right \rfloor\)</span> is the no. of multiples of <span class="math inline">\(p\)</span> upto <span class="math inline">\(n\)</span>, <span class="math inline">\(\left \lfloor \frac{n}{p^2} \right \rfloor\)</span> is the no. of multiples of <span class="math inline">\(p^2\)</span> upto <span class="math inline">\(n\)</span>.
 So the greatest power is <span class="math inline">\(\left \lfloor \frac{n}{p} \right \rfloor +\left \lfloor \frac{n}{p^2} \right \rfloor +\left \lfloor \frac{n}{p^3} \right \rfloor \dots = \sum_{i \geq 1}\left \lfloor \frac{n}{p^i} \right \rfloor\)</span>.</p>
 </div>
@@ -186,7 +186,7 @@ So the greatest power is <span class="math inline">\(\left \lfloor \frac{n}{p} \
 <p><span id="lem:sfour" class="lemma"><strong>Lemma 6.4  </strong></span>For all <span class="math inline">\(m \in \mathbb{N}, \underset{p \leq m \\ \text{$p$ prime}}{\prod} p \leq 4^m\)</span>.</p>
 </div>
 <div class="proof">
-<p><span id="unlabeled-div-141" class="proof"><em>Proof</em>. </span>By induction on <span class="math inline">\(m\)</span>.
+<p><span id="unlabeled-div-140" class="proof"><em>Proof</em>. </span>By induction on <span class="math inline">\(m\)</span>.
 True for <span class="math inline">\(m = 2\)</span>.
 If <span class="math inline">\(m &gt; 2\)</span> is even, then
 <span class="math display">\[\begin{align*}
@@ -203,7 +203,7 @@ By the inductive hypothesis,
 <p><span id="thm:sfive" class="theorem"><strong>Theorem 6.1  (Bertrand's Postulate) </strong></span>For all <span class="math inline">\(n \in \mathbb{N}\)</span> s.t. <span class="math inline">\(n \geq 2\)</span>, <span class="math inline">\(\exists\)</span> prime <span class="math inline">\(p\)</span> with <span class="math inline">\(n \leq p &lt; 2n\)</span>.</p>
 </div>
 <div class="proof">
-<p><span id="unlabeled-div-142" class="proof"><em>Proof</em>. </span>Clearly the prime factors of <span class="math inline">\(\binom{2n}{n}\)</span> are all <span class="math inline">\(&lt; 2n\)</span>.
+<p><span id="unlabeled-div-141" class="proof"><em>Proof</em>. </span>Clearly the prime factors of <span class="math inline">\(\binom{2n}{n}\)</span> are all <span class="math inline">\(&lt; 2n\)</span>.
 Suppose the theorem fails.
 Then all prime factors of <span class="math inline">\(\binom{2n}{n}\)</span> are in fact <span class="math inline">\(&lt; n\)</span>.<br />
 By Lemma <a href="more-about-primes-non-examinable.html#lem:stwo">6.2</a>, they are all <span class="math inline">\(&lt; \frac{2}{3} n\)</span>.<br />
@@ -232,6 +232,7 @@ So proof holds when <span class="math inline">\(n \geq 2^{11}\)</span>, and also
 </div>
 
 </div>
+
 
 
 

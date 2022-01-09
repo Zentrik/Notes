@@ -148,7 +148,7 @@
 <p>How do you know you have captured all natural numbers? How do you know they are all distinct?</p>
 <p>We shall assume:</p>
 <div class="definition">
-<p><span id="def:unlabeled-div-1" class="definition"><strong>Definition 2.1  (Peano Axioms) </strong></span>The natural numbers, <span class="math inline">\(\mathbb{N}\)</span>, is a set containing a special element ‘<span class="math inline">\(1\)</span>’ with an operation ‘<span class="math inline">\(+1\)</span>’ satisfying</p>
+<p><span id="def:unlabeled-div-14" class="definition"><strong>Definition 2.1  (Peano Axioms) </strong></span>The natural numbers, <span class="math inline">\(\mathbb{N}\)</span>, is a set containing a special element ‘<span class="math inline">\(1\)</span>’ with an operation ‘<span class="math inline">\(+1\)</span>’ satisfying</p>
 <ol style="list-style-type: lower-roman">
 <li><span class="math inline">\(\forall \; n \in \mathbb{N},\ n + 1 \neq 1\)</span>;</li>
 <li><span class="math inline">\(\forall \; m, n \in \mathbb{N},\ \text{ if } m \neq n,\ \text{ then } m + 1 \neq n + 1\)</span></li>
@@ -156,7 +156,7 @@
 </ol>
 </div>
 <p>iii is called the induction axiom.</p>
-<p>i and ii capture the idea that any two natural numbers are distinct; iii captures our intuitive notion that the list<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> is complete (i.e. encompasses all natural numbers).<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></p>
+<p>i and ii capture the idea that any two natural numbers are distinct; iii captures our intuitive notion that the list<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a> is complete (i.e. encompasses all natural numbers).<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a></p>
 <p>Now we can write 2 for <span class="math inline">\(1 + 1\)</span>, 3 for <span class="math inline">\(1 + 1 + 1\)</span>, etc, and we can define an operation ‘<span class="math inline">\(+ k\)</span>’ for any natural number <span class="math inline">\(k\)</span>:</p>
 <p><span class="math inline">\(\hspace{1cm}\)</span> for every natural number <span class="math inline">\(n\)</span>, we know <span class="math inline">\(n + (k + 1) = (n + k) + 1\)</span>;</p>
 <p><span class="math inline">\(\hspace{1cm}\)</span> and so by induction, taking <span class="math inline">\(P(k)\)</span> = “‘<span class="math inline">\(+k\)</span>’ is defined”, proved.</p>
@@ -192,10 +192,10 @@ This is also known as the <em>(weak) principle of induction (WPI)</em>. A more u
 <p><em>Well-ordering Principle (WOP)</em>: If <span class="math inline">\(P(n)\)</span> holds for some <span class="math inline">\(n \in \mathbb{N}\)</span>, then there is a least <span class="math inline">\(n \in \mathbb{N}\)</span> s.t. <span class="math inline">\(P(n)\)</span> holds.
 An alternative phrasing is “every non-empty subset of <span class="math inline">\(\mathbb{N}\)</span> has a minimal element”.</p>
 <div class="theorem">
-<p><span id="thm:unlabeled-div-2" class="theorem"><strong>Theorem 2.1  </strong></span>SPI is equivalent to the WOP.</p>
+<p><span id="thm:unlabeled-div-15" class="theorem"><strong>Theorem 2.1  </strong></span>SPI is equivalent to the WOP.</p>
 </div>
 <div class="proof">
-<p><span id="unlabeled-div-3" class="proof"><em>Proof</em>. </span>To show that WOP implies SPI, we assume 1 and 2 from SPI, and show that <span class="math inline">\(P(n)\)</span> holds <span class="math inline">\(\forall \; n \in \mathbb{N}\)</span> using WOP.</p>
+<p><span id="unlabeled-div-16" class="proof"><em>Proof</em>. </span>To show that WOP implies SPI, we assume 1 and 2 from SPI, and show that <span class="math inline">\(P(n)\)</span> holds <span class="math inline">\(\forall \; n \in \mathbb{N}\)</span> using WOP.</p>
 <p>Suppose, on the contrary, that <span class="math inline">\(P(n)\)</span> is not true <span class="math inline">\(\forall \; n \in \mathbb{N}\)</span>.
 Then <span class="math inline">\(C = \{n \in \mathbb{N}: P(n) \text{ is false}\} \neq \emptyset\)</span>.
 By WOP, <span class="math inline">\(C\)</span> has a minimal element, <span class="math inline">\(m\)</span>.
@@ -241,14 +241,14 @@ You can check all preceding rules apply.</p>
 <h2><span class="header-section-number">2.4</span> Primes</h2>
 <p>Given <span class="math inline">\(a, b \in \mathbb{Z}\)</span> we say “<span class="math inline">\(a\)</span> divides <span class="math inline">\(b\)</span>” if <span class="math inline">\(\exists \; c \in \mathbb{Z}\)</span> s.t. <span class="math inline">\(b = ac\)</span>. We might also say “<span class="math inline">\(a\)</span> is a divisor/ factor of <span class="math inline">\(b\)</span>” or “<span class="math inline">\(b\)</span> is a multiple of <span class="math inline">\(a\)</span>”. We write <span class="math inline">\(a \mid b\)</span> for <span class="math inline">\(a\)</span> divides <span class="math inline">\(b\)</span>.</p>
 <p>For any <span class="math inline">\(b \in \mathbb{Z}\)</span>, <span class="math inline">\(\pm 1\)</span> and <span class="math inline">\(\pm b\)</span> are always factors; all others are called <em>proper</em>.</p>
-<p>A natural number <span class="math inline">\(n \geq 2\)</span> is <em>prime</em> if its only factors are <span class="math inline">\(\pm 1\)</span> and <span class="math inline">\(\pm n\)</span>.<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>
+<p>A natural number <span class="math inline">\(n \geq 2\)</span> is <em>prime</em> if its only factors are <span class="math inline">\(\pm 1\)</span> and <span class="math inline">\(\pm n\)</span>.<a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a>
 If <span class="math inline">\(n \geq 2\)</span> is not prime, then it is <em>composite</em>.</p>
 <div class="proposition">
 <p><span id="prp:two" class="proposition"><strong>Proposition 2.1  </strong></span>Every natural number <span class="math inline">\(n \geq 2\)</span> can be written as a product of primes.</p>
 </div>
 <p><strong>Lecture 4</strong></p>
 <div class="proof">
-<p><span id="unlabeled-div-4" class="proof"><em>Proof</em>. </span>By induction on <span class="math inline">\(n\)</span>. True for <span class="math inline">\(n = 2\)</span>.
+<p><span id="unlabeled-div-17" class="proof"><em>Proof</em>. </span>By induction on <span class="math inline">\(n\)</span>. True for <span class="math inline">\(n = 2\)</span>.
 Let <span class="math inline">\(n &gt; 2\)</span> and suppose that the claim holds up to and including <span class="math inline">\(n - 1\)</span> (SPI). If <span class="math inline">\(n\)</span> is a prime, we are done. If <span class="math inline">\(n\)</span> is composite, then <span class="math inline">\(n = a b\)</span> for some <span class="math inline">\(1 &lt; a, b &lt; n\)</span>.
 By the induction hypothesis, have <span class="math inline">\(a = p_1 \dots p_k\)</span>, <span class="math inline">\(b = q_1 \dots q_l\)</span> for some primes <span class="math inline">\(p_1 \dots p_k, q_1 \dots q_l\)</span>.
 Hence <span class="math inline">\(n = ab = p_1 \dots p_k q_1 \dots q_l\)</span> is a product of primes.</p>
@@ -257,7 +257,7 @@ Hence <span class="math inline">\(n = ab = p_1 \dots p_k q_1 \dots q_l\)</span> 
 <p><span id="thm:three" class="theorem"><strong>Theorem 2.2  </strong></span>There are infinitely many primes.</p>
 </div>
 <div class="proof">
-<p><span id="unlabeled-div-5" class="proof"><em>Proof</em> (Euclid 300 BC). </span>Suppose there are finitely many primes, say <span class="math inline">\(p_1, \dots, p_k\)</span>. Let <span class="math inline">\(N = p_1 \dots p_k + 1\)</span>.
+<p><span id="unlabeled-div-18" class="proof"><em>Proof</em> (Euclid 300 BC). </span>Suppose there are finitely many primes, say <span class="math inline">\(p_1, \dots, p_k\)</span>. Let <span class="math inline">\(N = p_1 \dots p_k + 1\)</span>.
 Then <span class="math inline">\(p_1 \nmid N\)</span>, else <span class="math inline">\(p_1 \mid (N - p_1 \dots p_k) = 1\)</span>.
 Clearly <span class="math inline">\(p_1 \mid 1\)</span> is false.
 Likewise, none of <span class="math inline">\(p_2, p_3 \dots, p_k\)</span> divide <span class="math inline">\(N\)</span>, contradicting the fact that <span class="math inline">\(N\)</span> can be written as a product of primes.</p>
@@ -289,10 +289,10 @@ But if <span class="math inline">\(a\)</span> and <span class="math inline">\(b\
 Therefore, we will need to show that <span class="math inline">\(\operatorname{hcf}(a, b)\)</span> always exists.</p>
 </div>
 <div class="proposition">
-<p><span id="prp:unlabeled-div-6" class="proposition"><strong>Proposition 2.3  (Division Algorithm) </strong></span>Let <span class="math inline">\(n, k \in \mathbb{N}\)</span>. Then we can write <span class="math inline">\(n = qk + r\)</span>, where <span class="math inline">\(q\)</span> and <span class="math inline">\(r\)</span> are integers with <span class="math inline">\(0 \leq r \leq k - 1\)</span>.</p>
+<p><span id="prp:unlabeled-div-19" class="proposition"><strong>Proposition 2.3  (Division Algorithm) </strong></span>Let <span class="math inline">\(n, k \in \mathbb{N}\)</span>. Then we can write <span class="math inline">\(n = qk + r\)</span>, where <span class="math inline">\(q\)</span> and <span class="math inline">\(r\)</span> are integers with <span class="math inline">\(0 \leq r \leq k - 1\)</span>.</p>
 </div>
 <div class="proof">
-<p><span id="unlabeled-div-7" class="proof"><em>Proof</em>. </span>By induction on <span class="math inline">\(n\)</span>. True for <span class="math inline">\(n = 1\)</span>.</p>
+<p><span id="unlabeled-div-20" class="proof"><em>Proof</em>. </span>By induction on <span class="math inline">\(n\)</span>. True for <span class="math inline">\(n = 1\)</span>.</p>
 <p>Suppose <span class="math inline">\(n - 1 = q k + r\)</span> for some <span class="math inline">\(q, r \in \mathbb{Z}\)</span>, <span class="math inline">\(0 \leq r \leq k - 1\)</span>.</p>
 <p>If <span class="math inline">\(r &lt; k - 1\)</span> then <span class="math inline">\(n = (n - 1) + 1 = qk + (r + 1)\)</span>.</p>
 <p>If <span class="math inline">\(r = k - 1\)</span> then <span class="math inline">\(n = (n - 1) + 1 = qk + (k - 1) + 1 = (q + 1)k\)</span>.</p>
@@ -315,10 +315,10 @@ Therefore, we will need to show that <span class="math inline">\(\operatorname{h
 \end{array}\]</span>
 <p>Note that the algorithm terminates in <span class="math inline">\(\leq b\)</span> steps, since <span class="math inline">\(b &gt; r_1 &gt; r_2 &gt; \dots \geq 0\)</span>.</p>
 <div class="theorem">
-<p><span id="thm:unlabeled-div-8" class="theorem"><strong>Theorem 2.3  </strong></span>The output of Euclid’s algorithm with input <span class="math inline">\(a, b\)</span> is <span class="math inline">\(\operatorname{hcf}(a, b)\)</span>.</p>
+<p><span id="thm:unlabeled-div-21" class="theorem"><strong>Theorem 2.3  </strong></span>The output of Euclid’s algorithm with input <span class="math inline">\(a, b\)</span> is <span class="math inline">\(\operatorname{hcf}(a, b)\)</span>.</p>
 </div>
 <div class="proof">
-<p><span id="unlabeled-div-9" class="proof"><em>Proof</em>. </span> </p>
+<p><span id="unlabeled-div-22" class="proof"><em>Proof</em>. </span> </p>
 <ol style="list-style-type: lower-roman">
 <li><p><span class="math display">\[\begin{align*}
  \text{We can see } &amp;r_n \mid r_{n - 1} \text{ (as } r_{n + 1} = 0 \text{  at STEP } n + 1 \text{)} \\
@@ -337,7 +337,7 @@ Therefore, <span class="math inline">\(r_n = \operatorname{hcf}(a, b)\)</span>.<
 </div>
 <p><strong>Lecture 5</strong></p>
 <div class="example">
-<p><span id="exm:unlabeled-div-10" class="example"><strong>Example 2.1  </strong></span>To obtain <span class="math inline">\(\operatorname{hcf}(87, 52)\)</span> we run Euclid:
+<p><span id="exm:unlabeled-div-23" class="example"><strong>Example 2.1  </strong></span>To obtain <span class="math inline">\(\operatorname{hcf}(87, 52)\)</span> we run Euclid:
 <span class="math display">\[\begin{align*}
     87 &amp;= 1(52) + 35 \\
     52 &amp;= 1(35) + 17 \\
@@ -360,24 +360,24 @@ We can reverse the algorithm:
 “We can write <span class="math inline">\(\operatorname{hcf}(a, b)\)</span> as a linear combination of <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>.”</p>
 </div>
 <div class="proof">
-<p><span id="unlabeled-div-11" class="proof"><em>Proof</em> (1). </span>Run Euclid’s algorithm with input <span class="math inline">\(a\)</span>, <span class="math inline">\(b\)</span>, to obtain an output <span class="math inline">\(r_n\)</span>. At STEP <span class="math inline">\(n\)</span>, we have <span class="math inline">\(r_n = xr_{n-1} + yr_{n-2}\)</span> for some <span class="math inline">\(x, y \in \mathbb{Z}\)</span>.
+<p><span id="unlabeled-div-24" class="proof"><em>Proof</em> (1). </span>Run Euclid’s algorithm with input <span class="math inline">\(a\)</span>, <span class="math inline">\(b\)</span>, to obtain an output <span class="math inline">\(r_n\)</span>. At STEP <span class="math inline">\(n\)</span>, we have <span class="math inline">\(r_n = xr_{n-1} + yr_{n-2}\)</span> for some <span class="math inline">\(x, y \in \mathbb{Z}\)</span>.
 But <span class="math inline">\(r_{n-1}\)</span> is expressible as <span class="math inline">\(xr_{n-2} + yr_{n-3}\)</span> for some <span class="math inline">\(x, y \in \mathbb{Z}\)</span>, from STEP <span class="math inline">\(n-1\)</span>, whence <span class="math inline">\(r_n = xr_{n-2} + y r_{n-3}\)</span> for some <span class="math inline">\(x, y \in \mathbb{Z}\)</span>.
 Continuing by induction, we have that <span class="math inline">\(\forall \; i = 2, \dots, n-1\)</span>, <span class="math inline">\(r_n = xr_i + yr_{i - 1}\)</span> for some <span class="math inline">\(x, y \in \mathbb{Z}\)</span>.
 Thus <span class="math inline">\(r_n = xa + yb\)</span> for some <span class="math inline">\(x, y \in \mathbb{Z}\)</span>, from STEP 1 and 2.</p>
 </div>
 <div class="remark">
-<p><span id="unlabeled-div-12" class="remark"><em>Remark</em>. </span>Euclid’s algorithm not only proves that <span class="math inline">\(x, y \in \mathbb{Z}\)</span>, but it gives us a quick way to find them.</p>
+<p><span id="unlabeled-div-25" class="remark"><em>Remark</em>. </span>Euclid’s algorithm not only proves that <span class="math inline">\(x, y \in \mathbb{Z}\)</span>, but it gives us a quick way to find them.</p>
 </div>
 <div class="proof">
-<p><span id="unlabeled-div-13" class="proof"><em>Proof</em> (2). </span>Let <span class="math inline">\(h\)</span> be the least positive combination of <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>, i.e. the least positive integer of the form <span class="math inline">\(xa + yb\)</span> for some <span class="math inline">\(x, y \in \mathbb{Z}\)</span>.</p>
+<p><span id="unlabeled-div-26" class="proof"><em>Proof</em> (2). </span>Let <span class="math inline">\(h\)</span> be the least positive combination of <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>, i.e. the least positive integer of the form <span class="math inline">\(xa + yb\)</span> for some <span class="math inline">\(x, y \in \mathbb{Z}\)</span>.</p>
 <p>We shall show that <span class="math inline">\(h = \operatorname{hcf}(a, b)\)</span>.</p>
 <p>To see (ii) from <a href="elementary-number-theory.html#def:hcf">2.2</a>, observe that a given <span class="math inline">\(d\)</span> s.t. <span class="math inline">\(d \mid a\)</span> and <span class="math inline">\(d \mid b\)</span>, then we have <span class="math inline">\(d = ax + by \; \forall \; x, y \in \mathbb{Z}\)</span>, so in particular <span class="math inline">\(d \mid h\)</span>.</p>
-<p>To verify (i), suppose that <span class="math inline">\(h \nmid a\)</span>. Then we can write <span class="math inline">\(a = qh + r\)</span> for some <span class="math inline">\(q, r \in \mathbb{Z}\)</span> with <span class="math inline">\(0 &lt; r &lt; h\)</span><a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>.
+<p>To verify (i), suppose that <span class="math inline">\(h \nmid a\)</span>. Then we can write <span class="math inline">\(a = qh + r\)</span> for some <span class="math inline">\(q, r \in \mathbb{Z}\)</span> with <span class="math inline">\(0 &lt; r &lt; h\)</span><a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a>.
 Hence <span class="math inline">\(r = a - qh = a - q(xa + yb)\)</span>, so <span class="math inline">\(r\)</span> is also a positive linear combination of <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>, and strictly smaller than <span class="math inline">\(h\)</span>, contradicting the definition of <span class="math inline">\(h\)</span>.
 Therefore, <span class="math inline">\(h \mid a\)</span> and by the same argument, <span class="math inline">\(h \mid b\)</span>.</p>
 </div>
 <div class="remark">
-<p><span id="unlabeled-div-14" class="remark"><em>Remark</em>. </span>Proof (2) tells us that <span class="math inline">\(\operatorname{hcf}(a,b)\)</span> exists and is a linear combination of <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>, <em>but</em> gives no way to find <span class="math inline">\(\operatorname{hcf}(a,b)\)</span> or the coefficients <span class="math inline">\(x, y\)</span>.</p>
+<p><span id="unlabeled-div-27" class="remark"><em>Remark</em>. </span>Proof (2) tells us that <span class="math inline">\(\operatorname{hcf}(a,b)\)</span> exists and is a linear combination of <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>, <em>but</em> gives no way to find <span class="math inline">\(\operatorname{hcf}(a,b)\)</span> or the coefficients <span class="math inline">\(x, y\)</span>.</p>
 </div>
 <p>Is there an solution in integers <span class="math inline">\(x, y\)</span> to <span class="math inline">\(320x + 72y = 33\)</span>.
 No, as LHS is always even but the RHS is odd.</p>
@@ -387,7 +387,7 @@ Yes, as we had <span class="math inline">\(x&#39;, y&#39; \in \mathbb{Z}\)</span
 <p><span id="cor:bez" class="corollary"><strong>Corollary 2.1  (Bezout's Theorem) </strong></span>Let <span class="math inline">\(a, b \in \mathbb{N}\)</span>. Then the equation <span class="math inline">\(ax + by = c\)</span> has a solution in integers <span class="math inline">\(x, y\)</span> iff <span class="math inline">\(\operatorname{hcf}(a, b) \mid c\)</span>.</p>
 </div>
 <div class="proof">
-<p><span id="unlabeled-div-15" class="proof"><em>Proof</em>. </span>Let <span class="math inline">\(h = \operatorname{hcf}(a, b)\)</span>.</p>
+<p><span id="unlabeled-div-28" class="proof"><em>Proof</em>. </span>Let <span class="math inline">\(h = \operatorname{hcf}(a, b)\)</span>.</p>
 <p>Suppose there are <span class="math inline">\(x, y \in \mathbb{Z}\)</span> s.t. <span class="math inline">\(ax + by = c\)</span>. Then since <span class="math inline">\(h \mid a\)</span> and <span class="math inline">\(h \mid b\)</span>, so <span class="math inline">\(h \mid c\)</span>.</p>
 <p>Conversely, suppose <span class="math inline">\(h \mid c\)</span>.
 But Theorem <a href="elementary-number-theory.html#thm:seven">2.4</a> implies that there exist <span class="math inline">\(x, y \in \mathbb{Z}\)</span> s.t. <span class="math inline">\(h = ax + by\)</span>.
@@ -395,13 +395,13 @@ But then <span class="math inline">\(c = \frac{c}{h} h = \frac{c}{h}(ax + by) = 
 </div>
 <p>We will now give a proof of proposition <a href="elementary-number-theory.html#prp:four">2.2</a>.</p>
 <div class="proof">
-<p><span id="unlabeled-div-16" class="proof"><em>Proof</em>. </span>Suppose <span class="math inline">\(p \mid ab\)</span> but <span class="math inline">\(p \nmid a\)</span>. We will show <span class="math inline">\(p \mid b\)</span>.
+<p><span id="unlabeled-div-29" class="proof"><em>Proof</em>. </span>Suppose <span class="math inline">\(p \mid ab\)</span> but <span class="math inline">\(p \nmid a\)</span>. We will show <span class="math inline">\(p \mid b\)</span>.
 Then since <span class="math inline">\(p\)</span> is prime, <span class="math inline">\(\operatorname{hcf}(a, p) = 1\)</span> (as <span class="math inline">\(p \nmid a\)</span>).
 Thus, by Theorem <a href="elementary-number-theory.html#thm:seven">2.4</a>, <span class="math inline">\(\exists \; x, y \in \mathbb{Z}\)</span> s.t. <span class="math inline">\(xp + ya = 1\)</span>.</p>
 <p>It follows that <span class="math inline">\(xpb + yab = b\)</span>, <span class="math inline">\(p \mid ab\)</span> so <span class="math inline">\(p \mid b\)</span>.</p>
 </div>
 <div class="remark">
-<p><span id="unlabeled-div-17" class="remark"><em>Remark</em>. </span> </p>
+<p><span id="unlabeled-div-30" class="remark"><em>Remark</em>. </span> </p>
 <ol style="list-style-type: decimal">
 <li><p>Similarly, <span class="math inline">\(p \mid a_1 a_2 \dots a_n \implies p \mid a_i\)</span> for some <span class="math inline">\(i = 1, \dots, n\)</span>.
 Indeed, Proposition <a href="elementary-number-theory.html#prp:four">2.2</a> tells us that if <span class="math inline">\(p \mid a_1 a_2 \dots a_n\)</span>, then <span class="math inline">\(p \mid a_1\)</span> or <span class="math inline">\(p \mid a_2 \dots a_n\)</span>.
@@ -413,7 +413,7 @@ Proceed by induction on the number of terms in the product.</p></li>
 <p><span id="thm:fta" class="theorem"><strong>Theorem 2.5  (Fundamental Theorem of Arithmetic) </strong></span>Every natural number <span class="math inline">\(n \geq 2\)</span> is expressible as a product of primes, uniquely up to reordering.</p>
 </div>
 <div class="proof">
-<p><span id="unlabeled-div-18" class="proof"><em>Proof</em>. </span>Existence of factorisation follows from Proposition <a href="elementary-number-theory.html#prp:two">2.1</a>.
+<p><span id="unlabeled-div-31" class="proof"><em>Proof</em>. </span>Existence of factorisation follows from Proposition <a href="elementary-number-theory.html#prp:two">2.1</a>.
 To see uniqueness, use induction on <span class="math inline">\(n\)</span>.
 True for <span class="math inline">\(n = 2\)</span>.</p>
 <p>Given <span class="math inline">\(n \geq 2\)</span>, suppose <span class="math inline">\(n = p_1 p_2 \dots p_k = q_1 q_2 \dots q_l\)</span>, where <span class="math inline">\(p_i, q_j\)</span> are all prime.
@@ -425,7 +425,7 @@ So <span class="math inline">\(\frac{n}{p_1} = p_2 \dots p_k = q_2 \dots q_l &lt
 <p>By the induction hypothesis, <span class="math inline">\(k = l\)</span>, and, after reordering, <span class="math inline">\(p_2 = q_2, \dots, p_k = q_k\)</span>.</p>
 </div>
 <div class="remark">
-<p><span id="unlabeled-div-19" class="remark"><em>Remark</em>. </span>There are “arithmetical systems” (permitting addition, subtraction, multiplication) where factorisation is <em>not</em> unique.<br />
+<p><span id="unlabeled-div-32" class="remark"><em>Remark</em>. </span>There are “arithmetical systems” (permitting addition, subtraction, multiplication) where factorisation is <em>not</em> unique.<br />
 For example, consider <span class="math inline">\(\mathbb{Z}[\sqrt{-3}]\)</span>, meaning all complex numbers of the form <span class="math inline">\(x + y \sqrt{-3} = x + y \sqrt{3}i\)</span>, where <span class="math inline">\(x, y \in \mathbb{Z}\)</span>.
 We can add and multiply two elements of <span class="math inline">\(\mathbb{Z}[\sqrt{-3}]\)</span> to get another another element of <span class="math inline">\(\mathbb{Z}[ \sqrt{-3}]\)</span>.<br />
 E.g. <span class="math inline">\((1 + \sqrt{-3}) \cdot (1 - \sqrt{-3}) = 1 + \sqrt{-3} - \sqrt{-3} + 3 = 4\)</span>.<br />
@@ -456,7 +456,7 @@ Since <span class="math inline">\(\min \{ a_i, b_i \} + \max \{ a_i, b_i \} = a_
 <li><p>Another proof of Theorem <a href="elementary-number-theory.html#thm:three">2.2</a>, due to Erdos (1930):</p></li>
 </ol>
 <div class="proof">
-<p><span id="unlabeled-div-20" class="proof"><em>Proof</em>. </span>let <span class="math inline">\(p_1, \dots, p_k\)</span> be primes.
+<p><span id="unlabeled-div-33" class="proof"><em>Proof</em>. </span>let <span class="math inline">\(p_1, \dots, p_k\)</span> be primes.
 Any number which is a product of just these primes is of the form <span class="math inline">\(p_1^{j_1} p_2^{j_2}, \dots p_k^{j_k} = m^2 p_1^{i_1} p_2^{i_2} \dots p_k^{i_k} (*)\)</span> where <span class="math inline">\(i_x = 0, 1\)</span>.<br />
 Let <span class="math inline">\(M \in \mathbb{N}\)</span>.
 If a number <span class="math inline">\(\leq M\)</span> is of the form <span class="math inline">\((*)\)</span>, then <span class="math inline">\(m^2 \leq M\)</span>, i.e. <span class="math inline">\(m \leq \sqrt{M}\)</span>.
@@ -488,7 +488,7 @@ knitr::include_graphics("figures/02-Zn.png")
 Similarly, <span class="math inline">\(n \mid (a - a&#39;) \cdot b + (b - b&#39;) \cdot a = ab - a&#39;b&#39;\)</span> so <span class="math inline">\(ab \equiv a&#39;b&#39; \mod n\)</span>.<br />
 So we can do <em>arithmetic</em> modulo n.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-21" class="example"><strong>Example 2.2  </strong></span>Does <span class="math inline">\(2a^2 + 3b^3 = 1\)</span> have a solution with <span class="math inline">\(a, b \in \mathbb{Z}\)</span>?</p>
+<p><span id="exm:unlabeled-div-34" class="example"><strong>Example 2.2  </strong></span>Does <span class="math inline">\(2a^2 + 3b^3 = 1\)</span> have a solution with <span class="math inline">\(a, b \in \mathbb{Z}\)</span>?</p>
 </div>
 <p><em>Answer</em>
 If there is a solution, then <span class="math inline">\(2a^2 \equiv \mod 3\)</span>, but <span class="math inline">\(2 \cdot 0^2 \equiv 0\)</span>, <span class="math inline">\(2 \cdot 1 ^2 \equiv 2\)</span>, <span class="math inline">\(2 \cdot 2^2 \equiv 2 \mod 3\)</span>.</p>
@@ -496,7 +496,7 @@ If there is a solution, then <span class="math inline">\(2a^2 \equiv \mod 3\)</s
 <div id="solving-congruences" class="section level2" number="2.9">
 <h2><span class="header-section-number">2.9</span> Solving congruences</h2>
 <div class="example">
-<p><span id="exm:unlabeled-div-22" class="example"><strong>Example 2.3  </strong></span>Solve <span class="math inline">\(7x \equiv 2 \mod 10\)</span>.
+<p><span id="exm:unlabeled-div-35" class="example"><strong>Example 2.3  </strong></span>Solve <span class="math inline">\(7x \equiv 2 \mod 10\)</span>.
 We note <span class="math inline">\(3 \cdot 7 \equiv 1 \mod 10\)</span>, so <span class="math inline">\(3 \cdot 7 x \equiv 3 \cdot 2 \mod 10\)</span> so <span class="math inline">\(x \equiv 6 \mod 10\)</span>.</p>
 </div>
 <p>Given <span class="math inline">\(a, b \in \mathbb{Z}\)</span>, we say that b is an <em>inverse of a modulo <span class="math inline">\(n\)</span></em> if <span class="math inline">\(a b \equiv 1 \mod n\)</span>.
@@ -504,7 +504,7 @@ We say <span class="math inline">\(a\)</span> is <em>invertible modulo <span cla
 E.g. in <span class="math inline">\(\mathbb{Z}_{10}\)</span>, the inverse of <span class="math inline">\(3\)</span> is <span class="math inline">\(7\)</span>, and both <span class="math inline">\(3\)</span> and <span class="math inline">\(7\)</span> are units modulo <span class="math inline">\(10\)</span>.<br />
 But <span class="math inline">\(4\)</span> is <em>not</em> a unit modulo <span class="math inline">\(10\)</span> since <span class="math inline">\(4x \not\equiv 1 \mod 10 \; \forall \; x \in \mathbb{Z}\)</span>.</p>
 <div class="remark">
-<p><span id="unlabeled-div-23" class="remark"><em>Remark</em>. </span>If <span class="math inline">\(a\)</span> is a unit modulo <span class="math inline">\(n\)</span> …</p>
+<p><span id="unlabeled-div-36" class="remark"><em>Remark</em>. </span>If <span class="math inline">\(a\)</span> is a unit modulo <span class="math inline">\(n\)</span> …</p>
 <ol style="list-style-type: lower-roman">
 <li><p>… its inverse is unique (mod <span class="math inline">\(n\)</span>). Suppose <span class="math inline">\(\exists \; b, b&#39;\)</span> s.t. <span class="math inline">\(ab \equiv ab&#39; \equiv 1 \mod n\)</span>, then <span class="math inline">\(b \equiv bab \equiv bab&#39; \equiv b&#39; \mod n\)</span>.</p></li>
 <li><p>… we can write <span class="math inline">\(a^{-1}\)</span> for its inverse.</p></li>
@@ -518,7 +518,7 @@ This is <em>not</em> true in general: <span class="math inline">\(4 \cdot 3 \equ
 Then every <span class="math inline">\(a \not\equiv 0 \mod p\)</span> is a unit modulo <span class="math inline">\(p\)</span>.</p>
 </div>
 <div class="proof">
-<p><span id="unlabeled-div-24" class="proof"><em>Proof</em>. </span>Have <span class="math inline">\((a, p) = 1\)</span><a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a>, so <span class="math inline">\(\exists \; x, y \in \mathbb{Z}\)</span> s.t. <span class="math inline">\(ax + py = 1\)</span>.
+<p><span id="unlabeled-div-37" class="proof"><em>Proof</em>. </span>Have <span class="math inline">\((a, p) = 1\)</span><a href="#fn9" class="footnote-ref" id="fnref9"><sup>9</sup></a>, so <span class="math inline">\(\exists \; x, y \in \mathbb{Z}\)</span> s.t. <span class="math inline">\(ax + py = 1\)</span>.
 Hence <span class="math inline">\(ax = 1 - py\)</span>, so <span class="math inline">\(ax \equiv 1 \mod p\)</span> for some <span class="math inline">\(x \in \mathbb{Z}\)</span>.</p>
 </div>
 <div class="proposition">
@@ -526,14 +526,14 @@ Hence <span class="math inline">\(ax = 1 - py\)</span>, so <span class="math inl
 Then <span class="math inline">\(a\)</span> is a unit modulo <span class="math inline">\(n\)</span> iff <span class="math inline">\((a, n) = 1\)</span></p>
 </div>
 <div class="proof">
-<p><span id="unlabeled-div-25" class="proof"><em>Proof</em>. </span><span class="math display">\[\begin{align*}
+<p><span id="unlabeled-div-38" class="proof"><em>Proof</em>. </span><span class="math display">\[\begin{align*}
     (a, n) = 1 &amp;\iff ax + ny = 1 \text{ for some } x,y \in \mathbb{Z} \\
     &amp;\iff ax = 1 - ny \text{ for some } x,y \in \mathbb{Z} \\
     &amp;\iff ax \equiv 1 \mod n \text{ for some } x \in \mathbb{Z}.
 \end{align*}\]</span></p>
 </div>
 <div class="corollary">
-<p><span id="cor:unlabeled-div-26" class="corollary"><strong>Corollary 2.2  </strong></span>If <span class="math inline">\((a, n) = 1\)</span>, then the congruence <span class="math inline">\(ax \equiv b \mod n\)</span> has a unique solution (mod <span class="math inline">\(n\)</span>).
+<p><span id="cor:unlabeled-div-39" class="corollary"><strong>Corollary 2.2  </strong></span>If <span class="math inline">\((a, n) = 1\)</span>, then the congruence <span class="math inline">\(ax \equiv b \mod n\)</span> has a unique solution (mod <span class="math inline">\(n\)</span>).
 In particular, if <span class="math inline">\((a, n) = 1\)</span>, then there is a unique inverse of <span class="math inline">\(a\)</span>, <span class="math inline">\(a^{-1}\)</span>, modulo <span class="math inline">\(n\)</span>.
 Both follow from previous remark.</p>
 </div>
@@ -549,7 +549,7 @@ Conversely, if <span class="math inline">\(d \mid b\)</span>, then <span class="
 Note <span class="math inline">\((a&#39;, b&#39;) = 1\)</span>.<br />
 So if <span class="math inline">\((a, n) = d &gt; 1\)</span>, the congruence <span class="math inline">\(ax \equiv b \mod n\)</span> has no solutions unless <span class="math inline">\(d \mid b\)</span>, in which case the solutions are exactly those of <span class="math inline">\(\frac{a}{d}x \equiv \frac{b}{d} \mod \frac{n}{d}\)</span>.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-27" class="example"><strong>Example 2.4  </strong></span><span class="math inline">\(7x \equiv 4 \pod {30}\)</span>.<br />
+<p><span id="exm:unlabeled-div-40" class="example"><strong>Example 2.4  </strong></span><span class="math inline">\(7x \equiv 4 \pod {30}\)</span>.<br />
 We have <span class="math inline">\((7, 30) = 1\)</span>, so by Euclid <span class="math inline">\(13 \cdot 7 - 3 \cdot 30 = 1\)</span>.
 Hence <span class="math inline">\(13 \cdot 7 \equiv 1 \mod 30\)</span>, whence <span class="math inline">\(x \equiv 4 \cdot 13 \mod 30 = 22 \mod 30\)</span>.</p>
 <p>Suppose <span class="math inline">\(x&#39;\)</span> is also a solution, that is <span class="math inline">\(7x&#39; \equiv 4 \mod 30\)</span>.
@@ -562,7 +562,7 @@ Then <span class="math inline">\(7x \equiv 7x&#39; \mod 30\)</span>, so <span cl
 \end{align*}\]</span></p>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-28" class="example"><strong>Example 2.5  </strong></span>Solve <span class="math inline">\(10x \equiv 12 \mod 34\)</span>.<br />
+<p><span id="exm:unlabeled-div-41" class="example"><strong>Example 2.5  </strong></span>Solve <span class="math inline">\(10x \equiv 12 \mod 34\)</span>.<br />
 <span class="math inline">\(10x \equiv 12 \mod 34 \iff 10x = 12 + 34y\)</span>
 <span class="math display">\[\begin{align*}
     10x \equiv 12 \mod 34 &amp;\iff 10x = 12 + 34y \text{ for some } y \in \mathbb{Z} \\
@@ -598,7 +598,7 @@ Then there is a unique solution modulo <span class="math inline">\(mn\)</span> t
 That is, there is a solution <span class="math inline">\(x\)</span> to <span class="math inline">\(x \equiv a \mod m\)</span> and <span class="math inline">\(x \equiv b \mod n\)</span>, and y is a solution iff <span class="math inline">\(x \equiv y \mod mn\)</span>.</p>
 </div>
 <div class="proof">
-<p><span id="unlabeled-div-29" class="proof"><em>Proof</em>. </span>Existence:
+<p><span id="unlabeled-div-42" class="proof"><em>Proof</em>. </span>Existence:
 Since <span class="math inline">\((m, n) = 1,\; \exists \; s, t \in \mathbb{Z}\)</span> with <span class="math inline">\(sm + tn = 1\)</span>.<br />
 Not <span class="math inline">\(sm \equiv 1 \mod n\)</span> as <span class="math inline">\(tn \equiv 0 \mod n\)</span> and <span class="math inline">\(tn \equiv 1 \mod m\)</span> as <span class="math inline">\(sm \equiv 0 \mod m\)</span>.<br />
 Hence <span class="math inline">\(x = a(tn) + b(sm) \equiv a \mod m \equiv b \mod n\)</span>.</p>
@@ -613,7 +613,7 @@ Suppose <span class="math inline">\(y\)</span> is also a solution, that is, <spa
 \end{align*}\]</span></p>
 </div>
 <div class="remark">
-<p><span id="unlabeled-div-30" class="remark"><em>Remark</em>. </span>Theorem <a href="elementary-number-theory.html#thm:twelve">2.6</a> can be extended by induction, to more than two moduli: if <span class="math inline">\(m_1, m_2, \dots, m_k\)</span> are pairwise coprime, then <span class="math inline">\(\forall \; a_1, a_2, \dots, a_k \in \mathbb{Z},\ \exists\; x \in \mathbb{Z}\)</span> s.t.<span class="math display">\[\begin{align*}
+<p><span id="unlabeled-div-43" class="remark"><em>Remark</em>. </span>Theorem <a href="elementary-number-theory.html#thm:twelve">2.6</a> can be extended by induction, to more than two moduli: if <span class="math inline">\(m_1, m_2, \dots, m_k\)</span> are pairwise coprime, then <span class="math inline">\(\forall \; a_1, a_2, \dots, a_k \in \mathbb{Z},\ \exists\; x \in \mathbb{Z}\)</span> s.t.<span class="math display">\[\begin{align*}
     x &amp;\equiv a_1 \mod m_1 \\
     x &amp;\equiv a_2 \mod m_2 \\
     &amp;\;\; \vdots \\
@@ -627,7 +627,7 @@ E.g. when <span class="math inline">\(p\)</span> is prime, <span class="math inl
 When <span class="math inline">\(p, q\)</span> are distinct primes, <span class="math inline">\(\phi(pq) = pq - p - q + 1\)</span> (we subtracted <span class="math inline">\(pq\)</span> twice).</p>
 <p>How do powers of an integer behave modulo <span class="math inline">\(p\)</span>?</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-31" class="example"><strong>Example 2.6  </strong></span>Modulo <span class="math inline">\(7\)</span>, <span class="math inline">\(2^1 \equiv 2\)</span>, <span class="math inline">\(2^2 \equiv 4\)</span>, <span class="math inline">\(2^3 \equiv 1\)</span>, <span class="math inline">\(2^4 \equiv 2\)</span> then repeat <span class="math inline">\(4, 1, 2, 4, 1, 2, \dots\)</span>.<br />
+<p><span id="exm:unlabeled-div-44" class="example"><strong>Example 2.6  </strong></span>Modulo <span class="math inline">\(7\)</span>, <span class="math inline">\(2^1 \equiv 2\)</span>, <span class="math inline">\(2^2 \equiv 4\)</span>, <span class="math inline">\(2^3 \equiv 1\)</span>, <span class="math inline">\(2^4 \equiv 2\)</span> then repeat <span class="math inline">\(4, 1, 2, 4, 1, 2, \dots\)</span>.<br />
 Modulo 11, <span class="math inline">\(2^1 \equiv 2\)</span>, <span class="math inline">\(2^2 \equiv 4\)</span>, <span class="math inline">\(2^3 \equiv 8\)</span>, <span class="math inline">\(2^4 \equiv 5\)</span>, <span class="math inline">\(2^5 \equiv 10\)</span>, <span class="math inline">\(2^6 \equiv 9\)</span>, <span class="math inline">\(2^7 \equiv 7\)</span>, <span class="math inline">\(2^8 \equiv 3\)</span>, <span class="math inline">\(2^9 \equiv 6\)</span>, <span class="math inline">\(2^{10} \equiv 1\)</span> then repeat.</p>
 </div>
 <div class="theorem">
@@ -639,7 +639,7 @@ Equivalently, <span class="math inline">\(a^{p-1} \equiv 1 \mod p\)</span> for a
 </div>
 <p>We are going to be a bit general in this proof so we can take the same arguments and apply to composite <span class="math inline">\(p\)</span>.</p>
 <div class="proof">
-<p><span id="unlabeled-div-32" class="proof"><em>Proof</em>. </span>If <span class="math inline">\(a \neq 0 \mod p\)</span>, then <span class="math inline">\(a\)</span> is a unit mod <span class="math inline">\(p\)</span>.<br />
+<p><span id="unlabeled-div-45" class="proof"><em>Proof</em>. </span>If <span class="math inline">\(a \neq 0 \mod p\)</span>, then <span class="math inline">\(a\)</span> is a unit mod <span class="math inline">\(p\)</span>.<br />
 Thus <span class="math inline">\(ax \equiv ay \mod p\)</span> iff <span class="math inline">\(x \equiv y \mod p\)</span> (multiply by a to go from right to left, and by <span class="math inline">\(a^{-1}\)</span> for converse).
 Hence the numbers <span class="math inline">\(a, 2a, 3a, \dots, (p - 1)a\)</span> are pairwise incongruent (distinct) modulo <span class="math inline">\(p\)</span> and <span class="math inline">\(\not\equiv 0 \mod p\)</span>, so they are <span class="math inline">\(1, 2, 3, \dots p - 1\)</span> in some order.</p>
 <p>Hence
@@ -654,7 +654,7 @@ But <span class="math inline">\((p - 1)!\)</span> is a unit mod <span class="mat
 Then <span class="math inline">\(a^{\phi(m)} \equiv 1 \mod m\)</span> .</p>
 </div>
 <div class="proof">
-<p><span id="unlabeled-div-33" class="proof"><em>Proof</em>. </span>Let <span class="math inline">\(U = \{ x \in \mathbb{N} : 0 &lt; x &lt; m : (x, m) = 1 \}\)</span>, be the set of units modulo <span class="math inline">\(m\)</span>.
+<p><span id="unlabeled-div-46" class="proof"><em>Proof</em>. </span>Let <span class="math inline">\(U = \{ x \in \mathbb{N} : 0 &lt; x &lt; m : (x, m) = 1 \}\)</span>, be the set of units modulo <span class="math inline">\(m\)</span>.
 Label the elements <span class="math inline">\(u_1, u_2, \dots u_{\phi(m)}\)</span>.
 Then <span class="math inline">\(a u_1, a u_2, \dots, a u_{\phi(m)}\)</span> are all distinct and invertible modulo <span class="math inline">\(m\)</span> (since <span class="math inline">\(a\)</span> and <span class="math inline">\(u_i\)</span> are units), and hence they are <span class="math inline">\(u_1, u_2, \dots u_{\phi(m)}\)</span> in some order.</p>
 <p>It follows that
@@ -665,7 +665,7 @@ that is <span class="math inline">\(a^{\phi(m)} z = z \mod m\)</span> where <spa
 So we may cancel it to obtain <span class="math inline">\(a^{\phi(m)} = 1 \mod m\)</span></p>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-34" class="example"><strong>Example 2.7  </strong></span>Where <span class="math inline">\(p = 5,\ 4! = 24 \equiv \mod 5\)</span>.<br />
+<p><span id="exm:unlabeled-div-47" class="example"><strong>Example 2.7  </strong></span>Where <span class="math inline">\(p = 5,\ 4! = 24 \equiv \mod 5\)</span>.<br />
 <span class="math inline">\(p = 5,\ 4! = 24 \equiv \mod 5\)</span>.
 <span class="math display">\[\begin{align*}
     \text{Where } p &amp;= 5,\ 4! = 24 \equiv -1 \mod 5 \\
@@ -679,7 +679,7 @@ Then <span class="math inline">\(x^2 \equiv 1 \mod p \iff x \equiv \pm 1 \mod p\
 <p><em>Note</em> Modulo <span class="math inline">\(8\)</span>, <span class="math inline">\(1^2 = 3^2 = 5^2 = 7^2 = 1\)</span>.
 This make us think that <span class="math inline">\(p\)</span> being prime is important.</p>
 <div class="proof">
-<p><span id="unlabeled-div-35" class="proof"><em>Proof</em>. </span><span class="math display">\[\begin{align*}
+<p><span id="unlabeled-div-48" class="proof"><em>Proof</em>. </span><span class="math display">\[\begin{align*}
     x^2 \equiv 1 \mod p &amp;\iff x^2 - 1 \equiv 0 \mod p \\
     &amp;\iff (x + 1) (x - 1) \equiv 0 \mod p
 \end{align*}\]</span>
@@ -691,14 +691,14 @@ Hence
 \end{align*}\]</span></p>
 </div>
 <div class="remark">
-<p><span id="unlabeled-div-36" class="remark"><em>Remark</em>. </span>More generally, a non-zero polynomial of degree <span class="math inline">\(k\)</span> over <span class="math inline">\(\mathbb{Z}_p\)</span> has at most k roots.</p>
+<p><span id="unlabeled-div-49" class="remark"><em>Remark</em>. </span>More generally, a non-zero polynomial of degree <span class="math inline">\(k\)</span> over <span class="math inline">\(\mathbb{Z}_p\)</span> has at most k roots.</p>
 </div>
 <div class="theorem">
 <p><span id="thm:fifteen" class="theorem"><strong>Theorem 2.9  (Wilson's Theorem) </strong></span>Let <span class="math inline">\(p\)</span> be prime.
 Then <span class="math inline">\((p - 1)! \equiv -1 \mod p\)</span>.</p>
 </div>
 <div class="proof">
-<p><span id="unlabeled-div-37" class="proof"><em>Proof</em>. </span>True for <span class="math inline">\(p = 2\)</span>, so assume <span class="math inline">\(p &gt; 2\)</span>.<br />
+<p><span id="unlabeled-div-50" class="proof"><em>Proof</em>. </span>True for <span class="math inline">\(p = 2\)</span>, so assume <span class="math inline">\(p &gt; 2\)</span>.<br />
 Note that the units modulo <span class="math inline">\(p\)</span> come in pairs whose product is <span class="math inline">\(1\)</span>, together with some elements that are self-inverse, i.e. <span class="math inline">\(x\)</span> s.t. <span class="math inline">\(x^2 \equiv 1 \mod p\)</span>.<br />
 But by lemma <a href="elementary-number-theory.html#lem:fourteen">2.1</a>, the elements of <span class="math inline">\(\mathbb{Z}_p\)</span> that are self-inverse are <span class="math inline">\(+ 1\)</span> and <span class="math inline">\(-1\)</span>, so the remaining <span class="math inline">\(p - 3\)</span> elements of <span class="math inline">\(\mathbb{Z}_p\)</span> come in inverse pairs.
 [E.g. when <span class="math inline">\(p = 11\)</span>, <span class="math inline">\(1, 10\)</span> are self inverses and the pairs are <span class="math inline">\((2, 6),\ (3, 4),\ (5, 9),\ (7, 8)\)</span>].<br />
@@ -706,7 +706,7 @@ Hence <span class="math inline">\((p - 1)!\)</span> is the product of <span clas
 </div>
 <p>When is <span class="math inline">\(-1\)</span> a square modulo <span class="math inline">\(p\)</span>? (If ever.)</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-38" class="example"><strong>Example 2.8  </strong></span>When <span class="math inline">\(p = 5, 2^2 \equiv 4 \equiv - 1 \mod 5\)</span>.<br />
+<p><span id="exm:unlabeled-div-51" class="example"><strong>Example 2.8  </strong></span>When <span class="math inline">\(p = 5, 2^2 \equiv 4 \equiv - 1 \mod 5\)</span>.<br />
 When <span class="math inline">\(p = 7, 0^2 = 0, 1^2 = 1, 2^2 = 4, 3^2 = 2 \mod 7\)</span> and we don’t need to check <span class="math inline">\(4, 5, 6\)</span> as <span class="math inline">\((-x)^2 = x^2\)</span>.<br />
 When <span class="math inline">\(p = 13, 5^2 \equiv -1 \mod 13\)</span>.<br />
 No luck when <span class="math inline">\(p = 19\)</span>.</p>
@@ -716,7 +716,7 @@ No luck when <span class="math inline">\(p = 19\)</span>.</p>
 Then <span class="math inline">\(-1\)</span> is a square modulo <span class="math inline">\(p\)</span> iff <span class="math inline">\(p \equiv 1 \mod 4\)</span>.</p>
 </div>
 <div class="proof">
-<p><span id="unlabeled-div-39" class="proof"><em>Proof</em>. </span>Suppose <span class="math inline">\(p \equiv 1 \mod 4\)</span>.
+<p><span id="unlabeled-div-52" class="proof"><em>Proof</em>. </span>Suppose <span class="math inline">\(p \equiv 1 \mod 4\)</span>.
 By Wilson’s Theorem, <a href="elementary-number-theory.html#thm:fifteen">2.9</a>,
 <span class="math display">\[\begin{align*}
     -1 \equiv (p - 1)! &amp;\equiv 1 \cdot 2 \cdot 3 \cdot \dots \cdot \frac{p - 1}{2} \cdot - \frac{p - 1}{2} \cdot \dots -3 \cdot -2 \cdot -1 \mod p \\
@@ -736,7 +736,7 @@ If <span class="math inline">\(-1\)</span> were a square mod <span class="math i
 a contradiction.</p>
 </div>
 <div class="remark">
-<p><span id="unlabeled-div-40" class="remark"><em>Remark</em>. </span>When <span class="math inline">\(p \equiv 1 \mod 4\)</span>, Wilson’s Theorem, <a href="elementary-number-theory.html#thm:fifteen">2.9</a>, tells us a solution to <span class="math inline">\(x^2 \equiv -1 \mod p\)</span>.<br />
+<p><span id="unlabeled-div-53" class="remark"><em>Remark</em>. </span>When <span class="math inline">\(p \equiv 1 \mod 4\)</span>, Wilson’s Theorem, <a href="elementary-number-theory.html#thm:fifteen">2.9</a>, tells us a solution to <span class="math inline">\(x^2 \equiv -1 \mod p\)</span>.<br />
 E.g. When <span class="math inline">\(p = 29 = 4 \cdot 7 + 1\)</span>, <span class="math inline">\(x = (2 \cdot 7)!\)</span> works.</p>
 </div>
 </div>
@@ -747,7 +747,7 @@ I wish for my IA students to be able to send me encrypted messages in such a way
 We use the</p>
 <div id="rsa-scheme-rivest-shamir-adleman" class="section level3" number="2.11.1">
 <h3><span class="header-section-number">2.11.1</span> RSA Scheme (Rivest, Shamir, Adleman)</h3>
-<p>I think of two large primes <span class="math inline">\(p, q\)</span><a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a>.
+<p>I think of two large primes <span class="math inline">\(p, q\)</span><a href="#fn10" class="footnote-ref" id="fnref10"><sup>10</sup></a>.
 Let <span class="math inline">\(n = pq\)</span>, and pick an <em>encoding exponent</em> <span class="math inline">\(e\)</span> coprime to <span class="math inline">\(\phi(n) = (p - 1)(q - 1)\)</span>.
 I publish the pair <span class="math inline">\((n, e)\)</span> (not the hcf).<br />
 To send me a message (i.e. a sequence of numbers), you chop it into pieces/ numbers <span class="math inline">\(M &lt; n\)</span> and send me <span class="math inline">\(M^e \mod n\)</span>, computed quickly by repeated squaring.</p>
@@ -762,13 +762,13 @@ It is not know if RSA can be broken without factorisation.</p>
 </div>
 <div class="footnotes">
 <hr />
-<ol start="1">
-<li id="fn1"><p><span class="math inline">\(1, 1 + 1, 1+ 1 + 1, \dots\)</span><a href="elementary-number-theory.html#fnref1" class="footnote-back">↩︎</a></p></li>
-<li id="fn2"><p>to see this rigorously, take <span class="math inline">\(P(n)\)</span> = “<span class="math inline">\(n\)</span> is on this list<a href="elementary-number-theory.html#fnref2" class="footnote-back">↩︎</a></p></li>
-<li id="fn3"><p>We don’t allow <span class="math inline">\(1\)</span> to be a prime as we want to have unique prime factorisations and it would require every statement to say let <span class="math inline">\(n\)</span> be a prime not equal to <span class="math inline">\(1\)</span>.<a href="elementary-number-theory.html#fnref3" class="footnote-back">↩︎</a></p></li>
-<li id="fn4"><p>as <span class="math inline">\(h \nmid a\)</span><a href="elementary-number-theory.html#fnref4" class="footnote-back">↩︎</a></p></li>
-<li id="fn5"><p>the hcf of <span class="math inline">\(a\)</span> and <span class="math inline">\(p\)</span> is 1<a href="elementary-number-theory.html#fnref5" class="footnote-back">↩︎</a></p></li>
-<li id="fn6"><p>on the order of a hundred digits<a href="elementary-number-theory.html#fnref6" class="footnote-back">↩︎</a></p></li>
+<ol start="5">
+<li id="fn5"><p><span class="math inline">\(1, 1 + 1, 1+ 1 + 1, \dots\)</span><a href="elementary-number-theory.html#fnref5" class="footnote-back">↩︎</a></p></li>
+<li id="fn6"><p>to see this rigorously, take <span class="math inline">\(P(n)\)</span> = “<span class="math inline">\(n\)</span> is on this list<a href="elementary-number-theory.html#fnref6" class="footnote-back">↩︎</a></p></li>
+<li id="fn7"><p>We don’t allow <span class="math inline">\(1\)</span> to be a prime as we want to have unique prime factorisations and it would require every statement to say let <span class="math inline">\(n\)</span> be a prime not equal to <span class="math inline">\(1\)</span>.<a href="elementary-number-theory.html#fnref7" class="footnote-back">↩︎</a></p></li>
+<li id="fn8"><p>as <span class="math inline">\(h \nmid a\)</span><a href="elementary-number-theory.html#fnref8" class="footnote-back">↩︎</a></p></li>
+<li id="fn9"><p>the hcf of <span class="math inline">\(a\)</span> and <span class="math inline">\(p\)</span> is 1<a href="elementary-number-theory.html#fnref9" class="footnote-back">↩︎</a></p></li>
+<li id="fn10"><p>on the order of a hundred digits<a href="elementary-number-theory.html#fnref10" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>

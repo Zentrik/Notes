@@ -166,7 +166,7 @@ E.g. <span class="math inline">\(\{n \in \mathbb{N} : n \text{ is prime}\} = \{2
     A \cap B = \{x: x \in A \text{ and } x \in B\}.
 \end{align*}\]</span>
 <img src="figures/04-intersect.png" width="300" style="display: block; margin: auto;" /></p>
-<p>We say <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are <em>disjoint</em> if <span class="math inline">\(A \cap B = \emptyset\)</span><a href="#fn14" class="footnote-ref" id="fnref14"><sup>14</sup></a>
+<p>We say <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are <em>disjoint</em> if <span class="math inline">\(A \cap B = \emptyset\)</span><a href="#fn15" class="footnote-ref" id="fnref15"><sup>15</sup></a>
 Note that we can view intersection as a special case of subset selection: <span class="math inline">\(A \cap B = \{x \in A : x \in B\}\)</span>.</p>
 <p>Similarly, we have the <em>set difference</em> <span class="math inline">\(A \setminus B = \{x \in A : x \notin B\}\)</span>.</p>
 <p>Note that <span class="math inline">\(\cup\)</span> and <span class="math inline">\(\cap\)</span> are both commutative and associative.
@@ -201,7 +201,7 @@ If <span class="math inline">\(x \in A \cap C\)</span>, then <span class="math i
     \text{and } \bigcup_{i \in I} A_i &amp;= \{x : x \in A_i \text{ for some } i \in I\}. \\
 \end{align*}\]</span></p>
 <p>Given sets <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, we can form their <em>Cartesian product</em> <span class="math inline">\(A \times B = \{(a, b) : a \in A, b \in B\}\)</span> (“<span class="math inline">\(A\)</span> cross <span class="math inline">\(B\)</span>”), which is the set of <em>ordered pairs</em> <span class="math inline">\((a, b)\)</span> with <span class="math inline">\(a \in A, b \in B\)</span>.<br />
-Here <span class="math inline">\((a, b) = (a&#39;, b&#39;) \iff a = a&#39; \text{ and } b = b&#39;\)</span>.<a href="#fn15" class="footnote-ref" id="fnref15"><sup>15</sup></a>
+Here <span class="math inline">\((a, b) = (a&#39;, b&#39;) \iff a = a&#39; \text{ and } b = b&#39;\)</span>.<a href="#fn16" class="footnote-ref" id="fnref16"><sup>16</sup></a>
 We can extend this to ordered triples and so on, e.g. <span class="math inline">\(\mathbb{R}^3 = \mathbb{R} \times \mathbb{R} \times \mathbb{R}\)</span>
 <span class="math display">\[\begin{align*}
     \mathbb{R}^3 &amp;= \mathbb{R} \times \mathbb{R} \times \mathbb{R} \\
@@ -220,7 +220,7 @@ Indeed, suppose <span class="math inline">\(X = \{x : x \text{ is a set and } x 
 Then <span class="math inline">\(X \in X\)</span> implies that <span class="math inline">\(X \notin X\)</span> ⨳<br />
 while <span class="math inline">\(X \notin X\)</span> implies that <span class="math inline">\(X \in X\)</span> ⨳.<br />
 This is know as <em>Russell’s Paradox</em>.</p>
-<p>Similarly, there is no “universal” set <span class="math inline">\(Y\)</span>, meaning that <span class="math inline">\(\forall \; x, x \in Y\)</span>.
+<p>Similarly, there is no “universal” set <span class="math inline">\(Y\)</span>, meaning that <span class="math inline">\(\forall \; x \quad x \in Y\)</span>.
 Otherwise we could form <span class="math inline">\(X\)</span> above by subset selection:
 <span class="math display">\[\begin{align*}
     X = \{ x \in Y: x \notin x\}.
@@ -228,7 +228,7 @@ Otherwise we could form <span class="math inline">\(X\)</span> above by subset s
 <p><em>Moral</em>: To guarantee that a given set exists, it should be obtained from known sets (e.g. <span class="math inline">\(\mathbb{N}, \mathbb{R}\)</span>) in one of the ways described above.</p>
 <div id="finite-sets" class="section level2" number="4.1">
 <h2><span class="header-section-number">4.1</span> Finite Sets</h2>
-<p>Write <span class="math inline">\(\mathbb{N}_0 = \mathbb{N} \cup \{0\}\)</span>, i.e. <span class="math inline">\(\{0, 1, 2, 3, \dots\}\)</span><a href="#fn16" class="footnote-ref" id="fnref16"><sup>16</sup></a>.<br />
+<p>Write <span class="math inline">\(\mathbb{N}_0 = \mathbb{N} \cup \{0\}\)</span>, i.e. <span class="math inline">\(\{0, 1, 2, 3, \dots\}\)</span><a href="#fn17" class="footnote-ref" id="fnref17"><sup>17</sup></a>.<br />
 Given <span class="math inline">\(n \in \mathbb{N}_0\)</span>, we say a set <span class="math inline">\(A\)</span> has size <span class="math inline">\(n\)</span> if we can write <span class="math inline">\(A = \{a_1, a_2, \dots, a_n\}\)</span> with the elements <span class="math inline">\(a_i\)</span> distinct.
 E.g. <span class="math inline">\(\{1, 3, 7\}\)</span> has size <span class="math inline">\(3\)</span>, <span class="math inline">\(\emptyset\)</span> has size <span class="math inline">\(0\)</span>.</p>
 <p>We say <span class="math inline">\(A\)</span> is <em>finite</em> if <span class="math inline">\(\exists \; n \in \mathbb{N}_0\)</span> s.t. <span class="math inline">\(A\)</span> has size <span class="math inline">\(n\)</span>, and <span class="math inline">\(A\)</span> is <em>infinite</em> otherwise.</p>
@@ -340,7 +340,7 @@ Thus the number of times <span class="math inline">\(x\)</span> is counted on th
 <p><span id="def:unlabeled-div-87" class="definition"><strong>Definition 4.2  (Function) </strong></span>Given sets <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, a function <span class="math inline">\(f\)</span> from <span class="math inline">\(A\)</span> to <span class="math inline">\(B\)</span> is a “rule” that assigns to every <span class="math inline">\(x \in A\)</span> a unique element <span class="math inline">\(f(x) \in B\)</span>.</p>
 <p>More formally, a <em>function</em> from <span class="math inline">\(A\)</span> to <span class="math inline">\(B\)</span> is a subset <span class="math inline">\(f \subseteq A \times B\)</span> s.t. for all <span class="math inline">\(x \in A\)</span>, there is a unique <span class="math inline">\(y \in B\)</span> s.t. <span class="math inline">\((x, y) \in f\)</span>.<br />
 If <span class="math inline">\(f\)</span> is a function from <span class="math inline">\(A\)</span> to <span class="math inline">\(B\)</span>, we write <span class="math inline">\(f : A \to B\)</span>.
-If <span class="math inline">\((x, y) \in f\)</span>, we can write <span class="math inline">\(f(x) = y\)</span>, or <span class="math inline">\(x \mapsto y\)</span><a href="#fn17" class="footnote-ref" id="fnref17"><sup>17</sup></a>.</p>
+If <span class="math inline">\((x, y) \in f\)</span>, we can write <span class="math inline">\(f(x) = y\)</span>, or <span class="math inline">\(x \mapsto y\)</span><a href="#fn18" class="footnote-ref" id="fnref18"><sup>18</sup></a>.</p>
 </div>
 <div class="example">
 <p><span id="exm:unlabeled-div-88" class="example"><strong>Example 4.2  </strong></span><br />
@@ -404,11 +404,11 @@ The <em>image</em> of <span class="math inline">\(f\)</span>, sometime denoted <
 <p><span id="exm:unlabeled-div-93" class="example"><strong>Example 4.3  </strong></span>If <span class="math display">\[\begin{align*}
     f : \mathbb{R} &amp;\to \mathbb{R} \\
     x &amp;\mapsto x^2 \\
-    \operatorname{im}(f) = \{y \in \mathbb{R} : y \geq 0\}.
+    \operatorname{im}(f) &amp;= \{y \in \mathbb{R} : y \geq 0\}.
 \end{align*}\]</span></p>
 </div>
 <p>When specifying a function we must specify its domain and range.
-E.g. “Is the function <span class="math inline">\(f(x) = x^2\)</span> injective?” is meaningless, as <span class="math inline">\(f : \mathbb{N} to \mathbb{N}\)</span> is injective but <span class="math inline">\(f : \mathbb{Z} \to \mathbb{Z}\)</span> is not.</p>
+E.g. “Is the function <span class="math inline">\(f(x) = x^2\)</span> injective?” is meaningless, as <span class="math inline">\(f : \mathbb{N} \to \mathbb{N}\)</span> is injective but <span class="math inline">\(f : \mathbb{Z} \to \mathbb{Z}\)</span> is not.</p>
 <div id="observations" class="section level3" number="4.2.1">
 <h3><span class="header-section-number">4.2.1</span> Observations</h3>
 <ol style="list-style-type: decimal">
@@ -527,9 +527,9 @@ Hence <span class="math inline">\(f\)</span> is invertible with inverse <span cl
 <p>Given <span class="math inline">\(f: A \to B\)</span>, when is there a map <span class="math inline">\(g : B \to A\)</span> s.t. <span class="math inline">\(g \circ f = \text{id}_A\)</span>?<br />
 If such a <span class="math inline">\(g\)</span> exists, and <span class="math inline">\(a, a&#39; \in A\)</span> are s.t. <span class="math inline">\(f(a) = f(a&#39;)\)</span>, then <span class="math inline">\(gf(a) = gf(a&#39;)\)</span> so <span class="math inline">\(a = a&#39;\)</span>.
 Therefore <span class="math inline">\(f\)</span> must be injective.<br />
-Conversely, if <span class="math inline">\(f\)</span> is injective, we can find <span class="math inline">\(g\)</span> s.t. <span class="math inline">\(g \circ f = \text{id}_A\)</span>: if <span class="math inline">\(b \in f(A)\)</span>, let <span class="math inline">\(g(b) = a\)</span>, where <span class="math inline">\(a\)</span> is the unique element of <span class="math inline">\(A\)</span> with <span class="math inline">\(f(a) = b\)</span>; if <span class="math inline">\(b \neq f(A)\)</span>, let <span class="math inline">\(g(b)\)</span> be anything you like<a href="#fn18" class="footnote-ref" id="fnref18"><sup>18</sup></a>.</p>
+Conversely, if <span class="math inline">\(f\)</span> is injective, we can find <span class="math inline">\(g\)</span> s.t. <span class="math inline">\(g \circ f = \text{id}_A\)</span>: if <span class="math inline">\(b \in f(A)\)</span>, let <span class="math inline">\(g(b) = a\)</span>, where <span class="math inline">\(a\)</span> is the unique element of <span class="math inline">\(A\)</span> with <span class="math inline">\(f(a) = b\)</span>; if <span class="math inline">\(b \notin f(A)\)</span>, let <span class="math inline">\(g(b)\)</span> be anything you like<a href="#fn19" class="footnote-ref" id="fnref19"><sup>19</sup></a>.</p>
 <p>Given <span class="math inline">\(f : A \to B\)</span>, when is there a map <span class="math inline">\(g : B \to A\)</span> s.t. <span class="math inline">\(f \circ g = \text{id}_B\)</span>?<br />
-<span class="math inline">\(f \circ g = \text{id}_B \implies f(g(b)) = b \forall \; b \in B\)</span> so we need <span class="math inline">\(f(g(B)) = B\)</span>, so <span class="math inline">\(f\)</span> must be surjective.<br />
+<span class="math inline">\(f \circ g = \text{id}_B \implies f(g(b)) = b \quad \forall \; b \in B\)</span> so we need <span class="math inline">\(f(g(B)) = B\)</span>, so <span class="math inline">\(f\)</span> must be surjective.<br />
 Conversely, if <span class="math inline">\(f\)</span> is surjective, we can find <span class="math inline">\(g: B \to A\)</span> with <span class="math inline">\(f \circ g = \text{id}_B\)</span>: for each <span class="math inline">\(b \in B\)</span>, pick some <span class="math inline">\(a \in A\)</span> with <span class="math inline">\(f(a) = b\)</span> and put <span class="math inline">\(g(b) = a\)</span>.</p>
 <p>It follows that <span class="math inline">\(f : A \to B\)</span> is invertible iff <span class="math inline">\(f\)</span> is bijective.
 We write <span class="math inline">\(f^{-1} : B \to A\)</span> for the inverse of <span class="math inline">\(f\)</span> when it exists.</p>
@@ -556,13 +556,13 @@ We usually write <span class="math inline">\(aRb\)</span> (“<span class="math 
 </div>
 <p>There are three properties that a relation might have that are of special interest.</p>
 <div class="definition">
-<p><span id="def:unlabeled-div-101" class="definition"><strong>Definition 4.9  (Reflexive relation) </strong></span><span class="math inline">\(R\)</span> is <em>reflexive</em> if <span class="math inline">\(\forall \; x \in X, xRx\)</span>.</p>
+<p><span id="def:unlabeled-div-101" class="definition"><strong>Definition 4.9  (Reflexive relation) </strong></span><span class="math inline">\(R\)</span> is <em>reflexive</em> if <span class="math inline">\(\forall \; x \in X,\ xRx\)</span>.</p>
 </div>
 <div class="definition">
-<p><span id="def:unlabeled-div-102" class="definition"><strong>Definition 4.10  (Symmetric relation) </strong></span><span class="math inline">\(R\)</span> is <em>symmetric</em> if <span class="math inline">\(\forall \; x, y, xRy \implies yRx\)</span> (swapping <span class="math inline">\(x, y\)</span> gives <span class="math inline">\(\iff\)</span>).</p>
+<p><span id="def:unlabeled-div-102" class="definition"><strong>Definition 4.10  (Symmetric relation) </strong></span><span class="math inline">\(R\)</span> is <em>symmetric</em> if <span class="math inline">\(\forall \; x, y,\ xRy \implies yRx\)</span> (swapping <span class="math inline">\(x, y\)</span> gives <span class="math inline">\(\iff\)</span>).</p>
 </div>
 <div class="definition">
-<p><span id="def:unlabeled-div-103" class="definition"><strong>Definition 4.11  (Transitive relation) </strong></span><span class="math inline">\(R\)</span> is <em>transitive</em> if <span class="math inline">\(\forall \; x, y, z \in X, xRy\)</span> and <span class="math inline">\(yRz \implies xRz\)</span>.</p>
+<p><span id="def:unlabeled-div-103" class="definition"><strong>Definition 4.11  (Transitive relation) </strong></span><span class="math inline">\(R\)</span> is <em>transitive</em> if <span class="math inline">\(\forall \; x, y, z \in X,\ xRy\)</span> and <span class="math inline">\(yRz \implies xRz\)</span>.</p>
 </div>
 <div class="example">
 <span id="exm:unlabeled-div-104" class="example"><strong>Example 4.8  </strong></span>With regards to the examples above,
@@ -577,7 +577,7 @@ We usually write <span class="math inline">\(aRb\)</span> (“<span class="math 
 \end{array}\]</span>
 </div>
 <div class="definition">
-<p><span id="def:unlabeled-div-105" class="definition"><strong>Definition 4.12  (Equivalence relation) </strong></span>A relation <span class="math inline">\(R\)</span> ir an *equivalence relation” if it reflexive, symmetric and transitive.
+<p><span id="def:unlabeled-div-105" class="definition"><strong>Definition 4.12  (Equivalence relation) </strong></span>A relation <span class="math inline">\(R\)</span> is an *equivalence relation” if it is reflexive, symmetric and transitive.
 We often write <span class="math inline">\(a \sim b\)</span> for <span class="math inline">\(aRb\)</span>.</p>
 </div>
 <p>So (1) and (6) are equivalence relations.
@@ -604,7 +604,7 @@ Then the equivalences classes for a partition of <span class="math inline">\(X\)
 </div>
 <div class="proof">
 <p><span id="unlabeled-div-108" class="proof"><em>Proof</em>. </span>Since <span class="math inline">\(\sim\)</span> is reflexive, we have <span class="math inline">\(x \in [x] \; \forall \; x \in X\)</span>.
-Thus <span class="math inline">\(\bigcap_{x \in X} [x] = X\)</span>.
+Thus <span class="math inline">\(\bigcup_{x \in X} [x] = X\)</span>.
 It remains to show that <span class="math inline">\(\forall \; x, y \in X\)</span>, either <span class="math inline">\([x] \cap [y] = \emptyset\)</span> or <span class="math inline">\([x] = [y]\)</span>.
 Suppose <span class="math inline">\([x] \cap [y] \neq \emptyset\)</span>, and let <span class="math inline">\(z \in [x] \cap [y]\)</span>.<br />
 Then <span class="math inline">\(z \sim x\)</span>, so by symmetry <span class="math inline">\(x \sim z\)</span>, and <span class="math inline">\(z \sim y\)</span>.
@@ -612,7 +612,8 @@ Then by transitivity, <span class="math inline">\(x \sim y\)</span>.
 Let <span class="math inline">\(w \in [y]\)</span>, so <span class="math inline">\(y \sim w\)</span>.
 Since <span class="math inline">\(x \sim y\)</span> and <span class="math inline">\(y \sim w\)</span> by transitivity, <span class="math inline">\(x \sim w\)</span>.
 Thus <span class="math inline">\(w \in [x]\)</span>.<br />
-Hence if <span class="math inline">\([x] \cap [y] = \emptyset\)</span>, then <span class="math inline">\([y] \subseteq [x]\)</span>.</p>
+Hence if <span class="math inline">\([x] \cap [y] = \emptyset\)</span>, then <span class="math inline">\([y] \subseteq [x]\)</span>; similarly, <span class="math inline">\([x] \subseteq [y]\)</span>.
+So <span class="math inline">\([x] = [y]\)</span></p>
 </div>
 <p>This is a useful viewpoint: it is not easy to see that there is an equivalence relation on <span class="math inline">\(\mathbb{N}\)</span> with <span class="math inline">\(3\)</span> equivalence classes, of which <span class="math inline">\(2\)</span> are infinite and <span class="math inline">\(1\)</span> is finite - simply take a partition of <span class="math inline">\(\mathbb{N}\)</span> with this property.</p>
 <div class="definition">
@@ -631,8 +632,8 @@ In fact, this explains why we sometimes write <span class="math inline">\(\mathb
 </div>
 <div class="example">
 <p><span id="exm:unlabeled-div-111" class="example"><strong>Example 4.9  </strong></span>On <span class="math inline">\(\mathbb{Z} \times \mathbb{N}\)</span>, define <span class="math inline">\((a, b) R (c, d)\)</span> if <span class="math inline">\(ad = bc\)</span>.
-It is easy to see that <span class="math inline">\(B\)</span> is an equivalence relation. \
-E.g. <span class="math inline">\([(1, 2)] = \{(1, 2), (2, 4), (3, 6) \dots \}\)</span> so we can regard <span class="math inline">\(\mathbb{Z} \times \mathbb{N} / R\)</span> as a copy of <span class="math inline">\(Q\)</span> by identifying <span class="math inline">\([(a, b)]\)</span> with <span class="math inline">\(\frac{a}{b} \in \mathbb{Q}\)</span>.
+It is easy to see that <span class="math inline">\(B\)</span> is an equivalence relation.<br />
+E.g. <span class="math inline">\([(1, 2)] = \{(1, 2), (2, 4), (3, 6) \dots \}\)</span> so we can regard <span class="math inline">\(\mathbb{Z} \times \mathbb{N} / R\)</span> as a copy of <span class="math inline">\(\mathbb{Q}\)</span> by identifying <span class="math inline">\([(a, b)]\)</span> with <span class="math inline">\(\frac{a}{b} \in \mathbb{Q}\)</span>.
 The quotient map <span class="math display">\[\begin{align*}
     q : \mathbb{Z} \times \mathbb{N} &amp;\to \mathbb{Z} \times \mathbb{N} / R \\
     (a, b) &amp;\to \frac{a}{b}.
@@ -643,12 +644,12 @@ The quotient map <span class="math display">\[\begin{align*}
 </div>
 <div class="footnotes">
 <hr />
-<ol start="14">
-<li id="fn14"><p>This justifies why we need the notion of the empty set, otherwise we wouldn’t be able to take the intersection of arbitrary pairs of sets.<a href="sets-functions-and-relations.html#fnref14" class="footnote-back">↩︎</a></p></li>
-<li id="fn15"><p>Note we can define <span class="math inline">\((a, b) = \{a, \{a, b\}\}\)</span>, the first element and the unordered pair.<a href="sets-functions-and-relations.html#fnref15" class="footnote-back">↩︎</a></p></li>
-<li id="fn16"><p>We do this so we have a size <span class="math inline">\(0\)</span> set<a href="sets-functions-and-relations.html#fnref16" class="footnote-back">↩︎</a></p></li>
-<li id="fn17"><p>we use <span class="math inline">\(\mapsto\)</span> for the assignment of individual elements<a href="sets-functions-and-relations.html#fnref17" class="footnote-back">↩︎</a></p></li>
-<li id="fn18"><p>as <span class="math inline">\(g \circ f\)</span> will never lead to <span class="math inline">\(g(b)\)</span> if <span class="math inline">\(b \neq f(A)\)</span><a href="sets-functions-and-relations.html#fnref18" class="footnote-back">↩︎</a></p></li>
+<ol start="15">
+<li id="fn15"><p>This justifies why we need the notion of the empty set, otherwise we wouldn’t be able to take the intersection of arbitrary pairs of sets.<a href="sets-functions-and-relations.html#fnref15" class="footnote-back">↩︎</a></p></li>
+<li id="fn16"><p>Note we can define <span class="math inline">\((a, b) = \{a, \{a, b\}\}\)</span>, the first element and the unordered pair.<a href="sets-functions-and-relations.html#fnref16" class="footnote-back">↩︎</a></p></li>
+<li id="fn17"><p>We do this so we have a size <span class="math inline">\(0\)</span> set<a href="sets-functions-and-relations.html#fnref17" class="footnote-back">↩︎</a></p></li>
+<li id="fn18"><p>we use <span class="math inline">\(\mapsto\)</span> for the assignment of individual elements<a href="sets-functions-and-relations.html#fnref18" class="footnote-back">↩︎</a></p></li>
+<li id="fn19"><p>as <span class="math inline">\(g \circ f\)</span> will never lead to <span class="math inline">\(g(b)\)</span> if <span class="math inline">\(b \notin f(A)\)</span><a href="sets-functions-and-relations.html#fnref19" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>

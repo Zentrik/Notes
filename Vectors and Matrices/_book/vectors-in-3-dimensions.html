@@ -306,7 +306,7 @@ The <em>span</em> of a set of vectors is <span class="math inline">\(\operatorna
 <h2><span class="header-section-number">2.2</span> Scalar or Dot Product</h2>
 <ol style="list-style-type: lower-roman">
 <li><div class="definition">
-<span id="def:unlabeled-div-10" class="definition"><strong>Definition 2.1  </strong></span>Given <span class="math inline">\(\underline{a}\)</span> and <span class="math inline">\(\underline{b}\)</span> let <span class="math inline">\(\theta\)</span> be the angle between them; then
+<span id="def:unlabeled-div-1" class="definition"><strong>Definition 2.1  </strong></span>Given <span class="math inline">\(\underline{a}\)</span> and <span class="math inline">\(\underline{b}\)</span> let <span class="math inline">\(\theta\)</span> be the angle between them; then
 <span class="math display">\[\begin{align*}
  \underline{a} \cdot \underline{b} = | \underline{a} | | \underline{b} | \cos \theta
 \end{align*}\]</span>
@@ -323,19 +323,19 @@ Figure 2.1: <span class="math inline">\(\theta\)</span> defined unless <span cla
 \underline{a} \cdot \underline{b} &amp;= \underline{b} \cdot \underline{a} \\
 \underline{a} \cdot \underline{a} = |\underline{a}|^2 &amp;\geq 0 \text{ and } = 0 \iff \underline{a} = \underline{0} \\
 (\lambda \underline{a}) \cdot \underline{b} &amp;= \lambda (\underline{a} \cdot \underline{b}) = \underline{a} \cdot (\lambda \underline{b}) \\
-\underline{a} \cdot ( \underline{b} \cdot \underline{c}) &amp;= \underline{a} \cdot \underline{b} + \underline{a} \cdot \underline{c}
+\underline{a} \cdot ( \underline{b} + \underline{c}) &amp;= \underline{a} \cdot \underline{b} + \underline{a} \cdot \underline{c}
 \end{align*}\]</span></p></li>
 <li><p><em>Interpretation</em>
 For <span class="math inline">\(\underline{a} \neq \underline{0}\)</span>, consider <span class="math inline">\(\underline{u} = \frac{\underline{a}}{|\underline{a}|}\)</span>
 <span class="math display">\[\begin{align*}
-    \underline{u} \cdot \underline{b} = \frac{1}{\underline{a}} \underline{a} \cdot \underline{b}
+    \underline{u} \cdot \underline{b} = \frac{1}{|\underline{a}|} \underline{a} \cdot \underline{b}
 \end{align*}\]</span>
 is the <em>component</em> of <span class="math inline">\(\underline{b}\)</span> along <span class="math inline">\(\underline{a}\)</span>
 <img src="figures/02-interpretation.svg" style="display: block; margin: auto;" />
-We can <em>resolve</em> <span class="math inline">\(\underline{b} = \underline{b}_\parallel + \underline{b}_\bot\)</span>.
-<span class="math inline">\(\underline{b}_\parallel = (\underline{b} \cdot \underline{u}),\ \underline{b}_\bot = b - (\underline{b} \cdot \underline{u})\)</span> where <span class="math inline">\(\underline{u} = \frac{\underline{a}}{|\underline{a}|}\)</span>.
+We can <em>resolve</em> <span class="math inline">\(\underline{b} = \underline{b}_\parallel + \underline{b}_\perp\)</span>.
+<span class="math inline">\(\underline{b}_\parallel = (\underline{b} \cdot \underline{u}),\ \underline{b}_\perp = b - (\underline{b} \cdot \underline{u})\)</span> where <span class="math inline">\(\underline{u} = \frac{\underline{a}}{|\underline{a}|}\)</span>.
 Note <span class="math inline">\(\underline{a} \cdot \underline{b} = \underline{a} \cdot \underline{b}_\parallel\)</span>.  
-In general, vectors <span class="math inline">\(\underline{a}\)</span> and <span class="math inline">\(\underline{b}\)</span> are <em>orthogonal</em> or <em>perpendicular</em>, written <span class="math inline">\(\underline{a} \bot \underline{b} \iff \underline{a} \cdot \underline{b} = 0\)</span>.</p></li>
+In general, vectors <span class="math inline">\(\underline{a}\)</span> and <span class="math inline">\(\underline{b}\)</span> are <em>orthogonal</em> or <em>perpendicular</em>, written <span class="math inline">\(\underline{a} \perp \underline{b} \iff \underline{a} \cdot \underline{b} = 0\)</span>.</p></li>
 </ol>
 </div>
 <div id="orthonormal-bases-and-components" class="section level2" number="2.3">
@@ -365,9 +365,9 @@ and each component is <em>uniquely</em> determined
     \end{pmatrix}
 \end{align*}\]</span></p>
 <p>Note <span class="math display">\[\begin{align*}
-    \underline{a} \cdot \underline{b} &amp;= (\sum_i a_i \underline{e}_i) \cdot (\sum_j b_j \underline{e}_j) \\
+    \underline{a} \cdot \underline{b} &amp;= \left( \sum_i a_i \underline{e}_i \right) \cdot \left( \sum_j b_j \underline{e}_j \right) \\
     &amp;= a_1 b_1 + a_2 b_2 + a_3 b_3  \\
-    |\underline{a}|^2 &amp;= a_1^2 + a_2^2 + a_3^2 \text{(Pythagoras)}
+    |\underline{a}|^2 &amp;= a_1^2 + a_2^2 + a_3^2 \quad \text{(Pythagoras)}
 \end{align*}\]</span>
 <span class="math inline">\(\underline{e}_1, \underline{e}_2, \underline{e}_3\)</span> are also often written <span class="math inline">\(\underline{i}, \underline{j}, \underline{k}\)</span>.</p>
 </div>
@@ -375,10 +375,10 @@ and each component is <em>uniquely</em> determined
 <h2><span class="header-section-number">2.4</span> Vector or Cross Product</h2>
 <ol style="list-style-type: lower-roman">
 <li><div class="definition">
-<p><span id="def:unlabeled-div-11" class="definition"><strong>Definition 2.2  </strong></span>Given <span class="math inline">\(\underline{a}\)</span> and <span class="math inline">\(\underline{b}\)</span>, let <span class="math inline">\(\theta\)</span> be the angle between them measure in the sense shown relative to a unit normal <span class="math inline">\(\underline{n}\)</span> to the plane they span;
+<p><span id="def:unlabeled-div-2" class="definition"><strong>Definition 2.2  </strong></span>Given <span class="math inline">\(\underline{a}\)</span> and <span class="math inline">\(\underline{b}\)</span>, let <span class="math inline">\(\theta\)</span> be the angle between them measure in the sense shown relative to a unit normal <span class="math inline">\(\underline{n}\)</span> to the plane they span;
 <img src="figures/02-cross.svg" width="50%" style="display: block; margin: auto;" />
 then <span class="math display">\[\begin{align*}
- \underline{a} \wedge \underline{b} = \underline{a} \times \underline{b} = |\underline{a}| | \underline{b}| \sin \theta \underline{n}
+ \underline{a} \wedge \underline{b} = \underline{a} \times \underline{b} = |\underline{a}| | \underline{b}| \sin \theta \, \underline{n}
 \end{align*}\]</span> is <em>vector</em> or <em>cross</em> product.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
 </div></li>
 <li><em>Properties</em></li>
@@ -388,7 +388,7 @@ then <span class="math display">\[\begin{align*}
     (\lambda \underline{a}) \wedge \underline{b} &amp;= \lambda (\underline{a} \wedge \underline{b}) = \underline{a} \wedge (\lambda \underline{b}) \\
     \underline{a} \wedge (\underline{b} + \underline{c}) &amp;= \underline{a} \wedge \underline{b} + \underline{a} \wedge \underline{c} \\
     \underline{a} \wedge \underline{b} &amp;= \underline{0} \iff \underline{a} \parallel \underline{b} \\
-    \underline{a} \wedge \underline{b} &amp;\bot \underline{a} \text{ and } \underline{b} \\
+    \underline{a} \wedge \underline{b} &amp;\perp \underline{a} \text{ and } \underline{b} \\
     \underline{a} \cdot (\underline{a} \wedge \underline{b}) &amp;= \underline{b} \cdot (\underline{a} \wedge \underline{b}) = 0
 \end{align*}\]</span></p>
 <ol start="3" style="list-style-type: lower-roman">
@@ -398,16 +398,16 @@ then <span class="math display">\[\begin{align*}
 <li><p><span class="math inline">\(\underline{a} \wedge \underline{b}\)</span> is the <em>vector</em> area shown:
 <img src="figures/02-vector-area.svg" width="50%" style="display: block; margin: auto;" />
 <span class="math inline">\(|\underline{a} \wedge \underline{b}|\)</span> is the <em>scalar</em> area. The direction of the normal <span class="math inline">\(\underline{n}\)</span> gives orientation of the parallelogram in space.</p></li>
-<li><p>Fix <span class="math inline">\(\underline{a}\)</span> and consider <span class="math inline">\(\underline{x} \bot \underline{a}\)</span>; then <span class="math inline">\(\underline{x} \mapsto \underline{a} \wedge \underline{x}\)</span> scales <span class="math inline">\(| \underline{x} |\)</span> by a factor <span class="math inline">\(|\underline{a}|\)</span> and rotates <span class="math inline">\(\underline{x}\)</span> by <span class="math inline">\(\pi / 2\)</span> in the plane <span class="math inline">\(\bot \; \underline{a}\)</span> as shown:
+<li><p>Fix <span class="math inline">\(\underline{a}\)</span> and consider <span class="math inline">\(\underline{x} \perp \underline{a}\)</span>; then <span class="math inline">\(\underline{x} \mapsto \underline{a} \wedge \underline{x}\)</span> scales <span class="math inline">\(| \underline{x} |\)</span> by a factor <span class="math inline">\(|\underline{a}|\)</span> and rotates <span class="math inline">\(\underline{x}\)</span> by <span class="math inline">\(\pi / 2\)</span> in the plane <span class="math inline">\(\perp \underline{a}\)</span> as shown:
 <img src="figures/02-perp-cross.svg" width="50%" style="display: block; margin: auto;" /></p></li>
 </ul>
 <ol start="4" style="list-style-type: lower-roman">
 <li><em>Component expressions</em>
 Consider <span class="math inline">\(\underline{e}_1, \underline{e}_2, \underline{e}_3\)</span> orthonormal basis as in <a href="vectors-in-3-dimensions.html#orthonormal-bases-and-components">Orthonormal Bases and Components</a> but assume in addition
 <span class="math display">\[\begin{align*}
-\underline{e}_1 \wedge \underline{e}_2 = \underline{e}_3 = \underline{e}_2 \wedge \underline{e}_1 \\
-\underline{e}_2 \wedge \underline{e}_3 = \underline{e}_1 = \underline{e}_3 \wedge \underline{e}_2 \\
-\underline{e}_3 \wedge \underline{e}_1 = \underline{e}_2 = \underline{e}_1 \wedge \underline{e}_3 \\
+\underline{e}_1 \wedge \underline{e}_2 = \underline{e}_3 = -\underline{e}_2 \wedge \underline{e}_1 \\
+\underline{e}_2 \wedge \underline{e}_3 = \underline{e}_1 = -\underline{e}_3 \wedge \underline{e}_2 \\
+\underline{e}_3 \wedge \underline{e}_1 = \underline{e}_2 = -\underline{e}_1 \wedge \underline{e}_3 \\
 \end{align*}\]</span> (all equalities follow from any one).
 This is called a <em>right-handed</em> orthonormal basis.</li>
 </ol>
@@ -423,7 +423,7 @@ This is called a <em>right-handed</em> orthonormal basis.</li>
 <li><em>Scalar Triple Product</em></li>
 </ol>
 <div class="definition">
-<p><span id="def:unlabeled-div-12" class="definition"><strong>Definition 2.3  </strong></span><span class="math display">\[\begin{align*}
+<p><span id="def:unlabeled-div-3" class="definition"><strong>Definition 2.3  </strong></span><span class="math display">\[\begin{align*}
     \underline{a} \cdot (\underline{b} \wedge \underline{c}) &amp;= \underline{b} \cdot (\underline{c} \wedge \underline{a}) = \underline{c} \cdot ( \underline{a} \wedge \underline{b}) \\
     &amp;= - \underline{a} \cdot (\underline{c} \wedge \underline{b}) = - \underline{b} \cdot (\underline{a} \wedge \underline{c}) = - \underline{c} \cdot (\underline{b} \wedge \underline{a}) \\
     &amp;= \left[ \underline{a}, \underline{b}, \underline{c} \right]
@@ -433,16 +433,16 @@ This is called a <em>right-handed</em> orthonormal basis.</li>
 <img src="figures/02-parallelepiped.svg" width="50%" style="display: block; margin: auto;" />
 The “signed volume” is <span class="math inline">\(\underline{c} \cdot \underline{a} \wedge \underline{b}\)</span>; if
 <span class="math inline">\(\underline{c} \cdot \underline{a} \wedge \underline{b} &gt; 0\)</span> then we say <span class="math inline">\(\underline{a}, \underline{b}, \underline{c}\)</span> is a right-handed set</p>
-<p>Note: <span class="math inline">\(\underline{a} \cdot \underline{b} \wedge \underline{c}\)</span> iff <span class="math inline">\(\underline{a}, \underline{b}, \underline{c}\)</span> are <em>co-planar</em> meaning one of them lies in the plane spanned by the other two.
+<p>Note: <span class="math inline">\(\underline{a} \cdot \underline{b} \wedge \underline{c} = 0\)</span> iff <span class="math inline">\(\underline{a}, \underline{b}, \underline{c}\)</span> are <em>co-planar</em> meaning one of them lies in the plane spanned by the other two.
 e.g. <span class="math inline">\(\underline{c} = \alpha \underline{a} + \beta \underline{b}\)</span> belonging to <span class="math inline">\(\operatorname{span} \{ a, b \}\)</span></p>
 <div class="example">
-<p><span id="exm:unlabeled-div-13" class="example"><strong>Example 2.1  </strong></span><span class="math display">\[\begin{align*}
+<p><span id="exm:unlabeled-div-4" class="example"><strong>Example 2.1  </strong></span><span class="math display">\[\begin{align*}
     \underline{a} &amp;= \begin{pmatrix}2 &amp; 0 &amp; -1\end{pmatrix} \\
     \underline{b} &amp;= \begin{pmatrix}7 &amp; -3 &amp; 5 \end{pmatrix} \\
     \implies \underline{a} \wedge \underline{b} &amp;= (0.5 - (-1)(-3)) \underline{e}_1 + ((-1)7 - 2.5) \underline{e}_2 + (2(-3) - 0.7) \underline{e}_3 \\
     &amp;= \begin{pmatrix}-3 &amp; -17 &amp; -6 \end{pmatrix}
 \end{align*}\]</span>
-To test whether <span class="math inline">\(\underline{a}, \underline{b}, \underline{c}\)</span> are co-planar with <span class="math inline">\(\underline{c} = \begin{pmatrix}7 3 -3 &amp; 7 \end{pmatrix}\)</span>.
+To test whether <span class="math inline">\(\underline{a}, \underline{b}, \underline{c}\)</span> are co-planar with <span class="math inline">\(\underline{c} = \begin{pmatrix}3 &amp; -3 &amp; 7 \end{pmatrix}\)</span>.
 <span class="math display">\[\begin{align*}
     \underline{c} \cdot \underline{a} \wedge \underline{b} &amp;= 3(-3) + (-3)(-17) + 7(-6) \\
     &amp;= 0;
@@ -523,7 +523,7 @@ Figure 2.2: Clearly a plane
 <li>We can re-write and convert to some standard form</li>
 </ul>
 <div class="example">
-<p><span id="exm:unlabeled-div-14" class="example"><strong>Example 2.2  </strong></span><span class="math display">\[\begin{align*}
+<p><span id="exm:unlabeled-div-5" class="example"><strong>Example 2.2  </strong></span><span class="math display">\[\begin{align*}
     |\underline{r}|^2 + \underline{r} \cdot \underline{a} &amp;= k \\
     \text{Complete the square:} \\
     \left| \underline{r} + \frac{1}{2} \underline{a} \right|^2 &amp;= \left( \underline{r} + \frac{1}{2} \underline{a} \right) \cdot \left( \underline{r} + \frac{1}{2} \underline{a} \right) \\
@@ -536,7 +536,7 @@ This is the equation of a sphere, centre <span class="math inline">\(-\frac{1}{2
 <li>Try dotting and crossing with constant vectors to learn more.</li>
 </ul>
 <div class="example">
-<p><span id="exm:unlabeled-div-15" class="example"><strong>Example 2.3  </strong></span>Another example of a vector equation is
+<p><span id="exm:unlabeled-div-6" class="example"><strong>Example 2.3  </strong></span>Another example of a vector equation is
 <span class="math display" id="eq:one">\[\begin{align}
     \underline r + \underline a \times (\underline b \times \underline r) = \underline c \tag{2.1}
 \end{align}\]</span>
@@ -588,10 +588,10 @@ Indices or suffices <span class="math inline">\(i, j, k, l, p, q \dots\)</span> 
     &amp;&amp; &amp;= \alpha a_i + \beta b_i \text{ for } i = 1, 2, 3 \textbf{ free index} \\
     &amp;&amp; \underline{a} \cdot \underline{b} &amp;= \sum_i a_i b_i = \sum_j a_j b_j \\
     &amp;&amp; \underline{x} &amp;= \underline{a} + (\underline{b} \cdot \underline{c}) \underline{d} \\
-    &amp;\iff &amp; x_j &amp;= a_j + (\sum_k b_k c_k) d_j \text{ for } j = 1, 2, 3 \text{ free index}
+    &amp;\iff &amp; x_j &amp;= a_j + \left( \sum_k b_k c_k \right) d_j \text{ for } j = 1, 2, 3 \text{ free index}
 \end{align*}\]</span></p>
 <div class="definition">
-<p><span id="def:unlabeled-div-16" class="definition"><strong>Definition 2.4  (Kronecker Delta) </strong></span><span class="math display">\[\begin{align*}
+<p><span id="def:unlabeled-div-7" class="definition"><strong>Definition 2.4  (Kronecker Delta) </strong></span><span class="math display">\[\begin{align*}
     \delta_{ij} &amp;= \begin{cases}
         1 &amp; \text{if } i = j \\
         0 &amp; \text{else}\\
@@ -609,14 +609,14 @@ Indices or suffices <span class="math inline">\(i, j, k, l, p, q \dots\)</span> 
     0 &amp; 0 &amp; 1
     \end{pmatrix} \\
     \text{Then } \underline{e}_i \cdot \underline{e}_j &amp;= \delta_{ij} \\
-    \text{and } \underline{a} \cdot \underline{b} &amp;= \left( \sum_i a_i \underline{e}_i) \cdot (\sum_j b_j \underline{e}_j \right) \\
+    \text{and } \underline{a} \cdot \underline{b} &amp;= \left( \sum_i a_i \underline{e}_i \right) \cdot \left( \sum_j b_j \underline{e}_j \right) \\
     &amp;= \sum_{ij} a_i b_j \underline{e}_i \cdot \underline{e}_j \\
     &amp;= \sum_{ij} a_i b_j \delta_{ij} \\
     &amp;= \sum_i a_i b_i
 \end{align*}\]</span></p>
 </div>
 <div class="definition">
-<p><span id="def:unlabeled-div-17" class="definition"><strong>Definition 2.5  (Levi-Civita Epsilon) </strong></span><span class="math display">\[\begin{align*}
+<p><span id="def:unlabeled-div-8" class="definition"><strong>Definition 2.5  (Levi-Civita Epsilon) </strong></span><span class="math display">\[\begin{align*}
     \epsilon_{ijk} &amp;= \begin{cases}
         + 1 &amp; \text{if } (i, j, k) \text{ is an even permutation of } (1, 2, 3) \\
         - 1 &amp; \text{if } (i, j, k) \text{ is an odd permutation of } (1, 2, 3) \\
@@ -649,7 +649,7 @@ Then
 <p>With component/ index notation, we observe that indices that appear <em>twice</em> in a given term are (usually) summed over.
 In the summation convention we <em>omit</em> <span class="math inline">\(\sum\)</span> signs for repeated indices: the sum is understood.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-18" class="example"><strong>Example 2.4  </strong></span><span class="math display">\[\begin{align*}
+<p><span id="exm:unlabeled-div-9" class="example"><strong>Example 2.4  </strong></span><span class="math display">\[\begin{align*}
     a_i \delta_{ij} &amp;= a_1 \delta_{1j} + a_2 \delta_{2j} + a_3 \delta_{3j} \\
     &amp;= \begin{cases}
         a_1 &amp; \text{if} j = 1 \\
@@ -660,29 +660,28 @@ In the summation convention we <em>omit</em> <span class="math inline">\(\sum\)<
 \end{align*}\]</span></p>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-19" class="example"><strong>Example 2.5  </strong></span><span class="math display">\[\begin{align*}
+<p><span id="exm:unlabeled-div-10" class="example"><strong>Example 2.5  </strong></span><span class="math display">\[\begin{align*}
     \underline{a} \cdot \underline{b} &amp;= \delta_{ij} a_i b_j \\
     &amp;= a_i b_i
 \end{align*}\]</span></p>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-20" class="example"><strong>Example 2.6  </strong></span><span class="math display">\[\begin{align*}
+<p><span id="exm:unlabeled-div-11" class="example"><strong>Example 2.6  </strong></span><span class="math display">\[\begin{align*}
     (\underline{a} \wedge \underline{b})_i = \epsilon_{ijk} a_j b_k
 \end{align*}\]</span></p>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-21" class="example"><strong>Example 2.7  </strong></span><span class="math display">\[\begin{align*}
-    \underline{a} \cdot \underline{b} \wedge c &amp;= \epsilon_{ijk} a_j b_k c_k \\
-    &amp;= a_i b_i
+<p><span id="exm:unlabeled-div-12" class="example"><strong>Example 2.7  </strong></span><span class="math display">\[\begin{align*}
+    \underline{a} \cdot \underline{b} \wedge c &amp;= \epsilon_{ijk} a_i b_j c_k \\
 \end{align*}\]</span></p>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-22" class="example"><strong>Example 2.8  </strong></span><span class="math display">\[\begin{align*}
+<p><span id="exm:unlabeled-div-13" class="example"><strong>Example 2.8  </strong></span><span class="math display">\[\begin{align*}
     \delta_{ii} = \delta_{11} + \delta_{22} + \delta_{33} = 3
 \end{align*}\]</span></p>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-23" class="example"><strong>Example 2.9  </strong></span><span class="math display">\[\begin{align*}
+<p><span id="exm:unlabeled-div-14" class="example"><strong>Example 2.9  </strong></span><span class="math display">\[\begin{align*}
     \left[ (\underline{a} \cdot \underline{c}) \underline{b} - (\underline{a} \cdot \underline{b}) \underline{c} \right]_i &amp;= (\underline{a} \cdot \underline{c}) \underline{b}_i - (\underline{a} \cdot \underline{b}) \underline{c}_i \\
     &amp;= a_j c_j b_i - a_j b_j c_i
 \end{align*}\]</span></p>
@@ -700,7 +699,7 @@ In the summation convention we <em>omit</em> <span class="math inline">\(\sum\)<
 <h3><span class="header-section-number">2.7.4</span> Application</h3>
 <p>Proof of the vector triple product identity. Consider</p>
 <div class="proof">
-<p><span id="unlabeled-div-24" class="proof"><em>Proof</em>. </span><span class="math display">\[\begin{align*}
+<p><span id="unlabeled-div-15" class="proof"><em>Proof</em>. </span><span class="math display">\[\begin{align*}
     \left[ \underline{a} \wedge (\underline{b} \wedge \underline{c}) \right]_i &amp;= \epsilon_{ijk} a_j (\underline{b} \wedge \underline{c})_k \\
     &amp;= \epsilon_{ijk} a_j \epsilon_{kpq} b_p c_q \\
     &amp;= \epsilon_{ijk} \epsilon_{pqk} a_j b_p c_q \\

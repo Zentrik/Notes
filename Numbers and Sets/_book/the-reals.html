@@ -178,19 +178,16 @@ How do we express the fact making reference only to <span class="math inline">\(
 <span class="math display">\[\begin{align*}
  a (b + c) = ab + ac
 \end{align*}\]</span></p></li>
-<li><p><span class="math inline">\(\forall \; a, b\)</span>, exactly one of <span class="math inline">\(a &lt; b\)</span> or <span class="math inline">\(a = b\)</span> or <span class="math inline">\(b &lt; a\)</span> holds, and <span class="math inline">\(\forall \; a, b, c\)</span>,
+<li><p><span class="math inline">\(\forall \; a, b\)</span>, exactly one of <span class="math inline">\(a &lt; b\)</span>, <span class="math inline">\(a = b\)</span> or <span class="math inline">\(b &lt; a\)</span> holds, and <span class="math inline">\(\forall \; a, b, c\)</span>,
 <span class="math display">\[\begin{align*}
  a &lt; b \text{ and } b &lt; c \implies a &lt; c;
 \end{align*}\]</span></p></li>
-<li><p><span class="math inline">\(\forall \; a, b, c\)</span>
-<span class="math display">\[\begin{align*}
- \forall \; a, b, c &amp; a &lt; b &amp;\implies a + c &lt; b + c \\
- \text{and } &amp; a &lt; b &amp;\implies ac &lt; bc \text{ if } c &gt; 0.
-\end{align*}\]</span></p></li>
-</ol>
-<p>(The above all hold for the rationals)</p>
-<ol start="6" style="list-style-type: decimal">
-<li>Given any set <span class="math inline">\(S\)</span> of reals that is non-empty and bounded above <span class="math inline">\(S\)</span> has a least upper bound.</li>
+<li><p><span class="math display">\[\begin{align*}
+  \forall \; a, b, c &amp;&amp; a &lt; b &amp;\implies a + c &lt; b + c \\
+  \text{and } &amp;&amp; a &lt; b &amp;\implies ac &lt; bc \quad \text{if } c &gt; 0.
+\end{align*}\]</span>
+(The above all hold for the rationals)</p></li>
+<li><p>Given any set <span class="math inline">\(S\)</span> of reals that is non-empty and bounded above <span class="math inline">\(S\)</span> has a least upper bound.</p></li>
 </ol>
 <p>6 is known as the <em>least upper bound axiom</em></p>
 <p>We say that a set <span class="math inline">\(S\)</span> is bounded above if <span class="math inline">\(\exists \; x \in \mathbb{R}\)</span> s.t. <span class="math inline">\(x \geq y \; \forall \; y \in S\)</span>.
@@ -211,11 +208,11 @@ If <span class="math inline">\(S\)</span> is not bounded above, then it has no u
 </ol>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-57" class="example"><strong>Example 3.1  </strong></span><span class="math inline">\(S = \{ x \in \mathbb{R} : 0 \leq x \leq \mathbb{R} \}\)</span>
+<p><span id="exm:unlabeled-div-57" class="example"><strong>Example 3.1  </strong></span><span class="math inline">\(S = \{ x \in \mathbb{R} : 0 \leq x \leq 1 \}\)</span>
 <img src="figures/03-exm-1.png" width="1449" style="display: block; margin: auto;" /></p>
-<p>Is <span class="math inline">\(2\)</span> an upper bound for <span class="math inline">\(S\)</span>?
+<p>Is <span class="math inline">\(2\)</span> an upper bound for <span class="math inline">\(S?\)</span>
 Yes: <span class="math inline">\(\forall \; x \in S, x \leq 2\)</span>.<br />
-Is <span class="math inline">\(\frac{3}{4}\)</span> an upper bound for <span class="math inline">\(S\)</span>?
+Is <span class="math inline">\(\frac{3}{4}\)</span> an upper bound for <span class="math inline">\(S?\)</span>
 No: <span class="math inline">\(\frac{7}{8} \in S, \frac{7}{8} \leq \frac{3}{4}\)</span>.</p>
 <p>The least upper bound of <span class="math inline">\(S\)</span> is <span class="math inline">\(1\)</span> because</p>
 <ul>
@@ -234,9 +231,9 @@ No: <span class="math inline">\(\frac{7}{8} \in S, \frac{7}{8} \leq \frac{3}{4}\
     &amp;= (0, 1)
 \end{align*}\]</span></p>
 <p><img src="figures/03-exm-2.png" width="1512" style="display: block; margin: auto;" /></p>
-<p>Is <span class="math inline">\(2\)</span> an upper bound for <span class="math inline">\(S\)</span>?
+<p>Is <span class="math inline">\(2\)</span> an upper bound for <span class="math inline">\(S?\)</span>
 Yes: <span class="math inline">\(\forall \; x \in S, x \leq 2\)</span>.<br />
-Is <span class="math inline">\(\frac{3}{4}\)</span> an upper bound for <span class="math inline">\(S\)</span>?
+Is <span class="math inline">\(\frac{3}{4}\)</span> an upper bound for <span class="math inline">\(S?\)</span>
 No: <span class="math inline">\(\frac{7}{8} \in S, \frac{7}{8} \leq \frac{3}{4}\)</span>.</p>
 <p>We have <span class="math inline">\(\sup (S) = 1\)</span> because</p>
 <ul>
@@ -250,8 +247,8 @@ But <span class="math inline">\(\sup (S)\)</span> can exist when <span class="ma
 </div>
 <div class="example">
 <p><span id="exm:three" class="example"><strong>Example 3.3  </strong></span><span class="math display">\[\begin{align*}
-    S &amp;= \{ 1 - \frac{1}{n} : n \in \mathbb{N} \} \\
-    &amp;= \{ 0, \frac{1}{2}, \frac{2}{3}, \frac{3}{4}, \dots \}
+    S &amp;= \left\{ 1 - \frac{1}{n} : n \in \mathbb{N} \right\} \\
+    &amp;= \left\{ 0, \frac{1}{2}, \frac{2}{3}, \frac{3}{4}, \dots \right\}
 \end{align*}\]</span></p>
 <p><img src="figures/03-exm-3.png" width="1022" style="display: block; margin: auto;" /></p>
 <p>Clearly <span class="math inline">\(1\)</span> is an upper bound.<br />
@@ -276,10 +273,10 @@ Hence <span class="math inline">\(\frac{1}{n} &lt; t\)</span>.</p>
 </div>
 <p>A set <span class="math inline">\(S\)</span> is said to be bounded below if <span class="math inline">\(\exists \; x\)</span> s.t. <span class="math inline">\(x \leq y \; \forall \; y \in S\)</span>.
 Such an <span class="math inline">\(x\)</span> is called a <em>lower bound for <span class="math inline">\(S\)</span></em>.
-If <span class="math inline">\(S\)</span> is non-empty and bounded below, then <span class="math inline">\(-S = \{ y: y \in S \}\)</span> is non-empty and bounded above, so it has a least upper bound, <span class="math inline">\(c\)</span> say.
+If <span class="math inline">\(S\)</span> is non-empty and bounded below, then <span class="math inline">\(-S = \{ -y: y \in S \}\)</span> is non-empty and bounded above, so it has a least upper bound, <span class="math inline">\(c\)</span> say.
 Hence <span class="math inline">\(-c\)</span> is the <em>greatest lower bound of <span class="math inline">\(S\)</span></em>.
 We denote it by “<span class="math inline">\(\operatorname{GLB}(S)\)</span>”, or “<span class="math inline">\(\operatorname{infimum} (S)\)</span>”, or “<span class="math inline">\(\inf (S)\)</span>”.</p>
-<p>Corollary <a href="the-reals.html#cor:three">3.1</a> immediately implies that <span class="math inline">\(\inf ( \{ \frac{1}{n} : n \in \mathbb{N} \}) = 0\)</span>.</p>
+<p>Corollary <a href="the-reals.html#cor:three">3.1</a> immediately implies that <span class="math inline">\(\inf \left(\left\{ \frac{1}{n} : n \in \mathbb{N} \right\}\right) = 0\)</span>.</p>
 <p>Proposition <a href="elementary-number-theory.html#prp:two">2.1</a> and Corollary <a href="the-reals.html#cor:three">3.1</a> show that there are no “infinitely large” or “infinitely small” numbers in <span class="math inline">\(\mathbb{R}\)</span>.</p>
 <p>Back to Example <a href="the-reals.html#exm:three">3.3</a>: we have <span class="math inline">\(\sup (S) = 1\)</span>, for suppose <span class="math inline">\(c &lt; 1\)</span> is an upper bound for <span class="math inline">\(S\)</span>.
 Then <span class="math inline">\(1 - \frac{1}{n} &lt; c \; \forall \; n \in \mathbb{N}\)</span>, so <span class="math inline">\(0 &lt; 1 - c &lt; \frac{1}{n}\)</span> contradicting Corollary <a href="the-reals.html#cor:three">3.1</a>.</p>
@@ -302,27 +299,26 @@ For <span class="math inline">\(0 &lt; t &lt; 1\)</span>, have <span class="math
 This contradicts the assumption that <span class="math inline">\(c\)</span> is the <em>least</em> upper bound for <span class="math inline">\(S\)</span> (since <span class="math inline">\(c - t\)</span> is an upper bound for <span class="math inline">\(S\)</span>).</p>
 </div>
 <div class="remark">
-<p><span id="unlabeled-div-62" class="remark"><em>Remark</em>. </span>The same proof shows that <span class="math inline">\(x^{\frac{1}{n}}\)</span> exists <span class="math inline">\(\forall \; n \in N, \forall \; x \in \mathbb{R}, x &gt; 0\)</span>.
-[i.e. <span class="math inline">\(\forall \; n \in \mathbb{N}, \forall \; x \in \mathbb{R}, x &gt; 0, \exists \; y \in \mathbb{R}\)</span> s.t. <span class="math inline">\(y^n = x\)</span>.]<br />
+<p><span id="unlabeled-div-62" class="remark"><em>Remark</em>. </span>The same proof shows that <span class="math inline">\(x^{\frac{1}{n}}\)</span> exists <span class="math inline">\(\forall \; n \in N,\; x \in \mathbb{R},\; x &gt; 0\)</span>.
+[i.e. <span class="math inline">\(\forall \; n \in \mathbb{N},\; x \in \mathbb{R},\; x &gt; 0,\ \exists \; y \in \mathbb{R}\)</span> s.t. <span class="math inline">\(y^n = x\)</span>.]<br />
 A real that is not rational is called <em>irrational</em>.
 E.g. <span class="math inline">\(\sqrt{2}, \sqrt{3}, \sqrt{5}, \sqrt{6}\)</span> are irrational.<br />
 Also <span class="math inline">\(2 + 3\sqrt{5}\)</span> is irrational.
-Indeed if <span class="math inline">\(2 + 3\sqrt{5} = \frac{a}{b}\)</span> with <span class="math inline">\(\frac{a}{b} \in \mathbb{N}\)</span> then <span class="math inline">\(\sqrt{5} = \frac{a - 2b}{3b} \in \mathbb{Q}\)</span>, ⨳. <span class="math inline">\(\Box\)</span></p>
+Indeed if <span class="math inline">\(2 + 3\sqrt{5} = \frac{a}{b}\)</span> with <span class="math inline">\(a, b \in \mathbb{N}\)</span> then <span class="math inline">\(\sqrt{5} = \frac{a - 2b}{3b} \in \mathbb{Q}\)</span>, ⨳. <span class="math inline">\(\Box\)</span></p>
 </div>
-<p>The rationals are <em>dense</em> in <span class="math inline">\(\mathbb{R}\)</span>, in the sense that <span class="math inline">\(\forall \; a &lt; b \in \mathbb{R}, \exists \; c \in Q\)</span> with <span class="math inline">\(a &lt; c &lt; b\)</span>.</p>
+<p>The rationals are <em>dense</em> in <span class="math inline">\(\mathbb{R}\)</span>, in the sense that <span class="math inline">\(\forall \; a &lt; b \in \mathbb{R},\ \exists \; c \in \mathbb{Q}\)</span> with <span class="math inline">\(a &lt; c &lt; b\)</span>.</p>
 <div class="proof">
 <p><span id="unlabeled-div-63" class="proof"><em>Proof</em>. </span>Indeed, we may assume <span class="math inline">\(a \geq 0\)</span> (we can just add an integer, find the rational and subtract the integer).</p>
 <p>By Corollary <a href="the-reals.html#cor:three">3.1</a>, <span class="math inline">\(\exists \; n \in \mathbb{N}\)</span> with <span class="math inline">\(\frac{1}{n} &lt; b - a\)</span>.
 By the Axiom of Archimedes <a href="elementary-number-theory.html#prp:two">2.1</a>, <span class="math inline">\(\exists \; N \in \mathbb{N}\)</span> s.t. <span class="math inline">\(N &gt; b\)</span>.
-Let <span class="math inline">\(T = \{ k \in \mathbb{N} : \frac{k}{n} \geq b \}\)</span>,<br />
-then <span class="math inline">\(Nn \in T\)</span>, so <span class="math inline">\(T \neq \emptyset\)</span>.<br />
+Let <span class="math inline">\(T = \{ k \in \mathbb{N} : \frac{k}{n} \geq b \}\)</span>, then <span class="math inline">\(Nn \in T\)</span>, so <span class="math inline">\(T \neq \emptyset\)</span>.<br />
 By the Well-Ordering Principle, <span class="math inline">\(T\)</span> has a least element <span class="math inline">\(m\)</span>.
 Set <span class="math inline">\(c = (m - 1) \cdot \frac{1}{n}\)</span>.
 Since <span class="math inline">\(m - 1 \notin T\)</span>, <span class="math inline">\(c &lt; b\)</span>.<br />
 If <span class="math inline">\(c \leq a\)</span> then <span class="math inline">\(\frac{m}{n} = c + \frac{1}{n} &lt; a + b - a = b\)</span>, ⨳ of <span class="math inline">\(m \in T\)</span>.
 Hence <span class="math inline">\(a &lt; c &lt; b\)</span>.</p>
 </div>
-<p>The irrationals are also dense in <span class="math inline">\(\mathbb{R}\)</span>, i.e. <span class="math inline">\(\forall \; a &lt; b \in \mathbb{R}, \exists \; c \in \mathbb{R} \setminus \mathbb{Q}\)</span> with <span class="math inline">\(a &lt; c &lt; b\)</span>.<br />
+<p>The irrationals are also dense in <span class="math inline">\(\mathbb{R}\)</span>, i.e. <span class="math inline">\(\forall \; a &lt; b \in \mathbb{R},\ \exists \; c \in \mathbb{R} \setminus \mathbb{Q}\)</span> with <span class="math inline">\(a &lt; c &lt; b\)</span>.<br />
 Indeed, take a rational <span class="math inline">\(c\)</span> with <span class="math inline">\(a \sqrt{2} &lt; c &lt; b \sqrt{2}\)</span> then <span class="math inline">\(a &lt; \frac{c}{\sqrt{2}} &lt; b\)</span>.</p>
 </div>
 <div id="sequences" class="section level2" number="3.2">
@@ -423,8 +419,8 @@ Hence <span class="math inline">\(|a_n| \leq \max \{ |a_1|, |a_2|, \dots, |a_{N-
 <p>We say a sequence <span class="math inline">\((a_n)^\infty_{n = 1}\)</span> is <em>monotonic</em> if it is either increasing or decreasing.
 It is <em>increasing</em> if <span class="math inline">\(a_{n + 1} \geq a_n \; \forall \; n \in N\)</span>.</p>
 <div class="theorem">
-<p><span id="thm:five" class="theorem"><strong>Theorem 3.2  </strong></span>Every bounded monotonic sequence converges.<a href="#fn10" class="footnote-ref" id="fnref10"><sup>10</sup></a>
-<a href="#fn11" class="footnote-ref" id="fnref11"><sup>11</sup></a></p>
+<p><span id="thm:five" class="theorem"><strong>Theorem 3.2  </strong></span>Every bounded monotonic sequence converges.<a href="#fn11" class="footnote-ref" id="fnref11"><sup>11</sup></a>
+<a href="#fn12" class="footnote-ref" id="fnref12"><sup>12</sup></a></p>
 </div>
 <p><img src="figures/03-bounded.png" width="1234" style="display: block; margin: auto;" /></p>
 <div class="proof">
@@ -532,7 +528,7 @@ Since <span class="math inline">\(\frac{1}{10^n} \to 0\)</span> as <span class="
 Suppose <span class="math inline">\(0. a_1 a_2 a_3 \dots = 0. b_1 b_2 b_3 \dots\)</span>
 We may suppose <span class="math inline">\(a_j = b_j\)</span> for <span class="math inline">\(j &lt; K\)</span> for some <span class="math inline">\(K\)</span> and <span class="math inline">\(a_K &lt; b_K\)</span>.
 Then <span class="math inline">\(\sum_{j=K+1}^{\infty} \frac{a_j}{10^j} \leq \sum_{j=k+1}^{\infty} \frac{9}{10^j} = \frac{9}{10^{k + 1}} \frac{1}{1 - \frac{1}{10}} = \frac{1}{10^k}\)</span>.
-Hence we must have <span class="math inline">\(b_K = a_K + 1\)</span><a href="#fn12" class="footnote-ref" id="fnref12"><sup>12</sup></a> and <span class="math inline">\(a_j = 9, b_j = 0 \; \forall \; j &gt; K\)</span>.</p></li>
+Hence we must have <span class="math inline">\(b_K = a_K + 1\)</span><a href="#fn13" class="footnote-ref" id="fnref13"><sup>13</sup></a> and <span class="math inline">\(a_j = 9, b_j = 0 \; \forall \; j &gt; K\)</span>.</p></li>
 <li><p>A decimal expansion is <em>periodic</em> if, after a finite number of terms, say <span class="math inline">\(\ell\)</span> digits, it repeats in blocks, of length <span class="math inline">\(k\)</span>.
 I.e. <span class="math inline">\(\exists \; \ell, k\)</span> s.t. <span class="math inline">\(d_{n + k} = d_n \; \forall \; n &gt; \ell\)</span>.<br />
 A periodic decimal is rational, e.g. <span class="math inline">\(x = 0.7832147147147 \dots\)</span>, <span class="math inline">\(10^4 x - 7832 = 0.147147 \dots\)</span>
@@ -574,7 +570,7 @@ Then <span class="math inline">\(q! e \in \mathbb{N}\)</span>.
     &amp;= \frac{1}{q+1} + \underbrace{\frac{1}{(q + 1)(q + 2)}}_{\leq \frac{1}{(q + 1)^2}} + \underbrace{\frac{q}{(q + 1)(q + 2)(q + 3)}}_{\leq \frac{1}{(q + 1)^3}} + \dots \\
     \text{and in general, } \frac{q!}{(q + j)!} &amp;\leq \frac{1}{(q + 1)^j}, \\
     \text{so } x &amp;\leq \frac{1}{q + 1} + \frac{1}{(q + 1)^2} + \frac{1}{(q + 1)^3} + \dots = \frac{1}{q} &lt; 1 \text{ as } q \geq 2.
-\end{align*}\]</span><a href="#fn13" class="footnote-ref" id="fnref13"><sup>13</sup></a>
+\end{align*}\]</span><a href="#fn14" class="footnote-ref" id="fnref14"><sup>14</sup></a>
 Hence <span class="math inline">\(0 &lt; x &lt; 1\)</span>, contradicting that <span class="math inline">\(q! e \in \mathbb{N}\)</span>, so <span class="math inline">\(e\)</span> is irrational.</p>
 </div>
 </div>
@@ -599,8 +595,8 @@ Hence <span class="math inline">\(0 &lt; x &lt; 1\)</span>, contradicting that <
 <p><span id="unlabeled-div-74" class="proof"><em>Proof</em>. </span>Indeed, suppose <span class="math inline">\(p(x) = a_d x^d + a_{d-1}x^{d-1} + \dots + a_1 x + a_0\)</span>.
 <span class="math display">\[\begin{align*}
     \text{Then } p(x) - p(y) &amp;= a_d (x^d - y^d) + a_{d-1} (x^{d-1} - y^{d-1}) + \dots + a_1 (x - y) \\
-    &amp;= (x - y) [a_d (x^{d- 1} + x^{d-2} y + \dots + y^{d-1}) + \dots + \dots a_1] \\
-    \text{so } |p(x) - p(y)| &amp;\leq |x - y| | d \cdot (|a_d| + |a_{d-1} + \dots + |a_1|) |
+    &amp;= (x - y) [a_d (x^{d- 1} + x^{d-2} y + \dots + y^{d-1}) + \dots + a_1] \\
+    \text{so } |p(x) - p(y)| &amp;\leq |x - y| | d \cdot (|a_d| + |a_{d-1}| + \dots + |a_1|) |
 \end{align*}\]</span></p>
 </div>
 <p><em>Fact B</em>: A non-zero polynomial of degree <span class="math inline">\(d\)</span> has at most <span class="math inline">\(d\)</span> roots.<br />
@@ -612,17 +608,17 @@ So each root of <span class="math inline">\(p\)</span> is either <span class="ma
 But by the induction hypothesis, <span class="math inline">\(q\)</span> has at most <span class="math inline">\(d - 1\)</span> roots.</p>
 </div>
 <div class="proof">
-<p><span id="unlabeled-div-76" class="proof"><em>Proof</em> (Theorem <a href="the-reals.html#thm:nine">3.3</a>). </span>Write <span class="math inline">\(L_n = \sum_{k=0}^{n} \frac{1}{10^{k!}}\)</span>, so <span class="math inline">\(L_n \to L\)</span>. (? 0)
+<p><span id="unlabeled-div-76" class="proof"><em>Proof</em> (Theorem <a href="the-reals.html#thm:nine">3.3</a>). </span>Write <span class="math inline">\(L_n = \sum_{k=1}^{n} \frac{1}{10^{k!}}\)</span>, so <span class="math inline">\(L_n \to L\)</span>.
 Suppose there is a polynomial <span class="math inline">\(p\)</span> of which <span class="math inline">\(L\)</span> is a root.
 Then by Fact A, there exists <span class="math inline">\(k\)</span> s.t. <span class="math inline">\(|p(x) - p(y)| \leq k |x - y| \; \forall \; 0 \leq x, y \leq 1\)</span>.
-<img src="figures/03-louville.png" width="886" style="display: block; margin: auto;" />
+<img src="figures/03-louville.png" width="500" style="display: block; margin: auto;" />
 <span class="math display">\[\begin{align*}
-    \text{Note } |L - L_n| = \sum_{k=n + 1}^{\infty} \frac{1}{10^{k!}} &amp;\leq \frac{1}{10^{(n + 1)!}} (1 + \frac{1}{2} + \frac{1}{2}^2 \dots) \\
+    \text{Note } |L - L_n| = \sum_{k=n + 1}^{\infty} \frac{1}{10^{k!}} &amp;\leq \frac{1}{10^{(n + 1)!}} \left( 1 + \frac{1}{2} + \frac{1}{2}^2 \dots \right) \\
     &amp;= \frac{2}{10^{(n + 1)!}}
 \end{align*}\]</span>
 Suppose <span class="math inline">\(p\)</span> has degree <span class="math inline">\(d\)</span>, i.e. <span class="math inline">\(p(x) = a_d x^d + a_{d-1}x^{d-1} + \dots + a_1 x + a_0\)</span> with <span class="math inline">\(a_i \in \mathbb{Z}\)</span>, <span class="math inline">\(a_d \neq 0\)</span>.<br />
 Notice that <span class="math inline">\(L_n = s / 10^{n!}\)</span> for some <span class="math inline">\(s \in \mathbb{N}\)</span>, so <span class="math inline">\(p(L_n) = t / 10^{n! d}\)</span> for some <span class="math inline">\(t \in \mathbb{Z}\)</span> (as largest denominator is <span class="math inline">\(1 / 10^{n!}\)</span> and <span class="math inline">\(1 / 10^{n! d}\)</span> respectively).</p>
-<p>By Fact B, for sufficiently large <span class="math inline">\(n\)</span>, <span class="math inline">\(L_n\)</span> is not a root of <span class="math inline">\(p\)</span>.(?)
+<p>By Fact B, for sufficiently large <span class="math inline">\(n\)</span>, <span class="math inline">\(L_n\)</span> is not a root of <span class="math inline">\(p\)</span> (as it has finitely many roots).
 Hence <span class="math inline">\(|p(L_n)| \geq 1 / 10^{n! d}\)</span>, i.e. <span class="math inline">\(|p(L_n) - p(L)| \geq 1 / 10^{n! d}\)</span>.
 Therefore <span class="math inline">\(1 / 10^{n! d} \leq K \frac{2}{10^{(n + 1)!}} = K \frac{2}{10^{n!} 10^{n + 1}}\)</span>, which is a contradiction for sufficiently large <span class="math inline">\(n\)</span>.</p>
 </div>
@@ -634,7 +630,7 @@ Therefore <span class="math inline">\(1 / 10^{n! d} \leq K \frac{2}{10^{(n + 1)!
 “<span class="math inline">\(x\)</span> has a very good rational approximation <span class="math inline">\(\implies\)</span> transcendental”.</p></li>
 <li><p>Such <span class="math inline">\(x\)</span> are knows are <em>Liouville numbers</em>.</p></li>
 <li><p>This proof does not show that <span class="math inline">\(e\)</span> is transcendental, but in fact it is.</p></li>
-<li><p>We will give another proof of the existence of transcendental numbers in Section 4.</p></li>
+<li><p>We will give another proof of the existence of transcendental numbers in <a href="countability.html#cor:trans">5.3</a>.</p></li>
 </ol>
 </div>
 </div>
@@ -665,7 +661,7 @@ Indeed, given <span class="math inline">\(z = a + bi\)</span>, note that
 \end{align*}\]</span>
 A structure obeying rules (1) - (3) is called a <em>field</em>, e.g. <span class="math inline">\(\mathbb{C}, \mathbb{R}, \mathbb{Q}, \mathbb{Z}_p\)</span> with <span class="math inline">\(p\)</span> a prime, but <em>not</em> <span class="math inline">\(\mathbb{Z}\)</span>!</p></li>
 <li><p>Every non-zero polynomial (even allowing complex coefficients) has a root in <span class="math inline">\(\mathbb{C}\)</span>.
-This is know of that Fundamental Theorem of Algebra.</p></li>
+This is known as the Fundamental Theorem of Algebra.</p></li>
 </ol>
 </div>
 
@@ -673,11 +669,11 @@ This is know of that Fundamental Theorem of Algebra.</p></li>
 </div>
 <div class="footnotes">
 <hr />
-<ol start="10">
-<li id="fn10"><p>Is this statement true in the rationals? No, consider approximations to <span class="math inline">\(\sqrt{2}\)</span>, that is an bounded increasing sequence but it has no limit as <span class="math inline">\(\sqrt{2}\notin \mathbb{Q}\)</span>.<a href="the-reals.html#fnref10" class="footnote-back">↩︎</a></p></li>
-<li id="fn11"><p>An increasing sequence converges iff it is bounded.<a href="the-reals.html#fnref11" class="footnote-back">↩︎</a></p></li>
-<li id="fn12"><p>if <span class="math inline">\(b_K &gt; a_K + 1\)</span>, then <span class="math inline">\(0.b_1 b_2 \dots b_K - 0.a_1 a_2 \dots a_K &gt; \frac{1}{10^k}\)</span> and <span class="math inline">\(\sum_{j=K+1}^{\infty} \frac{a_j}{10^j} \leq \frac{1}{10^k}\)</span> so <span class="math inline">\(0.b_1 b_2 \dots &gt; 0.a_1 a_2 \dots\)</span>.<a href="the-reals.html#fnref12" class="footnote-back">↩︎</a></p></li>
-<li id="fn13"><p>Implicitly we are making the assumption that we can multiply <span class="math inline">\(q!\)</span> term by term, we can do this as we have established that the sequence converges. When the sequences tends to a limit, any constant multiple of the sequence will tend to a constant multiple of the limit.<a href="the-reals.html#fnref13" class="footnote-back">↩︎</a></p></li>
+<ol start="11">
+<li id="fn11"><p>Is this statement true in the rationals? No, consider approximations to <span class="math inline">\(\sqrt{2}\)</span>, that is an bounded increasing sequence but it has no limit as <span class="math inline">\(\sqrt{2}\notin \mathbb{Q}\)</span>.<a href="the-reals.html#fnref11" class="footnote-back">↩︎</a></p></li>
+<li id="fn12"><p>An increasing sequence converges iff it is bounded.<a href="the-reals.html#fnref12" class="footnote-back">↩︎</a></p></li>
+<li id="fn13"><p>if <span class="math inline">\(b_K &gt; a_K + 1\)</span>, then <span class="math inline">\(0.b_1 b_2 \dots b_K - 0.a_1 a_2 \dots a_K &gt; \frac{1}{10^k}\)</span> and <span class="math inline">\(\sum_{j=K+1}^{\infty} \frac{a_j}{10^j} \leq \frac{1}{10^k}\)</span> so <span class="math inline">\(0.b_1 b_2 \dots &gt; 0.a_1 a_2 \dots\)</span>.<a href="the-reals.html#fnref13" class="footnote-back">↩︎</a></p></li>
+<li id="fn14"><p>Implicitly we are making the assumption that we can multiply <span class="math inline">\(q!\)</span> term by term, we can do this as we have established that the sequence converges. When the sequences tends to a limit, any constant multiple of the sequence will tend to a constant multiple of the limit.<a href="the-reals.html#fnref14" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>

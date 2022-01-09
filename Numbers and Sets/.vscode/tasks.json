@@ -1,0 +1,14 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Serve Bookdown Book",
+			"type": "shell",
+			"command": "Rscript -e \"bookdown::serve_book()\"",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		}
+	]
+}

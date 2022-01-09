@@ -73,22 +73,22 @@ ii. *Properties*
     \underline{a} \cdot \underline{b} &= \underline{b} \cdot \underline{a} \\
     \underline{a} \cdot \underline{a} = |\underline{a}|^2 &\geq 0 \text{ and } = 0 \iff \underline{a} = \underline{0} \\
     (\lambda \underline{a}) \cdot \underline{b} &= \lambda (\underline{a} \cdot \underline{b}) = \underline{a} \cdot (\lambda \underline{b}) \\
-    \underline{a} \cdot ( \underline{b} \cdot \underline{c}) &= \underline{a} \cdot \underline{b} + \underline{a} \cdot \underline{c}
+    \underline{a} \cdot ( \underline{b} + \underline{c}) &= \underline{a} \cdot \underline{b} + \underline{a} \cdot \underline{c}
 \end{align*} 
 
 iii. *Interpretation*
 For $\underline{a} \neq \underline{0}$, consider $\underline{u} = \frac{\underline{a}}{|\underline{a}|}$
 \begin{align*}
-    \underline{u} \cdot \underline{b} = \frac{1}{\underline{a}} \underline{a} \cdot \underline{b}
+    \underline{u} \cdot \underline{b} = \frac{1}{|\underline{a}|} \underline{a} \cdot \underline{b}
 \end{align*} 
 is the *component* of $\underline{b}$ along $\underline{a}$
 ```{r interpretation, echo = FALSE, fig.cap = "", fig.align="center"} 
 knitr::include_graphics("figures/02-interpretation.svg") 
 ```
-We can *resolve* $\underline{b} = \underline{b}_\parallel + \underline{b}_\bot$.
-$\underline{b}_\parallel = (\underline{b} \cdot \underline{u}),\ \underline{b}_\bot = b - (\underline{b} \cdot \underline{u})$ where $\underline{u} = \frac{\underline{a}}{|\underline{a}|}$.
+We can *resolve* $\underline{b} = \underline{b}_\parallel + \underline{b}_\perp$.
+$\underline{b}_\parallel = (\underline{b} \cdot \underline{u}),\ \underline{b}_\perp = b - (\underline{b} \cdot \underline{u})$ where $\underline{u} = \frac{\underline{a}}{|\underline{a}|}$.
 Note $\underline{a} \cdot \underline{b} =  \underline{a} \cdot \underline{b}_\parallel$. \ 
-In general, vectors $\underline{a}$ and $\underline{b}$ are *orthogonal* or *perpendicular*, written $\underline{a} \bot \underline{b} \iff \underline{a} \cdot \underline{b} = 0$.
+In general, vectors $\underline{a}$ and $\underline{b}$ are *orthogonal* or *perpendicular*, written $\underline{a} \perp \underline{b} \iff \underline{a} \cdot \underline{b} = 0$.
 
 ## Orthonormal Bases and Components
 
@@ -122,9 +122,9 @@ Each $\underline{a}$ can now be identified with a set of components in
 \end{align*} 
 
 Note \begin{align*}
-    \underline{a} \cdot \underline{b} &= (\sum_i a_i \underline{e}_i) \cdot (\sum_j b_j \underline{e}_j) \\
+    \underline{a} \cdot \underline{b} &= \left( \sum_i a_i \underline{e}_i \right) \cdot \left( \sum_j b_j \underline{e}_j \right) \\
     &= a_1 b_1 + a_2 b_2 + a_3 b_3  \\
-    |\underline{a}|^2 &= a_1^2 + a_2^2 + a_3^2 \text{(Pythagoras)}
+    |\underline{a}|^2 &= a_1^2 + a_2^2 + a_3^2 \quad \text{(Pythagoras)}
 \end{align*} 
 $\underline{e}_1, \underline{e}_2, \underline{e}_3$ are also often written $\underline{i}, \underline{j}, \underline{k}$.
 
@@ -136,7 +136,7 @@ Given $\underline{a}$ and $\underline{b}$, let $\theta$ be the angle between the
 knitr::include_graphics("figures/02-cross.svg") 
 ```
 then \begin{align*}
-    \underline{a} \wedge \underline{b} = \underline{a} \times \underline{b} = |\underline{a}| | \underline{b}| \sin \theta \underline{n}
+    \underline{a} \wedge \underline{b} = \underline{a} \times \underline{b} = |\underline{a}| | \underline{b}| \sin \theta \, \underline{n}
 \end{align*} is *vector* or *cross* product.^[$\underline{n}$ is defined up to a choice of sign if $\underline{a} \nparallel \underline{b}$, but changing the sign of $\underline{n}$ means changing $\theta$ to $2\pi - \theta$ so definition is unchanged; $\underline{n}$ is not defined if $\underline{a} \parallel \underline{b}$ and $\theta$ is not defined if $\underline{a}$ or $\underline{b} = 0$, but $\underline{a} \wedge \underline{b} = \underline{0}$ in these cases.]
 :::
 
@@ -147,7 +147,7 @@ ii. *Properties*
     (\lambda \underline{a}) \wedge \underline{b} &= \lambda (\underline{a} \wedge \underline{b}) = \underline{a} \wedge (\lambda \underline{b}) \\
     \underline{a} \wedge (\underline{b} + \underline{c}) &= \underline{a} \wedge \underline{b} + \underline{a} \wedge \underline{c} \\
     \underline{a} \wedge \underline{b} &= \underline{0} \iff \underline{a} \parallel \underline{b} \\
-    \underline{a} \wedge \underline{b} &\bot \underline{a} \text{ and } \underline{b} \\
+    \underline{a} \wedge \underline{b} &\perp \underline{a} \text{ and } \underline{b} \\
     \underline{a} \cdot (\underline{a} \wedge \underline{b}) &= \underline{b} \cdot (\underline{a} \wedge \underline{b}) = 0
 \end{align*} 
 
@@ -158,7 +158,7 @@ knitr::include_graphics("figures/02-vector-area.svg")
 ```
 $|\underline{a} \wedge \underline{b}|$ is the *scalar* area. The direction of the normal $\underline{n}$ gives orientation of the parallelogram in space.
 
-- Fix $\underline{a}$ and consider $\underline{x} \bot \underline{a}$; then $\underline{x} \mapsto \underline{a} \wedge \underline{x}$ scales $| \underline{x} |$ by a factor $|\underline{a}|$ and rotates $\underline{x}$ by $\pi / 2$ in the plane $\bot \; \underline{a}$ as shown:
+- Fix $\underline{a}$ and consider $\underline{x} \perp \underline{a}$; then $\underline{x} \mapsto \underline{a} \wedge \underline{x}$ scales $| \underline{x} |$ by a factor $|\underline{a}|$ and rotates $\underline{x}$ by $\pi / 2$ in the plane $\perp \underline{a}$ as shown:
 ```{r perp-cross, echo = FALSE, fig.cap = "", fig.align="center", out.width="50%"} 
 knitr::include_graphics("figures/02-perp-cross.svg") 
 ```
@@ -166,9 +166,9 @@ knitr::include_graphics("figures/02-perp-cross.svg")
 iv. *Component expressions*
 Consider $\underline{e}_1, \underline{e}_2, \underline{e}_3$  orthonormal basis as in [Orthonormal Bases and Components] but assume in addition
 \begin{align*}
-    \underline{e}_1 \wedge \underline{e}_2 = \underline{e}_3 = \underline{e}_2 \wedge \underline{e}_1 \\
-    \underline{e}_2 \wedge \underline{e}_3 = \underline{e}_1 = \underline{e}_3 \wedge \underline{e}_2 \\
-    \underline{e}_3 \wedge \underline{e}_1 = \underline{e}_2 = \underline{e}_1 \wedge \underline{e}_3 \\
+    \underline{e}_1 \wedge \underline{e}_2 = \underline{e}_3 = -\underline{e}_2 \wedge \underline{e}_1 \\
+    \underline{e}_2 \wedge \underline{e}_3 = \underline{e}_1 = -\underline{e}_3 \wedge \underline{e}_2 \\
+    \underline{e}_3 \wedge \underline{e}_1 = \underline{e}_2 = -\underline{e}_1 \wedge \underline{e}_3 \\
 \end{align*} (all equalities follow from any one). 
 This is called a *right-handed* orthonormal basis.
 
@@ -197,7 +197,7 @@ knitr::include_graphics("figures/02-parallelepiped.svg")
 The "signed volume" is $\underline{c} \cdot \underline{a} \wedge \underline{b}$; if
 $\underline{c} \cdot \underline{a} \wedge \underline{b} > 0$ then we say $\underline{a}, \underline{b}, \underline{c}$ is a right-handed set
 
-Note: $\underline{a} \cdot \underline{b} \wedge \underline{c}$ iff $\underline{a}, \underline{b}, \underline{c}$ are *co-planar* meaning one of them lies in the plane spanned by the other two.
+Note: $\underline{a} \cdot \underline{b} \wedge \underline{c} = 0$ iff $\underline{a}, \underline{b}, \underline{c}$ are *co-planar* meaning one of them lies in the plane spanned by the other two.
 e.g. $\underline{c} = \alpha \underline{a} + \beta \underline{b}$ belonging to $\operatorname{span} \{ a, b \}$
 
 ::: {.example}
@@ -207,7 +207,7 @@ e.g. $\underline{c} = \alpha \underline{a} + \beta \underline{b}$ belonging to $
     \implies \underline{a} \wedge \underline{b} &= (0.5 - (-1)(-3)) \underline{e}_1 + ((-1)7 - 2.5) \underline{e}_2 + (2(-3) - 0.7) \underline{e}_3 \\
     &= \begin{pmatrix}-3 & -17 & -6 \end{pmatrix}
 \end{align*}
-To test whether $\underline{a}, \underline{b}, \underline{c}$ are co-planar with $\underline{c} = \begin{pmatrix}7 3 -3 & 7 \end{pmatrix}$.
+To test whether $\underline{a}, \underline{b}, \underline{c}$ are co-planar with $\underline{c} = \begin{pmatrix}3 & -3 & 7 \end{pmatrix}$.
 \begin{align*}
     \underline{c} \cdot \underline{a} \wedge \underline{b} &= 3(-3) + (-3)(-17) + 7(-6) \\
     &= 0;
@@ -361,7 +361,7 @@ Then \begin{align*}
     && &= \alpha a_i + \beta b_i \text{ for } i = 1, 2, 3 \textbf{ free index} \\
     && \underline{a} \cdot \underline{b} &= \sum_i a_i b_i = \sum_j a_j b_j \\
     && \underline{x} &= \underline{a} + (\underline{b} \cdot \underline{c}) \underline{d} \\
-    &\iff & x_j &= a_j + (\sum_k b_k c_k) d_j \text{ for } j = 1, 2, 3 \text{ free index}
+    &\iff & x_j &= a_j + \left( \sum_k b_k c_k \right) d_j \text{ for } j = 1, 2, 3 \text{ free index}
 \end{align*} 
 
 ::: {.definition name="Kronecker Delta"}
@@ -383,7 +383,7 @@ Then \begin{align*}
     0 & 0 & 1
     \end{pmatrix} \\
     \text{Then } \underline{e}_i \cdot \underline{e}_j &= \delta_{ij} \\
-    \text{and } \underline{a} \cdot \underline{b} &= \left( \sum_i a_i \underline{e}_i) \cdot (\sum_j b_j \underline{e}_j \right) \\
+    \text{and } \underline{a} \cdot \underline{b} &= \left( \sum_i a_i \underline{e}_i \right) \cdot \left( \sum_j b_j \underline{e}_j \right) \\
     &= \sum_{ij} a_i b_j \underline{e}_i \cdot \underline{e}_j \\
     &= \sum_{ij} a_i b_j \delta_{ij} \\
     &= \sum_i a_i b_i
@@ -450,8 +450,7 @@ In the summation convention we *omit* $\sum$ signs for repeated indices: the sum
 
 ::: {.example}
 \begin{align*}
-    \underline{a} \cdot \underline{b} \wedge c &= \epsilon_{ijk} a_j b_k c_k \\
-    &= a_i b_i
+    \underline{a} \cdot \underline{b} \wedge c &= \epsilon_{ijk} a_i b_j c_k \\
 \end{align*}
 :::
 

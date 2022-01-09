@@ -48,17 +48,16 @@ The real numbers, written $\mathbb{R}$, are a set with elements $0$ and $1$ ($0 
     a (b + c) = ab + ac
 \end{align*} 
 
-4. $\forall \; a, b$, exactly one of $a < b$ or $a = b$ or $b < a$ holds, and $\forall \; a, b, c$, 
+4. $\forall \; a, b$, exactly one of $a < b$, $a = b$ or $b < a$ holds, and $\forall \; a, b, c$, 
 \begin{align*}
     a < b \text{ and } b < c \implies a < c;
 \end{align*} 
 
-5. $\forall \; a, b, c$ 
+5.
 \begin{align*}
-    \forall \; a, b, c & a < b &\implies a + c < b + c \\
-    \text{and } & a < b &\implies ac < bc \text{ if } c > 0.
+    \forall \; a, b, c && a < b &\implies a + c < b + c \\
+    \text{and } && a < b &\implies ac < bc \quad \text{if } c > 0.
 \end{align*} 
-
 (The above all hold for the rationals)
 
 6. Given any set $S$ of reals that is non-empty and bounded above $S$ has a least upper bound.
@@ -88,14 +87,14 @@ v. It is possible to construct $\mathbb{R}$ "out of" $\mathbb{Q}$ and check that
 :::
 
 ::: {.example}
-$S = \{ x \in \mathbb{R} : 0 \leq x \leq \mathbb{R} \}$
+$S = \{ x \in \mathbb{R} : 0 \leq x \leq 1 \}$
 ```{r 03-exm-1, echo = FALSE, fig.cap = "", fig.align="center"} 
 knitr::include_graphics("figures/03-exm-1.png") 
 ```
 
-Is $2$ an upper bound for $S$?
+Is $2$ an upper bound for $S?$
 Yes: $\forall \; x \in S, x \leq 2$.\
-Is $\frac{3}{4}$ an upper bound for $S$?
+Is $\frac{3}{4}$ an upper bound for $S?$
 No: $\frac{7}{8} \in S, \frac{7}{8} \leq \frac{3}{4}$.
 
 The least upper bound of $S$ is $1$ because 
@@ -122,9 +121,9 @@ Hence $\sup (S) = 1$
 knitr::include_graphics("figures/03-exm-2.png") 
 ```
 
-Is $2$ an upper bound for $S$?
+Is $2$ an upper bound for $S?$
 Yes: $\forall \; x \in S, x \leq 2$.\
-Is $\frac{3}{4}$ an upper bound for $S$?
+Is $\frac{3}{4}$ an upper bound for $S?$
 No: $\frac{7}{8} \in S, \frac{7}{8} \leq \frac{3}{4}$.
 
 We have $\sup (S) = 1$ because 
@@ -143,8 +142,8 @@ But $\sup (S)$ can exist when $\max (S)$ does not, in which case $\sup (S) \noti
 
 ::: {.example #three}
 \begin{align*}
-    S &= \{ 1 - \frac{1}{n} : n \in \mathbb{N} \} \\
-    &= \{ 0, \frac{1}{2}, \frac{2}{3}, \frac{3}{4}, \dots \}
+    S &= \left\{ 1 - \frac{1}{n} : n \in \mathbb{N} \right\} \\
+    &= \left\{ 0, \frac{1}{2}, \frac{2}{3}, \frac{3}{4}, \dots \right\}
 \end{align*} 
 
 ```{r 03-exm-3, echo = FALSE, fig.cap = "", fig.align="center"} 
@@ -180,11 +179,11 @@ Hence $\frac{1}{n} < t$.
 
 A set $S$ is said to be bounded below if $\exists \; x$ s.t. $x \leq y \; \forall \; y \in S$.
 Such an $x$ is called a *lower bound for $S$*.
-If $S$ is non-empty and bounded below, then $-S = \{ y: y \in S \}$ is non-empty and bounded above, so it has a least upper bound, $c$ say.
+If $S$ is non-empty and bounded below, then $-S = \{ -y: y \in S \}$ is non-empty and bounded above, so it has a least upper bound, $c$ say.
 Hence $-c$ is the *greatest lower bound of $S$*.
 We denote it by "$\operatorname{GLB}(S)$", or "$\operatorname{infimum} (S)$", or "$\inf (S)$".
 
-Corollary \@ref(cor:three) immediately implies that $\inf ( \{ \frac{1}{n} : n \in \mathbb{N} \}) = 0$.
+Corollary \@ref(cor:three) immediately implies that $\inf \left(\left\{ \frac{1}{n} : n \in \mathbb{N} \right\}\right) = 0$.
 
 Proposition \@ref(prp:two) and Corollary \@ref(cor:three) show that there are no "infinitely large" or "infinitely small" numbers in $\mathbb{R}$.
 
@@ -217,23 +216,22 @@ This contradicts the assumption that $c$ is the *least* upper bound for $S$ (sin
 :::
 
 ::: {.remark}
-The same proof shows that $x^{\frac{1}{n}}$ exists $\forall \; n \in N, \forall \; x \in \mathbb{R}, x > 0$. 
-[i.e. $\forall \; n \in \mathbb{N}, \forall \; x \in \mathbb{R}, x > 0, \exists \; y \in \mathbb{R}$ s.t. $y^n = x$.]\
+The same proof shows that $x^{\frac{1}{n}}$ exists $\forall \; n \in N,\; x \in \mathbb{R},\; x > 0$. 
+[i.e. $\forall \; n \in \mathbb{N},\; x \in \mathbb{R},\; x > 0,\ \exists \; y \in \mathbb{R}$ s.t. $y^n = x$.]\
 A real that is not rational is called *irrational*. 
 E.g. $\sqrt{2}, \sqrt{3}, \sqrt{5}, \sqrt{6}$ are irrational.\
 Also $2 + 3\sqrt{5}$ is irrational.
-Indeed if $2 + 3\sqrt{5} = \frac{a}{b}$ with $\frac{a}{b} \in \mathbb{N}$ then $\sqrt{5} = \frac{a  - 2b}{3b} \in \mathbb{Q}$, ⨳. $\Box$
+Indeed if $2 + 3\sqrt{5} = \frac{a}{b}$ with $a, b \in \mathbb{N}$ then $\sqrt{5} = \frac{a  - 2b}{3b} \in \mathbb{Q}$, ⨳. $\Box$
 :::
 
-The rationals are *dense* in $\mathbb{R}$, in the sense that $\forall \; a < b \in \mathbb{R}, \exists \; c \in Q$ with $a < c < b$.
+The rationals are *dense* in $\mathbb{R}$, in the sense that $\forall \; a < b \in \mathbb{R},\ \exists \; c \in \mathbb{Q}$ with $a < c < b$.
 
 ::: {.proof}
 Indeed, we may assume $a \geq 0$ (we can just add an integer, find the rational and subtract the integer).
 
 By Corollary \@ref(cor:three), $\exists \; n \in \mathbb{N}$ with $\frac{1}{n} < b - a$.
 By the Axiom of Archimedes \@ref(prp:two), $\exists \; N \in \mathbb{N}$ s.t. $N > b$.
-Let $T = \{ k \in \mathbb{N} : \frac{k}{n} \geq b \}$,\
-then $Nn \in T$, so $T \neq \emptyset$.\
+Let $T = \{ k \in \mathbb{N} : \frac{k}{n} \geq b \}$, then $Nn \in T$, so $T \neq \emptyset$.\
 By the Well-Ordering Principle, $T$ has a least element $m$.
 Set $c = (m - 1) \cdot \frac{1}{n}$.
 Since $m - 1 \notin T$, $c < b$.\
@@ -241,7 +239,7 @@ If $c \leq a$ then $\frac{m}{n} = c + \frac{1}{n} < a + b - a = b$, ⨳ of $m \i
 Hence $a < c < b$.
 :::
 
-The irrationals are also dense in $\mathbb{R}$, i.e. $\forall \; a < b \in \mathbb{R}, \exists \; c \in \mathbb{R} \setminus \mathbb{Q}$ with $a < c < b$.\
+The irrationals are also dense in $\mathbb{R}$, i.e. $\forall \; a < b \in \mathbb{R},\ \exists \; c \in \mathbb{R} \setminus \mathbb{Q}$ with $a < c < b$.\
 Indeed, take a rational $c$ with $a \sqrt{2} < c < b \sqrt{2}$ then $a < \frac{c}{\sqrt{2}} < b$.
 
 ## Sequences
@@ -574,8 +572,8 @@ We will need two facts about polynomials.
 Indeed, suppose $p(x) = a_d x^d + a_{d-1}x^{d-1} + \dots + a_1 x + a_0$.
 \begin{align*}
     \text{Then } p(x) - p(y) &= a_d (x^d - y^d) + a_{d-1} (x^{d-1} - y^{d-1}) + \dots + a_1 (x - y) \\
-    &= (x - y) [a_d (x^{d- 1} + x^{d-2} y + \dots + y^{d-1}) + \dots + \dots a_1] \\
-    \text{so } |p(x) - p(y)| &\leq |x - y| | d \cdot (|a_d| + |a_{d-1} + \dots + |a_1|) |
+    &= (x - y) [a_d (x^{d- 1} + x^{d-2} y + \dots + y^{d-1}) + \dots + a_1] \\
+    \text{so } |p(x) - p(y)| &\leq |x - y| | d \cdot (|a_d| + |a_{d-1}| + \dots + |a_1|) |
 \end{align*} 
 :::
 
@@ -589,20 +587,20 @@ But by the induction hypothesis, $q$ has at most $d - 1$ roots.
 :::
 
 :::{.proof name="Theorem \@ref(thm:nine)"}
-Write $L_n = \sum_{k=0}^{n} \frac{1}{10^{k!}}$, so $L_n \to L$. (? 0)
+Write $L_n = \sum_{k=1}^{n} \frac{1}{10^{k!}}$, so $L_n \to L$.
 Suppose there is a polynomial $p$ of which $L$ is a root.
 Then by Fact A, there exists $k$ s.t. $|p(x) - p(y)| \leq k |x - y| \; \forall \; 0 \leq x, y \leq 1$.
-```{r 03-louville, echo = FALSE, fig.cap = "", fig.align="center"} 
+```{r 03-louville, echo = FALSE, fig.cap = "", fig.align="center", out.width="500"} 
 knitr::include_graphics("figures/03-louville.png") 
 ```
 \begin{align*}
-    \text{Note } |L - L_n| = \sum_{k=n + 1}^{\infty} \frac{1}{10^{k!}} &\leq \frac{1}{10^{(n + 1)!}} (1 + \frac{1}{2} + \frac{1}{2}^2 \dots) \\
+    \text{Note } |L - L_n| = \sum_{k=n + 1}^{\infty} \frac{1}{10^{k!}} &\leq \frac{1}{10^{(n + 1)!}} \left( 1 + \frac{1}{2} + \frac{1}{2}^2 \dots \right) \\
     &= \frac{2}{10^{(n + 1)!}}
 \end{align*} 
 Suppose $p$ has degree $d$, i.e. $p(x) = a_d x^d + a_{d-1}x^{d-1} + \dots + a_1 x + a_0$ with $a_i \in \mathbb{Z}$, $a_d \neq 0$. \
 Notice that $L_n = s / 10^{n!}$ for some $s \in \mathbb{N}$, so $p(L_n) = t / 10^{n! d}$ for some $t \in \mathbb{Z}$ (as largest denominator is $1 / 10^{n!}$ and $1 / 10^{n! d}$ respectively).
 
-By Fact B, for sufficiently large $n$, $L_n$ is not a root of $p$.(?)
+By Fact B, for sufficiently large $n$, $L_n$ is not a root of $p$ (as it has finitely many roots).
 Hence $|p(L_n)| \geq 1 / 10^{n! d}$, i.e. $|p(L_n) - p(L)| \geq 1 / 10^{n! d}$.
 Therefore $1 / 10^{n! d} \leq K \frac{2}{10^{(n + 1)!}} = K \frac{2}{10^{n!} 10^{n + 1}}$, which is a contradiction for sufficiently large $n$.
 :::
@@ -618,7 +616,7 @@ Therefore $1 / 10^{n! d} \leq K \frac{2}{10^{(n + 1)!}} = K \frac{2}{10^{n!} 10^
 
 3. This proof does not show that $e$ is transcendental, but in fact it is.
 
-4. We will give another proof of the existence of transcendental numbers in Section 4.
+4. We will give another proof of the existence of transcendental numbers in \@ref(cor:trans).
 :::
 
 ## The Complex Numbers
@@ -651,5 +649,5 @@ Indeed, given $z = a + bi$, note that
 A structure obeying rules (1) - (3) is called a *field*, e.g. $\mathbb{C}, \mathbb{R}, \mathbb{Q}, \mathbb{Z}_p$ with $p$ a prime, but *not* $\mathbb{Z}$!
 
 2. Every non-zero polynomial (even allowing complex coefficients) has a root in $\mathbb{C}$.
-This is know of that Fundamental Theorem of Algebra.
+This is known as the Fundamental Theorem of Algebra.
 :::

@@ -177,7 +177,7 @@ This $r$ has only one decimal expansion and is not on the list (because $\forall
 This is known as a "diagonal argument", due to Cantor (1870s).
 Note that it in fact shows that $(0, 1)$ is uncountable.
 
-::: {.corollary}
+::: {.corollary #trans}
 There are uncountably many transcendental numbers.
 :::
 

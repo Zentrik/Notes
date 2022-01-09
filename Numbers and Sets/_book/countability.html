@@ -271,23 +271,23 @@ This <span class="math inline">\(r\)</span> has only one decimal expansion and i
 <p>This is known as a “diagonal argument”, due to Cantor (1870s).
 Note that it in fact shows that <span class="math inline">\((0, 1)\)</span> is uncountable.</p>
 <div class="corollary">
-<p><span id="cor:unlabeled-div-126" class="corollary"><strong>Corollary 5.3  </strong></span>There are uncountably many transcendental numbers.</p>
+<p><span id="cor:trans" class="corollary"><strong>Corollary 5.3  </strong></span>There are uncountably many transcendental numbers.</p>
 </div>
 <div class="proof">
-<p><span id="unlabeled-div-127" class="proof"><em>Proof</em>. </span>If <span class="math inline">\(\mathbb{R} \setminus \mathbb{A}\)</span> were countable, then since <span class="math inline">\(\mathbb{A}\)</span> is countable, <span class="math inline">\(\mathbb{R} = \mathbb{R} \setminus \mathbb{A} \cup \mathbb{A}\)</span> would be countable. ⨳</p>
+<p><span id="unlabeled-div-126" class="proof"><em>Proof</em>. </span>If <span class="math inline">\(\mathbb{R} \setminus \mathbb{A}\)</span> were countable, then since <span class="math inline">\(\mathbb{A}\)</span> is countable, <span class="math inline">\(\mathbb{R} = \mathbb{R} \setminus \mathbb{A} \cup \mathbb{A}\)</span> would be countable. ⨳</p>
 </div>
 <div class="theorem">
 <p><span id="thm:vten" class="theorem"><strong>Theorem 5.6  </strong></span><span class="math inline">\(\mathcal{P} (\mathbb{N})\)</span>, <a href="sets-functions-and-relations.html#def:powset">4.1</a>, is uncountable.</p>
 </div>
 <div class="proof">
-<p><span id="unlabeled-div-128" class="proof"><em>Proof</em> (1). </span>If <span class="math inline">\(\mathcal{P}(\mathbb{N})\)</span> were countable, we could list the subsets of <span class="math inline">\(\mathbb{N}\)</span> as <span class="math inline">\(S_1, S_2, S_3, \dots\)</span><br />
+<p><span id="unlabeled-div-127" class="proof"><em>Proof</em> (1). </span>If <span class="math inline">\(\mathcal{P}(\mathbb{N})\)</span> were countable, we could list the subsets of <span class="math inline">\(\mathbb{N}\)</span> as <span class="math inline">\(S_1, S_2, S_3, \dots\)</span><br />
 Let <span class="math inline">\(S = \{ n \in \mathbb{N} : n \notin S_n \}\)</span> (it includes <span class="math inline">\(1\)</span> if <span class="math inline">\(1 \notin S_1\)</span> …).
 Then <span class="math inline">\(S\)</span> is not on our list since <span class="math inline">\(\forall \; n \in \mathbb{N}\)</span>, <span class="math inline">\(S \neq S_n\)</span> (as <span class="math inline">\(S\)</span> and <span class="math inline">\(S_n\)</span> differ in their membership of the element <span class="math inline">\(n\)</span>). ⨳<br />
 Hence <span class="math inline">\(\mathcal{P}(\mathbb{N})\)</span> is uncountable.</p>
 </div>
 <p>Note that this is again a “diagonal argument”.</p>
 <div class="proof">
-<p><span id="unlabeled-div-129" class="proof"><em>Proof</em> (2). </span>Note that there is an injection from <span class="math inline">\((0, 1)\)</span> into <span class="math inline">\(\mathcal{P}(\mathbb{N})\)</span> : write <span class="math inline">\(x \in (0, 1)\)</span> in binary <span class="math inline">\(0.x_1 x_2 x_3 \dots\)</span> with each <span class="math inline">\(x_i \in \{0, 1\}\)</span> (not ending in <span class="math inline">\(0.111 \dots\)</span>) and set <span class="math inline">\(f(x) = \{n : x_n = 1\}\)</span>.
+<p><span id="unlabeled-div-128" class="proof"><em>Proof</em> (2). </span>Note that there is an injection from <span class="math inline">\((0, 1)\)</span> into <span class="math inline">\(\mathcal{P}(\mathbb{N})\)</span> : write <span class="math inline">\(x \in (0, 1)\)</span> in binary <span class="math inline">\(0.x_1 x_2 x_3 \dots\)</span> with each <span class="math inline">\(x_i \in \{0, 1\}\)</span> (not ending in <span class="math inline">\(0.111 \dots\)</span>) and set <span class="math inline">\(f(x) = \{n : x_n = 1\}\)</span>.
 E.g. <span class="math inline">\(0.11101000 \dots \mapsto \{1, 2, 3, 5\}\)</span>.
 This is an injection.</p>
 </div>
@@ -296,12 +296,12 @@ This is an injection.</p>
 <p><span id="thm:veleven" class="theorem"><strong>Theorem 5.7  </strong></span>For any set <span class="math inline">\(X\)</span>, there is no bijection between <span class="math inline">\(X\)</span> and <span class="math inline">\(\mathcal{P}(X)\)</span>.</p>
 </div>
 <div class="proof">
-<p><span id="unlabeled-div-130" class="proof"><em>Proof</em>. </span>Given any function <span class="math inline">\(f : X \to \mathcal{P}(X)\)</span>, we shall show that <span class="math inline">\(f\)</span> is not a surjection.
+<p><span id="unlabeled-div-129" class="proof"><em>Proof</em>. </span>Given any function <span class="math inline">\(f : X \to \mathcal{P}(X)\)</span>, we shall show that <span class="math inline">\(f\)</span> is not a surjection.
 Indeed, let <span class="math inline">\(S = \{x \in X : x \notin f(x)\}\)</span> (<span class="math inline">\(f(x)\)</span> is a subset).
 Then <span class="math inline">\(S\)</span> does not belong to the image of <span class="math inline">\(f\)</span>, since <span class="math inline">\(\forall \; x \in X, S\)</span> and <span class="math inline">\(f(x)\)</span> differ in the element <span class="math inline">\(x\)</span>, and thus <span class="math inline">\(S \neq f(x)\)</span>.</p>
 </div>
 <div class="remark">
-<p><span id="unlabeled-div-131" class="remark"><em>Remark</em>. </span><br />
+<p><span id="unlabeled-div-130" class="remark"><em>Remark</em>. </span><br />
 </p>
 <ol style="list-style-type: decimal">
 <li><p>This is reminiscent of Russel’s paradox.</p></li>
@@ -310,18 +310,18 @@ Suppose we had such a universal set <span class="math inline">\(V\)</span>, then
 </ol>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-132" class="example"><strong>Example 5.3  </strong></span>Let <span class="math inline">\(\{A_i : i \in I\}\)</span> be a family of open intervals of <span class="math inline">\(\mathbb{R}\)</span> which are pairwise disjoint.
+<p><span id="exm:unlabeled-div-131" class="example"><strong>Example 5.3  </strong></span>Let <span class="math inline">\(\{A_i : i \in I\}\)</span> be a family of open intervals of <span class="math inline">\(\mathbb{R}\)</span> which are pairwise disjoint.
 Must the family be countable?
 <img src="figures/05-disjoint.png" width="1409" style="display: block; margin: auto;" />
 <em>Warning</em>: There is no “next” interval after <span class="math inline">\((a, b)\)</span>.
 The family <span class="math inline">\(\{A_i : i \in I\}\)</span> is nevertheless countable.</p>
 </div>
 <div class="proof">
-<p><span id="unlabeled-div-133" class="proof"><em>Proof</em> (1). </span>Each interval <span class="math inline">\(A_i\)</span> contains a rational, and <span class="math inline">\(\mathbb{Q}\)</span> is countable, so since the intervals are disjoint, we have an injection from <span class="math inline">\(I\)</span> into <span class="math inline">\(\mathbb{Q}\)</span>.
+<p><span id="unlabeled-div-132" class="proof"><em>Proof</em> (1). </span>Each interval <span class="math inline">\(A_i\)</span> contains a rational, and <span class="math inline">\(\mathbb{Q}\)</span> is countable, so since the intervals are disjoint, we have an injection from <span class="math inline">\(I\)</span> into <span class="math inline">\(\mathbb{Q}\)</span>.
 Hence the family <span class="math inline">\(\{A_i : i \in I\}\)</span> is countable.</p>
 </div>
 <div class="proof">
-<p><span id="unlabeled-div-134" class="proof"><em>Proof</em> (2). </span>The set <span class="math inline">\(\{i \in I : A_i \text{ has length }\geq 1 \}\)</span> is countable as it injects into <span class="math inline">\(\mathbb{Z}\)</span>.
+<p><span id="unlabeled-div-133" class="proof"><em>Proof</em> (2). </span>The set <span class="math inline">\(\{i \in I : A_i \text{ has length }\geq 1 \}\)</span> is countable as it injects into <span class="math inline">\(\mathbb{Z}\)</span>.
 <img src="figures/05-disjoint-2.png" width="1178" style="display: block; margin: auto;" />
 Similarly, the set <span class="math inline">\(\{i \in I : A_i \text{ has length } \geq \frac{1}{2} \}\)</span> is countable as it injects into <span class="math inline">\(\frac{1}{2} \mathbb{Z}\)</span>.<br />
 More generally, for each <span class="math inline">\(n \in \mathbb{N}\)</span>, <span class="math inline">\(\{i \in I : A_i \text{ has length } \geq \frac{1}{n} \}\)</span> is countable.<br />
@@ -346,7 +346,7 @@ Now <span class="math inline">\(\{A_i : i \in I\}\)</span> is countable as it is
 <p><span id="lem:vtwelve" class="lemma"><strong>Lemma 5.2  </strong></span>Given non-empty sets <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, <span class="math inline">\(\exists\)</span> injection <span class="math inline">\(f : A \to B \iff \exists\)</span> surjection <span class="math inline">\(g : B \to A\)</span>.</p>
 </div>
 <div class="proof">
-<p><span id="unlabeled-div-135" class="proof"><em>Proof</em>. </span>Suppose <span class="math inline">\(f : A \to B\)</span> is injective.
+<p><span id="unlabeled-div-134" class="proof"><em>Proof</em>. </span>Suppose <span class="math inline">\(f : A \to B\)</span> is injective.
 Fix <span class="math inline">\(a_0 \in A\)</span>.
 <span class="math display">\[\begin{align*}
     \text{Define } g : B &amp;\to A \\
@@ -366,7 +366,7 @@ Conversely, suppose <span class="math inline">\(g : B \to A\)</span> is surjecti
 <p><span id="thm:vthirteen" class="theorem"><strong>Theorem 5.8  (Schröder-Bernstein Theorem) </strong></span>If <span class="math inline">\(f : A \to B\)</span> and <span class="math inline">\(g : B \to A\)</span> are injections, then <span class="math inline">\(\exists\)</span> bijection <span class="math inline">\(h : A \to B\)</span>.</p>
 </div>
 <div class="proof">
-<p><span id="unlabeled-div-136" class="proof"><em>Proof</em>. </span>For <span class="math inline">\(a \in A\)</span>, write <span class="math inline">\(g^{-1}(a)\)</span> for the <span class="math inline">\(b \in B\)</span> (if it exists) s.t. <span class="math inline">\(g(b) = a\)</span>.
+<p><span id="unlabeled-div-135" class="proof"><em>Proof</em>. </span>For <span class="math inline">\(a \in A\)</span>, write <span class="math inline">\(g^{-1}(a)\)</span> for the <span class="math inline">\(b \in B\)</span> (if it exists) s.t. <span class="math inline">\(g(b) = a\)</span>.
 Similarly, for <span class="math inline">\(b \in A\)</span>, write <span class="math inline">\(f^{-1}(b)\)</span> for the <span class="math inline">\(a \in A\)</span> (if it exists) s.t. <span class="math inline">\(f(a) = b\)</span>.<br />
 We call <span class="math inline">\(g^{-1}(a), f^{-1}(g^{-1}(a)), g^{-1}(f^{-1}(g^{-1}(a))), \dots\)</span> the ancestor sequence of <span class="math inline">\(a \in A\)</span> (it may terminate).
 Similarly, we can define the ancestor sequence of <span class="math inline">\(b \in B\)</span>.
@@ -381,7 +381,7 @@ Taking the function <span class="math inline">\(h : A \to B\)</span> taking <spa
 </div>
 <p>This means that we have that if “A is at most as big as B” and “B is at most as big as A”, then “A is of the same size as B”.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-137" class="example"><strong>Example 5.4  </strong></span>Is there a bijection from <span class="math inline">\([0, 1]\)</span> to <span class="math inline">\([0, 1] \cup [2, 3]\)</span>?
+<p><span id="exm:unlabeled-div-136" class="example"><strong>Example 5.4  </strong></span>Is there a bijection from <span class="math inline">\([0, 1]\)</span> to <span class="math inline">\([0, 1] \cup [2, 3]\)</span>?
 Observe we have an injection
 <span class="math display">\[\begin{align*}
     f : [0, 1] &amp;\to [0, 1] \cup [2, 3] \\

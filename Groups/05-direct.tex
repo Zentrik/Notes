@@ -24,7 +24,7 @@ associativity since group operation in both $H$ and $K$ are associative.
 \begin{remark} ~
   \begin{enumerate}
     \item If $H$ and $K$ are both finite, $| H \times K| = |H| |K|$.
-    \item $H \times K$ is abelian iff $(h_1, k_1) * (h_2, k_2) = (h_2, k_2) * (h_1, k_1) \; \forall \; h_1, h_2 \in H \; \forall \; k_1, k_2 \in K$ \\
+    \item $H \times K$ is abelian iff $(h_1, k_1) * (h_2, k_2) = (h_2, k_2) * (h_1, k_1) \quad \forall \; h_1, h_2 \in H,\; k_1, k_2 \in K$ \\
     iff $(h_1 h_2, k_1 k_2) = (h_2 h_1, k_2 k_1)$ \\
     iff $h_1 h_2 = h_2 h_1$ and $k_1 k_2 = k_2 k_1$ \\
     iff $H$ is abelian and $K$ is abelian.
@@ -106,7 +106,7 @@ Recognising when a group can be written as a direct product of subgroups is tric
   \end{align*} 
   $\theta$ is injective:
   \begin{align*}
-    \theta \left( (h_1, h_2) \right) &= \theta \left( (h_2, k_2) \right) \\
+    \theta \left( (h_1, k_1) \right) &= \theta \left( (h_2, k_2) \right) \\
     h_1 k_1 &= h_2 k_2 \\
     h_2^{-1} h_1 &= k_2 k_1^{-1} \in H \cap K = \{ e \} \text{ by \Cref{5.1-2}} \\
     \implies h_1 = h_2 &\text{ and } k_1 = k_2 \\
@@ -131,7 +131,6 @@ Recognising when a group can be written as a direct product of subgroups is tric
 
   $(\implies)$ we show $K \trianglelefteq G$.\\
   Let $k \in K$, $g = h_1 k_1 \in G$ by \Cref{5.1-1}.
-  $g k g^{-1} = h_1 \underbrace{k_1 k k_1^{-1}}_{\overline{k} \in K} h_1^{-1}$
   \begin{align*}
     g k g^{-1} &= h_1 \underbrace{k_1 k k_1^{-1}}_{\overline{k} \in K} h_1^{-1} \\
     &= \overline{k} \in K \text{ by } \Cref{5.1-3}
