@@ -331,7 +331,7 @@ If $f : A \to B$ is a bijection, then everything in $B$ is hit (surjective) exac
 Example 6 is the only bijection.
 :::
 
-::: {.definition name="Permutation}
+::: {.definition name="Permutation"}
 A *permutation* of a set $A$ is a bijection from $A \to A$.
 :::
 
@@ -597,7 +597,7 @@ Then by transitivity, $x \sim y$.
 Let $w \in [y]$, so $y \sim w$.
 Since $x \sim y$ and $y \sim w$ by transitivity, $x \sim w$.
 Thus $w \in [x]$.\
-Hence if $[x] \cap [y] = \emptyset$, then $[y] \subseteq [x]$; similarly, $[x] \subseteq [y]$.
+Hence if $[x] \cap [y] \neq \emptyset$, then $[y] \subseteq [x]$; similarly, $[x] \subseteq [y]$.
 So $[x] = [y]$
 :::
 

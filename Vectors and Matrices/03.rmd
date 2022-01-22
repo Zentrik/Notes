@@ -6,7 +6,7 @@
 If we regard vectors as sets of components, it is easy to generalise from 3 to $n$ dimensions.
 
 ::: {.definition}
-$\mathbb{R}^n = \{ \underline{x} = (x_1, x_2, \dots, x_n) : x_i \in \mathbb{R}$
+$\mathbb{R}^n = \{ \underline{x} = (x_1, x_2, \dots, x_n) : x_i \in \mathbb{R} \}$
 :::
 
 ::: {.definition}
@@ -15,7 +15,7 @@ $\mathbb{R}^n = \{ \underline{x} = (x_1, x_2, \dots, x_n) : x_i \in \mathbb{R}$
 i. *addition* $\underline{x} + \underline{y} = (x_1 + y_1, \dots, x_n + y_n)$
 for any $\underline{x}, \underline{y} \in \mathbb{R}^n$
 
-ii. *scalar multiplication* $\lambda x = (\lambda x_1, \dots, \lambda x_n)$ for any $\underline{x} \mathbb{R}^n$ and $\lambda \in \mathbb{R}$
+ii. *scalar multiplication* $\lambda x = (\lambda x_1, \dots, \lambda x_n)$ for any $\underline{x} \in \mathbb{R}^n$ and $\lambda \in \mathbb{R}$
 :::
 
 ::: {.definition name="Inner/ scalar product"} 
@@ -52,16 +52,14 @@ Note it is orthonormal:
 
 ### Cauchy-Schwarz and Triangle Inequalities
 ::: {.proposition name="Cauchy-Schwarz"}
-$|\underline{x} \cdot \underline{y}| \leq |\underline{x}| | \underline{y}|$ for some $\underline{x}, \underline{y} \in \mathbb{R}^n$ \
-and equality holds iff \
-$\underline{x} = \lambda \underline{y}$ or $\underline{y} = \lambda \underline{x}$ $(\underline{x} \parallel \underline{y})$ for some $\lambda \in \mathbb{R}$.
+$|\underline{x} \cdot \underline{y}| \leq |\underline{x}| | \underline{y}|$ for some $\underline{x}, \underline{y} \in \mathbb{R}^n$ and equality holds iff $\underline{x} = \lambda \underline{y}$ or $\underline{y} = \lambda \underline{x}$ $(\underline{x} \parallel \underline{y})$ for some $\lambda \in \mathbb{R}$.
 :::
 
 Deductions reveal geometrical aspects of the inner product:
 
 i. Set $\underline{x} \cdot \underline{y} = |\underline{x}| |\underline{y}| \cos \theta$ to define angle $\theta$ between $\underline{x}$ and $\underline{y}$
 
-ii. Triangle inequality holds $| \underline{x} + \underline{y} | \leq |\underline{x}| |\underline{y}|$.
+ii. Triangle inequality holds $| \underline{x} + \underline{y} | \leq |\underline{x}| + |\underline{y}|$.
 
 ::: {.proof name="Cauchy-Schwarz"}
 If $\underline{y} = 0$, the result is immediate.
@@ -70,7 +68,7 @@ If $\underline{y} \neq 0$, consider
     |\underline{x} - \lambda \underline{y}|^2 &= (\underline{x} - \lambda \underline{y}) \cdot (\underline{x} - \lambda \underline{y}) \\
     &= |\underline{x}|^2 - 2 \lambda \underline{x} \cdot \underline{y} + \lambda^2 | \underline{y} | \geq 0
 \end{align*} 
-This is a quadratic in $\lambda \in \mathbb{R}$ with at most one real root, so discriminant satisfies $(-2 \underline{x} \cdot \underline{y})^2 - 4 |\underline{x}|^2 |\underline{y}|^" \leq 0$ as required.
+This is a quadratic in $\lambda \in \mathbb{R}$ with at most one real root, so discriminant satisfies $(-2 \underline{x} \cdot \underline{y})^2 - 4 |\underline{x}|^2 |\underline{y}|^2 \leq 0$ as required.
 Equality holds iff discriminant $= 0$ iff $\lambda \underline{y} = \underline{x}$ for some $\lambda \in \mathbb{R}$. 
 :::
 
@@ -84,7 +82,7 @@ Equality holds iff discriminant $= 0$ iff $\lambda \underline{y} = \underline{x}
 ### Comments
 Inner product on $\mathbb{R}^n$ 
 \begin{align*}
-    \underline{a} \cdot \underline{b} = \delta_{ij} a_i b_j \hspace{0.5cm} (\sum \text{ convention and } i, j = 1, \dots, n) \\
+    \underline{a} \cdot \underline{b} = \delta_{ij} a_i b_j \hspace{0.5cm} \left(\sum \text{ convention and } i, j = 1, \dots, n \right) \\
 \end{align*} 
 Component definition matches geometrical definition for n = 3 [Scalar or Dot Product].
 
@@ -131,18 +129,18 @@ Note $V$ and $\{ 0 \}$ are subspaces. \
 $\operatorname{span} \{ \underline{v}_1, \underline{v}_2, \dots, \underline{v}_r \}$ is a subspace for any vectors $\underline{v}_1, \underline{v}_2, \dots, \underline{v}_r$. \
 Note: a non-empty subset $U \subseteq V$ is a subspace iff 
 \begin{align*}
-    \underline{v}, \underline{w} \in U \implies \lambda \underline{v} + \mu \underline{w} \in U \; \forall \; \lambda, \mu \in \mathbb{R}.
+    \underline{v}, \underline{w} \in U \implies \lambda \underline{v} + \mu \underline{w} \in U \quad \forall \; \lambda, \mu \in \mathbb{R}.
 \end{align*} 
 
 ::: {.example}
 In $\mathbb{R}^3$, a line or plane through $\underline{0}$ is a subspace but if it doesn't contain $\underline{0}$ it is not a subspace.
-e.g. \begin{align*}
+e.g. \begin{gather}
     \underline{v}_1 = \begin{pmatrix}1 \\0 \\-1\end{pmatrix}, 
     \underline{v}_2 = \begin{pmatrix}1 \\1 \\-2\end{pmatrix},
     \underline{n} = \begin{pmatrix}1 \\1 \\1\end{pmatrix} \\
     \operatorname{span} \{ \underline{v}_1, \underline{v}_2\} = \{ \underline{r} : \underline{n} \cdot \underline{r} = 0 \} \text{ this is a plane and subspace} \\
     \text{But } \{ \underline{r} : \underline{n} \cdot \underline{r} = 1 \} \text{ this is a plane but not a subspace } [\underline{r}, \underline{r}' \text{ on plane then } (\underline{r} + \underline{r}') \cdot \underline{n} = 2] \\
-\end{align*} 
+\end{gather} 
 :::
 
 ### Linear Dependence and Independence
@@ -155,10 +153,10 @@ If \@ref(eq:ein) $\implies \lambda_i = 0$ for every $i$ then the vectors form a 
 If \@ref(eq:ein) holds with at least one $\lambda_i \neq 0$ then the vectors form a *linearly dependent* set (they obey a *non-trivial* linear relation).
 
 ::: {.example}
-\begin{align*}
+\begin{gather}
     \left\{ \begin{pmatrix}1 \\0\end{pmatrix}, \begin{pmatrix}0 \\1\end{pmatrix}, \begin{pmatrix}0 \\2\end{pmatrix} \right\} \text{ are linearly dependent because:} \\
     0 \begin{pmatrix}1 \\0\end{pmatrix} + 2 \begin{pmatrix}0 \\1\end{pmatrix} + (-1) \begin{pmatrix}0 \\2\end{pmatrix} = \underline{0}
-\end{align*} 
+\end{gather} 
 Note we cannot express $\begin{pmatrix}1 \\0\end{pmatrix}$ in terms of the others.
 :::
 
@@ -213,6 +211,7 @@ For a vector space $V$, a basis is a set
 i. $\mathcal{B}$ spans $V$, i.e. any $\underline{v} \in V$ can be written $\underline{v} = \sum_{i=1}^{n} v_i \underline{e_i}$
 
 ii. $\mathcal{B}$ is linearly independent. 
+
 Given ii., the coefficients $v_i$ in i. are unique since 
 \begin{align*}
     \sum_i v_i \underline{e}_i &= \sum v_i' \underline{e}_i \\
@@ -220,7 +219,7 @@ Given ii., the coefficients $v_i$ in i. are unique since
     \implies v_i &= v_i'
 \end{align*} 
 
-$v_i$ are *components* of $\underline{v}$ w.r.t. $\mathfrak{B}$
+$v_i$ are *components* of $\underline{v}$ w.r.t. $\mathcal{B}$
 
 ::: {.example}
 Standard basis for $\mathbb{R}^n$ consisting of 
@@ -292,8 +291,8 @@ Similarly,
     \sum_a B_{ia} A_{aj} = \delta_{ij}.
 \end{align*}
 Now \begin{align*}
-    \sum_{ia} A_{ai} B_{ia} &= \sum_a \delta_{aa} = m \\
-    &= \sum_{ia} B_{ia} A_{ai} = \sum_i \delta_{ii} = n \\
+    \sum_{i, a} A_{ai} B_{ia} &= \sum_a \delta_{aa} = m \\
+    &= \sum_{i, a} B_{ia} A_{ai} = \sum_i \delta_{ii} = n \\
     \implies m &= n
 \end{align*} 
 :::

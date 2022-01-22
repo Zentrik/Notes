@@ -1,7 +1,5 @@
 # Introduction
 
-**Lecture 1**
-
 ## Examples and remarks of statements
 :::{.example}
 There are infinitely many primes $p$ s.t. $2p + 1$ is also prime.

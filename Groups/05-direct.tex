@@ -3,7 +3,7 @@
 \subsection{Direct Products}
 
 \begin{definition}[(External) direct product of groups]
-  Let $H$ and $K$ be groups. We can construct the (external) \emph{direct product}, $H \times K$, with a set $\{ (h, k),\ h \in H, k \in K \}$ and an operation:
+  Let $H$ and $K$ be groups. We can construct the (external) \emph{direct product}, $H \times K$, with a set $\{ (h, k): h \in H, k \in K \}$ and an operation:
   \begin{align*}
     (h_1, k_1) * (h_2, k_2) &= (h_1 *_H h_2, k_1 *_K k_2) \\
     &= (h_1 h_2, k_1 k_2)
@@ -75,11 +75,11 @@ associativity since group operation in both $H$ and $K$ are associative.
     \text{Also, } (h, k)^n &= (h^n, k^n) \\
     &= (e_H, e_K) \\
     \implies o(h) \mkern-5mu &\;\mid n \text{ and } o(k) \mid n \text{ by \Cref{lem:five}}. \\
-    \implies \mkern-5mu &\;\mid n.
+    \implies m \mkern-5mu &\;\mid n.
   \end{align*} 
-  Thus we know when $C_m \times C_n \cong C_{mn}$ (Sheet 2, qn 10).
 \end{proof} 
 
+Thus we know when $C_m \times C_n \cong C_{mn}$ (Sheet 2, qn 10).
 Recognising when a group can be written as a direct product of subgroups is trickier.
 
 \begin{proposition}[Direct Product Theorem]
@@ -87,7 +87,7 @@ Recognising when a group can be written as a direct product of subgroups is tric
   \begin{enumerate}
     \item each element of $G$ can be written as $hk$, for some $h \in H$, $k \in K$, \label{5.1-1}
     \item $H \cap K = \{ e \}$ \label{5.1-2}
-    \item $hk = kh \; \forall \; h \in H,\ k \in K$ \label{5.1-3}
+    \item $hk = kh \quad \forall \; h \in H,\ k \in K$ \label{5.1-3}
   \end{enumerate} 
   Then $G \cong H \times K$ and we call $G$ the (internal) direct product of $H$ and $K$.
 \end{proposition} 
@@ -190,9 +190,7 @@ elements of \begin{align*}
     &= b^{-k} a \\
     \text{So } (b^k a) (b^k a) &= b^k b^{-k} a a \\
     &= e.
-  \end{align*} 
-  We can check 
-  \begin{align*}
+    \intertext{We can check}
     \theta : D_{2n} &\to G \\
     r &\mapsto b \\
     t &\mapsto a 
@@ -222,7 +220,7 @@ elements of \begin{align*}
     \implies G &\cong C_4
     \intertext{Suppose not, then let}
     1 \neq a \in G &\implies o(a) = 2 \\
-    &\implies G \text{ is abelian (qn 7, sheet 1)} \\
+    &\implies G \text{ is abelian (Sheet 1, Q7)} \\
     &\implies C_2 \cong \langle a \rangle \trianglelefteq G.
   \end{align*}
   Let $b \in G \setminus \langle a \rangle$, then $1 \neq b \in G$ so $C_2 \cong \langle b \rangle \trianglelefteq G$. \\
@@ -245,8 +243,8 @@ elements of \begin{align*}
 \end{lemma} 
 
 \begin{proof}
-  Let $1 \neq g \in G \implies o(g) = 2, 3 \text{ or } 6$ by \Cref{cor:two}.
-  If all non-identity elements have order $2 \implies |G|$ is a $2$-power \Lightning (qn 7, Sheet 1). \\
+  Let $1 \neq g \in G \implies o(g) = 2, 3 \text{ or } 6$ by \nameref{cor:two}.
+  If all non-identity elements have order $2 \implies |G|$ is a $2$-power \Lightning \ (Sheet 1, Q7). \\
   So $\exists \; b \in G, o(b) = 3$ (Note if $o(g) = 6$ then $o(g^2) = 3$). \\
   $C_3 \cong \langle b \rangle \trianglelefteq G$, RHS by \Cref{lem:twelve} (since of index 2).
 

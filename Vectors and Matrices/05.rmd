@@ -251,7 +251,7 @@ For an $n \times n$ matrix $M$ with columns
 \begin{align*}
     \underline{C}_a &= M \underline{e}_a
 \end{align*} 
-the *determinant* $\det M$ or $|M| \in \mathbb{R}$ or $\mathbb{C}$ if defined by 
+the *determinant* $\det M$ or $|M| \in \mathbb{R}$ or $\mathbb{C}$ is defined by 
 \begin{align*}
     \det M &= [\underline{C}_1, \underline{C}_2, \dots, \underline{C}_n] \\
     &= [M \underline{e}_1, M \underline{e}_2, \dots, M \underline{e}_n] \\
@@ -611,7 +611,7 @@ To get $\Delta_{ia}$ we subtract column $a$ with all other columns to get the ro
 
 Reasoning as in [Cofactors and Determinants] with $\underline{C}_b = \sum_i M_{ib} \underline{e}_i$
 \begin{align*}
-    [\underline{C}_1, \dots, \underline{C}_{a - 1}, \underline{C}_b, \underline{a + 1}, \dots, \underline{C_n}] &= \sum_i M_{ib} \delta_{ia} \\
+    [\underline{C}_1, \dots, \underline{C}_{a - 1}, \underline{C}_b, C_\underline{a + 1}, \dots, \underline{C_n}] &= \sum_i M_{ib} \delta_{ia} \\
     &= \begin{cases}
         \det M & \text{if } a = b \\
         0 & \text{if } a \neq b
@@ -647,8 +647,8 @@ Consider \begin{align*}
     1 & 1 & a \\
     a & 1 & 1 \\
     1 & a & 1
-    \end{pmatrix},\ a \in \mathbb{C} \\
-\end{align*}, previously found in Example \@ref(exm:exchanges) $\det A = (1 - a)^2 (a + 2)$.
+    \end{pmatrix},\ a \in \mathbb{C}, \\
+\end{align*} previously found in Example \@ref(exm:exchanges) $\det A = (1 - a)^2 (a + 2)$.
 Hence $A^{-1}$ exists if $a \neq 1$, $a \neq - 2$.
 
 Matrix of cofactors is \begin{align*}

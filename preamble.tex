@@ -9,6 +9,7 @@
 \documentclass[]{scrartcl}
 
 \usepackage{amsmath,amssymb, amsfonts}
+\usepackage{mathrsfs}
 \usepackage{mathtools}
 \usepackage{lmodern}
 \usepackage{ifxetex,ifluatex}
@@ -142,6 +143,18 @@
     postheadspace={3pt}
 ]{thmexamplebox}
 
+% Answer
+\declaretheoremstyle[
+    headfont=\sffamily\bfseries\color{definitionfg},
+    mdframed={
+        backgroundcolor=definitionbg,
+        nobreak=false
+    },
+    headpunct={\\[3pt]},
+    postheadspace={3pt}
+]{thmanswerbox}
+
+
 % Definition
 \declaretheoremstyle[
     headfont=\sffamily\bfseries\color{definitionfg},
@@ -177,6 +190,7 @@
     \declaretheorem[style=thmtheorembox,name=Corollary,numbered=no]{corollary*}
     \declaretheorem[style=thmexamplebox,name=Example,numbered=no]{example*}
     \declaretheorem[style=thmexamplebox,name=Question,numbered=no]{question}
+    \declaretheorem[style=thmanswerbox,name=Answer,numbered=no]{answer}
     \declaretheorem[style=thmdefinitionbox,name=Definition,numbered=no]{definition*}
     \declaretheorem[style=thmdefinitionbox,name=Axiom,numbered=no]{axiom*}
     \declaretheorem[style=thmtheorembox,name=Axiom,numbered=no]{axiomthm*}
@@ -215,9 +229,7 @@
 \theoremstyle{definition}
 
 \newtheorem{conjecture}[theorem]{Conjecture}
-\newtheorem{answer}[theorem]{Answer}
 \newtheorem{case}[theorem]{Case}
-% \newtheorem{question}[theorem]{Question}
 \newtheorem{exercise}[theorem]{Exercise}
 \newtheorem{problem}[theorem]{Problem}
 \newtheorem*{conjecture*}{Conjecture}
@@ -230,6 +242,7 @@
 
 \theoremstyle{remark}
 \newtheorem{remark}{Remark}
+\newtheorem*{note}{note}
 
 % Fancy Section and Chapter Heads 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -291,7 +304,23 @@
 
 \usepackage{wrapfig}
 
+\usepackage{cancel}
+
+\newcommand\hcancel[2][black]{\setbox0=\hbox{$#2$}%
+\rlap{\raisebox{.45\ht0}{\textcolor{#1}{\rule{\wd0}{1pt}}}}#2} 
+
+\newcommand\Ccancel[2][black]{
+    \let\OldcancelColor\CancelColor
+    \renewcommand\CancelColor{\color{#1}}
+    \cancel{#2}
+    \renewcommand\CancelColor{\OldcancelColor}
+}
+
 \allowdisplaybreaks
+
+% Small Macros
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\vocab}[1]{\textbf{\color{blue} #1}}
 
 % Math Symbols
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -312,3 +341,5 @@
 \newcommand{\DD}{\mathcal{D}}
 \newcommand{\FF}{\mathcal{F}}
 \newcommand{\BB}{\mathcal{B}}
+
+\newcommand{\dd}{\; \mathrm{d}}

@@ -23,4 +23,3 @@ link-citations: yes
 5. Determinants and Inverses
 6. Eigenvalues and Eigenvectors
 7. Changing Bases, Canonical Forms and Symmetries
-

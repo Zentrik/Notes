@@ -45,7 +45,7 @@ If \(F\) depends only on \(t\), then we can simply integrate twice. However, if 
 
 \begin{itemize}
 \item
-  Informally, if \(\lim_{x \to x_0} f(x) = A\), then \(f(Px)\) can be made arbitrarily close to \(A\) by making \(x\) sufficiently close to \(x_0\)
+  Informally, if \(\lim_{x \to x_0} f(x) = A\), then \(f(x)\) can be made arbitrarily close to \(A\) by making \(x\) sufficiently close to \(x_0\)
 
   \begin{itemize}
   \tightlist
@@ -60,7 +60,7 @@ If \(F\) depends only on \(t\), then we can simply integrate twice. However, if 
   \item
     for any \(\epsilon > 0\), there exists \(\delta >0\) such that \(|f(x) - A| < \epsilon\) for all \(0 < |x - x_0| < \delta\).
   \item
-    Right hand limit, for example, defined similarly but with \(0 < |x - x_0| < \delta\) replaced with \(0 < x - x_0 < \delta\). A similar procedure can be done for left hand Limits
+    Right hand limit, for example, defined similarly but with \(0 < |x - x_0| < \delta\) replaced with \(0 < x - x_0 < \delta\). A similar procedure can be done for left hand limits
   \end{itemize}
 
   \begin{figure}[h!]
@@ -106,19 +106,15 @@ These properties will be proved carefully in the Analysis 1 course next term, bu
 \subsubsection{Proof of uniqueness of limits}\label{proof-of-uniqueness-of-limits}}
 
 Suppose that \(\lim_{x \to x_0} f(x) = A\) \textcolor{red}{and} \(\lim_{x \to x_0} f(x) = B\).
-
-In terms of our epsilon-delta definition, this means that for any \(\epsilon > 0\)h there exists \(\delta_A > 0\) and \(\delta_B > 0\) such that
-
+In terms of our epsilon-delta definition, this means that for any \(\epsilon > 0\) there exists \(\delta_A > 0\) and \(\delta_B > 0\) such that
 \begin{align*}
   &\text{for }0 < |x -x_0| < \delta_A,\ |f(x) - A| < \epsilon / 2 \text{, where } \epsilon / 2 \text{ is an arbitrary positive quantity.} \\
   \color{red}{and} \ &\text{for } 0 < |x -x_0| < \delta_A,\ |f(x) - B| < \epsilon / 2
 \end{align*}
-
 Now let \(\delta = min(\delta_A, \delta_B)\) and consider \(0 < |x -x_0| < \delta\) - follows that
 \begin{align*}
   |A - B| &= |[A - f(x)] - [B - f(x)]| \\
   &\leq |A - f(x)| + |B - f(x)| \\
   &\leq \epsilon
 \end{align*}
-
 Since this holds \textcolor{red}{for all} \(\epsilon > 0\), we must have \(A = B\).

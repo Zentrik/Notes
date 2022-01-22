@@ -44,8 +44,6 @@ Similarly, we can define multiplication, powers, etc. You may check that the "no
     &5.\ \forall \; a, b, c \in \mathbb{N} & &a (b + c) = ab + ac & &(\times \text{ is distributive over }+);
 \end{align} 
 
-**Lecture 3**
-
 We can define $a < b$ if $a + c = b$ for some $c \in \mathbb{N}$. You may want to check
 
 \begin{align}
@@ -59,7 +57,9 @@ Recall the induction axiom: if $P(1)$ holds and $\forall \; n \in \mathbb{N}, P(
 This is also known as the *(weak) principle of induction (WPI)*. A more useful form is the *Strong Principle of Induction (SPI)*: if
 
 1. $P(1)$ holds and
-2. $\forall \; n \in \mathbb{N}$, we have $P(m) \;\forall \; m \leq n \implies P(n + 1)$, then $P(n)$ holds $\forall \; n \in \mathbb{N}$.
+2. $\forall \; n \in \mathbb{N}$, we have $P(m) \;\forall \; m \leq n \implies P(n + 1)$, 
+
+then $P(n)$ holds $\forall \; n \in \mathbb{N}$.
 
 In fact, WPI and SPI are equivalent. SPI $\implies$ WPI should be fairly clear. To see WPI $\implies$ SPI, apply the former to $Q(n) = `P(m) \; \forall \; m \leq n'$
 
@@ -114,7 +114,7 @@ The rationals, written $\mathbb{Q}$, consist of all expressions $\frac{a}{b}$ (n
 
 Define $\frac{a}{b} + \frac{c}{d} = \frac{ad + bc}{bd}$, and check it does not matter how we wrote $\frac{a}{b}$ or $\frac{c}{d}$.
 
-We similarly define multiplication, and '$\frac{a}{b} < \frac{c}{d}$' where $b, d > 0$ if $ad < bc$. 
+We similarly define multiplication, and $`\frac{a}{b} < \frac{c}{d}'$ where $b, d > 0$ if $ad < bc$. 
 You can check all preceding rules apply.
 
 In addition
@@ -135,8 +135,6 @@ If $n \geq 2$ is not prime, then it is *composite*.
 ::: {.proposition #two}
 Every natural number $n \geq 2$ can be written as a product of primes.
 :::
-
-**Lecture 4**
 
 ::: {.proof}
 By induction on $n$. True for $n = 2$.
@@ -226,7 +224,7 @@ The output of Euclid's algorithm with input $a, b$ is $\operatorname{hcf}(a, b)$
 i. \begin{align*}
     \text{We can see } &r_n \mid r_{n - 1} \text{ (as } r_{n + 1} = 0 \text{  at STEP } n + 1 \text{)} \\
     \text{so } &r_n \mid r_{n - 2} \ ( \text{STEP } n) \\
-    \text{so } &r_n \mid r_i \; \forall \; i = 1, \dots n - 1 \text{ (by induction)}
+    \text{so } &r_n \mid r_i \quad \forall \; i = 1, \dots n - 1 \text{ (by induction)}
 \end{align*} 
 Hence $r_n \mid b$ (STEP $2$) and $r_n \mid a$ (STEP $1$).
 
@@ -238,8 +236,6 @@ ii. Given $d$ s.t. $d \mid a$ and $d \mid b$,
 \end{align*} 
 Therefore, $r_n = \operatorname{hcf}(a, b)$.
 :::
-
-**Lecture 5**
 
 ::: {.example}
 To obtain $\operatorname{hcf}(87, 52)$ we run Euclid:
@@ -474,7 +470,7 @@ Does $2a^2 + 3b^3 = 1$ have a solution with $a, b \in \mathbb{Z}$?
 :::
 
 *Answer*
-If there is a solution, then $2a^2 \equiv \mod 3$, but $2 \cdot 0^2 \equiv 0$, $2 \cdot 1 ^2 \equiv 2$, $2 \cdot 2^2 \equiv 2 \mod 3$.
+If there is a solution, then $2a^2 \equiv 1 \mod 3$, but $2 \cdot 0^2 \equiv 0$, $2 \cdot 1 ^2 \equiv 2$, $2 \cdot 2^2 \equiv 2 \mod 3$.
 
 ## Solving congruences
 ::: {.example}

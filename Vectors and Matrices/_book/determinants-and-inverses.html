@@ -494,7 +494,7 @@ Note that <span class="math inline">\(\underline{v}_1, \dots, \underline{v}_n\)<
 <span class="math display">\[\begin{align*}
     \underline{C}_a &amp;= M \underline{e}_a
 \end{align*}\]</span>
-the <em>determinant</em> <span class="math inline">\(\det M\)</span> or <span class="math inline">\(|M| \in \mathbb{R}\)</span> or <span class="math inline">\(\mathbb{C}\)</span> if defined by
+the <em>determinant</em> <span class="math inline">\(\det M\)</span> or <span class="math inline">\(|M| \in \mathbb{R}\)</span> or <span class="math inline">\(\mathbb{C}\)</span> is defined by
 <span class="math display">\[\begin{align*}
     \det M &amp;= [\underline{C}_1, \underline{C}_2, \dots, \underline{C}_n] \\
     &amp;= [M \underline{e}_1, M \underline{e}_2, \dots, M \underline{e}_n] \\
@@ -810,7 +810,7 @@ To get <span class="math inline">\(\Delta_{ia}\)</span> we subtract column <span
 <h3><span class="header-section-number">5.4.2</span> Adjugates and Inverses</h3>
 <p>Reasoning as in <a href="determinants-and-inverses.html#cofactors-and-determinants">Cofactors and Determinants</a> with <span class="math inline">\(\underline{C}_b = \sum_i M_{ib} \underline{e}_i\)</span>
 <span class="math display">\[\begin{align*}
-    [\underline{C}_1, \dots, \underline{C}_{a - 1}, \underline{C}_b, \underline{a + 1}, \dots, \underline{C_n}] &amp;= \sum_i M_{ib} \delta_{ia} \\
+    [\underline{C}_1, \dots, \underline{C}_{a - 1}, \underline{C}_b, C_\underline{a + 1}, \dots, \underline{C_n}] &amp;= \sum_i M_{ib} \delta_{ia} \\
     &amp;= \begin{cases}
         \det M &amp; \text{if } a = b \\
         0 &amp; \text{if } a \neq b
@@ -844,8 +844,8 @@ This justifies <a href="determinants-and-inverses.html#eq:inverse">(5.1)</a> wit
     1 &amp; 1 &amp; a \\
     a &amp; 1 &amp; 1 \\
     1 &amp; a &amp; 1
-    \end{pmatrix},\ a \in \mathbb{C} \\
-\end{align*}\]</span>, previously found in Example <a href="determinants-and-inverses.html#exm:exchanges">5.5</a> <span class="math inline">\(\det A = (1 - a)^2 (a + 2)\)</span>.
+    \end{pmatrix},\ a \in \mathbb{C}, \\
+\end{align*}\]</span> previously found in Example <a href="determinants-and-inverses.html#exm:exchanges">5.5</a> <span class="math inline">\(\det A = (1 - a)^2 (a + 2)\)</span>.
 Hence <span class="math inline">\(A^{-1}\)</span> exists if <span class="math inline">\(a \neq 1\)</span>, <span class="math inline">\(a \neq - 2\)</span>.</p>
 <p>Matrix of cofactors is <span class="math display">\[\begin{align*}
     \Delta &amp;= \begin{pmatrix}

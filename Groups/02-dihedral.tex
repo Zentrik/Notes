@@ -312,7 +312,7 @@ If $\sigma, \tau \in S_n$ are disjoint then $\sigma \tau = \tau \sigma$
 \end{lemma}
 
 \begin{proof}
-If $x \in {1, \dots, n} \setminus \{ a_1, \dots, a_k \} \cup \{ b_1, \dots, b_k \}$, $(\sigma \circ \tau) (x) = \sigma \left( \tau(x) \right) = (\tau \circ \sigma)(x)$.
+If $x \in \{1, \dots, n\} \setminus \{ a_1, \dots, a_k \} \cup \{ b_1, \dots, b_k \}$, $(\sigma \circ \tau) (x) = \sigma \left( \tau(x) \right) = (\tau \circ \sigma)(x)$.
 
 Suppose $1 \leq i \leq k - 1$
 \begin{align*}
@@ -378,7 +378,7 @@ Since if not \begin{align*}
     \sigma^j(a_1) &= \sigma^i(a_1),\ j > i \geq 1 \\
     \implies \sigma^{j - i}(a_1) &= a_1 \quad \text{\Lightning \ of minimality of j.}
 \end{align*}
-So $\{ a_1, \sigma(a_1), \sigma^2(a_1), \dots, \sigma^{j-1}(a_1) \}$ is a cycle in $\sigma$.\\
+So $\left( a_1, \sigma(a_1), \sigma^2(a_1), \dots, \sigma^{j-1}(a_1) \right)$ is a cycle in $\sigma$.\\
 If $\exists \; b \in X \setminus \{ a_1, \sigma(a_1), \sigma^2(a_1), \dots, \sigma^{j-1}(a_1) \}$.
 Consider $b, \sigma(b), \dots$\\
 Note $\left(b, \sigma(b), \sigma^2(b), \dots, \sigma^{j-1}(b) \right)$ is disjoint from $\left( a_1, \sigma(a_1), \sigma^2(a_1), \dots, \sigma^{j-1}(a_1) \right)$ because $\sigma$ is a bijection.\footnote{If $\sigma^i(b) = \sigma^j(a_1)$ then $b = \sigma^{j - i}(a_1)$ which contradicts $b \in X \setminus \{ a_1, \sigma(a_1), \sigma^2(a_1), \dots, \sigma^{j-1}(a_1) \}$.}\\
@@ -521,7 +521,7 @@ We put the largest subgroups at the top and work our way down.
 The map
 \begin{align*}
     \operatorname{sgn} : (S_n, \circ) &\to \left( \{ \pm 1 \}, \times \right) \\
-    \sigma *\mapsto \operatorname{sgn}(\sigma)
+    \sigma &\mapsto \operatorname{sgn}(\sigma)
 \end{align*}
 is a well-defined non-trivial (doesn't just map to identity) homomorphism.
 \end{theorem}

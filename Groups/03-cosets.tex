@@ -9,8 +9,8 @@ Similarly the \emph{right coset} $Hg = \{ hg : h \in H \}$
 
 \begin{example} ~\vspace*{-1.5\baselineskip}
 \begin{align*}
-    S_3 &= \{ e, \begin{pmatrix}1 & 2 & 3\end{pmatrix}, \begin{pmatrix}1 & 3 & 2\end{pmatrix}, \begin{pmatrix}1 & 2\end{pmatrix}, \begin{pmatrix}1 & 3\end{pmatrix}, \begin{pmatrix}2 & 3\end{pmatrix} \} \\
-    H &= \{ \text{id}, \begin{pmatrix}1 & 2 & 3\end{pmatrix}, \begin{pmatrix}1 & 3 & 2\end{pmatrix} \} = A_3 \\
+    S_3 &= \left\{ e, \begin{pmatrix}1 & 2 & 3\end{pmatrix}, \begin{pmatrix}1 & 3 & 2\end{pmatrix}, \begin{pmatrix}1 & 2\end{pmatrix}, \begin{pmatrix}1 & 3\end{pmatrix}, \begin{pmatrix}2 & 3\end{pmatrix} \right\} \\
+    H &= \left\{ \text{id}, \begin{pmatrix}1 & 2 & 3\end{pmatrix}, \begin{pmatrix}1 & 3 & 2\end{pmatrix} \right\} = A_3 \\
     \begin{pmatrix}1 & 2\end{pmatrix}H &= \left\{ \begin{pmatrix}1 & 2\end{pmatrix}, \begin{pmatrix}1 & 2\end{pmatrix}\begin{pmatrix}1 & 2 & 3\end{pmatrix}, \begin{pmatrix}1 & 2\end{pmatrix}\begin{pmatrix}1 & 3 & 2\end{pmatrix} \right\} \\
     &= \left\{ \begin{pmatrix}1 & 2\end{pmatrix}, \begin{pmatrix}2 & 3\end{pmatrix}, \begin{pmatrix}1 & 3\end{pmatrix} \right\} \\
     \begin{pmatrix}1 & 2 & 3\end{pmatrix}H &= H \ (\text{since H is a subgroup})
@@ -224,7 +224,7 @@ Inverses: Let $a \in R_n^*$, $\operatorname{hcf}(a, n) = 1$
     \implies \exists \; u, v \in \mathbb{Z} \text{ s.t. } a u + v n &= 1 \text{ (Bezout's Theorem)} \\
     \implies au &\equiv 1 \pmod n
 \end{align*}
-Then $\overline{u} \in R_n^*$ is $a^{-1}$
+Then $\overline{u} \in R_n^*$ is $a^{-1}$ as $a^{-1}$ has an inverse $a$ which implies $(a, n) = 1$.
 
 \begin{proof}
 Note $|R_n^*| = \phi(n)$.

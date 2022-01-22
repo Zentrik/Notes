@@ -188,7 +188,7 @@ Now set $\underline{u} = \alpha \underline{v}$ and note
 \end{align*} 
 :::
 
-::: {.example name="(using a slightly different approach)"}
+::: {.example name="using a slightly different approach"}
 \begin{align*}
     A &= \begin{pmatrix}1 & 4 \\-1 & 5\end{pmatrix} \\
     \implies \chi_A(t) &= (t - 3)^2 \\
