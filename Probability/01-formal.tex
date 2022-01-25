@@ -1,0 +1,146 @@
+\section{Formal Setup}
+
+\begin{definition}[Sample Space]
+    The \vocab{sample space} $\Omega$ is a set of outcomes.
+\end{definition} 
+
+\begin{definition}[$\sigma$-algebra] ~\vspace*{-1.5\baselineskip}
+    \begin{itemize}
+        \item Let $\mathcal{F}$ a collection of subsets of $\Omega$ (called \emph{events}).
+        \item $\mathcal{F}$ is a \vocab{$\sigma$-alegbra} if
+        \begin{enumerate}[label=F\arabic*.]
+            \item $\Omega\in \mathcal{F}$.
+            \item $A\in\mathcal F$ then $A^c = \Omega \setminus A \in\mathcal F$.
+            \item $\forall$ countable collections $(A_n)_{n\in\mathbb{N}}\in\mathcal F$, the union $\bigcup_{n\in\mathbb{N}} A_n \in \mathcal F$ also.
+        \end{enumerate}
+    \end{itemize} 
+\end{definition}
+
+\begin{remark}
+    The motivation for F2 is so that $\mathbb{P}(A^c) = 1 - \mathbb{P}(A)$ (the probability of not $A$ is defined as expected).
+\end{remark} 
+
+\begin{definition}[Probility Measure]
+    Given $\sigma$-algebra $\mathcal{F}$ on $\Omega$, function $\mathbb{P}:\mathcal F \to [0,1]$\footnote{P1. $\mathbb{P}(A) \geq 0$} is a \vocab{probability measure} if
+    \begin{enumerate}[label=P\arabic*.] \setcounter{enumi}{1}
+        \item $\mathbb{P}(\Omega)=1$.
+        \item $\forall$ countable collections $(A_n)_{n \in \mathbb{N}}$ of \emph{disjoint} events in $\mathcal{F}$:
+        \begin{align*}
+            \mathbb{P}\left( \bigcup_{n\in\mathbb{N}} A_n \right) = \sum_{n\in\mathbb{N}}\mathbb{P}(A_n).
+        \end{align*}
+    \end{enumerate} 
+    Then $(\Omega, \mathcal F,\mathbb{P})$ is a \emph{probability space}.
+\end{definition} 
+
+\begin{example}
+    Coming back to \Cref{exm:0}.
+    $\Omega=\{1,2,\dots,6\}$ so \\
+    $\mathbb{P}(\Omega) = \mathbb{P}(\text{1 or 2 or 3 or 4 or 5 or 6}) = 1$ and $\mathcal{F}$ is all subsets of $\Omega$.\\
+\end{example} 
+
+\begin{question} ~\vspace*{-1.5\baselineskip}
+    \begin{align*}
+        \text{Why } &\mathbb{P} : \mathcal{F} \to [0, 1] \\
+        \text{and not } &\mathbb{P} : \Omega \to [0, 1]?
+    \end{align*} 
+    If $\Omega$ is countable:
+    \begin{itemize}
+        \item In general: $\mathcal{F} =$ all subsets of $\Omega$, i.e. $\mathcal{P}(\Omega)$ (the power set).
+        \item $\mathbb{P}(2)$ is shorthand for $\mathbb{P}(\{2\})$.
+        \item $\mathbb{P}$ is determined by $\left(\mathbb{P}(\{w\}),\ \forall \; w \in \Omega \right)$ (e.g. unfair dice). 
+    \end{itemize} 
+
+    If $\Omega$ is uncountable:
+    \begin{itemize}
+        \item E.g. $\Omega = [0, 1]$.
+        Want to choose a real number, all equally likely.
+        \item If $\mathbb{P}\left(\{0\}\right) = \alpha > 0$ then $\mathbb{P}\left(\left\{0, 1, \frac{1}{2}, \dots, \frac{1}{n}\right\}\right) = (n + 1)\alpha$ \Lightning \ if $n$ large as $\mathbb{P} > 1$.
+        \item So $\mathbb{P}(\{0\}) = 0$, or $\mathbb{P}(\{0\})$ is undefined.
+        \item What about $\mathbb{P}\left(\left\{x : x \leq \frac{1}{3}\right\}\right)$?
+        \begin{itemize}
+            \item ? ``Add up'' all $\mathbb{P}(\{x\})$ for $x \leq \frac{1}{3}$. However this range is uncountable and we can't take a sum of uncountably many terms.
+        \end{itemize}  
+    \end{itemize} 
+\end{question}
+
+\begin{aside}{Aside}
+    \begin{question}
+        Can we choose uniformly from an infinite countable set? (E.g. $\Omega = \mathbb{N}$ or $\Omega = \mathbb{Q} \cap [0, 1]$)
+    \end{question} 
+
+    \begin{answer}
+        No it is not possible but that's ok there $\exists$ lots of interesting probability measures of $\mathbb{N}$!
+    \end{answer} 
+    \begin{proof}
+        Suppose possible
+        \begin{itemize}
+            \item $\mathbb{P}(\{0\}) = \alpha > 0 \quad \forall \; \omega \in \Omega$.
+            Then $\mathbb{P}(\Omega) = \sum_{\omega \in \Omega} \mathbb{P}(\{ \omega \}) = \sum_{\omega \in \Omega} \alpha = \infty.$ \Lightning \ of P2 : $\mathbb{P}(\Omega) = 1$.
+            \item $\mathbb{P}(\{0\}) = 0 \quad \forall \; \omega \in \Omega$.
+            Then $\mathbb{P}(\Omega) = \sum_{\omega \in \Omega} \mathbb{P}(\{ \omega \}) = \sum_{\omega \in \Omega} 0 = 0.$
+        \end{itemize} 
+    \end{proof} 
+\end{aside} 
+
+\begin{proposition}[From the axioms] ~\vspace*{-1.5\baselineskip}
+    \begin{itemize}
+        \item $\mathbb{P}(A^c) = 1 - \mathbb{P}(A)$
+        \begin{proof}
+            $A, A^c$ are disjoint. $A \cup A^c = \Omega$.\\
+            $\implies \mathbb{P}(A) + \mathbb{P}(A^c) \underset{P3}{=} \mathbb{P}(\Omega) \underset{P2}{=} 1$
+        \end{proof} 
+        \item $\mathbb{P}(\emptyset) = 0$
+        \item If $A \subseteq B$ then $\mathbb{P}(A) \leq \mathbb{P}(B)$
+        \item $\mathbb{P}(A \cup B) = \mathbb{P}(A) + \mathbb{P}(B) - \mathbb{P}(A \cap B)$
+    \end{itemize}
+\end{proposition}  
+
+\subsection{Examples of Probability Spaces}
+
+\begin{example}[Uniform Choice]
+    $\Omega$ finite, $\Omega = \{\omega_1, \dots, \omega_n\}$, $\mathcal{F} =$ all subsets.
+    \emph{uniform} choice (equally likely)
+    \begin{align*}
+        \mathbb{P} : \mathcal{F} \to [0, 1],\ \mathbb{P}(A) = \frac{|A|}{|\Omega|}.
+    \end{align*} 
+    In particular: $\mathbb{P}(\{\omega\}) = \frac{1}{|\Omega|} \quad \forall \;\omega \in \Omega$.
+\end{example} 
+
+\begin{example}[Choosing without replacement]
+    $n$ indistinguishable marbles labelled $\{1, \dots, n\}$.
+    Pick $k \leq n$ marbles uniformly at random.
+    Here: $\Omega = \{A \subseteq \{1, \dots, n\}, |A| = k\} \quad |\Omega| = \binom{n}{k}$
+\end{example} 
+
+\begin{example}[Well-shuffled deck of cards]
+    Uniformly chosen \emph{permutation} of $52$ cards.
+    \begin{align*}
+        \Omega &= \{ \text{all permutations of 52 cards} \} \\
+        |\Omega| &= 52! \\
+        \mathbb{P}(\substack{\text{first three cards} \\ \text{have the same suit}}) &= \frac{52 \times 12 \times 11 \times 49!}{52!} = \frac{22}{425} \\
+        \text{Note:} &= \frac{12}{51} \times \frac{11}{50}
+    \end{align*} 
+\end{example}
+
+\begin{example}[Coincident Birthdays]
+    There are $n$ people; what is the probability that at least two of them share a birthday?
+
+    \emph{Assumptions}:
+    \begin{itemize}
+        \item No leap years! (365 days)
+        \item All birthdays are equally likely
+    \end{itemize} 
+
+    Let $\Omega = \{1, \dots, 365\}^n$ and $\mathcal F = \mathcal P(\Omega)$. \\
+    Let $A = \{ \text{at least two people share the same birthday} \}$ and so \\ 
+    $A^c = \{\text{all $n$ birthdays are different} \}$.
+    \begin{align*}
+        \mathbb{P}(A^c) &= \frac{|A^c|}{|\Omega|} = \frac{365 \times 364 \dots \times (365 - n + 1)}{365^n} \\
+        \mathbb{P}(A) &= 1 - \mathbb{P}(A^c)
+    \end{align*} 
+
+    Note that at $n=22$, $\mathbb{P}(A) \approx 0.476$ and at $n=23$, $\mathbb{P}(A) \approx 0.507$.
+    So when there are at least 23 people in a room, the probability that two of them share a birthday is around 50\%.
+
+    \color{red}{KEY IDEA: Calculating $\mathbb{P}(A^c)$ is easier than $\mathbb{P}(A)$.}
+\end{example}
