@@ -12,8 +12,14 @@ title: "Cambridge 2021 Maths Notes"
 
 [Groups](Groups/groups.pdf)
 
-[Differential Equations](Differential%20Equations/de.pdf)
+[Differential Equations](Differential%20Equations/de.pdf) (Annotations)
 
+### Lent
+[Probability](Probability/probability.pdf)
+
+[Dynamics and Relativity](Dynamics%20and%20Relativity/dynrel.pdf) (Annotations)
+
+[Vector Calculus](Vector%20Calculus/vc.pdf) (Annotations)
 
 ## Other Recent IA Notes
 

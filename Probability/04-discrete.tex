@@ -134,7 +134,7 @@ Consequence of definition
 Let $X_1, \dots, X_n$ be independent.
 Then $\mathbb{P}(X_1 \in A_1, \dots, X_n \in A_n) = \mathbb{P}(X \in A_1) \dots \mathbb{P}(X_n \in A_n) \quad \forall \; A_1, \dots, A_n \subset \mathbb{R}$ countable.
 
-Let $\Omega = \mathbb{N}$, "Ways of choosing a random integer"
+Let $\Omega = \mathbb{N}$, ``Ways of choosing a random integer"
 
 \subsubsection{Geometric distribution (``Waiting for success'')}
 This can be used to model the number of coin tosses until we get a head.
@@ -171,4 +171,150 @@ $\operatorname{Im}(X) = \{0, 1, 2, \dots\}$ and $\mathbb{P}(X = k) = e^{- \lambd
         &\to 1 \quad \text{There are a fixed number of terms all converging to 1} \\
         \mathbb{P}(X_n = k) &\underset{n \to \infty}{\to} e^{-\lambda} \frac{\lambda^k}{k!}.
     \end{align*} 
+    \color{blue} We might want to say $\operatorname{Bin}(n, \frac{\lambda}{n})$ converges to $\operatorname{Po}(\lambda)$, but what does convergence of random variables mean?
+\end{example}
+
+\subsection{Expectation}
+$(\Omega, \mathcal{F}, \mathbb{P})$ and $X$ a discrete RV.
+For now: $X$ only takes non-negative values. ``$X \geq 0$''
+
+\begin{definition}[Expectation]
+    The \vocab{expectation of $X$} (or \vocab{expected value} or \vocab{mean})
+    \begin{align*}
+        \mathbb{E}[X] &= \sum_{x \in \operatorname{Im}(X)} x \mathbb{P}(X = x) \\
+        &= \sum_{\omega \in \Omega} X(\omega) \mathbb{P}(\{\omega\}) 
+    \end{align*} 
+    \color{blue} ``Average of values taken by $X$, weighted by $p_X$''.
+\end{definition} 
+
+\begin{example}[Uniform Dice]
+    $X$ uniform on $\{1, 2, \dots, 6\}$
+    \begin{align*}
+        \mathbb{E}[X] &= \frac{1}{6} \cdot 1 + \frac{1}{6} \cdot 2 + \dots + \frac{1}{6} \cdot 6 \\
+        &= 3.5 
+    \end{align*} 
 \end{example} 
+
+\begin{note}
+    $\mathbb{E}[X]$ need not be in $\operatorname{Im}(X)$.
+\end{note}
+
+\begin{example}[Binomial Distribution]
+    Let $X \sim \operatorname{Binomial}(n, p)$
+    \begin{align*}
+        \mathbb{E}[X] &= \sum_{k=0}^{n} k \mathbb{P}(X = k) \\
+        &= \sum_{k=0}^{n} k \binom{n}{k} p^k (1 - p)^k \\
+        \color{blue} \emph{Trick:} \quad k \binom{n}{k} &\color{blue}=  \frac{k \times n!}{k! \times (n - k)!} \\
+        &\color{blue}= \frac{n!}{(k - 1)! (n - k)!} \\
+        &\color{blue}= n \binom{n - 1}{k - 1} \\
+        \mathbb{E}[X] &= n \sum_{k=1}^{n} \binom{n - 1}{k - 1} p^k (1 - p)^k \\
+        &= n p \sum_{k=1}^{n} \binom{n - 1}{k - 1} p^{k - 1} (1 - p)^k \\
+        &= np \sum_{l=0}^{n - 1} \underbracket{\binom{n - 1}{l} p^l (1 - p)^{(n - 1) - l}}_{\color{blue} \text{pmf of } \operatorname{Bin}(n - 1, p)} \\
+        &= np (p + (1 - p))^{n - 1} \\
+        &= np.
+    \end{align*} 
+\end{example} 
+
+\begin{note}
+    We would like to say:
+    \begin{align*}
+        \mathbb{E}[\operatorname{Bin}(n, p)] &= \mathbb{E}[\operatorname{Bern}(p)] + \dots + \mathbb{E}[\operatorname{Bern}(p)]
+    \end{align*} 
+    We will be able to do this soon.
+\end{note} 
+
+\begin{example}[Poisson Distribution]
+    Let $X \sim \operatorname{Poisson}(\lambda)$
+    \begin{align*}
+        \mathbb{E}[X] &= \sum_{k \geq 0} k \mathbb{P}(X = k) \\
+        &= \sum_{k \geq 0} \cdot e^{-\lambda} \frac{\lambda^k}{k!} \\
+        &= \sum_{k \geq 1} e^{-\lambda} \frac{\lambda^k}{(k - 1)!} \\
+        &= \lambda \sum_{k \geq 1} e^{-\lambda} \frac{\lambda^{k - 1}}{(k - 1)!} \quad \color{blue} \text{pmf of } \operatorname{Poisson}(\lambda) \\
+        &= \lambda.
+    \end{align*} 
+\end{example} 
+
+\begin{note}
+    We would like to say
+    \begin{align*}
+        \mathbb{E}[\operatorname{Poisson}(\lambda)] \approx \mathbb{E}\left[\operatorname{Bin}\left(n, \frac{\lambda}{n}\right)\right] = \lambda
+    \end{align*} 
+    \color{blue} It is not true in general that $\mathbb{P}(X_n = k) \approx \mathbb{P}(X = k) \implies \mathbb{E}[X_n] \approx \mathbb{E}[X]$
+\end{note} 
+
+\emph{Not important}
+
+If $X$ can take on any real value (not necessarily $X \geq 0$)
+\begin{align*}
+    \mathbb{E}[X] = \sum_{x \in \operatorname{Im}(X)} x \mathbb{P}(X = x)
+\end{align*} 
+unless: A, $\displaystyle \sum_{\substack{x > 0 \\ x \in \operatorname{Im}(X)}} x \mathbb{P}(X = x) = + \infty$ and B, $\displaystyle \sum_{\substack{x < 0 \\ x \in \operatorname{Im}(X)}} x \mathbb{P}(X = x) = + \infty$. \\
+Then we say $\mathbb{E}[X]$ is not defined.
+\color{red} Do we really want to study $\infty + \frac{2}{3} (- \infty)$
+
+\color{black}
+\emph{Summary}: 
+\begin{itemize}
+    \item A and B, $\mathbb{E}[X]$ is not defined.
+    \item A but not B, $\mathbb{E}[X] = + \infty$.\footnote{Some people say not defined instead of letting $\mathbb{E}[X] =  \pm \infty$}
+    \item B but not A, $\mathbb{E}[X] = - \infty$.
+    \item neither A nor B, $X$ is then integrable i.e. $\mathbb{E}[X]$ absolutely converges.
+\end{itemize} 
+
+\begin{example}
+    Most examples in the course are integrable \emph{except}: 
+    \begin{itemize}
+        \item $\mathbb{P}(X = n) = \frac{6}{\pi^2} \frac{1}{n^2}$ for $n \geq 1$.
+        Note that $\sum \mathbb{P}(X = n) = 1$. \\
+        Then $\mathbb{E}[X] = \sum \frac{6}{\pi^2} \frac{1}{n} = + \infty$.
+        \item $\mathbb{P}(X = n) = \frac{3}{\pi^2} \frac{1}{n^2}$ for $n \in \mathbb{Z} \setminus \{0\}$.
+        Then $\mathbb{E}[X]$ is not defined.
+        \color{blue} ``It's symmetric so $\mathbb{E}[X] = 0$'', we have decided that this is wrong to prevent many things going wrong in second and third year courses in probability.
+    \end{itemize} 
+\end{example} 
+
+\begin{example}[Indicator Function]
+    $\mathbb{E}[1_A] = \mathbb{P}(A)$.
+\end{example} 
+
+\subsubsection{Properties of Expectation}
+
+\begin{proposition}
+    If $X \geq 0$, then $\mathbb{E}[X] \geq 0$ with equality iff $\mathbb{P}(X = 0) = 1$. 
+\end{proposition} 
+
+\begin{proof}
+    $\displaystyle \mathbb{E}[X] = \sum_{\substack{x \in \operatorname{Im}(X) \\ x \neq 0}} x \mathbb{P}(X = x)$
+\end{proof} 
+
+\begin{proposition}[Linearity of expectation]
+    Given random variables $X, Y$ (both integrable) on same probability space and $\lambda, \mu \in \mathbb{R}$
+    \begin{align*}
+        \mathbb{E}[\lambda X + \mu Y] &= \lambda \mathbb{E}[X] + \mu \mathbb{E}[Y] \\
+        \text{Similarly} \quad \mathbb{E}[\lambda_1, X_1, + \dots + \lambda_n X_n] &= \lambda_1 \mathbb{E}[X_1] + \dots + \lambda_n \mathbb{E}[X_n]
+    \end{align*} 
+\end{proposition} 
+
+\begin{proof}
+    \begin{align*}
+        \mathbb{E}[\lambda X + \mu Y] &= \Ccancel[blue]{\sum_{z \in \operatorname{Im}(\lambda X + \mu Y)} z \mathbb{P}(\lambda X + \mu Y = z)} \quad \color{blue} \text{awkward} \\
+        &= \sum_{\omega \in \Omega} (\lambda X(\omega) + \mu Y(\omega)) \mathbb{P}(\{\omega\}) \\
+        &= \lambda \sum_{\omega \in \Omega} X(\omega) \mathbb{P}(\{\omega\}) + \mu \sum_{\omega \in \Omega} Y(\omega) \mathbb{P}(\{\omega\}) \\
+        &= \lambda \mathbb{E}[X] + \mu \mathbb{E}[Y].
+    \end{align*} 
+\end{proof} 
+
+\begin{aside}{Aside - Special Cases}
+    \begin{enumerate}
+        \item If $\lambda, c \in \mathbb{R}$ then:
+        \begin{enumerate}
+            \item $\mathbb{E}[X + c] = \mathbb{E}[X] + c$
+            \item $\mathbb{E}[\lambda X] = \lambda \mathbb{E}[X]$
+        \end{enumerate} 
+        \item \begin{enumerate}
+            \item $X, Y$ random variables (both integrable) on same probability space.
+            $\mathbb{E}[X + Y] = \mathbb{E}[X] + \mathbb{E}[Y]$.
+            \item in fact $\lambda, \mu \in \mathbb{R}$ $\mathbb{E}[\lambda X + \mu Y] = \lambda \mathbb{E}[X] + \mu \mathbb{E}[Y]$ (similarly $\mathbb{E}[\lambda_1, X_1, + \dots + \lambda_n X_n] = \lambda_1 \mathbb{E}[X_1] + \dots + \lambda_n \mathbb{E}[X_n]$)
+        \end{enumerate} 
+    \end{enumerate} 
+\end{aside} 

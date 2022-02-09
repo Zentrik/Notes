@@ -1,0 +1,651 @@
+\section{Integration}
+
+We are now prepared, both technically and emotionally, to talk about \emph{integrals}. 
+The idea behind integration is to assign some sort of `area' to sets. The first issue we run into is that is not quite clear what `area' actually means (in mathematical terms), so to avoid this difficulty, we will instead define the notion of an integral (specifically the \emph{Riemann integral}, there are other types) and we will use this as our definition of area (not vice versa). 
+
+Throughout this section, we will deal with the integration of bounded functions defined on bounded intervals, $f: [a, b] \rightarrow \R$. We will discuss a slight generalisation later on.
+
+\subsection{Dissections, Upper \& Lower Sums, and Riemann Integrals}
+
+
+As with most ideas in analysis, integration depends fundamentally on a `limiting process'. For Riemann integrals, this is conducted by considering \emph{dissections} of the interval in which we will be integrating over.
+
+\begin{definition}[Dissection]
+	A \vocab{dissection} $\DD$ of a finite interval $[a, b]$ is a finite subset of $[a, b]$ containing the endpoints. We typically write $\DD = \{x_0, x_1, x_2, \dots, x_n\}$ with $a = x_0 \leq x_1 \leq \cdots \leq x_n = b$.
+\end{definition}
+
+For a given dissection, because we are dealing with bounded functions we can sensibly define the lower and upper sums of a function as follows.
+
+\begin{definition}[Upper \& Lower Sums]
+	Let $f: [a, b] \rightarrow \R$ be a bounded function, and let $\DD$ be a dissection of $[a, b]$. We define the \vocab{upper sum} $S_{\DD}(f)$ and \vocab{lower sum} $s_{\DD}(f)$ by
+	\begin{align*}
+		S_{\DD}(f) &= \sum_{j = 1}^n (x_j - x_{j - 1}) \sup_{x \in [x_{j - 1}, x_j]} f(x), \\
+		s_{\DD}(f) &= \sum_{j = 1}^n (x_j - x_{j - 1}) \inf_{x \in [x_{j - 1}, x_j]} f(x).
+	\end{align*}
+\end{definition}
+
+
+% We can then inch closer towards the integral by defining the upper and lower sums of a function, based on some a dissection. The idea is that 
+
+\begin{center}
+	
+
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+%uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+
+%Straight Lines [id:da19396776950269734] 
+\draw [color={rgb, 255:red, 252; green, 0; blue, 5 }  ,draw opacity=1 ][line width=0.75]  [dash pattern={on 0.84pt off 2.51pt}]  (134.85,141.3) -- (316.24,141.3) ;
+%Straight Lines [id:da4528238021912888] 
+\draw [color={rgb, 255:red, 252; green, 0; blue, 5 }  ,draw opacity=1 ] [dash pattern={on 0.84pt off 2.51pt}]  (135.12,194) -- (278,194) ;
+%Straight Lines [id:da07256001779839838] 
+\draw    (110,256.06) -- (518,256.06) ;
+\draw [shift={(520,256.06)}, rotate = 180] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+%Straight Lines [id:da4160661105643173] 
+\draw    (134.85,280.91) -- (134.85,92) ;
+\draw [shift={(134.85,90)}, rotate = 450] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+%Curve Lines [id:da01724830020298984] 
+\draw [color={rgb, 255:red, 48; green, 50; blue, 214 }  ,draw opacity=1 ]   (196.97,146.27) .. controls (246.67,109) and (232.68,112.99) .. (259.09,171.12) .. controls (285.5,229.25) and (291.64,162.42) .. (308.79,146.27) .. controls (325.93,130.12) and (316.99,162.92) .. (333.64,158.7) .. controls (350.28,154.47) and (383.92,177.92) .. (397.17,179.13) .. controls (410.41,180.34) and (422.23,177.77) .. (430,170) ;
+%Straight Lines [id:da6312895336644457] 
+\draw  [dash pattern={on 4.5pt off 4.5pt}]  (196.97,146.27) -- (196.97,256.06) ;
+%Straight Lines [id:da7273879995323989] 
+\draw  [dash pattern={on 4.5pt off 4.5pt}]  (250,150) -- (250,256) ;
+%Straight Lines [id:da15617218734051053] 
+\draw  [dash pattern={on 4.5pt off 4.5pt}]  (330,160) -- (330,256) ;
+%Straight Lines [id:da5826562572785378] 
+\draw  [dash pattern={on 4.5pt off 4.5pt}]  (360,164) -- (360,256.39) ;
+%Straight Lines [id:da7949638221165019] 
+\draw  [dash pattern={on 4.5pt off 4.5pt}]  (430,170) -- (430,256) ;
+
+% Text Node
+\draw (187.85,259.36) node [anchor=north west][inner sep=0.75pt]    {$x_{0}$};
+% Text Node
+\draw (241,259) node [anchor=north west][inner sep=0.75pt]    {$x_{1}$};
+% Text Node
+\draw (322,259) node [anchor=north west][inner sep=0.75pt]    {$x_{2}$};
+% Text Node
+\draw (351,259) node [anchor=north west][inner sep=0.75pt]    {$x_{3}$};
+% Text Node
+\draw (422,259) node [anchor=north west][inner sep=0.75pt]    {$x_{4}$};
+% Text Node
+\draw (44,133) node [anchor=north west][inner sep=0.75pt]  [color={rgb, 255:red, 252; green, 0; blue, 5 }  ,opacity=1 ]  {$\displaystyle\sup _{x\in [ x_{1} ,x_{2}]} f( x)$};
+% Text Node
+\draw (44,183) node [anchor=north west][inner sep=0.75pt]  [color={rgb, 255:red, 252; green, 0; blue, 5 }  ,opacity=1 ]  {$\displaystyle\inf_{x\in [ x_{1} ,x_{2}]} f( x)$};
+
+
+\end{tikzpicture}
+
+\end{center}
+
+Let's make some observations. By construction we have $S_\DD (f) \geq s_\DD(f)$, and we can also see intuitively that replacing a dissection by a more elaborate one will decrease the upper sum and increase the lower sum. Indeed, if we say that $\DD'$ \vocab{refines} $\DD$ when $\DD' \supseteq \DD$, then we can formalise this intuition as follows.
+
+\begin{lemma}[Refinement Lemma]
+	If $f: [a, b] \rightarrow \R$ is a bounded function and $\DD, \DD'$ are dissections of $[a, b]$ s.t. $\DD \subseteq \DD'$, then 
+	$$s_\DD(f) \leq s_{\DD'}(f) \leq S_{\DD'}(f) \leq S_{\DD}(f).$$
+\end{lemma}
+\begin{proof}
+	It suffices to show that this holds when $\DD'$ and $\DD$ differ by a single element (since then we can just repeatedly apply this argument to obtain the general case).
+	Suppose that $\DD' = \{x_0, \dots, x_n\}$, and that $\DD = \DD' \backslash \{x_i\}$ where $i \neq 0, n$. Then let
+	\begin{align*}
+		A &= \sup_{x \in [x_{i - 1}, x_i]} f(x), \quad \text{and} \quad B = \sup_{x \in [x_{i}, x_{i+1}]} f(x).
+	\end{align*}
+	We can then establish the right hand side of the inequality with
+	\begin{align*}
+		S_{\DD}(f) - S_{\DD'}(f) &= (x_{i+1} - x_{i-1})\max\{A, B\} - (x_{i} - x_{i - 1})A - (x_{i + 1} - x_i)B \\
+		&\geq \max\{A, B\}[(x_{i+1} - x_{i-1}) - (x_{i} - x_{i - 1}) - (x_{i + 1} - x_i)] = 0.
+	\end{align*}
+	Then the left hand side of the inequality follows similarly (taking infima).
+\end{proof}
+
+A direct consequence of this lemma is that lower sums can \emph{never} exceed upper sums.
+
+\begin{lemma}[Key Integration Property]\label{lemma:key}
+	If $f: [a, b] \rightarrow \R$ is a bounded function and $\DD_1, \DD_2$ are dissections of $[a, b]$ then
+	$$
+s_{\DD_1}(f) \leq S_{\DD_2}(f).
+	$$
+\end{lemma}
+\begin{proof}
+	This follows from the previous lemma by noting that $s_{\DD_1}(f) \leq s_{\DD_1 \cup \DD_2}(f)$, and $S_{\DD_1 \cup \DD_2}(f) \leq S_{\DD_2} (f)$.
+\end{proof}
+
+We are now (finally) ready to say what it means for a function to be Riemann integrable.
+
+\begin{definition}[Upper \& Lower Integrals]
+	For a bounded function $f:[a, b] \rightarrow \R$ we define the \vocab{upper integral} as $I^*(f) = \inf_{\DD} S_\DD(f)$ and the \vocab{lower integral} as $I_*(f) = \sup_{\DD} s_\DD(f)$. 
+\end{definition}
+
+Note that \autoref{lemma:key}, along with the boundedness of the function, guarantees that the upper and lower integrals always exist.
+
+\begin{definition}[Riemann Integrable]
+	If $f:[a, b] \rightarrow \R$ is a bounded function and $I^*(f) = I_*(f)$, then we say $f$ is \vocab{Riemann integrable} and write
+	$$
+	\int_a^b f(x)\dd x = I^*(f).
+	$$
+\end{definition}
+
+So this is what it means for a function to be Riemann integrable\footnote{We will regularly drop the `Riemann', and when referring to `integrability' we will always be talking only about Riemann integrability.}. In general using this definition directly on a function to show that it's integrable is quite tricky. As an example, we can attempt to show that $f(x) = x$ is integrable.
+
+\begin{example}[$f(x) = x$ is Integrable]
+	Consider the function $f(x) = x$ defined on the interval $[a, b]$. Then for any dissection $\DD = \{x_0, x_1, \dots, x_n\}$ of $[a, b]$ we have the upper sum given by
+	\begin{align*}
+		S_{\DD}(f) &= \sum_{j = 1}^{n} (x_j - x_{j - 1}) x_j \\
+				&= \sum_{j = 1}^n \left(\frac{x_j^2}{2} - \frac{x_{j - 1}^2}{2}+ \frac{x_j^2}{2} + \frac{x_{j-1}^2}{2}- x_{j - 1}x_j\right) \\
+				&= \sum_{j = 1}^n \left(\frac{x_j^2}{2} - \frac{x_{j - 1}^2}{2}\right) +\frac{1}{2} \sum_{j = 1}^{n}\left(x_j - x_{j - 1}\right)^2 \\
+				&= \left(\frac{b^2}{2} - \frac{a^2}{2}\right) +\frac{1}{2} \sum_{j = 1}^{n}\left(x_j - x_{j - 1}\right)^2.
+	\end{align*}
+	If $x_{j} - x_{j - 1} < \delta$ for all $j$, then we can obtain the upper bound
+	\begin{align*}
+		S_{\DD}(f) \leq \left(\frac{b^2}{2} - \frac{a^2}{2}\right) +\frac{1}{2} \sum_{j = 1}^{n}\delta\left(x_j - x_{j - 1}\right) = \left(\frac{b^2}{2} - \frac{a^2}{2}\right) + \frac{\delta}{2}(b - a).
+	\end{align*}
+	So given $\varepsilon > 0$, there is some dissection $\DD$ s.t. $S_{\DD}(f) \leq (b^2 - a^2)/2 + \varepsilon$, and a similar argument also gives $s_{\DD}(f) \geq (b^2 - a^2)/2 - \varepsilon$. So by our key integration property, we have
+	$$
+	\frac{1}{2}(b^2 - a^2) - \varepsilon \leq I^*(f), I_*(f) \leq \frac{1}{2}(b^2 - a^2) + \varepsilon,
+	$$
+	for any $\varepsilon > 0$, and thus $I^*(f) = I_*(f) = (b^2 - a^2)/2$. This show that $f(x) = x$ is integrable over $[a, b]$, with
+	$$
+	\int_a^b x \dd x = \frac{b^2}{2} - \frac{a^2}{2}.
+	$$
+\end{example}
+
+There are a few ways that we can streamline this argument. Later on we will develop more general integrability results, but the following criterion is also quite useful for showing particular functions are integrable.
+
+\begin{theorem}[Riemann's Integrability Criterion]
+	Let $f:[a, b] \rightarrow \R$ be a bounded function. Then $f$ is Riemann integrable if and only if given any $\varepsilon>0$, we can find a dissection $\DD$ with
+	$$
+	S_\DD(f) - s_\DD(f) < \varepsilon.
+	$$
+\end{theorem}
+\begin{proof}
+	If $f$ is Riemann integrable, then given $\varepsilon > 0$ there must exist dissections $\DD_1$, $\DD_2$ s.t.
+	$$
+	S_{\DD_1}(f) < \int_a^b f(x) \dd x + \frac{\varepsilon}{2} \quad \text{and} \quad s_{\DD_2}(f) > \int_a^b f(x) \dd x - \frac{\varepsilon}{2}.
+	$$
+	Then taking $\DD = \DD_1 \cup \DD_2$ we have $S_{\DD}(f) \leq S_{\DD_1}(f)$, and $s_{\DD}(f) \geq s_{\DD_2}(f)$, and thus
+	$$
+	S_\DD(f) - s_\DD(f) \leq S_{\DD_1}(f) - s_{\DD_2}(f) < \varepsilon.
+	$$
+
+	Otherwise if for any $\varepsilon > 0$ we can find a dissection $\DD$ s.t. $S_{\DD}(f) - s_{\DD}(f) < \varepsilon$, then we would have
+	$$
+	\inf_{\DD'} S_{\DD'}(f) - \sup_{\DD'} s_{\DD'}(f) \leq S_{\DD}(f) - s_{\DD}(f) < \varepsilon,
+	$$
+	that is, $I^*(f) - I_*(f) < \varepsilon$ for all $\varepsilon > 0$. So we must have $I^*(f) = I_*(f)$, implying $f$ is Riemann integrable.
+\end{proof}
+
+% In the next sections we will make use of this result to prove various integrability re sults. 
+
+\subsection{Properties of Integration}
+
+We now need to prove many of the properties of integrals that you are (most likely) already familiar with. The first result we would like to prove is that an arbitrary linear combination of integrable functions is integrable, but we will need to prove some smaller results first.
+
+The proofs below are a little bit fiddly, but they all follow the same basic idea: simplify the problem as much as possible, think a bit about what's going on with the suprema/infima, and use our key property of integration, Riemann's criterion and so on. 
+
+\begin{proposition}[Adding Integrable Functions]
+	If $f, g : [a, b] \rightarrow \R$ are Riemann integrable, then so is $f + g$ and
+	$$
+	\int_a^b f(x) + g(x) \dd x = \int_a^b f(x) \dd x + \int_a^b g(x) \dd x.
+	$$
+\end{proposition}
+\begin{proof}
+		We begin by noting the general fact
+	$$
+	\sup_{x\in[x_{j - 1}, x_j]} (f(x) + g(x)) \leq \sup_{x\in[x_{j - 1}, x_j]}  f(x) + \sup_{x\in[x_{j - 1}, x_j]} g(x),
+	$$
+	which directly implies that $S_{\DD}(f + g) \leq S_{\DD}(f) + S_{\DD}(g)$. A similar fact about infima implies $s_{\DD}(f + g) \geq s_{\DD}(f) + s_{\DD}(g)$.
+
+	Now let $\DD_1$ and $\DD_2$ be dissections, and let $\DD = \DD_1 \cup \DD_2$. Then we have 
+		$$
+		S_{\DD}(f + g) \leq S_{\DD}(f) + S_{\DD}(g) \leq S_{\DD_1}(f) + S_{\DD_2}(g),
+		$$
+		which implies that $I^*(f + g) \leq I^*(f) + I^*(g)$.
+		Similarly we have $I_*(f + g) \geq I_*(f) + I_*(g)$.
+
+		Since $f$ and $g$ are integrable, their upper and lower integrals are equal, so combining the two previous inequalities gives
+		$$
+		\int_a^b f(x) \dd x + \int_a^b g(x) \dd x \leq I_{*}(f+g) \leq I^{*}(f+g) \leq \int_a^b f(x) \dd x + \int_a^b g(x) \dd x,
+		$$
+		so $I_{*}(f+g) = I^{*}(f+g)$, showing $f + g$ is integrable, with the integral given by
+		$
+		\int_a^b f(x) + g(x) \dd x = \int_a^b f(x) \dd x + \int_a^b g(x) \dd x.
+		$
+\end{proof}
+
+\begin{proposition}[Negating Integrable Functions]
+	If $f:[a, b] \rightarrow \R$ is Riemann integrable, then so is $-f$, and
+	$$
+	\int_a^b (-f(x)) \dd x = - \int_a^b f(x) \dd x.
+	$$
+\end{proposition}
+\begin{proof}
+	Let $\DD$ be a dissection of $[a, b]$. Then since $\sup_x -f(x) = - \inf_x f(x)$, we have
+	\begin{align*}
+		S_{\DD} (-f) &= \sum_{j = 1}^n (x_{j} - x_{j - 1}) \sup_{x \in[x_{j - 1}, x_j]} (-f(x)) \\
+		&= -\sum_{j = 1}^n (x_{j} - x_{j - 1}) \inf_{x \in[x_{j - 1}, x_j]} f(x) \\
+		&= -s_\DD(f).
+	\end{align*}
+	Similarly $s_\DD(-f) = -S_\DD(f)$. This then implies that $I^*(-f) = -I_*(f)$ and $I_*(-f) = -I^*(f)$. But then $f$ is integrable, so $I^*(-f) = I_*(-f) = -I^*(f)$. Thus $-f$ is also integrable, and $\int_a^b (-f(x)) \dd x = - \int_a^b f(x) \dd x$.
+\end{proof}
+
+
+\begin{proposition}[Scaling Integrable Functions]
+	If $\lambda \in \R$ and $f:[a, b] \rightarrow \R$ is Riemann integrable, then so is $\lambda f$ and 
+	$$\int_a^b \lambda f(x) \dd x = \lambda \int_a^b f(x) \dd x.$$
+\end{proposition}
+\begin{proof}
+	Without loss of generality\footnote{If $\lambda < 0$, we can consider $|\lambda| f$, then by the previous lemma $-|\lambda| f = \lambda f$ will be integrable.}, we may assume that $\lambda \geq 0$. Then if $\DD$ is a dissection of $[a, b]$ we have
+	$$
+	S_{\DD}(\lambda f) = \sum_{j = 1}^n (x_j - x_{j - 1})\sup_{x \in [x_{j - 1}, x_j]} \lambda f(x) = \lambda S_\DD(f),
+	$$
+	and similarly $s_{\DD}(\lambda f) = \lambda s_{\DD}(f)$. Then $I^*(\lambda f) = \lambda I^*(f)$ and $I_*(\lambda f) = \lambda I_*(f)$. Since $f$ is integrable, we then have $I^*(\lambda f) = I_*(\lambda f) = \lambda I^*(f)$, so $\lambda f$ is integrable and $\int_a^b \lambda f(x) \dd x = \lambda \int_a^b f(x) \dd x$.
+\end{proof}
+
+To summarise these results, if $f, g:[a, b] \rightarrow \R$ are integrable and $\lambda, \mu \in \R$ then $\lambda f + \mu g$ is integrable and
+$$
+	\int_a^b \lambda f(x) + \mu g(x) \dd x = \lambda \int_a^b f(x) \dd x + \mu \int_a^b g(x) \dd x.
+$$
+
+Let's now turn our attention\footnote{Don't get too sad -- we still have to show that the product of integrable functions is integrable, but we will come back to that once we have shown $|f|$ is integrable} to another set of integral properties which are still natural but probably ever-so-slightly less familiar: integral inequalities. The first result is one you'd expect to be true.
+
+\begin{proposition}[Basic Integral Inequality]
+	If $f, g:[a, b] \rightarrow \R$ are Riemann integrable and $f(x) \leq g(x)$ for all $x \in [a, b]$, then
+	$$
+	\int_a^b f(x) \dd x \leq \int_a^b g(x) \dd x.
+	$$
+\end{proposition}
+\begin{proof}
+	If $f \leq g$ then for all dissections $\DD$ we have $S_{\DD}(f) \leq S_{\DD}(g)$, and hence
+	$
+	\int_a^b f(x) \dd x = \inf_{\DD} S_{\DD}(f) \leq \inf_{\DD} S_{\DD}(g) = \int_{a}^b g(x) \dd x
+	$.
+\end{proof}
+
+The next result shows that $|f|$ is integrable if $f$ is, and also 
+something like a triangle inequality for integrals.
+
+\begin{proposition}[Integral Triangle Inequality]
+	If $f :[a, b] \rightarrow \R$ is Riemann integrable, then so is $|f|$ and
+	$$
+	\int_a^b |f(x) | \dd x \geq \left|\int_a^b f(x) \dd x\right|.
+	$$
+\end{proposition}
+\begin{proof}
+	We define $f_+(x) = \max\{f(x), 0\}$. We will showing that $f_+(x)$ is integrable. For some interval $I$ we have
+	$$
+	\sup_{x \in I} f_+(x) = \max\left\{0, \sup_{x \in I} f(x)\right\}, \quad \quad \inf_{x \in I} f_+(x) = \max\left\{0, \inf_{x \in I} f(x)\right\},
+	$$
+	and then considering the cases $\sup_{x \in I}f(x) \geq 0$ and $\sup_{x \in I}f(x) \leq 0$, we find that the following inequality holds:
+	\begin{align*}
+	\sup_{x \in I} f_+(x) - \inf_{x \in I} f_+(x) &= \max\left\{0, \sup_{x \in I} f(x)\right\} - \max\left\{0, \inf_{x \in I} f(x)\right\}  \\
+	& \leq \sup_{x \in I} f(x) - \inf_{x \in I} f(x).
+\end{align*}
+Then since $f$ is integrable, given $\varepsilon > 0$ there is a dissection $\DD$ s.t.
+$$
+S_{\DD}(f_+) - s_{\DD}(f_+) \leq S_{\DD}(f) - s_{\DD}(f) < \varepsilon,
+$$
+and thus $f_+$ is integrable. We can write $|f| = 2f_+ - f$, and thus $|f|$ is also integrable.
+
+We also have $-|f| \leq f \leq |f|$, so $\left|\int_{a}^{b} f(x) d x\right| \leq \int_{a}^{b}|f(x)| d x$.
+\end{proof}
+
+We can use this property to prove that the product of two integrable functions $fg$ is integrable. To do this, the expansion $2fg = (f + g)^2 - f^2 - g^2$ can be used, so all we need to show is that $f^2$ is integrable if $f$ is. Also since $f^2 = |f| \cdot |f|$, we can work only with the case that $f$ is positive.
+
+Unlike some of the previous results, we will not write down what the value of this integral will be (there's not really a nice rule). We will only be proving integrability.
+
+\begin{proposition}[Multiplying Integrable Functions]
+	If $f, g : [a, b] \rightarrow \R$ are Riemann integrable, then so is $fg$.
+\end{proposition}
+\begin{proof}
+	We will first show that if $f: [a, b ]\rightarrow \R$ is an integrable function s.t. $f(x) \geq 0$ for all $x \in [a, b]$, then $f^2$ is integrable. 
+	
+	Since $f$ is integrable (and hence bounded), we can choose some  $K > 0$ s.t. $|f(x)| \leq K$ for all $x \in [a, b]$. Then given any $\varepsilon> 0$, there exists some dissection $\DD$ where $S_{\DD}(f) - s_{\DD}(f) < \varepsilon/2K$.
+
+	Using $\DD$, we define $M_j = \sup_{x \in [x_{j - 1}, x_j]} f(x)$ and $m_j = \inf_{x \in [x_{j - 1}, x_j]} f(x)$. Then we have
+	\begin{align*}
+		S_\DD(f^2) - s_{\DD}(f^2) &= \sum_{j = 1}^{n} (x_{j} - x_{j - 1}) (M_j^2 - m_j^2) \\
+		&= \sum_{j = 1}^{n} (x_{j} - x_{j - 1}) (M_j + m_j) (M_j - m_j)  \\
+		&\leq  2K (S_\DD(f) - s_{an\DD}(f)) < \varepsilon,
+	\end{align*}
+	showing that $f^2$ is integrable.
+
+	Since $f^2 = |f| \cdot |f|$, and $|f| \geq 0$, this argument shows that $f^2$ is integrable for any integrable function $f$.
+	Using this and previous properties then shows that $[(f + g)^2 - f^2 - g^2]/2 = fg$ is integrable.
+\end{proof}
+
+\subsection{Integrable Functions}
+
+At this point we have our definition of integrability, along with some basic properties of integrals. However, we have so far only really seen that $f(x) = x$ and $f(x) = |x|$ are integrable. In this section we will prove some results that will expand this list quite widely.
+
+We have so only looked at bounded functions, and a natural question is whether bounded is a sufficient criterion for integrability.
+This sadly is not the case, and there is a standard counterexample due to Dirichlet.
+
+\begin{example}[A Bounded Non-Integrable Function]
+The function $f:[0, 1] \rightarrow \R$ given by
+$$
+f(x) = \begin{cases}
+	1 &\mbox{if } x \in \Q, \\
+	0 &\mbox{if } x \not\in \Q.
+	\end{cases}
+$$
+is not Riemann integrable.
+
+To see this, note that for any dissection $\DD$, since $\Q$ is dense in $\R$, we have $s_{\DD}(f) = 0$ and $S_{\DD}(f) = 1$.
+ \end{example}
+
+So let's look at some types of integrable functions. The first is that monotonic functions are integrable, which can be shown by taking an evenly spaced dissection causing the sum to telescope.
+
+\begin{proposition}[Monotonic Functions are Integrable]
+	Let $f:[a, b] \rightarrow \R$ be monotonic. Then $f$ is Riemann integrable.
+\end{proposition}
+\begin{proof}
+	Without loss of generality, assume that $f$ is increasing. Then given $\varepsilon > 0$, for any integer $n > [(b - a)(f(b)- f(a))]/\varepsilon$ we can define the dissection $\DD = \{x_0, x_1, \dots, x_n\}$ of $[a, b]$, where $x_0 = a$, and $x_{j} - x_{j - 1} = (b - a)/n$. Then we have
+	\begin{align*}
+		S_{\DD}(f) - s_{\DD}(f) &= \sum_{j = 1}^n (x_{j} - x_{j - 1})\left[\sup_{x \in [x_{j - 1}, x_j]} f(x) - \inf_{x \in [x_{j - 1}, x_j]} f(x)\right] \\
+&= \sum_{j = 1}^n \frac{b - a}{n}\left[f(x_j) - f(x_{j - 1})\right] \\
+&= \frac{(b - a)(f(b) - f(a))}{n} < \varepsilon,
+	\end{align*}
+	and thus $f$ is integrable.
+\end{proof}
+
+An interesting consequence of this is that if we can write $f(x) = f_1(x) - f_2(x)$ with $f_1, f_2$ are increasing, then $f$ is integrable. Such functions are known as `functions of bounded variation'. 
+
+The next result we would like to show is that every continuous function is Riemann integrable on some bounded interval. Before jumping into the proof, let's take a moment to reflect on what might be needed\footnote{This is not the only possible proof! You can prove things without uniform continuity, but this is a more natural (and more slick) argument.}. For some continuous function, we want to get $S_{\DD}(f) - s_{\DD}(f) < \varepsilon$ with some dissection. What this comes down to is finding some way to bound
+$$
+\sup_{x \in I}f(x) - \inf_{x \in I} f(x),
+$$
+under some sufficiently small interval $I$. 
+Now we know that $f$ is continuous, and continuity tells us that there if the interval is of size at most some $\delta$ (which can depend on where the interval is) then we can get $|f(x) - f(y)| < \varepsilon$. 
+This works for one interval, but we need to construct a dissection, so we would need to make this type of argument work for intervals which cover the whole of $[a, b]$.
+
+What would be really nice is if we could find some $\delta$ that would work no matter where the sub-interval in $[a, b]$ is. If this was the case, then the dissection could just be made up of points which are about a distance of $\delta$ apart. It turns out that this is always possible, and gives us the notion of \emph{uniform continuity}.\footnote{The `uniform' part of the definition is part of a larger class of definitions that you will come across in later analysis courses.}
+
+\begin{definition}[Uniform Continuity]
+	Let $A \subset \R$ and $f: A \rightarrow \R$. We say that $f$ is \vocab{uniformly continuous} on $A$ if given any $\varepsilon  >0$ we can find a $\delta> 0$ s.t. for $x, y \in A$, whenever $|x - y| < \delta$ we have $|f(x) - f(y| < \varepsilon$.
+\end{definition}
+
+Note that unlike the previous definition, we have no knowledge of where in the set $A$ the points $x$ and $y$ are, just how far apart they are. It turns out that on closed bounded intervals (like what we have when we talk about integration, at least in this section), continuous functions are always uniformly continuous.
+The proof of this is quite natural -- we use Bolzano-Weierstrass to show that a contradiction to uniform continuity is a contradiction to continuity.
+
+\begin{theorem}[Continuous Functions are Uniformly Continuous]
+	Let $f: [a, b] \rightarrow \R$ be continuous. Then $f$ is uniformly continuous.
+\end{theorem}
+\begin{proof}
+	Suppose $f$ was not uniformly continuous, that is, there exists some $\varepsilon > 0$ s.t. for all $\delta > 0$ there is some $x, y$ with $|x - y| < \delta$ s.t. $|f(x) - f(y)| \geq \varepsilon$.
+
+	Taking $\delta = 1/n$, we can find some sequences $x_n, y_n \in [a, b]$ s.t. $|x_n - y_n| < 1/n$, and $|f(x_n) - f(y_n)| \geq \varepsilon$. Then by Bolzano-Weierstrass, we can find some convergent subsequence $x_{n_j} \rightarrow x$ for some $x \in [a, b]$. But then $|x_{n_j} - y_{n_j}| < 1/n_j$ for all $j$, so we must have $y_{n_j} \rightarrow x$ also.
+
+	Then $|f(x_{n_j}) - f(y_{n_j})| \geq \varepsilon$ for every $j$, which implies that $f(x_{n_j})$ and $f(y_{n_j})$ cannot converge to the same value. But then by continuity we have $f(x_{n_j}) \rightarrow f(x)$ and $f(y_{n_j}) \rightarrow f(x)$, which is a contradiction. Thus $f$ must be uniformly continuous.
+\end{proof}
+
+With this result, we can prove that continuous functions are integrable in the way we discussed previously.
+
+
+\begin{theorem}[Continuous Functions are Integrable]
+	Let $f:[a, b] \rightarrow \R$ be continuous. Then $f$ is Riemann integrable.
+\end{theorem}
+\begin{proof}
+	Given $\varepsilon > 0$, since $f$ is uniformly continuous, there is some $\delta > 0$ s.t. $|f(x) - f(y)| < \varepsilon/(b - a)$ whenever $|x - y| < \delta$ and $x, y \in [a, b]$.
+
+	Now choose some integer $n \geq (b - a)/\varepsilon$, and define the dissection $\DD = \{x_0, x_1, \dots, x_n\}$ with $x_j = a + j(b - a)/n$. Then we have
+	$$
+	\sup_{x \in [x_{j - 1}, x_j]} f(x) - \inf_{x \in [x_{j - 1}, x_j]} f(x) \leq \frac{\varepsilon}{(b - a)},
+	$$
+	for all $1 \leq j \leq n$, and thus 
+	\begin{align*}
+		S_\DD(f) - s_\DD(f) &= \sum_{j = 1}^n (x_j - x_{j - 1})\left[\sup_{x \in [x_{j - 1}, x_j]} f(x) - \inf_{x \in [x_{j - 1}, x_j]} f(x)\right] \\
+		&\leq \sum_{j = 1}^n \frac{b - a}{n} \cdot \frac{\varepsilon}{b - a} = \varepsilon,
+	\end{align*}
+	and thus $f$ is Riemann integrable.
+\end{proof}
+
+This theorem shows that most of the functions we deal with regularly (and all of the ones discussed in the previous chapter) are integrable as well as continuous.
+
+
+Also, we have so far spent relatively little time on the `evaluating integrals' side of things, but knowing a function is integrable can help in determining the actual value of the integral. A straightforward example is shown below.
+
+\begin{example}[Integral of $f(x) = 1$]
+	Consider the function $f:[a, b] \rightarrow \R$ defined by $f(x) = 1$. This function is continuous and hence integrable. Then taking the dissection $\DD = \{a, b\}$, we have
+	$
+	S_{\DD}(f) = s_{\DD}(f) = b - a,
+	$ so the value of the integral is
+	$$
+	\int_a^b 1 \dd x = b - a.
+	$$
+\end{example}
+
+
+\subsection{The Fundamental Theorem of Calculus}
+
+
+With all of that out of the way, we can now prove a central result in the theory of integration: the fundamental theorem of calculus. The fundamental theorem of calculus connects the theory that we built up relating to differentiation and integration, showing that (in some sense) they are `inverses'.
+
+\begin{theorem}[Fundamental Theorem of Calculus]
+	Let $f: [a, b] \rightarrow \R $ be continuous. For $x \in [a, b]$, we define
+	$$
+	F(x) = \int_a^x f(x) \dd x.
+	$$
+	Then $F$ is differentiable, with derivative $F'(x) = f(x)$ for every $x$.
+\end{theorem}
+\begin{proof}
+	For $|h| > 0$, we note that
+	$$
+	\frac{F(x + h) - F(x)}{h} = \frac{1}{h} \int_x^{x + h} f(t) \dd t.
+	$$
+	Now given $\varepsilon > 0$, since $f$ is continuous at $x$ there is some $\delta > 0$ s.t. when $|x - y| < \delta$ we have $|f(x) - f(y)| < \varepsilon$. Hence if $0 < |h| < \delta$ we have
+	\begin{align*}
+		\left|\frac{1}{h} \int_x^{x + h} f(t) \dd t - f(x)\right| &= \left|\frac{1}{h} \int_x^{x + h} f(t)  - f(x)\dd t\right| \\
+		&\leq \frac{1}{|h|} \left|\int_x^{x + h} |f(t) - f(x)|\right| \\ 
+		& \leq \frac{1}{|h|} \cdot \varepsilon|h| = \varepsilon,
+	\end{align*}
+	hence $\lim_{h \to 0}\frac{F(x + h)- F(x)}{h} = f(x)$, as required.
+\end{proof}
+
+
+Another way to view this theorem (which is quite useful in evaluating integrals) is the corollary below.
+
+\begin{corollary}[Fundamental Theorem of Calculus -- Again]
+	Suppose that $f: [a, b] \rightarrow \R$ has a continuous derivative. Then
+	$$
+	\int_a^b f'(t) \dd t = f(b) - f(a).
+	$$
+\end{corollary}
+\begin{proof}
+	Define $g(x) = \int_a^x f'(t) \dd t$. Then by the fundamental theorem of calculus, $g'(x) = f'(x)$. Also $g(a) = 0$.
+
+	Let $h(x) = g(x) - f(x)$. Then $h'(x) = 0$, so by the mean value theorem, $h(x)$ is constant. Taking the value at $a$, we then have $h(a) = -f(a) = g(x) - f(x) = -f(a)$ for all $x$. So if $x = b$, this becomes $g(b) = f(b) - f(a)$, which is our desired result.
+\end{proof}
+
+One of the most useful applications of the fundamental theorem of calculus is that we can translate results about derivatives to results about integrals. This works in both coming up with the integrals of functions (by thinking about which functions result in a given function when differentiated), but also in the development of general methods for evaluating integrals. Two results we will look at are integration by parts, which comes from the product rule of differentiation, and integration by substitution, which comes from the chain rule.
+
+\begin{corollary}[Integration By Parts]
+	Suppose that the derivatives $f'$ and $g'$ exist and are continuous on $[a, b]$. Then
+	$$
+	\int_a^b f'(x)g(x) \dd x = f(b)g(b) - f(a)g(a) - \int_a^b f(x)g'(x) \dd x.
+	$$
+\end{corollary}
+\begin{proof}
+	By the product rule $(fg)' = f'g + fg'$. Then by the fundamental theorem of calculus we have
+	$
+	f(b)g(b) - f(a)g(a) = \int_a^b f'(x)g(x) \dd x + \int_a^b f(x) g'(x) \dd x.
+ 	$
+\end{proof}
+
+\begin{corollary}[Integration By Substitution]
+	Let $g:[\alpha, \beta] \rightarrow [a, b]$ with $g(\alpha) = a$ and $g(\beta) = b$, let $g'$ exist and be continuous on $[\alpha, \beta]$. Also let $f:[a, b] \rightarrow \R$ be continuous. Then
+	$$
+	\int_a^b f(x) \dd x = \int_{\alpha}^{\beta} f(g(t)) g'(t) \dd t.
+	$$
+\end{corollary}
+\begin{proof}
+	Set $F(x) = \int_a^x f(t) \dd t$, and let $h(t) = F(g(t))$, which is defined since $g$ takes values in $[a, b]$. Then by the fundamental theorem of calculus we have
+	\begin{align*}
+		\int_{\alpha}^{\beta} f(g(t)) g'(t) \dd t &= \int_{\alpha}^{\beta} F'(g(t)) g'(t) \dd t
+	\end{align*}
+	Then by the chain rule, we have
+	\begin{align*}
+		\int_{\alpha}^{\beta} F'(g(t)) g'(t) \dd t &= \int_{\alpha}^{\beta} h'(t) \dd t = h(\beta) - h(\alpha) = F(b) - F(a) = \int_a^b f(x) \dd x.
+	\end{align*}
+\end{proof}
+
+\subsection{Taylor's Theorem Again}
+
+With some results now built up around integration, we are going to spend the next two sections discussing two applications of integration to topics we have discussed earlier. The first will be revisiting Taylor's theorem, and after that we will look back at the convergence of infinite series.
+
+A nice application of integration by parts (and by extension the fundamental theorem of calculus) is in proving Taylor's theorem.
+You may recall from our discussion of differentiation that the proof of Taylor's theorem with Lagrange remainder was somewhat cumbersome. Using integration, we can derive another form of Taylor's theorem (this time with the `integral remainder'). This other form can then even be used to obtain Lagrange's form of the remainder, under some slightly stronger assumptions about our function\footnote{This is why we don't just throw out the old proof! We need a stronger continuity condition than before - specifically $f^{(n)}$ being continuous, not just existing.}.
+
+\begin{theorem}[Taylor's Theorem with Integral Remainder]
+	Let $f$ be $n$-times continuously differentiable on $[a, b]$. Then we have
+	$$
+	f(b) = f(a) + f'(a)(b - a) + \cdots + \frac{f^{(n - 1)}(a)}{(n - 1)!} (b - a)^{n - 1} + \int_a^b  \frac{f^{(n)}(t)}{(n - 1)!}(b - t)^{n - 1} \dd t
+	$$
+\end{theorem}
+\begin{proof}
+	We do induction on $n$. For $n = 1$, the result becomes $f(b) - f(a) = \int_a^b f'(t) \dd t$, which is true by the fundamental theorem of calculus. 
+
+	Now if $f$ is $(n + 1)$-times continuously differentiable, integrating by parts we have
+	\begin{align*}
+		\int_a^b \frac{f^{(n)}(t)}{(n - 1)!}(b - t)^{n - 1} \dd t &= \left[- \frac{f^{n}(t)}{n!}(b - t)^n\right]_a^b + \int_a^b \frac{f^{(n + 1)}(t)}{n!} (b - t)^n \dd t \\
+		&= \frac{f^{(n)}(a)}{n!}(b - a)^n + \int_a^b \frac{f^{(n + 1)}(t)}{n!} (b - t)^n \dd t.
+	\end{align*}
+	Thus if the result is true for $n$, it is also true for $n + 1$, so we are done by induction.
+\end{proof}
+
+With this result in hand, we can try and re-obtain the Lagrange form of the remainder. Looking back at the form of this, we really want to some way take the $f^{(n)}(t)$ term `out of the integral', turning it into some scale factor $f^{(n)}(c)$, for some $c \in (a, b)$. 
+
+The way we worked with this type of idea before was using the mean value theorem, so we are going to prove an analogue of the mean value theorem for integrals. To do this we will (naturally) use the mean value theorem along with the fundamental theorem of calculus.
+
+
+\begin{lemma}[Integral Mean Value Theorem]
+	Let $f, g : [a, b] \rightarrow \R$ be continuous with $g(x) \neq 0$ for all $x \in (a, b)$. Then there exists $c \in (a, b)$ s.t.
+	$$
+	\int_a^b f(x) g(x) \dd x = f(c) \int_a^b g(x) \dd x.
+	$$
+\end{lemma}
+\begin{proof}
+	Let $F(x) = \int_a^x f(t) g(t) \dd t$ and $G(x) = \int_a^x g(t) \dd t$.
+	By Cauchy's mean value theorem, there exists some $c \in (a, b)$ s.t.
+	$$
+	(F(b) - F(a))G'(c) = F'(c)(G(b) - G(a)),
+	$$
+	which by the fundamental theorem of calculus implies
+	$$
+	\left(\int_a^b f(t) g(t) \dd t\right)g(c) = f(c) g(c) \int_a^b g(t) \dd t.
+	$$
+	Then sine $g(c) \neq 0$, the result follows.
+\end{proof}
+
+
+And now we can write down a weaker form of Taylor's theorem with Lagrange remainder.
+
+\begin{theorem}[Taylor's Theorem with Lagrange Remainder -- Weaker]
+	Let $f$ be $n$-times continuously differentiable on $[a, b]$. Then we have
+	$$
+	f(b)=f(a)+f^{\prime}(a)(b-a)+\cdots+\frac{f^{(n-1)}(a)}{(n-1) !}(b-a)^{n-1}+\frac{f^{(n)}(c)}{n !}(b-a)^{n},
+	$$
+	for some $c \in (a, b)$.
+\end{theorem}
+\begin{proof}
+	By Taylor's theorem with integral remainder, we have
+	$$
+	f(b)=f(a)+f^{\prime}(a)(b-a)+\cdots+\frac{f^{(n-1)}(a)}{(n-1) !}(b-a)^{n-1}+\int_{a}^{b} \frac{f^{(n)}(t)}{(n-1) !}(b-t)^{n-1} \dd t.
+	$$
+	Then the integral mean value theorem gives us that
+	$$
+	\int_{a}^{b} \frac{f^{(n)}(t)}{(n-1) !}(b-t)^{n-1} \dd t = f^{(n)}(c) \int_{a}^{b} \frac{(b-t)^{n-1}}{(n-1) !} \dd t = \frac{f^{(n)}(c)}{n!}(b - a)^n, 
+	$$
+	for some $c \in (a, b)$, giving our result.
+\end{proof}
+
+Now, to just emphasize one last time: this version of the result imposes \emph{an extra continuity condition}, and \emph{does not replace the result and proof we had earlier}. That said, it's still a perfectly good result on its own.
+
+\subsection{Improper Integrals \& The Integral Test}
+
+So far our definition of Riemann integration applies only to functions that are bounded over some closed interval. In this subsection we are going to try and extend this definition in a natural way to discuss the integration of functions that are not necessarily bounded and integration over an interval that may not be closed (and may be infinite).
+
+\begin{definition}[Improper Integrals]
+	Suppose $f:[a, b) \rightarrow \R$ is integrable (and bounded) on every interval $[a, R]$, where $b \in \R \cup \{\infty\}$, and
+	$$
+	\int_a^R f(x) \dd x \rightarrow \ell \quad \text{as} \quad R \rightarrow b.
+	$$
+	Then we say that the \vocab{improper integral} $\int_a^{b} f(x) \dd x$ converges, and that its value is $\ell$. Otherwise, we say that it diverges. 
+\end{definition}
+
+Let's have a look at some examples.
+% \footnote{We will also use this definition for functions over $(a, b]$, where we consider integrating over $[R, b]$ as $R \rightarrow a$. You will see that this is really the same thing.}
+
+\begin{example}[Integral of $1/x^k$ from 1 to $\infty$]
+	We will show that the improper integral
+	$
+	\displaystyle\int_1^{\infty} \frac{1}{x^k} \dd x
+	$
+	converges if and only if $k > 1$.
+
+	If $k \neq 1$, then considering the integral of $1/x^k$ over $[1, R]$, we have
+	\begin{align*}
+	\int_1^R \frac{1}{x^k} \dd x &= \left.\frac{x^{1 - k}}{1 - k}\right|_1^R \\
+	&= \frac{R^{1 - k} - 1}{1 - k},
+	\end{align*}
+	which tends to a finite limit as $R \rightarrow \infty$, namely $-1/(1 - k)$, if and only if $k > 1$.
+
+	Otherwise, if $k = 1$, then over $[1 , R]$ we have
+	\begin{align*}
+		\int_1^R \frac{1}{x} \dd x = \log R,
+	\end{align*}
+	which does not tend to a finite limit as $R \rightarrow \infty$.
+	Thus the integral converges if and only if $k > 1$.
+\end{example}
+
+\begin{example}[Integral of $1/\sqrt{x}$ from 0 to 1]
+	We will show that the improper integral
+	$\displaystyle \int_0^1 \frac{1}{\sqrt{x}} \dd x$ converges.
+
+	For any $\delta > 0$, we have 
+	\begin{align*}
+		\int_\delta^1 \frac{1}{\sqrt{x}} \dd x = \left. 2\sqrt{x} \right|_\delta^1 = 2 - 2\sqrt{\delta} \rightarrow 2 \quad \text{as} \quad \delta \rightarrow 0,
+	\end{align*}
+	and thus the improper integral converges to $2$.
+\end{example}
+
+Note the example above shows that it is possible to have an improper integral which converges when the function is not bounded on the interval being integrated over.\footnote{It is also possible to have a function $f$ that is unbounded on the interval $[1, \infty)$, and yet $\int_1^{\infty} f(x) \dd x$ converges. If you haven't seen this before, try coming up with an example (as a hint, one way to do it is by drawing triangles in a somewhat clever way).} 
+
+The definition of improper integrals also gives us a sensible way to say if $\int_{-\infty}^{\infty} f(x) \dd x$ converges. If for some $a$ we have $\int_{-\infty}^{a} f(x) \dd x = \ell_1$ and $\int_{a}^{\infty} f(x) \dd x = \ell_2$, then we say that $\int_{-\infty}^{\infty} f(x) \dd x = \ell_1 + \ell_2$.
+
+\begin{remark}[Warning]
+	This is a strictly stronger notion than saying that $\int_{-R}^{R} f(x) \dd x$ converges to some limit as $R \rightarrow \infty$.
+\end{remark}
+
+It is with improper integrals that we get the last application of integration to our previously discussed topics: infinite series. 
+
+\begin{theorem}[The Integral Comparison Test]
+	If $f:[1, \infty) \rightarrow \R$ is a non-negative decreasing function with $f(x) \rightarrow 0$ as $x \rightarrow \infty$ then
+	$$
+	\sum_1^{\infty} f(n) \quad \text{and} \int_1^{\infty} f(x) \dd x
+	$$
+	either both diverge or both converge.
+\end{theorem}
+\begin{proof}
+	Since $f$ is decreasing and is non-negative, we have for $n \geq 2$ that
+	$$
+	\int_n^{n + 1} f(x) \dd x \leq f(n) \leq \int_{n - 1}^n f(x) \dd x.
+	$$
+	That is, since $\int_1^2 f(x) \dd x \leq f(1)$, we have
+	$$
+	\int_1^{N + 1} f(x) \dd x \leq \sum_{n= 1}^N f(x) \leq \int_1^N f(x) \dd x + f(1),
+	$$
+	and then our result follows as $N \rightarrow \infty$.
+\end{proof}
+
+The integral comparison test is useful because in many cases it is easier to evaluate an integral than it is to evaluate a sum (of course this isn't always true, and there's many examples in both directions). This test also gives us a way to determine the convergence of sums that previously required tools such as Cauchy's condensation test\footnote{Though it can be rather cumbersome to evaluate the integrals in certain cases, in which case reaching for Cauchy's condensation test first might be still helpful. Using the integral test also is a straightforward way to derive Cauchy's condensation test}. An example is shown below.
+
+\begin{example}[Using the Integral Test]
+	We will prove that $\sum_{n = 2}^{\infty} \frac{\log n}{n^2}$ converges using the integral test.
+
+	We compute using integration by parts that
+	\begin{align*}
+		\int_2^R \frac{\log x}{x^2} \dd x &= -\left.\frac{\log x}{x} \right|_2^R + \int_2^R \frac{1}{x^2} \dd x \\
+		&= - \frac{\log R}{R} + \frac{\log 2}{2} - \frac{1}{R} + \frac{1}{2}.
+	\end{align*}
+	This converges to $(1 + \log 2)/2$ as $R \rightarrow \infty$, and thus $\int_2^{\infty} \log x/x^2 \dd x$ and $\sum_{n = 2}^{\infty} \log n/n^2$ both converge by the integral test.
+\end{example}

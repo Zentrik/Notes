@@ -1,0 +1,539 @@
+\section{Power Series}
+
+Following on from our discussion of infinite series in Chapter 2, we are going to discuss a particular type of infinite series known as a \emph{power series}. Throughout this section, we are going to work mostly in $\C$.
+
+\begin{definition}[Complex Power Series]
+	A \vocab{complex power series} is an infinite series of the form
+	$$
+		\sum_{n = 0}^{\infty} a_n z^n,
+	$$
+	where $z \in \C$ and $a_n \in \C$.
+\end{definition}
+
+In this section we will look at some properties of power series, and we will use them to (finally) define some functions that we have alluded to quite a bit.
+
+\subsection{Radius of Convergence}
+
+Before we develop the concept of the radius of convergence, we first need to develop a lemma about the convergence of power series. 
+
+\begin{lemma}[Absolute Convergence of Power Series]
+Suppose that $\sum_{n = 0}^{\infty} a_n z_0^n$ converges for some $z_0 \in \C$. Then $\sum_{n = 0}^{\infty} a_n z^n$ converges absolutely for all $z\in \C$ with $|z| < |z_0|$.
+\end{lemma}
+\begin{proof}
+Since $\sum_{n = 0}^{\infty} a_n z_1^n$ converges, we have $a_n z_1^n \rightarrow 0$, implying this sequence is bounded.
+Then there is some $K > 0$ s.t. $|a_n z_1^n| < K$ for all $n$.	
+
+So if $|z| < |z_0|$, we have $|a_n z^n| \leq K \left|z/z_1\right|^n$. Since the geometric series $\sum_{n = 0}^{\infty} |z/z_1|^n$ converges, our result follows by comparison.
+\end{proof}
+
+With this lemma we can prove one of our key results in the study of power series, the existence of the \emph{radius of convergence}.
+
+\begin{theorem}[Radius of Convergence]
+	Suppose that $a_n \in \C$. Then either the power series $\sum_{n = 0}^\infty a_n z^n$ converges for all $z \in \C$, or there exists a real number $R$ with $R \geq 0$ s.t.
+	\begin{enumerate}[label=(\roman*)]
+		\item $\sum_{n =0}^\infty a_n z^n$ converges absolutely if $|z| < R$,
+		\item $\sum_{n =0}^\infty a_n z^n$ diverges if $|z| > R$.
+	\end{enumerate}
+	We say that $R$ is the \vocab{radius of convergence} of the power series.
+\end{theorem}
+\begin{proof}
+	If $\sum_{n = 0}^\infty a_n z^n$ converges for all $z \in \C$, then we are done. Otherwise, there must exist $z_1 \in \C$ s.t. $\sum_{n = 0}^{\infty} a_n z_1^n$ diverges. Then by our previous lemma the power series must diverge for all $z \in \C$ where $|z| > |z_1|$.
+
+	Now define the set $S = \{|z| : \sum_{n = 0}^\infty a_n z^n \text{ converges}\}$. This set is bounded above by $|z_1|$, and is non-empty since the power series converges for $z = 0$. Thus it has a supremum, say $R = \sup S$. 
+
+	Then by definition $\sum_{n = 0}^{\infty} a_n z^n$ diverges if $|z| > R$, and then suppose $|z| < R$. Then there must be some $z_0$ with $|z| < |z_0| < R$ s.t. the power series converges for $z_0$ (by the definition of the supremum again). Then by our previous lemma the power series converges absolutely for $z$.
+\end{proof}
+
+What's quite lovely is that when we are inside the radius of convergence, the power series converges absolutely! This means that we can avoid all of those issues with rearranging series that show up when things don't converge absolutely. This can be quite helpful when actually working with power series.
+
+What's also quite nice is that we can employ all of those lovely results we developed in \autoref{sec:2} to find what the radius of convergence of a power series is.
+Let's look at two lemmas that come from the ratio and root tests, which can give the radius of convergence. 
+
+\begin{lemma}[The Ratio Test for Radius of Convergence]
+	Let $\sum_{n = 0}^{\infty} a_n z^n$ be a power series with radius of convergence $R$.
+	Then if $|a_{n + 1}/a_n| \rightarrow \ell$ as $n \rightarrow \infty$, we have $R = 1/\ell$ if $\ell \neq 0$, and convergence everywhere if $\ell = 0$.
+\end{lemma}
+\begin{proof}
+	By the ratio test, we have absolute convergence if 
+	$$
+	\lim_{n \to \infty} \left|\frac{a_{n + 1}}{a_{n}} \cdot \frac{z^{n + 1}}{z^n}\right| < 1.
+	$$
+	So if $\ell = 0$, then we have convergence everywhere. Alternatively, if $|z| < 1/\ell$ we have absolute convergence, and if $|z| > 1/\ell$ the series diverges, again by the ratio test.
+\end{proof}
+
+\begin{lemma}[The Root Test for Radius of Convergence]
+	Let $\sum_{n = 0}^{\infty} a_n z^n$ be a power series with radius of convergence $R$.
+	Then if $|a_{n}|^{1/n} \rightarrow \ell$ as $n \rightarrow \infty$, we have $R = 1/\ell$.
+\end{lemma}
+\begin{proof}
+	By the root test, we have absolute convergence if
+	$$
+	\lim_{n \to \infty} |a_n z^n|^{1/n} < 1.
+	$$
+	So if $\ell = 0$, then we have convergence everywhere. Alternatively, if $|z| < 1\ell$ we have absolute convergence, and if $|z| > 1/\ell$ the series diverges, again by the root test.
+\end{proof}
+
+Now it is time for an important conceptual point: if we have a power series with radius of convergence $R$, then this only specifies the convergence/divergence inside or outside the circle $|z| = R$ (the \emph{circle of convergence}). Specifically {\color{red} it says nothing about the behaviour on the circle.} To see this, we will look at a few examples\footnote{This should remind you of the deadly sin mentioned in \autoref{sec:2}, where the root or ratio test said nothing if the limit was 1.}.
+
+\begin{example}[Convergence on $|z| = R$]
+	Consider the following power series:
+	$$
+	\text{(i) }\sum_{n = 0}^{\infty} z^n, \quad \text{(ii) }\sum_{n = 1}^\infty \frac{z^n}{n}\quad \text{(iii) }\sum_{n = 1}^\infty \frac{z^n}{n^2}.
+	$$
+	All of these have a radius of convergence $R = 1$, however for $|z| = 1$ for each power series we have:
+	\begin{enumerate}
+		\item Divergence if $|z| = 1$.
+		\item Convergence\footnote{Have a look at Example Sheet 1 for this result} if $|z| = 1$ with $z \neq 1$, and divergence if $z = 1$.
+		\item Convergence if $|z| = 1$.
+	\end{enumerate}
+	Thus we can't say anything about the case $|z| = R$ and each case really has to be treated separately.
+\end{example}
+
+\subsection{Differentiating Power Series}
+
+So things are generally quite nice inside the circle of convergence. One of the nice things we can do is differentiate! Even better, we can differentiate power series just like we do polynomials!
+The following results you need to know (including the lemmas), but the proofs are not examinable (feel free to skip them).
+
+We are going to show that the power series $\sum_{n = 0}^{\infty} a_n z^n$ with radius of convergence $R$ has the derivative $\sum_{n = 0}^{\infty} n a_n z^{n - 1}$, whenever $|z| < R$.
+Before showing this, we will need a lemma which gives us that this second power series converges for $|z| < R$.
+
+
+\begin{lemma}
+	Let $f(z) = \sum_{n = 0}^{\infty} a_n z^n$ be a power series whose radius of convergence is $R$. 
+	Then if $0 < r < R$, the power series $\sum_{n = 1}^{\infty} n |a_n|r^{n - 1}$ converges.
+\end{lemma}
+\begin{proof}
+	Pick $w$ s.t. $r < |w| < R$. Then the power series $\sum_{n = 0}^{\infty} a_n w^n$ converges, so the terms $|a_n w^n|$ are bounded above by say $M$. Then we have
+	$$
+	n|a_n|r^n = n|a_n w^n| \frac{r^n}{|w|^n} \leq M n \frac{r^n}{|w|^n}.
+	$$
+
+	But then the series $\sum_{n = 1}^{\infty} Mn (r/|w|)^n$ converges by the ratio test, and thus by the comparison test $\sum_{n = 1}^{\infty} n |a_n| r^{n - 1}$ converges.
+\end{proof}
+
+Applying this lemma twice also gives us that the power series
+$
+\sum_{n = 2}^{\infty} n(n - 1) |a_n| r^{n - 2}
+$
+converges. We are now ready to prove our theorem about differentiating power series.
+
+
+\begin{theorem}[Differentiating Power Series]
+	Let $f(z) = \sum_{n = 0}^{\infty} a_n z^n$ be a power series whose radius of convergence is $R$. Then $f$ is differentiable at all points with $|z| < R$, and
+	$
+	f'(z) = \sum_{n = 0}^{\infty} n a_n z^{n - 1}.
+	$
+\end{theorem}
+\begin{proof}
+	Using the difference of powers factorisation, we have
+	\begin{align*}
+		\frac{f(z+h)-f(z)}{h}&=\sum_{n=0}^{\infty} a_{n} \frac{(z+h)^{n}-z^{n}}{h}\\&=\sum_{n=1}^{\infty} a_{n}\left[(z+h)^{n-1}+(z+h)^{n-2} z+\cdots+z^{n-1}\right].
+	\end{align*}
+	Then, since $\sum_{n = 1}^\infty n a_n z^{n - 1}$ converges by our lemma, we have
+	\begin{align*}
+		\frac{f(z+h)-f(z)}{h}-\sum_{n=1}^{\infty} n a_{n} z^{n-1} &= \sum_{n = 1}^{\infty} a_n \left(\sum_{j=0}^{n-1} z^{j}(z+h)^{n-1-j}-z^{n-1}\right) \\
+		&= \sum_{n = 1}^{\infty} a_n \left(\sum_{j=0}^{n-1} z^{j}\left[(z+h)^{n-1-j}-z^{n-1 - j}\right]\right).
+	\end{align*}
+	Now we want to bound the terms of this inside sum. Choose $r$ s.t. $|z| < r < R$ and $h$ s.t. $|z| + |h| < r$. Then 
+	employing the difference of powers factorisation again we get
+	\begin{align*}
+		|(z+h)^{n-1-j}-z^{n-1 - j}| &= |h((z + h)^{n - 2 - j} + z(z + h)^{n - 3 - j} + \cdots + z^{n - 2 - j})| \\
+		&\leq |h|(n- 1 - j)r^{n - 2 - j}.
+	\end{align*}
+Applying this bound, assuming the right hand sum converges we have
+\begin{align*}
+	\left|\frac{f(z+h)-f(z)}{h}-\sum_{n=1}^{\infty} n a_{n} z^{n-1}\right| &\leq \sum_{n=1}^{\infty}\left|a_{n}\right|\left(\sum_{j=0}^{n-1} r^{j}|h|(n-1-j) r^{n-2-j}\right) \\
+	&= |h| \sum_{n=1}^{\infty}\left|a_{n}\right| r^{n-2}\left(\sum_{j=0}^{n-1}j\right) \\
+	&= \frac{1}{2}|h| \sum_{n=2}^{\infty}\left|a_{n}\right| n(n-1)r^{n-2}.
+\end{align*}
+Using our previous lemma twice shows that the right hand sum converges, and thus
+$$
+\frac{f(z+h)-f(z)}{h}-\sum_{n=1}^{\infty} n a_{n} z^{n-1} \rightarrow 0 \quad \text{as} \quad h \rightarrow 0,
+$$
+that is,
+$
+f'(z) = \sum_{n = 0}^{\infty} n a_n z^{n - 1}.
+$
+\end{proof}
+
+\subsection{Exponential, Trigonometric \& Hyperbolic Functions}
+
+With all that out of the way, let's define some functions! You'll hopefully be familiar with all of these anyway, but we will now be able to define them properly.
+
+We are going to need one little lemma before we proceed.
+
+\begin{lemma}[Constant Value Theorem Over $\C$]
+	If $F: \C \rightarrow \C$ has $F'(z) = 0$ for all $z \in \C$, then $F(z)$ is constant for all $z$.
+\end{lemma}
+\begin{proof}
+	For some $z \in \C$, we define the functions $u_z, v_z : \R \rightarrow \R$ s.t. 
+	$F(tz) = u_z(t) + i v_z(t)$.  By the chain rule $F'(tz) z = u_z'(t) + iv_z'(t) = 0$ for any $t \in \R$.	
+	Then comparing real and imaginary parts, this implies $u_z'(t) = 0$ and $v_z'(t) = 0$, for all $t \in \R$.  So $u_z$ and $v_z$ are constant.
+
+	Then for any $z \in \C$ we have $F(z) = u_z(1) + i v_z(1) = u_z(0) + i v_z(0) = F(0)$, so $F$ is constant too.
+\end{proof}
+
+\subsubsection{The Exponential \& Logarithm Function}
+
+We will begin with one of the most important functions, the exponential function.
+
+\begin{definition}[The Exponential Finction]
+	We define the \vocab{exponential function} $\exp: \C \rightarrow \C$ by the power series
+	$$
+	\exp(z) = \sum_{n = 0}^{\infty} \frac{z^n}{n!}.
+	$$
+\end{definition}
+
+When we state a definition using power series, we pretty much always have to check convergence straight away so that we do not end up writing complete nonsense.
+For this power series, we can see by the ratio test that it converges for all $z \in \C$. By the result in the previous section, we can also see that it's differentiable.
+
+Now we can prove all of the properties that you already are aware of.
+
+\begin{proposition}[Properties of the Exponential Function]\label{prop:exp}
+	Let $z, w \in \C$. Then the following hold.
+	\begin{enumerate}[label=(\roman*)]
+		\item $\exp'(z) = \exp(z)$.
+		\item $\exp(z)\exp(w) = \exp(z + w)$.
+		\item $\exp(x) > 0$ for $x \in \R$.
+		\item $\exp(x)$ is strictly increasing on $\R$.
+		\item $\exp(x) \rightarrow \infty$ as $x \rightarrow \infty$, $\exp(x) \rightarrow 0$ as $x \rightarrow -\infty$.
+		\item $\exp: \R \rightarrow (0, \infty)$ is a bijection.
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	We prove each individually.
+	\begin{enumerate}[label=(\roman*)]
+		\item This follows from differentiating the power series.
+		\item Let $a, b \in \C$ and define $F(z) = \exp(a + b - z)\exp(z)$. Then $F'(z) = -\exp(a + b - z)\exp(z) + \exp(a + b - z)\exp(z) = 0$, and thus by the constant value theorem, $F$ is constant. So $\exp(a + b - z)\exp(z) = F(0) = \exp(a +  b)$, and setting $z = b$ gives $\exp(a) \exp(b) = \exp(a + b)$.
+		\item Clearly $\exp(x) > 0$ for all $x \geq 0$, and $\exp(0) = 1$. Then $\exp(0) = \exp(x - x) = \exp(x) \exp(-x) = 1$, and thus $\exp(-x) > 0$ for $x > 0$.
+		\item Differentiating, $\exp'(x) = \exp(x) > 0$, and thus $\exp$ is strictly increasing on $\R$.
+		\item Truncating the power series, $\exp(x) > 1 + x$ for $x > 0$. Thus if $x \rightarrow \infty$, $\exp(x) \rightarrow \infty$. Then $\exp(-x) = 1/\exp (x)$, so $\exp(x) \rightarrow 0$ as $x \rightarrow - \infty$.
+		\item Injectivity follows directly from $\exp$ being strictly increasing. For surjectivity, take $y > 0$. Then by (v) there exists $a, b \in \R$ s.t. $\exp(a) < y < \exp(b)$, and by the intermediate value theorem there is $c \in (a, b)$ s.t. $\exp(c) = y$. \qedhere
+	\end{enumerate}
+\end{proof}
+
+Since the exponential function is a bijection $\R \rightarrow \R^+$, it also has a well defined inverse.
+
+\begin{definition}[The Logarithm Function]
+	We define the \vocab{logarithm function} $\log : (0, \infty) \rightarrow \R$ to be the inverse of $\exp$.
+\end{definition}
+
+By the inverse function theorem, this is a differentiable function, and its derivative is given by $\log'(t) = 1/t$ for $t > 0$.
+
+\begin{remark}As defined here, the logarithm function is an inverse of $\exp: \R \rightarrow (0, \infty)$, not over the whole of $\C$. In general, $\exp$ is \emph{not} a bijection, and thus it having an inverse doesn't make sense (with the tools we have developed, this is remedied in later courses).
+\end{remark}
+
+Using both the exponential and logarithm functions, we can define powers in the general case. For $x > 0$ and $\alpha \in \R$, we define $x^\alpha = \exp(\alpha \log x)$. With this we get the normal `rules of indices' being properties of the exponential function, and it it not hard to see that this definition matches how powers would be previously defined for $\alpha \in \Q$. This also gives us a new shorthand for the exponential function: $\exp(z) = e^z$.
+
+\begin{aside}{Aside: Multiplying Infinite Series}
+
+In \autoref{prop:exp} we proved a result involving multiplying two exponential functions together. We also managed to do this in a way that avoided using the power series definition of the function. Despite this, I think it's worth taking a moment to look properly at the multiplication of infinite series\footnote{This section is completely not-examinable and the proofs are relatively long, so I suggest that you skip it if you are using these notes for revision.}.
+
+When we talk about trying multiplying infinite series, we are really talking about taking two infinite series so that they can be combined into a new infinite series\footnote{If we don't care about obtaining a new infinite series, this discussion can be completely ignored.}, which hopefully converges to the product of the two original series.
+
+So how can we do this? A natural approach would be to just `expand everything', but unfortunately that's not really how infinite series work, so we can't do that. Still, we can use this idea as inspiration for a more mathematically sound approach. 
+
+Being quite informal and hand-wavy, let's consider two power series $\sum_{n = 0}^{\infty} a_n z^n$ and $\sum_{n = 0}^{\infty} b_n z^n$, multiply them term by term and then group by powers of $z$. Doing this, we get something like 
+\begin{align*}
+	&(a_0 + a_1 z + a_2 z^2 + a_3 z^3 + \cdots) \cdot (b_0 + b_1 z + b_2 z^2 + b_3z^3 + \cdots)\\
+	=\ & a_0 b_0 + (a_0 b_1 + a_1 b_0) z + (a_0 b_2 + a_1 b_1 + a_2 b_2) z^2 + (a_0 b_3 + a_1 b_2 + a_2 b_1 + a_3 b_0) z^3 + \cdots.
+\end{align*}
+Taking inspiration from this, for two sequence $a_n$ and $b_n$ we can define their \vocab{convolution} to be the sequence $c_n$ where
+$$
+	c_n = a_0 b_n + a_1 b_{n - 1} + \cdots + a_n b_0.
+$$
+It is this construction that will form the basis of our product of infinite series.
+
+\begin{definition*}[Cauchy Product]
+	Given two infinite series $\sum_{n = 0}^{\infty} a_n$ and $\sum_{n = 0}^{\infty} b_n$, their \vocab{Cauchy product} is the infinite series
+	$$
+	\sum_{n = 0}^{\infty} c_n,
+	$$
+	where $c_n = a_0 b_n + a_1 b_{n - 1} + \cdots + a_n b_0$.
+\end{definition*}
+
+The Cauchy product does give us a way to obtain a `product' of infinite series, but before we go any further some important caveats need to be pointed out. The most notable is the following: the infinite series obtained with the Cauchy product \emph{does not necessarily converge}\footnote{It's also possible for two divergent series to have a convergent Cauchy product. Try coming up with an example as an exercise.}.
+
+\begin{example*}[Convergent Series Whose Cauchy Product Diverges]
+	Consider the convergent\footnote{Exercise!} series $\sum_{n = 0}^{\infty} \frac{(-1)^n}{\sqrt{n + 1}}$. Then the Cauchy product of this series with itself is given by
+	$$
+	\sum_{n = 0}^{\infty} \sum_{k = 0}^n \frac{(-1)^k}{\sqrt{k + 1}} \frac{(-1)^{n - k}}{\sqrt{n - k + 1}}.
+	$$
+	But then since
+	$$
+	(k + 1)(n - k + 1) \leq \left(\frac{n}{2} + 1\right)^2 - \left(\frac{n}{2} - k\right)^2 \leq \left(\frac{n}{2} + 1\right)^2,
+	$$
+	the terms of the Cauchy product satisfy
+	$$
+	\left|\sum_{k = 0}^n \frac{(-1)^k}{\sqrt{k + 1}} \frac{(-1)^{n - k}}{\sqrt{n - k + 1}}\right| \geq \sum_{k = 0}^n \frac{1}{n/2 + 1} = \frac{n + 1}{n/2 + 1},
+	$$
+	and thus they don't tend to 0 so the series cannot converge. This implies that we have two convergent series whose Cauchy product does not converge.
+\end{example*}
+
+% \begin{example*}[Divergent Series Whose Cauchy Product Converges]
+% 	Consider the sequences $a_n, b_n$ where $a_0 = 2, b_0 = -1$ and $a_n = 2^n, b_n = 1$ for all $n \geq 1$. Then the corresponding infinite series $\sum_{n = 0}^{\infty} a_n$ and $\sum_{n = 0}^{\infty} b_n$ clearly diverge. 
+	
+% 	We now consider their Cauchy product
+% 	$$
+% 	\sum_{n = 0}^{\infty} \sum_{k = 0}^{n} a_k b_{n - k}.
+% 	$$
+% 	We can compute the inside sum as $-2$ when $n = 0$ and
+% 	$$
+% 	\sum_{k = 0}^{n} a_k b_{n - k} = \sum_{k = 1}^{n-1} a_k b_{n - k} + a_0 b_n + a_n b_0 = \sum_{k = 1}^{n - 1} 2^k + 2 - 2^n = 0,
+% 	$$
+% 	when $n \geq 1$. Thus the Cauchy product converges to $-2$. This implies that we have two divergent series whose Cauchy product converges.
+% \end{example*}
+
+This is obviously not a very good thing to happen, and we will spend the rest of this aside trying to deal with this possible issue.
+Luckily enough, this issue can be completely avoided if we know that one of the series being `multiplied' converges absolutely\footnote{This is another reason why absolute convergence is a great property to have.}.
+
+\begin{theorem*}[Mertens' Theorem]
+	Suppose that $\sum_{n = 0}^{\infty} a_n = A$ converges absolutely, and $\sum_{n = 0}^{\infty} b_n = B$ converges. Then their Cauchy product $\sum_{n = 0}^{\infty} c_n$ converges, and 
+	$$
+	\sum_{n = 0}^{\infty} c_n = AB.
+	$$
+\end{theorem*}
+\begin{proof}
+	Let the partial sums of the series be
+	$$
+	A_n = \sum_{k = 0}^{n} a_k, \quad B_n = \sum_{k = 0}^{n} b_k, \quad C_n = \sum_{k = 0}^{n} c_k.
+	$$
+	Then we have
+	\begin{align*}
+		C_n &= a_0 b_0 + (a_0 b_1 + a_1 b_0) + (a_0 b_2 + a_1 b_1 + a_2 b_0) + \cdots + (a_0 b_n + \cdots + a_{n - 1} b_n) \\
+		&= a_0 B_n + a_1 B_{n - 1} + \cdots + a_n B_0 \\
+		&= (a_0 B + \cdots + a_n B) - (a_0 B + \cdots + a_n B) + a_0 B_n + a_1 B_{n - 1} + \cdots + a_n B_0 \\
+		&= A_n B + a_0 (B_n - B) + a_1 (B_{n-1} - B) + \cdots + a_n(B_0 - B).
+	\end{align*}
+	We wish to show $C_n \rightarrow AB$, and we will do so using three bounds. Given $\varepsilon > 0$, since $A_n \rightarrow A$, there is an integer $L$ s.t. $n \geq L$ implies
+	$$
+	|A_n - A| \leq \frac{\varepsilon /3}{|B|}.
+	$$
+	Then since $\sum_{k = 0}^{\infty} |a_k|$ converges and $B_n \rightarrow B$, there is an integer $M$ s.t. $n \geq M$ implies
+	$$
+	|B_n - B| \leq \frac{\varepsilon/3}{\sum_{k = 0}^{\infty} |a_k|}.
+	$$
+	Also, since $\sum_{k = 0}^{\infty} a_k$ converges, $a_n \rightarrow 0$, and thus there is an integer $N$ s.t. $n \geq N$ implies that
+	$$
+	|a_n| \leq \frac{\varepsilon/3}{\sum_{k = 0}^{M-1} |B_k - B|}.
+	$$
+	Combining these\footnote{We use $M + N$ because we will need $n - (M - 1) \geq N$ to make the bounds work.}, for $N \geq \max\{L, M + N\}$ we obtain
+	\begin{align*}
+		|C_n - AB| &= \left|(A_n - A)B + \sum_{k = 0}^n a_{n - k} (B_k - B)\right| \\
+		&\leq |A_n - A||B| + \sum_{k = 0}^{M - 1}|a_{n - k}| |B_k - B| + \sum_{k = M}^{n} |a_{n -k}| |B_{k} - B| \leq \varepsilon
+	\end{align*}
+	Thus $\sum_{n = 0}^{\infty} c_n = AB$. \qedhere
+\end{proof}
+
+We can apply this result to power series. Recalling that power series converge absolutely inside their circle of convergence, we can safely multiply power series using the Cauchy product.
+
+\begin{corollary*}[Multiplying Power Series]
+	Let $\sum_{n = 0}^{\infty} a_n z^n$ and $\sum_{n = 0}^{\infty} b_n z^n$ be power series with radius of convergence $R_1$ and $R_2$ respectively. Then if $|z| < \min\{R_1, R_2\}$ we have
+	$$
+	\left(\sum_{n = 0}^{\infty} a_n z^n\right) \cdot \left(\sum_{n = 0}^{\infty} b_n z^n\right) = \left(\sum_{n = 0}^{\infty} c_n z^n\right),
+	$$
+	where $c_n = a_0 b_n + a_1 b_{n - 1} + \cdots + a_n b_0$.
+\end{corollary*}
+
+So to summarise: when inside the circle of convergence, we can multiply power series in the natural way, and the result will be as we expect. Using this corollary, we could prove $\exp(a + b) = \exp(a) \exp(b)$ directly (though admittedly the other proof is much faster).
+
+
+% Now there is one remaining 
+
+% The last question we will consider relating to Cauchy products is if they do converge, do they converge to what we would expect? It turns out the answer to this is yes, but to prove it we will first need another result about the continuity of power series. Inside the circle of convergence, we know that power series are differentiable and hence continuous. However, if a power series converges at a point on that circle, then it will also be continuous there. 
+% \begin{lemma*}[Continuity on the Circle of Convergence]
+% 	Suppose the power series $f(z) = \sum_{n = 0}^{\infty} a_n z^n$ has radius of convergence $R > 0$, and for some $z_0 \in \C$ with $|z_0| = R$ we have $f(z_0)$ converging. Then $\displaystyle \lim_{z \to z_0} f(z) = f(z_0)$.
+% \end{lemma*}
+% % \begin{proof}
+% % 	Let the partial sums of $f(z_0)$ be $S_n = a_0 + a_1 z_0 + \cdots + a_{n} z_0^n$, with $S_{-1} = 0$. Then
+% % 	$$
+% % 	\sum_{n = 0}^{N} a_n z^n 
+% % 	= \sum_{n = 0}^{N} \left(\frac{S_{n} - S_{n - 1}}{z_0^n}\right)  z^n = \left(1 - \frac{z}{z_0}\right)\sum_{n = 0}^N S_n \left(\frac{z}{z_0}\right)^n + S_N \left(\frac{z}{z_0}\right)^{N + 1}.
+% % 	$$
+% % 	For $|z| < R$, we can take the limit as $N \rightarrow \infty$, and using $|z/z_0| < 1$ we obtain
+% % 	$f(z) = (1 - z/z_0) \sum_{n = 0}^{\infty} S_n (z/z_0)^n$.
+
+% % 	Now given $\varepsilon > 0$, we can choose $N$ s.t. $n \geq N$ implies $|f(z_0) - S_n| < \varepsilon/2$. For $|z/z_0| < 1$ we have
+% % 	$$
+% % 	\left(1 - \frac{z}{z_0}\right)\sum_{n = 0}^\infty \left(\frac{z}{z_0}\right)^n = 1, 
+% % 	$$
+% % 	and thus we can obtain{\allowdisplaybreaks
+% % 	\begin{align*}
+% % 		|f(z) - f(z_0)| &= \left|\left(1 - \frac{z}{z_0}\right)\sum_{n = 0}^\infty \left(S_n - f(z_0)\right) \left(\frac{z}{z_0}\right)^n\right| \\
+% % 		&\leq \left|1 - \frac{z}{z_0}\right| \sum_{n = 0}^N \left|S_n - f(z_0)\right|\left|\frac{z}{z_0}\right|^n + \frac{\varepsilon}{2}\\
+% % 		&\leq \left|1 - \frac{z}{z_0}\right| \sum_{n = 0}^N \left|S_n - f(z_0)\right| + \frac{\varepsilon}{2}  \leq \varepsilon,
+% % 	\end{align*}
+% % 	where $0 < |z - z_0| < \delta$, for $\delta < \frac{1}{2}|z_0| \varepsilon \left[\sum_{n = 0}^N |S_n - f(z_0)|\right]^{-1}$. Thus $\displaystyle \lim_{z \to z_0} f(z) = f(z_0)$. }
+% % \end{proof}
+
+% Now we can apply this result about power series to infinite series in general, to show that if the Cauchy product of two convergent series is convergent, then it converges to the product of the two original series, as we would expect.
+
+% \begin{theorem*}[Multiplying Infinite Series]
+% 	Suppose that the infinite series $\sum_{n = 0}^{\infty} a_n = A$, $\sum_{n = 0}^{\infty} b_n = B$ and $\sum_{n =0}^{\infty} c_n = C$ all converge, where $c_n = a_0 b_n + \cdots + a_n b_0$. Then $C = AB$.
+% \end{theorem*}
+% \begin{proof}
+% 	We define the power series
+% 	$$
+% 	f(x) = \sum_{n = 0}^{\infty} a_n x^n, \quad g(x) = \sum_{n = 0}^{\infty} b_n x^n, \quad h(x) = \sum_{n = 0}^{\infty} c_n x^n,
+% 	$$
+% 	where $0 \leq x \leq 1$. Since each of these converge for $x = 1$, they converge absolutely for $x < 1$. Then by Mertens' theorem we have
+% 	$$
+% 		f(x) g(x) = h(x), \quad \quad \text{where } 0 \leq x < 1.
+% 	$$
+% 	By continuity we have $f(x) \rightarrow A$, $g(x) \rightarrow B$ and $h(x) \rightarrow C$ as $x \rightarrow 1$, and thus $C = AB$.
+% \end{proof}
+
+
+	
+\end{aside}
+
+
+
+% As before, we can prove some properties that you already know.
+
+% \begin{proposition}[Properties of the Logarithm Function]
+% 	Let $x \in \R$ and $t \in (0, \infty)$. Then the following hold.
+% 	\begin{enumerate}[label=(\roman*)]
+% 		\item $\log:(0, \infty) \rightarrow \R$ is a bijection, $\log(\exp(x)) = x$, and $\exp(\log(t)) = t$.
+% 		\item $\log$ is differentiable, and $\log'(t) = 1/t$.
+% 		\item $\log(ab) = \log(a) + \log(b)$ for $a, b \in (0, \infty)$.
+% 	\end{enumerate}
+% \end{proposition}
+% \begin{proof}
+% (i) follows from the definition of the function, (ii) follows from the one variable inverse function theorem, and (iii) follows from the properties of $\exp$.
+% \end{proof}
+
+\subsubsection{The Trigonometric Functions}
+
+We can use the exponential function to define the familiar trigonometric functions.
+
+\begin{definition}[Sine \& Cosine]
+	We define the \vocab{sine} and \vocab{cosine functions} by the power series
+	\begin{align*}
+		\sin z &= \frac{e^{iz} - e^{-iz}}{2i} = z - \frac{z^3}{3!} + \frac{z^5}{5!} - \frac{z^7}{7!} + \cdots \\
+		\cos z &= \frac{e^{iz} + e^{-iz}}{2} = 1 - \frac{z^2}{2} + \frac{z^4}{4!} - \frac{z^6}{6!} + \cdots
+	\end{align*}
+	where $z \in \R$.
+\end{definition}
+
+Stating these definitions in terms of the exponential function make lots of identities quite easy to derive.
+
+\begin{proposition}[Properties of $\sin$ and $\cos$]
+	Let $z, w \in \R$. Then the following hold.
+	\begin{enumerate}[label=(\roman*)]
+		\item $\sin' z = \cos z$, $\cos' z = -\sin z$.
+		\item $\sin^2 z + \cos^2 z = 1$.
+		\item $|\sin z|, |\cos z| \leq 1$.
+		\item $\cos(z + w) = \cos z \cos w - \sin z \sin w$.
+		\item $\sin(z + w) = \sin z \cos w + \cos z \sin w$.
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	We prove each individually, mainly by computation.
+	\begin{enumerate}[label=(\roman*)]
+		\item For $\sin$ we have $\sin' z = \left[(e^{iz} - e^{-iz}/2i\right]' = (e^{iz} + e^{-iz})/2 = \cos z$, and for $\cos$ we have $\cos' z = \left[(e^{iz} + e^{-iz})/2\right]' = (e^{-iz} - e^{iz})/2i = -\sin z$.
+		\item
+		$
+		\sin^2 z + \cos^2 z = -(e^{2iz} + e^{-2iz} + 2)/4 + (e^{2iz} + e^{-2iz} - 2)/4 = 1,
+		$
+		as required.
+		\item This follows from the above result.
+		\item Expanding the right hand expression gives 
+		\begin{align*}
+				&\cos z \cos w-\sin z \sin w \\
+				=\ &\frac{\left(e^{i z}+e^{-i z}\right)\left(e^{i w}+e^{-i w}\right)}{4}+\frac{\left(e^{i z}-e^{-i z}\right)\left(e^{i w}-e^{-i w}\right)}{4} \\
+				=\ &\frac{e^{i(z+w)}+e^{-i(z+w)}}{2} \\
+				=\ &\cos (z+w).
+		\end{align*}
+		\item Differentiating the above result with respect to $z$, we have $-\sin z \cos w - \cos z \sin w = - \sin (z + w)$, giving us our desired result. \qedhere
+	\end{enumerate}
+\end{proof}
+
+One of the more notable properties of $\sin$ and $\cos$ is that they are periodic, which is what we are going to show next. To establish this, we can try evaluating one of them (say $\cos$) at some values near where we expect a root to be (guided by our previous knowledge of these functions).
+
+\begin{lemma}[Smallest Root of $\cos$]\label{lemma:root}
+	There is a smallest positive $x$ s.t. $\cos(x) = 0$.
+\end{lemma}
+\begin{proof}
+	We begin by computing the sign of the derivative over $(0, 2)$.
+	Since $\cos'(x) = -\sin(x)$, we can use the inequality $\frac{x^{2n - 1}}{(2n - 1)!} > \frac{x^{2n + 1}}{(2n + 1)!}$ to bound
+	$$
+	\sin x = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + \cdots > 0,
+	$$
+	so $\cos$ has a negative derivative and must be decreasing on $(0, 2)$.
+
+
+	Evaluating the power series for $\cos$ at $\sqrt{2}$ and $\sqrt{3}$, we can see that the function changes sign
+\begin{align*}
+	\cos \sqrt{2} &= 1 - \frac{2}{2} + \frac{2^2}{4!} - \frac{2^3}{6!} +  \cdots > 0, 
+	\cos \sqrt{3} &= 1 - \frac{3}{2} + \frac{3^2}{4!} - \frac{3^3}{6!} + \cdots < 0.
+\end{align*}
+Then by the intermediate value theorem, there must be a root in the interval $(\sqrt{2}, \sqrt{3})$. Also since $\cos$ is decreasing on $(0, 2)$, this must also be the smallest positive root.
+\end{proof}
+
+The existence of this root gives us a way to define $\pi$.
+
+\begin{definition}[$\pi$]
+	 $\pi$ is the smallest positive real number s.t. $\cos \pi/2 = 0$.
+\end{definition}
+
+We can easily determine the value of $\sin \pi/2$ too. We have $\sin^2 \pi/2 + \cos^2 \pi/2 = 1$, so $\sin^2 \pi/2 = 1$, and 
+knowing from the proof of \autoref{lemma:root} that $\sin(x) > 0$ on $(0, 2)$, we can deduce that $\sin \pi/2 = 1$. These results are all we need to show that $\sin$ and $\cos$ are periodic, and also that the two functions are just translated versions of each-other.
+
+\begin{proposition}[Periodicity of $\sin$ and $\cos$]
+	The functions $\sin$ and $\cos$ are periodic with a period of $2 \pi$, and are related as follows.
+	\begin{align*}
+			\sin (z+ \pi/2)& =\cos z,   & \cos (z+ \pi/2)&=-\sin z, \\
+			\sin (z+\pi)&=-\sin z, & \cos (z+\pi)&=-\cos z, \\
+			\sin (z+2 \pi)&=\sin z, & \cos (z+2 \pi)&=\cos z.
+	\end{align*}
+\end{proposition}
+\begin{proof}
+	This follows directly from $\sin(\pi/2) = 1$, $\cos(\pi/2) = 0$ and the angle addition formulas.
+\end{proof}
+
+\begin{remark}[Periodicity of $\exp$]
+	If we use the power series for $\sin$ and $\cos$, we can write $\exp(iz) = \cos z + i \sin z$, from which the above result implies that $\exp$ is periodic with a period of $2\pi$.
+\end{remark}
+
+With $\sin$ and $\cos$ have been defined properly, we can then define $\tan$, $\sec$, $\csc$ and all of those fun functions in the normal way.
+
+\subsubsection{The Hyperbolic Functions}
+
+The last set of functions we will touch on is the (probably) slightly less familiar hyperbolic functions. As with the standard trigonometric functions, we can state the definitions using the exponential function.
+
+\begin{definition}[Hyperbolic Sine \& Cosine]
+	We define the \vocab{hyperbolic sine} and \vocab{hyperbolic cosine functions} by the power series
+	\begin{align*}
+		\sinh z &= \frac{e^z - e^{-z}}{2} = x+\frac{x^{3}}{3 !}+\frac{x^{5}}{5 !}+\frac{x^{7}}{7 !}+\cdots \\
+		\cosh z &= \frac{e^z + e^{-z}}{2} = 1+\frac{x^{2}}{2 !}+\frac{x^{4}}{4 !}+\frac{x^{6}}{6 !}+\cdots
+	\end{align*}
+	where $z \in \R$.
+\end{definition}
+
+\begin{remark}
+	The basic hyperbolic and trigonometric functions are related by $\cosh z = \cos(iz)$ and $\sinh z = -i \sin (iz)$. Remembering this can allow you to adapt facts about $\sin$ and $\cos$ to facts about $\sinh$ and $\cosh$.
+\end{remark}
+
+We will state a few properties for convenience.
+
+\begin{proposition}[Properties of $\sinh$ \& $\cosh$]
+	Let $z, w \in \R$. Then the following hold.
+	\begin{enumerate}[label=(\roman*)]
+		\item $\sinh' z = \cosh z$, $\cosh' z = \sin z$.
+		\item $\cosh^2 z - \sinh^2 z = 1$.
+		\item $\sinh (z+w)=\sinh z \cosh w+\cosh z \sinh w$.
+		\item $\cosh (z+w)=\cosh z \cosh w+\sinh z \sinh w$.
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+We will use the observation made in the above remark.
+\begin{enumerate}[label=(\roman*)]
+	\item For $\sinh$ we have $\sinh'z = [-i\sin(iz)]' = \cos(iz) = \cosh z$, and for $\cosh$ we have $\cosh'z = [\cos(iz)]' = -i\sin(iz) = \sinh z$.
+	\item $\cosh^2 z - \sinh^2 z = \cos(iz)^2 - (-i\sin(iz))^2 = \cos^2(iz) + \sin^2(iz) = 1$.
+	\item $\sinh(z + w) = -i\sin(iz + iw)= \sinh(z)\cosh(w) + \cosh(z)\sinh(w)$.
+	\item $\cosh(z + w) = \cos(iz + iw)= \cosh(z)\cosh(w) + \sinh(z)\sinh(w)$.\qedhere
+\end{enumerate}
+\end{proof}
+
+\clearpage

@@ -1,0 +1,232 @@
+\section{Limits and Convergence} \label{sec:1.1}
+
+\subsection{A Review from Numbers and Sets}
+
+\begin{notation}
+	Write sequences as: $a_n$ or $(a_n)_{n=1}^\infty$ with $a_n \in \R \quad \forall \; n$
+\end{notation}
+
+We will define convergence as follows.
+
+\begin{definition}[Convergence]
+	A sequence $a_n$ is said to \vocab{converge} to the limit $a \in \R$ if given any $\varepsilon > 0$, we can find an integer $N$\footnote{$N$ is a function of $\varepsilon$.} s.t. $|a_n - a| < \varepsilon$ for all $n \geq N$. We write $\displaystyle\lim_{n \to \infty}a_n = a$, or $a_n \rightarrow a$ as $n \rightarrow \infty$.
+\end{definition}
+
+This definition is (notably) purely algebraic. We can sensibly define this notion of convergence for any ordered field (for example, $\Q$). What takes us from algebra to analysis is the fundamental property of the real numbers.
+
+\begin{definition}[Increasing Sequences]
+	An \vocab{increasing sequence} is one s.t. $a_n \leq a_{n + 1} \quad \forall \; n$ and a \vocab{strictly increasing sequence} is one s.t. $a_n < a_{n + 1} \quad \forall \; n$.
+\end{definition} 
+
+\begin{axiomthm}[Fundamental Axiom of the real numbers] \label{axm:fundamental}
+If $a_1, a_2, \dots \in \R$ is an increasing sequence and there exists $A \in \R$ s.t. $a_i \leq A$ for all $i \in \N$, then there exists $a \in \R$ s.t. $a_n \rightarrow a$ as $n \rightarrow \infty$.
+\end{axiomthm}
+
+In other words -- an increasing sequence of real numbers that is bounded above converges. 
+Also this clearly implies that a decreasing sequence of reals bounded below converges.
+Equivalent also to: Every non-empty set of real numbers bounded above has a supremum (Least Upper Bound Axiom).
+
+\begin{definition}[Supremum]
+	Let $S \subset \mathbb{R}, S \neq \emptyset$. We say that $\sup S = K$ if
+	\begin{enumerate}
+		\item $x \leq K,\quad \forall \; x \in S$
+		\item given $\varepsilon > 0,\; \exists \; x \in S$ s.t. $x > K - \varepsilon$
+	\end{enumerate} 
+\end{definition} 
+
+Note: The supremum is unique and we have a similar notion of the infimum.
+
+Limits obey the properties that you would naturally expect.
+ 
+\begin{lemma}[Uniqueness of Limits] \label{lem:1.1}
+	If $a_n \rightarrow a$ and $a_n \rightarrow b$ as $n \rightarrow \infty$, then $a = b$.
+\end{lemma}
+\begin{proof}
+	Assume that $a \neq b$. Given given any $\varepsilon > 0$, we can find integers $N_1$ and $N_2$ s.t.
+	\begin{align*}
+		|a_n - a| \leq \varepsilon, \quad \text{ for all $n \geq N_1$}\\
+		|a_n - b| \leq \varepsilon, \quad \text{ for all $n \geq N_2$}
+	\end{align*}
+	Then letting $\varepsilon = |a - b|/3$ and taking $N = \max\{N_1, N_2\}$, we have by the triangle inequality
+	$$
+	|a - b| \leq |a_n - a| + |a_n - b| \leq 2\varepsilon = \frac{2}{3} |a - b|
+	$$
+	for all $n \geq N$.
+	Thus we must have $|a - b| = 0$, and $a = b$.
+\end{proof}
+
+\begin{lemma}[Convergence of Subsequences]
+	If $a_n \rightarrow a$ as $n \rightarrow \infty$ and $n(1) < n(2) < \cdots$, then $a_{n(j)} \rightarrow a$ as $j \rightarrow \infty$.
+\end{lemma}
+\begin{proof}
+	We note that $n(j) \geq j$. Now $a_n \rightarrow a$ implies that given some $\varepsilon$, we can find an $N$ s.t. $|a_j - a| < \varepsilon$ for all $j \geq N$. But then this implies that $|a_{n(j)} - a| < \varepsilon$ for all $j \geq N$, since $j \geq N$ implies $n(j) \geq N$. So $a_{n(j)} \rightarrow a$ also as $j \to \infty$.
+\end{proof}
+
+
+\begin{lemma}[Manipulating Limits]
+	\label{prop:manipulating}
+	Let $a_n$ and $b_n$ be sequences. Then the following hold.
+	\begin{enumerate}[label=(\roman*)]
+		\item If $a_n = c, \quad \forall \; n$ then $a_n \to c$ as $n \to \infty$.
+		\item If $a_n \rightarrow a$ and $b_n \rightarrow b$ then $a_n + b_n \rightarrow a + b$.
+		\item If $a_n \rightarrow a$ then $c a_n \rightarrow ac$ for a constant $c$.
+		\item If $a_n \rightarrow a$ and $b_n \rightarrow b$ then $a_n b_n \rightarrow a b$.
+		\item If $a_n \rightarrow a$ and $a, a_n \neq 0$ for all $n$, then $1/a_n \rightarrow 1/a$. \label{lem:1.3v}
+		\item If $a_n \leq A \quad \forall \; n$ and $a_n \to a$, then $a \leq A$. \label{lem:1.3vi}
+	\end{enumerate}
+\end{lemma}
+\begin{proof}
+	We prove each individually.
+	\begin{enumerate}[label=(\roman*)]
+		\item Left as an exercise to the reader.
+		\item Given some $\varepsilon>0,$ we can find integers $N_{a}$ and $N_{b}$ s.t. $|a_n - a| \leq \varepsilon/2$ for all $n \geq N_a$ and $|b_n - b| \leq \varepsilon/2$ for all $n \geq N_b$.
+		
+		Then letting $N=\max \left\{N_{a}, N_{b}\right\},$ by the triangle inequality we have
+		$$
+			\left|\left(a_{n}-a\right)+\left(b_{n}-b\right)\right| \leq\left|a_{n}-a\right|+\left|b_{n}-b\right|
+			\leq \frac{\varepsilon}{2}+\frac{\varepsilon}{2}=\varepsilon
+		$$
+		for all $n \geq N$. Thus $a_{n}+b_{n} \rightarrow a+b$.
+		\item Given $\varepsilon > 0$, we can find some $N$ s.t.
+		$|a_n - a| \leq \varepsilon/|c|$ for all $n \geq N$. Then $|ca_n - ca| \leq \varepsilon$ for all $n \geq N$. So $c a_n \rightarrow c a$.
+		\item Given some $\varepsilon > 0$, we can find integers $N_a$ and $N_b$ s.t. $|a_n - a| \leq \sqrt{\varepsilon}$ for all $n \geq N_a$ and $|b_n - b| \leq \sqrt{\varepsilon}$ for all $n \geq N_b$. Then again letting $N = \max\{N_a, N_b\}$, we have
+		$$
+			|(a_n - a)(b_n - b)| \leq \varepsilon,
+		$$
+		for all $n \geq N$.
+		Hence $(a_n - a)(b_n - b) \rightarrow 0$, so $a_n b_n - a b_n - b a_n + ab \rightarrow 0$, and using the previous two properties we have $a_n b_n \rightarrow ab$.
+
+		\emph{Alternatively} 
+		\begin{align*}
+			|a_n b_n - ab| &\leq |a_n b_n - a_n b| + |a_n b - ab| \\
+			&= |a_n||b_n - b| + |b| |a_n - a| \\
+			a_n \to a: \; &\text{given } \varepsilon > 0,\; \exists \; N_1 \text{ s.t. } |a_n - a| < \varepsilon \quad n \geq N_1 \\
+			b_n \to b: \;&\text{given } \varepsilon > 0,\; \exists \; N_2 \text{ s.t. } |b_n - b| < \varepsilon \quad n \geq N_2 \\
+			\text{If } n &\geq N_1(1),\, |a_n - a| < 1, \text{ so } |a_n| \leq |a| + 1 \\
+			\implies |a_n b_n - ab| &\leq \varepsilon (|a| + 1 + |b|) \quad \forall \; n \geq N_3(\varepsilon) = \max \{N_1(1), N_1(\varepsilon), N_2(\varepsilon) \}.
+		\end{align*} 
+		\item Since the sequence converges to $a \neq 0$, there must be some $r>0$ s.t. $|a_n|>r$, for all $n$.
+		Then given some $\varepsilon > 0$, there exists $N \in N$ s.t. $|a_n - a| < |a|\varepsilon r$ for all $n \geq N$. That is,
+		$$
+		\left|\frac{1}{a_n} - \frac{1}{a}\right|=\left|\frac{a - a_n}{a a_n}\right| < \frac{|a|\varepsilon r}{|a|r} = \varepsilon,
+		$$
+		for all $n \geq N$.
+		Hence $1/a_n \rightarrow 1/a$.
+		\item Left as an exercise to the reader. \qedhere
+	\end{enumerate}
+\end{proof}
+
+\begin{lemma}[Axiom of Archimedes]
+	$\frac{1}{n} \rightarrow 0$ as $n \rightarrow \infty$.
+\end{lemma}
+\begin{proof}
+	The sequence $\frac{1}{n}$ is a decreasing sequence bounded below, and thus has a limit $a$. Considering the sequence $\frac{1}{2n} = \frac{1}{2}\cdot \frac{1}{n}$, this tends to a limit $\frac{a}{2}$ by Lemma 1.3 \ref{lem:1.3v}, but since $\frac{1}{2n}$ is a subsequence of $\frac{1}{n}$, it also tends to a limit $a$ by \nameref{lem:1.1}. Thus $\frac{a}{2} = a$, so $a = 0$ as required.
+\end{proof}
+
+\begin{remark}
+	The definition of a limit of a sequence makes perfect sense for $a_n \in \mathbb{C}$.
+\end{remark} 
+
+\begin{definition}
+	$a_n \to a$ if given $\varepsilon > 0,\; \exists \; N \text{ s.t. } \forall \; n \geq N, |a_n - a| < \varepsilon$.
+\end{definition} 
+
+The previous lemmas are all the same over $\mathbb{C}$ except for Lemma 1.3 \ref{lem:1.3vi} as it uses the \emph{order} of $\mathbb{R}$.
+
+\subsection{Bolzano–Weierstrass}
+
+\begin{theorem}[Bolzano-Weierstrass]\label{thm:bolzano}
+	If $x_n \in \R$ and there exists $K$ s.t. $|x_n| \leq K$ for all $n$, then we can find $n_1 < n_2 < n_3 < \cdots$ and $x \in \R$ s.t. $x_{n_j} \to x$ as $j \to \infty$
+
+	In other words: every \emph{bounded} sequence has a convergent subsequence.
+\end{theorem}
+
+\begin{remark}
+	This theorem says nothing about the uniqueness of the subsequence's limit. For example, consider the sequence $x_n = (-1)^n$. Then $x_{2n + 1} \rightarrow -1$ and $x_{2n} \rightarrow 1$.
+\end{remark}
+
+\begin{proof}
+	We are going to define two sequences $a_n$ and $b_n$ inductively as follows. Begin by setting $[a_1, b_1] = [-K, K]$, and let $c_1 = (a_1 + b_1)/2$ be the midpoint of this interval.
+
+	Then there are two possibilities:
+	\begin{enumerate}
+		\item $x_n \in [a_1, c_1]$ for infinitely many values of $n$.
+		\item $x_n \in [c_1, b_1]$ for infinitely many values of $n$.
+	\end{enumerate}
+	Of course both of these can hold at the same time, but if the first one holds we set $a_2 = a_1$ and $b_2 = c_1$, and if it doesn't then we set $a_2 = c_1$ and $b_2 = b_1$.
+
+	Proceeding inductively we construct $a_n$ and $b_n$ s.t. $x_m \in [a_n, b_n]$ for infinitely many values of $m$\footnote{This is lion hunting! You can kind of imagine that we are hunting for a number that a subsequence converges to, using the fact that there must be infinitely many terms near that number}.
+	Then we have $a_{n - 1} \leq a_n \leq b_n \leq b_{n - 1}$, and also $b_n - a_n = (b_{n - 1} - a_{n - 1})/2$. 
+
+	Now $a_n$ is increasing and bounded above, and $b_n$ is decreasing and bounded below and thus $a_n \rightarrow a \in [a_1, b_1]$ and $b_n \rightarrow b \in [a_1, b_1]$ by the \nameref{axm:fundamental}.
+	Then we have $b - a = (b - a)/2$ using the above result, and thus $a = b$.
+
+	Since $x_m \in [a_n, b_n]$ for infinitely many values of $m$, we can construct a sequence $n_j$ s.t. $n_{j + 1} > n_j$ and $x_{n_{j + 1}} \in [a_{j + 1}, b_{j + 1}]$. Then $a_j \leq x_{n_j} \leq b_j$, and thus $x_{n_j} \rightarrow a$.
+\end{proof}
+
+\subsection{Cauchy Sequences \& The General Principle of Convergence}
+
+So far we have defined the notion of a sequence converging to some explicit limit. However, it is possible to determine if a sequence converges without considering this limit explicitly. This is done by considering how `close' the terms in the sequence eventually get, as we shall see.
+
+We begin by describing what it means for a sequence to be \emph{Cauchy}.
+
+\begin{definition}[Cauchy Sequence]
+	A sequence $a_n \in \R$ is said to be \vocab{Cauchy} if for every $\varepsilon > 0$ there exists a natural number $N$ s.t. for all $n, m \geq N$ we have $|a_n - a_m| \leq \varepsilon$.
+\end{definition}
+
+We can almost immediately write down our first lemma.
+
+\begin{lemma}[Convergence Implies Cauchy]
+	If a sequence converges then it is Cauchy.
+\end{lemma}
+\begin{proof}
+	Consider a convergent sequence $a_n \rightarrow a$.
+	Given $\varepsilon > 0, \exists \; N$ s.t.
+	$|a_n - a| \leq \varepsilon / 2$ for all $n \geq N$.
+	Then by the triangle inequality we have
+	$$
+	|a_n - a_m| \leq |a_n - a| + |a - a_m| \leq \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon,
+	$$
+	for all $m, n \geq N$. Thus the sequence is Cauchy.
+\end{proof}
+
+The converse of this result is also true! This gives us a powerful result about convergence, which is quite widely applicable (particularly because we can avoid talking about the limit explicitly, as we said before).
+
+\begin{lemma}[Completeness]
+	If a sequence is Cauchy then it converges.
+\end{lemma}
+\begin{proof}
+	Steps in the proof:
+	\begin{enumerate}
+		\item The sequence is bounded
+		\item Bolzano-Weierstrass gives us a convergent subsequence 
+		\item A convergent subsequence then implies convergence of the whole sequence.
+	\end{enumerate}
+
+	\begin{enumerate}
+		\item Let $a_n$ be a Cauchy sequence. We will first show that it is bounded. 
+		Because the sequence is Cauchy, we can find an integer $N \in \N$ s.t. $n, m \geq N$ implies that $|a_n - a_m| \leq 1$.
+		This implies that if $n \geq N$ we have
+		$$
+			|a_m| \leq |a_m - a_N| + |a_N| \leq 1 + |a_N| \quad \forall \; m \geq N.
+		$$
+		Thus $|a_n| = \max \{|a_1|, |a_2, \dots, |a_{n-1}|, 1 + |a_N|\} \quad \forall \; n$, so the sequence is bounded.
+		\item By \nameref{thm:bolzano}, we then have a subsequence $a_{n_j}$ with $a_{n_j} \rightarrow a$ as $j \rightarrow \infty$. 
+		\item So given $\varepsilon > 0, \exists \; j_0$ s.t. $|a_{n_j} - a| < \varepsilon \quad \forall \; j \geq j_0$. 
+		Also, $\exists \; N(\varepsilon)$ s.t. $|a_m - a_n| < \varepsilon \quad \forall \; m,n \geq N(\varepsilon)$.
+		Take $j$ s.t. $n_j \geq \max\{N(\varepsilon), n_{j_0}\}$\\
+		Then if $n \geq N(\varepsilon)$,
+		\[|a_n - a| \leq |a_n - a_{n_j}| + |a_{n_j} - a| < 2 \varepsilon \]
+	
+	\end{enumerate} 
+\end{proof}
+
+Stripping away the detail, the reason this result holds is since Cauchy sequences are bounded, we can get a convergent subsequence. Then since all of the terms get arbitrarily close, the whole sequence must converge along with the subsequence.
+
+Combining these two lemmas gives us the `general principle of convergence', a result also known as Cauchy's criterion.
+
+\begin{theorem}[General Principle of Convergence/Cauchy's Criteron]
+	A sequence converges iff it is a Cauchy sequence.
+\end{theorem}
+
+\clearpage

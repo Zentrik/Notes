@@ -1,0 +1,29 @@
+%&../preamble
+
+\def\npart {IA}
+\def\nterm {Lent}
+\def\nyear {2022}
+\def\nlecturer {Prof G. Paternain}
+\def\ncourse {Analysis I}
+
+\input{../preamble-dynamic.tex}
+
+% Where are these packages used?
+\usepackage{soul} 
+\usepackage{wasysym}
+
+\author{Based on lectures by \nlecturer \\\small Based on notes by Adam Kelly and Hasan Baig}
+
+% \includeonly{02-infinite.tex}
+
+\begin{document}
+    \maketitle
+    \tableofcontents
+
+    \include{01-sequences.tex}
+    \include{02-infinite.tex}
+    \include{03-continuity.tex}
+    \include{04-differentiability.tex}
+    \include{05-power.tex}
+    \include{06-integration.tex}
+\end{document}

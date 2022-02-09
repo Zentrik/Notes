@@ -1,0 +1,3165 @@
+%&../preamble
+
+\def\npart {IA}
+\def\nterm {Lent}
+\def\nyear {2022}
+\def\nlecturer {Prof G. Paternain}
+\def\ncourse {Analysis I}
+
+\input{../preamble-dynamic.tex}
+
+\author{Based on lectures by \nlecturer \\\small Based on notes by Hasan Baig}
+
+\newcommand{\br}[1]{\lbrack #1 \rbrack}
+\newcommand{\e}{\varepsilon}
+\newcommand{\la}{\lambda}
+\newcommand{\m}{\mu}
+\newcommand{\n}{\nu}
+\newcommand{\de}{\delta}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\cov}{\text{Cov}}
+\newcommand{\corr}{\text{Corr}}
+\newcommand{\im}{\text{Im}}
+\newcommand{\re}{\text{Re}}
+\newcommand{\sym}{\text{Sym}}
+\newcommand{\power}{\mathbb{P}}
+\newcommand{\tick}{\checkmark}
+\newcommand{\indep}{\perp\!\!\!\perp}
+\newcommand{\s}[2][i]{\sum\limits_{#1 = 1}^{#2}}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\newpage
+\setcounter{section}{0}
+\section{Limits and Convergence}
+\subsection{Review of Numbers and Sets}
+\begin{notation}
+Write sequences as: $a_n,\,(a_n)_{n=1}^\infty,\, a_n \in \R$
+\end{notation}
+\begin{definition}
+We say that $a_n \to a$ as $n \to \infty$ if given $\varepsilon > 0,\, \exists N$ s.t. $|a_n - a| < \varepsilon$ for all $n \geq N$
+\begin{note}
+$N = N(\varepsilon)$
+\end{note}
+\end{definition}
+\begin{definition}[increasing sequence]
+$a_n \leq a_{n+1}$
+\end{definition}
+\begin{definition}[decreasing sequence]
+$a_n \geq a_{n+1}$
+\end{definition}
+\begin{definition}[strictly increasing sequence]
+$a_n < a_{n+1}$
+\end{definition}
+\begin{definition}[strictly decreasing sequence]
+$a_n > a_{n+1}$
+\end{definition}
+\begin{note}
+Say monotone if stays increasing or stays decreasing
+\end{note}
+\subsection{Fundamental Axiom of the real numbers}
+\begin{axiom}
+If $a_n \in \R, \forall n \geq 1, A \in \R$ and $a_1 \leq a_2 \leq a_3 \leq \dots$ with $ a_n \leq A$ for all $n$, there exists $a\in\R$ s.t. $a_n \to a$ as $n\to \infty$\\
+i.e. an increasing sequence of real numbers bounded above converges.\\
+\begin{note}
+Equivalently: a decreasing sequence of real numbers bounded below converges\\
+Equivalent also to: every non-empty set of real numbers bounded above has a supremum
+\end{note}
+\begin{notation}
+Say LUBA $=$ Least Upper Bound Axiom.
+\end{notation}
+\end{axiom}
+\begin{definition}[supremum]
+For $S \subseteq \R,\, S \neq \emptyset$, sup $S = K$ if
+\begin{enumerate}
+    \item $x \leq K,\, \forall x \in S$
+    \item given $\varepsilon > 0, \exists x \in S,$ s.t. $x > K - \varepsilon$
+\end{enumerate}
+\begin{note}
+Supremum is unique (see N\&S notes), infinimum defined similarly.
+\end{note}
+\end{definition}
+\begin{lemma}
+\hfill{ }
+\begin{enumerate}
+    \item The limit is unique. That is, if $a_n \to a$, and $a_n \to b$, then $a = b$
+    \item If $a_n \to a$ as $n \to \infty$ and $n_1 < n_2 < n_3<  \dots$, then $a_{n_j} \to a$ as $j \to \infty$ (subsequences converge to the same limit)
+    \item If $a_n = C \ \forall n$, then $a_n \to C$ as $n \to \infty$
+    \item If $a_n \to a$ \& $b_n \to b$, then \[a_n + b_n \to a + b\]
+    \item If $a_n \to a$ \& $b_n \to b$, then \[a_nb_n \to ab\]
+    \item If $a_n \to a,\, a_n \neq 0 \ \forall n \,\& \,a \neq 0$ then \[\frac{1}{a_n} \to \frac{1}{a}\]
+    \item If $a_n \leq A \  \forall n$ and $a_n \to a$, then $a \leq A$
+\end{enumerate}
+\begin{proof}
+\hfill{ }
+\begin{enumerate}
+    \item given $\varepsilon > 0$, $\exists n_1$ s.t. $|a_n - a| < \varepsilon\, \forall n \geq n_1$\\
+    and $\exists n_2$ s.t. $|a_n - b| < \varepsilon\, \forall n \geq n_2$\\
+    Let $N =$ max$\{n_1,n_2\}$. Then $\forall n \geq N$\\
+    \[|a-b| \leq |a_n - a| + |a_n - b| < 2\varepsilon \, \forall n \geq N\]
+    If $a \neq b$, take
+    \[\varepsilon = \frac{|a-b|}{3} \implies |a-b| < \frac{2}{3}|a-b|  \ \contradiction\]
+    \item Given $\varepsilon > 0, \exists N$ s.t. $|a_n - a| < \varepsilon \, \forall n \geq N$. Since $n_j \geq j$ (induction),\\
+    \[|a_{n_j} - a| < \varepsilon \, \forall j \geq N\]
+    i.e. $a_{n_j} \to a$ as $j \to \infty$
+    \item Exercise.
+    \item Exercise.
+    \item \begin{align*}
+        |a_nb_n - ab| &\leq |a_nb_n - a_n b| + |a_nb - ab|\\
+        &= |a_n||b_n - b| + |b||a_n - a|
+    \end{align*}
+    As $a_n \to a$, given $\varepsilon > 0,\, \exists N_1$ s.t. $|a_n - a| < \varepsilon \, \forall n \geq N_1$ (*)\\
+    As $b_n \to b$, given $\varepsilon > 0, \exists N_2$ s.t. $|b_n - b| < \varepsilon \, \forall n \geq N_2$\\
+    (*) $\implies$ if $n \geq N_1(1),\, |a_n - a| < 1$, so:
+    \[|a_n| \leq |a| + 1\]
+    \[\implies |a_nb_n - ab| \leq \varepsilon(|a| + 1 + |b|) \, \forall n \geq N_3 = \max\{N_1(1),N_1(\varepsilon),N_2(\varepsilon)\}\]
+    
+    \item Exercise.
+    \item Exercise.
+\end{enumerate}
+\end{proof}
+\end{lemma}
+\begin{lemma}
+\[\frac{1}{n} \to 0 \text{ as } n \to \infty\]
+\begin{proof}
+$1/n$ is a decreasing sequence bounded below so by the fundamental Axiom it has limit $a$.
+\begin{claim}
+$a = 0$
+\end{claim}
+\begin{proof}
+\[\frac{1}{2n} = \frac{1}{2} \times \frac{1}{n} \to \frac{a}{2}\]
+by lemma 1.1(v)\\
+But $\frac{1}{2n}$ is a subsequence, so by 1.1(ii) $\frac{1}{2n} \to a$. By uniqueness of limits, lemma 1.1(i), we have \[a = \frac{a}{2} \implies a = 0 \ \]
+\end{proof}
+\end{proof}
+\end{lemma}
+\begin{remark}
+The definition of limit of a sequence makes perfect sence for $a_n \in \C$
+\end{remark}
+\begin{definition}
+$a_n \to a$ if given $\varepsilon > 0$, $\exists N$ s.t. $\forall n \geq N,\, |a_n - a| < \varepsilon$.\\
+First six parts of Lemma 1.1 are the same over $\C$.\\
+The last one does not makes sense (over $\C$) since it uses the order of $\R$.
+\end{definition}
+\subsection{Bolzano-Weierstass Theorem}
+\begin{theorem}[Bolzano-Weierstass]
+If $x_n \in \R$ and there exists $K$ s.t. $|x_n| \leq K\ \forall n$, then we can find $n_1<n_2<n_3<\dots \text{ and } x \in \R$
+s.t. $x_{n_j} \to x$ as $j \to \infty$\\
+In other words: every bounded sequence has a convergent subsequence.
+\begin{remark}
+We say nothing about uniqueness of limit, $x_n = (-1)^n$, $x_{2n+1} \to -1$, $x_{2n} \to 1$
+\end{remark}
+\begin{proof}
+set $[a_1,b_1] = [-K,K]$\\
+\begin{tikzpicture}
+    \draw[-] (-3,0) -- (3,0) ; %edit here for the axis
+    \draw[shift={(-3,0)},color=black] (0pt,3pt) -- (0pt,-3pt) node[below] {$a_1$};
+    \draw[shift={(3,0)},color=black] (0pt,3pt) -- (0pt,-3pt) node[below] {$b_1$};
+    \draw[shift={(0,0)},color=black] (0pt,3pt) -- (0pt,-3pt) node[below] {$C$};
+
+\end{tikzpicture}\\
+$C =$ mid point\\
+Consider the following cases:
+\begin{enumerate}
+    \item $x_n \in [a_1,c]$ for $\infty$ many values of $n$
+    \item $x_n \in [c,b_1]$ for $\infty$ many values of $n$
+\end{enumerate}
+(i) \& (ii) could both hold at the same time.\\
+If (i) holds then we set $a_2 = a_1$ and $b_2 = C$. If (i) fails, we have that (ii) must hold and we set $a_2 = C$ \& $b_2 = b_1$\\
+Proceed inductively to construct sequences $a_n,\, b_n$ s.t. $x_m \in [a_n,b_n]$ for infinitely many values of $m$.\\
+\[a_{n-1} \leq a_n \leq b_n \leq b_{n-1}\]
+\[b_n - a_n = \frac{b_{n-1} - a_{n-1}}{2} \tag{*}\]
+
+\begin{note}
+Called `bijection method' or ``lion hunting''
+\end{note}
+$a_n$ increasing sequence and bounded\\
+$b_n$ decreasing sequence and bounded\\
+By the Fundamental Axiom,
+\[a_n \to a \in [a_1,b_1]\]
+\[b_n \to b \in [a_1,b_1]\]
+Use (*), \[b-a = \frac{b-a}{2}\]
+\[\implies b - a\]
+Since $x_m \in [a_n,b_n]$ for $\infty$ many values of $m$, having chosen $n_j$ s.t. $x_{n_j} \in [a_j,b_j]$, there is $n_{j+1} > n_j$ s.t. $x_{j+1} \in [a_{j+1},b_{j+1}]$\\
+(I have an ``unlimited supply''!)\\
+Hence
+\[a_j \leq x_{n_j} \leq b_j\]
+\[\implies x_{n_j} \to a\]
+\end{proof}
+\end{theorem}
+\subsection{Cauchy Sequences}
+\begin{definition}
+$a_n \in \R$ is called a \emph{Cauchy sequence} if given $\varepsilon > 0$, $\exists N > 0$ s.t. $|a_n - a_m| < \varepsilon \ \forall n,m \geq N$
+\end{definition}
+\begin{lemma}
+A convergent sequence is a Cauchy sequence.
+\begin{proof}
+if $a_n \to a$, given $\varepsilon > 0$, $\exists N$ s.t. $\forall n \geq N,\, |a_n - a| < \varepsilon$\\
+Take $m,n \geq N,$
+\[|a_n - a_m| \leq |a_n - a| + |a_m - a| < 2\varepsilon\] 
+\end{proof}
+\end{lemma}
+\begin{theorem}
+Every Cauchy sequence is convergent.
+\begin{proof}
+\hfill{ }
+\begin{claim}
+If $a_n$ is Cauchy, then it is bounded.
+\end{claim}
+\begin{proof}
+Take $\varepsilon = 1, N = N(1)$, in the Cauchy property,
+then \[|a_n - a_m|<1,\, \forall n,m \geq N(1)\]
+\[|a_m| \leq |a_m - a_N| + |a_N| < 1 + |a_N| \, \forall m \geq N\]
+Let $K = \max\{1+ |a_N|,|a_n|,n = 1,2,\dots N-1\}$\\
+Then $|a_n| \leq K \, \forall n$ \tick\\
+By the Bolzano-Weierstrass theorem,
+\[a_{n_j} \to a\]
+\end{proof}
+\begin{claim}
+$a_n \to a$
+\end{claim}
+\begin{proof}
+Given $\varepsilon > 0, \, \exists j_0$ s.t. $\forall j \geq j_0$
+\[|a_{n_j} - a|<\varepsilon\]
+Also, $\exists N(\varepsilon)$ s.t. $|a_m - a_n| < \varepsilon \, \forall m,n \geq N(\varepsilon)$\\
+Take $j$ s.t. $n_j \geq \max\{N)\varepsilon),n_{j_0}\}$\\
+Then if $n \geq N(\varepsilon)$,
+\[|a_n - a| \leq |a_n - a_{n_j}| + a_{n_j} - a| < 2 \varepsilon\]
+\end{proof}
+\end{proof}
+\end{theorem}
+\begin{remark}
+Thus on $\R$ a sequence is convergent iff it is Cauchy.\\
+``Old-fashioned name'': ``the general principle of convergence''
+\end{remark}
+\begin{note}
+This is a useful property since we do not need to know what the limit is.
+\end{note}
+\subsection{Series}
+\begin{definition}
+$a_n \in \R, \C$. We say that $\sum\limits_{j=1}^\infty a_j$ \emph{converges to} $s$ if the sequence of partial sums
+\[S_N = \sum\limits_{j=1}^N a_j \to s\]
+as $N \to \infty$\\
+We write $\sum\limits_{j=1}^\infty a_j = s$\\
+If $S_N$ does not converge, we say that $\sum\limits_{j=1}^\infty a_j$ diverges.
+\end{definition}
+\begin{remark}
+Any problem on series can be turned into a problem on sequences just by considering the sequence of partial sums.
+\end{remark}
+
+\begin{lemma}
+\hfill{ }
+\begin{enumerate}
+    \item If $\sum\limits_{j=1}^\infty a_j$ \& $\sum\limits_{j=1}^\infty b_j$ converge, then so does $\sum\limits_{j=1}^\infty (\lambda a_j + \mu b_j)$ where $\la, \mu \in \C$
+    \item Suppose $\exists N$ s.t. $a_j = b_j\, \forall j \geq N$, then either $\sum\limits_{j=1}^\infty a_j$ \& $\sum\limits_{j=1}^\infty b_j$ both converge or both diverge (initial terms do not matter)
+\end{enumerate}
+\begin{proof}
+\hfill{ }
+\begin{enumerate}
+    \item \begin{align*}
+        S_N &= \sum\limits_{j=1}^N a(\lambda a_j + \mu b_j)\\
+        &= \la \sum\limits_{j=1}^N a_j + \mu \sum\limits_{j=1}^N b_j\\
+        &= \la c_N + \mu d_N
+    \end{align*}
+    $c_N \to c \& d_N \to d$ so by lemma 1.1 (version $\C$), $s_N \to \la c + \mu d$
+    \item $n \geq N$
+    \[s_n = \sum_1^n a_j = \sum_1^{N-1}a_j + \sum_N^n a_j\]
+    \[d_n = \sum_1^n b_j = \sum_1^{N-1}b_j + \sum_N^n b_j\]
+    \[\implies s_n - d_n = \sum_1^{N-1}a_j - \sum_1^{N-1}b_j\]
+    (as $a_j = b_j$ for $j \geq N$)\\
+    so $s_n$ converges iff $d_n$ does.
+\end{enumerate}
+\end{proof}
+\end{lemma}
+\subsubsection{The Geometric Series}
+\begin{claim}
+The geometric series converges iff $|x|<1$
+\begin{proof}
+Set $a_n = x^n-1\, n \geq 1$
+\[S_n = \sum_1^n a_g = 1 + x^2 + \dots + x^{n-1}\]
+Then \[s_n = \begin{cases} \frac{1-x^n}{1-x} &\text{ for } x \neq 1 \\ n&\text{ for } x = 1 \end{cases}\]
+\[xS_n = x + x^2 + \dots + x^n = S_n - 1 + x^n\]
+\[\implies S_n(1-x) = 1-x^n\]
+if $|x|<1,\, x^n \to 0$ and $S_n \to \frac{1}{1-x}$\\
+if $x>1, \, x^n \to \infty \, \&\, S_n \to \infty$\\
+if $x < -1, \,S_n$ does not converge (oscillates)\\
+if $x = -1,\, s = \begin{cases} 1 \text{ for } n \text{ odd}\\ 0 \text{ for } n \text{ even}\end{cases}$
+\end{proof}
+\end{claim}
+\begin{note}
+Say $S_n \to \infty$ if given $A$, $\exists N$ s.t. $S_n > A,\, \forall n \geq N$\\
+$S_n \to - \infty$, if given $A,\, \exists N$ s.t. $S_n < -A$ for all $n \geq N$\\
+If $S_n$ does not converge or tend to $\pm \infty$, we say that $S_n$ oscillates.
+\end{note}
+\begin{claim}
+$x^n \to 0$ if $|x| < 1$
+\begin{proof}
+Consider the case $0 < x < 1$ and we write $\frac{1}{x} = 1 \de,\,\de > 0$\\
+So: \[ x^n = \frac{1}{(1+\de)^n} \leq \frac{1}{1 + \de n}\to 0\]
+because $(1+\de )^n \geq 1 + n\de$ (from the binomial expansion)
+\end{proof}
+\end{claim}
+\begin{lemma}
+If $\s[j]{\infty}a_j$ converges, then: \[\lim\limits_{j \to \infty} a_j = 0\]
+\begin{proof}
+\[S_n = \sum_1^n a_j\]
+\[a_n = S_n - S_{n-1}\]
+So if $S_n \to a$ then $a_n \to 0$ (since $S_{n-1} \to a$ also)
+\end{proof}
+\end{lemma}
+\begin{remark}
+The converse of 1.7 is false! Shown by example below:
+\end{remark}
+\begin{claim}
+$\sum\limits_1^\infty \frac{1}{n}$ diverges (harmonic series)
+\begin{proof}
+\[S_n = \sum\limits_1^\infty \frac{1}{j}\]
+\[S_{2n} = S_n + \frac{1}{n+1} + \frac{1}{n+2} + \dots + \frac{1}{n + n} > S_n + \frac{1}{2}\]
+Since $\frac{1}{n+k} \geq \frac{1}{2n}$ for $k = 1,2,\dots,n$\\
+So if $S_n \to a$, then $S_{2n} \to a$ also and thus
+\[a \geq a + \frac{1}{2} \contradiction\]
+\end{proof}
+\end{claim}
+\subsubsection{Series of Positive/ Non-negative terms}
+\begin{theorem}[The Comparison Test]
+Suppose $0 \leq b_n \leq a_n \forall n$\\
+Then if $\sum\limits_1^\infty a_n$ converges, so does $\sum\limits_1^\infty b_n$
+\begin{proof}
+Let $S_N = \sum\limits_1^N a_n$\\
+$d_N = \sum\limits_1^N b_n$\\
+$b_n \leq a_n \implies d_N \leq S_N$\\
+But $S_N \to S$, then
+\[d_N \leq S_N \leq S \, \forall N\]
+and $d_N$ is an increasing sequence bounded above $\implies d_N$ converges $$
+\end{proof}
+\end{theorem}
+\begin{normal}
+An example using this below:
+\end{normal}
+\begin{claim}
+$\sum\limits_1^n \frac{1}{n^2}$ converges
+\begin{proof}
+\[\frac{1}{n^2} < \frac{1}{n(n-1)} = \frac{1}{n-1} - \frac{1}{n} = a_n\]
+\begin{align*}
+    \sum_2^N a_n &= 1 - \frac{1}{2} + \frac{1}{2} - \frac{1}{3} + \dots + \frac{1}{N-1} - \frac{1}{N}\\
+    &= 1 - \frac{1}{N} \to 1 \text{ as } N \to \infty
+\end{align*}
+By comparison, $\sum\limits_1^n \frac{1}{n^2}$ converges\\
+In fact, we get $\sum\limits_1^n \frac{1}{n^2} \leq 1 + 1 = 2$\\
+\end{proof}
+\begin{note}
+Converges to $\frac{\pi^2}{6}$ but we do not prove that here.
+\end{note}
+\end{claim}
+\begin{theorem}[Root test/ Cauchy's test for convergence]
+Assume $a_n \geq 0$ and $a_n^{1/n} \to a$ as $n \to \infty$. Then if $a < 1$, $\sum a_n$ converges; if $a > 1,\ \sum a_n$ diverges
+\begin{proof}
+If $a < 1$, choose $a< r < 1$.\\
+By definition of limit,\\
+$\exists N$ s.t. $\forall n \geq N$\\
+\[a_n^{1/n} < r \implies a_n < r^n\]
+But since $r < 1$, the geometric series $\sum r^n$ converges $\implies$ by Theorem 1.8, $\sum a_n$ converges.\\
+If $a > 1$, then for $n \geq N$,\\
+\[a^{1/n} > 1 \implies a_n > 1\]
+Thus $\sum a_n$ diverges (since $a_n$ does not tend to zero). $$
+\end{proof}
+\begin{remark}
+Nothing can be said if $a = 1$, see examples later.
+\end{remark}
+\end{theorem}
+\begin{theorem}[Ratio test/ D'Alanbert's test]
+Suppose $a_n > 0$ and $\frac{a_{n+1}}{a_n} \to l$\\
+If $l < 1, \, \sum a_n$ converges.\\
+If $l > 1,\, \sum a_n$ diverges
+\begin{proof}
+Suppose $l < 1$ and choose $r$ with $l < r < 1$\\
+Then $\exists N$ s.t. $\forall n \geq N,$
+\[\frac{a_{n+1}}{a_n} < r\]
+Therefore \[a_n = \frac{a_n}{a_{n-1}} \frac{a_{n-1}}{a_{n-2}} \dots \frac{a_{N+1}}{a_N}a_N < a_N r^{n-N}, \ n > N\]
+\[\implies a_n < K r^n\]
+with $K$ independent of $n$\\
+Since $\sum r^n$ converges, so does $\sum a_n$ by Theorem 1.8\\
+If $l > 1$, choose $1 < r < l$\\
+Then $\frac{a_{n+1}}{a_n} > r \, \forall n \geq N$\\
+And as before:
+\[a_n = \frac{a_n}{a_{n-1}} \frac{a_{n-1}}{a_{n-2}} \dots \frac{a_{N+1}}{a_N}a_N > a_N r^{n-N}, \ n > N\]
+\[a_Nr^{n-N} \to \infty\text{ as } n \to \infty\]
+So $\sum a_n$ diverges.
+\end{proof}
+\begin{remark}
+Nothing can be said if $a = 1$.
+\end{remark}
+\end{theorem}
+\begin{normal}
+Examples:
+Consider ratio test for series $\sum\limits_1^\infty \frac{n}{2^n}$
+\[\frac{n+1}{2^{n+1}} \frac{2^n}{n} = \frac{n+1}{2n}\to \frac{1}{2} < 1\]
+So we have convergence by the ratio test.\\
+\end{normal}
+
+\begin{normal}
+The following examples show limit 1 inconclusive:\\
+$\sum\limits_1^n \frac{1}{n}$ diverges,\\
+$\sum\limits_1^n \frac{1}{n^2}$ converges,\\
+Since $n^{1/n} \to 1$ as $n \to \infty$, root test is also inconclusive when limit $= 1$.\\
+To see this limit, write
+\[n^{1/n} = 1 + \de_n,\, \de > 0\]
+\[n = (1 + \de_n)^n > \frac{n(n-1)}{2}\de_n^2\]
+(binomial expansion)
+\[\implies \de_n^2 < \frac{2}{n-1} \implies \de_n \to 0\]
+\end{normal}
+\begin{normal}
+Another root test example:\\
+$\sum\limits_1^n \left [ \frac{n+1}{3n+5} \right ]^n$, root test gives:
+\[\frac{n+1}{3n+5} \to \frac{1}{3} < 1\]
+so converges.
+\end{normal}
+\begin{theorem}[Cauchy's Condensation Test]
+Let $a_n$ be a decreasing sequence of positive terms.\\
+Then $\S a_n$ converges iff\\
+$\S 2^n a_{2^n}$ converges.
+\begin{proof}
+First we observe that if $a_n$ is decreasing:
+\[a_{2^k} \underset{(*_1)}{\leq} a_{2^{k-1} + i} \underset{(*_2)}{\leq} a_{2^{k-1}},\, 1 \leq i \leq 2^{k-1} \ (\text{any } k \geq 1)\]
+Assume now that $\S a_n$ converges with sum let's say $A$\\
+Then,\\
+\[2^{n-1} a_{2^n} = \underbrace{a_{2^n} + \dots + a_{2^n}}_{2^{n-1} \text{ times}} \underset{(*_1)}{\leq} a_{2^{n-1} + 1} + a_{2^{n-1} + 2} + \dots + a_{2^n} = \sum\limits_{m=2^{n-1} + 1}^{2^n} a_m\]
+Thus
+\[\s[n]{N} 2^{n-1} a_{2^n} \leq \s[n]{N} \sum\limits_{m=2^{n-1} + 1}^{2^n} a_m\]
+\[\implies \s[n]{N} 2^n a_{2^n} \leq 2\sum_{m=2}^{2^N} a_m \leq 2(A-a_1)\]
+Thus $\s[n]{N} 2^n a_{2^n}$ increasing and bounded above, converges.\\
+Conversely, assume $\sum 2^n a_{2^n}$ converges.
+\[\sum_{m=2}^{2^N} a_m = \s[n]{N} \sum_{m=2^{n-1} + 1}^{2^N} a_m \leq \s[n]{N} 2^{n-1} a_{2^{n-1}} \leq B\]
+$\implies \s[m]{N} a_m$ is a bounded increasing sequence and thus it converges
+\end{proof}
+\end{theorem}
+\begin{normal}
+Example/ Application\\
+$\S \underbrace{\frac{1}{n^k}}_{a_n}$ converges iff $k > 1$ (for $k > 0$)\\
+Decreasing sequence of positive terms as:
+\[\frac{1}{(n+1)^k} < \frac{1}{n^k} \iff \left ( \frac{n}{n+1} \right )^k < 1 \iff \frac{n}{n+1} < 1\]
+\[2^n a_{2^n} = 2^n \left[ \frac{1}{2^n}\right]^k = 2^{n-nk} = ( \underbrace{2^{1-k}}_r )^n\]
+And $\sum r^n$ converges iff $r < 1$.\\
+$\implies \sum \frac{1}{n^k}$ converges iff $2^{1-k} < 1$ iff $k > 1$
+\end{normal}
+\subsubsection{Alternating Series}
+\begin{theorem}[The alternating series test]
+If $a_n$ decreases and tends to zero as $n \to \infty$, then the series $\S (-1)^{n+1} a_n$ converges\\
+
+\begin{proof}
+\[S_n = a_1 -a_2 + \dots + (-1)^{n+1} a_n\]
+\[S_{2n} = (a_1 - a_2) + (a_3 - a_4 ) + \dots + (a_{2^n - 1} - a_{2^n}) \geq S_{2n-2}\]
+\[S_{2n} = a_1 - (a_2 - a_3) - (a_4 - a_5) - \dots - (a_{2n-2} - a_{2n-1}) - a_{2n} \leq a_1\]
+So $S_{2n}$ is increasing and bounded above $\implies S_{2n} \to S$
+\[S_{2n+1} = S_{2n} + a_{2n+1} \to S + 0 = S\]
+This implies that $S_n$ converges to $S$ as:\\
+given $\varepsilon > 0,\, \exists N_1$ s.t. $\forall n \geq N_1,\, |S_{2n} - S| < \varepsilon$\\
+$\exists N_3$ s.t. $\forall n \geq N_2,\, |S_{2n+1} - S| < \varepsilon$\\
+Take $N = 2 \max\{N_1,N_2\}+1$\\
+Then if $k \geq N \implies$
+\[|S_k - S| < \varepsilon,\text{ so } S_k \to S\]
+\end{proof}
+\begin{note}
+e.g. $\S \frac{(-1)^{n+1}}{n}$ converges
+\end{note}
+\end{theorem}
+\subsubsection{Absolute Convergence}
+\begin{definition}
+Take $a_n \in \C$. If $\s[n]{\infty}|a_n|$ is convergent, then the series is \emph{absolutely convergent}
+\end{definition}
+\begin{note}
+Since $|a_N| \geq 0$ we can use th previous tests to check absolute convergence; this is particularly useful for $a_n \in \C$.
+\end{note}
+\begin{theorem}
+IF $\sigma a_n$ is absolutely convergent, then it is convergent.
+\begin{proof}
+Suppose first that $a_n \in \R$\\
+Let
+\[v_n = \begin{cases}a_n \text{ if }a_n \geq 0\\0 \text{ if }a_n < 0\end{cases}\]
+\[w_n = \begin{cases}0 \text{ if }a_n \geq 0\\-a_n \text{ if }a_n < 0\end{cases}\]
+\[v_n = \frac{|a_n| + a_n}{2}, \ w_n = \frac{|a_n| - a_n}{2}\]
+Clearly, $v_,w_n \geq 0$,
+\[a_n = v_n - w_n, \ |a_n| = v_n + w_n \geq v_n,w_n\]
+If $\sum |a_n|$ converges, by comparison, $\sum v_n, \sum  w_n$ also converge
+\[\implies \sum a_n\text{ converges}\]
+If $a_n\in\C$, write $a_n = x_n + iy_n$
+\[|x_n|,|y_n| \leq |a_n|\]
+$\implies \sum x_n, \sum y_n$ are absolutely convergent, $\implies \sum x_n, \sum y_n$ converge, since $a_n = x_n + iy_n \implies \sum a_n$ converges as well
+\end{proof}
+\end{theorem}
+\begin{example}
+\hfill{ }
+\begin{enumerate}
+    \item $\sum \frac{(-1)^n}{n}$ converges, but not absolutely convergent
+    \item \[\s[n]{\infty}\frac{z^n}{2^n}, \ \sum\left(\frac{|z|}{2}\right)^n \tag{*}\]
+    $\implies$ if $|z|<2$, convergence of (*) and hence absolute convergence.\\
+    if $|z|\geq 2$, then $|a_n| \geq 1$, so $a_n$ foes not tend to zero $\implies \sum \frac{z^n}{2^n}$ diverges
+\end{enumerate}
+\end{example}
+\begin{definition}
+If $\sum a_n$ converges but $\sum |a_n|$ does not, it is said sometimes that $\sum a_n$ is \emph{conditionally convergent}.
+\begin{note}
+``conditional'': because the sum to which the series converges is conditional on the order in which the elements of the sequence are taken.\\
+If rearranged, the sum is altered.
+\end{note}
+\end{definition}
+\begin{example}
+\[1-\frac{1}{2} + \frac{1}{3} - \frac{1}{4} + \dots\tag{\text{I}}\]
+\[1 + \frac{1}{3} - \frac{1}{2} + \frac{1}{5} + \frac{1}{7} -\frac{1}{4} + \frac{1}{9} + \frac{1}{11} - \frac{1}{6}+\dots\tag{\text{II}}\]
+Let $s)n$ be the partial sum fo (I) and $t_n$ be the sumpartial sum of (II)\\
+\[s_n \to s > 0\]
+\[t_n \to \frac{3s}{2}\]
+\end{example}
+\begin{definition}
+Let $\sigma$ be a bijection of the positive integersm
+\[a_n' = a_{\sigma(n)}\]
+is a \emph{rearrangement}.
+\end{definition}
+\begin{theorem}
+If $\sum_1^{\infty} a_n$ is absolutely convergent, every series consisting of the same terms in any order (i.e. a rearrangement) has the same sum.
+\begin{proof}
+We do the proof first for $a_n\in \R$.\\
+Let $\sum a_n'$ be a rearrangement of $\sum a_n$. Let \[S_n=\sum_1^n a_n\]
+\[t_n = \sum_1^n a_n'\]
+Suppose first that $a_n\geq 0$\\
+Given $n$, we can find $q$ s.t. $S_q$ contains every term of $t_n$\\
+Since $a_n \geq 0$,
+\[t_n \leq s_q \leq s\]
+As $n\to \infty$, $t_n \to t$ (increasing sequence bounded above) $\implies t \leq s$.
+By symmetry, $s\leq t \implies s = t$\\
+If $a_n$ has any sign $v_n$ and $w_n$ from Theorem 1.13
+\[v_n = \frac{|a_n| + a_n}{2}, \ w_n = \frac{|a_n| - a_n}{2}\]
+Consider, $\sum a_n',\sum v_n',\sum w_n'$\\
+Since $\sum|a_n|$ converges, both $\sum v_n, \sum w_n$ converge, now use the case $v_n, w_n \geq 0$ to deduce that
+\[\sum v_n' = \sum v_n, \sum w_n' = \sum w_n\]
+and the claim follows since $a_n = v_n - w_n$\\
+For the case $a_n \in \C$, write $a_n = x_n + iy_n$\\
+Since $|x_n|, |y_n| \leq |a_n|$
+$\implies \sum x_n, \sum y_n$ are absolutely convergent.\\
+Then by the previous case $\sum x_n' = \sum x_n$ and $\sum y_n' = \sum y_n$. Since $a_n' = x_n' + iy_n'$, $\sum a_n = \sum a_n'$
+\end{proof}
+\end{theorem}
+\section{Continuity}
+\begin{normal}
+$E\subseteq \C$ non-empty, $f:E\to \C$ any function, $a\in E$\\
+(includes case in which $f$ is real valued and $E$ is a subset of $\R$)
+\end{normal}
+\begin{definition}
+$f$ is \emph{continuous at a}$\in E$ if for every sequence $z_n\in E$ with $z_n\to a$, we have $f(z_n) \to f(a)$\\
+Equivalently below:
+\end{definition}
+
+\begin{definition}
+$f$ is \emph{continuous at a}$\in E$, if
+\[\text{given }\varepsilon > 0, \ \exists \delta \text{ s.t. if }|z-a| < f,\text{ then } |f(z)-f(a)|<\varepsilon\]
+($\varepsilon$-$f$ definition)
+\end{definition}
+\begin{claim}
+Two definitions equivalent
+\begin{proof}
+$\nth{2}\implies\nth{1}$:\\
+We know that given $\varepsilon > 0, \ \exists \delta > 0,$ s.t. $|z-a| < f, \ z\in E$, then $|f(z) - f(a)| < \varepsilon$.\\
+Let $z_n \to a$.\\
+Then $\exists n_0$ s.t. $\forall n \geq n_0$ we have
+\[|z_n - a| < \delta \implies |f(z_n) - f(a)| < \varepsilon\]
+$\nth{1} \implies \nth{2}$:\\
+Assume $f(z_n)\to f(a)$ whenever $z_n \to a \ (z_n\in E)$. Suppose $f$ is not continuous at $a$, according to \nth{2} definition.
+\[\exists \varepsilon > 0,\text{ s.t. }|z-a|<\delta \text{ and } |f(z) - f(a)|\geq \varepsilon\tag{*}\]
+Let $\delta = \frac{1}{n}$, from (*) we get $z_n$ s.t. $|z_n - a|<\frac{1}{n}$ and $|f(z_n) - f(a)|\geq \varepsilon$.\\
+Clearly $z_n\to a$, but $f(z_n)$ does not tend to $f(a)$ because $|f(z_n) - f(a)|\geq \varepsilon \contradiction$
+ \end{proof}
+\end{claim}
+\begin{prop}
+$a\in E, \ g,f:E\to \C$ continuous at $a$. Then so are the functions $f(z) + g(z), \ f(z)g(z) \ \& \ \la f(z)$ for any constant. In addition if $f(z)\neq 0 \ \forall z \in E$, then $\frac{1}{f}$ is continuous at $a$
+\begin{proof}
+Using \nth{1} definition, this is obvious using the analagous results for sequences (Lemma 1.1) e.g.
+\[f(z_n) + g(z_n) \to f(a) + g(a) \text{ if }z_n\to a, \ f(z_n)\to f(A) \ \& \ g(z_n) \to g(a) \text{ etc. }\]
+\end{proof}
+\end{prop}
+\begin{example}
+The function $f(z)=z$ is continuous, so using the proposition we derive that every polynomial is continuous at every point in $\C$
+\end{example}
+\begin{note}
+We say $f$ is continuous on $E$ if it is continuous at every $a\in E$.
+\end{note}
+\begin{remark}
+Still it is instructive to prove above prop directly from the $\varepsilon- \delta $ definition
+\end{remark}
+\begin{normal}
+Next we look at compositions
+\end{normal}
+\begin{theorem}
+Let $f:A\to \C $ and $g:B\to \C$ be two functions s.t. $f(A)\subseteq B$. Suppose $f$ is continuous at $a\in A$ and $g$ is continuous at $f(a)$. Then $g\circ f: A \to \C$ is continuous at $a$.\\
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+
+
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+%uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+
+%Shape: Ellipse [id:dp38744029410217484] 
+\draw   (263.83,115.42) .. controls (263.83,87.52) and (286.23,64.89) .. (313.87,64.89) .. controls (341.51,64.89) and (363.92,87.52) .. (363.92,115.42) .. controls (363.92,143.33) and (341.51,165.95) .. (313.87,165.95) .. controls (286.23,165.95) and (263.83,143.33) .. (263.83,115.42) -- cycle ;
+%Straight Lines [id:da5451898733246294] 
+\draw    (111.11,99.87) -- (251.56,99.87) ;
+\draw [shift={(253.56,99.87)}, rotate = 180] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+%Shape: Ellipse [id:dp15934791743603993] 
+\draw  [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ,fill opacity=1 ] (63.38,105.94) .. controls (63.38,104.8) and (64.19,103.87) .. (65.19,103.87) .. controls (66.19,103.87) and (67,104.8) .. (67,105.94) .. controls (67,107.08) and (66.19,108) .. (65.19,108) .. controls (64.19,108) and (63.38,107.08) .. (63.38,105.94) -- cycle ;
+%Straight Lines [id:da18848951955284865] 
+\draw    (380.6,103.76) -- (521.05,103.76) ;
+\draw [shift={(523.05,103.76)}, rotate = 180] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+%Straight Lines [id:da5245274819194323] 
+\draw    (91,211) -- (496.67,210) ;
+\draw [shift={(498.67,210)}, rotate = 539.86] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+%Shape: Ellipse [id:dp6242380694750305] 
+\draw  [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ,fill opacity=1 ] (559.38,102.94) .. controls (559.38,101.8) and (560.19,100.87) .. (561.19,100.87) .. controls (562.19,100.87) and (563,101.8) .. (563,102.94) .. controls (563,104.08) and (562.19,105) .. (561.19,105) .. controls (560.19,105) and (559.38,104.08) .. (559.38,102.94) -- cycle ;
+%Shape: Ellipse [id:dp5942978532859056] 
+\draw  [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ,fill opacity=1 ] (311.38,107.94) .. controls (311.38,106.8) and (312.19,105.87) .. (313.19,105.87) .. controls (314.19,105.87) and (315,106.8) .. (315,107.94) .. controls (315,109.08) and (314.19,110) .. (313.19,110) .. controls (312.19,110) and (311.38,109.08) .. (311.38,107.94) -- cycle ;
+%Shape: Polygon Curved [id:ds3869090014310188] 
+\draw   (47,101) .. controls (67,91) and (131.11,79.87) .. (111.11,99.87) .. controls (91.11,119.87) and (73.11,106.87) .. (93.11,136.87) .. controls (113.11,166.87) and (76,172) .. (56,142) .. controls (36,112) and (27,111) .. (47,101) -- cycle ;
+%Shape: Polygon Curved [id:ds6587782817881103] 
+\draw   (288,93) .. controls (269,77) and (314,83) .. (320,97) .. controls (326,111) and (329.23,116.75) .. (334.11,128.87) .. controls (339,141) and (314,149) .. (294,119) .. controls (274,89) and (307,109) .. (288,93) -- cycle ;
+
+% Text Node
+\draw (27.26,61.18) node [anchor=north west][inner sep=0.75pt]    {$A$};
+% Text Node
+\draw (320.71,35.27) node [anchor=north west][inner sep=0.75pt]    {$B$};
+% Text Node
+\draw (171.85,74.14) node [anchor=north west][inner sep=0.75pt]    {$f$};
+% Text Node
+\draw (59.92,111.89) node [anchor=north west][inner sep=0.75pt]    {$a$};
+% Text Node
+\draw (296.31,112.41) node [anchor=north west][inner sep=0.75pt]    {$f( a)$};
+% Text Node
+\draw (441.34,78.02) node [anchor=north west][inner sep=0.75pt]    {$g$};
+% Text Node
+\draw (538.9,116.41) node [anchor=north west][inner sep=0.75pt]    {$g( f( a))$};
+% Text Node
+\draw (296.73,180.37) node [anchor=north west][inner sep=0.75pt]    {$g\circ f$};
+% Text Node
+\draw (296.31,142.41) node [anchor=north west][inner sep=0.75pt]    {$f( A)$};
+
+
+\end{tikzpicture}\\
+\begin{proof}
+Take any sequence $z_n\to a$. By assummpion, $f(z_n) \to f(A)$. Set $w_n = f(z_n)$. then $w_n\in B$ and $w_n\to f(a)$; thus
+\[g(w_n) \to g(f(a))\]
+\end{proof}
+\end{theorem}
+\begin{example}
+\hfill{ }
+\begin{enumerate}
+    \item \[f:\R\to \R\]
+    \[f(x) = \begin{cases} \sin(\frac{1}{x}) \ &x \neq 0\\ 0 \ & x = 0\end{cases}\]
+
+($\sin(x)$ continuous proved later)\\
+if $x\neq 0$, then 2.1 and 2.2 imply that $f(x)$ is continuous at every $x\neq 0$.\\
+Discontinuous at 0:
+\[\frac{1}{x_n}= (2n+\frac{1}{2})\pi\]
+\[f(x_n) = 1, \ x_n\to 0\text{ but }f(0)=0\]
+\item \[f:\R\to \R\]
+\[f(x) = \begin{cases} x\sin(\frac{1}{x}) \ &x \neq 0\\ 0 \ & x = 0\end{cases}\]
+$f$ is continuous at 0:\\
+take $x_n\to 0$, then
+\[f(x_n)|\leq |x_n|\text{ because }|\sin(\frac{1}{x})|\leq 1\]
+\[\implies f(x_n) \to 0 = f(0)\]
+\item \[f(x) = \begin{cases}1 \ &x\in \Q\\0 & x\not \in \Q \end{cases}\]
+Discontinuous at every point:\\
+if $x\in \Q$, take a sequence $x_n\to x$ with $x_n\not \in \Q$, then 
+\[f(x_n)=0 \not \to f(x) = 1\]
+Similarly, if $x\not \in \Q$, take a sequence $x_n\to x$ with $x_n\in \Q$, then
+\[1 = f(x_n)\not \to f(x) = 0\]
+\end{enumerate}
+\end{example}
+\subsection{Limit of a function}
+\begin{normal}
+\[F:E\subseteq \C \to \C\]
+We wish to define what is meany by
+\[\lim_{z\to a}f(z)\]
+even when $a$ might not be in $E$ e.g.
+\[\text{limit at }z\to 0 \frac{\sin z}{z} \ E = \C\backslash \{0\} \ a = 0\]
+Also if \[E \cup [1,2]\] it does not make sense to speak about $z\in , \ z \neq 0, z \to 0$\\
+
+
+
+
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+%uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+
+%Straight Lines [id:da45722072848599393] 
+\draw [->]   (98,117) -- (606,117) ;
+%Straight Lines [id:da84471609715283] 
+\draw    (176,106) -- (176,127) ;
+
+% Text Node
+\draw (171,133.4) node [anchor=north west][inner sep=0.75pt]    {$0$};
+% Text Node
+\draw (472,133.4) node [anchor=north west][inner sep=0.75pt]    {$2$};
+% Text Node
+\draw (321,133.4) node [anchor=north west][inner sep=0.75pt]    {$1$};
+% Text Node
+\draw (323,110.4) node [anchor=north west][inner sep=0.75pt]    {$[$};
+% Text Node
+\draw (473,110.4) node [anchor=north west][inner sep=0.75pt]    {$]$};
+
+
+\end{tikzpicture}
+\end{normal}
+\begin{definition}
+$E\subseteq \C, \ a \in \C$. We say that $a$ is a \emph{limit point} of $E$ if for any $\delta > 0, \exists z\in E$ s.t.
+\[0<|z-a|<\delta\]
+\end{definition}
+\begin{remark}
+$a$ is a limit point iff $\exists$ a sequence $z_n\in E$ s.t. $z_n \to a$ and $z_n \neq a$ for all $n$. (can check  equivalence)
+\end{remark}
+\begin{definition}
+$f:E\subseteq \C\to\C$, let $a\in \C$ be a limit point of $E$.\\
+We say that
+\[\lim_{z\to a}f(z) = l\]
+($f$ tends to $l$ as $z$ tends to $a$)\\
+If given $\varepsilon > 0$, $\exists \delta > 0$ s.t. whenever $0<|z-a|<\delta$ and $z\in E$, thenn $|f(z) - l| < \varepsilon$\\
+Equivalently: $f(z_n) \to l$ for every sequence $z_n \in E$, $z_n\neq a$ and $z_n \to a$\\
+(proved exactly the same as previously with 2 definitions of continuity).
+\end{definition}
+\begin{remark}
+Straight from the definition, we have if $a\in E$ is a limit point, then \[\lim_{z\to a}f(z) = f(a) \iff f\text{ is continuous at }a\]
+If $a\in E$ is isolated (i.e. $a\in E$ and is not a limit point), continuity of $f$ at $a$ always holds.\\
+\end{remark}
+\begin{normal}
+The limit of functions has very similar properties to the limit of sequences
+\begin{enumerate}
+    \item it is unique $f(z)\to A, \ f(z) \to B$ as $z\to a$
+    \[|A-B|\leq |A-f(z)| + |f(z) - B|\]
+    if $z\in E$ is s.t. $0 < |z-a| < \delta_1,\delta_2$, then
+    \[|A-B|<2\varepsilon \implies A = B\]
+    (the existence of such $z$ is a consequence of the condition that $a$ is s alimit point of $E$)
+    \item $f(z) + g(z)\to A+B$ if $f(z) \to A, \ g(z) \to B$ as $z\to a$
+    \item $f(z)g(z) \to AB$
+    \item if $B\neq 0, \ \frac{f(z)}{g(z)}\to \frac{A}{B}$ 
+\end{enumerate}
+all proved in the same way as before.
+\end{normal}
+\subsection{The Intermediate Value Theorem}
+\begin{normal}
+
+
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+%uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+
+%Shape: Axis 2D [id:dp6148853872577664] 
+\draw  (50,249.5) -- (439,249.5)(88.9,38) -- (88.9,273) (432,244.5) -- (439,249.5) -- (432,254.5) (83.9,45) -- (88.9,38) -- (93.9,45)  ;
+%Curve Lines [id:da9625912027989694] 
+\draw    (197,170) .. controls (213,111) and (325,124) .. (335,71) ;
+%Straight Lines [id:da7596308432407466] 
+\draw    (197,238) -- (197,262) ;
+%Straight Lines [id:da10948801241256412] 
+\draw    (335,236) -- (335,260) ;
+%Straight Lines [id:da5816182538911085] 
+\draw[dotted]    (88,170) -- (197,170) ;
+%Straight Lines [id:da029478870535839086] 
+\draw[dotted]    (88,70) -- (335,71) ;
+
+% Text Node
+\draw (192,267.4) node [anchor=north west][inner sep=0.75pt]    {$a$};
+% Text Node
+\draw (330,271.4) node [anchor=north west][inner sep=0.75pt]    {$b$};
+% Text Node
+\draw (52,163.4) node [anchor=north west][inner sep=0.75pt]    {$f( a)$};
+% Text Node
+\draw (50,62.4) node [anchor=north west][inner sep=0.75pt]    {$f( b)$};
+% Text Node
+\draw (254,117) node [anchor=north west][inner sep=0.75pt]   [align=left] {x};
+
+
+\end{tikzpicture}
+\end{normal}
+\begin{theorem}
+$f:[a,b]\to \R$ continuous and $f(a) \neq f(b)$. Then $f$ takes every value which lies between $f(a)$ and $f(b)$.
+\begin{proof}
+Without loss of generality, we may suppose $f(a)< f(b)$.\\
+Take \[f(a) < \eta < f(b)\]
+Let
+\[S = \{x \in [a,b]: f(x) < \eta\}\]
+$a\in S$, so  $S\neq \emptyset$. Clearly $S$ is bounded above by $b$.\\
+Then there is a supremum $C$ where $C\leq b$. By definition of the supremum, given $n$, there exists $x_n \in S$ s.t.
+\[C-\frac{1}{n} < x_n \leq C\]
+So, $x_n \to C$. Since $x_n \in S$,
+\[f(x_n) < \eta\]
+By continuity of $f$, $f(x_n) \to f(C)$.\\
+Thus 
+\[f(C) \leq \eta\tag{*}\]
+Now observe that $C\neq b$, for if $C = b$, then $f(b) \leq \eta$ by (*) which is false.\\
+
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+%uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+
+%Straight Lines [id:da5808675142780437] 
+\draw    (182,158) -- (368,158) ;
+\node at (182,158) {$[$};
+\node at (182,170) {$a$};
+\node at (368,158) {$]$};
+\node at (368,170) {$b$};
+%Straight Lines [id:da5952875440943033] 
+\draw    (258,151) -- (258,165) ;
+\node at (258,172) {$C$};
+
+
+
+\end{tikzpicture}
+\\
+Then for $n$ large
+\[C + \frac{1}{n} \in [a,b]\text{ and }C + \frac{1}{n}\to C\]
+Again by continuity $f(C + \frac{1}{n}) \to f(C)$. But since
+\[C + \frac{1}{n} > C, \ f(C + \frac{1}{n}) \geq\eta\]
+Thus 
+\[f(C) \geq \eta\implies f(C) = \eta\]
+\end{proof}
+\end{theorem}
+\begin{remark}
+The theorem is very useful for finding zeros of fixed points.
+\end{remark}
+\begin{example}
+Existence if the $N$-th root of a positive real number
+\[f(x) = x^N, \ x \geq 0\]
+Let $y$ be a positive number.\\
+$f$ is continuous on $[0,1+y]$
+\[0 = f(0)<y<(1+y)^N = f(1+y)\]
+By the IVT, $\exists C \in (0,1+y)$ s.t. $f(C) = y$ i.e. $C^N = y$\\
+$C$ is a positive $N$-root of $y$.\\
+Uniqueness: if $d^N = y$ with $d > 0$ and $d\neq C$, wlog suppose $d< c$
+\[\implies d^N < c^N \implies y < y \contradiction\]
+\end{example}
+\subsection{Bounds of a Continuous Function}
+\begin{theorem}
+Let $f: [a,b]\to \R$ be continuous. Then there exists $K$ s.t.
+\[|f(x)|\leq K \ \forall x \in [a,b]\]
+\begin{proof}
+We argue by contradiction.\\
+Suppose statement is false. Then given any integer $n\geq 1$, there exists $x_n \in [a,b]$ s.t. $|f(x_n)| > n$.\\
+By Bolzano-Weierstrauss, $x_n$ has a convergent subsequence $x_{n_j}\to x$.\\
+Since $a\leq x_{n_j} \leq b$, we must have $x\in [a,b]$. By continuity of $f$,
+\[f(x_{n_j}) \to f(x)\]
+But \[|f(x_{n_j}| > n_j \to \infty \contradiction\]
+\end{proof}
+\end{theorem}
+\begin{theorem}
+$f:[a,b]\to \R$ continuous. Then $\exists x_1,x_2\in [a,b]$ s.t.
+\[f(x_1) \leq f(x) \leq f(x_2) \ \forall x\in [a,b]\]
+``A continuous function on a closed, bounded interval is bounded and attains its bounds.''
+\begin{proof}[\nth{1}]
+Let \[A = \{f(x):c \in [a,b]\} = f([a,b])\}\]
+By Theorem 2.4, $A$ is bounded. Since it is clearly non-empty, it has supremum, $M$.\\
+By definition of supremum, \[\text{given integer } n\geq 1, \ \exists x_n \in [a,b]\text{ s.t. }M - \frac{1}{n} < f(x_n) \leq M\tag{*}\]
+By Bolzano-Weierstrass,
+\[\exists x_{n_j} \to x\in [a,b]\]
+Since $f(x_{n_j} )\to M$ (because *) and $f$ is continuous, we deduce that $f(x) = M$ so $x_2 = x$. Reason similarly for the minimum $$
+\end{proof}
+\begin{proof}[\nth{2}]
+\[A = f([a,b]), \ M = \sup A\]
+as before. Suppose $\not \exists x_2$ s.t. $f(x_2) = M$.\\
+Let
+\[g(x) = \frac{1}{M-f(x)}, \ x\in [a,b]\]
+is defined and continuous. By Theorem 2.4 applied to $g$,
+\[\exists K > 0 \text{ s.t. }g(x)\leq K \ \forall x \in [a,b]\]
+This means that $f(x) \leq M - \frac{1}{K}$ on $[a,b]$. This is absurd since it contradicts that $M$ is the supremum
+\end{proof}
+\end{theorem}
+\begin{note}
+Theorems 2.4, 2.5 are false if the interval is not closed e.g.
+\[x\in (0,1], \ f(x) = \frac{1}{x}\]
+\end{note}
+\subsection{Inverse functions}
+\begin{definition}
+$f$ is \emph{increasing} for $x\in [a,b]$ if $f(x_1) \leq f(x_2)$ for all $x_1,x_2$ s.t. $a\leq x_1\leq x_2\leq b$\\
+If $f(x_1) < f(x_2)$ we say that $f$ is \emph{strictly increasing}.\\
+Similarly for \emph{decreasing} and \emph{strictly decreasing}.
+\end{definition}
+\begin{theorem}
+$f: [a,b]\to \R$ continuous and strictly increasing for $x \in [a,b]$.\\
+Let $c = f(a)$ and $d = f(b)$.\\
+Then $f:[a,b] \to [c,d]$ is bijective and the inverse
+\[g = f^{-1}:[c,d] \to [a,b]\]
+is continuous and strictly increasing
+\begin{remark}
+A similar theorem holds for strictly decreasing functions.
+\end{remark}
+\begin{proof}
+Take $c < k < d$.\\
+From the intermediate value theorem
+\[\exists h \text{ s.t. }f(h) = k\]
+
+
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+%uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+
+%Shape: Axis 2D [id:dp17871849809682305] 
+\draw  (182,190.2) -- (407,190.2)(204.5,21) -- (204.5,209) (400,185.2) -- (407,190.2) -- (400,195.2) (199.5,28) -- (204.5,21) -- (209.5,28)  ;
+%Curve Lines [id:da4017232980387129] 
+\draw    (261,104) .. controls (298,73) and (333,99) .. (373,69) ;
+%Straight Lines [id:da46796678684567117] 
+\draw[dotted]    (261,104) -- (260,193) ;
+%Straight Lines [id:da2988671106215548] 
+\draw[dotted]    (261,104) -- (203,104) ;
+%Straight Lines [id:da40610896084675785] 
+\draw[dotted]    (373,69) -- (203,69) ;
+%Straight Lines [id:da3099293212475842] 
+\draw[dotted]    (373,190) -- (373,69) ;
+%Straight Lines [id:da9818498757910352] 
+\draw[dotted]    (315,191) -- (315,85) ;
+%Straight Lines [id:da8975718056964592] 
+\draw[dotted]    (204,85) -- (315,85) ;
+
+% Text Node
+\draw (255,196.4) node [anchor=north west][inner sep=0.75pt]    {$a$};
+% Text Node
+\draw (366,196.4) node [anchor=north west][inner sep=0.75pt]    {$b$};
+% Text Node
+\draw (308,196.4) node [anchor=north west][inner sep=0.75pt]    {$h$};
+% Text Node
+\draw (185,96.4) node [anchor=north west][inner sep=0.75pt]    {$c$};
+% Text Node
+\draw (185,76.4) node [anchor=north west][inner sep=0.75pt]    {$k$};
+% Text Node
+\draw (185,60.4) node [anchor=north west][inner sep=0.75pt]    {$d$};
+
+
+\end{tikzpicture}\\
+Since $f$ is strictly increasing, $h$ is unique.\\
+Define $g(k) = h$ and this gives an inverse $g:[c,d] \to [a,b]$ for $f$.
+$g$ is strictly increaseing: $y_1 < y_2$
+\[y_1 = f(x_1), \ y_2 = f(x_2)\]
+If $x_2 \leq x_1$, since $f$ is increasing
+\[\implies f(x_2) \leq f(x_1) \implies y_2 \leq y_1 \contradiction\]
+$g$ is continuous:\\
+Given $\varepsilon > 0$, let
+\[k_1 = f(h - \varepsilon), \ k_1 = f(h + \varepsilon)\]
+$f$ strictly increasing $\implies$
+\[k_1 < k < k_2\]
+If $k_1 < y < k_2$ then
+\[h - \varepsilon < g(y) < h + \varepsilon\]
+
+
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+%uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+
+%Straight Lines [id:da3486489279353895] 
+\draw    (185,180) -- (451,179) (234.98,175.81) -- (235.01,183.81)(284.98,175.62) -- (285.01,183.62)(334.98,175.44) -- (335.01,183.44)(384.98,175.25) -- (385.01,183.25)(434.98,175.06) -- (435.01,183.06) ;
+
+% Text Node
+\draw (230,192.4) node [anchor=north west][inner sep=0.75pt]    {$c$};
+% Text Node
+\draw (433,191.4) node [anchor=north west][inner sep=0.75pt]    {$d$};
+% Text Node
+\draw (279,191.4) node [anchor=north west][inner sep=0.75pt]    {$k_{1}$};
+% Text Node
+\draw (331,191.4) node [anchor=north west][inner sep=0.75pt]    {$k$};
+% Text Node
+\draw (378,191.4) node [anchor=north west][inner sep=0.75pt]    {$k_{2}$};
+% Text Node
+\draw (380.19,157.18) node [anchor=north west][inner sep=0.75pt]  [font=\Huge,rotate=-90.66] [align=left] {\{};
+% Text Node
+\draw (360,145.4) node [anchor=north west][inner sep=0.75pt]    {$\delta $};
+
+
+\end{tikzpicture}\\
+\[\delta = \min\{k_2 - k, k - k_1\}\]
+(here $k \in (c,d)$ but a  similar argument establishes continuity at the end points (can check))
+\end{proof}
+\end{theorem}
+\section{Differentiability}
+\begin{normal}
+Let $f:E\subseteq \C \to \C$, ost of the time $E$ = interveral $\subseteq \R$
+\end{normal}
+\begin{definition}
+Let $x\in E$ be a point s.t. $\exists x_n \in E$ with $x_n \neq x$ and $x_n \to x$ (i.e. a limit point)\\
+$f$ is said to be \emph{differentiable} at $x$ with derviative $f'(x)$ if
+\[\lim_{y\to x} \frac{f(y)-f(x)}{y-x} = f'(x)\]
+If $f$ is differentiable at each $x\in E$, we say $f$ is differentiable on $E$\\
+\begin{note}
+Think of $E$ as an interval or disc in the case of $\C$
+\end{note}
+\end{definition}
+\begin{remark}
+\hfill{ }
+\begin{enumerate}
+    \item Other common notations:
+    \[\dv{y}{x}, \ \dv{f}{x}\]
+    \item \[f'(x) = \lim_{h\to 0}\frac{f(x+h) - f(x)}{h}\]
+    ($y=x+h$)
+    \item ``Another important look at the definition:''\\
+    Let
+    \[\varepsilon(h) = f(x+h) - f(x) - hf'(x)\]
+    then
+    \[\lim_{h\to 0}\frac{\varepsilon(h)}{h} = 0\]
+    \[f(x+h) = f(x) +\underbrace{ hf'(x)}_{\text{linear}} + \varepsilon(h)\]
+    linear as $h\mapsto hf'(x)$
+\end{enumerate}
+\end{remark}
+\begin{definition}[alternative]
+$f$ is \emph{differentiable} at $x$ if $\exists A$ and $\varepsilon$ s.t.
+\[f(x+h) = f(x) + hA + \varepsilon(h)\]
+where
+\[\lim_{h\to 0} \frac{\varepsilon(h)}{h} = 0\]
+If such an $A$ exists, then it is unique, since
+\[A = \lim_{h\to 0} \frac{f(x+h)-f(x)}{h}\]
+\end{definition}
+\begin{remark}
+\hfill{ }
+\begin{enumerate}
+\setcounter{enumi}{3}
+    \item If $f$ is differentiable at $x$ then $f$ is continuous at $x$ as since $\varepsilon(h) \to 0$,
+    \[f(x+h) \to f(x) \text{ as }h\to 0\]
+    \item Another alternative way of writing things:
+    \[f(x+h) = f(x) + hf'(x) + h\e_f(h)\]
+    with $\e_f(h) \to 0$ as $h\to 0$\\
+    or
+    \[f(x) = f(a) + (x-a)f'(a) + (x-a)\e_f(x)\]
+    with
+    \[\lim_{x\to a} \e_f(x) \to 0\]
+\end{enumerate}
+\end{remark}
+\begin{example}
+\[f(x) = |x|, \ f:\R \to \R\]
+
+
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+%uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+
+%Shape: Axis 2D [id:dp5139160088212542] 
+\draw  (70,150) -- (440,150)(251,30) -- (251,270) (433,145) -- (440,150) -- (433,155) (246,37) -- (251,30) -- (256,37)  ;
+%Straight Lines [id:da7577266990346554] 
+\draw    (251,150) -- (120,30) ;
+%Straight Lines [id:da439852315874677] 
+\draw    (251,150) -- (370,40) ;
+
+% Text Node
+\draw (237,152.4) node [anchor=north west][inner sep=0.75pt]    {$0$};
+% Text Node
+\draw (447,142.4) node [anchor=north west][inner sep=0.75pt]    {$x$};
+% Text Node
+\draw (247,2.4) node [anchor=north west][inner sep=0.75pt]    {$y$};
+
+
+\end{tikzpicture}\\
+\[f'(x) = 1 \text{ if } x > 0\]
+\[f'(x) -= 1 \text{ if } x < 0\]
+Take $h_n \to 0$ from above:
+\[\lim_{n\to \infty} \frac{f(h_n) - f(0)}{h_n} = \lim \frac{h_n}{h_n} = 1\]
+Take $h_n \to 0$ from below:
+\[\lim_{n\to \infty} \frac{f(h_n) - f(0)}{h_n} = \lim \frac{-h_n}{h_n} = -1\]
+So not differentiable at $x=0$
+\end{example}
+\subsection{Differentiation of Sums, Products, etc.}
+\begin{prop}
+\hfill{ }
+\begin{enumerate}
+    \item IF $f(x) = c \ \forall x\ in E$, then $f$ is differentiable with $f'(x) = 0$
+    \item $f,g$ differentiable at $x$, then so is $f+g$ and
+    \[(f+g)'(x) = f'(x) + g'(x)\]
+    \item $f,g$ differentiable at $x$, then so is $fg$ and
+    \[(fg)'(x) = f'(x)g(x) + f(g)g'(x)\]
+    \item If $f$ is differentiable at $x$ and $f(x)\neq 0 \ \forall x\in E$, then $1/f$ is differentiable at $x$ and
+    \[\left(\frac{1}{f}\right)'(x) = -\frac{f(x)}{[f(x)]^2}\]
+\end{enumerate}
+\begin{proof}
+\hfill{ }
+\begin{enumerate}
+    \item \[\lim_{h\to 0} \frac{C-C}{h} = 0\]
+    \item
+    \begin{align*}
+        \lim_{h\to 0} \frac{f(x+h) + g(x+h) - f(x) - g(x)}{h}&= \lim_{h\to 0} \frac{f(x+h) - f(x)}{h} + \lim_{h\to 0} \frac{g(x+h) - g(x)}{h} \\&= f'(x) + g'(x)
+    \end{align*}
+    \item \[\phi(x) = f(x)g(x)\]
+    \begin{align*}
+        \frac{\phi(x+h) - \phi(x)}{h} &= \frac{f(x+h)g(x+h) - f(x)g(x)}{h}\\
+        &= f(x+h)\left [ \frac{g(x+h) - g(x)}{h}\right] + g(x)\left [ \frac{f(x+h) - f(x)}{h}\right]\\
+        &= f'(x)g(x) + f(x)g'(x)
+    \end{align*}
+    using standard properties of limits and the fact that $f$ is continuous at $x$\item \[\phi(x) = 1/f(x)\]
+    \begin{align*}
+        \frac{\phi(x+h) - \phi(x)}{h} &= \frac{1/f(x+h) - 1/f(x)}{h}\\
+        &= \frac{f(x) - f(x+h)}{hf(x)f(x+h)} \to -\frac{f'(x)}{[f(x)]^2}
+    \end{align*}
+\end{enumerate} 
+\end{proof}
+\end{prop}
+\begin{remark}
+From (iii) and (iv) we immediately get
+\[\left(\frac{f(x)}{g(x)}\right)' = \frac{f'(x)g(x) - f(x)g'(x)}{[g(x)]^2}\]
+\end{remark}
+\begin{example}
+\[f(x) = x^n, \ n\in \Z, \ n > 0\]
+\[n = 1\]
+Clearly  $f(x) = x, \ f'(x) = 1$
+\begin{claim}
+\[f'(x) = nx^{n-1}\]
+\end{claim}
+\begin{proof}
+Induction:
+\[f(x) = x \cdot x^n\]
+\[f'(x) = x^n + x(nc^{n-1}) = (n+1)x^n\]
+Using prop 3.1
+\[f(x) = x^{-n} = \frac{1}{x^n} \ n\in \Z, \ n > 0\]
+If $x\neq0$, use prop 3.1 (iv) to derive
+\[f'(x) = -\frac{(x^n)'}{x^{2n}} = -\frac{nx^{n-1}}{x^{2n}} = -nx^{-n-1}\]
+So can differentiate polynomials, rational functions \tick
+\end{proof}
+\end{example}
+\begin{theorem}[Chain rule]
+\[f:U\to \C\]
+is s.t.
+\[f(x)\in V \ \forall x\in V\]
+If $f$ is differentiable at $a\in U$ and $g:V\to \C$ is differentiable at $f(a)$, then $g\circ f$ is differentiable at $a$ with
+\[(g\circ f)'(a) = f'(a)g'(f(a))\]
+\begin{proof}
+We know:
+\[f(x) = f(a) + (x-a)f'(a) + \e_f(x)(x-a)\]
+where \[\lim_{x\to a} \e_f(x) = 0\]
+\[g(y) = g(b) + (y-b)g'(b) + \e_g(y)(y-b)\]
+where
+\[\lim_{y\to b} \e_g(y) = 0\]
+\[b = f(a)\]
+Set
+\[\e_f(a) = 0 \ \& \ \e_g(b) = 0\]
+to make them continuous at $x=a$ and $y=b$.\\
+Now $y = f(x)$ gives
+\begin{align*}
+    g(f(x)) &= g(b) + (f(x) - b)g'(b) + \e_g(f(x))(f(x)-b)\\
+    &= g(f(a)) + [(x-a)f'(a) + \e_f(x)(x-a)][g'(b) + \e_g(f(x))]\\
+    &= g(f(a)) + (x-a)f'(a)g'(b) + (x-a)\underbrace{[\e_f(x)g'(b) + \e_g(f(x))(f'(a) + \e_f(x))]}_{\sigma(x)}
+\end{align*}
+\[\sigma(x) = \underbrace{\e_f(x)g'(b)}_0 + \underbrace{\e_g(f(x))}_{0\text{ as continuous comp.}}\underbrace{(f'(a) + \e_f(x))}_{f'(a)}\]
+so
+\[\lim_{x\to a}\sigma(x) = 0\]
+\end{proof}
+\end{theorem}
+\begin{example}
+\hfill{ }
+\begin{enumerate}
+    \item \[f(x) = \sin(x^2)\]
+\[(\sin x)' = \cos x\]
+(to be seen later)
+\[f'(x) = 2x\cos(x^2)\]
+\item \[f(x) = \begin{cases} \sin(\frac{1}{x}) \ &x \neq 0\\ 0 \ & x = 0\end{cases}\]
+(this is  continuous at every $x$)\\
+differentiable at every $x\neq 0$ by the previous theorem.\\
+At $x=0$,
+\[\frac{f(x) - f(0)}{x-0} = \frac{x\sin(1/x)}{x}= \sin(1/x)\]
+\[\implies \lim_{x\to 0} \frac{f(x)-f(0)}{x-0}\]
+does not exist $\implies f$ is not differentiable at $x=0$.
+\end{enumerate}
+\end{example}
+\subsection{The Mean Value Theorem}
+\begin{theorem}[Rolle's Theorem]
+\[f:[a,b]\to \R\]
+continuous on $[a,b]$ and differentiable on $[a,b)$. If $f(a) = f(b)$,
+\[\exists c\in (a,b)\text{ s.t. }f'(c)=0\]
+
+
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+
+
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+%uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+
+%Shape: Axis 2D [id:dp5139160088212542] 
+\draw  (70,240) -- (440,240)(109,30) -- (109,270) (433,235) -- (440,240) -- (433,245) (104,37) -- (109,30) -- (114,37)  ;
+%Straight Lines [id:da27557976206971313] 
+\draw[dashed]    (100,140) -- (320,140) ;
+%Curve Lines [id:da5390513122929355] 
+\draw    (170,140) .. controls (181,95) and (268,109) .. (270,140) ;
+%Straight Lines [id:da6974670195300308] 
+\draw[dashed]    (170,140) -- (170,240) ;
+%Straight Lines [id:da5102620295951221] 
+\draw [dashed]   (270,140) -- (270,240) ;
+%Straight Lines [id:da5776389200278502] 
+\draw [dashed]   (170,110) -- (270,110) ;
+%Straight Lines [id:da8685336823098051] 
+\draw [dashed]   (220,110) -- (220,240) ;
+
+% Text Node
+\draw (172,243.4) node [anchor=north ][inner sep=0.75pt]    {$a$};
+% Text Node
+\draw (272,243.4) node [anchor=north ][inner sep=0.75pt]    {$b$};
+% Text Node
+\draw (222,243.4) node [anchor=north ][inner sep=0.75pt]    {$c$};
+
+
+\end{tikzpicture}
+\begin{proof}
+Let \[M = \max_{x\in [a,b]} f(x), \ m = \min_{x\in [a,b]}f(x)\]
+Recall (Theorem 2.5) that these values are achieved.\\
+Let $k = f(a)$. If $M=m=k$, then $f$ is constant and $f'(c) = 0 \ \forall c\in (a,b)$\\
+Then $M>k$ or $m<k$. Suppose $M>k$\\
+By Theorem 2.5,
+\[\exists c \text{ s.t. } f(c) = M\]
+If $f'(c)>0$, then there are values to the right of $c$ for which $f(x) > f(c)$ since
+\[f(x+h) - f(x) = h(f'(c) + \varepsilon(h))>0\]
+Since $\varepsilon(h) \to 0$ as $h\to 0$ and thus
+\[f'(x) + \varepsilon(h) > 0\text{ if }h\text{ small}\]
+This contradicts that $M$ is the maximum.\\
+Similarly, if $f'(c)<0, \ \exists x$ to the left of $c$ for which $f(x) > f(c)$
+\[\implies f'(c) = 0\]
+\end{proof}
+\end{theorem}
+\begin{note}
+A simple tweak gives below:
+\end{note}
+\begin{theorem}[The Mean Value Theorem]
+Let $f:[a,b] \to \R$ be a continuous function which is differentiable on $(a,b)$. Then $\exists c\in (a,b)$ st.
+\[f(b) - f(a) = f'(c)(b-a)\]
+\begin{proof}
+Write \[\phi(x) = f(x) - kx\]
+Choose $k$ s.t. $\phi(a) = \phi(b)$
+\[\implies f(b) - bk = f(a) - bk \implies k = \frac{f(b)-f(a)}{b-a}\]
+By Rolle's theorem applied to $\phi$
+\[\exists c\in (a,b) \text{ s.t. }\phi'(c) = 0\]
+i.e.
+$f'(x) = k$
+\end{proof}
+\end{theorem}
+\begin{remark}
+We will often write
+\[f(a+h) = f(A) + hf'(a+\theta h)\]
+
+
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+%uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+
+%Straight Lines [id:da9759747666050753] 
+\draw    (150,170) -- (430,170) ;
+%Straight Lines [id:da7682474160851609] 
+\draw    (230,160) -- (230,180) ;
+
+% Text Node
+\draw (178,161) node [anchor=north west][inner sep=0.75pt]   [align=left] {[};
+% Text Node
+\draw (291,161) node [anchor=north west][inner sep=0.75pt]   [align=left] {]};
+% Text Node
+\draw (177,182.4) node [anchor=north west][inner sep=0.75pt]    {$a$};
+% Text Node
+\draw (281,182.4) node [anchor=north west][inner sep=0.75pt]    {$a+h$};
+% Text Node
+\draw (202,182.4) node [anchor=north west][inner sep=0.75pt]    {$a+h\theta $};
+
+
+\end{tikzpicture}\\
+\[\theta \in (0,1)\]
+\[(b = a + h\]
+\end{remark}
+\begin{warning}
+\[\theta = \theta(h)\]
+\end{warning}
+\begin{cor}
+$f: [a,b]\to \R $ continuous and differentiable on $(a,b)$. Then we have
+\begin{enumerate}
+    \item If $f'(x) > 0 \ \forall x \in (a,b)$, then $f$ is strictly increasing on $[a,b]$\\
+    (i.e. if $b \geq y > x \geq a$, then $f(y) > f(x)$)
+    \item If $f'(x)\geq 0 \ \forall x \in (a,b)$, then $f$ is increasing (i.e. if $b\geq y>x\geq a$, then $f(y)\geq f(x)$)
+    \item If $f'(x) = 0 \ \forall x \in (a,b)$, then $f$ is constant on $[a,b]$
+\end{enumerate}
+\begin{proof}
+\hfill{ }
+\begin{enumerate}
+    \item Have
+    \[f(y) - f(x) = f'(c)(y-x) \ c\in (x,y)\]
+    from MVT\\
+    so
+    \[f'(c)>0 \implies f(y) > f(x)\]
+    \item same: but $f'(c)\geq 0 \implies f(y) \geq f(x)$
+    \item Take $x\in [a,b]$. Then use MVT in $[a,x]$ to get $x\in (a,x)$ s.t.
+    \[f(x) - f(a) = f'(x)(x-a) = 0\]
+    \[\implies f(x) = f(a) \implies f\text{ is constant}\]
+\end{enumerate}
+\end{proof}
+\begin{remark}
+We have similar statements for decreasing functions
+\end{remark}
+\end{cor}
+\subsection{Inverse Rule/ Inverse Function Theorem}
+\begin{theorem}
+$f:[a,b]\to \R$ continuous and differentiable on $(a,b)$ with \[f'(x) > 0 \ \forall x\in (a,b)\]
+Let $f(a) = c$ and $f(b) = d$. Then the function $f:[a,b] \to [c,d]$ is bijective and $f^{-1}$ is differentiable on $(c,d)$ with
+\[(f^{-1})'(x) = \frac{1}{f'(f^{-1}(x))}\]
+\begin{proof}
+By corollary 3.5, $f$ is strictly increasing on $[a,b]$. By Theorem 2.6
+\[\exists g: [c,d] \to [a,b]\]
+which is continuous, strictly increasing inverse of $f$.\\
+RTP: $g$ is differentiable and $g'(y) = \frac{1}{f'(x)}$ where $y = f(x), \ x \in (a,b)$\\
+If $k\neq 0$ is given, let $h$ be given by
+\[y+k = f(x+h)\]
+That is, $g(y+k) = x+h, \ h\neq 0$\\
+Then
+\[\frac{g(y+k) - g(y)}{k} = \frac{ x+h -  x}{f(x+h) - f(x)}\to \frac{1}{f'(x)}\]
+Let $k\to 0$, then $h\to 0$ ($g$ is continuous)
+\[g'(y) = \lim_{h\to 0} \frac{g(y+k)-g(y)}{k} = \frac{1}{f'(x)}\]
+\end{proof}
+\end{theorem}
+\begin{example}
+\[g(x) = x^{1/q}\]
+($x>0, \ q$ positive integer)
+\[f(x) = x^q \ (g(f(x) = x)\]
+\[f'(x) = qx^{q-1}\]
+Since $f$ is differentiable, so if $g$ and by the inverse rule
+\[g'(x) = \frac{1}{q(x^{1/q})^{1-q}} = \frac{1}{q}x^{1/q - 1}\]
+Now if $g(x= x^{p/q}$ ($p$ integer, $q$ positive integer)\\
+We can find $g'(x)$ by using the chain rule
+\[g(x) = (x^p)^{1/q} = (x^{1/q})^p\]
+We find (can check)
+\[g'(x) = \frac{p}{q}x^{\frac{p}{q}-1}\]
+So, if $g(x) = x^r \ r\in \Q$\\
+then $g'(x) = rx^{r-1}$
+\end{example}
+\begin{remark}
+Suppose $f,g:[a,b]\to \R$ are continuous, differentiable on $(a,b)$ and $g(a)\neq g(b)$. Then the MVT gives us $s,t\in (a,b)$ s.t.
+\[\frac{f(b)-f(a)}{g(b)-g(a)} = \frac{(b-a)f'(s)}{(b-a)g'(t)} = \frac{f'(s)}{g'(t)}\]
+Cauchy showed that one can take $s=t$
+\end{remark}
+\begin{theorem}[Cauchy's mean value theorem]
+Let $f,g: [a,b] \to \R$ be continuous functions and differentiable on $(a,b)$.\\
+Then $\exists t\in (a,b)$ s.t.
+\[(f(b) - f(a))g'(t) = f'(t)(g(b)-g(a))\]
+\begin{proof}
+Let
+\[\phi(x) = \begin{vmatrix}1&1&1\\f(a)&f(x)&f(b)\\g(a)&g(x)&g(b)\end{vmatrix}\]
+$\phi$ iscontinuous on $[a,b]$ and differentiable on $(a,b)$\\
+Also,
+\[\phi(a) = \phi(b) = 0\]
+By Rolle's theorem, $\exists t \in (a,b)$ s.t. $\phi'(t) = 0$\\
+If we expand the determinant, we get the desired result:
+\begin{align*}
+    \phi'(x) &= f'(x)g(b) - g'(x)f(b) + f(a)g'(x)-g(a)f'(x)\\
+    &= f'(x)[g(b)-g(a)] + g'(x)[f(a) - f(b)]
+\end{align*}
+$\phi'(t) = 0$ gives the result
+\end{proof}
+\begin{note}
+We recover the MVT if we take $g(x) = x$
+\end{note}
+\end{theorem}
+\begin{example}
+``L'Hopital's rule''
+\[\lim_{x\to 0}\frac{e^x-1}{\sin x}  = \frac{e^x-e^0}{\sin x - \sin 0}= \frac{e^t}{\cos t}\]
+as $x\to 0$, $t\to 0$, so
+\[\frac{e^t}{\cos t} \to 1\]
+\end{example}
+\begin{note}
+We want to entend the MVT to include higher order derivatives
+\end{note}
+\begin{theorem}[Taylor's theorem with Lagrange's remainder]
+Suppose $f$ and its derivatives up to order $n-1$ are continuous in $[a,a+h]$ and $f^{(n)}$ exist for $x\in (a,a+h)$. Then
+\[f(a+h) = f(a) + hf'(a) + \frac{h^2}{2!}f''(a) + \dots + \frac{h^{n-1}f^{(n-1)}(a)}{(n-1)!} + \frac{h^n}{n!}f^{(n)}(a+\theta h)\]
+Where $\theta \in (0,1)$
+\begin{proof}
+Define for $0\leq t\leq h$
+\[\phi(t) = f(a+t) - f(a)-tf'(a)-\dots - \frac{t^{n-1}}{(n-1)!}f^{(n-1)}(a) - \frac{t^n}{n!}\beta\]
+where we choose $\beta$ s.t. $\phi(h)$ = 0\\
+(recall in the proof of the MVT we used $f(x) - kx$ and we picked $k$ s.t. we could use Rolle's theorem)\\
+We see that
+\[\phi(0) = \phi'(0) = \dots = \phi^{(n-1)}(0) = 0\]
+We use Rolle's Theorem $n$-times:
+\[\phi(0) = \phi(h) = 0 \implies\phi'(h_1) = 0 \ 0<h_1<h\]
+\[\phi'(0) = \phi(h_1) = 0 \implies\phi''(h_2) = 0 \ 0<h_2<h_1\]
+Finally
+\[\phi^{(n-1)}(0) = \phi^{(n-1)}(h_{n-1}) = 0 \implies \phi^{(n)}(h_n) = 0\]
+\[0<h_n<h_{n-1}<\dots<h\]
+So $h_n = \theta h$ for $\theta \in (0,1)$\\
+Now
+\[\phi^{(n)}(t) = f^{(n)}(a+t) - \beta\]
+\[\implies \beta = f^{(n)}(a+\theta h)\]
+Set $t=h$, $\phi(h) = 0$ and put this value of $\beta$ in the second line in the proof
+\end{proof}
+\begin{note}
+\hfill{ }
+\begin{enumerate}
+    \item For $n=1$,we get back the MVT, so this is a ``$n$-th order mean value theorem''
+    \item \[R_n = \frac{h^n}{n!}f^{(n)}(a+\theta h)\] is known as Lagrange's form of the remainder
+\end{enumerate}
+\end{note}
+\end{theorem}
+\begin{theorem}[Taylor's theorem with Cauchy's form of remainder]
+With the same hypothesis as in Theorem 3.8 and $a=0$ (to simplify), we have
+\[f(h) = f(0) + hf'(0) + \dots + \frac{h^{n-1}}{(n-1)!}f^{(n-1)}(0) + R_n\]
+where
+\[R_n = \frac{h^n(1-\theta)^{n-1}f^{(n)}(\theta h)}{(n-1)!}, \ \theta \in (0,1)\]
+\begin{proof}
+Define
+\[F(t) = f(h) - f(t) - (h-t)f'(t) - \dots - \frac{(h-t)^{n-1} f^{(n-1)}(t)}{(n-1)!}\]
+with $t\in [0,h]$
+\[F'(t) = -f'(t) + f'(t) - (h-t)f''(t) + (h-t)f''(t)-\frac{(h-t)^2}{2}f''(t) + \dots - \frac{(h-t)^{n-1}}{(n-1)!}f^{(n)}(t)\]
+\[\implies F'(t) = -\frac{(h-t)^{n-1}}{(n-1)!}f^{(n)}(t)\]
+Set
+\[\phi(t) = F(t) - \left[\frac{h-t}{h}\right]^pF(0)\]
+where $p\in \Z, 1\leq p\leq n$\\
+Then $\phi(0) = \phi(h) = 0$ so by Rolle's theorem,
+\[\exists \theta \in (0,1)\text{ s.t. }\phi'(\theta h) = 0\]
+But
+\[\phi'(\theta h) = F'(\theta h) + \frac{p(1-\theta)^{p-1}}{h}F(0)=0\]
+Thus
+\[0 = -h^{n-1}\frac{(1-\theta)^{n-1}}{(n-1)!}f^{(n)}(\theta h) + \frac{p(1-\theta)^{p-1}}{h}\left[f(h) - f(0)-hf'(0)-\dots-\frac{h^{n-1}}{(n-1)!}f^{(n-1)}(0)\right]\]
+\[\implies f(h) = f(0) + hf'(0) + \dots + \frac{h^{n-1}}{(n-1)!}f^{(n-1)}(0) + \frac{h^n(1-\theta)^{n-1}f^{(n)}(\theta h)}{(n-1)!\cdot p\cdot (1-\theta)^{p-1}}, \ \theta \in (0,1)\]
+If $p=n$ we get Lagrange's remainder\\
+If $p=1$ we get Cauchy's remainder
+\end{proof}
+\end{theorem}
+\begin{method}
+To get a Taylor Series for $f$, one needs to show that $R_n\to 0$ as $n\to \infty$. This requires ``estimates'' and ``effort''
+\end{method}
+\begin{remark}
+Theorems 3.8 and 3.9 work equally well in n interval $[a+h,a]$ with $h<0$
+\end{remark}
+\begin{example}[The Binomial Series]
+\[f(x) = (1+x)^r, \ r\in \Q\]
+\begin{claim}
+if $|x||<1$ then
+\[(1+x)^r = 1 + \binom{r}{1}x + \dots + \binom{r}{n}x^n + \dots\]
+where
+\[\binom{r}{n} = \frac{r(r-1)\dots(r-n+1)}{n!}\]
+\end{claim}
+\begin{proof}
+Clearly
+\[f^{(n)}(x) = r(r-1)\dots(r-n+1)(1+x)^{r-n}\]
+If $r\in \Z,\ r\geq 0$, then $f^{(r+1)} \equiv 0$, we have a polynomial of degree $r$.\\
+In general (Lagrange),
+\begin{align*}
+    R_n &= \frac{x^n}{n!}f^{(n)}(\theta x)\\
+    &=\binom{r}{n}\frac{x^n}{(1+\theta x)^{n-r}}
+\end{align*}
+$\theta\in(0,1)$ so have interval $[0,x]$
+Note: in principle, $\theta$ depends on both $x$ and $n$.\\
+For $0<x<1$
+\[(1+\theta x)^{n-r}>1\text{ for }n>r\]
+Now observe that the series
+\[\sum \binom{r}{n}x^n\]
+is absolutely convergent for $|x| < 1$.\\
+Indeed by the ratio test
+\[a_n = \binom{r}{n}x^n\]
+\begin{align}
+    \left|\frac{a_{n+1}}{a_n}\right| &= \left|\frac{r(r-1)\dots(r-n+1)(r-n)x^{n+1}}{(n+1)!}\right|\left|\frac{n!}{r(r-1)\dots(r-n+1)x^n}\right|\\
+    &= \left| \frac{(r-n)x}{n+1}\right|\to |x|\text{ as }n\to \infty
+\end{align}
+In particular, $a_n\to 0$, so $\binom{r}{n}x^n \to 0$for $|x|<1$\\
+Hence for $n>r$ and $0<x<1$, we have
+\[|R_n|\leq \left|\binom{r}{n}x^n\right| = |a_n|\to 0\text{ as }n\to \infty\]
+So the claim is proved in the range $0\leq x<1$\\
+\end{proof}
+\end{example}
+\begin{example}[continued]
+\hfill{ }
+\begin{proof}[continued]
+If $-1<x<0$ the argument above breaks down, but Cauchy's form of $R_n$ works:
+\begin{align*}
+    R_n &= \frac{(1-\theta)^{n-1}r(r-1)\dots(r-n+1)(1+\theta x)^{r-n}x^n}{(n-1)!}\\
+&= \underbrace{\frac{r(r-1)\dots(r-n+1)}{(n-1)!}}_{r\binom{r-1}{n-1}} \frac{(1-\theta)^{n-1}}{(1+\theta x)^{n-r}}x^r\\
+&=r\binom{r-1}{n-1}x^n(1+\theta x)^{r-1}\underbrace{\left(\frac{1-\theta}{1+\theta x}\right)^{n-1}}_{<1 \text{ for }x\in (-1,1)}
+\end{align*}
+\[|R_n|\leq\left|r\binom{r-1}{n-1}x^n\right|(1+\theta x)^{n-1}\]
+Can check:
+\[(1+\theta x)^{r-1} < \max\{1,(1+x)^{r-1}\}\]
+\[K_r = r\max\{1,(1+x)^{r-1}\}\]
+which is independent of $n$
+\[|R_n|\leq K_r\left|\binom{r-1}{n-1}x^n\right|\to 0\]
+because $a_n\to 0$. Thus $R_n\to 0$
+\end{proof}
+\end{example}
+\subsection{Remarks on Complex Differentiation}
+\begin{remark}
+Formally, we have regarding sums, products, chain rule etc. but it is much more restrictive than differentiability of functions on the real line.
+\end{remark}
+\begin{example}
+$f(z) = \Bar{z}$ is no-where $\C$-differentiable\\
+
+
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+%uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+
+%Straight Lines [id:da9804105261108953] 
+\draw    (160,170) -- (400,170) ;
+%Straight Lines [id:da3948616751480558] 
+\draw    (280,60) -- (280,280) ;
+%Straight Lines [id:da8287454431436203] 
+\draw  [dash pattern={on 4.5pt off 4.5pt}]  (300,110) -- (400,110) ;
+%Straight Lines [id:da7188723290461729] 
+\draw  [dash pattern={on 4.5pt off 4.5pt}]  (350,70) -- (350,150) ;
+%Shape: Circle [id:dp7680166142544331] 
+\draw  [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ,fill opacity=1 ] (345,110) .. controls (345,107.24) and (347.24,105) .. (350,105) .. controls (352.76,105) and (355,107.24) .. (355,110) .. controls (355,112.76) and (352.76,115) .. (350,115) .. controls (347.24,115) and (345,112.76) .. (345,110) -- cycle ;
+%Straight Lines [id:da9481400175268146] 
+\draw [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ]   (340,70) -- (360,70) ;
+%Straight Lines [id:da5201524716852459] 
+\draw [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ]   (340,80) -- (360,80) ;
+%Straight Lines [id:da8362763674040299] 
+\draw [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ]   (340,90) -- (360,90) ;
+%Straight Lines [id:da6486940488421522] 
+\draw [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ]   (340,100) -- (360,100) ;
+%Straight Lines [id:da5850858356847799] 
+\draw [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ]   (370,100) -- (370,120) ;
+%Straight Lines [id:da018468956902345735] 
+\draw [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ]   (380,100) -- (380,120) ;
+%Straight Lines [id:da3171078770488138] 
+\draw [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ]   (390,100) -- (390,120) ;
+%Straight Lines [id:da31035401098830473] 
+\draw [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ]   (360,100) -- (360,120) ;
+%Straight Lines [id:da47063736771800113] 
+\draw [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ]   (330,80) -- (330,97) ;
+\draw [shift={(330,100)}, rotate = 270] [fill={rgb, 255:red, 208; green, 2; blue, 27 }  ,fill opacity=1 ][line width=0.08]  [draw opacity=0] (8.93,-4.29) -- (0,0) -- (8.93,4.29) -- cycle    ;
+%Straight Lines [id:da2502231140412998] 
+\draw [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ]   (380,130) -- (363,130) ;
+\draw [shift={(360,130)}, rotate = 360] [fill={rgb, 255:red, 208; green, 2; blue, 27 }  ,fill opacity=1 ][line width=0.08]  [draw opacity=0] (8.93,-4.29) -- (0,0) -- (8.93,4.29) -- cycle    ;
+
+% Text Node
+\draw (348,113.4) node [anchor=north east] [inner sep=0.75pt]    {$z$};
+
+
+\end{tikzpicture}\\
+\[z_n = z+ \frac{1}{n}\to z\]
+\[\frac{f(z_n)-f(z)}{z_n-z} = \frac{\Bar{z} + \frac{1}{n} - \Bar{z}}{z+\frac{1}{n}-z} = 1\]
+\[z_n = z + \frac{i}{n}\to z\]
+\[\frac{f(z_n)-f(z)}{z_n-z} =\frac{\Bar{z} - \frac{i}{n} - \Bar{z}}{z+\frac{i}{n}-z} = -1\]
+so
+\[\lim_{w\to z}\frac{f(w) - f(z)}{w-z}\text{ does not exist}\]
+On the other hand $f(x,y) = (x,-y)$ is differentiable
+\[z = x + iy\]
+\begin{note}
+IB Complex Analysis explores the consequences of $\C$-differentiability
+\end{note}
+\end{example}
+\section{Power Series}
+\begin{normal}
+We want to look at $\sum_{n=0}^\infty a_nz^n$ with $z_n\in \C, \ a_n\in\C$.\\
+(The case $\sum_{n=0}^\infty a_n(z-z_0)^n, \ z_0$ fixed follows this one by translation)
+\end{normal}
+\begin{lemma}
+If $\sum_0^\infty a_nz_1^n$ converges and $|z|<|z_1|$, then $\sum_0^\infty a_nz^n$ converges absolutely
+\begin{proof}
+Since $\sum_0^\infty a_n z_1^n$ converges, $a_nz_1^n\to 0$. Thus $\exists K>0$ s.t. \[|a_nz_1^n|<K \ \forall n\]
+Then
+\[|a_nz^n|\leq K\left|\frac{z}{z_1}\right|^n\]
+Since the geometric series $\sum_0^\infty\left|\frac{z}{z_1}\right|^n$ converges, the lemma follows by comparison
+\end{proof}
+\end{lemma}
+\begin{normal}
+Using this lemma, we will prove that every power series has a radius of convergence
+\end{normal}
+\begin{theorem}
+A power series either
+\begin{enumerate}
+    \item Converges absolutely for all $z$, or
+    \item Converges absolutely for all $z$ inside a circle $|z| = R$ and diverges for all $z$ outside it, or
+    \item Converges for $R=0$ only
+\end{enumerate}
+
+
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+%uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+
+%Shape: Circle [id:dp16347718169876901] 
+\draw   (229.94,155.05) .. controls (229.89,119.12) and (258.96,89.9) .. (294.89,89.8) .. controls (330.81,89.69) and (359.98,118.73) .. (360.04,154.66) .. controls (360.1,190.59) and (331.02,219.81) .. (295.09,219.91) .. controls (259.17,220.02) and (230,190.98) .. (229.94,155.05) -- cycle ;
+%Shape: Circle [id:dp8959088693076032] 
+\draw  [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ,fill opacity=1 ] (289.99,154.85) .. controls (289.99,152.09) and (292.23,149.85) .. (294.99,149.85) .. controls (297.75,149.85) and (299.99,152.09) .. (299.99,154.85) .. controls (299.99,157.62) and (297.75,159.85) .. (294.99,159.85) .. controls (292.23,159.85) and (289.99,157.62) .. (289.99,154.85) -- cycle ;
+%Shape: Circle [id:dp11995718731133365] 
+\draw  [draw opacity=0][fill={rgb, 255:red, 208; green, 2; blue, 27 }  ,fill opacity=1 ] (250,145) .. controls (250,142.24) and (252.24,140) .. (255,140) .. controls (257.76,140) and (260,142.24) .. (260,145) .. controls (260,147.76) and (257.76,150) .. (255,150) .. controls (252.24,150) and (250,147.76) .. (250,145) -- cycle ;
+%Straight Lines [id:da11152355402211644] 
+\draw    (340,110) -- (300,150) ;
+%Shape: Circle [id:dp6053222509882736] 
+\draw  [draw opacity=0][fill={rgb, 255:red, 208; green, 2; blue, 27 }  ,fill opacity=1 ] (190,139) .. controls (190,136.24) and (192.24,134) .. (195,134) .. controls (197.76,134) and (200,136.24) .. (200,139) .. controls (200,141.76) and (197.76,144) .. (195,144) .. controls (192.24,144) and (190,141.76) .. (190,139) -- cycle ;
+
+% Text Node
+\draw (322,133.4) node [anchor=north west][inner sep=0.75pt]    {$R$};
+% Text Node
+\draw (257,148.4) node [anchor=north west][inner sep=0.75pt]    {$\textcolor[rgb]{0.82,0.01,0.11}{\tick }$};
+% Text Node
+\draw (197,142.4) node [anchor=north west][inner sep=0.75pt]  [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,opacity=1 ]  {$\text{x}$};
+% Text Node
+\draw (296.99,158.25) node [anchor=north west][inner sep=0.75pt]    {$O$};
+
+
+\end{tikzpicture}\\
+\begin{proof}
+Let $S = \{x\in\R, \ x\geq 0\text{ and }\sum a_nx^n\text{ converges}\}$
+Clearly $0\in S$. By Lemma 4.1, if $x_1\in S$, then $[0,x_1]\in S$.\\
+\\
+If $S = [0,\infty)$, we have case (i)\\
+\\
+If not, there exists a finite supremum $R \ (R\geq 0)$. For $S$, $R = \sup S < \infty$\\
+\\
+If $R>0$, we'll prove that if $|z_1|<R$, then $\sum a_n z_1^n$ converges absolutely:\\
+choose $R_0$ s.t.$|z_1<|R_0<R$. Then $R_0\in S$ and the series converges if $z=R_0$.\\ By Lemma 4.1, $\sum |a_nz_1^n|$ converges\\
+\\
+Finally we show that if $|z_2|>R\geq 0$, then the series does not converge for $z_2$. Now take $R_0$ s.t. $R<R_0<|z_2|$. If $\sum a_n z_2^n$ converes, by Lemma 4.1, $\sum a_nR_0^n$ would be convergent, which contradicts that $R = \sup S$.
+
+\end{proof}
+\end{theorem}
+\begin{definition}
+The circle $|z| = R$ is called the \emph{circle of convergence} and $R$ is the \emph{radius of convergence}.\\
+In (i), we agree that $R=\infty$ and in (iii) $R = 0$
+\end{definition}
+\begin{normal}
+The following lemma is useful for computing $R$
+\end{normal}
+\begin{lemma}
+If
+\[\left|\frac{a_{n+1}}{a_n}\right| \to l\]
+as $n\to \infty$, then $R = \frac{1}{l}$
+\begin{proof}
+By the ratio test, we have absolute convergence if
+\[\lim \left| \frac{a_{n+1}}{a_n}\frac{z^{n+1}}{z^n}\right| < 1\]
+so if $|z|<\frac{1}{l}$, we have absolute convergence. If $|z|>\frac{1}{l}$, the series diverges , again by the ratio test
+\end{proof}
+\end{lemma}
+\begin{remark}
+One can also use the root test to get $|a_n|^{1/n}\to l$ then $R = \frac{1}{l}$
+\end{remark}
+\begin{example}
+\hfill{ }
+\begin{enumerate}
+    \item $\sum_0^\infty \frac{z^n}{n!}$
+    \[\left| \frac{a_{n+1}}{a_n}\right| - \frac{n!}{(n+1)|} = \frac{1}{n+1}\to 0 = l\implies R = \infty\]
+    \item Geometric series, $\sum_0^\infty z^n$\\
+    $R = 1$. Note that at $|z|=1$, we have divergence\\
+    \item $\sum_0^\infty n!z^n$, has $R = 0$
+    \[\left|\frac{a_{n+1}}{a_n}\right| = \frac{(n+1)!z^{n+1}}{n!z^n} = (n+1)z \to \infty\]
+    Only converges at $z=0$
+    \item $\sum_1^\infty \frac{z^n}{n}$ has $R =1$, but diverges for $z=1$ (harmonic series)\\
+    What happens for $|z| = 1$ and $z\neq 1$?\\
+    Consider
+    \[\sum_1^\infty\frac{z^n}{n}(1-z)\]
+    \begin{align*}
+        S_N &= \sum_1^N\frac{z^n - z^{n+1}}{n} = \sum_1^N \frac{z^n}{n} - \sum_1^N\frac{z^{n+1}}{n}\\
+        &=\sum_1^N\frac{z^n}{n} - \sum_2^{N+!}\frac{z^n}{n-1}\\
+        &= z- \frac{z^{N+1}}{N} + \sum_2^{N+1}\frac{-z^n}{n(n-1)}
+    \end{align*}
+    if $|z| = 1$, $\frac{z^{N+1}}{N}\to 0$ as $N\to \infty$ and $\sum_2^\infty \frac{z^n}{n}$ converges for all $z$ with $|z| = 1, \ z\neq 1$
+    \item $\sum_1^\infty \frac{z^n}{n^2}, \ R= 1$ and converges for all $z$ with $|z| = 1$
+    \item $\sum_0^\infty nz^n, \ R=1$ but diverges for all $|z| = 1$
+\end{enumerate}
+\begin{remark}
+In principle, nothing can be said about $|z| = R$ and each case has to be discussed separately.\\
+Within the radius of convergence `life is great''. Power series will ``behave as if they were polynomials''
+\end{remark}
+\end{example}
+\begin{theorem}
+$f(z) = \sum_0^\infty a_nz^n$ has radius of convergence $R$. Then $f$ is differentiable at all points with $|z|<R$ with
+\[f'(z) = \s[n]\infty na_nz^{n-1}\]
+\begin{proof}
+By Lemma 4.5, we may define
+\[f'(z) = \sum_{n=1}^\infty na_nz^{n-1}, \ |z|<R\]
+RTP:
+\[\lim_{h\to 0}\frac{f(z+h)-f(z)-hf'(z)}{h}\to 0\]
+Let
+\begin{align*}
+    I &= \frac{f(z+h)-f(z)-hf'(z)}{h}\\
+    &=\frac{1}{h}\sum_0^\infty a_n\left((z+h)^n - z^n - hnz^{n-1}\right)\\
+    |I| &= \frac{1}{|h|}\left|\lim_{N\to \infty}\sum_0^Na_n\left((z+h)^n - z^n - hnz^{n-1}\right)\right|\\
+    &\leq \frac{1}{|h|}\sum_0^\infty |a_n||(z+h)^n - z^n - nhz^{n-1}|\\
+    &\leq \frac{1}{|h|} \sum_2^\infty |a_n|n(n-1)(|z|+|h|)^{n-2}|h|^2
+\end{align*}
+By Lemma 4.5, for $|h|$ small enough,
+\[\sum_2^\infty |a_n|n(n-1)(|z| + |h|)^{n-2}\]
+converges to $A(h)$, but $A(h)\leq A(r)$ for $h<r$ and $|z|+r<R$
+\[\implies |I|\leq |h|A(h)\leq |h|A(r)\text{ as }h\to 0\]
+\end{proof}
+\end{theorem}
+\begin{lemma}
+If $\sum_0^\infty a_nz^n$ has radius of convergence $R$, then so do
+\[\sum_1^\infty na_nz^{n-1} \text{ and }\sum_2^{\infty} n(n-1)a_nz^{n-2}\]
+\begin{proof}
+Take $z$ and $R_0$ s.t. $0<|z|<R_0<R$. Since $a_nR_0^n\to 0$,
+\[\exists K\text{ s.t. }|a_nR_0^n|\leq K \ \forall n\geq 0\]
+Thus
+\begin{align*}
+    |a_n nz^{n-1}| &= \frac{n}{|z|}|a_nR_0^n|\left|\frac{z}{R_0}\right|^n\\
+    &\leq \frac{Kn}{|z|}\left|\frac{z}{R_0}\right|^n
+\end{align*}
+But $\sum n|\frac{z}{R_0}|$ converges by the ratio test
+\[\frac{n+1}{n}\left|\frac{z}{R_0}\right|^{n+1}\left|\frac{R_0}{z}\right|^n = \frac{n+1}{n}\left|\frac{z}{R_0}\right| \to \left|\frac{z}{R_0}\right|<1\]
+if $|z|>R$, the series diverges since $|a_nz^n|$ is unbounded, hence so is $n|a_nz^n|$\\
+Same proof applies to
+\[\sum_2^\infty n(n-1)a_nz^{n-2} \\]
+\end{proof}
+\end{lemma}
+\begin{lemma}
+\hfill{ }
+\begin{enumerate}
+    \item \[\binom{n}{r} \leq n(n-1)\binom{n-2}{r-2}\]
+    for all $2\leq r\leq n$
+    \item \[|(z+h)^n - z^n - nhz^{n-1}|\leq n(n-1)(|z| + |h|)^{n-2}|h|^2 \ \forall z\in \C, \ h\in \C\]
+\end{enumerate}
+\begin{proof}
+\hfill{ }
+\begin{enumerate}
+    \item
+    \begin{align*}
+        \frac{\binom{n}{r}}{\binom{n-2}{r-2}} &=\frac{n!}{r!(n-r)!}\frac{(r-2)!(n-r)!}{(n-2)!}\\
+        &=\frac{n(n-1)}{r(r-1)}\\
+        &\leq n(n-1) \ \tick
+    \end{align*}
+    \item
+    \begin{align*}
+        (z+h)^n - z^n - nhz^{n-1} &=\sum_{r=2}^n\binom{n}{r}z^{n-r}h^r \text{ thus}\\
+        |(z+h)^n - z^n - nhz^{n-1}|&\leq \sum_{r=2}^n\binom{n}{r}|z|^{n-r}|h|^r\\
+        &\leq n(n-1)\underbrace{\left[\sum_{r=2}^n\binom{n-2}{r-2}|z|^{n-r}|h|^{r-2}\right]}_{(|z|+|h|)^{n-2}}|h|^2\\
+    \end{align*}
+\end{enumerate}
+\end{proof}
+\end{lemma}
+\subsection{The Standard Functions}
+\begin{normal}
+We have already seen that
+\[\sum_0^\infty\frac{z^n}{n!}\]
+has $R = \infty$\\
+Define $e:\C\to \C$
+\[e(z) = \sum_0^\infty \frac{z^n}{n!}\]
+Straight from Theorem $4.4$, $e$ is differentiable and $e'(z) = e(z)$
+\begin{claim}
+Observation: If $F:\C \to \C$ has $f'(z) = 0 \ \forall z\in \C$, then $F$ is constant
+\end{claim}
+\begin{proof}
+Consider \begin{align*}
+    g(t) &= F(tz)\\&= u(t) + iv(t)
+\end{align*}
+By the chain rule:
+\begin{align*}
+    g'(t) = F'(tz)z = 0 = u'(t) + iv'(t)
+\end{align*}
+\[\implies u' = v' = 0\]
+Now apply Corollary 3.5
+\end{proof}
+\end{normal}
+\begin{normal}
+Now let $a,b\in \C$ and consider
+\[F(z) = e(a+b-z)e(z)\]
+\[F'(z) = -e(a+b-z)e(z) + e(a+b-z)^z = 0\]
+\[\implies F \text{is constant}\]
+\[e(a+b-z)e(z) = F(0) = e(a+b)\]
+Set $z = b$
+\[e(a)e(b) e(a+b)\]
+\end{normal}
+\begin{normal}
+Now we restrict $e:\R\to \R$
+\end{normal}
+\begin{theorem}
+\hfill{ }
+\begin{enumerate}
+    \item $e:\R\to\R$ is everywhere differentiable and $e'(x) = e(x)$
+    \item $e(x+y) = e(x)e(y)$
+    \item $e(x)>0 \ \forall x\in \R$
+    \item $e$ is strictly increasing
+    \item $e(x)\to \infty$ as $x\to \infty$, and $e(x)\to 0$ as $x\to -\infty$
+    \item $e:\R \to (0,\infty)$ is a bijection
+\end{enumerate}
+\begin{proof}
+\hfill{ }
+\begin{enumerate}
+    \item done \tick
+    \item done \tick
+    \item Clearly $e(x)>0 \ \forall x\geq 0$ and $e(0)=1$\\
+    Also
+    \[e(0) = e(x-x) = e(x)e(-x)\]
+    \[\implies e(-x)>0 \ \forall x >0\]
+    \item \[e'(x) = e(x)>0\implies e\text{ is strictly increasing}\]
+    \item \[e(x) > 1+x\text{ for }x>0\]
+    So if $x\to \infty, \ e(x)\to \infty$\\
+    For $x>0$ since
+    \[e(-x) = \frac{1}{e(x)}, \ e(x) \to 0\text{ as }x\to -\infty\]
+    \item injectivity: follows right away from being strictly increasing\\
+    surjectivity: Take $y\in (0,\infty)$, since $e(x)\to \infty$ as $x\to \infty$ and $e(x)\to 0$ as $x\to -\infty$,
+    \[\exists a,b\in \R \text{ s.t. }e(a)<y<e(b)\]
+    By the intermediate value theorem, $\exists x\in \R$ s.t. $e(x)=y$
+\end{enumerate}
+\end{proof}
+\end{theorem}
+\begin{remark}
+\[e:(\R,+) \to ((0,\infty),\times)\]
+is a group isomorphism.
+\end{remark}
+\begin{normal}
+Since $e$ is a bijection, consider the inverse function
+\[l:(0,\infty)\to \R\]
+\end{normal}
+\begin{theorem}
+\hfill{ }
+\begin{enumerate}
+    \item \[l:(0,\infty)\to \R\] is a bijection and
+    \[l(e(x)) = x \ \forall x\in \R\]
+    and
+    \[e(l(t) = t \ \forall t\in (0,\infty)\]
+    \item $l$ is differentiable and
+    \[l'(t) = \frac{1}{t}\]
+    \item \[l(xy) = l(x) + l(y) \ \forall x,y\in (0,\infty)\]
+\end{enumerate}
+\begin{proof}
+\hfill{ }
+\begin{enumerate}
+    \item obvious from the definition
+    \item Inverse rule (Theorem 3.6):\\
+    $l$ is differenitable and
+    \[l'(t) = \frac{1}{e(l(t))} = \frac{1}{t}\]
+    \item from IA Groups, if $e$ is an isomorphism, so is its inverse
+\end{enumerate}
+\end{proof}
+\end{theorem}
+\begin{normal}
+Now define for $\alpha\in \R$ and $x>0$,
+\[r_{\alpha}(x) = e(\alpha l(x))\]
+\end{normal}
+\begin{theorem}
+Suppose $x,y>0$ and $\alpha,\beta \in \R$. Then:
+\begin{enumerate}
+    \item \[r_\alpha l(xy) = r_\alpha (x)r_\alpha(y)\]
+    \item \[r_{\alpha + \beta}(x) = r_\alpha(x)r_\beta(x)\]
+    \item \[r_\alpha (r_\beta (x)) = r_{\alpha\beta}(x)\]
+    \item \[r_1(x) = x, \ r_0(x) = 1\]
+\end{enumerate}
+\begin{proof}
+\hfill{ }
+\begin{enumerate}
+    \item \begin{align*}
+        r_\alpha(xy) &=e(\alpha l(xy))\\
+        &=e(\alpha l(x) + \alpha l(y))\\
+        &=e(\alpha l(x))e(\alpha l(y))\\
+        &=r_\alpha(x)r_\alpha(y)
+    \end{align*}
+    \item
+    \begin{align*}
+        r_{\alpha + \beta}(x) &= e((\alpha + \beta)l(x))\\
+        &=e(\alpha l(x))e(\beta l(x))\\
+        &=r_\alpha(x) r_\beta (x) \ \tick
+    \end{align*}
+    \item
+    \begin{align*}
+        r_{\alpha\beta}(x) &= r_\alpha(e(\beta l(x)))\\
+        &= e(\alpha le(\beta l(x)))\\
+        &= e(\alpha \beta l(x))\\
+        r_{\alpha\beta}(x) \ \tick
+    \end{align*}
+    \item \[r_1(x) = e(l(x)) = x \ \tick\]
+    \[r_0(x) = e(0) = 1 \ \tick\\]
+\end{enumerate}
+\end{proof}
+\end{theorem}
+\begin{eqn}
+    \[r_n(x) = r_{1 + \dots + 1}(x) = x\cdot x \dots x = x^n\]
+    \[r_1(x)r_{-1}(x) = r_0(x) = 1\]
+    So
+    \[r_{-1}(x) = \frac{1}{x}\]
+    \[\implies r_{-n}(x) = \frac{1}{x^n}\]
+    \[(r_{1/q}(x))^q = r_1(x) = x \implies r_{1/q}(x) = x^{1/q}\]
+    \[r_{p/q} = (r_{1/q}(x))^p = x^{p/q}\]
+    Thus $r_\alpha(x)$ agrees with $\alpha\in \Q$ as previously defined.
+\end{eqn}
+\begin{normal}
+Now we do a ``baptism ceremony''
+\[\exp(x) = e(x) \ x\in \R\]
+\[\log x = l(x) \ x\in (0,\infty)\]
+\[x^\alpha = r_\alpha(x) \ \alpha \in \R, \ x\in (0,\infty)\]
+\[e(x) = e(x\log e) = r_x(e) = e^x\]
+where
+\[e = \sum_0^\infty \frac{1}{n!} = e(1)\] so $\exp(x)$ is also a power, which we may as well denote $e^x$\\
+Finally, we compute $(x^\alpha)'$\\
+\[(x^\alpha)' = \left(e^{\alpha\log x}\right)' = e^{\alpha\log x}\frac{\alpha}{x} = \alpha x^{\alpha - 1} \ \tick\]
+\end{normal}
+\begin{note}
+If we let $f(x) = a^x$, $a>0$ then
+\[f'(x) = \left(e^{x\log a}\right)' = e^{x\log a}\log a = a^x \log a\]
+\end{note}
+\begin{remark}
+``Exponentials beat polynomials''
+\[\lim_{x\to \infty} \frac{e^x}{x^k} =\infty \text{ for }k>0\]
+\[e^x = \sum_0^{\infty}\frac{x^j}{j!} > \frac{x^n}{n!} \text{ for }x>0\]
+and pick $n>k$ so
+\[\frac{e^x}{x^k} > \frac{x^{n-k}}{n!}\to \infty\text{ as }x\to \infty\]
+\end{remark}
+\subsection{Trigonometric Functions}
+\begin{definition}
+\[\cos z = 1-\frac{z^2}{2!}+\frac{z^4}{4!} - \dots = \sum_0^{\infty}\frac{(-1)^kz^{2k}}{(2k)!}\]
+\[\sin z = z-\frac{z^3}{3!} + \frac{z^5}{5!}-\dots = \sum_0^{\infty} \frac{(-10)^kz^{2k+1}}{(2k+1)!}\]
+Both power series have infinite radius of convergence and by theorem 4.4., they are differentiable and
+\[(\sin z)' = \cos z\]
+\[(\cos z)' = -\sin z\]
+\end{definition}
+\begin{notation}
+Write
+\[e^x = e(z)\]
+\end{notation}
+\begin{eqn}
+\[e^{iz} = \sum_0^{\infty} \frac{(-z)^n}{n!} = \sum_0^{\infty}\frac{(iz)^{2k}}{(2k)!} + \sum_0^{\infty}\frac{(iz)^{2k+1}}{(2k+1)!}\]
+\[(iz)^{2k} = (-1)^kz^{2k}, \ (iz) = i(-1)^kz^{2k+1}\]
+\[\implies e^{iz} = \cos z + i\sin z\]
+Similarly,
+\[e^{-iz} = \cos z - i\sin z\]
+which gives:
+\[\cos z = \frac{1}{2}\left(e^{iz} + e^{-iz}\right)\]
+\[\sin z = \frac{1}{2i}\left(e^{iz} - e^{-iz}\right)\]
+From this we get many trigonometric identities:
+\[\cos z = \cos(-z), \ \sin(z) = -\sin z\]
+\[\cos(0) = 1,\ \sin(0) = 0\]
+\begin{enumerate}
+    \item \[\sin(z+w) = \sin z \cos w + \cos z \sin w\]
+    \item \[\cos(z+w) = \cos z \cos w - \sin z\sin w \ z,w\in \C\]
+\end{enumerate}
+Follows from
+\[e^{a+b} = e^a\cdot e^b\]
+to prove (ii) write:
+\begin{align*}
+    \cos(z+w) = \frac{1}{2}\left\{e^{i(z+w)} + e^{-i(z+w)}\right\}\\
+    &=\frac{1}{2}\left\{e^{iz}\cdot e^{iw} + e^{-iz}\cdot e^{-iw}\right\}
+\end{align*}
+\begin{align*}
+    \cos z\cos w - \sin z\sin w &= \frac{1}{4}(e^{iz} + e^{-iz})(e^{iw} + e^{-iw})+ \frac{1}{4}(e^{iz} - e^{-iz})(e^{iw} - e^{-iw})\tag{*}
+\end{align*}
+operate to get same result
+use (*) to get
+\[\sin^2z + \cos^2 z = 1\ \forall z\in \C\]
+Now if $x\in \R$, then $\sin x,\cos x \in \R$\\
+and (*) gives
+\[|\sin x|, \ |\cos x| \leq 1\]
+\end{eqn}
+\begin{warning}
+\[\cos(iy) = \frac{1}{2}(e^{-y} + e^y) \ (y\in \R)\]
+as $y\to \infty, \ \cos(iy)\to \infty$
+\end{warning}
+\subsubsection{Periodicity of the Trigonometric Functions}
+\begin{prop}
+There is a smallest positive number $\omega$ (where $\sqrt{2}<\frac{\omega}{2}<\sqrt{3}$ s.t.
+\[\cos\left(\frac{\omega}{2}\right) = 0\]
+\begin{proof}
+If $0<x<2$
+\[\sin x = \left(x - \frac{x^3}{3!}\right) + \left(\frac{x^5}{5!} - \frac{x^7}{7!}\right) + \dots > 0\]
+(if $0<x<2$ then $\frac{x^{2n-1}}{(2n-1)!}> \frac{x^{2n+1}}{(2n+1)}$)\\
+So for $0<x<2$,
+\[(\cos x)' = -\sin x < 0\]
+$\implies \cos x$ is strictly decreasing\\
+\begin{tikzpicture}
+    \begin{axis}[
+     clip=false,
+     xmin=0,xmax=2,
+     ymin=-1.5,ymax=1.5,
+     axis lines=left,
+     axis x line=middle,
+     axis y line=left,
+     xtick={0,1,2},
+     xticklabels={$0$, $1$,$2$}
+     ]
+      \addplot[domain=0:2,samples=200,blue]{cos(deg(x))}node[left,pos=0.9]{$\cos x$};
+    \end{axis}
+  \end{tikzpicture}\\
+We'll show that $\cos \sqrt{2} > 0$ and $\cos \sqrt{3} < 0$. Then by the intermediate value theorem the existence of $\omega$ follows.
+\[\cos \sqrt{2} = \left(\frac{(\sqrt{2})^4}{4!}-\frac{(\sqrt{2})^6}{6!}\right) + \underset{>0}{( \ )} + \underset{>0}{( \ )} + \dots > 0\]
+\[\cos x = 1 - \frac{x^2}{2!} + \frac{x^4}{4!}- \underbrace{\left(\frac{x^6}{6!}-\frac{x^8}{8!}\right)}_{>0} - \dots\]
+$x = \sqrt{3}$:
+\[1 - \frac{3}{2} + \frac{9}{4\times 3\times 2} = 1 - \frac{3}{2} + \frac{3}{8} = -\frac{1}{8} < 0\]
+\[\implies\cos \sqrt{3} < 0 \\]
+\end{proof}
+\end{prop}
+\begin{cor}
+\[\sin \frac{\omega}{2} - 1\]
+\begin{proof}
+\[\sin^2 \frac{\omega}{2} + \cos\frac{\omega}{2} = 1\]
+and
+\[\sin \frac{\omega}{2} > 0 \\]
+\end{proof}
+\end{cor}
+\begin{notation}
+Now define $\pi = \omega$
+\end{notation}
+\begin{theorem}
+\hfill{ }
+\begin{enumerate}
+    \item \[\sin(z+\frac{\pi}{2}) = \cos z,\ \cos(z+\frac{\pi}{2}) - \sin z\]
+    \item \[\sin(z+\pi) = -\sin z, \ \cos(z+\pi) = -\cos z\]
+    \item \[\sin(z+2\pi) = \sin z, \ \cos(z+2\pi)\cos z\]
+\end{enumerate}
+\begin{proof}
+immediate from addition formulas and
+\[\cos \frac{\pi}{2}, \ \sin \frac{\pi}{2} = 1 \\]
+\end{proof}
+\end{theorem}
+\begin{note}
+This implies
+\begin{align*}
+    e^{iz+2\pi i} = \cos(z+2\pi) + i\sin(z+2\pi)\\
+    &=\cos(z)  i\sin z\\
+    &=e^{iz}
+\end{align*}
+\[\implies e^{z} \text{ is periodic with period }2\pi i \]
+\end{note}
+\begin{remark}
+We can ``relate the trig functions with geometry''.\\
+Given two vectors $x,y\in \R^2$, define
+$x\cdot y$ as in vector and matrices
+\[x\cdot y = x_1y_1 + x_2y_2, \ x = (x_1,x_2)\text{ and }y = (y_1,y_2)\]
+By Cauchy-Swarz:
+\[|x\cdot y|\leq \norm{x}\norm{y}\]
+Thus if $x\neq 0,\ y\neq 0$
+\[-1\leq\frac{x\cdot y}{\norm{x}\norm{y}}\leq 1\]
+So we define the angle between $x$ and $y$ as the unique $\theta \in [0,\pi]$ s.t.
+\[\cos\theta = \frac{x\cdot y}{\norm{x}\norm{y}}\]
+
+
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+%uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+
+%Shape: Circle [id:dp5396233168046318] 
+\draw   (229.94,155.05) .. controls (229.89,119.12) and (258.96,89.9) .. (294.89,89.8) .. controls (330.81,89.69) and (359.98,118.73) .. (360.04,154.66) .. controls (360.1,190.59) and (331.02,219.81) .. (295.09,219.91) .. controls (259.17,220.02) and (230,190.98) .. (229.94,155.05) -- cycle ;
+%Shape: Circle [id:dp5571370882794309] 
+\draw  [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ,fill opacity=1 ] (289.99,154.85) .. controls (289.99,152.09) and (292.23,149.85) .. (294.99,149.85) .. controls (297.75,149.85) and (299.99,152.09) .. (299.99,154.85) .. controls (299.99,157.62) and (297.75,159.85) .. (294.99,159.85) .. controls (292.23,159.85) and (289.99,157.62) .. (289.99,154.85) -- cycle ;
+%Straight Lines [id:da7006084560422694] 
+\draw    (340,110) -- (300,150) ;
+%Straight Lines [id:da5380076782265517] 
+\draw    (174.99,154.85) -- (411.99,154.85) ;
+\draw [shift={(414.99,154.85)}, rotate = 180] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (8.93,-4.29) -- (0,0) -- (8.93,4.29) -- cycle    ;
+%Straight Lines [id:da3235849023425452] 
+\draw    (294.99,47.85) -- (294.99,264.85) ;
+\draw [shift={(294.99,44.85)}, rotate = 90] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (8.93,-4.29) -- (0,0) -- (8.93,4.29) -- cycle    ;
+%Shape: Circle [id:dp46433792831539256] 
+\draw  [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ,fill opacity=1 ] (335,110) .. controls (335,107.24) and (337.24,105) .. (340,105) .. controls (342.76,105) and (345,107.24) .. (345,110) .. controls (345,112.76) and (342.76,115) .. (340,115) .. controls (337.24,115) and (335,112.76) .. (335,110) -- cycle ;
+%Shape: Arc [id:dp7924289595632943] 
+\draw  [draw opacity=0] (315.57,133.03) .. controls (321.37,138.5) and (324.99,146.25) .. (324.99,154.85) .. controls (324.99,154.89) and (324.99,154.92) .. (324.99,154.95) -- (294.99,154.85) -- cycle ; \draw   (315.57,133.03) .. controls (321.37,138.5) and (324.99,146.25) .. (324.99,154.85) .. controls (324.99,154.89) and (324.99,154.92) .. (324.99,154.95) ;
+%Straight Lines [id:da4707115471457062] 
+\draw  [dash pattern={on 4.5pt off 4.5pt}]  (340,110) -- (339.99,154.85) ;
+%Straight Lines [id:da961221197583157] 
+\draw    (110,120) -- (217.11,90.79) ;
+\draw [shift={(220,90)}, rotate = 524.74] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (8.93,-4.29) -- (0,0) -- (8.93,4.29) -- cycle    ;
+%Straight Lines [id:da48344262831431783] 
+\draw    (158.26,52.44) -- (110,120) ;
+\draw [shift={(160,50)}, rotate = 125.54] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (8.93,-4.29) -- (0,0) -- (8.93,4.29) -- cycle    ;
+%Shape: Arc [id:dp6086392505676208] 
+\draw  [draw opacity=0] (126.64,95.04) .. controls (132.48,98.94) and (136.88,104.84) .. (138.85,111.75) -- (110,120) -- cycle ; \draw   (126.64,95.04) .. controls (132.48,98.94) and (136.88,104.84) .. (138.85,111.75) ;
+
+% Text Node
+\draw (318,126.6) node [anchor=south east] [inner sep=0.75pt]    {$1$};
+% Text Node
+\draw (296.99,158.25) node [anchor=north west][inner sep=0.75pt]    {$O$};
+% Text Node
+\draw (342,106.6) node [anchor=south west] [inner sep=0.75pt]    {$x$};
+% Text Node
+\draw (327,140) node [anchor=west] [inner sep=0.75pt]    {$\theta $};
+% Text Node
+\draw (326.99,158.35) node [anchor=north west][inner sep=0.75pt]    {$h$};
+% Text Node
+\draw (347.22,130) node    {$v$};
+% Text Node
+\draw (429.04,151.05) node    {$e_{1}$};
+% Text Node
+\draw (299,31) node    {$e_{2}$};
+% Text Node
+\draw (143.22,90) node    {$\theta $};
+% Text Node
+\draw (203.22,110) node    {$x$};
+% Text Node
+\draw (127.22,60) node    {$y$};
+% Text Node
+\draw (545,70) node    {$x=( h,v)$};
+% Text Node
+\draw (554.07,99.05) node    {$\cos \theta  = x \cdot e_{1}  = h$};
+
+
+\end{tikzpicture}
+\end{remark}
+\subsection{Hyperbolic Functions}
+\begin{definition}
+\[\cosh z = \frac{1}{2}(e^z + e^{-z})\]
+\[\sinh z = \frac{1}{2}(e^z - e^{-z})\]
+\[\implies\cosh z = \cos(iz), \ \sinh = -i\sin(iz)\]
+\end{definition}
+\begin{claim}
+\[(\cosh z)' = \sinh z\]
+\[(\sinh z)' = \cosh z\]
+\[\cosh^2z - \sinh^2 z = 1, \text{ etc.}\]
+\begin{proof}
+Exercise
+\end{proof}
+\end{claim}
+\begin{note}
+The rest of the trigonometric functions $(\tan,\cot,\sec,\text{cosec})$ are defined in the usual way
+\end{note}
+\section{Integration}
+\begin{note}
+$f:[a,b]\to \R$ bounded meand:
+\[\exists K\text{ s.t. }|f(X)|\leq K, \ \forall x\in [a,b]\]
+\end{note}
+\begin{definition}
+A \emph{dissection} (or partition) $\mathcal{D}$ of $[a,b]$ is a finite subset of $[a,b]$ containing the end points of $a$ and $b$.\\
+We write
+\[\mathcal{D} = \{x_0,x_1,\dots,x_n\}\text{ with }\]
+\[a = x_0 < x_1<\dots<x_{n-1}<x_n=b\]
+
+
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+%uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+
+%Shape: Rectangle [id:dp9631542259156651] 
+\draw  [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,draw opacity=1 ][fill={rgb, 255:red, 74; green, 144; blue, 226 }  ,fill opacity=1 ] (320,110) -- (400,110) -- (400,200) -- (320,200) -- cycle ;
+%Straight Lines [id:da3669973979738501] 
+\draw    (140,200) -- (557,200) ;
+\draw [shift={(560,200)}, rotate = 180] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (8.93,-4.29) -- (0,0) -- (8.93,4.29) -- cycle    ;
+%Straight Lines [id:da9032309093159274] 
+\draw    (200,43) -- (200,260) ;
+\draw [shift={(200,40)}, rotate = 90] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (8.93,-4.29) -- (0,0) -- (8.93,4.29) -- cycle    ;
+%Curve Lines [id:da6560347819590218] 
+\draw    (220,60) .. controls (235,109) and (458,137) .. (520,140) ;
+%Straight Lines [id:da6363783806808925] 
+\draw  [dash pattern={on 4.5pt off 4.5pt}]  (240,93) -- (240,200) ;
+%Straight Lines [id:da10796644266527977] 
+\draw  [dash pattern={on 4.5pt off 4.5pt}]  (440,132) -- (440,200) ;
+%Shape: Rectangle [id:dp5713094340498781] 
+\draw  [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ][fill={rgb, 255:red, 208; green, 2; blue, 27 }  ,fill opacity=1 ] (320,126) -- (400,126) -- (400,200) -- (320,200) -- cycle ;
+
+% Text Node
+\draw (240,203.4) node [anchor=north] [inner sep=0.75pt]    {$a$};
+% Text Node
+\draw (440,203.4) node [anchor=north] [inner sep=0.75pt]    {$b$};
+% Text Node
+\draw (320,203.4) node [anchor=north] [inner sep=0.75pt]    {$x_{j-1}$};
+% Text Node
+\draw (400,203.4) node [anchor=north] [inner sep=0.75pt]    {$x_{j}$};
+% Text Node
+\draw (257,70) node    {$f$};
+
+
+\end{tikzpicture}
+\end{definition}
+\begin{definition}
+We define the \emph{upper sum} and \emph{lower sum} associated with $\mathcal{D}$ by
+\[S(f,\mathcal{D}) = \s[j] n (x_j - x_{j-1})\sup_{x\in [x_{j-1},x_j]}f(x) \text{ (upper}\]
+\[s(f,\mathcal{D} = \s[j] n (x_j - x_{j-1})\inf_{x\in [x_{j-1},x_j]}f(x) \text{ (lower}\]
+Clearly
+\[s(d,\mathcal{D})\leq S(d,\mathcal{D}) \ \forall \mathcal{D}\]
+\end{definition}
+\begin{lemma}
+If $\mathcal{D}$ and $\mathcal{D}'$ are dissections with $\mathcal{D}\subseteq \mathcal{D}'$, then
+\[S(d,\mathcal{D})\geq S(d,\mathcal{D'}) \geq s(f,\mathcal{D}')\geq s(f,\mathcal{D})\]
+\begin{proof}
+\[S(d,\mathcal{D'}) \geq s(f,\mathcal{D}')\]
+is obvious.\\
+Suppose $\mathcal{D'}$ contains an extra point than $\mathcal{D}$, let's say $y\in (x_{r-1},x_r)$\\
+clearly:
+\[\sup_{x\in [x_{r-1},y]}f(x), \ \sup_{x\in [y,x_r]}f(x)\leq \sup_{x\in [x_{r-1},x_r]} f(x)\]
+\[\implies(x_r - x_{r-1})\sup_{x\in [x_{r-1},x_r]} f(x) \geq (y-x_{r-1})\sup_{x\in [x_{r-1},y]}f(x) + (x_r - y)\sup_{x\in [y,x_r]}f(x)\]
+\[S(f,\mathcal{D})\geq s(f,\mathcal{D}')\]
+The same for $s$ and the same if $\mathcal{D'}$ has more extra points than $\mathcal{D}$
+\end{proof}
+\end{lemma}
+\begin{lemma}
+$\mathcal{D}_1,\mathcal{D}_2$ two arbitrary dissections. Then
+\[S(f,\mathcal{D}_1)\geq S(f,\mathcal{D}_1\cup D_2)\geq s(f,\mathcal{D}_1\cup \mathcal{D}_2)\geq s(f,\mathcal{D}_2)\]
+So
+\[S(f,\mathcal{D}_1)\geq s(f,\mathcal{D}_2)\]
+\begin{proof}
+Take
+\[\mathcal{D}' = \mathcal{D}_1\cup \mathcal{D}_2\supseteq \mathcal{D}_1\mathcal{D}_2\]
+ad apply the previous lemma.
+\end{proof}
+\end{lemma}
+\begin{definition}
+The \emph{upper integral} of $f$ is
+\[I^*(f) = \inf_{\mathcal{D}}S(f,\mathcal{D})\]
+(this always exists)\\
+The \emph{lower integral} of $f$ is
+\[I_*(f) = \sup_{\mathcal{D}}s(f,\mathcal{D})\]
+(this always exists)
+\end{definition}
+\begin{claim}
+By lemma 5.2,
+\[I^*(f) \geq I_*(f)\]
+\begin{proof}
+\[S(f,\mathcal{D}_1)\geq s(f,\mathcal{D}_2)\]
+\[I^*(f) = \inf_{\mathcal{D}_1}S(f,\mathcal{D_1}) \geq s(f,\mathcal{D}_2)\]
+\[I^*(f) \geq \sup_{\mathcal{D}_2}s(f,\mathcal{D_2}) \geq s(f,\mathcal{D}_2) = I_*(f)\]
+\end{proof}
+\end{claim}
+\begin{definition}
+A bounded function $f:[a,b]\to \R$ is said to be \emph{Reimann integrable} (or first integrable) if
+\[I^*(f) = I_*(f)\]
+and we set
+\[\int_a^bf(x)\,\dd x = I^*(f) = I_*(f) = \int_a^bf\]
+\end{definition}
+\begin{example}
+\[f(x) = \begin{cases} 1 \ &x\in \Q\cap[0,1]\\0 \ &x\not\in \Q\cap [0,1]\end{cases}\]
+$f:[0,1]\to \R$ is not Reimann integrable
+\[\sup_{[x_{j-1},x_j]} = 1, \ \inf_{[x_{j-1},x_j]} = 0 \ \forall \mathcal{D}\]
+\[\implies I^*(f) = 1,\text{ but }I_*(f) = 0\]
+\end{example}
+\begin{normal}
+A useful criterion for integrability:
+\end{normal}
+\begin{theorem}
+A bounded function
+\[f:[a,b]\to \R\]
+is Riemann integrable iff given $\varepsilon > 0, \exists \mathcal{D}$ s.t.
+\[S(f,\mathcal{D}) - s(f,\mathcal{D})<\varepsilon\]
+\begin{proof}
+For every dissection $\mathcal{D}$, we have
+\[0\leq I^*(f) - I_*(f)\leq S(f,\mathcal{D}) - s(f,\mathcal{D})\]
+If the given condition holds, then
+\[0\leq I^*(f) - I_*(f)\leq S(f,\mathcal{D}) - s(f,\mathcal{D}) < \varepsilon \ \forall \varepsilon > 0\]
+\[\implies I^*(f) = I_*(f)\]
+Conversely, if $f$ is integrable, by definition of sup, inf, there are partitions $\mathcal{D}_1$ and $\mathcal{D}_2$ s.t.
+\[\int_a^b f\,\dd x - \frac{\varepsilon}{2} = I_*(f) - \frac{\varepsilon}{2} < s(f,\mathcal{D}_1)\]
+\[S(f, \mathcal{D}_2) < I^*(f) + \frac{\varepsilon}{2} = \int_a^bf\,\dd x + \frac{\varepsilon}{2}\]
+By lemma 5.1, \[(\mathcal{D}_1\cup\mathcal{D}_2 \supseteq \mathcal{D}_1,\mathcal{D}_2)\]
+\[S(f,\mathcal{D}_1\cup \mathcal{D}_2) - s(f,\mathcal{D}_1\cup \mathcal{D}_2) \leq S(f,\mathcal{D}_2) - s(f,\mathcal{D}_1) < \int_a^b f\,\dd x + \frac{\varepsilon}{2} - \int_a^b f\,\dd x + \frac{\varepsilon}{2} = \varepsilon \\]
+\end{proof}
+\end{theorem}
+\begin{normal}
+We now use this condition to show that monotonic and continuous functions (separately) are integrable.
+\end{normal}
+\begin{remark}
+Monotonic and continuous are bounded (thm 2.6 for the case of continuous functions)
+\end{remark}
+\begin{theorem}
+$f:[a,b] \to \R$ monotonic. Then $f$ is integrable
+\begin{proof}
+Suppose $f$ is increasing (same proof for $f$ decreasing)\\
+Then
+\[\sup_{x\in [x_{j-1},x_j]} = f(x_j)\]
+\[\inf_{x\in [x_{j-1},x_j]} = f(x_{j-1})\]
+Thus 
+\[S(f,\mathcal{D})-s(f,\mathcal{D}) = \s[j]{n}(x_j-x_{j-1})[f(x_j) - f(x_{j-1})]\]
+Now choose
+\[\mathcal{D} = \{a,a+\frac{b-a}{n},a+\frac{2(b-a)}{n},\dots,b\}\]
+\[x_j = a + \frac{(b-a)j}{n}, \ 0\leq j\leq n\]
+\[S(f,\mathcal{D}) - s(f,\mathcal{D}) = \frac{(b-a)}{n}(f(b)-f(a))\]
+Take $n$ large enough s.t.
+\[\frac{b-a}{n}(f(b)-f(a))<\varepsilon\]
+and use Theorem 5.3
+\end{proof}
+\end{theorem}
+\subsubsection{Continuous Functions}
+\begin{note}
+First we need an auxiliary lemma
+\end{note}
+\begin{lemma}
+$f:[a,b]\to \R$ continuous. Then
+\[\text{given }\varepsilon > 0, \\exists \de > 0\text{ s.t }|x-y|<\de \implies |f(x) - f(y)|<\varepsilon\]
+(uniform continuity)
+\begin{note}
+The point is $\de$ works $\forall x,y$ as long as $|x-y|<\de$\\
+(in the definition of continuity of $f$ at $x$, $\de = \de(x)$)
+\end{note}
+\begin{proof}
+Suppose the claim is false. Then $\exists \varepsilon > 0$ s.t. $\forall \de > 0$, we can find $x,y\in [a,b]$ s.t. $|x-y|<\de$ but $|f(x) - f(y) \geq \varepsilon$\\
+Take $\de = \frac{1}{n}$, to gen $x_n, y_n$ with
+\[|x_n- y_n| < \frac{1}{n}\text{, but }|f(x_n) - f(y_n)|\geq \varepsilon\]
+By Bolzano-Weierstrass, $\exists x_{n_k} > C$
+\[|y_{n_k} - C|\leq |y_{n_k} - x_{n_k}| + |x_{n_k} - C| \to 0\]
+(both parts of sum converge to 0)\\
+But
+\[|f(x_{n_k}) - f(y_{n_k})| \geq \varepsilon\]
+\[0\geq \varepsilon \ \contradiction \\]
+\end{proof}
+\end{lemma}
+\begin{theorem}
+Let $f:[a,b]\to \R$ be continuous. Then $f$ is Riemann integrable.
+\begin{proof}
+given $\varepsilon > 0, \ \exists \de > 0$ s.t. $|x-y|<\de$
+\[\implies |f(x) - f(y)|<\varepsilon\]
+Let $\mathcal{D} = \{a + \frac{(b-a)j}{n}, j = 0,1,\dots, n\}$\\
+Choose $n$ large enough s.t.
+\[\frac{b-a}{n}<\de\]
+Then for $x,y\in [x_{j-1},x_j]$
+\[|f(x) - f(y)|<\varepsilon\tag{*}\]
+since 
+\[|x-y| \leq |x_j - x_{j-1}| = \frac{b-a}{n} < \de\]
+This means that
+\[\max_{x\in [x_{j-1},x_j]} f(x)- \min_{x\in [x_{j-1},x_j]}f(x) = f(p_j) - f(q_j) \ p_j,q_j\in [x_{j-1},x_j]\]
+(max and min exist due to continuity)
+\begin{align*}
+    \implies S(f, \mathcal{D}) - s(f,\mathcal{D}) &= \s[j]{n}(x_j - x_{j-1})\left[\max_{x\in [x_{j-1},x_j]} f(x)- \min_{x\in [x_{j-1},x_j]}f(x)\right]\\
+    &=\s[j] n \frac{(b-a)}{n}(\underbrace{f(p_j) - f(q_j)}_{<\varepsilon\text{ by (*)}})\\
+    &<\varepsilon(b-a)
+\end{align*}
+Now use Theorem 5.3 \
+\end{proof}
+\end{theorem}
+\begin{remark}
+More complicated functions can be Riemann integrable
+\end{remark}
+\begin{example}
+$f:[0,1] \to \R$
+\[f(x) = \begin{cases} 1/q, \ &x = p/q\in(0,1]\text{in its lowest form}\\0, \ &\text{otherwise}\end{cases}\]
+Clearly $s(f,\mathcal{D}) = 0 \ \forall \mathcal{D}$.\\
+We will show that given $\varepsilon > 0, \exists \mathcal{D}$ s.t.
+\[S(f,\mathcal{D}) < \varepsilon\]
+This implies $f$ is integrable with
+\[\int_0^1f = 0\]
+Take $N\in \N$ s.t.
+\[\frac{1}{N}<\frac{\varepsilon}{2}\]
+Consider the set
+\[\{x\in [0,1]: f(x)\geq 1/N\} = \{p/q: 1\leq q \leq N\text{ and }1\leq p \leq q\]
+This is a finite set $0<t_1<<t_2<\dots<t_R=1$\\
+Consider a dissection of $[a,b]$ s.t.
+\begin{enumerate}
+    \item Each $t_k, 1\leq k\leq R$ is in some $[x_{j-1},x_j]$
+    \item $\forall k$, the unique interval containing $t_R$ has length at most $\varepsilon/2R$
+\end{enumerate}
+\begin{center}
+    
+
+
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+%uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+
+%Shape: Rectangle [id:dp12557215503216823] 
+\draw  [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ][fill={rgb, 255:red, 208; green, 2; blue, 27 }  ,fill opacity=1 ] (290,126) -- (340,126) -- (340,135) -- (290,135) -- cycle ;
+%Shape: Rectangle [id:dp9975606753403077] 
+\draw  [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ][fill={rgb, 255:red, 208; green, 2; blue, 27 }  ,fill opacity=1 ] (230,125) -- (270,125) -- (270,135) -- (230,135) -- cycle ;
+%Shape: Rectangle [id:dp24974197802471942] 
+\draw  [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ][fill={rgb, 255:red, 208; green, 2; blue, 27 }  ,fill opacity=1 ] (150,125) -- (210,125) -- (210,135) -- (150,135) -- cycle ;
+%Straight Lines [id:da6058176476923773] 
+\draw    (150,130) -- (460,130) ;
+%Straight Lines [id:da9505256864663187] 
+\draw    (150,120) -- (150,140) ;
+%Straight Lines [id:da5038857425913257] 
+\draw    (190,120) -- (190,140) ;
+%Straight Lines [id:da593630449690753] 
+\draw    (210,120) -- (210,140) ;
+%Straight Lines [id:da9023881857198455] 
+\draw    (270,120) -- (270,140) ;
+%Straight Lines [id:da3082217048656062] 
+\draw    (230,120) -- (230,140) ;
+%Straight Lines [id:da7690294385354493] 
+\draw    (250,120) -- (250,140) ;
+%Straight Lines [id:da9191340856813672] 
+\draw    (340,120) -- (340,140) ;
+%Straight Lines [id:da9090841296814456] 
+\draw    (460,120) -- (460,140) ;
+%Straight Lines [id:da18091364564406143] 
+\draw    (290,120) -- (290,140) ;
+%Straight Lines [id:da9758976987783163] 
+\draw    (310,120) -- (310,140) ;
+%Straight Lines [id:da9835948357077464] 
+\draw    (180,100) -- (180,117) ;
+\draw [shift={(180,120)}, rotate = 270] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (8.93,-4.29) -- (0,0) -- (8.93,4.29) -- cycle    ;
+%Straight Lines [id:da9832463789111241] 
+\draw    (220,180) -- (220,133) ;
+\draw [shift={(220,130)}, rotate = 450] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (8.93,-4.29) -- (0,0) -- (8.93,4.29) -- cycle    ;
+
+% Text Node
+\draw (153,142.4) node [anchor=north] [inner sep=0.75pt]    {$0$};
+% Text Node
+\draw (453,142.4) node [anchor=north west][inner sep=0.75pt]    {$1\ =\ t_{R}$};
+% Text Node
+\draw (190,143.4) node [anchor=north] [inner sep=0.75pt]    {$t_{1}$};
+% Text Node
+\draw (250,143.4) node [anchor=north] [inner sep=0.75pt]    {$t_{2}$};
+% Text Node
+\draw (310,143.4) node [anchor=north] [inner sep=0.75pt]    {$t_{3}$};
+% Text Node
+\draw (150,116.6) node [anchor=south] [inner sep=0.75pt]    {$x_{0}$};
+% Text Node
+\draw (210,116.6) node [anchor=south] [inner sep=0.75pt]    {$x_{1}$};
+% Text Node
+\draw (230,116.6) node [anchor=south] [inner sep=0.75pt]    {$x_{2}$};
+% Text Node
+\draw (270,116.6) node [anchor=south] [inner sep=0.75pt]    {$x_{3}$};
+% Text Node
+\draw (290,116.6) node [anchor=south] [inner sep=0.75pt]    {$x_{4}$};
+% Text Node
+\draw (340,116.6) node [anchor=south] [inner sep=0.75pt]    {$x_{5}$};
+% Text Node
+\draw (221.45,190) node    {$< 1/N$};
+% Text Node
+\draw (172.5,90) node    {$< \varepsilon /2R$};
+% Text Node
+\draw (516,122) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle R$ such intervals.};
+
+
+\end{tikzpicture}\\
+\end{center}
+\hfill{ }\\
+Not: $f\leq 1$ everywhere
+\[S(f,\mathcal{D})\leq \frac{1}{N}+\frac{\varepsilon}{2}<\varepsilon\]
+\end{example}
+\subsection{Elementary Properties of the Integral}
+\begin{claim}
+For $f,g$ bounded and integrable on $[a,b]$:
+\begin{enumerate}
+    \item If $f\leq g$ on $[a,b]$, then
+    \[\int_a^bf \leq \int_a^b g\]
+    \item $f + g$ is integrable on $9a,b]$ and
+    \[\int_a^b f + g = \int_a^bf + \int_a^b g\]
+    \item For any constant $k$, $kf$ is integrable and
+    \[\int_a^bkg = k\int_a^b f\]
+    \item $|f|$ is integrable and
+    \[\left|\int_a^bf\right|\leq \int_a^b|f|\]
+    \item The product $fg$ is integrable
+\end{enumerate}
+\begin{proof}
+\hfill{ }
+\begin{enumerate}
+    \item if $f\leq g$, then
+    \[\int_a^bf = I^*(f)\leq S(f,\mathcal{D})\leq S(g,\mathcal{D})\]
+    hence
+    \[\int_a^bf = I^*(f)\leq I^*(g) =\int_a^b g\]
+    \item \[\sup_{[x_{j-1},x_j]}(f+g)\leq \sup_{[x_{j-1},x_j]} f + \sup_{[x_{j-1},x_j]} g\]
+    \[\implies S(f+g,\mathcal{D})\leq S(f,\mathcal{D}) + S(g,\mathcal{D})\]
+    Now take two dissections $\mathcal{D}_1$ and $\mathcal{D}_2$
+    \begin{align*}
+        I^*(f+g) &\leq S(f+g,\mathcal{D}_1\cup\mathcal{D}_2)\leq S(f,\mathcal{D}_1\cup\mathcal{D}_2) + S(g,\mathcal{D}_1\cup\mathcal{D}_2)\\
+        &\leq S(f,\mathcal{D}_1) + S(g,\mathcal{D}_2)
+    \end{align*}
+    last from lemma 5.1. Fix $\mathcal{D}_1$ and inf over $\mathcal{D}_2$ to get
+    \[I^*(f+g) \leq I^*(f) + I^*(g) = \int_a^b f + \int_a^b g\]
+    Similarly
+    \[\int_a^b f + \int_a^b g \leq I_*(f+g)\]
+    $\implies f + g$ is integrable  with integral equal to the sum of the integrals.
+    \item Exercise!
+    \end{enumerate}
+\end{proof}
+\end{claim}
+\begin{claim}[cont.]
+\hfill{ }
+\begin{proof}[cont.]
+\hfill{ }
+\begin{enumerate}
+\setcounter{enumi}{3}
+
+    
+
+    \item Consider \[f_+(x) = \max(f(x),0)\]
+    \[\sup_{[x_{j-1},x_j]} f_+ - \inf_{[x_{j-1},x_j]} f_+ \leq \sup_{[x_{j-1},x_j]} f - \inf_{[x_{j-1},x_j]} f\]
+    (can check)\\ and we know that given $\varepsilon > 0, \ \exists \mathcal{D}$ s.t.
+    \[S(f,\mathcal{D}) - s(f,\mathcal{D})<\varepsilon\]
+    \[\implies S(f_+,\mathcal{D}) - s(f_+,\mathcal{D})<\varepsilon\]
+    $\implies f_+$ is integrable\\
+    But $|f| = 2f_+ - f$
+    By (ii) and (iii), $|f|$ is integrable.\\
+    Since $-|f|\leq f\leq |f|$, we use property (i) to see
+     \[\left|\int_a^bf\right|\leq \int_a^b|f|\]
+     \item Take $f$ integrable and $\geq 0$\\
+     Then
+     \[\sup_{[x_{j-1},x_j]} f^2 = \left(\overbrace{\sup_{[x_{j-1},x_j]} f}^{M_j}\right)^2\]
+     \[\inf_{[x_{j-1},x_j]} f^2 = \left(\underbrace{\inf_{[x_{j-1},x_j]} f}_{m_j}\right)^2\]
+     Thus
+     \begin{align*}
+         S(f^2,\mathcal{D}) - s(f^2,\mathcal{D}) &= \s[j] n (x_j - x_{j-1})(M_j^2 - m_j^2)\\
+         &=\s[j] n (x_j - x_{j-1}(M_j + m_j)(M_j - m_j)\\
+         &\leq 2K(S(f,\mathcal{D})-s(f,\mathcal{D}))
+     \end{align*}
+     using $|f(x)|\leq K \ \forall x\in [a,b]$\\
+     Using the criterion in Theorem 5.3, we deduce that $f^2$ is integrable.\\
+     Now take any $f$, then $|f| \geq 0$ and is integrable. Since $f^2 = |f|^2$.\\
+     We deduce that $f^2$ is integrable for any $f$\\
+     Finally for $fg$, note:
+     \[4fg = (f+g)^2 - (f-g)^2\]
+     \[\implies fg\text{ is integrable given what we proved}\]
+\end{enumerate}
+\end{proof}
+\end{claim}
+\begin{claim}[6]
+$f$ is integrable on $[ab]$. If $a<c<b$, then $f$ is integrable over $[a,c]$ and $[c,b]$ and
+\[\int_a^b f = \int_a^c f + \int_c^b f\]
+Conversely if $f$ is integrable over $[a,c]$ and $[c,b]$, then $f$ is integrable over $[a,b]$ and
+\[\int_a^b f = \int_a^c f + \int_c^b f\]
+\begin{proof}
+We first make two observations:\\
+if $\mathcal{D}_1$ is a dissection of $[a,c]$ and $\mathcal{D}_2$ is a dissection of $[b,c]$, then
+\[\mathcal{D} = \mathcal{D}_1 \cup \mathcal{D}_2\]
+is a dissection of $[a,b]$ and
+\[S(f,\mathcal{D}_1\cup\mathcal{D}_2) = S(f|_{[a,c]},\mathcal{D}_1) + S(f|_{[c,b]},\mathcal{D}_2) \tag{$\text{*}_1$}\]
+Also if $\mathcal{D}$ is a dissection of $[a,b]$, then
+\begin{align*}
+    S(f,\mathcal{D})&\geq S(f,\mathcal{D}\cup \{c\})\\
+    &=S(f|_{[a,c]},\mathcal{D}_1) + S(f|_{[c,b]},\mathcal{D}_2) \tag{$\text{*}_2$}
+\end{align*}
+where $\mathcal{D}_1$ dissects $[a,c]$ and $\mathcal{D}_2$ dissects $[a,b]$
+\[(*_1)\implies I^{*}(f) \leq I^*(f|_{[a,c]}) + I^*(f|_{[c,b]})\]
+\[(*_2)\implies I^{*}(f) \geq I^*(f|_{[a,c]}) + I^*(f|_{[c,b]})\]
+Similarly
+\[I_*(f) = I_*(f|_{[a,c]}) + I_*(f|_{[c,b]})\]
+Thus
+\[0\leq I^*(f) - I_*(f) = \underbrace{I^*(f|_{[a,c]}) - I_*(f|_{[a,c]})}_{\geq 0} + \underbrace{I^*(f|_{[c,b]}) - I_*(f|_{[c,b]})}_{\geq 0}\]
+From this, claim follows right away.
+\end{proof}
+\end{claim}
+\begin{notation}
+We have a convention that is if $a>b$, then
+\[\int_a^b f = -\int_b^a f\]
+if $a=b$, we agree that its value is zero.\\
+With this convention, if $|f|\leq K$, then
+\[\left|\int_c^b f\right|\leq K|b-a|\]
+(from property (4) and convention)
+\end{notation}
+\subsection{The Fundamental Theorem of Calculus (FTC)}
+\begin{normal}
+$f:[a,b]\to \R$ bounded and integrable.
+Write
+\[F(x) = \int_a^xf(t)\,\dd t, \ x\in [a,b]\]
+\end{normal}
+\begin{theorem}
+$F$ is continuous
+\begin{proof}
+\[F(x+h) - F(x) =\int_x^{x+h} f(t)\,\dd t\]
+\[|F(x+h) - F(x)| =\left|\int_x^{x+h} f(t)\,\dd t\right| \leq K|h|\]
+if $|f(t)|\leq K, \ \forall t\in [a,b]$. Now let $h\to 0$ and we are done.
+\end{proof}
+\end{theorem}
+\begin{theorem}[FTC]
+If in addition $f$ is continuous at $x$, then $F$ is differentiable at $x$ and
+\[F'(x) = f(x)\]
+\begin{proof}
+We need to consider $(x+h\in [a,b] \ \&\ h\neq 0$
+\begin{align*}
+    \left|\frac{F(x+h) - F(x)}{h}-f(x)\right| &= \frac{1}{|h|}\left|\int_x^{x+h}f(t)\,\dd t - hf(x)\right|\\
+    &= \frac{1}{|h|}\left|\int_x^{x+h}[f(t) - f(x)]\,\dd t\right|
+\end{align*}
+$f$ continuous at $x$, means that given $\varepsilon > 0, \ \exists \de > 0$ s.t. if $|t-x|<\de$ then
+\[|f(t) - f(x)|<\varepsilon\]
+IF $|h|<\de$, we can write
+\begin{align*}
+    \frac{1}{|h|}\left|\int_x^{x+h}[f(t) - f(x)]\,\dd t\right| &\leq \frac{1}{|h|}\varepsilon|h|\\
+    &=\varepsilon
+\end{align*}
+This means
+\[\lim_{h\to 0} \frac{F(x+h) - F(x)}{h} = f(x) \\] 
+\end{proof}
+\end{theorem}
+\begin{example}
+\[f(x) = \begin{cases} -1 \ &x\in [-1,0)\\1 \ &x\in (0,1]\end{cases}\]
+
+
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+%uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+
+%Shape: Rectangle [id:dp14953164147065445] 
+\draw  [draw opacity=0][fill={rgb, 255:red, 248; green, 231; blue, 28 }  ,fill opacity=1 ] (300,130) -- (400,130) -- (400,180) -- (300,180) -- cycle ;
+%Shape: Rectangle [id:dp46502945792337735] 
+\draw  [draw opacity=0][fill={rgb, 255:red, 248; green, 231; blue, 28 }  ,fill opacity=1 ] (200,180) -- (300,180) -- (300,230) -- (200,230) -- cycle ;
+%Straight Lines [id:da46449077920987003] 
+\draw    (170,180) -- (437,180) ;
+\draw [shift={(440,180)}, rotate = 180] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (8.93,-4.29) -- (0,0) -- (8.93,4.29) -- cycle    ;
+%Straight Lines [id:da7914137013206675] 
+\draw    (300,63) -- (300,280) ;
+\draw [shift={(300,60)}, rotate = 90] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (8.93,-4.29) -- (0,0) -- (8.93,4.29) -- cycle    ;
+%Straight Lines [id:da35373771581347024] 
+\draw    (200,170) -- (200,190) ;
+%Straight Lines [id:da10559181828551445] 
+\draw    (200,230) -- (300,230) ;
+\draw [shift={(300,230)}, rotate = 0] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]      (0, 0) circle [x radius= 3.35, y radius= 3.35]   ;
+%Straight Lines [id:da3310818529458379] 
+\draw    (302.35,130) -- (400,130) ;
+\draw [shift={(300,130)}, rotate = 0] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]      (0, 0) circle [x radius= 3.35, y radius= 3.35]   ;
+%Straight Lines [id:da49007225162549384] 
+\draw    (400,170) -- (400,190) ;
+
+% Text Node
+\draw (200,193.4) node [anchor=north] [inner sep=0.75pt]    {$-1$};
+% Text Node
+\draw (400,193.4) node [anchor=north] [inner sep=0.75pt]    {$1$};
+
+
+\end{tikzpicture}
+\[\text{monotonic } \implies\text{ integrable}\]
+\[f(x) = \begin{cases} -x-1 \ &x\leq 0\\x-1 \ &x\geq 0\end{cases}\]
+\[F(x) = -1 + |x|\]
+
+
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+%uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+
+%Straight Lines [id:da30422781266367793] 
+\draw    (190,180) -- (457,180) ;
+\draw [shift={(460,180)}, rotate = 180] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (8.93,-4.29) -- (0,0) -- (8.93,4.29) -- cycle    ;
+%Straight Lines [id:da28281253046115107] 
+\draw    (320,63) -- (320,280) ;
+\draw [shift={(320,60)}, rotate = 90] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (8.93,-4.29) -- (0,0) -- (8.93,4.29) -- cycle    ;
+%Straight Lines [id:da6283566529678011] 
+\draw    (220,170) -- (220,190) ;
+%Straight Lines [id:da9545101061943335] 
+\draw    (420,170) -- (420,190) ;
+%Straight Lines [id:da7944027041231898] 
+\draw    (220,180) -- (320,260) ;
+%Straight Lines [id:da15272779859262764] 
+\draw    (320,260) -- (420,180) ;
+%Straight Lines [id:da4990845765198251] 
+\draw    (330,260) -- (310,260) ;
+
+% Text Node
+\draw (220,193.4) node [anchor=north] [inner sep=0.75pt]    {$-1$};
+% Text Node
+\draw (420,193.4) node [anchor=north] [inner sep=0.75pt]    {$1$};
+% Text Node
+\draw (332,260) node [anchor=west] [inner sep=0.75pt]    {$-1$};
+% Text Node
+\draw (153.8,251) node   [align=left] {$\displaystyle F$ not differentiable at $\displaystyle x=0$};
+% Text Node
+\draw (383.22,220) node    {$F$};
+
+
+\end{tikzpicture}
+\end{example}
+\begin{cor}[integration is the inverse of differentiation]
+If $f = g'$ is continuous on $[a,b]$, then
+\[\int_a^xf(t)\,\dd t = g(x) - g(a) \ \forall x\in [a,b]\]
+\begin{proof}
+From Theorem 5.8, $F - g$ has zero derivative in $[a,b] \implies F-g$ is constant and since $F(a) = 0$,
+\[F(x) = g(x) - g(a) \\]
+\end{proof}
+\end{cor}
+\begin{notation}
+Every continuous function has an indefinite integral or anti-derivative written
+\[\int f(x)\,\dd x\]
+which is determined up to a constant.
+\end{notation}
+\begin{remark}
+We have solved the ODE:
+\[\begin{cases} y'(x) = f(x) \\ y(a) = y_0\end{cases}\]
+\end{remark}
+\begin{cor}[integration by parts]
+Suppose $f'$ and $g'$ exist and are ontinuous on $[a,b]$. Then
+\[\int_a^b f'g = f(b)g(b) - f(a)g(a) - \int_a^b fg'\]
+\begin{proof}
+By the product rule,
+\[(fg)' = f'g+ fg'\]
+By 5.9, 
+\[f(b)g(b) - f(a)g(a) = \int_a^bf'g  + \int_a^b fg' \\]
+\end{proof}
+\end{cor}
+\begin{cor}[integration by substitution]
+Let $g:[\alpha,\beta] \to [a,b]$ with $g(\alpha) = a$ and $g(\beta) = b, \ g'$ exists and is continuous on $[\alpha,\beta]$. Let $f:[a,b]\to \R$ be continuous. Then
+\[\int_a^b f(x)\,\dd x = \int_{\alpha}^{\beta}f(g(t))g'(t)\,\dd t\]
+\begin{proof}
+Set
+\[F(x) = \int_a^xf(t)\,\dd t\]
+as before. Let $h(t) = F(g(t))$ defined since $g$ takes values in $[a,b]$). Then
+\begin{align*}
+    \int_{\alpha}^{\beta}f(g(t))g'(t)\,\dd t &\underset{\text{FTC}}{=} \int_{\alpha}^{\beta}F'(g(t))g'(t)\,\dd t\\
+    &\underset{\text{chain rule}}{=} \int_{\alpha}^{\beta} h'(t)\,\dd t\\
+    &=h(\beta) - h(\alpha)\\
+    &=F(b) - F(a)\\
+    &=\int_a^bf(x)\,\dd x \
+\end{align*}
+\end{proof}
+\end{cor}
+\begin{theorem}[Taylor's theorem with remainder an integral]
+Let $f^{(n)}(x)$ be continuous for $x\in [0,h]$. Then
+\[f(h) = f(0) + \dots + \frac{h^{n-1}f^{(n-1)}}{(n-1)!} + R_n\]
+where
+\[R_n = \frac{h^n}{(n-1)!}\int_0^1(1-t)^{n-1}f^{(n)}(th)\,\dd t\]
+\begin{proof}
+By substituting $u = th$
+\[R_n = \frac{1}{(n-1)!}\int_0^h(h-u)^{n-1}f^{(n)}(u)\,\dd u\]
+Integrating by parts now, we get:
+\[R_n = -\frac{h^{n-1}f^{(n-1)}(0)}{(n-1)!} + \underbrace{\frac{1}{(n-2)!}\int_0^h(h-u)^{n-2}f^{(n-1)}(u)\,\dd u}_{R_{n-1}}\]
+If we integrate by parts $n-1$ times, we arrive at:
+\[R_n = -\frac{h^{n-1}f^{(n-1)}(0)}{(n-1)!} - \dots - hf'(0) + \underbrace{\int_0^hf'(u)\,\dd u}_{f(h) - f(0)} \\]
+\end{proof}
+\end{theorem}
+\begin{remark}
+Now we can get the Cauchy \& Lagrange form of the remainder.\\
+However, note that the proof above uses continuity of $f^{(n)}$ not just mere existence as in section 3.\\
+But first need to prove:
+\end{remark}
+\begin{theorem}
+$f,g:[a,b]\to \R$ continuous with $g(x) \neq 0 \ \forall x\in (a,b)$. Then $\exists c\in (a,b)$ s.t.
+\[\int_a^bf(x)g(x)\,\dd x = f(x)\int_a^bg(x)\,\dd x\]
+\begin{proof}
+We're going to use Cauchy's MVT (Theorem 3.7)
+\[F(x) = \int_a^x fg, \ G(x) = \int_a^x g\]
+\[\text{Theorem 3.7 }\implies \exists c\in (a,b) \text{ s.t. }\]
+\[(F(b) - F(a))G'(c) = F'(c)(G(b) - G(a))\]
+\[\left(\int_a^b fg\right)g(c) = f(c)g(c)\int_a^bg\]
+if $g(c)\neq 0$, we simplify ans we're done
+\end{proof}
+\begin{note}
+if we take $g(x) \equiv 1$, we get
+\[\int_a^b f(x)\,\dd x= f(c)(b-a)\]
+\end{note}
+\end{theorem}
+\begin{claim}
+We can get the Cauchy \& Lagrange form of the remainder from Taylor's theorem with remainder (given continuity of $f^{(n)}$)
+\begin{proof}
+Now we want to apply this to 
+\[R_n = \frac{h^n}{(n-1)!}\int_0^1(1-t)^{n-1}f^{(n)}(th)\,\dd t\]
+First we use Theorem 5.13 with $g \equiv 1$, to get
+\[R_n = \frac{h^n}{(n-1)!}(1-\theta)^{n-1}f^{(n)}(\theta h)m \theta\in (0,1)\]
+Which is Cauchy's form of the remainder!\\
+To get Lagrange, we use Theorem 5.13 with $g(t) = (1-t)^{n-1}$ which is $>0$ for $t\in (0,1)$
+\[\implies\exists \theta\in (0,1)\text{ s.t. } R_n = \frac{h^n}{(n-1)!} f^{(n)}(\theta h)\underbrace{\left[\int_0^1(1-t)^{n-1}\,\dd t\right]}_{=1/n}\]
+\[\int_0^1(1-t)^{n-1}\,\dd t = \left.-\frac{(1-t)^n}{n}\right]_0^1 = \frac{1}{n}\]
+\[\implies R_n = \frac{h^n}{n!}f^{(n)}(\theta h), \ \theta \in (0,1)\]
+which is Lagrange's form of the remainder!
+\end{proof}
+\end{claim}
+\subsection{Improper Integrals}
+\begin{definition}
+Suppose $f:[a,\infty] \to \R$ integrable (and bounded) on every interval $[a,R]$ and that as $R\to \infty$
+\[\int_a^R f(x)\,\dd x \to l\]
+Then we say that $\int_a^{\infty}f(x)\,\dd x$ exists or converges and that its value is $l$. If $\int_a^Rf(x)\,\dd x$ does not ten to a limit, we say that $\int_a^{\infty}f(x)\,\dd x$ diverges.\\
+A similar definition applies to $\int_{-\infty}^af(x)\,\dd x$. If \[\int_a^{\infty}f(x)\,\dd x= l_1\]
+and
+\[\int_{-\infty}^af(x)\,\dd x = l_2\]
+we write
+\[\int_{-\infty}^{\infty} = l_1 + l_2\]
+(independent of the particular value of $a$)
+\end{definition}
+\begin{warning}
+This is not the same as saying that
+\[\lim_{R\to \infty} \int_{-R}^Rf(x)\,\dd x\]
+exists. It is stronger: e.g.
+\[\int_{-R}^Rx\,\dd x = 0\]
+\end{warning}
+\begin{example}
+\[\int_1^{\infty} \frac{\dd x}{x^k}\text{ converges iff }k>1\]
+Indeed, if $k\neq 1$,
+\[\int_1^R\frac{\dd x}{x^k} = \left.\frac{x^{1-k}}{1-k}\right ]_1^R = \frac{R^{1-k}}{1-k}\]
+and as $R\to \infty$, this limit is finite iff $k>1$ (and equals $-\frac{1}{1-k}$)\\
+if $k = 1$,
+\[\int_1^R\frac{\dd x}{x} = \log R \to \infty\]
+\end{example}
+\begin{remark}
+$1/\sqrt{x}$ continuous on $[\de,1]$, for any $\de > 0$. and
+    \[\int_{\de}^1 \frac{\dd x}{\sqrt{x}} = \left.2\sqrt{x}\right]_{\de}^1=2-2\sqrt{\de} \to 2\text{ as }\de \to 0\]
+    
+
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+%uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+
+%Straight Lines [id:da5117028845102776] 
+\draw    (210,180) -- (477,180) ;
+\draw [shift={(480,180)}, rotate = 180] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (8.93,-4.29) -- (0,0) -- (8.93,4.29) -- cycle    ;
+%Straight Lines [id:da3917387097241809] 
+\draw    (340,13) -- (340,280) ;
+\draw [shift={(340,10)}, rotate = 90] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (8.93,-4.29) -- (0,0) -- (8.93,4.29) -- cycle    ;
+%Curve Lines [id:da4863388377016009] 
+\draw    (350,20) .. controls (355,86) and (369,138) .. (400,140) ;
+%Straight Lines [id:da2444955540399507] 
+\draw  [dash pattern={on 4.5pt off 4.5pt}]  (340,140) -- (400,140) ;
+%Straight Lines [id:da13457509695724723] 
+\draw  [dash pattern={on 4.5pt off 4.5pt}]  (400,140) -- (400,180) ;
+
+% Text Node
+\draw (338,140) node [anchor=east] [inner sep=0.75pt]    {$1$};
+% Text Node
+\draw (400,183.4) node [anchor=north] [inner sep=0.75pt]    {$1$};
+
+
+\end{tikzpicture}\\
+    $1/\sqrt{x}$ is unbounded on $[0,1]$
+    \[\int_0^1\frac{\dd x}{\sqrt{x}} = \lim_{\de \to 0}\int_{\de}^1\frac{\dd x}{\sqrt{x}} =2\]
+    Exercise: give a general definition
+    \[\int_0^1\frac{\dd x}{x} = \lim_{\de \to 0}\int_{\de}^1\frac{\dd x}{x} = \lim_{\de \to 0} \left.\log x \right ]_{\de}^1 = \log 1 - \log\de\]
+    limit does not exist as $\de \to 0$
+\end{remark}
+\begin{remark}
+
+If $f\geq 0$ and $g\geq 0$ for $x\geq a$ and $f(x)\leq Kg(x)$, $K$ constant $x\geq a$, then
+    \[\int_a^{\infty}g\text{ converges } \implies\int_a^{\infty}f\text{ converges} \]
+    and
+    \[\int_a^{\infty}f \leq K\int_a^{\infty} g\]
+    Just note that
+    \[\int_a^R f \leq K\int_a^R g\]
+    The function $R \to \int_a^R f$ is increasing $(f\geq 0)$ and bounded above ($\int_a^{\infty}g$ converges)\\
+    Take
+    \[l = \sup_{R\geq a}\int_a^Rf < \infty\]
+    Now check that
+    \[\lim_{R\to \infty} \int_a^R f = l\]
+    given $\varepsilon > 0, \exists R_0$ s.t.
+    \[\int_a^{R_0}f\geq l - \varepsilon\]
+    Thus
+    \[\forall R\geq R_0, \int_a^Rf\geq \int_a^{R_0}\geq l - \varepsilon\]
+    \[\implies 0 \leq l - \int_a^Rf \leq \varepsilon \ \tick\]
+\end{remark}
+\begin{example}
+\[\int_0^{\infty} e^{-x^2/2}\,\dd x\]
+\[e^{-x^2/2} \leq e^{-x/2}, x\geq 1\]
+\[\int_1^Re^{-x/2}\,\dd x = \frac{1}{2}[e^{-1/2} - e^{-R/2}] \to \frac{e^{-1/2}}{2}\]
+\[\implies \int_0^{\infty} e^{-x^2/2} \,\dd x\text{ converges}\]
+\end{example}
+\begin{remark}
+We know that if $\sum a_n$ converges, then $a_n\to 0$. We have to be careful with improper integrals.\\
+$\int_a^{\infty}f$ converges may not imply that $f\to 0$
+\end{remark}
+\begin{example}
+\hfill{ }\\
+
+
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+%uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+
+%Straight Lines [id:da43442396614102097] 
+\draw    (120,190) -- (547,190) ;
+\draw [shift={(550,190)}, rotate = 180] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (8.93,-4.29) -- (0,0) -- (8.93,4.29) -- cycle    ;
+%Straight Lines [id:da40607768582469395] 
+\draw    (140,83) -- (140,250) ;
+\draw [shift={(140,80)}, rotate = 90] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (8.93,-4.29) -- (0,0) -- (8.93,4.29) -- cycle    ;
+%Straight Lines [id:da31541630534853016] 
+\draw    (180,180) -- (180,200) ;
+%Straight Lines [id:da5443738857963163] 
+\draw    (260,180) -- (260,200) ;
+%Straight Lines [id:da9547928062485167] 
+\draw    (360,180) -- (360,200) ;
+%Straight Lines [id:da6535201452609982] 
+\draw    (150,130) -- (130,130) ;
+%Straight Lines [id:da597565618678622] 
+\draw    (220,130) -- (180,190) ;
+%Straight Lines [id:da00024030887075210394] 
+\draw    (220,130) -- (260,190) ;
+%Straight Lines [id:da6519221140368283] 
+\draw    (360,130) -- (340,190) ;
+%Straight Lines [id:da7178409438287057] 
+\draw    (360,130) -- (380,190) ;
+%Straight Lines [id:da6969341552254511] 
+\draw    (382.12,202.12) -- (420,240) ;
+\draw [shift={(380,200)}, rotate = 45] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (8.93,-4.29) -- (0,0) -- (8.93,4.29) -- cycle    ;
+
+% Text Node
+\draw (128,130) node [anchor=east] [inner sep=0.75pt]    {$1$};
+% Text Node
+\draw (180,203.4) node [anchor=north] [inner sep=0.75pt]    {$1/2$};
+% Text Node
+\draw (260,203.4) node [anchor=north] [inner sep=0.75pt]    {$3/2$};
+% Text Node
+\draw (360,203.4) node [anchor=north] [inner sep=0.75pt]    {$n$};
+% Text Node
+\draw (291,202.4) node [anchor=north west][inner sep=0.75pt]    {$\dotsc $};
+% Text Node
+\draw (420,243.4) node [anchor=north] [inner sep=0.75pt]    {$\frac{2}{( n+1)^{2}}$};
+% Text Node
+\draw (361,188) node [anchor=west] [inner sep=0.75pt]    {$\underbrace{\ \ }$};
+% Text Node
+\draw (543.3,130) node    {$f( n) \ =\ 1$};
+
+
+\end{tikzpicture}\\
+\[\text{area}(\Delta) = \frac{2}{(n+1)^2}\]
+\end{example}
+\subsection{The Integral Test}
+\begin{theorem}[integral test]
+Let $f(x)$ be a positive decreasing function for $x\geq 1$. Then
+\begin{enumerate}
+    \item Th integral $\int_1^{\infty} f(x)\,\dd x$ and the series $\sum_1^{\infty}f(n)$ both converge or diverge.
+    \item As $n\to \infty$,
+    \[\s[r] n f(r) - \int_1^nf(x)\,\dd x\]
+    tends to a limit $l$ s.t. $0\leq l \leq f(1)$
+\end{enumerate}
+\begin{proof}
+\hfill{ }\\
+
+
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+%uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+
+%Straight Lines [id:da9112733848946959] 
+\draw    (120,180) -- (547,180) ;
+\draw [shift={(550,180)}, rotate = 180] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (8.93,-4.29) -- (0,0) -- (8.93,4.29) -- cycle    ;
+%Straight Lines [id:da5484181702859661] 
+\draw    (140,73) -- (140,240) ;
+\draw [shift={(140,70)}, rotate = 90] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (8.93,-4.29) -- (0,0) -- (8.93,4.29) -- cycle    ;
+%Straight Lines [id:da9645875188345192] 
+\draw    (270,170) -- (270,190) ;
+%Straight Lines [id:da5986143218849769] 
+\draw    (380,170) -- (380,190) ;
+%Straight Lines [id:da5520550911480744] 
+\draw [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ]   (347,170) -- (347,190) ;
+%Curve Lines [id:da49427945594657485] 
+\draw    (170,80) .. controls (205,114) and (420,157) .. (520,160) ;
+%Straight Lines [id:da23091982551276335] 
+\draw  [dash pattern={on 4.5pt off 4.5pt}]  (270,120) -- (270,180) ;
+%Straight Lines [id:da12139537747371931] 
+\draw  [dash pattern={on 4.5pt off 4.5pt}]  (380,143) -- (380,180) ;
+%Straight Lines [id:da08207118077601905] 
+\draw  [dash pattern={on 4.5pt off 4.5pt}]  (270,120) -- (140,120) ;
+%Straight Lines [id:da8599726211035308] 
+\draw  [dash pattern={on 4.5pt off 4.5pt}]  (380,143) -- (140,143) ;
+
+% Text Node
+\draw (270,193.4) node [anchor=north] [inner sep=0.75pt]    {$n-1$};
+% Text Node
+\draw (380,193.4) node [anchor=north] [inner sep=0.75pt]    {$n$};
+% Text Node
+\draw (347,193.4) node [anchor=north] [inner sep=0.75pt]  [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,opacity=1 ]  {$x$};
+% Text Node
+\draw (138,143) node [anchor=east] [inner sep=0.75pt]    {$f( n)$};
+% Text Node
+\draw (138,120) node [anchor=east] [inner sep=0.75pt]    {$f( n-1)$};
+
+
+\end{tikzpicture}\\
+($f$ decreasing $\implies f$ integrable on every bounded subinterval by Theorem 5.4)\\
+If $n-1\leq x\leq n$, then
+\[f(n-1)\geq f(x)\geq f(n)\]
+\[\implies f(n-1)\geq \int_{n-1}^n f(x)\,\dd x\geq f(n)\tag{*}\]
+Adding:
+\[\s[r]{n-1}f(r)\geq \int_1^nf(x)\,\dd x \geq \sum_2^nf(r)\tag{**}\]
+From this claim (i) is obvious.\\
+For the proof of (ii) set
+\[\phi(n) = \sum_1^n f(r) - \int_1^n f(x)\,\dd x\]
+Then
+\[\phi(n) - \phi(n-1) = f(n) - \int_{n-1}^n f(x)\,\dd x\leq 0\]
+using (*).\\
+Also from (**),
+\[0\leq \phi(n) \leq g(1)\]
+thus $\phi(n)$ is decreasing and tends ot a limit $l$ s.t.
+\[0\leq l \leq f(1) \\]
+\end{proof}
+\end{theorem}
+\begin{example}
+\hfill{ }
+\begin{enumerate}
+    \item \[\sum_1^{\infty} \frac{1}{n^k}\text{ converges iff }k>1\]
+    We saw that
+    \[\int_1^{\infty} \frac{1}{x^k}\text{ converges iff }k>1\]
+    so we just apply the integral test.
+    \item \[\sum_1^{\infty} \frac{1}{n\log n}, \ f(x) = \frac{1}{x\log x}, \ x\geq 2\]
+    \begin{align*}
+        \int_2^R\frac{\dd x}{x\log x} &= \left.\log(\log x)\right]_2^R \\
+        &\log(\log R) - \log(\log 2) \to \infty \text{ as }R\to \infty
+    \end{align*}
+    then by the integral test
+    \[\sum_2^{\infty}\frac{1}{n\log n}\text{ diverges}\]
+\end{enumerate}
+\end{example}
+\begin{cor}[Euler's constant]
+As $n\to \infty$, 
+\[1 + \frac{1}{2} + \dots + \frac{1}{n} - \log n \to \gamma\]
+with $0\leq \gamma \leq 1$
+\begin{proof}
+Set $f(x) = 1/x$ and use Theorem 5.14
+\end{proof}
+\end{cor}
+\begin{remark}
+We have an open problem: is $\gamma$ irrational?\\
+$(\gamma \sim 0.577)$
+\end{remark}
+\begin{remark}
+We have seen: monotone functions and continuous functions are integrable\\
+We can generalise this a bit and say that piece-wise continuous functions are integrable\\
+
+
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+%uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+
+%Straight Lines [id:da968383528067571] 
+\draw    (120,180) -- (547,180) ;
+\draw [shift={(550,180)}, rotate = 180] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (8.93,-4.29) -- (0,0) -- (8.93,4.29) -- cycle    ;
+%Straight Lines [id:da6187629463109774] 
+\draw    (140,73) -- (140,240) ;
+\draw [shift={(140,70)}, rotate = 90] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (8.93,-4.29) -- (0,0) -- (8.93,4.29) -- cycle    ;
+%Straight Lines [id:da1053580386444204] 
+\draw    (270,170) -- (270,190) ;
+%Straight Lines [id:da7087270458001851] 
+\draw    (330,170) -- (330,190) ;
+%Curve Lines [id:da13832497283968448] 
+\draw    (220,130) .. controls (241,82) and (243,150) .. (270,100) ;
+%Curve Lines [id:da3572607253879816] 
+\draw    (270,150) .. controls (291,102) and (303,120) .. (330,70) ;
+%Curve Lines [id:da9362270474886443] 
+\draw    (330,90) .. controls (381,89) and (363,190) .. (390,140) ;
+
+% Text Node
+\draw (223,180) node    {$\Bigl[$};
+% Text Node
+\draw (397,180.5) node    {$\Bigr]$};
+% Text Node
+\draw (223,202.4) node [anchor=north] [inner sep=0.75pt]    {$a$};
+% Text Node
+\draw (397,202.4) node [anchor=north] [inner sep=0.75pt]    {$b$};
+
+
+\end{tikzpicture}\\
+\end{remark}
+\begin{definition}
+A function $f:[a,b]\to \R$ is said to be \emph{piece-wise continuous} if there is a dissection $\mathcal{D}= \{x_0 = a, x_1,\dots, x_n = b\}$ s.t.
+\begin{enumerate}
+    \item $f$ is continuous on $(x_{j-1},x_j) \ \forall j$
+    \item the one-sided limits
+    \[\lim_{x\to x_{j-1}^+} f(x), \ \lim_{x\to x_{j-1}^-} f(x)\text{ exist}\]
+\end{enumerate}
+\end{definition}
+\subsection{Characterization for Riemann integrability (Non-Examinable)}
+\begin{note}
+It is now an exercise to check that $f$ is Riemann integrable:\\
+first check that $f|_{[x_{j-1},x_j]}$ is integrable for each $j$ (the values of $f$ at the end points won't really matter) and use additivity of domain (property (6))
+\end{note}
+\begin{note}
+Q: How large can the discontinuity of $f$ be while $f$ is still Riemann integrable?\\
+Recall the example
+\[f(x) = \begin{cases} 1/q &\ x = p/q\\ 0 &\text{ otherwise}\end{cases}\]
+The question has been answered by Henri Lebesgue:\\
+Characterization for Riemann integrability:\\
+$f:[a,b]\to \R$ bounded. Then $f$ is Riemann integrable iff the set of discontinuity points has measure zero.
+\end{note}
+\begin{definition}
+Let $l(I)$ be the length of an interval $I$.\\
+A subset $A\subseteq \R$ is said to have \emph{measure zero} if for each $\varepsilon > 0 \ \exists$ a countable family of intervals st.
+\[A\subseteq \bigcup_{j=1}^{\infty} I_j\]
+and
+\[\sum_j l(I_j) < \varepsilon\]
+\end{definition}
+\begin{lemma}
+\hfill{ }
+\begin{enumerate}
+    \item Every countable set has measure zero.\\
+    \item if $B$ has measure zero and $A\subseteq B$, the $A$ has measure zero.
+    \item if $A_k$ has measure zero $\forall k\in \N$ then
+    $\bigcup_{k\in \N}A_k$ also has measure zero.\\
+\end{enumerate}
+\begin{note}
+The proof of Lebesgue's criterion uses the concept of oscillation of $f$:\\
+$I$ interval:
+\[\omega_f(I) = \sup_If - \inf_I f\]
+Oscillation at a point
+\[\omega_f(x) = \lim_{\varepsilon \to 0}\omega_f(x-\varepsilon, x + \varepsilon)\]
+
+\end{note}
+\begin{proof}[Sketch]
+\begin{align*}
+    D &= \{x\in [a,b]:f\text{ discontinuous at }x\}\\
+    &=\{x:\omega_f(x) > 0\}
+\end{align*}
+$\implies$ RTP: $D$ has measure zero.
+\[N(\alpha) = \{x:\omega_f(x)\geq \alpha\}\]
+\[D = \bigcup_1^{\infty}N(1/k)\]
+We'll show that for fixed $\alpha$, $N(\alpha)$ has measure zero.\\
+Let $\varepsilon > 0, \exists \mathcal{D}$ s.t.
+\[S(f,\mathcal{D}) - s(f,\mathcal{D}) < \frac{\varepsilon \alpha}{2}\]
+\[S(f,\mathcal{D}) - s(f,\mathcal{D}) = \s[j] n \omega_f([x_{j-1},x_j])(x_j - x_{j-1})\]
+\[F = \{j: (x_{j-1},x_j)\cap N(\alpha) \neq \emptyset\}\]
+then for each $j\in F$,
+\[\omega_f([x_{j-1},x_j])\geq \alpha\]
+\[\alpha\sum_{j\in F}(x_j - x_{j-1})\leq \sum_{j\in F}\omega_f([x_{j-1},x_j])(x_j - x_{j-1})< \frac{\varepsilon \alpha}{2}\]
+\[\implies \sum_{j\in F}(x_j - x_{j-1}) < \frac{\varepsilon}{2}\]
+These cover $N(\alpha)$ except perhaps for $\{x_0,x_1,x_n\}$. But these can be covered by intervals of total length $<\frac{\varepsilon}{2}$\\
+$\implies N(\alpha)$ can be covered by intervals of total length $<\varepsilon \tick$
+\end{proof}
+\end{lemma}
+\begin{lemma}[cont.]\hfill{ }
+\begin{proof}[cont.]
+$\impliedby:$ let $\varepsilon > 0$ be given
+\[N(\varepsilon)\subseteq D\]
+so $N(\varepsilon)$ has measure zero. It is closed and bounded,
+$\implies$ it can be covered with finitely many open sets of total length $< \varepsilon$
+\[N(\varepsilon)\subseteq\bigcup_{i=1}^mU_i\]
+let $I_i = \overline{U_i}$ (closure = adding end points)\\
+wlog, $I_i$ do not overlap\\
+
+
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+%uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+
+%Straight Lines [id:da9033197651158771] 
+\draw    (120,180) -- (550,180) ;
+%Straight Lines [id:da780032737714109] 
+\draw    (247.34,212.68) -- (266,250) ;
+\draw [shift={(246,210)}, rotate = 63.43] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (8.93,-4.29) -- (0,0) -- (8.93,4.29) -- cycle    ;
+%Straight Lines [id:da7711039020551951] 
+\draw    (333.57,213.56) -- (355.95,250) ;
+\draw [shift={(332,211)}, rotate = 58.44] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (8.93,-4.29) -- (0,0) -- (8.93,4.29) -- cycle    ;
+%Straight Lines [id:da8690649169018527] 
+\draw    (375.39,212.66) -- (396,252) ;
+\draw [shift={(374,210)}, rotate = 62.35] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (8.93,-4.29) -- (0,0) -- (8.93,4.29) -- cycle    ;
+
+% Text Node
+\draw (223,180.5) node    {$\Bigl[$};
+% Text Node
+\draw (397,180.5) node    {$\Bigr]$};
+% Text Node
+\draw (223,202.4) node [anchor=north] [inner sep=0.75pt]    {$a$};
+% Text Node
+\draw (397,202.4) node [anchor=north] [inner sep=0.75pt]    {$b$};
+% Text Node
+\draw (257,180.5) node    {$\Bigr]$};
+% Text Node
+\draw (307,180.5) node    {$\Bigr]$};
+% Text Node
+\draw (261,180.5) node    {$\Bigl[$};
+% Text Node
+\draw (312,180.5) node    {$\Bigl[$};
+% Text Node
+\draw (346,180.5) node    {$\Bigr]$};
+% Text Node
+\draw (363,180.5) node    {$\Bigl[$};
+% Text Node
+\draw (383,180.5) node    {$\Bigr]$};
+% Text Node
+\draw (237,180.5) node    {$\Bigl[$};
+% Text Node
+\draw (248.5,151) node    {$I_{1}$};
+% Text Node
+\draw (328.5,151) node    {$I_{2}$};
+% Text Node
+\draw (373,151) node    {$I_{i}$};
+% Text Node
+\draw (288.5,201) node    {$J_{1}$};
+% Text Node
+\draw (247,198) node    {$\underbrace{\ \ }$};
+% Text Node
+\draw (263,260) node    {$< \varepsilon $};
+% Text Node
+\draw (329.5,202.5) node    {$\underbrace{\ \ \ \ \ \ \ }$};
+% Text Node
+\draw (352.95,260) node    {$< \varepsilon $};
+% Text Node
+\draw (373,198) node    {$\underbrace{\ \ \ \ }$};
+% Text Node
+\draw (394.95,260) node    {$< \varepsilon $};
+
+
+\end{tikzpicture}\\
+The complement
+\[K = [a,b] \backslash \bigcup_{i=1}^mU_i\]
+is compact so it can be covered by finitely many disjoint closed intervals $J_i$ s.t.
+\[\omega_f(J_j) < \varepsilon\]
+Now the $I_i$'s and $J_j$'s give a dissection for $[a,b]$ s.t.
+
+\begin{align*}
+    \sum_1^n\omega_f([x_{j-1},x_j])(x_j - x_{j-1}) &= \s{m}\underbrace{\omega_f(I_i)}_{\leq 2K}l(I_i) + \s[j] k\underbrace{\omega_f(J_j)}_{<\varepsilon}l(J_j)\\
+    &\leq 2K\sum_1^ml(I_i) + \varepsilon(b-a)\\
+    &\leq 2K\varepsilon + \varepsilon(b-a) \
+\end{align*}
+(using $|f|\leq K$)
+\end{proof}
+\end{lemma}
+\begin{lemma}
+$f$ is continuous at $x$ iff $\omega_f(x) = 0$
+\begin{proof}
+Exercise.
+\end{proof}
+\end{lemma}
+\end{document}

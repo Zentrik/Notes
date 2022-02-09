@@ -192,7 +192,7 @@ Let $\underline{x}' = T(\underline{x})$ with
 \begin{align*}
     \underline{x} = \sum_i x_i \underline{e}_i = \begin{pmatrix}x_1 \\ \vdots \\ x_n\end{pmatrix},\ \underline{x}' = \sum_a x_a' \underline{f}_a = \begin{pmatrix}x_1' \\ \vdots \\ x_m'\end{pmatrix}
 \end{align*} 
-Linearity implies $T$ is determined by $T(\underline{e}_i) = \underline{e}_i' = \underline{C}_i \in \mathbb{R}^m \ (i = 1, \dots, n)$; take these ase *columns* of a $m \times n$ *array* or *matrix* $M$ with *rows*
+Linearity implies $T$ is determined by $T(\underline{e}_i) = \underline{e}_i' = \underline{C}_i \in \mathbb{R}^m \ (i = 1, \dots, n)$; take these as *columns* of a $m \times n$ *array* or *matrix* $M$ with *rows*
 \begin{align*}
     \underline{R}_a \in \mathbb{R}^n \ (a = 1, \dots, m).
 \end{align*} 

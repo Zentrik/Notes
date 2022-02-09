@@ -1,0 +1,389 @@
+\section{Infinite Series}\label{sec:2}
+
+The notion of convergence lets us talk quite sensibly about what it would mean to add up an infinite number of things, which is quite exciting. 
+
+\subsection{Convergent \& Divergent Series}
+
+The definition of convergence for an infinite series is rather natural, and comes from considering the sequence of partial sums.
+
+% \begin{definition}[Convergence of an Infinite Series]
+% 	For a sequence $a_j \in \C$, we say that the series $\sum_{j = 1}^{\infty} a_j$ \vocab{converges} to $S$ if the sequence of partial sums $S_n = \sum_{j = 1}^{n} a_j$ converges to $S$ as $n \rightarrow \infty$. Otherwise, we say it \vocab{diverges}.
+% \end{definition}
+
+\begin{definition}[Convergence of an Infinite Series]
+		For a sequence $a_j \in \C$, we say that the series $\sum_{j = 1}^{\infty} a_j$ \vocab{converges} to $S$ if the sequence of partial sums converges to $S$.
+		That is, $\sum_{j = 1}^{n} a_j \rightarrow S$ as $n \rightarrow \infty$. Otherwise we say that it \vocab{diverges}.
+\end{definition}
+
+\begin{remark}
+	Any problem on series is really a problem about the sequence of partial sums.
+\end{remark} 
+
+\begin{remark}[Notation]
+	If a series converges, then we will typically write $\sum_{j = 1}^{\infty} a_j = S$, but some care is needed as if the series does not converge then this is nonsense. 
+	We will also write $S_n$ to denote the partial sum of a series, if it is clear from context what series is being referred to.
+\end{remark}
+
+In this chapter we will be primarily concerned with finding ways to show whether a given series converges. But first, a few preliminaries.
+
+\begin{proposition}[Adding Series]
+	If two series converge, say $\sum_{j = 1}^{\infty} a_j = a$ and $\sum_{j = 1}^{\infty} b_j = b$, then $\sum_{j = 1}^{\infty} (\lambda a_j + \mu b_j)$ also converges, and we have
+	$$
+	\sum_{j = 1}^{\infty} (\lambda a_j + \mu b_j) = \lambda a + \mu b,\ \lambda, \mu \in \mathbb{C}.
+	$$
+\end{proposition}
+\begin{proof}
+	Considering the sequence of partial sums we have
+	$$
+	\sum_{j = 1}^n (\lambda a_j + \mu b_j) = \lambda \sum_{j=1}^n a_j + \mu \sum_{j = 1}^n b_j \longrightarrow \lambda a + \mu b
+	$$
+	as $n \rightarrow \infty$, as required.
+\end{proof}
+
+It should also be intuitively clear that the first few terms of an infinite series will not affect its convergence.
+
+\begin{proposition}[Ignoring Initial Terms]
+Suppose there exists $N$ s.t. $a_j = b_j$ for all $j \geq N$. Then either $\sum_{j = 1}^{\infty} a_j$ and $\sum_{j = 1}^{\infty} b_j$ both converge or they both diverge.
+\end{proposition}
+\begin{proof}
+	For $n \geq N$, we have $\sum_{j = 1}^n a_n - \sum_{j = 1}^n b_n =  \sum_{j = 1}^N a_n - \sum_{j = 1}^N b_n$, which is a constant. Thus the sequences of partial sums either both converge or diverge.
+\end{proof}
+
+We can also apply the general principle of convergence to infinite series. This gives us another useful way of proving that a series converges, particularly when we don't know what the series converges to which is often the case.
+
+\begin{theorem}[General Principle of Convergence/Cauchy's Criterion for Series]
+	The infinite series $\sum_{j = 1}^{\infty} a_j$ converges if and only if for every $\varepsilon > 0$ there is an integer $N$ s.t. for all $n, m \geq N$ we have $|\sum_{j = n}^m a_j| \leq \varepsilon$.
+\end{theorem}
+\begin{proof}
+	This follows directly from the definition of the sequence of partial sums being Cauchy.
+\end{proof}
+
+% We can use this to prove the convergence of some interesting series.
+
+% \begin{example}
+% 	The series $\sum_{n = 1}^{\infty} 1/(n2^n)$ converges since $\sum_{n = 1}^{\infty} 1/(2^n)$ converges, and $2^n \leq n 2^n$ for $n \geq 1$.
+% \end{example}
+
+
+
+% Many of the results that we develop in this discussion on infinite series will be used again when we discuss power series later on. With this in mind, we will be quite careful about whether we are working in $\R$ or in $\C$. This will be mentioned explicitly where necissary.
+
+% To end this section, we will consider the example of a geometric series, a type of infinite series you are most likely quite familar with. 
+
+% \begin{example}[Geometric Series]
+% 	Consider the infinite series $\sum_{j = 1}^{\infty} x^{j - 1}$. 
+% 	We can write it's partial sum as
+% 	$S_n = \sum_{j = 1}^{n} x^{j-1} = 1 + x + x^2 + \cdots + x^{n - 1}$. Then we have
+% 	\begin{align*}
+% 		x S_n &= x + x^2 + \cdots + x^n \\
+% 	\implies S_n &= \begin{cases}
+%         \frac{1 - x^n}{1 - x} &\mbox{if } x \neq 1, \\
+%         n &\mbox{if } x = 1.
+%        \end{cases}
+% 	\end{align*}
+% 	Now we will consider various values of $x$ to see if the series converges.
+% 	\begin{itemize}
+% 		\item If $|x| < 1$, then $x^n \rightarrow 0$ and $S_n \rightarrow \frac{1}{1 - x}$. 
+% 		\item If $|x| > 1$, then we can see that the sequence of partial sums does not converge.
+% 		\item =
+% 	\end{itemize}
+	
+% \end{example}
+
+
+% \begin{itemize}
+%  	\item Detailed example of geometric series
+%  	\item Note that if we can say that the sum goes to $\pm \infty$, or that it oscillates
+%  	\item Its straightforward to note that $\sum_{j = 1}^{\infty} a_j$ converges then $a_j \rightarrow 0$ as $j \rightarrow \infty$ and proof.
+%  	\item Of course the converse is false, take the harmonic series.
+ 	
+% \end{itemize}
+
+\subsection{Convergence Tests}
+
+In this section we will develop some `tests' of convergence, so that given some infinite series we will have some tools to try and determine relatively quickly if it converges and diverges.
+
+We begin with the observation that if the terms of the series do not tend to 0, then the series must diverge.
+
+\begin{proposition}[Limit of Terms in a Convergent Series]\label{prop:limit-of-terms}
+	Suppose that $\sum_{j = 1}^{\infty} a_j$ converges. Then $a_j \rightarrow 0$ as $j \rightarrow \infty$.
+\end{proposition}
+\begin{proof}
+	Let $S_n = \sum_{j = 1}^{n} a_j$. Then $S_n \rightarrow S$ for some $S$, and thus we must have $S_{n + 1} \rightarrow S$. Adding these sequences we get $S_{n+1} - S_{n} \rightarrow 0$, that is, $a_{n + 1} \rightarrow 0$ as $n \rightarrow \infty$ as required.
+\end{proof}
+
+Somewhat unfortunately, while necessary this is not a sufficient condition for convergence. The most commonly cited counterexample to this is the Harmonic series.
+
+\begin{example}[Divergence of the Harmonic Series]
+	Consider the infinite series with $a_k = 1/k$. Then $a_k \rightarrow 0$, but $\sum_{k = 1}^\infty a_k$ diverges.
+
+	To see this, let $H_n = \sum_{k = 1}^n a_k$ be the partial sum of the series. Then we have
+	\begin{align*}
+		H_{2n} &= H_n + \frac{1}{n + 1} + \frac{1}{n + 2} + \cdots + \frac{1}{n + n} \\
+		&\geq  H_n + \underbrace{\frac{1}{2n} + \frac{1}{2n} + \cdots + \frac{1}{2n}}_{\text{$n$ times}} = H_n + \frac{1}{2}.
+	\end{align*}
+	So if the series converged, we would have $H_n \rightarrow a$ and $H_{2n} \rightarrow a$, giving $a \geq a + 1/2$, which is a contradiction.
+\end{example}
+
+The result about the limit of terms in a series can be helpful though! For example, let's consider a series you are likely familiar with.
+
+\begin{example}[Convergence/Divergence of the Geomeric Series]
+		Consider the infinite series $\sum_{j = 1}^{\infty} x^{j - 1}$. Writing it's partial sum as
+	$S_n = \sum_{j = 1}^{n} x^{j-1}$,
+	A little bit of algebra gives us that
+	\begin{align*}
+		S_n = \begin{cases}
+        \frac{1 - x^n}{1 - x} &\mbox{if } x \neq 1, \\
+        n &\mbox{if } x = 1.
+       \end{cases}
+	\end{align*}
+	So if $|x| < 1$, then $x^n \rightarrow 0$ and $S_n \rightarrow \frac{1}{1 - x}$. Otherwise, if $|x| \geq 1$ then the series cannot converge since the terms do not tend to 0.
+\end{example}
+
+It's best to think of \autoref{prop:limit-of-terms} as giving the sort of a `bare minimum' property that a series has to have in order to converge. Of course, it's also quite helpful for sanity checks!
+
+\subsubsection{Series of Non-Negative Terms}
+
+We just saw a necessary condition for convergence, now let's have a look at some \emph{sufficient} conditions for convergence. For the time being we will restrict ourselves to considering infinite series where all of the terms are \emph{real and non-negative}.
+
+The first result we have is a direct consequence of our fundamental axiom.
+
+\begin{theorem}[Bounded Partial Sums]
+	If $a_n$ is a non-negative sequence and the partial sums $S_n$ are bounded above, then $\sum_{n = 1}^{\infty} a_n$ converges.
+\end{theorem}
+\begin{proof}
+	Since all of the terms are non-negative, $S_n$ is a bounded and increasing sequence, and thus converges by our fundamental axiom.
+\end{proof}
+
+In a similar vein is the comparison test, which allows us to show convergence by comparing a series with another series whose convergence we know.
+
+\begin{theorem}[The Comparison Test]
+	Suppose that $0 \leq a_j \leq b_j$ for all $j$. Then if $\sum_{j = 1}^{\infty} b_j$ converges, so does $\sum_{j = 1}^{\infty} a_j$.
+\end{theorem}
+\begin{proof}
+	Since $B_n = \sum_{j = 1}^n b_j$ is an increasing sequence whose limit is say $B$, we have $B_n \leq B$ for all $n$. 
+	Thus $\sum_{j = 1}^n a_n \leq B_n \leq B$, so we have a series of non-negative terms whose partial sums are bounded. Thus $\sum_{j = 1}^\infty a_n$ converges.
+\end{proof}
+
+\begin{example}[Using the Comparison Test]
+	We will prove that $\sum_{n = 1}^{\infty} \frac{1}{n^2}$ converges using the comparison test.
+
+	Since $\frac{1}{n^2} < \frac{1}{n(n - 1)}$ for $n \geq 2$, and $\sum_{n = 2}^{\infty} \frac{1}{n(n - 1)}$ converges as
+	$\sum_{n = 2}^N \frac{1}{n(n - 1)} = 1 - \frac{1}{N} \rightarrow 1$ as $N \rightarrow \infty$, we get that $\sum_{n = 1}^{\infty} \frac{1}{n^2}$ converges by comparison.
+\end{example}
+
+Using the comparison test we can derive two more useful tests, both of which come from comparing a series with the geometric series. You'll notice that the proofs for both results are relatively similar!
+
+\begin{theorem}[The Root Test]
+	Let $a_n$ be a non-negative sequence and suppose $\sqrt[n]{a_n} \rightarrow a$ as $n \rightarrow \infty$.
+	Then if $a < 1$, $\sum_{n = 1}^{\infty} a_n$ converges, and if $a > 1$, $\sum_{n = 1}^{\infty} a_n$ diverges.
+\end{theorem}
+\begin{proof}
+	If $a < 1$, we can choose $b$ s.t. $a < b < 1$, and there exists an integer $N$ s.t. for all $n \geq N$ we have $\sqrt[n]{a_n} < b$, that is, $a_n < b^n$. But then $\sum_{n = N}^{\infty} b^n$ converges since $b < 1$. Thus by comparison $\sum_{n = 1}^{\infty} a_n$ converges too.
+
+	If $a > 1$, then for $n \geq N$ $\sqrt[n]{a_n} > 1$ implies that $a_n > 1$, but then the terms in the series do not tend to zero and thus $\sum_{n = 1}^{\infty} a_n$ diverges.
+\end{proof}
+
+% \begin{remark}[Warning]
+% 	If we find that $a = 1$, we cannot draw any conclusion about convergence. To see this, consider $\sum \frac{1}{n}$ and $\sum \frac{1}{n^2}$.
+% \end{remark}
+
+\begin{theorem}[The Ratio Test]
+	Let $a_n$ be a non-negative sequence and suppose that $\frac{a_{n + 1}}{a_n} \rightarrow \ell$ as $n \rightarrow \infty$. Then if $\ell < 1$, $\sum_{n = 1}^{\infty} a_n$ converges, and if $\ell > 1$, $\sum_{n = 1}^{\infty} a_n$ diverges.
+\end{theorem}
+\begin{proof}
+	If $\ell < 1$, we can choose $b$ s.t. $\ell < b < 1$, and there exists an integer $N$ s.t. $\frac{a_{n + 1}}{a_n} < b$ for all $n \geq N$. Therefore
+	\begin{align*}
+		a_n &= \frac{a_n}{a_{n - 1}} \cdot \frac{a_{n - 1}}{a_{n - 2}} \cdots \frac{a_{N + 1}}{a_{N}}\cdot a_N \\
+		&< \left(a_N b^{-N}\right)b^{n},
+	\end{align*}
+	for $n > N$. But then $\sum_{n = N+1}^{\infty} b^n$ converges as $b < 1$, and since $a_N b^{-N}$ is a constant, $\sum_{n = 1}^{\infty} a_n$ converges by comparison.
+
+	If $\ell > 1$, then $a_{n + 1} > a_n$ and the terms in the series do not tend to zero and thus $\sum_{n = 1}^{\infty} a_n$ diverges. 
+\end{proof}
+\begin{remark}[A Deadly Sin]
+	In both the root and ratio test, if we find that either $a = 1$ or $\ell = 1$, we \emph{cannot draw any conclusions about the convergence of the series}. To see this, consider $\sum \frac{1}{n}$ and $\sum \frac{1}{n^2}$.
+\end{remark}
+
+Some examples of using the root and ratio tests are shown below, but we won't do too many since there's a most likely a few already on your example sheets (and there's not really much to the basic technique).
+
+\begin{example}[Using the Ratio Test]
+	We will prove that $\sum_{n = 1}^{\infty} \frac{n}{2^n}$ converges using the ratio test.
+
+	Let $a_n = n/2^n$. Then we have $\frac{a_{n + 1}}{a_n} = \frac{n + 1}{2^{n + 1}} \cdot \frac{2^n}{n} = \frac{n + 1}{2n}$, and thus $\frac{a_{n + 1}}{a_n} \rightarrow \frac{1}{2} < 1$ as $n \rightarrow \infty$. Then by the ratio test $\sum_{n = 1}^{\infty} \frac{n}{2^n}$ converges.
+\end{example}
+
+\begin{example}[Using the Root Test]
+	We will prove that $\sum_{n = 1}^{\infty} \left(\frac{n + 1}{3n + 5}\right)^n$ converges using the root test.
+
+	Let $a_n = (\frac{n + 1}{3n + 5})^n$. Then $\sqrt[n]{a_n} = \frac{n + 1}{3n + 5}$, and thus $\sqrt[n]{a_n} \rightarrow \frac{1}{3}$ as $n \rightarrow \infty$. Then by the root test $\sum_{n = 1}^{\infty} \left(\frac{n + 1}{3n + 5}\right)^n$ converges.
+\end{example}
+
+In the case that we have our sequence of non-negative terms is decreasing, we can determine the convergence by looking at a related series involving a relatively small subsequence of terms.
+
+\begin{theorem}[Cauchy's Condensation Test]
+	If $a_n$ is a decreasing sequence of positive numbers, then $\sum_{n = 1}^{\infty} a_n$ and $\sum_{n = 0}^{\infty} 2^n a_{2^n}$ either both converge or both diverge.
+\end{theorem}
+\begin{proof}
+It suffices to show that the partial sums of both series are either both bounded or both unbounded.
+Let $S_n = \sum_{j = 1}^{n} a_j$ and $T_n = \sum_{j = 0}^n 2^j a_{2^j}$ be the partial sums of each series.
+
+If $n < 2^k$ we have
+\begin{align*}
+	S_n &\leq a_1 + (a_2 + a_3) + \cdots + (a_{2^k} + \cdots + a_{2^{k + 1} - 1}) \\
+	&\leq a_1 + 2 a_2 + \cdots + 2^k a_{2^k} = T_k,
+\end{align*}
+thus $S_n \leq T_k$. So if $T_n$ is bounded so is $S_n$. Also if $n > 2^k$, we have
+\begin{align*}
+	S_n &\geq a_1 + a_2 + (a_3 + a_4) + \cdots + (a_{2^{k -1}+1} + \cdots + a_{2^k}) \\
+	&\geq \frac{1}{2}a_1 + a_2 + 2 a_4 + \cdots + 2^{k - 1}a_{2^k} = \frac{1}{2}T_k,
+\end{align*}
+so $2S_n \geq T_k$. So if $S_n$ is bounded so is $T_k$.
+Thus $S_n$ and $T_n$ are either both bounded or both unbounded. 
+\end{proof}
+
+You may notice that this proof somewhat resembles our proof that the harmonic series diverges, and indeed you can show the following stronger result.
+
+\begin{theorem}[Convergence of $\sum n^{-\alpha}$]
+	$\sum_{n = 1}^{\infty} \frac{1}{n^\alpha}$ converges if and only if $\alpha > 1$.
+\end{theorem}
+\begin{proof}
+If $\alpha \leq 0$ then the terms in the series do not tend to zero, so the series diverges. So for $\alpha > 0$ we apply Cauchy's condensation test. This series converges if and only if the series
+$$
+\sum_{k = 0}^{\infty} 2^k \cdot \frac{1}{2^{\alpha k}} = \sum_{k = 0}^{\infty} 2^{(1 - \alpha) k}
+$$
+converges. By comparison with the geometric series, this will converge if and only if $2^{1 - \alpha} < 1$, that is, $\alpha > 1$.
+\end{proof}
+
+
+In a way Cauchy's condensation test is slightly different to the others convergence tests since it just gives us a different series that may be easier to show convergence or divergence for.
+
+Still, it is natural to reach for Cauchy's condensation test when the root or ratio tests fail. For example, all of the series below cannot be shown to converge or diverge using the root or ratio tests:
+$$
+\sum_{n=1}^{\infty} \frac{1}{n^{\alpha}}, \quad \sum_{n=2}^{\infty} \frac{1}{n \log n}, \quad \sum_{n=2}^{\infty} \frac{1}{(\log n)^{2}}, \quad \sum_{n=2}^{\infty} \frac{1}{n(\log n)^{2}}, \quad \text{and} \quad \sum_{n=2}^{\infty} \frac{\log n}{n^{2}}.
+$$
+If you try, you will find that these tests are inconclusive. However, all can be shown to converge/diverge using Cauchy's condensation test.\footnote{You could also use the integration test (which we have not discussed), but that's most likely going to be slower as you have to integrate things.}
+
+
+% \clearpage
+
+% \begin{aside}{Aside: The Basel Problem}
+
+% 	The problem of determining the exact value of $\sum_{n = 1}^{\infty} \frac{1}{n^2}$, known as the `Basel problem', has been around since the 17th century, and solving it was 
+
+% 	Indeed, Bombelli noticed this and gave an explanation for how these two solutions were essentially the same, even with the presence of the rather puzzling term $\sqrt{-121}$.
+% 	His explanation essentially began by noting that if we wrote $\sqrt{-121} = 11i$, then we could find that
+% 	\begin{align*}
+% 		\sqrt[3]{2 + \sqrt{-121}} &= 2 + ni \\
+% 		\sqrt[3]{2 - \sqrt{-121}} &= 2 - ni,
+% 	\end{align*}
+% 	and adding would then result in $2 + ni + 2 - ni = 4$, our other solution.
+	
+% 	Inherent in this explanation was an expectation that this $i$ would obey many of the same rules of arithmetic that we would expect of, say, a real number. After this work, contributions from mathematicians such as Descartes, Wallis, de Moivre, Euler, Wessel, Argand, Hamilton, Gauss, Cauchy and many others began to build up a rich theory of the complex numbers, later developing the field of complex analysis, all centered on this construction of some $i$ with the property that $i^2 = -1$. 
+% \end{aside}
+
+\subsubsection{Alternating Series}
+
+We will now look at a convergence test for series whose terms alternate from positive to negative.
+
+\begin{theorem}[Alternating Series Test]
+	If $a_n$ is a decreasing sequence of positive numbers with $a_n \rightarrow 0$ as $n \rightarrow \infty$ then $\sum_{j = 1}^{\infty} (-1)^{j + 1}a_j$ converges.
+\end{theorem}
+\begin{proof}
+	Let $S_n = \sum_{j = 1}^n (-1)^{j + 1}a_j$ denote the partial sum of the series. Then
+	$
+		S_{2n} = S_{2n - 2} + (a_{2n - 1} - a_{2n}) \geq S_{2n - 2}.
+	$
+	Also
+	$$
+		S_{2n} = a_1 - (a_2 - a_3) - \cdots - (a_{2n - 2} - a_{2n - 1}) - a_{2n}
+		\leq a_1.
+	$$
+	Therefore $S_{2n}$ is increasing and bounded above, and thus converges. Now let $S_{2n} \rightarrow S$ as $n \rightarrow \infty$. Then $S_{2n + 1} = S_{2n} + a_{2n + 1} \rightarrow S + 0 = S$ as $n \rightarrow S$. Thus $S_n \rightarrow S$, and $\sum_{j = 1}^{\infty} (-1)^{j + 1}a_j$ converges.
+\end{proof}
+
+\begin{example}
+	We will prove that $\sum_{n = 1}^{\infty} \frac{(-1)^{n + 1}}{n}$ converges using the alternating series test.\footnote{Later on we will see that this is equal to $\log 2$.}
+
+	We note that $\frac{1}{n}$ is a decreasing sequence of positive numbers with $\frac{1}{n} \rightarrow 0$. Thus by the alternating series test $\sum_{n = 1}^{\infty} \frac{(-1)^{n + 1}}{n}$ converges. 
+\end{example}
+
+\subsection{Absolute Convergence}
+
+To finish our discussion on infinite series (for now!) we will introduce the stronger notion of \emph{absolute convergence}. The main motivation for introducing this will become clear as we develop some of the properties of absolute convergence, but informally knowing that a series converges absolutely will allow us to be a little less careful when working with the series.
+
+\begin{definition}[Absolute Convergence]
+	For some sequence $a_n \in \C$, we say that the series $\sum_{n = 1}^{\infty} a_n$ converges \vocab{absolutely} if the series $\sum_{n = 1}^{\infty} |a_n|$ converges. 
+\end{definition}
+
+We can see that absolute convergence is a strictly stronger property than `regular' convergence. Indeed absolute convergence implies convergence, but not the other way round.
+
+\begin{theorem}[Absolute Convergence Implies Convergence]
+	If $\sum_{j = 1}^{\infty} a_j$ converges absolutely then it converges.
+\end{theorem}
+\begin{proof}
+	By the triangle inequality we have
+	$$
+	\left|\sum_{j = n}^m a_j\right| \leq \sum_{j = n}^m \left|a_j\right|,
+	$$
+	and thus by Cauchy's criterion $\sum_{j = 1}^{\infty} a_j$ converges.
+\end{proof}
+
+To see that the converse isn't true (and that indeed it is a strictly stronger notion), consider the series $\sum_{n = 1}^{\infty} \frac{(-1)^{n + 1}}{n}$, which converges but does not converge absolutely. We sometimes say such series converge \vocab{conditionally}. 
+
+When trying to determine whether a series converges absolutely, since $|a_n| \geq 0$ we are free to apply all of the results that we developed in the previous subsection. We will see this in the next example.
+
+\begin{example}[Showing Absolute Convergence]
+	Consider the infinite series $\sum_{n = 1}^{\infty} z^n/2^n$. We will determine for which values of $z$ this infinite series converges absolutely.
+	
+	By the root test, we know that $\sum_{n = 1}^{\infty} |z^n/2^n|$ converges if $|z| < 2$ and diverges if $|z| > 2$. Also for $|z| = 2$ we can see that the terms of the series do not go to zero, so the series diverges.
+
+	Thus $\sum_{n = 1}^{\infty} z^n/2^n$ converges absolutely for $|z| < 2$ and diverges for $|z| \geq 2$.
+\end{example}
+
+Now it was claimed at the start of this subsection that absolute convergence allows us to be a `little less careful'. Allow me to elaborate on this. 
+
+
+In general, \emph{\color{red} you must be very careful when manipulating infinite series}. To see why, consider this informal example.
+\begin{align*}
+	1-\frac{1}{2}+\frac{1}{3}-\frac{1}{4}+\frac{1}{5}-\frac{1}{6}+\cdots &= \log 2 \\
+	1+\frac{1}{3}-\frac{1}{2}+\frac{1}{5}+\frac{1}{7}-\frac{1}{4}+\cdots &= \frac{3}{2} \log 2
+\end{align*}
+The two series above both converge, and they both have all of the same terms. The only difference is that the terms are in a different order, and this change has completely altered the value of the series.
+
+What's nice about absolutely convergent series is that \emph{we don't have to worry about this}.
+
+\begin{definition}[Rearrangement]
+	A \vocab{rearrangement} of the series $\sum_{n = 1}^{\infty} a_n$ is another series $\sum_{n = 1}^{\infty} a_{\sigma(n)}$, where $\sigma : \N \rightarrow \N$ is a bijection.
+\end{definition}
+
+\begin{theorem}[Rearranging Absolutely Convergent Series]
+	If $\sum_{j = 1}^{\infty} a_j$ is absolutely convergent then any rearrangement of the series will converge to the same value.
+\end{theorem}
+\begin{proof}
+Let $\sum_{j = 1}^{\infty} a_{\sigma(j)}$ be a rearrangement of the series. Given $\varepsilon > 0$, we wish to show that there exists an integer $N$ s.t. $|\sum_{j = 1}^{\infty} a_j - \sum_{j = 1}^n a_{\sigma(j)}| < \varepsilon$ for all $n \geq N$.
+
+By Cauchy's criterion there exists an integer $m$ s.t. $\sum_{j = m + 1}^{\infty} |a_j| < \varepsilon$.
+We then choose $N$ s.t. $\{a_1, a_2, \dots, a_m\} \subseteq \{a_{\sigma(1)}, a_{\sigma(2)}, \dots, a_{\sigma(N)}\}$. This can be done by setting $N = \max_{1 \leq i \leq m} \sigma^{-1}(i)$.
+Then if $n \geq N$ we have
+$$
+\sum_{j = 1}^{\infty} a_j - \sum_{j = 1}^n a_{\sigma(j)} = \sum_{j \in A_n} a_j,
+$$
+where $A_n \subseteq \{m + 1, m + 2, \dots \}$. 
+Then applying the triangle inequality we have
+$$
+\left|\sum_{j = 1}^{\infty} a_j - \sum_{j = 1}^n a_{\sigma(j)}\right| = \left|\sum_{j \in A_n} a_j\right| \leq \left|\sum_{j = m + 1}^{\infty} a_j \right| \leq \sum_{j = m + 1}^{\infty} |a_j| < \varepsilon,
+$$
+as required.
+\end{proof}
+
+To see just how not-true this is for series that do not converge absolutely, we just need to read the statement of Riemann's Rearrangement Theorem.
+
+\begin{theorem}[Riemann's Rearrangement Theorem]
+	Let $a_j \in \R$. Suppose that $\sum_{j = 1}^{\infty} a_j$ is convergent but not absolutely convergent. Then given any $x \in \R$ there is a rearrangement of this series s.t. $\sum_{j = 1}^{\infty} a_{\sigma(j)} = x$.
+\end{theorem}
+\begin{proof}
+	Left as an exercise -- it's on the example sheet!
+\end{proof}
+
+\clearpage
