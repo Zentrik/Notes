@@ -227,7 +227,7 @@ For now: $X$ only takes non-negative values. ``$X \geq 0$''
     Let $X \sim \operatorname{Poisson}(\lambda)$
     \begin{align*}
         \mathbb{E}[X] &= \sum_{k \geq 0} k \mathbb{P}(X = k) \\
-        &= \sum_{k \geq 0} \cdot e^{-\lambda} \frac{\lambda^k}{k!} \\
+        &= \sum_{k \geq 0} k \cdot e^{-\lambda} \frac{\lambda^k}{k!} \\
         &= \sum_{k \geq 1} e^{-\lambda} \frac{\lambda^k}{(k - 1)!} \\
         &= \lambda \sum_{k \geq 1} e^{-\lambda} \frac{\lambda^{k - 1}}{(k - 1)!} \quad \color{blue} \text{pmf of } \operatorname{Poisson}(\lambda) \\
         &= \lambda.
@@ -242,18 +242,17 @@ For now: $X$ only takes non-negative values. ``$X \geq 0$''
     \color{blue} It is not true in general that $\mathbb{P}(X_n = k) \approx \mathbb{P}(X = k) \implies \mathbb{E}[X_n] \approx \mathbb{E}[X]$
 \end{note} 
 
-\emph{Not important}
+\begin{aside}{Not important}
+    If $X$ can take on any real value (not necessarily $X \geq 0$)
+    \begin{align*}
+        \mathbb{E}[X] = \sum_{x \in \operatorname{Im}(X)} x \mathbb{P}(X = x)
+    \end{align*} 
+    unless: A, $\displaystyle \sum_{\substack{x > 0 \\ x \in \operatorname{Im}(X)}} x \mathbb{P}(X = x) = + \infty$ and B, $\displaystyle \sum_{\substack{x < 0 \\ x \in \operatorname{Im}(X)}} x \mathbb{P}(X = x) = + \infty$. \\
+    Then we say $\mathbb{E}[X]$ is not defined.
+    \color{red} Do we really want to study $\infty + \frac{2}{3} (- \infty)$ \color{black}
+\end{aside} 
 
-If $X$ can take on any real value (not necessarily $X \geq 0$)
-\begin{align*}
-    \mathbb{E}[X] = \sum_{x \in \operatorname{Im}(X)} x \mathbb{P}(X = x)
-\end{align*} 
-unless: A, $\displaystyle \sum_{\substack{x > 0 \\ x \in \operatorname{Im}(X)}} x \mathbb{P}(X = x) = + \infty$ and B, $\displaystyle \sum_{\substack{x < 0 \\ x \in \operatorname{Im}(X)}} x \mathbb{P}(X = x) = + \infty$. \\
-Then we say $\mathbb{E}[X]$ is not defined.
-\color{red} Do we really want to study $\infty + \frac{2}{3} (- \infty)$
-
-\color{black}
-\emph{Summary}: 
+\underline{Summary}: 
 \begin{itemize}
     \item A and B, $\mathbb{E}[X]$ is not defined.
     \item A but not B, $\mathbb{E}[X] = + \infty$.\footnote{Some people say not defined instead of letting $\mathbb{E}[X] =  \pm \infty$}
@@ -273,13 +272,13 @@ Then we say $\mathbb{E}[X]$ is not defined.
     \end{itemize} 
 \end{example} 
 
-\begin{example}[Indicator Function]
+\begin{example}[Indicator Function] \label{exm:exp-indi}
     $\mathbb{E}[1_A] = \mathbb{P}(A)$.
 \end{example} 
 
 \subsubsection{Properties of Expectation}
 
-\begin{proposition}
+\begin{proposition} \label{prp:exp-1}
     If $X \geq 0$, then $\mathbb{E}[X] \geq 0$ with equality iff $\mathbb{P}(X = 0) = 1$. 
 \end{proposition} 
 
@@ -287,15 +286,20 @@ Then we say $\mathbb{E}[X]$ is not defined.
     $\displaystyle \mathbb{E}[X] = \sum_{\substack{x \in \operatorname{Im}(X) \\ x \neq 0}} x \mathbb{P}(X = x)$
 \end{proof} 
 
-\begin{proposition}[Linearity of expectation]
-    Given random variables $X, Y$ (both integrable) on same probability space and $\lambda, \mu \in \mathbb{R}$
+\begin{proposition}[Linearity of expectation] \label{prp:linear}
+    Given random variables $X, Y$ (both integrable) on same probability space $\forall \; \lambda, \mu \in \mathbb{R}$
     \begin{align*}
         \mathbb{E}[\lambda X + \mu Y] &= \lambda \mathbb{E}[X] + \mu \mathbb{E}[Y] \\
-        \text{Similarly} \quad \mathbb{E}[\lambda_1, X_1, + \dots + \lambda_n X_n] &= \lambda_1 \mathbb{E}[X_1] + \dots + \lambda_n \mathbb{E}[X_n]
+        \text{Similarly} \quad \mathbb{E}[\lambda_1 X_1, + \dots + \lambda_n X_n] &= \lambda_1 \mathbb{E}[X_1] + \dots + \lambda_n \mathbb{E}[X_n]\footnote{holds for countably infinite collection though proof is omitted until more analysis experience.}
     \end{align*} 
 \end{proposition} 
 
+\begin{note}
+    \emph{Independence} is \emph{NOT} a condition.
+\end{note}  
+
 \begin{proof}
+    If $\Omega$ is countable:
     \begin{align*}
         \mathbb{E}[\lambda X + \mu Y] &= \Ccancel[blue]{\sum_{z \in \operatorname{Im}(\lambda X + \mu Y)} z \mathbb{P}(\lambda X + \mu Y = z)} \quad \color{blue} \text{awkward} \\
         &= \sum_{\omega \in \Omega} (\lambda X(\omega) + \mu Y(\omega)) \mathbb{P}(\{\omega\}) \\
@@ -318,3 +322,544 @@ Then we say $\mathbb{E}[X]$ is not defined.
         \end{enumerate} 
     \end{enumerate} 
 \end{aside} 
+
+\begin{corollary}
+    $X \geq Y$\footnote{$X(\omega) > Y(\omega) \quad \forall \; \omega \in \Omega$} then $\mathbb{E}[X] \geq \mathbb{E}[Y]$.
+\end{corollary} 
+
+\begin{proof}
+    \begin{align*}
+        X &= (X - Y) + Y \\
+        \mathbb{E}[X] &= \mathbb{E}[X - Y] + \mathbb{E}[Y] \\
+        X - Y \geq 0 &\implies \mathbb{E}[X - Y] \geq 0 \quad \text{by \Cref{prp:exp-1}}.
+    \end{align*} 
+\end{proof} 
+
+\begin{example}[Counting Problems]
+    $(\sigma(1), \dots, \sigma(n))$ uniform on $\Sigma_n$.
+    $Z = |\{i : \sigma(i) = i\}| =$ number of fixed points.
+    Let $A_i = \{\sigma(i) = i\}$, \color{blue} recall from \Cref{exm:indep1} $A_i$s \emph{not} independent. \color{black}
+
+    \emph{Key step}:
+    \begin{align*}
+        Z &= 1_{A_1} + \dots + 1_{A_n} \\
+        \mathbb{E}[Z] &= \mathbb{E}[1_{A_1} + \dots + 1_{A_n}] \\
+        &= \mathbb{E}[1_{A_1}] + \dots + \mathbb{E}[1_{A_n}] \quad \text{by \nameref{prp:linear}} \\
+        &= \mathbb{P}(A_1) + \dots + \mathbb{P}(A_n) \quad \text{by \Cref{exm:exp-indi}}\\
+        &= \frac{1}{n} n = 1.
+    \end{align*}
+\end{example}
+
+\begin{note}
+    Same answer as $\operatorname{Bin}(n, \frac{1}{n})$
+\end{note} 
+
+\begin{proposition}
+    If $X$ takes values in $\{0, 1, 2, \dots\}$ then
+    \begin{align*}
+        \mathbb{E}[X] = \sum_{k \geq 0} \mathbb{P}(X \geq k)
+    \end{align*} 
+\end{proposition} 
+
+\begin{proof}
+    One can carefully re-arrange the summands which is left as an exercise to the reader.
+\end{proof} 
+
+\begin{proof}[Alternative]
+    Write $X = \sum_{k \geq 1} 1_{X \geq k}$\footnote{Sanity check: let $X = 7$, $1_{X \geq 1} = \dots = 1_{X \geq 7} = 1$ whilst $1_{X \geq 8} = 1_{X \geq 9} = \dots = 0$.} then take $\mathbb{E}[X]$:
+    \begin{align*}
+        \mathbb{E}[X] &= \mathbb{E}\left[\sum 1_{X \geq q}\right] \\
+        &= \sum \mathbb{E}[1_{X \geq k}] \\
+        &= \sum \mathbb{P}(X \geq k)
+    \end{align*} 
+\end{proof} 
+
+\begin{claim}[Markov's Inequality] \label{clm:markov}
+    Let $X \geq 0$ be a random variable.
+    Then $\forall \; a > 0$:
+    \begin{align*}
+        \mathbb{P}(X \geq a) \leq \frac{\mathbb{E}[X]}{a}
+    \end{align*} 
+    \color{red} The LHS is interesting, e.g. if we want to bound the probability of an extreme outcome, whilst the RHS is easy to study.
+\end{claim}
+
+\begin{note} \color{blue}
+    Is $a = \frac{\mathbb{E}[X]}{2}$ useful? No, we already know probabilities are less than 2. \\
+    If $a$ is large it might be useful
+\end{note} 
+
+\begin{proof}
+    Observe $X \geq a 1_{X \geq a}$\footnote{Check: If $X \in [0, a)$ then RHS $= 0$ else RHS $= a$.} and take $\mathbb{E}$
+    \begin{align*}
+        \mathbb{E}[X] &\geq a \mathbb{E}[1_{X \geq a}] \\
+        &= a \mathbb{P}(X \geq a)
+    \end{align*} 
+\end{proof} 
+
+\begin{note} \color{red}
+    Markov's Inequality is also true for continuous RVs.
+\end{note} 
+
+Studying $\mathbb{E}[f(X)]$
+Let $f: \mathbb{R} \to \mathbb{R}$ be a function.
+Then $f(x)$ is also a \emph{random variable}\footnote{\color{blue} $X: \Omega \to \mathbb{R}$ so $f(X) : \Omega \to \mathbb{R}$.}.
+
+\begin{claim} ~\vspace*{-1.5\baselineskip}
+    \begin{align*}
+        \mathbb{E}[f(x)] &= \sum_{x \in \operatorname{Im}(x)} f(x) \mathbb{P}(X = x)\footnote{if it exists}.
+    \end{align*} 
+\end{claim} 
+
+\begin{proof}
+    Let $A = \operatorname{Im}(f(x)) = \{f(x) : x \in \operatorname{Im}(X)\}$.
+    Starting with RHS
+    \begin{align*}
+        \sum_{x \in \operatorname{Im}(X)} f(x) \mathbb{P}(X = x) &= \sum_{y \in A} \sum_{\substack{x \in \operatorname{Im}(X) \\ f(x) = y}} f(x) \mathbb{P}(X = x) \\
+        &= \sum_{y \in A} y \sum_{\substack{x \in \operatorname{Im}(X) \\ f(x) = y}} \mathbb{P}(X = x) \\
+        &= \sum_{y \in A} y \mathbb{P}(f(X) = y) \quad \text{by additivity} \\
+        &= \mathbb{E}[f(X)]
+    \end{align*}  
+\end{proof}
+
+\subsection{Variance}
+\underline{Motivation}
+\begin{align*}
+    U_n &\sim \operatorname{Uniform}(\{-n, -n + 1, \dots, n\}) \\
+    V_n &\sim \operatorname{Uniform}(\{-n, n\}) \\
+    Z_n &= 0 \\
+    S_n &= \text{random walk for $n$ steps} \\
+    &\sim n - 2 \operatorname{Bin}\left( n, \frac{1}{2} \right)
+\end{align*} 
+All of these have \emph{$\mathbb{E} = 0$}.
+
+\color{blue} Variance is a way to ``measure how concentrated a RV is around its mean''. \color{black}
+
+\begin{definition}
+    The \vocab{variance} of $X$ is:
+    \begin{align*}
+        \Var(X) &= \mathbb{E}\left[(X - \mathbb{E}[X])^2 \right]
+    \end{align*} 
+\end{definition} 
+
+\begin{proposition}
+    $\Var(X) \geq 0$ with equality $\iff \mathbb{P}(X = \mathbb{E}[X]) = 1$ (as $(X - \mathbb{E}[X])^2$ so by \Cref{prp:exp-1}).
+\end{proposition} 
+
+\begin{definition}[Alternative characterisation] ~\vspace*{-1.5\baselineskip}
+    \begin{align*}
+        \Var(X) &= \mathbb{E}\left[X^2\right] - \left( \mathbb{E}[X] \right)^2 \quad (\geq 0)
+    \end{align*} 
+\end{definition} 
+
+\begin{proof}
+    Write $\mu = \mathbb{E}[X]$
+    \begin{align*}
+        \Var(X) &= \mathbb{E}\left[ (X - \mu)^2 \right] \\
+        &= \mathbb{E}\left[X^2 - 2\mu X + \mu^2\right] \\
+        &= \mathbb{E}[X^2] - 2 \mu \underbracket{\mathbb{E}[X]}_\mu + \mu^2 \\
+        &= \mathbb{E}[X^2] - \mu^2
+    \end{align*} 
+\end{proof} 
+
+\begin{proposition}[Properties]
+    If $\lambda, c \in \mathbb{R}$
+    \begin{itemize}
+        \item $\Var(\lambda X) = \lambda^2 \Var(X)$.
+        \item $\Var(X + c) = \Var(X)$
+    \end{itemize} 
+\end{proposition} 
+
+\begin{proof}
+    \begin{align*}
+        \mathbb{E}[X + c] &= \mu + c \\
+        \Var(X + c) &= \mathbb{E}\left[\left( X + c - (\mu + c)^2 \right)\right] \\
+        &= \mathbb{E}\left[(X - \mu)^2\right] \\
+        &= \Var(X).
+    \end{align*} 
+\end{proof} 
+
+\begin{example}[Poisson Distribution]
+    Let $X \sim \operatorname{Poisson}(\lambda)$
+    \begin{align*}
+        \Var(X) &= \mathbb{E}[X^2] - \lambda^2 \\
+        \intertext{\color{blue} ``Falling factorial trick'': sometimes easier to calculate $\mathbb{E}[X (X - 1)]$ than $\mathbb{E}[X^2]$}
+        \mathbb{E}[X(X-1)] &= \sum_{k \geq 2} \underbracket{k(k-1)}_{\color{blue} \text{function}} \underbracket{e^{- \lambda} \frac{\lambda^k}{k!}}_{\color{blue} \text{PMF}} \\
+        &= \lambda^2 e^{- \lambda} \underbracket{\sum_{k \geq 2} \frac{\lambda^{k - 1}}{(k - 2)!}}_{e^\lambda} \\
+        &= \lambda^2 \\
+        \mathbb{E}[X^2] &= \mathbb{E}[X (X - 1)] + \mathbb{E}[X] \\
+        &= \lambda^2 + \lambda \\
+        \Var(X) &= \lambda
+    \end{align*} 
+\end{example} 
+
+\begin{example}[Geometric Distribution]
+    Let $Y \sim \operatorname{Geom}(p)$ where $Y \in \mathbb{N}$.
+    \begin{align*}
+        \mathbb{E}[Y] &= \frac{1}{p},\ \Var(Y) = \frac{1 - p}{p^2}.
+    \end{align*} 
+    Proof left as an exercise.
+\end{example} 
+
+\color{blue}
+\begin{note}
+    $\lambda$ large: $\Var(x) = \mathbb{E}[X]$, \color{red}more concentrated \color{blue} \\
+    $p$ small: $\Var(Y) \approx \frac{1}{p^2} = \left( \mathbb{E}[X] \right)^2$.
+\end{note} 
+
+\begin{example}[Bernouli Distribution]
+    Let $X \sim \operatorname{Bern}(p)$.
+    \begin{align*}
+        \mathbb{E}[X] &= 1 \times p = p \\
+        \mathbb{E}[X^2] &= 1^2 \times p = p \\
+        \Var(X) &= p - p^2 \\
+        &= p(1-p)
+    \end{align*} 
+\end{example} 
+
+\begin{example}[Binomial Distribution] \label{exm:var-bin}
+    Let $X \sim \operatorname{Bin}(n, p)$
+    \begin{align*}
+        \mathbb{E}[X] &= np  \\
+        \mathbb{E}\left[X^2\right] &= \color{red} \text{ugly}
+    \end{align*} 
+\end{example} 
+
+\subsubsection{Sums of RVs}
+
+\color{blue} \underline{Goal}: Study $\Var(X_1 + \dots + X_n)$. Do the $X_i$s need to be independent. \color{black}
+
+\begin{proposition}[Preliminary: Expectation of Product of RVs]
+    If $X, Y$ are \color{red} independent \color{black} RVs and $f, g$ are functions $\mathbb{R} \to \mathbb{R}$. \\
+    Then: $\mathbb{E}[f(X) g(Y)] = \mathbb{E}[f(X)] \mathbb{E}[g(Y)]$ \color{blue} ``Splits as a product'' \color{black}.
+\end{proposition} 
+
+\begin{example}
+    $\mathbb{E}[XY] = \mathbb{E}[X] \mathbb{E}[Y]$
+\end{example} 
+
+\begin{example}
+    Let $f(x) = g(x) = z^x$ (or $e^{tx}$).
+\end{example} 
+
+\begin{proof}
+    \color{blue} (X, Y discrete) \color{black}
+    \begin{align*}
+        \text{LHS} &= \sum_{x, y \in \operatorname{Im}} f(x) g(y) \mathbb{P}(X = x, Y = y) \\
+        &= \sum_{x, y \in \operatorname{Im}} f(x) g(y) \mathbb{P}(X = x) \mathbb{P}(Y = y) \\
+        &= \left[\sum_{x \in \operatorname{Im}} f(x) \mathbb{P}(X = x) \right] \left[\sum_{y \in \operatorname{Im}} g(x) \mathbb{P}(Y = y) \right] \\
+        &= \mathbb{E}[f(X)] \mathbb{E}[g(Y)]
+    \end{align*} 
+\end{proof} 
+
+\begin{proposition}[Sums of independent RVs]
+    Let $X_1, \dots, X_n$ be \underline{independent}.
+    Then
+    \begin{align*}
+        \Var(X_1 + \dots + X_n) = \Var(X_1) + \dots + \Var(X_n)
+    \end{align*} 
+\end{proposition} 
+
+\begin{proof}
+    (Suffices to Prove (STP) $n = 2$). 
+    Say $\mathbb{E}[X] = \mu,\, \mathbb{E}[Y] = \nu$
+    \begin{align*}
+        \Var(X + Y) &= \mathbb{E}\left[ \left( X + Y - \mu - \nu \right)^2 \right] \\
+        &= \mathbb{E} \left[ \left( X - \mu \right)^2 \right] + \mathbb{E}\left[ (Y - \nu)^2 \right] + 2 \mathbb{E}[(X - \mu)(Y - \nu)]. \\
+        &= \Var(X) + \Var(Y) + 2 \mathbb{E}[X - \mu] \mathbb{E}[Y - \nu] \\
+        &= \Var(X) + \Var(Y).
+    \end{align*} 
+\end{proof} 
+
+
+\begin{example}[Binomial]
+    Going back to \nameref{exm:var-bin}, $\Var(\operatorname{Bin}(n, p)) = n p(1-p)$.
+\end{example} 
+
+\underline{Goal}: Study $\Var(X + Y)$ when $X, Y$ not independent.
+
+\begin{definition}[Covariance]
+    Let $X, Y$ be two RVs.
+    Their \vocab{covariance} is 
+    \begin{align*}
+        \Cov(X, Y) &= \mathbb{E}\left[ (X - \mathbb{E}[X]) (Y - \mathbb{E}[Y]) \right]
+    \end{align*} 
+    \color{blue} ``Measures how dependent $X, Y$ are and in which \underline{direction}'' ($X$ large $\implies Y$ larger if $\Cov > 0$ else $Y$ smaller).
+\end{definition} 
+
+\begin{proposition}[Properties] ~\vspace*{-1.5\baselineskip}
+    \begin{align*}
+        \Cov(X, Y) &= \Cov(Y, X) \\
+        \Cov(X, X) &= \Var(X)
+    \end{align*} 
+\end{proposition} 
+
+\begin{definition}[Alternative Characterisation] ~\vspace*{-1.5\baselineskip}
+    \begin{align*}
+        \Cov(X, Y) &= \mathbb{E}[XY] - \mathbb{E}[X]\mathbb{E}[Y]
+    \end{align*} 
+\end{definition} 
+
+\begin{proof}
+    \begin{align*}
+        \Cov(X, Y) &= \mathbb{E}\left[ (X- \mu) (Y - \nu) \right] \\
+        &= \mathbb{E}[XY] - \mu \underbracket{\mathbb{E}[Y]}_\nu - \nu \underbracket{\mathbb{E}[X]}_\mu + \mu \nu \\
+        &= \mathbb{E}[XY] - \mu \nu.
+    \end{align*} 
+\end{proof} 
+
+\begin{proposition}[More Properties]
+    Let $\lambda \in \mathbb{R}$
+    \begin{align*}
+        \Cov(\lambda, X) &= 0 \\
+        \Cov(X + \lambda, Y) &= \Cov(X, Y) \\
+        \Cov(\lambda X, Y) &= \lambda \Cov(X, Y) \\
+        \Var(X + Y) &= \Var(X) + \Var(Y) + 2 \Cov(X, Y)
+    \end{align*} 
+\end{proposition} 
+
+\color{blue}
+Covariance is \underline{linear} in each argument i.e. $\Cov(\sum \lambda_i X_i, Y) = \sum \lambda_i \Cov(X_i, Y)$ and $\Cov (\sum \lambda_i X_i, \sum \mu_j Y_j)= \sum_{i=1}^{n} \sum_{j=1}^{m} \lambda_i \mu_j \Cov(X_i, Y_j)$.
+\color{black}
+
+\begin{proposition}[Sums of RVs] ~\vspace*{-1.5\baselineskip}
+    \begin{align*}
+        \Var\left( \sum_{i=1}^{n} X_i \right) &= \Cov\left( \sum_{i=1}^{n} X_i, \sum_{i=1}^{n} X_i \right) \\
+        &= \sum_{i=1}^{n} \Var(X_i) + \sum_{i \neq j} \Cov(X_i, X_j)\footnote{or $2 \sum_{i < j} \Cov(X_i, X_j)$}
+    \end{align*} 
+\end{proposition} 
+
+\begin{proposition}
+    $X, Y$ independent $\implies \Cov(X, Y) = 0$, \color{red} the converse is false.
+\end{proposition} 
+
+\begin{example}
+    Let $Y = - X$, $\Var(Y) = \Var(X)$. 
+    So $\Var(X + Y) = \Var(0) = 0 \neq \Var(X) + \Var(Y)$.
+\end{example} 
+
+\begin{example}[Uniform Permutation]
+    Let $(\sigma(1), \dots, \sigma(n))$ be uniformly chosen on $\Sigma_n$.
+    Let $A_i = \{\sigma(i) = i\}$ and $N = 1_{A_1} + \dots + 1_{A_n}$ ($N$ is the number of fixed points). \\
+    \begin{align*}
+        \mathbb{E}[N] &= n \times \frac{1}{n} = 1
+        \intertext{$A_i$ and $A_j$ are \emph{not} independent}
+        \Var(1_{A_1}) &= \frac{1}{n} \left( 1 - \frac{1}{n} \right) \\
+        \Cov(1_{A_i}, 1_{A_j}) &= \mathbb{E}[1_{A_i} 1_{A_j}] - \mathbb{E}[1_{A_i}] \mathbb{E}[1_{A_j}] \\
+        &= \mathbb{E}[1_{A_i \cap A_j}] - \mathbb{E}[1_{A_i}] \mathbb{E}[1_{A_j}] \\
+        &= \mathbb{P}(A_i \cap A_j) - \mathbb{P}(A_i) \mathbb{P}(A_j) \\
+        &= \frac{1}{n (n - 1)} - \frac{1}{n} \times \frac{1}{n} \\
+        &= \frac{1}{n^2 (n - 1)} > 0
+        \intertext{\color{blue} Note: $\Cov$ doesn't depend on $i, j$}
+        \Var(N) &= \sum_{i=1}^{n} \Var(1_{A_i}) + \sum_{i \neq j} \Cov(1_{A_i}, 1_{A_j}) \\
+        &= n \times n \left( 1 - \frac{1}{n} \right) + n(n-1) \times \frac{1}{n^2 (n - 1)} \\
+        &= 1 - \frac{1}{n} + \frac{1}{n} \\
+        &= 1.
+    \end{align*}
+    \emph{Compare} with $\operatorname{Bin}\left( n, \frac{1}{n} \right)$:
+    $\mathbb{E} = 1$, $\Var = n \times \frac{1}{n} \left( 1 - \frac{1}{n} \right) = 1 - \frac{1}{n}$.
+\end{example} 
+
+\subsubsection{Chebyshev's Inequality}
+
+\begin{proposition}[Chebyshev's Inequality]
+    Let $X$ be a RV, $\mathbb{E}[X] = \mu$, $\Var(X) = \sigma^2 < \infty$.
+    \begin{align*}
+        \mathbb{P}(|X - \mu| \geq \lambda) \leq \frac{\Var(X)}{\lambda^2}
+    \end{align*} 
+    \color{blue} Remember the proof, not the statement.
+\end{proposition} 
+
+\begin{proof}
+    \underline{Idea}: Apply \nameref{clm:markov} to $(X - \mu)^2$.
+    \begin{align*}
+        \mathbb{P}\left( (X - \mu)^2 \geq \lambda^2 \right) &\leq \frac{\mathbb{E}\left[ (X - \mu)^2 \right]}{\lambda^2} \\
+        &= \frac{\Var(X)}{\lambda^2}
+    \end{align*} 
+\end{proof} 
+
+\color{red} \underline{Danger}: Applying \nameref{clm:markov} to $|X - \mu|$, $\mathbb{E}\left[|X - \mu|\right]$ is less nice than $\mathbb{E}\left[ (X - \mu)^2 \right]$. \color{black}
+
+\underline{Comments}
+\begin{itemize}
+    \item Chebyshev's Inequality gives better bounds than Markov's Inequality (decays with $\lambda^2$ instead of $\lambda$).
+    \item We can apply it to all RVs, not just those $\geq 0$.
+    \item Caveat: We need $\Var(X) < \infty$ which is a stronger condition than $\mathbb{E}[X] < \infty$.
+\end{itemize} 
+
+\begin{definition}[Standard Deviation]
+    $\sqrt{\Var(X)}$ is the \vocab{standard deviation}, $\sigma$, of $X$.
+\end{definition} 
+It has the same ``units'' as $X$ but not many nice properties so $\Var$ is generally preferred.
+
+We can rewrite Chebyshev as $\mathbb{P}(|X - \mu| \geq k \sigma) \leq 1 / k^2$
+
+\subsection{Conditional Expectation}
+\underline{Setting}: $(\Omega, \mathcal{F}, \mathbb{P})$. \\
+Recall the definition of \nameref{def:condition}. 
+
+\begin{definition}[Conditional Expectation]
+    $B \in \mathcal{F}$ with $\mathbb{P}(B) > 0$, $X$ a RV.
+    The \vocab{conditional expectation} is 
+    \begin{align*}
+        \mathbb{E}[X \mid B] &= \frac{\mathbb{E}[X 1_{B}]}{\mathbb{P}(B)}
+    \end{align*} 
+\end{definition} 
+
+\begin{example}[Uniform Dice]
+    Let $X$ be a dice, uniform on $\{1, \dots, 6\}$.
+    \begin{align*}
+        \mathbb{E}[X \mid X \text{ prime}] &= \frac{\frac{1}{6} [0 + 2 + 3 + 0 + 5 + 0]}{\frac{1}{2}} \\
+        &= \frac{1}{3} (2 + 3 + 5) \\
+        &= \frac{10}{3}.
+    \end{align*} 
+\end{example} 
+
+\begin{definition}[Alternative Characterisation] ~\vspace*{-1.5\baselineskip}
+    \begin{align*}
+        \mathbb{E}[X \mid B] &= \sum_{x \in \operatorname{Im} X} x \mathbb{P}(X = x \mid B).
+    \end{align*} 
+\end{definition} 
+
+\begin{proof}
+    \begin{align*}
+        \text{RHS } &= \sum \frac{x \mathbb{P}(\{X = x\} \cap B)}{\mathbb{P}(B)} \\
+        &= \sum_{\substack{x \neq 0 \\ x \in \operatorname{Im} X}} \frac{x \mathbb{P}(X 1_B = x)}{\mathbb{P}(B)} \\
+        \text{Note: } \mathbb{E}[X 1_B] &= \sum_{\substack{x \neq 0 \\ x \in \operatorname{Im} X}} x \mathbb{P}(X 1_B = x)
+    \end{align*} 
+\end{proof} 
+
+\begin{proposition}[Law of Total Expectation] \label{prp:lte}
+    Let $(B_1, B_2, \dots)$ be a finite or countably-infinite partition of $\Omega$ with $B_n \in \mathcal{F} \quad \forall \; n$ s.t. $\mathbb{P}(B_n) > 0$.
+    $X$ a RV.
+    \begin{align*}
+        \mathbb{E}[X] &= \sum_n \mathbb{E}[X \mid B_n] \mathbb{P}(B_n).
+    \end{align*} 
+\end{proposition} 
+
+\begin{example}
+    Let $X = 1_A$ we recover the \nameref{thm:ltp}.
+\end{example} 
+
+\begin{proof}
+    \begin{align*}
+        \text{RHS } &= \sum_n \mathbb{E}[X 1_{B_n}] \\
+        &= \mathbb{E}\left[ \sum X \cdot (1_{B_1} + \dots + 1_{B_n}) \right] \quad \text{by \nameref{prp:linear}}\\
+        &= \mathbb{E}[X \cdot 1] \\
+        &= \mathbb{E}[X].
+    \end{align*} 
+\end{proof} 
+
+\underline{Application}: Two stage randomness where $(B_n)$ describes what happens in stage 1.
+
+\begin{example}[Sums of random number of terms]
+    Let $(X_n)_{n \geq 1}$ be IID and $N \in \{0, 1, 2, \dots\}$ be a random index independent of $(X_n)$.
+    $S_n = X_1 + \dots + X_n$ with $\mathbb{E}[X_n] = \mu$ so $\mathbb{E}[S_n] = n \mu$.
+    Then
+    \begin{align*}
+        \mathbb{E}[S_N] &= \sum_{n \geq 0} \mathbb{E}[S_N \mid N = n] \mathbb{P}(N = n) \\
+        &= \sum \mathbb{E}[S_{\color{red} n}] \mathbb{P}(N = n)\footnote{KEY STEP $\mathbb{E}[S_N \mid N = n] = \mathbb{E}[S_n \mid N = n] = \mathbb{E}[S_n]$ last step follows as $S_n$ and $\{N = n\}$ are independent.} \\
+        &= \sum_{n \geq 0} n \mu \mathbb{P}(N = n) \\
+        &= \mu \mathbb{E}[N].
+    \end{align*}
+\end{example} 
+
+\subsection{Random Walks}
+
+\begin{definition}[Random Walk]
+    Let $(X_n)_{n \geq 1}$ be IID RVs then $S_n = x_0 + X_1 + \dots + X_n$. $(S_0, S_1, S_2, \dots)$ is a random process called a \vocab{Random Walk} started from $x_0$.
+\end{definition} 
+
+\subsubsection{Simple Random Walk (SRW) on $\mathbb{Z}$ - Main example in our course}
+$P(X_i = + 1) = p$, $\mathbb{P}(X = - 1) = q = 1-p$. \\
+$x_0 \in \mathbb{Z}$ (often $x_0 = 0$). \\
+\underline{Special case}: $p = q = \frac{1}{2}$ is ``symmetric''.
+
+$\mathbb{P}(S_2 = x_0) = pq + qp = 2pq$
+
+Useful interpretation: A gamble repeatedly plays a game where he wins $\pounds 1$ with $\mathbb{P} = p$, loses $\pounds 1$ with $\mathbb{P} = q$. \\
+Often: stops at $\pounds 0$.
+
+\begin{question}
+    Suppose the gambler starts with $\pounds x$ at time $0$.
+    What is the probability he reaches $\pounds a$ before $\pounds 0$. ($0 < x < a$)
+\end{question} 
+
+\begin{notation}
+    $\mathbb{P}_x(\cdot) = \mathbb{P}(\cdot \mid x_0 = x)$ \color{blue} ``measure of RW started from $x_0$.''
+\end{notation} 
+
+\begin{answer}
+    \underline{Key idea}: Conditional on $S_1 = z$, $(S_1, S_2, \dots)$ is a random walk started from $z$. \\
+    Apply \nameref{thm:ltp}
+    \begin{align*}
+        \mathbb{P}_x(S \text{ hits a before 0}) &= \sum\footnote{Subscript: $z \in \operatorname{Im}(S_1)$ but we will bother with that any more} \mathbb{P}_x(S \text{ hits a before 0} \mid S_1 = z) \mathbb{P}_x(S_1 = z) \\
+        &= \sum_z \mathbb{P}_z (S \text{ hits a before 0}) \mathbb{P}_x(S_1 = z) \\
+        \text{let } h_x &= \mathbb{P}_x(S \text{ hits a before 0}). \\
+        S_1 &= x \pm 1 \\
+        h_x &= p h_{x + 1} + q h_{x - 1}.
+    \end{align*} 
+    Important to specify boundary conditions: $h_0 = 0$, $h_a = 1$
+
+    \underline{Solving Linear Recurrence Equations} \\
+    $p h_{x + 1} - h_x + q h_{x - 1} = 0$ is a homogenous equation whose solutions form a vector space.
+    We want to find two LI solutions and we guess $h_x = \lambda^x$
+    So \begin{align*}
+        p \lambda^{x + 1} - \lambda^x + q \lambda^{x - 1} &= 0 \\
+        p \lambda^2 - \lambda + q &= 0 \\
+        \lambda &= 1, \frac{q}{p}
+    \intertext{Case $q \neq p$}
+        h_x &= A + B \left( \frac{q}{p} \right)^x \\
+        \intertext{Use BCs to find A,B: }
+        x = 0 : h_0 &= 0 = A + B \\
+        x = a : h_a &= 1 = A + \left( \frac{q}{p} \right)^a \\
+        h_x &= \frac{\left( \frac{q}{p} \right)^x - 1}{\left( \frac{q}{p} \right)^a - 1}.
+    \end{align*} 
+    
+    Case $p = q = \frac{1}{2}$:
+    Note $h_x = x$ \color{blue} ``$x$ is the average of $x + 1$ and $x - 1$'' \color{black}
+    General solution: $h_x = A + Bx$
+    BCs
+    \begin{align*}
+        h_0 &= 0 = A \\
+        h_a &= 1 = Ba \\
+        h_x &= \frac{x}{a}
+    \end{align*} 
+\end{answer} 
+
+\begin{question}
+    Suppose the gambler starts with $\pounds x$ at time $0$.
+    What is the expected absorption time, $T = \min \{ n \geq 0 : S_n = 0 \text{ or } S_n = a\}$. \color{blue} ``first time $S$ hits $\{0, a\}$'' \color{black}
+\end{question} 
+
+\begin{answer}
+    Apply \nameref{prp:lte}\\
+    We want $\mathbb{E}_x[T]$ ($\mathbb{E}[T]$ when we start from $x$) which we label as $\tau_x$
+    \begin{align*}
+        \tau_x &= \mathbb{E}_x[T] \\
+        &= p \mathbb{E}_x[T \mid S_1 = x + 1] + q \mathbb{E}_x[T \mid S_1 = x - 1] \\
+        &= p \mathbb{E}_{x + 1}[T + 1] + q \mathbb{E}_{x - 1}[T - 1] \\
+        &= p (1 + \mathbb{E}_{x + 1}[T]) + q(1 + \mathbb{E}_{x - 1}[T]) \\
+        &= 1 + p \tau_{x + 1} + q \tau_{x - 1}
+    \end{align*} 
+    Boundary conditions: $\tau_0 = \tau_a = 0$ \color{blue} ``We're already there'' \color{black}.
+
+    We already solved the homogenous case of this equation previously. 
+    Inhomogeneous case: $p h_{x + 1} - h_x + q h_{x - 1} = -1$.
+    Find a \emph{particular solution} \color{blue} Guess: ``one level more complicated than general solution'' \color{black}
+    Add on general solution.
+    Solve for BCs.
+
+    $p \neq q$: Guess: $h_x = \frac{x}{q - p}$ woks as a particular solution
+
+    $p = q = \frac{1}{2}$: Guess $h_x = C x^2$ \underline{might} work \\
+    Sub in: $\frac{C}{2} (x + 1)^2 - C x^2 + \frac{C}{2} (x - 1)^2 = - 1$
+    $C = -1$ so $h_x = A + Bx - x^2$ (find $A, B$ with BCs)
+    roots are $0$ and $a$ so $h_x = x (a - x)$ and $h_x \geq 0$
+
+    \color{blue}
+    Probability sanity check: $p = q = \frac{1}{2}$. ``Fair game''
+    Study: Expected profit if you start from $\pounds x$ and play until time $T$.
+    $\mathbb{E}_x[S_T] = a \mathbb{P}_x(S_T = a) + 0 \times \mathbb{P}_x(S_T = 0) = a h_x = x$.
+    Fits our intuition for fair games. \checkmark
+    \color{black}
+\end{answer} 

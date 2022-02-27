@@ -253,7 +253,7 @@ $(\Omega, \mathcal{F}, \mathbb{P})$ as before.
     \end{align*} 
 \end{example} 
 
-\begin{example}[Independence] ~\vspace*{-1.5\baselineskip}
+\begin{example}[Independence] ~\vspace*{-1.5\baselineskip} \label{exm:indep1}
     \begin{itemize}
         \item \begin{align*}
             \Omega' &= \{\text{all functions } f : \{1, \dots, n\} \text{ to itself} \\
@@ -303,8 +303,8 @@ $(\Omega, \mathcal{F}, \mathbb{P})$ as before.
 
 Consider $B \in \mathcal{F}$ with $\mathbb{P}(B) > 0,\ A \in \mathcal{F}$
 
-\begin{definition}[Conditional Probability]
-    The \vocab{conditional probability} of $A$ given $B$ is $\mathbb{P}(A \mid B) = \frac{\mathbb{P}(A \cap B)}{\mathbb{P}(B)}$
+\begin{definition}[Conditional Probability] \label{def:condition}
+    The \vocab{conditional probability} of $A$ given $B$ is $\mathbb{P}(A \mid B) = \frac{\mathbb{P}(A \cap B)}{\mathbb{P}(B)}$.
 \end{definition} 
 \color{blue} ``The probability of $A$ is we know $B$ happened". (e.g. revealing information in succession)
 
@@ -356,7 +356,7 @@ $\mathbb{P}(\bullet \mid B)$ is a function from $\mathcal{F} \to [0, 1]$ that sa
 
 \begin{example} \label{exm:conditional}
     Uniform choice of a permutation $(\sigma(1), \sigma(2), \dots, \sigma(n)) \in \Sigma_n$.
-    \begin{claim} ~\vspace*{-1.5\baselineskip} \label{clm:perms}
+    \begin{claim} \label{clm:perms} ~\vspace*{-1.5\baselineskip}
         \begin{align*}
             \mathbb{P}\left(\sigma(k) = i_k \mid \sigma(1) = i, \dots, \sigma(k - 1) = i_{k-1} \right), \quad i_1, \dots, i_{k-1} \text{ distinct.} \\
             = \begin{cases}
@@ -519,7 +519,7 @@ $\mathbb{P}(\bullet \mid B)$ is a function from $\mathcal{F} \to [0, 1]$ that sa
     \begin{itemize}
         \item \begin{align*}
             \mathbb{P}(A \mid C_i) &= \mathbb{P}(\sigma(2) \in \{1, 2, 3, 4\} \mid \sigma(1) = i) \quad i \leq 4 \\
-            &= \frac{3}{51} \text{ by \Cref{clm:perms}}
+            &= \frac{3}{51} \text{ by \Cref{exm:conditional}}
         \end{align*} 
         \item $\mathbb{P}(C_1) = \dots = \mathbb{P}(C_4) = \frac{1}{52}$.
     \end{itemize} 

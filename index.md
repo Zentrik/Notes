@@ -1,8 +1,8 @@
 --- 
-title: "Cambridge 2021 Maths Notes"
+title: "Cambridge Maths Notes"
 ---
 
-## IA
+## IA - 2021
 
 ### Michaelmas 
 
