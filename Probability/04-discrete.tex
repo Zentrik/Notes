@@ -9,7 +9,7 @@ If we restrict our attention to:
 \end{itemize} 
 This is annoying and we want to move on from sets.
 
-\emph{Goal}: ``Random real-valued measurements'', we want the value of the first dice to be $X$ and the sum to be $X + Y$ \dots
+\emph{Goal}: ``Random real-valued measurements'', we want the value of the first dice to be $X$ and the sum to be $X + Y$\dots
 
 \begin{definition}[Discrete Random Variable]
     A \vocab{discrete random variable} $X$ on a probability space $(\Omega, \mathcal{F}, \mathbb{P})$ is a function $X : \Omega \to \mathbb{R}$ \color{blue} s.t. 
@@ -38,7 +38,8 @@ This is annoying and we want to move on from sets.
 \begin{note} \mbox{}
     \begin{itemize}
         \item if $x \notin \operatorname{Image}(X)$ then $p_X(x) = \mathbb{P}(\{\omega \in \Omega : X(\omega) = x\}) = \mathbb{P}(\emptyset) = 0$.
-        \item \begin{align*}
+        \item ~\vspace*{-1.5\baselineskip}
+        \begin{align*}
             \sum_{x \in \operatorname{Im}(X)} p_X(x) &= \sum_{x \in \operatorname{Im}(X)} \mathbb{P}(\underbracket{\{\omega \in \Omega : X(\omega) = x\}}_{\color{blue} \text{disjoint}}) \\
             &= \mathbb{P}\left(\bigcup_{x \in \operatorname{Im}(X)} \{\omega \in \Omega : X(\omega) = x\} \right) \\
             &= \mathbb{P}(\Omega) \\
@@ -73,21 +74,23 @@ This is annoying and we want to move on from sets.
 \end{remark} 
 
 \subsection{Discrete Probability Distributions}
-$\Omega$ is finite.
 
-\subsubsection{Bernoulli distribution - ``(biased) coin toss"}
+\subsubsection{Finite $\Omega$}
 
-If $X \sim \operatorname{Bern}(p)$ where $p \in [0, 1]$ then $\operatorname{Im}(X) = \{0, 1\}$ and $p_X(1) = \mathbb{P}(X = 1) = p$ and $p_X(0) = 1 - p$.
+\begin{definition}[Bernoulli Distribution - ``(biased) coin toss"]
+    If $X \sim \operatorname{Bern}(p)$ where $p \in [0, 1]$ then $\operatorname{Im}(X) = \{0, 1\}$, $p_X(1) = \mathbb{P}(X = 1) = p$ and $p_X(0) = 1 - p$.
+\end{definition} 
 
 \begin{example}
     $1_A \sim \operatorname{Bern}(p)$ with $p = \mathbb{P}(A)$.
 \end{example} 
 
-\subsubsection{Binomial distribution}
-This can be used to model the number of heads when a coin is tossed $n$ times.
+\begin{definition}[Binomial Distribution]
+    If $X \sim \operatorname{Bin}(n, p)$ where $n \in \mathbb{Z}^+$ and $p \in [0, 1]$ then $\operatorname{Im}(X) = \{0, 1, \dots, n\}$, $p_X(k) = \mathbb{P}(X = k) = \binom{n}{k} p^k (1- p)^{n -k}$.
+    $\sum_{k=0}^{n} p_X(k) = (p + (1-p))^n = 1$.
+\end{definition} 
 
-If $X \sim \operatorname{Bin}(n, p)$ where $n \in \mathbb{Z}^+$ and $p \in [0, 1]$ then $\operatorname{Im}(X) = \{0, 1, \dots, n\}$, $p_X(k) = \mathbb{P}(X = k) = \binom{n}{k} p^k (1- p)^{n -k}$.
-$\sum_{k=0}^{n} p_X(k) = (p + (1-p))^n = 1$.
+The binomial distribution can be used to model the number of heads when a coin is tossed $n$ times.
 
 \subsubsection{More than one RV}
 
@@ -101,7 +104,7 @@ but $1_A \leq 1_C$ for all outcomes \emph{is false}.
     Let $X_1, \dots, X_n$ be discrete RVs.
     We say $X_1, \dots, X_n$ are \emph{independent} if:
     \begin{align*}
-        \mathbb{P}(X_1 = x_1, \dots, X_n = x_n) &= \mathbb{P}(X_1 = x) \dots \mathbb{P}(X_n = x_n) \quad \forall \; x_1, \dots, x_n \in \mathbb{R}.
+        \mathbb{P}(X_1 = x_1, \dots, X_n = x_n) &= \mathbb{P}(X_1 = x_1) \dots \mathbb{P}(X_n = x_n) \quad \forall \; x_1, \dots, x_n \in \mathbb{R}.
     \end{align*} 
     \color{blue} (suffices to check $\forall \; x_i \in \operatorname{Im}(X_i)$)
 \end{definition} 
@@ -129,29 +132,31 @@ but $1_A \leq 1_C$ for all outcomes \emph{is false}.
     E.g. $\mathbb{P}(\sigma(1) = 1, \sigma(2) = 1) = 0 \neq \underbracket{\mathbb{P}(\sigma(1) = 1) \mathbb{P}(\sigma(2) = 1)}_{= 1 / n \times 1 /n}$
 \end{example} 
 
-Consequence of definition
+\underline{Consequence of definition}
 
 Let $X_1, \dots, X_n$ be independent.
 Then $\mathbb{P}(X_1 \in A_1, \dots, X_n \in A_n) = \mathbb{P}(X \in A_1) \dots \mathbb{P}(X_n \in A_n) \quad \forall \; A_1, \dots, A_n \subset \mathbb{R}$ countable.
 
-Let $\Omega = \mathbb{N}$, ``Ways of choosing a random integer"
+\subsubsection{$\Omega = \mathbb{N}$ - ``Ways of choosing a random integer"}
 
-\subsubsection{Geometric distribution (``Waiting for success'')}
-This can be used to model the number of coin tosses until we get a head.
+\begin{definition}[Geometric Distribution (``Waiting for success'')]  
+    If $X \sim \operatorname{Geo}(p)$ where $p \in (0, 1)$.
+    $\operatorname{Im}(X) = \{1, 2, \dots\}$, \\
+    $p_X(k) = \mathbb{P}(\text{(k-1) failures, then success on the kth trial}) = (1-p)^{k-1}p$.
+    \color{blue} Check: $\mathcolor{blue}{\sum_{k \geq 1} (1-p)^{k - 1} p = p \sum_{t \geq 0} (1-p)^t = \frac{p}{1 - (1 - p)} = 1}$.\color{black}
 
-If $X \sim \operatorname{Geo}(p)$ were $p \in (0, 1)$.
-$\operatorname{Im}(X) = \{1, 2, \dots\}$, \\
-$p_X(k) = \mathbb{P}(\text{(k-1) failures, then success on the kth trial}) = (1-p)^{k-1}p$.
-\color{blue} Check: $\mathcolor{blue}{\sum_{k \geq 1} (1-p)^{k - 1} p = p \sum_{t \geq 0} (1-p)^t = \frac{p}{1 - (1 - p)} = 1}$.\color{black}
+    Alternatively: ``Count how many failures before a success'' \\
+    $\operatorname{Im}(Y) = \{0, 1, 2, \dots\}$, $p_Y(k) = \mathbb{P}(\text{k failures, then success on the (k+1)th trial})$.
+    \color{blue} Check: $\mathcolor{blue}{\sum_{k \geq 0} (1-p)^{k} p = 1}$.\color{black}
+\end{definition}    
 
-Alternatively: ``Count how many failures before a success'' \\
-$\operatorname{Im}(Y) = \{0, 1, 2, \dots\}$, $p_Y(k) = \mathbb{P}(\text{k failures, then success on the (k+1)th trial})$.
-\color{blue} Check: $\mathcolor{blue}{\sum_{k \geq 0} (1-p)^{k} p = 1}$.\color{black}
+The geometric distribution can be used to model the number of coin tosses until we get a head.
 
-\subsubsection{Poisson Distribution}
-If $X \sim \operatorname{Po}(\lambda)$ (or $\operatorname{Poi}(\lambda)$) with $\lambda \in (0, \infty)$.
-$\operatorname{Im}(X) = \{0, 1, 2, \dots\}$ and $\mathbb{P}(X = k) = e^{- \lambda} \lambda^k / k! \quad \forall \; k \geq 0$.
-\color{blue} Check: $\mathcolor{blue}{\sum_{k \geq 0} \mathbb{P}(X = k) = e^{^\lambda} \sum_{k \geq 0} \frac{\lambda^k}{k!} = e^{\lambda} e^\lambda}$.\color{black}
+\begin{definition}[Poisson Distribution]
+    If $X \sim \operatorname{Po}(\lambda)$ (or $\operatorname{Poi}(\lambda)$) with $\lambda \in (0, \infty)$.
+    $\operatorname{Im}(X) = \{0, 1, 2, \dots\}$ and $\mathbb{P}(X = k) = e^{- \lambda} \lambda^k / k! \quad \forall \; k \geq 0$.
+    \color{blue} Check: $\mathcolor{blue}{\sum_{k \geq 0} \mathbb{P}(X = k) = e^{^\lambda} \sum_{k \geq 0} \frac{\lambda^k}{k!} = e^{\lambda} e^\lambda}$.\color{black}
+\end{definition} 
 
 \text{Motivation}: Consider $X_n \sim \operatorname{Bin}(n, \frac{\lambda}{n})$
     \begin{example}[``Arrival proccess'']
@@ -247,7 +252,7 @@ For now: $X$ only takes non-negative values. ``$X \geq 0$''
     \begin{align*}
         \mathbb{E}[X] = \sum_{x \in \operatorname{Im}(X)} x \mathbb{P}(X = x)
     \end{align*} 
-    unless: A, $\displaystyle \sum_{\substack{x > 0 \\ x \in \operatorname{Im}(X)}} x \mathbb{P}(X = x) = + \infty$ and B, $\displaystyle \sum_{\substack{x < 0 \\ x \in \operatorname{Im}(X)}} x \mathbb{P}(X = x) = + \infty$. \\
+    unless: A, $\displaystyle \sum_{\substack{x > 0 \\ x \in \operatorname{Im}(X)}} x \mathbb{P}(X = x) = + \infty$ and B, $\displaystyle \sum_{\substack{x < 0 \\ x \in \operatorname{Im}(X)}} x \mathbb{P}(X = x) = - \infty$. \\
     Then we say $\mathbb{E}[X]$ is not defined.
     \color{red} Do we really want to study $\infty + \frac{2}{3} (- \infty)$ \color{black}
 \end{aside} 
@@ -324,7 +329,7 @@ For now: $X$ only takes non-negative values. ``$X \geq 0$''
 \end{aside} 
 
 \begin{corollary}
-    $X \geq Y$\footnote{$X(\omega) > Y(\omega) \quad \forall \; \omega \in \Omega$} then $\mathbb{E}[X] \geq \mathbb{E}[Y]$.
+    $X \geq Y$\footnote{$X(\omega) \geq Y(\omega) \quad \forall \; \omega \in \Omega$} then $\mathbb{E}[X] \geq \mathbb{E}[Y]$.
 \end{corollary} 
 
 \begin{proof}
@@ -400,13 +405,13 @@ For now: $X$ only takes non-negative values. ``$X \geq 0$''
     Markov's Inequality is also true for continuous RVs.
 \end{note} 
 
-Studying $\mathbb{E}[f(X)]$
+\subsubsection{Studying $\mathbb{E}[f(X)]$}
 Let $f: \mathbb{R} \to \mathbb{R}$ be a function.
-Then $f(x)$ is also a \emph{random variable}\footnote{\color{blue} $X: \Omega \to \mathbb{R}$ so $f(X) : \Omega \to \mathbb{R}$.}.
+Then $f(X)$ is also a \emph{random variable}\footnote{\color{blue} $X: \Omega \to \mathbb{R}$ so $f(X) : \Omega \to \mathbb{R}$.}.
 
 \begin{claim} ~\vspace*{-1.5\baselineskip}
     \begin{align*}
-        \mathbb{E}[f(x)] &= \sum_{x \in \operatorname{Im}(x)} f(x) \mathbb{P}(X = x)\footnote{if it exists}.
+        \mathbb{E}[f(X)] &= \sum_{x \in \operatorname{Im}(X)} f(x) \mathbb{P}(X = x)\footnote{if it exists}.
     \end{align*} 
 \end{claim} 
 
@@ -528,7 +533,7 @@ All of these have \emph{$\mathbb{E} = 0$}.
 
 \color{blue} \underline{Goal}: Study $\Var(X_1 + \dots + X_n)$. Do the $X_i$s need to be independent. \color{black}
 
-\begin{proposition}[Preliminary: Expectation of Product of RVs]
+\begin{proposition}[Preliminary: Expectation of Product of RVs] \label{prp:expprod}
     If $X, Y$ are \color{red} independent \color{black} RVs and $f, g$ are functions $\mathbb{R} \to \mathbb{R}$. \\
     Then: $\mathbb{E}[f(X) g(Y)] = \mathbb{E}[f(X)] \mathbb{E}[g(Y)]$ \color{blue} ``Splits as a product'' \color{black}.
 \end{proposition} 
@@ -661,7 +666,7 @@ Covariance is \underline{linear} in each argument i.e. $\Cov(\sum \lambda_i X_i,
 
 \subsubsection{Chebyshev's Inequality}
 
-\begin{proposition}[Chebyshev's Inequality]
+\begin{proposition}[Chebyshev's Inequality] \label{prp:cheby}
     Let $X$ be a RV, $\mathbb{E}[X] = \mu$, $\Var(X) = \sigma^2 < \infty$.
     \begin{align*}
         \mathbb{P}(|X - \mu| \geq \lambda) \leq \frac{\Var(X)}{\lambda^2}
@@ -743,7 +748,7 @@ Recall the definition of \nameref{def:condition}.
 \begin{proof}
     \begin{align*}
         \text{RHS } &= \sum_n \mathbb{E}[X 1_{B_n}] \\
-        &= \mathbb{E}\left[ \sum X \cdot (1_{B_1} + \dots + 1_{B_n}) \right] \quad \text{by \nameref{prp:linear}}\\
+        &= \mathbb{E}\left[X \cdot (1_{B_1} + \dots + 1_{B_n}) \right] \quad \text{by \nameref{prp:linear}}\\
         &= \mathbb{E}[X \cdot 1] \\
         &= \mathbb{E}[X].
     \end{align*} 
@@ -770,19 +775,29 @@ Recall the definition of \nameref{def:condition}.
 \end{definition} 
 
 \subsubsection{Simple Random Walk (SRW) on $\mathbb{Z}$ - Main example in our course}
-$P(X_i = + 1) = p$, $\mathbb{P}(X = - 1) = q = 1-p$. \\
-$x_0 \in \mathbb{Z}$ (often $x_0 = 0$). \\
-\underline{Special case}: $p = q = \frac{1}{2}$ is ``symmetric''.
 
-$\mathbb{P}(S_2 = x_0) = pq + qp = 2pq$
+\begin{definition}[Simple Random Walk]
+    A \vocab{simple random walk} has $P(X_i = + 1) = p$ and $\mathbb{P}(X = - 1) = q = 1-p$.
+    $x_0 \in \mathbb{Z}$ and is often $0$. \\
+    It is ``symmetric'' in the \underline{special case} where $p = q = \frac{1}{2}$.
+\end{definition} 
 
-Useful interpretation: A gamble repeatedly plays a game where he wins $\pounds 1$ with $\mathbb{P} = p$, loses $\pounds 1$ with $\mathbb{P} = q$. \\
+\begin{example}
+    $\mathbb{P}(S_2 = x_0) = pq + qp = 2pq$
+\end{example} 
+
+\underline{Useful interpretation}: A gamble repeatedly plays a game where he wins $\pounds 1$ with $\mathbb{P} = p$, loses $\pounds 1$ with $\mathbb{P} = q$. \\
 Often: stops at $\pounds 0$.
 
 \begin{question}
     Suppose the gambler starts with $\pounds x$ at time $0$.
     What is the probability he reaches $\pounds a$ before $\pounds 0$. ($0 < x < a$)
 \end{question} 
+
+\begin{figure}[h] 
+    \centering 
+    \includegraphics[height=5cm]{04-ruin} 
+\end{figure}
 
 \begin{notation}
     $\mathbb{P}_x(\cdot) = \mathbb{P}(\cdot \mid x_0 = x)$ \color{blue} ``measure of RW started from $x_0$.''
@@ -792,7 +807,7 @@ Often: stops at $\pounds 0$.
     \underline{Key idea}: Conditional on $S_1 = z$, $(S_1, S_2, \dots)$ is a random walk started from $z$. \\
     Apply \nameref{thm:ltp}
     \begin{align*}
-        \mathbb{P}_x(S \text{ hits a before 0}) &= \sum\footnote{Subscript: $z \in \operatorname{Im}(S_1)$ but we will bother with that any more} \mathbb{P}_x(S \text{ hits a before 0} \mid S_1 = z) \mathbb{P}_x(S_1 = z) \\
+        \mathbb{P}_x(S \text{ hits a before 0}) &= \sum\footnote{Subscript: $z \in \operatorname{Im}(S_1)$ but we will bother with that any more} \overbracket{\mathbb{P}_x(S \text{ hits a before 0} \mid S_1 = z)}^{\color{red} \text{Interpret this.} \color{black}} \mathbb{P}_x(S_1 = z) \\
         &= \sum_z \mathbb{P}_z (S \text{ hits a before 0}) \mathbb{P}_x(S_1 = z) \\
         \text{let } h_x &= \mathbb{P}_x(S \text{ hits a before 0}). \\
         S_1 &= x \pm 1 \\
@@ -807,7 +822,7 @@ Often: stops at $\pounds 0$.
         p \lambda^{x + 1} - \lambda^x + q \lambda^{x - 1} &= 0 \\
         p \lambda^2 - \lambda + q &= 0 \\
         \lambda &= 1, \frac{q}{p}
-    \intertext{Case $q \neq p$}
+    \intertext{\underline{Case $q \neq p$}}
         h_x &= A + B \left( \frac{q}{p} \right)^x \\
         \intertext{Use BCs to find A,B: }
         x = 0 : h_0 &= 0 = A + B \\
@@ -815,16 +830,25 @@ Often: stops at $\pounds 0$.
         h_x &= \frac{\left( \frac{q}{p} \right)^x - 1}{\left( \frac{q}{p} \right)^a - 1}.
     \end{align*} 
     
-    Case $p = q = \frac{1}{2}$:
-    Note $h_x = x$ \color{blue} ``$x$ is the average of $x + 1$ and $x - 1$'' \color{black}
+    \underline{Case $p = q = \frac{1}{2}$:} \\
+    Note $h_x = x$ \color{blue}, ``$x$ is the average of $x + 1$ and $x - 1$''. \color{black} \\
     General solution: $h_x = A + Bx$
-    BCs
     \begin{align*}
         h_0 &= 0 = A \\
         h_a &= 1 = Ba \\
         h_x &= \frac{x}{a}
     \end{align*} 
 \end{answer} 
+
+\color{blue}
+Probability sanity check: $p = q = \frac{1}{2}$. ``Fair game'' \\
+Study: Expected profit if you start from $\pounds x$ and play until time $T$.
+\begin{align*}
+    \mathbb{E}_x[S_T] &= a \mathbb{P}_x(S_T = a) + 0 \times \mathbb{P}_x(S_T = 0) \\
+    &= a h_x = x
+\end{align*} 
+Fits our intuition for fair games. \checkmark
+\color{black}
 
 \begin{question}
     Suppose the gambler starts with $\pounds x$ at time $0$.
@@ -836,7 +860,7 @@ Often: stops at $\pounds 0$.
     We want $\mathbb{E}_x[T]$ ($\mathbb{E}[T]$ when we start from $x$) which we label as $\tau_x$
     \begin{align*}
         \tau_x &= \mathbb{E}_x[T] \\
-        &= p \mathbb{E}_x[T \mid S_1 = x + 1] + q \mathbb{E}_x[T \mid S_1 = x - 1] \\
+        &= p \overbracket{\mathbb{E}_x[T \mid S_1 = x + 1]}^{\color{red} \text{Interpret this.} \color{black}}\footnote{\color{blue} ``As if we started from $(x + 1)$ and incremented time by one unit.''} + q \mathbb{E}_x[T \mid S_1 = x - 1] \\
         &= p \mathbb{E}_{x + 1}[T + 1] + q \mathbb{E}_{x - 1}[T - 1] \\
         &= p (1 + \mathbb{E}_{x + 1}[T]) + q(1 + \mathbb{E}_{x - 1}[T]) \\
         &= 1 + p \tau_{x + 1} + q \tau_{x - 1}
@@ -844,22 +868,514 @@ Often: stops at $\pounds 0$.
     Boundary conditions: $\tau_0 = \tau_a = 0$ \color{blue} ``We're already there'' \color{black}.
 
     We already solved the homogenous case of this equation previously. 
-    Inhomogeneous case: $p h_{x + 1} - h_x + q h_{x - 1} = -1$.
-    Find a \emph{particular solution} \color{blue} Guess: ``one level more complicated than general solution'' \color{black}
-    Add on general solution.
-    Solve for BCs.
+    We want to find a \emph{particular solution}, \color{blue} guess: ``one level more complicated than general solution'' \color{black}
 
-    $p \neq q$: Guess: $h_x = \frac{x}{q - p}$ woks as a particular solution
+    \underline{$p \neq q$}: Guess: $\tau_x = \frac{x}{q - p}$ works as a particular solution
 
-    $p = q = \frac{1}{2}$: Guess $h_x = C x^2$ \underline{might} work \\
-    Sub in: $\frac{C}{2} (x + 1)^2 - C x^2 + \frac{C}{2} (x - 1)^2 = - 1$
-    $C = -1$ so $h_x = A + Bx - x^2$ (find $A, B$ with BCs)
-    roots are $0$ and $a$ so $h_x = x (a - x)$ and $h_x \geq 0$
-
-    \color{blue}
-    Probability sanity check: $p = q = \frac{1}{2}$. ``Fair game''
-    Study: Expected profit if you start from $\pounds x$ and play until time $T$.
-    $\mathbb{E}_x[S_T] = a \mathbb{P}_x(S_T = a) + 0 \times \mathbb{P}_x(S_T = 0) = a h_x = x$.
-    Fits our intuition for fair games. \checkmark
-    \color{black}
+    \underline{$p = q = \frac{1}{2}$}: Guess $\tau_x = C x^2$ \emph{might} work
+    \begin{gather*}
+        \text{Sub in:} \ \frac{C}{2} (x + 1)^2 - C x^2 + \frac{C}{2} (x - 1)^2 = - 1 \\
+        C = -1 \\
+        \tau_x = A + Bx - x^2 \\
+        \tau_0 = \tau_a = 0 \text{ and } \tau_x \geq 0\\
+        \therefore \tau_x = x (a - x) 
+    \end{gather*} 
 \end{answer} 
+
+\subsubsection{Unbounded RW: ``Gambler's Ruin'}
+
+\begin{figure}[h] 
+    \centering 
+    \includegraphics[height=5cm]{04-gamblers} 
+\end{figure}
+
+\begin{align*}
+    \mathbb{P}_x(\text{hit } 0) &= \lim_{a \to \infty} \mathbb{P}_x(\text{hit $0$ before $a$}) \\
+    &= \lim_{a \to \infty} 1 - h_x \\
+    &= \begin{cases}
+        (\frac{q}{p})^x & p > q \\
+        1 & p \leq q
+    \end{cases} \\
+    \text{When $p = \frac{1}{2}$:} \quad \mathbb{E}_x[\text{time to hit } 0] &\geq \mathbb{E}_x[\text{time to hit $0$ or $a$}] \\
+    &= x(a-x) \to \infty \text{ as } a \to \infty
+\end{align*} 
+
+\underline{Key conclusion}: $T_x$ (time to hit $0$ from $x$) is for $p = \frac{1}{2}$ finite with probability $1$ and has infinite expectation.
+
+\begin{aside}{Comment (non - examinable)}
+    Alternative derivation of $\mathbb{E}[T_1] = \infty$. \\
+    $\mathbb{E}[T_2] = 2 \mathbb{E}[T_1]$ as going from $2 \to 1$ is the same as going from $1 \to 0$.
+    \begin{align*}
+        \mathbb{E}[T_1] &= \frac{1}{2} \times 1 + \frac{1}{2} \left( 1 + \mathbb{E}[T_2] \right) \\
+        &= 1 + \mathbb{E}[T_1]
+    \end{align*} 
+    We conclude that $\mathbb{E}[T_1] = \infty$. \\
+\end{aside} 
+
+\subsection{Generating Functions}
+
+\begin{definition}[Probability Generating Function]
+    Let $X$ be a RV taking values in $\{0, 1, 2, \dots\}$. The \vocab{probability generating function} of $X$ is 
+    \begin{align*}
+        G_X(z) &= \mathbb{E}\left[ z^X \right] = \sum_{k \geq 0} z^k \mathbb{P}(X = k). 
+    \end{align*} 
+    Analytic comment: $G_X : (-1, 1) \to \mathbb{R}$.
+\end{definition} 
+
+\underline{Idea}: ``A pgf \emph{encodes} the distribution of $X$ as a function with nice analytic properties.''
+
+\begin{example}[Bernoulli]
+    Let $X \sim \operatorname{Bern}(p)$
+    \begin{align*}
+        G_X(z) &= z^0 \mathbb{P}(X = 0) + z \mathbb{P}(X = 1) \\
+        &= (1-p) + pz.
+    \end{align*} 
+\end{example} 
+
+\begin{example}[Poisson]
+    Let $X \sim \operatorname{Poi}(\lambda)$
+    \begin{align*}
+        G_X(z) &= \sum_{k \geq 0} z^k e^{- \lambda} \frac{\lambda^k}{k!} \\
+        &= e^{- \lambda} \sum_{k \geq 0} \frac{(\lambda z)^k}{k!} \\
+        &= e^{- \lambda} e^{\lambda z} \\
+        &= e^{\lambda (z - 1)}
+    \end{align*} 
+\end{example} 
+
+\begin{note}
+    $G_X(0) = 0^0 \mathbb{P}(X = 0) = \mathbb{P}(X = 0)$.
+\end{note} 
+
+\begin{proposition}[Recovering PMF from PGF]
+    $\mathbb{P}(X = n) = \frac{1}{n!} G_X^{(n)} (0)$
+\end{proposition} 
+
+\begin{proof}
+    \underline{Idea}: Differentiate $n$ times
+    \begin{align*}
+        \frac{d^n}{d z^n} G_X(z) &= \sum_{k \geq 0} \frac{d^n}{d z^n} (z^k) \mathbb{P}(X = k) \\
+        &= \sum_{k \geq 0} \frac{k!}{(k - n)!} z^{k - n} \mathbb{P}(X = k) \\
+        &= \sum_{k \geq n} \frac{k!}{(k - n)!} z^{k - n} \mathbb{P}(X = k) \\
+        &= \sum_{l \geq 0} \frac{(l + n)!}{l!} z^l \mathbb{P}(X = l + n) \\
+        \frac{d^n}{d z^n} G_X(0) &= n! \mathbb{P}(X = n).
+    \end{align*} 
+\end{proof} 
+
+\underline{Key fact}: PGF \emph{determines} PMF/distribution exactly.
+
+\begin{note}
+    $G_X(1)\footnote{Technical Comment: $G_X(1)$ means $\lim_{z \uparrow 1} G_X(z)$ if the domain is $(-1, 1)$. In particular $G_x'(1)$ is possible} = \sum_{k \geq 0} \mathbb{P}(X = k) = 1$.
+\end{note} 
+
+\begin{proposition}[Recoving other probablistic qunatities] ~\vspace*{-1.5\baselineskip}
+    \begin{align*}
+        G_X^{(n)}(1) = \mathbb{E}[\underbracket{X (X - 1) \dots (X - n + 1)}_{\color{blue} \text{Falling Factorial.}}]
+    \end{align*} 
+\end{proposition} 
+
+\begin{proof}
+    \begin{align*}
+        G_X^{(n)}(1) &= \sum_{k \geq n} \underbracket{k (k - 1) \dots (k - n + 1)}_{\color{blue} \text{function of $k$}} \mathbb{P}(X = k) \\
+        &= \mathbb{E}[X (X - 1) \dots (X - n + 1)]
+    \end{align*} 
+\end{proof} 
+
+\begin{proposition}[Variance in terms of pgf] ~\vspace*{-1.5\baselineskip}
+    \begin{align*}
+        \Var(X) &= G_X''(1) + G_X'(1) - \left[G_X'(1)\right]^2
+    \end{align*} 
+\end{proposition}
+
+\begin{proof}
+    \begin{align*}
+        \mathbb{E}\left[ X^2 \right] &= \mathbb{E}[X (X - 1)] + \mathbb{E}[X] \\
+        &= G_X''(1) + G_X'(1)
+    \end{align*} 
+\end{proof} 
+
+\underline{Idea}: Find general $\mathbb{E}[P(X)]$ ($P(X)$ is a polynomial) using $\mathbb{E}[\text{falling factorials of } X]$.
+
+\begin{aside}{Linear Algebra aside}
+    The falling factorials $1, X, X(X - 1), \dots$ form a \emph{basis} for $\mathbb{R}[X]$ (vector space of polynomials). \\
+\end{aside} 
+
+\begin{proposition}[PGF for sum of independent RVs]
+    Let $X_1, \dots, X_n$ be independent RVs with pgfs $G_{X_1}, \dots, G_{X_n}$.
+    Let $X = X_1 + \dots + X_n$.
+    \begin{align*}
+        G_X(z) &= G_{X_1}(z) \dots G_{X_n}(z)
+    \end{align*} 
+    \underline{Special case}: $X_i$ are IID, $G_X(z) = \left( G_{X_1}(z) \right)^n$. \color{blue} Much nicer than PMF of $X$!
+\end{proposition} 
+
+\begin{proof}
+    \begin{align*}
+        G_X(z) &= \mathbb{E}\left[z^X\right] \\
+        &= \mathbb{E}\left[z^{X_1 + \dots X_N}\right] \\
+        &= \mathbb{E}\left[ \underbracket{z^{X_1}}_{\color{blue} \substack{\text{function} \\ \text{of $X_1$}}} z^{X_2} \dots \underbracket{z^{X_n}}_{\color{blue} \substack{\text{function} \\ \text{of $X_n$}}} \right] \\
+        &= \mathbb{E}\left[ z^{X_1} \right] \dots \mathbb{E}\left[ z^{X_n} \right] \quad \text{as $X_i$ are independent so by \Cref{prp:expprod}}\\
+        &= G_{X_1}(z) \dots G_{X_n}(z).
+    \end{align*}
+\end{proof} 
+
+\begin{example}[Binomial]
+    Let $X \sim \operatorname{Bin}(n, p)$
+    \begin{align*}
+        X &= X_1 + \dots + X_n, \quad X_i \text{ IID } \operatorname{Bern}(p) \\
+        G_X(z) &= (1 - p + pz)^n.
+    \end{align*} 
+\end{example} 
+
+\begin{example}[Q6, Sheet 3]
+    Let $X \sim \operatorname{Poi}(\lambda)$ and $Y \sim \operatorname{Poi}(\mu)$.
+    \begin{align*}
+        G_X(z) &= e^{\lambda (z - 1)},\ G_Y(z) = e^{\mu (z - 1)} \\
+        \text{Study } Z &= X + Y \\
+        G_{Z}(z) &= G_X(z) G_Y(z) \\
+        &= e^{\lambda (z - 1)} e^{\mu (z - 1)} \\
+        &= \underbracket{e^{(\lambda + \mu)(z - 1)}}_{\text{PGF of $\operatorname{Poi}(\lambda + \mu)$}}
+    \end{align*}
+    So $X + Y \sim \operatorname{Poi}(\lambda + \mu)$.
+\end{example} 
+
+\begin{proposition}[PGF for random sums] \label{prp:randsum}
+    Let $X_1, X_2, \dots$ be IID with the same distribution as $X$.
+    $X$ takes values in $\{0, 1, 2, \dots,\}$ and let $N$ be a RV taking values in $\{0, 1, 2, \dots\}$ \emph{independent} of $(X_n)$.
+    \begin{align*}
+        G_{X_1 + \dots + X_N} &= G_N(G_X(z))
+    \end{align*} 
+\end{proposition} 
+
+\begin{proof}
+    \begin{align*}
+        \mathbb{E}\left[z^{X_1 + \dots X_N}\right] &= \sum_{n \geq 0} \mathbb{E}\left[ z^{X_1 + \dots + X_N} \mid N = n \right] \mathbb{P}(N = n) \quad \text{by \nameref{prp:lte}} \\
+        &= \sum_{n \geq 0} \mathbb{E}\left[ z^{X_1 + \dots + X_n} \mid N = n \right] \mathbb{P}(N = n) \quad \text{\color{red} Replace with conditioning} \\
+        &= \sum_{n \geq 0} \mathbb{E}\left[ z^{X_1 + \dots + X_n} \right] \mathbb{P}(N = n) \quad \text{\color{red} $(N, X_i)$ independent so get rid of conditioning} \\
+        &= \sum_{n \geq 0} \mathbb{E}\left[ z^{X_1} \right] \dots \mathbb{E}\left[ z^{X_n} \right] \mathbb{P}(N = n) \quad \text{$(X_i)$s independent} \\
+        &= \sum_{n \geq 0} \left( G_X(z) \right)^n \mathbb{P}(N = n) \\
+        &= G_N(G_X(z))
+    \end{align*} 
+\end{proof} 
+
+\begin{example}[Bernoulli - Q7, Sheet 3]
+    Let $X_i \sim \operatorname{Bern}(p)$ and $N \sim \operatorname{Poi}(\lambda)$.
+    \begin{align*}
+        G_{X_i}(z) &= (1 - p) + pz \\
+        G_N(s) &= e^{\lambda (s - 1)}
+    \end{align*}  
+    \color{blue} \underline{Interpretation:} ``Poisson thinning'' \\
+    \color{red} ``$\operatorname{Poi}(\lambda)$ misprints, each gets found with $\mathbb{P} = 1-p$'' \color{black}
+    \begin{align*}
+        Y &= X_1 + \dots + X_N \\
+        G_Y(z) &= G_N(G_{X_i}(z)) \\
+        &= e^{\lambda (1 - p + pz - 1)} \\
+        &= \underbracket{e^{\lambda p(z - 1)}}_{\text{PGF of $\operatorname{Poi}(\lambda p)$}}
+    \end{align*} 
+\end{example} 
+
+In general the PMF $X_1 + \dots + X_N$ is horrible whilst $G_N(G_X(z))$ is nice.
+
+\subsection{Branching Process} \color{blue} ``Modelling growth of a population'' \color{black}
+
+\begin{definition}[Random branching tree]
+    Let $X$ be a RV on $\{0, 1, 2, \dots\}$. 
+    There is one individual at generation 0 and each individual has a random number of children with distribution $X$.
+\end{definition} 
+
+\underline{Goal}: 
+\begin{itemize}
+    \item Study number of individuals in each generation
+    \item Total population size - is it finite or infinite?
+\end{itemize} 
+
+\begin{figure}
+    \centering 
+    \includegraphics[width=10cm]{04-branch} 
+\end{figure} 
+
+\underline{Reduction}: Let $Z_n =$ be the number of individuals in generation $n$.
+$Z_0 = 1$, $Z_1 \sim X$, $Z_{n + 1} = X_1^{(n)} + \dots + X_{Z_n}^{(n)}$ where $X_k^{(n)}$ are IID with distribution $X$ and independent of $Z_n$. 
+\color{blue}``$X_k^{(n)} =$ number of children of kth individual in generation $n$.'' \color{black}
+
+\begin{note}
+    If $Z_n = 0 \implies Z_{n + 1} = Z_{n + 2} = \dots = 0$.
+\end{note} 
+
+\begin{theorem}
+    $\mathbb{E}[Z_n] = (\mathbb{E}[X])^n$
+\end{theorem} 
+
+\begin{proof}
+    $Z_{n + 1}$ is a random sum so $\mathbb{E}[Z_{n + 1}] = \mathbb{E}[X] \mathbb{E}[Z_n]$.
+    By induction the result follows. 
+\end{proof}
+
+\begin{notation}
+    $\mu = \mathbb{E}[X] \implies \mathbb{E}[Z_n] = \mu^n$.
+\end{notation} 
+
+\begin{notation} \label{not:branchpgf}
+    Let $G$ be the PGF of $X$ and $G_n$ the PGF of $Z_n$.
+\end{notation} 
+
+\begin{theorem} \label{thm:branchpgf}
+    $G_n(z) = G(\dots G(z) \dots)$\footnote{Sometimes written as $G^n(z)$, but this is confusing notation so we won't use it}.
+\end{theorem} 
+
+\begin{proof}
+    $G_{n + 1}(z) = G_n(G(z))$ by \nameref{prp:randsum} and so result follows by induction.
+\end{proof}
+
+\begin{question}
+    What is the probability the population has goes extinct?
+\end{question} 
+
+\begin{definition}[Extinction Probability by generation $n$]
+    The probability that the population is extinct by generation $n$ is $q_n = \mathbb{P}(Z_n = 0)$.
+\end{definition}
+
+\begin{definition}[Extinction Probability]
+    The probability that the population goes extinct is $q = \mathbb{P}(Z_n = 0 \text{ for any } n \geq 1)$, i.e. the population size is finite.
+\end{definition}
+
+\begin{note}
+    $\{Z_n = 0\} \subseteq \{Z_{n + 1} = 0\}$ as $Z_n = 0 \implies Z_{n + 1} = 0$.
+    Also $\{Z_n = 0 \text{ for any } n \geq 1\} = \bigcup_{n \geq 1} \{Z_n = 0\}$.
+\end{note} 
+
+\begin{theorem}
+    $\mathbb{P}(Z_n = 0) \uparrow \mathbb{P}(\bigcup_{n \geq 1} \{Z_n = 0\})$\footnote{$\uparrow$ is convergence with an increasing sequence.}, i.e. $q_n \uparrow q$ as $n \to \infty$.
+\end{theorem} 
+
+\begin{proof}
+    By \nameref{prp:continuity}.
+\end{proof} 
+
+There are 3 cases to consider
+\begin{itemize}
+    \item $\mu < 1$ - subcritical
+    \item $\mu = 1$ - critical
+    \item $\mu > 1$ - supercritical
+\end{itemize} 
+
+\color{blue} The degenerate case $\mathbb{P}(X = 1) = 1$ is boring so we exclude it. \color{black}
+
+\begin{theorem}
+    $q = 1 \iff \mu = \mathbb{E}[X] \leq 1$.\footnote{This does not hold in the degenerate case obviously.}
+\end{theorem} 
+
+\begin{remark} \color{blue} 
+    Interesting that $q$ depends on $X$ only through $\mathbb{E}[X]$.
+\end{remark} 
+
+\underline{Interpretation}: Consider a pandemic spreading through a population, obviously it cannot infect infinite people.
+Instead we take ``finite'' to mean e.g. 100 people are infected out of a large population and ``infinite'' might mean the model stops making sense/ a significant positive proportion are infected.
+
+\begin{proof}[Baby Proof - (Subcritical)]
+    \begin{align*}
+        \mathbb{P}(Z_n \geq 1) &\leq \frac{\mathbb{E}[Z_n]}{1} \ \text{ by \nameref{clm:markov}} \\
+        &= \mu^n \to 0.
+    \end{align*} 
+    For supercritical case, \color{red} note $\mathbb{E}[Z_n] \to \infty$ does \underline{not} imply $\mathbb{P}(Z_n = 0) \not\to 1$.
+\end{proof} 
+
+Recall $G$ is the PGF of $X$ and $G_n$ the PGF of $Z_n$, $q_n = \mathbb{P}(Z_n = 0) = G_n(0)$ and that $q$ is the extinction probability.
+
+\begin{claim} \label{clm:branchpgf}
+    $G(q) = q$.
+\end{claim}
+
+\begin{proof}[Proof 1.]
+    $q_{n+1} = G(q_n)$ by \Cref{thm:branchpgf}, $q_n \to q$ and $G$ is continuous as it's a power series so $G(q_n) \to G(q)$ so $q = G(q)$ as $n \to \infty$.
+\end{proof}
+
+\begin{proof}[Proof 2 - LTP (revision of random sums)]
+    Conditional on $Z_1 = k$, we get $k$ independent branching processes.
+
+    \tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+    
+    \begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-0.75,xscale=0.75]
+    %uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+    
+    %Shape: Polygon Curved [id:ds39756330989696687] 
+    \draw  [fill={rgb, 255:red, 248; green, 231; blue, 28 }  ,fill opacity=1 ] (210,80) .. controls (232,115) and (190,140) .. (210,170) .. controls (230,200) and (170,200) .. (150,170) .. controls (130,140) and (188,45) .. (210,80) -- cycle ;
+    %Shape: Polygon Curved [id:ds6379465750469737] 
+    \draw  [fill={rgb, 255:red, 248; green, 231; blue, 28 }  ,fill opacity=1 ] (275,70) .. controls (283,74) and (296,140) .. (290,170) .. controls (284,200) and (280,210) .. (260,180) .. controls (240,150) and (267,66) .. (275,70) -- cycle ;
+    %Shape: Polygon Curved [id:ds8073009612262341] 
+    \draw  [fill={rgb, 255:red, 248; green, 231; blue, 28 }  ,fill opacity=1 ] (315,70) .. controls (333,70) and (398,190) .. (370,180) .. controls (342,170) and (341,204) .. (310,180) .. controls (279,156) and (297,70) .. (315,70) -- cycle ;
+    %Straight Lines [id:da4966370314659285] 
+    \draw    (275,55) -- (195,85) ;
+    %Straight Lines [id:da012619115368816214] 
+    \draw    (195,85) -- (175,115) ;
+    %Straight Lines [id:da6584759199495862] 
+    \draw    (315,85) -- (275,55) ;
+    %Straight Lines [id:da6264172554803165] 
+    \draw    (275,55) -- (275,85) ;
+    %Straight Lines [id:da10191236924904246] 
+    \draw    (275,85) -- (275,115) ;
+    %Straight Lines [id:da8454343099013522] 
+    \draw    (195,85) -- (205,115) ;
+    %Straight Lines [id:da5191712973579519] 
+    \draw    (275,115) -- (260,150) ;
+    %Straight Lines [id:da2866173505227845] 
+    \draw    (175,115) -- (160,150) ;
+    %Straight Lines [id:da5251550145753905] 
+    \draw    (175,115) -- (190,150) ;
+    %Straight Lines [id:da7969351562542346] 
+    \draw    (315,85) -- (300,120) ;
+    %Straight Lines [id:da9516356439304474] 
+    \draw    (315,85) -- (330,120) ;
+    %Shape: Circle [id:dp2072526843406961] 
+    \draw  [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ][fill={rgb, 255:red, 208; green, 2; blue, 27 }  ,fill opacity=1 ] (190,85) .. controls (190,82.24) and (192.24,80) .. (195,80) .. controls (197.76,80) and (200,82.24) .. (200,85) .. controls (200,87.76) and (197.76,90) .. (195,90) .. controls (192.24,90) and (190,87.76) .. (190,85) -- cycle ;
+    %Shape: Circle [id:dp9783169345220857] 
+    \draw  [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ][fill={rgb, 255:red, 208; green, 2; blue, 27 }  ,fill opacity=1 ] (325,120) .. controls (325,117.24) and (327.24,115) .. (330,115) .. controls (332.76,115) and (335,117.24) .. (335,120) .. controls (335,122.76) and (332.76,125) .. (330,125) .. controls (327.24,125) and (325,122.76) .. (325,120) -- cycle ;
+    %Shape: Circle [id:dp4926704073297845] 
+    \draw  [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ][fill={rgb, 255:red, 208; green, 2; blue, 27 }  ,fill opacity=1 ] (310,85) .. controls (310,82.24) and (312.24,80) .. (315,80) .. controls (317.76,80) and (320,82.24) .. (320,85) .. controls (320,87.76) and (317.76,90) .. (315,90) .. controls (312.24,90) and (310,87.76) .. (310,85) -- cycle ;
+    %Shape: Circle [id:dp9137052205134757] 
+    \draw  [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ][fill={rgb, 255:red, 208; green, 2; blue, 27 }  ,fill opacity=1 ] (295,120) .. controls (295,117.24) and (297.24,115) .. (300,115) .. controls (302.76,115) and (305,117.24) .. (305,120) .. controls (305,122.76) and (302.76,125) .. (300,125) .. controls (297.24,125) and (295,122.76) .. (295,120) -- cycle ;
+    %Shape: Circle [id:dp7992097944836307] 
+    \draw  [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ][fill={rgb, 255:red, 208; green, 2; blue, 27 }  ,fill opacity=1 ] (200,115) .. controls (200,112.24) and (202.24,110) .. (205,110) .. controls (207.76,110) and (210,112.24) .. (210,115) .. controls (210,117.76) and (207.76,120) .. (205,120) .. controls (202.24,120) and (200,117.76) .. (200,115) -- cycle ;
+    %Shape: Circle [id:dp8305157135492074] 
+    \draw  [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ][fill={rgb, 255:red, 208; green, 2; blue, 27 }  ,fill opacity=1 ] (170,115) .. controls (170,112.24) and (172.24,110) .. (175,110) .. controls (177.76,110) and (180,112.24) .. (180,115) .. controls (180,117.76) and (177.76,120) .. (175,120) .. controls (172.24,120) and (170,117.76) .. (170,115) -- cycle ;
+    %Shape: Circle [id:dp9668393196026197] 
+    \draw  [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ][fill={rgb, 255:red, 208; green, 2; blue, 27 }  ,fill opacity=1 ] (270,115) .. controls (270,112.24) and (272.24,110) .. (275,110) .. controls (277.76,110) and (280,112.24) .. (280,115) .. controls (280,117.76) and (277.76,120) .. (275,120) .. controls (272.24,120) and (270,117.76) .. (270,115) -- cycle ;
+    %Shape: Circle [id:dp4143559387276672] 
+    \draw  [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ][fill={rgb, 255:red, 208; green, 2; blue, 27 }  ,fill opacity=1 ] (270,55) .. controls (270,52.24) and (272.24,50) .. (275,50) .. controls (277.76,50) and (280,52.24) .. (280,55) .. controls (280,57.76) and (277.76,60) .. (275,60) .. controls (272.24,60) and (270,57.76) .. (270,55) -- cycle ;
+    %Shape: Circle [id:dp6716716115264691] 
+    \draw  [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ][fill={rgb, 255:red, 208; green, 2; blue, 27 }  ,fill opacity=1 ] (270,85) .. controls (270,82.24) and (272.24,80) .. (275,80) .. controls (277.76,80) and (280,82.24) .. (280,85) .. controls (280,87.76) and (277.76,90) .. (275,90) .. controls (272.24,90) and (270,87.76) .. (270,85) -- cycle ;
+    %Straight Lines [id:da03905545740393146] 
+    \draw    (300,120) -- (310,150) ;
+    %Straight Lines [id:da03738266096433085] 
+    \draw    (330,120) -- (340,150) ;
+    
+    % Text Node
+    \draw (161,160) node    {$\vdots $};
+    % Text Node
+    \draw (189,160) node    {$\vdots $};
+    % Text Node
+    \draw (259,160) node    {$\vdots $};
+    % Text Node
+    \draw (309,160) node    {$\vdots $};
+    % Text Node
+    \draw (341,160) node    {$\vdots $};
+    % Text Node
+    \draw (234,90) node    {$\dotsc $};
+    
+    
+    \end{tikzpicture}
+
+    The total population is finite $\iff$ all subtrees\footnote{\color{blue} Each subtree has the same distribution as the original tree.} of \nth{1} generation are finite.
+    \begin{align*}
+        q &= \mathbb{P}(\text{finite}) \\
+        &= \sum_{k \geq 0} \mathbb{P}(\text{all finite} \mid Z_1 = k) \mathbb{P}(Z_1 = k) \\
+        &= \sum_{k \geq 0} [\mathbb{P}(\text{finite})]^k \mathbb{P}(Z_1 = k) \\
+        &= \sum q^k \mathbb{P}(Z_1 = k) \\
+        &= G(q). 
+    \end{align*} 
+
+    \underline{Facts about G}
+    \begin{itemize}
+        \item $G(0) = \mathbb{P}(X = 0) \geq 0$
+        \item $G(1) = 1$
+        \item $G'(1) = \mathbb{E}[X] = \mu$.
+        \item $G$ is \underline{smooth}, all derivatives $\geq 0$ on $[0, 1)$ as all coefficients of the power series are non-negative.
+    \end{itemize} 
+ 
+    \tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+    
+    \begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-0.75,xscale=0.75]
+    %uncomment if require: \path (0,820); %set diagram left start at 0, and has height of 820
+    
+    %Straight Lines [id:da3566472400103051] 
+    \draw    (77.07,60) -- (77.07,292) ;
+    %Straight Lines [id:da30593282072011996] 
+    \draw    (340,292) -- (77.07,292) ;
+    %Straight Lines [id:da4498600243653825] 
+    \draw  [dash pattern={on 4.5pt off 4.5pt}]  (77.07,106.4) -- (262.67,106.4) ;
+    %Straight Lines [id:da23330676870406375] 
+    \draw  [dash pattern={on 4.5pt off 4.5pt}]  (262.67,292) -- (262.67,106.4) ;
+    %Straight Lines [id:da7917034040416375] 
+    \draw [color={rgb, 255:red, 245; green, 166; blue, 35 }  ,draw opacity=1 ]   (262.67,106.4) -- (77.07,292) ;
+    %Curve Lines [id:da28945061334157707] 
+    \draw    (77.07,214.67) .. controls (165.23,205.39) and (197.71,146.61) .. (253.39,106.4) ;
+    %Straight Lines [id:da5923563349362415] 
+    \draw  [dash pattern={on 0.84pt off 2.51pt}]  (77.07,214.67) -- (154.4,214.67) ;
+    %Straight Lines [id:da6561123702182479] 
+    \draw  [dash pattern={on 0.84pt off 2.51pt}]  (154.4,214.67) -- (154.6,187.67) ;
+    %Straight Lines [id:da11817016362725852] 
+    \draw  [dash pattern={on 0.84pt off 2.51pt}]  (154.6,187.67) -- (181.34,187.67) ;
+    %Straight Lines [id:da5269040164238137] 
+    \draw  [dash pattern={on 0.84pt off 2.51pt}]  (181.34,187.67) -- (181.34,168.29) ;
+    %Straight Lines [id:da277083738848787] 
+    \draw  [dash pattern={on 0.84pt off 2.51pt}]  (181.34,168.29) -- (199.67,168.73) ;
+    %Straight Lines [id:da16311358371686424] 
+    \draw  [dash pattern={on 0.84pt off 2.51pt}]  (199.67,168.73) -- (199.67,151.71) ;
+    %Straight Lines [id:da7565353729355639] 
+    \draw  [dash pattern={on 0.84pt off 2.51pt}]  (199.67,151.71) -- (216.69,151.71) ;
+    %Straight Lines [id:da1753488502260936] 
+    \draw  [dash pattern={on 0.84pt off 2.51pt}]  (216.69,151.71) -- (216.76,136.87) ;
+    %Straight Lines [id:da5142578403064464] 
+    \draw  [dash pattern={on 0.84pt off 2.51pt}]  (216.76,136.87) -- (232.23,136.87) ;
+    %Straight Lines [id:da6510626123810166] 
+    \draw  [dash pattern={on 0.84pt off 2.51pt}]  (232.23,136.87) -- (232.14,122.83) ;
+    %Straight Lines [id:da29923484937339095] 
+    \draw  [dash pattern={on 0.84pt off 2.51pt}]  (232.14,122.83) -- (246.06,122.83) ;
+    %Straight Lines [id:da34578049100722796] 
+    \draw  [dash pattern={on 0.84pt off 2.51pt}]  (246.06,122.83) -- (246.06,112.01) ;
+    %Straight Lines [id:da7302764276625526] 
+    \draw    (377,60) -- (377,292) ;
+    %Straight Lines [id:da7795005021532544] 
+    \draw    (639.93,292) -- (377,292) ;
+    %Straight Lines [id:da33689560520140405] 
+    \draw  [dash pattern={on 4.5pt off 4.5pt}]  (482.61,291.28) -- (482.61,191.01) ;
+    %Curve Lines [id:da3993780573627619] 
+    \draw    (377,214.67) .. controls (465.16,205.39) and (546.33,174.03) .. (569.5,104.12) ;
+    %Straight Lines [id:da575658635871469] 
+    \draw  [dash pattern={on 0.84pt off 2.51pt}]  (377,214.67) -- (454.33,214.67) ;
+    %Straight Lines [id:da272355400423417] 
+    \draw  [dash pattern={on 0.84pt off 2.51pt}]  (454.33,214.67) -- (454.53,199.04) ;
+    %Straight Lines [id:da2543476335628043] 
+    \draw  [dash pattern={on 0.84pt off 2.51pt}]  (454.53,199.04) -- (472.58,199.04) ;
+    %Straight Lines [id:da8309056535722565] 
+    \draw  [dash pattern={on 0.84pt off 2.51pt}]  (472.58,199.04) -- (472.58,193.02) ;
+    %Straight Lines [id:da05239577254419703] 
+    \draw  [dash pattern={on 0.84pt off 2.51pt}]  (471.91,193.69) -- (477.93,193.69) ;
+    %Straight Lines [id:da7959659183906378] 
+    \draw [color={rgb, 255:red, 245; green, 166; blue, 35 }  ,draw opacity=1 ]   (569.5,104.12) -- (377,292) ;
+    
+    % Text Node
+    \draw (262.67,295.4) node [anchor=north] [inner sep=0.75pt]    {$1$};
+    % Text Node
+    \draw (75.07,106.4) node [anchor=east] [inner sep=0.75pt]    {$1$};
+    % Text Node
+    \draw (75.07,214.67) node [anchor=east] [inner sep=0.75pt]    {$G( 0)$};
+    % Text Node
+    \draw (482.61,294.68) node [anchor=north] [inner sep=0.75pt]    {$q$};
+    % Text Node
+    \draw (375,214.67) node [anchor=east] [inner sep=0.75pt]    {$G( 0)$};
+    \end{tikzpicture}\\
+    The \nth{1} graph has gradient $< 1$ so only one solution at $q = 1$. \\
+    In the \nth{2} graph, the gradient is $> 1$ so there is only one solution on $[0, 1)$ by IVT on $G(z) - z$.
+\end{proof}
+
+\begin{theorem}
+    $q$, the extinction probability, is the \underline{minimal} solution to $z = G(z)$ in $[0, 1]$.\footnote{Assuming $\mathbb{P}(X = 1) \neq 1$.}
+\end{theorem}
+
+\begin{corollary}
+    $q = 1 \iff \mu \leq 1$
+\end{corollary} 
+
+\begin{proof}
+    Let $t$ be the minimal solution to $t = G(t)$.
+    Reminder: $G$ is increasing.
+    \begin{align*}
+        t &\geq 0 \\
+        \implies G(t) &\geq G(0) \\
+        \implies G(G(t)) &\geq G(G(0)) \\
+        \implies G(\dots G(t) \dots) &\geq G(\dots G(0) \dots) \\
+        t &\geq q_n \\
+        t &\geq q \ \text{ as } n \to \infty.
+    \end{align*} 
+    $q$ is a solution by Claim \ref{clm:branchpgf} and is bounded above by the minimal solution so $t = q$.
+\end{proof}

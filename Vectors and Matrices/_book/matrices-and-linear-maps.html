@@ -423,7 +423,7 @@ Let <span class="math inline">\(\underline{x}&#39; = T(\underline{x})\)</span> w
 <span class="math display">\[\begin{align*}
     \underline{x} = \sum_i x_i \underline{e}_i = \begin{pmatrix}x_1 \\ \vdots \\ x_n\end{pmatrix},\ \underline{x}&#39; = \sum_a x_a&#39; \underline{f}_a = \begin{pmatrix}x_1&#39; \\ \vdots \\ x_m&#39;\end{pmatrix}
 \end{align*}\]</span>
-Linearity implies <span class="math inline">\(T\)</span> is determined by <span class="math inline">\(T(\underline{e}_i) = \underline{e}_i&#39; = \underline{C}_i \in \mathbb{R}^m \ (i = 1, \dots, n)\)</span>; take these ase <em>columns</em> of a <span class="math inline">\(m \times n\)</span> <em>array</em> or <em>matrix</em> <span class="math inline">\(M\)</span> with <em>rows</em>
+Linearity implies <span class="math inline">\(T\)</span> is determined by <span class="math inline">\(T(\underline{e}_i) = \underline{e}_i&#39; = \underline{C}_i \in \mathbb{R}^m \ (i = 1, \dots, n)\)</span>; take these as <em>columns</em> of a <span class="math inline">\(m \times n\)</span> <em>array</em> or <em>matrix</em> <span class="math inline">\(M\)</span> with <em>rows</em>
 <span class="math display">\[\begin{align*}
     \underline{R}_a \in \mathbb{R}^n \ (a = 1, \dots, m).
 \end{align*}\]</span>
@@ -657,7 +657,7 @@ Or if <span class="math inline">\(S : U \to V\)</span> is also linear, then so i
 <h3><span class="header-section-number">4.5.2</span> Matrix multiplication</h3>
 <p>If <span class="math inline">\(A\)</span> is an <span class="math inline">\(m \times n\)</span> matrix, entries <span class="math inline">\(A_{ai} \in \mathbb{R}\)</span> or <span class="math inline">\(\mathbb{C}\)</span><br />
 and <span class="math inline">\(B\)</span> is an <span class="math inline">\(n \times p\)</span> matrix, entries <span class="math inline">\(B_{ir}\)</span> then <span class="math inline">\(AB\)</span> is an <span class="math inline">\(m \times p\)</span> matrix defined by <span class="math inline">\((AB)_{ar} = A_{ai} B_{ir}\)</span> (<span class="math inline">\(\sum\)</span> convention).
-The product <span class="math inline">\(AB\)</span> is not defined unless no. of cols of $A = $ no. of rows of B.
+The product <span class="math inline">\(AB\)</span> is not defined unless no. of cols of <span class="math inline">\(A =\)</span> no. of rows of B.
 <span class="math display">\[\begin{align*}
     a &amp;= 1, \dots, m \\
     i &amp;= 1, \dots, n \\
@@ -852,8 +852,8 @@ Inner product on <span class="math inline">\(\mathbb{C}^n\)</span> is <span clas
     \operatorname{tr} (I_n) &amp;= n \\
     [I_{ij} = \delta_{ij} \text{ and } I_{ii} = \delta_{ii} = n]
 \end{align*}\]</span></p>
-<p>We previously decomposed <span class="math inline">\(M = S + A\)</span> (symmetric/ anti-symmetric parts).
-Let <span class="math inline">\(T = S - \frac{1}{n} (\operatorname{tr} (S)) I\)</span> or <span class="math inline">\(T_{ij} = S_{ij} - \frac{1}{n} \operatorname{tr} (S) \delta_{ij}\)</span>, then <span class="math inline">\(T_{ii} = \operatorname{T} = 0\)</span>; and note <span class="math inline">\(\operatorname{M} = \operatorname{S}\)</span> and <span class="math inline">\(\operatorname{A} = 0\)</span><a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a>.
+<p>We previously decomposed <span class="math inline">\(M = S + A\)</span> (symmetric/ anti-symmetric parts).<br />
+Let <span class="math inline">\(T = S - \frac{1}{n} (\operatorname{tr} (S)) I\)</span> or <span class="math inline">\(T_{ij} = S_{ij} - \frac{1}{n} \operatorname{tr} (S) \delta_{ij}\)</span>, then <span class="math inline">\(T_{ii} = \operatorname{tr}(T) = 0\)</span>; and note <span class="math inline">\(\operatorname{tr}(M) = \operatorname{tr}(S)\)</span> and <span class="math inline">\(\operatorname{tr}(A) = 0\)</span><a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a>.
 So <span class="math inline">\(M = \underset{\text{symm and traceless}}{T} + \underset{\text{antisymm part}}{A} + \underset{\text{pure trace}}{\frac{1}{n} \operatorname{tr}(M) I}\)</span></p>
 <div class="example">
 <p><span id="exm:unlabeled-div-66" class="example"><strong>Example 4.18  </strong></span><span class="math display">\[\begin{align*}

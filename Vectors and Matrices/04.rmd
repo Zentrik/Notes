@@ -451,7 +451,7 @@ If $M$ and $N$ are $m \times n$ matrices then $\alpha M + \beta N$ is an $m \tim
 
 If $A$ is an $m \times n$ matrix, entries $A_{ai} \in \mathbb{R}$ or $\mathbb{C}$\
 and $B$ is an  $n \times p$ matrix, entries $B_{ir}$ then $AB$ is an $m \times p$ matrix defined by $(AB)_{ar} = A_{ai} B_{ir}$ ($\sum$ convention).
-The product $AB$ is not defined unless no. of cols of $A = $ no. of rows of B.
+The product $AB$ is not defined unless no. of cols of $A =$ no. of rows of B.
 \begin{align*}
     a &= 1, \dots, m \\
     i &= 1, \dots, n \\
@@ -663,8 +663,8 @@ For any square $n \times n$ matrix $M$, the *trace* is defined by
     [I_{ij} = \delta_{ij} \text{ and } I_{ii} = \delta_{ii} = n]
 \end{align*} 
 
-We previously decomposed $M = S + A$ (symmetric/ anti-symmetric parts).
-Let $T = S - \frac{1}{n} (\operatorname{tr} (S)) I$ or $T_{ij} = S_{ij} - \frac{1}{n} \operatorname{tr} (S) \delta_{ij}$, then $T_{ii} = \operatorname{T} = 0$; and note $\operatorname{M} = \operatorname{S}$ and $\operatorname{A} = 0$^[$A$ has zeros on its diagonal.].
+We previously decomposed $M = S + A$ (symmetric/ anti-symmetric parts).\
+Let $T = S - \frac{1}{n} (\operatorname{tr} (S)) I$ or $T_{ij} = S_{ij} - \frac{1}{n} \operatorname{tr} (S) \delta_{ij}$, then $T_{ii} = \operatorname{tr}(T) = 0$; and note $\operatorname{tr}(M) = \operatorname{tr}(S)$ and $\operatorname{tr}(A) = 0$^[$A$ has zeros on its diagonal.].
 So $M = \underset{\text{symm and traceless}}{T} + \underset{\text{antisymm part}}{A} + \underset{\text{pure trace}}{\frac{1}{n} \operatorname{tr}(M) I}$
 
 ::: {.example}

@@ -200,7 +200,7 @@ Returning to polar form \@ref(prp:polar-form), this can be written
 $z = r ( \cos \theta + i \sin \theta) = re^{i \theta}$ for $r = |z|$ and $\theta = \arg z$. De Moivre's Theorem \@ref(thm:de) now follows from $(e^{i \theta})^n = e^{i n \theta}$.
 
 ### Roots of units
-$z$ is an Nth root of unity if $z^n = 1$. To find all solutions: 
+$z$ is an Nth root of unity if $z^N = 1$. To find all solutions: 
 \begin{align*}
     && z &= r e^{i \theta} \text{ satisfying } z^N = 1 \\
     &\iff & r^N e^{i N \theta} &= 1 \\

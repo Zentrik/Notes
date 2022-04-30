@@ -25,9 +25,10 @@ i. Symmetric $\underline{x} \cdot \underline{y} = \underline{y} \cdot \underline
 
 ii. Bilinear (linear in each vector)
 \begin{align*}
-    (\lambda \underline{x} + \lambda' \underline{x}) \cdot \underline{y} &= \lambda (\underline{x} \cdot \underline{y}) + \lambda' (\underline{x}' \cdot \underline{y}) \\
-    (\lambda \underline{y} + \lambda' \underline{y}) \cdot \underline{x} &= \lambda (\underline{y} \cdot \underline{x}) + \lambda' (\underline{y}' \cdot \underline{x}) \\
-\end{align*} 
+    (\lambda \underline{x} + \lambda' \underline{x}') \cdot \underline{y} &= \lambda (\underline{x} \cdot \underline{y}) + \lambda' (\underline{x}' \cdot \underline{y}) \\
+    \underline{x} \cdot (\mu \underline{y} + \mu' \underline{y}') &= \mu (\underline{x} \cdot \underline{y}) + \mu' (\underline{x} \cdot \underline{y})
+    % (\lambda \underline{y} + \lambda' \underline{y}) \cdot \underline{x} &= \lambda (\underline{y} \cdot \underline{x}) + \lambda' (\underline{y}' \cdot \underline{x}) \\
+\end{align*}
 
 iii. Positive definite
 $\underline{x} \cdot \underline{x} = \sum_i x^2_i \geq 0$ and $= 0 \iff \underline{x} = \underline{0}$.
@@ -89,7 +90,7 @@ Component definition matches geometrical definition for n = 3 [Scalar or Dot Pro
 In $\mathbb{R}^3$ we also have a cross product with component definition $(\underline{a} \wedge \underline{b})_i = \epsilon_{ijk} a_j b_k$ (geometric definition given in [Vector or Cross Product]) \
 In $\mathbb{R}^n$ we have $\epsilon_{\underbrace{ij...l}_\text{$n$ indices}}$ (totally antisymmetric).
 Cannot use this to define vector-valued product except in $n = 3$.
-But in $\mathbb{R}^2$ we have $\epsilon_{ij}$ with $\epsilon_{12} = \epsilon_{21} = 1$ and we can use this to define an additional scalar cross product in 2d.
+But in $\mathbb{R}^2$ we have $\epsilon_{ij}$ with $\epsilon_{12} = -\epsilon_{21} = 1$ and we can use this to define an additional scalar cross product in 2d.
 
 \begin{align*}
     [\underline{a}, \underline{b}] &= \epsilon_{ij} a_i b_j \\
@@ -375,7 +376,7 @@ Also if $\underline{z}_1, \underline{z}_2, \dots, \underline{z}_k$ are non-zero 
 Complex inner product on $\mathbb{C}$ ($n = 1$) is 
 \begin{align*}
     (z, w) &= \bar{z} w \\
-    \text{Let } z &= a_1 + i a_2,\ w = b_1 + b_2 \\
+    \text{Let } z &= a_1 + i a_2,\ w = b_1 + i b_2 \\
     \text{Then } \underline{a} &= (a_1, a_2) \in \mathbb{R}^2,\ \underline{b} = (b_1, b_2) \in \mathbb{R}^2 \text{ the corresponding vectors} \\
     \bar{z} w &= (a_1 b_1 + a_2 b_2) + i (a_1 b_2 - a_2 b_1) \\
     &= \underline{a} \cdot \underline{b} + i [\underline{a}, \underline{b}]

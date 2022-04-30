@@ -36,3 +36,5 @@ title: "Cambridge Maths Notes"
 [Hasan Baig](http://mhb45.user.srcf.net/)
 
 [Jason Tang](https://github.com/jywtang/Maths-Summary)
+
+[Abigail Tan](http://ahcmt2.user.srcf.net/)

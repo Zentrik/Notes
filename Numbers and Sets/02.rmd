@@ -206,10 +206,10 @@ If $r = k - 1$ then $n = (n - 1) + 1 = qk + (k - 1) + 1 = (q + 1)k$.
     \text{STEP } 1& a = q_1 b + r_1 & q_1, r_1 \in \mathbb{Z} & 372 = 2 \cdot 162 + 48 \\
     & & 0 \leq r \leq b - 1 & \\
     \text{STEP } 2& b = q_2 r_1 + r_2 & 0 \leq r_2 < r_1 & 162 = 3 \cdot 48 + 18 \\
-    & r_1 = q_3 r_2 + r_3 & 0 < r_3 < r_2 & 48 = 2 \cdot 18 + 12 \\
-    & \vdots &  & 18 = 1 \cdot 12 + 6 \\
-    \text{STEP } n& r_{n - 2} = q_n r_{n-1} + r_{n} & 0 \leq r_n < r_{n - 1} & 12 = 2 \cdot 6 \\
-    \text{STEP } n + 1& r_{n - 1} = q_{n + 1} r_n + r_{n + 1} & r_{n + 1} = 0 & 0 \leq r_n < r_{n - 1} & \\
+    \text{STEP } 3& r_1 = q_3 r_2 + r_3 & 0 < r_3 < r_2 & 48 = 2 \cdot 18 + 12 \\
+    & \vdots &  & \vdots \\
+    \text{STEP } n& r_{n - 2} = q_n r_{n-1} + r_{n} & 0 \leq r_n < r_{n - 1} & 18 = 1 \cdot 12 + 6 \\
+    \text{STEP } n + 1& r_{n - 1} = q_{n + 1} r_n + r_{n + 1} & r_{n + 1} = 0 & 12 = 2 \cdot 6 & \\
     \hline
     \text{OUTPUT} & r_n &&&
 \end{array} 

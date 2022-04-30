@@ -41,7 +41,7 @@ Note: $P$ and $Q$ are invertible; in relation above we can exchange $\underline{
 With definitions as above
 \begin{align*}
     A' = Q^{-1} A P
-\end{align*}  which is the change of basis formula for matrix of a linear map.
+\end{align*}  which is the change of basis formula for matrix of a linear map.^[$P$ expresses our vector in $\underline{e}'_i$ the basis in terms of the $\underline{e}_i$ basis. E.g. $P * (1 \ 0 \dots \ 0)^T$ gives $P_{i 1} \underline{e}_i$ which is $\underline{e}'_1$ in terms of $\underline{e}_i$. Then we apply $A$ and get the components in terms of $\underline{f}_i$ so we use $Q^{-1}$ to convert to $\underline{f}'_i$.]
 :::
 
 ::: {.example}
@@ -255,7 +255,7 @@ If $A$ is invertible (no zero eigenvalues) then by setting $\underline{y} = \und
 \begin{align*}
     \underline{y}^T A \underline{y} &= (\underline{x} + \frac{1}{2}A^{-1} \underline{b})^T A (\underline{x} + \frac{1}{2}A^{-1} \underline{b}) \\
     &= \underline{x}^T A \underline{x} + \underline{b}^T \underline{x} + \frac{1}{4} \underline{b}^T A^{-1} \underline{b} 
-\end{align*} since $(A^{-1} \underline{b})^T = \underline{b} A^{-1}$ as $A$ is symmetric so $\frac{1}{2} (A^{-1} \underline{b})^T A \frac{1}{2} (A^{-1} \underline{b})$ is the last term.
+\end{align*} since $(A^{-1} \underline{b})^T = \underline{b}^T A^{-1}$ as $A$ is symmetric so $\frac{1}{2} (A^{-1} \underline{b})^T A \frac{1}{2} (A^{-1} \underline{b})$ is the last term.
 
 Then $Q(\underline{x}) = 0 \iff \mathcal{F}(\underline{y}) = k$ with $\mathcal{F}(\underline{y}) = \underline{y}^T A \underline{y}$ (a quadratic form w.r.t. new origin $\underline{y} = 0$) and $k = \frac{1}{4} \underline{b}^T A^{-1} \underline{b} - c$.
 Diagonalise $\mathcal{F}$ as in [Quadratic Forms]: orthonormal eigenvectors give principal axes; eigenvalues of $A$ and value of $k$ determine nature of this quadric.
@@ -270,7 +270,7 @@ If $A$ has one or more zero eigenvalues then analysis changes and simplest stand
 
 ### Conics
 
-Quadrics in $\mathbb{R}^2$ are curves, *conics.
+Quadrics in $\mathbb{R}^2$ are curves, *conics*.
 
 - If $\det A \neq 0$ \
 By completing the square and diagonalising we get a standard form 
@@ -313,7 +313,7 @@ $R \in SO(n) \implies$ R also preserves orientation.
 $SO(n)$ consists of all rotations in $\mathbb{R}^n$
 
 Reflections belong to $O(n)$ but not $SO(n)$.
-For a specific $H \in O(n) \setminus SO(n)$, any element of $O(n)$ is of teh form $R$ or $RH$ with $R \in SO(n)$, e.g. if $n$ is odd, we can choose $H = -I$.
+For a specific $H \in O(n) \setminus SO(n)$, any element of $O(n)$ is of the form $R$ or $RH$ with $R \in SO(n)$, e.g. if $n$ is odd, we can choose $H = -I$.
 
 #### Active and Passive points of View
 
@@ -423,7 +423,7 @@ knitr::include_graphics("figures/07-lorentz.png")
 The curves defined by $(\underline{x}, \underline{x}) = k$ where $k$ is a constant are hyperbolas, as shown.
 This is analogous to how the curves defined by $\underline{x} \cdot \underline{x} = k$ are circles.
 So applying $M$ to any vector on a given branch of a hyperbola, the resultant vector remains on the hyperbola.
-Allowing $|M_{00}| \geq 1$ we would get transformations that could map $\underline{x}$ to the dotted branch below.
+Allowing $|M_{00}| < -1$ we would get transformations that could map $\underline{x}$ to the dotted branch below.
 
 ### Application to special relativity
 Set \begin{align*}

@@ -46,7 +46,7 @@ $\sum_{n \in \mathbb{N}} \mathbb{P}(A_n)$ ``double counts" some sub-events.
 
 \subsection{Continuity}
 
-\begin{proposition}[Continuity]
+\begin{proposition}[Continuity] \label{prp:continuity}
     Let $(A_n)_{n \in \mathbb{N}}$ be an increasing sequence of events in $\mathcal{F}$, i.e. $A_n \subseteq A_{n + 1} \quad \forall \; n$. 
     Then $\mathbb{P}(A_n) \leq \mathbb{P}(A_{n + 1})$.
     So $\mathbb{P}(A_n)$ converges as $n \to \infty$.\footnote{As probabilities are bounded above by 1 and increasing.}
@@ -77,7 +77,7 @@ For motivation try Q6, Sheet 1.
 Background: $\mathbb{P}(A \cup B) = \mathbb{P}(A) + \mathbb{P}(B) - \mathbb{P}(A \cap B)$. \\
 Similarly: $A, B, C \in \mathcal{F}$
 \begin{align*}
-    \mathbb{P}(A \cup B \cup C) &= \mathbb{P}(A) + \mathbb{P}(B) + \mathbb{P}(C) - \mathbb{P}(A \cup B) - \mathbb{P}(B \cup C) - \mathbb{P}(C \cup A) + \mathbb{P}(A \cap B \cap C).
+    \mathbb{P}(A \cup B \cup C) &= \mathbb{P}(A) + \mathbb{P}(B) + \mathbb{P}(C) - \mathbb{P}(A \cap B) - \mathbb{P}(B \cap C) - \mathbb{P}(C \cap A) + \mathbb{P}(A \cap B \cap C).
 \end{align*} 
 
 \begin{proposition}[Inclusion-Exclusion Principle] \label{prp:IEP}
@@ -86,7 +86,7 @@ Similarly: $A, B, C \in \mathcal{F}$
         \mathbb{P} \left(\bigcup_{i = 1}^n A_i \right) = &\sum_{i=1}^{n} \mathbb{P}(A_i) - \sum_{1 \leq i_1 < i_2 \leq n} \mathbb{P}(A_{i_1} \cap A_{i_2}) + \sum_{1 \leq i_1 < i_2 < i_3 \leq n} \mathbb{P}(A_{i_1} \cap A_{i_2} \cap A_{i_3}) - \dots \\ &+ (-1)^{n + 1} \mathbb{P}(A_1 \cap \dots \cap A_n) \\
         = &\sum_{\substack{I \subset \{1, \dots, n\} \\ I \neq \emptyset} } (-1)^{|I| + 1} \mathbb{P} \left( \bigcap_{i \in I} A_i \right)
     \end{align*}
-    Note: $\sum_{1 \leq i_1 < i_2 \leq n}$ is the sum of all triples that are distinct and unordered.
+    Note: $\sum_{1 \leq i_1 < i_2 < i_3 \leq n}$ is the sum of all triples that are distinct and unordered.
 \end{proposition}
 
 \begin{proof}
@@ -105,7 +105,7 @@ Similarly: $A, B, C \in \mathcal{F}$
         J \cup \{n\} &\mapsto I. \\
         -(-1)^{|J| + 1} &\mapsto (-1)^{|I| + 1} \\
         &= \underbracket{\mathcolor{blue}{\sum_{\substack{I \subset \{1, \dots, n - 1\} \\ I \neq \emptyset}} (-1)^{|I| + 1} \mathbb{P} \left( \bigcap_{i \in I} A_i \right)}}_{\text{Just changed the labels}} + \mathbb{P}(A_n) \\
-        &+ \mathcolor{violet}{\sum_{\substack{I \subset \{1, \dots, n\} \\ n \in I,\ |I| > 2}} (-1)^{|I| + 1} \mathbb{P} \left( \bigcap_{i \in I} A_i \right)} \\
+        &+ \mathcolor{violet}{\sum_{\substack{I \subset \{1, \dots, n\} \\ n \in I,\ |I| \geq 2}} (-1)^{|I| + 1} \mathbb{P} \left( \bigcap_{i \in I} A_i \right)} \\
         &= \sum_{\substack{I \subset \{1, \dots, n\} \\ I \neq \emptyset}} (-1)^{|I| + 1} \mathbb{P} \left( \bigcap_{i \in I} A_i \right).
     \end{align*}
     Let us check that we have indeed counted all subsets $I$.
@@ -171,7 +171,7 @@ Then $\forall \; A_1, \dots, A_n \subseteq \Omega$
             &= (m - k)^n \\
             IEP \to |B_1 \cup \dots \cup B_m| &= \sum_{k=1}^{m} (-1)^{k + 1} \sum_{i_1 < \dots < i_k} \underbracket{|B_{i_1} \cap \dots \cap B_{i_k}|}_\text{same for all $i_1, \dots, i_k$}\\
             &= \sum_{k=1}^{m} (-1)^{k+1} \binom{m}{k} (m - k)^n \\
-            |A| &= m^n - |B_{i_1} \cap \dots \cap B_{i_k}| \\
+            |A| &= m^n - |B_{i_1} \cup \dots \cup B_{i_k}| \\
             &= \sum_{k=0}^m (-1)^k \binom{m}{k} (m - k)^n 
         \end{align*} 
     \end{itemize}
@@ -189,7 +189,8 @@ Then $\forall \; A_1, \dots, A_n \subseteq \Omega$
     \emph{Key observations}:
     \begin{itemize}
         \item $D = A_1^c \cap \dots A_n^c = \left(\bigcup_{i = 1}^n A_i \right)^c.$
-        \item \begin{align*}
+        \item ~\vspace*{-1.5\baselineskip}
+        \begin{align*}
             \mathbb{P}(A_{i_1} \cap \dots \cap A_{i_k}) &= \frac{(n - k)!}{n!} \\
             IEP \to \mathbb{P}\left(\bigcup_{i = 1}^n A_i \right) &= \sum_{k=1}^{n} (-1)^{k + 1} \sum_{i_1 < \dots < i_k} \mathbb{P}(A_{i_1} \cap \dots \cap A_{i_k}) \\
             &= \sum_{k=1}^{n} (-1)^{k+1} \binom{n}{k} \frac{(n - k)!}{n!} \\
@@ -255,7 +256,8 @@ $(\Omega, \mathcal{F}, \mathbb{P})$ as before.
 
 \begin{example}[Independence] ~\vspace*{-1.5\baselineskip} \label{exm:indep1}
     \begin{itemize}
-        \item \begin{align*}
+        \item ~\vspace*{-1.5\baselineskip}
+        \begin{align*}
             \Omega' &= \{\text{all functions } f : \{1, \dots, n\} \text{ to itself} \\
             A_i &= \{f \in \Omega' : f(i) = i\}. \\
             \mathbb{P}(A_i) &= \frac{n^{n -1}}{n^n} = \frac{1}{n} \\
@@ -264,7 +266,8 @@ $(\Omega, \mathcal{F}, \mathbb{P})$ as before.
             &= \prod_{j = 1}^k \mathbb{P}(A_{i_j})
         \end{align*} 
         Here: $(A_i)$ are independent events.
-        \item \begin{align*}
+        \item ~\vspace*{-1.5\baselineskip}
+        \begin{align*}
             \Omega &= \left\{\sigma : \text{ permutation of } \{1, \dots, n\} \right\} \\
             A_i &= \{ \sigma \in \Omega : \sigma(i) = i \} \\
             \mathbb{P}(A_i) &= \frac{(n - 1)!}{n!} = \frac{1}{n}. \\

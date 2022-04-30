@@ -267,7 +267,7 @@ If <span class="math inline">\(T\)</span> is invertible then
 <span class="math display">\[\begin{align*}
     \underbrace{\ker T = \{ \underline{0} \}}_\text{because $T$ is one-to-one} \text{ and } \underbrace{\operatorname{Im} T = \mathbb{R}^n}_\text{$T$ is onto}.
 \end{align*}\]</span>
-These conditions are equivalent by rank-nullity theorem <a href="matrices-and-linear-maps.html#thm:rank">4.1</a>.
+These conditions are equivalent by rank-nullity theorem <a href="#thm:rank"><strong>??</strong></a>.
 Conversely, if these conditions hold, then
 <span class="math display">\[\begin{align*}
     \underline{e}_1&#39; &amp;= T(\underline{e}_1), \dots, \underline{e}_n&#39; = T(\underline{e}_n) \\
@@ -325,7 +325,7 @@ This is the factor by which volumes are scaled under <span class="math inline">\
     &amp;= \underbrace{(\underline{C}_1 (M) \cdot \underline{C}_2 (M) \wedge \underline{C}_3 (M))}_{\det M} \delta_{ij}
 \end{align*}\]</span></p>
 <div class="example">
-<p><span id="exm:unlabeled-div-70" class="example"><strong>Example 5.1  </strong></span><span class="math display">\[\begin{align*}
+<p><span id="exm:unlabeled-div-1" class="example"><strong>Example 5.1  </strong></span><span class="math display">\[\begin{align*}
     M &amp;= \begin{pmatrix}
     1 &amp; 3 &amp; 0 \\
     0 &amp; -1 &amp; 2 \\
@@ -390,13 +390,13 @@ If <span class="math inline">\(\sigma\)</span> is any permutation of <span class
     \epsilon_{\sigma(1) \sigma(2) \dots \sigma(n)} &amp;= \epsilon(\sigma).
 \end{align*}\]</span></p>
 <div class="lemma">
-<p><span id="lem:unlabeled-div-71" class="lemma"><strong>Lemma 5.1  </strong></span><span class="math display">\[\begin{align*}
+<p><span id="lem:unlabeled-div-2" class="lemma"><strong>Lemma 5.1  </strong></span><span class="math display">\[\begin{align*}
     \epsilon_{\sigma(i) \sigma(j) \dots \sigma(l)} = \epsilon(\sigma) \epsilon_{ij \dots l}
 \end{align*}\]</span>
 <span class="math inline">\(\epsilon\)</span> is totally antisymmetric.</p>
 </div>
 <div class="proof">
-<p><span id="unlabeled-div-72" class="proof"><em>Proof</em>. </span>If <span class="math inline">\(i, j, \dots l\)</span> is <em>not</em> a permutation of <span class="math inline">\(1, 2, \dots, n\)</span> then <span class="math inline">\(RHS = LHS = 0\)</span>.<br />
+<p><span id="unlabeled-div-3" class="proof"><em>Proof</em>. </span>If <span class="math inline">\(i, j, \dots l\)</span> is <em>not</em> a permutation of <span class="math inline">\(1, 2, \dots, n\)</span> then <span class="math inline">\(RHS = LHS = 0\)</span>.<br />
 If <span class="math inline">\(i = \rho(1), j = \rho(2), \dots, l = \rho(n)\)</span> for some permutation <span class="math inline">\(\rho\)</span> then
 <span class="math display">\[\begin{align*}
     RHS &amp;= \epsilon(\sigma) \epsilon (\rho) = \epsilon (\sigma \rho) = LHS.
@@ -431,7 +431,7 @@ If <span class="math inline">\(i = \rho(1), j = \rho(2), \dots, l = \rho(n)\)</s
 <span class="math display">\[\begin{align*}
 [\underline{v}_1, \dots, \underline{v}_p, \dots, \underline{v}_q, \dots, \underline{v}_n] &amp;= 0
 \end{align*}\]</span> (from ii, exchanging <span class="math inline">\(\underline{v}_p \leftrightarrow \underline{v}_q\)</span> changes sign of alternating from).</p></li>
-<li><p>If <span class="math inline">\(\underline{v}_p = \sum_{i \neq p} \lambda_i \underline{v}\)</span> then
+<li><p>If <span class="math inline">\(\underline{v}_p = \sum_{i \neq p} \lambda_i \underline{v}_i\)</span> then
 <span class="math display">\[\begin{align*}
  [\underline{v}_1, \dots, \underline{v}_p, \dots, \underline{v}_n] &amp;= 0
 \end{align*}\]</span> (sub in and use i and iv).</p></li>
@@ -442,28 +442,28 @@ If <span class="math inline">\(i = \rho(1), j = \rho(2), \dots, l = \rho(n)\)</s
     \underline{v}_3 &amp;= \begin{pmatrix}3 \\2i \\0 \\0\end{pmatrix}, \begin{pmatrix}0 \\0 \\-i \\1\end{pmatrix} \\
     \implies [\underline{v}_1, \underline{v}_2, \underline{v}_3, \underline{v}_4] &amp;= 5i [\underline{v}_1, \underline{e}_3, \underline{v}_3, \underline{v}_4] \\
     &amp;= 5i [i \underline{e}_1 + \cancel{2 \underline{e}_4}, \underline{e}_3, \cancel{3 \underline{e}_1} + 2i \underline{e}_2, \cancel{-i \underline{e}_3} + \underline{e}_4] \\
-    &amp;= 5i \cdot i \cdot 2i) [\underline{e}_1, \underline{e}_3, \underline{e}_2, \underline{e}_4] \\
+    &amp;= (5i \cdot i \cdot 2i) [\underline{e}_1, \underline{e}_3, \underline{e}_2, \underline{e}_4] \\
     &amp;= (- 10 i) \cdot (-1) \\
     &amp;= 10i
 \end{align*}\]</span> (in cancelling, we first cancel <span class="math inline">\(i \underline{e}_3\)</span> as there is another lone <span class="math inline">\(\underline{e}_3\)</span>, then the <span class="math inline">\(2\underline{e}_4\)</span> and finally the <span class="math inline">\(3\underline{e}_1\)</span>)</p>
 </div>
 <p>Note: properties i and iii follow immediately from definition</p>
 <div class="proof">
-<p><span id="unlabeled-div-73" class="proof"><em>Proof</em> (Property ii). </span><span class="math display">\[\begin{align*}
+<p><span id="unlabeled-div-4" class="proof"><em>Proof</em> (Property ii). </span><span class="math display">\[\begin{align*}
     [\underline{v}_{\sigma(1)}, \underline{v}_{\sigma(2)}, \dots \underline{v}_{\sigma(n)}] &amp;= \sum_\rho \epsilon (\rho) \underbrace{[\underline{v}_{\sigma(1)}]_{\rho(1)} \dots [\underline{v}_{\sigma(n)}]_{\rho(n)}}_\text{each term can be re-written as: } \text{ ($\sigma$ fixed)} \\
     &amp; [\underline{v}_1]_{\rho \sigma^{-1} (1)} \dots [\underline{v}_n]_{\rho \sigma^{-1} (n)} \\
     &amp;= \sum_\rho \epsilon (\sigma) \epsilon(\rho&#39;) [\underline{v}_1]_{\rho&#39;(1)} \dots [\underline{v}_n]_{\rho&#39;(n)} \text{ where } \rho&#39; = \rho \sigma^{-1} \\
     \text{ and } \sum_\rho &amp;\text{ is equivalent to } \sum_{\rho&#39;} \\
     &amp;= \epsilon(\sigma) [\underline{v}_1, \underline{v}_2, \dots, \underline{v}_n]
-\end{align*}\]</span></p>
+\end{align*}\]</span><a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
 </div>
 <div class="proposition">
-<p><span id="prp:unlabeled-div-74" class="proposition"><strong>Proposition 5.1  </strong></span><span class="math display">\[\begin{align*}
+<p><span id="prp:unlabeled-div-5" class="proposition"><strong>Proposition 5.1  </strong></span><span class="math display">\[\begin{align*}
     [\underline{v}_1, \underline{v}_2, \dots, \underline{v}_n] \neq 0 \iff \underline{v}_1, \dots, \underline{v}_n \text{ are linearly independent}.
 \end{align*}\]</span></p>
 </div>
 <div class="proof">
-<p><span id="unlabeled-div-75" class="proof"><em>Proof</em>. </span><span class="math inline">\(\implies\)</span>:<br />
+<p><span id="unlabeled-div-6" class="proof"><em>Proof</em>. </span><span class="math inline">\(\implies\)</span>:<br />
 Use property v.
 If <span class="math inline">\(\underline{v}_1, \dots \underline{v}_n\)</span> are linearly dependent then <span class="math inline">\(\sum \alpha_i \underline{v}_i = \underline{0}\)</span> where not all coefficients are zero.
 Suppose wlog that <span class="math inline">\(\alpha_p \neq 0\)</span>, then express <span class="math inline">\(\underline{v}_p\)</span> as a linear combination of <span class="math inline">\(\underline{v}_i (i \neq p)\)</span> and so
@@ -490,7 +490,7 @@ Note that <span class="math inline">\(\underline{v}_1, \dots, \underline{v}_n\)<
 <div id="definition" class="section level3" number="5.3.1">
 <h3><span class="header-section-number">5.3.1</span> Definition</h3>
 <div class="definition">
-<p><span id="def:unlabeled-div-76" class="definition"><strong>Definition 5.1  (Determinant) </strong></span>For an <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(M\)</span> with columns
+<p><span id="def:unlabeled-div-7" class="definition"><strong>Definition 5.1  (Determinant) </strong></span>For an <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(M\)</span> with columns
 <span class="math display">\[\begin{align*}
     \underline{C}_a &amp;= M \underline{e}_a
 \end{align*}\]</span>
@@ -503,7 +503,7 @@ the <em>determinant</em> <span class="math inline">\(\det M\)</span> or <span cl
 \end{align*}\]</span></p>
 </div>
 <div class="proposition">
-<p><span id="prp:unlabeled-div-77" class="proposition"><strong>Proposition 5.2  (Transpose Property) </strong></span><span class="math display">\[\begin{align*}
+<p><span id="prp:unlabeled-div-8" class="proposition"><strong>Proposition 5.2  (Transpose Property) </strong></span><span class="math display">\[\begin{align*}
     \det M &amp;= \det M^T \\
     \text{so } \det M &amp;= [\underline{R}_1, \underline{R}_2, \dots, \underline{R}_n] \\
     &amp;= \epsilon_{ij \dots l} M_{1i} M_{2j} \dots M_{nl} \\
@@ -511,19 +511,19 @@ the <em>determinant</em> <span class="math inline">\(\det M\)</span> or <span cl
 \end{align*}\]</span></p>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-78" class="example"><strong>Example 5.3  </strong></span>In <span class="math inline">\(\mathbb{R}^3\)</span> or <span class="math inline">\(\mathbb{C}^3\)</span>
+<p><span id="exm:unlabeled-div-9" class="example"><strong>Example 5.3  </strong></span>In <span class="math inline">\(\mathbb{R}^3\)</span> or <span class="math inline">\(\mathbb{C}^3\)</span>
 <span class="math display">\[\begin{align*}
     \det M &amp;= \epsilon_{ijk} M_{i1} M_{j2} M_{k3} \\
-    &amp;= M_{11} \begin{bmatrix}
+    &amp;= M_{11} \begin{vmatrix}
     M_{22} &amp; M_{23} \\
     M_{32} &amp; M_{33}
-    \end{bmatrix} - M_{21} \begin{bmatrix}
+    \end{vmatrix} - M_{21} \begin{vmatrix}
     M_{12} &amp; M_{13} \\
     M_{32} &amp; M_{33}
-    \end{bmatrix} + M_{31} \begin{bmatrix}
+    \end{vmatrix} + M_{31} \begin{vmatrix}
     M_{12} &amp; M_{13} \\
     M_{22} &amp; M_{23}
-    \end{bmatrix}
+    \end{vmatrix}
 \end{align*}\]</span></p>
 </div>
 <div class="properties">
@@ -535,7 +535,7 @@ the <em>determinant</em> <span class="math inline">\(\det M\)</span> or <span cl
 </ol>
 </div>
 <div class="theorem">
-<p><span id="thm:unlabeled-div-79" class="theorem"><strong>Theorem 5.1  </strong></span><span class="math display">\[\begin{align*}
+<p><span id="thm:unlabeled-div-10" class="theorem"><strong>Theorem 5.1  </strong></span><span class="math display">\[\begin{align*}
     \det M \neq 0 &amp;\iff \text{ columns of $M$ are linearly independent} \\
     &amp;\iff \text{ row of $M$ are linearly independent} \\
     &amp;\iff \operatorname{rank} M = n \quad (M \text{ is } n \times n) \\
@@ -544,10 +544,10 @@ the <em>determinant</em> <span class="math inline">\(\det M\)</span> or <span cl
 \end{align*}\]</span></p>
 </div>
 <div class="proof">
-<p><span id="unlabeled-div-80" class="proof"><em>Proof</em>. </span>All equivalences follow immediately from earlier results including the discussion in <a href="eigenvalues-and-eigenvectors.html#introduction-3">Introduction</a>.</p>
+<p><span id="unlabeled-div-11" class="proof"><em>Proof</em>. </span>All equivalences follow immediately from earlier results including the discussion in <a href="eigenvalues-and-eigenvectors.html#introduction-3">Introduction</a>.</p>
 </div>
 <div class="proof">
-<p><span id="unlabeled-div-81" class="proof"><em>Proof</em> (Transpose property). </span>Suffices to show
+<p><span id="unlabeled-div-12" class="proof"><em>Proof</em> (Transpose property). </span>Suffices to show
 <span class="math display">\[\begin{align*}
     \sum_\sigma \epsilon(\sigma) M_{\sigma(1) 1} \dots M_{\sigma(n) n} &amp;= \sum_\sigma \epsilon(\sigma) M_{1 \sigma(1)} \dots M_{n \sigma(n)}
 \end{align*}\]</span>
@@ -562,16 +562,16 @@ Then <span class="math inline">\(\epsilon(\sigma) = \epsilon(\rho)\)</span> and 
 <h3><span class="header-section-number">5.3.2</span> Evaluating determinants: expanding by rows or columns</h3>
 <p>For <span class="math inline">\(M\)</span>, <span class="math inline">\(n \times n\)</span>, for each entry <span class="math inline">\(M_{ia}\)</span> define the <em>minor</em> <span class="math inline">\(M^{ia}\)</span> to be the determinant of <span class="math inline">\((n - 1) \times (n - 1)\)</span> matrix obtained from deleting row <span class="math inline">\(i\)</span> and column <span class="math inline">\(a\)</span> from <span class="math inline">\(M\)</span>.</p>
 <div class="proposition">
-<p><span id="prp:unlabeled-div-82" class="proposition"><strong>Proposition 5.3  </strong></span><span class="math display">\[\begin{align*}
+<p><span id="prp:unlabeled-div-13" class="proposition"><strong>Proposition 5.3  </strong></span><span class="math display">\[\begin{align*}
     \det M &amp;= \sum_i (-1)^{i + a} M_{ia} M^{ia} \hspace{.5cm} a \text{ fixed} \\
     &amp;= \sum_a (-1)^{i + a} M_{ia} M^{ia} \hspace{.5cm} i \text{ fixed}
 \end{align*}\]</span> called expanding by (or about) column <span class="math inline">\(a\)</span> or row <span class="math inline">\(i\)</span> respectively.</p>
 </div>
 <div class="proof">
-<p><span id="unlabeled-div-83" class="proof"><em>Proof</em>. </span>See <a href="determinants-and-inverses.html#cofactors-and-determinants">Cofactors and Determinants</a>.</p>
+<p><span id="unlabeled-div-14" class="proof"><em>Proof</em>. </span>See <a href="determinants-and-inverses.html#cofactors-and-determinants">Cofactors and Determinants</a>.</p>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-84" class="example"><strong>Example 5.4  </strong></span><span class="math display">\[\begin{align*}
+<p><span id="exm:unlabeled-div-15" class="example"><strong>Example 5.4  </strong></span><span class="math display">\[\begin{align*}
     M &amp;= \begin{pmatrix}
     i &amp; 0 &amp; 3 &amp; 0 \\
     0 &amp; 0 &amp; 2i &amp; 0 \\
@@ -608,7 +608,7 @@ Then <span class="math inline">\(\epsilon(\sigma) = \epsilon(\rho)\)</span> and 
     &amp;= 0 \\
     \det M &amp;= (-1)^{3 + 2} 5i (-2) \\
     &amp;= 10i \\
-    \emph{or } \text{expand by column 2}: \\
+    \textit{or } \text{expand by column 2}: \\
     \det M &amp;= \sum_i (-1)^{2 + i} M_{i2} M^{i2} \\
     &amp;= (-1)^{2 + 3} M_{32} M^{32} \\
     &amp;= 10i.
@@ -620,7 +620,7 @@ Then <span class="math inline">\(\epsilon(\sigma) = \epsilon(\rho)\)</span> and 
 block form with <span class="math inline">\(A\)</span> a <span class="math inline">\(r \times r\)</span> matrix; <span class="math inline">\(I \ (n - r) \times (n - r)\)</span> identity, then <span class="math inline">\(\det M = \det A\)</span>.</p>
 </div>
 <div class="proof">
-<p><span id="unlabeled-div-85" class="proof"><em>Proof</em>. </span>For <span class="math inline">\(r = n - 1\)</span>, result follows by expanding about column <span class="math inline">\(n\)</span> or row <span class="math inline">\(n\)</span>, and for <span class="math inline">\(r &lt; n - 1\)</span>, continue process.</p>
+<p><span id="unlabeled-div-16" class="proof"><em>Proof</em>. </span>For <span class="math inline">\(r = n - 1\)</span>, result follows by expanding about column <span class="math inline">\(n\)</span> or row <span class="math inline">\(n\)</span>, and for <span class="math inline">\(r &lt; n - 1\)</span>, continue process.</p>
 </div>
 </div>
 <div id="simplifying-determinants-row-and-column-operations" class="section level3" number="5.3.3">
@@ -697,19 +697,19 @@ then <span class="math inline">\(\det M \mapsto \det M\)</span> as we can use mu
 <div id="multiplicative-property" class="section level3" number="5.3.4">
 <h3><span class="header-section-number">5.3.4</span> Multiplicative Property</h3>
 <div class="theorem">
-<p><span id="thm:unlabeled-div-86" class="theorem"><strong>Theorem 5.2  </strong></span>For <span class="math inline">\(n \times n\)</span> matrices <span class="math inline">\(M\)</span> and <span class="math inline">\(N\)</span>
+<p><span id="thm:unlabeled-div-17" class="theorem"><strong>Theorem 5.2  </strong></span>For <span class="math inline">\(n \times n\)</span> matrices <span class="math inline">\(M\)</span> and <span class="math inline">\(N\)</span>
 <span class="math display">\[\begin{align*}
     \det (MN) = \det M \det N
 \end{align*}\]</span><br />
 This is based on the following lemma</p>
 </div>
 <div class="lemma">
-<p><span id="lem:unlabeled-div-87" class="lemma"><strong>Lemma 5.3  </strong></span><span class="math display">\[\begin{align*}
+<p><span id="lem:unlabeled-div-18" class="lemma"><strong>Lemma 5.3  </strong></span><span class="math display">\[\begin{align*}
     \epsilon_{i_1 \dots i_n} M_{i_1 a_1} \dots M_{i_n a_n} &amp;= (\det M) \epsilon_{a_1 \dots a_n}
 \end{align*}\]</span></p>
 </div>
 <div class="proof">
-<p><span id="unlabeled-div-88" class="proof"><em>Proof</em> (Proof of Theorem). </span><span class="math display">\[\begin{align*}
+<p><span id="unlabeled-div-19" class="proof"><em>Proof</em> (Proof of Theorem). </span><span class="math display">\[\begin{align*}
     \det (MN) &amp;= \epsilon_{i_1 \dots i_n} (MN)_{i_1 1} \dots (MN)_{i_n n} \\ 
     &amp;= \epsilon_{i_1 \dots i_n} M_{i_1 k_1} N_{k_1 1} \dots  M_{i_n k_n} N_{k_n n} \\ 
     &amp;= \epsilon_{i_1 \dots i_n} M_{i_1 k_1} \dots  M_{i_n k_n} N_{k_1 1} \dots N_{k_n n} \\ 
@@ -718,10 +718,10 @@ This is based on the following lemma</p>
 \end{align*}\]</span></p>
 </div>
 <div class="proof">
-<p><span id="unlabeled-div-89" class="proof"><em>Proof</em> (Proof of Lemma). </span>Use total antisymmetry of LHS and RHS and then check taking <span class="math inline">\(a_1 = 1, \dots, a_n = n\)</span>.</p>
+<p><span id="unlabeled-div-20" class="proof"><em>Proof</em> (Proof of Lemma). </span>Use total antisymmetry of LHS and RHS and then check taking <span class="math inline">\(a_1 = 1, \dots, a_n = n\)</span>.</p>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-90" class="example"><strong>Example 5.6  </strong></span><br />
+<p><span id="exm:unlabeled-div-21" class="example"><strong>Example 5.6  </strong></span><br />
 </p>
 <ol style="list-style-type: lower-roman">
 <li><p>If <span class="math inline">\(M = \left(  \begin{array}{c|c}  A &amp; O \\  \hline  O &amp; B  \end{array} \right)\)</span>
@@ -757,7 +757,7 @@ U^\dagger U = I &amp;\implies \det(U^\dagger) \det U \\
     \det M &amp;= [\underline{C}_1, \dots, \underline{C}_{a - 1}, \underline{C}_a, \underline{C}_{a + 1}, \dots, \underline{C}_n] \\
     &amp;= [\underline{C}_1, \dots, \underline{C}_{a - 1}, \sum_i M_{ia} \underline{e}_i, \underline{C}_{a + 1}, \dots, \underline{C}_n] \\
     &amp;= \sum_i M_{ia} \Delta_{ia} \hspace{0.5cm} \text{(no sum over $a$)} \\
-    \text{where the } &amp;\emph{cofactor } \Delta_{ia} \text{ is defined by} \\
+    \text{where the } &amp;\textit{cofactor } \Delta_{ia} \text{ is defined by} \\
     \Delta_{ia} &amp;= [\underline{C}_1, \underline{C}_2, \dots, \underline{C}_{a- 1}, \underline{e}_i, \underline{C}_{a + 1}, \dots, \underline{C}_n] \\
     &amp;= \det \left( \begin{array}{c|c|c} 
         A &amp; \begin{array}{c} 
@@ -810,13 +810,13 @@ To get <span class="math inline">\(\Delta_{ia}\)</span> we subtract column <span
 <h3><span class="header-section-number">5.4.2</span> Adjugates and Inverses</h3>
 <p>Reasoning as in <a href="determinants-and-inverses.html#cofactors-and-determinants">Cofactors and Determinants</a> with <span class="math inline">\(\underline{C}_b = \sum_i M_{ib} \underline{e}_i\)</span>
 <span class="math display">\[\begin{align*}
-    [\underline{C}_1, \dots, \underline{C}_{a - 1}, \underline{C}_b, C_\underline{a + 1}, \dots, \underline{C_n}] &amp;= \sum_i M_{ib} \delta_{ia} \\
+    [\underline{C}_1, \dots, \underline{C}_{a - 1}, \underline{C}_b, C_\underline{a + 1}, \dots, \underline{C_n}] &amp;= \sum_i M_{ib} \Delta_{ia} \\
     &amp;= \begin{cases}
         \det M &amp; \text{if } a = b \\
         0 &amp; \text{if } a \neq b
     \end{cases} \\
-    \text{Hence } \sum_i M_{ib} \delta_{ia} &amp;= \delta_{ab} \det M \\
-    \text{And similarly} \sum_a M_{ja} \delta_{ia} &amp;= \delta_{ij} \det M.
+    \text{Hence } \sum_i M_{ib} \Delta_{ia} &amp;= \delta_{ab} \det M \\
+    \text{And similarly} \sum_a M_{ja} \Delta_{ia} &amp;= \delta_{ij} \det M.
 \end{align*}\]</span>
 Let <span class="math inline">\(\Delta\)</span> be the <em>matrix</em> of cofactors with entries <span class="math inline">\(\Delta_{ia}\)</span>, and define the <em>adjugate</em> <span class="math inline">\(\widetilde{M} = \operatorname{adj}(M) = \Delta^T\)</span>.
 Then the relations above become
@@ -833,7 +833,7 @@ This justifies <a href="determinants-and-inverses.html#eq:inverse">(5.1)</a> wit
     \widetilde{M} &amp;= \Delta^T \\
     \Delta_{ia} &amp;= (-1)^{i + a} M^{ia} \\
     \text{we have } \widetilde{M}M &amp;= M \widetilde{M} = (\det M) I.
-\end{align*}\]</span><a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a></p>
+\end{align*}\]</span><a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></p>
 <p>Hence if <span class="math inline">\(\det M \neq 0\)</span> then <span class="math inline">\(M\)</span> is invertible and
 <span class="math display">\[\begin{align*}
     M^{-1} = \frac{1}{\det M} \widetilde{M}.
@@ -891,7 +891,7 @@ Hence <span class="math inline">\(A^{-1}\)</span> exists if <span class="math in
 <p><em>Elaboration</em>: a solution exists iff <span class="math inline">\(A \underline{x}_0 = \underline{b}\)</span> for some <span class="math inline">\(\underline{x}_0 \iff \underline{b} \in \operatorname{Im} A\)</span>.
 Then <span class="math inline">\(\underline{x}\)</span> is also a solution iff <span class="math inline">\(\underline{u} = \underline{x} - \underline{x}_0\)</span> satisfies
 <span class="math display">\[\begin{align*}
-    A \underline{u} &amp;= \underline{0} \emph{ homogenous problem}.
+    A \underline{u} &amp;= \underline{0} \textit{ homogenous problem}. \\
     \text{Now } \det A \neq 0 &amp;\iff \operatorname{Im} A = \mathbb{R}^n \\
     &amp;\iff \ker A = \{ \underline{0} \}.
 \end{align*}\]</span>
@@ -903,7 +903,7 @@ So in (i) there is a unique solutions and it can be found using <span class="mat
 and then either <span class="math inline">\(\underline{b} \notin \operatorname{Im} A\)</span> as in case (ii) or <span class="math inline">\(\underline{b} \in \operatorname{Im} A\)</span> as in case (iii).
 If <span class="math inline">\(\underline{u}_1, \dots, \underline{u}_k\)</span> is a basis for <span class="math inline">\(\ker A\)</span> then general solution of homogenous problem is <span class="math inline">\(\underline{u} = \sum_{i=1}^{k} \lambda_i \underline{u}_i\)</span>.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-91" class="example"><strong>Example 5.8  </strong></span><span class="math inline">\(A \underline{x} = \underline{b}\)</span> with <span class="math inline">\(A\)</span> as in Example <a href="determinants-and-inverses.html#exm:inverse">5.7</a> and <span class="math inline">\(\underline{b} = \begin{pmatrix}1 \\c \\1\end{pmatrix}\)</span>, <span class="math inline">\(a, c \in \mathbb{R}\)</span>.</p>
+<p><span id="exm:unlabeled-div-22" class="example"><strong>Example 5.8  </strong></span><span class="math inline">\(A \underline{x} = \underline{b}\)</span> with <span class="math inline">\(A\)</span> as in Example <a href="determinants-and-inverses.html#exm:inverse">5.7</a> and <span class="math inline">\(\underline{b} = \begin{pmatrix}1 \\c \\1\end{pmatrix}\)</span>, <span class="math inline">\(a, c \in \mathbb{R}\)</span>.</p>
 <ul>
 <li><p><span class="math inline">\(a \neq 1, -2\)</span><br />
 Then <span class="math inline">\(A^{-1}\)</span> exists and we have a solutions for any <span class="math inline">\(c\)</span>:
@@ -952,11 +952,11 @@ For <span class="math inline">\(a = 1, c \neq 1\)</span> we have no solutions - 
 So solutions of homogenous problem (finding <span class="math inline">\(\ker A\)</span>) is given by intersection of these planes.</p>
 <ul>
 <li><p><span class="math inline">\(\operatorname{rank}(A) = 3 \implies\)</span> normals are linearly independent and planes intersect in <span class="math inline">\(\underline{0}\)</span>.</p></li>
-<li><p><span class="math inline">\(\operatorname{rank}(A) = 3 \implies 2\)</span> normals span a plane and planes intersect in a line and <span class="math inline">\(\dim \ker A = 1\)</span>.</p>
+<li><p><span class="math inline">\(\operatorname{rank}(A) = 2 \implies\)</span> normals span a plane and planes intersect in a line and <span class="math inline">\(\dim \ker A = 1\)</span>.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:05-sheaf"></span>
-<img src="figures/05-sheaf.png" alt="looking *along* line of intersection of planes" width="1696" height="300" />
+<img src="figures/05-sheaf.png" alt="looking *along* line of intersection of planes. LEFT: The line comes out of the image." width="1696" height="300" />
 <p class="caption">
-Figure 5.1: looking <em>along</em> line of intersection of planes
+Figure 5.1: looking <em>along</em> line of intersection of planes. LEFT: The line comes out of the image.
 </p>
 </div></li>
 <li><p><span class="math inline">\(\operatorname{rank}(A) = 1 \implies\)</span> normals are parallel and planes coincide and <span class="math inline">\(\dim \ker A = 2\)</span></p>
@@ -1042,8 +1042,9 @@ If <span class="math inline">\(n = m\)</span> then <span class="math inline">\(\
 </div>
 <div class="footnotes">
 <hr />
-<ol start="8">
-<li id="fn8"><p>Would probably be guided through this proof in an exam and even then probably wouldn’t come up.<a href="determinants-and-inverses.html#fnref8" class="footnote-back">↩︎</a></p></li>
+<ol start="1">
+<li id="fn1"><p>Let <span class="math inline">\(\sigma(x) = 1\)</span>, then <span class="math inline">\([v_{\sigma(x)}]_{\rho(x)} = [v_1]_{\rho(x)} = [v_1]_{\rho \sigma^{-1}(1)}\)</span>.<a href="determinants-and-inverses.html#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>Would probably be guided through this proof in an exam and even then probably wouldn’t come up.<a href="determinants-and-inverses.html#fnref2" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>

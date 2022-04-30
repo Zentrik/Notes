@@ -131,7 +131,7 @@ $\underline{e}_1, \underline{e}_2, \underline{e}_3$ are also often written $\und
 ## Vector or Cross Product
 i. 
 ::: {.definition}
-Given $\underline{a}$ and $\underline{b}$, let $\theta$ be the angle between them measure in the sense shown relative to a unit normal $\underline{n}$ to the plane they span;
+Given $\underline{a}$ and $\underline{b}$, let $\theta$ be the angle between them measured in the sense shown relative to a unit normal $\underline{n}$ to the plane they span;
 ```{r cross, echo = FALSE, fig.cap = "", fig.align="center", out.width="50%"} 
 knitr::include_graphics("figures/02-cross.svg") 
 ```
@@ -427,9 +427,9 @@ In the summation convention we *omit* $\sum$ signs for repeated indices: the sum
 \begin{align*}
     a_i \delta_{ij} &= a_1 \delta_{1j} + a_2 \delta_{2j} + a_3 \delta_{3j} \\
     &= \begin{cases}
-        a_1 & \text{if} j = 1 \\
-        a_2 & \text{if} j = 2 \\
-        a_3 & \text{if} j = 3
+        a_1 & \text{if } j = 1 \\
+        a_2 & \text{if } j = 2 \\
+        a_3 & \text{if } j = 3
     \end{cases} \\
     a_i \delta_{ij} &= a_j
 \end{align*}
