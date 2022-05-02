@@ -207,7 +207,7 @@ If $r = k - 1$ then $n = (n - 1) + 1 = qk + (k - 1) + 1 = (q + 1)k$.
     & & 0 \leq r \leq b - 1 & \\
     \text{STEP } 2& b = q_2 r_1 + r_2 & 0 \leq r_2 < r_1 & 162 = 3 \cdot 48 + 18 \\
     \text{STEP } 3& r_1 = q_3 r_2 + r_3 & 0 < r_3 < r_2 & 48 = 2 \cdot 18 + 12 \\
-    & \vdots &  & \vdots \\
+    \vdots & \vdots & \vdots & \vdots \\
     \text{STEP } n& r_{n - 2} = q_n r_{n-1} + r_{n} & 0 \leq r_n < r_{n - 1} & 18 = 1 \cdot 12 + 6 \\
     \text{STEP } n + 1& r_{n - 1} = q_{n + 1} r_n + r_{n + 1} & r_{n + 1} = 0 & 12 = 2 \cdot 6 & \\
     \hline
@@ -279,7 +279,7 @@ Let $h$ be the least positive combination of $a$ and $b$, i.e. the least positiv
 
 We shall show that $h = \operatorname{hcf}(a, b)$. 
 
-To see (ii) from \@ref(def:hcf), observe that a given $d$ s.t. $d \mid a$ and $d \mid b$, then we have $d = ax + by \; \forall \; x, y \in \mathbb{Z}$, so in particular $d \mid h$.
+To see (ii) from \@ref(def:hcf), observe that a given $d$ s.t. $d \mid a$ and $d \mid b$, then we have $d \mid ax + by \; \forall \; x, y \in \mathbb{Z}$, so in particular $d \mid h$.
 
 To verify (i), suppose that $h \nmid a$. Then we can write $a = qh + r$ for some $q, r \in \mathbb{Z}$ with $0 < r < h$^[as $h \nmid a$].
 Hence $r = a - qh = a - q(xa + yb)$, so $r$ is also a positive linear combination of $a$ and $b$, and strictly smaller than $h$, contradicting the definition of $h$.
@@ -462,7 +462,7 @@ knitr::include_graphics("figures/02-Zn.png")
 ```
 
 *Note* If $a \equiv a' \mod n$ and $b \equiv b' \mod n$, then $n \mid (a - a') + (b - b') = (a + b) - (a' + b')$ so $a + b \equiv a' + b' \mod n$. \
-Similarly, $n \mid (a - a') \cdot b + (b - b') \cdot a = ab - a'b'$ so $ab \equiv a'b' \mod n$. \
+Similarly, $n \mid (a - a') \cdot b + (b - b') \cdot a' = ab - a'b'$ so $ab \equiv a'b' \mod n$. \
 So we can do *arithmetic* modulo n.
 
 ::: {.example}
@@ -553,7 +553,6 @@ Then $7x \equiv 7x' \mod 30$, so $x \equiv x' \mod 30$ since $7$ is a unit modul
 :::
 
 ::: {.example} 
-Solve $10x \equiv 12 \mod 34$. \
 $10x \equiv 12 \mod 34 \iff 10x = 12 + 34y$
 \begin{align*}
     10x \equiv 12 \mod 34 &\iff 10x = 12 + 34y \text{ for some } y \in \mathbb{Z} \\
@@ -579,8 +578,8 @@ We inspect
 \end{align*} 
 What about \begin{align*}
     \begin{cases}
-        x \equiv \mod 4 \\
-        x \equiv \mod 6   
+        x \equiv 1 \mod 4 \\
+        x \equiv 2 \mod 6   
     \end{cases}?
 \end{align*} 
 
@@ -593,14 +592,14 @@ That is, there is a solution $x$ to $x \equiv a \mod m$ and $x \equiv b \mod n$,
 ::: {.proof}
 Existence:
 Since $(m, n) = 1,\; \exists \; s, t \in \mathbb{Z}$ with $sm + tn = 1$.\
-Not $sm \equiv 1 \mod n$ as $tn \equiv 0 \mod n$ and $tn \equiv 1 \mod m$ as $sm \equiv 0 \mod m$. \
+Note $sm \equiv 1 \mod n$ as $tn \equiv 0 \mod n$ and $tn \equiv 1 \mod m$ as $sm \equiv 0 \mod m$. \
 Hence $x = a(tn) + b(sm) \equiv a \mod m \equiv b \mod n$.
 
 Uniqueness:
 Suppose $y$ is also a solution, that is, $y \equiv a \mod m$ and $y \equiv b \mod n$.
 \begin{align*}
     &\;\;\; y \equiv a \mod m \text{ and } y \equiv b \mod n \\
-    &\iff y \equiv \mod m \text{ and } y \equiv x \mod n \\
+    &\iff y \equiv x \mod m \text{ and } y \equiv x \mod n \\
     &\iff m \mid y - x \text { and } n \mid y - x \\
     &\iff mn \mid y - x \hspace{0.5cm} \text{since } (m, n) = 1 \\
     &\iff y \equiv x \mod mn
@@ -622,6 +621,8 @@ Define $\phi(1) = 1$. \
 E.g. when $p$ is prime, $\phi(p) = p - 1$, and $\phi(p^2) = p^2 - p$ (there are $p$ multiples of $p$ that are $\leq p^2$).\
 When $p, q$ are distinct primes, $\phi(pq) = pq - p - q + 1$ (we subtracted $pq$ twice).
 
+## Fermat's Little Theorem
+
 How do powers of an integer behave modulo $p$?
 
 ::: {.example}
@@ -641,14 +642,14 @@ $a \not\equiv 0 \mod p$ means $a$ is a unit modulo $p$ and so first statement gi
 We are going to be a bit general in this proof so we can take the same arguments and apply to composite $p$.
 
 ::: {.proof}
-If $a \neq 0 \mod p$, then $a$ is a unit mod $p$. \
+If $a \not\equiv 0 \mod p$, then $a$ is a unit mod $p$. \
 Thus $ax \equiv ay \mod p$ iff $x \equiv y \mod p$ (multiply by a to go from right to left, and by $a^{-1}$ for converse). 
 Hence the numbers $a, 2a, 3a, \dots, (p - 1)a$ are pairwise incongruent (distinct) modulo $p$ and $\not\equiv 0 \mod p$, so they are $1, 2, 3, \dots p - 1$ in some order.
 
 Hence
 \begin{align*}
     a \cdot 2a \cdot 3a \cdot \dots \cdot (p - 1)a &\equiv 1 \cdot 2 \cdot 3 \dots \cdot (p - 1) \mod p \\
-    a^{p-1} (p - 1)! &= (p - 1)! \mod p. \\
+    a^{p-1} (p - 1)! &\equiv (p - 1)! \mod p. \\
 \end{align*} 
 But $(p - 1)!$ is a unit mod $p$ (since it is a product of units), so we can cancel it to obtain $a^{p-1} \equiv 1 \mod p$.
 :::
@@ -671,9 +672,11 @@ that is $a^{\phi(m)} z = z \mod m$ where $z = u_1 \cdot u_2 \cdot \dots u_{\phi(
 So we may cancel it to obtain $a^{\phi(m)} = 1 \mod m$ 
 :::
 
+## Results about primes
+
+What is $(p - 1)!$ modulo $p$.
+
 ::: {.example}
-Where $p = 5,\ 4! = 24 \equiv \mod 5$.\
-$p = 5,\ 4! = 24 \equiv \mod 5$.
 \begin{align*}
     \text{Where } p &= 5,\ 4! = 24 \equiv -1 \mod 5 \\
     p &= 7,\ 6! = 720 \equiv -1 \mod 7

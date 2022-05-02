@@ -101,7 +101,7 @@ But we *cannot* form $\{x : P(x)\}$.
 Indeed, suppose $X = \{x : x \text{ is a set and } x \notin x\}$ were a set. \
 Then $X \in X$ implies that $X \notin X$ ⨳ \
 while $X \notin X$ implies that $X \in X$ ⨳. \
-This is know as *Russell's Paradox*.
+This is known as *Russell's Paradox*.
 
 Similarly, there is no "universal" set $Y$, meaning that $\forall \; x \quad x \in Y$.
 Otherwise we could form $X$ above by subset selection:

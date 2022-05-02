@@ -50,7 +50,7 @@ Plainly (i) $\implies$ (ii) for if $X$ is finite, it obviously injects into $\ma
 Conversely, if there is an injection $f : X \to \mathbb{N}$, then $f$ is a bijection between $X$ and $S = f(X)$.
 If $S$ is finite, then so is $X$.
 If $S$ is infinite, then by Lemma \@ref(lem:vone), there is a bijection $g : S \to \mathbb{N}$, and thus $X \overset{f}{\to} S = f(X) \overset{g}{\to} \mathbb{N}$ is a bijection.
-So (ii) $\implies$ (i).
+So (ii) $\implies$ (i).\
 Plainly (i) $\implies$ (iii), if $X \neq \emptyset$ and there is a surjection $f : \mathbb{N} \to X$, define $g : X \to \mathbb{N}$ by $g(a) = \min f^{-1}(\{a\})$, which exists by WOP.
 $g$ is injective, so by (ii), $X$ is countable, i.e. (iii) $\implies$ (i).
 :::
@@ -135,7 +135,7 @@ This is an injection.
 ::: {.proof name="2"}
 Let $I$ be a countable index set, and for each $i \in I$, $A_i$ is a countable set.
 Since $I$ is countable, there is an injection $f : I \to \mathbb{N}$ and for each $i \in I$, since $A$ is countable, there is an injection $g_i :A_i \to \mathbb{N}$. \
-We construct an injection $h : A = \bigcup_{i \in I} A_i \to \mathbb{N} \times \mathbb{N}$ as follows for each $x \in A$, pick $m_x = \min \{j \in \mathbb{N},\ x \in A_i,\ f(i) = j\}$, which exists by WOP.
+We construct an injection $h : A = \bigcup_{i \in I} A_i \to \mathbb{N} \times \mathbb{N}$ as follows for each $x \in A$, pick $m_x = \min \{j \in \mathbb{N}:\ x \in A_i,\ f(i) = j\}$, which exists by WOP.
 Let $i_x$ be such that $f(i_x) = m_x$ ($i_x$ is unique as $f$ is injective).
 Set $h(x) = (m_x, g_{i_x}(x))$.
 Then $h$ is an injection.
@@ -297,7 +297,7 @@ If $f : A \to B$ and $g : B \to A$ are injections, then $\exists$ bijection $h :
 
 ::: {.proof}
 For $a \in A$, write $g^{-1}(a)$ for the $b \in B$ (if it exists) s.t. $g(b) = a$.
-Similarly, for $b \in A$, write $f^{-1}(b)$ for the $a \in A$ (if it exists) s.t. $f(a) = b$. \
+Similarly, for $b \in B$, write $f^{-1}(b)$ for the $a \in A$ (if it exists) s.t. $f(a) = b$. \
 We call $g^{-1}(a), f^{-1}(g^{-1}(a)), g^{-1}(f^{-1}(g^{-1}(a))), \dots$ the ancestor sequence of $a \in A$ (it may terminate).
 Similarly, we can define the ancestor sequence of $b \in B$.
 ```{r 05-schroder, echo = FALSE, fig.cap = "", fig.align="center", out.width = "300"} 

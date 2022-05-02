@@ -119,6 +119,8 @@ some-applications-of-theorem-refthmfta
 modular-arithmetic
 solving-congruences
 solving-simultaneous-congruences
+fermats-little-theorem
+results-about-primes
 public-key-cryptography
 rsa-scheme-rivest-shamir-adleman
 the-reals

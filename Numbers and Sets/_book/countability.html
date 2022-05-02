@@ -93,9 +93,11 @@
 <li class="chapter" data-level="2.8" data-path="elementary-number-theory.html"><a href="elementary-number-theory.html#modular-arithmetic"><i class="fa fa-check"></i><b>2.8</b> Modular arithmetic</a></li>
 <li class="chapter" data-level="2.9" data-path="elementary-number-theory.html"><a href="elementary-number-theory.html#solving-congruences"><i class="fa fa-check"></i><b>2.9</b> Solving congruences</a></li>
 <li class="chapter" data-level="2.10" data-path="elementary-number-theory.html"><a href="elementary-number-theory.html#solving-simultaneous-congruences"><i class="fa fa-check"></i><b>2.10</b> Solving simultaneous congruences</a></li>
-<li class="chapter" data-level="2.11" data-path="elementary-number-theory.html"><a href="elementary-number-theory.html#public-key-cryptography"><i class="fa fa-check"></i><b>2.11</b> Public Key Cryptography</a>
+<li class="chapter" data-level="2.11" data-path="elementary-number-theory.html"><a href="elementary-number-theory.html#fermats-little-theorem"><i class="fa fa-check"></i><b>2.11</b> Fermat’s Little Theorem</a></li>
+<li class="chapter" data-level="2.12" data-path="elementary-number-theory.html"><a href="elementary-number-theory.html#results-about-primes"><i class="fa fa-check"></i><b>2.12</b> Results about primes</a></li>
+<li class="chapter" data-level="2.13" data-path="elementary-number-theory.html"><a href="elementary-number-theory.html#public-key-cryptography"><i class="fa fa-check"></i><b>2.13</b> Public Key Cryptography</a>
 <ul>
-<li class="chapter" data-level="2.11.1" data-path="elementary-number-theory.html"><a href="elementary-number-theory.html#rsa-scheme-rivest-shamir-adleman"><i class="fa fa-check"></i><b>2.11.1</b> RSA Scheme (Rivest, Shamir, Adleman)</a></li>
+<li class="chapter" data-level="2.13.1" data-path="elementary-number-theory.html"><a href="elementary-number-theory.html#rsa-scheme-rivest-shamir-adleman"><i class="fa fa-check"></i><b>2.13.1</b> RSA Scheme (Rivest, Shamir, Adleman)</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="the-reals.html"><a href="the-reals.html"><i class="fa fa-check"></i><b>3</b> The Reals</a>
@@ -180,7 +182,7 @@ It is also surjective because if <span class="math inline">\(k \in S\)</span>, t
 Conversely, if there is an injection <span class="math inline">\(f : X \to \mathbb{N}\)</span>, then <span class="math inline">\(f\)</span> is a bijection between <span class="math inline">\(X\)</span> and <span class="math inline">\(S = f(X)\)</span>.
 If <span class="math inline">\(S\)</span> is finite, then so is <span class="math inline">\(X\)</span>.
 If <span class="math inline">\(S\)</span> is infinite, then by Lemma <a href="countability.html#lem:vone">5.1</a>, there is a bijection <span class="math inline">\(g : S \to \mathbb{N}\)</span>, and thus <span class="math inline">\(X \overset{f}{\to} S = f(X) \overset{g}{\to} \mathbb{N}\)</span> is a bijection.
-So (ii) <span class="math inline">\(\implies\)</span> (i).
+So (ii) <span class="math inline">\(\implies\)</span> (i).<br />
 Plainly (i) <span class="math inline">\(\implies\)</span> (iii), if <span class="math inline">\(X \neq \emptyset\)</span> and there is a surjection <span class="math inline">\(f : \mathbb{N} \to X\)</span>, define <span class="math inline">\(g : X \to \mathbb{N}\)</span> by <span class="math inline">\(g(a) = \min f^{-1}(\{a\})\)</span>, which exists by WOP.
 <span class="math inline">\(g\)</span> is injective, so by (ii), <span class="math inline">\(X\)</span> is countable, i.e. (iii) <span class="math inline">\(\implies\)</span> (i).</p>
 </div>
@@ -235,7 +237,7 @@ This is an injection.</p>
 <div class="proof">
 <p><span id="unlabeled-div-122" class="proof"><em>Proof</em> (2). </span>Let <span class="math inline">\(I\)</span> be a countable index set, and for each <span class="math inline">\(i \in I\)</span>, <span class="math inline">\(A_i\)</span> is a countable set.
 Since <span class="math inline">\(I\)</span> is countable, there is an injection <span class="math inline">\(f : I \to \mathbb{N}\)</span> and for each <span class="math inline">\(i \in I\)</span>, since <span class="math inline">\(A\)</span> is countable, there is an injection <span class="math inline">\(g_i :A_i \to \mathbb{N}\)</span>.<br />
-We construct an injection <span class="math inline">\(h : A = \bigcup_{i \in I} A_i \to \mathbb{N} \times \mathbb{N}\)</span> as follows for each <span class="math inline">\(x \in A\)</span>, pick <span class="math inline">\(m_x = \min \{j \in \mathbb{N},\ x \in A_i,\ f(i) = j\}\)</span>, which exists by WOP.
+We construct an injection <span class="math inline">\(h : A = \bigcup_{i \in I} A_i \to \mathbb{N} \times \mathbb{N}\)</span> as follows for each <span class="math inline">\(x \in A\)</span>, pick <span class="math inline">\(m_x = \min \{j \in \mathbb{N}:\ x \in A_i,\ f(i) = j\}\)</span>, which exists by WOP.
 Let <span class="math inline">\(i_x\)</span> be such that <span class="math inline">\(f(i_x) = m_x\)</span> (<span class="math inline">\(i_x\)</span> is unique as <span class="math inline">\(f\)</span> is injective).
 Set <span class="math inline">\(h(x) = (m_x, g_{i_x}(x))\)</span>.
 Then <span class="math inline">\(h\)</span> is an injection.</p>
@@ -367,7 +369,7 @@ Conversely, suppose <span class="math inline">\(g : B \to A\)</span> is surjecti
 </div>
 <div class="proof">
 <p><span id="unlabeled-div-135" class="proof"><em>Proof</em>. </span>For <span class="math inline">\(a \in A\)</span>, write <span class="math inline">\(g^{-1}(a)\)</span> for the <span class="math inline">\(b \in B\)</span> (if it exists) s.t. <span class="math inline">\(g(b) = a\)</span>.
-Similarly, for <span class="math inline">\(b \in A\)</span>, write <span class="math inline">\(f^{-1}(b)\)</span> for the <span class="math inline">\(a \in A\)</span> (if it exists) s.t. <span class="math inline">\(f(a) = b\)</span>.<br />
+Similarly, for <span class="math inline">\(b \in B\)</span>, write <span class="math inline">\(f^{-1}(b)\)</span> for the <span class="math inline">\(a \in A\)</span> (if it exists) s.t. <span class="math inline">\(f(a) = b\)</span>.<br />
 We call <span class="math inline">\(g^{-1}(a), f^{-1}(g^{-1}(a)), g^{-1}(f^{-1}(g^{-1}(a))), \dots\)</span> the ancestor sequence of <span class="math inline">\(a \in A\)</span> (it may terminate).
 Similarly, we can define the ancestor sequence of <span class="math inline">\(b \in B\)</span>.
 <img src="figures/05-schroder.png" width="300" style="display: block; margin: auto;" />

@@ -93,9 +93,11 @@
 <li class="chapter" data-level="2.8" data-path="elementary-number-theory.html"><a href="elementary-number-theory.html#modular-arithmetic"><i class="fa fa-check"></i><b>2.8</b> Modular arithmetic</a></li>
 <li class="chapter" data-level="2.9" data-path="elementary-number-theory.html"><a href="elementary-number-theory.html#solving-congruences"><i class="fa fa-check"></i><b>2.9</b> Solving congruences</a></li>
 <li class="chapter" data-level="2.10" data-path="elementary-number-theory.html"><a href="elementary-number-theory.html#solving-simultaneous-congruences"><i class="fa fa-check"></i><b>2.10</b> Solving simultaneous congruences</a></li>
-<li class="chapter" data-level="2.11" data-path="elementary-number-theory.html"><a href="elementary-number-theory.html#public-key-cryptography"><i class="fa fa-check"></i><b>2.11</b> Public Key Cryptography</a>
+<li class="chapter" data-level="2.11" data-path="elementary-number-theory.html"><a href="elementary-number-theory.html#fermats-little-theorem"><i class="fa fa-check"></i><b>2.11</b> Fermat’s Little Theorem</a></li>
+<li class="chapter" data-level="2.12" data-path="elementary-number-theory.html"><a href="elementary-number-theory.html#results-about-primes"><i class="fa fa-check"></i><b>2.12</b> Results about primes</a></li>
+<li class="chapter" data-level="2.13" data-path="elementary-number-theory.html"><a href="elementary-number-theory.html#public-key-cryptography"><i class="fa fa-check"></i><b>2.13</b> Public Key Cryptography</a>
 <ul>
-<li class="chapter" data-level="2.11.1" data-path="elementary-number-theory.html"><a href="elementary-number-theory.html#rsa-scheme-rivest-shamir-adleman"><i class="fa fa-check"></i><b>2.11.1</b> RSA Scheme (Rivest, Shamir, Adleman)</a></li>
+<li class="chapter" data-level="2.13.1" data-path="elementary-number-theory.html"><a href="elementary-number-theory.html#rsa-scheme-rivest-shamir-adleman"><i class="fa fa-check"></i><b>2.13.1</b> RSA Scheme (Rivest, Shamir, Adleman)</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="the-reals.html"><a href="the-reals.html"><i class="fa fa-check"></i><b>3</b> The Reals</a>
@@ -306,7 +308,7 @@ Therefore, we will need to show that <span class="math inline">\(\operatorname{h
     &amp; &amp; 0 \leq r \leq b - 1 &amp; \\
     \text{STEP } 2&amp; b = q_2 r_1 + r_2 &amp; 0 \leq r_2 &lt; r_1 &amp; 162 = 3 \cdot 48 + 18 \\
     \text{STEP } 3&amp; r_1 = q_3 r_2 + r_3 &amp; 0 &lt; r_3 &lt; r_2 &amp; 48 = 2 \cdot 18 + 12 \\
-    &amp; \vdots &amp;  &amp; \vdots \\
+    \vdots &amp; \vdots &amp; \vdots &amp; \vdots \\
     \text{STEP } n&amp; r_{n - 2} = q_n r_{n-1} + r_{n} &amp; 0 \leq r_n &lt; r_{n - 1} &amp; 18 = 1 \cdot 12 + 6 \\
     \text{STEP } n + 1&amp; r_{n - 1} = q_{n + 1} r_n + r_{n + 1} &amp; r_{n + 1} = 0 &amp; 12 = 2 \cdot 6 &amp; \\
     \hline
@@ -369,7 +371,7 @@ Thus <span class="math inline">\(r_n = xa + yb\)</span> for some <span class="ma
 <div class="proof">
 <p><span id="unlabeled-div-26" class="proof"><em>Proof</em> (2). </span>Let <span class="math inline">\(h\)</span> be the least positive combination of <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>, i.e. the least positive integer of the form <span class="math inline">\(xa + yb\)</span> for some <span class="math inline">\(x, y \in \mathbb{Z}\)</span>.</p>
 <p>We shall show that <span class="math inline">\(h = \operatorname{hcf}(a, b)\)</span>.</p>
-<p>To see (ii) from <a href="elementary-number-theory.html#def:hcf">2.2</a>, observe that a given <span class="math inline">\(d\)</span> s.t. <span class="math inline">\(d \mid a\)</span> and <span class="math inline">\(d \mid b\)</span>, then we have <span class="math inline">\(d = ax + by \; \forall \; x, y \in \mathbb{Z}\)</span>, so in particular <span class="math inline">\(d \mid h\)</span>.</p>
+<p>To see (ii) from <a href="elementary-number-theory.html#def:hcf">2.2</a>, observe that a given <span class="math inline">\(d\)</span> s.t. <span class="math inline">\(d \mid a\)</span> and <span class="math inline">\(d \mid b\)</span>, then we have <span class="math inline">\(d \mid ax + by \; \forall \; x, y \in \mathbb{Z}\)</span>, so in particular <span class="math inline">\(d \mid h\)</span>.</p>
 <p>To verify (i), suppose that <span class="math inline">\(h \nmid a\)</span>. Then we can write <span class="math inline">\(a = qh + r\)</span> for some <span class="math inline">\(q, r \in \mathbb{Z}\)</span> with <span class="math inline">\(0 &lt; r &lt; h\)</span><a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a>.
 Hence <span class="math inline">\(r = a - qh = a - q(xa + yb)\)</span>, so <span class="math inline">\(r\)</span> is also a positive linear combination of <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>, and strictly smaller than <span class="math inline">\(h\)</span>, contradicting the definition of <span class="math inline">\(h\)</span>.
 Therefore, <span class="math inline">\(h \mid a\)</span> and by the same argument, <span class="math inline">\(h \mid b\)</span>.</p>
@@ -483,7 +485,7 @@ knitr::include_graphics("figures/02-Zn.png")
 ```--></p>
 <p><img src="_main_files/figure-html/unnamed-chunk-1-1.png" width="250" style="display: block; margin: auto;" /></p>
 <p><em>Note</em> If <span class="math inline">\(a \equiv a&#39; \mod n\)</span> and <span class="math inline">\(b \equiv b&#39; \mod n\)</span>, then <span class="math inline">\(n \mid (a - a&#39;) + (b - b&#39;) = (a + b) - (a&#39; + b&#39;)\)</span> so <span class="math inline">\(a + b \equiv a&#39; + b&#39; \mod n\)</span>.<br />
-Similarly, <span class="math inline">\(n \mid (a - a&#39;) \cdot b + (b - b&#39;) \cdot a = ab - a&#39;b&#39;\)</span> so <span class="math inline">\(ab \equiv a&#39;b&#39; \mod n\)</span>.<br />
+Similarly, <span class="math inline">\(n \mid (a - a&#39;) \cdot b + (b - b&#39;) \cdot a&#39; = ab - a&#39;b&#39;\)</span> so <span class="math inline">\(ab \equiv a&#39;b&#39; \mod n\)</span>.<br />
 So we can do <em>arithmetic</em> modulo n.</p>
 <div class="example">
 <p><span id="exm:unlabeled-div-34" class="example"><strong>Example 2.2  </strong></span>Does <span class="math inline">\(2a^2 + 3b^3 = 1\)</span> have a solution with <span class="math inline">\(a, b \in \mathbb{Z}\)</span>?</p>
@@ -560,8 +562,7 @@ Then <span class="math inline">\(7x \equiv 7x&#39; \mod 30\)</span>, so <span cl
 \end{align*}\]</span></p>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-41" class="example"><strong>Example 2.5  </strong></span>Solve <span class="math inline">\(10x \equiv 12 \mod 34\)</span>.<br />
-<span class="math inline">\(10x \equiv 12 \mod 34 \iff 10x = 12 + 34y\)</span>
+<p><span id="exm:unlabeled-div-41" class="example"><strong>Example 2.5  </strong></span><span class="math inline">\(10x \equiv 12 \mod 34 \iff 10x = 12 + 34y\)</span>
 <span class="math display">\[\begin{align*}
     10x \equiv 12 \mod 34 &amp;\iff 10x = 12 + 34y \text{ for some } y \in \mathbb{Z} \\
     &amp;\iff 5x = 6 + 17y \text{ for some } y \in \mathbb{Z} \\
@@ -586,8 +587,8 @@ We inspect
 \end{align*}\]</span>
 What about <span class="math display">\[\begin{align*}
     \begin{cases}
-        x \equiv \mod 4 \\
-        x \equiv \mod 6   
+        x \equiv 1 \mod 4 \\
+        x \equiv 2 \mod 6   
     \end{cases}?
 \end{align*}\]</span></p>
 <div class="theorem">
@@ -598,13 +599,13 @@ That is, there is a solution <span class="math inline">\(x\)</span> to <span cla
 <div class="proof">
 <p><span id="unlabeled-div-42" class="proof"><em>Proof</em>. </span>Existence:
 Since <span class="math inline">\((m, n) = 1,\; \exists \; s, t \in \mathbb{Z}\)</span> with <span class="math inline">\(sm + tn = 1\)</span>.<br />
-Not <span class="math inline">\(sm \equiv 1 \mod n\)</span> as <span class="math inline">\(tn \equiv 0 \mod n\)</span> and <span class="math inline">\(tn \equiv 1 \mod m\)</span> as <span class="math inline">\(sm \equiv 0 \mod m\)</span>.<br />
+Note <span class="math inline">\(sm \equiv 1 \mod n\)</span> as <span class="math inline">\(tn \equiv 0 \mod n\)</span> and <span class="math inline">\(tn \equiv 1 \mod m\)</span> as <span class="math inline">\(sm \equiv 0 \mod m\)</span>.<br />
 Hence <span class="math inline">\(x = a(tn) + b(sm) \equiv a \mod m \equiv b \mod n\)</span>.</p>
 <p>Uniqueness:
 Suppose <span class="math inline">\(y\)</span> is also a solution, that is, <span class="math inline">\(y \equiv a \mod m\)</span> and <span class="math inline">\(y \equiv b \mod n\)</span>.
 <span class="math display">\[\begin{align*}
     &amp;\;\;\; y \equiv a \mod m \text{ and } y \equiv b \mod n \\
-    &amp;\iff y \equiv \mod m \text{ and } y \equiv x \mod n \\
+    &amp;\iff y \equiv x \mod m \text{ and } y \equiv x \mod n \\
     &amp;\iff m \mid y - x \text { and } n \mid y - x \\
     &amp;\iff mn \mid y - x \hspace{0.5cm} \text{since } (m, n) = 1 \\
     &amp;\iff y \equiv x \mod mn
@@ -623,6 +624,9 @@ We call <span class="math inline">\(\phi\)</span> the <em>Euler totient function
 Define <span class="math inline">\(\phi(1) = 1\)</span>.<br />
 E.g. when <span class="math inline">\(p\)</span> is prime, <span class="math inline">\(\phi(p) = p - 1\)</span>, and <span class="math inline">\(\phi(p^2) = p^2 - p\)</span> (there are <span class="math inline">\(p\)</span> multiples of <span class="math inline">\(p\)</span> that are <span class="math inline">\(\leq p^2\)</span>).<br />
 When <span class="math inline">\(p, q\)</span> are distinct primes, <span class="math inline">\(\phi(pq) = pq - p - q + 1\)</span> (we subtracted <span class="math inline">\(pq\)</span> twice).</p>
+</div>
+<div id="fermats-little-theorem" class="section level2" number="2.11">
+<h2><span class="header-section-number">2.11</span> Fermat’s Little Theorem</h2>
 <p>How do powers of an integer behave modulo <span class="math inline">\(p\)</span>?</p>
 <div class="example">
 <p><span id="exm:unlabeled-div-44" class="example"><strong>Example 2.6  </strong></span>Modulo <span class="math inline">\(7\)</span>, <span class="math inline">\(2^1 \equiv 2\)</span>, <span class="math inline">\(2^2 \equiv 4\)</span>, <span class="math inline">\(2^3 \equiv 1\)</span>, <span class="math inline">\(2^4 \equiv 2\)</span> then repeat <span class="math inline">\(4, 1, 2, 4, 1, 2, \dots\)</span>.<br />
@@ -637,13 +641,13 @@ Equivalently, <span class="math inline">\(a^{p-1} \equiv 1 \mod p\)</span> for a
 </div>
 <p>We are going to be a bit general in this proof so we can take the same arguments and apply to composite <span class="math inline">\(p\)</span>.</p>
 <div class="proof">
-<p><span id="unlabeled-div-45" class="proof"><em>Proof</em>. </span>If <span class="math inline">\(a \neq 0 \mod p\)</span>, then <span class="math inline">\(a\)</span> is a unit mod <span class="math inline">\(p\)</span>.<br />
+<p><span id="unlabeled-div-45" class="proof"><em>Proof</em>. </span>If <span class="math inline">\(a \not\equiv 0 \mod p\)</span>, then <span class="math inline">\(a\)</span> is a unit mod <span class="math inline">\(p\)</span>.<br />
 Thus <span class="math inline">\(ax \equiv ay \mod p\)</span> iff <span class="math inline">\(x \equiv y \mod p\)</span> (multiply by a to go from right to left, and by <span class="math inline">\(a^{-1}\)</span> for converse).
 Hence the numbers <span class="math inline">\(a, 2a, 3a, \dots, (p - 1)a\)</span> are pairwise incongruent (distinct) modulo <span class="math inline">\(p\)</span> and <span class="math inline">\(\not\equiv 0 \mod p\)</span>, so they are <span class="math inline">\(1, 2, 3, \dots p - 1\)</span> in some order.</p>
 <p>Hence
 <span class="math display">\[\begin{align*}
     a \cdot 2a \cdot 3a \cdot \dots \cdot (p - 1)a &amp;\equiv 1 \cdot 2 \cdot 3 \dots \cdot (p - 1) \mod p \\
-    a^{p-1} (p - 1)! &amp;= (p - 1)! \mod p. \\
+    a^{p-1} (p - 1)! &amp;\equiv (p - 1)! \mod p. \\
 \end{align*}\]</span>
 But <span class="math inline">\((p - 1)!\)</span> is a unit mod <span class="math inline">\(p\)</span> (since it is a product of units), so we can cancel it to obtain <span class="math inline">\(a^{p-1} \equiv 1 \mod p\)</span>.</p>
 </div>
@@ -662,10 +666,12 @@ Then <span class="math inline">\(a u_1, a u_2, \dots, a u_{\phi(m)}\)</span> are
 that is <span class="math inline">\(a^{\phi(m)} z = z \mod m\)</span> where <span class="math inline">\(z = u_1 \cdot u_2 \cdot \dots u_{\phi(m)}\)</span> is a product of units modulo <span class="math inline">\(m\)</span>, therefore it itself is a unit.
 So we may cancel it to obtain <span class="math inline">\(a^{\phi(m)} = 1 \mod m\)</span></p>
 </div>
+</div>
+<div id="results-about-primes" class="section level2" number="2.12">
+<h2><span class="header-section-number">2.12</span> Results about primes</h2>
+<p>What is <span class="math inline">\((p - 1)!\)</span> modulo <span class="math inline">\(p\)</span>.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-47" class="example"><strong>Example 2.7  </strong></span>Where <span class="math inline">\(p = 5,\ 4! = 24 \equiv \mod 5\)</span>.<br />
-<span class="math inline">\(p = 5,\ 4! = 24 \equiv \mod 5\)</span>.
-<span class="math display">\[\begin{align*}
+<p><span id="exm:unlabeled-div-47" class="example"><strong>Example 2.7  </strong></span><span class="math display">\[\begin{align*}
     \text{Where } p &amp;= 5,\ 4! = 24 \equiv -1 \mod 5 \\
     p &amp;= 7,\ 6! = 720 \equiv -1 \mod 7
 \end{align*}\]</span></p>
@@ -738,13 +744,13 @@ a contradiction.</p>
 E.g. When <span class="math inline">\(p = 29 = 4 \cdot 7 + 1\)</span>, <span class="math inline">\(x = (2 \cdot 7)!\)</span> works.</p>
 </div>
 </div>
-<div id="public-key-cryptography" class="section level2" number="2.11">
-<h2><span class="header-section-number">2.11</span> Public Key Cryptography</h2>
+<div id="public-key-cryptography" class="section level2" number="2.13">
+<h2><span class="header-section-number">2.13</span> Public Key Cryptography</h2>
 <p>Let us agree to write messages as sequences of numbers, e.g. <span class="math inline">\(A \to 00,\ B \to 1, \dots, Z \to 25, ! \to 26, \dots\)</span>
 I wish for my IA students to be able to send me encrypted messages in such a way that I can decrypt them easily but the same in not true for any third-party observer.
 We use the</p>
-<div id="rsa-scheme-rivest-shamir-adleman" class="section level3" number="2.11.1">
-<h3><span class="header-section-number">2.11.1</span> RSA Scheme (Rivest, Shamir, Adleman)</h3>
+<div id="rsa-scheme-rivest-shamir-adleman" class="section level3" number="2.13.1">
+<h3><span class="header-section-number">2.13.1</span> RSA Scheme (Rivest, Shamir, Adleman)</h3>
 <p>I think of two large primes <span class="math inline">\(p, q\)</span><a href="#fn10" class="footnote-ref" id="fnref10"><sup>10</sup></a>.
 Let <span class="math inline">\(n = pq\)</span>, and pick an <em>encoding exponent</em> <span class="math inline">\(e\)</span> coprime to <span class="math inline">\(\phi(n) = (p - 1)(q - 1)\)</span>.
 I publish the pair <span class="math inline">\((n, e)\)</span> (not the hcf).<br />
