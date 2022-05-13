@@ -99,7 +99,7 @@ Recognising when a group can be written as a direct product of subgroups is tric
   \end{align*} 
   $\theta$ is a homomorphism:
   \begin{align*}
-    \theta \left( (h_1, k_1), (h_2, k_2) \right) &= \theta \left( (h_1 h_2, k_1 k_2) \right) \\
+    \theta \left( (h_1, k_1) (h_2, k_2) \right) &= \theta \left( (h_1 h_2, k_1 k_2) \right) \\
     &= h_1 h_2 k_1 k_2 \\
     &= h_1 k_1 h_2 k_2 \text{ by } \Cref{5.1-3} \\
     &= \theta \left( (h_1, k_1) \right) \theta \left( (h_2, k_2) \right)
@@ -199,7 +199,7 @@ elements of \begin{align*}
 
 \subsubsection{Classifying groups of small order}
 
-\begin{example} ~\vspace*{-1.5\baselineskip}
+\begin{lemma} ~\vspace*{-1.5\baselineskip}
   \begin{itemize}
     \item If $|G| = 1$, $G = \{ e \}$
     \item If $|G| = 2 \implies G \cong C_2$, as we have identity and an another element which must be a self inverse or we can prove by \nameref{cor:two}.
@@ -207,7 +207,7 @@ elements of \begin{align*}
     \item If $|G| = 5 \implies G \cong C_5$ by \Cref{cor:three} ($5$ is prime).
     \item If $|G| = 7 \implies G \cong C_7$ by \Cref{cor:three} ($7$ is prime).
   \end{itemize}
-\end{example}
+\end{lemma}
 
 \begin{lemma}
   If $|G| = 4$, $G$ is isomorphic to $C_4$ and $C_2 \times C_2$, both abelian.
@@ -271,6 +271,31 @@ elements of \begin{align*}
   So $o(a) = 2$, $o(b) = 3$, $aba^{-1} = b^{-1} \implies G \cong D_6$.
 \end{proof} 
 
+\begin{lemma}
+  If $|G| = 9$, $G$ is isomorphic to $C_9$ and $C_3 \times C_3$.
+\end{lemma} 
+
+\begin{proof}
+  We will show later that groups of order $p^2$ (where $p$ is prime) are abelian, so either $G \cong C_9$. \\
+  Or all non-identity elements have order 3 by \nameref{cor:two}
+  Choose $e \neq a \in G, b \in G \setminus \langle a \rangle$
+  \begin{align*}
+    G &= \langle a \rangle \cup \langle a \rangle b \cup \langle a \rangle b^2 \\
+    &= \langle a \rangle \langle b \rangle \\
+    &\cong \langle a \rangle \times \langle b \rangle \\
+    &\cong C_3 \times C_3.
+  \end{align*} 
+\end{proof} 
+
+\begin{lemma}
+If $|G| = 10 \implies G \cong C_{10} \text{ or } D_{10}$ (Sheet 2, Q12, use proof similar to order 8 not 6).
+\end{lemma} 
+
+\begin{remark}
+  There are lots of groups of order $2^k$.
+  e.g. 10 of order 16 and approximately 50,000,000,000 of order $2^{10}$.
+\end{remark} 
+
 \subsubsection{Groups of order 8}
 
 \begin{lemma}
@@ -282,9 +307,7 @@ elements of \begin{align*}
   \begin{itemize}
     \item If $G$ contains an element of order 8, then $G\cong C_8$.
     \item If all non-identity elements have order 2 $\implies G$ is abelian (Sheet 1, Q7). 
-    If all non-identity elements have order $2 \implies G$ abelian (qn7, Sheet 1).
     Let $1 \neq a \in G$, then $C_2 \cong \langle a \rangle \trianglelefteq G$, RHS as $G$ is abelian.
-    Choose $b \notin \langle a \rangle$, $\langle a, b \rangle = \{1, a, b, ab \}$ 
     \begin{align*}
       \text{Choose } b &\notin \langle a \rangle, \\
       \langle a, b \rangle &= \{1, a, b, ab \} \\
@@ -382,20 +405,3 @@ elements of \begin{align*}
     Q_8 = \langle a, b \mid a^4 = e, b^2 = a^2, b a b^{-1} = a^{-1} \rangle
   \end{align*} 
 \end{enumerate} 
-
-If $|G| = 9$, we will show later that groups of order $p^2$ (where $p$ is prime) are abelian, so either $G \cong C_9$. \\
-Or all non-identity elements have order 3 by \nameref{cor:two}
-Choose $e \neq a \in G, b \in G \setminus \langle a \rangle$
-\begin{align*}
-  G &= \langle a \rangle \cup \langle a \rangle b \cup \langle a \langle b^2 \\
-  &= \langle a \rangle \langle b \rangle \\
-  &\cong \langle a \rangle \times \langle b \rangle \\
-  &\cong C_3 \times C_3.
-\end{align*} 
-
-If $|G| = 10 \implies G \cong C_{10} \text{ or } D_{10}$ (qn 12, Sheet 2, use proof similar to order 8 not 6).
-
-\begin{remark}
-  There are lots of groups of order $2^k$.
-  e.g. 10 of order 16 and approximately 50,000,000,000 of order $2^{10}$.
-\end{remark} 

@@ -432,7 +432,7 @@ $\theta(G) \subseteq H$ by definition of $\theta$.
 \begin{align*}
     x *_H y &= \theta(g) *_H \theta(h) \\
     &= \theta(g *_G h) \text{ as } \theta \text{ is a homomorphism} \\
-    &= \theta(G).
+    &\in \theta(G).
   \intertext{\emph{Identity:}}
     \theta(e_G) &= \theta(e_G *_G e_G) \\
     &= \theta(e_G) *_H \theta(e_G) \\
@@ -484,7 +484,7 @@ $\theta$ is an isomorphism.
       \theta_1 : (G_1, *_1) &\to (G_2, *_2) \\
       \theta_2 : (G_2, *_2) &\to (G_3, *_3)
   \end{align*}
-  are isomorphisms.
+  are homomorphisms.
   Thus $\theta_2 \circ \theta_1$ is a function from $G_1$ to $G_3$, we need to check if its a homomorphism.
   \begin{align*}
       \text{Let } x, y &\in G_1 && \\
@@ -558,7 +558,7 @@ Suppose $G$ is a group, $g \in G$ and $o(g) = m$. Let $n \in \mathbb{N}_{>0}$. T
 ($\implies$) Suppose $g^n = e$. Write $n = qm + r$ with $0 \leq r < m$, $q \in \mathbb{N}$.
 \begin{align*}
     &\implies & e = g^n &= g^{qm + r} \\
-    && &= (g^m)^q + g^r \\
+    && &= (g^m)^q g^r \\
     && &= e^q g^r \\
     && &= e g^r \\
     && &= g^r \\

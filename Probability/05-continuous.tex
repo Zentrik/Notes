@@ -230,7 +230,7 @@ It is a good way to model \underline{arrival times}, ``how long to wait before s
     \begin{align*}
         \mathbb{E}[X] &= \int_{0}^{\infty} x f_X(x) \,dx \\
         &= \int_{\mathcolor{blue}{x=0}}^{\color{blue} \infty} \left( \int_{\mathcolor{red}{u = 0}}^{\color{red} x} 1 \,du \right) f_X(x) \,dx \\
-        &= \int_{\mathcolor{red}{u = 0}}^{\color{red} \infty} \,du \int_{\mathcolor{blue}{x = u}}^{\color{blue} \infty} f_X(x) \,dx \\
+        &= \int_{\mathcolor{red}{u = 0}}^{\color{red} \infty} \,du \int_{\mathcolor{blue}{x = u}}^{\color{blue} \infty} f_X(x) \,dx\footnote{Consider the region of $(u, x)$ space the second line integrates over and see this is the same as the third line.} \\
         &= \int_{\mathcolor{red}{u = 0}}^{\color{red} \infty} \,du \color{blue} \mathbb{P}(X \geq u)
     \end{align*} 
 \end{proof} 
@@ -855,7 +855,7 @@ Warning: Does not say that \underline{densities} converge, e.g. in \Cref{exm:con
 \end{align*} 
 
 \begin{theorem}[Weak LLN]
-    Let $(X_n)_{n \geq 1}$ be IID with $\mu = \mathbb{E}[X_1] < \infty$. 
+    Let $(X_n)_{n \geq 1}$ be IID with $\mu = \mathbb{E}[X_1]$ finite. 
     Set $S_n = X_1 + \dots + X_n \quad \forall \; n \geq 0$.
     Then
     \begin{align*}
@@ -1077,7 +1077,7 @@ We use CLT by
 \end{proof} 
 
 \begin{claim}
-    If $f$ is strictly convex then $\mathbb{E}[f(X)] = f(\mathbb{E}[X])$ only if $X = \mathbb{E}[X]$ with $\mathbb{P} = 1$, i.e. constant RV.
+    If $f$ is strictly convex then $\mathbb{E}[f(X)] = f(\mathbb{E}[X])$ iff $X = \mathbb{E}[X]$ with $\mathbb{P} = 1$, i.e. constant RV.
 \end{claim} 
 
 Informal comment: Jensen's inequality is better than most other inequalities as many can be derived from Jensen's.

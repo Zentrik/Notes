@@ -152,7 +152,7 @@ E.g. <span class="math inline">\(\{1, 3, 7\} = \{1, 7, 3\}\)</span> and <span cl
 Two sets are equal if they have the same elements.
 That is, if <span class="math inline">\(\forall \; x, x \in A \iff x \in B\)</span>, then <span class="math inline">\(A = B\)</span>.
 In particular, there is only one empty set <span class="math inline">\(\emptyset\)</span>.</p>
-<p>A set <span class="math inline">\(B\)</span> is a subset of <span class="math inline">\(A\)</span>, written “<span class="math inline">\(B \subseteq A\)</span> or”<span class="math inline">\(B \subset A\)</span>“, if every element of <span class="math inline">\(B\)</span> is an element of <span class="math inline">\(A\)</span>.
+<p>A set <span class="math inline">\(B\)</span> is a subset of <span class="math inline">\(A\)</span>, written “<span class="math inline">\(B \subseteq A\)</span>” or “<span class="math inline">\(B \subset A\)</span>”, if every element of <span class="math inline">\(B\)</span> is an element of <span class="math inline">\(A\)</span>.
 <img src="figures/04-subset.png" width="300" style="display: block; margin: auto;" />
 <span class="math inline">\(B\)</span> is said to be a <em>proper</em> subset of <span class="math inline">\(A\)</span> if <span class="math inline">\(B \subseteq A\)</span> and <span class="math inline">\(B \neq A\)</span> (also write <span class="math inline">\(B \subsetneq A\)</span>).</p>
 <p>Note that <span class="math inline">\(A = B\)</span> iff <span class="math inline">\(A \subseteq B\)</span> and <span class="math inline">\(B \subseteq A\)</span>.</p>
@@ -251,9 +251,9 @@ Clearly true for <span class="math inline">\(n = 0\)</span>.
 Given <span class="math inline">\(n &gt; 0\)</span>, and <span class="math inline">\(T \subseteq \{1, 2, \dots, n - 1\}\)</span>, how many sets <span class="math inline">\(S \subseteq \{1, 2, \dots, n\}\)</span> are there s.t. <span class="math inline">\(S \cap \{1, \dots, n - 1\} = T?\)</span>.</p>
 <p><img src="figures/04-no-of-subsets.png" width="500" style="display: block; margin: auto;" /></p>
 <p>There are exactly <span class="math inline">\(2\)</span>, namely <span class="math inline">\(T\)</span> and <span class="math inline">\(T \cup \{n\}\)</span>.<br />
-Hence the no. of subsets of <span class="math inline">\(\{1, 2, \dots, n\}\)</span>
+Hence
 <span class="math display">\[\begin{align*}
-    \{1, 2, \dots, n\} &amp;= 2 \times \text{ no. of subsets of } \{1, 2, \dots, n - 1\} \\
+    \text{no. of subsets of } \{1, 2, \dots, n\} &amp;= 2 \times \text{ no. of subsets of } \{1, 2, \dots, n - 1\} \\
     &amp;= 2 \cdot 2^{n - 1} \\
     &amp;= 2^n.
 \end{align*}\]</span></p>
@@ -263,7 +263,7 @@ Hence the no. of subsets of <span class="math inline">\(\{1, 2, \dots, n\}\)</sp
 <p>Given <span class="math inline">\(n \in \mathbb{N}_0\)</span> and <span class="math inline">\(0 \leq k \leq n\)</span>, we write <span class="math inline">\(\binom{n}{k}\)</span> for the number of subsets of an <span class="math inline">\(n\)</span>-element set that are of size <span class="math inline">\(k\)</span>.
 In other words
 <span class="math display">\[\begin{align*}
-    \binom{n}{k} = \left| \{ S \subseteq {1, 2, \dots, n} : |S| = k \} \right|.
+    \binom{n}{k} = \left| \{ S \subseteq \{1, 2, \dots, n\} : |S| = k \} \right|.
 \end{align*}\]</span>
 <span class="math inline">\(\binom{n}{k}\)</span> is called a <em>binomial coefficient</em>.</p>
 <p>E.g. the subsets of size <span class="math inline">\(2\)</span> of <span class="math inline">\(\{1, 2, 3, 4\}\)</span> are precisely <span class="math inline">\(\{1, 2\}, \{1, 3\}, \{1, 4\}, \{2, 3\}, \{2, 4\}, \{3, 4\}\)</span> so <span class="math inline">\(\binom{4}{2} = 6\)</span>.</p>
@@ -287,8 +287,8 @@ Each row starts and ends with a <span class="math inline">\(1\)</span>, and the 
 </div>
 <div class="proof">
 <p><span id="unlabeled-div-82" class="proof"><em>Proof</em>. </span>Given a set of size <span class="math inline">\(n\)</span>, there are <span class="math inline">\(n (n - 1) (n - 2) \dots (n - k + 1)\)</span> ways to pick <span class="math inline">\(k\)</span> elements, one by one, with unique orders.
-Each subset of size <span class="math inline">\(k\)</span> if picked in <span class="math inline">\(k (k - 1) (k - 2) \dots 2 \cdot 1\)</span> ways by this method.
-Hence the no. of subsets of size <span class="math inline">\(k\)</span> in {1, 2, , n} is <span class="math inline">\(\binom{n}{k} = \frac{n (n - 1) (n - 2) \dots (n - k + 1)}{k (k - 1) (k - 2) \dots 2 \cdot 1}\)</span>.</p>
+Each subset of size <span class="math inline">\(k\)</span> is picked in <span class="math inline">\(k (k - 1) (k - 2) \dots 2 \cdot 1\)</span> ways by this method.
+Hence the no. of subsets of size <span class="math inline">\(k\)</span> in <span class="math inline">\(\{1, 2, \dots, n\}\)</span> is <span class="math inline">\(\binom{n}{k} = \frac{n (n - 1) (n - 2) \dots (n - k + 1)}{k (k - 1) (k - 2) \dots 2 \cdot 1}\)</span>.</p>
 </div>
 <p>Note that the formula tells us, for example, that
 <span class="math display">\[\begin{align*}
@@ -310,7 +310,7 @@ Hence the no. of subsets of size <span class="math inline">\(k\)</span> in {1, 2
 <div class="example">
 <p><span id="exm:unlabeled-div-84" class="example"><strong>Example 4.1  </strong></span><span class="math inline">\((1 + x)^n = 1 + nx + \frac{n (n - 1)}{2} x^2 + \binom{n}{3} x^3 + \dots + \binom{n}{n - 1} + x^n\)</span> so for small <span class="math inline">\(x\)</span>, a good approximation is <span class="math inline">\(1 + nx\)</span>.
 E.g. <span class="math inline">\((1.00001)^8 \sim 1.00008\)</span>.<br />
-A better approximation is <span class="math inline">\(1 + nx + \frac{n(n-1)}{2}x^2\)</span>, e.g. <span class="math inline">\((1.00001)^8 \sim + 1.00008 + 28 (1.00008)^2\)</span>.</p>
+A better approximation is <span class="math inline">\(1 + nx + \frac{n(n-1)}{2}x^2\)</span>, e.g. <span class="math inline">\((1.00001)^8 \sim 1.00008 + 28 (0.00001)^2\)</span>.</p>
 </div>
 <p>What can we say about the relationship between sizes of unions and intersections of finite sets?</p>
 <p>For example <span class="math inline">\(|A \cup B| = |A| + |B| - |A \cap B|\)</span> (otherwise elements in the intersection are counted twice.)</p>
@@ -415,7 +415,7 @@ E.g. “Is the function <span class="math inline">\(f(x) = x^2\)</span> injectiv
 <h3><span class="header-section-number">4.2.1</span> Observations</h3>
 <ol style="list-style-type: decimal">
 <li><p><span class="math inline">\(f\)</span> is surjective iff <span class="math inline">\(f(A) = B\)</span>.
-In particular, if <span class="math inline">\(|B| &gt; |A|\)</span>, then there can be no surjective from <span class="math inline">\(A\)</span> to <span class="math inline">\(B\)</span>.</p></li>
+In particular, if <span class="math inline">\(|B| &gt; |A|\)</span>, then there can be no surjection from <span class="math inline">\(A\)</span> to <span class="math inline">\(B\)</span>.</p></li>
 <li><p>There can be no injection from <span class="math inline">\(A\)</span> to <span class="math inline">\(B\)</span> if <span class="math inline">\(|A| &gt; |B|\)</span>.</p></li>
 <li><p>If <span class="math inline">\(f: A \to A\)</span>, then <span class="math inline">\(f\)</span> is injective <span class="math inline">\(\iff\)</span> <span class="math inline">\(f\)</span> is surjective.</p></li>
 <li><p>There is no bijection from <span class="math inline">\(A\)</span> to any proper subset of <span class="math inline">\(A\)</span>.</p></li>
@@ -545,7 +545,7 @@ This does <em>not</em> mean that <span class="math inline">\(f\)</span> has an i
 <p>A <em>relation</em> on a set <span class="math inline">\(X\)</span> is a subset <span class="math inline">\(R \subseteq X \times X\)</span>.
 We usually write <span class="math inline">\(aRb\)</span> (“<span class="math inline">\(a\)</span> is related to <span class="math inline">\(b\)</span>”) for <span class="math inline">\((a, b) \in R\)</span>.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-100" class="example"><strong>Example 4.7  (Relations on $\mathbb{N}$) </strong></span><br />
+<p><span id="exm:unlabeled-div-100" class="example"><strong>Example 4.7  (Relations on ℕ) </strong></span><br />
 </p>
 <ol style="list-style-type: decimal">
 <li><span class="math inline">\(aRb\)</span> if <span class="math inline">\(a, b\)</span> have the same final digit;</li>
@@ -579,13 +579,13 @@ We usually write <span class="math inline">\(aRb\)</span> (“<span class="math 
 \end{array}\]</span>
 </div>
 <div class="definition">
-<p><span id="def:unlabeled-div-105" class="definition"><strong>Definition 4.12  (Equivalence relation) </strong></span>A relation <span class="math inline">\(R\)</span> is an *equivalence relation” if it is reflexive, symmetric and transitive.
+<p><span id="def:unlabeled-div-105" class="definition"><strong>Definition 4.12  (Equivalence relation) </strong></span>A relation <span class="math inline">\(R\)</span> is an <em>equivalence relation</em> if it is reflexive, symmetric and transitive.
 We often write <span class="math inline">\(a \sim b\)</span> for <span class="math inline">\(aRb\)</span>.</p>
 </div>
 <p>So (1) and (6) are equivalence relations.
 We have already seen another one:<br />
 (7). <span class="math inline">\(X = \mathbb{Z}\)</span> with <span class="math inline">\(a \sim b\)</span> if <span class="math inline">\(a \equiv b \mod 5\)</span>.
-This equivalence relations partitions <span class="math inline">\(\mathbb{Z}\)</span> into “pieces” consisting of related elements, namely <span class="math inline">\(\{x \in \mathbb{Z} : x \equiv 0 \mod 5\}, \{x \in \mathbb{Z} : x \equiv 1 \mod 5\}, \dots, \{x \in \mathbb{Z} : x \equiv 4 \mod 5\}\)</span>.</p>
+This equivalence relation partitions <span class="math inline">\(\mathbb{Z}\)</span> into “pieces” consisting of related elements, namely <span class="math inline">\(\{x \in \mathbb{Z} : x \equiv 0 \mod 5\}, \{x \in \mathbb{Z} : x \equiv 1 \mod 5\}, \dots, \{x \in \mathbb{Z} : x \equiv 4 \mod 5\}\)</span>.</p>
 <div class="definition">
 <p><span id="def:unlabeled-div-106" class="definition"><strong>Definition 4.13  (Partition of set) </strong></span>Given a set <span class="math inline">\(X\)</span>, a <em>partition</em> of <span class="math inline">\(X\)</span> is a collection of pairwise disjoint subsets (called “parts”) whose union is <span class="math inline">\(X\)</span>.</p>
 </div>
@@ -602,7 +602,7 @@ Given a partition of <span class="math inline">\(X\)</span>, there is an equival
 <img src="figures/04-partition.png" width="500" style="display: block; margin: auto;" /></p>
 <div class="theorem">
 <p><span id="thm:ffive" class="theorem"><strong>Theorem 4.3  </strong></span>Let <span class="math inline">\(\sim\)</span> be any equivalence relation on <span class="math inline">\(X\)</span>.
-Then the equivalences classes for a partition of <span class="math inline">\(X\)</span>.</p>
+Then the equivalences classes form a partition of <span class="math inline">\(X\)</span>.</p>
 </div>
 <div class="proof">
 <p><span id="unlabeled-div-108" class="proof"><em>Proof</em>. </span>Since <span class="math inline">\(\sim\)</span> is reflexive, we have <span class="math inline">\(x \in [x] \; \forall \; x \in X\)</span>.
@@ -634,7 +634,7 @@ In fact, this explains why we sometimes write <span class="math inline">\(\mathb
 </div>
 <div class="example">
 <p><span id="exm:unlabeled-div-111" class="example"><strong>Example 4.9  </strong></span>On <span class="math inline">\(\mathbb{Z} \times \mathbb{N}\)</span>, define <span class="math inline">\((a, b) R (c, d)\)</span> if <span class="math inline">\(ad = bc\)</span>.
-It is easy to see that <span class="math inline">\(B\)</span> is an equivalence relation.<br />
+It is easy to see that is an equivalence relation.<br />
 E.g. <span class="math inline">\([(1, 2)] = \{(1, 2), (2, 4), (3, 6) \dots \}\)</span> so we can regard <span class="math inline">\(\mathbb{Z} \times \mathbb{N} / R\)</span> as a copy of <span class="math inline">\(\mathbb{Q}\)</span> by identifying <span class="math inline">\([(a, b)]\)</span> with <span class="math inline">\(\frac{a}{b} \in \mathbb{Q}\)</span>.
 The quotient map <span class="math display">\[\begin{align*}
     q : \mathbb{Z} \times \mathbb{N} &amp;\to \mathbb{Z} \times \mathbb{N} / R \\

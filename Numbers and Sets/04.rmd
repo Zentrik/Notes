@@ -10,7 +10,7 @@ Two sets are equal if they have the same elements.
 That is, if $\forall \; x, x \in A \iff x \in B$, then $A = B$.
 In particular, there is only one empty set $\emptyset$.
 
-A set $B$ is a subset of $A$, written "$B \subseteq A$ or "$B \subset A$", if every element of $B$ is an element of $A$.
+A set $B$ is a subset of $A$, written "$B \subseteq A$" or "$B \subset A$", if every element of $B$ is an element of $A$.
 ```{r 04-subset, echo = FALSE, fig.cap = "", fig.align="center", out.width="300"} 
 knitr::include_graphics("figures/04-subset.png") 
 ```
@@ -142,9 +142,9 @@ knitr::include_graphics("figures/04-no-of-subsets.png")
 ```
 
 There are exactly $2$, namely $T$ and $T \cup \{n\}$.\
-Hence the no. of subsets of $\{1, 2, \dots, n\}$ 
+Hence
 \begin{align*}
-    \{1, 2, \dots, n\} &= 2 \times \text{ no. of subsets of } \{1, 2, \dots, n - 1\} \\
+    \text{no. of subsets of } \{1, 2, \dots, n\} &= 2 \times \text{ no. of subsets of } \{1, 2, \dots, n - 1\} \\
     &= 2 \cdot 2^{n - 1} \\
     &= 2^n.
 \end{align*} 
@@ -157,7 +157,7 @@ So Proposition \@ref(prp:fone) says that $|A| = n \implies |\mathcal{P}(A)| = 2^
 Given $n \in \mathbb{N}_0$ and $0 \leq k \leq n$, we write $\binom{n}{k}$ for the number of subsets of an $n$-element set that are of size $k$.
 In other words
 \begin{align*}
-    \binom{n}{k} = \left| \{ S \subseteq {1, 2, \dots, n} : |S| = k \} \right|.
+    \binom{n}{k} = \left| \{ S \subseteq \{1, 2, \dots, n\} : |S| = k \} \right|.
 \end{align*} 
 $\binom{n}{k}$ is called a *binomial coefficient*.
 
@@ -192,8 +192,8 @@ Each row starts and ends with a $1$, and the remaining entities are the sum of t
 
 ::: {.proof}
 Given a set of size $n$, there are $n (n - 1) (n - 2) \dots (n - k + 1)$ ways to pick $k$ elements, one by one, with unique orders. 
-Each subset of size $k$ if picked in $k (k - 1) (k - 2) \dots 2 \cdot 1$ ways by this method.
-Hence the no. of subsets of size $k$ in \{1, 2, \dots, n\} is $\binom{n}{k} = \frac{n (n - 1) (n - 2) \dots (n - k + 1)}{k (k - 1) (k - 2) \dots 2 \cdot 1}$.
+Each subset of size $k$ is picked in $k (k - 1) (k - 2) \dots 2 \cdot 1$ ways by this method.
+Hence the no. of subsets of size $k$ in $\{1, 2, \dots, n\}$ is $\binom{n}{k} = \frac{n (n - 1) (n - 2) \dots (n - k + 1)}{k (k - 1) (k - 2) \dots 2 \cdot 1}$.
 :::
 
 Note that the formula tells us, for example, that 
@@ -219,7 +219,7 @@ When we expand $(a + b)^n = (a + b) (a + b) \dots (a + b)$ we obtain terms of th
 ::: {.example}
 $(1 + x)^n = 1 + nx + \frac{n (n - 1)}{2} x^2 + \binom{n}{3} x^3 + \dots + \binom{n}{n - 1} + x^n$ so for small $x$, a good approximation is $1 + nx$.
 E.g. $(1.00001)^8 \sim 1.00008$.\
-A better approximation is $1 + nx + \frac{n(n-1)}{2}x^2$, e.g. $(1.00001)^8 \sim + 1.00008 + 28 (1.00008)^2$.
+A better approximation is $1 + nx + \frac{n(n-1)}{2}x^2$, e.g. $(1.00001)^8 \sim 1.00008 + 28 (0.00001)^2$.
 :::
 
 What can we say about the relationship between sizes of unions and intersections of finite sets?
@@ -356,7 +356,7 @@ E.g. "Is the function $f(x) = x^2$ injective?" is meaningless, as $f : \mathbb{N
 ### Observations
 
 1. $f$ is surjective iff $f(A) = B$.
-In particular, if $|B| > |A|$, then there can be no surjective from $A$ to $B$.
+In particular, if $|B| > |A|$, then there can be no surjection from $A$ to $B$.
 
 2. There can be no injection from $A$ to $B$ if $|A| > |B|$.
 
@@ -517,7 +517,7 @@ knitr::include_graphics("figures/04-preimage.png")
 A *relation* on a set $X$ is a subset $R \subseteq X \times X$.
 We usually write $aRb$ ("$a$ is related to $b$") for $(a, b) \in R$.
 
-::: {.example name="Relations on $\mathbb{N}$"}
+::: {.example name="Relations on ℕ"}
 
 \
 
@@ -555,13 +555,13 @@ With regards to the examples above,
 :::
 
 ::: {.definition name="Equivalence relation"}
-A relation $R$ is an *equivalence relation" if it is reflexive, symmetric and transitive.
+A relation $R$ is an *equivalence relation* if it is reflexive, symmetric and transitive.
 We often write $a \sim b$ for $aRb$.
 :::
 So (1) and (6) are equivalence relations.
 We have already seen another one:\
 (7). $X = \mathbb{Z}$ with $a \sim b$ if $a \equiv b \mod 5$.
-This equivalence relations partitions $\mathbb{Z}$ into "pieces" consisting of related elements, namely $\{x \in \mathbb{Z} : x \equiv 0 \mod 5\}, \{x \in \mathbb{Z} : x \equiv 1 \mod 5\}, \dots, \{x \in \mathbb{Z} : x \equiv 4 \mod 5\}$.
+This equivalence relation partitions $\mathbb{Z}$ into "pieces" consisting of related elements, namely $\{x \in \mathbb{Z} : x \equiv 0 \mod 5\}, \{x \in \mathbb{Z} : x \equiv 1 \mod 5\}, \dots, \{x \in \mathbb{Z} : x \equiv 4 \mod 5\}$.
 
 ::: {.definition name="Partition of set"}
 Given a set $X$, a *partition* of $X$ is a collection of pairwise disjoint subsets (called "parts") whose union is $X$.
@@ -584,7 +584,7 @@ knitr::include_graphics("figures/04-partition.png")
 
 ::: {.theorem #ffive}
 Let $\sim$ be any equivalence relation on $X$.
-Then the equivalences classes for a partition of $X$.
+Then the equivalences classes form a partition of $X$.
 ::: 
 
 ::: {.proof}
@@ -622,7 +622,7 @@ The map \begin{align*}
 
 ::: {.example}
 On $\mathbb{Z} \times \mathbb{N}$, define $(a, b) R (c, d)$ if $ad = bc$.
-It is easy to see that $B$ is an equivalence relation. \
+It is easy to see that is an equivalence relation. \
 E.g. $[(1, 2)] = \{(1, 2), (2, 4), (3, 6) \dots \}$ so we can regard $\mathbb{Z} \times \mathbb{N} / R$ as a copy of $\mathbb{Q}$ by identifying $[(a, b)]$ with $\frac{a}{b} \in \mathbb{Q}$.
 The quotient map \begin{align*}
     q : \mathbb{Z} \times \mathbb{N} &\to \mathbb{Z} \times \mathbb{N} / R \\
