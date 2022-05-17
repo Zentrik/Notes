@@ -328,7 +328,7 @@ Goal: \begin{itemize}
             &= 1 - e^{- \lambda \frac{x}{c}} \\
             &= 1 - e^{- \frac{\lambda}{c} x} - \text{\color{red} CDF of $\operatorname{Exp}\left( \frac{\lambda}{c} \right)$.}
         \end{align*} 
-        \item \begin{align*}
+        \mathitem \begin{align*}
             \hat{f}(x) = \frac{1}{c} f \left(\frac{x}{c}\right) = \frac{1}{c} \lambda e^{- \lambda x / c } = \frac{\lambda}{c} e^{- \frac{\lambda}{c} x}  - \text{\color{red} PDF of $\operatorname{Exp}\left( \frac{\lambda}{c} \right)$.}
         \end{align*} 
     \end{itemize} 
@@ -417,7 +417,7 @@ Goal: \begin{itemize}
             &= \frac{1}{\sigma} f_Z \left( \frac{x - \mu}{\sigma} \right) \\
             &= \frac{1}{\sigma \sqrt{2 \pi}} e^{- \frac{(x - \mu)^2}{2 \sigma^2}}.
         \end{align*}
-        \item \begin{align*}
+        \mathitem \begin{align*}
             F_{g(Z)} &= \mathbb{P}(g(Z) \leq x) \\
             &= \mathbb{P}(Z \leq \frac{x - \mu}{(\sigma)}) \\
             &= \Phi \left( \frac{x - \mu}{\sigma} \right).
@@ -531,7 +531,7 @@ Goal: convert to statement about densities
 
 \begin{proof} ~
     \begin{enumerate}
-        \item \begin{align*}
+        \mathitem \begin{align*}
             \mathbb{P}(X_1\leq x_1,\dots, X_n\leq x_n) &= \mathbb{P}(X_1\leq x_1)\dots \mathbb{P}(X_n\leq x_n)\\
             &= \left[ \int_{-\infty}^{x_1} f_{X_1}(u_1) \,du_1 \right] \dots \left[ \int_{-\infty}^{x_n} f_{X_n}(u_n) \,du_n \right] \\
             &=\int_{-\infty}^{x_1} \dots \int_{-\infty}^{x_n} \underbracket{\prod f_{X_i}(u_i)}_{\color{red} \text{matches definition of } f} \prod du_i
@@ -894,7 +894,7 @@ Warning: Does not say that \underline{densities} converge, e.g. in \Cref{exm:con
 We use CLT by 
 \begin{enumerate}
     \item $S_n \overset{d}{\approx} \mathcal{N}(n \mu, n \sigma^2)$
-    \item ~\vspace*{-1.5\baselineskip} 
+    \mathitem 
     \begin{align*}
         \mathbb{P}(a \leq S_n \leq b) &= \mathbb{P}\left( \frac{a - n \mu}{\sqrt{n \sigma^2}} \leq \frac{S_n - n \mu}{\sqrt{n \sigma^2}} \leq \frac{b - n \mu}{\sqrt{n \sigma^2}} \right). \\
         &= \mathbb{P} \left( \frac{a - n \mu}{\sqrt{n \sigma^2}} \leq Z \leq \frac{b - n \mu}{\sqrt{n \sigma^2}} \right).
@@ -1256,14 +1256,18 @@ For $n = 2: V = \begin{pmatrix}\Var(X) & \Cov(X, Y) \\ \Cov(Y, X) & \Var(Y)\end{
     The MGF uniquely determines distribution of a RV whenever it exists $\forall \; u \in (- \epsilon, \epsilon)^n$ for some $\epsilon > 0$.
 \end{theorem} 
 
-If $X$ Gaussian $m_X(u) = m_{u^T X}(1) = \exp \left( u^T \mu + \frac{1}{2} u^T V u \right)$.
+\begin{claim}
+    If $X$ Gaussian $m_X(u) = m_{u^T X}(1) = \exp \left( u^T \mu + \frac{1}{2} u^T V u \right)$.
+\end{claim} 
 
-Logical overview: $X \in \mathbb{R}^n$ Gaussian.
+\color{blue}
+\underline{Logical overview}: $X \in \mathbb{R}^n$ Gaussian.
 \begin{itemize}
     \item distribution defined by MGF
     \item MGF defined by $\mu$ and $V$ \\
     $\implies$ distribution of $X$ defined by $\mu$ and $V$.
 \end{itemize} 
+\color{black}
 
 \begin{remark}
     Density is \begin{align*}
@@ -1271,23 +1275,26 @@ Logical overview: $X \in \mathbb{R}^n$ Gaussian.
     \end{align*} 
 \end{remark} 
 
-Return to $n = 2$: For a Gaussian vector $(X_1, X_2)$. 
-Independent $\iff \Cov(X_1, X_2) = 0$. $\impliedby$ is false in general.
+\begin{claim}
+    Return to $n = 2$: For a Gaussian vector $(X_1, X_2)$ it is independent $\iff \Cov(X_1, X_2) = 0$. \color{red} $\impliedby$ is false in general.
+\end{claim} 
 
+\color{blue}
 Why useful?
 Imagine $X_1, X_2$ describe real-world parameters, e.g. height vs 1 km rowing time.
 \begin{itemize}
     \item Independence would be an interesting conclusion
     \item $\Cov$ can be sampled.
 \end{itemize} 
+\color{black}
 
 \begin{proof}
-    Let $X = (X_1, X_2)$ independent.
-    if $m_X \left( (u_1, u_2) \right)$ splits as a product $f_1 (u_1) f_2 (u_2)$.
+    $X = (X_1, X_2)$ is independent iff $m_X \left( (u_1, u_2) \right)$ splits as a product $m_1 (u_1) m_2 (u_2)$.
     \begin{align*}
         \exp(u^T \mu) &= \exp(u_1 \mu_1) \exp(u_2 \mu_2) \\
-        \exp(\frac{1}{2} u^T V u) &= \exp(u_1^2 \sigma_1^2) \exp(u_2^2 \sigma_2^2) \exp(2 u_1 u_2 \Cov(X_1, X_2))
-    \end{align*} 
+        \exp\left(\frac{1}{2} u^T V u\right) &= \exp \left( \frac{1}{2} u_1^2 \sigma_1^2 \right) \exp \left( \frac{1}{2} u_2^2 \sigma_2^2 \right) \exp(u_1 u_2 \Cov(X_1, X_2)) 
+    \end{align*}
+    Therefore splits iff $\Cov = 0$. 
 \end{proof} 
 
 \underline{Motivation}: $\Cov(100 X_1, X_2) = 100 \Cov(X_1, X_2)$, so ``large covariance'' doesn't imply ``very dependent''.

@@ -300,7 +300,7 @@ The kernels of \Cref{exm:actions}
     \begin{enumerate}
         \item We could have proved \Cref{lem:17} by noticing that $x_1 \sim x_2$ if $\exists \; g \in G$ s.t. $g(x_1) = x_2$ is an equivalence relation.
         \item $\operatorname{Orb}_G(x)$ is $G$-invariant, i.e. $g \left( \operatorname{Orb}_G(x) \right) \subseteq \operatorname{Orb}_G(x)$.
-        Since if $y \in \operatorname{Orb}_G(x), y = hx$ for some $h \in G \implies g(y) = g(h(x)) = (gh)(x) \in \operatorname{Orb}_G(x)$.
+        Since if $y \in \operatorname{Orb}_G(x), y = h(x)$ for some $h \in G \implies g(y) = g(h(x)) = (gh)(x) \in \operatorname{Orb}_G(x)$.
         \item $G$ is transitive on $\operatorname{Orb}_G(x)$.
         \begin{align*}
             \text{Let } y, z &\in \operatorname{Orb}_G(x) \\
@@ -344,13 +344,15 @@ The kernels of \Cref{exm:actions}
 \begin{proof} ~
     \begin{itemize} 
         \item $e(x) = x \implies e \in \operatorname{Stab}_G(x)$.
-        \item \begin{align*}
+        \mathitem
+        \begin{align*}
             \text{if } g, h &\in \operatorname{Stab}_G(x) \\
             (gh)(x) &= g(h(x)) \\
             &= g(x) \\
             &= x \implies gh \in \operatorname{Stab}_G(x).
             \end{align*} 
-        \item \begin{align*}
+        \mathitem
+        \begin{align*}
             g &\in \operatorname{Stab}_G(x) \\
             g(x) &= x \\
             x &= e(x) = (g^{-1} g)(x) = g^{-1}(gx) \\
@@ -641,28 +643,28 @@ We can find the elements of $A_5$
     \begin{align*}
         X &= \{ (x_1, x_2, \dots, x_p) : x_1 x_2 \dots x_p = e, x_i \in G \}.
     \end{align*} 
-    Let $H = \langle h : o(h) = p \rangle \cong C_p$ acts on $X$ as follows:
+    Let $H = \langle h : o(h) = p \rangle \cong C_p$\footnote{$h \notin G$, $H$ is just a copy of $C_p$} acts on $X$ as follows:
     \begin{align*}
         H \times X &\to X \\
         (h, (x_1, x_2, \dots, x_p)) &\mapsto (x_2, x_3, \dots, x_p, x_1) \\
         \intertext{in general}
         (h^i, (x_1, x_2, \dots, x_p)) &\mapsto (x_{1 + i}, x_{2 + i}, \dots, x_{p + i}) \\
-        \text{suffices are taken modulo p.}
+        \text{subscripts are taken modulo p.}
     \end{align*}
     Check this is a group action
     \begin{enumerate} \addtocounter{enumi}{-1}
-        \item \begin{align*}
+        \mathitem \begin{align*}
             x_1 x_2 \dots x_p &= e \\
             x_{i + 1} x_{2 + i} \dots, x_{p + i} &= [(x_1 x_2 \dots x_i)^{-1} (x_1 x_2 \dots x_i)] x_{i + 1} x_{2 + i} \dots, x_{p} x_1 x_2 \dots x_i \\ 
             &= (x_1 x_2 \dots x_i)^{-1} x_1 x_2 \dots x_p (x_1 x_2 \dots x_i) \\
             &= (x_1 x_2 \dots x_i)^{-1} e (x_1 x_2 \dots x_i) \\
             &= e.
         \end{align*} 
-        \item \begin{align*}
+        \mathitem \begin{align*}
             h^{i + j} (x_1, \dots, x_p) &= (x_{1 + i + j}, \dots, x_{p + i + j}) \\
             &= h^i (h^j (x_1, \dots, x_p)).
         \end{align*} 
-        \item \begin{align*}
+        \mathitem \begin{align*}
             e (x_1, \dots, x_p) &= h^p (x_1, \dots, x_p) \\
             &= (x_1, \dots, x_p).
         \end{align*} 
@@ -721,7 +723,7 @@ stabilisers are called centralisers
             &= e \\
             \implies o(k) \mid o(h)
         \end{align*} 
-        Similarly, $h = g^{-1} k g \implies o(h) \mid o(h)$.
+        Similarly, $h = g^{-1} k g \implies o(h) \mid o(k)$.
         \end{proof} 
         \item \label{conjugacy-4}
         Recall the centre of $G$ is
@@ -904,7 +906,7 @@ Or consider
 So the conjugacy class of 8 $3$-cycles in $S_4$ splits into 2 conjugacy classes in $A_4$.
 
 \emph{Key point} Let $x \in A_n$.
-If $C_{A_n}(x) = C_{S_n}(x) \implies \operatorname{ccl}_{A_n}(x) = \frac{| \operatorname{ccl}_{S_n}(x) |}{2}$ by \nameref{thm:orbit}. \\
+If $C_{A_n}(x) = C_{S_n}(x) \implies |\operatorname{ccl}_{A_n}(x)| = \frac{| \operatorname{ccl}_{S_n}(x) |}{2}$ by \nameref{thm:orbit}. \\
 If $C_{A_n}(x) \lneq C_{S_n}(x)$, then $C_{S_n}$ contains an odd permutation and $|C_{A_n}(x)| = |C_{S_n} \cap A_n| = \frac{|C_{S_n}|}{2}$ (Q4, Sheet 2) $\implies |\operatorname{ccl}_{A_n}(x)| = |\operatorname{ccl}_{S_n}(x)|$.
 
 \emph{$A_4$}:

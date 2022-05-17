@@ -350,10 +350,12 @@
 \pretocmd{\start@align}{\let\footnote\align@footnote}{}{}
 \makeatother
 
-
 \usepackage{bm}
 
 \allowdisplaybreaks
+
+% removes space after align after item
+\newcommand\mathitem{\item\leavevmode\vspace*{-\dimexpr\baselineskip+\abovedisplayskip\relax}}
 
 % Small Macros
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

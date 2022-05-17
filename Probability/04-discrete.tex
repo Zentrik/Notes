@@ -38,7 +38,7 @@ This is annoying and we want to move on from sets.
 \begin{note} \mbox{}
     \begin{itemize}
         \item if $x \notin \operatorname{Image}(X)$ then $p_X(x) = \mathbb{P}(\{\omega \in \Omega : X(\omega) = x\}) = \mathbb{P}(\emptyset) = 0$.
-        \item ~\vspace*{-1.5\baselineskip}
+        \mathitem
         \begin{align*}
             \sum_{x \in \operatorname{Im}(X)} p_X(x) &= \sum_{x \in \operatorname{Im}(X)} \mathbb{P}(\underbracket{\{\omega \in \Omega : X(\omega) = x\}}_{\color{blue} \text{disjoint}}) \\
             &= \mathbb{P}\left(\bigcup_{x \in \operatorname{Im}(X)} \{\omega \in \Omega : X(\omega) = x\} \right) \\
@@ -807,7 +807,7 @@ Often: stops at $\pounds 0$.
     \underline{Key idea}: Conditional on $S_1 = z$, $(S_1, S_2, \dots)$ is a random walk started from $z$. \\
     Apply \nameref{thm:ltp}
     \begin{align*}
-        \mathbb{P}_x(S \text{ hits a before 0}) &= \sum\footnote{Subscript: $z \in \operatorname{Im}(S_1)$ but we will bother with that any more} \overbracket{\mathbb{P}_x(S \text{ hits a before 0} \mid S_1 = z)}^{\color{red} \text{Interpret this.} \color{black}} \mathbb{P}_x(S_1 = z) \\
+        \mathbb{P}_x(S \text{ hits a before 0}) &= \sum\footnote{Subscript: $z \in \operatorname{Im}(S_1)$ but we will not bother with that any more} \overbracket{\mathbb{P}_x(S \text{ hits a before 0} \mid S_1 = z)}^{\color{red} \text{Interpret this.} \color{black}} \mathbb{P}_x(S_1 = z) \\
         &= \sum_z \mathbb{P}_z (S \text{ hits a before 0}) \mathbb{P}_x(S_1 = z) \\
         \text{let } h_x &= \mathbb{P}_x(S \text{ hits a before 0}). \\
         S_1 &= x \pm 1 \\
@@ -826,7 +826,7 @@ Often: stops at $\pounds 0$.
         h_x &= A + B \left( \frac{q}{p} \right)^x \\
         \intertext{Use BCs to find A,B: }
         x = 0 : h_0 &= 0 = A + B \\
-        x = a : h_a &= 1 = A + \left( \frac{q}{p} \right)^a \\
+        x = a : h_a &= 1 = A + B\left( \frac{q}{p} \right)^a \\
         h_x &= \frac{\left( \frac{q}{p} \right)^x - 1}{\left( \frac{q}{p} \right)^a - 1}.
     \end{align*} 
     

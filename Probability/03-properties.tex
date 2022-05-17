@@ -161,7 +161,7 @@ Then $\forall \; A_1, \dots, A_n \subseteq \Omega$
 
     \emph{Key observations}:
     \begin{itemize}
-        \item \begin{align*}
+        \mathitem \begin{align*}
             A &= B_1^c \cap \dots B_m^c \\
             &= (B_1 \cup \dots \cup B_m)^c
         \end{align*} 
@@ -189,7 +189,7 @@ Then $\forall \; A_1, \dots, A_n \subseteq \Omega$
     \emph{Key observations}:
     \begin{itemize}
         \item $D = A_1^c \cap \dots A_n^c = \left(\bigcup_{i = 1}^n A_i \right)^c.$
-        \item ~\vspace*{-1.5\baselineskip}
+        \mathitem
         \begin{align*}
             \mathbb{P}(A_{i_1} \cap \dots \cap A_{i_k}) &= \frac{(n - k)!}{n!} \\
             IEP \to \mathbb{P}\left(\bigcup_{i = 1}^n A_i \right) &= \sum_{k=1}^{n} (-1)^{k + 1} \sum_{i_1 < \dots < i_k} \mathbb{P}(A_{i_1} \cap \dots \cap A_{i_k}) \\
@@ -256,7 +256,7 @@ $(\Omega, \mathcal{F}, \mathbb{P})$ as before.
 
 \begin{example}[Independence] ~\vspace*{-1.5\baselineskip} \label{exm:indep1}
     \begin{itemize}
-        \item ~\vspace*{-1.5\baselineskip}
+        \mathitem
         \begin{align*}
             \Omega' &= \{\text{all functions } f : \{1, \dots, n\} \text{ to itself} \\
             A_i &= \{f \in \Omega' : f(i) = i\}. \\
@@ -266,7 +266,7 @@ $(\Omega, \mathcal{F}, \mathbb{P})$ as before.
             &= \prod_{j = 1}^k \mathbb{P}(A_{i_j})
         \end{align*} 
         Here: $(A_i)$ are independent events.
-        \item ~\vspace*{-1.5\baselineskip}
+        \mathitem
         \begin{align*}
             \Omega &= \left\{\sigma : \text{ permutation of } \{1, \dots, n\} \right\} \\
             A_i &= \{ \sigma \in \Omega : \sigma(i) = i \} \\
@@ -520,7 +520,7 @@ $\mathbb{P}(\bullet \mid B)$ is a function from $\mathcal{F} \to [0, 1]$ that sa
 
     Note:
     \begin{itemize}
-        \item \begin{align*}
+        \mathitem \begin{align*}
             \mathbb{P}(A \mid C_i) &= \mathbb{P}(\sigma(2) \in \{1, 2, 3, 4\} \mid \sigma(1) = i) \quad i \leq 4 \\
             &= \frac{3}{51} \text{ by \Cref{exm:conditional}}
         \end{align*} 
