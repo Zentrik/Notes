@@ -404,13 +404,13 @@ Since if $A \in SO_2(\mathbb{R})$ then $A = \underbrace{\left( A \begin{pmatrix}
             \Block{2-2}{\text{action} \\ \text{on $\Pi$}} & & 0 \\
             & & 0 \\
             \hline
-            0 & 0 & 0
+            0 & 0 & 1
             \end{pNiceArray} \\
             &= \begin{pNiceArray}{cc|c}[margin]
                 \Block{2-2}<\Large>{Q} & & 0 \\
                 & & 0 \\
                 \hline
-                0 & 0 & 0
+                0 & 0 & 1
                 \end{pNiceArray} \\
             \det (P A P^{-1}) &= \det A = 1 \\
             \implies \det Q &= 1 \\
@@ -448,7 +448,7 @@ $\begin{pmatrix}-1 & 0 & 0 \\0 & 1 & 0 \\0 & 0 & 1\end{pmatrix} SO_3(\mathbb{R})
     So $r_1 A(\Pi) = \Pi$, as angles are preserved. \\
     $\exists$ a reflection $r_2$ s.t. $r_2(e_3) = e_3,\ r_2(r_1 A (e_2)) = e_2$.
     So $r_2 r_1 A$ fixes $e_2$ and $e_3$. \\
-    So $r_2 rq A (e_1) = \pm e_1$, if $e_1 = e_1$, set $r_3 = \text{id}$.
+    So $r_2 r_1 A (e_1) = \pm e_1$, if $e_1 = e_1$, set $r_3 = \text{id}$.
     Else $e_1 = - e_1$, let $r_3$ be the reflection in the plane $\bot$ to $e_1$. \\
     So $r_3 r_2 r_1 A$ fixes $e_1, e_2, e_3$, so $r_3 r_2 r_1 A = \text{id} \implies A = r_1^{-1} r_2^{-1} r_3^{-1} = r_1 r_2 r_3$.
 \end{proof} 

@@ -56,7 +56,7 @@ If $c \neq 0;\ f(\infty) = \frac{a}{c};\ f(-\frac{d}{c}) = \infty$ else $c = 0;\
 \begin{proof}
     \begin{itemize}
         \item Composition of maps is associative.
-        \item $I(z) = z \in \mathcal{M}$ ($a = d = 1, c = d = 0$)
+        \item $I(z) = z \in \mathcal{M}$ ($a = d = 1, b = c = 0$)
         \item closure:
         \begin{align*}
             \text{Let } f(z) &= \frac{az + b}{cz + d},\ g(z) = \frac{\alpha z + \beta}{\gamma z + \delta} \\
@@ -64,8 +64,8 @@ If $c \neq 0;\ f(\infty) = \frac{a}{c};\ f(-\frac{d}{c}) = \infty$ else $c = 0;\
             \text{First suppose } z &\in \mathbb{C} \setminus \{ - \delta / \gamma \} \\
             \text{Then } f(g(z)) &=  \frac{a \left( \frac{\alpha z + \beta}{\gamma z + \delta} \right) + b}{c \left( \frac{\alpha z + \beta}{\gamma z + \delta} \right) + d} \\
             &= \frac{(a \alpha + b \gamma) z + (a \beta + b \delta)}{(c \alpha + d \gamma)z + (c \beta + \delta d)} \\
-            &\in \mathcal{M} \\
-            \text{since } (a \alpha + b \gamma)(c \beta + \delta d) - (a \beta + b \delta)(c \alpha + d \gamma) &= (ad - bc)(\alpha \delta - \beta \gamma) \neq 0 \\
+            &\in \mathcal{M}
+            \intertext{since $(a \alpha + b \gamma)(c \beta + \delta d) - (a \beta + b \delta)(c \alpha + d \gamma) = (ad - bc)(\alpha \delta - \beta \gamma) \neq 0$}
             \text{Also, } f\left(g\left(-\frac{\delta}{\gamma}\right)\right) &= f(\infty) = \frac{a}{c} \\
             \text{and } \frac{(a \alpha + b \gamma) \left(-\frac{\delta}{\gamma}\right) + (a \beta + b \delta)}{(c \alpha + d \gamma)\left(-\frac{\delta}{\gamma}\right) + (c \beta + \delta d)} &= \frac{a \alpha \left(-\frac{\delta}{\gamma}\right) + \alpha \beta}{c \alpha \left(-\frac{\delta}{\gamma}\right) + c \beta} \\
             &= \frac{a}{c} \ \checkmark \\
