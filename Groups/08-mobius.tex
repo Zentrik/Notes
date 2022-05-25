@@ -119,13 +119,13 @@ If $c \neq 0;\ f(\infty) = \frac{a}{c};\ f(-\frac{d}{c}) = \infty$ else $c = 0;\
 \begin{proof}
     Restrict $\phi$ to $\operatorname{SL}_2(\mathbb{C})$
     \begin{align*}
-        \phi : \operatorname{SL}_2(\mathbb{C}) &\to \mathcal{M} \\
+        \Phi : \operatorname{SL}_2(\mathbb{C}) &\to \mathcal{M} \\
         \begin{pmatrix}a & b \\c & d\end{pmatrix} &\mapsto \frac{az + b}{cz + d}
-    \intertext{We require $\phi$ to be surjective:}
+    \intertext{We require $\Phi$ to be surjective:}
         f(z) &= \frac{az + b}{cz + d} \\
         &= \frac{ \frac{a}{\sqrt{ad - bc}} z + \frac{b}{\sqrt{ad - bc}} }{ \frac{c}{\sqrt{ad - bc}} z + \frac{d}{\sqrt{ad - bc}} }.
     \end{align*} 
-    And $\ker \phi = \{ \pm I \}$.
+    And $\ker \Phi = \{ \pm I \}$.
 \end{proof} 
 
 \begin{proposition} \label{prp:13}
@@ -259,7 +259,7 @@ A Euclidean circle is the set of points in $\mathbb{C}$ given by some equation $
 A Euclidean line is the set of points in $\mathbb{C}$ given by some equation $|z - a| = |z - b|,\ a \neq b$.
 
 \begin{definition}[Circle in $\mathbb{C}_\infty$]
-    A \emph{circle in $\mathbb{C}_\infty$} is either a Euclidean circle of a set $L \cup \{\infty\}$ where $L$ is a Euclidean line.
+    A \emph{circle in $\mathbb{C}_\infty$} is either a Euclidean circle or a set $L \cup \{\infty\}$ where $L$ is a Euclidean line.
     Its general equation is of the form 
     \begin{align}
         Az\bar z + \bar Bz + B\bar z + C = 0, \label{eq:circle}
@@ -294,7 +294,7 @@ There is a unique circle passing through any 3 distinct points in $\mathbb{C}_\i
         f(z) &= \frac{z - i}{z + i}.
     \end{align*} 
     It is thus a circle in $\mathbb{C}_\infty$ containing $f(0) = -1, f(\infty) = 1, f(1) = -i$ so $f(\mathbb{R} \cup \{\infty\}) = $ unit circle. 
-    Furthermore, complimentary components are mapped to complementary components.
+    Furthermore, complimentary components are mapped to complimentary components.
     {\centering \includegraphics[height=5cm]{08-complimentary}}
 \end{example} 
 
