@@ -501,10 +501,10 @@ Hence we must have $b_K = a_K + 1$^[if $b_K > a_K + 1$, then $0.b_1 b_2 \dots b_
 
 2. A decimal expansion is *periodic* if, after a finite number of terms, say $\ell$ digits, it repeats in blocks, of length $k$. 
 I.e. $\exists \; \ell, k$ s.t. $d_{n + k} = d_n \; \forall \; n > \ell$. \
-A periodic decimal is rational, e.g. $x = 0.7832147147147 \dots$, $10^4 x - 7832 = 0.147147 \dots$
+A periodic decimal is rational, e.g.
 \begin{align*}
     x &= 0.7832147147147 \dots \\
-    10^4 x - 7832 &= 0.147147 \dots
+    10^4 x - 7832 &= 0.147147 \dots \\
     &= 147 \sum_{j=1}^{\infty} \frac{1}{10^{3j}} \\
     &= 147 \cdot \frac{1}{10^3} \cdot \frac{1}{1 - 10^3}
 \end{align*} so $x \in \mathbb{Q}$. \

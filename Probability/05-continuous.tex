@@ -23,7 +23,7 @@ This is consistent with the previous definition when $\Omega$ is countable (or $
 \end{definition} 
 
 \begin{example}[A 6-sided dice]
-ars
+    insertpicture
 \end{example} 
 
 \subsection{Properties of CDF}
@@ -1028,7 +1028,7 @@ We use CLT by
 
 \begin{proof}
     Convexity $\implies \forall \; x < y < z$
-    ars
+    insertpicture
     \begin{align*}
         \frac{f(y) - f(x)}{y - x} &\leq \frac{f(z) - f(y)}{z - y} \\
         \text{Let } M^- &= \sup_{x < y}  \frac{f(y) - f(x)}{y - x} \\
@@ -1135,8 +1135,7 @@ Sampling uniformly on $[0, 1]^d$ is easy, we simply take $(U^{(1)}, \dots, U^{(d
 
 \begin{question}
     How do we sample uniformly on $A$?
-    ars
-    arst
+    insertpicture
 \end{question} 
 
 Goal: \begin{align*}
@@ -1175,9 +1174,11 @@ Let $U_1, U_2, \dots$ be IID uniform on $[0, 1]^d$ and let $N = \min \{n : U_n \
     Then $U^{(1)} \sim X$.
 \end{claim} 
 
+insertpicture
+
 \begin{proof}
     \begin{align*}
-        \mathbb{P}(U^{1} \leq u) &= \mathbb{P}(U \in \text{ blue region}) \\
+        \mathbb{P}(U^{1} \leq u) &= \mathbb{P}(U \in \text{blue region}) \\
         &= \operatorname{area}(\{(x, y): x \leq u, y \leq f_X(x)\}) \\
         &= \int_{0}^{u} f_X(x) \,dx \\
         &= F_X(u).
