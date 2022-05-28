@@ -14,7 +14,7 @@ These conditions are equivalent by rank-nullity theorem \@ref(thm:rank).
 Conversely, if these conditions hold, then 
 \begin{align*}
     \underline{e}_1' &= T(\underline{e}_1), \dots, \underline{e}_n' = T(\underline{e}_n) \\
-\end{align*} is a basis (where $\{ \underline{e}_i \}$ is the standard basis) and we can define a linear map $T^{-1}$ by $T^{^-1}(\underline{e}_1') = \underline{e}_1, \dots, T^{-1}(\underline{e}_n') = \underline{e}_n$.
+\end{align*} is a basis (where $\{ \underline{e}_i \}$ is the standard basis) and we can define a linear map $T^{-1}$ by $T^{-1}(\underline{e}_1') = \underline{e}_1, \dots, T^{-1}(\underline{e}_n') = \underline{e}_n$.
 
 How can we test whether the conditions holds from matrix $M$ representing $T:$ $T(\underline{x}) = M \underline{x}$ and how can we find $M^{-1}$ when they do hold?
 

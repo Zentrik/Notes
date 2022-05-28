@@ -363,7 +363,7 @@ Standard basis vectors are "orthonormal" in generalised sense
     \underline{e}_0 = \begin{pmatrix}1 \\0\end{pmatrix} &\text{ and } \underline{e}_1 = \begin{pmatrix}0 \\1\end{pmatrix} \\
     \text{obey } (\underline{e}_0, \underline{e}_0) &= 1 \\
     (\underline{e}_1, \underline{e}_1) &= -1 \\
-    (\underline{e}_0, \underline{e}_0) &= 0
+    (\underline{e}_0, \underline{e}_1) &= 0
 \end{align*} 
 This new inner product is called the *Minkowski* metric and $\mathbb{R}^2$ equipped with it is called *Minkowski space*.
 

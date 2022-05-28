@@ -262,7 +262,7 @@
 <div id="definitions-3" class="section level3" number="6.1.1">
 <h3><span class="header-section-number">6.1.1</span> Definitions</h3>
 <div class="definition">
-<p><span id="def:unlabeled-div-1" class="definition"><strong>Definition 6.1  (Eigenvector and eigenvalue) </strong></span>For a linear map <span class="math inline">\(T : V \to V\)</span> (<span class="math inline">\(V\)</span> a real vector or complex vector space) a vector <span class="math inline">\(\underline{v} \in V\)</span> with <span class="math inline">\(\underline{v} \neq \underline{0}\)</span> is an <em>eigenvector</em> of <span class="math inline">\(T\)</span> with eigenvalue <span class="math inline">\(\lambda\)</span> if <span class="math display">\[\begin{align*}
+<p><span id="def:unlabeled-div-92" class="definition"><strong>Definition 6.1  (Eigenvector and eigenvalue) </strong></span>For a linear map <span class="math inline">\(T : V \to V\)</span> (<span class="math inline">\(V\)</span> a real vector or complex vector space) a vector <span class="math inline">\(\underline{v} \in V\)</span> with <span class="math inline">\(\underline{v} \neq \underline{0}\)</span> is an <em>eigenvector</em> of <span class="math inline">\(T\)</span> with eigenvalue <span class="math inline">\(\lambda\)</span> if <span class="math display">\[\begin{align*}
     T(\underline{v}) = \lambda \underline{v}.
 \end{align*}\]</span></p>
 </div>
@@ -276,7 +276,7 @@ We find eigenvalues as roots of the characteristic equation/ polynomial and then
 <div id="examples-1" class="section level3" number="6.1.2">
 <h3><span class="header-section-number">6.1.2</span> Examples</h3>
 <div class="example">
-<p><span id="exm:unlabeled-div-2" class="example"><strong>Example 6.1  </strong></span><span class="math display">\[\begin{align*}
+<p><span id="exm:unlabeled-div-93" class="example"><strong>Example 6.1  </strong></span><span class="math display">\[\begin{align*}
     V &amp;= \mathbb{C}^2 \text{ and } A = \begin{pmatrix}
     2 &amp; i \\
     -i &amp; 2
@@ -309,7 +309,7 @@ To find eigenvectors <span class="math inline">\(\underline{v} = \begin{pmatrix}
 </ul>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-3" class="example"><strong>Example 6.2  </strong></span><span class="math display">\[\begin{align*}
+<p><span id="exm:unlabeled-div-94" class="example"><strong>Example 6.2  </strong></span><span class="math display">\[\begin{align*}
     V &amp;= \mathbb{R}^2 \text{ and } A = \begin{pmatrix}
     1 &amp; 1 \\
     0 &amp; 1
@@ -356,10 +356,10 @@ To find eigenvectors <span class="math inline">\(\underline{v} = \begin{pmatrix}
     \end{pmatrix} \\
     &amp;= \sum_{j=0}^{n} c_j t^j, \text{ for some } c_j \in \mathbb{C} \\
     &amp;= (-1)^n (t - \lambda_1) \dots (t - \lambda_n)
-\end{align*}\]</span><a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
+\end{align*}\]</span><a href="#fn10" class="footnote-ref" id="fnref10"><sup>10</sup></a></p>
 <ol style="list-style-type: lower-roman">
 <li><p><span class="math inline">\(\exists\)</span> at least one eigenvalue (one root of <span class="math inline">\(\chi_A\)</span>); in fact <span class="math inline">\(\exists\)</span> <span class="math inline">\(n\)</span> roots counted with multiplicity (FTA).</p></li>
-<li><p><span class="math inline">\(\operatorname{tr}(A) = A_{ii} = \sum_i \lambda_i\)</span>, sum of eigenvalues, by comparing terms of order <span class="math inline">\(n - 1\)</span> in <span class="math inline">\(t\)</span>.<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></p></li>
+<li><p><span class="math inline">\(\operatorname{tr}(A) = A_{ii} = \sum_i \lambda_i\)</span>, sum of eigenvalues, by comparing terms of order <span class="math inline">\(n - 1\)</span> in <span class="math inline">\(t\)</span>.<a href="#fn11" class="footnote-ref" id="fnref11"><sup>11</sup></a></p></li>
 <li><p><span class="math inline">\(\det A = \chi_A(0) = \Pi_i \lambda_i\)</span>, product of eigenvalues.</p></li>
 <li><p>If <span class="math inline">\(A\)</span> is diagonal:
 <span class="math display">\[\begin{align*}
@@ -378,22 +378,22 @@ A = \begin{pmatrix}
 <div id="definitions-4" class="section level3" number="6.2.1">
 <h3><span class="header-section-number">6.2.1</span> Definitions</h3>
 <div class="definition">
-<p><span id="def:unlabeled-div-4" class="definition"><strong>Definition 6.2  (Eigenspace) </strong></span>For an eigenvalue <span class="math inline">\(\lambda\)</span> of matrix <span class="math inline">\(A\)</span>, define the <em>eigenspace</em>
+<p><span id="def:unlabeled-div-95" class="definition"><strong>Definition 6.2  (Eigenspace) </strong></span>For an eigenvalue <span class="math inline">\(\lambda\)</span> of matrix <span class="math inline">\(A\)</span>, define the <em>eigenspace</em>
 <span class="math display">\[\begin{align*}
     E_\lambda = \{ \underline{v} : A \underline{v} = \lambda \underline{v}\} = \ker (A - \lambda I),
 \end{align*}\]</span> this is the subspace consisting of the eigenvectors and <span class="math inline">\(\underline{0}\)</span>.</p>
 </div>
 <div class="definition">
-<p><span id="def:unlabeled-div-5" class="definition"><strong>Definition 6.3  (Geometric multiplicity) </strong></span>The <em>geometric multiplicity</em>
+<p><span id="def:unlabeled-div-96" class="definition"><strong>Definition 6.3  (Geometric multiplicity) </strong></span>The <em>geometric multiplicity</em>
 <span class="math display">\[\begin{align*}
     m_\lambda = \dim E_\lambda = \operatorname{null}(A - \lambda I),
 \end{align*}\]</span> the number of linearly independent eigenvectors with eigenvalue <span class="math inline">\(\lambda\)</span>.</p>
 </div>
 <div class="definition">
-<p><span id="def:unlabeled-div-6" class="definition"><strong>Definition 6.4  (Algebraic multiplicity) </strong></span>The <em>algebraic multiplicity</em> <span class="math inline">\(M_\lambda\)</span> is the multiplicity of <span class="math inline">\(\lambda\)</span> as a root of <span class="math inline">\(\chi_A\)</span>, i.e. <span class="math inline">\(\chi_A(t) = (t-\lambda)^{M_\lambda} f(t)\)</span> (with <span class="math inline">\(f(\lambda) \neq 0\)</span>).</p>
+<p><span id="def:unlabeled-div-97" class="definition"><strong>Definition 6.4  (Algebraic multiplicity) </strong></span>The <em>algebraic multiplicity</em> <span class="math inline">\(M_\lambda\)</span> is the multiplicity of <span class="math inline">\(\lambda\)</span> as a root of <span class="math inline">\(\chi_A\)</span>, i.e. <span class="math inline">\(\chi_A(t) = (t-\lambda)^{M_\lambda} f(t)\)</span> (with <span class="math inline">\(f(\lambda) \neq 0\)</span>).</p>
 </div>
 <div class="proposition">
-<p><span id="prp:unlabeled-div-7" class="proposition"><strong>Proposition 6.1  </strong></span><span class="math display">\[\begin{align*}
+<p><span id="prp:unlabeled-div-98" class="proposition"><strong>Proposition 6.1  </strong></span><span class="math display">\[\begin{align*}
     M_\lambda \geq m_\lambda
 \end{align*}\]</span>
 Further discussion in 6.3.</p>
@@ -402,7 +402,7 @@ Further discussion in 6.3.</p>
 <div id="examples-2" class="section level3" number="6.2.2">
 <h3><span class="header-section-number">6.2.2</span> Examples</h3>
 <div class="example">
-<p><span id="exm:unlabeled-div-8" class="example"><strong>Example 6.4  </strong></span><br />
+<p><span id="exm:unlabeled-div-99" class="example"><strong>Example 6.4  </strong></span><br />
 </p>
 <ol style="list-style-type: lower-roman">
 <li><p><span class="math display">\[\begin{align*}
@@ -473,7 +473,7 @@ If the eigenvalues are distinct, <span class="math inline">\(\lambda_i \neq \lam
 </ol>
 </div>
 <div class="proof">
-<p><span id="unlabeled-div-9" class="proof"><em>Proof</em>. </span><br />
+<p><span id="unlabeled-div-100" class="proof"><em>Proof</em>. </span><br />
 </p>
 <ol style="list-style-type: lower-roman">
 <li><span class="math display">\[\begin{align*}
@@ -483,7 +483,7 @@ If the eigenvalues are distinct, <span class="math inline">\(\lambda_i \neq \lam
 </ol>
 <p>First, suppose the eigenvectors are linear dependent, so <span class="math inline">\(\exists\)</span> linear relations <span class="math inline">\(\underline{w} = 0\)</span> with a number of non-zero coefficients <span class="math inline">\(p \geq 2\)</span>.
 Pick a <span class="math inline">\(\underline{w}\)</span> for which <span class="math inline">\(p\)</span> is least and assume (wlog) <span class="math inline">\(\alpha_1 \neq 0\)</span>.
-Then <span class="math inline">\((A - \lambda_1 I) \underline{w} = \sum_{j&gt;1} \alpha_j (\lambda_j - \lambda_1) \underline{v}_j = \underline{0}\)</span><a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a> is a linear relation with <span class="math inline">\(p - 1\)</span> non-zero coefficients ⨳.</p>
+Then <span class="math inline">\((A - \lambda_1 I) \underline{w} = \sum_{j&gt;1} \alpha_j (\lambda_j - \lambda_1) \underline{v}_j = \underline{0}\)</span><a href="#fn12" class="footnote-ref" id="fnref12"><sup>12</sup></a> is a linear relation with <span class="math inline">\(p - 1\)</span> non-zero coefficients ⨳.</p>
 <p>Or secondly,
 <span class="math display">\[\begin{align*}
     \underline{w} = \underline{0} \implies &amp;\Pi_{j \neq k} (A - \lambda_j I) \underline{w} \text{ for some chosen } k \\
@@ -505,7 +505,7 @@ This follows by same arguments as in (i).</li>
 <div id="introduction-3" class="section level3" number="6.3.1">
 <h3><span class="header-section-number">6.3.1</span> Introduction</h3>
 <div class="proposition">
-<p><span id="prp:unlabeled-div-10" class="proposition"><strong>Proposition 6.3  </strong></span>For a <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(A\)</span> acting on <span class="math inline">\(V = \mathbb{R}^n\)</span> or <span class="math inline">\(\mathbb{C}^n\)</span>, the following conditions are equivalent:</p>
+<p><span id="prp:unlabeled-div-101" class="proposition"><strong>Proposition 6.3  </strong></span>For a <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(A\)</span> acting on <span class="math inline">\(V = \mathbb{R}^n\)</span> or <span class="math inline">\(\mathbb{C}^n\)</span>, the following conditions are equivalent:</p>
 <ol style="list-style-type: lower-roman">
 <li><p>There exists a basis of eigenvectors for <span class="math inline">\(V\)</span>, <span class="math inline">\(\underline{v}_1, \underline{v}_2, \dots, \underline{v}_n\)</span> with <span class="math inline">\(A \underline{v}_i = \lambda_i \underline{v}_i\)</span> (not summation notation and <span class="math inline">\(\lambda_i\)</span> need not be distinct).</p></li>
 <li><p>There exists an <span class="math inline">\(n \times n\)</span> invertible matrix <span class="math inline">\(P\)</span> with
@@ -520,7 +520,7 @@ P^{-1} A P = D = \begin{pmatrix}
 <p>If either of these conditions holds, <span class="math inline">\(A\)</span> is <em>diagonalisable</em>.</p>
 </div>
 <div class="proof">
-<p><span id="unlabeled-div-11" class="proof"><em>Proof</em>. </span>Note that for any matrix <span class="math inline">\(P\)</span>, <span class="math inline">\(AP\)</span> has columns <span class="math inline">\(A \underline{C}_i(P)\)</span> and <span class="math inline">\(PD\)</span> has columns <span class="math inline">\(\lambda_i \underline{C}_i(P)\)</span> for each <span class="math inline">\(i\)</span>.
+<p><span id="unlabeled-div-102" class="proof"><em>Proof</em>. </span>Note that for any matrix <span class="math inline">\(P\)</span>, <span class="math inline">\(AP\)</span> has columns <span class="math inline">\(A \underline{C}_i(P)\)</span> and <span class="math inline">\(PD\)</span> has columns <span class="math inline">\(\lambda_i \underline{C}_i(P)\)</span> for each <span class="math inline">\(i\)</span>.
 Then (i) and (ii) are related by
 <span class="math display">\[\begin{align*}
     \underline{v}_i &amp;= \underline{C}_i(P): \\
@@ -528,7 +528,7 @@ Then (i) and (ii) are related by
 \end{align*}\]</span></p>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-12" class="example"><strong>Example 6.5  </strong></span>Refer to <a href="eigenvalues-and-eigenvectors.html#exm:sone">6.3</a>:
+<p><span id="exm:unlabeled-div-103" class="example"><strong>Example 6.5  </strong></span>Refer to <a href="eigenvalues-and-eigenvectors.html#exm:sone">6.3</a>:
 Eigenvalues <span class="math inline">\(e^{\pm i \theta}\)</span> and eigenvectors <span class="math inline">\(\begin{pmatrix}1 \\ \mp i\end{pmatrix}\)</span>, the eigenvectors are linearly independent over <span class="math inline">\(\mathbb{C}\)</span>.
 <span class="math display">\[\begin{align*}
     P &amp;= \begin{pmatrix}
@@ -549,7 +549,7 @@ Eigenvalues <span class="math inline">\(e^{\pm i \theta}\)</span> and eigenvecto
 <div id="criteria-for-diagonalisability" class="section level3" number="6.3.2">
 <h3><span class="header-section-number">6.3.2</span> Criteria for Diagonalisability</h3>
 <div class="theorem">
-<p><span id="thm:unlabeled-div-13" class="theorem"><strong>Theorem 6.1  </strong></span>Let <span class="math inline">\(A\)</span> be a <span class="math inline">\(n \times n\)</span> matrix and <span class="math inline">\(\lambda_1, \dots, \lambda_r\)</span> all its distinct eigenvalues.</p>
+<p><span id="thm:unlabeled-div-104" class="theorem"><strong>Theorem 6.1  </strong></span>Let <span class="math inline">\(A\)</span> be a <span class="math inline">\(n \times n\)</span> matrix and <span class="math inline">\(\lambda_1, \dots, \lambda_r\)</span> all its distinct eigenvalues.</p>
 <ol style="list-style-type: lower-roman">
 <li><p>A necessary and sufficient condition:
 <span class="math inline">\(A\)</span> is diagonalisable iff
@@ -561,7 +561,7 @@ Eigenvalues <span class="math inline">\(e^{\pm i \theta}\)</span> and eigenvecto
 </ol>
 </div>
 <div class="proof">
-<p><span id="unlabeled-div-14" class="proof"><em>Proof</em>. </span>Use Proposition <a href="eigenvalues-and-eigenvectors.html#prp:sone">6.2</a></p>
+<p><span id="unlabeled-div-105" class="proof"><em>Proof</em>. </span>Use Proposition <a href="eigenvalues-and-eigenvectors.html#prp:sone">6.2</a></p>
 <ol start="2" style="list-style-type: lower-roman">
 <li>If <span class="math inline">\(r = n\)</span> we have <span class="math inline">\(n\)</span> distinct eigenvalues and hence <span class="math inline">\(n\)</span> linearly independent eigenvectors, which form a basis (for <span class="math inline">\(\mathbb{R}^n\)</span> or <span class="math inline">\(\mathbb{C}^n\)</span>).</li>
 </ol>
@@ -631,7 +631,7 @@ M_{-2} &amp;= 3 &gt; m_{-2} = 2 \\
 \end{align*}\]</span> for some invertible <span class="math inline">\(P\)</span> (<span class="math inline">\(n \times n\)</span>).
 This is an equivalence relation.</p>
 <div class="proposition">
-<p><span id="prp:unlabeled-div-15" class="proposition"><strong>Proposition 6.4  </strong></span>If <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are similar, then</p>
+<p><span id="prp:unlabeled-div-106" class="proposition"><strong>Proposition 6.4  </strong></span>If <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are similar, then</p>
 <ol style="list-style-type: lower-roman">
 <li><p><span class="math inline">\(B^r = P^{-1} A^r P\)</span> for <span class="math inline">\(r \geq 0\)</span></p></li>
 <li><p><span class="math inline">\(B^{-1} = P^{-1} A^{-1} P\)</span> (if either <span class="math inline">\(A\)</span> or <span class="math inline">\(B\)</span> is invertible, so is the other)</p></li>
@@ -641,7 +641,7 @@ This is an equivalence relation.</p>
 </ol>
 </div>
 <div class="proof">
-<p><span id="unlabeled-div-16" class="proof"><em>Proof</em>. </span><br />
+<p><span id="unlabeled-div-107" class="proof"><em>Proof</em>. </span><br />
 </p>
 <ol style="list-style-type: lower-roman">
 <li>is immediate.</li>
@@ -696,14 +696,14 @@ Recall: complex inner-product for <span class="math inline">\(\underline{v}, \un
     (A \underline{v})^\dagger \underline{w} &amp;= \underline{v}^\dagger (A \underline{w}) \ \forall \; \underline{v}, \underline{w} \in \mathbb{C}^n \\
 \end{align*}\]</span></p>
 <div class="proof">
-<p><span id="unlabeled-div-17" class="proof"><em>Proof</em>. </span><span class="math display">\[\begin{align*}
+<p><span id="unlabeled-div-108" class="proof"><em>Proof</em>. </span><span class="math display">\[\begin{align*}
     (A \underline{v})^\dagger \underline{w} &amp;= (\underline{v}^\dagger A^\dagger) \underline{w} \\
     &amp;= \underline{v}^\dagger A \underline{w} \\
     &amp;= \underline{v}^\dagger (A \underline{w})
 \end{align*}\]</span></p>
 </div>
 <div class="theorem">
-<p><span id="thm:unlabeled-div-18" class="theorem"><strong>Theorem 6.2  </strong></span>For a matrix <span class="math inline">\(A\)</span> (<span class="math inline">\(n \times n\)</span>) that is hermitian</p>
+<p><span id="thm:unlabeled-div-109" class="theorem"><strong>Theorem 6.2  </strong></span>For a matrix <span class="math inline">\(A\)</span> (<span class="math inline">\(n \times n\)</span>) that is hermitian</p>
 <ol style="list-style-type: lower-roman">
 <li><p>Every eigenvalue <span class="math inline">\(\lambda\)</span> is real</p></li>
 <li><p>Eigenvectors <span class="math inline">\(\underline{v}, \underline{w}\)</span> with distinct eigenvalues <span class="math inline">\(\lambda, \mu\)</span> respectively (<span class="math inline">\(\lambda \neq \mu\)</span>) are orthogonal
@@ -717,7 +717,7 @@ Recall: complex inner-product for <span class="math inline">\(\underline{v}, \un
 </ol>
 </div>
 <div class="proof">
-<p><span id="unlabeled-div-19" class="proof"><em>Proof</em>. </span><br />
+<p><span id="unlabeled-div-110" class="proof"><em>Proof</em>. </span><br />
 </p>
 <ol style="list-style-type: lower-roman">
 <li><p><span class="math display">\[\begin{align*}
@@ -742,7 +742,7 @@ Then <span class="math inline">\(A \underline{u} = \lambda \underline{u}\)</span
 <div id="unitary-and-orthogonal-diagonalisation" class="section level3" number="6.4.2">
 <h3><span class="header-section-number">6.4.2</span> Unitary and Orthogonal Diagonalisation</h3>
 <div class="theorem">
-<p><span id="thm:unlabeled-div-20" class="theorem"><strong>Theorem 6.3  </strong></span>Any <span class="math inline">\(n \times n\)</span> hermitian matrix <span class="math inline">\(A\)</span> is diagonalisable (as in <a href="eigenvalues-and-eigenvectors.html#introduction-3">Introduction</a>)</p>
+<p><span id="thm:unlabeled-div-111" class="theorem"><strong>Theorem 6.3  </strong></span>Any <span class="math inline">\(n \times n\)</span> hermitian matrix <span class="math inline">\(A\)</span> is diagonalisable (as in <a href="eigenvalues-and-eigenvectors.html#introduction-3">Introduction</a>)</p>
 <ol style="list-style-type: lower-roman">
 <li><p><span class="math inline">\(\exists\)</span> a basis of eigenvectors <span class="math inline">\(\underline{u}_1, \dots, \underline{u}_n \in \mathbb{C}^n\)</span> with <span class="math inline">\(A \underline{u}_i = \lambda_i \underline{u}_i\)</span>; equivalently</p></li>
 <li><p><span class="math inline">\(\exists \; n \times n\)</span> invertible matrix <span class="math inline">\(P\)</span> with <span class="math inline">\(P^{-1} A P = D = \begin{pmatrix}\lambda_1 &amp; &amp; \\ &amp; \ddots &amp; \\ &amp; &amp; \lambda_n\end{pmatrix}\)</span>; columns of <span class="math inline">\(P\)</span> are eigenvectors <span class="math inline">\(\underline{u}_i\)</span>.</p></li>
@@ -765,7 +765,7 @@ Let <span class="math inline">\(P = \frac{1}{\sqrt{2}} \begin{pmatrix}1 &amp; 1 
 <span class="math inline">\(\lambda_1 = \lambda_2 = -1, \lambda_3 = 2\)</span> and can choose
 <span class="math display">\[\begin{align*}
  \underline{u}_1 = \frac{1}{\sqrt{2}}  \begin{pmatrix}1 \\-1 \\0\end{pmatrix}, \underline{u}_2 = \frac{1}{\sqrt{6}} \begin{pmatrix}1 \\1 \\-2\end{pmatrix}, \underline{u}_3 = \frac{1}{\sqrt{3}} \begin{pmatrix}1 \\1 \\1\end{pmatrix}.
-\end{align*}\]</span><a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>
+\end{align*}\]</span><a href="#fn13" class="footnote-ref" id="fnref13"><sup>13</sup></a>
 Let <span class="math inline">\(P\)</span> be the matrix with columns <span class="math inline">\(\underline{u}_1, \underline{u}_2, \underline{u}_3\)</span> then <span class="math inline">\(P^T = P^{-1}\)</span> so <span class="math inline">\(P\)</span> is orthogonal and <span class="math inline">\(P^T A P = \begin{pmatrix}-1 &amp; 0 &amp; 0 \\0 &amp; -1 &amp; 0 \\0 &amp; 0 &amp; 2\end{pmatrix}\)</span>.</p></li>
 </ol>
 </div>
@@ -893,7 +893,7 @@ Recall the characteristic polynomial is <span class="math inline">\(\chi_A(t) = 
     A^{-1} &amp;= - \frac{1}{c_0} \left(c_1 I + \dots + c_n A^{n-1} \right)
 \end{align*}\]</span></p>
 <div class="proof">
-<p><span id="unlabeled-div-21" class="proof"><em>Proof</em>. </span><br />
+<p><span id="unlabeled-div-112" class="proof"><em>Proof</em>. </span><br />
 </p>
 <ol style="list-style-type: lower-roman">
 <li><p>General <span class="math inline">\(2 \times 2\)</span> matrix
@@ -915,11 +915,11 @@ PAP^{-1} &amp;= D = \begin{pmatrix}\lambda_1 &amp;  &amp;  \\ &amp; \ddots &amp;
 </div>
 <div class="footnotes">
 <hr />
-<ol start="1">
-<li id="fn1"><p><span class="math inline">\((-1)^n\)</span> factor appears as <span class="math inline">\(t_n\)</span> has coefficient <span class="math inline">\((-1)^n\)</span> in <span class="math inline">\(\chi_A(t)\)</span> as you only get <span class="math inline">\(t^n\)</span> from <span class="math inline">\((-t)^n\)</span>.<a href="eigenvalues-and-eigenvectors.html#fnref1" class="footnote-back">↩︎</a></p></li>
-<li id="fn2"><p>To get a <span class="math inline">\(t^{n - 1}\)</span> we need <span class="math inline">\(n - 1\)</span> terms on the diagonal, but the last term needs to be a different row and column to the rest by definition of the determinant, so it will be the remaining element on the diagonal.<a href="eigenvalues-and-eigenvectors.html#fnref2" class="footnote-back">↩︎</a></p></li>
-<li id="fn3"><p><span class="math inline">\(\alpha_1 (\lambda_1 - \lambda_1) = 0\)</span> so <span class="math inline">\(j &gt; 1\)</span>.<a href="eigenvalues-and-eigenvectors.html#fnref3" class="footnote-back">↩︎</a></p></li>
-<li id="fn4"><p>For symmetric <span class="math inline">\(3 \times 3\)</span> matrices, we may guess that <span class="math inline">\(\begin{pmatrix}1 &amp; 1 &amp; 1\end{pmatrix}^T\)</span> is an eigenvector.<a href="eigenvalues-and-eigenvectors.html#fnref4" class="footnote-back">↩︎</a></p></li>
+<ol start="10">
+<li id="fn10"><p><span class="math inline">\((-1)^n\)</span> factor appears as <span class="math inline">\(t_n\)</span> has coefficient <span class="math inline">\((-1)^n\)</span> in <span class="math inline">\(\chi_A(t)\)</span> as you only get <span class="math inline">\(t^n\)</span> from <span class="math inline">\((-t)^n\)</span>.<a href="eigenvalues-and-eigenvectors.html#fnref10" class="footnote-back">↩︎</a></p></li>
+<li id="fn11"><p>To get a <span class="math inline">\(t^{n - 1}\)</span> we need <span class="math inline">\(n - 1\)</span> terms on the diagonal, but the last term needs to be a different row and column to the rest by definition of the determinant, so it will be the remaining element on the diagonal.<a href="eigenvalues-and-eigenvectors.html#fnref11" class="footnote-back">↩︎</a></p></li>
+<li id="fn12"><p><span class="math inline">\(\alpha_1 (\lambda_1 - \lambda_1) = 0\)</span> so <span class="math inline">\(j &gt; 1\)</span>.<a href="eigenvalues-and-eigenvectors.html#fnref12" class="footnote-back">↩︎</a></p></li>
+<li id="fn13"><p>For symmetric <span class="math inline">\(3 \times 3\)</span> matrices, we may guess that <span class="math inline">\(\begin{pmatrix}1 &amp; 1 &amp; 1\end{pmatrix}^T\)</span> is an eigenvector.<a href="eigenvalues-and-eigenvectors.html#fnref13" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
