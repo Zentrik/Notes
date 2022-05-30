@@ -8,7 +8,7 @@ We will focus on the case where $\operatorname{Im}(X)$ is an \underline{interval
 \end{itemize} 
 
 \begin{definition}[Random Variable - Redefintion]
-    A \vocab{random variable} $X$ on $(\Omega, \mathcal{F}, \mathbb{P})$ is a function $X : \Omega \to \mathbb{R}$ s.t. ${X \leq x} \in \mathcal{F}$.
+    A \vocab{random variable} $X$ on $(\Omega, \mathcal{F}, \mathbb{P})$ is a function $X : \Omega \to \mathbb{R}$ s.t. $\{X \leq x\} \in \mathcal{F}$.
 \end{definition} 
 This is consistent with the previous definition when $\Omega$ is countable (or $\operatorname{Im}(X)$ is countable).
 
@@ -324,7 +324,7 @@ Goal: \begin{itemize}
     \begin{itemize}
         \item Let $X \sim \operatorname{Exp}(\lambda)$ and $Y = cX$.
         \begin{align*}
-            \mathbb{P}(Y \leq x) &= \mathbb{P}(X \leq \frac{x}{c}) \\
+            \mathbb{P}(Y \leq x) &= \mathbb{P}\left( X \leq \frac{x}{c} \right) \\
             &= 1 - e^{- \lambda \frac{x}{c}} \\
             &= 1 - e^{- \frac{\lambda}{c} x} - \text{\color{red} CDF of $\operatorname{Exp}\left( \frac{\lambda}{c} \right)$.}
         \end{align*} 
@@ -410,16 +410,16 @@ Goal: \begin{itemize}
 
 \begin{proof} ~
     \begin{enumerate}
-        \item Let $\mu + \sigma z$ so $g^{-1}(x) = \frac{x - \mu}{\sigma}$. \\
+        \item Let $g(x) = \mu + \sigma z$ so $g^{-1}(x) = \frac{x - \mu}{\sigma}$. \\
         Then $g(Z)$ has density 
         \begin{align*}
-            f_g(Z)(x) &= f_Z(g^{-1}(x)) \cdot \left|\frac{d}{dy}g^{-1}(y)\right| \ \text{ by \Cref{theorem:transrv}} \\
+            f_{g(Z)}(x) &= f_Z(g^{-1}(x)) \cdot \left|\frac{d}{dy}g^{-1}(y)\right| \ \text{ by \Cref{theorem:transrv}} \\
             &= \frac{1}{\sigma} f_Z \left( \frac{x - \mu}{\sigma} \right) \\
             &= \frac{1}{\sigma \sqrt{2 \pi}} e^{- \frac{(x - \mu)^2}{2 \sigma^2}}.
         \end{align*}
         \mathitem \begin{align*}
             F_{g(Z)} &= \mathbb{P}(g(Z) \leq x) \\
-            &= \mathbb{P}(Z \leq \frac{x - \mu}{(\sigma)}) \\
+            &= \mathbb{P}\left( Z \leq \frac{x - \mu}{\sigma} \right) \\
             &= \Phi \left( \frac{x - \mu}{\sigma} \right).
         \end{align*} 
         \item Use part (i) to get
@@ -594,7 +594,7 @@ Goal: convert to statement about densities
 \end{example} 
 
 \begin{theorem}
-    Let $X = (X_1, \dots, X_n)$ be a RV on $D \in \mathbb{R}^n$, $g : \mathbb{R}^n \to \mathbb{R}^n$ a well-behaved and $U = g(X) = (U_1, \dots, U_n)$.
+    Let $X = (X_1, \dots, X_n)$ be a RV on $D \in \mathbb{R}^n$, $g : \mathbb{R}^n \to \mathbb{R}^n$ well-behaved and $U = g(X) = (U_1, \dots, U_n)$.
     Assume the joint density $f_X(x)$ is continuous. \\
     Then the joint density \begin{align*}
         f_U(\bm{u}) &= f_X \left( g^{-1} (\bm{u}) \right) | J(\bm{u}) | 
@@ -732,6 +732,8 @@ pattern radius = 1pt}
 
 
 \end{tikzpicture}
+
+The support needs to be a rectangle as then the indicator function will split as a product.
 
 \subsection{Moment Generating Function}
 
