@@ -255,7 +255,7 @@ If $\underline{u} \cdot \underline{c} = 0$, try a particular solution by conside
     &= - |\underline{u}|^2 \underline{c}
 \end{align*} 
 
-Hence $\underline{a} = - \frac{1}{|\underline{u}|^2} (\underline{u} \wedge \underline{c})$ is a solutions. The general solution is \begin{align*}
+Hence $\underline{a} = - \frac{1}{|\underline{u}|^2} (\underline{u} \wedge \underline{c})$ is a solution. The general solution is \begin{align*}
     \underline{r} = \underline{a} + \lambda \underline{u}
 \end{align*} as $\underline{u} \wedge (\underline{a} + \lambda \underline{u}) = \underline{u} \wedge \underline{a}$
 

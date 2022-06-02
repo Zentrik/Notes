@@ -491,7 +491,7 @@ This is based on the following lemma
     \det (MN) &= \epsilon_{i_1 \dots i_n} (MN)_{i_1 1} \dots (MN)_{i_n n} \\ 
     &= \epsilon_{i_1 \dots i_n} M_{i_1 k_1} N_{k_1 1} \dots  M_{i_n k_n} N_{k_n n} \\ 
     &= \epsilon_{i_1 \dots i_n} M_{i_1 k_1} \dots  M_{i_n k_n} N_{k_1 1} \dots N_{k_n n} \\ 
-    &= (\det M)  \epsilon_{k_1 \dots k_n} N_{k_1 1} \dots N_{k_n n} \text{by lemma } \\
+    &= (\det M)  \epsilon_{k_1 \dots k_n} N_{k_1 1} \dots N_{k_n n} \text{ by lemma } \\
     &= (\det M) (\det N)
 \end{align*}  
 :::
