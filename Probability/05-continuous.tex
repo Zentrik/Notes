@@ -46,8 +46,8 @@ This is consistent with the previous definition when $\Omega$ is countable (or $
 
 \begin{proof}[Proof (Not Lectured)]
     \begin{align*}
-        \mathbb{P}(a<X\leq b) &= \mathbb{P}(\{a<X\}\cap \{X\leq b\}) \\
-        &=\mathbb{P}(X\leq b) - \mathbb{P}(\{X\leq b\}\cap \{X\leq a\}) \\
+        \mathbb{P}(a<X\leq b) &= \mathbb{P}\left( \{a<X\}\cap \{X\leq b\} \right) \\
+        &=\mathbb{P}(X\leq b) - \mathbb{P}\left( \{X\leq b\}\cap \{X\leq a\} \right) \\
         &=\mathbb{P}(X\leq b) - \mathbb{P}(X\leq a)
     \end{align*}
 \end{proof}
@@ -812,7 +812,7 @@ The support needs to be a rectangle as then the indicator function will split as
 
 \begin{definition}[Convergence in Distribution]
     Let $(X_n)_{n \geq 1}$ and $X$ be RVs.
-    $X_n$ \underline{converges to} $X$ \underline{in distribution}, $X_n \overset{d}{\to} X$, if $F_{X_n}(x) \to F_X(x)$ for all $x \in \mathbb{R}$ which are continuity points of $F_X$.
+    $X_n$ \emph{converges to} $X$ \emph{in distribution}, $X_n \overset{d}{\to} X$, if $F_{X_n}(x) \to F_X(x)$ for all $x \in \mathbb{R}$ which are continuity points of $F_X$.
 \end{definition} 
 
 \begin{example} \label{exm:conv1}

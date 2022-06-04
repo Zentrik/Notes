@@ -309,7 +309,7 @@ Consider $B \in \mathcal{F}$ with $\mathbb{P}(B) > 0,\ A \in \mathcal{F}$
 \begin{definition}[Conditional Probability] \label{def:condition}
     The \vocab{conditional probability} of $A$ given $B$ is $\mathbb{P}(A \mid B) = \frac{\mathbb{P}(A \cap B)}{\mathbb{P}(B)}$.
 \end{definition} 
-\color{blue} ``The probability of $A$ is we know $B$ happened". (e.g. revealing information in succession)
+\color{blue} ``The probability of $A$ if we know $B$ happened". (e.g. revealing information in succession)
 
 \begin{example}
     $A, B$ independent.
@@ -411,11 +411,17 @@ $\mathbb{P}(\bullet \mid B)$ is a function from $\mathcal{F} \to [0, 1]$ that sa
 \begin{theorem}[Bayes' Formula] \label{thm:bayes}
     Same setup as above
     \begin{align*}
-        \mathbb{P}(B_n \mid A) &= \frac{\mathbb{P}(A \cap B_n)}{\mathbb{P}(A)} \\
-        &= \frac{\mathbb{P}(A \mid B_n) \mathbb{P}(B_n)}{\sum_m \mathbb{P}(A \mid B_m) \mathbb{P}(B_m)}.
+        \mathbb{P}(B_n \mid A) &= \frac{\mathbb{P}(A \mid B_n) \mathbb{P}(B_n)}{\sum_m \mathbb{P}(A \mid B_m) \mathbb{P}(B_m)}.
     \end{align*} 
     Let $n = 2$: $\mathbb{P}(B \mid A) \mathbb{P}(A) = \mathbb{P}(A \mid B) \mathbb{P}(B) = \mathcolor{red}{\mathbb{P}(A \cap B)}$
 \end{theorem} 
+
+\begin{proof}
+    \begin{align*}
+        \mathbb{P}(B_n \mid A) &= \frac{\mathbb{P}(A \cap B_n)}{\mathbb{P}(A)} \\
+        &= \frac{\mathbb{P}(A \mid B_n) \mathbb{P}(B_n)}{\sum_m \mathbb{P}(A \mid B_m) \mathbb{P}(B_m)}.
+    \end{align*} 
+\end{proof} 
 
 \begin{example}[Lecture course]
     Consider a Lecture course which has $2 / 3$ of the lectures on weekdays and $1 / 3$ on weekends.
@@ -505,7 +511,7 @@ $\mathbb{P}(\bullet \mid B)$ is a function from $\mathcal{F} \to [0, 1]$ that sa
 \begin{aside}{Non Examinable}
     \emph{Special Case}: 
     \begin{itemize}
-        \item If all $\mathbb{P}(C_n)$ are equal then so are $\mathbb{P}(C_n \mid B)$. Note $\sum_n \mathbb{P}(C_n \mid B) = 1$.
+        \item If all $\mathbb{P}(C_n)$ are equal then so are $\mathbb{P}(C_n \mid B)$. Note $\sum_n \mathbb{P}(C_n \mid B) = 1$.\footnote{$\mathbb{P}(C_n \mid B) = \frac{\mathbb{P}(C_n \cap B)}{\mathbb{P}(B)} = \frac{\mathbb{P}(C_n)}{\mathbb{P}(B)}$.}
         \item If $\mathbb{P}(A \mid C_n)$ are all equal.
     \end{itemize} 
 
