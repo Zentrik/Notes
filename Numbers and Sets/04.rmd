@@ -615,7 +615,7 @@ In fact, this explains why we sometimes write $\mathbb{Z} / 5 \mathbb{Z}$ (the r
 
 ::: {.definition name="Quotient map"}
 The map \begin{align*}
-    q : &\to X / R \\
+    q : X &\to X / R \\
     x &\mapsto [x]
 \end{align*} is the *quotient map* (or *projection map*).
 :::
