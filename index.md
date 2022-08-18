@@ -2,9 +2,17 @@
 title: "Cambridge Maths Notes"
 ---
 
-## IA - 2021
+# IB - 2022
 
-### Michaelmas 
+## Easter - 2021
+
+[Optimisation](Optimisation\Optimisation.pdf) (Annotations)
+
+[Variational Principles](Variational%20Principles\VP.pdf) (Annotations)
+
+# IA - 2021
+
+## Michaelmas 
 
 [Numbers and Sets](Numbers%20and%20Sets/_book/index.html)
 
@@ -14,7 +22,7 @@ title: "Cambridge Maths Notes"
 
 [Differential Equations](Differential%20Equations/de.pdf) (Annotations)
 
-### Lent
+## Lent
 [Probability](Probability/probability.pdf)
 
 [Dynamics and Relativity](Dynamics%20and%20Relativity/dynrel.pdf) (Annotations)
@@ -30,6 +38,8 @@ title: "Cambridge Maths Notes"
 [Hasan Baig](http://mhb45.user.srcf.net/)
 
 [Zhiyuan Bai](https://zb260.user.srcf.net/notes/)
+
+[Xuanang Chen](http://xc329.user.srcf.net/)
 
 ### Summaries
 
