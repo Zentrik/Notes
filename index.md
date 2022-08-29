@@ -12,6 +12,13 @@ title: "Cambridge Maths Notes"
 
 # IA - 2021
 
+## Lent
+[Probability](Probability/probability.pdf)
+
+[Dynamics and Relativity](Dynamics%20and%20Relativity/dynrel.pdf) (Annotations)
+
+[Vector Calculus](Vector%20Calculus/vc.pdf) (Annotations)
+
 ## Michaelmas 
 
 [Numbers and Sets](Numbers%20and%20Sets/_book/index.html)
@@ -21,13 +28,6 @@ title: "Cambridge Maths Notes"
 [Groups](Groups/groups.pdf)
 
 [Differential Equations](Differential%20Equations/de.pdf) (Annotations)
-
-## Lent
-[Probability](Probability/probability.pdf)
-
-[Dynamics and Relativity](Dynamics%20and%20Relativity/dynrel.pdf) (Annotations)
-
-[Vector Calculus](Vector%20Calculus/vc.pdf) (Annotations)
 
 ## Other Recent IA Notes
 

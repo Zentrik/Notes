@@ -16,14 +16,18 @@
 \tikzset{external/system call={xelatex -fmt=../preamble.fmt \tikzexternalcheckshellescape -halt-on-error -interaction=batchmode -jobname "\image" "\texsource"}} % path is relative to file that includes preamble
 \tikzexternalize
 
-\hypersetup{
-  pdftitle={Part \npart\ - \ncourse},
-  pdfsubject={Cambridge Maths Notes: Part \npart\ - \ncourse},
-  pdfkeywords={Cambridge Mathematics Maths Math \npart\ \nterm\ \nyear\ \ncourse}
-}
+\providetoggle{DontSetTitleAuthorDate}
 
-\author{Based on lectures by \nlecturer}
-\date{\nterm\ \nyear}
-\title{Part \npart\ --- \ncourse}
+\nottoggle{DontSetTitleAuthorDate}{
+  \hypersetup{
+    pdftitle={Part \npart\ - \ncourse},
+    pdfsubject={Cambridge Maths Notes: Part \npart\ - \ncourse},
+    pdfkeywords={Cambridge Mathematics Maths Math \npart\ \nterm\ \nyear\ \ncourse}
+  }
+
+  \author{Based on lectures by \nlecturer}
+  \date{\nterm\ \nyear}
+  \title{Part \npart\ --- \ncourse}
+}{}
 
 \tikzsetexternalprefix{figtemp/}
