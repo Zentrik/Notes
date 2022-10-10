@@ -14,6 +14,7 @@
 % \includeonly{00-intro.tex}
 
 \author{Based on lectures by \nlecturer \ and notes by thirdsgames.co.uk}
+\numberwithin{equation}{section}
 
 % \setcounter{section}{-1}
 
@@ -138,7 +139,7 @@
             &= \frac{2L}{n\pi} (-1)^{n+1}
         \end{align*}
         So the sawtooth FS is
-        \begin{align}
+        \begin{align} \label{eq:1.6}
             f(x) &= \frac{2L}{\pi} \sum_{n=1}^{\infty} \frac{(-1)^{n+1}}{n} \sin \frac{n \pi x}{L} \\
             &= \frac{2L}{\pi} \left( \sin \frac{\pi x}{L} - \frac{1}{2} \sin \frac{2 \pi x}{L} + \frac{1}{3} \sin \frac{3 \pi x}{L} + \dots \right) \notag
         \end{align} 
@@ -182,9 +183,9 @@
         \end{align*}
         {\par \centering \includegraphics[height=5cm]{01-squarewave} \par}
         Then the Fourier series is
-        \begin{align*}
+        \begin{align} \label{eq:1.7}
             f(x) = 4 \sum_{m=1}^\infty \frac{\sin (2m-1)\pi x}{(2m-1)\pi}
-        \end{align*}
+        \end{align}
     \end{example}
 
     \begin{example}[$p = 1$]
@@ -197,9 +198,9 @@
         \end{align*}
         and defined as an odd function for $-1 \leq x < 0$.
         The Fourier series is\footnote{This is an important exercise you should do at home.}
-        \begin{align*}
+        \begin{align} \label{eq:1.8}
             f(x) = 2 \sum_{m=1}^\infty \frac{\sin n\pi \xi \sin n\pi x}{(n \pi)^2}
-        \end{align*}
+        \end{align}
         
         {\par \centering \includegraphics[height=5cm]{01-seesaw} \par}
 
@@ -215,9 +216,9 @@
         \end{align*}
         for $0 \leq x < 1$, and defined as an odd function for $-1 \leq x < 0$.
         We can show that
-        \begin{align*}
+        \begin{align}
             f(x) = 4\sum_{n=1}^\infty \frac{\sin(2m - 1)\pi x}{((2m-1)\pi)^3}
-        \end{align*}
+        \end{align}
         {\par \centering \includegraphics[height=5cm]{01-p2} \par}
     \end{example}
     \begin{example}[$p = 3$]
@@ -247,13 +248,13 @@
         If $f(x)$ is continuous and satisfies the Dirichlet conditions, and $f'(x)$ also satisfies the Dirichlet conditions, then $f'(x)$ can be found term by term by differentiating the Fourier series of $f(x)$.
     \end{theorem}
     \begin{example}
-        We can differentiate the see-saw function with $\xi = \frac{1}{2}$, even though the derivative is not continuous.
-        The result is an offset square wave, or by mapping $x \mapsto x + \frac{1}{2}$ we recover the original square wave.
+        We can differentiate the see-saw function, \cref{eq:1.8}, with $\xi = \frac{1}{2}$, even though the derivative is not continuous.
+        The result is an offset square wave, or by mapping $x \mapsto x + \frac{1}{2}$ we recover the original square wave, \cref{eq:1.7}.
     \end{example}
 
     \subsection{Parseval's theorem}
     Parseval's theorem relates the integral of the square of a function with the sum of the squares of the function's Fourier series coefficients.
-    \begin{theorem}
+    \begin{theorem}[Parseval's theorem]
         Suppose $f$ has Fourier coefficients $a_i, b_i$.
         Then
         \begin{align}
@@ -263,9 +264,9 @@
             & = L \qty[ \frac{1}{2} a_0^2 + \sum_{n=1}^\infty (a_n^2 + b_n^2) ]
         \end{align}
     \end{theorem}
-    \noindent This is also called the completeness relation: the left hand side is greater than or equal to the right hand side if any of the basis functions are missing.
+    \noindent This is also called the \textit{completeness relation}: the left hand side is greater than or equal to the right hand side if any of the basis functions are missing.
     \begin{example}
-        Let us apply Parseval's theorem to the sawtooth wave.
+        Let us apply Parseval's theorem to the sawtooth wave with FS \cref{eq:1.6}.
         \begin{align*}
             \int_{-L}^L [f(x)]^2 \dd{x} = \int_{-L}^L x^2 \dd{x} = \frac{2}{3}L^3
         \end{align*}
@@ -281,9 +282,6 @@
     \begin{note}
         Parseval's theorem for functions $\inner{f, f} = \norm{f}^2$ is equivalent to Pythagoras for vectors $\inner{v, v} = \norm{v}^2$.
     \end{note} 
-    \begin{remark}
-        Parseval's theorem for functions is equivalent to Pythagoras' theorem for vectors in $\mathbb R^n$: we can find the norm ($\norm{f}^2 = \inner{f, f}$) of a linear combination by computing the sum of the norms of the components.
-    \end{remark}
 
     \subsection{Half-range series}
     Consider $f(x)$ defined only on $0 \leq x < L$.
