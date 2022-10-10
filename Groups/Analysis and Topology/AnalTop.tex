@@ -1,0 +1,138 @@
+%&../preamble
+
+\def\npart {IB}
+\def\nterm {Michaelmas}
+\def\nyear {2022}
+\def\nlecturer {Dr P. Russell}
+\def\ncourse {Analysis and Topology}
+
+\input{../preamble-dynamic.tex}
+\newcommand{\norm}[1]{\left \lVert #1 \right \rVert}
+% \includeonly{00-intro.tex}
+
+% \setcounter{section}{-1}
+
+\begin{document}
+    \maketitle
+    \tableofcontents
+
+    \part{Generalizing continuity and convergence}
+    \section{Three Examples of Convergence}
+    \subsection{Convergence in $\mathbb{R}$}
+    Let $(x_n)$ be a sequence in $\mathbb{R}$ and $x \in \mathbb{R}$.
+    We say $(x_n)$ \textit{converges} to $x$ and write $x_n \to x$ if
+    \begin{align*}
+        \forall \; \epsilon > 0 \quad \exists \; N \quad \forall \; n \geq N \quad |x_n - x| < \epsilon.
+    \end{align*} 
+    Useful fact: $\forall \; a, b \in \mathbb{R} \ |a+b| \leq |a| + |b|$ (Triangle Inequality).
+
+    Bolzano-Weierstrass Theorem (BWT)
+    A bounded sequence in $\mathbb{R}$ must have a convergent subsequence (Proof by interval bisection).
+
+    Recall: A sequence $(x_n)$ in $\mathbb{R}$ is Cauchy if 
+    \begin{align*}
+        \forall \; \epsilon > 0 \quad \exists \; N \quad \forall \; m, n \geq N \quad |x_m - x_n| < \epsilon.
+    \end{align*} 
+
+    Easy exercise Convergent $\implies$ Cauchy
+
+    General Principle of Convergence (GPC)
+    Any Cauchy sequence in $\mathbb{R}$ converges.
+
+    \begin{proof}[Outline]
+        If $(x_n)$ Cauchy then $(x_n)$ bounded so by BWT has a convergent subsequence, say $x_{n_j} \to x$.
+        But as $(x_n)$ Cauchy, $x_n \to x$.
+    \end{proof} 
+
+    \subsection{Convergence in $\mathbb{R}^2$}
+    \begin{remark}
+        This all works in $\mathbb{R}^n$
+    \end{remark} 
+
+    Let $(z_n)$ be a sequence in $\mathbb{R}^2$ and $z \in \mathbb{R}^2$.
+    What should $z_n \to z$ mean?
+
+    In $\mathbb{R}$: ``As $n$ gets large, $z_n$ gets arbitrarily close to $z$.''
+
+    What does `close' mean in $\mathbb{R}^2$?
+
+    In $\mathbb{R}$: $a, b$ close if $|a - b|$ small.
+    In $\mathbb{R}^2$: Replace $|\cdot|$ by $\left \lVert \cdot \right \rVert $
+
+    Recall: If $z = (x, y)$ then $\left \lVert z \right \rVert = \sqrt{x^2 + y^2}$.
+
+    Triangle Inequality If $a, b \in \mathbb{R}^2$ then $\left \lVert a + b \right \rVert \leq \left \lVert a \right \rVert + \left \lVert b \right \rVert$.
+
+    \begin{definition}
+        Let $(z_n)$ be a sequence in $\mathbb{R}^2$ and $z \in \mathbb{R}^2$.
+        We say $(z_n)$ \vocab{converges} to $z$ and .. $z_n \to z$ if $\forall \; \epsilon > 0 \ \exists \; N \ \forall \; n \geq N \ \left \lVert z_n - z \right \rVert < \epsilon$. 
+
+        Equivalently, $z_n \to z$ iff $\left \lVert z_n - z \right \rVert \to 0$ (convergence in $\mathbb{R}$).
+    \end{definition} 
+
+    \begin{example}
+        Let $(z_n), (w_n)$ be sequences in $\mathbb{R}^2$ with $z_n \to z, w_n \to w$. 
+        Then $z_n + w_n \to z + w$.
+    \end{example} 
+
+    \begin{proof}
+        \begin{align*}
+            \left \lVert (z_n + w_n) - (z + w) \right \rVert &\leq \left \lVert z_n - z \right \rVert + \left \lVert w_n - w \right \rVert \\
+            &\to 0 + 0 = 0 \ \text{(by results from IA)}.
+        \end{align*} 
+    \end{proof} 
+
+    In fact, given convergence in $\mathbb{R}$, convergence in $\mathbb{R}^2$ is easy:
+    \begin{proposition} \label{prop:one}
+        Let $(z_n)$ be a sequence in $\mathbb{R}^2$ and let $z \in \mathbb{R}^2$.
+        Write $z_n = (x_n, y_n)$ and $z = (x, y)$.
+        Then $z_n \to z$ iff $x_n \to x$ and $y_n \to y$.
+    \end{proposition} 
+
+    \begin{proof}
+        ($\implies$): $|x_n - x|, |y_n - y| \leq \norm{z_n - z}$.
+        So if $\norm{z_n - z} \to 0$ then $|x_n - x| \to 0$ and $|y_n - y| \to 0$.
+
+        ($\Longleftarrow$): If $|x_n - x| \to 0$ and $|y_n - y| \to 0$ then $\norm{z_n - z} = \sqrt{(x_n - x)^2 + (y_n - y)^2} \to 0$ by results in $\mathbb{R}$.
+    \end{proof} 
+
+    \begin{definition}[Bounded Sequence]
+        A sequence $(z_n)$ in $\mathbb{R}^2$ is \vocab{bounded} if $\exists \; M \in \mathbb{R}$ s.t. $\forall \; n \ \norm{z_n} \leq M$.
+    \end{definition} 
+
+    \begin{theorem}[BWT in $\mathbb{R}^2$]
+        A bounded sequence in $\mathbb{R}^2$ must have a convergent subsequence.
+    \end{theorem} 
+
+    \begin{theorem}[GPC for $\mathbb{R}^2$]
+        Any Cauchy sequence in $\mathbb{R}^2$ converges.
+    \end{theorem} 
+
+    \begin{proof}
+        Let $(z_n)$ be a Cauchy sequence in $\mathbb{R}^2$.
+        Write $z_n = (x_n, y_n)$.
+        For all $m, n, |x_m - x_n| \leq \norm{z_m - z_n}$ so $(x_n)$ is a Cauchy sequence in $\mathbb{R}$, so converges by GPC.
+        Similarly, $(y_n)$ converges in $\mathbb{R}$.
+        So by \ref{prop:one}, $(z_n)$ converges.
+    \end{proof} 
+
+    \underline{Thought for the day} What about continuity?
+    Let $f: \mathbb{R}^2 \to \mathbb{R}$.
+    What does it mean for $f$ to be continuous?
+    (Simple modification of defn for $\mathbb{R} \to \mathbb{R}$).
+
+    What can we do with it?
+
+    Big theorem in IA: If $f: \mathbb{R} \to \mathbb{R}$ is a continuous function on a closed bounded interval then $f$ is bounded and attains its bounds.
+
+    Is there a similar theorem for $\mathbb{R}^2 \to \mathbb{R}$.
+    What do we replace `closed bounded interval' by?
+    We proved the theorem using BWT.
+    Why did it work?
+    Why did we need a closed bounded interval to make it work?
+    What can we do in $\mathbb{R}^2$?
+
+    \section{Metric Spaces}
+    \section{Topological Spaces}
+    \part{Generalizing differentiation}
+\end{document}

@@ -4,6 +4,18 @@ title: "Cambridge Maths Notes"
 
 # IB - 2022
 
+## Michaelmas - 2022
+
+[Analysis and Topology](Analysis%20and%20Topology\AnalTop.pdf)
+
+[Linear Algebra](Linear%20Algebra\LA.pdf) (Annotations)
+
+[Markov Chains](Markov%20Chains\markov.pdf)
+
+[Methods](Methods\Methods.pdf)
+
+[Quantum Mechanics](Quantum%20Mechanics\QM.pdf) (Annotations)
+
 ## Easter - 2021
 
 [Optimisation](Optimisation\Optimisation.pdf) (Annotations)
