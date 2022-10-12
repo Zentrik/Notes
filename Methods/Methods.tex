@@ -216,7 +216,7 @@
         \end{align*}
         for $0 \leq x < 1$, and defined as an odd function for $-1 \leq x < 0$.
         We can show that
-        \begin{align}
+        \begin{align} \label{eq:1.9}
             f(x) = 4\sum_{n=1}^\infty \frac{\sin(2m - 1)\pi x}{((2m-1)\pi)^3}
         \end{align}
         {\par \centering \includegraphics[height=5cm]{01-p2} \par}
@@ -261,7 +261,7 @@
             \int_0^{2L} [f(x)]^2 \dd{x} & = \int_0^{2L} \qty[ \frac{1}{2}a_0 + \sum_{n=1}^\infty a_n \cos \frac{n \pi x}{L} + \sum_{n=1}^\infty b_n \sin \frac{n\pi x}{L} ]^2 \dd{x} \notag \\
             \intertext{We can remove cross terms, since the basis functions are orthogonal. \cref{eq:1.1,eq:1.2,eq:1.3}}
             & = \int_0^{2L} \qty[ \frac{1}{4} a_0^2 + \sum_{n=1}^\infty a_n^2 \cos^2 \frac{n\pi x}{L} + \sum_{n=1}^\infty b_n^2 \sin^2 \frac{n\pi x}{L} ] \dd{x} \notag \\
-            & = L \qty[ \frac{1}{2} a_0^2 + \sum_{n=1}^\infty (a_n^2 + b_n^2) ]
+            & = L \qty[ \frac{1}{2} a_0^2 + \sum_{n=1}^\infty (a_n^2 + b_n^2) ] \label{eq:1.10}
         \end{align}
     \end{theorem}
     \noindent This is also called the \textit{completeness relation}: the left hand side is greater than or equal to the right hand side if any of the basis functions are missing.
@@ -285,13 +285,13 @@
 
     \subsection{Half-range series}
     Consider $f(x)$ defined only on $0 \leq x < L$.
-    We can extend the range of $f$ to be the full range $-1 \leq x < L$ in two simple ways:
+    We can extend the range of $f$ to be the full range $-L \leq x < L$ in two simple ways:
     \begin{enumerate}
         \item require $f$ to be odd, so $f(-x) = -f(x)$.
-            Hence, $a_n = 0$ and
-            \begin{align*}
+            Hence, $a_n = 0$ (as $\cos$ is even) and
+            \begin{align} \label{eq:1.11}
                 b_n = \frac{2}{L} \int_0^L f(x) \sin \frac{n \pi x}{L} \dd{x}
-            \end{align*}
+            \end{align}
             So
             \begin{align*}
                 f(x) = \sum_{n=1}^\infty b_n \sin \frac{n\pi x}{L}
@@ -299,12 +299,12 @@
             which is called a Fourier sine series.
         \item require $f$ to be even, so $f(-x) = f(x)$.
             In this case, $b_n = 0$ and
-            \begin{align*}
+            \begin{align} \label{eq:1.12}
                 a_n = \frac{2}{L} \int_0^L f(x) \cos \frac{n \pi x}{L} \dd{x}
-            \end{align*}
-            and
+            \end{align}
+            and so
             \begin{align*}
-                So f(x) = \frac{1}{2}a_0 + \sum_{n=1}^\infty a_n \cos \frac{n\pi x}{L}
+                f(x) = \frac{1}{2}a_0 + \sum_{n=1}^\infty a_n \cos \frac{n\pi x}{L}
             \end{align*}
             which is a Fourier cosine series.
     \end{enumerate}
@@ -312,28 +312,30 @@
     \subsection{Complex representation of Fourier series}
     Recall that
     \begin{align*}
-        \cos \frac{n \pi x}{L} & = \frac{1}{2}\qty(e^{i n \pi x / L} + e^{-i n \pi x / L}); \\
-        \sin \frac{n \pi x}{L} & = \frac{1}{2i}\qty(e^{i n \pi x / L} - e^{-i n \pi x / L})
+        \cos \frac{n \pi x}{L} &= \frac{1}{2}\qty(e^{i n \pi x / L} + e^{-i n \pi x / L}); \\
+        \sin \frac{n \pi x}{L} &= \frac{1}{2i}\qty(e^{i n \pi x / L} - e^{-i n \pi x / L})
     \end{align*}
     Therefore, a Fourier series can be written as
-    \begin{align*}
-        f(x) & = \frac{1}{2} a_0 + \frac{1}{2} \sum_{n=1}^\infty \qty[ (a_n - i b_n) e^{i n \pi x / L} + (a_n + i b_n) e^{-i n \pi x / L} ] \\
-            & = \sum_{m=-\infty}^\infty c_m e^{i m \pi x / L}
-    \end{align*}
+    \begin{align}
+        f(x) &= \frac{1}{2} a_0 + \frac{1}{2} \sum_{n=1}^\infty \qty[ (a_n - i b_n) e^{i n \pi x / L} + (a_n + i b_n) e^{-i n \pi x / L} ] \notag \\
+        &= \sum_{m=-\infty}^\infty c_m e^{i m \pi x / L} \label{eq:1.13}
+    \end{align}
     where for $m > 0$ we have $m=n, c_m = \frac{1}{2}(a_n - ib_n)$, and for $m < 0$ we have $n = -m, c_m = \frac{1}{2}(a_{-m} + ib_{-m})$, and where $m = 0$ we have $c_0 = \frac{1}{2} a_0$.
     In particular,
-    \begin{align*}
+    \begin{align} \label{eq:1.14}
         c_m = \frac{1}{2L} \int_{-L}^L f(x) e^{-i m \pi x / L} \dd{x}
-    \end{align*}
+    \end{align}
     where the negative sign comes from the complex conjugate.
     This is because, for complex-valued $f, g$, we have
-    \begin{align*}
-        \inner{f,g} = \int_{-L}^L f^\star g \dd{x}
-    \end{align*}
+    \begin{definition}[Complex inner product] ~\vspace*{-1.5\baselineskip}
+        \begin{align*}
+            \inner{f,g} = \int_{-L}^L f^\star\footnote{$f^\star$ is the complex conjugate of $f$.} g \dd{x}
+        \end{align*}
+    \end{definition} 
     The orthogonality conditions are
-    \begin{align*}
+    \begin{align} \label{eq:1.15}
         \int_{-L}^L e^{-i m \pi x / L} e^{i n \pi x / L} \dd{x} = 2L \delta_{mn}
-    \end{align*}
+    \end{align}
     Parseval's theorem now states
     \begin{align*}
         \int_{-L}^L f^\star(x) f(x) \dd{x} = \int_{-L}^L \abs{f(x)}^2 \dd{x} = 2L \sum_{m=-\infty}^\infty \abs{c_m}^2
@@ -342,60 +344,67 @@
     \subsection{Self-adjoint matrices}
     \textit{Much of this section is a recap of IA Vectors and Matrices.}
     Suppose that $u, v \in \mathbb C^N$ with inner product
-    \begin{align*}
+    \begin{align} \label{eq:1.16}
         \inner{u,v} = u^\dagger v
-    \end{align*}
-    The $N \times N$ matrix $A$ is \textit{self-adjoint}, or \textit{Hermitian}, if
-    \begin{align*}
-        \forall u,v \in \mathbb C^N, \inner{Au, v} = \inner{u, Av} \iff A^\dagger = A
-    \end{align*}
+    \end{align}
+    \begin{definition}[Hermitian matrix] 
+        The $N \times N$ matrix $A$ is \textit{self-adjoint}, or \textit{Hermitian}, if
+        \begin{align*}
+            \forall u,v \in \mathbb C^N, \inner{Au, v} = \inner{u, Av} \iff A^\dagger = A
+        \end{align*}
+    \end{definition} 
     The eigenvalues $\lambda_n$ and eigenvectors $v_n$ satisfy
-    \begin{align*}
+    \begin{align} \label{eq:1.17}
         A v_n = \lambda_n v_n
-    \end{align*}
+    \end{align}
     They have the following properties:
     \begin{enumerate}
         \item $\lambda_n^\star = \lambda_n$;
         \item $\lambda_n \neq \lambda_m \implies \inner{ v_n, v_m } = 0$;
         \item we can create an orthonormal basis from the eigenvectors.
     \end{enumerate}
-    Given $b \in \mathbb C^n$, we can solve for $x$ in the general matrix equation $Ax = b$ by expressing $b$ in terms of the eigenvector basis:
+    Given $b \in \mathbb C^n$, we can solve for $x$ in the general matrix equation 
+    \begin{align}
+        Ax = b \label{eq:1.18}
+    \end{align}
+    Express $b$ in terms of the eigenvector basis:
     \begin{align*}
-        b = \sum_{n=1}^N b_n v_n
+        b = \sum_{n=1}^N b_n v_n \notag
     \end{align*}
     We seek a solution of the form
     \begin{align*}
         x = \sum_{n=1}^N c_n v_n
     \end{align*}
     At this point, the $b_n$ are known and the $c_n$ are our target.
-    Substituting into the matrix equation, orthogonality of basis vectors gives
+    Substituting into the matrix equation \cref{eq:1.18}, orthogonality of basis vectors gives
     \begin{align*}
-        A \sum_{n=1}^N c_n v_n         & = \sum_{n=1}^N b_n v_n  \\
-        \sum_{n=1}^N c_n \lambda_n v_n & = \sum_{n=1}^N b_n v_n  \\
-        c_n \lambda_n                  & = b_n                   \\
-        c_n                            & = \frac{b_n}{\lambda_n} \\
+        A \sum_{n=1}^N c_n v_n &= \sum_{n=1}^N b_n v_n \\
+        \sum_{n=1}^N c_n \lambda_n v_n &= \sum_{n=1}^N b_n v_n
+        \intertext{As the eigenvector basis is orthogonal we can equate coefficients}
+        c_n \lambda_n &= b_n \\
+        c_n &= \frac{b_n}{\lambda_n}
     \end{align*}
     Therefore,
-    \begin{align*}
+    \begin{align} \label{eq:1.19}
         x = \sum_{n=1}^N \frac{b_n}{\lambda_n} v_n
-    \end{align*}
+    \end{align}
     provided $\lambda_n \neq 0$, or equivalently, the matrix is invertible.
 
     \subsection{Solving inhomogeneous ODEs with Fourier series}
-    We wish to find $y(x)$ given a source term $f(x)$ for the general differential equation
-    \begin{align*}
+    We wish to find $y(x)$ given a driving/ source term $f(x)$ for the general differential equation
+    \begin{align} \label{eq:1.20}
         \mathcal L y \equiv -\dv[2]{y}{x} = f(x)
-    \end{align*}
+    \end{align}
     with boundary conditions $y(0) = y(L) = 0$.
     The related eigenvalue problem is
     \begin{align*}
         \mathcal L y_n = \lambda_n y_n,\quad y_n(0) = y_n(L) = 0
     \end{align*}
     which has solutions
-    \begin{align*}
-        y_n(x) = \sin \frac{n \pi x}{L}, \lambda_n = \qty(\frac{n\pi}{L})^2
-    \end{align*}
-    We can show that this is a self-adjoint linear operator with orthogonal eigenfunctions.
+    \begin{align} \label{eq:1.21}
+        y_n(x) = \sin \frac{n \pi x}{L},\ \lambda_n = \qty(\frac{n\pi}{L})^2
+    \end{align}
+    We can show that this is a self-adjoint linear operator\footnote{https://math.stackexchange.com/questions/4356100/why-is-the-second-derivative-operator-self-adjoint} with orthogonal eigenfunctions.
     We seek solutions of the form of a half-range sine series.
     Consider
     \begin{align*}
@@ -409,31 +418,32 @@
     \begin{align*}
         b_n = \frac{2}{L} \int_0^L f(x) \sin \frac{n \pi x}{L} \dd{x}
     \end{align*}
-    Substituting, we have
+    Substituting into \cref{eq:1.20}, we have
     \begin{align*}
-        \mathcal L y = -\dv[2]{x} \qty(\sum_n c_n \sin \frac{n \pi x}{L}) = \sum_n c_n \qty(\frac{n\pi}{L})^2 \sin \frac{n \pi x}{L} = \sum_n b_n \sin \frac{n \pi x}{L}
+        \mathcal L y = -\dv[2]{x} \qty(\sum_n c_n \sin \frac{n \pi x}{L}) &= \sum_n c_n \qty(\frac{n\pi}{L})^2 \sin \frac{n \pi x}{L} \\
+        \text{So } \sum_n c_n \qty(\frac{n\pi}{L})^2 \sin \frac{n \pi x}{L} &= \sum_n b_n \sin \frac{n \pi x}{L}
     \end{align*}
-    By orthogonality,
+    By orthogonality \cref{eq:1.1},
     \begin{align*}
         c_n \qty(\frac{n \pi}{L})^2 = b_n \implies c_n = \qty(\frac{L}{n \pi})^2 b_n
     \end{align*}
     Therefore the solution is
-    \begin{align*}
+    \begin{align} \label{eq:1.22}
         y(x) = \sum_n \qty(\frac{L}{n \pi})^2 b_n \sin \frac{n \pi x}{L} = \sum_n \frac{b_n}{\lambda_n} y_n
-    \end{align*}
+    \end{align}
     which is equivalent to the solution we found for self-adjoint matrices for which the eigenvalues and eigenvectors are known.
-    \begin{example}
+    \begin{example}[Odd square wave]
         Consider an odd square wave with $L = 1$, so $f(x) = 1$ from $0 \leq x < 1$.
         \begin{align*}
-            f(x) = 4 \sum_m \frac{\sin(2m-1)\pi x}{(2m-1)\pi}
+            f(x) = 4 \sum_m \frac{\sin(2m-1)\pi x}{(2m-1)\pi} \text{ by \cref{eq:1.7}}
         \end{align*}
-        Then the solution to $\mathcal L y = f$ should be (with odd $n = 2m-1$)
+        Then the solution to $\mathcal L y = f$ \cref{eq:1.22} should be (with odd $n = 2m-1$)
         \begin{align*}
             y(x) = \sum_n \frac{b_n}{\lambda_n} y_n = 4 \sum_n \frac{\sin (2m-1) \pi x}{((2m - 1) \pi)^3}
         \end{align*}
         This is exactly the Fourier series for
         \begin{align*}
-            y(x) = \frac{1}{2}x(1-x)
+            y(x) = \frac{1}{2}x(1-x) \text{ by \cref{eq:1.9}}
         \end{align*}
         so this $y$ is the solution to the differential equation.
         We can in fact integrate $\mathcal L y = 1$ directly with the boundary conditions to verify the solution.

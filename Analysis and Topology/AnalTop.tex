@@ -319,6 +319,152 @@
         \end{align*} 
     \end{proof} 
 
+    What about differentiation?
+    Here even uniform convergence isn't enough.
+
+    \begin{example}
+        $f_n : (-1, 1) \to \mathbb{R}$, each $f_n$ differentiable, $f_n \to f$ uniformly, $f$ not diff.
+
+        Let $f(x) = |x|$ which is not differentiable at $0$.
+        {\par \centering \includegraphics[height=5cm]{01-modx} \par}
+
+        \begin{align*}
+            f_n &= \begin{cases}
+                |x| & |x| \geq \frac{1}{n} \\
+                ax^2 + bx + c & |x| < \frac{1}{n}
+            \end{cases}.
+        \end{align*} 
+        We need $a(\frac{1}{n})^2 + \frac{b}{n} + c = \frac{1}{n}$ for continuity.
+        Thus $b = 0$ and $c = \frac{1}{n} - \frac{a}{n^2}$.
+
+        Also need $2a \frac{1}{n} + b = 1$ and $2a (- \frac{1}{n}) = -1$ for differentiability so take $a = \frac{n}{2}$, $c = \frac{1}{n} - \frac{1}{2n} = \frac{1}{2n}$.
+
+        If $|x| \geq \frac{1}{n}$ then $|f_n(x) - f(x)| = 0$.
+        If $|x| < \frac{1}{n}$:
+        \begin{align*}
+            |f_n(x) - f(x)| &= \left| \frac{n}{2} x^2 + \frac{1}{2n} - |x| \right| \\
+            &\leq \frac{n}{2} x^2 + \frac{1}{2n} + |x| \\
+            &\leq \frac{n}{2} (\frac{1}{n})^2 + \frac{1}{2n} + \frac{1}{n} \\
+            &= \frac{1}{2n} + \frac{1}{2n} + \frac{1}{n} \\
+            &= \frac{2}{n}
+        \end{align*} 
+        So $\sup_{x \in (-1, 1)} |f_n(x) - f(x)| \leq \frac{2}{n} \to 0$ as $n \to \infty$.
+        So $f_n \to f$ uniformly.
+    \end{example} 
+
+    If fact we need uniform convergence of the derivatives.
+
+    \begin{theorem}
+        Let $f_n : (u, v) \to \mathbb{R}$ ($n \geq 1$) with $f_n \to f : (u, v) \to \mathbb{R}$ pointwise.
+        Suppose further each $f_n$ is continuously differentiable and that $f_n' \to g : (u, v) \to \mathbb{R}$ uniformly.
+        Then $f$ is differentiable with $f' = g$.
+    \end{theorem} 
+
+    \begin{proof}
+        Fix $a \in (u, v)$.
+        Let $x \in (u, v)$, by FTC we have each $f_n'$ is integrable over $[a, x]$ and $\int_{a}^{x} f_n' = f_n(x) - f_n(a)$.
+        But $f_n' \to g$ uniformly so by thm 5 $g$ is integrable over $[a, x]$ and $\int_{a}^{x} g = \lim_{n \to \infty} \int_{a}^{x} f_n' = f(x) - f(a)$.
+        So we have shown that for all $x \in (u, v)$
+        \begin{align*}
+            f(x) &= f(a) + \int_a^x g.
+        \end{align*} 
+
+        By thm 4, $g$ is cts so by FTC, $f$ is differentiable with $f' = g$.
+    \end{proof} 
+
+    \begin{remark}
+        It would have sufficed to assume $f_n(x) \to f(x)$ for a single value of $x$ rather than $f_n \to f$ pointwise.
+    \end{remark} 
+
+    GPC?
+
+    \begin{definition}[Uniform Cauchy]
+        Let $X \subset \mathbb{R}$ and let $f_n : X \to \mathbb{R}$ for each $n \geq 1$.
+        We say $f_n)$ is \vocab{uniformly Cauchy} if $\forall \; \epsilon > 0 \ \exists \; N \ \forall \; m, n \geq N \ \forall \; x \in X \ |f_m(x) - f_n(x)| < \epsilon$
+    \end{definition} 
+
+    exercise: uniformly convergence $\implies$ uniformly Cauchy.
+
+    \begin{theorem}[General principle of Uniform Convergence (GPUC)]
+        Let $(f_n)$ be a uniformly Cauchy sequence of functions $X \to \mathbb{R}$ ($X \subset \mathbb{R}$).
+        Then $(f_n)$ is uniformly convergent.
+    \end{theorem} 
+
+    \begin{proof}
+        Let $x \in X$.
+        Let $\epsilon > 0$.
+        Then $\exists \; N \ \forall \; m,n \geq N \ \forall \; y \in X \ |f_m(y) - f_n(y)| < \epsilon$.
+        In particular, $\forall \; m, n \geq N \ |f_m(x) - f_n(x)| < \epsilon$.
+        So $(f_n(x))$ is a Cauchy sequence in $\mathbb{R}$ so by GPC it converges, say $f_n(x) \to f(x)$ as $n \to \infty$. 
+
+        We have now constructed $f : X \to \mathbb{R}$ s.t. $f_n \to f$ pointwise. \\
+        Let $\epsilon > 0$.
+        Then we can find a $N$ s.t. $\forall \; m, n \geq N \ \forall \; y \in X \ |f_m(y) - f_n(y)| < \epsilon$.
+        Fix $y \in X$, keep $m \geq N$ fixed and let $n \to \infty$: $|f_m(y) - f(y)| \leq \epsilon$.
+        So we have shown that $\forall \; m \geq N,\ |f_m(y) - f(y)| < \epsilon$.
+
+        But $y$ was arbitrary so $\forall \; x \in X \ \forall \; m \geq N \ |f_m(x) - f(x)| \leq \epsilon$.
+        That is $f_n \to f$ uniformly.
+    \end{proof} 
+
+    BW?
+
+    \begin{definition}[Pointwise bounded]
+        Let $X \subset \mathbb{R}$ and let $f_n : X \to \mathbb{R}$ for each $n \geq 1$.
+        We say $(f_n)$ is \vocab{pointwise bounded} if $\forall \; x \ \exists \; M \ \forall \; n \ |f_n(x)| \leq M$.
+    \end{definition} 
+
+    \begin{definition}[Uniformly bounded]
+        Let $X \subset \mathbb{R}$ and let $f_n : X \to \mathbb{R}$ for each $n \geq 1$.
+        We say $(f_n)$ is \vocab{uniformly bounded} if $\exists \; M \ \forall \; x \ \forall \; n \ |f_n(x)| \leq M$.\footnote{Again we have just swapped ... as in convergence.}
+    \end{definition} 
+    
+    What would uniform BW say?
+    `If $(f_n)$ is a uniformly bounded sequence of functions that it has a uniformly convergent subsequence'.
+    But this is \underline{not} true.
+
+    \begin{example}[Counterexample of BW] ~\vspace*{-1.5\baselineskip}
+        \begin{align*}
+            f_n : \mathbb{R} &\to \mathbb{R} \\
+            f_n(x) &= \begin{cases}
+                1 & x = n \\
+                0 & x \neq n.
+            \end{cases}
+        \end{align*} 
+        Obviously $(f_n)$ uniformly bounded (by 1).
+        However, if $m \neq n$ then $f_m(m) = 1$ and $f_n(m) = 0$ so $|f_m(m) - f_n(m)| = 1$ so no subsequence can be uniformly Cauchy so no subsequence can be uniformly convergent.
+    \end{example} 
+
+    \underline{Application to power series}
+    Recall that if $\sum a_n x^n$ is a real power series with r.o.c $R > 0$ then we can differentiate/ integrate it term-by-term within $(-R, R)$.
+
+    \begin{definition}
+        Let $f_n : X \to \mathbb{R}$ ($X \subset \mathbb{R}$) for each $n \geq 0$.
+        We say the series $\sum_{n=0}^{\infty} f_n$ \vocab{uniformly converges} if the sequence of partial sums $(F_n)$ does, where $F_n = \sum_{m=0}^{n} f_m$.
+    \end{definition} 
+    We can apply thm 4 to 6 to get e.g. if conditions hold with $f_n$ cts diff and uniform convergence then $\sum f_n$ has derivative $\sum f_n'$.
+
+    \underline{Hope} Prove $\sum a_n x^n$ converges uniformly on $(-R, R)$ then hit it with earlier theorems.
+
+    \underline{Not quite true}:
+    \begin{example}
+        $\sum_{n=0}^{\infty} x^n$ r.o.c 1.
+        This does \underline{not} converge uniformly on $(-1, 1)$.
+        Let $f(x) = \sum_{n=0}^{\infty} x^n$ and $F_n(x) = \sum_{m=0}^{n} x^m$.
+        Note $f(x) = \frac{1}{1 - x} \to \infty$ as $x \to 1$.
+        However, $\forall \; x \in (-1, 1) \ |F_n(x)| \leq n + 1$.
+
+        Fix any $n$.
+        We can find a point $x \in (-1, 1)$ where $f(x) \geq n + 2$ and so $|f(x) - F_n(x)| \geq 1$.
+        So we don't have uniform convergence. 
+    \end{example} 
+
+    \underline{Back-up plan}: It does work if we look at a smaller interval.
+    
+    New plan: show if $0 < r < R$ then we do have uniform convergence on $(-r, r)$. \\
+    Given $x \in (-R, R)$ there's some $r$ with $|x| < r < R$: use uniform convergence on $(-r, r)$ to check everything is nice at $x$.
+    `Local uniform convergence of power series'.
+
     \section{Metric Spaces}
     \section{Topological Spaces}
     \part{Generalizing differentiation}
