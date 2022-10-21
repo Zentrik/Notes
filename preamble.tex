@@ -91,6 +91,8 @@
 \definecolor{theoremfg}{HTML}{242476}
 \definecolor{proofbg}{HTML}{F7F7F7}
 \definecolor{prooffg}{HTML}{808080}
+\definecolor{warningbg}{HTML}{efc3c3}
+\definecolor{warningfg}{HTML}{801919}
 
 % \AtBeginDocument{%
 %   \setlength{\abovedisplayskip}{0.25\abovedisplayskip}%
@@ -154,6 +156,17 @@
     postheadspace={3pt}
 ]{thmanswerbox}
 
+% Warning
+\declaretheoremstyle[
+    headfont=\sffamily\bfseries\color{warningfg},
+    mdframed={
+        backgroundcolor=warningbg,
+        nobreak=false
+    },
+    headpunct={\\[3pt]},
+    postheadspace={3pt}
+]{warningbox}
+
 
 % Definition
 \declaretheoremstyle[
@@ -182,6 +195,7 @@
     \declaretheorem[style=thmdefinitionbox,name=Axiom,numberwithin=section]{axiom}
     \declaretheorem[style=thmtheorembox,name=Axiom,numberwithin=section]{axiomthm}
     \declaretheorem[style=thmdefinitionbox,name=Law,numberwithin=section]{law}
+    \declaretheorem[style=warningbox,name=Warning,numberwithin=section]{warning}
     \declaretheorem[style=thmtheorembox,name=Theorem,numbered=no]{theorem*}
     \declaretheorem[style=thmtheorembox,name=Lemma,numbered=no]{lemma*}
     \declaretheorem[style=thmtheorembox,name=Claim,numberwithin=section]{claim}
@@ -194,6 +208,7 @@
     \declaretheorem[style=thmdefinitionbox,name=Definition,numbered=no]{definition*}
     \declaretheorem[style=thmdefinitionbox,name=Axiom,numbered=no]{axiom*}
     \declaretheorem[style=thmtheorembox,name=Axiom,numbered=no]{axiomthm*}
+    \declaretheorem[style=warningbox,name=Warning,numbered=no]{warning*}
 \else
     \newtheorem{theorem}{Theorem}[section]
     \newtheorem{lemma}[theorem]{Lemma}
@@ -214,6 +229,10 @@
     \newtheorem*{example*}{Example}
     \newtheorem*{definition*}{Definition}
     \newtheorem*{axiom*}{Axiom}
+
+    \theoremstyle{remark}
+    \newtheorem{warning}{Warning}
+    \newtheorem*{warning*}{Warning}
 \fi
 
 \ifadamfancyproofs
@@ -388,6 +407,12 @@
 
 \usepackage{etoolbox}
 \usepackage{siunitx}
+\usepackage{quiver}
+\AtBeginEnvironment{tikzcd}{\tikzexternaldisable}
+\AtEndEnvironment{tikzcd}{\tikzexternalenable}
+
+\usepackage{physics}
+\usepackage{bbm}
 
 % Small Macros
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -416,5 +441,8 @@
 \newcommand{\Var}{\operatorname{Var}}
 \newcommand{\Cov}{\operatorname{Cov}}
 
-\newcommand{\dd}{\; \mathrm{d}}
+% \newcommand{\dd}{\; \mathrm{d}} % in physics package
 \newcommand{\indep}{\perp\!\!\!\perp}
+
+% \renewcommand{\norm}[1]{\left \lVert #1 \right \rVert}
+\newcommand{\inner}[1]{\left\langle{#1}\right\rangle}

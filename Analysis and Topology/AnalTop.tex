@@ -7,8 +7,6 @@
 \def\ncourse {Analysis and Topology}
 
 \input{../preamble-dynamic.tex}
-\newcommand{\norm}[1]{\left \lVert #1 \right \rVert}
-\usepackage{bbm}
 % \includeonly{00-intro.tex}
 
 % \setcounter{section}{-1}
@@ -254,7 +252,7 @@
 
     Equivalently, $f_n \to f$ uniformly if for sufficiently large $n$ $f_n - f$ is bounded and $\sup_{x \in X} |f_n - f| \to 0$.
 
-    \begin{theorem}[A uniform limit of cts functions is cts]
+    \begin{theorem}[A uniform limit of cts functions is cts] \label{thm:4}
         Let $X \subset \mathbb{R}$, let $f_n: X \to \mathbb{R}$ be continuous ($n \geq 1$) and let $f_n \to f: X \to \mathbb{R}$ uniformly.
         Then $f$ is cts.
     \end{theorem} 
@@ -278,7 +276,7 @@
         This is often called a `$3\epsilon$ proof' (or an $\frac{\epsilon}{3}$ proof).
     \end{remark} 
 
-    \begin{theorem}
+    \begin{theorem} \label{thm:5}
         Let $f_n: [a, b] \to \mathbb{R}$ ($n \geq 1$) be integrable and let $f_n \to f: [a, b] \to \mathbb{R}$ uniformly.
         Then $f$ is integrable and $\int_a^b f_n \to \int_a^b f$ as $n \to \infty$.
     \end{theorem} 
@@ -354,7 +352,7 @@
 
     If fact we need uniform convergence of the derivatives.
 
-    \begin{theorem}
+    \begin{theorem} \label{thm:6}
         Let $f_n : (u, v) \to \mathbb{R}$ ($n \geq 1$) with $f_n \to f : (u, v) \to \mathbb{R}$ pointwise.
         Suppose further each $f_n$ is continuously differentiable and that $f_n' \to g : (u, v) \to \mathbb{R}$ uniformly.
         Then $f$ is differentiable with $f' = g$.
@@ -363,13 +361,13 @@
     \begin{proof}
         Fix $a \in (u, v)$.
         Let $x \in (u, v)$, by FTC we have each $f_n'$ is integrable over $[a, x]$ and $\int_{a}^{x} f_n' = f_n(x) - f_n(a)$.
-        But $f_n' \to g$ uniformly so by thm 5 $g$ is integrable over $[a, x]$ and $\int_{a}^{x} g = \lim_{n \to \infty} \int_{a}^{x} f_n' = f(x) - f(a)$.
+        But $f_n' \to g$ uniformly so by \cref{thm:5} $g$ is integrable over $[a, x]$ and $\int_{a}^{x} g = \lim_{n \to \infty} \int_{a}^{x} f_n' = f(x) - f(a)$.
         So we have shown that for all $x \in (u, v)$
         \begin{align*}
             f(x) &= f(a) + \int_a^x g.
         \end{align*} 
 
-        By thm 4, $g$ is cts so by FTC, $f$ is differentiable with $f' = g$.
+        By \cref{thm:4}, $g$ is cts so by FTC, $f$ is differentiable with $f' = g$.
     \end{proof} 
 
     \begin{remark}
@@ -385,7 +383,7 @@
 
     exercise: uniformly convergence $\implies$ uniformly Cauchy.
 
-    \begin{theorem}[General principle of Uniform Convergence (GPUC)]
+    \begin{theorem}[General principle of Uniform Convergence (GPUC)] \label{thm:7}
         Let $(f_n)$ be a uniformly Cauchy sequence of functions $X \to \mathbb{R}$ ($X \subset \mathbb{R}$).
         Then $(f_n)$ is uniformly convergent.
     \end{theorem} 
@@ -442,7 +440,7 @@
         Let $f_n : X \to \mathbb{R}$ ($X \subset \mathbb{R}$) for each $n \geq 0$.
         We say the series $\sum_{n=0}^{\infty} f_n$ \vocab{uniformly converges} if the sequence of partial sums $(F_n)$ does, where $F_n = \sum_{m=0}^{n} f_m$.
     \end{definition} 
-    We can apply thm 4 to 6 to get e.g. if conditions hold with $f_n$ cts diff and uniform convergence then $\sum f_n$ has derivative $\sum f_n'$.
+    We can apply \cref{thm:4,thm:5,thm:6} to get e.g. if conditions hold with $f_n$ cts diff and uniform convergence then $\sum f_n$ has derivative $\sum f_n'$.
 
     \underline{Hope} Prove $\sum a_n x^n$ converges uniformly on $(-R, R)$ then hit it with earlier theorems.
 
@@ -465,7 +463,410 @@
     Given $x \in (-R, R)$ there's some $r$ with $|x| < r < R$: use uniform convergence on $(-r, r)$ to check everything is nice at $x$.
     `Local uniform convergence of power series'.
 
+    \begin{aside}{Aside}
+        In $\mathbb{R}$ $x_n \to 0$ if 
+        \begin{enumerate}
+            \item $\forall \; \epsilon > 0 \ \exists \; N \ \forall \; n \geq N \ |x_n| < \epsilon$.
+            \item Equivalently: $\forall \; \epsilon > 0 \ \exists \; N \ \forall \; n \geq N \ |x_n| \leq \epsilon$.
+        \end{enumerate} 
+        \begin{proof}
+            i $\implies$ ii: obvious \\
+            ii $\implies$ ii: Let $\epsilon > 0$.
+            Pick $N$ s.t. $\forall \; n \geq N \ |x_n|  \leq \frac{1}{2} \epsilon$.
+            Then $\forall \; n \geq N \ |x_n| < \epsilon$.
+        \end{proof} 
+
+
+        Also: $f_n,f : X \to \mathbb{R}$, $f_n \to f$ uniformly.
+        \begin{enumerate}
+            \item $\forall \; \epsilon > 0\ \exists \; N\ \forall \; x \in X\ \forall \; n \geq N\ |f_n(x) - f(x)| < \epsilon$.
+            \item For $n$ suff large $f_n - f$ is bounded and $\forall \; \epsilon > 0\ \exists \; N\ \forall \; n \geq N\ \sup_{x \in X} |f_n(x) - f(x)| < \epsilon$. 
+        \end{enumerate} 
+        \begin{proof}
+            ii $\implies$ i: obvious \\
+            i $\implies$ ii: if i holds then $\sup_{x \in X} |f_n(x) - f(x)| \leq \epsilon$.
+            But OK by same argument as previously.
+        \end{proof} 
+    \end{aside} 
+
+    \begin{lemma} \label{lem:8}
+        Let $\sum a_n x^n$ be a real power series with r.o.c $R > 0$.
+        Let $0 < r < R$.
+        Then $\sum a_n x^n$ converges uniformly on $(-r, r)$.
+    \end{lemma} 
+
+    \begin{proof}
+        Define $f, f_n : (-r, r) \to \mathbb{R}$ by $f(x) = \sum_{n=0}^{\infty} a_n x^n$ and $f_m(x) = \sum_{n=0}^{m} a_n x^n$.
+        Recall that $\sum a_n x^n$ converges absolutely for all $x$ with $|x| < R$.
+
+        Let $x \in (-r, r)$.
+        Then $f$
+        \begin{align*}
+            |f(x) - f_m(x)| &= \left| \sum_{n=m+1}^{\infty} a_n x^n \right| \\
+            &\leq \sum_{n=m+1}^{\infty} |a_n| |x|^n \\
+            &\leq \sum_{n=m+1}^{\infty} |a_n| r^n
+        \end{align*} which converges by absolute convergence at $r$.
+        Hence if $m$ suff large, $f - f_m$ is bounded and 
+        \begin{align*}
+            \sup_{x \in (-r, r)} |f(x) - f_m(x)| \leq \sum_{n=m+1}^{\infty} |a_n| r^n \to 0
+        \end{align*} as $m \to \infty$ by absolute convergence of $r$.
+    \end{proof} 
+
+    \begin{theorem} \label{thm:9}
+        Let $\sum a_n x^n$ be a real power series with r.o.c $R > 0$.
+        Define $f : (-R, R) \to \mathbb{R}$ by $f(x) = \sum_{n=0}^{\infty} a_n x^n$.
+        Then 
+        \begin{enumerate}
+            \item $f$ is continuous;
+            \item for any $x \in (-R, R)$ $f$ is integrable over $[0, x]$ with 
+            \begin{align*}
+                \int_0^x f = \sum_{n=0}^{\infty} \frac{a_n}{n + 1} x^{n + 1}.
+            \end{align*} 
+        \end{enumerate} 
+    \end{theorem} 
+
+    \begin{proof}
+        Let $x \in (-R, R)$.
+        Pick $r$ s.t. $|x| < r < R$.
+        By \cref{lem:8}, $\sum a_n y^n$ converges uniformly on $(-r, r)$.
+        But the partial sum functions $y \mapsto \sum_{n=0}^{m} a_n y^n$ ($m \geq 0$) are all cts functions on $(-r, r)$ (as they are polynomials).
+        Hence by \cref{thm:4}, $f \mid_{(-r, r)}$\footnote{$f$ restricted to domain $(-r, r)$} is cts.
+        Hence $f$ is cts at $x$, but $x$ was arbitrary so $f$ is a cts fcn on $(-R, R)$.
+
+        Moreover, $[0, x] \subset (-r, r)$ so we also have $\sum a_n y^n$ converges uniformly on $[0, x]$.
+        Each partial sum function on $[0, x]$ is a poly so can be integrated with $\int_0^x \sum_{n=0}^{m} a_n y^n \,dy = \sum_{n=0}^{m} \int_{0}^{x} a_n y^n \,dy = \sum_{n=0}^{m} \frac{a_n}{n + 1} x^{n+1}$.
+        Hence by \cref{thm:5}, $f$ is integrable over $[0, x]$ with
+        \begin{align*}
+            \int_{0}^{x} f &= \lim_{m \to \infty} \int_{0}^{x} \sum_{n=0}^{m} a_n y^n \,dy \\
+            &= \lim_{m \to \infty} \sum_{n=0}^{m} \frac{a_n}{n + 1} x^{n + 1} \\
+            &= \sum_{n=0}^{\infty} \frac{a_n}{n + 1} x^{n+1}.
+        \end{align*} 
+    \end{proof} 
+
+    For differentiation, need technical lemma:
+    \begin{lemma} \label{lem:10}
+        Let $\sum a_n x^n$ be a real power series with r.o.c $R > 0$.
+        Then the power series $\sum_{n \geq 1} n a_n x^{n - 1}$ has r.o.c at least $R$.
+    \end{lemma} 
+
+    \begin{proof}
+        Let $x \in \mathbb{R}$ with $0 < x < R$.
+        Pick $w$ with $x < w < R$.
+        Then $\sum a_n w^n$ is absolutely convergent, so $a_n w^n \to 0$ (terms of a convergent series) so $\exists \; M$ s.t. $\forall \; n,\ |a_n w^n| \leq M$.
+
+        For each $n$, 
+        \begin{align*}
+            |n a_n x^{n - 1}| &= |a_n w^n| \left| \frac{x}{w} \right|^n \frac{1}{|x|} n.
+        \end{align*} 
+        Fix $n$.
+        Let $\alpha = \left| \frac{x}{w} \right| < 1$.
+        Let $c = \frac{M}{|x|}$, a constant.
+        Then $|n a_n x^{n - 1}| \leq c n \alpha^n$.
+        By comparison test, ETS (enough to show) $\sum n \alpha^n$ converges. \\
+        Note $\left| \frac{(n + 1) \alpha^{n + 1}}{n \alpha^n} \right| = (1 + \frac{1}{n}) \alpha \to \alpha < 1$ as $n \to \infty$ so done by ratio test.
+    \end{proof} 
+
+    \begin{theorem} \label{thm:11}
+        Let $\sum a_n x^n$ be a real power series with r.o.c. $R > 0$.
+        Let $f : (-R, R) \to \mathbb{R}$ be defined by $f(x) = \sum_{n=0}^{\infty} a_n x^n$.
+        Then $f$ is differentiable and $\forall \; x \in (-R, R)$ $f'(x) = \sum_{n=1}^{\infty} n a_n x^{n - 1}$.
+    \end{theorem} 
+
+    \begin{proof}
+        Let $x \in (-R, R)$.
+        Pick $r$ with $|x| < r < R$.
+        Then $\sum a_n y^n$ converges uniformly on $(-r, r)$.
+        Moreover, the power series $\sum_{n \geq 1} n a_n y^{n - 1}$ has r.o.c at least $R$ and so also converges uniformly on $(-r, r)$.
+
+        The partial sum functions $f_m(y) = \sum_{n=0}^{m} a_n y^n$ are polys so differentiable with $f_m'(y) = \sum_{n=1}^{m} n a_n y^{n - 1}$.
+        We now have $f'_m$ converging uniformly on $(-r, r)$ to the function $g(y) = \sum_{n=1}^{\infty} n a_n y^{n - 1}$.
+
+        Hence by \cref{thm:6}, $f \mid_{(-r, r)}$ is differentiable and $\forall \; y \in (-r, r)$ $f'(y) = g(y)$.
+
+        In particular, $f$ is differentiable at $x$ with $f'(x) = g(x)$.
+        Hence $f$ is a differentiable function on $(-R, R)$ with derivative $g$ as desired.
+    \end{proof} 
+
+    \subsection{Uniform Continuity}
+    Let $X \subset \mathbb{R}$.
+    Let $f: X \to \mathbb{R}$.
+    (May as well think of $X = \mathbb{R}$ or $X = (a, b)$).
+
+    \begin{definition}[Continuous function]
+        $f$ is \vocab{continuous} if 
+        \begin{align*}
+            \forall \; \epsilon > 0 \ \color{red} \forall \; x \in X \ \exists \; \delta > 0 \color{black} \ \forall \; y \in X \ |x - y| < \delta \implies |f(x) - f(y)| < \epsilon.
+        \end{align*} 
+    \end{definition} 
+
+    \begin{definition}[Unifomly Continuous function]
+        $f$ is \vocab{uniformly continuous} if 
+        \begin{align*}
+            \forall \; \epsilon > 0 \ \color{red} \exists \; \delta > 0 \ \forall \; x \in X \color{black} \ \forall \; y \in X \ |x - y| < \delta \implies |f(x) - f(y)| < \epsilon.
+        \end{align*} 
+    \end{definition} 
+
+    \begin{remark}
+        Clearly if $f$ is uniformly cts then $f$ is cts.
+        We would suspect that $f$ cts doesn't imply $f$ uniformly cts.
+    \end{remark} 
+
+    \begin{example}
+        A function $f: \mathbb{R} \to \mathbb{R}$ that is cts but not uniformly cts.
+
+        {\par
+    \centering 
+    \includegraphics[height=5cm]{01-uniformcts} 
+        \par}
+        We want some function that looks like this, a continuous function which gets steeper as we go to infinity.
+        So $f(x) = x^2$ ought to work.
+        We know $f$ is cts (as it's a poly).
+        Suppose $\delta > 0$.
+        Then \begin{align*}
+            f(x + \delta) - f(x) &= (x + \delta)^2 - x^2 \\
+            &= 2 \delta x + \delta^2 \to \infty \text{ as } x \to \infty.
+        \end{align*} 
+        So in particular, $\forall \; \delta > 0 \ \exists \; x, y \in \mathbb{R}$ s.t. $|x-y| < \delta$ but $|f(x) - f(y)| \geq 1$.
+        So conditions for uniform cty fails for $\epsilon = 1$.
+        So $f$ not uniform cty.
+    \end{example} 
+
+    \begin{example} \label{exm:1/x}
+        Make domain bounded.
+        We can still fail, e.g. $f: (0, 1) \to \mathbb{R}$ cts but not uniform cts.
+
+        { \par
+        \centering 
+        \includegraphics[height=5cm]{01-uniformcty2} 
+        \par}
+
+        Let $f(x) = \frac{1}{x}$, clearly cts.
+        Proof that its not uniform continuity is left as an exercise to the reader.
+    \end{example} 
+
+    \begin{theorem} \label{thm:12}
+        A continuous real-valued function on a closed bounded interval is uniformly continuous.
+    \end{theorem} 
+
+    \begin{proof}
+        Let $f: [a, b] \to \mathbb{R}$ and suppose $f$ is cts but not uniformly cts. Then we can find $\epsilon > 0$ st. $\delta > 0 \ \exists \; x,y \in [a, b]$ with $|x-y| < \delta$ but $|f(x) - f(y)| \geq \epsilon$.
+
+        In particular, taking $\delta = \frac{1}{n}$ we can find sequences $(x_n), (y_n) \in [a, b]$ with, for each $n$, $|x_n - y_n| < \frac{1}{n}$ but $|f(x_n) - f(y_n)| \geq \epsilon$.
+        The sequence $(x_n)$ is bounded so by BW\footnote{Bolzano Weierstrass} it has a convergent subsequence $x_{n_j} \to x$.
+        And $[a, b]$ is a closed interval so $x \in [a, b]$.
+        Then $x_{n_j} - y_{n_j} \to 0$ so $y_{n_j} \to x$.
+
+        But $f$ is cts at $x$ so $\exists \; \delta > 0$ s.t. $\forall \; y \in [a, b]$ $|y-x| < \delta \implies |f(y) - f(x)| < \frac{\epsilon}{2}$. 
+        Take such a $\delta$.
+        As $x_{n_j} \to x$ we can find $J_1$ s.t. $j \geq J_1 \implies |x_{n_j} - x| < \delta$.
+        Similarly we can find $J_2$ s.t. $j \geq J_2 \implies |y_{n_j} - x| < \delta$.
+        Now let $j = \max (J_1, J_2)$ then $|x_{n_j} - x|, |y_{n_j} - x| < \delta$ so we have $|f(x_{n_j}) - f(x)|, |f(y_{n_j}) - f(x)| < \epsilon / 2$.
+        Then $|f(x_{n_j}) - f(y_{n_j})| \leq |f(x_{n_j}) - f(x)| + |f(y_{n_j}) - f(x)| < \epsilon$ \Lightning.
+    \end{proof} 
+
+    \begin{corollary} \label{cor:13}
+        A continuous real-valued function on a closed bounded interval is bounded.
+    \end{corollary} 
+
+    \begin{proof}
+        Let $f:[a, b] \to \mathbb{R}$ be a continuous function, and so uniformly continuous by \cref{thm:12}.
+        Then we can find $\delta > 0$ s.t. $\forall \; x, y \in [a, b] \ |x - y| < \delta \implies |f(x) - f(y)| < 1$.
+
+        Let $M = \lceil \frac{b - a}{\delta} \rceil$.
+        Let $x \in [a, b]$.
+        We can find $a = x_0 \leq x_1 \leq \dots \leq x_M = x$ with $|x_i - x_{i - 1}| < \delta$ for each $i$.
+        Hence
+        \begin{align*}
+            |f(x)| &= \qty| f(a) + \sum_{i=1}^{M} f(x_i) - f(x_{i - 1}) |\\
+            &\leq |f(a)| + \sum_{i=1}^{M} |f(x_i) - f(x_{i-1})| \\
+            &< |f(a)| + \sum_{i=1}^{M} 1 \\
+            &= |f(a)| + M.
+        \end{align*} 
+    \end{proof}
+    
+    \begin{remark}
+        Referring back to \cref{exm:1/x}, starting at $x = 1$ and going towards $x  = 0$ we can that $\delta$ gets smaller and smaller s.t. you require an infinite number of steps to get $0$.
+        So $M = \infty$ essentially.
+    \end{remark} 
+
+    \begin{corollary} \label{cor:14}
+        A continuous real-valued function on a closed bounded interval is integrable.
+    \end{corollary} 
+
+    \begin{proof}
+        Let $f:[a, b] \to \mathbb{R}$ be a continuous function, and so uniformly continuous by \cref{thm:12}.
+        Let $\epsilon > 0$.
+        Then we can find $\delta > 0$ s.t. $\forall \; x, y \in [a, b] \ |x - y| < \delta \implies |f(x) - f(y)| < \epsilon$.
+        Let $\mathcal{D} = \{ x_0 < x_1 < \dots < x_n\}$ be a dissection s.t. for each $i$ we have $x_i - x_{i-1} < \delta$.
+
+        Let $i \in \{1, \dots, n\}$.
+        Then for any $u, v \in [x_{i-1}, x_i]$ we have $|u - v| < \delta$ so $|f(u) - f(v)| < \epsilon$.
+        Hence 
+        \begin{align*}
+            \sup_{x \in [x_{i-1}, x_i]} f(x) - \inf_{x \in [x_{i-1}, x_i]} f(x) \leq \epsilon.
+        \end{align*} 
+        Hence:
+        \begin{align*}
+            S(f, \mathcal{D}) - s(f, \mathcal{D}) &= \sum_{i=1}^{n} (x_i - x_{i-1}) \qty(\sup_{x \in [x_{i-1}, x_i]} f(x) - \inf_{x \in [x_{i-1}, x_i]} f(x)) \\
+            &\leq \sum_{i=1}^{n} (x_i - x_{i - 1}) \epsilon \\
+            &= \epsilon \sum_{i=1}^{n} (x_i - x_{i - 1}) \\
+            &= \epsilon (b - a).
+        \end{align*} 
+        But $\epsilon(b-a)$ can be made arbitrarily small by taking $\epsilon$ small.
+        So by Riemann's criterion $f$ is integrable over $[a, b]$.
+    \end{proof} 
+
     \section{Metric Spaces}
+    \subsection{Definitions and Examples}
+
+    \begin{question}
+        Can we think about convergence in a more general setting? Convergence seemed similar in our 3 settings.
+
+        What do we really need?
+    \end{question} 
+    \begin{answer}
+        We need a notion of distance.
+
+        In $\mathbb{R}$: distance $x$ to $y$ is $|x-y|$. \\
+        In $\mathbb{R}^2$: its $\norm{x - y}$. \\
+        For functions: distance $f$ to $g$ is $\sup_{x \in X} |f(x) - g(x)|$ (where this exists, i.e. if $f - g$ bounded).
+
+        The triangle inequality was often important (see the proof of uniqueness of limits).
+    \end{answer}
+    
+    \begin{definition}[Metric]
+        A $\vocab{metric}$ $d$ is a function $d : X^2 \to \mathbb{R}$ satisfying:
+        \begin{itemize}
+            \item $d(x, y) \geq 0$ for all $x, y \in X$ with equality iff $x = y$;
+            \item $d(x, y) = d(y, x)$ for all $x, y \in X$.
+            \item $d(x, z) \leq d(x, y) + d(y, z)$ for all $x, y, z \in X$.
+        \end{itemize} 
+    \end{definition} 
+
+    \begin{definition}[Metric Space]
+        A $\vocab{metric space}$ is a set $X$ endowed with a metric $d$.
+    \end{definition} 
+    We could also define a metric space as an ordered pair $(X, d)$.
+    If it is obvious what $d$ is, we sometimes write `The metric space $X$ \dots'.
+
+    \begin{example}
+        $X = \mathbb{R}$, $d(x, y) = |x - y|$
+        `The \underline{usual metric} on $\mathbb{R}$'.
+    \end{example} 
+
+    \begin{example}
+        $X = \mathbb{R}^n$ with the \underline{Euclidean metric}, $d(x, y) = \norm{x - y} = \sqrt{\sum_{i=1}^{n} (x_i - y_i)^2}$.
+    \end{example} 
+
+    Uniform convergence of functions doesn't quite work: we want $d(f, g) = \sup |f - g|$ but this might not exist if $f - g$ is unbounded.
+    However, we can do something with appropriate sets of functions.
+
+    \begin{example} \label{exm:2.3}
+        Let $Y \subset \mathbb{R}$.
+        Take $X = B(Y) = \{f : Y \to \mathbb{R} \mid f \text{ bounded}\}$ with the \underline{uniform metric} $d(f, g) = \sup_{x \in Y} |f - g|$.
+
+        Checking triangle inequality:
+        \begin{proof}
+            Let $f, g, h \in B(Y)$.
+            Let $x \in Y$.
+            Then \begin{align*}
+                |f(x) - h(x)| &\leq |f(x) - g(x)| + |g(x) - h(x)| \\
+                &\leq d(f, g) + d(g, h)
+                \intertext{Taking $\sup$ over all $x \in Y$}
+                d(f, h) \leq d(f, g) + d(g, h).
+            \end{align*} 
+        \end{proof} 
+    \end{example} 
+
+    \begin{definition}[Subspace]
+        Suppose $(X, d)$ a metric space and $Y \subset X$.
+        Then $d\mid_{Y^2}$ is a metric on $Y$.
+        We say $Y$ with this metric is a \vocab{subspace} of $X$.
+    \end{definition} 
+
+    \begin{example}
+        Subspaces of $\mathbb{R}$: any of $\mathbb{Q}, \mathbb{Z}, \mathbb{N}, [0, 1], \dots$ with the usual metric $d(x, y) = |x-y|$.
+    \end{example} 
+
+    \begin{example}
+        Recall that a cts function on a closed bounded interval is bounded.
+        Define $C([a, b]) = \{f:[a, b] \to \mathbb{R} \mid f \text{ cts}\}$.
+        This is a subspace of $B([a, b])$, \cref{exm:2.3}.
+        That is $C([a, b])$ is a metric space with the uniform metric $\mathcal{L}(f, g) = \sup_{x \in [a, b]} |f(x) - g(x)|$
+    \end{example} 
+
+    \begin{example}
+        The empty metric space $X = \emptyset$ with the empty metric.
+    \end{example} 
+
+    Could maybe define different metrics on the same set:
+    \begin{example}
+        The $\ell_1$ metric on $\mathbb{R}^n$: $d(x, y) = \sum_{i=1}^{n} |x_i - y_i|$.
+    \end{example} 
+
+    \begin{example}
+        The $\ell_\infty$ metric on $\mathbb{R}^n$: $d(x, y) = \max_{i} |x_i - y_i|$.\footnote{Proof of triangle inequality similar to \cref{exm:2.3}}
+    \end{example} 
+
+    \begin{example}
+        On $C([a, b])$ we can define the $L_1$ metric: $d(f, g) = \int_a^b |f-g|$.
+    \end{example} 
+
+    \begin{example}
+        $X = \mathbb{C}$ with 
+        \begin{align*}
+            d(z, w) = \begin{cases}
+                0 & z = w \\
+                |z| + |w| & z \neq w.
+            \end{cases}.
+        \end{align*}
+
+        First two conditions of a metric hold obviously, for triangle inequality we need $d(u, w) \leq d(u, v) + d(v, w)$.
+
+        \begin{enumerate}
+            \item If $u = w$, LHS = 0 \checkmark
+            \item If $u = v$ or $v = w$ then LHS = RHS \checkmark
+            \item If $u, v, w$ distinct:
+            \begin{align*}
+                LHS &= |u| + |w| \\
+                RHS &= |u| + |w| + 2|v| \checkmark
+            \end{align*} 
+        \end{enumerate} 
+
+        This metric is often called the British Rail metric or SNCF metric, you can think of it as for distinct points you have to travel through the origin.
+        {\par 
+    \centering 
+    \includegraphics[height=5cm]{02-britishrail} 
+        \par}
+    \end{example} 
+
+    \begin{example}
+        Let $X$ be any set.
+        Define a metric $d$ on $X$ by
+        \begin{align*}
+            d(x, y) = \begin{cases}
+                0 & x = y \\
+                1 & x \neq y.
+            \end{cases} 
+        \end{align*} 
+
+        Easy to check this works.
+        This is called the \underline{discrete metric} on $X$.
+    \end{example} 
+
+    \begin{example}
+        Let $\mathbb{X} = \mathbb{Z}$.
+        Let $p$ be a prime.
+        The $p$-adic metric on $\mathbb{Z}$ is the metric $d$ defined by:
+        \begin{align*}
+            d(x, y) = \begin{cases}
+                0 & x = y \\
+                p^{-a} & \text{if $x \neq y$ and $x - y = p^a m$ with}
+            \end{cases} 
+        \end{align*} 
+        Two numbers are close if difference is divisible by a large power of $p$.
+    \end{example} 
+
     \section{Topological Spaces}
     \part{Generalizing differentiation}
 \end{document}

@@ -109,13 +109,14 @@ They are independent if for all \(k,m\), $i_1 < \dots < i_k$, $j_1 < \dots < j_m
 \end{align*}
 
 \subsection{Simple Markov property}
-\begin{theorem}
+\begin{theorem}[Simple Markov Property]
 	Suppose $X$ is $\Markov{\lambda, P}$.
 	Let $m \in \mathbb N$ and $i \in I$.
 	Given that $X_m = i$, we have that the process after time $m$, written $(X_{m+n})_{n \geq 0}$, is $\Markov{\delta_i, P}$, and it is independent of $X_0, \dots, X_m$.
 \end{theorem}
 \noindent Informally, the past and the future are independent given the present.
 \begin{proof}
+	Let $x_0, x_1, \dots, x_n \in I$.
 	We must show that
 	\begin{align*}
 		\prob{X_m = x_0, \dots, X_{m+n} = x_n \mid X_m = i} = \delta_{i x_0} P(x_0, x_1) \dots P(x_{n-1}, x_n)
@@ -123,14 +124,14 @@ They are independent if for all \(k,m\), $i_1 < \dots < i_k$, $j_1 < \dots < j_m
 	We have
 	\begin{align*}
 		\prob{X_{m+n} = x_{m+n}, \dots, X_m = x_m \mid X_m = i}
-		= \frac{\prob{X_{m+n} = x_{m+n}, \dots, X_m = x_m} \delta_{i x_m}}{\prob{X_m = i}}
+		= \frac{\prob{X_{m+n} = x_{m+n}, \dots, X_m = x_m}}{\prob{X_m = i}} \delta_{i x_m}
 	\end{align*}
 	The numerator is
 	\begin{align*}
-		 & \prob{X_{m+n}, \dots, X_m = x_m}                                                                                         \\ & = \sum_{x_0, \dots, x_{m-1} \in I} \prob{X_{m+n} = x_{m+n}, \dots, X_m = x_m, X_{m-1} = x_{m-1}, \dots, X_0 = x_0}       \\
-		 & = \sum_{x_0, \dots, x_{m-1}} \lambda_{x_0} P(x_0, x_1) \dots P(x_{m-1}, x_m) P(x_m, x_{m+1}) \dots P(x_{m+n-1}, x_{m+n}) \\
-		 & = P(x_m, x_{m+1}) \dots P(x_{m+n-1}, x_{m+n}) \sum_{x_0, \dots, x_{m-1}} \lambda_{x_0} P(x_0, x_1) \dots P(x_{m-1}, x_m) \\
-		 & = P(x_m, x_{m+1}) \dots P(x_{m+n-1}, x_{m+n}) \prob{X_m = x_m}                                                           \\
+		& \prob{X_{m+n}, \dots, X_m = x_m}  \\ &= \sum_{x_0, \dots, x_{m-1} \in I} \prob{X_{m+n} = x_{m+n}, \dots, X_m = x_m, X_{m-1} = x_{m-1}, \dots, X_0 = x_0}       \\
+		& = \sum_{x_0, \dots, x_{m-1}} \lambda_{x_0} P(x_0, x_1) \dots P(x_{m-1}, x_m) P(x_m, x_{m+1}) \dots P(x_{m+n-1}, x_{m+n}) \\
+		& = P(x_m, x_{m+1}) \dots P(x_{m+n-1}, x_{m+n}) \sum_{x_0, \dots, x_{m-1}} \lambda_{x_0} P(x_0, x_1) \dots P(x_{m-1}, x_m) \\
+		& = P(x_m, x_{m+1}s) \dots P(x_{m+n-1}, x_{m+n}) \prob{X_m = x_m}
 	\end{align*}
 	Thus we have
 	\begin{align*}
@@ -141,12 +142,13 @@ They are independent if for all \(k,m\), $i_1 < \dots < i_k$, $j_1 < \dots < j_m
 	Now it suffices to show independence between the past and future variables.
 	In particular, we need to show $m \leq i_1 < \dots < i_k$ for some $k \in \mathbb N$ implies that
 	\begin{align*}
-		 & \prob{X_{i_1} = x_{m+1}, \dots, X_{i_k} = x_{m+k}, X_0 = x_0, \dots, X_m = x_m \mid X_m = i}                                               \\
-		 & = \prob{X_{i_1} = x_{m+1}, \dots, X_{i_k} = x_{m+k} \mid X_m = i} \prob{X_0 = x_0, \dots, X_m = x_m \mid X_m = i}                          \\
+		 & \prob{X_{i_1} = x_{m+1}, \dots, X_{i_k} = x_{m+k}, X_0 = x_0, \dots, X_m = x_m \mid X_m = i} \\
+		 & = \prob{X_{i_1} = x_{m+1}, \dots, X_{i_k} = x_{m+k} \mid X_m = i} \prob{X_0 = x_0, \dots, X_m = x_m \mid X_m = i} \\
 		\intertext{So let $i = x_m$, and then}
-		 & = \frac{\prob{X_{i_1} = x_{m+1}, \dots, X_{i_k} = x_{m+k}, X_0 = x_0, \dots, X_m = x_m}}{\prob{X_m = i}}                                   \\
+		 & = \frac{\prob{X_{i_1} = x_{m+1}, \dots, X_{i_k} = x_{m+k}, X_0 = x_0, \dots, X_m = x_m}}{\prob{X_m = i}}  \\
 		 & = \frac{\lambda_{x_0} P(x_0, x_1) \dots P(x_{m-1}, x_m) \prob{X_{i_1} = x_{m+1}, \dots, X_{i_k} = x_{m+k} \mid X_m = x_m}}{\prob{x_m = i}} \\
-		 & = \frac{\prob{X_0 = x_0, \dots, X_m = x_m}}{\prob{X_m = x_m}} \prob{X_{i_1} = x_{m+1}, \dots, X_{i_k} = x_{m+k} \mid X_m = x_m}
+		 & = \frac{\prob{X_0 = x_0, \dots, X_m = x_m}}{\prob{X_m = x_m}} \prob{X_{i_1} = x_{m+1}, \dots, X_{i_k} = x_{m+k} \mid X_m = x_m} \\
+		 &= \prob{X_0 = x_0, \dots, X_m = x_m \mid X_m = i} \prob{X_{i_1} = x_{m+1}, \dots, X_{i_k} = x_{m+k} \mid X_m = i}
 	\end{align*}
 	which gives the result as required.
 \end{proof}
@@ -160,26 +162,23 @@ Let $x \in I$ and $n \in \mathbb N$.
 Then,
 \begin{align*}
 	\prob{X_n = x} & = \sum_{x_0, \dots, x_{n-1} \in I} \prob{X_n = x, X_{n-1} = x_{n-1}, \dots, X_0 = x_0} \\
-	               & = \sum_{x_0, \dots, x_{n-1} \in I} \lambda_{x_0} P(x_0, x_1) \dots P(x_{n-1}, x)       \\
-	\intertext{We can think of $\lambda$ as a row vector.
-		So we can write this as}
-	               & = (\lambda P^n)_x
+	& = \sum_{x_0, \dots, x_{n-1} \in I} \lambda_{x_0} P(x_0, x_1) \dots P(x_{n-1}, x) \\
+	\intertext{We can think of $\lambda$ as a row vector\footnote{$\lambda = [\lambda(1), \lambda(2), \dots, \lambda(|I|)]$}. So we can write this as}
+	& = (\lambda P^n)_x\footnote{$\lambda P^n$ is a vector so we take the $x$th element.}
 \end{align*}
 By convention, we take $P^0 = I$, the identity matrix.
 Now, suppose $m, n \in \mathbb N$.
 By the simple Markov property,
 \begin{align*}
-	\prob{X_{m+n} = y \mid X_m = x} = \prob{X_n = y \mid X_0 = x} = ( \delta_x P^n )_y
+	\prob{X_{m+n} = y \mid X_m = x} = ( \delta_x P^n )_y = (P^n)_{x, y}
 \end{align*}
 We will write $\psubx{A} := \prob{A \mid X_0 = x}$ as an abbreviation.
 Further, we write $p_{ij}(n)$ for the $(i,j)$ element of $P^n$.
 We have therefore proven the following theorem.
-\begin{theorem}
+\begin{theorem} ~\vspace*{-1.5\baselineskip}
 	\begin{align*}
-		\prob{X_n = x} = (\lambda P^n)_x;
-	\end{align*}
-	\begin{align*}
-		\prob{X_{n+m} = y \mid X_m = x} = \psubx{X_n = y} = p_{xy}(n)
+		\prob{X_n = x} &= (\lambda P^n)_x \\
+		\prob{X_{n+m} = y \mid X_m = x} &= p_{xy}(n) = \mathbb{P}(X_n = y \mid X_0 = x)
 	\end{align*}
 \end{theorem}
 
@@ -200,7 +199,7 @@ We have therefore proven the following theorem.
 	Note that $p_{11}(n) + p_{12}(n) = 1$ since $P^n$ is stochastic.
 	Therefore,
 	\begin{align*}
-		p_{11}(n+1) = p_{11}(n)(1-\alpha-\beta) + \beta
+		p_{11}(n+1) = p_{11}(n)(1-\alpha-\beta) + \beta,\quad p_{11}(0) = 1.
 	\end{align*}
 	We can solve this recursion relation to find
 	\begin{align*}
@@ -212,9 +211,9 @@ We have therefore proven the following theorem.
 \noindent The general procedure for finding $P^n$ is as follows.
 Suppose that $P$ is a $k \times k$ matrix.
 Then let $\lambda_1, \dots, \lambda_k$ be its eigenvalues (which may not be all distinct).
-\begin{enumerate}
-	\item All $\lambda_i$ distinct.
-	      In this case, $P$ is diagonalisable, and hence we can write $P = U D U^{-1}$ where $U$ is a diagonal matrix, whose diagonal entries are the $\lambda_i$.
+\begin{itemize}
+	\item If all $\lambda_i$ distinct.
+	      In this case, $P$ is diagonalisable, and hence we can write $P = U D U^{-1}$ where $D$ is a diagonal matrix, whose diagonal entries are the $\lambda_i$.
 	      Then, $P^n = U D^n U^{-1}$.
 	      Calculating $D^n$ may be done termwise since $D$ is diagonal.
 	      In this case, we have terms such as
@@ -222,22 +221,23 @@ Then let $\lambda_1, \dots, \lambda_k$ be its eigenvalues (which may not be all 
 		      p_{11}(n) = a_1 \lambda_1^n + \dots + a_k \lambda_k^n; \quad a_i \in \mathbb R
 	      \end{align*}
 	      First, note $P^0 = I$ hence $p_{11}(0) = 1$.
-	      We can substitute small values of $n$ and then solve the system of equations.
+	      We can substitute small values of $n$ and then solve the system of equations.\footnote{If we only care about $p_{11}(n)$ then we don't need to work out $U$ we can solve this specific case.}
+
 	      Now, suppose $\lambda_k$ is complex for some $k$.
 	      In this case, $\overline{\lambda_k}$ is also an eigenvalue.
 	      Then, up to reordering,
 	      \begin{align*}
-		      \lambda_k = re^{i\theta} = r(\cos \theta + i \sin \theta); \lambda_{k-1} = \overline{\lambda_k} = re^{i\theta} = r(\cos \theta - i \sin \theta)
+		      \lambda_k = re^{i\theta} = r(\cos \theta + i \sin \theta); \lambda_{k-1} = \overline{\lambda_k} = re^{-i\theta} = r(\cos \theta - i \sin \theta)
 	      \end{align*}
-	      We can instead write $p_{11}(n)$ as
+	      We can instead write $p_{11}(n)$ as, where $b_{k-1}, b_k$ are set appropriately
 	      \begin{align*}
-		      p_{11}(n) = a_1 \lambda_1^n + \dots + a_{k-1} r^n \cos (n\theta) + a_k r^n \sin (n\theta)
+		      p_{11}(n) = a_1 \lambda_1^n + \dots + a_{k - 2} \lambda_{k-1}^n + b_{k-1} r^n \cos (n\theta) + b_k r^n \sin (n\theta)
 	      \end{align*}
 	      Since $p_{11}(n)$ is real, all the imaginary parts disappear, so we can simply ignore them.
-	\item Not all $\lambda_i$ distinct.
+	\item If not all $\lambda_i$ distinct.
 	      In this case, $\lambda$ appears with multiplicity 2, then we include also the term $(an + b) \lambda^n$ as well as $b \lambda^n$.
 	      This can be shown by considering the Jordan normal form of $P$.
-\end{enumerate}
+\end{itemize}
 \begin{example}
 	Let
 	\begin{align*}

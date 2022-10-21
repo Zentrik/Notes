@@ -8,7 +8,7 @@ title: "Cambridge Maths Notes"
 
 [Analysis and Topology](Analysis%20and%20Topology\AnalTop.pdf)
 
-[Linear Algebra](Linear%20Algebra\LA.pdf) (Annotations)
+[Linear Algebra](Linear%20Algebra\Linear%20Algebra.pdf)
 
 [Markov Chains](Markov%20Chains\markov.pdf)
 
