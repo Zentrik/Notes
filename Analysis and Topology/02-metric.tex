@@ -376,7 +376,7 @@ Equivalently $x_n \to x$ iff $d(x_n, x) \to 0$ in $\mathbb{R}$.
     The \vocab{projection maps} $\pi_i: \mathbb{R}^n \to \mathbb{R}$ given by $\pi_i(x) = x_i$ are continuous. 
     
     (Why? We've seen convergence in $\mathbb{R}^n$ of sequences is the same as convergence in each coordinate. 
-    Let's denote a sequence in $\mathbb{R}^n$ by $(x^(m))_{m \geq 1}$. So e.g. $x^{(3)}_5$ is the $5$th coord of the $3$rd term.
+    Let's denote a sequence in $\mathbb{R}^n$ by $(x^{(m)})_{m \geq 1}$. So e.g. $x^{(3)}_5$ is the $5$th coord of the $3$rd term.
     We know $x^{(m)} \to x$ iff for each $i$ $x_i^{(m)} \to x_i$, i.e. for each $i$ $\pi_i(x^{(m)}) \to \pi_i(x)$.
     Then we can use \cref{prp:16})
 
@@ -454,6 +454,116 @@ But converse is not true in general.
     GPC for $\mathbb{R}^n$ says $\mathbb{R}^n$ with Euclidean metric is complete.
 \end{example} 
 
-\begin{example}
+\begin{example} \label{exm:gpuc}
     GPUC, \cref{thm:7}, (almost) says if $X \subset \mathbb{R}$ and $B(X) = \{f : X \to \mathbb{R} \mid f \text{ is bounded}\}$ with the uniform norm then $B(X)$ is complete.
 \end{example} 
+
+\begin{proof}
+    Let $(f_n)$ be a Cauchy sequence in $B(X)$.
+    Then $(f_n)$ is uniformly Cauchy so by GPUC is uniformly convergent.
+    That is $f_n \to f$ uniformly for some $f: X \to \mathbb{R}$.
+    As $f_n \to f$ uniformly we know $f_n - f$ is bounded for $n$ suff. large.
+    Take such an $n$, then $f_n - f$ and $f_n$ are bounded so $f = f_n - (f_n  - f)$ is bounded.
+    That is, $f \in B(X)$.
+    Finally, $f_n \to f$ uniformly and $d(f_n, f) \to 0$, i.e. $f_n \to f$ in $(B(X), d)$.
+\end{proof} 
+
+\begin{remark}
+    In many ways, this is typical of a proof that a given space $(X, d)$ is complete:
+    \begin{enumerate}
+        \item Take $(x_n)$ Cauchy in $X$;
+        \item Construct/ find a putative limit object $x$ where it seems $(x_n)$ converges to $x$ in some sense;
+        \item Show $x \in X$,
+        \item Show $x_n \to x$ in metric space $(X, d)$ i.e. that $d(x_n, x) \to 0$.
+    \end{enumerate} 
+    This is often tricky/ fiddly/ annoying/ repetitive/ boring.
+    But we need to take care as for example, it's tempting to talk about $d(x_n, x)$ while doing (ii) or (iii); but makes no sense to write `$d(x_n, x)$' until we have completed (iii) as $d$ is only defined on $X^2$ (if $x \notin X$ then can't use $d$).
+\end{remark} 
+
+\begin{example}
+    If $[a, b]$ is a closed interval then $C([a, b])$ with uniform norm $d$ is complete.
+\end{example} 
+
+\begin{proof}
+    (i): Let $(f_n)$ be a Cauchy sequence in $C([a, b])$. \\
+    (ii): We know $C([a, b])$ is a subspace of $B([a, b])$ with uniform metric.
+    We know $B([a, b])$ is complete by \cref{exm:gpuc} and $(f_n)$ is a Cauchy sequence in $B([a, b])$ so in $B([a, b])$, $f_n \to f$ for some $f$. \\
+    (iii) Each $f_n$ is cts and $f_n \to f$ uniformly so $f$ is cts, i.e. $f \in C([a, b])$. \\
+    (iv) Finally, each $f_n \in C([a, b])$, $f \in C([a, b])$ and $f_n \to f$ uniformly so $d(f_n, f) \to 0$.
+\end{proof} 
+
+This generalises:
+\begin{definition}[Closed Metric Space]
+    Let $(X, d)$ be a metric space and $Y \subset X$.
+    We say $Y$ is \vocab{closed} if whenever $(x_n)$ a sequence in $Y$ with $x_n \to x \in X$ then $x \in Y$.
+\end{definition} 
+
+\begin{proposition} \label{prp:18}
+    A closed subset of a complete metric space is complete.
+\end{proposition} 
+
+\begin{remark}
+    This \underline{does} make sense: if $Y \subset X$ then $Y$ is itself a metric space or a subspace of $X$ so we can say e.g. `$Y$ is complete' to mean the metric space $Y$ (as a subspace of $X$) is complete.
+
+    We could do exactly the same with any other properties of metric spaces we define.
+\end{remark} 
+
+\begin{proof}
+    Let $(X, d)$ be a metric space and $Y \subset X$ with $X$ complete and $Y$ closed.
+    (i): Let $(x_n)$ be a Cauchy sequence in $Y$. \\
+    (ii): Now $(x_n)$ is a Cauchy sequence in $X$ so by completeness $x_n \to x$ in $X$ for some $x \in X$. \\
+    (iii) $Y \subset X$ is closed so $x \in Y$. \\
+    (iv) Finally we now have each $x_n \in Y, x \in Y$ and $x_n \to x$ in $X$, so $d(x_n, x) \to 0$ so $x_n \to x$ in $Y$.
+\end{proof} 
+
+\begin{example}
+    Define $\ell_1 = \{ (x_n)_{n \geq 1} \in \mathbb{R}^\mathbb{N} \mid \sum_{n=1}^{\infty} |x_n| \text{ converges} \}$.
+    Define a metric $d$ on $\ell_1$ by $d((x_n), (y_n)) = \sum_{n=1}^{\infty} |x_n - y_n|$.
+
+    Note we have $\sum |x_n|, \sum |y_n|$ converge as we are in $\ell_1$.
+    For each $n$ $|x_n - y_n| \leq |x_n| + |y_n|$ so by comparison test $\sum |x_n - y_n|$ converges.
+    So $d$ is well-defined.
+    Easy to check $d$ is a metric on $\ell_1$.
+    Then $(\ell_1, d)$ is complete.
+\end{example} 
+
+\begin{proof}
+    (i): Let $(x^{(n)})_{n \geq 1}$ be a Cauchy sequence in $\ell_1$, so for each $n$ $(x^{(n)}_i)_{i \geq 1}$ is a sequence in $\mathbb{R}$ with $\sum_{i=1}^{\infty} |x_i^{(n)}|$ convergent. \\
+    % (ii) For each $n$, $(x_i^{(n)})_{i \geq 1}$ is a Cauchy sequence in $\mathbb{R}$ since if $y, z \in \ell_1$ then $|y_i - z_i| \leq d(y, z)$.
+    % But $\mathbb{R}$ is complete, so for each $n$ we 
+    (ii) For each $i$, $(x_i^{(n)})_{n \geq 1}$ is a Cauchy sequence in $\mathbb{R}$, since if $y, z \in \ell_1$ then $|y_i - z_i| \leq d(y, z)$.
+    But $\mathbb{R}$ is complete, so for each $i$ we can find $x_i \in \mathbb{R}$ s.t. $x_i^{(n)} \to x_i$ as $n \to \infty$. \\
+    Let $x = (x_1, x_2, \dots) \in \mathbb{R}^\mathbb{N}$. \\
+    (iii) We next show $x \in \ell_1$, i.e. that $\sum_{i=1}^{\infty} |x_i|$ converges.
+
+    Given $y \in \ell_1$, define $\sigma(y) = \sum_{i=1}^{\infty} |y_i|$, i.e. $\sigma(y) = d(y, z)$ where $z$ is the constant zero sequence. \\
+    We now have, for any $m, n$
+    \begin{align*}
+        \sigma(x^{(m)}) &= d(x^{(m)}, z) \\
+        &\leq d(x^{(m)}, x^{(n)}) + d(x^{(n)}, z) \\
+        &= d(x^{(m)}, x^{(n)}) + \sigma(x^{(n)}) 
+    \end{align*} 
+    So $\sigma(x^{(m)}) - \sigma(x^{(n)}) \leq d(x^{(m)}, x^{(n)})$.
+    Similarly, for any $m, n$ $\sigma(x^{(n)}) - \sigma(x^{(m)}) \leq d(x^{(m)}, x^{(n)})$ and so $|\sigma(x^{(m)}) - \sigma(x^{(n)})| \leq d(x^{(m)}, x^{(n)})$.
+    Hence $(\sigma(x^{(m)}))_{m \geq 1}$ is a Cauchy sequence in $\mathbb{R}$, and so by GPC converges, say $\sigma(x^{(m)}) \to K$ as $m \to \infty$.
+
+    \begin{claim}
+        For any $I \in \mathbb{N}$, $\sum_{i=1}^{I} |x_i| \leq K + 2$.
+    \end{claim}
+    
+    \begin{proof}
+        As $\sigma(x^{(n)}) \to K$ as $n \to \infty$ we can find $N_1$ s.t. $n \geq N_1 \implies \sum_{i=1}^{\infty} |x_i^{(n)}| \leq K + 1$.
+        Also, $n \geq N_1 \implies \sum_{i=1}^{I} |x_i^{(n)}| \leq K + 1$ (as each term non-negative).
+
+        Next, for each $i \in \{1, 2, \dots, I\}$ we have $x_i^{(n)} \to x_i$ as $n \to \infty$.
+        So we can find $N_2$ s.t. $n \geq N_2 \implies \forall \; i \in \{1, \dots, I\} \ |x_i^{(n)} - x_i| < I\inv$.
+
+        Now let $n = \max (N_1, N_2)$ then $\sum_{i=1}^{I} |x_i| \leq \sum_{i=1}^{I} |x_i^{(n)}| + \sum_{i=1}^{I} |x_i^{(n)} - x_i| \leq K + 1 + I (I\inv) = K + 2$.
+    \end{proof} 
+
+    Now the partial sums of $\sum |x_i|$ are increasing and bounded above so $\sum |x_i|$ converges.
+    That is $x \in \ell_1$. 
+
+    (iv) Finally, need to check $x^{(n)} \to x$ as $n \to \infty$ in $\ell_1$, i.e. that $d(x^{(n)}, x) \to 0$ as $n \to \infty$. \\
+    Have 
+\end{proof} 
