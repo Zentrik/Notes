@@ -1,0 +1,495 @@
+\section{Vector spaces and linear dependence}
+
+\subsection{Vector spaces}
+
+\begin{definition}[$F$-vector space]
+    Let $F$ be an arbitrary field.
+    A \vocab{$F$-vector space} is an abelian group $(V, +)$ equipped with a function
+    \begin{align*}
+        F \times V \to V;\quad (\lambda, v) \mapsto \lambda v
+    \end{align*}
+    such that
+    \begin{enumerate}
+        \item $\lambda(v_1 + v_2) = \lambda v_1 + \lambda v_2$
+        \item $(\lambda_1 + \lambda_2) v = \lambda_1 v + \lambda_2 v$
+        \item $\lambda ( \mu v ) = ( \lambda \mu ) v$
+        \item $1 v = v$
+    \end{enumerate}
+    Such a vector space may also be called a \textit{vector space over $F$}.
+\end{definition}
+
+\begin{example}
+    Let $n \in \mathbb{N}$.
+    $F^n$ is the space of column vectors of length $n$ with entries in $F$.
+    \begin{gather*}
+        v \in F^n, v = \begin{bmatrix} x_1 \\ \vdots \\ x_n\end{bmatrix}, x_i \in F, 1 \leq i \leq n. \\
+        v + w = \begin{bmatrix}v_1 \\ \vdots \\ v_n\end{bmatrix} + \begin{bmatrix}w_1 \\ \vdots \\ w_n\end{bmatrix} = \begin{bmatrix}v_1 + w_1 \\ \vdots \\ v_n + w_n\end{bmatrix},\quad \lambda v = \begin{bmatrix} \lambda v_1 \\ \vdots \\ \lambda v_n\end{bmatrix}.
+    \end{gather*} 
+    $F^n$ is a $F$-vector space.
+\end{example} 
+
+\begin{example}
+    Let $X$ be a set, and define $\mathbb R^X = \qty{ f \colon X \to \mathbb R}$ (set of real valued functions on $X$).
+    Then $\mathbb R^X$ is an $\mathbb R$-vector space:
+    \begin{itemize}
+        \item $(f_1 + f_2)(x) = f_1(x) + f_2(x)$.
+        \item $(\lambda f)(x) = \lambda f(x), \lambda \in \mathbb{R}$.
+    \end{itemize} 
+\end{example}
+
+\begin{example}
+    Define $M_{n,m}(F)$ to be the set of $n \times m$ $F$-valued matrices.
+    This is an $F$-vector space, where the sum of matrices is computed elementwise.
+\end{example}
+
+\begin{remark}
+    The axioms of scalar multiplication imply that $\forall v \in V,\ 0_F \cdot v = 0_V$.
+\end{remark}
+
+\subsection{Subspaces}
+\begin{definition}[Subspace]
+    Let $V$ be an $F$-vector space.
+    The subset $U \subseteq V$ is a vector subspace of $V$, denoted $U \leq V$, if
+    \begin{enumerate}
+        \item $0_V \in U$
+        \item $u_1, u_2 \in U \implies u_1 + u_2 \in U$
+        \item $(\lambda, u) \in F \times U \implies \lambda u \in U$
+    \end{enumerate}
+    Conditions (ii) and (iii) are equivalent to
+    \begin{align*}
+        \forall \lambda_1, \lambda_2 \in F, \forall u_1, u_2 \in U, \lambda_1 u_1 + \lambda_2 u_2 \in U
+    \end{align*}
+    This means that $U$ is \textit{stable} by vector addition and scalar multiplication.
+\end{definition}
+
+\begin{proposition}
+    If $V$ is an $F$-vector space, and $U \leq V$, then $U$ is an $F$-vector space.
+\end{proposition}
+% proof as exercise
+
+\begin{example}
+    Let $V = \mathbb R^{\mathbb R}$ be the space of functions $\mathbb R \to \mathbb R$.
+    The set $C(\mathbb R)$ of continuous real functions is a subspace of $V$.
+    The set $\mathbb P(\mathbb{R})$ of real polynomials is a subspace of $C(\mathbb R)$ so $\mathbb{P}(\mathbb{R}) \leq V$.
+\end{example}
+\begin{example}
+    Consider the subset of $\mathbb R^3$ such that $x_1 + x_2 + x_3 = t$ for some real $t$.
+    This is a subspace for $t = 0$ only, since no other $t$ values yields the origin as a member of the subset.
+\end{example}
+
+\begin{proposition}[Intersection of two subspaces is a subspace]
+    Let $V$ be an $F$-vector space.
+    Let $U, W \leq V$.
+    Then $U \cap W$ is a subspace of $V$.
+\end{proposition}
+\begin{proof}
+    First, note $0_V \in U, 0_V \in W \implies 0_V \in U \cap W$.
+    Now, consider stability:
+    \begin{align*}
+        \lambda_1, \lambda_2 \in F, v_1, v_2 \in U \cap W \implies \lambda_1 v_1 + \lambda_2 v_2 \in U, \lambda_1 v_1 + \lambda_2 v_2 \in W
+    \end{align*}
+    Hence stability holds.
+\end{proof}
+
+\subsection{Sum of subspaces}
+\begin{warning}
+    The union of two subspaces is not, in general, a subspace.
+    For instance, consider $\mathbb R, i\mathbb R \subset \mathbb C$.
+    Their union does not span the space; for example, $1 + i \notin \mathbb R \cup i\mathbb R$.
+\end{warning}
+
+\begin{definition}[Subspace Sum]
+    Let $V$ be an $F$-vector space.
+    Let $U, W \leq V$.
+    The sum $U + W$ is defined to be the set
+    \begin{align*}
+        U + W = \qty{ u + w \colon u \in U, w \in W }
+    \end{align*}
+\end{definition}
+\begin{proposition}
+    $U + W$ is a subspace of $V$.
+\end{proposition}
+\begin{proof}
+    First, note $0_{U+W} = 0_U + 0_W = 0_V$.
+    Then, for $\lambda_1, \lambda_2 \in F$ and $f, g \in U + W$ we have 
+    \begin{align*}
+        f &= f_1 + f_2 \\
+        g &= g_1 + g_2
+    \end{align*} with $f_1, g_1 \in U$ and $f_2, g_2 \in W$.
+    Hence 
+    \begin{align*}
+        \lambda_1 f + \lambda_2 g &= \lambda_1 (f_1 + f_2) + \lambda_2 (g_1 + g_2) \\
+        &= \underbracket{(\lambda_1 f_1 + \lambda_2 g_1)}_{\in U} + \underbracket{(\lambda_1 f_2 + \lambda g_2)}_{\in W} \in U + W.
+    \end{align*} 
+\end{proof}
+
+\begin{proposition}
+    The sum $U + W$ is the smallest subspace of $V$ that contains both $U$ and $W$.
+\end{proposition}
+
+\begin{proof}
+    Left as an exercise.
+\end{proof} 
+
+\subsection{Quotients}
+\begin{definition}[Quotient]
+    Let $V$ be an $F$-vector space.
+    Let $U \leq V$.
+    The \vocab{quotient space} $V / U$ is the abelian group $V / U$ equipped with the scalar multiplication function
+    \begin{align*}
+        F \times V / U \to V / U;\quad (\lambda, v + U) \mapsto \lambda v + U
+    \end{align*}
+\end{definition}
+
+\begin{note}
+    We must check that the multiplication operation is well-defined.
+    Indeed, suppose $v_1 + U = v_2 + U$.
+    Then,
+    \begin{align*}
+        v_1 - v_2 \in U \implies \lambda (v_1 - v_2) \in U \implies \lambda v_1 + U = \lambda v_2 + U \in V / U
+    \end{align*}
+\end{note} 
+\begin{proposition}
+    $V / U$ is an $F$-vector space.
+\end{proposition}
+\begin{proof}
+    Left as an exercise        
+\end{proof}
+
+\subsection{Span}
+\begin{definition}[Span of a family of vectors]
+    Let $V$ be an $F$-vector space.
+    Let $S \subset V$ be a subset (so $S$ is a set of vectors).
+    We define the \vocab{span} of $S$, written $\genset{S}$, as the set of finite linear combinations of elements of $S$.
+    In particular,
+    \begin{align*}
+        \genset{S} = \qty{ \sum_{s \in S} \lambda_s v_s \colon \lambda_s \in F, v_s \in S, \text{only finitely many nonzero } \lambda_s }
+    \end{align*}
+    By convention, we specify
+    \begin{align*}
+        \genset{\varnothing} = \qty{0}
+    \end{align*}
+    so that all spans are subspaces.
+\end{definition}
+\begin{remark}
+    $\genset{S}$ is the smallest vector subspace of $V$ containing $S$.
+\end{remark}
+\begin{example}
+    Let $V = \mathbb R^3$, and
+    \begin{align*}
+        S = \qty{ \begin{pmatrix}
+                1 \\ 0 \\ 0
+            \end{pmatrix}, \begin{pmatrix}
+                0 \\ 1 \\ 2
+            \end{pmatrix} , \begin{pmatrix}
+            3 \\ -2 \\ -4
+        \end{pmatrix} }
+    \end{align*}
+    Then we can check that
+    \begin{align*}
+        \genset{S} = \qty{\begin{pmatrix}
+                a \\ b \\ 2b
+            \end{pmatrix} \colon (a,b) \in \mathbb R}
+    \end{align*}
+\end{example}
+\begin{example}
+    Let $V = \mathbb R^n$.
+    We define
+    \begin{align*}
+        e_i = \begin{pmatrix}
+            0 \\ \vdots \\ 0 \\ 1 \\ 0 \\ \vdots \\ 0
+        \end{pmatrix}
+    \end{align*}
+    where the 1 is in the $i$th position.
+    Then $V = \genset{(e_i)_{1 \leq i \leq n}}$.
+\end{example}
+\begin{example}
+    Let $X$ be a set, and $\mathbb R^X = \qty{f \colon X \to \mathbb R}$.
+    Then let $S_x \colon X \to \mathbb R$ be defined by
+    \begin{align*}
+        S_x(y) = \begin{cases}
+            1 & y = x            \\
+            0 & \text{otherwise}
+        \end{cases}
+    \end{align*}
+    Then, $\genset{(S_x)_{x \in X}} = \qty{f \in \mathbb R^X \colon f \text{ has finite support}}$,
+    where the support of $f$ is defined to be $\qty{x \colon f(x) \neq 0}$.
+    % check this
+\end{example}
+
+\subsection{Dimensionality}
+\begin{definition}
+    Let $V$ be an $F$-vector space.
+    Let $S \subset V$.
+    We say that $S$ spans $V$ if $\genset{S} = V$.
+    If $S$ spans $V$, we say that $S$ is a generating family of $V$.
+\end{definition}
+
+\begin{definition}[Finite dimensional]
+    Let $V$ be an $F$-vector space.
+    $V$ is \vocab{finite dimensional} if it is spanned by a finite set.
+\end{definition}
+
+\begin{definition}[Infinite dimensional]
+    Let $V$ be an $F$-vector space.
+    $V$ is \vocab{infinite dimensional} if there is no family $S$  with finitely many elements which span $V$.
+\end{definition}
+
+\begin{example}
+    Consider the set $V = \mathbb P[x]$ which is the set of polynomials on $\mathbb R$.
+    Further, consider $V_n = \mathbb P_n[x]$ which is the subspace with degree less than or equal to $n$.
+    Then $V_n$ is spanned by $\qty{1, x, x^2, \dots, x^n}$, so $V_n$ is finite-dimensional.
+
+    Conversely, $V$ is infinite-dimensional; there is no finite set $S$ such that $\genset{S} = V$.
+    The proof is left as an exercise.
+\end{example}
+
+\subsection{Linear independence}
+\begin{definition}[Linear independence]
+    We say that $v_1, \dots, v_n \in V$ are \vocab{linearly independent} or \vocab{free}, if, for $\lambda_i \in F$,
+    \begin{align*}
+        \sum_{i=1}^n \lambda_i v_i = 0 \implies \forall i, \lambda_i = 0.
+    \end{align*}
+\end{definition}
+\begin{remark}
+    Linear dependence implies $\exists \; \lambda_i \in F$ and $j \in [1, n]$ s.t. $\sum_{i=1}^{n} \lambda_i v_i = 0$ and $\lambda_j \neq 0$.
+    This implies $v_j = - \frac{1}{\lambda_j} \sum_{i \neq j}^{n} \lambda_i v_i$, i.e. one of the vectors can be written as a linear combination of the remaining ones.
+\end{remark} 
+
+\begin{remark}
+    If $(v_i)_{1 \leq i \leq n}$ are linearly independent, then
+    \begin{align*}
+        \forall i \in \qty{1,\dots,n}, v_i \neq 0
+    \end{align*}
+\end{remark}
+
+\subsection{Bases}
+\begin{definition}[Basis]
+    $S \subset V$ is a basis of $V$ if
+    \begin{enumerate}
+        \item $\genset{S} = V$
+        \item $S$ is a linearly independent set
+    \end{enumerate}
+    So, a basis is a linearly independent/free generating family.
+\end{definition}
+\begin{example}
+    Let $V = \mathbb R^n$.
+    The \textit{canonical basis} $(e_i)$ is a basis since we can show that they are free and span $V$.
+    Proof is left as an exercise.
+\end{example}
+\begin{example}
+    Let $V = \mathbb C$, considered as a $\mathbb C$-vector space.
+    Then $\qty{1}$ is a basis.
+    If $V$ is a $\mathbb R$-vector space, $\qty{1,i}$ is a basis.
+\end{example}
+\begin{example}
+    Consider again $\mathbb P[x]$, polys on $\mathbb{R}$.
+    Then $S = \qty{x^n \colon n \geq 0}$ is a basis of $\mathbb P$.
+\end{example}
+
+\begin{lemma}[Unique decomposition for everything equivalent to being a basis]
+    Let $V$ be an $F$-vector space.
+    Then, $(v_1, \dots, v_n)$ is a basis of $V$ if and only if any vector $v \in V$ has a \textit{unique} decomposition
+    \begin{align*}
+        v = \sum_{i=1}^n \lambda_i v_i, \lambda_i \in F
+    \end{align*}
+\end{lemma}
+\begin{remark}
+    In the above definition, we call $(\lambda_1, \dots, \lambda_n)$ the \textit{coordinates} of $v$ in the basis $(v_1, \dots, v_n)$.
+\end{remark}
+\begin{proof}
+    Suppose $(v_1, \dots, v_n)$ is a basis of $V$.
+    Then $\forall v \in V$ there exists $\lambda_1, \dots, \lambda_n \in F$ such that
+    \begin{align*}
+        v = \sum_{i=1}^n \lambda_i v_i
+    \end{align*}
+    So there exists a tuple of $\lambda$ values.
+    Suppose two such $\lambda$ tuples exist.
+    Then
+    \begin{align*}
+        v = \sum_{i=1}^n \lambda_i v_i = \sum_{i=1}^n \lambda_i' v_i \implies \sum_{i=1}^n (\lambda_i - \lambda_i') v_i = 0 \implies \lambda_i = \lambda_i'
+    \end{align*} since $v_i$ linearly independent.
+    The converse is left as an exercise.
+\end{proof}
+
+\begin{lemma}[Some subset of a spanning set is a basis]
+    If $\genset{\qty{v_1, \dots, v_n}} = V$, then some subset of this set is a basis of $V$.
+\end{lemma}
+\begin{proof}
+    If $(v_1, \dots, v_n)$ are linearly independent, this is a basis.
+    Otherwise, one of the vectors can be written as a linear combination of the others.
+    So, up to reordering,
+    \begin{align*}
+        v_n \in \genset{\qty{v_1, \dots, v_{n-1}}} &\implies \genset{\qty{v_1, \dots, v_n}} = \genset{\qty{v_1, \dots, v_{n-1}}} \\
+        &\implies \genset{\qty{v_1, \dots, v_{n-1}}} = V
+    \end{align*}
+    So we have removed a vector from this set and preserved the span.
+    By induction, we will eventually reach a basis.
+\end{proof}
+
+\subsection{Steinitz exchange lemma}
+\begin{theorem}[Steinitz exchange lemma]
+    Let $V$ be a finite dimensional $F$-vector space.
+    Let $(v_1, \dots, v_m)$ be linearly independent, and $(w_1, \dots, w_n)$ span $V$.
+    Then,
+    \begin{enumerate}
+        \item $m \leq n$; and
+        \item up to reordering, $(v_1, \dots, v_m, w_{m+1}, \dots w_n)$ spans $V$.
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    Suppose that we have replaced $\ell \geq 0$ of the $w_i$.
+    \begin{align*}
+        \genset{v_1, \dots, v_\ell, w_{\ell+1}, \dots w_n} = V
+    \end{align*}
+    If $m = \ell$, we are done.
+    Otherwise, $\ell < m$.
+    Then,
+    $v_{\ell + 1} \in V = \genset{v_1, \dots, v_\ell, w_{\ell+1}, \dots w_n}$
+    Hence $v_{\ell + 1}$ can be expressed as a linear combination of the generating set.
+    Since the $(v_i)_{1 \leq i \leq m}$ are linearly independent (free), one of the coefficients on the $w_i$ are nonzero.
+    In particular, up to reordering we can express $w_{\ell+1}$ as a linear combination of $v_1, \dots, v_{\ell + 1}, w_{\ell + 2}, \dots, w_n$.
+    Inductively, we may replace $m$ of the $w$ terms with $v$ terms.
+    Since we have replaced $m$ vectors, necessarily $m \leq n$.
+\end{proof}
+
+\subsection{Consequences of Steinitz exchange lemma}
+\begin{corollary}
+    Let $V$ be a finite-dimensional $F$-vector space.
+    Then, any two bases of $V$ have the same number of vectors.
+    This number is called the dimension of $V$, $\dim_F V$.
+\end{corollary}
+\begin{proof}
+    Suppose the two bases are $(v_1, \dots, v_n)$ and $(w_1, \dots, w_m)$.
+    Then, $(v_1, \dots, v_n)$ is free and $(w_1, \dots, w_m)$ is generating, so the Steinitz exchange lemma shows that $n \leq m$.
+    Vice versa, $m \leq n$.
+    Hence $m = n$.
+\end{proof}
+\begin{corollary}
+    Let $V$ be an $F$-vector space with finite dimension $n$.
+    Then,
+    \begin{enumerate}
+        \item Any independent set of vectors has at most $n$ elements, with equality if and only if it is a basis.
+        \item Any spanning set of vectors has at least $n$ elements, with equality if and only if it is a basis.
+    \end{enumerate}
+\end{corollary}
+\begin{proof}
+    Exercise.
+\end{proof}
+
+\subsection{Dimensionality of sums}
+\begin{proposition}
+    Let $V$ be an $F$-vector space.
+    Let $U, W$ be subspaces of $V$.
+    If $U, W$ are finite-dimensional, then so is $U + W$, with
+    \begin{align*}
+        \dim_F (U + W) = \dim_F U + \dim_F W - \dim_F (U \cap W)
+    \end{align*}
+\end{proposition}
+\begin{proof}
+    Consider a basis $(v_1, \dots, v_n)$ of the intersection.
+    Extend this basis to a basis $(v_1, \dots, v_n, u_1, \dots, u_m)$ of $U$ and $(v_1, \dots, v_n, w_1, \dots, w_k)$ of $W$.
+    Then, we will show that $(v_1, \dots, v_n, u_1, \dots, u_m, w_1, \dots, w_k)$ is a basis of $\dim_F (U + W)$, which will conclude the proof.
+    Indeed, since any component of $U + W$ can be decomposed as a sum of some element of $U$ and some element of $W$, we can add their decompositions together.
+    Now we must show that this new basis is free.
+    \begin{align*}
+        \sum_{i=1}^n \alpha_i v_i + \sum_{i=1}^m \beta_i u_i + \sum_{i=1}^k \gamma_i w_i & = 0                                              \\
+        \underbrace{\sum_{i=1}^n \alpha_i v_i + \sum_{i=1}^m \beta_i u_i}_{\in U}        & = \underbrace{\sum_{i=1}^k \gamma_i w_i}_{\in W} \\
+        \sum_{i=1}^k \gamma_i w_i                                                        & \in U \cap W                                     \\
+        \sum_{i=1}^k \gamma_i w_i                                                        & = \sum_{i=1}^n \delta_i v_i                      \\
+        \sum_{i=1}^n (\alpha_i + \delta_i) v_i + \sum_{i=1}^m \beta_i u_i                & = 0                                              \\
+        \beta_i = 0, \alpha_i                                                            & = -\delta_i                                      \\
+        \sum_{i=1}^n \alpha_i v_i + \sum_{i=1}^k \gamma_i w_i                            & = 0                                              \\
+        \alpha_i = 0, \gamma_i                                                           & = 0
+    \end{align*}
+\end{proof}
+\begin{proposition} \label{prp:quotientdim}
+    If $V$ is a finite-dimensional $F$-vector space, and $U \leq V$, then $U$ and $V / U$ are also finite-dimensional.
+    In particular, $\dim_F V = \dim_F U + \dim_F (V / U)$.
+\end{proposition}
+\begin{proof}
+    Let $(u_1, \dots, u_\ell)$ be a basis of $U$.
+    We extend this basis to a basis of $V$: $(u_1, \dots, u_\ell, w_{\ell + 1}, \dots, w_n)$.
+    We claim that $(w_{\ell + 1} + U, \dots, w_n + U)$ is a basis of the vector space $V / U$.
+    % exercise.
+\end{proof}
+
+\begin{remark}
+    If $V$ is an $F$-vector space, and $U \leq V$, then we say $U$ is a proper subspace if $U \neq V$.
+    Then if $U$ is proper, then $\dim_F U < \dim_F V$ and $\dim_F ( V / U ) > 0$ because $(V/U) \neq \varnothing$.
+\end{remark}
+
+\subsection{Direct sums}
+\begin{definition}
+    Let $V$ be an $F$-vector space and $U, W$ be subspaces of $V$.
+    We say that $V = U \oplus V$, read as the direct sum of $U$ and $V$, if $\forall v \in V, \exists!
+    u \in U, \exists!
+    w \in W, u + w = v$.
+    We say that $W$ is \textit{a} direct complement of $U$ in $V$; there is no uniqueness of such a complement.
+\end{definition}
+\begin{lemma}
+    Let $V$ be an $F$-vector space, and $U, W \leq V$.
+    Then the following statements are equivalent.
+    \begin{enumerate}
+        \item $V = U \oplus W$
+        \item $V = U + W$ and $U \cap W = \{0\}$
+        \item For any basis $B_1$ of $U$ and $B_2$ of $W$, $B_1 \cup B_2$ is a basis of $V$
+    \end{enumerate}
+\end{lemma}
+\begin{proof}
+    First, we show that (ii) implies (i).
+    If $V = U + W$, then certainly $\forall v \in V, \exists u \in U, \exists w \in W, v = u + w$, so it suffices to show uniqueness.
+    Note, $u_1 + w_1 = u_2 + w_2 \implies u_1 - u_2 = w_2 - w_1$.
+    The left hand side is an element of $U$ and the right hand side is an element of $W$, so they must be the zero vector; $u_1 = u_2, w_1 = w_2$.
+
+    Now, we show (i) implies (iii).
+    Suppose $B_1$ is a basis of $U$ and $B_2$ is a basis of $W$.
+    Let $B = B_1 \cup B_2$.
+    First, note that $B$ is a generating family of $U + W$.
+    Now we must show that $B$ is free.
+    \begin{align*}
+        \underbrace{\sum_{u \in B_1} \lambda_u u}_{\in U} + \underbrace{\sum_{w \in B_2} \lambda_w w}_{\in W} = 0
+    \end{align*}
+    Hence both sums must be zero.
+    Since $B_1, B_2$ are bases, all $\lambda$ are zero, so $B$ is free and hence a basis.
+
+    Now it remains to show that (iii) implies (ii).
+    We must show that $V = U + W$ and $U \cap W = \{0\}$.
+    Now, suppose $v \in V$.
+    Then, $v = \sum_{u \in B_1} \lambda_u u + \sum{w \in B_2} \lambda_w w$.
+    In particular, $V = U + W$, since the $\lambda_u, \lambda_w$ are arbitrary.
+    Now, let $v \in U \cap W$.
+    Then
+    \begin{align*}
+        v = \sum_{u \in B_1} \lambda_u u = \sum_{w \in B_2} \lambda_w w \implies \lambda_u = \lambda_w = 0
+    \end{align*}
+\end{proof}
+
+\begin{definition}
+    Let $V$ be an $F$-vector space, with subspaces $V_1, \dots, V_p \leq V$.
+    Then
+    \begin{align*}
+        \sum_{i=1}^p V_i = \qty{ v_1, \dots, v_\ell, v_i \in V_i, 1 \leq i \leq \ell}
+    \end{align*}
+    We say the sum is direct, written
+    \begin{align*}
+        \bigoplus_{i=1}^p V_i
+    \end{align*}
+    if the decomposition is unique.
+    Equivalently,
+    \begin{align*}
+        V = \bigoplus_{i=1}^p V_i \iff \exists!
+        v_1 \in V_1, \dots, v_n \in V_n, v = \sum_{i=1}^n v_i
+    \end{align*}
+\end{definition}
+\begin{lemma}
+    The following are equivalent:
+    \begin{enumerate}
+        \item $\sum_{i=1}^p V_i = \bigoplus_{i=1}^p V_i$
+        \item $\forall 1 \leq i \leq l$, $V_i \cap \qty( \sum_{j \neq i} V_j ) = \{0\}$
+        \item For any basis $B_i$ of $V_i$, $B = \bigcup_{i=1}^n B_i$ is a basis of $\sum_{i=1}^n V_i$.
+    \end{enumerate}
+\end{lemma}
+\begin{proof}
+    Exercise.
+\end{proof}

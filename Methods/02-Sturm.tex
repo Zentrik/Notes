@@ -326,15 +326,21 @@ So taking a power series does not give a useful solution.
 Suppose we chose $\lambda = \ell (\ell + 1)$.
 Then eventually we have $n$ such that the numerator vanishes.
 In particular, by taking $\lambda = \ell (\ell + 1)$, either the series for $y_{\text{even}}$ or $y_{\text{odd}}$ terminates.
-These functions are called the Legendre polynomials, denoted $P_\ell(x)$, with the normalisation convention $P_\ell(1) = 1$.
-\begin{itemize}
+These functions are called the \vocab{Legendre polynomials}, denoted $P_\ell(x)$, are eigenfunctions of \cref{eq:2.21} on $-1 \leq x \leq 1$ with the normalisation convention $P_\ell(1) = 1$ (not unit normalised).
+\begin{itemize} \label{eq:2.23}
     \item $\ell = 0, \lambda = 0, P_0(x) = 1$
     \item $\ell = 1, \lambda = 2, P_1(x) = x$
     \item $\ell = 2, \lambda = 6, P_2(x) = \frac{3x^2 - 1}{2}$
     \item $\ell = 3, \lambda = 12, P_3(x) = \frac{5x^3 - 3x}{2}$
 \end{itemize}
-Note, $P_\ell(x)$ has $\ell$ zeroes.
-The polynomials oscillate in parity.
+\begin{figure}[h] 
+    \centering 
+    \includegraphics[height=5cm]{02-legendre} 
+\end{figure}
+\begin{note}
+    $P_\ell(x)$ has $\ell$ zeroes.
+    $P_\ell$ is odd if $\ell$ is odd, $P_\ell$ is even for even $\ell$.
+\end{note} 
 
 \subsection{Properties of Legendre polynomials}
 Since Legendre polynomials come from a self-adjoint operator, they must have certain conditions, such as orthogonality.
@@ -343,19 +349,29 @@ For $n \neq m$,
     \int_{-1}^1 P_n P_m \dd{x} = 0
 \end{align*}
 They are also normalisable,
-\begin{align*}
+\addtocounter{equation}{1}
+\begin{align} \label{eq:2.24}
     \int_{-1}^1 P_n^2 \dd{x} = \frac{2}{2n+1}
-\end{align*}
-We can prove this with Rodrigues' formula:
+\end{align}
+We can prove this with Rodrigues' formula (Sheet 2, Q5):
 \begin{align*}
     P_n(x) = \frac{1}{2^n n!} \qty( \dv{x} )^n (x^2 - 1)^n
 \end{align*}
 Alternatively we could use a generating function:
-\begin{align*}
-    \sum_{n=0}^\infty P_n(x) t^n = \frac{1}{\sqrt{1 - 2xt + t^2}} & = 1 + \frac{1}{2}\qty(2xt - t^2) + \frac{3}{8}\qty(2xt - t^2)^2 + \dots \\
-                                                                & = 1 + xt + \frac{1}{2}\qty(3x^2 - 1)t^2 + \dots
-\end{align*}
-There are some useful recursion relations.
+\addtocounter{equation}{-2}
+\begin{subequations}
+    \begin{align} \label{eq:2.23a}
+        \sum_{n=0}^\infty P_n(x) t^n &= \frac{1}{\sqrt{1 - 2xt + t^2}} \\
+        &= 1 + \frac{1}{2}\qty(2xt - t^2) + \frac{3}{8}\qty(2xt - t^2)^2 + \dots \notag \\
+        & = 1 + xt + \frac{1}{2}\qty(3x^2 - 1)t^2 + \dots \notag \\
+        &= P_0 + P_1 t + P_2 t^2 + \dots \notag
+    \end{align}
+\end{subequations}
+
+\begin{exercise}
+    Verify $P_3$ and find $P_4$ using binomial expansion.
+\end{exercise} 
+There are some useful recursion relations\footnote{Derived in Example Sheet}.
 \begin{align*}
     \ell(\ell + 1) P_{\ell + 1} = (2 \ell + 1) x P_\ell(x) - \ell P_{\ell - 1}(x)
 \end{align*}
@@ -365,25 +381,30 @@ Also,
 \end{align*}
 
 \subsection{Legendre polynomials as eigenfunctions}
-Any (well-behaved) function on $[-1,1]$ can be expressed as
-\begin{align*}
+Any (well-behaved) function $f(x)$ on $[-1,1]$ can be expressed as
+\addtocounter{equation}{1}
+\begin{align} \label{eq:2.25}
     f(x) = \sum_{\ell = 0}^\infty a_\ell P_\ell(x)
-\end{align*}
+\end{align}
 where
-\begin{align*}
+\begin{align} \label{eq:2.26}
     a_\ell = \frac{2\ell + 1}{2} \int_{-1}^1 f(x) P_\ell(x) \dd{x}
-\end{align*}
+\end{align}
 with no boundary conditions (e.g.\ periodicity conditions) on $f$.
+
+\begin{exercise}
+    Verify $f(x) = \frac{15}{2} x^2 - \frac{3}{2} = P_0(x) + 5 P_2(x)$ using \cref{eq:2.26}
+\end{exercise} 
 
 \subsection{Solving inhomogeneous differential equations}
 \textit{This can be thought of as the general case of Fourier series discussed previously.}
 
-\noindent Consider the problem
-\begin{align*}
+Consider the problem
+\begin{align} \label{eq:2.27}
     \mathcal L y = f(x) \equiv w(x) F(x)
-\end{align*}
+\end{align}
 on $x \in [a,b]$ assuming homogeneous boundary conditions.
-Given eigenfunctions $y_n(x)$ satisfying $\mathcal L y_n = \lambda_n w y_n$, we wish to expand this solution as
+Given eigenfunctions $y_n(x)$ satisfying $\mathcal L y_n = \lambda_n w y_n$, we wish to expand this solution as (recall \cref{sec:1.6})
 \begin{align*}
     y(x) = \sum_n c_n y_n(x)
 \end{align*}
@@ -391,7 +412,8 @@ and
 \begin{align*}
     F(x) = \sum_n a_n y_n(x)
 \end{align*}
-where $a_n$ are known and $c_n$ are unknown:
+where $a_n$ are known and $c_n$ are unknown.
+Using \cref{eq:2.17}:
 \begin{align*}
     a_n = \frac{\int_a^b w F y_n \dd{x}}{\int_a^b w y_n^2 \dd{x}}
 \end{align*}
@@ -404,23 +426,24 @@ By orthogonality,
     c_n \lambda_n = a_n \implies c_n = \frac{a_n}{\lambda_n}
 \end{align*}
 In particular,
-\begin{align*}
+\begin{align} \label{eq:2.28}
     y(x) = \sum_{n=1}^\infty \frac{a_n}{\lambda_n}y_n(x)
-\end{align*}
-We can further generalise; we can permit a driving force, which often induces a linear response term $\widetilde\lambda w y$.
-\begin{align*}
-    \mathcal L y - \widetilde \lambda w y = f(x)
-\end{align*}
-where $\widetilde \lambda$ is fixed.
-The solution becomes
-\begin{align*}
-    y(x) = \sum_{n=1}^\infty \frac{a_n}{\lambda_n - \widetilde \lambda} y_n(x)
-\end{align*}
+\end{align} (assuming $\lambda_n \neq 0, \forall \; n$).
 
-\subsection{Integral solutions}
-Recall that
+We can further generalise; we can permit a driving force, which often induces a linear response term $\widetilde\lambda w y$.
+\begin{align} \label{eq:2.29}
+    \mathcal L y - \widetilde \lambda w y = f(x)
+\end{align}
+where $\widetilde \lambda$ is fixed.
+The solution \cref{eq:2.28} becomes
+\begin{align} \label{eq:2.30}
+    y(x) = \sum_{n=1}^\infty \frac{a_n}{\lambda_n - \widetilde \lambda} y_n(x)
+\end{align} (again $\widetilde \lambda \neq \lambda_n, \forall \; n$).
+
+\subsection{Integral solutions and Green's function}
+Recall \cref{eq:2.28}
 \begin{align*}
-    y(x) = \sum_{n=1}^\infty \frac{a_n}{\lambda_n} y_n(x) = \sum_n \frac{y_n(x)}{\lambda_n \lambda_n N_n} \int_a^b w(\xi) F(\xi) y_n(\xi) \dd{\xi}
+    y(x) = \sum_{n=1}^\infty \frac{a_n}{\lambda_n} y_n(x) = \sum_n \frac{y_n(x)}{\lambda_n N_n} \int_a^b w(\xi) F(\xi) y_n(\xi) \dd{\xi} \text{ by \cref{eq:2.17}}
 \end{align*}
 where
 \begin{align*}
@@ -438,41 +461,6 @@ is the eigenfunction expansion of the Green's function.
 Note that the Green's function does not depend on $f$, but only on $\mathcal L$ and the boundary conditions.
 In this sense, it acts like an inverse operator
 \begin{align*}
-    \mathcal L^- \equiv \int \dd{\xi} G(x,\xi)
+    \mathcal L\inv \equiv \int \dd{\xi} G(x,\xi)
 \end{align*}
 analogously to how $Ax = b \implies x = A^{-1} b$ for matrix equations.
-
-\subsection{Waves on an elastic string}
-Consider a small displacement $y(x,t)$ on a stretched string with fixed ends at $x = 0$ and $x = L$, that is, with boundary conditions $y(0,t) = y(L,t) = 0$.
-We can determine the string's motion for specified initial conditions $y(x,0) = p(x)$ and $\pdv{y}{t}(x,0) = q(x)$.
-We derive the equation of motion governing the motion of the string by balancing forces on a string segment $(x,x+\delta x)$ and take the limit as $\delta x \to 0$.
-Let $T_1$ be the tension force acting to the left at angle $\theta_1$ from the horizontal.
-Analogously, let $T_2$ be the rightwards tension force at angle $\theta_2$.
-We assume at any point on the string that $\abs{\pdv{y}{x}} \ll 1$, so the angles of the forces are small.
-In the $x$ dimension,
-\begin{align*}
-    T_1 \cos \theta_1 = T_2 \cos \theta_2 \implies T_1 \approx T_2 = T
-\end{align*}
-So the tension $T$ is constant up to an error of order $O\qty(\abs{\pdv{y}{x}
-}^2)$.
-In the $y$ dimension, since $\theta$ are small,
-\begin{align*}
-    F_T = T_2 \sin \theta_2 - T_1 \sin \theta_1 \approx T \qty(\eval{\pdv{y}{x}}_{x + \delta x} - \eval{\pdv{y}{x}}_x) \approx T \pdv[2]{y}{x} \delta x
-\end{align*}
-By $F = ma$,
-\begin{align*}
-    F_T + F_g = (\mu \delta x) \pdv[2]{y}{t} = T \pdv[2]{y}{x} \delta x - g \mu \delta x
-\end{align*}
-where $F_g$ is the gravitational force and $\mu$ is the linear mass density.
-We define the wave speed as
-\begin{align*}
-    c = \sqrt{\frac{T}{\mu}}
-\end{align*}
-and find
-\begin{align*}
-    \pdv[2]{y}{t} = \frac{T}{\mu} \pdv[2]{y}{x} - g = c^2 \pdv[2]{y}{x}
-\end{align*}
-We often assume gravity is negligible to produce the pure wave equation
-\begin{align*}
-    \frac{1}{c^2} \pdv[2]{y}{t} = \pdv[2]{y}{x}
-\end{align*}

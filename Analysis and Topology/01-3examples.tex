@@ -15,7 +15,9 @@ Recall: A sequence $(x_n)$ in $\mathbb{R}$ is Cauchy if
     \forall \; \epsilon > 0 \quad \exists \; N \quad \forall \; m, n \geq N \quad |x_m - x_n| < \epsilon.
 \end{align*} 
 
-Easy exercise Convergent $\implies$ Cauchy
+\begin{exercise}[Easy]
+    Show convergent $\implies$ Cauchy.
+\end{exercise} 
 
 General Principle of Convergence (GPC)
 Any Cauchy sequence in $\mathbb{R}$ converges.
@@ -46,7 +48,7 @@ Triangle Inequality If $a, b \in \mathbb{R}^2$ then $\left \lVert a + b \right \
 
 \begin{definition}
     Let $(z_n)$ be a sequence in $\mathbb{R}^2$ and $z \in \mathbb{R}^2$.
-    We say $(z_n)$ \vocab{converges} to $z$ and .. $z_n \to z$ if $\forall \; \epsilon > 0 \ \exists \; N \ \forall \; n \geq N \ \left \lVert z_n - z \right \rVert < \epsilon$. 
+    We say $(z_n)$ \vocab{converges} to $z$ and write $z_n \to z$ if $\forall \; \epsilon > 0 \ \exists \; N \ \forall \; n \geq N \ \left \lVert z_n - z \right \rVert < \epsilon$. 
 
     Equivalently, $z_n \to z$ iff $\left \lVert z_n - z \right \rVert \to 0$ (convergence in $\mathbb{R}$).
 \end{definition} 
@@ -363,7 +365,9 @@ GPC?
     We say $(f_n)$ is \vocab{uniformly Cauchy} if $\forall \; \epsilon > 0 \ \exists \; N \ \forall \; m, n \geq N \ \forall \; x \in X \ |f_m(x) - f_n(x)| < \epsilon$
 \end{definition} 
 
-exercise: uniformly convergence $\implies$ uniformly Cauchy.
+\begin{exercise}
+    Show uniformly convergence $\implies$ uniformly Cauchy.
+\end{exercise} 
 
 \begin{theorem}[General principle of Uniform Convergence (GPUC)] \label{thm:7}
     Let $(f_n)$ be a uniformly Cauchy sequence of functions $X \to \mathbb{R}$ ($X \subset \mathbb{R}$).
@@ -396,7 +400,7 @@ BW?
 
 \begin{definition}[Uniformly bounded]
     Let $X \subset \mathbb{R}$ and let $f_n : X \to \mathbb{R}$ for each $n \geq 1$.
-    We say $(f_n)$ is \vocab{uniformly bounded} if $\exists \; M \ \forall \; x \ \forall \; n \ |f_n(x)| \leq M$.\footnote{Again we have just swapped ... as in convergence.}
+    We say $(f_n)$ is \vocab{uniformly bounded} if $\exists \; M \ \forall \; x \ \forall \; n \ |f_n(x)| \leq M$.\footnote{Again we have just swapped $\forall \; x \ \exists \; M$ as in convergence.}
 \end{definition} 
 
 What would uniform BW say?
@@ -631,7 +635,7 @@ Let $f: X \to \mathbb{R}$.
 \end{theorem} 
 
 \begin{proof}
-    Let $f: [a, b] \to \mathbb{R}$ and suppose $f$ is cts but not uniformly cts. Then we can find $\epsilon > 0$ st. $\delta > 0 \ \exists \; x,y \in [a, b]$ with $|x-y| < \delta$ but $|f(x) - f(y)| \geq \epsilon$.
+    Let $f: [a, b] \to \mathbb{R}$ and suppose $f$ is cts but not uniformly cts. Then we can find $\epsilon > 0$ st. $\forall \; \delta > 0 \ \exists \; x,y \in [a, b]$ with $|x-y| < \delta$ but $|f(x) - f(y)| \geq \epsilon$.
 
     In particular, taking $\delta = \frac{1}{n}$ we can find sequences $(x_n), (y_n) \in [a, b]$ with, for each $n$, $|x_n - y_n| < \frac{1}{n}$ but $|f(x_n) - f(y_n)| \geq \epsilon$.
     The sequence $(x_n)$ is bounded so by BW\footnote{Bolzano Weierstrass} it has a convergent subsequence $x_{n_j} \to x$.
