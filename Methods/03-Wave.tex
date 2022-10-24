@@ -167,57 +167,59 @@ A general strategy for solving higher-dimensional partial differential equations
 	\item Sum over the products of separable solutions to find the general series solution.
 	\item Determine coefficients for this series using the initial conditions.
 \end{enumerate}
-\begin{example}
-	We will solve the wave equation instead in characteristic coordinates.
-	Recall the sine and cosine summation identities:
-	\begin{align*}
-		y(x,t) & = \frac{1}{2} \sum_{n=1}^\infty \Bigg[ \qty(C_n \sin \frac{n \pi}{L}(x-ct) + D_n \cos \frac{n \pi}{L}(x-ct)) \\&
-		+ \qty(C_n \sin \frac{n \pi}{L}(x+ct) - D_n \cos \frac{n \pi}{L}(x+ct)) \Bigg]                                        \\
-		       & = f(x-ct) + g(x+ct)
-	\end{align*}
-	The standing wave solution can be interpreted as a superposition of a right-moving wave and a left-moving wave.
-	A special case is $q(x) = 0$, implying $f = g = \frac{1}{2} p$.
-	Then,
-	\begin{align*}
-		y(x,t) = \frac{1}{2}\qty[p(x-ct) + p(x+ct)]
-	\end{align*}
-\end{example}
+% \begin{example}
+% 	We will solve the wave equation instead in characteristic coordinates.
+% 	Recall the sine and cosine summation identities:
+% 	\begin{align*}
+% 		y(x,t) & = \frac{1}{2} \sum_{n=1}^\infty \Bigg[ \qty(C_n \sin \frac{n \pi}{L}(x-ct) + D_n \cos \frac{n \pi}{L}(x-ct)) \\&
+% 		+ \qty(C_n \sin \frac{n \pi}{L}(x+ct) - D_n \cos \frac{n \pi}{L}(x+ct)) \Bigg]                                        \\
+% 		       & = f(x-ct) + g(x+ct)
+% 	\end{align*}
+% 	The standing wave solution can be interpreted as a superposition of a right-moving wave and a left-moving wave.
+% 	A special case is $q(x) = 0$, implying $f = g = \frac{1}{2} p$.
+% 	Then,
+% 	\begin{align*}
+% 		y(x,t) = \frac{1}{2}\qty[p(x-ct) + p(x+ct)]
+% 	\end{align*}
+% \end{example}
 
 \subsection{Energy of oscillations}
 A vibrating string has kinetic energy due to its motion.
 \begin{align*}
 	\text{Kinetic energy} = \frac{1}{2} \mu \int_0^L \qty(\pdv{y}{t})^2 \dd{x}
 \end{align*}
-It has potential energy given by
+It has potential energy  due to stretching by $\Delta x$ given by
 \begin{align*}
-	\text{Potential energy} = T \Delta x = T \int_c^T \qty(\sqrt{1 + \qty(\pdv{y}{x})^2}-1)\dd{x} \approx \frac{1}{2} T \int_0^L \qty(\pdv{y}{x})^2 \dd{x}
+	\text{Potential energy} = T \Delta x = T \int_c^T \qty(\underbrace{\sqrt{1 + \qty(\pdv{y}{x})^2}}_\text{arc length $s$} -1)\dd{x} \approx \frac{1}{2} T \int_0^L \qty(\pdv{y}{x})^2 \dd{x}
 \end{align*}
 assuming that the disturbances on the string are small, that is, $\abs{\pdv{y}{x}} \ll 1$.
 The total energy on the string, given $c^2 = T/\mu$, is given by
-\begin{align*}
+\begin{align} \label{eq:3.13}
 	E = \frac{1}{2}\mu \int_0^L \qty[\qty(\pdv{y}{t})^2 + c^2 \qty(\pdv{y}{x})^2] \dd{x}
-\end{align*}
-Substituting the solution, using the orthogonality conditions,
-\begin{align*}
-	E & = \frac{1}{2}\mu \sum_{n=1}^\infty \int_0^L \Bigg[-\qty(\frac{n \pi c}{L} C_n \sin \frac{n \pi c t}{L} + \frac{n \pi c}{L} D_n \cos \frac{n \pi c t}{L})^2 \sin^2 \frac{n \pi x}{L} \\
-	  & + c^2 \qty(C_n \cos \frac{n \pi c t}{L} + D_n \sin \frac{n \pi c t}{L})^2 \frac{n^2 \pi^2}{L^2} \cos^2 \frac{n \pi x}{L} \Bigg] \dd{x}                                              \\
-	  & = \frac{1}{4} \mu \sum_{n=1}^\infty \frac{n^2 \pi^2 c^2}{L} \qty(C_n^2 + D_n^2)
-\end{align*}
+\end{align}
+Substituting the solution \cref{eq:3.10}, using the orthogonality conditions \cref{eq:1.1},
+\begin{align}
+	E &= \frac{1}{2}\mu \sum_{n=1}^\infty \int_0^L \Bigg[-\qty(\frac{n \pi c}{L} C_n \sin \frac{n \pi c t}{L} + \frac{n \pi c}{L} D_n \cos \frac{n \pi c t}{L})^2 \sin^2 \frac{n \pi x}{L}\notag \\
+	&+ c^2 \qty(C_n \cos \frac{n \pi c t}{L} + D_n \sin \frac{n \pi c t}{L})^2 \frac{n^2 \pi^2}{L^2} \cos^2 \frac{n \pi x}{L} \Bigg] \dd{x} \notag \\
+	&= \frac{1}{4} \mu \sum_{n=1}^\infty \frac{n^2 \pi^2 c^2}{L} \qty(C_n^2 + D_n^2) \label{eq:3.14}
+\end{align}
 which is an analogous result to Parseval's theorem.
 This is true since \begin{align*}
 	\int \cos^2 \frac{n \pi x}{L}\dd{x} = \frac{1}{2}
 \end{align*} and $\cos^2 + \sin^2 = 1$.
 We can think of this energy as the sum over all the normal modes of the energy in that specific mode.
-Note that this quantity is constant over time.
+Note that this quantity is constant over time (no dissipation).
 
 \subsection{Wave reflection and transmission}
+Recall the travelling wave solution \cref{eq:3.12}.
 The travelling wave has left-moving and right-moving modes.
-A \textit{simple harmonic} travelling wave is
+A \vocab{simple harmonic} travelling wave is
 \begin{align*}
 	y = \Re\qty[ A e^{i \omega(t-x/c)} ] = A \cos \qty[\omega(t-x/c) + \phi]
 \end{align*}
 where the phase $\phi$ is equal to $\arg A$, and the wavelength $\lambda$ is $2 \pi c / \omega$.
 In further discussion, we assume only the real part is used.
+
 Consider a density discontinuity on the string at $x = 0$ with the following properties.
 \begin{align*}
 	\mu = \begin{cases}
@@ -230,26 +232,31 @@ Consider a density discontinuity on the string at $x = 0$ with the following pro
 \end{align*}
 assuming a constant tension $T$.
 As a wave from the negative direction approaches the discontinuity, some of the wave will be reflected, given by $B e^{i \omega(t + x/c_-)}$, and some of the wave will be transmitted, given by $D e^{i \omega(t - x/c_+)}$.
+\begin{figure}[h] 
+    \centering 
+    \includegraphics[height=5cm]{03-densitydiscon} 
+\end{figure}
 The boundary conditions at $x = 0$ are
 \begin{enumerate}
 	\item $y$ is continuous for all $t$ (the string does not break), so
-	      \begin{equation}
-		      A + B = D \tag{$\ast$}
-	      \end{equation}
+	\begin{equation}
+		A + B = D \tag{$\ast$}
+	\end{equation}
 	\item The forces balance, $T \eval{\pdv{y}{x}}_{x = 0^-} = T \eval{\pdv{y}{x}}_{x = 0^+}$ which means $\pdv{y}{x}$ must be continuous for all $t$.
-	      This gives
-	      \begin{equation}
-		      \frac{-i\omega A}{c_-} + \frac{i \omega B}{c_-} = \frac{-i \omega D}{c_+} \tag{$\dagger$}
-	      \end{equation}
+	This gives
+	\begin{equation}
+		\frac{-i\omega A}{c_-} + \frac{i \omega B}{c_-} = \frac{-i \omega D}{c_+} \tag{$\dagger$}
+	\end{equation}
 \end{enumerate}
 We can eliminate $B$ from $(\ast)$ by subtracting $\frac{c_-}{i \omega}(\dagger)$.
 \begin{align*}
 	2A = D + D \frac{c_-}{c_+} = \frac{D}{c_+}(c_+ + c_-)
 \end{align*}
 Hence, given $A$, we have the solution for the transmitted amplitude and reflected amplitude to be
-\begin{align*}
+\setcounter{equation}{15}
+\begin{align} \label{eq:3.16}
 	D = \frac{2 c_+}{c_- + c_+} A;\quad B = \frac{c_+ - c_-}{c_- + c_+}
-\end{align*}
+\end{align}
 In general $A, B, D$ are complex, hence different phase shifts are possible.
 
 There are a number of limiting cases, for example
@@ -263,65 +270,75 @@ There are a number of limiting cases, for example
 	      This gives total reflection but with the same phase.
 \end{enumerate}
 
-\subsection{Wave equation in plane polar coordinates}
+\subsection{Wave equation in 2D plane polar coordinates}
 Consider the two-dimensional wave equation for $u(r,\theta,t)$ given by
-\begin{align*}
+\begin{align} \label{eq:3.17}
 	\frac{1}{c^2} \pdv[2]{u}{t} = \laplacian u
-\end{align*}
+\end{align}
 with boundary conditions at $r = 1$ on a unit disc given by
-\begin{align*}
-	u(1,\theta,t) = 0
-\end{align*}
+\begin{align} \label{eq:3.18}
+	u(1,\theta,t) = 0 \quad \text{(fixed rim)}
+\end{align}
 and initial conditions for $t = 0$ given by
-\begin{align*}
+\begin{align} \label{eq:3.19}
 	u(r,\theta,0) = \phi(r,\theta);\quad \pdv{u}{t}(r,\theta,0) = \psi(r,\theta)
-\end{align*}
+\end{align}
+
+\subsubsection{Temporal Seperation}
 Suppose that this equation is separable.
 First, let us consider temporal separation.
 Suppose that
-\begin{align*}
+\begin{align} \label{eq:3.20}
 	u(r,\theta,t) = T(t) V(r,\theta)
-\end{align*}
-Then we have
-\begin{align*}
-	\ddot T + \lambda c^2 T = 0;\quad \laplacian V + \lambda V = 0
-\end{align*}
-In plane polar coordinates, we can write the spatial equation as
+\end{align}
+Then substitute into \cref{eq:3.17}
+\begin{align}
+	\ddot T + \lambda c^2 T &= 0 \label{eq:3.21} \\
+	\laplacian V + \lambda V &= 0 \label{eq:3.22}
+\end{align}
+In plane polar coordinates, we can write the spatial equation \cref{eq:3.22} as
 \begin{align*}
 	\pdv[2]{V}{r} + \frac{1}{r} \pdv{V}{r} + \frac{1}{r^2}\pdv[2]{V}{\theta} + \lambda V = 0
 \end{align*}
+\subsubsection{Spatial Seperation}
 We will perform another separation, supposing
 \begin{align*}
-	V(r,\theta) = R(r) \Theta(\theta)
+	V(r,\theta) = R(r) \Theta(\theta).
 \end{align*}
-to give
-\begin{align*}
-	\Theta'' + \mu \Theta = 0;\quad r^2 R'' + r R' + \qty(\lambda r^2 - \mu) R = 0
-\end{align*}
+Substitute into \cref{eq:3.22}
+\begin{align}
+	\Theta'' + \mu \Theta &= 0 \label{eq:3.23} \\
+	r^2 R'' + r R' + \qty(\lambda r^2 - \mu) R &= 0 \label{eq:3.24}
+\end{align}
 where $\lambda, \mu$ are the separation constants.
+\subsubsection{Polar Solution}
 The polar solution is constrained by periodicity $\Theta(0) = \Theta(2 \pi)$, since we are working on a disc.
 We also consider only $\mu > 0$.
-The eigenvalue is then given by $\mu = m^2$, where $m \in \mathbb N$.
-\begin{align*}
+The eigenvalue is then given by $\mu = m^2$, where $m \in \mathbb N \cup \{0\}$.
+\begin{align} \label{eq:3.25}
 	\Theta_m(\theta) = A_m \cos m \theta + B_m \sin m \theta
-\end{align*}
+\end{align}
 Or, in complex exponential form,
 \begin{align*}
 	\Theta_m(\theta) = C_m e^{im\theta};\quad m \in \mathbb Z
 \end{align*}
 
-\subsection{Bessel's equation}
-We can solve the radial equation (in the previous subsection) by converting it first into Sturm-Liouville form, which can be accomplished by dividing by $r$.
-\begin{align*}
-	\dv{r} \qty(r R') - \frac{m^2}{r} = -\lambda r R
-\end{align*}
+\subsection{Radial Equations}
+We can solve the radial equation \cref{eq:3.24} (in the previous subsection) by converting it first into Sturm-Liouville form \cref{eq:2.7}, which can be accomplished by dividing by $r$ with $\mu = m^2$.
+\begin{align} \label{eq:3.26}
+	\dv{r} \qty(r R') - \frac{m^2}{r} = -\lambda r R \quad (0 \leq r \leq 1)
+\end{align}
 where $p(r) = r, q(r) = \frac{m^2}{r}, w(r) = r$, with self-adjoint boundary conditions with $R(1) = 0$.
 We will require $R$ is bounded at $R(0)$, and since $p(0) = 0$ there is a regular singular point at $r = 0$.
+
+\subsubsection{Bessel's equation}
 This particular equation for $R$ is known as Bessel's equation.
-We will first substitute $z \equiv \sqrt{\lambda} r$, then we find the usual form of Bessel's equation,
-\begin{align*}
+We will first substitute $z \equiv \sqrt{\lambda} r$ in \cref{eq:3.26}, then we find the usual form of Bessel's equation\footnote{May also be written as $(z R')' + (z - m^2 / z) R = 0$},
+\begin{align} \label{eq:3.27}
 	z^2 \dv[2]{R}{z} + z \dv{R}{z} + (z^2 - m^2)R = 0
-\end{align*}
+\end{align}
+
+\subsubsection{Frobenius Solution}
 We can use the method of Frobenius by substituting the following power series:
 \begin{align*}
 	R = z^p \sum_{n=0}^\infty a_n z^n
@@ -555,8 +572,8 @@ Suppose we have a bar of length $2L$ with $-L \leq x \leq L$ and initial tempera
 	\end{cases}
 \end{align*}
 with boundary conditions $\theta(L, t) = 1$, $\theta(-L, t) = 0$.
-Currently the boundary conditions are not homoegeneous, so Sturm-Liouville theory cannot be used directly.
-If we can identify a steady-state solution (time-independent) that reflects the late-time behaviour, then we can turn it into a homoegeneous set of boundary conditions.
+Currently the boundary conditions are not homogeneous, so Sturm-Liouville theory cannot be used directly.
+If we can identify a steady-state solution (time-independent) that reflects the late-time behaviour, then we can turn it into a homogeneous set of boundary conditions.
 We will try a solution of the form
 \begin{align*}
 	\theta_s(x) = Ax + B

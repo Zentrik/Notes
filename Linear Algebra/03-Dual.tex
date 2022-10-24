@@ -7,62 +7,76 @@
 	\begin{align*}
 		V^\star = L(V,F) = \qty{\alpha \colon V \to F}
 	\end{align*}
-	where the $\alpha$ are linear.
+	where the $\alpha$ are linear. \\
 	If $\alpha \colon V \to F$ is linear, then we say $\alpha$ is a linear form.
 	So the dual of $V$ is the set of linear forms on $V$.
 \end{definition}
+
 \begin{example}
 	For instance, the trace $\tr \colon M_{n,n}(F) \to F$ is a linear form on $M_{n,n}(F)$.
+	So $\tr \in M_{n, n}^*(F)$
 \end{example}
+
 \begin{example}
-	Consider functions $[0,1] \to \mathbb R$.
-	We can define $T_f \colon \mathcal C^\infty([0,1], \mathbb R) \to \mathbb R$ such that $\phi \mapsto \int_0^1 f(x) \phi(x) \dd{x}$.
-	Then $T_f$ is a linear form on $\mathcal C^{\infty}([0,1], \mathbb R)$.
+	Consider functions $f: [0,1] \to \mathbb R$.
+	We can define $T_f \colon \mathcal C^\infty([0,1], \mathbb R) \to \mathbb R$ such that $\phi \mapsto \int_0^1 f(x) \phi(x) \dd{x}$. 
+	I.e. $T_f(\phi) = \int_0^1 f(x) \phi(x) \dd{x}$. \\
+	Then $T_f$ is a linear form on $\mathcal C^{\infty}([0,1], \mathbb R)$ ($\mathbb{R}$ vector space). \\
+	The function defines a linear form.
 	We can then reconstruct $f$ given $T_f$.
-	This mathematical formulation is called distribution.
+	This mathematical formulation is called distribution (which is about the generalisation of the notion of functions).
 \end{example}
-\begin{lemma}
+
+\begin{remark}
+	Duality is not that useful in finite dimensions but it is in infinite.
+\end{remark} 
+
+\begin{lemma}[Dual Basis]
 	Let $V$ be an $F$-vector space with a finite basis $B = \qty{e_1, \dots, e_n}$.
 	Then there exists a basis $B^\star$ for $V^\star$ given by
 	\begin{align*}
-		B^\star = \qty{\varepsilon_1, \dots, \varepsilon_n}; \quad \varepsilon_j \qty( \sum_{i=1}^n a_i e_i ) = a_j
+		B^\star = \qty{\varepsilon_1, \dots, \varepsilon_n}; \quad \varepsilon_j\footnote{Recall $\varepsilon_j$ is a linear form} \qty( \sum_{i=1}^n a_i e_i ) = a_j
 	\end{align*}
-	We call $B^\star$ the \textit{dual basis} for $B$.
+	We call $B^\star$ the \vocab{dual basis} for $B$.
 \end{lemma}
-\begin{proof}
-	We know
+
+\begin{remark}
+	Kronecker symbol, $\delta_{ij}$.
 	\begin{align*}
-		\varepsilon_j \qty( \sum_{i=1}^n a_i e_i ) = a_j
-	\end{align*}
-	Equivalently,
+		\varepsilon_j \qty( \sum_{i=1}^n a_i e_i ) = a_j \iff \varepsilon_j (e_i) = \delta_{ij}
+	\end{align*} 
+\end{remark} 
+
+\begin{proof}
+	Let
 	\begin{align*}
 		\varepsilon_j (e_i) = \delta_{ij}
 	\end{align*}
 	First, we will show that the set of linear forms as defined is free.
 	For all $i$,
 	\begin{align*}
-		\sum_{j=1}^n \lambda_j \varepsilon_j                        & = 0 \\
+		\sum_{j=1}^n \lambda_j \varepsilon_j &= 0 \\
 		\therefore \qty( \sum_{j=1}^n \lambda_j \varepsilon_j ) e_i & = 0 \\
-		\sum_{j=1}^n \lambda_j \varepsilon_j(e_i)                   & = 0 \\
-		\lambda_i                                                   & = 0
+		\sum_{j=1}^n \lambda_j \underbrace{\varepsilon_j(e_i)}_{\delta_{ij}} &= 0 \\
+		\lambda_i &= 0
 	\end{align*}
 	Now we show that the set spans $V^\star$.
 	Suppose $\alpha \in V^\star$, $x \in V$.
 	\begin{align*}
 		\alpha(x) & = \alpha\qty(\sum_{j=1}^n \lambda_j e_j) \\
-		          & = \sum_{i=1}^n \lambda_j \alpha(e_j)
+		&= \sum_{i=1}^n \lambda_j \alpha(e_j)
 	\end{align*}
 	Conversely, we can write
 	\begin{align*}
-		\sum_{i=1}^n \alpha(e_j) \varepsilon(j) \in V^\star
+		\sum_{i=1}^n \underbrace{\alpha(e_j)}_{\in F} \varepsilon_j \in V^\star
 	\end{align*}
 	Thus,
 	\begin{align*}
 		\qty( \sum_{i=1}^n \alpha(e_j) \varepsilon_j) (x) & = \sum_{j=1}^n \alpha(e_j) \varepsilon_j\qty(\sum_{k=1}^n \lambda_k e_k) \\
-		                                                  & = \sum_{j=1}^n \alpha(e_j) \sum_{k=1}^n \lambda_k \varepsilon_j(e_k)     \\
-		                                                  & = \sum_{j=1}^n \alpha(e_j) \sum_{k=1}^n \lambda_k \delta_{jk}            \\
-		                                                  & = \sum_{j=1}^n \alpha(e_j) \lambda_j                                     \\
-		                                                  & = \alpha(x)
+        &= \sum_{j=1}^n \alpha(e_j) \sum_{k=1}^n \lambda_k \varepsilon_j(e_k) \\
+		& = \sum_{j=1}^n \alpha(e_j) \sum_{k=1}^n \lambda_k \delta_{jk} \\
+		&= \sum_{j=1}^n \alpha(e_j) \lambda_j \\
+		&= \alpha(x)
 	\end{align*}
 	We have then shown that
 	\begin{align*}
@@ -71,7 +85,7 @@
 	as required.
 \end{proof}
 \begin{corollary}
-	If $V$ is finite-dimensional, $V^\star$ has the same dimension.
+	If $V$ is finite-dimensional, $V^\star$ has the same dimension.\footnote{Very different in infinite dimension.}
 \end{corollary}
 \begin{remark}
 	It is sometimes convenient to think of $V^\star$ as the spaces of row vectors of length $\dim V$ over $F$.
@@ -89,9 +103,9 @@
 \end{remark}
 
 \subsection{Annihilators}
-\begin{definition}
-	Let $U \subseteq V$.
-	Then the annihilator of $U$ is
+\begin{definition}[Annihilator]
+	Let $U \leq V$.
+	Then the \vocab{annihilator} of $U$ is
 	\begin{align*}
 		U^0 = \qty{\alpha \in V^\star \colon \forall u \in U, \alpha(u) = 0}
 	\end{align*}
@@ -102,9 +116,10 @@
 		\item If $U \leq V$ and $\dim V < \infty$, then $\dim V = \dim U + \dim U^0$.
 	\end{enumerate}
 \end{lemma}
+
 \begin{proof}
 	\begin{enumerate}
-		\item First, note that $0 \in U^0$ since $\alpha(0) = 0$ by linearity.
+		\item First, note that $0 \in U^0$.
 		      If $\alpha, \alpha' \in U^0$, then for all $u \in U$,
 		      \begin{align*}
 			      (\alpha + \alpha')(u) = \alpha(u) + \alpha'(u) = 0
@@ -114,43 +129,46 @@
 			      (\lambda \alpha)(u) = \lambda \alpha(u) = 0
 		      \end{align*}
 		      Hence $U^0 \leq V^\star$.
-		\item Let $(e_1, \dots, e_k)$ be a basis of $U$, completed into a basis $B = (e_1, \dots, e_k, e_{k+1}, \dots, e_n)$ of $V$.
-		      Let $(\varepsilon_1, \dots, \varepsilon_n)$ be the dual basis $B^\star$.
-		      We then will prove that
-		      \begin{align*}
-			      U^0 = \genset{\varepsilon_{k+1}, \dots, \varepsilon_n}
-		      \end{align*}
-		      If $i > k$, then $\varepsilon_i(e_k) = \delta_{ik} = 0$.
-		      Hence $\varepsilon_i \in U^0$.
-		      Thus $\genset{\varepsilon_{k+1}, \dots, \varepsilon_n} \subset U^0$.
-		      Conversely, let $\alpha \in U^0$.
-		      Then $\alpha = \sum_{i=1}^n \alpha_i \varepsilon_i$.
-		      For $i \leq k$, $\alpha \in U^0$ hence $\alpha(e_i) = 0$.
-		      Hence,
-		      \begin{align*}
-			      \alpha = \sum_{i=k+1}^n \alpha_i \varepsilon_i
-		      \end{align*}
-		      Thus
-		      \begin{align*}
-			      \alpha \in \genset{\varepsilon_{k+1}, \dots, \varepsilon_n}
-		      \end{align*}
-		      as required.
+		\item Let $U \leq V$ and $\dim V = n$. 
+		Let $(e_1, \dots, e_k)$ be a basis of $U$, completed into a basis $B = (e_1, \dots, e_k, e_{k+1}, \dots, e_n)$ of $V$.
+		Let $(\varepsilon_1, \dots, \varepsilon_n)$ be the dual basis $B^\star$.
+		We then will prove that
+		\begin{align*}
+			U^0 = \genset{\varepsilon_{k+1}, \dots, \varepsilon_n}
+		\end{align*}
+		Pick $i > k$, then $\varepsilon_i(e_j) = \delta_{ij} = 0$ for $1 \leq j \leq k$.
+		Hence $\varepsilon_i \in U^0$.
+		Thus $\genset{\varepsilon_{k+1}, \dots, \varepsilon_n} \subset U^0$. \\
+		Conversely, let $\alpha \in U^0$.
+		Then $\alpha = \sum_{i=1}^n \alpha_i \varepsilon_i$.
+		For $i \leq k$, $\alpha \in U^0$ hence $\alpha(e_i) = 0$ for $1 \leq i \leq k$.
+		Hence,
+		\begin{align*}
+			\alpha = \sum_{i=k+1}^n \alpha_i \varepsilon_i
+		\end{align*}
+		Thus
+		\begin{align*}
+			\alpha \in \genset{\varepsilon_{k+1}, \dots, \varepsilon_n}
+		\end{align*}
+		so $U^0 \subset \genset{\varepsilon_{k+1}, \dots, \varepsilon_n}$ as required.
 	\end{enumerate}
 \end{proof}
 
 \subsection{Dual maps}
-\begin{lemma}
+\begin{lemma}[Dual Map]
 	Let $V, W$ be $F$-vector spaces.
 	Let $\alpha \in L(V,W)$.
-	Then there exists a unique $\alpha^\star \in L(W^\star, V^\star)$ such that
+	Then there exists a unique $\alpha^\star \in L(W^\star, V^\star)$
 	\begin{align*}
-		\varepsilon \mapsto \varepsilon \circ \alpha
+		\alpha^\star : W^\star &\to V^\star \\
+		\varepsilon &\mapsto \varepsilon \circ \alpha
 	\end{align*}
-	called the dual map.
+	called the \vocab{dual map}.
 \end{lemma}
+
 \begin{proof}
 	First, note $\varepsilon(\alpha) \colon V \to F$ is a linear map.
-	Hence, $\varepsilon \circ \alpha \in V^\star$.
+	Hence, $\varepsilon \circ \alpha \in V^\star$. \\
 	Now we must show $\alpha^\star$ is linear.
 	\begin{align*}
 		\alpha^\star(\theta_1 + \theta_2) = (\theta_1 + \theta_2)(\alpha) = \theta_1 \circ \alpha + \theta_2 \circ \alpha = \alpha^\star(\theta_1) + \alpha^\star(\theta_2)
@@ -164,6 +182,7 @@
 \end{proof}
 \begin{proposition}
 	Let $V, W$ be finite-dimensional $F$-vector spaces with bases $B, C$ respectively.
+	Let $B^\star, C^\star$ be the dual basis of $V^\star, W^\star$.
 	Then
 	\begin{align*}
 		[\alpha^\star]_{C^\star, B^\star} = [\alpha]^\transpose_{B, C}
@@ -174,20 +193,21 @@
 	This follows from the definition of the dual map.
 	Let $B = (b_1, \dots, b_n)$, $C = (c_1, \dots, c_m)$, $B^\star = (\beta_1, \dots, \beta_n)$, $C^\star = (\gamma_1, \dots, \gamma_m)$.
 	Let $[\alpha]_{B,C} = (a_{ij})$.
+	Recall $\alpha^\star : W^\star \to V^\star$.
 	Then, we compute
 	\begin{align*}
-		\alpha^\star(\gamma_r)(b_s) & = \gamma_r \circ \alpha(b_s)         \\
-		                            & = \gamma_r \qty( \sum_t a_{ts} c_t ) \\
-		                            & = \sum_t a_{ts} \gamma_r(c_t)        \\
-		                            & = \sum_t a_{ts} \delta_{tr}          \\
-		                            & = a_{rs}
+		\alpha^\star(\gamma_r)(b_s) &= \underbrace{\gamma_r}_{\in W^\star} \circ \underbrace{\alpha(b_s)}_{\in W} \\
+		&= \gamma_r \underbrace{\qty( \sum_t a_{ts} c_t )}_\text{$s$th column vector} \\
+		&= \sum_t a_{ts} \gamma_r(c_t) \\
+		&= \sum_t a_{ts} \delta_{tr} \\
+		&= a_{rs}
 	\end{align*}
 	We can conversely write $[\alpha^\star]_{C^\star, B^\star} = (m_{ij})$ and
 	\begin{align*}
-		\alpha^\star(\gamma_r)      & = \sum_{i=1}^n m_{ir} \beta_i      \\
-		\alpha^\star(\gamma_r)(b_s) & = \sum_{i=1}^n m_{ir} \beta_i(b_s) \\
-		                            & = \sum_{i=1}^n m_{ir} \delta_{is}  \\
-		                            & = m_{sr}
+		\alpha^\star(\gamma_r) &= \sum_{i=1}^n m_{ir} \beta_i \\
+		\alpha^\star(\gamma_r)(b_s) &= \sum_{i=1}^n m_{ir} \beta_i(b_s) \\
+		&= \sum_{i=1}^n m_{ir} \delta_{is} \\
+		&= m_{sr}
 	\end{align*}
 	Thus,
 	\begin{align*}
