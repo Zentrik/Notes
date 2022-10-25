@@ -576,7 +576,7 @@ This generalises:
     As $\sum_i |x_i^{(N_1)}|$ converges, we can find $I_2$ s.t. $\sum_{i=I_2+1}^{\infty} |x_i^{(N_1)}| < \epsilon$.
     Then
     \begin{align*}
-        n \geq N_1 \implies \sum_{i=1}^{\infty} |x_i^{(n)}| &\leq \sum_{i=I_2 + 1}^{\infty} |x_i^{(N_1)}| + \sum_{i=I_2 = 1}^{\infty} |x_i^{(n)} - x_i^{(N_1)}| \\
+        n \geq N_1 \implies \sum_{i=I_2 + 1}^{\infty} |x_i^{(n)}| &\leq \sum_{i=I_2 + 1}^{\infty} |x_i^{(N_1)}| + \sum_{i=I_2 + 1}^{\infty} |x_i^{(n)} - x_i^{(N_1)}| \\
         &< \epsilon + d(x^{(n)}, x^{(N_1)}) \\
         &< 2\epsilon.
     \end{align*} 
