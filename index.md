@@ -14,7 +14,7 @@ title: "Cambridge Maths Notes"
 
 [Methods](Methods\Methods.pdf)
 
-[Quantum Mechanics](Quantum%20Mechanics\QM.pdf) (Annotations)
+[Quantum Mechanics](Quantum%20Mechanics\Ubiali_notes.pdf) (Annotations)
 
 ## Easter - 2021
 

@@ -1,3 +1,52 @@
+\section{The Wave Equation}
+
+\subsection{Waves on an elastic string}
+Consider a small displacement $y(x,t)$ on a stretched string with fixed ends at $x = 0$ and $x = L$, that is, with boundary conditions
+\begin{align} \label{eq:3.1}
+	y(0,t) = y(L,t) = 0.
+\end{align} 
+and initial conditions
+\begin{align} \label{eq:3.2}
+	y(x, 0) = p(x),\ \frac{\partial y}{\partial t}(x,0) = q(x)
+\end{align} 
+We derive the equation of motion governing the motion of the string by balancing forces on a string segment $(x,x+\delta x)$ and take the limit as $\delta x \to 0$.
+\begin{figure}[h] 
+	\centering 
+	\includegraphics[height=5cm]{03-string} 
+\end{figure}
+
+Let $T_1$ be the tension force acting to the left at angle $\theta_1$ from the horizontal.
+Analogously, let $T_2$ be the rightwards tension force at angle $\theta_2$.
+We assume at any point on the string that $\abs{\pdv{y}{x}} \ll 1$, so the angles of the forces, $\theta_1, \theta_2$ are small.
+In the $x$ dimension,
+\begin{align*}
+	T_1 \cos \theta_1 = T_2 \cos \theta_2 \implies T_1 \approx T_2 = T \text{ by small angle approximation}
+\end{align*}
+So the tension $T$ is a constant independent of $x$ up to an error of order $O\qty(\abs{\pdv{y}{x}
+}^2)$.
+In the $y$ dimension, since the $\theta$ are small,
+\begin{align*}
+	F_T = T_2 \sin \theta_2 - T_1 \sin \theta_1 \approx T \qty(\eval{\pdv{y}{x}}_{x + \delta x} - \eval{\pdv{y}{x}}_x) \approx T \pdv[2]{y}{x} \delta x
+\end{align*}
+By $F = ma$,
+\begin{align*}
+	F_T + F_g = (\mu \, \delta x) \pdv[2]{y}{t} = T \pdv[2]{y}{x} \delta x - g \mu \delta x
+\end{align*}
+where $F_g$ is the gravitational force and $\mu$ is the mass per unit length (linear mass density).
+We define the wave speed as
+\begin{align*}
+	c = \sqrt{\frac{T}{\mu}} \text{ (a constant)}
+\end{align*}
+and find
+\begin{align}
+	\pdv[2]{y}{t} = \frac{T}{\mu} \pdv[2]{y}{x} - g = c^2 \pdv[2]{y}{x} - g \label{eq:3.3}
+\end{align}
+We often assume gravity is negligible to produce the pure wave equation
+\begin{align} \label{eq:3.4}
+	\frac{1}{c^2} \pdv[2]{y}{t} = \pdv[2]{y}{x}.
+\end{align}
+The 1D wave equation is then $\ddot{y} = c^2 y''$.
+
 \subsection{Separation of variables}
 We wish to solve the wave equation \cref{eq:3.4} subject to  boundary conditions \cref{eq:3.1} and initial conditions \cref{eq:3.2}.
 Consider a possible solution of \underline{seperable form} (ansatz):

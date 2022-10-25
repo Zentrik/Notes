@@ -565,5 +565,152 @@ This generalises:
     That is $x \in \ell_1$. 
 
     (iv) Finally, need to check $x^{(n)} \to x$ as $n \to \infty$ in $\ell_1$, i.e. that $d(x^{(n)}, x) \to 0$ as $n \to \infty$. \\
-    Have 
+    We have, for all $n, I$:
+    \begin{align*}
+        d(x^{(n)}, x) &= \sum_{i=1}^{\infty} |x_i^{(n)} - x_i| &\\
+        &\leq \sum_{i=1}^{I} |x_i^{(n)} - x_i| + \sum_{i=I+1}^{\infty} |x_i^{(n)}| + \sum_{i=I + 1}^{\infty} |x_i|.
+    \end{align*}
+    Let $\epsilon>0$.
+    We know $\sum |x_i|$ convergent (as $x \in \ell_1$) so we can pick $I_1$ s.t. $\sum_{i=I_1+1}^{\infty} |x_i| < \epsilon$. \\
+    As $(x^{(n)})$ is Cauchy, we can find $N_1$ s.t. $m, n \geq N_1 \implies d(x^{(m)}, x^{(n)}) < \epsilon$.
+    As $\sum_i |x_i^{(N_1)}|$ converges, we can find $I_2$ s.t. $\sum_{i=I_2+1}^{\infty} |x_i^{(N_1)}| < \epsilon$.
+    Then
+    \begin{align*}
+        n \geq N_1 \implies \sum_{i=1}^{\infty} |x_i^{(n)}| &\leq \sum_{i=I_2 + 1}^{\infty} |x_i^{(N_1)}| + \sum_{i=I_2 = 1}^{\infty} |x_i^{(n)} - x_i^{(N_1)}| \\
+        &< \epsilon + d(x^{(n)}, x^{(N_1)}) \\
+        &< 2\epsilon.
+    \end{align*} 
+    Let $I = \max(I_1, I_2)$.
+    For each $i = 1, 2, \dots, I$ we have $|x_i^{(n)} - x_i| \to 0$ as $n \to \infty$, so $\sum_{i=1}^{I} |x_i^{(n)} - x_i| \to 0$ as $n \to \infty$.
+    Hence we can find $N_2$ s.t $n \geq N_2 \implies \sum_{i=1}^{I} |x_i^{(n)} - x_i| < \epsilon$.
+    Let $N = \max(N_1, N_2)$ and let $n \geq N$.
+    Then \begin{align*}
+        d(x^{(n)}, x) &\leq \sum_{i=1}^{I} |x_i^{(n)} - x_i| + \sum_{i=I+1}^{\infty} |x_i^{(n)}| + \sum_{i=I+1}^{\infty} |x_i| \\
+        &\leq \sum_{i=1}^{I} |x_i^{(n)} - x_i| + \sum_{i=I_2 + 1}^\infty |x_i^{(n)}| + \sum_{i=I_1 + 1}^{\infty} |x_i| \\
+        &< \epsilon + 2\epsilon + \epsilon = 4\epsilon  
+    \end{align*} 
+    Hence $d(x^{(n)}, x) \to 0$ as $n \to \infty$, i.e. $x^{(n)} \to x$ in $\ell_1$. \\
+    Hence $\ell_1$ is complete.
+\end{proof} 
+
+Now we will move on to main theorem of completeness.
+
+\begin{definition}[Contraction mapping]
+    Let $(X, d)$ be a metric space and $f:X \to X$.
+    We say $f$ is a \vocab{contraction} if $\exists \; \lambda \in [0, 1)$ s.t. $\forall \; x, y \in X \ d(f(x), f(y)) \leq \lambda d(x, y)$.
+\end{definition} 
+
+\begin{theorem}[The Contraction Mapping Theorem] \label{thm:19}
+    Let $(X, d)$ be a complete, non-empty metric space and $f: X \to X$ a contraction.
+    Then $f$ has a unique fixed point.
+\end{theorem} 
+
+\begin{proof}
+    Let $\lambda \in [0, 1)$ satisfy $\forall \; x, y \in X \ d(f(x), f(y)) \leq \lambda d(x, y)$. \\
+    Let $x_0 \in X$.
+    Recursively define $x_n = f(x_{n - 1})$ for $n \geq 1$.
+    Let $\Delta = d(x_0, x_1)$.
+    Then, by induction $d(x_n, x_{n+1}) \leq \lambda^n \Delta$ for all $n$. \\
+    Now suppose $N \leq m < n$.
+    Then
+    \begin{align*}
+        d(x_m, x_n) &\leq \sum_{i=m}^{n-1} d(x_i, x_{i + 1}) \\
+        &\leq \sum_{i=m}^{n-1} \lambda^i \Delta \\
+        &\leq \sum_{i=N}^{\infty} \lambda^i \Delta \\
+        &= \frac{\lambda^N \Delta}{1 - \lambda} \to 0 \text{ as $N \to \infty$}.
+    \end{align*}
+    So $\forall \; \epsilon > 0 \ \exists \; N \ \forall \; m, n \geq N \ d(x_m, x_n) < \epsilon$ (i.e. we take $N$ s.t. $\frac{\lambda^N \Delta}{1 - \lambda} < \epsilon$).
+    Thus $(x_n)$ is Cauchy, so by completeness converges, say $x_n \to x \in X$.
+    But also $x_n = f(x_{n-1}) \to f(x)$ as $f$ continuous\footnote{follows immediately from definition of contraction mapping (e.g. let $\delta = \epsilon$ in definition of continuity).}.
+    So by uniqueness of limits, $f(x) = x$.
+
+    Suppose also $f(y) = y$ for some $y \in X$.
+    Then $d(x, y) = d(f(x), f(y)) \leq \lambda d(x, y)$ with $\lambda < 1$.
+    So $d(x, y) = 0$ so $x = y$.
+\end{proof} 
+
+\begin{remark} \
+    \begin{enumerate}
+        \item Why is $f$ cts? We have, for all $x, y \in X$ $d(f(x), f(y)) \leq d(x, y)$.
+        So $\forall \; \epsilon > 0$, $d(x, y) < \epsilon \implies d(f(x), f(y)) < \epsilon$.
+        (Indeed, this shows $f$ is uniformly continuous.)
+        \item We have proved more than claimed.
+        Not only does $f$ have a unique fixed point, but starting from \underline{any} point of the space and repeatedly apply $f$ then the resulting sequence converges to the fixed point.
+        In fact, the speed of convergence is exponential.
+    \end{enumerate} 
+\end{remark} 
+
+\begin{example}[Application]
+    Suppose we want to numerically approximate the solution to $\cos x = x$.
+    Any root must lie in $[-1, 1]$.
+    Consider metric space $X = [-1, 1]$ with usual metric.
+    $X$ is a closed subset of a complete space $\mathbb{R}$ so is complete.
+    Obviously $X$ is non-empty.
+    Think of $\cos : [-1, 1] \to [-1, 1]$.
+    Suppose $x, y \in [-1, 1]$.
+    \begin{align*}
+        |\cos x - \cos y| &= |x-y| |\cos'z| \text{ for some $z \in [-1, 1]$ by MVT} \\
+        & |x-y| |-\sin'z| \\
+        &\leq |x-y| \sin 1
+    \end{align*} 
+    But $0 \leq \sin 1 < 1$ so $\cos$ is a contraction of $[-1, 1]$.
+    So by \nameref{thm:19}, $\cos$ has a unique fixed point in $[-1, 1]$.
+    That is $\cos x = x$ has a unique solution.
+
+    How do we find it numerically?
+    Use remark 2, we will have rapid convergence to the root.
+\end{example} 
+
+We will see two major applications of CMT (\nameref{thm:19}) later.
+
+\subsection{Sequential Compactness}
+Recall BW for $\mathbb{R}^n$ says a bounded sequence in $\mathbb{R}^n$ has a convergent subsequence.
+
+\begin{definition}[Bounded]
+    Let $(X, d)$ be a metric space.
+    We say $X$ is \vocab{bounded} if
+    \begin{align*}
+        \exists \; M \in \mathbb{R} \ \forall \; x, y \in X \ d(x, y) \leq M.
+    \end{align*} 
+\end{definition} 
+
+\begin{remark}
+    Easy to check by triangle inequality that $X$ bounded $\iff (X = \emptyset \text{ or } \exists \; M \in \mathbb{R} \ \epsilon x \in X \text{ s.t. } \forall \; y \in X \ d(x, y) \leq M)$.
+    So definition agrees with earlier definition for subsets of $\mathbb{R}^n$.
+\end{remark} 
+
+\begin{definition}[Closed subspace]
+    Let $(X, d)$ be a metric space and $Y \subset X$.
+    We say $Y$ is \vocab{closed} in $X$ if whenever $(x_n)$ is a sequence in $Y$ with, in X, $x_n \to x \in X$ then $x \in Y$.
+\end{definition} 
+
+\begin{definition}[Sequentially Compact]
+    A metric space is \vocab{sequentially compact} if every sequence has a convergent subsequence.
+\end{definition}  
+
+BW for $\mathbb{R}^n$ is essentially the following:
+\begin{theorem} \label{thm:20}
+    Let $X \subset \mathbb{R}^n$ with the Euclidean metric.
+    Then $X$ is sequentially compact iff $X$ is closed and bounded.
+\end{theorem} 
+
+\begin{proof}
+    ($\Longleftarrow$) Suppose $X$ is closed and bounded.
+    Let $(x_n)$ be a sequence in $X$.
+    Then $(x_n)$ is a bounded sequence in $\mathbb{R}^n$ so by BW, in $\mathbb{R}^n$, $x_{n_j} \to x$ for some $ x \in \mathbb{R}^n$ and some subsequence $(x_{n_j})$ of $(x_n)$. \\
+    As $X$ is closed, $x \in X$.
+    Hence the subsequence $(x_{n_j})$ converges in $X$.
+    So $X$ is sequentially compact.
+
+    ($\implies$) Suppose $X$ is not closed.
+    Then we can find a sequence $(x_n)$ in $X$ s.t. in $\mathbb{R}^n$ $x_n \to x \in \mathbb{R}^n$ with $x \notin X$.
+    Now any subsequence $(x_{n_j}) \to x$ in $\mathbb{R}^n$.
+    But $x \notin X$ so by uniqueness of limits $(x_{n_j})$ does not converge in $X$.
+    So $X$ is not sequentially compact.
+
+    Suppose instead $X$ is not bounded.
+    Then we can find a sequence $(x_n)$ in $X$ with $\forall \; n \ \norm{x_n} \geq n$, i.e. $\norm{x_n} \to \infty$ as $n \to \infty$.
+    Suppose we have a subsequence $x_{n_j} \to x \in X$.
+    Then $\norm{x_{n_j}} \to \norm{x}$ but $\norm{x_{n_j}} \to \infty$ \Lightning.
+    So, again, $X$ is not sequentially compact.
 \end{proof} 

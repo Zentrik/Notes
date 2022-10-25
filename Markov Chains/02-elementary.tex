@@ -210,21 +210,22 @@
 	\end{align*}
 	So the minimal solution arises at $h_1 = 0$.
 \end{example}
-\begin{example}
-	Consider $I = \mathbb N$, and
+
+\begin{example}[Simple random walk on $\mathbb{Z}_+$]
+	Consider $I = \mathbb{Z}_+$, and
 	\begin{align*}
 		P(i, i+1) = p \in (0,1);\quad P(i, i-1) = 1-p = q
-	\end{align*}
+	\end{align*} with $\mathbb{P}(0, 1) = 1$.
 	Then $h_i = \psub{i}{T_0 < \infty}$ hence $h_0 = 1$.
 	The linear equations are
 	\begin{align*}
-		p \neq q \implies h_i = p h_{i+1} + q h_{i-1}
+		h_i = p h_{i+1} + q h_{i-1}
 	\end{align*}
 	\begin{align*}
 		p(h_{i+1} - h_i) = q(h_i - h_{i-1})
 	\end{align*}
 	Let $u_i = h_i - h_{i-1}$.
-	Then,
+	Then assuming $p \neq q$,
 	\begin{align*}
 		\frac{q}{p} u_i = \dots = \qty(\frac{q}{p})^i u_1
 	\end{align*}
@@ -235,7 +236,7 @@
 	The general solution is therefore
 	\begin{align*}
 		h_i = a + b \qty(\frac{q}{p})^i
-	\end{align*}
+	\end{align*} with $h_0 = a + b = 1$.
 	If $q > p$, then minimality of $h_i$ implies $b = 0$, $a = 1$.
 	Hence,
 	\begin{align*}
@@ -251,32 +252,36 @@
 		h_i = \frac{1}{2} h_{i+1} + \frac{1}{2} h_{i-1}
 	\end{align*}
 	Hence, $h_i = a + bi$.
-	Minimality implies $a = 1$ and $b = 0$.
+	$h_0 = a = 1$ and minimality implies $b = 0$.
 	\begin{align*}
-		h_i = 1
+		h_i = 1.
 	\end{align*}
 \end{example}
 
 \subsection{Birth and death chain}
-Consider a Markov chain on $\mathbb N$ with
+Consider a Markov chain with
 \begin{align*}
-	P(i,i+1) = p_i;\quad P(i,i-1) = q_i;\quad \forall i,\ p_i + q_i = 1
+	P(0, 0) = 1;\quad P(i,i+1) = p_i;\quad P(i,i-1) = q_i;\quad \forall i,\ p_i, q_i \in (0, 1), \ p_i + q_i = 1
 \end{align*}
 Now, consider $h_i = \psub{i}{T_0 < \infty}$.
 $h_0 = 1$, and $h_i = p_i h_{i+1} + q_i h_{i-1}$.
 \begin{align*}
 	p_i (h_{i+1} - h_i) = q_i (h_i - h_{i-1})
 \end{align*}
-Let $u_i = h_i - h_{i-1}$ to give
+Let $u_i = h_i - h_{i-1}$ ($u_1 = h_1 - 1$) to give
 \begin{align*}
-	u_{i+1} = \frac{q_i}{p_i} u_i = \underbrace{\prod{j=1}^i \frac{q_i}{p_i}}_{\gamma_i} u_i
+	u_{i+1} = \frac{q_i}{p_i} u_i = \underbrace{\prod_{j=1}^i \frac{q_i}{p_i}}_{\gamma_i} u_i
 \end{align*}
 Then
 \begin{align*}
-	h_i = 1 - (1 - h_1) \qty( \gamma_0 + \gamma_1 + \dots + \gamma_{i-1} )
+	h_i &= \sum_{j=1}^{i} (h_j - h_{j - 1}) + 1 \\
+	&= \sum_{j=1}^{i} u_j \\
+	&= 1 + u_1 + \sum_{j=1}^{i-1} \gamma_j u_1 \\  
+	h_i &= 1 + (h_1 - 1) \qty( \gamma_0 + \gamma_1 + \dots + \gamma_{i-1}) \\
+	&= 1 - (1 - h_1) \qty( \gamma_0 + \gamma_1 + \dots + \gamma_{i-1})
 \end{align*}
 where we let $\gamma_0 = 1$.
-Since $h_i$ is the minimal non-negative solution,
+Since $h_i$ is a non-negative solution,
 \begin{align*}
 	h_i \geq 0 \implies 1 - h_1 \leq \frac{1}{\sum_{j=0}^{i-1} \gamma_j} \leq \frac{1}{\sum_{j=0}^{\infty} \gamma_j}
 \end{align*}
@@ -284,7 +289,7 @@ By minimality, we must have exactly this bound.
 If $\sum_{j=0}^\infty \gamma_j = \infty$ then $1 - h_1 = 0 \implies h_i = 1$ for all $i$.
 If $\sum_{j=0}^\infty \gamma_j < \infty$ then
 \begin{align*}
-	h_i = \frac{\sum_{j=i}^\infty \gamma_j}{\sum_{j=0}^\infty \gamma_j}
+	h_i = \frac{\sum_{j=i}^\infty \gamma_j}{\sum_{j=0}^\infty \gamma_j}.
 \end{align*}
 
 \subsection{Mean hitting times}
@@ -295,9 +300,9 @@ Recall that
 \begin{theorem}
 	The vector $(k_i^A)_{i \in I}$ is the minimal non-negative solution to the system of equations
 	\begin{align*}
-		\begin{cases}
-			0                                   & \text{if } i \in A     \\
-			1 + \sum_{j \not\in A} P(i,j) k_j^A & \text{if } i \not\in A
+		x_i = \begin{cases}
+			0 & \text{if } i \in A \\
+			1 + \sum_{j \not\in A} P(i,j) x_j & \text{if } i \not\in A
 		\end{cases}
 	\end{align*}
 \end{theorem}
@@ -363,8 +368,8 @@ The simple Markov property shows that, if $X_m = i$,
 and this is independent of $X_0, \dots, X_m$.
 The strong Markov property will show that the same property holds when we replace $m$ with a finite random `time' variable.
 It is not the case that \textit{any} random variable will work; indeed, an $m$ very dependent on the Markov chain itself might not satisfy this property.
-\begin{definition}
-	A random time $T \colon \Omega \to \qty{0, 1, \dots} \cup \qty{\infty}$ is called a \textit{stopping time} if, for all $n \in \mathbb N$, $\qty{ T = n }$ depends only on $X_0, \dots, X_n$.
+\begin{definition}[Stopping Time]
+	A random time $T \colon \Omega \to \qty{0, 1, \dots} \cup \qty{\infty}$ is called a \vocab{stopping time} if, for all $n \in \mathbb N$, $\qty{ T = n }$ depends only on $X_0, \dots, X_n$.
 \end{definition}
 \begin{example}
 	The hitting time $T_A = \inf \qty{ n \geq 0 \colon X_n \in A}$ is a stopping time.
@@ -372,7 +377,9 @@ It is not the case that \textit{any} random variable will work; indeed, an $m$ v
 	\begin{align*}
 		\qty{T_A = n} = \qty{X_0 \not\in A, \dots, X_{n-1} \not\in A, X_n \in A}
 	\end{align*}
+	So first hitting times are always stopping times.
 \end{example}
+
 \begin{example}
 	The time $L_A = \sup \qty{n \geq 0 \colon X_n \in A}$ is not a stopping time.
 	This is because we need to know information about the future behaviour of $X_n$ in order to guarantee that we are at the supremum of such events.
@@ -386,7 +393,7 @@ It is not the case that \textit{any} random variable will work; indeed, an $m$ v
 	and this distribution is independent of $X_0, \dots, X_T$.
 \end{theorem}
 \begin{proof}
-	We need to show that, for all $x_0, \dots, x_n$ and for all vectors $w$ of any length,
+	We need to show that, for all $x_0, \dots, x_n \in I$ and for all vectors $w$ of any length with elements in $I$,
 	\begin{align*}
 		 & \prob{X_T = x_0, \dots, X_{T+n} = x_n, (X_0, \dots, X_T) = w \mid T < \infty, X_T = i}                    \\
 		 & = \delta_{i x_0} P(x_0,x_1) \dots P(x_{n-1}, x_n) \prob{(X_0, \dots, X_T) = w \colon T < \infty, X_T = i}
@@ -394,24 +401,29 @@ It is not the case that \textit{any} random variable will work; indeed, an $m$ v
 	Suppose that $w$ is of the form $w = (w_0, \dots, w_k)$.
 	Then,
 	\begin{align*}
-		 & \prob{X_T = X_0, \dots, X_{T+n} = x_n, (X_0, \dots, X_T) = w \mid T < \infty, X_T = i}                      \\
+		 & \prob{X_T = X_0, \dots, X_{T+n} = x_n, (X_0, \dots, X_T) = w \mid T < \infty, X_T = i} \\
+		 &= \prob{X_k = X_0, \dots, X_{k+n} = x_n, (X_0, \dots, X_k) = w \mid T < \infty, X_T = i} \\
 		 & = \frac{\prob{X_k = x_0, \dots, X_{k+n} = x_n, (X_0, \dots, X_k)=w, T=k,X_k=i}}{\prob{T < \infty, X_T = i}}
 	\end{align*}
-	Now, since $\qty{T=k}$ depends only on $X_0, \dots, X_k$, by the simple Markov property we have
+	
+	Now, since $\qty{T=k}$ depends \underline{only} on $X_0, \dots, X_k$ by the simple Markov property
 	\begin{align*}
-		 & \prob{X_k = x_0, \dots, X_{k+n} = x_n \mid (X_0, \dots, X_k) = w, T = k, X_k = i}                        \\
+		 & \prob{X_k = x_0, \dots, X_{k+n} = x_n \mid (X_0, \dots, X_k) = w, T = k, X_k = i} \\
 		 & = \prob{X_k = x_0, \dots, X_{k+n} = x_n \mid X_k = i} = \delta_{i x_0} P(x_0, x_1) \dots P(x_{n-1}, x_n)
 	\end{align*}
+	\begin{align*}
+		\frac{\mathbb{P}((X_0, \dots, X_k) = w, T = k, X_k = i)}{\prob{T < \infty, X_T = i}} &= \mathbb{P}((X_0, \dots, X_k) = w \mid T < \infty, X_T = i)
+	\end{align*} 
 	Now,
 	\begin{align*}
-		 & \prob{X_T = x_0, \dots, X_{T+n} = x_n, (X_0, \dots, X_T) = w \mid T < \infty, X_T = i}                                                  \\
-		 & = \frac{\delta_{i x_0} P(x_0,x_1) \dots P(x_{n-1}, x_n) \prob{(X_0, \dots, X_k) = w \colon T = k, X_k = i}}{\prob{T < \infty, X_T = i}} \\
-		 & = \delta_{i x_0} P(x_0,x_1) \dots P(x_{n-1}, x_n) \prob{(X_0, \dots, X_T) = w \colon T < \infty, X_T = i}
+		 & \prob{X_T = x_0, \dots, X_{T+n} = x_n, (X_0, \dots, X_T) = w \mid T < \infty, X_T = i} \\
+		 & = \frac{\delta_{i x_0} P(x_0,x_1) \dots P(x_{n-1}, x_n) \prob{(X_0, \dots, X_k) = w \mid T = k, X_k = i}}{\prob{T < \infty, X_T = i}} \\
+		 & = \delta_{i x_0} P(x_0,x_1) \dots P(x_{n-1}, x_n) \prob{(X_0, \dots, X_T) = w \mid T < \infty, X_T = i}
 	\end{align*}
 	as required.
 \end{proof}
 \begin{example}
-	Consider a simple random walk on $I = \mathbb N$, where $P(x,x\pm 1) = \frac{1}{2}$ for $x \neq 0$, and $P(0,1) = 1$.
+	Consider a simple random walk on $I = \mathbb N \cup \{0\}$, where $P(x,x\pm 1) = \frac{1}{2}$ for $x \neq 0$, and $P(0,1) = 1$.
 	Now, let $h_i = \psub{i}{T_0 < \infty}$.
 	We want to calculate $h_1$.
 	We can write
@@ -425,23 +437,24 @@ It is not the case that \textit{any} random variable will work; indeed, an $m$ v
 	\end{align*}
 	Note that in order to hit 0, we must first hit 1.
 	So conditioning on the first hitting time of 1 being finite, after this time the process starts again from 1.
-	We can write $T_0 = T_1 + \widetilde T_0$, where $\widetilde T_0$ is independent of $T_1$, with the same distribution as $T_0$ under $\mathbb P_1$.
 	Now,
 	\begin{align*}
-		h_2 = \psub{2}{T_0 < \infty, T_1 < \infty} = \psub{2}{T_0 < \infty \mid T_1 < \infty} \psub{2}{T_2 < \infty}
+		h_2 = \psub{2}{T_0 < \infty, T_1 < \infty} = \psub{2}{T_0 < \infty \mid T_1 < \infty} \psub{2}{T_1 < \infty}
 	\end{align*}
+	Conditional on $T_1 < \infty$ and $X_{T_1}$, by the strong Markov property $(X_{T+n})_{n \geq 0}$ is $\Markov{\delta_1, P}$. So we can express (under the conditioning)  $T_0 = T_1 + \widetilde T_0$, where $\widetilde T_0$ is independent of $T_1$\footnote{$X_{T_1 + n}$ is independent of $(X_0, \dots, X_{T_1})$}, with the same distribution as $T_0$ under $\mathbb P_1$.
 	Note that
 	\begin{align*}
-		\psub{2}{T_0 < \infty \mid T_1 < \infty} = \psub{2}{T_1 + \widetilde T_0 < \infty \mid T_1 < \infty} = \psub{2}{\widetilde T_0 < \infty \mid T_1 < \infty} = \psub{1}{T_0 < \infty}
+		\psub{2}{T_0 < \infty \mid T_1 < \infty} &= \psub{2}{T_1 + \widetilde T_0 < \infty \mid T_1 < \infty} \\
+		&= \psub{2}{\widetilde T_0 < \infty \mid T_1 < \infty} \\
+		&= \psub{1}{T_0 < \infty} \\
+		&= h_1.
 	\end{align*}
-	But $\psub{2}{T_1 < \infty} = \psub{1}{T_0 < \infty}$, so
+	But $\psub{2}{T_1 < \infty} = \psub{1}{T_0 < \infty}$ by translation invariance, so
 	\begin{align*}
-		h_2 = \psub{2}{T_1 < \infty} \psub{1}{T_0 < \infty}
+		h_2 &= \psub{2}{T_1 < \infty} \psub{1}{T_0 < \infty} \\
+		&= h_1^2
 	\end{align*}
-	By translation invariance,
-	\begin{align*}
-		h_2 = h_1^2
-	\end{align*}
+	So $h_1 = \frac{1}{2} + \frac{1}{2}h_2 \implies \frac{1}{2} + \frac{1}{2} h_1^2$ so $h_1 = 1$.
 	In general, therefore, for any $n \in \mathbb N$,
 	\begin{align*}
 		h_n = h_1^n
