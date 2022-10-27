@@ -110,7 +110,8 @@
 		U^0 = \qty{\alpha \in V^\star \colon \forall u \in U, \alpha(u) = 0}
 	\end{align*}
 \end{definition}
-\begin{lemma}
+
+\begin{lemma} \label{lem:annihilator}
 	\begin{enumerate}
 		\item $U^0 \leq V^\star$;
 		\item If $U \leq V$ and $\dim V < \infty$, then $\dim V = \dim U + \dim U^0$.
@@ -216,7 +217,7 @@
 	as required.
 \end{proof}
 
-\subsection{Properties of dual map}
+\subsection{Properties of the dual map}
 Let $\alpha \in L(V,W)$, and $\alpha^\star \in L(W^\star, V^\star)$.
 Let $B$ and $C$ be bases of $V, W$ respectively, and $B^\star, C^\star$ be their duals.
 We have proven that
@@ -226,7 +227,7 @@ We have proven that
 \begin{lemma}
 	Suppose that $E = (e_1, \dots, e_n)$ and $F = (f_1, \dots, f_n)$ are bases of $V$.
 	Let $P = [I]_{F, E}$ be a change of basis matrix from $F$ to $E$.
-	The bases $E^\star = (\varepsilon_1, \dots, \varepsilon_n)$, $F^\star = (\eta_1, \dots, \eta_n)$ are the corresponding dual bases.
+	The bases $E^\star = (\varepsilon_1, \dots, \varepsilon_n)$, $F^\star = (\eta_1, \dots, \eta_n)$ are the corresponding dual bases. \\
 	Then, the change of basis matrix from $F^\star$ to $E^\star$ is
 	\begin{align*}
 		\qty(P^{-1})^\transpose
@@ -241,22 +242,23 @@ We have proven that
 \begin{lemma}
 	Let $V, W$ be $F$-vector spaces.
 	Let $\alpha \in L(V, W)$.
-	Let $\alpha^\star$ be the corresponding dual map.
+	Let $\alpha^\star \in L(W^\star, V^\star)$ be the corresponding dual map.
 	Then, denoting $N(\alpha)$ for the kernel of $\alpha$,
 	\begin{enumerate}
-		\item $N(\alpha^\star) = (\Im \alpha)^0$, so $\alpha^\star$ is injective if and only if $\alpha$ is surjective.
+		\item $N(\alpha^\star) = (\Im \alpha)^0\footnote{The annihilator of $\Im \alpha$}$, so $\alpha^\star$ is injective if and only if $\alpha$ is surjective.
 		\item $\Im \alpha^\star \leq (N(\alpha))^0$, with equality if $V, W$ are finite-dimensional.
 		      In this finite-dimensional case, $\alpha^\star$ is surjective if and only if $\alpha$ is injective.
 	\end{enumerate}
 \end{lemma}
 \begin{remark}
-	In many applications, it is often simpler to understand the dual map $\alpha^\star$ than it is to understand $\alpha$.
+	This is a fundamental property. \\
+	In many applications (especially in infinite dimensions) e.g. controllability, it is often simpler to understand the dual map $\alpha^\star$ than it is to understand $\alpha$.
 \end{remark}
 \begin{proof}
 	First, we prove (i).
 	Let $\varepsilon \in W^\star$.
-	Then, $\varepsilon \in N(\alpha^\star)$ means $\alpha^\star(\varepsilon) = 0$.
-	Hence, $\alpha^\star(\varepsilon) = \varepsilon \circ \alpha = 0$
+	Then, $\varepsilon \in N(\alpha^\star) \iff \alpha^\star(\varepsilon) = 0$.
+	Hence, $\alpha^\star(\varepsilon) = \varepsilon \circ \alpha = 0$.
 	So for any $v \in V$, $\varepsilon(\alpha(v)) = 0$.
 	Equivalently, $\varepsilon$ is an element of the annihilator of $\Im \alpha$.
 
@@ -271,7 +273,7 @@ We have proven that
 	\begin{align*}
 		\dim \Im \alpha^\star = r(\alpha^\star) = r\qty([\alpha^\star]_{C^\star, B^\star}) = r\qty([\alpha]_{B,C}^\transpose) = r\qty([\alpha]_{B,C}) = r(\alpha) = \dim \Im \alpha
 	\end{align*}
-	Due to the rank-nullity theorem, $\dim \Im \alpha^\star = \dim V - \dim N(\alpha) = \dim\qty[(N(\alpha))^0]$.
+	Due to the rank-nullity theorem, $\dim \Im \alpha^\star = \dim \Im \alpha = \dim V - \dim N(\alpha) = \dim\qty[(N(\alpha))^0]$ by \cref{lem:annihilator}.
 	Hence,
 	\begin{align*}
 		\Im \alpha^\star \leq (N(\alpha))^0;\quad \dim \Im \alpha^\star = \dim (N(\alpha))^0
@@ -280,25 +282,31 @@ We have proven that
 \end{proof}
 
 \subsection{Double duals}
-\begin{definition}
+\begin{definition}[Double Dual]
 	Let $V$ be an $F$-vector space.
 	Let $V^\star$ be the dual of $V$.
-	The \textit{double dual} or \text{bidual} of $V$ is
+	The \vocab{double dual} or \vocab{bidual} of $V$ is
 	\begin{align*}
 		V^\sstar = L(V^\star, F) = (V^\star)^\star
 	\end{align*}
 \end{definition}
 \begin{remark}
-	In general, there is no obvious relation between $V$ and $V^\star$.
+	This is a very important space in infinite dimensions. \\
+	In general, there is no obvious relation between $V$ and $V^\star$ (unless Hilbertian structure).
 	However, the following useful facts hold about $V$ and $V^\sstar$.
 	\begin{enumerate}
-		\item There is a \textit{canonical embedding} from $V$ to $V^\sstar$.
-		      In particular, there exists $i$ in $L(V, V^\sstar)$ which is injective.
-		\item There are examples of infinite-dimensional spaces where $V \simeq V^\sstar$.
-		      These are called reflexive spaces.
-		      Such spaces are investigated in the study of Banach spaces.
+		\item There is a large class of function spaces where $V \simeq V^\sstar$.
+		These are called \vocab{reflexive spaces}.
+		\begin{example}
+			$p > r$, $L^p(\mathbb{R}) = \left\{ f : \mathbb{R} \to \mathbb{R} : \int_{\mathbb{R}} |f(x)|^p \dd{x} < + \infty \right\}$.
+			This is a reflexive space (this uses the Lebesque integral as this space is not complete using Riemann integral.)
+		\end{example} 
+		Such spaces are investigated in the study of Banach spaces.
+		\item There is a \vocab{canonical embedding} from $V$ to $V^\sstar$.
+		In particular, there exists $i$ in $L(V, V^\sstar)$ which is injective.
 	\end{enumerate}
 \end{remark}
+
 \begin{theorem}
 	$V$ embeds into $V^\sstar$.
 \end{theorem}
@@ -307,7 +315,7 @@ We have proven that
 	\begin{align*}
 		\hat v(\varepsilon) = \varepsilon(v)
 	\end{align*}
-	So clearly $\hat v$ is linear.
+	% So clearly $\hat v$ is linear.
 	We want to show $\hat v \in V^\sstar$.
 	If $\varepsilon \in V^\star, \varepsilon(v) \in F$.
 	Further, $\lambda_1, \lambda_2 \in F$ and $\varepsilon_1, \varepsilon_2 \in V^\star$ give
@@ -316,13 +324,13 @@ We have proven that
 	\end{align*}
 \end{proof}
 \begin{theorem}
-	If $V$ is finite-dimensional, then $i \colon V \to V^\sstar$ given by $i(v) = \hat v$ is an isomorphism.
+	If $V$ is a finite-dimensional vector space over $F$, then $i \colon V \to V^\sstar$ given by $i(v) = \hat v$ is an isomorphism\footnote{In infinite dimension, we can show under canonical assumptions (Banach space) that this is an injection.}.
 \end{theorem}
 \begin{proof}
 	We will show $i$ is linear.
-	If $v_1, v_2 \in V, \lambda_1, \lambda_2 \in F$, then
+	If $v_1, v_2 \in V, \lambda_1, \lambda_2 \in F, \epsilon \in V^\star$, then
 	\begin{align*}
-		i(\lambda_1 v_1 + \lambda_2 v_2) (\varepsilon) = \varepsilon(\lambda_1 v_1 + \lambda_2 v_2) = \lambda_1 \varepsilon(v_1) + \lambda_2 \varepsilon(v_2) = \lambda_1 \hat v_1(\varepsilon) + \lambda_2 \hat v_2(\varepsilon)
+		i(\lambda_1 v_1 + \lambda_2 v_2) (\varepsilon) = \varepsilon(\lambda_1 v_1 + \lambda_2 v_2) = \lambda_1 \varepsilon(v_1) + \lambda_2 \varepsilon(v_2) = \lambda_1 \hat v_1(\varepsilon) + \lambda_2 \hat v_2(\varepsilon).
 	\end{align*}
 	Now, we will show that $i$ is injective for finite-dimensional $V$.
 	Let $e \in V \setminus \qty{0}$.
@@ -344,13 +352,13 @@ We have proven that
 	Let $U \leq V$.
 	Then,
 	\begin{align*}
-		\hat U = U^{00}
+		\hat U\footnote{Image of $U$ under $i$ map} = U^{00}
 	\end{align*}
 	After identifying $V$ and $V^\sstar$, we typically say
 	\begin{align*}
 		U = U^{00}
 	\end{align*}
-	although this is is incorrect notation and not an equality.
+	although this is is incorrect notation and not an equality (but an isomorphism).
 \end{lemma}
 \begin{proof}
 	We will show that $\hat U \leq U^{00}$.

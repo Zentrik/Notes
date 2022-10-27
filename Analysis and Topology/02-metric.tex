@@ -714,3 +714,155 @@ BW for $\mathbb{R}^n$ is essentially the following:
     Then $\norm{x_{n_j}} \to \norm{x}$ but $\norm{x_{n_j}} \to \infty$ \Lightning.
     So, again, $X$ is not sequentially compact.
 \end{proof} 
+
+\begin{remark}
+    Does this hold in a general metric space?
+    Obviously not: e.g. in $\mathbb{R} \setminus \{0\}$ with the usual metric, the set $[-1, 0) \cup (0, 1]$ is closed and bounded but the sequence $(\frac{1}{n})_{n \geq 1}$ has no convergent subsequence.
+\end{remark} 
+
+
+\underline{Problem}: Space is not complete.
+Maybe complete and bounded $\implies$ sequentially compact?
+
+Even this doesn't work.
+Recall example from section 1:
+Let $X = \{f \in B(\mathbb{R}) :  \sup_{x \in \mathbb{R}} |f(x)| \leq 1\}$ with uniform metric.
+Then $X$ is complete (closed subset of a complete space $B(\mathbb{R})$) and bounded (if $f, g \in X$ then $d(f, g) \leq 2$).
+But consider $f_n(x) = \begin{cases}
+    1 & x = n \\
+    0 & x \neq n
+\end{cases}$.
+Then $f_n$ is a sequence in $X$ but $\forall \; m, n$ $m \neq n \implies d(f_m, f_n) = 1$.
+So $(f_n)$ cannot have a convergent subsequence.
+
+\underline{Problem}: $X$ is `too big'.
+
+We need a stronger concept of boundedness.
+
+\begin{definition}[Totally Bounded]
+    Let $(X, d)$ be a metric space.
+    We say $X$ is \vocab{totally bounded} if $\forall \; \delta > 0$ we can find a \underline{finite} subset $A \subset X$ s.t. $\forall \; x \in X \ \exists \; a \in A \ d(x, a) < \delta$.
+\end{definition} 
+
+\begin{theorem} \label{thm:21}
+    A metric space is sequentially compact iff it is complete and totally bounded.
+\end{theorem} 
+
+\begin{proof}
+    $(\Longleftarrow)$: Suppose the metric space $(X, d)$ is complete and totally bounded.
+    Let $(x_n)_{n \geq 1}$ be a sequence in $X$. \\
+    As $X$ is totally bounded, we can find finite $A_1 \subset X$ s.t. $\forall \; x \in X \ \exists \; a \in A_1 \ d(x, a) < 1$.
+    In particular, there is an infinite set $N_1 \subset \mathbb{N}$ and a point $a_1 \in A_1$ s.t. $\forall \; n \in N_1 \ d(x_n, a_1) < 1$.
+    Hence $\forall \; m, n \in N_1 \ d(x_m, x_n) < 2$. \\
+    Similarly, we can find finite $A_2 \subset X$ s.t. $\forall \; x \in X \ \exists \; a \in A_2 \ d(x, a) < \frac{1}{2}$.
+    In particular, there is an infinite $N_2 \subset N_1$ s.t. $\forall \; n \in N_2 \ d(x_n, a_2) < \frac{1}{2}$ and thus $\forall \; m, n \in N_2 \ d(x_m, x_n) < 1$. \\
+    Keep going.
+    We get a sequence $N_1 \supset N_2 \supset N_3 \dots$ of infinite subsets of $\mathbb{N}$ s.t. $\forall \; i \ \forall \; m, n \in N_i \implies d(x_m, x_n) < \frac{2}{i}$. \\
+    Now pick $n_1 \in N_1$.
+    Then pick $n_2 \in N_2$ with $n_2 > n_1$.
+    Then pick $n_i \in N_i$ with $n_i > n_{i - 1}$. \\
+    We obtain a subsequence $(x_{n_j})$ of $(x_n)$ s.t. $\forall \; j \ x_{n_j} \in N_j$.
+    Thus if $i \leq j$ then $x_{n_i}, x_{n_j} \in N_i$ and so $d(x_{n_i}, x_{n_j}) < \frac{2}{i}$.
+    Hence $(x_{n_j})$ is a Cauchy sequence and hence by completeness, converges.
+    Thus $X$ is sequentially compact.
+
+    ($\implies$) Suppose $X$ is not complete.
+    Then $X$ has a Cauchy sequence $(x_n)$ which doesn't converge.
+    Suppose we have a convergent subsequence, say $x_{n_j} \to x$.
+    Then $x_n \to x$ (left as an exercise, same as in gpc for $\mathbb{R}$) \Lightning.
+
+    Suppose instead $X$ not totally bounded.
+    Then there is some $\delta > 0$ s.t. whenever $A \subset X$ is finite $\exists \; x \in X \ \forall \; a \in A \ d(x, a) < \delta$.
+    So pick $x_1 \in X$, pick $x_2 \in X$ s.t. $d(x_1, x_2) \geq \delta$, pick $x_3 \in X$ s.t. $d(x_1, x_3) \geq \delta$ and $d(x_2, x_3) \geq \delta$ \dots
+    We get a sequence $(x_n) \in X$ s.t. $\forall \; i, j \ i \neq j \implies d(x_i, x_j) \geq \delta$.
+    Hence $(x_n)$ has no convergent subsequence.
+\end{proof} 
+
+\begin{exercise}
+    A cts fcn on a sequentially compact metric space is uniformly compact.
+    If the fcn is real-valued then it's bounded and attains its bounds.
+\end{exercise} 
+
+\subsection{The Topology of Metric Spaces}
+Theme of section 2: to generalise convergence/ continuity, all we need is a distance.
+
+But: e.g. in $\mathbb{R}^n$ we have three very different concepts of distance given by the Euclidean, $\ell_1$ and $\ell_\infty$ metrics.
+But all give same concept of convergence and continuity.
+
+\begin{definition}[Homeomorphism]
+    Let $(X, d)$ and $(Y, e)$ be metric spaces.
+    Let $f : X \to Y$.
+    We say $f$ is a \vocab{homeomorphism} and that $X, Y$ are \vocab{homeomorphic} if $f$ is a cts bijection with a cts inverse.
+\end{definition} 
+
+\begin{remark}
+    Homeomorphism is an equivalence `relation' (it satisfies symmetry, transitivity and reflexivity but not an actual relation).
+\end{remark} 
+
+\begin{example}
+    If $x, y \in \mathbb{R}^n$: $d_\infty(x, y) \leq d_1(x, y) \leq n d_\infty(x, y)$.
+    ($d_1, d_\infty \ \ell_1$ and $\ell_\infty$ metrics respectively).
+    So identity map $\mathbb{R}^n \to \mathbb{R}^n$ is continuous as map $(\mathbb{R}^n, d_1) \to (\mathbb{R}^n, d_\infty)$ and as a map $(\mathbb{R}^n, d_\infty) \to (\mathbb{R}^n, d_1)$.
+    So it's a homeomorphism. \\
+    Similarly, $\mathbb{R}^n$ with the Euclidean metric is homeomorphic to both of these spaces.
+\end{example} 
+
+\begin{example}
+    Same argument would show:
+    If $(X, d), (Y, e)$ metric spaces and $f: X \to Y$ is a bijection satisfying 
+    \begin{enumerate}
+        \item $\exists \; A \ \forall \; x, y \in X \ e(f(x), f(y)) \leq A d(x, y)$
+        \item $\exists \; B \ \forall \; x, y \in X \ d(x, y) \leq B e(f(x), f(y))$ then $f, f\inv$ are cts so $X, Y$ homeomorphic.
+    \end{enumerate} 
+\end{example} 
+
+\begin{example}
+    Define $f:(-\frac{\pi}{2}, \frac{\pi}{2}) \to \mathbb{R}$ by $f(x) = \tan x$.
+    Then $f$ is a homeomorphism (usual metric in each case).
+    But there is no constant $A$ s.t. $\forall \; x, y \in (- \frac{\pi}{2}, \frac{\pi}{2})$ $|\tan x - \tan y| \leq A |x - y|$.
+\end{example} 
+
+\begin{proposition}
+    Let $(V, b), (W, c), (X, d), (Y, e)$ be metric spaces and $f : X \to V$, $g:Y \to W$ be homeomorphisms.
+    \begin{enumerate}
+        \item In $X$, $x_n \to x$ iff in $V$ $f(x_n) \to f(x)$;
+        \item A function $h: X \to Y$ is cts at $a \in X$ iff $g \circ h \circ f\inv$ is cts at $f(a) \in V$.
+    \end{enumerate} 
+\end{proposition} 
+
+\begin{proof}
+    (i) $x_n \to x \implies f(x_n) \to f(x)$ as $f$ cts; $f(x_n) \to f(x) \implies x_n = f\inv(f(x_n)) \to f\inv (f(x)) = x$ as $f\inv$ cts.
+
+    (ii) $h$ cts $\implies$ $g \circ h \circ f\inv$ cts (composition of cts fcns).
+    And $g \circ h \circ f\inv$ cts $\implies h = g\inv \circ (g \circ h \circ f\inv) \circ f$ is cts (similarly).
+\end{proof} 
+
+We now have examples of metric spaces that look very different but behave identically w.r.t convergence/ continuity.
+
+\underline{Thought}: Could we dispense with distance altogether?
+
+Another way to think about continuity.
+
+\begin{definition}[Open ball]
+    Let $(X, d)$ be a metric space, let $a \in X$ and let $\epsilon > 0$.
+    The \vocab{open ball of radius $\epsilon$ about $a$} is the set $B_\epsilon(a) = \{ x \in X : d(x, a) < \epsilon\}$.
+\end{definition} 
+
+\begin{remark}
+    Suppose $f: X \to Y$, $a \in X$.
+    $d$ metric on $X$, $e$ metric on $Y$.
+    \begin{align*}
+        f \text{ cts at } a \iff \forall \; \epsilon > 0 \ \exists \; \delta > 0 \ d(x, a) < \delta \implies d(f(x), f(a)) < \epsilon \\
+        \iff \forall \; \epsilon > 0 \ \delta > 0 \ x \in B_\delta(a) \implies f(x) \in B_\epsilon(f(a)) \\
+        \iff \forall \; \epsilon > 0 \ \exists \; \delta > 0 \ f(B_\delta(a)) \subset B_\epsilon(f(a)) \\
+        \iff \forall \; \epsilon > 0 \ \exists \; \delta > 0 \ B_\delta(a) \subset f\inv(B_\epsilon(f(a))).
+    \end{align*} 
+    So we have redefined continuity in terms of open balls.
+    But open balls have radii so still mentioning distance.
+\end{remark} 
+
+\begin{definition}[Open, Neighbourhood]
+    Let $X$ be a metric space.
+    A subset $G \subset X$ is \vocab{open} if $\forall \; x \in G \ \exists \; \epsilon > 0 \ B_\epsilon(x) < G$.
+    A subset $N \subset X$ is a \vocab{neighbourhood} (nbd) of a point $a \in X$ if there exists an open set $G \subset X$ s.t. $a \in G \subset N$.
+\end{definition} 
