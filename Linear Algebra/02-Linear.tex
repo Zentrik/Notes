@@ -58,7 +58,7 @@
         \item $\alpha$ is linear
         \item $\alpha$ is bijective
     \end{enumerate}
-    If such an $\alpha$ exists, we say that $V$ and $W$ are isomorphic, written $V \simeq W$.
+    If such an $\alpha$ exists, we say that $V$ and $W$ are isomorphic, written $V \cong W$.
 \end{definition}
 \begin{remark}
     If $\alpha$ in the above definition is an isomorphism, then $\alpha\inv \colon W \to V$ is linear.
@@ -83,7 +83,7 @@
     The proofs of each part are left as an exercise.
 \end{proof}
 \begin{theorem}
-    If $V$ is an $F$-vector space of dimension $n$, then $V \simeq F^n$.
+    If $V$ is an $F$-vector space of dimension $n$, then $V \cong F^n$.
 \end{theorem}
 \begin{proof}
     Let $B = (v_1, \dots, v_n)$ be a basis for $V$.
@@ -101,14 +101,14 @@
     Let $V, W$ be $F$-vector spaces with finite dimensions $n, m$.
     Then,
     \begin{align*}
-        V \simeq W \iff n = m
+        V \cong W \iff n = m
     \end{align*}
 \end{theorem}
 \begin{proof}
     If $\dim V = \dim W = n$, then there exist isomorphisms from both $V$ and $W$ to $F^n$.
     By transitivity, therefore, there exists an isomorphism between $V$ and $W$.
 
-    Conversely, if $V \simeq W$ then let $\alpha \colon V \to W$ be an isomorphism.
+    Conversely, if $V \cong W$ then let $\alpha \colon V \to W$ be an isomorphism.
     Let $B$ be a basis of $V$, then we claim that $\alpha(B)$ is a basis of $W$.
     Indeed, $\alpha(B)$ spans $W$ from the surjectivity of $\alpha$, and $\alpha(B)$ is free due to injectivity.
 \end{proof}
@@ -198,7 +198,7 @@
 \end{theorem}
 
 \begin{proof}
-    We have proven that $U / \ker \alpha \simeq \Im \alpha$.
+    We have proven that $U / \ker \alpha \cong \Im \alpha$.
     Hence, the dimensions on the left and right match: $\dim (U/\ker\alpha) = \dim \Im \alpha$.
     \begin{align*}
         \dim U - \dim \ker \alpha\footnote{by \cref{prp:quotientdim}} = \dim \Im \alpha
@@ -362,7 +362,7 @@ We can now define a matrix of some linear map $\alpha$ in the $B, C$ basis.
 \begin{proposition} \label{prp:dimmapspace}
     If $V, W$ are $F$-vector spaces, and $\dim_F V = n, \dim_F W = m$, then
     \begin{align*}
-        L(V,W) \simeq M_{m \times n}(F)
+        L(V,W) \cong M_{m \times n}(F)
     \end{align*}
     which implies the dimensionality of $L(V,W)$ in $F$ is $m \times n$.
 \end{proposition}

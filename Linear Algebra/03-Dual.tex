@@ -295,11 +295,11 @@ We have proven that
 	In general, there is no obvious relation between $V$ and $V^\star$ (unless Hilbertian structure).
 	However, the following useful facts hold about $V$ and $V^\sstar$.
 	\begin{enumerate}
-		\item There is a large class of function spaces where $V \simeq V^\sstar$.
+		\item There is a large class of function spaces where $V \cong V^\sstar$.
 		These are called \vocab{reflexive spaces}.
 		\begin{example}
 			$p > r$, $L^p(\mathbb{R}) = \left\{ f : \mathbb{R} \to \mathbb{R} : \int_{\mathbb{R}} |f(x)|^p \dd{x} < + \infty \right\}$.
-			This is a reflexive space (this uses the Lebesque integral as this space is not complete using Riemann integral.)
+			This is a reflexive space (this uses the Lebesgue integral as this space is not complete using Riemann integral.)
 		\end{example} 
 		Such spaces are investigated in the study of Banach spaces.
 		\item There is a \vocab{canonical embedding} from $V$ to $V^\sstar$.
@@ -369,7 +369,7 @@ We have proven that
 	Hence $\hat u \in U^{00}$ and so $\hat U \leq U^{00}$.
 
 	Now, we will compute dimension:	$\dim U^{00} = \dim V - \dim U^0 = \dim U$.
-	Since $\hat U \simeq U$, their dimensions are the same, so $U^{00} = \hat U$.
+	Since $\hat U \cong U$, their dimensions are the same, so $U^{00} = \hat U$.
 \end{proof}
 \begin{remark}
 	Due to this identification of $V^\sstar$ and $V$, we can define
@@ -389,7 +389,8 @@ We have proven that
 \begin{proof}
 	Let $\theta \in V^\star$.
 	Then $\theta \in (U_1 + U_2)^0 \iff \forall u_1 \in U_1, u_2 \in U_2, \theta(u_1 + u_2) = 0$.
-	Hence $\theta(u) = 0$ for all $u \in U_1 \cup U_2$ by linearity.
-	Hence $\theta \in U_1^0 \cap U_2^0$.
+	Iff $\theta(u) = 0$ for all $u \in U_1 \cup U_2$ by linearity.
+	Iff $\theta \in U_1^0 \cap U_2^0$.
+	
 	Now, take the annihilator of (i) and $U^{00} = U$ to complete part (ii).
 \end{proof}
