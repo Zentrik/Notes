@@ -850,10 +850,10 @@ Another way to think about continuity.
     Suppose $f: X \to Y$, $a \in X$.
     $d$ metric on $X$, $e$ metric on $Y$.
     \begin{align*}
-        f \text{ cts at } a \iff \forall \; \epsilon > 0 \ \exists \; \delta > 0 \ d(x, a) < \delta \implies d(f(x), f(a)) < \epsilon \\
-        \iff \forall \; \epsilon > 0 \ \delta > 0 \ x \in B_\delta(a) \implies f(x) \in B_\epsilon(f(a)) \\
-        \iff \forall \; \epsilon > 0 \ \exists \; \delta > 0 \ f(B_\delta(a)) \subset B_\epsilon(f(a)) \\
-        \iff \forall \; \epsilon > 0 \ \exists \; \delta > 0 \ B_\delta(a) \subset f\inv(B_\epsilon(f(a))).
+        f \text{ cts at } a &\iff \forall \; \epsilon > 0 \ \exists \; \delta > 0 \ d(x, a) < \delta \implies d(f(x), f(a)) < \epsilon \\
+        &\iff \forall \; \epsilon > 0 \ \delta > 0 \ x \in B_\delta(a) \implies f(x) \in B_\epsilon(f(a)) \\
+        &\iff \forall \; \epsilon > 0 \ \exists \; \delta > 0 \ f(B_\delta(a)) \subset B_\epsilon(f(a)) \\
+        &\iff \forall \; \epsilon > 0 \ \exists \; \delta > 0 \ B_\delta(a) \subset f\inv(B_\epsilon(f(a))).
     \end{align*} 
     So we have redefined continuity in terms of open balls.
     But open balls have radii so still mentioning distance.
@@ -864,3 +864,161 @@ Another way to think about continuity.
     A subset $G \subset X$ is \vocab{open} if $\forall \; x \in G \ \exists \; \epsilon > 0 \ B_\epsilon(x) < G$.
     A subset $N \subset X$ is a \vocab{neighbourhood} (nbd) of a point $a \in X$ if there exists an open set $G \subset X$ s.t. $a \in G \subset N$.
 \end{definition} 
+
+\begin{remark} \
+    \begin{enumerate}
+        \item \color{blue} Intuition: \color{black} A set is open if for each point in the set it contains all points nearby as well.
+        A set is a neighbourhood of $a$ if it contains all points near $a$.
+        \item The open ball $B_\epsilon(a)$ is open.
+        Why?
+        If $x \in B_\epsilon(a)$ then $d(x, a) = \delta < \epsilon$, say so by $\Delta$ inequality $B_{\epsilon - \delta}(x) \subset B_\epsilon(a)$.
+        \item If $\mathcal{N}$ is an open set and $a \in \mathcal{N}$ then certainly $\mathcal{N}$ is a nbd (neighbourhood) of $a$: $a \in \underbracket{\mathcal{N}}_\text{open} \subset \mathcal{N}$. \\
+        However, a nbd of $a$ need not be open.
+        E.g. in $\mathbb{R}$ with the usual metric then $[-1, 1]$ is a nbd of $0$: $0 \in \underbracket{(0, 1)}_\text{open} \subset [-1, 1]$.
+        And $[-1, 1] \cup \{396\}$ is a nbd of $0$.
+        \item $\mathcal{N}$ is a nbd of $a$ iff $\exists \; \epsilon > 0$ s.t. $B_\epsilon(a) \subset N$.
+        \begin{proof}
+            ($\Longleftarrow$): $a \in \underbracket{B_\epsilon(a)}_\text{open} \subset \mathcal{N}$. \\
+            ($\implies$): $a \in \underbracket{G}_\text{open} \subset \mathcal{N}$ and $\exists \; \epsilon > 0$ s.t. $B_\epsilon(a) \subset G$.
+        \end{proof} 
+        \item A set $G$ is open iff it's a nbd of each of its points.
+    \end{enumerate} 
+\end{remark} 
+
+\begin{proposition} \label{prp:23}
+    Let $(X, d), (Y, e)$ be metric spaces and let $f : X \to Y$.
+    \begin{enumerate}
+        \item $f$ is cts at $a \in X$ iff whenever $\mathcal{N} \subset Y$ is a nbd of $f(a)$ we have $f\inv(\mathcal{N}) \subset X$ a nbd of a;
+        \item $f$ is a cts function iff whenever $G \subset Y$ is open we have $f\inv(G) \subset X$ open.
+    \end{enumerate} 
+\end{proposition} 
+
+\begin{proof} \
+    \begin{enumerate}
+        \item ($\implies$): Suppose $f$ cts at $a \in X$.
+        Let $\mathcal{N}$ be a nbd of $f(a)$.
+        Then $\exists \; \epsilon > 0$ s.t. $B_\epsilon(f(a)) \subset \mathcal{N}$.
+        But $f$ cts at $a$ so $\exists \; \delta > 0$ s.t. $B_\delta(a) \subset f\inv (B_\epsilon(f(a))) \subset f\inv (\mathcal{N})$.
+        So $f\inv(\mathcal{N})$ is a nbd of $a$.
+
+        ($\Longleftarrow$): Suppose $f\inv(\mathcal{N})$ is a nbd of $a$ for every nbd $\mathcal{N}$ of $f(a)$.
+        Let $\epsilon > 0$.
+        In particular, $B_\epsilon(f(a))$ is a nbd of $f(a)$ so $f\inv(B_\epsilon(f(a)))$ is a nbd of $a$ so $\exists \; \delta > 0$ s.t. $B_\delta(a) \subset f\inv (B_\epsilon (f(a)))$.
+        So $f$ is cts at $a$.
+
+        \item ($\implies$): Suppose $f$ is a cts function.
+        Let $G \subset Y$ be open.
+        Let $a \in f\inv(G)$.
+        Then $f(a) \in G$ and $G$ open so $G$ is a nbd of $f(a)$.
+        Moreover, $f$ is cts at $a$ so by (i) we have $f\inv(G)$ a nbd of $a$.
+        Hence $\exists \; \delta > 0$ s.t. $B_\delta(a) \subset f\inv(a)$.
+        So $f\inv(a)$ is open.
+
+        ($\Longleftarrow$): Suppose $f\inv(G)$ open whenever $G$ is open in $Y$.
+        Let $a \in X$.
+        Let $\mathcal{N} \subset Y$ be a nbd of $f(a)$.
+        Then $\exists \; G \subset Y$ open s.t. $f(a) \in G \subset \mathcal{N}$.
+        By assumption, $f\inv(G) \subset X$ open.
+        Now $a \in f\inv(G) \subset f\inv(\mathcal{N})$ with $f\inv(G)$ open so $f\inv(\mathcal{N})$ is nbd of $a$.
+        So by $(i)$, $f$ is cts at $a$.
+        So $f$ is a cts function.
+    \end{enumerate} 
+\end{proof} 
+
+\begin{remark}
+    \begin{enumerate}
+        \item This says that we can define continuity entirely in terms of open sets without mentioning the metric.
+        \item We saw previously that homeomorphisms preserve convergence and continuity.
+        \Cref{prp:23} (ii) say homeomorphisms also preserve open sets: precisely, if $f : X \to Y$ is a homeomorphism then $G \subset X$ is open iff $f(G) \subset Y$ is open.
+        (Why? $G = f\inv(f(G))$ with $f$ cts and $f(G) = (f\inv)\inv(G)$ with $f\inv$ cts.)
+    \end{enumerate} 
+\end{remark} 
+
+What else is preserved by homeomorphisms? \\
+Suppose $f: X \to Y$ is a homeomorphism and $X$ is sequentially compact.
+Let $(y_n)$ be a sequence in $Y$.
+Then $(f\inv(y_n))$ is a sequence in $X$ and so has a convergent subsequence.
+$f\inv(y_{n_j}) \to x \in X$, say.
+But convergence of sequences is preserved by homeomorphisms.
+Hence $(y_{n_j}) = f(f\inv(y_{n_j})) \to f(x) \in Y$.
+So $Y$ is sequentially compact.
+
+Thus if $X, Y$ homeomorphic spaces, $X$ sequentially compact $\iff$ $Y$ sequentially compact.
+
+`Sequential compactness is a \underline{topological property}\footnote{This means it is preserved by homeomorphisms}'.
+If $X, Y$ homeomorphic and one has the property then so does the other.
+
+What about completeness?
+Not so good.
+
+\begin{example}
+    We saw $(0, 1)$ and $\mathbb{R}$ with the usual metric in each case are homeomorphic.
+    But $\mathbb{R}$ is complete and $(0, 1)$ is not.
+    So completeness is not a topological property.
+\end{example} 
+
+What went wrong?
+Property of being a Cauchy sequence is not preserved by homeomorphisms.
+
+\begin{remark}
+    Suppose $(x_n)$ is a sequence in a metric space $X$ and $x \in X$.
+    Then
+    \begin{align*}
+        x_n \to x &\iff \forall \; \epsilon > 0 \ \exists \; N \ \forall \; n \geq N \ d(x_n, x) < \epsilon \\
+        &\iff \forall \; \epsilon > 0 \ \exists \; N \ \forall \; n \geq N \ x_n \in B_\epsilon(x) \\
+        &\iff \text{for all nbds $\mathcal{N}$ of $x$ $\exists \; N \ \forall \; n \geq N \ x_n \in \mathcal{N}$.}
+    \end{align*} 
+    This defines convergence solely in terms of nbds.
+    Can't do something similar for Cauchy sequences using nbds/ open sets.
+\end{remark} 
+
+We have just seen that seq. compactness is a topological property.
+We can define seq. compactness just in terms of nbds/ open sets:
+Seq. compact is defined in terms of convergence of sequences which can be described using nbds.
+But is there a `nicer' way to do this, can we describe just in terms of open sets?
+
+\begin{definition}[Open Cover]
+    Let $X$ be a metric space.
+    An \vocab{open cover} of $X$ is a collection $\mathcal{C}$ of open subsets of $X$ s.t. $X = \bigcup_{G \in \mathcal{C}} G$.
+\end{definition} 
+
+\begin{definition}[Subcover]
+    A \vocab{subcover} of $\mathcal{C}$ is an open cover $\mathcal{B}$ of $X$ with $\mathcal{B} \subset \mathcal{C}$.
+\end{definition} 
+
+\begin{definition}[Compact]
+    We say $X$ is \vocab{compact} if every open cover of $X$ has a finite subcover.
+\end{definition} 
+
+\begin{example}[The Heine-Borel Theorem]
+    $[0, 1]$ with the usual metric is compact.
+\end{example} 
+
+\begin{proof}
+    Let $\mathcal{C}$ be an open cover of $[0, 1]$. \\
+    Let $A = \{ x \in [0, 1] : \exists \; \mathcal{B} \subset \mathcal{C} \text{ finite with } [0, x] \subset \bigcup_{G \in \mathcal{B}} G \}$.
+    We know $\exists \; G \in \mathcal{C}$ with $0 \in G$.
+    So $0 \in A$ so $A \neq \emptyset$.
+    Clearly $A$ bounded above by $1$.
+    So $A$ has supremum, say $\sigma = \sup A$.
+
+    As $G$ open, $\exists \; \epsilon > 0$ s.t. $[0, \epsilon) = B_\epsilon(0) \subset G$.
+    So $\frac{\epsilon}{2} \in A$ so $\sigma > 0$.
+
+    Suppose $\sigma < 1$.
+    We can find $H \in \mathcal{C}$ with $\sigma \in H$.
+    As $\sigma = \sup A$ we can find $x \in A$ with $x \in H$.
+    So we have $\mathcal{B} \subset \mathcal{C}$ finite with $[0, x] \subset \bigcup_{G \in \mathcal{B}} G$.
+    But $\exists \; \epsilon > 0$ s.t. $(\sigma - \epsilon, \sigma + \epsilon) = B_\epsilon(\sigma) \subset H$.
+    So $[0, \sigma + \frac{\epsilon}{2}] \subset \bigcup_{G \in \mathcal{B} \cup \{H\}} G$.
+    So $\sigma + \frac{\epsilon}{2} \in A$ \Lightning.
+
+    Hence $\sigma = 1$.
+    We can find $K \in \mathcal{C}$ s.t. $1 \in K$.
+    As $K$ open, we can find $\epsilon > 0$ s.t. $(1 - \epsilon, 1] = B_\epsilon(1) \subset K$.
+    As $1 = \sup A$ we can find $x \in A \cap (1 - \epsilon, 1]$.
+    That says we have finite $\mathcal{B} \subset \mathcal{C}$ with $[0, x] \subset \bigcup_{G \in \mathcal{B}} G$.
+
+    Then $\mathcal{B} \cup \{K\}$ is an open cover of $[0, 1]$ and so a subcover of $\mathcal{C}$.
+    So $[0, 1]$ is compact.
+\end{proof} 

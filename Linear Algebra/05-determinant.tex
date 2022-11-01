@@ -34,8 +34,8 @@
 		\tr(P^{-1}AP) = \tr (A P^{-1} P) = \tr A
 	\end{align*}
 \end{proof}
-\begin{definition}
-	If $\alpha \colon V \to V$ is linear, we can define the trace of $\alpha$ as
+\begin{definition}[Trace of a linear]
+	If $\alpha \colon V \to V$ is linear, we can define the \vocab{trace} of $\alpha$ as
 	\begin{align*}
 		\tr \alpha = \tr [\alpha]_B
 	\end{align*}
@@ -48,9 +48,10 @@
 		\tr \alpha = \tr \alpha^\star
 	\end{align*}
 \end{lemma}
+
 \begin{proof}
 	\begin{align*}
-		\tr \alpha = \tr [\alpha]_B = \tr [\alpha]_B^\transpose = \tr [\alpha^\star]_{B^\star} = \tr \alpha^\star
+		\tr \alpha = \tr [\alpha]_B = \tr [\alpha]_B^\transpose\footnote{Check $tr [\alpha]_B = \tr [\alpha]_B^\transpose$} = \tr [\alpha^\star]_{B^\star} = \tr \alpha^\star
 	\end{align*}
 \end{proof}
 
@@ -64,7 +65,7 @@ We say that the signature of a permutation, denoted $\varepsilon \colon S_n \to 
 We can then show that $\varepsilon$ is a homomorphism.
 
 \subsection{Determinant}
-\begin{definition}
+\begin{definition}[Determinant]
 	Let $A \in M_n(F)$.
 	We define
 	\begin{align*}
@@ -93,35 +94,45 @@ We can then show that $\varepsilon$ is a homomorphism.
 		\det A = a_{1 1} \dots a_{n n} = 0
 	\end{align*}
 \end{proof}
+
+\begin{exercise}
+	Show similarly $\det \begin{pmatrix}\lambda_1 &  & * \\ & \ddots & \\ 0 &  & \lambda_n\end{pmatrix} = \prod_{i = 1}^n \lambda_i$.
+\end{exercise} 
+
 \begin{lemma}
 	Let $A \in M_n(F)$.
 	Then, $\det A = \det A^\transpose$.
 \end{lemma}
 \begin{proof}
 	\begin{align*}
-		\det A & = \sum_{\sigma \in S_n} \varepsilon(\sigma) a_{\sigma(1) 1} \dots a_{\sigma(n) n}      \\
-		       & = \sum_{\sigma^{-1} \in S_n} \varepsilon(\sigma) a_{\sigma(1) 1} \dots a_{\sigma(n) n} \\
-		       & = \sum_{\sigma \in S_n} \varepsilon(\sigma^{-1}) a_{1 \sigma(1)} \dots a_{n \sigma(n)} \\
-		       & = \sum_{\sigma \in S_n} \varepsilon(\sigma) a_{1 \sigma(1)} \dots a_{n \sigma(n)}      \\
-		       & = \det A^\transpose
+		\det A & = \sum_{\sigma \in S_n} \varepsilon(\sigma) a_{\sigma(1) 1} \dots a_{\sigma(n) n} \\
+		&= \sum_{\sigma \in S_n} \varepsilon(\sigma) \prod_i a_{i \sigma\inv(i)} \quad \text{as $\sigma$ a bijection}\footnote{See V\&M notes for better explanation.} \\
+		&= \sum_{\sigma\inv \in S_n} \varepsilon(\sigma\inv) \prod_i a_{i \sigma\inv(i)} \\
+		& = \sum_{\sigma \in S_n} \varepsilon(\sigma)\prod_i a_{i \sigma(i)} \quad \text{as $\sigma$ a bijection}\\
+		& = \det A^\transpose
 	\end{align*}
 \end{proof}
 
 \subsection{Volume forms}
-\begin{definition}
-	A volume form $d$ on $F^n$ is a function $d \colon \underbrace{F^n \times \dots \times F^n}_{n \text{ times}} \to F$ satisfying
+Why do we use this formula for $\det A$?
+
+\begin{definition}[Volume Form]
+	A \vocab{volume form} $d$ on $F^n$ is a function $d \colon \underbrace{F^n \times \dots \times F^n}_{n \text{ times}} \to F$ satisfying
 	\begin{enumerate}
 		\item $d$ is multilinear: for all $i \in \qty{1, \dots, n}$ and for all $v_1, \dots, v_{i-1}, v_{i+1}, \dots, v_n \in F^n$, the map from $F^n$ to $F$ defined by
-		      \begin{align*}
-			      v \mapsto (v_1, \dots, v_{i-1}, v, v_{i+1}, \dots, v_n)
-		      \end{align*}
-		      is linear.
-		      In other words, this map is an element of $(F^n)^\star$.
-		\item $d$ is alternating: for $v_i = v_j$ for some $i \neq j$, $d = 0$.
+		\begin{align*}
+			v \mapsto (v_1, \dots, v_{i-1}, v, v_{i+1}, \dots, v_n)
+		\end{align*}
+		is linear.
+		In other words, this map is an element of $(F^n)^\star$.\footnote{Linear with respect to all $m$ coordinates.}
+		\item $d$ is alternating: if $v_i = v_j$ for some $i \neq j$, $d = 0$.
 	\end{enumerate}
 	So an alternating multilinear form is a volume form.
 	We want to show that, up to multiplication by a scalar, the determinant is the only volume form.
 \end{definition}
+
+\underline{Aim}: We wan to show that there is in fact only ONE (up to a multiplicative constant) volume form on $F^n \times \dots \times F^n$ which is given by the determinant.
+
 \begin{lemma}
 	The map $(F^n)^n \to F$ defined by $(A^{(1)}, \dots, A^{(n)}) \mapsto \det A$ is a volume form.
 	This map is the determinant of $A$, but thought of as acting on the column vectors of $A$.
@@ -134,14 +145,21 @@ We can then show that $\varepsilon$ is a homomorphism.
 	This then clearly implies that the determinant, a sum of such multilinear maps, is itself multilinear.
 
 	Now, we show that the determinant is alternating.
-	Let $k \neq \ell$, and $A^{(k)} = A^{(\ell})$.
-	Let $\tau = ( k \ell )$ be the transposition exchanging $k$ and $\ell$.
+	Let $k \neq \ell$, and $A^{(k)} = A^{(\ell)}$.
+	I want to show $\det A = 0$. \\
+	Let $\tau = ( k \; \ell )$ be the transposition exchanging $k$ and $\ell$.
 	Then, for all $i, j \in \qty{1, \dots, n}$, $a_{ij} = a_{i \tau(j)}$.
-	We can decompose permutations into two disjoint sets: $S_n = A_n \cup \tau A_n$, where $A_n$ is the alternating group of order $n$.
-	Now, note that $\prod_{i=1}^n a_{\sigma(i) i} + \prod_{i=1}^n a_{(\tau \circ \sigma)(i) i} = 0$.
-	So the sum over all $\sigma \in A_n$ gives zero.
+	We can decompose permutations into two disjoint sets: $S_n = A_n \cup \tau A_n$\footnote{As $\tau$ bijective and $\varepsilon(\tau) = -1$}, where $A_n$ is the alternating group of order $n$.
+	\begin{align*}
+		\det A &= \sum_{\sigma \in S_n} \varepsilon(\sigma) \prod_{i = 1}^n a_{i \sigma(i)} \\
+		&= \sum_{\sigma\in A_n} \varepsilon(\sigma) \prod_{i = 1}^n a_{i \sigma(i)} + \sum_{\sigma \in \tau A_n} \varepsilon(\sigma) \prod_{i = 1}^n a_{i \sigma(i)} \\
+		&= \sum_{\sigma\in A_n} \prod_{i = 1}^n a_{i \sigma(i)} - \sum_{\sigma\in A_n} \prod_{i = 1}^n a_{i \tau\sigma(i)} \\
+		&= \sum_{\sigma\in A_n} \prod_{i = 1}^n a_{i \sigma(i)} - \sum_{\sigma\in A_n} \prod_{i = 1}^n a_{i \mathcolor{red}{\sigma(i)}} \quad \text{as $a_{ij} = a_{i \tau(j)}$} \\
+		&= 0
+	\end{align*} 
 	So the determinant is alternating, and hence a volume form.
 \end{proof}
+
 \begin{lemma}
 	Let $d$ be a volume form.
 	Then, swapping two entries changes the sign.
@@ -149,13 +167,13 @@ We can then show that $\varepsilon$ is a homomorphism.
 \begin{proof}
 	Take the sum of these two results:
 	\begin{align*}
-		d(v_1, \dots, v_i, \dots, v_j, \dots, v_n) & + d(v_1, \dots, v_j, \dots, v_i, \dots, v_n)               \\
-		                                           & = d(v_1, \dots, v_i, \dots, v_j, \dots, v_n)               \\
-		                                           & + d(v_1, \dots, v_j, \dots, v_i, \dots, v_n)               \\
-		                                           & + d(v_1, \dots, v_i, \dots, v_i, \dots, v_n)               \\
-		                                           & + d(v_1, \dots, v_j, \dots, v_j, v_n)                      \\
-		                                           & = 2 d(v_1, \dots, v_i + v_j, \dots, v_i + v_j, \dots, v_n) \\
-		                                           & = 0
+		d(v_1, \dots, v_i, \dots, v_j, \dots, v_n) & + d(v_1, \dots, v_j, \dots, v_i, \dots, v_n) \\
+		& = d(v_1, \dots, v_i, \dots, v_j, \dots, v_n) \\
+		& + d(v_1, \dots, v_j, \dots, v_i, \dots, v_n) \\
+		& + \underbracket{d(v_1, \dots, v_i, \dots, v_i, \dots, v_n)}_0 \\
+		& + \underbracket{d(v_1, \dots, v_j, \dots, v_j, v_n)}_0 \\
+		& = 2 d(v_1, \dots, v_i + v_j, \dots, v_i + v_j, \dots, v_n) \\
+		& = 0
 	\end{align*}
 	as required.
 \end{proof}
