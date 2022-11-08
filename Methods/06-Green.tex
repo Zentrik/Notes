@@ -1,70 +1,111 @@
 \section{Green's Functions}
 
 \subsection{Dirac delta function}
-\begin{definition}
+\begin{definition}[Dirac Delta Function]
 	We define a generalised function $\delta(x - \xi)$ such that
-	\begin{enumerate}
-		\item $\delta(x-\xi) = 0$ for all $x \neq \xi$;
-		\item $\int_{-\infty}^\infty \delta(x-\xi) \dd{x} = 1$.
-	\end{enumerate}
-	This acts as a linear operator $\int \dd{x} \delta(x - \xi)$ on some function $f(x)$ to produce a number $f(\xi)$.
-	\begin{align*}
+	\begin{align}
+		\begin{aligned} \label{eq:6.1}
+			&\delta(x-\xi) = 0 \ \ \forall \; x \neq \xi; \\
+			&\int_{-\infty}^\infty \delta(x-\xi) \dd{x} = 1.
+		\end{aligned} 	
+	\end{align} 
+	% \begin{enumerate}
+	% 	\item $\delta(x-\xi) = 0$ for all $x \neq \xi$;
+	% 	\item $\int_{-\infty}^\infty \delta(x-\xi) \dd{x} = 1$.
+	% \end{enumerate}
+	This acts as a linear operator $\int \dd{x} \delta(x - \xi)$ on some arbitrary function $f(x)$ to produce a number $f(\xi)$.
+	\begin{align} \label{eq:6.2}
 		\int_{-\infty}^\infty \dd{x} \delta(x-\xi) f(x) = f(\xi)
-	\end{align*}
+	\end{align}
 	This relationship holds provided that $f(x)$ is sufficiently `well-behaved' at $x=\xi$ and $x\to\pm \infty$.
 \end{definition}
-\begin{remark}
-	Strictly, the $\delta$ `function' is classified as a distribution, not as a function.
-	For this reason, we will never use $\delta$ outside an integral, although such an integral may be implied.
-	The $\delta$ function represents a unit point source or impulse.
-\end{remark}
-We can approximate the $\delta$ function using a Gaussian approximation.
-\begin{align*}
+
+\begin{note}
+	\begin{itemize}
+		\item Strictly, the $\delta$ `function' is classified as a distribution, not as a function.
+		See lectures notes of Jozsa and Skinner section 6.1 for more details.
+		\item For this reason, we will never use $\delta$ outside an integral, although such an integral may be implied.
+		\item The $\delta$ function represents a unit point source (e.g. mass, charge) or an impulse.
+	\end{itemize} 
+\end{note}
+
+\subsubsection{Some limiting approximations}
+
+A discrete approximation as $n \to \infty$ is $\delta_n = \begin{cases}
+	0 & x > \frac{1}{n} \\
+	\frac{n}{2} & |x| \leq \frac{1}{n} \\
+	0 & x < - \frac{1}{n}
+\end{cases}$.
+\begin{figure}[h] 
+    \centering 
+    \includegraphics[height=5cm]{06-discretedelta} 
+	\caption{Discrete approximation}
+\end{figure}
+
+\underline{Continuous:}
+We can approximate the $\delta$ function using a Gaussian approximation as $\epsilon \to 0$.
+\begin{align} \label{eq:6.3}
 	\delta_\varepsilon(x) = \frac{1}{\varepsilon \sqrt{\pi}} \exp[-\frac{x^2}{\varepsilon^2}]
-\end{align*}
-Therefore,
+\end{align}
+Therefore verifying \cref{eq:6.2},
 \begin{align*}
-	\int_{-\infty}^\infty f(x) \delta(x) \dd{x} & = \lim_{\varepsilon \to 0} \int_{-\infty}^\infty \frac{1}{\varepsilon \sqrt{\pi}} \exp[-\frac{x^2}{\varepsilon^2}] f(x) \dd{x} \\
-    & = \lim_{\varepsilon \to 0} \int_{-\infty}^\infty \frac{1}{\varepsilon \sqrt{\pi}} \exp[-y^2] f(\varepsilon y) \dd{y} \\
-    & = \lim_{\varepsilon \to 0} \int_{-\infty}^\infty \frac{1}{\varepsilon \sqrt{\pi}} \exp[-y^2] [f(0) + \varepsilon y f'(0) + \cdots] \dd{y} \\
+	\int_{-\infty}^\infty f(x) \delta(x) \dd{x} & = \lim_{\varepsilon \to 0} \int_{-\infty}^\infty \frac{1}{\varepsilon \sqrt{\pi}} \exp[-\frac{x^2}{\varepsilon^2}] f(x) \dd{x}
+	\intertext{Let $y = \frac{x}{\epsilon}$,}
+    & = \lim_{\varepsilon \to 0} \int_{-\infty}^\infty \frac{1}{\sqrt{\pi}} \exp[-y^2] f(\varepsilon y) \dd{y} \\
+    & = \lim_{\varepsilon \to 0} \int_{-\infty}^\infty \frac{1}{\sqrt{\pi}} \exp[-y^2] [f(0) + \varepsilon y f'(0) + \cdots] \dd{y} \\
     & = f(0)
 \end{align*}
-for all well-behaved functions $f$ at $0, \pm \infty$.
-We could alternatively use the Dirichlet kernel
-\begin{align*}
+for all `well-behaved functions' $f$ at $0, \pm \infty$\footnote{Well behaved at $0$ lets us taylor expand and well behaved at $\pm \infty$ means it doesn't diverge faster than the Gaussian.}.
+\begingroup
+\tikzset{every picture/.style={scale=0.8}}
+\begin{center}
+	\input{figures/06-GaussianApproximation.tex}
+\end{center} 
+\endgroup
+
+\underline{Further Examples}
+We could alternatively use the Dirichlet kernel (as $n \to \infty$)
+\begin{align} \label{eq:6.4}
 	\delta_n(x) = \frac{\sin n x}{\pi x} = \frac{1}{2\pi} \int_{-n}^n e^{ikx} \dd{k}
-\end{align*}
+\end{align}
 or even
-\begin{align*}
+\begin{align} \label{eq:6.5}
 	\delta_n(x) = \frac{n}{2} \sech^2 nx
-\end{align*}
+\end{align}
 
 \subsection{Integral and derivative of delta function}
+\subsubsection{Integral of $\delta(x)$}
 We define the Heaviside step function by
-\begin{align*}
+\begin{align} \label{eq:6.6}
 	H(x) = \begin{cases}
 		1 & x \geq 0 \\
 		0 & x < 0
 	\end{cases}
-\end{align*}
+\end{align}
 For $x \neq 0$, we have
-\begin{align*}
+\begin{align} \label{eq:6.7}
 	H(x) = \int_{-\infty}^x \delta(t) \dd{t}
-\end{align*}
+\end{align}
 Thus,
 \begin{align*}
 	\dv{x} H(x) = \delta(x)
 \end{align*}
 where this identification takes place under an implied integral.
+
+\begin{exercise}
+	Verify using \cref{eq:6.5} $\delta(x) = \lim_{n \to \infty} \frac{n}{2} \sech^2 nx$ [You will find $\frac{1}{2} (\tanh nx + 1)$ which is an approximate step function. This also gives $H(0) = \frac{1}{2}$ (an alternative definition)].
+\end{exercise} 
+
+\subsubsection{Derivative of $\delta(x)$}
 We define $\delta'(x)$ using integration by parts.
-\begin{align*}
-	\int_{-\infty}^\infty \delta'(x-\xi) f(x) \dd{x} &= \qty[\delta(x-\xi) f(x)]_{-\infty}^\infty - \int_{-\infty}^\infty \delta(x-\xi) f'(x) \dd{x} \\
-    &= - \int_{-\infty}^\infty \delta(x-\xi) f'(x) \dd{x} \\
-    &= - f'(\xi)
-\end{align*}
+\begin{align}
+	\int_{-\infty}^\infty \delta'(x-\xi) f(x) \dd{x} &= \qty[\delta(x-\xi) f(x)]_{-\infty}^\infty - \int_{-\infty}^\infty \delta(x-\xi) f'(x) \dd{x} \notag \\
+    &= - \int_{-\infty}^\infty \delta(x-\xi) f'(x) \dd{x} \notag \\
+    \int_{-\infty}^\infty \delta'(x-\xi) f(x) \dd{x} &= - f'(\xi) \label{eq:6.8}
+\end{align}
 This is valid for all $f$ that are smooth at $x = \xi$.
 \begin{example}
-	Consider the Gaussian approximation:
+	Consider the Gaussian approximation \cref{eq:6.3}:
 	\begin{align*}
 		\delta_\varepsilon(x) = \frac{1}{\varepsilon \sqrt{\pi}} \exp[-\frac{x^2}{\varepsilon^2}]
 	\end{align*}
@@ -72,18 +113,28 @@ This is valid for all $f$ that are smooth at $x = \xi$.
 	\begin{align*}
 		\delta_\varepsilon'(x) = \frac{-2x}{\varepsilon^3 \sqrt{\pi}} \exp[-\frac{x^2}{\varepsilon^2}]
 	\end{align*}
+
+	\begingroup
+	\tikzset{every picture/.style={scale=0.8}}
+	\begin{center}
+		\input{figures/06-GaussianApproximationDerivative.tex}
+	\end{center} 
+	\endgroup
 \end{example}
 
 \subsection{Properties of delta function}
+\subsubsection{Sampling Property}
 Note that
-\begin{align*}
+\begin{align} \label{eq:6.9}
 	\int_a^b f(x) \delta(x-\xi) \dd{x} = \begin{cases}
 		f(\xi) & a < \xi < b \\
 		0 & \text{otherwise}
 	\end{cases}
-\end{align*}
+\end{align}
 So the $\delta$ function only `samples' values within the integral range.
 This is known as the sampling property.
+
+\subsubsection{Even Property}
 Let $u = -(x-\xi)$, and consider
 \begin{align*}
 	\int_{-\infty}^\infty f(x) \delta\qty(-(x-\xi)) \dd{x} &= \int_{\infty}^{-\infty} f(\xi - u) \delta(u) (-\dd{u}) \\
@@ -91,23 +142,50 @@ Let $u = -(x-\xi)$, and consider
     &= f(\xi)
 \end{align*}
 Hence,
-\begin{align*}
+\begin{align} \label{eq:6.10}
 	\int_{-\infty}^\infty f(x) \delta\qty(-(x-\xi)) \dd{x} = \int_{-\infty}^\infty f(x) \delta(x-\xi) \dd{x}
-\end{align*}
+\end{align}
 This is called the even property.
+
+\subsubsection{Scaling Property}
 Now, consider
-\begin{align*}
+\begin{align} \label{eq:6.11}
 	\int_{-\infty}^\infty f(x) \delta(a(x-\xi)) \dd{x} = \frac{1}{\abs{a}}f(\xi)
-\end{align*}
-This is the scaling property.
+\end{align}
+
+\begin{exercise}
+	Show this using $u = ax$ (noting integral limit order with $a < 0$).
+\end{exercise} 
+
+\subsubsection{Advanced Scaling Property}
 Let $g(x)$ be a function with $n$ isolated roots at $x_1, \dots, x_n$.
 Then, assuming $g'(x)$ does not vanish at the $x_i$,
-\begin{align*}
+\begin{align} \label{eq:6.12}
 	\delta(g(x)) = \sum_{i=1}^n \frac{\delta(x - x_i)}{\abs{g'(x_i)}}
-\end{align*}
+\end{align}
 This is a generalisation of the above, known as the advanced scaling property.
-Now, if $g(x)$ is continuous at $x = 0$, then $g(x) \delta(x)$ equivalent to $g(0) \delta(x)$ inside an integral.
-This is known as the isolation property.
+\begin{exercise}
+	Show for $g$ has $1$ root at $x = x_i$.
+\end{exercise} 
+
+\begin{example}
+	\begin{align*}
+		I &= \int_{-\infty}^{\infty} f(x) \delta(x^2 - 1) \dd{x} \\
+		&= \int_{1 - \epsilon}^{1 + \epsilon} f(x) \frac{\delta(x - 1)}{|2x|} \dd{x} + \int_{-1 - \epsilon}^{-1 + \epsilon} f(x) \frac{\delta(x + 1)}{|2x|} \dd{x} \\
+		&= \frac{1}{2} (f(1) + f(-1)).
+	\end{align*} 
+\end{example} 
+
+\subsubsection{Isolation Property}
+Now, if $g(x)$ is continuous at $x = 0$, then 
+\begin{align*}
+	g(x) \delta(x) = g(0) \delta(x) \label{eq:6.13}
+\end{align*} 
+inside an integral.
+
+\begin{exercise}
+	Evaluate and show $\int_{0}^{\infty} \delta'(x^2 - 1) x^2 \dd{x} = - \frac{1}{4}$ using $u = x^2 - 1$ and $\cref{eq:6.8}$ and $\cref{eq:6.12}$.
+\end{exercise} 
 
 \subsection{Fourier series expansion of delta function}
 Consider a complex Fourier series expansion,
