@@ -392,7 +392,7 @@ Equivalently $x_n \to x$ iff $d(x_n, x) \to 0$ in $\mathbb{R}$.
 \end{example} 
 
 \begin{example}
-    Let $(x, d)$ be the discrete metric space, \cref{exm:discrete}, and let $(Y, e)$ be any metric space.
+    Let $(X, d)$ be the discrete metric space, \cref{exm:discrete}, and let $(Y, e)$ be any metric space.
     Which functions $f : X \to Y$ are cts?
     Suppose $a \in X$ and $(x_n)$ a sequence in $X$ with $x_n \to a$.
     Then $(x_n)$ is eventually constant, i.e. for sufficiently large $n$ $x_n = a$ and so $f(x_n) = f(a)$.
@@ -441,7 +441,7 @@ But converse is not true in general.
 
 \begin{example}
     \Cref{exm:rnot0} says $\mathbb{R} \setminus \{0\}$ with the usual metric is not complete. \\
-    Similarly $Q$ with usual metric is not complete.
+    Similarly $\mathbb{Q}$ with usual metric is not complete.
 \end{example} 
 
 \begin{example}
@@ -673,7 +673,7 @@ Recall BW for $\mathbb{R}^n$ says a bounded sequence in $\mathbb{R}^n$ has a con
 \end{definition} 
 
 \begin{remark}
-    Easy to check by triangle inequality that $X$ bounded $\iff (X = \emptyset \text{ or } \exists \; M \in \mathbb{R} \ \epsilon x \in X \text{ s.t. } \forall \; y \in X \ d(x, y) \leq M)$.
+    Easy to check by triangle inequality that $X$ bounded $\iff (X = \emptyset \text{ or } \exists \; M \in \mathbb{R},\ x \in X \text{ s.t. } \forall \; y \in X \ d(x, y) \leq M)$.
     So definition agrees with earlier definition for subsets of $\mathbb{R}^n$.
 \end{remark} 
 
@@ -1021,4 +1021,116 @@ But is there a `nicer' way to do this, can we describe just in terms of open set
 
     Then $\mathcal{B} \cup \{K\}$ is an open cover of $[0, 1]$ and so a subcover of $\mathcal{C}$.
     So $[0, 1]$ is compact.
+\end{proof} 
+
+\begin{theorem}
+    Let $X$ be a metric space.
+    Then TFAE:
+    \begin{enumerate}
+        \item $X$ is compact;
+        \item $X$ is sequentially compact;
+        \item $X$ is complete and totally bounded;
+        \item $X$ is a subspace of $\mathbb{R}^n$ with the Euclidean metric. $X \subset \mathbb{R}^n$ is closed and bounded.
+    \end{enumerate} 
+\end{theorem} 
+
+\begin{proof}
+    We have already shown (2) $\iff$ (3) ($\iff$ (4) if appropriate) in previous section 2.3. \\
+    So only remains to prove (1) $\iff$ (2).
+
+    ($\implies$): Suppose $X$ is not sequentially compact.
+    Then there is some sequence $(x_n)$ in $X$ with no convergent subsequence.
+    Hence for every point $a \in X$ we can find a nbd of $a$ and hence an open set $G_a$ containing $a$ but containing $(x_n)$ for only finitely many values of $n$. (If not, pick an $a$ for which this is not true; then take $n$ s.t. $x_{n_1} \in B_1(a)$, then $n_2 > n_1$ s.t. $x_{n_2} \in B_{\frac{1}{2}}(a)$, then $x_{n_3} \in B_{\frac{1}{3}}(a)$ with $n_3 > n_2$, \dots, giving $x_{n_j} \to a$ \Lightning).
+
+    Now let $\mathcal{C} = \{ G_a : a \in X\}$.
+    This is an open cover of $X$.
+    But if $\mathcal{D} \subset \mathcal{C}$ is finite then $\bigcup_{G \in \mathcal{D}} G$ contains $x_n$ for only finitely many $n$, so $\bigcup_{G \in \mathcal{D}} \neq X$.
+    So $\mathcal{C}$ has no finite subcover.
+    Hence $X$ is not compact.
+
+    ($\Longleftarrow$): Suppose $X$ is sequentially compact. \\
+    Let $\mathcal{C}$ be an open cover of $X$.
+    \begin{claim}
+        $\exists \; \delta > 0 \ \forall \; a \in X \ \exists \; G \in \mathcal{C} \ B_\delta(a) \subset G$.
+    \end{claim} 
+
+    \begin{proof}
+        Suppose not.
+        Then $\forall \; \delta > 0 \ \exists \;a \in X \ \forall \; G \in \mathcal{C} \ B_\delta(a) \not\subset G$.
+        Taking $\delta = \frac{1}{n}$ for each $n \in \mathbb{N}$ we obtain a sequence $(x_n)$ in $X$ s.t. for each $n$, $\forall \; G \in \mathcal{C} \ B_\frac{1}{n}(x_n) \not\subset G$. \\
+        By sequential compactness, we can find a convergent subsequence $x_{n_j} \to a \in X$.
+        Pick $G \in \mathcal{C}$ s.t. $a \in G$.
+        As $G$ open, we can pick $\epsilon > 0$ s.t. $B_\epsilon(a) \subset G$.
+        Pick $j$ sufficiently large s.t. $x_{n_j} \in B_{\frac{\epsilon}{2}}(a)$ and also $\frac{1}{n_j} < \frac{\epsilon}{2}$.
+        Then $B_{\frac{1}{n_j}}(x_{n_j}) \subset B_\epsilon(a) \subset G$.
+    \end{proof} 
+
+    Now take $\delta$ as in the claim.
+    As $X$ is sequentially compact, it is totally bounded so we can find a finite set $A \subset X$ s.t. $\forall \; x \in X \ \exists \; a \in A \ d(x, a) < \delta$.
+    That is $\forall \; x \in X \ \exists \; a \in A \ x \in B_\delta(a)$.
+    That is, $X = \bigcup_{a \in A} B_\delta(a)$.
+    By choice of $\delta$, for each $a \in A$ we can pick $G_a \in \mathcal{C}$ s.t. $B_\delta(a) \subset G_a$.
+    So $\{G_a : a \in A\}$ is a finite subcover.
+    So $X$ is compact.
+\end{proof} 
+
+Finally, two important properties of open sets.
+First: relationship between open/ closed.
+\begin{proposition} \label{prp:25}
+    Let $X$ be a metric space and $G \subset X$.
+    Then $G$ is open iff $F = X \setminus G$ is closed.
+\end{proposition} 
+
+\begin{proof}
+    ($\implies$) Suppose $F$ not closed.
+    Then there is a sequence $(x_n)$ in $F$ with $x_n \to x \notin F$ so $x \in G$.
+    Suppose $\mathcal{N}$ is a nbd of $x$.
+    Then $\exists \; N$ s.t. $\forall \; n \geq N \ x_n \in \mathcal{N}$.
+    But $\forall \; n \ x_n \notin G$.
+    So $\mathcal{N} \neq G$.
+    So $G$ is not a nbd of $x \in G$.
+    So $G$ is not open.
+
+    ($\Longleftarrow$): Suppose $G$ is not open.
+    Then there is some $x \in G$ s.t. $\forall \; \epsilon > 0 \ B_\epsilon(x) \not\subset G$.
+    That is $B_\epsilon(x) \cap F \neq \emptyset$.
+    So for $n \in \mathbb{N}$ we can pick $x_n \in B_{\frac{1}{n}}(x) \cap F$.
+    Then $(x_n)$ is a sequence in $F$ with $x_n \to x \in G$.
+    So $F$ is not closed.
+\end{proof} 
+
+Secondly: If $X$ is a metric space, can we say something about the structure of the collection of all open subsets of $X$?
+
+\begin{proposition} \label{prp:26}
+    Let $X$ be a metric space and let $\tau = \{ G \subset X : G \text{ open}\}$.
+    Then \begin{enumerate}
+        \item $\emptyset \in \tau$ and $X \in \tau$;
+        \item if $\sigma \subset \tau$ then $\bigcup_{G \in \sigma} G \in \tau$, `any union of open sets is open';
+        \item If $G_1, G_2, \dots, G_n \in \tau$ then $\bigcap_{i = 1}^n G_i \in \tau$, `a finite intersection of open sets is open'.
+    \end{enumerate} 
+\end{proposition} 
+
+\begin{remark}
+    We do need finiteness condition in (3).
+    E.g. $\forall \; n \in \mathcal{N}$, $(-\frac{1}{n}, \frac{1}{n})$ is open in $\mathbb{R}$ with the usual metric.
+    But $\bigcap_{n = 1}^\infty (-\frac{1}{n}, \frac{1}{n}) = \{0\}$ which is not open.
+\end{remark} 
+
+\begin{proof}
+    \begin{enumerate}
+        \item Obvious
+        \item Suppose $\sigma \subset \tau$.
+        Let $H = \bigcup_{G \in \sigma} G$.
+        Suppose $a \in H$.
+        Then $a \in G$ for some $G \in \sigma$.
+        So $G$ is a nbd of $a$ (as $G$ open).
+        So $H$ is a nbd of $a$ (as $G \subset H$).
+        Hence $H$ is open, i.e. $H \in \tau$.
+        \item Suppose $G_1, \dots, G_n \in \tau$ and let $J = \bigcap_{i = 1}^n G_i$.
+        Suppose $a \in J$.
+        For each $i$, $a \in G_i$ and $G_i$ open so $\exists \; \delta_i \geq 0$ s.t. $B_{\delta_i}(a) \subset G_i$.
+        Let $\delta = \min \{\delta_1, \dots, \delta_n\}$\footnote{This is where we need finiteness}.
+        Then $\delta > 0$ and $B_\delta(a) = \bigcap_{i = 1}^n B_{\delta_i}(a) \subset \bigcap_{i = 1}^n G_i = J$.
+        So $J$ is open, i.e. $J \in \tau$.
+    \end{enumerate} 
 \end{proof} 

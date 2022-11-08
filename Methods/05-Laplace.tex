@@ -170,63 +170,83 @@ The general solution is therefore
 
 \subsection{Laplace's equation in cylindrical polar coordinates}
 In cylindrical coordinates,
-\begin{align*}
-	\frac{1}{r} \pdv{r} \qty(r \pdv{\phi}{r}) + \frac{1}{4^2} \pdv[2]{\phi}{\theta} + \pdv[2]{\phi}{z} = 0
-\end{align*}
+\begin{align} \label{eq:5.9}
+	\frac{1}{r} \pdv{r} \qty(r \pdv{\phi}{r}) + \frac{1}{r^2} \pdv[2]{\phi}{\theta} + \pdv[2]{\phi}{z} = 0
+\end{align}
 With $\phi = R(r) \Theta(\theta) Z(z)$, we find
 \begin{align*}
 	\Theta'' = -\mu \Theta;\quad Z'' = \lambda Z;\quad r(rR')' + (\lambda r^2 - \mu) R = 0
 \end{align*}
-The polar equation can be easily solved by
+The polar equation can be easily solved (as before) by
 \begin{align*}
 	\mu_m = m^2;\quad \Theta_m(\theta) = \cos m\theta, \sin m\theta
 \end{align*}
-The radial equation is Bessel's equation, giving solutions
+
+The radial equation is Bessel's equation \cref{eq:3.26}, giving solutions
 \begin{align*}
 	R = J_m(kr), Y_m(kr)
 \end{align*}
 Setting boundary conditions in the usual way, defining $R=0$ at $r = a$ means that
 \begin{align*}
-	J_m(ka) = 0 \implies k = \frac{j_{mn}}{a}
+	J_m(ka) = 0 \implies k = \frac{j_{mn}\footnote{$j_{mn}$ is the nth zero of $J_m$, see \cref{eq:3.2}.}}{a}
 \end{align*}
 The radial solution is
-\begin{align*}
+\begin{align} \label{eq:5.10}
 	R_{mn}(r) = J_m\qty(\frac{j_{mn}}{a}r)
-\end{align*}
-We have eliminated the $Y_n$ term since we require $r = 0$ to give a finite $\phi$.
+\end{align}
+We have eliminated the $Y_n$ term since we require $r = 0$ to give a finite $\phi$ and $Y_n \to -\infty$ as $r \to 0$.
+
 Finally, the $z$ equation gives
 \begin{align*}
 	Z'' = k^2 Z \implies Z = e^{-kz}, e^{kz}
 \end{align*}
 We typically eliminate the $e^{kz}$ mode due to boundary conditions, such as $Z \to 0$ as $z \to \infty$.
 The general solution is therefore
-\begin{align*}
-	\phi(r,\theta,z) = \sum_{m=0}^\infty \sum_{n = 1}^\infty \qty(a_{mn} \cos m\theta + b_{mn} \sin m\theta) J_m\qty(\frac{j_{mn}}{a} r) e^{-frac{j_{mn}r}{a}}
-\end{align*}
+\begin{align} \label{eq:5.11}
+	\phi(r,\theta,z) = \sum_{m=0}^\infty \sum_{n = 1}^\infty \qty(a_{mn} \cos m\theta + b_{mn} \sin m\theta) J_m\qty(\frac{j_{mn}}{a} r) e^{-\frac{j_{mn}r}{a}}
+\end{align}
+
+\begin{exercise}
+	Describe steady-state heat flow in a semi-infinite circular wire with b.c.s $\phi = 0$ at $r = a$, $\phi = T_0$ at $z = 0$ and $\phi \to 0$ as $z \to \infty$.
+	Use sections 3.9 and 5.1.
+	Show that the soln is $\phi(r, \theta, z) = \sum_{n=1}^{\infty} \frac{2 T_0}{j_{0n} J_1(j_{0n})} J_0 \qty(\frac{j_{0n}}{a} r) e^{- \frac{j_{0n} z}{a}}$.
+\end{exercise} 
 
 \subsection{Laplace's equation in spherical polar coordinates}
-In spherical polar coordinates,
+Recall that 
 \begin{align*}
+	x &= r \sin \theta \cos \phi \\
+	y &= r \sin \theta \sin \phi \\
+	z &= r \cos \theta \\
+	\dd{V} &= r^2 \sin \theta \dd{r} \dd{\theta} \dd{\phi}
+\end{align*} with $0 \leq r < \infty, 0 \leq \theta \leq \pi, 0 \leq \phi < 2\pi$.
+
+In spherical polar coordinates Laplace's equations \cref{eq:5.1} becomes,
+\begin{align} \label{eq:5.12}
 	\frac{1}{r^2} \pdv{r} \qty(r^2 \pdv{\Phi}{r}) + \frac{1}{r^2 \sin\theta}\pdv{\theta} \qty(\sin\theta \pdv{\Phi}{\theta}) + \frac{1}{r^2 \sin^2 \theta} \pdv[2]{\Phi}{\phi} = 0
-\end{align*}
+\end{align}
 We will consider the \textit{axisymmetric case}; supposing that there is no $\phi$ dependence.
 We seek a separable solution of the form
 \begin{align*}
 	\Phi(r,\theta) = R(r) \Theta(\theta)
 \end{align*}
 which gives
-\begin{align*}
+\begin{align} \label{eq:5.13}
 	(\sin\theta \Theta')' + \lambda \sin\theta \Theta = 0;\quad (r^2R')' - \lambda R = 0
-\end{align*}
-Consider the substitution $x = \cos\theta, \dv{x}{\theta} = -\sin\theta$ in the polar equation.
+\end{align}
+
+\subsubsection{Polar (Legendere) equation}
+Consider the substitution $\theta \mapsto x$ with $x = \cos\theta, \dv{x}{\theta} = -\sin\theta$ in the polar equation.
 This gives $\dv{\Theta}{\theta} = -\sin\theta \dv{\Theta}{x}$ and hence
 \begin{align*}
 	-\sin\theta \dv{x}\qty[-\sin^2\theta \dv{\Theta}{x}] + \lambda \sin\theta \Theta = 0 \implies \dv{x}\qty[(1-x^2)\dv{\Theta}{x}] + \lambda \Theta = 0
 \end{align*}
-This gives Legendre's equation, so it has solutions of eigenvalues $\lambda_\ell = \ell (\ell + 1)$ and eigenfunctions
-\begin{align*}
+This gives Legendre's equation \cref{eq:2.21}, so it has solutions of eigenvalues $\lambda_\ell = \ell (\ell + 1)$ and eigenfunctions \cref{eq:2.23}
+\begin{align} \label{eq:5.14}
 	\Theta_\ell(\theta) = P_\ell(x) = P_\ell(\cos\theta)
-\end{align*}
+\end{align}
+
+\subsubsection{Radial equation}
 The radial equation then gives
 \begin{align*}
 	(r^2 R')' - \ell (\ell + 1) R = 0
@@ -240,56 +260,96 @@ Thus the radial eigenmodes are
 \begin{align*}
 	R_\ell = r^{\ell}, r^{-\ell - 1}
 \end{align*}
+
+\subsection{General axisymmetric solution}
 Therefore the general axisymmetric solution for spherical polar coordinates is
-\begin{align*}
+\begin{align} \label{eq:5.15}
 	\Phi(r,\theta) = \sum_{\ell = 0}^\infty (a_\ell r^{\ell} + b_\ell r^{-\ell - 1}) P_\ell(\cos\theta)
-\end{align*}
+\end{align}
 The $a_\ell, b_\ell$ are determined by the boundary conditions.
-Orthogonality conditions for the $P_\ell$ can be used to determine coefficients.
-Consider a solution to Laplace's equation on the unit sphere with axisymmetric boundary conditions given by
-\begin{align*}
-	\Phi(1,\theta) = f(\theta)
-\end{align*}
-Given that we wish to find the interior solution, $b_n = 0$ by regularity.
-Then,
-\begin{align*}
-	f(\theta) = \sum_{\ell=0}^\infty a_\ell P_\ell(\cos\theta)
-\end{align*}
-By defining $f(\theta) = F(\cos\theta)$,
-\begin{align*}
-	F(x) = \sum_{\ell=0}^\infty a_\ell P_\ell(x)
-\end{align*}
-We can then find the coefficients in the usual way, giving
-\begin{align*}
-	a_\ell = \frac{2\ell + 1}{2} \int_{-1}^1 F(x) P_{\ell}(x) \dd{x}
-\end{align*}
+Orthogonality conditions for the $P_\ell$ can be used to determine coefficients (see \cref{eq:2.24}).
+
+\begin{example}
+	Consider a solution to Laplace's equation on the unit sphere with axisymmetric boundary conditions at $r = 1$ given by
+	\begin{align*}
+		\Phi(1,\theta) = f(\theta)
+	\end{align*}
+	Given that we wish to find the interior solution, $b_n = 0$ by regularity.
+	Then,
+	\begin{align*}
+		f(\theta) = \sum_{\ell=0}^\infty a_\ell P_\ell(\cos\theta)
+	\end{align*}
+	By defining $f(\theta) = F(\cos\theta)$,
+	\begin{align*}
+		F(x) = \sum_{\ell=0}^\infty a_\ell P_\ell(x)
+	\end{align*}
+	We can then find the coefficients in the usual way, giving by \cref{eq:2.25}
+	\begin{align*}
+		a_\ell = \frac{2\ell + 1}{2} \int_{-1}^1 F(x) P_{\ell}(x) \dd{x}.
+	\end{align*}
+\end{example} 
+
+\begin{exercise}
+	Show $f(\theta) = \sin^2 \theta$ yields a solution $\Phi(r, \theta) = \frac{2}{3} (1 - P_2(\cos \theta) r^2)$
+\end{exercise} 
 
 \subsection{Generating function for Legendre polynomials}
 Consider a charge at $r_0 = (x,y,z) = (0,0,1)$.
-Then, the potential at a point $P$ becomes
+Then, the potential at a point $P$ (represented by $r = (x, y, z)$) becomes
 \begin{align*}
 	\Phi(r) & = \frac{1}{\abs{r - r_0}} = \frac{1}{(x^2 + y^2 + (x-1)^2)^{1/2}} \\
-	& = \frac{1}{(r^2 (\sin^2 \phi + \cos^2 \phi) \sin^2 \theta + r^2 \cos^2 \theta - 2r \cos\theta + 1)^{1/2}} \\
+	& = \frac{1}{(\underbracket{r^2 (\sin^2 \phi + \cos^2 \phi) \sin^2 \theta}_{x^2 + y^2} + r^2 \cos^2 \theta - 2r \cos\theta + 1)^{1/2}} \text{ in spherical coordinates}\\
 	& = \frac{1}{(r^2 \sin^2 \theta + r^2 \cos^2 \theta - 2r \cos\theta + 1)^{1/2}} \\
 	& = \frac{1}{(r^2 - 2r \cos\theta + 1)^{1/2}} \\
 	& = \frac{1}{(r^2 - 2r \overline x + 1)^{1/2}}
 \end{align*}
-where 
-
-$\overline x \equiv \cos \theta$.
+where $\overline x \equiv \cos \theta$.
 This function $\Phi$ is a solution to Laplace's equation where $r \neq r_0$.
-Note that we can represent any axisymmetric solution as a sum of Legendre polynomials.
+
+\begin{exercise}
+	Verify $\Phi = \frac{1}{\abs{r - r_0}}$ satisfies $\laplacian \Phi = 0$ where $r \neq r_0$.
+\end{exercise} 
+
+Note that we can represent any axisymmetric solution \cref{eq:5.12} as a sum of Legendre polynomials \cref{eq:5.15} (with $b_n = 0$) for $r < 1$.
 Now,
 \begin{align*}
 	\frac{1}{\sqrt{r^2 - 2rx + 1}} = \sum_{\ell = 0}^\infty a_\ell P_\ell(x) r^\ell
 \end{align*}
-With the normalisation condition for the Legendre polynomials $P_\ell(1) = 1$, we find
+With the normalisation condition for the Legendre polynomials $P_\ell(1) = 1$ at $x = 1$, we find
 \begin{align*}
 	\frac{1}{1-r} = \sum_{\ell=0}^\infty a_\ell r^\ell
 \end{align*}
-Using the geometric series expansion, we arrive at $a_\ell = 1$.
+Using the geometric series expansion ($\frac{1}{1-r} = 1 + r + r^2 + \dots$), we arrive at $a_\ell = 1$.
 This gives
-\begin{align*}
+\begin{align} \label{eq:5.16}
 	\frac{1}{\sqrt{r^2 - 2rx + 1}} = \sum_{\ell = 0}^\infty P_\ell(x) r^\ell
-\end{align*}
+\end{align}
 which is the generating function for the Legendre polynomials.
+Expand LHS with binomial theorem to find $P_\ell(x)$ (coeff of $r^\ell$th term).
+Use to obtain normalisation condition \cref{eq:2.24} (Sheet 2, Q5).
+
+\begin{example}[Electric multipoles]
+	Consider charges along $z-$axis at $z = \pm a, 0$, viewed from $x >> a$ with $\phi \to 0$ as $r \to \infty$ (i.e. $a_n = 0$, singular part of expansion \cref{eq:5.15}).
+	
+	$\ell = 0$:
+	{\par 
+    \centering 
+    \includegraphics[height=5cm]{05-exmlast0} 
+	\par}
+
+	$\Phi \propto \frac{1}{r}$ - \underline{monopole} field of point charge $q$.
+
+	$\ell = 1$:
+	{\par 
+    \centering 
+    \includegraphics[height=5cm]{05-exmlast1} 
+	\par}
+	$\Phi \propto \frac{\cos \theta}{r^2}$ - \underline{dipole} field for two opposite charges.
+
+	$\ell = 2$
+	{\par 
+    \centering 
+    \includegraphics[height=5cm]{05-exmlast2} 
+	\par}
+	$\Phi \propto \frac{1}{2} \frac{3 \cos^2 \theta - 1}{r^3}$ \underline{quadrupole} field.
+\end{example} 

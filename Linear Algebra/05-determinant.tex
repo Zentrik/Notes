@@ -191,7 +191,6 @@ Why do we use this formula for $\det A$?
 		d(A^{(1)}, \dots, A^{(n)}) = \det A \cdot d(e_1, \dots, e_n)
 	\end{align*}
 	So there is a unique volume form up to a constant multiple.
-	We can then see that $\det A$ is the only volume form such that $d(e_1, \dots, e_n) = 1$.
 \end{theorem}
 \begin{proof}
 	\begin{align*}
@@ -203,7 +202,9 @@ Why do we use this formula for $\det A$?
 	\end{align*}
 	Inductively on all columns,
 	\begin{align*}
-		d(A^{(1)}, \dots, A^{(n)}) = \sum_{i=1}^n \sum_{j=1}^n a_{i1} a_{j2} d\qty(e_i, e_j, A^{(3)}, \dots, A^{(n)}) = \dots = \sum_{1 \leq i_1, \leq \dots \leq n} \prod_{k=1}^n a_{i_\ell k} d(e_{i_1}, \dots e_{i_n})
+		d(A^{(1)}, \dots, A^{(n)}) &= \sum_{i=1}^n \sum_{j=1}^n a_{i1} a_{j2} d\qty(e_i, e_j, A^{(3)}, \dots, A^{(n)})\\
+		&\vdots \\
+		&= \sum_{\substack{1 \leq i_1 \leq n \\ \vdots \\ 1 \leq i_n \leq n}} \prod_{k=1}^n a_{i_k k} d(e_{i_1}, \dots e_{i_n})
 	\end{align*}
 	Since $d$ is alternating, we know that for $d(e_{i_1}, \dots, e_{i_n})$ to be nonzero, the $i_k$ must be different, so this corresponds to a permutation $\sigma \in S_n$.
 	\begin{align*}
@@ -211,6 +212,10 @@ Why do we use this formula for $\det A$?
 	\end{align*}
 	which is exactly the determinant up to a constant multiple.
 \end{proof}
+
+\begin{corollary}
+	We can then see that $\det A$ is the only volume form such that $d(e_1, \dots, e_n) = 1$.
+\end{corollary} 
 
 \subsection{Multiplicative property of determinant}
 \begin{lemma}
@@ -225,6 +230,7 @@ Why do we use this formula for $\det A$?
 	$v_i \mapsto A v_i$ is linear, and the determinant is multilinear, so $d_A$ is multilinear.
 	If $i \neq j$ and $v_i = v_j$, then $\det(\dots, A v_i, \dots, A v_j, \dots) = 0$ so $d_A$ is alternating.
 	Hence $d_A$ is a volume form.
+
 	Hence there exists a constant $C_A$ such that $d_A(v_1, \dots, v_n) = C_A \det(v_1, \dots, v_n)$.
 	We can compute $C_A$ by considering the basis vectors; $A e_i = A_i$ where $A_i$ is the $i$th column vector of $A$.
 	Then,
@@ -233,30 +239,36 @@ Why do we use this formula for $\det A$?
 	\end{align*}
 	Hence,
 	\begin{align*}
-		\det(AB) = d_A(B) = \det A \det B
+		\det(AB) = d_A(B_1, \dots, B_n) = \det A \det B
 	\end{align*}
 \end{proof}
 
 \subsection{Singular and non-singular matrices}
-\begin{definition}
+\begin{definition}[Singular]
 	Let $A \in M_n(F)$.
 	We say that
 	\begin{enumerate}
-		\item $A$ is \textit{singular} if $\det A = 0$;
-		\item $A$ is \textit{non-singular} if $\det A \neq 0$.
+		\item $A$ is \vocab{singular} if $\det A = 0$;
+		\item $A$ is \vocab{non-singular} if $\det A \neq 0$.
 	\end{enumerate}
 \end{definition}
+
 \begin{lemma}
 	If $A$ is invertible, it is non-singular.
 \end{lemma}
+
 \begin{proof}
 	If $A$ is invertible, there exists $A^{-1}$.
-	Then, since the determinant is a homomorphism,
 	\begin{align*}
 		\det(A A^{-1}) = \det I = 1
 	\end{align*}
 	Thus $\det A \det A^{-1} = 1$ and hence neither of these determinants can be zero.
 \end{proof}
+
+\begin{remark}
+	We have proved that $\det A\inv = \frac{1}{\det A}$
+\end{remark} 
+
 \begin{theorem}
 	Let $A \in M_n(F)$.
 	The following are equivalent.
@@ -267,7 +279,7 @@ Why do we use this formula for $\det A$?
 	\end{enumerate}
 \end{theorem}
 \begin{proof}
-	We have already shown that (i) implies (ii).
+	We have just shown that (i) implies (ii).
 	We have also shown that (i) and (iii) are equivalent by the rank-nullity theorem.
 	So it suffices to show that (ii) implies (iii).
 
@@ -290,6 +302,7 @@ Why do we use this formula for $\det A$?
 \end{proof}
 \begin{remark}
 	The above theorem gives necessary and sufficient conditions for invertibility of a set of $n$ linear equations with $n$ unknowns.
+	There exists a unique solution $X \in F^n$ to $AX = Y$ iff $A$ is invertible.
 \end{remark}
 
 \subsection{Determinants of linear maps}
@@ -298,7 +311,7 @@ Why do we use this formula for $\det A$?
 \end{lemma}
 \begin{proof}
 	\begin{align*}
-		\det (P^{-1} A P) = \det(P^{-1}) \det A \det P = \det A \det (P^{-1} P) = \det A
+		\det (P^{-1} A P) = \det(P^{-1}) \det A \det P = \det A \det (P^{-1} P) = \det A\footnote{$P$ invertible.}
 	\end{align*}
 \end{proof}
 \begin{definition}
@@ -317,8 +330,12 @@ Why do we use this formula for $\det A$?
 		\item $\det \alpha \neq 0$ if and only if $\alpha$ is invertible, and in this case, $\det(\alpha^{-1}) \det \alpha = 1$.
 	\end{enumerate}
 	This is simply a reformulation of the previous theorem for matrices.
-	The proof is simple, and relies on the invariance of the determinant under a change of basis.
 \end{theorem}
+
+\begin{proof}
+	The proof is simple, and relies on the invariance of the determinant under a change of basis.
+	Simply pick a basis, and re-express in terms of $[\alpha]_B, [\beta]_B$.
+\end{proof} 
 
 \subsection{Determinant of block-triangular matrices}
 \begin{lemma}
@@ -345,10 +362,11 @@ Why do we use this formula for $\det A$?
 	We can then uniquely decompose $\sigma$ into two permutations $\sigma = \sigma_1 \sigma_2$, where $\sigma_1$ is restricted to $\qty{1, \dots, k}$ and $\sigma_2$ is restricted to $\qty{k+1, \dots, n}$.
 	Hence,
 	\begin{align*}
-		\det M & = \sum_{\sigma_1 \in S_k} \sum_{\sigma_2 \in S_{n-k}} \varepsilon(\sigma) \prod_{i=1}^n m_{\sigma(i) i}                                                         \\
-		       & = \sum_{\sigma_1 \in S_k} \sum_{\sigma_2 \in S_{n-k}} \varepsilon(\sigma_1) \varepsilon(\sigma_2) \prod_{i=1}^k m_{\sigma(i) i} \prod_{i=k+1}^n m_{\sigma(i) i} \\
-		       & = \sum_{\sigma_1 \in S_k} \varepsilon(\sigma_1) \prod_{i=1}^k m_{\sigma(i) i} \sum_{\sigma_2 \in S_{n-k}} \varepsilon(\sigma_2) \prod_{i=k+1}^n m_{\sigma(i) i} \\
-		       & = \det A \det B
+		\det M & = \sum_{\sigma_1 \in S_k} \sum_{\sigma_2 \in S_{n-k}} \varepsilon(\sigma) \prod_{i=1}^n m_{\sigma(i) i} \\
+		& = \sum_{\sigma_1 \in S_k} \sum_{\sigma_2 \in S_{n-k}} \varepsilon(\sigma_1) \varepsilon(\sigma_2) \prod_{i=1}^k m_{\sigma_1(i) i} \prod_{i=k+1}^n m_{\sigma_2(i) i} \\
+		&= \sum_{\sigma_1 \in S_k} \sum_{\sigma_2 \in S_{n-k}} \varepsilon(\sigma_1) \varepsilon(\sigma_2) \prod_{i=1}^k A_{\sigma_1(i) i}\footnote{$i, \sigma_1(i) \in [1, k]$ so $m_{\sigma_1(i) i} = A_{\sigma_1(i) i}$.} \prod_{i=k+1}^n B_{\sigma_2(i) i} \\
+		& = \qty(\sum_{\sigma_1 \in S_k} \varepsilon(\sigma_1) \prod_{i=1}^k A_{\sigma(i) i}) \qty(\sum_{\sigma_2 \in S_{n-k}} \varepsilon(\sigma_2) \prod_{i=k+1}^n B_{\sigma(i) i}) \\
+		& = \det A \det B
 	\end{align*}
 \end{proof}
 \begin{corollary}

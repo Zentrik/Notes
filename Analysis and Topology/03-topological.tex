@@ -1,0 +1,221 @@
+\section{Topological Spaces}
+
+`Do continuity entirely in terms of open sets without mentioning distance'.
+
+Metric space: set with a distance.
+
+Topological space: set with a collection of open subsets.
+
+\subsection{Definitions and Examples}
+
+\begin{definition}[Topological Space]
+    A \vocab{topological space} is a set $X$ endowed with a \vocab{topology} $\tau$ that is a subset $\tau \subset \mathcal{P}(X)$ satisfying
+    \begin{enumerate}
+        \item $\emptyset \in \tau$ and $X \in \tau$;
+        \item If $\sigma \subset \tau$ then $\bigcup_{G \in \sigma} G = \tau$;
+        \item If $G_1, \dots, G_n \in \tau$ then $\bigcap_{i = 1}^n G_i \in \tau$.
+    \end{enumerate} 
+\end{definition} 
+
+\begin{remark}
+    Could replace (3) by $G, H \in \tau \implies G \cap H \in \tau$.
+    Equivalent to (3) by induction.
+\end{remark} 
+
+\begin{notation}
+    Sometimes write `$(X, \tau)$ is a topological space'.
+    If obvious what the topology is, we might just write `$X$ is a topological space'.
+\end{notation} 
+
+\begin{example}
+    Let $(X, d)$ be a metric space.
+    Let $\tau = \{G \subset X : G \text{ open}\}$.
+    Then by \cref{prp:26}, $\tau$ is a topology on $X$.
+
+    We say $\tau$ is the \underline{topology, induced by the metric $d$}.
+\end{example} 
+
+We want to define open/ closed/ cts etc for topological spaces.
+As metric spaces are top. spaces try to make sure it's `backward compatible', so to say.
+The new defns shouldn't contradict the old metric space ones.
+So in making new defns, we'll be guided by section 2.4.
+
+\begin{definition}
+    Let $(X,\tau)$ be a topological space. We say that $G\subset X$ is \emph{open} if $G\in \tau$. We say $F$ is \emph{closed} if $X \backslash F \in\tau$. We say $\mathcal{N} \subset X$ is a \emph{neighbourhood} of $a\in X$ if $\exists G\subset X$ open with $a\in G\subset \mathcal{N}$.
+    
+    Let $(Y,\sigma)$ be another topological space, and let $f:X\rightarrow Y$. We say $f$ is \emph{continuous} if whenever $G\subset Y$ is open, then $f^{-1}(G)\subset X$ is open. In other words, $f$ is continuous if $\forall G\in \sigma, f^{-1}(G)\subset \tau$.
+    
+    We say that $f$ is \emph{continuous at $a \in X$} if whenever $\mathcal{N} \subset Y$ is a neighbourhood of $f(a)$ then $f^{-1}(\mathcal{N})\subset X$ is a neighbourhood of $a$.
+    
+    We say that $f$ is a \emph{homeomorphism} and $X,Y$ are \emph{homeomorphic} if $f$ is a bijection and both $f,f^{-1}$ are continuous. 
+    
+    A property is \emph{topological} if it is preserved by homeomorphisms; that is to say, if $X,Y$ are homeomorphic then $X$ has the property iff $Y$ does.
+\end{definition}
+
+\begin{remark}
+1. if $\tau$ is induced by a metric then this is all consistent with the metric space definitions of these concepts.
+
+2. Given our definition, $G$ open iff $G\in \tau$, often don't need to explicitly name the topology. E.g. `Let $X=\R$ with the usual topology and $G\subset X$ be open\dots'. Other times more convenient to specify $\tau$, write `$G\in \tau$' etc.
+
+3. Homeomorphism is an equivalence `relation'.
+
+4. If $a\in G$ and $G$ open then $G$ is a neighbourhood of $a$, however neighbourhoods need not be open in general. A set $G\subset X$ is open iff $G$ is a neighbourhood of each of its points.
+\end{remark}
+
+\begin{proposition}             %3.1
+Let $X,Y$ be topological spaces and $f: X\rightarrow Y$. Then $f$ is continuous if and only if for all $a\in X$, $f$ is continuous at $a$.
+\end{proposition}      
+
+\begin{proof}
+Forward: Suppose $f$ continuous and let $a\in X$. Let $\mathcal{N}\subset Y$ be a neighbourhood of $f(a)$. Then there is an open set $G\subset Y$ with $a\in G\subset \mathcal{N}$. As $f$ is continuous, $f^{-1}(G)\subset X$ is open. Now $a\in f^{-1}(a)\subset f^{-1}(\mathcal{N})$ with $f^{-1}(G)$ open. Thus $f$ is continuous at $a$.
+
+Converse: Suppose for all $a\in X$ we have $f$ continuous at $a$. Let $G\subset Y$ be open. Let $a\in f^{-1}(G).$ Then $f(a)\in G$, but $G$ is open so $G$ is a neighbourhood of $f(a)$. Now $f$ is continuous at $a$ so $f^{-1}(a)$ is a neighbourhood of $a$ in $X$. But $a$ was arbitrary so $f^{-1}(G)$ is a neighbourhood of each of its points, i.e. it is open. Hence $f$ is continuous.
+\end{proof}
+
+\begin{proposition}
+Let $(X,\tau), (Y,\sigma), (Z,\rho)$ be topological spaces, let $f:X\rightarrow Y$ and $g:Y\rightarrow Z$ be continuous. Then $g\circ f: X\rightarrow Z$ is continuous.
+\end{proposition}
+
+\begin{proof}
+Let $G\in \rho$. As $g$ is continuous, $g^{-1}(G)\in \sigma$. As $f$ continuous, $f^{-1}(g^{-1}(G))\in \tau$. That is, $(g\circ f)^{-1}(G)\in \tau$. So $g\circ f$ continuous.
+\end{proof}
+
+\begin{example}[Some examples of topologies]
+1. \emph{The discrete topology.} Let $X$ be any set and $\tau = \mathcal{P}(X)$, where `every set is open'. This is not a new example; it is induced by the discrete metric $d(x,y) = 1$ iff $x=y$. Now in $(X,d)$, for any $x\in X$ then $\{x\} = B_1(x)$ is open and so if $G\subset X$ then $G = \bigcup_{x\in G} \{x\}$ is open.
+
+2. \emph{The indiscrete topology.} Let $X$ be any set and $\tau = \{\emptyset, X\}$. Here, `only open sets are $\emptyset$ and whole space'. This is something we have not seen before: $\tau$ cannot be induced by a metric as long as $|X|\ge 2$. Indeed, suppose $|X|\ge 2$ and that $\tau $ is induced by a metric $d$. Let $x,y\in X$ with $x\neq y$, so let $d(x,y) = \delta>0$. Then $B_\delta(x)$ is open with $x\in B_\delta(x)$ and $y\not\in B_\delta(x)$.
+
+3. \emph{The cofinite topology.} Let $X$ be any infinite set and let $\tau = \{G\subset X : X \backslash G \textup{ is finite} \} \cup \{\emptyset\}$. We will check that this is a topology, and not induced by any metric $d$. 
+
+4. \emph{The cocountable topology.} Let $X$ be any uncountable set and let $\tau = \{G\subset X : X\backslash G \textup{ countable} \} \cup \{\emptyset\}$. Then, very similarly to (3), we can show that this is a topology that is not induced by any metric.
+\end{example}
+
+\begin{proof}
+\begin{enumerate}
+    \item $\emptyset\in\tau$ and $X\backslash X = \emptyset$ is finite so $X\in\tau$.
+    \item Let $\sigma \subset\tau$. If $\sigma$ is empty or only contains $\emptyset$ then $\bigcup_{G\in \sigma} G = \emptyset\in \tau$. 
+    Otherwise, pick $H\in \sigma$ with $H\neq \emptyset$. Then $X\backslash H$ is finite so $(X\backslash\bigcup_{G\in \sigma} G) = \bigcup_{G\in \sigma} (X\backslash G)\subset X\backslash H$ is finite. So $\bigcup_{G\in \sigma} G \in \tau.$
+    \item Let $G,H\in \tau$. If $G = \emptyset$ or $H=\emptyset$ then $G\cap H = \emptyset\in\tau$. Otherwise $X\backslash G, X\backslash H$ are finite then $(X\backslash(G\cap H)) = (X\backslash G)\cup(X\backslash H)$ is finite. So $G\cap H\in \tau$.
+\end{enumerate}
+
+Furthermore, it is not induced by a metric $d$. Observe first that if $G,H$ open and non-empty then $G\cap H\neq \emptyset$. Then $d(x,y) = \delta > 0$ so $B_\delta/2(x), B_\delta/2(y)$ are non-empty disjoint open sets. So $d$ doesn't induce $\tau$.
+\end{proof}
+
+\subsection{Sequences and Hausdorff spaces}
+
+\begin{definition}
+Let $X$ be a topological space, let $(x_n)$ be a sequence in $X$ and let $x\in X$. We say $(x_n)$ \emph{converges} to $x$ and write $x_n\rightarrow x$ if whenever $\mathcal{N}\subset X$ is a neighbourhood of $x$ then $\exists N$, $\forall n \geq N$ we have $x_n \in \mathcal{N}$.
+\end{definition}
+
+\begin{question}
+Let $X$ be an uncountable set with the cocountable topology. What sequences converge in $X$?
+\end{question}
+
+\begin{proof}
+Suppose $x_n\rightarrow x$. Then let $\mathcal{N} = (X\backslash \{x_n : n\in \mathbb{N}\})\cup\{x\}$. Then $\mathcal{N}$ open and $x\in \mathcal{N}$ so $\mathcal{N}$ is a neighbourhood of $x$. Thus $\exists N$ such that $\forall n\ge N$, $x_n\in \mathcal{N}$. So $\exists N$, $\forall n\ge N$ we have $x_n=x$.
+
+Conversely, it is obvious if $\exists N$ such that $\forall n\ge N$, $x_n=x$ then $x_n\rightarrow x$. So the only convergent sequences in this space are eventually constant.
+\end{proof}
+
+\begin{example}
+2. Let $X = \{1,2,3\}$ with the indiscrete topology. Let $x_n =i\in X$ with $i\equiv n \mod 3$. So sequence is 1,2,3,1,2,3,$\dots$.
+
+\begin{claim}
+    $x_n\rightarrow 2$
+\end{claim} 
+\begin{proof}
+Let $\mathcal{N}$ be a neighbourhood of $2$. Then $\exists G$ open such that $2\in G\subset \mathcal{N}$. But only open sets are $\emptyset, \{1,2,3\}$ so $G = \{1,2,3\}$. So $\mathcal{N} = \{1,2,3\}$ so $\forall n, x_n\in\mathcal{N}$. 
+\end{proof}
+Similarly $x_n\rightarrow 1$ and $x_n\rightarrow 3$, and so we arrive at the big revelation for topological spaces: \textbf{\color{red} LIMITS OF CONVERGENT SEQUENCES NEED NOT BE UNIQUE.} Thus we can write $\lim_{n\rightarrow \infty} x_n$ anymore.
+\end{example}
+
+\begin{remark}
+The above proof shows that in any indiscrete space, every sequences converges to every point of the space.
+\end{remark}
+
+\begin{definition}
+A topological space $X$ is \emph{Hausdorff} if whenever $x,y\in X$ with $x\neq y$ then there are disjoint open $G,H\subset X$ with $x\in G$ and $y\in H$.
+\end{definition}
+
+\begin{example}
+1. Metric spaces are Hausdorff. Indeed, if $(X,d)$ metric and $x,y\in X$, $x\neq y$, let $\delta = d(x,y) >0$ and take $G = B_{\delta/2}(x)$ and $H=B_{\delta/2}(y)$.
+
+2. Indiscrete spaces are not Hausdorff (assuming $|X|\ge 2$).
+
+3. The cofinite topology is not Hausdorff. Let $X$ be an infinite set with the cofinite topology and let $x,y\in X$ with $x\neq y$. Let $G,H\subset X$ be open with $x\in G$, $y\in H$. Clearly $G,H\neq \emptyset$ so $X\backslash G$, $X\backslash H$ finite and so $X\backslash (G\cap H) = (X\backslash G)\cup (X\backslash H)$ is finite. In particular $G\cap H = \emptyset$.
+
+Similarly, the cocountable topology is not Hausdorff.
+\end{example}
+
+\begin{proposition}                        %3.3(29)
+Limits of convergent sequences in Hausdorff spaces are unique.
+\end{proposition}          
+\begin{proof}
+Let $X$ be Hausdorff, let $a,b\in X$, and let $(x_n)$ be a sequence in $X$ with $x_n\rightarrow a$ and $x_n\rightarrow b$. Suppose $a\neq b$. Take open $G,H$ with $a\in G$, $b\in H$ and $G\cap H = \emptyset$. Now $G$ is a neighbourhood of $a$ so there is some $N_1$ such that $\forall n\ge N_1$ we have $x_n\in G$. Similarly there is some $N_2$ such that $\forall n\ge N_2$, $x_n\in H$. Taking $n = \max\{N_1,n_2\}$, we get $x_n\in G\cap H = \emptyset$, contradiction.
+\end{proof}
+
+\begin{proposition}[Relationship to continuity]          %3.4(30)
+Let $X,Y$ be topological spaces and let $f:X\rightarrow Y$ be continuous at $a\in X$. Let $(x_n)$ be a sequence in $X$ with $x_n\rightarrow a$. Then $f(x_n)\rightarrow f(a)$.
+\end{proposition}
+\begin{proof}
+Let $\mathcal{N}\subset Y$ be a neighbourhood of $f(a)$. As $f$ continuous we know $f\inv (\mathcal{N})$ is a neighbourhood of $a$. As $x_n\rightarrow a$ we can find $N$ such that $\forall n\ge N$, $x_n\in f\inv(\mathcal{N})$. Then $\forall n\ge N$, $f(x_n)\in \mathcal{N}$. So $f(x_n)\rightarrow f(a)$.
+\end{proof}
+
+\begin{example}[Converse is not true in general!]
+Let $X=Y=\R$, $X$ with cocountable topology, $Y$ with usual topology and let $f:X\rightarrow Y$ be the identity function.
+
+Suppose $x_n\rightarrow 0$ in $X$. Then for sufficiently large $n$, $x_n=0$ and so for sufficiently large $n$, $f(x_n) = x_n = 0 = f(0)$ so $f(x_n)\rightarrow f(0)$ in $Y$.
+
+However $(-1,1)\subset Y$ is open and $0\in (-1,1)$ so $(-1,1)$ is a neighbourhood of $0\in Y$. But $f\inv((-1,1)) = (-1,1)\in X$ is not a neighbourhood of $0$ in $X$. So $f$ is not continuous at $0$.
+\end{example}
+\begin{example}[Converse is still not true even after imposing condition that spaces are Hausdorff.]
+Take example as above but replace topology on $X$ by \[\sigma = \{G\subset \R : (X\backslash G) \textup{ countable or } 0\not\in G \}. \]
+Check that this is a topology, and this is Hausdorff: suppose $x,y\in X$ with $x\neq y$. If $x,y\neq 0$ then $\{x\}, \{y\}\in \sigma$. While if $x=0$ say, then $\R\backslash \{y\}, \{y\}\in \sigma$.
+
+Now, neighbourhoods of $0$ in $\sigma$ are exactly same as in the cocountable topology. So exactly as before, $x_n\rightarrow 0$ in $X\implies x_n\rightarrow 0$ in $Y$ but $f$ is not continuous at $0$.
+\end{example}
+\begin{remark}
+In a metric space, the topology is completely determined by convergence of sequences. Not true for a general topology space. Hence we'll tend to concentrate more on continuity than convergence of sequences.
+\end{remark}
+
+\subsection{Subspaces}
+\vspace{3mm}
+\begin{definition}
+Let $(X,\tau)$ be a topological space and let $Y\subset X$. The \emph{subspace topology} on $Y$ is \[ \sigma = \{G\cap Y : G\in \tau \}.\] Easy to check that this is a topology.
+\end{definition}
+
+Let's check that this is indeed backward compatible with our definition of metric spaces.
+
+\begin{proposition}                        %3.5(31)
+Let $(X,d)$ be a metric space with topology $\tau$ be induced by $d$. Let $Y$ be a subspace of the metric space $X$. Then $Y$ has the subspace topology.
+\end{proposition}  
+\begin{proof}
+Let $\sigma$ be the topology on $Y$ induced by the metric $d\mid_{Y^2}$. 
+
+First suppose $G\in \tau$; we want to check that $G\cap Y$ is open in $Y$. Let $y\in G\cap Y$. As $y\in G$ and $G$ is open in $X$ we can find $\delta >0$ such that $\forall x\in X$, we have $d(x,y)<\delta \implies x\in G$. Then $\forall x\in Y,$ we have $d(x,y)<\delta \implies x \in G\cap Y$. Thus $G\cap Y$ is a neighbourhood of $y$. Since $y$ is arbitrary, so $G\cap Y\in \sigma$.
+
+Conversely, suppose $H\in \sigma$. For each $y\in H$ we can find $\delta_y>0$ such that $\forall x\in Y$, $d(x,y)<\delta_y\implies x\in H$. Now consider the open balls\[B_{\delta_y}(y) = \{x\in X : d(x,y) < \delta_y\}. \] Each $B_{\delta_y}(y)$ is open, so for each $y\in H$, $y\in B_{\delta_y}(y)$ and $B_{\delta_y}(y)\cap Y\subset H$. Now let $G = \bigcup_{y\in H}B_{\delta_y}(y)$. Then $G$ is open and $G\cap Y= H$. That is, we've found $G\in \tau$ such that $G\cap Y = H$.
+\end{proof}
+
+\begin{proposition}                            %3.6(32)
+A subspace of a Hausdorff space is Hausdorff.
+\end{proposition}
+\begin{proof}
+Let $(X,\tau)$ be Hausdorff, $Y\subset X$, and $\sigma$ be the subspace topology on $Y$. Let $x,y\in Y$ with $x\neq y$. As $X$ is Hausdorff we can find $G,H\in \tau$ with $x\in G, y\in H, G\cap H = \emptyset$. Then $G\cap Y, H\cap Y \in \sigma$ with $x\in G\cap Y$, $y\in H\cap Y$ and $(G\cap Y)\cap (H\cap Y) = \emptyset$.
+\end{proof}
+
+\subsection{Compactness}
+\vspace{3mm}
+\begin{definition}
+Let $(X,\tau)$ be a topological space. An \emph{open cover} of $X$ is a subset $\mathcal{C}\subset \tau$ such that $X = \bigcup_{G\in\mathcal{C}} G$. A \emph{subcover} of $\mathcal{C}$ is a subset $\mathcal{D}\subset \mathcal{C}$ which is itself an open cover. We say that $X$ is \emph{compact} if every open cover of $X$ has a finite subcover. We say that $X$ is \emph{sequentially compact} if every sequence in $X$ has a convergent subsequence.
+\end{definition}
+\begin{exercise}
+Show that a continuous real-valued function on a sequentially compact topological space is bounded and attains its bounds.
+\end{exercise}
+\begin{remark}
+This was the traditional wording we have been using; here and elsewhere, if no topology is specified $\R$ is generally assumed to have the usual topology, and proof is similar to the metric space case.
+
+We've seen that for a metric space, compact and sequentially compact are equivalent; but \textbf{\color{red} This is not true for general topological space!} In fact, $\exists$ compact space that is not sequentially compact, and $\exists$ sequentially compact space that is not compact. However both examples are beyond the scope of this course.
+
+Observe that compactness and sequential compactness are both topological properties. Given that we don't want to think too much about sequences in a general topological space, we'll be concentrating primarily on compactness rather than sequential compactness.
+\end{remark}

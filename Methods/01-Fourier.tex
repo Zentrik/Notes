@@ -150,7 +150,7 @@ The Dirichlet conditions are sufficiency conditions for a ``well-behaved'' funct
 
 \noindent The rate of convergence of the Fourier series depends on the smoothness of the function.
 \begin{theorem}
-    If $f(x)$ has continuous derivatives up to a $p$th derivative which is discontinuous, then the Fourier series converges with order $O(n^{-(p+1)})$ as $n \to \infty$.
+    If $f(x)$ has continuous derivatives\footnote{Note it needs to be continuous on $\mathbb{R}$ not on $[0, 2L)$, i.e. it needs to be continuous on $[0, 2L)$ and $f^{(n)}(0) = f^{(n)}(2L)$ as its periodic.} up to a $p$th derivative which is discontinuous, then the Fourier series converges with order $O(n^{-(p+1)})$ as $n \to \infty$.
 \end{theorem}
 \begin{example}[$p = 0$]
     Consider the square wave (Sheet 1, Q5)
