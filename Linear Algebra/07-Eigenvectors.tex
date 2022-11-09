@@ -194,16 +194,17 @@ Proved in Complex Analysis.
 \end{lemma}
 \begin{proof}
 	\begin{align*}
-		\chi_\alpha(t) = \det(\alpha - t I) \implies \chi_\alpha(0) = \det(\alpha)
+		\chi_\alpha(t) = \det(\alpha - t I) \implies \chi_\alpha(0) = \det(\alpha) = c_0.
 	\end{align*}
-	Further, for $\mathbb R, \mathbb C$ we know that $\alpha$ is triangulable over $\mathbb C$.
+	Further, for $\mathbb R, \mathbb C$\footnote{For $\mathbb{R}$ we can think of $A$ as having complex entries as well.} we know that $\alpha$ is triangulable over $\mathbb C$.
 	Hence $\chi_\alpha(t)$ is the determinant of a triangular matrix;
 	\begin{align*}
-		\chi_\alpha(t) = \prod_{i=1}^n (a_i - t)
+		\chi_\alpha(t) &= \prod_{i=1}^n (a_i - t) \\
+		&= (-1)^n t^n + c_{n-1} t^{n-1} + \dots + c_0
 	\end{align*}
 	Hence
 	\begin{align*}
-		c_{n-1} = (-1)^{n-1} a_i
+		c_{n-1} = (-1)^{n-1} \underbracket{\sum_i^n  a_i}_{\tr A}
 	\end{align*}
 	Since the trace is invariant under a change of basis, this is exactly the trace as required.
 \end{proof}

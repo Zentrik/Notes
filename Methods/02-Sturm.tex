@@ -450,9 +450,10 @@ where
     N_n = \int w y_n^2 \dd{x}
 \end{align*}
 This then gives
-\begin{align*}
-    y(x) = \int_a^b \underbrace{\sum_{n=1}^\infty \frac{y_n(x) y_n(\xi)}{\lambda_n N_n}}_{G(x,\xi)} \underbrace{w(\xi) F(\xi)}_{f(\xi)} \dd{\xi} = \int_a^b G(x;\xi) f(\xi) \dd{\xi}
-\end{align*}
+\begin{align}
+    y(x) &= \int_a^b \underbrace{\sum_{n=1}^\infty \frac{y_n(x) y_n(\xi)}{\lambda_n N_n}}_{G(x,\xi)} \underbrace{w(\xi) F(\xi)}_{f(\xi)} \dd{\xi} \notag\\
+    &= \int_a^b G(x;\xi) f(\xi) \dd{\xi} \label{eq:2.31}
+\end{align}
 where
 \begin{align*}
     G(x,\xi) = \sum_{n=1}^\infty \frac{y_n(x) y_n(\xi)}{\lambda_n N_n}

@@ -219,3 +219,79 @@ We've seen that for a metric space, compact and sequentially compact are equival
 
 Observe that compactness and sequential compactness are both topological properties. Given that we don't want to think too much about sequences in a general topological space, we'll be concentrating primarily on compactness rather than sequential compactness.
 \end{remark}
+
+\begin{definition}
+    If $X$ is a topological space and $K\subset X$ we might want to say `$K$ is compact'. Clearly meaningful since $K$ is a topological space with subspace topology. Thinking further: Let $\tau$ be the topology on $X$. Then $K$ is \emph{compact} iff whenever $\mathcal{C}\subset \tau$ with $K = \bigcup_{G\in \mathcal{C}} G\cap K$ then there is a finite $\mathcal{D}\subset \mathcal{C}$ such that $K = \bigcup_{G\in \mathcal{D}} G\cap K$.
+    
+    Equivalently, $K$ is compact iff whenever $\mathcal{C}\subset \tau$ with $K\subset \bigcup_{G\in \mathcal{C}} G$ then there is a finite $\mathcal{D}\subset\mathcal{C}$ with $K\subset \bigcup_{G\in \mathcal{D}} G$. Thus we sometimes refer to $\mathcal{C}$ as being an open cover of $K (in X)$.
+\end{definition}
+
+\begin{example}[Compact spaces in topologies]
+
+1. $[0,1]$ with the usual topology is compact, proven in Section 2.4 `Heine-Borel Theorem', using the `creeping along proof'. More generally, $S\subset \R^n$ is compact iff $S$ is closed and bounded.
+
+2. A metric space is compact iff it is complete and totally bounded.
+
+3. Suppose $X$ is a discrete topological space. Then $\Set{\set{x}}{x\in X}$ is an open cover It does not have any subcovers apart from itself, so $X$ is compact iff $X$ is finite. (Note: any finite space if compact, since there are only finitely many subsets.)
+
+4. Let $X$ be indiscrete. Then the only open covers of $X$ are $\set{\emptyset, X}$ and $\set{X}$, both of which are finite. So $X$ is compact.
+
+\end{example}
+
+Recall that sequential compactness and compactness are generally different in topological spaces. Hence, we need to find another way to prove properties involving ``Boltzano-Weierstrass" differently.
+\begin{theorem}                           %3.7(33)
+A continuous real-valued function on a compact topological space is bounded and attains its bounds.
+\end{theorem}   
+
+\begin{proof}
+Let $X$ be compact and $f:X\rightarrow \R$ be continuous. Let $G_n = f\inv((-n,n)) , (n\in \N)$. Then $\Set{G_n}{n\in \N}$ is an open cover of $X$, so as $X$ is compact we have a finite subcover $\set{G_{n_1},\dots, G_{n_k}}$. Now $\forall x\in G_{n_i}$, $|f(x)| < n_i$, and hence $\forall x\in X, |f(x)| < \max_{1\le i \le k} n_i$, thus $f$ is bounded.
+
+Let $\sigma = \sup_{x\in X} f(x)$, and suppose $\sigma$ is not attained by $f$. Now define $g: X\rightarrow \R$ by $g(x) = \frac{1}{\sigma-f(x)}$ which is well-defined and continuous. Hence by previous part, $g$ is bounded. But by definition of $\sup$ given $\epsilon>0$ we can find $x$ such that $\sigma - f(x)< \epsilon$ where $g(x) > \frac{1}{\epsilon}$, a contradiction. Similarly, $\inf_{x\in X} f(x)$ is attained.
+\end{proof}
+
+\begin{remark}
+Think of compactness as a `smallness' condition, or we don't want a topological space to be `too big'; in a sense, this is the next best thing to finiteness.
+
+For instance, a real-valued function on a finite space is bounded (obvious). If we have a continuous function on a compact space - how can we show boundedness? We can use compactness to show space is not `too big', i.e. we can cover it with finitely many sets on each of which $f$ is bounded.
+\end{remark}
+    
+\begin{theorem}              %3.8 (34)         
+A continuous image of a compact space is compact.
+\end{theorem}
+
+\begin{proof}                         %3.8 (34)
+Let $f: X\rightarrow Y$ be continuous and $X$ compact. Let $K=f(X)\subset Y$. Let $\mathcal{C}$ be an open cover of $K$ in $Y$. Then $\Set{f\inv (G)}{G\in \mathcal{C}}$ is an open cover of $X$ so by compactness, there is a finite $\mathcal{D}\subset\mathcal{C}$ such that $\Set{f\inv (G)}{G\in \mathcal{D}}$ is an open cover of $X$. Then $\mathcal{D}$ is an open cover of $K$ in $Y$, so $K$ is compact.
+\end{proof}
+
+\begin{remark}
+This together with the fact that compact subsets of $\R$ are closed and bounded gives an alternative proof of Theorem 3.7.
+\end{remark}
+
+\begin{lemma}         %3.8(35)
+    \leavevmode\vspace{-1.4em}
+    \begin{enumerate}
+        \item A closed subset of a compact space is compact.
+        \item A compact subset of a Hausdorff space is closed.
+    \end{enumerate}
+\end{lemma}  
+
+\begin{proof}
+    \begin{enumerate}
+        \item Let $X$ be a compact topological space and let $F\subset X$ be closed. Let $\mathcal{C}$ be an open cover of $F$ in $X$. Thus $X\backslash F$ is open so $\mathcal{C}' = \mathcal{C} \cup \set{X\backslash F}$ then $\mathcal{C}'$ is an open cover of $X$. Since $X$ is compact so $\mathcal{C}'$ has a finite subcover $\mathcal{D}'$. Let $\mathcal{D} = \mathcal{D}'\backslash \set{X\backslash F}$ if $X\backslash F \in \mathcal{D}'$, and $\mathcal{D} = \mathcal{D}'$ otherwise. Then $\mathcal{D}$ is a finite subcover of $\mathcal{C}$, so $F$ is compact.
+        
+        \item Let $X$ be a Hausdorff space and let $K\subset X$ be compact. We want to show $K$ is closed, i.e. $X\backslash K$ is open, i.e. $X\backslash K$ is a neighbourhood of each of its points.
+        
+        Let $y\in X\backslash K$. We want to find some open set containing $y$, that is contained entirely within $X\backslash K$. Given $x\in K$, $x\neq y$ so as $X$ Hausdorff, we can find disjoint open sets $U_x, V_x\subset X$ with $x\in U_x$ and $y\in V_x$. Then $\Set{U_x}{x\in X}$ is an open cover of $K$ in $X$ so it has a finite subcover $\set{U_{x_1}, \dots, U_{x_n}}.$ 
+        Let $U = \bigcup_{i=1}^n U_{x_i}$ and $V = \bigcap_{i=1}^n V_{x_i}$. We have $U,V$ open and $K\subset U$, $y\in V$ and $U\cap V = \emptyset$. In particular, we have found an open set $V$ such that $y\in V\subset X\backslash K$. So $X\backslash K$ is a neighbourhood of each of its points and it's open, thus $K$ is closed.
+\end{enumerate}
+\end{proof}
+
+\begin{theorem}                     %3.10(36) 
+A continuous bijection from a compact space to a Hausdorff space is a homeomorphism.
+\end{theorem}   
+
+\begin{proof}
+    Let $f: X\rightarrow Y$ be a continuous bijection, $X$ compact, $Y$ Hausdorff, and our aim is to show $f\inv : Y\rightarrow X$ is continuous.
+
+    Let $G\subset X$ be open. Then $X\backslash G$ is closed, so by lemma 3.9 (i), $X\backslash G$ is compact. By theorem 3.8, $f(X\backslash G)$ is compact and so by lemma 3.9 (ii), $f(X\backslash G)$ is closed. That is, $Y\backslash f(G)$ is closed, i.e. $f(G)$ is open. But $F$ is a bijection so $(f\inv)\inv (G) = f(G)$ is open. Thus $f\inv$ is continuous.
+\end{proof}
