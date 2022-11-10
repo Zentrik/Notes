@@ -213,9 +213,9 @@ Proved in Complex Analysis.
 Let $p(t)$ be a polynomial over $F$.
 We will write
 \begin{align*}
-	p(t) = a_n t^n + \dots + a_0
+	p(t) = a_n t^n + \dots + a_0,\quad a_i \in F
 \end{align*}
-For a matrix $A \in M_n(F)$, we write
+For a matrix $A \in M_n(F)$ ($\forall \; k \ A^k \in M_n(f)$), we define
 \begin{align*}
 	p(A) = a_n A^n + \dots + a_0 \in M_n(F)
 \end{align*}
@@ -227,29 +227,32 @@ For an endomorphism $\alpha \in L(V)$,
 \subsection{Sharp criterion of diagonalisability}
 \begin{theorem}
 	Let $V$ be a vector space over $F$ of finite dimension $n$.
-	Let $\alpha$ be an endomorphism of $V$.
-	Then $\alpha$ is diagonalisable if and only if there exists a polynomial $p$ which is a product of \textit{distinct} linear factors, such that $p(\alpha) = 0$.
-	In other words, there exist distinct $\lambda_1, \dots, \lambda_k$ such that
+	Let $\alpha$ be an endomorphism of $V$. \\
+	Then $\alpha$ is diagonalisable if and only if there exists a polynomial $p$ which is a product of \textit{distinct linear factors}, such that $p(\alpha) = 0$.
+	In other words, there exist \textit{distinct} $\lambda_1, \dots, \lambda_k$ such that
 	\begin{align*}
 		p(t) = \prod_{i=1}^n (t - \lambda_i) \implies p(\alpha) = 0
 	\end{align*}
 \end{theorem}
 \begin{proof}
-	Suppose $\alpha$ is diagonalisable in a basis $B$.
+	($\implies$)
+	Suppose $\alpha$ is diagonalisable.
 	Let $\lambda_1, \dots, \lambda_k$ be the $k \leq n$ \textit{distinct} eigenvalues.
 	Let
 	\begin{align*}
 		p(t) = \prod_{i=1}^k (t-\lambda_i)
 	\end{align*}
+	Let $B$ be a basis of $V$ made of the eigenvectors of $\alpha$ (it is precisely the basis in which $[\alpha]_B$ is diagonal). \\
 	Let $v \in B$.
 	Then $\alpha(v) = \lambda_i v$ for some $i$.
 	Then, since the terms in the following product commute,
 	\begin{align*}
-		(\alpha - \lambda_i I)(v) = 0 \implies p(\alpha)(v) = \qty[\prod_{i=1}^k (\alpha - \lambda_i I)](v) = 0
+		(\alpha - \lambda_i I)(v) = 0 \implies p(\alpha)(v) = \qty[\prod_{j=1}^k (\alpha - \lambda_j I)](v)\footnote{One of the $j$s is $i$, so as they commute product is 0.} = 0
 	\end{align*}
-	So for all basis vectors, $p(\alpha)(v)$.
-	By linearity, $p(\alpha) = 0$.
+	So for all basis vectors, $p(\alpha)(v) = 0$.
+	As $B$ a basis, by linearity, $p(\alpha)(v) = 0 \ \forall \; v \in V$ so $p(\alpha) = 0$.
 
+	($\Longleftarrow$) (Kernel lemma, Bezout's theorem for prime polynomials) \\
 	Conversely, suppose that $p(\alpha) = 0$ for some polynomial $p(t) = \prod_{i=1}^k (t-\lambda_i)$ with distinct $\lambda_i$.
 	Let $V_{\lambda_i} = \ker(\alpha - \lambda_i I)$.
 	We claim that
@@ -266,9 +269,9 @@ For an endomorphism $\alpha \in L(V)$,
 	\begin{align*}
 		q = q_1 + \dots + q_k
 	\end{align*}
-	The degree of $q$ is at most $(k-1)$.
+	We know $\deg q_j \leq k-1$ so $\deg q \leq k -1$.
 	Note, $q(\lambda_i) = 1$ for all $i \in \qty{1, \dots, k}$.
-	The only polynomial that evaluates to one at $k$ points with degree at most $(k-1)$ is exactly given by $q(t) = 1$.
+	The only polynomial that evaluates to one at $k$ points with degree at most $(k-1)$ is exactly given by $q(t) = 1$. \\
 	Consider the endomorphism
 	\begin{align*}
 		\pi_j = q_j(\alpha) \in L(V)
@@ -284,33 +287,34 @@ For an endomorphism $\alpha \in L(V)$,
 		I(v) = v = \sum_{j=1}^k \pi_j(v) = \sum_{j=1}^k q_j(\alpha)(v)
 	\end{align*}
 	So we can decompose any vector as a sum of its projections $\pi_j(v)$.
-	Now, by definition of $q_j$ and $p$,
+	\underline{Observe} by definition of $q_j$ and $p$,
 	\begin{align*}
 		(\alpha - \lambda_j I) q_j(\alpha)(v) & = \frac{1}{\prod_{i \neq j} (\lambda_j - \lambda_i)} (\alpha - \lambda_j I) \qty[\prod_{i \neq j} (t - \lambda_i)] (\alpha) \\
-		                                      & = \frac{1}{\prod_{i \neq j} (\lambda_j - \lambda_i)} \prod_{i=1}^k (\alpha - \lambda_i I)(v)                                \\
-		                                      & = \frac{1}{\prod_{i \neq j} (\lambda_j - \lambda_i)} p(\alpha)(v)
+		& = \frac{1}{\prod_{i \neq j} (\lambda_j - \lambda_i)} \prod_{i=1}^k (\alpha - \lambda_i I)(v) \\
+		& = \frac{1}{\prod_{i \neq j} (\lambda_j - \lambda_i)} p(\alpha)(v)
 	\end{align*}
 	By assumption, this is zero.
-	For all $v$, we have $(\alpha - \lambda_j I) q_j(\alpha)(v)$.
-	Hence,
+	For all $v$, we have
 	\begin{align*}
-		(\alpha - \lambda_j I) \pi_j(v) = 0 \implies \pi_j(v) \in \ker(\alpha - \lambda_j I) = v_j
+		(\alpha - \lambda_j I) \pi_j(v) = 0 \implies \pi_j(v) \in \ker(\alpha - \lambda_j I) = V_{\lambda_j}
 	\end{align*}
+	($\pi_j$ is a projector on $V_{\lambda_j}$).
 	We have then proven that, for all $v \in V$,
 	\begin{align*}
-		v = \sum_{j=1}^k \underbrace{\pi_j(v)}_{\in V_j}
+		v = q(v) = \sum_{j=1}^k \underbrace{\pi_j(v)}_{\in V_{\lambda_j}}
 	\end{align*}
 	Hence,
 	\begin{align*}
-		V = \sum_{j=1}^k V_j
+		V = \sum_{j=1}^k V_{\lambda_j}
 	\end{align*}
+
 	It remains to show that the sum is direct.
 	Indeed, let
 	\begin{align*}
 		v \in V_{\lambda_j} \cap \qty(\sum_{i \neq j} V_{\lambda_i})
 	\end{align*}
 	We must show $v = 0$.
-	Applying $\pi_j$,
+	$v \in V_{\lambda_j}$ so applying $\pi_j$,
 	\begin{align*}
 		\pi_j(v) = q_j(\alpha)(v) = \prod_{i \neq j} \frac{(\alpha - \lambda_i I)(v)}{\lambda_j - \lambda_i}
 	\end{align*}
@@ -318,31 +322,36 @@ For an endomorphism $\alpha \in L(V)$,
 	\begin{align*}
 		\pi_j(v) = \prod_{i \neq j} \frac{(\lambda_j - \lambda_i)v}{\lambda_j - \lambda_i} = v
 	\end{align*}
-	Hence $\pi_j$ really projects onto $V_{\lambda_j}$.
+	So $\pi_j \mid_{V_{\lambda_j}} = Id$.
+	% Hence $\pi_j$ really projects onto $V_{\lambda_j}$.
 	However, we also know $v \in \sum_{i \neq j} V_{\lambda_i}$.
 	So we can write $v = \sum_{i \neq j} w_i$ for $w \in V_{\lambda_i}$.
 	Thus,
 	\begin{align*}
-		\pi_j(w_i) = \prod_{m \neq j} \frac{(\alpha - \lambda_m I)(v)}{\lambda_m - \lambda_j}
+		\pi_j(w_i) = \prod_{m \neq j} \frac{(\alpha - \lambda_m I)(w_i)}{\lambda_m - \lambda_j}
 	\end{align*}
 	Since $\alpha(w_i) = \lambda_i w_i$, one of the factors will vanish, hence
 	\begin{align*}
 		\pi_j(w_i) = 0
 	\end{align*}
-	So
+	So $\pi_j \mid_{V_{\lambda_i}} = 0$ for $i \neq j$ and
 	\begin{align*}
 		v = \sum_{i \neq j} w_i \implies \pi_j(v) = \sum_{i \neq j} \pi_j(w_i) = 0
 	\end{align*}
 	But $v = \pi_j(v)$ hence $v = 0$.
+
 	So the sum is direct.
 	Hence, $B = (B_1, \dots, B_k)$ is a basis of $V$, where the $B_i$ are bases of $V_{\lambda_i}$.
 	Then $[\alpha]_B$ is diagonal.
+
+	Also, we know $\pi_j \mid_{V_{\lambda_j}} = Id$ and $\pi_j \mid_{V_{\lambda_i}} = 0$ for $i \neq j$ so $\pi_j$ is the projector onto $V_{\lambda_j}$.
 \end{proof}
 \begin{remark}
-	We have shown further that if $\lambda_1, \dots, \lambda_k$ are distinct eigenvalues of $\alpha$, then
+	We have shown further that if $\lambda_1, \dots, \lambda_k$ are \underline{distinct} eigenvalues of $\alpha$, then
 	\begin{align*}
 		\sum_{i=1}^k V_{\lambda_i} = \bigoplus_{i=1}^k V_{\lambda_i}
 	\end{align*}
+	(and we know the projectors).
 	Therefore, the only way that diagonalisation fails is when this sum is not direct, so
 	\begin{align*}
 		\sum_{i=1}^k V_{\lambda_i} < V

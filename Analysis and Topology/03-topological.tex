@@ -40,109 +40,173 @@ As metric spaces are top. spaces try to make sure it's `backward compatible', so
 The new defns shouldn't contradict the old metric space ones.
 So in making new defns, we'll be guided by section 2.4.
 
-\begin{definition}
-    Let $(X,\tau)$ be a topological space. We say that $G\subset X$ is \emph{open} if $G\in \tau$. We say $F$ is \emph{closed} if $X \backslash F \in\tau$. We say $\mathcal{N} \subset X$ is a \emph{neighbourhood} of $a\in X$ if $\exists G\subset X$ open with $a\in G\subset \mathcal{N}$.
-    
-    Let $(Y,\sigma)$ be another topological space, and let $f:X\rightarrow Y$. We say $f$ is \emph{continuous} if whenever $G\subset Y$ is open, then $f^{-1}(G)\subset X$ is open. In other words, $f$ is continuous if $\forall G\in \sigma, f^{-1}(G)\subset \tau$.
-    
-    We say that $f$ is \emph{continuous at $a \in X$} if whenever $\mathcal{N} \subset Y$ is a neighbourhood of $f(a)$ then $f^{-1}(\mathcal{N})\subset X$ is a neighbourhood of $a$.
-    
-    We say that $f$ is a \emph{homeomorphism} and $X,Y$ are \emph{homeomorphic} if $f$ is a bijection and both $f,f^{-1}$ are continuous. 
-    
-    A property is \emph{topological} if it is preserved by homeomorphisms; that is to say, if $X,Y$ are homeomorphic then $X$ has the property iff $Y$ does.
+\begin{definition}[Open]
+    Let $(X,\tau)$ be a topological space. We say that $G\subset X$ is \vocab{open} if $G\in \tau$
 \end{definition}
+
+\begin{definition}[Closed]
+    Let $(X,\tau)$ be a topological space.
+    We say $F$ is \vocab{closed} if $X  \setminus F \in\tau$.
+\end{definition}
+
+\begin{definition}[Neighbourhood]
+    Let $(X,\tau)$ be a topological space. 
+    We say $\mathcal{N} \subset X$ is a \vocab{neighbourhood} of $a\in X$ if $\exists G\subset X$ open with $a\in G\subset \mathcal{N}$.
+\end{definition}
+
+\begin{definition}[Continuity]
+    Let $(X,\tau)$ be a topological space.
+    Let $(Y,\sigma)$ be another topological space, and let $f:X \to Y$. We say $f$ is \vocab{continuous} if whenever $G\subset Y$ is open, then $f\inv(G)\subset X$ is open.
+    In other words, $f$ is continuous if $\forall \; G \in \sigma, f\inv(G) \subset \tau$.
+    
+    We say that $f$ is \vocab{continuous at $a \in X$} if whenever $\mathcal{N} \subset Y$ is a neighbourhood of $f(a)$ then $f\inv(\mathcal{N})\subset X$ is a neighbourhood of $a$.
+\end{definition}
+
+\begin{definition}[Homeomorphisms]
+    Let $(X,\tau)$ be a topological space.
+    We say that $f$ is a \vocab{homeomorphism} and $X,Y$ are \vocab{homeomorphic} if $f$ is a bijection and both $f,f\inv$ are continuous. 
+\end{definition} 
+
+\begin{definition}[Topological]
+    Let $(X,\tau)$ be a topological space.
+    A property is \vocab{topological} if it is preserved by homeomorphisms; that is to say, if $X,Y$ are homeomorphic then $X$ has the property iff $Y$ does.
+\end{definition} 
 
 \begin{remark}
 1. if $\tau$ is induced by a metric then this is all consistent with the metric space definitions of these concepts.
 
-2. Given our definition, $G$ open iff $G\in \tau$, often don't need to explicitly name the topology. E.g. `Let $X=\R$ with the usual topology and $G\subset X$ be open\dots'. Other times more convenient to specify $\tau$, write `$G\in \tau$' etc.
+2. Given our definition, $G$ open iff $G\in \tau$, we often don't need to explicitly name the topology.
+E.g. `Let $X=\R$ with the usual topology and $G\subset X$ be open\dots'.
+Other times more convenient to specify $\tau$, write `$G\in \tau$' etc.
 
 3. Homeomorphism is an equivalence `relation'.
 
 4. If $a\in G$ and $G$ open then $G$ is a neighbourhood of $a$, however neighbourhoods need not be open in general. A set $G\subset X$ is open iff $G$ is a neighbourhood of each of its points.
 \end{remark}
 
-\begin{proposition}             %3.1
-Let $X,Y$ be topological spaces and $f: X\rightarrow Y$. Then $f$ is continuous if and only if for all $a\in X$, $f$ is continuous at $a$.
+\begin{proposition} \label{prp:27}
+Let $X,Y$ be topological spaces and $f: X \to Y$. Then $f$ is continuous if and only if for all $a\in X$, $f$ is continuous at $a$.
 \end{proposition}      
 
 \begin{proof}
-Forward: Suppose $f$ continuous and let $a\in X$. Let $\mathcal{N}\subset Y$ be a neighbourhood of $f(a)$. Then there is an open set $G\subset Y$ with $a\in G\subset \mathcal{N}$. As $f$ is continuous, $f^{-1}(G)\subset X$ is open. Now $a\in f^{-1}(a)\subset f^{-1}(\mathcal{N})$ with $f^{-1}(G)$ open. Thus $f$ is continuous at $a$.
+($\implies$): Suppose $f$ continuous and let $a\in X$. Let $\mathcal{N}\subset Y$ be a neighbourhood of $f(a)$.
+Then there is an open set $G\subset Y$ with $a\in G\subset \mathcal{N}$.
+As $f$ is continuous, $f\inv(G)\subset X$ is open.
+Now $a\in f\inv(G) \subset f\inv(\mathcal{N})$ with $f\inv(G)$ open. Thus $f$ is continuous at $a$.
 
-Converse: Suppose for all $a\in X$ we have $f$ continuous at $a$. Let $G\subset Y$ be open. Let $a\in f^{-1}(G).$ Then $f(a)\in G$, but $G$ is open so $G$ is a neighbourhood of $f(a)$. Now $f$ is continuous at $a$ so $f^{-1}(a)$ is a neighbourhood of $a$ in $X$. But $a$ was arbitrary so $f^{-1}(G)$ is a neighbourhood of each of its points, i.e. it is open. Hence $f$ is continuous.
+($\Longleftarrow$): Suppose for all $a \in X$ we have $f$ continuous at $a$.
+Let $G\subset Y$ be open.
+Let $a \in f\inv(G)$.
+Then $f(a) \in G$, but $G$ is open so $G$ is a neighbourhood of $f(a)$.
+Now $f$ is continuous at $a$ so $f\inv(G)$ is a neighbourhood of $a$ in $X$.
+But $a$ was arbitrary so $f\inv(G)$ is a neighbourhood of each of its points.
+That is $f\inv(G)$ is open.
+Hence $f$ is continuous.
 \end{proof}
 
-\begin{proposition}
-Let $(X,\tau), (Y,\sigma), (Z,\rho)$ be topological spaces, let $f:X\rightarrow Y$ and $g:Y\rightarrow Z$ be continuous. Then $g\circ f: X\rightarrow Z$ is continuous.
+\begin{proposition} \label{prp:28}
+Let $(X,\tau), (Y,\sigma), (Z,\rho)$ be topological spaces, let $f:X \to Y$ and $g:Y \to Z$ be continuous. Then $g\circ f: X \to Z$ is continuous.
 \end{proposition}
 
 \begin{proof}
-Let $G\in \rho$. As $g$ is continuous, $g^{-1}(G)\in \sigma$. As $f$ continuous, $f^{-1}(g^{-1}(G))\in \tau$. That is, $(g\circ f)^{-1}(G)\in \tau$. So $g\circ f$ continuous.
+Let $G\in \rho$. As $g$ is continuous, $g\inv(G)\in \sigma$. As $f$ continuous, $f\inv(g\inv(G))\in \tau$. That is, $(g\circ f)\inv(G)\in \tau$. So $g\circ f$ continuous.
 \end{proof}
 
-\begin{example}[Some examples of topologies]
-1. \emph{The discrete topology.} Let $X$ be any set and $\tau = \mathcal{P}(X)$, where `every set is open'. This is not a new example; it is induced by the discrete metric $d(x,y) = 1$ iff $x=y$. Now in $(X,d)$, for any $x\in X$ then $\{x\} = B_1(x)$ is open and so if $G\subset X$ then $G = \bigcup_{x\in G} \{x\}$ is open.
-
-2. \emph{The indiscrete topology.} Let $X$ be any set and $\tau = \{\emptyset, X\}$. Here, `only open sets are $\emptyset$ and whole space'. This is something we have not seen before: $\tau$ cannot be induced by a metric as long as $|X|\ge 2$. Indeed, suppose $|X|\ge 2$ and that $\tau $ is induced by a metric $d$. Let $x,y\in X$ with $x\neq y$, so let $d(x,y) = \delta>0$. Then $B_\delta(x)$ is open with $x\in B_\delta(x)$ and $y\not\in B_\delta(x)$.
-
-3. \emph{The cofinite topology.} Let $X$ be any infinite set and let $\tau = \{G\subset X : X \backslash G \textup{ is finite} \} \cup \{\emptyset\}$. We will check that this is a topology, and not induced by any metric $d$. 
-
-4. \emph{The cocountable topology.} Let $X$ be any uncountable set and let $\tau = \{G\subset X : X\backslash G \textup{ countable} \} \cup \{\emptyset\}$. Then, very similarly to (3), we can show that this is a topology that is not induced by any metric.
+\begin{example}[The discrete topology]
+    Let $X$ be any set and $\tau = \mathcal{P}(X)$, where `every set is open'. \\
+    However, this is not a new example; it is induced by the discrete metric \begin{align*}
+        d(x, y) = \begin{cases}
+            1 & x \neq y \\
+            0 & x = y
+        \end{cases}. 
+    \end{align*} 
+    Now in $(X,d)$, for any $x\in X$ then $\{x\} = B_1(x)$ is open and so if $G\subset X$ then $G = \bigcup_{x\in G} \{x\}$ is open.
 \end{example}
 
-\begin{proof}
-\begin{enumerate}
-    \item $\emptyset\in\tau$ and $X\backslash X = \emptyset$ is finite so $X\in\tau$.
-    \item Let $\sigma \subset\tau$. If $\sigma$ is empty or only contains $\emptyset$ then $\bigcup_{G\in \sigma} G = \emptyset\in \tau$. 
-    Otherwise, pick $H\in \sigma$ with $H\neq \emptyset$. Then $X\backslash H$ is finite so $(X\backslash\bigcup_{G\in \sigma} G) = \bigcup_{G\in \sigma} (X\backslash G)\subset X\backslash H$ is finite. So $\bigcup_{G\in \sigma} G \in \tau.$
-    \item Let $G,H\in \tau$. If $G = \emptyset$ or $H=\emptyset$ then $G\cap H = \emptyset\in\tau$. Otherwise $X\backslash G, X\backslash H$ are finite then $(X\backslash(G\cap H)) = (X\backslash G)\cup(X\backslash H)$ is finite. So $G\cap H\in \tau$.
-\end{enumerate}
+\begin{example}[The indiscrete topology]
+    Let $X$ be any set and $\tau = \{\emptyset, X\}$. Here, `only open sets are $\emptyset$ and whole space'.
+    This is something we have not seen before: $\tau$ cannot be induced by a metric as long as $|X| \geq 2$.
+    Indeed, suppose $|X|  \geq 2$ and that $\tau$ is induced by a metric $d$.
+    Let $x,y \in X$ with $x\neq y$, so let $d(x,y) = \delta>0$.
+    Then $B_\delta(x)$ is open with $x \in B_\delta(x)$ and $y \not\in B_\delta(x)$ \Lightning.
+\end{example} 
 
-Furthermore, it is not induced by a metric $d$. Observe first that if $G,H$ open and non-empty then $G\cap H\neq \emptyset$. Then $d(x,y) = \delta > 0$ so $B_\delta/2(x), B_\delta/2(y)$ are non-empty disjoint open sets. So $d$ doesn't induce $\tau$.
-\end{proof}
+\begin{example}[The cofinite topology]
+    Let $X$ be any infinite set and let $\tau = \{G\subset X : X \setminus G \textup{ is finite} \} \cup \{\emptyset\}$.
+    This is not induced by a metric.
+
+    \begin{proof}
+        \begin{enumerate}
+            \item $\emptyset\in\tau$ and $X \setminus X = \emptyset$ is finite so $X\in\tau$.
+            \item Let $\sigma \subset\tau$. If $\sigma$ is empty or only contains $\emptyset$ then $\bigcup_{G\in \sigma} G = \emptyset\in \tau$. 
+            Otherwise, pick $H\in \sigma$ with $H\neq \emptyset$. Then $X \setminus H$ is finite so $(X \setminus\bigcup_{G\in \sigma} G) = \bigcap_{G\in \sigma} (X \setminus G)\subset X \setminus H$ is finite. So $\bigcup_{G\in \sigma} G \in \tau.$
+            \item Let $G,H\in \tau$. If $G = \emptyset$ or $H=\emptyset$ then $G\cap H = \emptyset\in\tau$. Otherwise $X \setminus G, X \setminus H$ are finite then $(X \setminus(G\cap H)) = (X \setminus G)\cup(X \setminus H)$ is finite. So $G\cap H\in \tau$.
+        \end{enumerate}
+
+        So the cofinite topology is indeed a topology.
+        
+        Furthermore, it is not induced by a metric $d$. 
+        Observe first that if $G,H$ open and non-empty then $G\cap H\neq \emptyset$\footnote{As they are both infinite sets with finite complements}. 
+        Now suppose $x, y \in X$ with $x \neq y$.
+        Then $d(x,y) = \delta > 0$ so $B_\delta/2(x), B_\delta/2(y)$ are non-empty disjoint open sets. So $d$ doesn't induce $\tau$ as open sets can't be disjoint in this topology.
+        \end{proof}
+\end{example} 
+
+\begin{example}[The cocountable topology]
+    Let $X$ be any uncountable set and let $\tau = \{G\subset X : X \setminus G \textup{ countable} \} \cup \{\emptyset\}$. Then, very similarly to previous example, we can show that this is a topology that is not induced by any metric.
+\end{example} 
 
 \subsection{Sequences and Hausdorff spaces}
 
-\begin{definition}
-Let $X$ be a topological space, let $(x_n)$ be a sequence in $X$ and let $x\in X$. We say $(x_n)$ \emph{converges} to $x$ and write $x_n\rightarrow x$ if whenever $\mathcal{N}\subset X$ is a neighbourhood of $x$ then $\exists N$, $\forall n \geq N$ we have $x_n \in \mathcal{N}$.
+\begin{definition}[Convergence]
+Let $X$ be a topological space, let $(x_n)$ be a sequence in $X$ and let $x\in X$. \\
+We say $(x_n)$ \vocab{converges} to $x$ and write $x_n \to x$ if whenever $\mathcal{N}\subset X$ is a neighbourhood of $x$ then $\exists \; N \ \forall \; n \geq N$ we have $x_n \in \mathcal{N}$.
 \end{definition}
 
-\begin{question}
-Let $X$ be an uncountable set with the cocountable topology. What sequences converge in $X$?
-\end{question}
 
-\begin{proof}
-Suppose $x_n\rightarrow x$. Then let $\mathcal{N} = (X\backslash \{x_n : n\in \mathbb{N}\})\cup\{x\}$. Then $\mathcal{N}$ open and $x\in \mathcal{N}$ so $\mathcal{N}$ is a neighbourhood of $x$. Thus $\exists N$ such that $\forall n\ge N$, $x_n\in \mathcal{N}$. So $\exists N$, $\forall n\ge N$ we have $x_n=x$.
+\begin{example}[Cocountable Topology]
+    Let $X$ be an uncountable set with the cocountable topology. What sequences converge in $X$?
 
-Conversely, it is obvious if $\exists N$ such that $\forall n\ge N$, $x_n=x$ then $x_n\rightarrow x$. So the only convergent sequences in this space are eventually constant.
-\end{proof}
+    The only convergent sequences in this space are eventually constant.
+    
+    \begin{proof}
+    Suppose $x_n \to x$. Then let $\mathcal{N} = (X \setminus \{x_n : n \in \mathbb{N}\})\cup\{x\}$. Then $\mathcal{N}$ open and $x\in \mathcal{N}$ so $\mathcal{N}$ is a neighbourhood of $x$. Thus $\exists \; N$ such that $\forall \; n \geq N$, $x_n\in \mathcal{N}$. So $\exists \; N$, $\forall \; n \geq N$ we have $x_n=x$.
+    
+    Conversely, it is obvious if $\exists \; N$ such that $\forall \; n \geq N$, $x_n=x$ then $x_n \to x$.
+    
+    So the only convergent sequences in this space are eventually constant.
+    \end{proof}
+\end{example} 
 
-\begin{example}
-2. Let $X = \{1,2,3\}$ with the indiscrete topology. Let $x_n =i\in X$ with $i\equiv n \mod 3$. So sequence is 1,2,3,1,2,3,$\dots$.
+\begin{example}[Indiscrete Topology]
+    Let $X = \{1,2,3\}$ with the indiscrete topology. Let $x_n =i\in X$ with $i\equiv n \mod 3$. So sequence is 1,2,3,1,2,3,$\dots$.
 
-\begin{claim}
-    $x_n\rightarrow 2$
-\end{claim} 
-\begin{proof}
-Let $\mathcal{N}$ be a neighbourhood of $2$. Then $\exists G$ open such that $2\in G\subset \mathcal{N}$. But only open sets are $\emptyset, \{1,2,3\}$ so $G = \{1,2,3\}$. So $\mathcal{N} = \{1,2,3\}$ so $\forall n, x_n\in\mathcal{N}$. 
-\end{proof}
-Similarly $x_n\rightarrow 1$ and $x_n\rightarrow 3$, and so we arrive at the big revelation for topological spaces: \textbf{\color{red} LIMITS OF CONVERGENT SEQUENCES NEED NOT BE UNIQUE.} Thus we can write $\lim_{n\rightarrow \infty} x_n$ anymore.
-\end{example}
+    \begin{claim}
+        $x_n \to 2$
+    \end{claim} 
+
+    \begin{proof}
+    Let $\mathcal{N}$ be a neighbourhood of $2$. Then $\exists \; G$ open such that $2 \in G \subset \mathcal{N}$.
+    But only open sets are $\emptyset, \{1,2,3\}$ so $G = \{1,2,3\}$. So $\mathcal{N} = \{1,2,3\}$ so $\forall \; n, x_n \in \mathcal{N}$. 
+    \end{proof}
+    Similarly $x_n \to 1$ and $x_n \to 3$, and so we arrive at the big revelation for topological spaces: \textbf{\color{red} LIMITS OF CONVERGENT SEQUENCES NEED NOT BE UNIQUE.}
+    Thus we can't write $\lim_{n \to \infty} x_n$ anymore.
+\end{example} 
 
 \begin{remark}
 The above proof shows that in any indiscrete space, every sequences converges to every point of the space.
 \end{remark}
 
-\begin{definition}
-A topological space $X$ is \emph{Hausdorff} if whenever $x,y\in X$ with $x\neq y$ then there are disjoint open $G,H\subset X$ with $x\in G$ and $y\in H$.
+\begin{definition}[Hausdorff]
+A topological space $X$ is \vocab{Hausdorff} if whenever $x,y \in X$ with $x \neq y$ then there are disjoint open $G,H \subset X$ with $x \in G$ and $y \in H$.
 \end{definition}
 
 \begin{example}
-1. Metric spaces are Hausdorff. Indeed, if $(X,d)$ metric and $x,y\in X$, $x\neq y$, let $\delta = d(x,y) >0$ and take $G = B_{\delta/2}(x)$ and $H=B_{\delta/2}(y)$.
+1. Metric spaces are Hausdorff. Indeed, if $(X,d)$ metric and $x,y \in X$, $x \neq y$, let $\delta = d(x,y) >0$ and take $G = B_{\delta/2}(x)$ and $H=B_{\delta/2}(y)$.
 
-2. Indiscrete spaces are not Hausdorff (assuming $|X|\ge 2$).
+2. Indiscrete spaces are not Hausdorff (assuming $|X| \geq 2$).
 
-3. The cofinite topology is not Hausdorff. Let $X$ be an infinite set with the cofinite topology and let $x,y\in X$ with $x\neq y$. Let $G,H\subset X$ be open with $x\in G$, $y\in H$. Clearly $G,H\neq \emptyset$ so $X\backslash G$, $X\backslash H$ finite and so $X\backslash (G\cap H) = (X\backslash G)\cup (X\backslash H)$ is finite. In particular $G\cap H = \emptyset$.
+3. The cofinite topology is not Hausdorff. Let $X$ be an infinite set with the cofinite topology and let $x,y\in X$ with $x\neq y$. Let $G,H\subset X$ be open with $x\in G$, $y\in H$. Clearly $G,H\neq \emptyset$ so $X \setminus G$, $X \setminus H$ finite and so $X \setminus (G\cap H) = (X \setminus G)\cup (X \setminus H)$ is finite. In particular $G\cap H = \emptyset$.
 
 Similarly, the cocountable topology is not Hausdorff.
 \end{example}
@@ -151,28 +215,28 @@ Similarly, the cocountable topology is not Hausdorff.
 Limits of convergent sequences in Hausdorff spaces are unique.
 \end{proposition}          
 \begin{proof}
-Let $X$ be Hausdorff, let $a,b\in X$, and let $(x_n)$ be a sequence in $X$ with $x_n\rightarrow a$ and $x_n\rightarrow b$. Suppose $a\neq b$. Take open $G,H$ with $a\in G$, $b\in H$ and $G\cap H = \emptyset$. Now $G$ is a neighbourhood of $a$ so there is some $N_1$ such that $\forall n\ge N_1$ we have $x_n\in G$. Similarly there is some $N_2$ such that $\forall n\ge N_2$, $x_n\in H$. Taking $n = \max\{N_1,n_2\}$, we get $x_n\in G\cap H = \emptyset$, contradiction.
+Let $X$ be Hausdorff, let $a,b\in X$, and let $(x_n)$ be a sequence in $X$ with $x_n \to a$ and $x_n \to b$. Suppose $a\neq b$. Take open $G,H$ with $a\in G$, $b\in H$ and $G\cap H = \emptyset$. Now $G$ is a neighbourhood of $a$ so there is some $N_1$ such that $\forall n \geq N_1$ we have $x_n\in G$. Similarly there is some $N_2$ such that $\forall n \geq N_2$, $x_n\in H$. Taking $n = \max\{N_1,n_2\}$, we get $x_n\in G\cap H = \emptyset$, contradiction.
 \end{proof}
 
 \begin{proposition}[Relationship to continuity]          %3.4(30)
-Let $X,Y$ be topological spaces and let $f:X\rightarrow Y$ be continuous at $a\in X$. Let $(x_n)$ be a sequence in $X$ with $x_n\rightarrow a$. Then $f(x_n)\rightarrow f(a)$.
+Let $X,Y$ be topological spaces and let $f:X \to Y$ be continuous at $a\in X$. Let $(x_n)$ be a sequence in $X$ with $x_n \to a$. Then $f(x_n) \to f(a)$.
 \end{proposition}
 \begin{proof}
-Let $\mathcal{N}\subset Y$ be a neighbourhood of $f(a)$. As $f$ continuous we know $f\inv (\mathcal{N})$ is a neighbourhood of $a$. As $x_n\rightarrow a$ we can find $N$ such that $\forall n\ge N$, $x_n\in f\inv(\mathcal{N})$. Then $\forall n\ge N$, $f(x_n)\in \mathcal{N}$. So $f(x_n)\rightarrow f(a)$.
+Let $\mathcal{N}\subset Y$ be a neighbourhood of $f(a)$. As $f$ continuous we know $f\inv (\mathcal{N})$ is a neighbourhood of $a$. As $x_n \to a$ we can find $N$ such that $\forall n \geq N$, $x_n\in f\inv(\mathcal{N})$. Then $\forall n \geq N$, $f(x_n)\in \mathcal{N}$. So $f(x_n) \to f(a)$.
 \end{proof}
 
 \begin{example}[Converse is not true in general!]
-Let $X=Y=\R$, $X$ with cocountable topology, $Y$ with usual topology and let $f:X\rightarrow Y$ be the identity function.
+Let $X=Y=\R$, $X$ with cocountable topology, $Y$ with usual topology and let $f:X \to Y$ be the identity function.
 
-Suppose $x_n\rightarrow 0$ in $X$. Then for sufficiently large $n$, $x_n=0$ and so for sufficiently large $n$, $f(x_n) = x_n = 0 = f(0)$ so $f(x_n)\rightarrow f(0)$ in $Y$.
+Suppose $x_n \to 0$ in $X$. Then for sufficiently large $n$, $x_n=0$ and so for sufficiently large $n$, $f(x_n) = x_n = 0 = f(0)$ so $f(x_n) \to f(0)$ in $Y$.
 
 However $(-1,1)\subset Y$ is open and $0\in (-1,1)$ so $(-1,1)$ is a neighbourhood of $0\in Y$. But $f\inv((-1,1)) = (-1,1)\in X$ is not a neighbourhood of $0$ in $X$. So $f$ is not continuous at $0$.
 \end{example}
 \begin{example}[Converse is still not true even after imposing condition that spaces are Hausdorff.]
-Take example as above but replace topology on $X$ by \[\sigma = \{G\subset \R : (X\backslash G) \textup{ countable or } 0\not\in G \}. \]
-Check that this is a topology, and this is Hausdorff: suppose $x,y\in X$ with $x\neq y$. If $x,y\neq 0$ then $\{x\}, \{y\}\in \sigma$. While if $x=0$ say, then $\R\backslash \{y\}, \{y\}\in \sigma$.
+Take example as above but replace topology on $X$ by \[\sigma = \{G\subset \R : (X \setminus G) \textup{ countable or } 0\not\in G \}. \]
+Check that this is a topology, and this is Hausdorff: suppose $x,y\in X$ with $x\neq y$. If $x,y\neq 0$ then $\{x\}, \{y\}\in \sigma$. While if $x=0$ say, then $\R \setminus \{y\}, \{y\}\in \sigma$.
 
-Now, neighbourhoods of $0$ in $\sigma$ are exactly same as in the cocountable topology. So exactly as before, $x_n\rightarrow 0$ in $X\implies x_n\rightarrow 0$ in $Y$ but $f$ is not continuous at $0$.
+Now, neighbourhoods of $0$ in $\sigma$ are exactly same as in the cocountable topology. So exactly as before, $x_n \to 0$ in $X\implies x_n \to 0$ in $Y$ but $f$ is not continuous at $0$.
 \end{example}
 \begin{remark}
 In a metric space, the topology is completely determined by convergence of sequences. Not true for a general topology space. Hence we'll tend to concentrate more on continuity than convergence of sequences.
@@ -244,9 +308,9 @@ A continuous real-valued function on a compact topological space is bounded and 
 \end{theorem}   
 
 \begin{proof}
-Let $X$ be compact and $f:X\rightarrow \R$ be continuous. Let $G_n = f\inv((-n,n)) , (n\in \N)$. Then $\Set{G_n}{n\in \N}$ is an open cover of $X$, so as $X$ is compact we have a finite subcover $\set{G_{n_1},\dots, G_{n_k}}$. Now $\forall x\in G_{n_i}$, $|f(x)| < n_i$, and hence $\forall x\in X, |f(x)| < \max_{1\le i \le k} n_i$, thus $f$ is bounded.
+Let $X$ be compact and $f:X \to \R$ be continuous. Let $G_n = f\inv((-n,n)) , (n\in \N)$. Then $\Set{G_n}{n\in \N}$ is an open cover of $X$, so as $X$ is compact we have a finite subcover $\set{G_{n_1},\dots, G_{n_k}}$. Now $\forall x\in G_{n_i}$, $|f(x)| < n_i$, and hence $\forall x\in X, |f(x)| < \max_{1 \leq i  \leq k} n_i$, thus $f$ is bounded.
 
-Let $\sigma = \sup_{x\in X} f(x)$, and suppose $\sigma$ is not attained by $f$. Now define $g: X\rightarrow \R$ by $g(x) = \frac{1}{\sigma-f(x)}$ which is well-defined and continuous. Hence by previous part, $g$ is bounded. But by definition of $\sup$ given $\epsilon>0$ we can find $x$ such that $\sigma - f(x)< \epsilon$ where $g(x) > \frac{1}{\epsilon}$, a contradiction. Similarly, $\inf_{x\in X} f(x)$ is attained.
+Let $\sigma = \sup_{x\in X} f(x)$, and suppose $\sigma$ is not attained by $f$. Now define $g: X \to \R$ by $g(x) = \frac{1}{\sigma-f(x)}$ which is well-defined and continuous. Hence by previous part, $g$ is bounded. But by definition of $\sup$ given $\epsilon>0$ we can find $x$ such that $\sigma - f(x)< \epsilon$ where $g(x) > \frac{1}{\epsilon}$, a contradiction. Similarly, $\inf_{x\in X} f(x)$ is attained.
 \end{proof}
 
 \begin{remark}
@@ -260,15 +324,14 @@ A continuous image of a compact space is compact.
 \end{theorem}
 
 \begin{proof}                         %3.8 (34)
-Let $f: X\rightarrow Y$ be continuous and $X$ compact. Let $K=f(X)\subset Y$. Let $\mathcal{C}$ be an open cover of $K$ in $Y$. Then $\Set{f\inv (G)}{G\in \mathcal{C}}$ is an open cover of $X$ so by compactness, there is a finite $\mathcal{D}\subset\mathcal{C}$ such that $\Set{f\inv (G)}{G\in \mathcal{D}}$ is an open cover of $X$. Then $\mathcal{D}$ is an open cover of $K$ in $Y$, so $K$ is compact.
+Let $f: X \to Y$ be continuous and $X$ compact. Let $K=f(X)\subset Y$. Let $\mathcal{C}$ be an open cover of $K$ in $Y$. Then $\Set{f\inv (G)}{G\in \mathcal{C}}$ is an open cover of $X$ so by compactness, there is a finite $\mathcal{D}\subset\mathcal{C}$ such that $\Set{f\inv (G)}{G\in \mathcal{D}}$ is an open cover of $X$. Then $\mathcal{D}$ is an open cover of $K$ in $Y$, so $K$ is compact.
 \end{proof}
 
 \begin{remark}
 This together with the fact that compact subsets of $\R$ are closed and bounded gives an alternative proof of Theorem 3.7.
 \end{remark}
 
-\begin{lemma}         %3.8(35)
-    \leavevmode\vspace{-1.4em}
+\begin{lemma} \label{lem:35} ~
     \begin{enumerate}
         \item A closed subset of a compact space is compact.
         \item A compact subset of a Hausdorff space is closed.
@@ -277,12 +340,12 @@ This together with the fact that compact subsets of $\R$ are closed and bounded 
 
 \begin{proof}
     \begin{enumerate}
-        \item Let $X$ be a compact topological space and let $F\subset X$ be closed. Let $\mathcal{C}$ be an open cover of $F$ in $X$. Thus $X\backslash F$ is open so $\mathcal{C}' = \mathcal{C} \cup \set{X\backslash F}$ then $\mathcal{C}'$ is an open cover of $X$. Since $X$ is compact so $\mathcal{C}'$ has a finite subcover $\mathcal{D}'$. Let $\mathcal{D} = \mathcal{D}'\backslash \set{X\backslash F}$ if $X\backslash F \in \mathcal{D}'$, and $\mathcal{D} = \mathcal{D}'$ otherwise. Then $\mathcal{D}$ is a finite subcover of $\mathcal{C}$, so $F$ is compact.
+        \item Let $X$ be a compact topological space and let $F\subset X$ be closed. Let $\mathcal{C}$ be an open cover of $F$ in $X$. Thus $X \setminus F$ is open so $\mathcal{C}' = \mathcal{C} \cup \set{X \setminus F}$ then $\mathcal{C}'$ is an open cover of $X$. Since $X$ is compact so $\mathcal{C}'$ has a finite subcover $\mathcal{D}'$. Let $\mathcal{D} = \mathcal{D}' \setminus \set{X \setminus F}$ if $X \setminus F \in \mathcal{D}'$, and $\mathcal{D} = \mathcal{D}'$ otherwise. Then $\mathcal{D}$ is a finite subcover of $\mathcal{C}$, so $F$ is compact.
         
-        \item Let $X$ be a Hausdorff space and let $K\subset X$ be compact. We want to show $K$ is closed, i.e. $X\backslash K$ is open, i.e. $X\backslash K$ is a neighbourhood of each of its points.
+        \item Let $X$ be a Hausdorff space and let $K\subset X$ be compact. We want to show $K$ is closed, i.e. $X \setminus K$ is open, i.e. $X \setminus K$ is a neighbourhood of each of its points.
         
-        Let $y\in X\backslash K$. We want to find some open set containing $y$, that is contained entirely within $X\backslash K$. Given $x\in K$, $x\neq y$ so as $X$ Hausdorff, we can find disjoint open sets $U_x, V_x\subset X$ with $x\in U_x$ and $y\in V_x$. Then $\Set{U_x}{x\in X}$ is an open cover of $K$ in $X$ so it has a finite subcover $\set{U_{x_1}, \dots, U_{x_n}}.$ 
-        Let $U = \bigcup_{i=1}^n U_{x_i}$ and $V = \bigcap_{i=1}^n V_{x_i}$. We have $U,V$ open and $K\subset U$, $y\in V$ and $U\cap V = \emptyset$. In particular, we have found an open set $V$ such that $y\in V\subset X\backslash K$. So $X\backslash K$ is a neighbourhood of each of its points and it's open, thus $K$ is closed.
+        Let $y\in X \setminus K$. We want to find some open set containing $y$, that is contained entirely within $X \setminus K$. Given $x\in K$, $x\neq y$ so as $X$ Hausdorff, we can find disjoint open sets $U_x, V_x\subset X$ with $x\in U_x$ and $y\in V_x$. Then $\Set{U_x}{x\in X}$ is an open cover of $K$ in $X$ so it has a finite subcover $\set{U_{x_1}, \dots, U_{x_n}}.$ 
+        Let $U = \bigcup_{i=1}^n U_{x_i}$ and $V = \bigcap_{i=1}^n V_{x_i}$. We have $U,V$ open and $K\subset U$, $y\in V$ and $U\cap V = \emptyset$. In particular, we have found an open set $V$ such that $y\in V\subset X \setminus K$. So $X \setminus K$ is a neighbourhood of each of its points and it's open, thus $K$ is closed.
 \end{enumerate}
 \end{proof}
 
@@ -291,7 +354,76 @@ A continuous bijection from a compact space to a Hausdorff space is a homeomorph
 \end{theorem}   
 
 \begin{proof}
-    Let $f: X\rightarrow Y$ be a continuous bijection, $X$ compact, $Y$ Hausdorff, and our aim is to show $f\inv : Y\rightarrow X$ is continuous.
+    Let $f: X \to Y$ be a continuous bijection, $X$ compact, $Y$ Hausdorff, and our aim is to show $f\inv : Y \to X$ is continuous.
 
-    Let $G\subset X$ be open. Then $X\backslash G$ is closed, so by lemma 3.9 (i), $X\backslash G$ is compact. By theorem 3.8, $f(X\backslash G)$ is compact and so by lemma 3.9 (ii), $f(X\backslash G)$ is closed. That is, $Y\backslash f(G)$ is closed, i.e. $f(G)$ is open. But $F$ is a bijection so $(f\inv)\inv (G) = f(G)$ is open. Thus $f\inv$ is continuous.
+    Let $G\subset X$ be open. Then $X \setminus G$ is closed, so by lemma 3.9 (i), $X \setminus G$ is compact. By theorem 3.8, $f(X \setminus G)$ is compact and so by lemma 3.9 (ii), $f(X \setminus G)$ is closed. That is, $Y \setminus f(G)$ is closed, i.e. $f(G)$ is open. But $F$ is a bijection so $(f\inv)\inv (G) = f(G)$ is open. Thus $f\inv$ is continuous.
 \end{proof}
+
+\subsection{Products}
+Suppose we have $\R$ with the usual topology. We would like to think about $\R \times \R$ as $\R^2$ with the Euclidean topology. In general, if $(X,\tau), (Y,\sigma)$ are topological spaces, what sensible topology can we put on $X\times Y$? 
+
+In general, $\tau \times \sigma$ is not going to be a topology. E.g. $\R\times \R \backslash \R^2$, an open ball in $\R^2$ is not in $\tau\times \sigma$. However, each point in the ball is some set in $\tau\times \sigma$ confined in the ball (i.e. for each point in the ball, there is some open square inside the ball that contains the point). Hence the open ball is a union of some sets in $\tau \times \sigma$.
+
+Thus, in general, we would want our product topology from $\tau,\sigma$ to be the collection of all union of sets in $\tau \times\sigma$.
+
+\begin{definition}
+A \emph{$\pi$-system} on a set $X$ is a non-empty subset $\pi\subset \mathcal{P}(X)$ such that $A,B\in \pi \implies A\cap B\in \pi$.
+\end{definition}
+
+\begin{proposition}                            %3.11(37)
+Let $\Pi$ be a $\pi$-system on a set $X$. Then \[\tau = \Set{\bigcup_{A\in \Sigma}}{\Sigma\in \pi} \cup \set{\emptyset, X} \] is a topology on $X$.
+\end{proposition}  
+
+\begin{proof}
+Clearly, $\phi, X\in \tau$ and it's closed under arbitrary unions. Now suppose $G,H\in \tau$. If $G = \phi, X$ or $H=\phi, X$ then $G\cap H\in \tau$ trivially. Otherwise $G = \bigcup_{A\in \Phi}A, H =\bigcup_{B\in \Theta} B$ for some $\Phi, \Theta \subset \Pi$.
+
+Then $G\cap H = \bigcup_{A\in \Phi, B\in \Theta} (A\cap B) = \bigcup_{C\in \Sigma} C$, where $\Sigma = \Set{A\cap B}{A\in \Phi, B\in \Theta}\subset \Pi.$ Hence $G\cap H\in \tau$.
+\end{proof}
+\begin{definition}
+We call $\tau$ the topology \emph{generated by} $\Pi$.
+\end{definition}
+\begin{proposition}                        %3.12(38)
+Let $(X,\tau), (Y,\sigma)$ be topological spaces. Then $\tau\times \sigma$ is a $\pi$-system on $X\times Y$.
+\end{proposition}
+\begin{proof}
+$\phi = \phi\times \phi \in \tau\times \sigma$ so $\tau\times \sigma\neq \phi$. Now suppose $A,B\in\tau\times \sigma $. Then $A = G\times H$, $B=K\times L$ for some $G,K\in \tau$ and some $H,L,\in \sigma$. So $A\cap B = (G\cap K)\times (H\cap L) \in \tau\times \sigma$.
+\end{proof}
+\begin{definition}
+Let $(X,\tau), (Y,\sigma)$ be topological spaces. The \emph{product topology} on $X\times Y$ is the topology generated by the $\pi$-system $\tau\times \sigma$.
+\end{definition}
+\begin{exercise*}
+If $X=Y=\R$, $\tau=\sigma$ is the usual topology, show that the product topology on $\R^2$ is the Euclidean topology.
+\end{exercise*}
+
+\begin{theorem}                             %3.13(39)
+\begin{enumerate}
+    \item A product of Hausdorff spaces is Hausdorff.
+    \item A product of compact spaces is compact.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Let $(X,\tau), (Y,\sigma)$ be topological spaces and let $\rho$ be the product topology on $X\times Y$.
+\begin{enumerate}
+    \item Suppose $X,Y$ are Hausdorff. Let $(x,y), (z,w)\in X\times Y$ with $(x,y)\neq (z,w)$, wlog $x\neq z$. As $X$ is Hausdorff we can find $G,H\in \tau$ with $G\cap H = \phi$, $x\in G$, $z\in H$. Then $G\times Y, H\times Y\in \rho$ with $(G\times Y)\cap (H\times Y) = \phi$ and $(x,y)\in G\times Y$, $(z,w) \in H\times Y$. Thus $X\times Y$ is Hausdorff.
+    \item Suppose $X\times Y$ compact. Let $\mathcal{C}\subset\rho$ be an open cover of $X\times Y$. Fix $x \in X$. For each $y\in Y$, there is some $G_y\in \mathcal{C}$ such that $(x,y)\in G_y$. Hence we can find $U_y\in \tau$ and $V_y\in \sigma$ such that $(x,y)\in U_y\times V_y\subset G_y$. In particular, we have $x\in U_y$ and $y\in V_y$. Thus $\Set{V_y}{y\in Y}\subset \sigma$ is an open cover of $Y$. So, as $Y$ is compact, it has a finite subcover $\set{V_{y_1},\dots, V_{y_n}}$, say.
+    
+    Let $W = \bigcap_{i=1}^n U_{y_i}$. Then $W$ is open in $X$ and $x\in W$. Moreover, $W\times Y \subset \bigcup_{i=1}^n (U_{y_i}\times V_{y_i}) \subset \bigcup_{i=1}^n G_{y_i}$. Now do this for each $x\in X$ to obtain $W_x = W, n_x = n$ and $G_{y_i}^{(x)} = G_{y_i}$ for ($1 \leq i  \leq n_x)$ as above. Then $\Set{W_x}{x\in X}\subset \tau$ is an open cover of $X$. So, as $X$ is compact, it has a finite subcover, $\set{W_{x_1},\dots , W_{x_m}}$, say.
+    
+    Now $X = \bigcup_{j=1}^m W_{x_j}$ and for each $j, W_{x_j}\times Y\subset \bigcup_{i=1}^{n_{x_j}} G_{y_i}^{(x_j)}$. Thus \[\Set{G_{y_i}^{(x_j)}}{1 \leq j \leq m, 1 \leq i \leq n_{x_j}}\] is an open cover of $X\times Y$ and hence a finite subcover of $\mathcal{C}$. Thus $X\times Y$ is compact.
+\end{enumerate}
+\end{proof}
+\subsection{Quotients}
+Consider the surface of a torus(donut) in $\R^3$. We might be interested in for example, continuous functions $T\rightarrow T$. Analysis is likely to be unpleasant since the equation defining $T$ might be complicated. However, given that we care about continuity and convergence, if we replace $T$ by a space homeomorphic to $T$ then we're happy, particularly if the new space is analytically easier to work with.
+
+For example take the closed unit space $[0,1]\times[0,1]$ with Euclidean subspace topology. Glue $(x,0)$ to $(x,1)$ for each $x$, and glue $(0,y)$ to $(1,y)$ for each $y$; this seems to give us $T$. More specifically, we defined an equivalence relation on $[0,1]\times[0,1]$, say by $~$ with equivalence classes: 
+\begin{align*}
+    \set{(x,y)} & \quad 0<x,y<1\\
+    \set{(x,0),(x,1)} & \quad 0<x<1\\
+    \set{(0,y),(1,y)} & \quad 0<y<1\\
+    \set{(0,0), (0,1), (1,0), (1,1)}.
+\end{align*}
+Essentially we could define $T = [0,1]^2 / \sim$, the set of equivalence classes. This definition seems annoying - a better could perhaps be defining an equivalence relation $\sim$ on $\R^2$, where every unit square is ``mapped'' to the $[0,1]$ square, i.e. $(x,y)\sim(z,w) \Leftrightarrow x-z\in Z$ and $y-w\in Z$. Again, hopefully we can define $T = R^2/ \sim$.
+\begin{definition}
+Let $(X,\tau)$ be a topological space and let
+\end{definition}
