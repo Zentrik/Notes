@@ -370,30 +370,39 @@ For an endomorphism $\alpha \in L(V)$,
 
 \subsection{Simultaneous diagonalisation}
 \begin{theorem}
-	Let $\alpha, \beta$ be endomorphisms of $V$ which are diagonalisable.
-	Then $\alpha, \beta$ are \textit{simultaneously diagonalisable} (there exists a basis $B$ of $V$ such that $[\alpha]_B, [\beta]_B$ are diagonal) if and only if $\alpha$ and $\beta$ commute.
+	Let $V$ be a finite dimensional vector space.
+	Let $\alpha, \beta$ be endomorphisms of $V$ which are diagonalisable. \\
+	Then $\alpha, \beta$ are \vocab{simultaneously diagonalisable} (there exists a basis $B$ of $V$ such that $[\alpha]_B, [\beta]_B$ are diagonal) if and only if $\alpha$ and $\beta$ commute.
 \end{theorem}
+
 \begin{proof}
-	Two diagonal matrices commute.
+	($\implies$) $\exists \; B$ basis of $V$ s.t. $[\alpha]_B$, $[\beta]_B$ are diagonal.
+	Two diagonal matrices commute, i.e. $[\alpha]_B [\beta]_B = [\beta]_B [\alpha]_B$.
 	If such a basis exists, $\alpha \beta = \beta \alpha$ in this basis.
 	So this holds in any basis.
-	Conversely, suppose $\alpha \beta = \beta \alpha$.
+
+	($\Longleftarrow$)
+	Conversely, suppose $\alpha, \beta$ are diagonalisable and $\alpha \beta = \beta \alpha$.
 	We have
 	\begin{align*}
 		V = \bigoplus_{i=1}^k V_{\lambda_i}
 	\end{align*}
 	where $\lambda_i, \dots, \lambda_k$ are the $k$ distinct eigenvalues of $\alpha$.
-	We claim that $\beta \qty(V_{\lambda_j}) \leq V_{\lambda_j}$.
-	Indeed, for $v \in V_{\lambda_j}$,
-	\begin{align*}
-		\alpha \beta(v) = \beta \alpha(v) = \beta(\lambda_j v) = \lambda_j \beta(v) \implies \alpha(\beta(v)) = \lambda_j \beta(v)
-	\end{align*}
-	Hence, $\beta(v) \in V_{\lambda_j}$.
+	\begin{claim}
+		$V_{\lambda_i}$ stable by $\beta$, i.e. $\beta \qty(V_{\lambda_j}) \leq V_{\lambda_j}$.
+	\end{claim} 
+	\begin{proof}
+		Indeed, for $v \in V_{\lambda_j}$,
+		\begin{align*}
+			\alpha \beta(v) = \beta \alpha(v) = \beta(\lambda_j v) = \lambda_j \beta(v) \implies \alpha(\beta(v)) = \lambda_j \beta(v)
+		\end{align*}
+		Hence, $\beta(v) \in V_{\lambda_j}$.
+	\end{proof} 
 	By assumption, $\beta$ is diagonalisable.
 	Hence, there exists a polynomial $p$ with distinct linear factors such that $p(\beta) = 0$.
 	Now, $\beta\qty(V_{\lambda_j}) \leq V_{\lambda_j}$ so we can consider $\eval{\beta}_{V_{\lambda_j}}$.
 	This is an endomorphism of $V_{\lambda_j}$.
-	We can compute
+	We can see that
 	\begin{align*}
 		p\qty(\eval{\beta}_{V_{\lambda_j}}) = 0
 	\end{align*}
@@ -403,22 +412,23 @@ For an endomorphism $\alpha \in L(V)$,
 	Then the matrices of $\alpha$ and $\beta$ in $V$ are diagonal.
 \end{proof}
 
-\subsection{Minimal polynomials}
-Recall from IB Groups, Rings and Modules the Euclidean algorithm for dividing polynomials.
+\subsection{Minimal polynomials of an endomorphism}
+Recall from IB GRM the Euclidean algorithm for dividing polynomials.
 Given $a, b$ polynomials over $F$ with $b$ nonzero, there exist polynomials $q, r$ over $F$ with $\deg r < \deg b$ and $a = qb + r$.
-\begin{definition}
+\begin{definition}[Minimal polynomial]
 	Let $V$ be a finite dimensional $F$-vector space.
-	Let $\alpha$ be an endomorphism on $V$.
-	The \textit{minimal polynomial} $m_\alpha$ of $\alpha$ is the nonzero polynomial with smallest degree such that $m_\alpha(\alpha) = 0$.
+	Let $\alpha$ be an endomorphism on $V$. \\
+	The \vocab{minimal polynomial} $m_\alpha$ of $\alpha$ is the (unique up to a constant) nonzero polynomial with \textit{smallest degree} such that $m_\alpha(\alpha) = 0$.
 \end{definition}
 \begin{remark}
 	If $\dim V = n < \infty$, then $\dim L(V) = n^2$.
 	In particular, the family $\qty{I, \alpha, \dots, \alpha^{n^2}}$ cannot be free since it has $n^2+1$ entries.
-	This generates a polynomial in $\alpha$ which evaluates to zero.
+	So $\exists \; (a_{n^2}, \dots, a_1, a_0) \neq 0$ s.t. $a_{n^2} \alpha^{n^2} + \dots = a_1 \alpha + a_0 = 0$.
+	So $\exists \; p \in F[t]$ s.t. $p \neq 0$ and $p(\alpha) = 0$.
 	Hence, a minimal polynomial always exists.
 \end{remark}
 \begin{lemma}
-	Let $\alpha \in L(V)$ and $p \in F[t]$ be a polynomial.
+	Let $\alpha \in L(V)$ and $p \in F[t]$ be a polynomial. \\
 	Then $p(\alpha) = 0$ if and only if $m_\alpha$ is a factor of $p$.
 	In particular, $m_\alpha$ is well-defined and unique up to a constant multiple.
 \end{lemma}
@@ -426,8 +436,9 @@ Given $a, b$ polynomials over $F$ with $b$ nonzero, there exist polynomials $q, 
 	Let $p \in F[t]$ such that $p(\alpha) = 0$.
 	If $m_\alpha(\alpha) = 0$ and $\deg m_\alpha < \deg p$, we can perform the division $p = m_\alpha q + r$ for $\deg r < \deg m_\alpha$.
 	Then $p(\alpha) = m_\alpha(\alpha) q(\alpha) + r(\alpha)$.
-	But $m_\alpha(\alpha) = 0$.
+	But $m_\alpha(\alpha) = 0$ so $r(\alpha) = 0$. \\
 	But $\deg r < \deg m_\alpha$ and $m_\alpha$ is the smallest degree polynomial which evaluates to zero for $\alpha$, so $r \equiv 0$ so $p = m_\alpha q$.
+	d
 	In particular, if $m_1, m_2$ are both minimal polynomials that evaluate to zero for $\alpha$, we have $m_1$ divides $m_2$ and $m_2$ divides $m_1$.
 	Hence they are equivalent up to a constant.
 \end{proof}
@@ -443,21 +454,27 @@ Given $a, b$ polynomials over $F$ with $b$ nonzero, there exist polynomials $q, 
 		\end{pmatrix}
 	\end{align*}
 	We can check $p(t) = (t-1)^2$ gives $p(A) = p(B) = 0$.
-	So the minimal polynomial of $A$ or $B$ must be either $(t-1)$ or $(t-1)^2$.
-	For $A$, we can find the minimal polynomial is $(t-1)$, and for $B$ we require $(t-1)^2$.
+	So the minimal polynomial of $A$ or $B$ must be either $(t-1)$ or $(t-1)^2$ (as the min poly divides any poly s.t. $p(\alpha) = 0$).
+	For $A$, we can find the minimal polynomial is $(t-1)$, and for $B$ we require $(t-1)^2$. \\
+	A is diagonalisable as it is a product of distinct linear factors.
 	So $B$ is not diagonalisable, since its minimal polynomial is not a product of distinct linear factors.
 \end{example}
 
 \subsection{Cayley-Hamilton theorem}
-\begin{theorem}
+\begin{theorem}[Cayley-Hamitlon]
 	Let $V$ be a finite dimensional $F$-vector space.
 	Let $\alpha \in L(V)$ with characteristic polynomial $\chi_\alpha(t) = \det(\alpha - t I)$.
 	Then $\chi_\alpha(\alpha) = 0$.
 \end{theorem}
-\noindent Two proofs will provided; one more physical and based on $F = \mathbb C$ and one more algebraic.
+
+\begin{corollary}
+	$m_\alpha \mid \chi_\alpha$.
+\end{corollary} 
+
+Two proofs will provided; one more physical and based on $F = \mathbb C$ and one more algebraic.
 \begin{proof}
+	Let $F = \mathbb{C}$.
 	Let $B = \qty{v_1, \dots, v_n}$ be a basis of $V$ such that $[\alpha]_B$ is triangular.
-	This can be done when $F = \mathbb C$.
 	Note, if the diagonal entries in this basis are $a_i$,
 	\begin{align*}
 		\chi_\alpha(t) = \prod_{i=1}^n (a_i - t) \implies \chi_\alpha(\alpha) = (\alpha - a_1 I) \dots (\alpha - a_n I)
@@ -468,12 +485,12 @@ Given $a, b$ polynomials over $F$ with $b$ nonzero, there exist polynomials $q, 
 	We want to compute $\chi_\alpha(\alpha)(v)$.
 	Note, by construction of the triangular matrix.
 	\begin{align*}
-		\chi_\alpha(\alpha)(v) & = (\alpha - a_1 I) \dots \underbrace{(\alpha - a_n I)(v)}_{\in U_{n-1}}                     \\
-		                       & = (\alpha - a_1 I) \dots \underbrace{(\alpha - a_{n-1} I)(\alpha - a_n I)(v)}_{\in U_{n-2}} \\
-		                       & = \dots                                                                                     \\
-		                       & \in U_0
+		\chi_\alpha(\alpha)(v) & = (\alpha - a_1 I) \dots \underbrace{(\alpha - a_n I)(v)}_{\in U_{n-1}} \\
+		&= (\alpha - a_1 I) \dots \underbrace{(\alpha - a_{n-1} I)(\alpha - a_n I)(v)}_{\in U_{n-2}} \\
+		&= (\alpha - a_1 I) \underbrace{\dots (\alpha - a_n I)(v)}_{\in U_1} \\
+		&= 0
 	\end{align*}
-	Hence this evaluates to zero.
+	Hence $\chi_\alpha(\alpha) = 0$.
 \end{proof}
 \noindent The following proof works for any field where we can equate coefficients, but is much less intuitive.
 \begin{proof}
@@ -509,24 +526,30 @@ Given $a, b$ polynomials over $F$ with $b$ nonzero, there exist polynomials $q, 
 \end{proof}
 
 \subsection{Algebraic and geometric multiplicity}
-\begin{definition}
+\begin{definition}[Algebraic/ geometric multiplicity.]
 	Let $V$ be a finite dimensional $F$-vector space.
-	Let $\alpha \in L(V)$ and let $\lambda$ be an eigenvalue of $\alpha$.
+	Let $\alpha \in L(V)$ and let $\lambda$ be an eigenvalue of $\alpha$. \\
 	Then
 	\begin{align*}
 		\chi_\alpha(t) = (t-\lambda)^{a_\lambda} q(t)
 	\end{align*}
-	where $q(t)$ is a polynomial over $F$ such that $(t-\lambda)$ does not divide $q$.
-	$a_\lambda$ is known as the \textit{algebraic multiplicity} of the eigenvalue $\lambda$.
-	We define the \textit{geometric multiplicity} $g_\lambda$ of $\lambda$ to be the dimension of the eigenspace associated with $\lambda$, so $g_\lambda = \dim \ker (\alpha - \lambda I)$.
+	where $q(t)$ is a non zero polynomial over $F$ such that $(t-\lambda)$ does not divide $q$.
+	$a_\lambda$ is known as the \vocab{algebraic multiplicity} of the eigenvalue $\lambda$.
+	We define the \vocab{geometric multiplicity} $g_\lambda$ of $\lambda$ to be the dimension of the eigenspace associated with $\lambda$, so $g_\lambda = \dim \ker (\alpha - \lambda I)$.
 \end{definition}
+
+\begin{remark}
+	$\lambda$ an eigenvalue iff $\alpha - \lambda I$ singular iff $\det(\alpha - \lambda I) = \chi_\alpha(\lambda) = 0$.
+\end{remark} 
+
 \begin{lemma}
 	If $\lambda$ is an eigenvalue of $\alpha \in L(V)$, then $1 \leq g_\lambda \leq a_\lambda$.
 \end{lemma}
+
 \begin{proof}
 	We have $g_\lambda = \dim \ker (\alpha - \lambda I)$.
 	There exists a nontrivial vector $v \in V$ such that $v \in \ker(\alpha - \lambda I)$ since $\lambda$ is an eigenvalue.
-	Hence $g_\lambda \geq 1$.
+	Hence $g_\lambda \geq 1$. \\
 	We will show that $g_\lambda \leq a_\lambda$.
 	Indeed, let $v_1, \dots, v_{g_\lambda}$ be a basis of $V_\lambda \equiv \ker (\alpha - \lambda I)$.
 	We complete this into a basis $B \equiv \qty(v_1, \dots, v_{g_\lambda}, v_{g_\lambda + 1}, \dots, v_n)$ of $V$.
@@ -560,11 +583,11 @@ Given $a, b$ polynomials over $F$ with $b$ nonzero, there exist polynomials $q, 
 \begin{proof}
 	By the Cayley-Hamilton theorem, $\chi_\alpha(\alpha) = 0$.
 	Since $m_\alpha$ is linear, $m_\alpha$ divides $\chi_\alpha$.
-	Hence $c_\lambda \leq a_\lambda$.
+	Hence $c_\lambda \leq a_\lambda$. \\
 	Now we show $c_\lambda \geq 1$.
 	Indeed, $\lambda$ is an eigenvalue hence there exists a nonzero $v \in V$ such that $\alpha(v) = \lambda v$.
 	For such an eigenvector, $\alpha^P(v) = \lambda^P v$ for $P \in \mathbb N$.
-	Hence for $p \in F[t]$, $p(\alpha)(v) = [p(\lambda)](v)$.
+	Hence for $p \in F[t]$, $p(\alpha)(v) = [p(\lambda)]v$.
 	Hence $m_\alpha(\alpha)(v) = [m_\alpha(\lambda)](v)$.
 	Since the left hand side is zero, $m_\alpha(\lambda) = 0$.
 	So $c_\lambda \geq 1$.
@@ -582,7 +605,7 @@ Given $a, b$ polynomials over $F$ with $b$ nonzero, there exist polynomials $q, 
 	\begin{align*}
 		\chi_A(t) = (t-1)^2(t-2)
 	\end{align*}
-	So the minimal polynomial is either $(t-1)^2(t-2)$ or $(t-1)(t-2)$
+	So the minimal polynomial is either $(t-1)^2(t-2)$ or $(t-1)(t-2)$.
 	We check $(t-1)(t-2)$.
 	$(A - I)(A - 2I)$ can be found to be zero.
 	So $m_A(t) = (t-1)(t-2)$.
