@@ -309,7 +309,7 @@ This was the traditional wording we have been using; here and elsewhere, if no t
 
 We've seen that for a metric space, compact and sequentially compact are equivalent; but \textbf{\color{red} This is not true for general topological space!} In fact, $\exists$ compact space that is not sequentially compact, and $\exists$ sequentially compact space that is not compact. However both examples are beyond the scope of this course.
 
-Observe that compactness and sequential compactness are both topological properties. Given that we don't want to think too much about sequences in a general topological space, we'll be concentrating primarily on compactness rather than sequential compactness.
+Observe that compactness and sequential compactness are both topological propositionerties. Given that we don't want to think too much about sequences in a general topological space, we'll be concentrating primarily on compactness rather than sequential compactness.
 \end{remark}
 
 \begin{remark}
@@ -335,7 +335,7 @@ We shall now see some examples of compact spaces.
     Let $X$ be indiscrete. Then the only open covers of $X$ are $\set{\emptyset, X}$ and $\set{X}$, both of which are finite. So $X$ is compact.
 \end{example} 
 
-Recall that sequential compactness and compactness are generally different in topological spaces. Hence, we need to find another way to prove properties involving ``Boltzano-Weierstrass" differently.
+Recall that sequential compactness and compactness are generally different in topological spaces. Hence, we need to find another way to prove propositionerties involving ``Boltzano-Weierstrass" differently.
 \begin{theorem} \label{thm:33}
 A continuous real-valued function on a compact topological space is bounded and attains its bounds.
 \end{theorem}   
@@ -483,7 +483,7 @@ Consider the surface of a torus (donut) in $\R^3$.
     \centering 
     \includegraphics[height=5cm]{03-torus} 
 \end{figure}
-We might be interested in for example, continuous functions $T\rightarrow T$. Analysis is likely to be unpleasant since the equation defining $T$ might be complicated. However, given that we care about continuity and convergence, if we replace $T$ by a space homeomorphic to $T$ then we're happy, particularly if the new space is analytically easier to work with.
+We might be interested in for example, continuous functions $T\to T$. Analysis is likely to be unpleasant since the equation defining $T$ might be complicated. However, given that we care about continuity and convergence, if we replace $T$ by a space homeomorphic to $T$ then we're happy, particularly if the new space is analytically easier to work with.
 
 For example take the closed unit square $[0,1]\times[0,1]$ with Euclidean subspace topology. 
 \begin{figure}[h] 
@@ -497,15 +497,367 @@ Glue $(x,0)$ to $(x,1)$ for each $x$, and glue $(0,y)$ to $(1,y)$ for each $y$; 
     \set{(0,y),(1,y)} & \quad 0<y<1\\
     \set{(0,0), (0,1), (1,0), (1,1)}.
 \end{align*}
-Essentially we could define $T = [0,1]^2 / \sim$, the set of equivalence classes.
+Essentially we could define $T = [0,1]^2 / {\sim}$, the set of equivalence classes.
 This definition seems annoying - a better could perhaps be defining an equivalence relation $\sim$ on $\R^2$, where every unit square is ``mapped'' to the $[0,1]$ square, i.e. $(x,y)\sim(z,w) \Leftrightarrow x-z\in \mathbb{Z}$ and $y-w\in \mathbb{Z}$.
 \begin{figure}[h] 
     \centering 
     \includegraphics[height=5cm]{03-squareongrid} 
     \caption{The squares `wrap' over.}
 \end{figure}
-Again, hopefully we can define $T = R^2/ \sim$. \\
+Again, hopefully we can define $T = R^2/ {\sim}$. \\
 \underline{But} what is the topology?
-\begin{definition}
-Let $(X,\tau)$ be a topological space and let
+\begin{definition}[Quotient Topology]
+    Let $(X,\tau)$ be a topological space and let $\sim$ be an equivalence relation on $X$. Let $q: X\to X/ {\sim}$ be the quotient map, i.e. $\forall x \in X,\ q(x) = [x]_\sim$ (equivalence class of $x$).
+    The \vocab{quotient topology} on $X/ {\sim}$ is
+    \begin{align*}
+        \rho = \Set{G\subset X/ {\sim}}{q\inv(G)\in \tau}
+    \end{align*} 
 \end{definition}
+
+\begin{remark}
+    \begin{enumerate}
+        \item $\rho$ is indeed a topology using $q\inv(\bigcup G) = \bigcup q\inv(G)$ and $q\inv (G\cap H) = q\inv(G)\cap q\inv (H)$.
+    
+        \item $\rho$ is the largest topology on $X/ {\sim}$ making the quotient map $q$ continuous.
+    \end{enumerate} 
+\end{remark}
+
+\begin{example}
+    Take $\R$ with the usual topology and $X\sim Y$ iff $x-y\in \Z$.
+    Then $\R/ {\sim}$ `is' $S^1$, the unit circle (a subspace of $\R^2$ with the Euclidean topology), where `is' means `is homeomorphic to'.
+    We will prove this later.
+\end{example} 
+
+\begin{example}
+    Suppose as above, but now $x\sim y$ iff $x-y\in \Q$. What is the quotient topology on $\R/ {\sim}?$ 
+    Suppose $G\subset \R/ {\sim}$ is open and $G\neq \phi$.
+    Then $q\inv (G)\subset\R$ is open and non-empty so contains some interval $(a,b)\subset q\inv (G)$ with $a\neq b$. 
+    Now take any $x\in \R$, then $\exists y\in (a,b)$ with $x-y\in \mathbb{Q}$ i.e. $x\sim y$. 
+    Then $q(x) = [x]_\sim = [y]_\sim \in G$. Hence $G = \R/ {\sim}$. 
+    
+    So quotient topology on $\R/ {\sim}$ is the indiscrete topology.
+\end{example} 
+
+\begin{example}
+    Quotients of metrizable spaces need not be metrizable, and the same holds if `metrizable' is replaced with `Hausdorff'.
+\end{example} 
+
+\subsubsection{Basics on equivalence relations and quotients}
+
+Suppose $X$ is a set and $\sim$ is an equivalence relation on $X$. We have $X/ {\sim} = \Set{[x]_\sim}{x\in X}$ and have quotient map $q:X \to X/ {\sim},$ $x \mapsto [x]_\sim$. Clearly $q$ is surjective.
+
+Suppose now $Y$ is also a set and $f:X\to Y$. Assume $f$ \vocab{respects} $\sim$, i.e. $x\sim y \implies f(x) = f(y)$. 
+% https://q.uiver.app/?q=WzAsMyxbMCwwLCJYIl0sWzEsMSwiWC8ge1xcc2ltfSJdLFsyLDAsIlkiXSxbMCwxLCJxIiwyXSxbMSwyLCJcXGJhcntmfSIsMix7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFswLDIsImYiXV0=
+\[\begin{tikzcd}
+	X && Y \\
+	& {X/ {\sim}}
+	\arrow["q"', from=1-1, to=2-2]
+	\arrow["{\bar{f}}"', dashed, from=2-2, to=1-3]
+	\arrow["f", from=1-1, to=1-3]
+\end{tikzcd}\]
+Then there is a unique function $\bar{f}: X/ {\sim} \to Y$ such that $f = \bar{f}\circ q$.
+Indeed, we must have $\forall \; x \in X$ $\bar{f}([x]_\sim) = \bar{f}(q(x)) = f(x)$.
+As $f$ respects $\sim$, this is well defined: $[x]_\sim = [y]_\sim \implies x \sim y \implies f(x) = f(y)$.
+
+\begin{example}
+Suppose $G,H$ are groups and $\theta: G\to H$ is a homomorphism. Let $K = \ker\theta$, and define $\sim$ on $G$ by $g\sim h\Leftrightarrow g\inv h\in K$. Then $G/K = G/ {\sim}$ and consider $\bar{\theta}: G/K\to H$. 
+% https://q.uiver.app/?q=WzAsNCxbMCwwLCJHIl0sWzEsMSwiRyAvIEsiXSxbMiwwLCJIIl0sWzEsMF0sWzAsMSwicSIsMl0sWzEsMiwiXFxiYXJ7XFx0aGV0YX0iLDIseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbMCwyLCJcXHRoZXRhIl1d
+\[\begin{tikzcd}
+	G & {} & H \\
+	& {G / K}
+	\arrow["q"', from=1-1, to=2-2]
+	\arrow["{\bar{\theta}}"', dashed, from=2-2, to=1-3]
+	\arrow["\theta", from=1-1, to=1-3]
+\end{tikzcd}\]
+We can check that $\bar{\theta}$ is a homomorphism and injective thus isomorphism onto $\theta(G)$. This is the first isomorphism theorem.
+\end{example}
+
+\begin{proposition} \label{prp:40}                               
+    Let $(X,\tau)$ be a topological space and $\sim$ be an equivalence relation on $X$. Let $\rho$ be the quotient topology on $X/ {\sim}$. Suppose $f: X\to Y$ is a continuous function respecting $\sim$, where $(Y,\sigma)$ is a topological space. Then there is a unique continuous function $\bar{f}:X/ {\sim}\to Y$ such that $f = \bar{f}\circ q$, where $q: X\to X/ {\sim}$ is a quotient map.
+\end{proposition}
+
+\begin{proof}
+Define $\bar{f}: X/ {\sim}\to Y$ by $\bar{f}([x]_\sim) = f(x)$. \\
+This is well-defined, $[x]_\sim = [y]_\sim \implies x\sim Y \implies f(x) = f(y)$. 
+Clearly $\bar{f}\circ q=f$.
+Let $G\in \sigma$. Then $q\inv(\bar{f}\inv(G)) = (\bar{f}\circ q)\inv (G) = f\inv (G)\in \tau$ as $f$ is continuous. 
+So by definition of quotient topology, $\bar{f}\inv(G)\in \rho$. 
+Hence $\bar{f}$ is continuous.
+
+Finally, if $f = h \circ q$ for some $h:X/ {\sim}\to Y$ then $\forall x\in X$, $h([x]_\sim) = h(q(x)) = f(x) =\bar{f}([x]_\sim)$. So $h = \bar{f}$.
+\end{proof}
+
+\begin{remark}
+This is what makes quotients useful. 
+E.g. recall torus $T = \R^2/ {\sim}$ for an appropriate relation $\sim$.
+Hopefully $T$ is homeomorphic to a genuine torus as a surface in $\R^3$, e.g. $T$ is nasty while $R^2$ is nice. 
+Hence we want to work `upstairs' in $R^2$ rather than `downstairs' in $T$. 
+For examples, if you want to think about a continuous function on $T$, we can instead think about an appropriate continuous function on $\R^2$ respecting $\sim$.
+\end{remark}
+
+\begin{example}
+Recall we had $\R$ with the usual topology, $x\sim y$ iff $x-y\in \Z$ and $S^1= $ $ \Set{x\in \R^2}{||x||=1}$ with subspace topology inherited from Euclidean topology on $\R^2$. \\
+We claimed $\R/ {\sim}$ is homeomorphic to $S^1$. Define $f:\R \to S^1$ by $f(x) = (\sin 2\pi x, \cos 2\pi x)$.
+Clearly $f$ is a continuous surjection and it respects $\sim$. 
+By \cref{prp:40} there is a unique continuous $\bar{f}: \R/ {\sim} \to S^1$ with $\bar{f}\circ q = f$.
+
+Clearly $\bar{f}$ is a continuous bijection (for injectivity, note each $x\in S^1$ is $f(a)$ for unique $a\in[0,1)$ and each $b\in \R$ has $b\sim a$ for a unique $a\in[0,1)$).
+
+Now $\R/ {\sim} = q([0,1])$ is a continuous image of a compact set and so is compact. And $S^1$ is Hausdorff as its a metric space. 
+We also know that any continuous bijection from a compact space to a Hausdorff space is a homeomorphism.
+
+Thus we are done, as $\bar{f}$ is a homeomorphism from $\R/ {\sim}$ to $S^1$.
+\end{example}
+
+\subsection{Connectedness}
+
+Recall the \emph{Intermediate Value Theorem} (IVT): if $f:[a,b]\to \R$ is continuous and wlog $f(a)<f(b)$ then $[f(a),f(b)]\subset f([a,b])$. \\
+Moreover, if $c,d \in f([a,b])$ with $c<d$ then $[c,d]\subset f([a,b])$. 
+
+However, this doesn't work more generally, e.g. if we replace $[a,b]$ by $[-1,0)\cup (0,1] = X$. Define $f:X\to \R$ by \begin{align*}
+    \begin{cases}
+        1 & x<0\\
+        0 & x>0.
+    \end{cases}
+\end{align*} 
+Then $f$ is continuous on $X$, $0\in f(X)$, $1\in f(X)$, but e.g. $1/2 \not\in f(X)$ so $[0,1] \not\subset f(X)$. Indeed, this is because $[-1,0)\cup (0,1]$ is `disconnected'.
+
+\begin{definition}[Connectedness]
+A topological space $X$ is \vocab{disconnected} if there exist disjoint, non-empty open sets $U,V$ with $X = U\cup V$.
+We say $X$ is \vocab{connected} if $X$ is not disconnected.
+\end{definition}
+
+\begin{remark}
+    \begin{enumerate}
+        \item Recall that $U\subset X$ is closed iff its complement, $X \setminus U$ is open. \\
+        If $X$ is disconnected then $X = U \cup V$ so $U = X \setminus V$ and $V = X \setminus U$, so $U, V$ closed.
+        Thus, $X$ is disconnected iff there exist disjoint, non-empty closed sets $U,V$ with $X = U\cup V$.
+        
+        Further, if there exist an open and closed set of $X$, say $A$, then $A \cup (X \setminus A) = X$.
+        So $X$ is connected iff the only subsets of $X$ that are both open and closed are $\emptyset, X$.
+        
+        $X$ is connected iff whenever $U,V\subset X$ are open and disjoint with $X=U\cup V$ then $U=\phi$ or $V=\phi$. Again, we could replace `open' by `closed'.
+
+        If $X$ is disconnected, we say the sets $U,V$ in the definition \emph{disconnect} $X$.
+
+        \item Connectedness is a topological property.
+        \item if $S\subset X$, $X$ a topological space, what does our definition of connectedness say when applied to $S$? Of course, as usual $S$ has the subspace topology from $X$ so is a topology space in its own right. 
+
+        $S$ is disconnected $\Leftrightarrow$ there exist open sets $U,V\subset X$ such that $S\cap U\cap V = \phi$ and $S\subset U\cup V$. Again, we say $U,V$ disconnect $S$.
+        
+        \textbf{\color{red} Warning:} It is not necessary to have $U\cap V =\phi$, e.g. in $\N$ with cofinite topology, the set $\set{1,2}$ is disconnected in $\N$ by the open sets $\N\backslash \set{1}, \N\backslash \set{2}$. We have $(\N\backslash \set{1}) \cap (\N\backslash \set{2})\cap \set{1,2} = \phi$ but $(\N\backslash \set{1})\cap (\N\backslash \set{2}) \neq \phi$. Indeed, if $U,V\subset \N$ are open and non-empty then $U\cap V\neq\phi$. 
+        
+        Thus $S$ is connected iff whenever $U,V\subset X$ are open and $S\cap U\cap V=\phi$ then either $S\cap U=\phi$ or $S\cap V=\phi.$
+        
+        Finally, as in remark 1, could replace `open' with `closed' in these reformulations of the definition.
+    \end{enumerate} 
+\end{remark}
+
+\begin{question}
+Which subsets of $\R$ are connected?
+\end{question}
+
+\begin{definition}
+A subset $I\subset \R$ is an \emph{interval} if whenever $a<b<c$ with $a,c\in I$ then $b\in I$.
+\end{definition}
+
+\begin{proposition} \label{prp:41}      
+Let $I\subset \R$ with the usual topology. Then $I$ is connected iff $I$ is an interval.
+\end{proposition}
+
+\begin{proof}
+\underline{$\Rightarrow$} Suppose $I$ is not an interval. Then we can find $a<b<c$ with $a,c\in I$ but $b\not\in I$. Then $(-\infty,b)$ and $(b,\infty)$ disconnect $I$ in $\R$.
+
+\underline{$\Leftarrow$} Suppose $I$ is an interval. Work in the subspace topology on $I$. Let $S\subset I$ be open, closed and non-empty. Let $a\in S$. Suppose we have $b\in I\backslash S$. Wlog $b>a$. Let $c=\sup([a,b]\cap S).$ Then we can find a sequence $(x_n)$ in $S$ with $x_n\to c\in I$. But $S$ is closed in $I$ so $c\in S$. In particular, $c\neq b$. so $c<b$.
+
+But also $S$ is open in $I$ so $\exists \delta>0$ such that $(c-\delta, c+\delta)\subset S$, wlog $\delta < b-c$. Then $c +\frac{\delta}{2}\in S\cap [a,b]$, contradiction. Thus in fact, $S=I$ and hence $I$ is connected.
+\end{proof}
+
+\begin{theorem}[Equivalent definition of connectedness] \label{thm:42}
+Let $X$ be a topological space. Then $X$ is connected iff every continuous $f: X\to \Z$ (with the usual topology) is constant.
+\end{theorem}
+
+\begin{proof}
+\underline{$\Rightarrow$} Suppose $X$ is connected and $f:X\to \Z$ continuous. For any $n\in \Z$, $\set{n}\subset \Z$ is open and closed so $f\inv(\set{n})\subset X$ is open and closed, so $f\inv(\set{n})= \phi$ or $f\inv(\set{n}) = X$. Thus $f$ is constant.
+
+\underline{$\Leftarrow$} Suppose $U,V$ disconnected $X$. Define $f:X\to Z$ by $f(x) = 0$ if $x\in U$, and $f(x) = 1$ if $x\in V$. Then for any $A\subset \Z$, $f\inv(A) = \phi,X,U$ or $V$ is open. So $f$ is continuous and non-constant.
+\end{proof}
+
+\begin{remark}
+1. Theorem 3.16 together with the IVT can provide an alternative proof of Prop 3.15.
+
+2. Theorem 3.16 remains true with same proof if $\Z$ is replaced by any discrete topological space $Y$ with $|Y|\geq 2$.
+\end{remark}
+
+\begin{proposition}
+A continuous image of a connected space is connected.
+\end{proposition}
+\begin{proof}
+Let $X$ be a connected topological space, let $Y$ be a topological space and let $f:X\to Y$ be continuous. Suppose $U,V\subset Y$ are open with $f(X)\subset U\cup V$ and $U\cap V\cap f(X) = \phi$.
+
+As $f$ is continuous, $f\inv(U),f\inv(V)\subset X$ are open. Also $X = f\inv(U)\cup f\inv(V)$ and $f\inv(U) \cap f\inv(V)=\phi$. As $X$ is connected, wlog $f\inv(U)= \phi$. Then $U\cap f(X)=\phi$. So $f(X)$ is connected.
+\end{proof}
+\begin{proposition}
+A product of connected spaces is connected.
+\end{proposition}
+\begin{proof}
+Let $(X,\tau)$ and $(Y,\sigma)$ be connected topological spaces, and let $\rho$ be the product topology on $X\times Y$. Suppose $U,V\in\rho$ with $U\cap V=\phi$ and $U\cup V = X\times Y$. We want to show $U=\phi$, $V=X\times Y$ or $U=X\times Y$, $V=\phi$.
+
+Fix $x\in X$. Then $\set{x}\times Y$ is homeomorphic to $Y$ (an exercise). In particular, $\set{x}\times Y$ is connected. Then $\set{x}\times Y\subset U$ or $\set{x}\times Y \subset V$ as otherwise $U,V$ would disconnect $\set{x}\times Y$ in $X\times Y$.
+
+Let $A = \Set{x\in X}{\set{x}\times Y\subset U}$ and $B = \Set{x\in X}{\set{x}\times Y \subset V}$. Clearly $A\cap B = \phi$ (as $U\cap V = \phi)$ and we've proved that $X = A\cup B$. Now we want to show that $A,B$ are open to use connectedness in $X$.
+
+Suppose $x\in A$. Then $\set{x}\times Y\subset U$. Then (assuming $Y\neq \phi$, which we do wlog) pick any $y\in Y$. Then $(x,y)\in U$. $U$ is open so can find $T\in \tau$, $S\in \sigma$ such that $(x,y)\in T\times S \subset U$. In particular, for all $w\in T$ then $(w,y)in U$ and so $\set{w}\times Y\subset U$, i.e. $w\in A$. We now have $T\in \tau$ with $x\in T\subset A$ so $A$ is a neighbourhood of $x$ in $X$. Hence $A$ is open.
+
+Similarly $B$ is open. Since $X$ is connected, so $A=\phi$ giving $U=\phi$ or $B=\phi$ giving $V=\phi$. Hence $X\times Y$ is connected.
+\end{proof}
+
+\begin{example}[What can we do with spaces that aren't connected?]
+Recall $[-1,0)\cup (0,1]$ is not connected. But it is a disjoint union of connected sets. Moreover, any propositioner superset of $[-1,0)$ or $(0,1]$ in the $[-1,0)\cup (0,1]$ is disconnected. 
+
+We see here that the space is not connected, but we can take two maximal subsets of the space that are connected that gives us the entire space.
+\end{example}
+
+\begin{definition}
+Let $X$ be a topological space. A \emph{connected component} of $X$ is a maximal connected subset $A$ of $X$: that is to say, $A$ is connected but if $A\subset B\subset X$ with $B$ connected then $A=B$.
+\end{definition}
+
+\begin{theorem} \label{thm:45}
+The connected components of a topological space $X$ form a partition of $X$.
+\end{theorem}
+\begin{proof}
+Define $\sim$ on $X$ by $x\sim y$ iff $\exists A\subset X$ connected with $x,y\in A$. Clearly $\sim$ is reflexive ($\set{x}$ connected) and symmetric. Let's check that it is transitive.
+
+Suppose $x,y,z\in X$ with $x\sim y$ and $y\sim z$. Then $\exists A,B\subset X$ connected with $x,y\in A$ and $y,z\in B$. Now $x,z\in A\cup B$. Suppose $U,V$ disconnect $A\cup B$ in $X$. Wlog $y\in U$. Pick $w\in V\cap(A\cup B)$. Wlog $w\in A$. But also $y\in A$ so $U,V$ disconnect $A$. So $A\cup B$ is connected, so $x\sim z$, thus $\sim$ is indeed an equivalence relation.
+
+Now suppose $S$ is an equivalence class of $\sim$. We want to show that $S$ is connected. Suppose $U,V$ disconnect $S$. Then we can find $x\in U\cap S$, $y\in V\cap S$ and $U\cap V\cap S = \phi$. Then $x\sim y$ so there is a connected $A\subset X$ with $x,y\in A$. For all $z\in A$, $x,z\in A$ are connected so $x\sim z$ so $z\in S$. So $A\subset S$ and so $U\cap V\cap A = \phi$ which gives $U,V$ disconnects $A$, contradiction. Hence $S$ is connected.
+
+Now let's show $S$ is a connected component. Suppose $S\subset T\subset X$ with $T$ connected. Let $x\in S$. Then for all $y\in T$, $x,y\in T$ with $T$ connected so $x\sim y$. Thus $T\subset S$, so $S=T$ and $S$ is a connected component.
+
+Finally let $R$ be a connected component and let $x,y\in R$. Then, as $R$ is connected, $x,y\in R$. So $R$ is contained in some equivalence class $Q$ of $\sim$. But $R\subset Q$ with $Q$ connected so $R=Q$. Hence equivalence classes of $\sim$ are precisely the connected components.
+\end{proof}
+
+\begin{definition}
+A \emph{path} from $x$ to $y$ in a topological space $X$ is a continuous function $\varphi:[0,1]\to X$ with $\varphi(0) = x$, $\varphi(1) = y$. $X$ is \emph{path-connected} if for all $x,y\in X$ there is a path from $x$ to $y$.
+\end{definition}
+
+\begin{proposition}                                     %3.20(46)
+A path-connected space $X$ is connected.
+\end{proposition}
+\begin{proof}
+Suppose $U,V$ disconnect $X$. Pick $a\in U, b\in V$. Let $\varphi$ be a path in $X$ from $a$ to $b$. Then $U,V$ disconnect $\varphi([0,1])$.
+\end{proof}
+
+\textbf{\color{red} Warning:} The converse is not true!
+\begin{example}
+Consider 
+\begin{align*}
+    A &= \Set{(0,y)}{-1\leq y \leq 1}\\
+    B &= \Set{(x,\sin \frac{1}{x})}{0< x\leq 1}
+\end{align*}
+and $X = A\cup B \subset \R^2$. Let's show that $X$ is connected but not path-connected.
+\end{example}
+\textbf{\color{red} Claim:} $X$ connected.
+\begin{proof}
+Clearly $A,B$ themselves are path-connected so connected. Suppose $U,V$ disconnect $X$ in $\R^2$. Then wlog $A\subset U$, $B\subset V$. So $(0,0)\in A\subset U$. $U$ is open so there exists $\delta>0$ such that $B_\delta((0,0))\subset U$. Pick $n$ such that $\frac{1}{2n\pi}<\delta$. Then $(\frac{1}{2n\pi},0)\in U\cap B$, contradiction.
+\end{proof}
+\textbf{\color{red} Claim:} $X$ not path-connected.
+\begin{proof}
+Suppose $\varphi$ is a path from $(0,0)$ to $(1,\sin 1)$ in $X$. Let $\sigma = \sup\Set{t\in [0,1]}{\varphi_1(t) = 0}$. Let $y = \varphi_2(\sigma).$ Then, as $\varphi$ is continuous, $\varphi(\sigma) = (0,y)$.
+
+Choose $\delta > 0$ such that $|\sigma - t| <\delta \implies \norm{\phi(\sigma) - \phi(t)} < 1$. Wlog $\delta < 1-\sigma$. By definition of $\sigma$, $\phi_1(\sigma + \frac{\delta}{2}) = x > 0$. Choose $w\in (0,x)$ such that $\abs{\sin \frac{1}{w} - y} \geq 1$. Then by IVT, there is some $t\in \qty(\sigma, \sigma +\frac{\delta}{2})$ such that $\phi_1(t) = w$. Then $\abs{\sigma - t} < \delta$ but $\norm{\phi(\sigma) - \phi(t)} \geq \abs{\phi_2(\sigma) - \phi_2(t)} = \abs{\sin\frac{1}{w} - y} \geq 1$, contradiction.
+\end{proof}
+
+\begin{proposition}                       %3.21(47)
+An open, connected subset of Euclidean space is path-connected.
+\end{proposition}
+\begin{proof}
+Let $X\subset \R^n$ be open and connected. If $X = \phi$ we are done. So assume $x\neq \phi$. Fix $a\in X$ and let \[ U = \Set{x\in X}{\exists \textup{ path in } X \textup{ from } a \textup{ to } x}. \]
+Note that $U\neq \phi$ as $a\in U$, since  there is a constant path from $a$ to $a$.
+
+\begin{claim}
+    $U$ open in $X$.
+\end{claim} 
+\begin{proof}
+Suppose $b\in U$. Since $X$ is open we can pick $\delta > 0$ such that $B_\delta(b) \subset X$. Let $\phi$ be a path from $a$ to $b$ in $X$ and let $x\in B_\delta(b)$. Then $\theta$ is a path in $X$ from $a$ to $x$ where 
+\[
+\theta(t) = \begin{cases}
+\phi(2t) & 0\leq t \leq \frac{1}{2}\\
+b + 2(t-\frac{1}{2})(x-b) & \frac{1}{2}\leq t \leq 1
+\end{cases}.
+\]
+\end{proof}
+
+\begin{claim}
+    $U$ closed in $X$, i.e. $X\backslash U$ is open in $X$.
+\end{claim} 
+
+\begin{proof}
+Let $b \in X\backslash U$. Choose $\delta> 0$ such that $B_\delta(b) \subset X.$ Suppose $x\in B_\delta (b)\cap U$. Let $\phi$ be a path in $X$ from $a$ to $x$. Then 
+\[
+t \mapsto \begin{cases}
+\phi(2t) & 0\leq t \leq \frac{1}{2}\\
+b + 2(t-\frac{1}{2})(b-x) & \frac{1}{2}\leq t \leq 1
+\end{cases}
+\]
+is a path from $a$ to b in $X$, contradiction. Thus $B_\delta (b) \subset X\backslash U$.
+\end{proof}
+Hence, as $X$ is connected, $U=X$. But the point $a$ was arbitrary. Thus $X$ is path-connected.
+\end{proof}
+
+\begin{remark}
+Recall that we don't always specify the topology when defining a topological space; we should always assume it's the standard one. In particular, $R$ comes with the usual topology, and $R^n$ comes with the Euclidean topology. $X\subset R,R^n$ comes with the subspace topology from the above.
+
+Products/Quotients come with the product/quotient topology respectively.
+\end{remark}
+
+\section{Differentiation}
+Recall that $f:\R\to \R$ is \emph{differentiable} at $a\in R$ with \emph{derivative} A if \[ \frac{f(a+h)-f(a)}{h}\to A \textup{ as } h\to 0.\] We write $f'(a) = A$.
+
+How can we generalize to $f:\R^n\to \R^n$? If $n\geq 2$, then dividing by $h\in \R^n$ makes no sense.
+
+\begin{definition}
+If $f: \R^n\to \R^n$, the \emph{$i$th partial derivative} of $f$ at $a\in \R^n$ is \[ D_i f(a) = \lim_{h\to 0} \frac{f(a+he_i)-f(a)}{h}\]
+where this limit exists, where $e_1,\dots ,e_n$ is standard basis of $\R^n$.
+\end{definition}
+
+However, with this definition all partial derivatives existing at a point doesn't mean that the function is differentiable at that point!
+\begin{example}
+Consider $f:\R^2\to \R$ with 
+\[
+f(x,y) = \begin{cases}
+0 & x = 0 \textup{ or } y = 0\\
+1 & \textup{ otherwise.}
+\end{cases}
+\]
+Both partial derivatives exist at $(0,0)$, but $f$ is not continuous there.
+\end{example}
+
+Let's try think of a better definition. Return to $f:\R\to \R$, where
+\begin{align*}
+    f'(a) = A &\Leftrightarrow \frac{f(a+h) - f(a)}{h}\to A \textup{ as }h\to 0\\
+    &\Leftrightarrow \frac{f(a+h) - f(a)}{h} = A+\epsilon(h) \textup{ where } \epsilon(h)\to 0 \textup{ as } h\to 0\\
+    &\Leftrightarrow f(a+h) = f(a) + Ah + \underbrace{\epsilon(h)h}_{o(h)} \textup{ where } \epsilon(h)\to 0 \textup{ as } h\to 0.
+\end{align*}
+In words, `small changes in $a$ produce approximately linear changes in $f(a)$'.
+
+\begin{definition}
+Let $f:\R^n\to \R^m$ and $a\in \R^n$. We say that $f$ is \emph{differentiable} at $a$ if there is a linear map $\alpha = \mathcal{L}(\R^n,\R^m)$ with \[ f(a+h) = f(a) + \alpha(h) + \epsilon(h) \norm{h}\] where $\epsilon(h)\to 0$ as $h\to 0$.
+\end{definition}
+
+\begin{proposition}                       %4.1      
+Suppose $f:\R^n\to \R^m$, $a \in \R^n$, $\alpha,\beta \in \mathcal{L}(\R^n,\R^m)$ and 
+\begin{align*}
+    f(a+h) &= f(a) + \alpha(h) + \epsilon(h) \norm{h} \\
+    f(a+h) &= f(a) + \beta(h) + \eta(h) \norm{h}
+\end{align*}
+with $\epsilon(h), \eta(h)\to 0$ as $h\to 0$. Then $\alpha = \beta$.
+\end{proposition}
+
+\begin{definition}
+After proving Prop 4.1, we know that the $\alpha$ in the previous definition is unique. We say $\alpha$ is the \emph{derivative} of $f$ at $a$, and write $Df|_a = \alpha$. So, if $f$ is differentiable at $a$, then \[ f(a+h) = f(a) + Df|_a(h) + \epsilon(h) \norm{h}\]
+where $\epsilon(h)\to 0$ as $h\to 0$.
+\end{definition}
+\begin{remark}
+If $f:\R\to \R^m$, then $Df|_a = f'(a)h.$
+\end{remark}    
