@@ -309,7 +309,7 @@ This was the traditional wording we have been using; here and elsewhere, if no t
 
 We've seen that for a metric space, compact and sequentially compact are equivalent; but \textbf{\color{red} This is not true for general topological space!} In fact, $\exists$ compact space that is not sequentially compact, and $\exists$ sequentially compact space that is not compact. However both examples are beyond the scope of this course.
 
-Observe that compactness and sequential compactness are both topological propositionerties. Given that we don't want to think too much about sequences in a general topological space, we'll be concentrating primarily on compactness rather than sequential compactness.
+Observe that compactness and sequential compactness are both topological properties. Given that we don't want to think too much about sequences in a general topological space, we'll be concentrating primarily on compactness rather than sequential compactness.
 \end{remark}
 
 \begin{remark}
@@ -335,7 +335,7 @@ We shall now see some examples of compact spaces.
     Let $X$ be indiscrete. Then the only open covers of $X$ are $\set{\emptyset, X}$ and $\set{X}$, both of which are finite. So $X$ is compact.
 \end{example} 
 
-Recall that sequential compactness and compactness are generally different in topological spaces. Hence, we need to find another way to prove propositionerties involving ``Boltzano-Weierstrass" differently.
+Recall that sequential compactness and compactness are generally different in topological spaces. Hence, we need to find another way to prove properties involving ``Boltzano-Weierstrass" differently.
 \begin{theorem} \label{thm:33}
 A continuous real-valued function on a compact topological space is bounded and attains its bounds.
 \end{theorem}   
@@ -423,7 +423,7 @@ A \vocab{$\pi$-system} on a set $X$ is a non-empty subset $\pi\subset \mathcal{P
 \begin{proposition} \label{prp:37}
 Let $\Pi$ be a $\pi$-system on a set $X$. Then 
 \begin{align*}
-    \tau = \qty{\bigcup_{A\in \Sigma} A : \Sigma\in \Pi} \cup \set{\emptyset, X}
+    \tau = \qty{\bigcup_{A\in \Sigma} A : \Sigma \subset \Pi} \cup \set{\emptyset, X}
 \end{align*} is a topology on $X$.
 \end{proposition}  
 
@@ -530,7 +530,7 @@ Again, hopefully we can define $T = R^2/ {\sim}$. \\
 
 \begin{example}
     Suppose as above, but now $x\sim y$ iff $x-y\in \Q$. What is the quotient topology on $\R/ {\sim}?$ 
-    Suppose $G\subset \R/ {\sim}$ is open and $G\neq \phi$.
+    Suppose $G\subset \R/ {\sim}$ is open and $G\neq \emptyset$.
     Then $q\inv (G)\subset\R$ is open and non-empty so contains some interval $(a,b)\subset q\inv (G)$ with $a\neq b$. 
     Now take any $x\in \R$, then $\exists y\in (a,b)$ with $x-y\in \mathbb{Q}$ i.e. $x\sim y$. 
     Then $q(x) = [x]_\sim = [y]_\sim \in G$. Hence $G = \R/ {\sim}$. 
@@ -636,18 +636,20 @@ We say $X$ is \vocab{connected} if $X$ is not disconnected.
         Further, if there exist an open and closed set of $X$, say $A$, then $A \cup (X \setminus A) = X$.
         So $X$ is connected iff the only subsets of $X$ that are both open and closed are $\emptyset, X$.
         
-        $X$ is connected iff whenever $U,V\subset X$ are open and disjoint with $X=U\cup V$ then $U=\phi$ or $V=\phi$. Again, we could replace `open' by `closed'.
+        $X$ is connected iff whenever $U,V\subset X$ are open and disjoint with $X=U\cup V$ then $U=\emptyset$ or $V=\emptyset$. Again, we could replace `open' by `closed'.
 
-        If $X$ is disconnected, we say the sets $U,V$ in the definition \emph{disconnect} $X$.
+        If $X$ is disconnected, we say the sets $U,V$ in the definition \vocab{disconnect} $X$.
 
         \item Connectedness is a topological property.
-        \item if $S\subset X$, $X$ a topological space, what does our definition of connectedness say when applied to $S$? Of course, as usual $S$ has the subspace topology from $X$ so is a topology space in its own right. 
+        \item if $S\subset X$, where $X$ is a topological space, what does our definition of connectedness say when applied to $S$? Of course, as usual $S$ has the subspace topology from $X$ so is a topological space in its own right. 
 
-        $S$ is disconnected $\Leftrightarrow$ there exist open sets $U,V\subset X$ such that $S\cap U\cap V = \phi$ and $S\subset U\cup V$. Again, we say $U,V$ disconnect $S$.
+        $S$ is disconnected $\iff$ there exist open\footnote{} sets $U,V\subset X$ such that $(S \cap U) \cap (S \cap V) = S\cap U\cap V = \emptyset$ and $(S \cap U) \cup (S \cap V) = S$ i.e. $S\subset U\cup V$. Again, we say $U,V$ disconnect $S$.
         
-        \textbf{\color{red} Warning:} It is not necessary to have $U\cap V =\phi$, e.g. in $\N$ with cofinite topology, the set $\set{1,2}$ is disconnected in $\N$ by the open sets $\N\backslash \set{1}, \N\backslash \set{2}$. We have $(\N\backslash \set{1}) \cap (\N\backslash \set{2})\cap \set{1,2} = \phi$ but $(\N\backslash \set{1})\cap (\N\backslash \set{2}) \neq \phi$. Indeed, if $U,V\subset \N$ are open and non-empty then $U\cap V\neq\phi$. 
+        \begin{warning}
+            It is not necessary to have $U\cap V =\emptyset$, e.g. in $\N$ with cofinite topology, the set $\set{1,2}$ is disconnected in $\N$ by the open sets $\N\setminus \set{1}, \N\setminus \set{2}$. We have $(\N\setminus \set{1}) \cap (\N\setminus \set{2})\cap \set{1,2} = \emptyset$ but $(\N\setminus \set{1})\cap (\N\setminus \set{2}) \neq \emptyset$. Indeed, if $U,V\subset \N$ are open and non-empty then $U\cap V\neq\emptyset$ (if $U, V$ open in cofinite topology then they have finite complement so their intersection has finite complement.).
+        \end{warning} 
         
-        Thus $S$ is connected iff whenever $U,V\subset X$ are open and $S\cap U\cap V=\phi$ then either $S\cap U=\phi$ or $S\cap V=\phi.$
+        Thus $S$ is connected iff whenever $U,V\subset X$ are open, $S\cap U\cap V=\emptyset$ and $S \subset U \cup V$ then either $S\cap U=\emptyset$ or $S\cap V=\emptyset.$
         
         Finally, as in remark 1, could replace `open' with `closed' in these reformulations of the definition.
     \end{enumerate} 
@@ -657,8 +659,8 @@ We say $X$ is \vocab{connected} if $X$ is not disconnected.
 Which subsets of $\R$ are connected?
 \end{question}
 
-\begin{definition}
-A subset $I\subset \R$ is an \emph{interval} if whenever $a<b<c$ with $a,c\in I$ then $b\in I$.
+\begin{definition}[Interval]
+A subset $I\subset \R$ is an \vocab{interval} if whenever $a<b<c$ with $a, c \in I$ then $b \in I$.
 \end{definition}
 
 \begin{proposition} \label{prp:41}      
@@ -666,11 +668,13 @@ Let $I\subset \R$ with the usual topology. Then $I$ is connected iff $I$ is an i
 \end{proposition}
 
 \begin{proof}
-\underline{$\Rightarrow$} Suppose $I$ is not an interval. Then we can find $a<b<c$ with $a,c\in I$ but $b\not\in I$. Then $(-\infty,b)$ and $(b,\infty)$ disconnect $I$ in $\R$.
+($\implies$): Suppose $I$ is not an interval. Then we can find $a<b<c$ with $a,c\in I$ but $b\not\in I$. Then $(-\infty,b)$ and $(b,\infty)$ disconnect $I$ in $\R$.
 
-\underline{$\Leftarrow$} Suppose $I$ is an interval. Work in the subspace topology on $I$. Let $S\subset I$ be open, closed and non-empty. Let $a\in S$. Suppose we have $b\in I\backslash S$. Wlog $b>a$. Let $c=\sup([a,b]\cap S).$ Then we can find a sequence $(x_n)$ in $S$ with $x_n\to c\in I$. But $S$ is closed in $I$ so $c\in S$. In particular, $c\neq b$. so $c<b$.
+($\Longleftarrow$): Suppose $I$ is an interval. Work in the subspace topology on $I$. Let $S\subset I$ be open, closed and non-empty. Let $a\in S$. \\
+Suppose we have $b\in I\setminus S$. Wlog $b>a$. Let $c=\sup([a,b]\cap S)$. Then we can find a sequence $(x_n)$ in $S$ with $x_n\to c\in I$. But $S$ is closed in $I$ so $c\in S$. In particular, $c\neq b$. so $c<b$.
 
-But also $S$ is open in $I$ so $\exists \delta>0$ such that $(c-\delta, c+\delta)\subset S$, wlog $\delta < b-c$. Then $c +\frac{\delta}{2}\in S\cap [a,b]$, contradiction. Thus in fact, $S=I$ and hence $I$ is connected.
+But also $S$ is open in $I$ so $\exists \delta>0$ such that $(c-\delta, c+\delta)\subset S$, wlog $\delta < b-c$. Then $c +\frac{\delta}{2}\in S\cap [a,b]$ \Lightning. 
+Thus in fact, $S=I$ and hence $I$ is connected.
 \end{proof}
 
 \begin{theorem}[Equivalent definition of connectedness] \label{thm:42}
@@ -678,59 +682,70 @@ Let $X$ be a topological space. Then $X$ is connected iff every continuous $f: X
 \end{theorem}
 
 \begin{proof}
-\underline{$\Rightarrow$} Suppose $X$ is connected and $f:X\to \Z$ continuous. For any $n\in \Z$, $\set{n}\subset \Z$ is open and closed so $f\inv(\set{n})\subset X$ is open and closed, so $f\inv(\set{n})= \phi$ or $f\inv(\set{n}) = X$. Thus $f$ is constant.
+($\implies$): Suppose $X$ is connected and $f:X\to \Z$ continuous. For any $n\in \Z$, $\set{n}\subset \Z$ is open and closed so $f\inv(\set{n})\subset X$ is open and closed, so $f\inv(\set{n})= \emptyset$ or $f\inv(\set{n}) = X$\footnote{Connectedness implies only open and closed subsets of $X$ are $\emptyset, X$.}. Thus $f$ is constant.
 
-\underline{$\Leftarrow$} Suppose $U,V$ disconnected $X$. Define $f:X\to Z$ by $f(x) = 0$ if $x\in U$, and $f(x) = 1$ if $x\in V$. Then for any $A\subset \Z$, $f\inv(A) = \phi,X,U$ or $V$ is open. So $f$ is continuous and non-constant.
+($\Longleftarrow$): Suppose $U,V$ disconnect $X$. Define $f:X \to \mathbb{Z}$ by $f(x) = \begin{cases}
+    0 & x \in U \\
+    1 & x \in V
+\end{cases}$. 
+Then for any $A\subset \Z$, $f\inv(A) = \emptyset,X,U$ or $V$\footnote{We get $\emptyset$ if $0, 1 \notin A$, $X$ if $\{0, 1\} \subset A$, \dots} and so $f\inv(A)$ is open. So $f$ is continuous and non-constant.
 \end{proof}
 
 \begin{remark}
-1. Theorem 3.16 together with the IVT can provide an alternative proof of Prop 3.15.
+1. \Cref{thm:42} together with the IVT can provide an alternative proof of \cref{prp:41}.
 
-2. Theorem 3.16 remains true with same proof if $\Z$ is replaced by any discrete topological space $Y$ with $|Y|\geq 2$.
+2. \Cref{thm:42} remains true with same proof if $\Z$ is replaced by any discrete topological space $Y$ with $|Y| \geq 2$ (need two points to construct $f(x)$ in ($\Longleftarrow$)).
 \end{remark}
 
-\begin{proposition}
+\begin{proposition} \label{prp:43}
 A continuous image of a connected space is connected.
 \end{proposition}
 \begin{proof}
-Let $X$ be a connected topological space, let $Y$ be a topological space and let $f:X\to Y$ be continuous. Suppose $U,V\subset Y$ are open with $f(X)\subset U\cup V$ and $U\cap V\cap f(X) = \phi$.
+Let $X$ be a connected topological space, let $Y$ be a topological space and let $f:X\to Y$ be continuous. Suppose $U,V\subset Y$ are open with $f(X)\subset U\cup V$ and $U\cap V\cap f(X) = \emptyset$.
 
-As $f$ is continuous, $f\inv(U),f\inv(V)\subset X$ are open. Also $X = f\inv(U)\cup f\inv(V)$ and $f\inv(U) \cap f\inv(V)=\phi$. As $X$ is connected, wlog $f\inv(U)= \phi$. Then $U\cap f(X)=\phi$. So $f(X)$ is connected.
+As $f$ is continuous, $f\inv(U),f\inv(V)\subset X$ are open. Also $X = f\inv(U)\cup f\inv(V)$ and $f\inv(U) \cap f\inv(V)=\emptyset$. As $X$ is connected, wlog $f\inv(U)= \emptyset$. Then $U \cap f(X)=\emptyset$. So $f(X)$ is connected.
 \end{proof}
-\begin{proposition}
+
+\begin{proposition} \label{prp:44}
 A product of connected spaces is connected.
 \end{proposition}
+
 \begin{proof}
-Let $(X,\tau)$ and $(Y,\sigma)$ be connected topological spaces, and let $\rho$ be the product topology on $X\times Y$. Suppose $U,V\in\rho$ with $U\cap V=\phi$ and $U\cup V = X\times Y$. We want to show $U=\phi$, $V=X\times Y$ or $U=X\times Y$, $V=\phi$.
+Let $(X,\tau)$ and $(Y,\sigma)$ be connected topological spaces, and let $\rho$ be the product topology on $X\times Y$. 
 
-Fix $x\in X$. Then $\set{x}\times Y$ is homeomorphic to $Y$ (an exercise). In particular, $\set{x}\times Y$ is connected. Then $\set{x}\times Y\subset U$ or $\set{x}\times Y \subset V$ as otherwise $U,V$ would disconnect $\set{x}\times Y$ in $X\times Y$.
+Suppose $U,V\in\rho$ with $U\cap V=\emptyset$ and $U\cup V = X\times Y$. We want to show $U=\emptyset$, $V=X\times Y$ or $U=X\times Y$, $V=\emptyset$.
 
-Let $A = \Set{x\in X}{\set{x}\times Y\subset U}$ and $B = \Set{x\in X}{\set{x}\times Y \subset V}$. Clearly $A\cap B = \phi$ (as $U\cap V = \phi)$ and we've proved that $X = A\cup B$. Now we want to show that $A,B$ are open to use connectedness in $X$.
+Fix $x\in X$. Then $\set{x}\times Y$ is homeomorphic to $Y$ (Sheet 3). In particular, $\set{x}\times Y$ is connected. Then $\set{x}\times Y\subset U$ or $\set{x}\times Y \subset V$ as otherwise $U,V$ would disconnect $\set{x}\times Y$ in $X\times Y$.
 
-Suppose $x\in A$. Then $\set{x}\times Y\subset U$. Then (assuming $Y\neq \phi$, which we do wlog) pick any $y\in Y$. Then $(x,y)\in U$. $U$ is open so can find $T\in \tau$, $S\in \sigma$ such that $(x,y)\in T\times S \subset U$. In particular, for all $w\in T$ then $(w,y)in U$ and so $\set{w}\times Y\subset U$, i.e. $w\in A$. We now have $T\in \tau$ with $x\in T\subset A$ so $A$ is a neighbourhood of $x$ in $X$. Hence $A$ is open.
+Let $A = \Set{x\in X}{\set{x}\times Y\subset U}$ and $B = \Set{x\in X}{\set{x}\times Y \subset V}$. Clearly $A\cap B = \emptyset$ (as $U\cap V = \emptyset)$ and we've proved that $X = A\cup B$. Now we want to show that $A,B$ are open to use connectedness in $X$.
 
-Similarly $B$ is open. Since $X$ is connected, so $A=\phi$ giving $U=\phi$ or $B=\phi$ giving $V=\phi$. Hence $X\times Y$ is connected.
+Suppose $x\in A$. Then $\set{x}\times Y\subset U$. Then (assuming $Y\neq \emptyset$, which we do wlog) pick any $y\in Y$. Then $(x,y)\in U$. $U$ is open so can find $T\in \tau$, $S\in \sigma$ such that $(x,y)\in T\times S \subset U$. 
+In particular, for all $w \in T$ then $(w,y) \in U$ and so $\set{w}\times Y\subset U$\footnote{If $\set{w} \times \set{y} \in U$ and $\set{w} \times \set{a} \in V$ for some $a \in Y$ this contradicts $\set{x} \times Y \subset U$ or $\set{x} \times Y \subset V$.}, i.e. $w \in A$. We now have $T\in \tau$ with $x\in T\subset A$ so $A$ is a neighbourhood of $x$ in $X$. Hence $A$ is open.
+
+Similarly $B$ is open. Since $X$ is connected, so $A=\emptyset$ giving $U=\emptyset$ or $B=\emptyset$ giving $V=\emptyset$. Hence $X\times Y$ is connected.
 \end{proof}
 
 \begin{example}[What can we do with spaces that aren't connected?]
-Recall $[-1,0)\cup (0,1]$ is not connected. But it is a disjoint union of connected sets. Moreover, any propositioner superset of $[-1,0)$ or $(0,1]$ in the $[-1,0)\cup (0,1]$ is disconnected. 
+Recall $[-1,0)\cup (0,1]$ is not connected. But it \underline{is} a disjoint union of connected sets. Moreover, any proper superset of $[-1,0)$ or $(0,1]$ in $[-1,0) \cup (0,1]$ is disconnected. 
 
 We see here that the space is not connected, but we can take two maximal subsets of the space that are connected that gives us the entire space.
 \end{example}
 
-\begin{definition}
-Let $X$ be a topological space. A \emph{connected component} of $X$ is a maximal connected subset $A$ of $X$: that is to say, $A$ is connected but if $A\subset B\subset X$ with $B$ connected then $A=B$.
+\begin{definition}[Connected Component]
+Let $X$ be a topological space. A \vocab{connected component} of $X$ is a maximal connected subset $A$ of $X$: that is to say, $A$ is connected but if $A\subset B\subset X$ with $B$ connected then $A=B$.
 \end{definition}
 
 \begin{theorem} \label{thm:45}
 The connected components of a topological space $X$ form a partition of $X$.
 \end{theorem}
+
 \begin{proof}
-Define $\sim$ on $X$ by $x\sim y$ iff $\exists A\subset X$ connected with $x,y\in A$. Clearly $\sim$ is reflexive ($\set{x}$ connected) and symmetric. Let's check that it is transitive.
+Define $\sim$ on $X$ by $x\sim y$ iff $\exists A\subset X$ connected with $x,y \in A$. Clearly $\sim$ is reflexive ($\set{x}$ connected) and symmetric. Let's check that it is transitive.
 
-Suppose $x,y,z\in X$ with $x\sim y$ and $y\sim z$. Then $\exists A,B\subset X$ connected with $x,y\in A$ and $y,z\in B$. Now $x,z\in A\cup B$. Suppose $U,V$ disconnect $A\cup B$ in $X$. Wlog $y\in U$. Pick $w\in V\cap(A\cup B)$. Wlog $w\in A$. But also $y\in A$ so $U,V$ disconnect $A$. So $A\cup B$ is connected, so $x\sim z$, thus $\sim$ is indeed an equivalence relation.
+Suppose $x,y,z\in X$ with $x\sim y$ and $y\sim z$. Then $\exists A,B\subset X$ connected with $x,y\in A$ and $y,z\in B$. Now $x,z\in A\cup B$. Suppose $U,V$ disconnect $A\cup B$ in $X$. Wlog $y\in U$. Pick $w\in V\cap(A\cup B)$. Wlog $w\in A$. But also $y\in A$ so $U,V$ disconnect $A$ \Lightning.
+So $A\cup B$ is connected, so $x\sim z$, thus $\sim$ is indeed an equivalence relation.
 
-Now suppose $S$ is an equivalence class of $\sim$. We want to show that $S$ is connected. Suppose $U,V$ disconnect $S$. Then we can find $x\in U\cap S$, $y\in V\cap S$ and $U\cap V\cap S = \phi$. Then $x\sim y$ so there is a connected $A\subset X$ with $x,y\in A$. For all $z\in A$, $x,z\in A$ are connected so $x\sim z$ so $z\in S$. So $A\subset S$ and so $U\cap V\cap A = \phi$ which gives $U,V$ disconnects $A$, contradiction. Hence $S$ is connected.
+Now suppose $S$ is an equivalence class of $\sim$. We want to show that $S$ is connected. Suppose $U,V$ disconnect $S$. Then we can find $x\in U\cap S$, $y\in V\cap S$ and $U\cap V\cap S = \emptyset$. Then $x\sim y$ so there is a connected $A\subset X$ with $x,y\in A$. For all $z\in A$, $x,z\in A$ are connected so $x\sim z$ so $z\in S$. So $A\subset S$ and so $U\cap V\cap A = \emptyset$ which gives $U,V$ disconnects $A$, contradiction. Hence $S$ is connected.
 
 Now let's show $S$ is a connected component. Suppose $S\subset T\subset X$ with $T$ connected. Let $x\in S$. Then for all $y\in T$, $x,y\in T$ with $T$ connected so $x\sim y$. Thus $T\subset S$, so $S=T$ and $S$ is a connected component.
 
@@ -765,42 +780,42 @@ Clearly $A,B$ themselves are path-connected so connected. Suppose $U,V$ disconne
 \begin{proof}
 Suppose $\varphi$ is a path from $(0,0)$ to $(1,\sin 1)$ in $X$. Let $\sigma = \sup\Set{t\in [0,1]}{\varphi_1(t) = 0}$. Let $y = \varphi_2(\sigma).$ Then, as $\varphi$ is continuous, $\varphi(\sigma) = (0,y)$.
 
-Choose $\delta > 0$ such that $|\sigma - t| <\delta \implies \norm{\phi(\sigma) - \phi(t)} < 1$. Wlog $\delta < 1-\sigma$. By definition of $\sigma$, $\phi_1(\sigma + \frac{\delta}{2}) = x > 0$. Choose $w\in (0,x)$ such that $\abs{\sin \frac{1}{w} - y} \geq 1$. Then by IVT, there is some $t\in \qty(\sigma, \sigma +\frac{\delta}{2})$ such that $\phi_1(t) = w$. Then $\abs{\sigma - t} < \delta$ but $\norm{\phi(\sigma) - \phi(t)} \geq \abs{\phi_2(\sigma) - \phi_2(t)} = \abs{\sin\frac{1}{w} - y} \geq 1$, contradiction.
+Choose $\delta > 0$ such that $|\sigma - t| <\delta \implies \norm{\emptyset(\sigma) - \emptyset(t)} < 1$. Wlog $\delta < 1-\sigma$. By definition of $\sigma$, $\phi_1(\sigma + \frac{\delta}{2}) = x > 0$. Choose $w\in (0,x)$ such that $\abs{\sin \frac{1}{w} - y} \geq 1$. Then by IVT, there is some $t\in \qty(\sigma, \sigma +\frac{\delta}{2})$ such that $\phi_1(t) = w$. Then $\abs{\sigma - t} < \delta$ but $\norm{\emptyset(\sigma) - \emptyset(t)} \geq \abs{\phi_2(\sigma) - \phi_2(t)} = \abs{\sin\frac{1}{w} - y} \geq 1$, contradiction.
 \end{proof}
 
 \begin{proposition}                       %3.21(47)
 An open, connected subset of Euclidean space is path-connected.
 \end{proposition}
 \begin{proof}
-Let $X\subset \R^n$ be open and connected. If $X = \phi$ we are done. So assume $x\neq \phi$. Fix $a\in X$ and let \[ U = \Set{x\in X}{\exists \textup{ path in } X \textup{ from } a \textup{ to } x}. \]
-Note that $U\neq \phi$ as $a\in U$, since  there is a constant path from $a$ to $a$.
+Let $X\subset \R^n$ be open and connected. If $X = \emptyset$ we are done. So assume $x\neq \emptyset$. Fix $a\in X$ and let \[ U = \Set{x\in X}{\exists \textup{ path in } X \textup{ from } a \textup{ to } x}. \]
+Note that $U\neq \emptyset$ as $a\in U$, since  there is a constant path from $a$ to $a$.
 
 \begin{claim}
     $U$ open in $X$.
 \end{claim} 
 \begin{proof}
-Suppose $b\in U$. Since $X$ is open we can pick $\delta > 0$ such that $B_\delta(b) \subset X$. Let $\phi$ be a path from $a$ to $b$ in $X$ and let $x\in B_\delta(b)$. Then $\theta$ is a path in $X$ from $a$ to $x$ where 
+Suppose $b\in U$. Since $X$ is open we can pick $\delta > 0$ such that $B_\delta(b) \subset X$. Let $\emptyset$ be a path from $a$ to $b$ in $X$ and let $x\in B_\delta(b)$. Then $\theta$ is a path in $X$ from $a$ to $x$ where 
 \[
 \theta(t) = \begin{cases}
-\phi(2t) & 0\leq t \leq \frac{1}{2}\\
+\emptyset(2t) & 0\leq t \leq \frac{1}{2}\\
 b + 2(t-\frac{1}{2})(x-b) & \frac{1}{2}\leq t \leq 1
 \end{cases}.
 \]
 \end{proof}
 
 \begin{claim}
-    $U$ closed in $X$, i.e. $X\backslash U$ is open in $X$.
+    $U$ closed in $X$, i.e. $X\setminus U$ is open in $X$.
 \end{claim} 
 
 \begin{proof}
-Let $b \in X\backslash U$. Choose $\delta> 0$ such that $B_\delta(b) \subset X.$ Suppose $x\in B_\delta (b)\cap U$. Let $\phi$ be a path in $X$ from $a$ to $x$. Then 
+Let $b \in X\setminus U$. Choose $\delta> 0$ such that $B_\delta(b) \subset X.$ Suppose $x\in B_\delta (b)\cap U$. Let $\emptyset$ be a path in $X$ from $a$ to $x$. Then 
 \[
 t \mapsto \begin{cases}
-\phi(2t) & 0\leq t \leq \frac{1}{2}\\
+\emptyset(2t) & 0\leq t \leq \frac{1}{2}\\
 b + 2(t-\frac{1}{2})(b-x) & \frac{1}{2}\leq t \leq 1
 \end{cases}
 \]
-is a path from $a$ to b in $X$, contradiction. Thus $B_\delta (b) \subset X\backslash U$.
+is a path from $a$ to b in $X$, contradiction. Thus $B_\delta (b) \subset X\setminus U$.
 \end{proof}
 Hence, as $X$ is connected, $U=X$. But the point $a$ was arbitrary. Thus $X$ is path-connected.
 \end{proof}
