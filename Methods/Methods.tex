@@ -8,11 +8,12 @@
 
 \input{../preamble-dynamic.tex}
 % \newcommand{\norm}[1]{\left \lVert #1 \right \rVert}
-\newcommand{\inv}{^{-1}}
 \DeclareMathOperator{\sgn}{sgn}
 
 \author{Based on lectures by \nlecturer \ and notes by thirdsgames.co.uk}
 \numberwithin{equation}{section}
+
+\let\phi\varphi
 
 % \setcounter{section}{-1}
 
@@ -29,9 +30,13 @@
     \include{03-Wave.tex}
     \include{04-diffusion.tex}
     \include{05-Laplace.tex}
+    % \part{Inhomogenous ODEs; Fourier Transforms}
     \include{06-Dirac.tex}
     \include{07-Green.tex}
     \include{08-Fourier.tex}
-
-    \part{Inhomogenous ODEs and Greens Functions}
+    % \part{PDEs on Unbounded Domains}
+    \include{09-Characteristics.tex}
+    \include{10-PDEsGreens.tex}
+    
+    % \part{Inhomogenous ODEs and Greens Functions}
 \end{document}
