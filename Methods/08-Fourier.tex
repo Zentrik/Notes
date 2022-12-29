@@ -664,13 +664,13 @@ So, for instance, $n = 4$ gives $\omega = e^{-2\pi i/4} = -i$ giving
 	\end{pmatrix}
 \end{align*}
 The inverse discrete Fourier transform is
-\begin{align}
-	h_m &= h(t_m) \notag \\
-	    &= \frac{1}{2\pi} \int_{-\infty}^\infty \widetilde h(\omega) e^{i \omega t_m} \dd{\omega} \notag \\
-	    &= \int_{-\infty}^\infty \widetilde h(f) e^{2\pi i f t_m} \dd{f} \notag \\
-	    &\approx \frac{1}{\Delta N} \sum_{n=0}^{N-1} \Delta \widetilde h_d(f_n) e^{2\pi i m n / N} \notag \\
-	    &= \frac{1}{N} \sum_{n=0}^{N-1} \widetilde h_n e^{2\pi i m n / N} \label{eq:8.48}
-\end{align}
+\begin{align*}
+	h_m &= h(t_m) \\
+	    &= \frac{1}{2\pi} \int_{-\infty}^\infty \widetilde h(\omega) e^{i \omega t_m} \dd{\omega} \\
+	    &= \int_{-\infty}^\infty \widetilde h(f) e^{2\pi i f t_m} \dd{f} \\
+	    &\approx \frac{1}{\Delta N} \sum_{n=0}^{N-1} \Delta \widetilde h_d(f_n) e^{2\pi i m n / N} \\
+	    &= \frac{1}{N} \sum_{n=0}^{N-1} \widetilde h_n e^{2\pi i m n / N}
+\end{align*}
 Hence, we can interpolate the initial function from its samples.
 \begin{align*}
 	h(t) = \frac{1}{N} \sum_{n=0}^{N-1} \widetilde h_n e^{2\pi i n t / N}

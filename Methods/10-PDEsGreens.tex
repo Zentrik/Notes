@@ -214,7 +214,7 @@ The potential here is spherically symmetric, so the Green's function is a functi
 Without loss of generality, let $r' = 0$, so $G$ is a function only of the radius, now denoted $r$.
 Integrating the left hand side of Poisson's equation, \cref{eq:10.15}, over a ball $B$ with radius $r$ around zero, we find
 \begin{align*}
-	\int_B \laplacian{G_{\mathrm{FS}}} \dd[3]{r} = \int_{\partial B} \grad{G_{\mathrm{FS}}} \cdot \hat n \dd{S} = \int_{\partial B} \pdv{G}{r} r^2 \dd{\Omega}
+	\int_B \laplacian{G_{\mathrm{FS}}} \dd[3]{r} = \int_{\partial B} \grad{G_{\mathrm{FS}}} \cdot \hat n \dd{S} = \int_{\partial B} \pdv{G_{\mathrm{FS}}}{r} r^2 \dd{\Omega}
 \end{align*}
 where $\dd{\Omega}$ is the angle element.
 This gives
