@@ -3,9 +3,9 @@
 For this section, let $F = \mathbb C$.
 
 \subsection{Definition}
-\begin{definition}
+\begin{definition}[Jordan Normal Form]
 	Let $A \in M_n(\mathbb C)$.
-	We say that $A$ is in \textit{Jordan normal form} if it is a block diagonal matrix, where each block is of the form
+	We say that $A$ is in \vocab{Jordan normal form} (JNF) if it is a block diagonal matrix, where each block is of the form
 	\begin{align*}
 		J_{n_i}(\lambda) =
 		\begin{pmatrix}
@@ -16,7 +16,7 @@ For this section, let $F = \mathbb C$.
 			0       & 0       & 0       & \cdots & \lambda
 		\end{pmatrix}
 	\end{align*}
-	We say that $J_{n_i}(\lambda) \in M_{n_i}(\mathbb C)$ are \textit{Jordan blocks}.
+	We say that $J_{n_i}(\lambda) \in M_{n_i}(\mathbb C)$ are \vocab{Jordan blocks}.
 	The $\lambda_i \in \mathbb C$ need not be distinct.
 \end{definition}
 \begin{remark}
@@ -36,8 +36,9 @@ For this section, let $F = \mathbb C$.
 \begin{theorem}
 	Any complex matrix $A \in M_n(\mathbb C)$ is similar to a matrix in Jordan normal form, which is unique up to reordering the Jordan blocks.
 \end{theorem}
-\noindent The proof is non-examinable.
+The proof is non-examinable.
 This follows from IB Groups, Rings and Modules.
+
 \begin{example}
 	Let $\dim V = 2$.
 	Then any matrix is similar to one of
@@ -61,84 +62,52 @@ This follows from IB Groups, Rings and Modules.
 	\end{align*}
 \end{example}
 
-\subsection{Direct sum of eigenspaces}
-\begin{theorem}
-	Let $V$ be a $\mathbb C$-vector space.
-	Let $\dim V = n < \infty$.
-	Then, the minimal polynomial $m_\alpha(t)$ of an endomorphism $\alpha \in L(V)$ satisfies
+\begin{example}
+	Let $\dim V = 3$.
+	Then any matrix is similar to one of
 	\begin{align*}
-		V = \bigoplus_{j=1}^k V_j
+		\begin{pmatrix}
+		\lambda_1 & 0 & 0 \\
+		0 & \lambda_2 & 0 \\
+		0 & 0 & \lambda_3
+		\end{pmatrix};
+		\begin{pmatrix}
+			\lambda_1 & 0 & 0 \\
+			0 & \lambda_2 & 0 \\
+			0 & 0 & \lambda_2
+		\end{pmatrix};
+		\begin{pmatrix}
+			\lambda_1 & 0 & 0 \\
+			0 & \lambda_2 & 1 \\
+			0 & 0 & \lambda_2
+		\end{pmatrix};
+		\begin{pmatrix}
+			\lambda & 0 & 0 \\
+			0 & \lambda & 0 \\
+			0 & 0 & \lambda
+		\end{pmatrix};
+		\begin{pmatrix}
+			\lambda & 0 & 0 \\
+			0 & \lambda & 1 \\
+			0 & 0 & \lambda
+		\end{pmatrix};
+		\begin{pmatrix}
+			\lambda & 1 & 0 \\
+			0 & \lambda & 1 \\
+			0 & 0 & \lambda
+		\end{pmatrix}
 	\end{align*}
-	where $V_j = \ker[(\alpha - \lambda_j I)^{c_j}]$, and where
+	The minimal polynomials are
 	\begin{align*}
-		m_\alpha(t) = \prod_{i=1}^k (t - \lambda_i)^{c_i}
+		(t-\lambda_1)(t-\lambda_2)(t-\lambda_3); (t-\lambda_1)(t-\lambda_2); (t-\lambda_1)(t-\lambda_2)^2; (t-\lambda); (t-\lambda)^2; (t-\lambda)^3
 	\end{align*}
-	$V_j$ is called a \textit{generalised eigenspace} associated with $\lambda_j$.
-\end{theorem}
-\begin{remark}
-	Note that $V_j$ is stable by $\alpha$, that is, $\alpha(V_j) = V_j$.
-	Note further that $\eval{(\alpha - \lambda_j I)}_{V_j} = \mu_j$ gives that $\mu_j$ is a nilpotent endomorphism; $\mu_j^{c_j} = 0$.
-	So the Jordan normal form theorem is a statement about nilpotent matrices.
+\end{example}
 
-	Note, when $\alpha$ is diagonalisable, $c_j = 1$ and hence we recover $V_j = \ker(\alpha - \lambda_j I)$ and $V = \bigoplus V_j$.
-\end{remark}
-\begin{proof}
-	The key to this proof is that the projectors onto $V_j$ are `explicit'.
-	First, recall
-	\begin{align*}
-		m_\alpha(t) = \prod_{j=1}^k (t-\lambda_j)^{c_j}
-	\end{align*}
-	Then, let
-	\begin{align*}
-		p_j(t) = \prod_{i \neq j} (t - \lambda_i)^{c_i}
-	\end{align*}
-	Then $p_j$ have by definition no common factor.
-	So by Euclid's algorithm, we can find polynomials $q_i$ such that
-	\begin{align*}
-		\sum_{i=1}^k q_i p_i = 1
-	\end{align*}
-	We define the projector $\pi_j = q_j p_j(\alpha)$, which is an endomorphism.
-	By construction, for all $v \in V$, we have
-	\begin{align*}
-		\sum_{j=1}^k \pi_j(v) = \sum_{j=1}^k a_j p_j(\alpha(v)) = I(v) = v
-	\end{align*}
-	Hence,
-	\begin{align*}
-		v = \sum_{i=1}^k \pi_i(v)
-	\end{align*}
-	Observe further that $\pi_j(v) \in V_j$.
-	Indeed,
-	\begin{align*}
-		(\alpha - \lambda_j I)^{c_j} \pi_j(v) = (\alpha - \lambda_j I)^{c_j} q_j p_j(\alpha(v)) = q_j m_\alpha (\alpha(v)) = 0
-	\end{align*}
-	Hence $\pi_j(v) \in V_j$.
-	In particular, $V = \sum_{j=1}^k V_j$.
-	We need to show that this sum is direct.
-	Note, for $i \neq j$, $\pi_i \pi_j = 0$ from the definition of $\pi$.
-	Hence, observe that
-	\begin{align*}
-		\pi_i = \pi_i \qty(\sum_{j=1}^k \pi_j) \implies \pi_i = \pi_i \pi_i
-	\end{align*}
-	Thus, $\pi$ is a projector.
-	In particular, this implies that $\eval{\pi_i}_{V_j}$ is the identity if $i = j$ and zero if $i \neq j$.
-	This immediately implies that th sum is direct;
-	\begin{align*}
-		V = \bigoplus_{j=1}^k V_j
-	\end{align*}
-	Indeed, suppose
-	\begin{align*}
-		\sum_{j=1}^k \alpha_j v_j = 0;\quad v_j \in V_j;\quad \alpha_1 = 0
-	\end{align*}
-	Then
-	\begin{align*}
-		v_1 = -\frac{1}{\alpha_1} \sum_{j=2}^k \alpha_j v_j
-	\end{align*}
-	Applying $\pi_1$,
-	\begin{align*}
-		v_1 = -\frac{1}{\alpha_1} \sum_{j=2}^k \alpha_j \pi_1(v_j) = 0
-	\end{align*}
-	Iterating, we find $v = 0$.
-\end{proof}
+
+\begin{definition}[Nilpotent]
+	An endomorphism, $u$, is \vocab{nilpotent} of order $n$ if $u^n = 0$ but $u^{n-1} \neq 0$.
+\end{definition} 
+
 \begin{remark}
 	We can compute the quantities $a_\lambda, g_\lambda, c_\lambda$ on the Jordan normal form of a matrix.
 	Indeed, let $m \geq 2$ and consider a Jordan block $J_m(\lambda)$.
@@ -150,7 +119,7 @@ This follows from IB Groups, Rings and Modules.
 			0 & 0
 		\end{pmatrix}
 	\end{align*}
-	Hence $J$ is nilpotent of order exactly $m$.
+	Hence $(J_m - \lambda I)$ is nilpotent of order exactly $m$.
 	In Jordan normal form,
 	\begin{enumerate}
 		\item $a_\lambda$ is the sum of sizes of blocks with eigenvalue $\lambda$.
@@ -159,6 +128,7 @@ This follows from IB Groups, Rings and Modules.
 		\item $c_\lambda$ is the size of the largest block with eigenvalue $\lambda$.
 	\end{enumerate}
 \end{remark}
+
 \begin{example}
 	Let
 	\begin{align*}
@@ -209,3 +179,82 @@ This follows from IB Groups, Rings and Modules.
 		\end{pmatrix}^{-1}
 	\end{align*}
 \end{example}
+
+\subsection{Direct sum of eigenspaces}
+\begin{theorem}[Generalised Eigenspace Decomposition]
+	Let $V$ be a $\mathbb C$-vector space.
+	Let $\dim V = n < \infty$.
+	Then, the minimal polynomial $m_\alpha(t)$ of an endomorphism $\alpha \in L(V)$ satisfies
+	\begin{align*}
+		m_\alpha(t) = \prod_{i=1}^k (t - \lambda_i)^{c_i}
+	\end{align*} where $\lambda_i$ are the eigenvalues of $\alpha$.
+	Then
+	\begin{align*}
+		V = \bigoplus_{j=1}^k V_j
+	\end{align*}
+	where $V_j = \ker[(\alpha - \lambda_j I)^{c_j}]$.
+	$V_j$ is called a \textit{generalised eigenspace} associated with $\lambda_j$.
+\end{theorem}
+\begin{remark}
+	Note that $V_j$ is stable by $\alpha$, that is, $\alpha(V_j) = V_j$.
+	Note further that $\eval{(\alpha - \lambda_j I)}_{V_j} = \mu_j$ gives that $\mu_j$ is a nilpotent endomorphism; $\mu_j^{c_j} = 0$.
+	So the Jordan normal form theorem is a statement about nilpotent matrices.
+
+	Note, when $\alpha$ is diagonalisable, $c_j = 1$ and hence we recover $V_j = \ker(\alpha - \lambda_j I)$ and $V = \bigoplus V_j$.
+\end{remark}
+\begin{proof}
+	The key to this proof is that the projectors onto $V_j$ are `explicit'.
+
+	First, recall
+	\begin{align*}
+		m_\alpha(t) = \prod_{j=1}^k (t-\lambda_j)^{c_j}
+	\end{align*}
+	Then, let
+	\begin{align*}
+		p_j(t) = \prod_{i \neq j} (t - \lambda_i)^{c_i}
+	\end{align*}
+	Then $p_j$ have by definition no common factor.
+	So by Euclid's algorithm, we can find polynomials $q_i$ such that
+	\begin{align*}
+		\sum_{i=1}^k q_i p_i = 1
+	\end{align*}
+	We define the projector $\pi_j = q_j p_j(\alpha)$, which is an endomorphism.
+	By construction, for all $v \in V$, we have
+	\begin{align*}
+		\sum_{j=1}^k \pi_j(v) = \sum_{j=1}^k q_j p_j(\alpha(v)) = I(v) = v
+	\end{align*}
+	Hence,
+	\begin{align*}
+		v = \sum_{i=1}^k \pi_i(v)
+	\end{align*}
+
+	Secondly, recall $m_\alpha(\alpha) = 0$ and we can observe $\pi_j(v) \in V_j$.
+	Indeed,
+	\begin{align*}
+		(\alpha - \lambda_j I)^{c_j} \pi_j(v) = (\alpha - \lambda_j I)^{c_j} q_j p_j(\alpha(v)) = q_j m_\alpha (\alpha(v)) = 0
+	\end{align*}
+	Hence $\pi_j(v) \in V_j = \ker (\alpha - \lambda_j I)^{c_j}$.
+
+	So, $v = \sum_{j=1}^{k} \pi_j(v) \; \forall \; v \in V$ where $\pi_j(v) \in V_j$.
+	So, $V = \sum_{j=1}^k V_j$.
+
+	We need to show that this sum is direct.
+	Note, for $i \neq j$, $\pi_i \pi_j = 0$ as $m_\alpha \mid \pi_i \pi_j$.
+	Hence, observe that
+	\begin{align*}
+		\pi_i = \pi_i \qty(\sum_{j=1}^k \pi_j) \implies  \underbracket{\pi_i = \pi_i \pi_i}_\text{projector property}
+	\end{align*}
+	Thus, $\pi$ is a projector.
+	In particular, this implies that $\eval{\pi_i}_{V_j}$ is the identity if $i = j$ and zero if $i \neq j$.
+	This immediately implies that the sum is direct;
+	\begin{align*}
+		V = \bigoplus_{j=1}^k V_j
+	\end{align*}
+	Indeed, suppose
+	\begin{align*}
+		v &\in V_i \cap \qty(\sum_{j \neq i} V_j) \\
+		v &= \sum_{j \neq i} v_j,\ v_j \in V_j \\
+		\pi_i(v) &= \pi_i\qty(\sum_{j \neq i} v_j) \\
+		v &= 0
+	\end{align*}
+\end{proof}
