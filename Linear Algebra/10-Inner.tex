@@ -1,0 +1,676 @@
+\section{Inner Product Spaces}
+
+\subsection{Definition}
+\begin{definition}[Inner Product]
+	Let $V$ be a vector space over $\mathbb R$ or $\mathbb C$.
+	A \vocab{scalar product} or \vocab{inner product} is a positive-definite symmetric (respectively Hermitian) bilinear form $\phi$ on $V$.
+\end{definition}
+
+\begin{notation}
+	We write
+	\begin{align*}
+		\phi(u,v) = \inner{u,v}
+	\end{align*}
+\end{notation} 
+
+\begin{definition}[Inner Product Space]
+	$V$, when equipped with this inner product, is called a real (respectively complex) \vocab{inner product space}.
+\end{definition} 
+
+\begin{example}
+	In $\mathbb C^n$, we define
+	\begin{align*}
+		\inner{x,y} = \sum_{i=1}^n x_i \overline y_i
+	\end{align*}
+\end{example}
+
+\begin{example}
+	Let $V = C^0([0,1], \mathbb C)$.
+	Then we can define
+	\begin{align*}
+		\inner{f,g} = \int_0^1 f(t) \overline g(t) \dd{t}
+	\end{align*}
+	This is the $L^2$ scalar product.
+\end{example}
+
+\begin{example}
+	Let $\omega \colon [0,1] \colon \mathbb R^\star_+$ where $\mathbb R^\star_+ = \mathbb R_+ \setminus \qty{0}$ and define
+	\begin{align*}
+		\inner{f,g} = \int_0^1 f(t) \overline g(t) w(t) \dd{t}
+	\end{align*}
+\end{example}
+
+\begin{remark}
+	Typically it suffices to check $\inner{u,u} = 0 \implies u = 0$ since linearity and positivity are usually trivial.
+\end{remark}
+
+\begin{definition}[Norm]
+	Let $V$ be an inner product space.
+	Then for $v \in V$, the \vocab{norm} of $v$ induced by the inner product is defined by
+	\begin{align*}
+		\norm{v} = \qty(\inner{v,v})^{1/2}
+	\end{align*}
+	This is real, and positive if $v \neq 0$.
+\end{definition}
+
+\subsection{Cauchy-Schwarz inequality}
+\begin{lemma}[Cauchy-Schwarz Inequality]
+	For an inner product space,
+	\begin{align*}
+		\abs{\inner{u,v}} \leq \norm{a} \norm{b}
+	\end{align*}
+\end{lemma}
+
+\begin{remark}
+	Note that equality iff $u, v$ colinear.
+\end{remark} 
+
+\begin{proof}
+	$F = \mathbb{R}$ or $\mathbb{C}$.
+
+	Let $t \in F$.
+	Then,
+	\begin{align*}
+		0 \leq \norm{t u - v} = \inner{tu - v, tu - v} = t \overline t \inner{u,u} - u \inner{u,v} - \overline t \inner{v,u} + \norm{v}^2
+	\end{align*}
+	Since the inner product is Hermitian $\inner{v, u} = \overline{\inner{u, v}}$,
+	\begin{align*}
+		0 \leq \abs{t}^2 \norm{u}^2 + \norm{v}^2 - 2 \Re(t \inner{u,v})
+	\end{align*}
+	By choosing
+	\begin{align*}
+		t = \frac{\overline{\inner{u,v}}}{\norm{u}^2}
+	\end{align*}
+	we have
+	\begin{align*}
+		0 \leq \frac{\abs{\inner{u,v}}^2}{\norm{u}^2} + \norm{v}^2 - 2 \Re\qty(\frac{\abs{\inner{u,v}}^2}{\norm{u}^2})
+	\end{align*}
+	Since the term under the real part operator is real, the result holds.
+
+	Proving equality implies $u, v$ are proportional is left as an exercise.
+\end{proof}
+
+
+\begin{corollary}[Triangle Inequality]
+	In an inner product space,
+	\begin{align*}
+		\norm{u+v} \leq \norm{u} + \norm{v}
+	\end{align*}
+\end{corollary}
+\begin{proof}
+	We have
+	\begin{align*}
+		\norm{u+v}^2 &= \inner{u+v, u+v} \\
+		&= \norm{u^2} + 2 \Re(\inner{u,v}) + \norm{v}^2 \\
+		&\leq \norm{u^2} + \norm{v}^2 + 2 \norm{u} \cdot \norm{v} \quad \text{by Cauchy-Schwarz}\\
+		&= (\norm{u} + \norm{v})^2
+	\end{align*}
+\end{proof}
+\begin{remark}
+	Any inner product induces a norm, but not all norms derive from scalar products.
+\end{remark}
+
+\subsection{Orthogonal and orthonormal sets}
+\begin{definition}[Orthogonal and Orthonormal Sets]
+	A set $(e_1, \dots, e_k)$ of non-zero vectors of $V$ is said to be \vocab{orthogonal} if $\inner{e_i, e_j} = 0$ for all $i \neq j$.
+	The set is said to be \vocab{orthonormal} if it is orthogonal and $\norm{e_i} = 1$ for all $i$.
+	In this case, $\inner{e_i, e_j} = \delta_{ij}$.
+\end{definition}
+
+\begin{lemma}
+	If $(e_1, \dots, e_k)$ are orthogonal and nonzero, then they are linearly independent.
+	Further, let $v \in \genset{\qty{e_i}}$.
+	Then,
+	\begin{align*}
+		v = \sum_{j=1}^k \lambda_j e_j \implies \lambda_j = \frac{\inner{v, e_j}}{\norm{e_j}^2}
+	\end{align*}
+\end{lemma}
+
+\begin{proof}
+	Suppose
+	\begin{align*}
+		\sum_{i=1}^k \lambda_i e_i = 0
+	\end{align*}
+	Then,
+	\begin{align*}
+		0 = \inner{\sum_{i=1}^k \lambda_i, e_j} \implies 0 = \sum_{i=1}^k \lambda_i \inner{e_i, e_j} = \lambda_j
+	\end{align*}
+	Thus $\lambda_j = 0$ for all $j$.
+
+	Further, for $v$ in the span of these vectors,
+	\begin{align*}
+		\inner{v, e_j} = \sum_{i=1}^k \lambda_i \inner{e_i, e_j} = \lambda_j \norm{e_j}^2
+	\end{align*}
+\end{proof}
+
+\subsection{Parseval's identity}
+\begin{corollary}[Parseval's Identity]
+	Let $V$ be a finite-dimensional inner product space.
+	Let $(e_1, \dots, e_n)$ be an orthonormal basis.
+	Then, for any vectors $u, v \in V$, we have
+	\begin{align*}
+		\inner{u, v} = \sum_{i=1}^n \inner{u, e_i} \overline{\inner{v, e_i}}
+	\end{align*}
+	Hence,
+	\begin{align*}
+		\norm{u}^2 = \sum_{i=1}^n \abs{\inner{u,e_i}}^2
+	\end{align*}
+\end{corollary}
+
+\begin{proof}
+	By orthonormality,
+	\begin{align*}
+		u = \sum_{i=1}^n \inner{u, e_i} e_i;\quad v = \sum_{i=1}^n \inner{v, e_i} e_i
+	\end{align*}
+	Hence, by orthogonality and sesquilinearity,
+	\begin{align*}
+		\inner{u,v} = \sum_{i=1}^n \inner{u, e_i} \overline{\inner{v, e_i}}
+	\end{align*}
+	By taking $u = v$ we find
+	\begin{align*}
+		\norm{u}^2 = \inner{u,u} = \sum_{i=1}^n \abs{\inner{u,e_i}}^2
+	\end{align*}
+\end{proof}
+
+\subsection{Gram-Schmidt orthogonalisation process}
+\begin{theorem}[Gram-Schmidt Orthogonalisation Process]
+	Let $V$ be an inner product space.
+	Let $(v_i)_{i \in I}$ be a linearly independent family of vectors such that $I$ is countable (or finite).
+	Then there exists a family $(e_i)_{i \in I}$ of orthonormal vectors such that for all $k \geq 1$,
+	\begin{align*}
+		\genset{v_1, \dots, v_k} = \genset{e_1, \dots, e_k}
+	\end{align*}
+\end{theorem}
+\begin{proof}
+	This proof is an explicit algorithm to compute the family $(e_i)$, which will be computed by induction on $k$.
+
+	For $k = 1$, take $e_1 = \frac{v_1}{\norm{v_1}}$ as $v_1 \neq 0$ as $(v_i)$ free.
+
+	Inductively, suppose $(e_1, \dots, e_k)$ satisfy the conditions as above.
+	Then we will find a valid $e_{k+1}$.
+	We define
+	\begin{align*}
+		e_{k+1}' = v_{k+1} - \sum_{i=1}^k \inner{v_{k+1}, e_i} e_i
+	\end{align*}
+	This ensures that the inner product between $e_{k+1}'$ and any basis vector $e_j$ is zero, while maintaining the same span.
+	\begin{align*}
+		\inner{e_{k+1}', e_j} &= \inner{v_{k+1} - \sum_{i=1}^k \inner{v_{k+1}, e_i} e_i, e_j} \\
+		&= \inner{v_{k+1}, e_j} - \inner{v_{k+1}, e_j} \\
+		&= 0.
+	\end{align*} 
+	Suppose $e_{k+1}' = 0$.
+	Then, $v_{k+1} \in \genset{e_1, \dots, e_k} = \genset{v_1, \dots, v_k}$ which contradicts the fact that the $(v_i)$ family is free. \\
+	$\genset{v_1, \dots, v_{k+1}} = \genset{e_1, \dots, e'_{k+1}}$. \\
+	Thus,
+	\begin{align*}
+		e_{k+1} = \frac{e_{k+1}'}{\norm{e_{k+1}'}}
+	\end{align*}
+	satisfies the requirements.
+\end{proof}
+
+\begin{corollary}
+	In finite-dimensional inner product spaces, there always exists an orthonormal basis.
+	In particular, any orthonormal set of vectors can be extended into an orthonormal basis.
+\end{corollary}
+
+\begin{proof}
+	Pick $(e_1, \dots, e_k)$ orthonormal.
+	Then they are linearly independent so we can extend to $(e_1, \dots, e_k, v_{k+1}, \dots, v_n)$ a basis of $V$.
+	Apply Gram Schmidt to this set noticing that there is no need to modify $(e_1, \dots, e_k)$.
+	So we get $(e_1, \dots, e_k, e_{k+1}, \dots, e_n)$, an orthonormal basis of $V$.
+\end{proof} 
+
+\begin{remark}
+	Let $A \in M_n(\mathbb R)$ be a real-valued (or complex-valued) matrix.
+	Then, the column vectors of $A$ are orthonormal if $A^\transpose A = I$ (or $A^\transpose \overline A = I$ in the complex-valued case).
+\end{remark}
+
+\subsection{Orthogonality of matrices}
+\begin{definition}[Orthogonal and Unitary Matrices]
+	A matrix $A \in M_n(\mathbb R)$ is \vocab{orthogonal} if $A^\transpose A = I$, iff $A^\transpose = A^{-1}$. \\
+	A matrix $A \in M_n(\mathbb C)$ is \vocab{unitary} if $A^\transpose \overline A = I$, iff $A^\dagger = A^{-1}$.
+\end{definition}
+
+\begin{proposition}
+	Let $A$ be a square, non-singular, real-valued (or complex-valued) matrix.
+	Then $A$ can be written as $A = RT$ where $T$ is upper triangular and $R$ is orthogonal (or respectively unitary).
+\end{proposition}
+
+\begin{proof}
+	We apply the Gram-Schmidt process to the column vectors of the matrix.
+	This gives us an orthonormal set of vectors, which gives an upper triangular matrix in this new basis.
+\end{proof}
+
+\subsection{Orthogonal complement and projection}
+\begin{definition}[Orthogonal Direct Sum]
+	Let $V$ be an inner product space.
+	Let $V_1, V_2 \leq V$.
+	Then we say that $V$ is the \vocab{orthogonal direct sum} of $V_1$ and $V_2$ if 
+	\begin{enumerate}
+		\item $V = V_1 \oplus V_2$
+		\item for all vectors $v_1\in V_1, v_2\in V_2$ we have $\inner{v_1, v_2} = 0$.
+	\end{enumerate} 
+\end{definition}
+
+\begin{notation}
+	For orthogonal direct sums we write $V = V_1 \overset{\perp}{\oplus} V_2$.
+\end{notation} 
+
+\begin{remark}
+	If for all vectors $v_1, v_2$ we have $\inner{v_1, v_2} = 0$, then $v \in V_1 \cap V_2 \implies \norm{v}^2 = 0 \implies v = 0$.
+	Hence the sum is always direct if the subspaces are orthogonal.
+\end{remark}
+
+\begin{definition}[Orthogonal]
+	Let $V$ be an inner product space and let $W \leq V$.
+	We define the \vocab{orthogonal} of $W$ to be
+	\begin{align*}
+		W^\perp = \qty{v \in V \colon \forall w \in W, \inner{v,w} = 0}
+	\end{align*}
+\end{definition}
+
+\begin{lemma}
+	For any inner product space $V$ and any subspace $W \leq V$, we have $V = W \overset{\perp}{\oplus} W^\perp$.
+\end{lemma}
+
+\begin{proof}
+	First note that $W^\perp \leq V$.
+	Then, if $w \in W$, $w \in W^\perp$, we have
+	\begin{align*}
+		\norm{w}^2 = \inner{w, w} = 0
+	\end{align*}
+	since they are orthogonal, so the vector subspaces intersect only in the zero vector.
+	Now, we need to show $V = W + W^\perp$.
+	Let $(e_1, \dots, e_k)$ be an orthonormal basis of $W$ and extend it into $(e_1, \dots, e_k, e_{k+1}, \dots, e_n)$ which can be made orthonormal.
+	Then, $(e_{k+1}, \dots, e_n)$ are elements of $W^\perp$ and form a basis.
+\end{proof}
+
+\subsection{Projection maps}
+\begin{definition}[Projection]
+	Suppose $V = U \oplus W$, so $U$ is a complement of $W$ in $V$. \\
+	Then, we define
+	\begin{align*}
+		\pi : V &\to W \\
+		v = u + w &\mapsto w
+	\end{align*} 
+	This is well defined, since the sum is direct. \\
+	$\pi$ is linear, and $\pi^2 = \pi$.
+
+	We say that $\pi$ is the \vocab{projection} operator onto $W$.
+\end{definition}
+
+\begin{remark}
+	The map $I - \pi$ is the projection onto $U$, where $I$ is the identity map.
+\end{remark}
+
+\begin{remark}
+	If $V$ an inner product space and $W$ finite dimensional, then $V = W^\perp \oplus W$ so we can let $U = W^\perp$ and find $\pi$ explicitly.
+\end{remark} 
+
+\begin{lemma}
+	Let $V$ be an inner product space.
+	Let $W \leq V$ be a finite-dimensional subspace.
+	Let $(e_1, \dots, e_k)$ be an orthonormal basis for $W$ (by Gram Schmidt).
+	Then,
+	\begin{enumerate}
+		\item $\pi(v) = \sum_{i=1}^k \inner{v, e_i} e_i$ and $W \overset{\perp}{\oplus} W^\perp$
+		\item for all $v \in V, w \in W$, $\norm{v - \pi(v)} \leq \norm{v - w}$ with equality iff $w = \pi(v)$, hence $\pi(v)$ is the point in $W$ closest to $v$.
+	\end{enumerate}
+\end{lemma}
+
+\begin{remark}
+	This lemma has an infinite dimensional generalisation:
+	\begin{itemize}
+		\item $V$ inner product space $\to$ Hilbert space (completeness)
+		\item $W$ finite dimensional $\to$ closed.
+	\end{itemize} 
+\end{remark} 
+
+\begin{proof}
+	Let $W = \genset{e_1, \dots, e_k}$ where $(e_i)$ are an orthonormal basis.
+
+	We define $\pi(v) = \sum_{i=1}^k \inner{v, e_i} e_i$. \\
+	Then \begin{align*}
+		v = (v - \pi(v)) + \underbracket{\pi(v)}_{W}
+	\end{align*} 
+	We claim that the remaining term is in the orthogonal; $v - \pi(v) \in W^\perp$.
+	Indeed, we must show $\inner{v - \pi(v), w} = 0$ for all $w \in W$.
+	Equivalently, $\inner{v - \pi(v), e_i} = 0$ for all basis vectors $e_i$ of $W$.
+	We can explicitly compute
+	\begin{align*}
+		\inner{v - \pi(v), e_j} &= \inner{v, e_j} - \inner{\sum_{i=1}^k \inner{v, e_i} e_i, e_j} \\
+		&= \inner{v, e_j} - \sum_{i=1}^k \inner{v, e_i} \inner{e_i, e_j} \\
+		&= \inner{v, e_j} - \inner{v, e_j} = 0
+	\end{align*}
+	Hence, $v = (v - \pi(v)) + \pi(v)$ is a decomposition into $W$ and $W^\perp$ so $V = W + W^\perp$.
+	$W \cap W^\perp = \qty{0}$ as for $v \in W \cap W^\perp$ $\inner{v, v} = 0$ so $v = 0$, so we have $V = W \overset{\perp}{\oplus} W^\perp$.
+
+	For the second part, let $v \in V$, $w \in W$, and we compute
+	\begin{align*}
+		\norm{v - w}^2 &= \norm{\underbrace{v - \pi(v)}_{\in W^\perp} + \underbrace{\pi(v) - w}_{\in W}}^2 \\
+		&= \inner{v - \pi(v) + \pi(v) - w, v - \pi(v) + \pi(v) - w} \\
+		&= \norm{v - \pi(v)}^2 + \norm{\pi(v) - w}^2 \\
+		&\geq \norm{v - \pi(v)}^2
+	\end{align*}
+	with equality if and only if $w = \pi(v)$.
+\end{proof}
+
+\subsection{Adjoint maps}
+\begin{definition}[Adjoint Map]
+	Let $V, W$ be finite-dimensional inner product spaces.
+	Let $\alpha \in L(V, W)$.
+	Then there exists a unique linear map $\alpha^\star \colon W \to V$ such that for all $v, w \in V, W$,
+	\begin{align*}
+		\inner{\alpha(v), w} = \inner{v, \alpha^\star(w)}
+	\end{align*}
+	Moreover, if $B$ is an orthonormal basis of $V$, and $C$ is an orthonormal basis of $W$, then
+	\begin{align*}
+		[\alpha^\star]_{C, B} = \qty(\overline{[\alpha]_{B, C}})^\transpose
+	\end{align*}
+\end{definition}
+
+\begin{proof}
+	Let $B = (v_1, \dots, v_n)$ and $C = (w_1, \dots, w_m)$ and $A = [\alpha]_{B, C} = (a_{ij})$.
+
+	To check existence, we define $[\alpha^\star]_{C, B} = \overline{A}^\transpose = (c_{ij})$ and explicitly check the definition.
+	By orthogonality,
+	\begin{align*}
+		\inner{\alpha\qty(\sum \lambda_i v_i), \sum \mu_j w_j} = \inner{\sum_{i,k} \lambda_i a_{ki} w_k, \sum_j \mu_j w_j} = \sum_{i,j} \lambda_i a_{ji} \overline{\mu_j}
+	\end{align*}
+	Then,
+	\begin{align*}
+		\inner{\sum \lambda_i v_i, \alpha^\star\qty(\sum \mu_j w_j)} = \inner{\sum_i \lambda_i v_i, \sum_{j,k} \mu_j c_{kj} v_k} = \sum_{i,j} \lambda_i \overline{c_{ij}} \overline{\mu_j}
+	\end{align*}
+	So equality requires $\overline{c_{ij}} = a_{ji}$.
+
+	Uniqueness follows from the above; the expansions are equivalent for any vector if and only if $\overline{c_{ij}} = a_{ji}$.
+\end{proof}
+
+\begin{remark}
+	The same notation, $\alpha^\star$, is used for the adjoint as just defined, and the dual map as defined before.
+	If $V, W$ are real product inner spaces and $\alpha \in L(V,W)$, we define $\psi \colon V \to V^\star$ such that $\psi(v)(x) = \inner{x,v}$ and similarly for $W$.
+	Then we can check that the adjoint for $\alpha$ is given by the composition of $\psi$ from $W \to W^\star$, then applying the dual from $W^\star \to V^\star$, then applying the inverse of $\psi$ from $V^\star \to V$.
+\end{remark}
+
+\subsection{Self-adjoint and isometric maps}
+\begin{definition}[Self-Adjoint and Isometries]
+	Let $V$ be a finite-dimensional inner product space, and $\alpha$ be an endomorphism of $V$.
+	Let $\alpha^\star \in L(V)$ be the adjoint map.
+	Then,
+	\begin{enumerate}
+		\item the condition $\inner{\alpha v, w} = \inner{v, \alpha w} \; \forall \; v, w \in V$ is equivalent to the condition $\alpha = \alpha^\star$, and such an $\alpha$ is called \vocab{self-adjoint} (for $\mathbb R$ we call such endomorphisms \textit{symmetric}, and for $\mathbb C$ we call such endomorphisms Hermitian);
+		\item the condition $\inner{\alpha v, \alpha w} = \inner{v, w} \; \forall \; v, w \in V$ is equivalent to the condition $\alpha^\star = \alpha^{-1}$, and such an $\alpha$ is called an \vocab{isometry} (for $\mathbb R$ it is called \textit{orthogonal}, and for $\mathbb C$ it is called \textit{unitary}).
+	\end{enumerate}
+\end{definition}
+
+\begin{proposition}
+	The conditions for isometries defined as above are equivalent.
+\end{proposition}
+
+\begin{proof}
+	$(\implies)$: Suppose $\inner{\alpha v, \alpha w} = \inner{v,w}$. \\
+	Then for $v = w$, we find $\norm{\alpha v}^2 = \norm{v}^2$, so $\alpha$ preserves the norm.
+	In particular, this implies $\ker \alpha = \qty{0}$.
+	Since $\alpha$ is an endomorphism and $V$ is finite-dimensional, $\alpha$ is bijective.
+	Then for all $v, w \in V$,
+	\begin{align*}
+		\inner{v, \alpha^\star(w)} &= \inner{\alpha v, w} = \inner{\alpha v, \alpha\qty(\alpha^{-1}(w))} = \inner{v, \alpha^{-1}(w)} \\
+		\inner{v, \alpha^\star(w)} &= \inner{v, \alpha^{-1}(w)} \; \forall \; v, w \in V \\
+		\inner{v, \alpha^\star(w) - \alpha^{-1}(w)} &= 0 \\
+		\inner{\alpha^\star(w) - \alpha^{-1}(w), \alpha^\star(w) - \alpha^{-1}(w)} &= 0 \\
+		\alpha^\star(w) &= \alpha^{-1}(w).
+	\end{align*}
+	Hence $\alpha^\star = \alpha^{-1}$.
+
+	$(\Longleftarrow)$: Conversely, if $\alpha^\star = \alpha^{-1}$ we have
+	\begin{align*}
+		\inner{\alpha v, \alpha w} = \inner{v, \alpha^\star(\alpha w)} = \inner{v, w}
+	\end{align*}
+	as required.
+\end{proof}
+
+\begin{remark}
+	Using the polarisation identity, we can show that $\alpha$ is isometric if and only if for all $v \in V$, $\norm{\alpha(v)} = \norm{v}$.
+	I.e. prese
+	rving the scalar product iff preserving the norm.
+\end{remark}
+\begin{lemma}
+	Let $V$ be a finite-dimensional real (or complex) inner product space.
+	Then for $\alpha \in L(V)$,
+	\begin{enumerate}
+		\item $\alpha$ is self-adjoint iff for all orthonormal bases $B$ of $V$, we have $[\alpha]_B$ is symmetric (or Hermitian);
+		\item $\alpha$ is an isometry iff for all orthonormal bases $B$ of $V$, we have $[\alpha]_B$ is orthogonal (or unitary).
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	Let $B$ be an orthonormal basis for $V$.
+	Then we know $[\alpha^\star]_B = [\alpha]_B^\dagger$.
+	We can then check that $[\alpha]_B^\dagger = [\alpha]_B$ and $[\alpha]_B^\dagger = [\alpha]_B^{-1}$ respectively.
+\end{proof}
+
+\begin{definition}[Orthogonal Group]
+	For $F = \mathbb R$, we define the \vocab{orthogonal group} of $V$ by
+	\begin{align*}
+		O(V) = \qty{ \alpha \in L(V) \colon \alpha \text{ is an isometry} }
+	\end{align*}
+	Again, note that $U(V)$ is bijective with the set of orthogonal bases of $V$.
+\end{definition}
+
+\begin{definition}[Unitary Group]
+	For $F = \mathbb C$, we define the \vocab{unitary group} of $V$ by
+	\begin{align*}
+		U(V) = \qty{ \alpha \in L(V) \colon \alpha \text{ is an isometry} }
+	\end{align*}
+\end{definition} 
+
+\begin{remark}
+	If $V$ is finite dimensional and $\{e_1, \dots, e_n\}$ an orthonormal basis:
+	\begin{itemize}
+		\item $F = \mathbb{R}$: $O(v)$ is bijective with the set of orthogonal bases of $V$ under $\alpha \mapsto \{\alpha(e_1), \dots, \alpha(e_n)\}$.
+		\item $F = \mathbb{C}$: $U(v)$ is bijective with the set of orthogonal bases of $V$ under $\alpha \mapsto \{\alpha(e_1), \dots, \alpha(e_n)\}$.
+	\end{itemize} 
+\end{remark} 
+
+\subsection{Spectral theory for self-adjoint operators}
+Spectral theory is the study of the spectrum of operators.
+Recall that in finite-dimensional inner product spaces $V, W$, $\alpha \in L(V, W)$ yields the adjoint $\alpha^\star \in L(W, V)$ such that for all $v \in V, w \in W$, we have $\inner{\alpha(v), w} = \inner{v, \alpha^\star(w)}$.
+
+Linear maps become compact operators in infinite dimensions.
+
+\begin{lemma}
+	Let $V$ be a finite-dimensional inner product space.
+	Let $\alpha \in L(V)$ be a self-adjoint endomorphism.
+	Then 
+	\begin{itemize}
+		\item $\alpha$ has real eigenvalues
+		\item eigenvectors of $\alpha$ with respect to different eigenvalues are orthogonal.
+	\end{itemize}
+\end{lemma}
+
+\begin{proof}
+	Suppose $\lambda \in \mathbb C$, $v \in V$ nonzero such that $\alpha(v) = \lambda v$.
+	Then, $\inner{\lambda v, v} = \lambda \norm{v}^2$ and also
+	\begin{align*}
+		\inner{\alpha v, v} = \inner{v, \alpha v} = \inner{v, \lambda v} = \overline{\lambda} \norm{v}^2
+	\end{align*}
+	Hence $\lambda = \overline{\lambda}$ since $v \neq 0$.
+
+	Now, suppose $\mu \neq \lambda$ and $w \in V$ nonzero such that $\alpha(w) = \mu w$.
+	Then,
+	\begin{align*}
+		\lambda \inner{v, w} = \inner{\alpha v, w} = \inner{v, \alpha w} = \overline{\mu} \inner{v, w} = \mu \inner{v,w}
+	\end{align*}
+	So if $\lambda \neq \mu$ we must have $\inner{v,w} = 0$.
+\end{proof}
+
+\begin{theorem}[spectral theorem for self-adjoint maps]
+	Let $V$ be a finite-dimensional inner product space.
+	Let $\alpha \in L(V)$ be self-adjoint.
+	Then $V$ has an orthonormal basis of eigenvectors of $\alpha$.
+	Hence $\alpha$ is diagonalisable in an orthonormal basis.
+\end{theorem}
+
+\begin{proof}
+	$F = \mathbb{R}$ or $\mathbb{C}$.
+	We will consider induction on the dimension of $V$.
+	True for $n = 1$.
+
+	Suppose $A = [\alpha]_B$ with respect to any orthonormal basis $B$.
+	By the fundamental theorem of algebra, we know that $\chi_A(t)$ has a (complex) root, say $\lambda$. \\
+	But since $\lambda$ is an eigenvalue of $\alpha$ and $\alpha$ is self-adjoint, $\lambda \in \mathbb R$. \\
+	Now, we choose an eigenvector $v_1 = V \setminus \qty{0}$ such that $\alpha(v_1) = \lambda v_1$.
+	We can set $\norm{v_1} = 1$ by linearity.
+	Let $U = \genset{v_1}^\perp \leq V$.
+	We then observe that $U$ is stable by $\alpha$; $\alpha(U) \leq U$.
+	Indeed, let $u \in U$.
+	Then $\inner{\alpha(u), v_1} = \inner{u, \alpha(v_1)} = \overline \lambda \inner{u, v_1} = 0$ by orthogonality.
+	Hence $\alpha(u) \in U$.
+
+	We can then restrict $\alpha$ to the domain $U$ where it is still self-adjoint, and by induction we can then choose an orthonormal basis of eigenvectors for $U$ as $\dim U = \dim V - 1$.
+	Since $V = \genset{v_1} \overset{\perp}{\oplus} U$ we have an orthonormal basis of eigenvectors for $V$ when including $v_1$.
+\end{proof}
+
+\begin{remark}
+	\begin{align*}
+		A = \begin{pNiceMatrix}
+		\lambda & 0 & \dots & 0 \\
+		0 		& \Block{3-3}{\hat A} &  &  \\
+		\vdots  &  &  &  \\
+		0 		&  &  & 
+		\end{pNiceMatrix}
+	\end{align*} where $\hat A = [\phi \mid_U]$. 
+	This illustrates that $\phi \mid_U$ is stable.
+\end{remark} 
+
+\begin{corollary}
+	Let $V$ be a finite-dimensional inner product space.
+	Let $\alpha \in L(V)$ be self-adjoint.
+	Then $V$ is the orthogonal direct sum of all the eigenspaces of $\alpha$.
+\end{corollary}
+
+\subsection{Spectral theory for unitary maps}
+\begin{lemma}
+	Let $V$ be a complex inner product space (Hermitian sesquilinear structure).
+	Let $\alpha$ be unitary, so $\alpha^\star = \alpha^{-1}$.
+	\begin{itemize}
+		\item Then all eigenvalues of $\alpha$ have unit norm.
+		\item Eigenvectors corresponding to different eigenvalues are orthogonal.
+	\end{itemize} 
+\end{lemma}
+\begin{proof}
+	Let $\lambda \in \mathbb C$, $v \in V \setminus \qty{0}$ such that $\alpha(v) = \lambda v$.
+	First, $\lambda \neq 0$ since $\alpha$ is invertible, and in particular $\ker \alpha = \qty{0}$.
+	Since $v = \lambda \alpha^{-1}(v)$, we can compute
+	\begin{align*}
+		\lambda \inner{v,v} = \inner{\lambda v, v} = \inner{\alpha v, v} = \inner{v, \alpha^{-1} v} = \inner{v, \frac{1}{\lambda} v} = \overline{\lambda\inv} \inner{v, v}
+	\end{align*}
+	Hence $(\lambda \overline \lambda - 1) \norm{v}^2 = 0$ giving $\abs{\lambda} = 1$.
+
+	Further, suppose $\mu \in \mathbb C$ and $w \in V \setminus \qty{0}$ such that $\alpha(w) = \mu w, \lambda \neq \mu$.
+	Then
+	\begin{align*}
+		\lambda \inner{v,w} = \inner{\lambda v, w} = \inner{\alpha v, w} = \inner{v, \alpha^{-1} w} = \inner{v, \frac{1}{\mu} w} = \overline{\mu\inv} \inner{v,w} = \mu \inner{v,w}
+	\end{align*}
+	since $\mu \overline \mu = 1$.
+	As $\lambda \neq \mu$ then $\inner{v, w} = 0$.
+\end{proof}
+
+\begin{theorem}[Spectral Theorem for Unitary Maps]
+	Let $V$ be a finite-dimensional complex inner product space.
+	Let $\alpha \in L(V)$ be unitary.
+	Then $V$ has an orthonormal basis of eigenvectors of $\alpha$.
+	Hence $\alpha$ is diagonalisable in an orthonormal basis.
+\end{theorem}
+
+\begin{proof}
+	Let $A = [\alpha]_B$ where $B$ is an orthonormal basis.
+	Then $\chi_A(t)$ has a complex root $\lambda$. \\
+	As before, let $v_1 \neq 0$ such that $\alpha(v_1) = \lambda v_1$ and $\norm{v_1} = 1$. \\
+	Let $U = \genset{v_1}^\perp$, and we claim that $\alpha(U) \leq U$.
+	Indeed, let $u \in U$, and we find
+	\begin{align*}
+		\inner{\alpha(u), v_1} = \inner{u, \alpha^{-1}(v_1)} = \inner{u, \frac{1}{\lambda} v_1} = \overline{\lambda\inv} \inner{u,v_1}
+	\end{align*}
+	Since $\inner{u, v_1} = 0$, we have $\alpha(u) \in U$.
+	Hence, $\alpha$ restricted to $U$ is a unitary endomorphism of $U$.
+	By induction we have an orthonormal basis of eigenvectors of $\alpha$ for $U$ and hence for $V$.
+\end{proof}
+
+\begin{remark}
+	We used the fact that the field is complex to find an eigenvalue.
+	In general, a real-valued orthonormal matrix $A$ giving $A A^\transpose = I$ cannot be diagonalised over $\mathbb R$.
+	For example, consider
+	\begin{align*}
+		A = \begin{pmatrix}
+			\cos\theta & -\sin\theta \\
+			\sin\theta & \cos\theta
+		\end{pmatrix}
+	\end{align*}
+	This is orthogonal and normalised.
+	However, $\chi_A(\lambda) = 1 + 2\lambda \cos\theta + \lambda^2$ hence $\lambda = e^{\pm i \theta}$ which are complex in the general case.
+\end{remark}
+
+\subsection{Application to bilinear forms}
+We wish to extend the previous statements about spectral theory into statements about bilinear forms.
+\begin{corollary}
+	Let $A \in M_n(\mathbb R)$ (or $M_n(\mathbb C)$) be a symmetric (or respectively Hermitian) matrix.
+	Then there exists an orthonormal (respectively unitary) matrix $P$ such that $P^\transpose A P$ (or $P^\dagger A P$) is diagonal with real-valued entries.
+\end{corollary}
+
+\begin{proof}
+	Using the standard inner product over $\mathbb{R}^n$, $A \in L(F^n)$ is self-adjoint and hence there exists an orthonormal basis $B$ of $F^n$ such that $A$ is diagonal in this basis.
+	Let $P = (v_1, \dots, v_n)$ be the matrix of this basis.
+	Since $B$ is orthonormal, $P$ is orthogonal (or unitary).
+	So $P^\transpose P = I$ ($P^\dagger P = I$).
+	We know $P^{-1} A P$ is diagonal and so $P^\transpose A P$ is too.
+	The eigenvalues are real as they are the eigenvalues of a symmetric operator, hence the diagonal matrix is real.
+\end{proof}
+
+\begin{corollary}
+	Let $V$ be a finite-dimensional real (or complex) inner product space.
+	Let $\phi \colon V \times V \to F$ be a symmetric (or Hermitian) bilinear form.
+	Then, there exists an orthonormal basis $B$ of $V$ such that $[\phi]_B$ is diagonal.
+\end{corollary}
+\begin{proof}
+	Let $B = \{v_1, \dots, v_n\}$ be any orthonormal basis of $V$.
+	Let $A =[\phi]_B$.
+
+	$\phi$ symmetric (respectively Hermitian) so $A^\transpose = A$ (or respectively $A^\dagger = A$), hence there exists an orthogonal (respectively unitary) matrix $P$ such that $P^\transpose A P$ ($P^\dagger A P$) is diagonal.
+	Let $(v_i)$ be the $i$th row of $P^\transpose$ (or $P^\dagger$).
+	Then $(v_1, \dots, v_n)$ is an orthonormal basis $B'$ of $V$ such that $[\phi]_{B'} = P^\transpose A P$\footnote{Using change of basis formula for bilinear forms} is this diagonal matrix.
+\end{proof}
+
+\begin{remark}
+	The diagonal entries of $P^\transpose A P$ are the eigenvalues of $A$.
+
+	Moreover, we can define the signature $s(\phi)$ to be the difference between the number of positive eigenvalues of $A$ and the number of negative eigenvalues of $A$.
+\end{remark}
+
+\subsection{Simultaneous diagonalisation}
+\begin{corollary}[Simultaneous Diagonalisation]
+	Let $V$ be a finite-dimensional real (or complex) vector space.
+	Let $\phi, \psi$ be symmetric (or Hermitian) bilinear forms on $V$.
+	Let $\phi$ be positive definite.
+	Then there exists a basis $(v_1, \dots, v_n)$ of $V$ with respect to which $\phi$ and $\psi$ are represented with a diagonal matrix.
+\end{corollary}
+
+\begin{proof}
+	Since $\phi$ is positive definite, $V$ equipped with $\phi$ is a finite-dimensional inner product space where $\inner{u,v} = \phi(u,v)$.
+	Hence, there exists a basis of $V$ in which $\psi$ is represented by a diagonal matrix, which is orthonormal with respect to the inner product defined by $\phi$.
+	Then, $\phi$ in this basis is represented by the identity matrix given by $\phi(v_i, v_j) = \inner{v_i, v_j} = \delta_{ij}$, which is diagonal.
+
+	So both bilinear forms are diagonal in $B$.
+\end{proof}
+
+\begin{corollary}[Matrix Reformulation of Simultaneous Diagonalisation]
+	Let $A, B \in M_n(\mathbb R)$ (or $\mathbb C$) which are symmetric (or Hermitian).
+	Suppose for all $x \neq 0$ we have $x^\dagger A x > 0$, so $A$ is positive definite.
+	Then there exists an invertible matrix $Q \in M_n(\mathbb R)$ (or $\mathbb C$) such that $Q^\transpose A Q$ (or $Q^\dagger A Q$) and $Q^\transpose B Q$ (or $Q^\dagger B Q$) are diagonal.
+\end{corollary}
+
+\begin{proof}
+	$A$ induces a quadratic form $Q(x) = x^\dagger A x$ which is positive definite by assumption.
+	Similarly, $\widetilde Q(x) = x^\dagger B x$ is induced by $B$.
+	Then we can apply the previous corollary and change basis.
+\end{proof}

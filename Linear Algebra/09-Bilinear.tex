@@ -397,47 +397,65 @@ This is not a bilinear form on $\mathbb C$ due to the complex conjugate, it is n
 	so it is antilinear with respect to the second entry.
 \end{definition}
 
+\begin{definition}[Matrix of Sesquilinear Form]
+	Let $B = (v_1, \dots, v_m)$ be a basis of $V$ and $C = (w_1, \dots, w_n)$ be a basis of $W$.
+	Then $[\phi]_{B,C} = \qty(\phi(v_i, w_j))$.
+\end{definition} 
+
 \begin{lemma}
 	Let $B = (v_1, \dots, v_m)$ be a basis of $V$ and $C = (w_1, \dots, w_n)$ be a basis of $W$.
-	Let $[\phi]_{B,C} = \qty(\phi(v_i, w_j))$.
-	Then,
 	\begin{align*}
 		\phi(v,w) = [v]_B^\transpose [\phi]_{B,C} \overline{[w]_C}
 	\end{align*}
 \end{lemma}
+
 \begin{proof}
+	Left as an exercise.
+\end{proof}
+
+\begin{lemma}[Change of Basis]
 	Let $B, B'$ be bases of $V$ and $C, C'$ be bases of $W$.
 	Let $P = [I]_{B', B}$ and $Q = [I]_{C', C}$.
 	Then
 	\begin{align*}
 		[\phi]_{B', C'} = P^\transpose [\phi]_{B,C} \overline Q
 	\end{align*}
+\end{lemma} 
+
+\begin{proof}
+	Left as an exercise.
 \end{proof}
 
 \subsection{Hermitian forms}
-\begin{definition}
+\begin{definition}[Hermitian Forms]
 	Let $V$ be a finite-dimensional $\mathbb C$-vector space.
 	Let $\phi$ be a sesquilinear form on $V$.
-	Then $\phi$ is \textit{Hermitian} if, for all $u, v \in V$,
+	Then $\phi$ is \vocab{Hermitian} if, for all $u, v \in V$,
 	\begin{align*}
 		\phi(u, v) = \overline{\phi(v,u)}
 	\end{align*}
 \end{definition}
+
+This is the complex value generalisation of symmetric bilinear form.
+
 \begin{remark}
 	If $\phi$ is Hermitian, then $\phi(u,u) = \overline{\phi(u,u)} \in \mathbb R$.
 	Further, $\phi(\lambda u, \lambda u) = \abs{\lambda}^2 \phi(u,u)$.
 	This allows us to define positive and negative definite Hermitian forms.
 \end{remark}
+
 \begin{lemma}
-	A sesquilinear form $\phi \colon V \times V \to \mathbb C$ is Hermitian if and only if, for any basis $B$ of $V$,
+	A sesquilinear form $\phi \colon V \times V \to \mathbb C$ is Hermitian iff for all basis $B$ of $V$,
 	\begin{align*}
 		[\phi]_B = [\phi]_B^\dagger
 	\end{align*}
 \end{lemma}
+
 \begin{proof}
 	Let $A = [\phi]_B = (a_{ij})$.
 	Then $a_{ij} = \phi(e_i, e_j)$, and $a_{ji} = \phi(e_j, e_i) = \overline{\phi(e_i, e_j)} = \overline{a_{ij}}$.
 	So $\overline A^\transpose = A$.
+
 	Conversely suppose that $[\phi]_B = A = \overline A^\transpose$.
 	Now let
 	\begin{align*}
@@ -445,11 +463,11 @@ This is not a bilinear form on $\mathbb C$ due to the complex conjugate, it is n
 	\end{align*}
 	Then,
 	\begin{align*}
-		\phi(u,v) = \phi\qty(\sum_{i=1}^n \lambda_i e_i, \sum_{i=1}^n \mu_i e_i) = \sum_{i=1}^n \sum_{j=1}^n \lambda_i \overline{\mu_j} a_{ij}
+		\phi(u,v) = \phi\qty(\sum_{i=1}^n \lambda_i e_i, \sum_{j=1}^n \mu_j e_j) = \sum_{i=1}^n \sum_{j=1}^n \lambda_i \overline{\mu_j} a_{ij}
 	\end{align*}
 	Further,
 	\begin{align*}
-		\overline{\phi(v,u)} = \overline{\phi\qty(\sum_{i=1}^n \mu_i e_i, \sum_{i=1}^n \lambda_i e_i)} = \sum_{i=1}^n \sum_{j=1}^n \overline{\mu_j \overline{\lambda_i}} \overline{a_{ij}}
+		\overline{\phi(v,u)} = \overline{\phi\qty(\sum_{i=1}^n \mu_i e_i, \sum_{j=1}^n \lambda_j e_j)} = \sum_{i=1}^n \sum_{j=1}^n \overline \mu_j \lambda_i \overline{a_{ij}} = \sum_{j=1}^n \lambda_i \overline{\mu_j} \overline{a_{ji}}
 	\end{align*}
 	which is equivalent.
 	Hence $\phi$ is Hermitian.
@@ -461,8 +479,10 @@ A Hermitian form $\phi$ on a complex vector space $V$ is entirely determined by 
 	\phi(u,v) = \frac{1}{4} \qty[ Q(u+v) - Q(u-v) + iQ(u+iv) - iQ(u-iv) ]
 \end{align*}
 
+Proof left as an exercise.
+
 \subsection{Hermitian formulation of Sylvester's law}
-\begin{theorem}
+\begin{theorem}[Sylvester's law of inertia for Hermitian forms]
 	Let $V$ be a finite-dimensional $\mathbb C$-vector space.
 	Let $\phi \colon V \times V \to \mathbb C$ be a Hermitian form on $V$.
 	Then there exists a basis $B = (v_1, \dots, v_n)$ of $V$ such that
@@ -477,6 +497,7 @@ A Hermitian form $\phi$ on a complex vector space $V$ is entirely determined by 
 \end{theorem}
 \begin{proof}
 	The following is a sketch proof; it is nearly identical to the case of real symmetric bilinear forms.
+
 	If $\phi = 0$, existence is trivial.
 	Otherwise, using the polarisation identity there exists $e_1 \neq 0$ such that $\phi(e_1, e_1) \neq 0$.
 	Let
@@ -493,10 +514,10 @@ A Hermitian form $\phi$ on a complex vector space $V$ is entirely determined by 
 \end{proof}
 
 \subsection{Skew-symmetric forms}
-\begin{definition}
+\begin{definition}[Skew-symmetric Form]
 	Let $V$ be a finite-dimensional $\mathbb R$-vector space.
 	Let $\phi$ be a bilinear form on $V$.
-	Then $\phi$ is \textit{skew-symmetric} if, for all $u,v \in V$,
+	Then $\phi$ is \vocab{skew-symmetric} if, for all $u,v \in V$,
 	\begin{align*}
 		\phi(u,v) = -\phi(v,u)
 	\end{align*}
@@ -512,7 +533,7 @@ A Hermitian form $\phi$ on a complex vector space $V$ is entirely determined by 
 \end{remark}
 
 \subsection{Skew-symmetric formulation of Sylvester's law}
-\begin{theorem}
+\begin{theorem}[Sylvester's law of inertia for Skew-symmetric forms]
 	Let $V$ be a finite-dimensional $\mathbb R$-vector space.
 	Let $\phi \colon V \times V \to \mathbb R$ be a skew-symmetric form on $V$.
 	Then there exists a basis
@@ -530,17 +551,23 @@ A Hermitian form $\phi$ on a complex vector space $V$ is entirely determined by 
 			   &   &    &   &        & 0
 		\end{pmatrix}
 	\end{align*}
+	with $m$ $2 \times 2$ blocks.
 \end{theorem}
-\begin{corollary}
-	Skew-symmetric matrices have an even rank.
-\end{corollary}
-\begin{proof}
+
+\begin{proof}[Sketch Proof]
 	This is again very similar to the previous case.
-	We will perform an inductive step on the dimension of $V$.
+
+	We will perform an inductive step on the dimension of $V$, $n = \dim V$.
+
 	If $\phi \neq 0$, there exist $v_1, w_1$ such that $\phi_1(v_1, w_1) \neq 0$.
 	After scaling one of the vectors, we can assume $\phi(v_1, w_1) = 1$.
 	Since $\phi$ is skew-symmetric, $\phi(w_1, v_1) = -1$.
-	Then $v_1, w_1$ are linearly independent; if they were linearly dependent we would have $\phi(v_1, w_1) = \phi(v_1, \lambda v_1) = 0$.
+	Then $v_1, w_1$ are linearly independent; if they were linearly dependent we would have $\phi(v_1, w_1) = \phi(v_1, \lambda v_1) = \lambda \phi(v_1, v_1) = 0$.
+	
 	Let $U = \genset{v_1, w_1}$ and let $W = \qty{v \in V \colon \phi(v_1, v) = \phi(w_1, v) = 0}$ and we can show $V = U \oplus W$.
 	Then induction gives the required result.
 \end{proof}
+
+\begin{corollary}
+	Skew-symmetric matrices have an even rank.
+\end{corollary}
