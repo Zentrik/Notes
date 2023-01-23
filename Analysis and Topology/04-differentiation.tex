@@ -1,0 +1,688 @@
+\part{Generalizing differentiation}
+\section{Differentiation}
+
+\subsection{The First Derivative}
+Recall that $f:\R\to \R$ is \emph{differentiable} at $a\in R$ with \emph{derivative} A if \[ \frac{f(a+h)-f(a)}{h}\to A \textup{ as } h\to 0.\] We write $f'(a) = A$.
+
+\begin{question}
+    How can we generalise to $f:\R^n\to \R^n$?
+\end{question} 
+Obviously if $n = 1$ exact same definition works. \\
+\underline{Problem}: If $n\geq 2$, then dividing by $h\in \R^n$ makes no sense.
+
+\begin{definition}[$i$th Partial Derivative]
+    If $f: \R^n\to \R^n$, the \vocab{$i$th partial derivative} of $f$ at $a\in \R^n$ is \[ D_i f(a) = \lim_{h\to 0} \frac{f(a+he_i)-f(a)}{h}\]
+    where this limit exists, where $e_1,\dots ,e_n$ is standard basis of $\R^n$.
+\end{definition}
+
+However, with this definition all partial derivatives existing at a point doesn't mean that the function is differentiable at that point!
+\begin{example}
+    Consider $f:\R^2\to \R$ with 
+    \[
+    f(x,y) = \begin{cases}
+    0 & x = 0 \textup{ or } y = 0\\
+    1 & \textup{ otherwise.}
+    \end{cases}
+    \]
+    Both partial derivatives exist at $(0,0)$, but $f$ is not continuous there.
+\end{example}
+
+Let's try think of a better definition. Return to $f:\R\to \R$, where
+\begin{align*}
+    f'(a) = A &\Leftrightarrow \frac{f(a+h) - f(a)}{h}\to A \textup{ as }h\to 0\\
+    &\Leftrightarrow \frac{f(a+h) - f(a)}{h} = A+\epsilon(h) \textup{ where } \epsilon(h)\to 0 \textup{ as } h\to 0\\
+    &\Leftrightarrow f(a+h) = f(a) + Ah + \underbrace{\epsilon(h)h}_{o(h)} \textup{ where } \epsilon(h)\to 0 \textup{ as } h\to 0.
+\end{align*}
+In words, `small changes in $a$ produce approximately linear changes in $f(a)$'.
+
+\begin{definition}[Differentiable]
+    Let $f:\R^n\to \R^m$ and $a\in \R^n$. We say that $f$ is \vocab{differentiable} at $a$ if there is a linear map $\alpha = \mathcal{L}(\R^n,\R^m)$ with 
+    \begin{align*}
+        f(a+h) = f(a) + \alpha(h) + \epsilon(h) \norm{h} \tag{$\star$}
+    \end{align*} where $\epsilon(h) \to 0$ as $h \to 0$.
+\end{definition}
+
+\begin{proposition} \label{prp:2.1}      
+    Suppose $f:\R^n\to \R^m$, $a \in \R^n$, $\alpha,\beta \in \mathcal{L}(\R^n,\R^m)$ and 
+    \begin{align*}
+        f(a+h) &= f(a) + \alpha(h) + \epsilon(h) \norm{h} \\
+        f(a+h) &= f(a) + \beta(h) + \eta(h) \norm{h}
+    \end{align*}
+    with $\epsilon(h), \eta(h)\to 0$ as $h\to 0$. \\
+    Then $\alpha = \beta$.
+\end{proposition}
+
+\begin{definition}[Derivative]
+    After proving \cref{prp:2.1}, we know that the $\alpha$ in $(\star)$ is unique. 
+    We say $\alpha$ is the \vocab{derivative} of $f$ at $a$, and write $Df|_a = \alpha$. So, if $f$ is differentiable at $a$, then \[ f(a+h) = f(a) + Df|_a(h) + \epsilon(h) \norm{h}\]
+    where $\epsilon(h)\to 0$ as $h\to 0$.
+\end{definition}
+
+\begin{remark}
+    If $f:\R\to \R^m$, then $Df|_a = f'(a)h.$
+\end{remark}    
+
+\begin{proof}[Proof of \cref{prp:2.1}]
+    Let $h\in \R^n$, $h\neq 0$. Then
+    \begin{align*}
+        \alpha(h) - \beta(h) &= (\eta(h) - \epsilon(h))  \norm{h} 
+        \intertext{Then for $\lambda\in \R, \lambda\neq 0,$}
+        \alpha(h) - \beta(h) &= \frac{\alpha(\lambda h) - \beta(\lambda h)}{\lambda} \\
+        &= \frac{(\eta(\lambda h) - \epsilon(\lambda h)) \norm{\lambda h}}{\lambda} \\
+        \norm{\alpha(h) - \beta(h)} &= \norm{\eta(\lambda h) - \epsilon(\lambda h)}\norm{h}\to 0
+    \end{align*}
+    as $\lambda\to 0$. Hence $\alpha(h) = \beta(h)$. Hence $\alpha = \beta$.
+\end{proof}
+
+\begin{remark}
+    1. To consider differentiability of $f$ at $a$, it only matters what happens on some neighbourhood of $a$. 
+    So definition works if instead of $f:\R^n\to \R^m$, we have $f:\mathcal{N}\to \R^m$ where $\mathcal{N}\subset \R^n$ is a neighbourhood of $a$, or, in particular, if $f:B_\delta(a)\to \R^m$ where $\delta > 0$. 
+    (Imagine $f$ defined as anything on the rest of $\R^n$ and it makes no difference.)
+
+    2. We can define the $\ell_1$ and $\ell_\infty$ norms on $\R^n$ by 
+    \begin{align*}
+        \norm{x}_1 &= d_1(0,x) =  \sum_{i=1}^n \abs{x_i}, \textup{ and}\\
+        \norm{x}_\infty & =  d_\infty(0,x) = \max_i\abs{x_i}.
+    \end{align*}
+    Note $\norm{x}_1\ge 0$ with equality iff $x=0$, $\norm{\lambda x}_1 = \abs{\lambda}\norm{x}_1$; $\norm{x+y}_1 \leq \norm{x}_1 + \norm{y}_1$.
+
+    Similarly for $\norm{\cdot}_\infty$. We've seen that for all $x\in \R^n$,
+    \begin{align*}
+        \norm{x}_\infty &\leq \norm{x} \leq \sqrt{n}\norm{x}_\infty, \textup{ and}\\
+        \norm{x}_\infty &\leq \norm{x}_1 \leq n\norm{x}_\infty
+    \end{align*}
+    So we can replace $\norm{\cdot}$ in the definition of derivative by $\norm{.}_1$ or $\norm{.}_\infty$ and defintion doesn't change. Sometimes this is useful for computation.
+\end{remark}
+
+Consider the vector space $\mathcal{L}(\R^n,\R^m)$ of linear maps $\R^n\to \R^m$. We have $\mathcal{L}(\R^n,\R^m) \cong \R^{mn}$ with isomorphism (by writing map as matrix w.r.t standard bases of $\R^n$ and $\R^m$). \\
+So we could think about Euclidean norm of a linear map. But this seems a bit unnatural.
+
+\begin{definition}[Operator Norm]
+    The \vocab{operator norm} on $\mathcal{L}(\R^n,\R^m)$ is defined by 
+    \begin{align*}
+        \underbracket{\norm{\alpha}}_{\textup{operator norm}} = \sup\Set{ \norm{\alpha x}}{\norm{x} = 1}.
+    \end{align*} 
+    The $\norm{\alpha x}$ in $\sup$ is the Euclidean norm as $\alpha  x\in \R^m$. 
+\end{definition}
+
+\begin{proposition} \label{prp:2.2}
+    Let $\norm{\cdot}$ be the operator norm on $V = \mathcal{L}(\R^n,\R^m)$. Let $\alpha,\beta\in V$. Then:
+    \begin{enumerate}
+        \item $\norm{\alpha}\ge 0$ with equality iff $\alpha = 0$;
+        \item $\forall \lambda\in \R, \norm{\lambda \alpha} = \abs{\lambda}\norm{ \alpha}$;
+        \item $\norm{\alpha + \beta} \leq \norm{\alpha} + \norm{\beta}$;
+        \item $\forall x\in \R^n, \norm{\alpha x} \leq \norm{\alpha}\norm{x}$;
+        \item $\norm{\alpha\beta} \leq \norm{\alpha}\norm{\beta}$; ($\alpha\beta$ refers to composition in the case $m=n$.)
+        \item if $\norm{\cdot}'$ is the Euclidean norm on $V\cong \R^{mn}$ with the standard isomorphism then there are constants (indep. of $\alpha$) $c,d$ (depending on $n,m$) such that \begin{align*}
+            c\norm{\alpha} \leq \norm{\alpha}' \leq d\norm{\alpha}.
+        \end{align*} 
+    \end{enumerate}
+\end{proposition}
+
+\begin{remark}
+    A linear map from $f:\R^n\to \R^m$ is continuous and $\Set{x\in \R^n}{\norm{x} = 1}$ is compact so operator norm is well-defined.
+\end{remark}
+
+\begin{notation}
+    The standard is that $\norm{\cdot}$ refers to the operator norm if applied to a linear map and Euclidean norm if applied to point of $\R^n$, unless otherwise stated.
+\end{notation} 
+
+\begin{proof}
+(i) - (iii) is an exercise.
+
+\underline{(iv):} Let $x\in \R^n$. If $x = 0$ that's fine. Otherwise, $\alpha(x) = \norm{x}\alpha \qty(\frac{x}{\norm{x}})$ with $\norm{\frac{x}{\norm{x}}} = 1$. So $\norm{\alpha(x)}\leq \norm{x}\norm{\alpha}$.
+
+\underline{(v):} Let $x\in \R^n$ with $\norm{x} = 1$. Then $\norm{\alpha\beta x}\leq \norm{\alpha}\norm{\beta x}\leq \norm{\alpha}\norm{\beta} \norm{x} = \norm{\alpha}\norm{\beta}$ by taking (iv) twice. So $\norm{\alpha\beta} \leq \norm{\alpha}\norm{\beta}$.
+
+\underline{(vi):} Let $x\in \R^n$ with $\norm{x} = 1$. $\norm{\alpha x}\leq \sqrt{m} \max_{1\leq i\leq m} \abs{(\alpha x)_i}$. Let $A$ be the matrix of $\alpha$ w.r.t the standard bases $e_1,\dots, e_n$ of $\R^n$ and $f_1,\dots ,f_m$ of $\R^m$. Then 
+\begin{align*}
+    \norm{\alpha x} &\leq \sqrt{m} \max_{1\leq i\leq m} \abs{\sum_{j=1}^n A_{ij} x_j}\\
+    &\leq \sqrt{m} \max_{1\leq i\leq m} \sum_{j=1}^n\abs{ A_{ij}} \abs{x_j}\\
+    &\leq \sqrt{m} \max_{1\leq i\leq m} \sum_{j=1}^n \norm{\alpha}'\footnote{$\abs{A_{ij}} \leq \norm{\alpha}'$ as $\norm{\cdot}'$ is the Euclidean norm. Also, $\norm{x} = 1$ so $\abs{x_j} \leq 1$.} \\
+    &= n\sqrt{m} \norm{\alpha}'.
+\end{align*}
+Hence $\norm{\alpha}\leq n\sqrt{m}\norm{\alpha}'$. 
+
+On the other hand, pick $i,j$ maximize $\abs{A_{ij}}$. Then $\norm{\alpha e_j}\ge \norm{(\alpha e_j)_i} = \abs{A_{ij}}$. But
+\begin{align*}
+    \norm{\alpha}' &\leq \sqrt{mn}\abs{A_{ij}} \\
+    &\leq \sqrt{mn} \norm{\alpha e_j}\\
+    &\leq \sqrt{mn} \norm{\alpha}.
+\end{align*}
+This proves (vi) with $d = \sqrt{mn}$ and $c = \frac{1}{n\sqrt{m}}$.
+\end{proof}
+
+\begin{proposition} \label{prp:2.3}
+    Let $f: \R^n\to \R^m$ which is differentiable at $a\in \R^n$. 
+    Then $f$ is continuous at $a$.
+\end{proposition}
+\begin{proof}
+    Write $f(a+h) = f(a) + Df|_a(h) + \epsilon(h) \norm{h}$ where both $\epsilon(h), \norm{h} \to 0$ as $h\to 0$.
+    Also $Df|_a$ is linear so continuous so $Df|_a(h) \to Df|_a(0) = 0$ as $h\to 0$. Then $f(a+h) \to f(a)$ as $h\to 0$.
+\end{proof}
+
+\begin{proposition} \label{prp:2.4}
+    Let $f,g: \R^n\to \R^m$ and $\lambda:\R^n\to\R$ be differentiable at $a\in \R^n$. 
+    Then $f+g, \lambda f$ are differentiable at $a$ with \[ D(f+g)|_a = Df|_a + Dg|_a \] and \[ D(\lambda f)|_a(h) = \lambda (a) Df|_a(h) + D\lambda |_a(h) f(a). \]
+\end{proposition}
+
+\begin{proof}
+    We have 
+    \begin{align*}
+        f(a+h) &= f(a) + Df|_a(h) + \epsilon(h) \norm{h}, \\
+        g(a+h) &= g(a) + Dg|_a(h) + \eta(h) \norm{h}, \\
+        \lambda(a+h) &= \lambda(a) + D\lambda |_a(h) + \zeta(h) \norm{h},
+    \end{align*}
+    where $\epsilon(h), \eta(h), \zeta(h) \to 0$ as $h\to 0$. 
+    Now, $(f+g)(a+h) = (f+g)(a) + (Df|_a + Dg|_a)(h) + (\epsilon(h) +\eta(h)) \norm{h}$ where $Df|_a + Dg|_a$ is linear and $\epsilon(h) + \eta(h)\to 0$ as $h\to 0$. 
+
+    Also,
+    \begin{align*}
+        (\lambda f)(a+h) &= (\lambda f)(a) \\
+        &+ \lambda(a) Df|_a(h) + D\lambda|_a(h) f(a)\\
+        &+ \xi(h)\norm{h}
+    \end{align*}
+    where $h\mapsto \lambda(a) Df|_a(h) + D\lambda|_a(h) f(a)$ is a linear map, and 
+    \begin{align*}
+        \xi(h) &= \zeta(h)f(a) + Df|_a(h)D\lambda |_a(h) \frac{1}{\norm{h}}\\
+        &+ Df|_a(h)\zeta(h) + \lambda (a)\epsilon(h) \\
+        &+ D\lambda |_a(h)\epsilon(h) +\epsilon(h) \zeta(h) \norm{h} \to 0
+    \end{align*}
+    as $h\to 0$ since $\epsilon(h), \zeta(h) \to 0$ as $h\to 0$, $\norm{h}\to 0$ as $h\to 0$.
+
+    $Df|_a(h)$, $D\lambda |_a(h)$ are linear so continuous, so $Df|_a(h), D\lambda |_a(h)\to 0$ as $h\to 0$, and 
+    \begin{align*}
+        \norm{Df|_a(h)D\lambda |_a(h) \frac{1}{\norm{h}}} &\leq \norm{Df|_a(h)} \norm{D\lambda |_a(h)}\frac{1}{\norm{h}}\\
+        &\leq \norm{Df|_a}\norm{h} \norm{D\lambda |_a}\norm{h} \frac{1}{\norm{h}}\\
+        & = \norm{Df|_a} \norm{D\lambda |_a} \norm{h}\to 0
+    \end{align*}
+    as $h\to 0$, as required.
+\end{proof}
+
+Partial derivatives can still be useful for computation.
+\begin{proposition} \label{prp:4.5}
+    Let $f: \R^n\to \R^m$ and $a\in \R^n$. Write $f =\begin{pmatrix} f_1\\ \vdots \\f_m\end{pmatrix} $, where for each $i$, $f_i: \R^n\to \R$. Then
+    \begin{enumerate}
+        \item $f$ is differentiable at $a$ iff each $f_i$ is differentiable at $a$, in which case $Df|_a = \begin{pmatrix} Df_1|_a\\ \vdots \\Df_m|_a\end{pmatrix}$; and 
+        \item if $f$ is differentiable at $a$ and $A$ is the matrix of $Df|_a$ in terms of the standard bases then $A_{ij} = D_jf_i(a)$.
+    \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+    \begin{enumerate}
+        \item ($\implies$): Write $f(a+h) = f(a) + Df|_a(h) + \epsilon(h) \norm{h}$ where $\epsilon(h)\to 0$ as $h\to 0$. 
+        Then \[f_i(a+h) = f_i(a) + (Df|_a)_i(h) + \epsilon_i(h) \norm{h} \] where $(Df|_a)_i: \R^n \to \R$ is linear\footnote{As it is linear in each coordinate} and $\abs{\epsilon_i(h)} \leq \norm{\epsilon(h)}\to 0$ as $h\to 0$.
+
+        ($\Longleftarrow$): For each $i$, write $f_i(a+h) = f_i(a) + (Df|_a)_i(h) + \epsilon_i(h) \norm{h}$. 
+        Then \[f(a+h) = f(a) + \alpha(h) + \epsilon(h) \norm{h}  \] where $\alpha = \begin{pmatrix} Df_1|_a\\ \vdots \\Df_m|_a\end{pmatrix} : \R^n\to \R^m$ is linear and $\norm{\epsilon(h)} = \norm{\begin{pmatrix} \epsilon_1(h)\\ \vdots \\ \epsilon_m(h)\end{pmatrix}  } = \sqrt{ \sum_{i=1}^m \epsilon_i(h)^2}\to 0$ as $h\to 0$.
+        \item Write $f(a+h) = f(a) + Df|_a(h) + \epsilon(h) \norm{h}$ where $\epsilon(h)\to 0$ as $h\to 0$. Let $e_1, \dots, e_n$ be the standard basis in $\R^n$. Then 
+        \begin{align*}
+            \frac{f(a+ke_j) - f(a)}{k} &= \frac{Df|_a(ke_j) + \epsilon(ke_j)\norm{ke_j}}{k}\\
+            &= Df|_a(e_j) \pm\footnote{We don't know the sign of $k$} \epsilon(ke_j) \\
+            &\to Df|_a(e_j)
+        \end{align*}
+        as $k\to 0$. So all partial derivatives of $f$ exist at $a$ and $D_jf(a) = Df|_a(e_j)$.
+    \end{enumerate} 
+\end{proof}
+
+\begin{definition}[Jacobian Matrix]
+The matrix $A$ in (b) is called the \vocab{Jacobian matrix} of $f$ at $a$.
+\end{definition}
+
+\begin{theorem}[The Chain Rule] \label{thm:2.6}
+Let $f:\R^p\to \R^n$ be differentiable at $a\in \R^p$ and let $g: \R^n\to \R^m$ be differentiable at $f(a)\in \R^n$. Then $g\circ f$ is differentiable at $a$ with $D(g\circ f) |_a = Dg|_{f(a)}\circ Df|_a$.
+\end{theorem}
+\begin{remark}
+Intuitively why this is true: If $f$ is approximately linear near $a$ and $g$ is approximately linear near $f(a)$ then $g\circ f$ is approximately linear near $a$ and the linear approximation to get near $a$ is the chain rule result. Proof unfortunately is messy to make sure error terms behave.
+\end{remark}
+
+\begin{proof}
+Write 
+\begin{align*}
+    f(a+h) &= f(a) + \alpha(h) + \epsilon(h) \norm{h} \\
+    g(f(a)+k) &= g(f(a)) + \beta(k) + \eta(k)\norm{k}
+\end{align*}
+where $\alpha = Df|_a, \beta = Dg|_{f(a)}$ are linear, $\epsilon(h) \to 0$ as $h\to 0$,  $\eta(k)\to 0 $ as $k\to 0$. Now
+\begin{align*}
+    g(f(a+h)) &= g(f(a) + \underbrace{\alpha(h) + \epsilon(h) \norm{h}}_k) \\
+    &= g(f(a)) + \beta(\alpha(h) + \epsilon(h) \norm{h}) \\
+    &+ \eta(\alpha(h) + \epsilon(h) \norm{h}) \bigg\lVert \alpha(h) + \epsilon(h) \norm{h} \bigg\rVert \\
+    & = g(f(a)) + \underbrace{\beta(\alpha(h))}_{\textup{linear}} + \underbrace{\zeta(h) \norm{h}}_{\textup{small}}
+\end{align*}
+where \[ \zeta(h) = \beta(\epsilon(h)) + \eta(\alpha(h) + \epsilon(h) \norm{h}) \norm{ \frac{\alpha(h)}{\norm{h}} + \epsilon(h)}. \]
+
+Now $\epsilon(h) \to 0$ as $h\to 0$ and $\beta$ linear so continuous so $\beta(\epsilon(h)) \to \beta(0) = 0$ as $h\to 0$. \\
+Next, $\alpha$ linear so continuous and so $\alpha(h) \to \alpha(0) = 0$ as $h \to 0$. 
+And $\epsilon(h) \norm{h} \to 0 \times 0 = 0$ as $h \to 0$. 
+So $\alpha(h) + \epsilon(h) \norm{h} \to 0$ as $h\to 0$. \\
+Wlog $\eta(0) = 0$ so $\eta$ continuous at $0$. 
+Then $\eta (\alpha(h) + \epsilon(h) \norm{h}) \to 0$ as $h\to 0$. 
+
+Finally,
+\begin{align*}
+    \norm{ \frac{\alpha(h)}{\norm{h}} + \epsilon(h)} &\leq \frac{\norm{\alpha(h)}}{\norm{h}} + \norm{\epsilon(h)} \\
+    &\leq \frac{\norm{\alpha} \norm{h}}{\norm{h}} + \norm{\epsilon(h)} \\
+    &= \norm{\alpha} + \norm{\epsilon(h)} \to \norm{\alpha}
+\end{align*}
+as $h\to 0$. Hence $\zeta(h)\to 0 $ as $h\to 0$.
+\end{proof}
+
+\begin{example}
+Suppose $f$ is constant. Then $f(a+h) = f(a) + 0 + 0\norm{h}$ so $f$ is everywhere differentiable with derivative the zero map.
+\end{example}
+
+\begin{example}
+    Suppose $f$ is linear. Then $f(a+h) = f(a) + f(h) + 0\norm{h}$ so $f$ is everywhere differentiable with $Df|_a = f$ for all $a$.
+\end{example} 
+
+\begin{example}
+    Suppose $f: \R \to\R^m$. As remarked earlier, for $a\in \R$, $f$ is differentiable in old sense at $a$ iff it is differentiable in new sense, in which case $Df|_a(h) = hf'(a)$.
+\end{example} 
+
+\begin{example}
+Using the above together with chain rule, we obtain many differentiable functions. E.g. $f \qty(\begin{pmatrix} x\\ y \end{pmatrix}) = \begin{pmatrix} e^{x+y}\\ \cos(xy) \end{pmatrix}$ is differentiable. We can show this by considering the projection maps $\pi_1, \pi_2: \R^2\to \R$, $\pi_1\begin{pmatrix} x\\ y \end{pmatrix} = x$, $\pi_2 \begin{pmatrix} x\\ y \end{pmatrix} = y$ are linear so differentiable. So by chain rule, \[f_1(z) = e^{\pi_1(z) + \pi_2(z)}, f_2(z) = \cos(\pi_1(z)\pi_2(z)) \] are differentiable. So by \cref{prp:4.5}(1), $f$ is differentiable.
+
+What is derivative of $f$ at $z = \begin{pmatrix} x\\ y \end{pmatrix}$? It is a linear map $\R^2 \to \R^2$. By \cref{prp:4.5}(2), the matrix of derivatives is given by the partial derivatives: \[ Df|_{\begin{psmallmatrix} x\\ y \end{psmallmatrix}} \textup{ has matrix } \begin{pmatrix} e^{x+y} & e^{x+y}\\ -y\sin(xy) & -x\sin(xy) \end{pmatrix}. \]
+\end{example}
+
+\begin{example}
+    Let $\mathcal{M}_n$ be the vector space of $n\times n$ real matrices. 
+    So $\mathcal{M}_n \cong \R^{n^2}$ so we can consider differentiability of $f: \mathcal{M}_n \to \mathcal{M}_n$. \\
+    Recall definition is still the same if we replace Euclidean norm by operator norm, so write $\norm{\cdot}$ for operator norm on $\mathcal{M}_n$. 
+    Define $f:\mathcal{M}_n \to \mathcal{M}_n$ by $f(A) = A^2$. Then 
+    \begin{align*}
+        f(A+H) &= (A+H)^2\\
+        & = \underbrace{A^2}_{f(A)} + \underbrace{AH+HA}_{\textup{linear}} + \underbrace{H^2}_{\textup{higher order}}
+    \end{align*}
+    where $\norm{\frac{H^2}{\norm{H}}}\leq \frac{\norm{H}^2}{\norm{H}} = \norm{H} \to 0$ as $H\to 0$. 
+    So $f$ is everywhere differentiable and $Df|_A(H) = AH+HA$.
+\end{example} 
+
+\begin{example}
+    We have $\det: \mathcal{M}_n\to \R$. We have 
+    \begin{align*}
+        \det(I+H) &= \begin{vmatrix}
+        1 + H_{11} &  & H_{ij}'s \\
+         & \ddots &  \\
+        H_{ij}'s &  & 1 + H_{nn}
+        \end{vmatrix}\\
+        &= 1 + \tr(H) + \textup{terms involving two or more  $H_{ij}$ multiplied together}.
+    \end{align*} 
+    Note $\abs{\frac{H_{ij} H_{kl}}{\norm{H}_2\footnote{This is the Euclidean norm}}} \leq \abs{ H_{kl}}\to 0$ as $H\to 0$. 
+    So $\det$ differentiable at $I$ with $D \det|_I(H) = \tr(H)$. \\
+    Suppose $A \in \mathcal{M}_n$ invertible. Then 
+    \begin{align*}
+        \det(A+H) &= \det(A) \det(I + A\inv H) \\
+        &= \det A(1 + \tr(A\inv H) + \epsilon(A\inv H) \norm{A\inv H})\\
+        &= \det A + (\det A)(\tr A\inv H) + (\det A)\epsilon(A\inv H)\norm{A\inv H}
+    \end{align*}
+    where $\epsilon(K)\to 0 $ as $K\to 0$, and $\abs{\frac{(\det A) \epsilon(A\inv H)\norm{A\inv H}}{\norm{H}}} \leq \bigg|(\det A)\epsilon(A\inv H) \norm{A\inv}\bigg| \to 0$ as $H\to 0$. \\
+    So $\det$ is differentiable at $A$ with $D\det|_A(H) = (\tr A\inv H) (\det A).$
+\end{example} 
+
+Recall: if $f: \R\to\R$ differentiable with zero derivative everywhere then $f$ is constant.
+This followed from the Mean Value Theorem. 
+Let's look at what the MVT is like in higher dimensions.
+
+\begin{theorem}[Mean Value Inequality] \label{thm:2.7}
+    Let $f:\R^n\to\R^m$. Suppose $f$ is differentiable on an open set $X\subset \R^n$ with $a,b\in X$. 
+    Suppose further $[a,b] = \Set{a+t(b-a)}{0\leq t\leq 1}\subset X$. \\
+    Then $\norm{f(b) - f(a)} \leq \norm{b-a} \sup_{z\in(a,b)}\norm{Df|_z}$ where $(a,b) = [a,b] \backslash \{a,b\}.$
+\end{theorem}
+
+\begin{proof}
+    Define $\phi: [0,1] \to \R$ by $\phi = f(a+t(b-a)) \cdot (f(b)-f(a))$. 
+    Then $\phi = \alpha \circ f\circ\beta$ where $\beta:[0,1]\to \R^n,\beta(t) = a+t(b-a)$ and $\alpha: \R^m\to \R, \alpha(x) = x\cdot(f(b) -f(a))$.
+    Clearly $\phi$ is continuous on $[0,1]$. 
+
+    Now $\alpha$ is a linear map so is everywhere differentiable with $D\alpha|_x = \alpha$. Next, $\beta([0,1])\subset X$ and $f$ is differentiable on $X$. Finally, if $t\in (0,1)$ then $\beta$ differentiable at $t$ with $\beta'(t) = b-a$, i.e. $D\beta|_t(h) = h(b-a)$. 
+    
+    Hence by the chain rule, if $t\in (0,1)$ then $\phi$ is differentiable at $t$ and \begin{align*}
+        D\phi|_t(h) &= D\alpha|_{f(\beta(t))} \qty(Df|_{\beta(t)} (D\beta|_t(h))) \\
+        &= \alpha \qty( Df|_{a+t(b-a)}(h(b-a)) )\\
+        &= (f(b)-f(a)) \cdot \qty(h Df|_{a+t(b-a)}(b-a) )\\
+        &= h \qty( (f(b)-f(a))\cdot Df|_{a+t(b-a)}(b-a) ).
+    \end{align*}
+    That is, $\phi'(t) = (f(b)-f(a))\cdot Df|_{a+t(b-a)}(b-a)$. So, by the MVT, 
+    \begin{align*}
+        \norm{f(b) - f(a)}^2 &= (f(b)-f(a)) \cdot f(b) - (f(b)-f(a)) \cdot f(a)\\
+        &= \phi(1) - \phi(0)\\
+        &= \phi'(t) \textup{ for some } t\in(0,1)\\
+        &= (f(b)-f(a))\cdot Df|_{a+t(b-a)}(b-a)\\
+        &\leq \norm{f(b)-f(a)} \norm{Df|_{a+t(b-a)}(b-a)} \textup{ by Cauchy-Schwarz}\\
+        &\leq \norm{f(b)-f(a)} \norm{Df|_{a+t(b-a)}} \norm{b-a}.
+    \end{align*}
+    Hence $\norm{f(b) - f(a)}\leq\norm{b-a} \norm{Df|_{a+t(b-a)}}$.
+    \end{proof}
+
+\begin{corollary} \label{cor:2.8}
+    Let $X\subset \R^n$ be open and connected, and let $f:X\to \R^m$ be differentiable with $Df|_x$ the zero map for all $x\in X$. Then $f$ is constant on $X$.
+\end{corollary}
+
+\begin{proof}
+    By MVI, $f$ is `locally' constant'. For each $x\in X$, there is some $\delta > 0$ such that $B_\delta(x)\subset X$ and so $f$ is constant on $B_\delta(x)$. (Since $B_\delta(x)$ is convex so contains line segments joining each pair of points.) 
+    
+    Note that as $X$ is open, if $U\subset X$ then $U$ open in $X$ iff $U$ open in $\R^n$. \\
+    If $X=\emptyset$ we are done, so suppose not.
+    Fix $a\in X$, and let \[ U = \Set{x\in X}{f(x) = f(a)}. \]
+    \underline{$U\neq \emptyset$}: $a\in U$.
+
+    \underline{$U$ is open}: if $b\in U$ then there is some $\delta>0$ such that $B_\delta(b)\subset X$ and $f$ constant on $B_\delta(b)$ so $B_\delta(b)\subset U$.
+
+    \underline{$U$ is closed in $X$}: if $b\in X\backslash U$ then there is some $\delta > 0$ such that $B_\delta(b) \subset X$ and $f$ constant on $B_\delta(b)$ so $B_\delta(b)\subset X\backslash U$. So $X\backslash U$ is open in $\R^n$, so open in $X$. Hence $U$ is closed in $X$.
+    
+    But $X$ is connected, so only clopen set is $X \therefore U =X$.
+\end{proof}
+
+We've seen if $f$ is differentiable at $a$ then partial derivatives all exist at $a$ and the matrix of $Df|_a$ is given by the partial derivatives.
+But, on the other hand, we can have all partial derivatives existing at $a$ but $f$ not differentiable at $a$. 
+However, there is a partial converse to this.
+
+\begin{theorem} \label{thm:4.9}
+    Let $f:\R^n\to\R^m$ and let $a\in \R^n$. Suppose there is some neighbourhood of $a$ such that the partial derivatives $D_if$ for $1\leq i \leq n$ all exist on this neighbourhood and are continuous at $a$.
+    Then $f$ is differentiable at $a$. 
+\end{theorem}
+
+How can we prove this?
+
+For simplicity, let's try to prove this for $n=2,m=1$. So $f:\R^2\to \R$. Write $a = (x,y)$. \\
+We want to think about $f(x+h,y+k)$ for small $h,k$. 
+Now, by definition of partial derivatives, \[ f(x+h,y+k) = f(x+h,y) + kD_2f(x+h,y) + \color{red}{o(k)} \] and \[ f(x+h,y) = f(x,y) + hD_1f(x,y) + o(h). \] Hence
+\begin{align*}
+    f(x+h,y+k) &= f(x,y) + hD_1f(x,y) + kD_2f(x+h,y) + o(h) + o(k)\\
+    &= f(x,y) + hD_1f(x,y) + k(D_2f(x,y) + o(1)) + o(h) + o(k)\\
+    &=f(x,y) + \underbrace{hD_1f(x,y) + kD_2f(x,y)}_{\textup{linear in }(h,k)} + \underbrace{o(h) + o(k)}_{o((h,k))}.
+\end{align*}
+Unfortunately, this proof does not work. The red-highlighted $o(k)$ is actually also dependent on $h$. Call it $\eta(h,k)$. We need $\frac{\eta(h,k)}{k}\to 0$ as $(h,k) \to (0,0)$. But we only know for each $h$, $\frac{\eta(h,k)}{k}\to$ as $k\to 0$. This is weaker. 
+
+In fact, what we need is the Mean Value Theorem.
+
+\begin{proof}
+    For simplicity, $n=2,m=1$. $a=(x,y)$. Take $(h,k)$ small.
+    Then, by MVT, \[f(x+h,y+k) - f(x+h,y) = kD_2f(x+h, y+\theta_{h,k}k) \] for some $\theta_{h,k}\in (0,1)$. 
+    By MVT, \[f(x+h,y) - f(x,y) = hD_1f(x+\phi_h h, y) \] for some $\phi_h\in (0,1)$. Hence \[ f(x+h,y+k) - f(x,y) = kD_2f(x+h, y+\theta_{h,k}k) + hD_1f(x+\phi_h h, y) .\]
+    As $(h,k)\to (0,0)$, we have $(x+h, y+\theta_{h,k}k)\to(x,y)$ and $(x+\phi_h h, y) \to (x,y)$ so by continuity of $D_1,D_2$ at $(x,y)$, we have $D_2f(x+h, y+\theta_{h,k}k) \to D_2f(x,y)$ and $D_1f(x+\phi_h h, y)\to D_1f(x,y)$.  
+
+    Write $D_2f(x+h, y+\theta_{h,k}k) = D_2f(x,y) + \eta(h,k)$ and $D_1f(x+\phi_h h, y) = D_1 f(x,y) + \zeta(h,k)$, where $\eta(h,k), \zeta(h,k)\to 0$ as $(h,k) \to (0,0)$. \\
+    Then $f(x+h,y+k) = f(x,y) + hD_1f(x,y) + kD_2f(x,y) + h\zeta(h,k) + k\eta(h,k)$. Now $(h,k)\mapsto hD_1f(x,y) + kD_2f(x,y)$ is linear, and \[ \abs{\frac{h\zeta(h,k) + k\eta(h,k)}{\sqrt{h^2+k^2}}} \leq \abs{\zeta(h,k)} + \abs{\eta(h,k)}\to 0 \] as $(h,k) \to (0,0).$ So $f$ is differentiable at $a= (x,y)$.
+\end{proof}
+
+\begin{remark}
+    1. Same proof basically does $f:\R^n\to \R$ for general $n$ with more involved notation. Then $f: \R^n\to \R^m$ by looking at each $f_i: \R^n\to \R$, $(1\leq i \leq m)$.
+
+    2. If you try to prove anything similar without invoking the MVT at any point, it's likely that the proof is probably wrong.
+\end{remark}
+
+\subsection{The Second Derivative}
+We'll start with a result on partial derivatives: `$\frac{\partial^2 f}{\partial x\partial y} = \frac{\partial^2 f}{\partial y\partial x}$'.
+
+\begin{theorem}[Symmetry of mixed partial derivatives] \label{thm:2.10}
+    Let $f: \R^n\to\R^m$, $a\in \R^n$ and $\epsilon > 0$. Suppose $D_iD_jf$ and $D_jD_if$ exist on $B_\epsilon (a) $ and are continuous at $a$. Then $D_iD_jf(a) = D_jD_if(a).$
+\end{theorem}
+
+\begin{proof}
+    Wlog $m=1, n=2\footnote{We can consider $f$ to be a vector of functions, $f_i$, so wlog $m = 1$. Also we can ignore the variables that we are not differentiating wrt by treating them as constants so wlog $n = 2$.}, a=(x,y), i=1, j=2$. \\
+    Let \begin{align*}
+        \Delta_h = f(x+h,y+h) -f(x,y+h)-f(x+h,y) +f(x,y) = g(y+h) - g(y)
+    \end{align*} 
+    where $g(t) = f(x+h,t) - f(x,t)$. \\
+    Let $0<\abs{h}<\sqrt{\epsilon}$. Then
+    \begin{align*}
+        \Delta_h &= hg'(y+\theta_h h) \quad\textup{some }\theta_h\in(0,1)\textup{ by MVT}\\
+        &= h(D_2f(x+h,y+\theta_h h) - D_2f(x,y+\theta_h h)) \\
+        &= h^2 D_1D_2f(x+\phi_h h, y+\theta_h h) \quad\textup{some }\phi_h\in(0,1)\textup{ by MVT.}
+    \end{align*}
+    Similarly, $\Delta_h = h^2D_2D_1f(x+\zeta_h h, y+\xi_h h)$\footnote{Let $g(t) = f(t, y+h) - f(t, y)$.} for some $\zeta_h, \xi_h\in (0,1)$. \\
+    Hence $D_1D_2f(x+\phi_h h, y+\theta_h h) = D_2D_1f(x+\zeta_h h, y+\xi_h h)$. So let $h\to 0$ and use continuity of $D_1D_2f, D_2D_1f$ at $(x,y)$,
+    \begin{align*}
+        D_1D_2f(x,y)= D_2D_1f(x,y)
+    \end{align*} 
+\end{proof}
+
+\begin{question}
+    What is the second derivative really?
+\end{question} 
+
+\begin{definition}[Twice-Differentiable]
+Let $f:\R^n\to \R^m$ be everywhere differentiable. \\
+For each $x\in \R^n, Df_x\in \mathcal{L}(\R^n,\R^m)$. 
+Define $F: \R^n\to\mathcal{L}(\R^n,\R^m) \cong \R^{nm}$ by $F(x) = Df|_x$.
+
+If $F$ is differentiable at $a \in \R^n$ then we say that $f$ is \vocab{twice-differentiable} at $a$ and the \vocab{second derivative} of $f$ at $a$ is $D^2f|_a = DF|_a$. \\
+\end{definition}
+
+What is $D^2 f|_a$?
+\begin{align*}
+    D^2f|_a\in \mathcal{L} \qty(\R^n, \mathcal{L}(\R^n,\R^m)) \cong Bi|(\R^n\times\R^n, \R^m)
+\end{align*} 
+
+So $D^2f|_a$ is a bilinear map from $\R^n\times\R^n \to \R^m$.
+
+If $f$ is twice differentiable at $a$, this says \[ Df|_{a+h} = Df|_a + D^2f|_a(h) + o(h) \]
+where everything in the expression is a linear map, i.e. \begin{align*}
+    Df|_{a+h}(k) = Df|_a(k) + \underbracket{D^2 f|_a(h,k)}_{\textup{bilinear in }h,k} + \underbracket{o_k(h)}_{\textup{for each fixed }k, \textup{ this is }o(h)}
+\end{align*}
+
+\begin{example}
+    Let $f: \mathcal{M}_n\to\mathcal{M}_n$, $f(A) = A^3$. \\
+    Then \begin{align*}
+        f(A+K) = A^3 + \underbracket{A^2K + AKA + KA^2}_{\text{linear in }K} + \text{ terms involving $K^2$}
+    \end{align*} so $f$ is everywhere differentiable with $Df|_A(K) =  A^2K + AKA + KA^2$. \\
+    Then
+    \begin{align*}
+        Df|_{A+H}(K) &= (A+H)^2 K + (A+H)K(A+H) + K(A+H)^2 \\
+        &= \underbracket{A^2K + AKA + KA^2}_{Df|_A(K)} + \underbracket{AHK+HAK+AKH+HKA+KAH+KHA}_{\textup{Bilinear}} \\
+        &+ \underbracket{H^2K+HKH+KH^2}_{o_K(H)}.
+    \end{align*}
+    So $f$ is twice differentiable at $A$ and $D^2f|_A(H,K) = AHK+HAK+AKH+HKA+KAH+KHA$.
+\end{example}
+
+\begin{remark}
+For definition to work, it's enough to have $f$ differentiable on some neighbourhood of $a$.
+\end{remark}
+
+\begin{question}
+    How does $D^2f|_a$ relate to $D_i D_j f(a)$?
+\end{question} 
+
+Suppose $f:\R^n\to\R$ is twice-differentiable at $a\in \R^n$. 
+Then, with $e_1,\dots ,e_n$ standard basis 
+\begin{align*}
+    \frac{D_jf(a+he_i)-D_jf(a)}{h} &= \frac{D^2f|_a(he_i,e_j) + o(h)}{h}\\
+    &= D^2f|_a(e_i,e_j) + o(1) \\
+    &\to D^2f|_a(e_i,e_j).
+\end{align*}
+So $D_iD_jf(a) = D^2f|_a(e_i,e_j)$. 
+So if $H$ is the $n\times n$ matrix respecting the bilinear form $D^2f|_a$, we have $H_{ij} = D_iD_jf(a)$. 
+
+\begin{definition}[Hessian]
+    The \vocab{Hessian} matrix, $H$, of $f$ is $H_{ij} = D_iD_jf(a)$.
+\end{definition} 
+
+If $f:\R^n\to\R^m$, we could do this for each $f_i: \R^n\to \R (i=1,\dots ,m)$, or could think about matrices whose entries are elements of $\R^m$.
+
+\begin{definition}[Continuously Differentiable]
+    Let $f:\R^n \to \R^m$ and $a \in \R^n$. 
+    We say $f$ is \vocab{continuously differentiable} at $a$ if $Df|_x$ exists for all $x$ in some ball $B_\delta(a)$ $(\delta > 0)$ and the function $x\mapsto Df|_x$ is continuous at $a$.
+\end{definition}
+
+\begin{remark}
+    If $f$ is twice continuously differentiable at $a$ then \cref{thm:2.10} tells us that $H$ is a symmetric matrix. \\
+    Hence, under this condition, $D^2f|_a$ is a symmetric bilinear form. 
+\end{remark}
+
+Let's use this to find stationary points.
+\begin{definition}[Local Maximum]
+    Let $f:\R^n \to \R$, $a \in \R^n$. 
+    We say $a$ is a \vocab{local maximum} (resp. \emph{minimum}) for $f$ if there is some $\delta>0$ such that for all $x\in B_\delta(a)$ we have $f(x)\leq f(a)$ (resp. $f(x) \ge f(a)$).
+\end{definition}
+
+\begin{proposition} \label{prp:2.1q}
+    Let $f:\R^n \to \R$ and let $a$ be a local max/min for $f$. 
+    Suppose $f$ is differentiable at $a$. 
+    Then  $Df|_a$ is the zero map.
+\end{proposition}
+
+\begin{proof}
+    Let $u\in \R^n$. For $\lambda\neq 0$ in $\R$, 
+    \begin{align*}
+        \frac{f(a+\lambda u) - f(a)}{\lambda} = \frac{Df|_a(\lambda u) + o(\lambda)}{\lambda} \to Df|_a(a)
+    \end{align*} 
+    as $\lambda\to 0$. 
+    Assume wlog $a$ is a maximum (otherwise consider $-f$). 
+    Then $\frac{f(a+\lambda u) - f(a)}{\lambda}$ is $\ge 0$ if $\lambda < 0$, and $\leq 0$ if $\lambda >0$. Hence $Df|_a(u) = 0$.
+\end{proof}
+Note the converse does not hold: e.g. $f:\R\to\R$, $f(x) = x^3$, $a=0$.
+
+\begin{lemma}[Second-order Taylor Theorem] \label{lem:2.12}
+    Let $f:\R^n\to \R$ be twice-differentiable at $a\in \R^n$. Then \[f(a+h) = f(a) + Df|_a(h) + \frac{1}{2} D^2f|_a(h,h) + o \qty(\norm{h}^2). \]
+\end{lemma}
+
+\begin{proof}
+    Define $g: [0,1]: \to \R$ by $g(t) = f(a+th) - f(a) - tDf|_a(h) - \frac{t^2}{2} Df|_a(h,h)$. 
+    Clearly $g$ is continuous on $[0,1], g(0)=0$ and $g$ is differentiable on $(0,1)$ with $g'(t) = Df|_{a+th}(h) - Df|_a(h) - tD^2f|_a(h,h)$.
+
+    By MVT, $\exists \; t \in (0,1)$ such that $g(1) -g(0) = g'(t)$. 
+    Hence 
+    \begin{align*}
+        \frac{\bigg| f(a+h) - f(a) - Df|_a(h) -\frac{1}{2} D^2f|_a(h,h) \bigg| }{\norm{h}^2} &= \frac{ \bigg| Df|_{a+th}(h) - Df|_a(h) - tD^2f|_a(h,h) \bigg|}{\norm{h}^2}\\
+        &= \frac{\bigg| D^2f|_a(th,h) + o(\norm{h})^2 - tD^2f|_a(h,h) \bigg|}{\norm{h}^2} \\
+        &= \frac{\abs{o(\norm{h})^2}}{\norm{h}^2} \text{ by bilinearity} \\
+        &\to 0 \text{ as } h \to 0.
+    \end{align*}
+\end{proof}
+
+\begin{theorem}
+    Let $f: \R^n\to \R$ and $a\in\R^n$. Suppose $f$ is twice continuously differentiable at $a$ (so, in particular, $D^2f|_a$ is a symmetric bilinear form) and $Df|_a = 0$. Then
+    \begin{enumerate}
+        \item if $D^2f|_a$ is positive definite, then $a$ is a local minimum, and 
+        \item if $D^2f|_a$ is negative definite, then $a$ is a local maximum,
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    Suppose wlog $D^2f|_a$ is positive definite (otherwise consider $-f$). 
+    Then wrt some orthonormal basis $D^2f|_a$ has diagonal matrix with strictly positive elements on leading diagonal. 
+
+    Hence $\forall \; x \in \R^n$, $D^2f|_a(x,x) \ge \mu\norm{x}^2$ where $\mu > 0$ is the minimum eigenvalue of $D^2f|_a$. 
+    By \cref{lem:2.12},
+    \begin{align*}
+        \frac{f(a+h) - f(a)}{\norm{h}^2} &= \frac{1}{2} \frac{D^2f|_a(h,h)}{\norm{h}^2} + o(1)\\
+        &\ge \frac{1}{2} \mu + o(1) \to \frac{1}{2} \mu \textup{ as } h\to 0
+    \end{align*}
+    but $\frac{1}{2}\mu > 0$ so for $h$ sufficiently small, $\frac{f(a+h) - f(a)}{\norm{h}^2}>0$ and thus $f(a+h) - f(a) > 0$. 
+    Hence $a$ is a local minimum for $f$.
+\end{proof}
+
+\subsection{Ordinary Differential Equations}
+\begin{lemma} \label{lem:2.14}
+    Let $A\subset\R^n$, $B\subset\R^m$ with $A$ compact and $B$ closed. Let $X = C(A,B) = \Set{f:A\to B}{A \textup{ continuous}}$ with uniform metric $d(f,g) = \sup_{x\in A} \norm{f(x)-g(x)}.$ Then $X$ is a complete metric space.
+\end{lemma}
+
+\begin{proof}
+    As $A$ is compact, $d$ is well-defined. 
+    Let $(f_n)$ be a Cauchy sequence in $X$. 
+    Then $(f_n)$ is uniformly Cauchy so uniformly convergent by GPUC on each coordinate. 
+    So $f_n\to f$ uniformly for some $f: A \to \R^m$. 
+    Uniform limit of continuous functions is continuous so $f$ is continuous. 
+    And $\forall x \in A$, $f_n(x) \to f(x)$ so, as $B$ is closed, $f(x) \in B$. 
+    Hence $f \in X$ and $d(f_n,f) \to 0$ as required.
+\end{proof}
+
+Often we want to solve an ODE but can't find a closed-form solution. Two ways we have tried so far: Numerical methods, and phase-plane portraits. However, these methods have no meaning if the ODE has no solution. So we would like a general result telling us that for ODE under appropriate conditions, they have unique solutions.
+
+A typical ODE is: $\frac{dy}{dx} = \phi(x,y)$ subject to $y=y_0$ when $x= x_0$. If we think about $\R\to\R^n$, we want to solve the initial value problem $f:\R\to\R^n$, and $f'(t) = \phi(t,f(t))$, and initial condition $f(t_0) = y_0$.
+
+\begin{definition}[Closed Ball]
+    In $\R^n$, if $a\in \R^n$ and $\delta >0$, the \vocab{closed ball of radius $\delta$ about $a$} is
+    \begin{align*}
+        \overline{B_\delta(a)} = \Set{x\in \R^n}{\norm{x-a} < \delta}.
+    \end{align*} 
+\end{definition}
+
+\begin{theorem}[Lindelöf-Picard] \label{thm:2.15}
+    Let $a, b \in \R, (a<b)$, $y_0\in \R^n$, $\delta>0$ and $t_0\in (a,b)$. \\
+    Let $\phi: [a,b] \times \overline{B_\delta(y_0)} \to \R^n$ be continuous, and suppose there is some $K>0$ such that 
+    \begin{align*}
+        \forall \; t\in [a,b],\ \forall \; y,z\in \overline{B_\delta(y_0)}, \textup{ we have } \norm{\phi(t,y) - \phi(t,z)} \leq K\norm{y-z}.
+    \end{align*} 
+    Then there is some $\epsilon>0$ such that $[t_0-\epsilon, t_0+\epsilon] \subset [a,b]$ and the initial value problem \[f'(t) =\phi(t,f(t)) \textup{ with } f(t_0) = y_0 \tag{$\star$} \] has a unique solution on $[t_0-\epsilon, t_0+\epsilon]$.
+\end{theorem}
+
+\begin{proof}
+    As $\phi$ is a continuous function on a compact set we can find $M$ such that \[\forall t\in [a,b], \forall y\in  \overline{B_\delta(y_0)}, \textup{ we have }\norm{\phi(t,y)}\leq M. \]
+    Take $\epsilon > 0$ such that $[t_0-\epsilon, t_0+\epsilon]\subset [a,b]$. 
+    Let $X = C \qty( [t_0-\epsilon, t_0+\epsilon], \overline{B_\delta(y_0)} )$. 
+    Then by \cref{lem:2.14}, $X$ is complete with uniform metric $d$. 
+    And obviously $X\neq \phi$\footnote{$X$ contains the constant function $y_0$}.
+
+    For $g\in X$, define $T_g:[t_0-\epsilon, t_0+\epsilon] \to \R^n$ by \[Tg(t) = y_0 + \int_{t_0}^t \phi(x,g(x)) dx. \] 
+    Note that by FTC, $T_f=f$ iff $f$ is a solution of $(\star)$. 
+
+    Now, if $g\in X$ and $t\in [t_0-\epsilon, t_0+\epsilon]$, 
+    \begin{align*}
+        \norm{T_g(t) - y_0} &= \norm{\int_{t_0}^t \phi(x,g(x)) dx}\\
+        &\leq \int_{t_0}^t \norm{\phi(x,g(x))} dx\\
+        &\leq M\epsilon.
+    \end{align*}
+    Also, if $g,h\in X$ and $t\in [t_0-\epsilon, t_0+\epsilon] $ then 
+    \begin{align*}
+        \norm{T_g(t) - T_h(t)} &= \norm{\int_{t_0}^t \phi(x,g(x)) - \phi(x,h(x)) dx}\\
+        &\leq \int_{t_0}^t \norm{\phi(x,g(x)) - \phi(x,h(x))} dx\\
+        &\leq \int_{t_0}^t K\norm{g(x) - h(x)} dx\\
+        &\leq K\epsilon d(g,h)
+    \end{align*}
+    i.e. $d(T_g,T_h) \leq K \epsilon (g,h)$. 
+    
+    So taking $\epsilon = \min\set{\frac{\delta}{M}, \frac{1}{2K}}$ we have that $T$ is a contraction of $X$ and so has a unique fixed point by the Contraction Mapping Theorem as desired.
+\end{proof}
+
+\begin{remark}
+    Not that much use as stated, as it doesn't provide a global solution, and in fact there might not be one. 
+    In practice, given appropriate conditions on $\phi$ we can often `patch together' local solutions, but this is beyond the scope of this course.
+\end{remark}
+
+\subsection{The Inverse Function Theorem}
+
+\begin{theorem}[The Inverse Function Theorem] \label{thm:2.16}
+Let $f: \R^n\to \R^n$ be continuously differentiable at $a \in \R^n$ with $\alpha = Df|_a$ being non-singular. 
+Then there exist open neighbourhoods $U$ of $a$ and $V$ of $f(a)$ such that $f|_U$ is a homeomorphism of $U$ onto $V$.
+
+Moreover, if $g: V\to U$ is the inverse of $f|_U$, it is differentiable at $f(a)$ with $Dg|_{f(a)} = \alpha\inv$, but this part will not be proven.
+\end{theorem}
+
+\begin{proof}
+Write \[f(a+h) = f(a) + \alpha(h) +\epsilon(h) \norm{h} \] where $\epsilon(h)\to 0$ as $h\to 0$. Let $\delta,\eta >0$ such that $f$ is differentiable on $\overline{B_\delta(a)}$. Define $W = \overline{B_\delta(a)}$, $V = B_\eta(f(a))$. Also define $\phi: \R^n\to \R^n$ by $\phi(x) = f(x) - \alpha(x)$. Then, for $x\in W$, $\phi$ is differentiable at $x$ with \[D\phi|_x = Df|_x - \alpha \to 0 \textup{ as } x\to a.\]
+
+Note $W$ is a complete, non-empty metric space. We hope to define something $W\to W$ such that it is a contraction. 
+
+Fix $y\in V$. Define $T_y: W\to \R^n$ by \[T_y(x) = x-\alpha\inv(f(x) - y).\] Note $f(x) = y\Leftrightarrow T_y(x) = x$. Now, given $x\in W$, 
+\begin{align*}
+    \norm{T_yx - a} &= \norm{\alpha\inv \qty( \alpha x - f(x) + y - \alpha(a) )} \\
+    &= \norm{\alpha\inv \qty( y - (f(x) - \alpha(x-a)) )} \\
+    &= \norm{\alpha\inv \qty( y -f(a) - \epsilon(x-a)\norm{x-a} )} \\
+    &\leq \norm{\alpha\inv} \qty( \norm{y-f(a)} + \norm{\epsilon(x-a)}\norm{x-a} ) \\
+    &\leq \norm{\alpha\inv} \qty(\eta + \delta\norm{\epsilon(x-a)}).
+\end{align*}
+Also, given $w,x\in W$,
+\begin{align*}
+    \norm{T_yx - T_yw} &= \norm{\alpha\inv (\alpha(x) - f(x) + f(w) - \alpha(w))}\\
+    &= \norm{\alpha\inv (\phi(w) - \phi(x))}\\
+    &\leq \norm{\alpha\inv} \norm{\phi(w) - \phi(x)}\\
+    &\leq \norm{\alpha\inv}\norm{w-x}\sup_{z\in w}\norm{D\phi|_z}
+\end{align*}
+by Mean Value Inequality. Pick $\delta>0$ sufficiently small such that $\forall x\in W$, we have $\norm{\epsilon(x-a)}\leq \frac{1}{2\norm{\alpha\inv}}$ and also $\sup_{z\in W}\norm{D\phi|_z} < \frac{1}{\norm{\alpha\inv}}.$ (We can do this since $\epsilon(x-a)\to 0$ as $x\to a$ and $D\phi|_x \to 0$ as $x\to a$.)
+
+Take $\eta = \frac{\delta}{2}$. Then for each $y\in V$, we have $\forall x\in W,$ $\norm{T_yx-a}<\delta$ and $\forall x,w\in W$, $\norm{T_yx - T_yw}\leq K\norm{w-x}$ for some constant $K<1$. Thus $T_y$ is a contraction of $W$ and by CMT has a unique fixed point, and $x_y\in T_y(W)\subset B_\delta(a)$. That is, for each $y\in V$ there is a unique $x\in W$ with $f(x) = y$, and in fact $x\in B_\delta(a)$. 
+
+Let $U$ be the set of all such $x$. Let $h=f|_{B_\delta(a)}$. Then $U=h\inv(V)$ so $U$ is open in $B_\delta(a)$. But $B_\delta(a)$ is open in $\R^n$ so $U$ is open in $\R^n$. So now we have open neighbourhoods $U$ of $a$ and $V$ of $f(a)$ such that $f$ maps $U$ bijectively onto $V$. Remains to check that $f$ is continuous so that we have a homeomorphism.
+
+Let $X = C(V,W)$. As $W$ is bounded, similarly to Lemma 4.14 we have that $X$ is a complete non-empty metric space. We want to define a function $X\to X$ that is a contraction. Define $S:X\to X$ by \[S_g(y) = g(y) - \alpha\inv(f(g(y))-y) = T_y(g(y)). \]
+Given $g,h\in X$ and $y\in V$,
+\begin{align*}
+    \norm{S_g(y) - S_h(y)} &= \norm{T_y(g(y)) - T_y(h(y))}\\
+    &\leq K\norm{g(y) - h(y)}\\
+    &\leq Kd(g,h)
+\end{align*}
+and so by taking sup over all $y$, $d(S_g,S_h) \leq Kd(g,h)$. Hence $S$ is a contraction of $X$ and has a unique fixed point $g$. By definition of $S$, for each $y\in V$ we have $g(y)$ is the unique $x\in W$ with $f(x) = y$. Hence $g = (f|_U)\inv$ is continuous. Since $g\in X$, $(f|_U)\inv$ is continuous and thus $f|_U$ is a homeomorphism from $U$ onto $V$.
+\end{proof}
