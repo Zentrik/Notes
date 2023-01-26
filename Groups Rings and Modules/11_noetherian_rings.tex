@@ -1,0 +1,106 @@
+\subsection{Definition}
+Recall the definition of a Noetherian ring.
+\begin{definition}
+	A ring $R$ is \textit{Noetherian} if, for all sequences of nested ideals $I_1 \subseteq I_2 \subseteq \cdots$, there exists $N \in \mathbb N$ such that for all $n > N$, $I_n = I_{n+1}$.
+\end{definition}
+\begin{lemma}
+	Let $R$ be a ring.
+	Then $R$ satisfies the ascending chain condition (so $R$ is Noetherian) if and only if all ideals in $R$ are finitely generated.
+\end{lemma}
+We have already shown that principal ideal domains are Noetherian, since they satisfy this `ascending chain' condition.
+This now will immediately follow from the lemma.
+\begin{proof}
+	First, suppose that all ideals in $R$ are finitely generated.
+	Let $I_1 \subseteq I_2 \subseteq \cdots$ be an ascending chain of ideals.
+	Consider $I = \bigcup_{i=1}^\infty I_i$, which is an ideal.
+	$I$ is finitely generated, so $I = (a_1, \dots, a_n)$.
+	These elements belong to a nested union of ideals.
+	In particular, we can choose $N \in \mathbb N$ such that all $a_i$ are contained within $I_N$.
+	Then, for $n \geq N$, we find
+	\begin{align*}
+		(a_1, \dots, a_n) \subseteq I_N \subseteq I_n \subseteq I = (a_1, \dots, a_n)
+	\end{align*}
+	So the inclusions are all equalities, so $I_N = I_n$.
+
+	Conversely, suppose that $R$ is Noetherian.
+	Suppose that there exists an ideal $J \triangleleft R$ which is not finitely generated.
+	Let $a_1 \in J$.
+	Then since $J$ is not finitely generated, $(a_1) \subset J$.
+	We can therefore choose $a_2 \in J \setminus (a_1)$, and then $(a_1) \subset (a_1, a_2) \subset J$.
+	Continuing inductively, we contradict the ascending chain condition.
+\end{proof}
+
+\subsection{Hilbert's basis theorem}
+\begin{theorem}
+	Let $R$ be a Noetherian ring.
+	Then $R[X]$ is Noetherian.
+\end{theorem}
+\begin{proof}
+	Suppose there exists an ideal $J$ that is not finitely generated.
+	Let $f_1 \in J$ be an element of minimal degree.
+	Then $(f_1) \subset J$.
+	So we can choose $f_2 \in J \setminus (f_1)$, which is also of minimal degree.
+	Inductively we can construct a sequence $f_1, f_2, \dots$, where the degrees are non-decreasing.
+	Let $a_i$ be the leading coefficient of $f_i$, for all $i$.
+	We then obtain a sequence of ideals $(a_1) \subseteq (a_1, a_2) \subseteq (a_1, a_2, a_3) \subseteq \cdots$ in $R$.
+	Since $R$ is Noetherian, there exists $m \in \mathbb N$ such that for all $n \geq m$, we have $a_{n} \in (a_1, \dots, a_m)$.
+	Let $a_{m+1} = \sum_{i=1}^m \lambda_i a_i$, since $a_{m+1}$ lies in the ideal $(a_1, \dots, a_m)$.
+	Now we define
+	\begin{align*}
+		g(X) = \sum_{i=1}^m \lambda_i X^{\deg (f_{m+1} - f_i)} f_i
+	\end{align*}
+	The degree of $g$ is equal to the degree of $f_{m+1}$, and they have the same leading coefficient $a_{m+1}$.
+	Then, consider $f_{m+1} - g \in J$ and $\deg (f_{m+1} - g) < \deg f_{m+1}$.
+	By minimality of the degree of $f_{m+1}$, $f_{m+1} - g \in (f_1, \dots, f_m)$, hence $f_{m+1} \in (f_1, \dots, f_m)$.
+	This contradicts the choice of $f_{m+1}$, so $J$ is in fact finitely generated.
+\end{proof}
+\begin{corollary}
+	$\mathbb Z[X_1, \dots, X_n]$ is Noetherian.
+	Similarly, $F[X_1, \dots, X_n]$ is Noetherian for any field $F$, since fields satisfy the ascending chain condition.
+\end{corollary}
+\begin{example}
+	Let $R = \mathbb C[X_1, \dots, X_n]$.
+	Let $V \subseteq \mathbb C^n$ be a subset of the form
+	\begin{align*}
+		V = \qty{(a_1, \dots, a_n) \in \mathbb C^n \colon f(a_1, \dots, a_n) = 0,\,\forall f \in \mathscr F}
+	\end{align*}
+	where $\mathscr F \subseteq R$ is a (possibly infinite) set of polynomials.
+	Such a set is referred to as an \textit{algebraic variety}.
+	Let
+	\begin{align*}
+		I = \qty{\sum_{i=1}^m \lambda_i f_i \colon m \in \mathbb N,\, \lambda_i \in R_i,\, f_i \in \mathscr F}
+	\end{align*}
+	We can check that $I \triangleleft R$.
+	Since $R$ is Noetherian, $I = (g_1, \dots, g_r)$.
+	Hence
+	\begin{align*}
+		V = \qty{(a_1, \dots, a_n) \in \mathbb C^n \colon g(a_1, \dots, a_n) = 0,\,\forall g \in I}
+	\end{align*}
+\end{example}
+\begin{lemma}
+	Let $R$ be a Noetherian ring, and $I \triangleleft R$.
+	Then $\faktor{R}{I}$ is Noetherian.
+\end{lemma}
+\begin{proof}
+	Let $J_1' \subseteq J_2' \subseteq \cdots$ be a chain of ideals in $\faktor{R}{I}$.
+	By the ideal correspondence, $J_i'$ corresponds to an ideal $J_i$ that contains $I$, so $J_i' = \faktor{J_i}{I}$.
+	So $J_1 \subseteq J_2 \subseteq \cdots$ is a chain of ideals in $R$.
+	Since $R$ is Noetherian, there exists $N \in \mathbb N$ such that for all $n \geq N$, we have $J_N = J_n$, and so $J_N' = J_n'$.
+	Hence $\faktor{R}{I}$ satisfies the ascending chain condition.
+\end{proof}
+\begin{example}
+	The ring of Gaussian integers $\faktor{\mathbb Z}{(X^2 + 1)}$ is Noetherian.
+	If $R[X]$ is Noetherian, then $\faktor{R[X]}{(X)} \cong R$ is Noetherian.
+	This is a converse to the Hilbert basis theorem.
+
+	The ring of polynomials in countably many variables is not Noetherian.
+	\begin{align*}
+		\mathbb Z[X_1, X_2, \dots] = \bigcup_{n \in \mathbb N} \mathbb Z[X_1, \dots, X_n]
+	\end{align*}
+	In particular, consider the ascending chain $(X_1) \subset (X_1, X_2) \subset (X_1, X_2, X_3) \subset \cdots$.
+
+	Let $R = \qty{f \in \mathbb Q[X] \colon f(0) \in \mathbb Z} \leq \mathbb Q[X]$.
+	Even though $\mathbb Q[X]$ is Noetherian, $R$ is not.
+	Indeed, consider $(X) \subset \qty(\frac{1}{2} X) \subset \qty(\frac{1}{4}X) \subset \qty(\frac{1}{8}X) \subset \cdots$.
+	These inclusions are strict, since $2 \in R$ is not a unit.
+\end{example}

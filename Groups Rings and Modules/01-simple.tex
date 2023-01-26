@@ -1,0 +1,48 @@
+\section{Simple groups}
+
+\subsection{Introduction}
+If $K \trianglelefteq G$, then studying the groups $K$ and $\faktor{G}{K}$ give information about $G$ itself.
+This approach is available only if $G$ has nontrivial normal subgroups.
+It therefore makes sense to study groups with no normal subgroups, since they cannot be decomposed into simpler structures in this way.
+
+\begin{definition}[Simple Group]
+	A group $G$ is \vocab{simple} if $\qty{1}$ and $G$ are its only normal subgroups.
+\end{definition}
+
+By convention, we do not consider the trivial group to be a simple group.
+This is analogous to the fact that we do not consider one to be a prime.
+
+\begin{lemma}
+	Let $G$ be an abelian group.
+	$G$ is simple iff $G \cong C_p$ for some prime $p$.
+\end{lemma}
+
+\begin{proof}
+	Certainly $C_p$ is simple by Lagrange's theorem.
+	Conversely, since $G$ is abelian, all subgroups are normal.
+	Let $1 \neq g \in G$.
+	Then $\genset g \trianglelefteq G$.
+	Hence $\genset g = G$ by simplicity.
+	If $G$ is infinite, then $G \cong \mathbb Z$, which is not a simple group; $2\mathbb Z \triangleleft \mathbb Z$.
+	Hence $G$ is finite, so $G \cong C_{o(g)}$.
+	If $o(g) = mn$ for $m, n \neq 1, p$, then $\genset{g^m} \leq G$, contradicting simplicity.
+\end{proof}
+
+\begin{lemma}
+	If $G$ is a finite group, then $G$ has a \textit{composition series}
+	\begin{align*}
+		1 \cong G_0 \triangleleft G_1 \triangleleft \dots \triangleleft G_n = G
+	\end{align*}
+	where each quotient $\faktor{G_{i+1}}{G_i}$ is simple.
+\end{lemma}
+
+\begin{remark}
+	It is not the case that necessarily $G_i$ be normal in $G_{i+k}$ for $k \geq 2$.
+\end{remark}
+
+\begin{proof}
+	We will consider an inductive step on $\abs{G}$.
+	If $\abs{G} = 1$, then trivially $G = 1$.
+	Conversely, if $\abs{G} > 1$, let $G_{n-1}$ be a normal subgroup of largest possible order not equal to $\abs{G}$.
+	Then, $\faktor{G}{G_{n-1}}$ exists, and is simple by the correspondence theorem.
+\end{proof}

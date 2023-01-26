@@ -1,0 +1,46 @@
+%&../preamble
+
+\def\npart {IB}
+\def\nterm {Lent}
+\def\nyear {2022}
+\def\nlecturer {Prof. G. Paternain}
+\def\ncourse {Geometry}
+
+\input{../preamble-dynamic.tex}
+
+\usepackage{faktor}
+\usepackage{scalerel}
+
+\newcommand{\connect}{\mathbin{\#}}
+\DeclareMathOperator*{\bigconnect}{\scalerel*{\#}{\textstyle\sum}}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Hom}{Hom}
+\newcommand{\tran}{\intercal}
+\DeclareMathOperator{\vecspan}{span}
+\newcommand{\wildcard}{{}\cdot{}}
+\DeclareMathOperator{\Iff}{\mathrm{I}}
+\DeclareMathOperator{\IIff}{\mathrm{I\!I}}
+\newcommand{\Mob}{\text{M\"ob}}
+\DeclareMathOperator{\artanh}{artanh}
+\newcommand{\genset}[1]{\left\langle{} #1 \right\rangle}
+\newcommand{\Chat}{\widehat{\mathbb C}}
+\newcommand{\acts}{\curvearrowright}
+
+\let\emptyset\varnothing
+
+\usepackage{../quiver}
+\usepackage{../tikzit}
+\input{../style.tikzstyles}
+
+\begin{document}
+    \maketitle
+    \tableofcontents
+
+    \include{01-surfaces.tex}
+    \include{02-smooth.tex}
+    \include{03-R3.tex}
+    \include{04-geometry.tex}
+    \include{05-geodesics.tex}
+    \include{06-riemannian.tex}
+\end{document}

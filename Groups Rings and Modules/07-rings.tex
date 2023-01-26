@@ -1,0 +1,544 @@
+\section{Rings}
+
+\subsection{Definitions}
+\begin{definition}
+	A \textit{ring} is a triple $(R, +, \cdot)$ where $R$ is a set and $+, \cdot$ are binary operations $R \times R \to R$, satisfying the following axioms.
+	\begin{enumerate}
+		\item $(R, +)$ is an abelian group, and we will denote the identity element 0 and the inverse of $x$ as $-x$;
+		\item $(R, \cdot)$ satisfies the group axioms except for the invertibility axiom, and we will denote the identity element 1 and the inverse of $x$ as $x\inv$ if it exists;
+		\item for all $x, y, z \in R$ we have $x \cdot (y+z) = x\cdot y + x\cdot z$ and $(y+z)\cdot x = y \cdot x + z \cdot x$.
+	\end{enumerate}
+	If multiplication is commutative, we say that $R$ is a \textit{commutative} ring.
+	In this course, we will study only commutative rings.
+\end{definition}
+\begin{remark}
+	For all $x \in R$,
+	\begin{align*}
+		0 \cdot x = (0+0) \cdot x = 0 \cdot x + 0 \cdot x \implies 0 \cdot x = 0
+	\end{align*}
+	Further,
+	\begin{align*}
+		0 = 0 \cdot x = (1 + -1) \cdot x = x + (-1 \cdot x) \implies -1 \cdot x = -x
+	\end{align*}
+\end{remark}
+\begin{definition}
+	A subset $S \subseteq R$ is a \textit{subring}, denoted $S \leq R$, if $(S, +, \cdot)$ is a ring with the same identity elements.
+\end{definition}
+\begin{remark}
+	It suffices to check the closure axioms for addition and multiplication; the other properties are inherited.
+\end{remark}
+\begin{example}
+	$\mathbb Z \leq \mathbb Q \leq \mathbb R \leq \mathbb C$ are rings.
+	The set $\mathbb Z[i] = \qty{a+bi \colon a,b\in\mathbb Z}$ is a subring of $\mathbb C$.
+	This is known as the ring of Gaussian integers.
+	The set $\mathbb Q[\sqrt{2}] = \qty{a+b\sqrt{2} \colon a,b \in\mathbb Q}$ is a subring of $\mathbb R$.
+\end{example}
+\begin{example}
+	The set $\faktor{\mathbb Z}{n\mathbb Z}$ is a ring.
+\end{example}
+\begin{example}
+	Let $R, S$ be rings.
+	Then the \textit{product} $R \times S$ is a ring under the binary operations
+	\begin{align*}
+		(a,b) + (c,d) = (a+c,b+d);\quad (a,b) \cdot (c,d) = (a\cdot c,b\cdot d)
+	\end{align*}
+	The additive identity is $(0_R, 0_S)$ and the multiplicative identity is $(1_R, 1_S)$.
+	Note that the subset $R \times \qty{0}$ is preserved under addition and multiplication, so it is a ring, but it is not a subring because the multiplicative identity is different.
+\end{example}
+
+\subsection{Polynomials}
+\begin{definition}
+	Let $R$ be a ring.
+	A \textit{polynomial} $f$ over $R$ is an expression
+	\begin{align*}
+		f = a_0 + a_1 X + a_2 X^2 + \dots + a_n X^n
+	\end{align*}
+	for $a_i \in R$.
+	The term $X$ is a formal symbol, no substitution of $X$ for a value will be made.
+	We could alternatively define polynomials as finite sequences of terms in $R$.
+	The \textit{degree} of a polynomial $f$ is the largest $n$ such that $a_n \neq 0$.
+	A degree-n polynomial is \textit{monic} if $a_n = 1$.
+	We write $R[X]$ for the set of all such polynomials over $R$.
+	Let $g = b_0 + b_1 X + \dots + b_n X^n$.
+	Then we define
+	\begin{align*}
+		f + g = (a_0 + b_0) + (a_1 + b_1) X + \dots + (a_n + b_n) X^n;\quad f \cdot g = \sum_i \qty(\sum_{j=0}^i a_j b_{i-j}) X^i
+	\end{align*}
+	Then $(R[X], +, \cdot)$ is a ring.
+	The identity elements are the constant polynomials $0$ and $1$.
+	We can identify the ring $R$ with the subring of $R[X]$ of constant polynomials.
+\end{definition}
+\begin{definition}
+	An element $r \in R$ is a \textit{unit} if $r$ has a multiplicative inverse.
+	The units in a ring, denoted $R^\times$, form an abelian group under multiplication.
+	For instance, $\mathbb Z^\times = \qty{\pm 1}$ and $\mathbb Q^\times = \mathbb Q \setminus \qty{0}$.
+\end{definition}
+\begin{definition}
+	A \textit{field} is a ring where all nonzero elements are units and $0 \neq 1$.
+\end{definition}
+\begin{example}
+	$\faktor{\mathbb Z}{n\mathbb Z}$ is a field only if $n$ is a prime.
+\end{example}
+\begin{remark}
+	If $R$ is a ring such that $0 = 1$, then every element in the ring is equal to zero.
+	Indeed, $x = 1\cdot x = 0\cdot x = 0$.
+	Thus, the exclusion of rings with $0 = 1$ in the definition of a field simply excludes the trivial ring.
+\end{remark}
+\begin{proposition}
+	Let $f, g \in R[X]$ such that the leading coefficient of $g$ is a unit.
+	Then there exist polynomials $q, r \in R[X]$ such that $f = qg + r$, where the degree of $r$ is less than the degree of $g$.
+\end{proposition}
+\begin{remark}
+	This is the Euclidean algorithm for division, adapted to polynomial rings.
+\end{remark}
+\begin{proof}
+	Let $n$ be the degree of $f$ and $m$ be the degree of $g$, so
+	\begin{align*}
+		f = a_n X^n + \dots + a_0;\quad g = b_m X^m + \dots + b_0
+	\end{align*}
+	By assumption, $b_m \in R^\times$.
+	If $n < m$ then let $q = 0$ and $r = f$.
+	Conversely, we have $n \geq m$.
+	Consider the polynomial $f_1 = f - a_n b_m\inv g X^{n-m}$.
+	This has degree at most $n - 1$.
+	Hence, we can use induction on $n$ to decompose $f_1$ as $f_1 = q_1 g + r$.
+	Thus $f = (q_1 + a_n b_m\inv X^{n-m}) g + r$ as required.
+\end{proof}
+\begin{remark}
+	If $R$ is a field, then every nonzero element of $R$ is a unit.
+	Therefore, the above algorithm can be applied for all polynomials $g$ unless $g$ is the constant polynomial zero.
+\end{remark}
+\begin{example}
+	Let $R$ be a ring and $X$ be a set.
+	Then the set of functions $X \to R$ is a ring under
+	\begin{align*}
+		(f + g)(x) = f(x) + g(x);\quad (f \cdot g)(x) = f(x) \cdot g(x)
+	\end{align*}
+	The set of continuous functions $\mathbb R \to \mathbb R$ is a subring of the ring of all functions $\mathbb R \to \mathbb R$, since they are closed under addition and multiplication.
+	The set of polynomial functions $\mathbb R \to \mathbb R$ is also a subring, and we can identify this with the ring $\mathbb R[X]$.
+\end{example}
+\begin{example}
+	Let $R$ be a ring.
+	Then the \textit{power series ring} $R\Brackets{X}$ is the set of power series on $X$.
+	This is defined similarly to the polynomial ring, but we permit infinitely many nonzero elements in the expansion.
+	The power series is defined formally; we cannot actually carry out infinitely many additions in an arbitrary ring.
+	We instead consider the power series as a sequence of numbers.
+\end{example}
+\begin{example}
+	Let $R$ be a ring.
+	Then the ring of \textit{Laurent polynomials} is $R[X,X\inv]$ with the restriction that $a_i \neq 0$ for finitely many $i$.
+\end{example}
+
+\subsection{Homomorphisms}
+\begin{definition}
+	Let $R$ and $S$ be rings.
+	A function $\varphi \colon R \to S$ is a \textit{ring homomorphism} if
+	\begin{enumerate}
+		\item $\varphi(r_1 + r_2) = \varphi(r_1) + \varphi(r_2)$;
+		\item $\varphi(r_1 \cdot r_2) = \varphi(r_1) \cdot \varphi(r_2)$;
+		\item $\varphi(1_R) = 1_S$.
+	\end{enumerate}
+	We can derive that $\varphi(0_R) = 0_S$ from (i).
+
+	A ring homomorphism is an \textit{isomorphism} if it is bijective.
+	The \textit{kernel} of a ring homomorphism is $\ker \varphi = \qty{r \in R : \varphi(r) = 0}$.
+\end{definition}
+\begin{lemma}
+	Let $R, S$ be rings.
+	Then a ring homomorphism $\varphi \colon R \to S$ is injective if and only if $\ker \varphi = \qty{0}$.
+\end{lemma}
+\begin{proof}
+	Let $\varphi \colon (R, +) \to (S, +)$ be the induced group homomorphism on addition.
+	The result then follows from the corresponding fact about group homomorphisms.
+\end{proof}
+
+\subsection{Ideals}
+\begin{definition}
+	A subset $I \subseteq R$ is an \textit{ideal}, written $I \trianglelefteq R$, if
+	\begin{enumerate}
+		\item $I$ is a subgroup of $(R, +)$;
+		\item if $r \in R$ and $x \in I$, then $rx \in I$.
+	\end{enumerate}
+	We say that an ideal is \textit{proper} if $I \neq R$.
+\end{definition}
+\begin{lemma}
+	Let $\varphi \colon R \to S$ be a ring homomorphism.
+	Then $\ker \varphi$ is an ideal of $R$.
+\end{lemma}
+\begin{proof}
+	We know that $\ker \varphi$ is a subgroup by the equivalent fact from groups.
+	If $r \in R$ and $x \in \ker \varphi$, then
+	\begin{align*}
+		\varphi(rx) = \varphi(r) \varphi(x) = \varphi(r) \cdot 0 = 0
+	\end{align*}
+	Hence $rx \in \ker \varphi$.
+\end{proof}
+\begin{remark}
+	If $I$ contains a unit, then the multiplicative identity lies in $I$.
+	Then all elements lie in $I$.
+	In particular, if $I$ is a proper ideal, $1 \not\in I$.
+	Hence a proper ideal $I$ is not a subring of $R$.
+\end{remark}
+\begin{lemma}
+	The ideals in $\mathbb Z$ are precisely the subsets of the form $n\mathbb Z$ for any $n = 0, 1, 2, \dots$.
+\end{lemma}
+\begin{proof}
+	First, we can check directly that any subset of the form $n\mathbb Z$ is an ideal.
+	Now, let $I$ be any nonzero ideal of $\mathbb Z$ and let $n$ be the smallest positive element.
+	Then $n\mathbb Z \subseteq I$.
+	Let $m \in I$.
+	Then by the Euclidean algorithm, $m = qn+r$ for $q,r \in \mathbb Z$ and $r \in \qty{0, 1, \dots, n-1}$.
+	Then $r = m - qn$.
+	We know $qn \in I$ since $n \in I$, so $r \in I$.
+	If $r \neq 0$, this contradicts the minimality of $n$ as chosen above.
+	So $I = n\mathbb Z$ exactly.
+\end{proof}
+\begin{definition}
+	For an element $a \in R$, we write $(a)$ to denote the subset of $R$ given by multiples of $a$; that is, $(a) = \qty{ra \colon r\in R}$.
+	This is an ideal, known as the ideal \textit{generated by $a$}.
+	More generally, if $a_1, \dots, a_n \in R$, then $(a_1, \dots, a_n)$ is the set of elements in $R$ given by linear combinations of the $a_i$.
+	This is also an ideal.
+\end{definition}
+\begin{definition}
+	Let $I \trianglelefteq R$.
+	Then $I$ is \textit{principal} if there exists some $a \in R$ such that $I = (a)$.
+\end{definition}
+
+\subsection{Quotients}
+\begin{theorem}
+	Let $I \trianglelefteq R$.
+	Then the set $\faktor{R}{I}$ of cosets of $I$ in $(R, +)$ forms the \textit{quotient ring} under the operations
+	\begin{align*}
+		(r_1 + I) + (r_2 + I) = (r_1 + r_2) + I;\quad (r_1 + I) \cdot (r_2 + I) = (r_1 \cdot r_2) + I
+	\end{align*}
+	This ring has the identity elements
+	\begin{align*}
+		0_{\faktor{R}{I}} = 0_R + I;\quad 1_{\faktor{R}{I}} = 1_R + I
+	\end{align*}
+	Further, the map $R \to \faktor{R}{I}$ defined by $r \mapsto r + I$ is a ring homomorphism called the \textit{quotient map}.
+	The kernel of the quotient map is $I$.
+	Hence any ideal is the kernel of some homomorphism.
+\end{theorem}
+\begin{proof}
+	From the analogous result from groups, the addition defined on the set of cosets yields the group $\qty(\faktor{R}{I}, +)$.
+	If $r_1 + I = r_1' + I$ and $r_2 + I = r_2' + I$, then $r_1' = r_1 + a_1$ and $r_2' = r_2 + a_2$ for some $a_1, a_2 \in I$.
+	Then
+	\begin{align*}
+		r_1' r_2' = (r_1 + a_1)(r_2 + a_2) = r_1 r_2 + a_1 r_2 + r_1 a_2 + a_1 a_2
+	\end{align*}
+	Hence $(r_1' r_2') + I = (r_1 r_2) + I$.
+	The remainder of the proof is trivial.
+\end{proof}
+\begin{example}
+	In the integers $\mathbb Z$, the ideals are $n\mathbb Z$.
+	Hence we can form the quotient ring $\faktor{\mathbb Z}{n\mathbb Z}$.
+	The ring $\faktor{\mathbb Z}{n\mathbb Z}$ has elements $n\mathbb Z, 1 + n\mathbb Z, \dots, (n-1) + n\mathbb Z$.
+	Addition and multiplication behave like in modular arithmetic modulo $n$.
+\end{example}
+\begin{example}
+	Consider the ideal $(X)$ inside the polynomial ring $\mathbb C[X]$.
+	This ideal is the set of polynomials with zero constant term.
+	Let $f(X) = a_n X^n + \dots + a_0$ be an arbitrary element of $\mathbb C[X]$.
+	Then $f(X) + X = a_0 + X$.
+	Thus, there exists a bijection between $\faktor{\mathbb C[X]}{(X)}$ and $\mathbb C$, defined by $f(x) + (X) \mapsto f(0)$, with inverse $a \mapsto a + (X)$.
+	This bijection is a ring homomorphism, hence $\faktor{\mathbb C[X]}{(X)} \cong \mathbb C$.
+\end{example}
+\begin{example}
+	Consider $(X^2 + 1) \triangleleft \mathbb R[X]$.
+	For $f(X) = a_n X^n + \dots + a_0 \in \mathbb R[X]$, we can apply the Euclidean algorithm to write $f(X)$ as $q(X) (X^2 + 1) + r(X)$ where the degree of $r$ is less than two.
+	Hence $r(X) = a+bX$ for some real numbers $a$ and $b$.
+	Thus, any element of $\faktor{\mathbb R[X]}{(X^2 + 1)}$ can be written $a+bX + (X^2 + 1)$.
+	Suppose a coset can be represented by two representatives: $a+bX + (X^2+1) = a' + b'X + (X^2 + 1)$.
+	Then,
+	\begin{align*}
+		a+bX - a' - b'X = (a-a') - (b-b')X = g(X) (X^2 + 1)
+	\end{align*}
+	Hence $g(X) = 0$, giving $a-a' = 0$ and $b-b' = 0$.
+	Hence the coset representative is unique.
+	Consider the bijection $\varphi$ between this quotient ring and the complex numbers given by $a+bX + (X^2 + 1) \mapsto a+bi$.
+	We can show that $\varphi$ is a ring homomorphism.
+	Indeed, it preserves addition, and $1 + (X^2 + 1) \mapsto 1$, so it suffices to check that multiplication is preserved.
+	\begin{align*}
+		\varphi((a+bX + (X^2 + 1)) \cdot (c+dX + (X^2 + 1))) & = \varphi((a+bX)(c+dX) + (X^2 + 1))                        \\
+		                                                     & = \varphi(ac + (ad + bc)X + bd (X^2 + 1) - bd + (X^2 + 1)) \\
+		                                                     & = \varphi(ac-bd+(ad+bc)X + (X^2 + 1))                      \\
+		                                                     & = ac - bd + (ad + bc)i                                     \\
+		                                                     & = (a+bi)(c+di)                                             \\
+		                                                     & = \varphi((a+bX) + (X^2 + 1)) \varphi((c+dX) + (X^2 + 1))
+	\end{align*}
+	Thus $\faktor{\mathbb R[X]}{(X^2 + 1)} \cong \mathbb C$.
+\end{example}
+
+\subsection{Isomorphism theorems}
+\begin{theorem}[first isomorphism theorem]
+	Let $\varphi \colon R \to S$ be a ring homomorphism.
+	Then,
+	\begin{align*}
+		\ker \varphi \triangleleft R;\quad \Im \varphi \leq S;\quad \faktor{R}{\ker \varphi} \cong \Im \varphi
+	\end{align*}
+\end{theorem}
+\begin{proof}
+	We have $\ker \varphi \triangleleft R$ from above.
+	We know that $\Im \varphi \leq (S, +)$.
+	Now we show that $\Im \varphi$ is closed under multiplication.
+	\begin{align*}
+		\varphi(r_1) \varphi(r_2) = \varphi(r_1 r_2) \in \Im \varphi
+	\end{align*}
+	Finally,
+	\begin{align*}
+		1_S = \varphi(1_R) \in \Im \varphi
+	\end{align*}
+	Hence $\Im \varphi$ is a subring of $S$.
+	Let $K = \ker \varphi$.
+	Then, we define $\Phi \colon \faktor{R}{K} \to \Im \varphi$ by $r+K \mapsto \varphi(r)$.
+	By appealing to the first isomorphism theorem from groups, this is well-defined, a bijection, and a group homomorphism under addition.
+	It therefore suffices to show that $\Phi$ preserves multiplication and maps the multiplicative identities to each other.
+	\begin{align*}
+		\Phi(1_R + K) = \varphi(1_R) = 1_S;\quad \Phi((r_1+K)(r_2+K)) = \Phi(r_1 r_2 +K) = \varphi(r_1 r_2) = \varphi(r_1) \varphi(r_2)
+	\end{align*}
+	The result follows as required.
+\end{proof}
+\begin{theorem}[second isomorphism theorem]
+	Let $R \leq S$ and $J \triangleleft S$.
+	Then,
+	\begin{align*}
+		R \cap J \triangleleft R;\quad R + J = \qty{r+a \colon r\in R, a \in J} \leq S;\quad \faktor{R}{R \cap J} \cong \faktor{R+J}{J} \leq \faktor{S}{J}
+	\end{align*}
+\end{theorem}
+\begin{proof}
+	By the second isomorphism theorem for groups, $R+J \leq (S, +)$.
+	Further, $1_S = 1_S + 0_S$, and since $R$ is a subring, $1_S + 0_S \in R + J$ hence $1_S \in R \cap J$.
+	If $r_1, r_2 \in R$ and $a_1, a_2 \in J$, we have
+	\begin{align*}
+		(r_1 + a_1)(r_2 + a_2) = \underbrace{r_1 r_2}_{\in R} + \underbrace{r_1 a_2}_{\in J} + \underbrace{r_2 a_1}_{\in J} + \underbrace{r_2 a_2}_{\in J} \in R + J
+	\end{align*}
+	Hence $R+J$ is closed under multiplication, giving $R+J \leq S$.
+
+	Let $\varphi \colon R \to \faktor{S}{J}$ be defined by $r \mapsto r + J$.
+	This is a ring homomorphism, since it is the composite of the inclusion homomorphism $R \subseteq S$ and the quotient map $S \to \faktor{S}{J}$.
+	The kernel of $\varphi$ is the set $\qty{r \in R \colon r+J = J} = R \cap J$.
+	Since this is the kernel of a ring homomorphism, $R \cap J$ is an ideal in $R$.
+	The image of $\varphi$ is $\qty{r+J \mid r \in R} = \faktor{R+J}{J} \leq \faktor{S}{J}$.
+	By the first isomorphism theorem, $\faktor{R}{R \cap J} \cong \faktor{R+J}{J}$ as required.
+\end{proof}
+\begin{remark}
+	If $I \triangleleft R$, there exists a bijection between ideals in $\faktor{R}{I}$ and the ideals of $R$ containing $I$.
+	Explicitly,
+	\begin{align*}
+		K \mapsto \qty{r \in R \mid r + I \in K};\quad J \mapsto \faktor{J}{I}
+	\end{align*}
+\end{remark}
+\begin{theorem}[third isomorphism theorem]
+	Let $I \triangleleft R$ and $J \triangleleft R$ with $I \subseteq J$.
+	Then,
+	\begin{align*}
+		\faktor{J}{I} \triangleleft \faktor{R}{I};\quad \faktor{R/I}{J/I} \cong \faktor{R}{J}
+	\end{align*}
+\end{theorem}
+\begin{proof}
+	Let $\varphi \colon \faktor{R}{I} \to \faktor{R}{J}$ defined by $r+I \mapsto r+J$.
+	We can check that this is a surjective ring homomorphism by considering the third isomorphism theorem for groups.
+	Its kernel is $\qty{r + I \colon r \in J} = \faktor{J}{I}$, which is an ideal in $\faktor{R}{I}$, and we conclude by use of the first isomorphism theorem.
+\end{proof}
+\begin{remark}
+	$\faktor{J}{I}$ is not a quotient ring, since $J$ is not in general a ring; this notation should be interpreted as a set of cosets.
+\end{remark}
+\begin{example}
+	Consider the surjective ring homomorphism $\varphi \colon \mathbb R[X] \to \mathbb C$ which is defined by
+	\begin{align*}
+		f = \sum_n a_n X^n \mapsto f(i) = \sum_n a_n i^n
+	\end{align*}
+	Its kernel can be found by the Euclidean algorithm, yielding $\ker \varphi = (X^2 + 1)$.
+	Applying the first isomorphism theorem, we immediately find $\faktor{\mathbb R[X]}{(X^2 + 1)} \cong \mathbb C$.
+\end{example}
+\begin{example}
+	Let $R$ be a ring.
+	Then there exists a unique ring homomorphism $i \colon \mathbb Z \to R$.
+	Indeed, we must have
+	\begin{align*}
+		0_{\mathbb Z} \mapsto 0_R;\quad 1_{\mathbb Z} \mapsto 1_R
+	\end{align*}
+	This inductively defines
+	\begin{align*}
+		n \mapsto \underbrace{1_R + \dots + 1_R}_{n \text{ times}}
+	\end{align*}
+	The negative integers are also uniquely defined, since any ring homomorphism is a group homomorphism.
+	\begin{align*}
+		-n \mapsto -(\underbrace{1_R + \dots + 1_R}_{n \text{ times}})
+	\end{align*}
+	We can show that any such construction is a ring homomorphism as required.
+	Then, the kernel of the ring homomorphism is an ideal of $\mathbb Z$, hence it is $n\mathbb Z$ for some $n$.
+	Hence, by the first isomorphism theorem, any ring contains a copy of $\faktor{\mathbb Z}{n\mathbb Z}$, since it is isomorphic to the image of $i$.
+	If $n = 0$, then the ring contains a copy of $\mathbb Z$ itself, and if $n = 1$, then the ring is trivial since $0 = 1$.
+	The number $n$ is known as the \textit{characteristic} of $R$.
+
+	For example, $\mathbb Z, \mathbb Q, \mathbb R, \mathbb C$ have characteristic zero.
+	The rings $\faktor{\mathbb Z}{p \mathbb Z}, \faktor{\mathbb Z}{p \mathbb Z}[X]$ have characteristic $p$.
+\end{example}
+
+\subsection{Integral domains}
+\begin{definition}
+	An \textit{integral domain} is a ring $R$ with $0 \neq 1$ such that for all $a, b \in R$, $a b = 0$ implies $a = 0$ or $b = 0$.
+	A \textit{zero divisor} in a ring $R$ is a nonzero element $a \in R$ such that $a b = 0$ for some nonzero $b \in R$.
+	A ring is an integral domain if and only if it has no zero divisors.
+\end{definition}
+\begin{example}
+	All fields are integral domains.
+	Any subring of an integral domain is an integral domain.
+	For instance, $\mathbb Z[i] \leq \mathbb C$ is an integral domain.
+\end{example}
+\begin{example}
+	The ring $\mathbb Z \times \mathbb Z$ is not an integral domain.
+	Indeed, $(1,0) \cdot (0,1) = (0,0)$.
+\end{example}
+\begin{lemma}
+	Let $R$ be an integral domain.
+	Then $R[X]$ is an integral domain.
+\end{lemma}
+\begin{proof}
+	We will show that any two nonzero elements produce a nonzero element.
+	In particular, let
+	\begin{align*}
+		f = \sum_n a_n X^n;\quad g = \sum_n b_n X^n
+	\end{align*}
+	Since these are nonzero, the leading coefficients $a_n$ and $b_m$ are nonzero.
+	Here, the leading term of the product $fg$ has form $a_n b_m X^{n+m}$.
+	Since $R$ is an integral domain, $a_n b_m \neq 0$, so $fg$ is nonzero.
+	Further, the degree of $fg$ is $n + m$, the sum of the degrees of $f$ and $g$.
+\end{proof}
+\begin{lemma}
+	Let $R$ be an integral domain, and $f \neq 0$ be a nonzero polynomial in $R[X]$.
+	We define $\mathrm{roots}(f) = \qty{a \in R \colon f(a) = 0}$.
+	Then $\abs{\mathrm{roots}(f)} \leq \mathrm{deg}(f)$.
+\end{lemma}
+\begin{proof}
+	Exercise on the example sheets.
+\end{proof}
+\begin{theorem}
+	Let $F$ be a field.
+	Then any finite subgroup $G$ of $(F^\times, \cdot)$ is cyclic.
+\end{theorem}
+\begin{proof}
+	$G$ is a finite abelian group.
+	If $G$ is not cyclic, we can apply a previous structure theorem for finite abelian groups to show that there exists $H \leq G$ such that $H \cong C_{d_1} \times C_{d_1}$ for some integer $d_1 \geq 2$.
+	The polynomial $f(X) = X^{d_1} - 1 \in F[X]$ has degree $d_1$, but has at least $d_1^2$ roots, since any element of $H$ is a root.
+	This contradicts the previous lemma.
+\end{proof}
+\begin{example}
+	$\qty(\faktor{\mathbb Z}{p\mathbb Z})^\times$ is cyclic.
+\end{example}
+\begin{proposition}
+	Any finite integral domain is a field.
+\end{proposition}
+\begin{proof}
+	Let $0 \neq a \in R$, where $R$ is an integral domain.
+	Consider the map $\varphi \colon R \to R$ given by $x \mapsto ax$.
+	If $\varphi(x) = \varphi(y)$, then $a(x-y) = 0$.
+	But $a \neq 0$, hence $x - y = 0$.
+	Hence $\varphi$ is injective.
+	Since $R$ is finite, $\varphi$ is a bijection, hence it has an inverse $\varphi\inv$, which yields the multiplicative inverse of $a$ by considering $\varphi\inv(a)$.
+	This may be repeated for all $a$.
+\end{proof}
+\begin{theorem}
+	Any integral domain $R$ is a subring of a field $F$, and every element of $F$ can be written in the form $ab\inv$ where $a, b \in R$ and $b \neq 0$.
+	Such a field $F$ is called the \textit{field of fractions} of $R$.
+\end{theorem}
+\begin{proof}
+	Consider the set $S = \qty{(a,b) \in R \colon b \neq 0}$.
+	We can define an equivalence relation
+	\begin{align*}
+		(a,b) \sim (c,d) \iff ad = bc
+	\end{align*}
+	This is reflexive and commutative.
+	We can show directly that it is transitive.
+	\begin{align*}
+		(a,b) \sim (c,d) \sim (e,f) & \implies ad = bc;\; cf = de \\
+		                            & \implies adf = bcf = bde    \\
+		                            & \implies af = be            \\
+		                            & \implies (a,b) \sim (e,f)
+	\end{align*}
+	Hence $\sim$ is indeed an equivalence relation.
+	Now, let $F = \faktor{S}{\sim}$, and we write $\frac{a}{b}$ for the class $[(a,b)]$.
+	We define the ring operations
+	\begin{align*}
+		\frac{a}{b} + \frac{c}{d} = \frac{ad + bc}{bd};\quad \frac{a}{b} \cdot \frac{c}{d} = \frac{ac}{bd}
+	\end{align*}
+	These can be shown to be well-defined.
+	Thus, $F$ is a ring with identities $0_F = \frac{0_R}{1_R}$ and $1_F = \frac{1_R}{1_R}$.
+	If $\frac{a}{b} \neq 0_F$, then $a \neq 0$.
+	Thus, $\frac{b}{a}$ exists, and $\frac{a}{b} \cdot \frac{b}{a} = 1$.
+	Hence $F$ is a field.
+
+	We can identify $R$ with the subring of $F$ given by $\frac{r}{1}$ for all $r \in R$.
+	This is clearly isomorphic to $R$.
+	Further, any element of $F$ can be written as $\frac{a}{b} = ab\inv$ as required.
+\end{proof}
+This is analogous to the construction of the rationals using the integers.
+\begin{example}
+	Consider $\mathbb C[X]$.
+	This has field of fractions $\mathbb C(X)$, called the field of \textit{rational functions} in $X$.
+\end{example}
+
+\subsection{Maximal ideals}
+\begin{definition}
+	An ideal $I \triangleleft R$ is \textit{maximal} if $I \neq R$ and, if $I \subseteq J \triangleleft R$, we have $J = I$ or $J = R$.
+\end{definition}
+\begin{lemma}
+	A nonzero ring $R$ is a field if and only if its only ideals are zero or $R$.
+\end{lemma}
+\begin{proof}
+	Suppose $R$ is a field.
+	If $0 \neq I \triangleleft R$, then $I$ contains a nonzero element, which is a unit since $R$ is a field.
+	Hence $I = R$.
+
+	Now, suppose a ring $R$ has ideals that are only zero or $R$.
+	If $0 \neq x \in R$, consider $(x)$.
+	This is nonzero since it contains $x$.
+	By assumption, $(x) = R$.
+	Thus, the element 1 lies in $(x)$.
+	Hence, there exists $y \in R$ such that $xy = 1$, and hence this $y$ is the multiplicative inverse as required.
+\end{proof}
+\begin{proposition}
+	Let $I \triangleleft R$.
+	Then $I$ is maximal if and only if $\faktor{R}{I}$ is a field.
+\end{proposition}
+\begin{proof}
+	$\faktor{R}{I}$ is a field if and only if its ideals are either zero, denoted $\faktor{I}{I}$, or $\faktor{R}{I}$ itself.
+	By the correspondence theorem, $I$ and $R$ are the only ideals in $R$ which contain $I$.
+	Equivalently, $I \triangleleft R$ is maximal.
+\end{proof}
+
+\subsection{Prime ideals}
+\begin{definition}
+	An ideal $I \triangleleft R$ is \textit{prime} if $I \neq R$ and, for all $a,b \in R$ such that $ab \in I$, we have $a \in I$ or $b \in I$.
+\end{definition}
+\begin{example}
+	The ideals in the integers are $(n)$ for some $n \geq 0$.
+	$n\mathbb Z$ is a prime ideal if and only if $n$ is prime or zero.
+	The case for $n = 0$ is trivial.
+	If $n \neq 0$ we can use the property that $p \mid ab$ implies either $p \mid a$ or $p \mid b$.
+	Conversely, if $n$ is composite, we can write $n = uv$ for $u, v > 1$.
+	Then $uv \in n\mathbb Z$ but $u,v \not\in n\mathbb Z$.
+\end{example}
+\begin{proposition}
+	Let $I \triangleleft R$.
+	Then $I$ is prime if and only if $\faktor{R}{I}$ is an integral domain.
+\end{proposition}
+\begin{proof}
+	If $I$ is prime, then for all $ab \in I$ we have $a \in I$ or $b \in I$.
+	Equivalently, for all $a + I, b + I \in \faktor{R}{I}$, we have $(a+I)(b+I) = 0+I$ if $a+I = 0+I$ or $b+I = 0+I$.
+	This is the definition of an integral domain.
+\end{proof}
+\begin{remark}
+	If $I$ is a maximal ideal, then $\faktor{R}{I}$ is a field.
+	A field is an integral domain.
+	Hence any maximal ideal is prime.
+\end{remark}
+\begin{remark}
+	If the characteristic of a ring is $n$, then $\faktor{\mathbb Z}{n\mathbb Z} \leq R$.
+	In particular, if $R$ is an integral domain, then $\faktor{\mathbb Z}{n\mathbb Z}$ must be an integral domain.
+	Equivalently, $n\mathbb Z \triangleleft \mathbb Z$ is a prime ideal.
+	Hence $n$ is zero or prime.
+	Thus, in an integral domain, the characteristic must either be zero or prime.
+	A field always has a characteristic, which is either zero (in which case it contains $\mathbb Z$ and hence $\mathbb Q$) or prime (in which case it contains $\faktor{\mathbb Z}{p\mathbb Z} = \mathbb F_p$ which is already a field).
+\end{remark}

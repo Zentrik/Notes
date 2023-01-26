@@ -1,0 +1,47 @@
+%&../preamble
+
+\def\npart {IB}
+\def\nterm {Lent}
+\def\nyear {2022}
+\def\nlecturer {Dr R Zhou}
+\def\ncourse {GRM}
+
+\input{../preamble-dynamic.tex}
+
+\usepackage{faktor}
+\newcommand{\genset}[1]{\left\langle{} #1 \right\rangle}
+\newcommand{\ngenset}[1]{\left\langle\!\left\langle{} #1 \right\rangle\!\right\rangle}
+\newcommand{\acts}{\curvearrowright}
+\DeclarePairedDelimiter\Brackets{[\![}{]\!]}
+
+\DeclareMathOperator{\Sym}{Sym}
+\DeclareMathOperator{\Orb}{Orb}
+\DeclareMathOperator{\Stab}{Stab}
+\DeclareMathOperator{\ccl}{ccl}
+\DeclareMathOperator{\adj}{adj}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\id}{id}
+
+\begin{document}
+    \maketitle
+    \tableofcontents
+    
+    \setcounter{section}{-1}
+
+    \include{00-review.tex}
+    \include{01-simple.tex}
+    \include{02-actions.tex}
+    \include{03-alternating.tex}
+    \include{04-pgroups.tex}
+    \include{05-matrix.tex}
+    \include{06-finite.tex}
+    \include{07-rings.tex}
+    % \section{Factorisation in integral domains}
+    % \input{09_factorisation.tex}
+    % \section{Algebraic integers}
+    % \input{10_algebraic_integers.tex}
+    % \section{Noetherian rings}
+    % \input{11_noetherian_rings.tex}
+    % \section{Modules}
+    % \input{12_modules.tex}
+\end{document}
