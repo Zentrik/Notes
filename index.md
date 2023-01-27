@@ -4,6 +4,15 @@ title: "Cambridge Maths Notes"
 
 # IB - 2022
 
+## Lent - 2022
+<!-- [Complex Methods] -->
+
+[GRM](Groups%20Rings%20and%20%Modules\GRM.pdf)
+
+[Statistics](Statistics\Statistics.pdf)
+
+[Geometry](Geometry\Geometry.pdf)
+
 ## Michaelmas - 2022
 
 [Analysis and Topology](Analysis%20and%20Topology\AnalTop.pdf)
@@ -21,6 +30,14 @@ title: "Cambridge Maths Notes"
 [Optimisation](Optimisation\Optimisation.pdf) (Annotations)
 
 [Variational Principles](Variational%20Principles\VP.pdf) (Annotations)
+
+<!-- ## Other Recent IB Notes (excludes those listed in IA section) -->
+
+<!-- https://mjv43.user.srcf.net/ -->
+
+## IB Summaries (excludes those listed in IA section)
+
+[James Alvey](https://github.com/james-alvey-42/LectureNotes/tree/master/Part%20IB/Summaries)
 
 # IA - 2021
 
@@ -53,7 +70,7 @@ title: "Cambridge Maths Notes"
 
 [Xuanang Chen](http://xc329.user.srcf.net/)
 
-### Summaries
+### IA Summaries
 
 [Hasan Baig](http://mhb45.user.srcf.net/)
 
