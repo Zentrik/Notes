@@ -7,7 +7,7 @@ title: "Cambridge Maths Notes"
 ## Lent - 2022
 <!-- [Complex Methods] -->
 
-[GRM](Groups%20Rings%20and%20%Modules\GRM.pdf)
+[GRM](Groups%20Rings%20and%20Modules\GRM.pdf)
 
 [Statistics](Statistics\Statistics.pdf)
 

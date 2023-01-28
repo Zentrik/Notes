@@ -1,13 +1,15 @@
 \section{$p$-groups}
 
 \subsection{$p$-groups}
-\begin{definition}
+\begin{definition}[$p$-group]
 	Let $p$ be a prime.
-	A finite group $G$ is a \textit{$p$-group} if $\abs{G} = p^n$ for $n \geq 1$.
+	A finite group $G$ is a \vocab{$p$-group} if $\abs{G} = p^n$ for $n \geq 1$.
 \end{definition}
+
 \begin{theorem}
 	If $G$ is a $p$-group, the centre $Z(G)$ is non-trivial.
 \end{theorem}
+
 \begin{proof}
 	For $g \in G$, due to the orbit-stabiliser theorem, $\abs{\ccl(g)} \abs{C(g)} = p^n$.
 	In particular, $\abs{\ccl(g)}$ divides $p^n$, and they partition $G$.
@@ -18,30 +20,37 @@
 	Hence $Z(G)$ has order zero modulo $p$ so it cannot be trivial.
 	We can check this by noting that $g \in Z(G) \iff x\inv g x = g$ for all $x$, which is true if and only if $\ccl_G(g) = \qty{g}$.
 \end{proof}
+
 \begin{corollary}
 	The only simple $p$-groups are the cyclic groups of order $p$.
 \end{corollary}
+
 \begin{proof}
 	Let $G$ be a simple $p$-group.
 	Since $Z(G)$ is a normal subgroup of $G$, we have $Z(G) = 1$ or $Z(G) = G$.
 	But $Z(G)$ may not be trivial, so $Z(G) = G$.
 	This implies $G$ is abelian.
-	The only abelian simple groups are cyclic of prime order, hence $G \cong C_p$.
+	The only abelian simple groups are cyclic of prime order by \cref{lem:1.3}, hence $G \cong C_p$.
 \end{proof}
+
 \begin{corollary}
 	Let $G$ be a $p$-group of order $p^n$.
 	Then $G$ has a subgroup of order $p^r$ for all $r \in \qty{0, \dots, n}$.
 \end{corollary}
+
 \begin{proof}
-	Recall that any group $G$ has a composition series $1 = G_1 \triangleleft \dots \triangleleft G_N = G$ where each quotient $\faktor{G_{i+1}}{G_i}$ is simple.
+	Recall from \cref{lem:1.4} that any group $G$ has a composition series $1 = G_1 \triangleleft \dots \triangleleft G_N = G$ where each quotient $\faktor{G_{i+1}}{G_i}$ is simple.
+
 	Since $G$ is a $p$-group, $\faktor{G_{i+1}}{G_i}$ is also a $p$-group.
 	Each successive quotient is an order $p$ group by the previous corollary, so we have a composition series of nested subgroups of order $p^r$ for all $r \in \qty{0, \dots, n}$.
 \end{proof}
+
 \begin{lemma}
 	Let $G$ be a group.
 	If $\faktor{G}{Z(G)}$ is cyclic, then $G$ is abelian.
 	This then implies that $Z(G) = G$, so in particular $\faktor{G}{Z(G)} = 1$.
 \end{lemma}
+
 \begin{proof}
 	Let $g Z(G)$ be a generator for $\faktor{G}{Z(G)}$.
 	Then, each coset of $Z(G)$ in $G$ is of the form $g^r Z(G)$ for some $r \in \mathbb Z$.
@@ -52,9 +61,11 @@
 	\end{align*}
 	So any two elements in $G$ commute.
 \end{proof}
+
 \begin{corollary}
 	Any group of order $p^2$ is abelian.
 \end{corollary}
+
 \begin{proof}
 	Let $G$ be a group of order $p^2$.
 	Then $\abs{Z(G)} \in \qty{1, p, p^2}$.
@@ -66,7 +77,7 @@
 \end{proof}
 
 \subsection{Sylow theorems}
-\begin{theorem}
+\begin{theorem}[Sylow Theorems]
 	Let $G$ be a finite group of order $p^a m$ where $p$ is a prime and $p$ does not divide $m$.
 	Then:
 	\begin{enumerate}
@@ -78,9 +89,10 @@
 		      \end{align*}
 	\end{enumerate}
 \end{theorem}
+
 \begin{proof}
 	\begin{enumerate}
-		\item Let $\Omega$ be the set of all subsets of $G$ of order $p^a$.
+		\item Let $\Omega$ be the set of all \underline{subsets} of $G$ of order $p^a$.
 		      We can directly find
 		      \begin{align*}
 			      \abs{\Omega} = \binom{p^a m}{p^a} = \frac{p^a m}{p^a} \cdot \frac{p^a m - 1}{p^a - 1} \cdots \frac{p^a m - p^a + 1}{1}
@@ -88,12 +100,12 @@
 		      Note that for $0 \leq k < p^a$, the numbers $p^a m - k$ and $p^a - k$ are divisible by the same power of $p$.
 		      In particular, $\abs{\Omega}$ is coprime to $p$.
 
-		      Let $G \acts \Omega$ by left-multiplication, so $g \ast X = \qty{gx \colon x \in X}$.
+		      Let $G$ act on $\Omega$ by left-multiplication, so $g \ast X = \qty{gx \colon x \in X}$.
 		      For any $X \in \Omega$, the orbit-stabiliser theorem can be applied to show that
 		      \begin{align*}
 			      \abs{G_X} \abs{\mathrm{orb}_G(X)} = \abs{G} = p^a m
 		      \end{align*}
-		      By the above, there must exist an orbit with size coprime to $p$, since orbits partition $\Omega$.
+		      Since $|\Omega|$ is coprime to $p$, there must exist an orbit with size coprime to $p$, since orbits partition $\Omega$.
 		      For such an $X$, $p^a \mid \abs{G_X}$.
 
 		      Conversely, note that if $g \in G$ and $x \in X$, then $g \in (gx\inv) \ast X$.
@@ -103,7 +115,7 @@
 		      \end{align*}
 		      Thus $\abs{G} \leq \abs{\mathrm{orb}_G(X)} \cdot \abs{X}$, giving $\abs{G_X} = \frac{\abs{G}}{\abs{\mathrm{orb}_G(X)}} \leq \abs{X} = p^a$.
 
-		      Combining with the above, we must have $\abs{G_X} = p^a$.
+		      As $p^a \mid \abs{G_X}$ we must have $\abs{G_X} = p^a$.
 		      In other words, the stabiliser $G_X$ is a Sylow $p$-subgroup of $G$.
 		\item We will prove a stronger result for this part of the proof.
 		      We claim that if $P$ is a Sylow $p$-subgroup and $Q \leq G$ is a $p$-subgroup, then $Q \leq g P g\inv$ for some $g \in G$.
@@ -132,36 +144,42 @@
 		      Thus, $\abs{P}$ is the unique orbit of size 1, so $n_p \equiv 1 \mod p$ as required.
 	\end{enumerate}
 \end{proof}
+
 \begin{corollary}
 	If $n_p = 1$, then there is only one Sylow $p$-subgroup, and it is normal.
 \end{corollary}
+
 \begin{proof}
 	Let $g \in G$ and $P \in \mathrm{Syl}_p(G)$.
 	Then $g P g\inv$ is a Sylow $p$-subgroup, hence $g P g\inv = P$.
 	$P$ is normal in $G$.
 \end{proof}
+
 \begin{example}
 	Let $G$ be a group with $\abs{G} = 1000 = 2^3 \cdot 5^3$.
 	Here, $n_5 \equiv 1 \mod 5$, and $n_5 \mid 8$, hence $n_5 = 1$.
 	Thus the unique Sylow 5-subgroup is normal.
 	Hence no group of order 1000 is simple.
 \end{example}
+
 \begin{example}
 	Let $G$ be a group with $\abs{G} = 132 = 2^2 \cdot 3 \cdot 11$.
 	$n_{11}$ satisfies $n_{11} \equiv 1 \mod 11$ and $n_{11} \mid 12$, thus $n_{11} \in \qty{1, 12}$.
+
 	Suppose $G$ is simple.
-	Then $n_{11} = 12$.
+
+	Then $n_{11} = 12$\footnote{If $n_{11} = 1$ then we have a normal subgroup by the previous corollary.}.
 	The amount of Sylow 3-subgroups satisfies $n_3 \equiv 1 \mod 3$ and $n_3 \mid 44$ so $n_3 \in \qty{1, 4, 22}$.
 	Since $G$ is simple, $n_3 \in \qty{4, 22}$.
 
 	Suppose $n_3 = 4$.
-	Then $G \acts \mathrm{Syl}_3(G)$ by conjugation, and this generates a group homomorphism $\varphi \colon G \to S_4$.
-	But the kernel of this homomorphism is a normal subgroup of $G$, so $\ker \varphi$ is trivial or $G$ itself.
+	Then $G$ acts on $\mathrm{Syl}_3(G)$ by conjugation, and this generates a group homomorphism $\varphi \colon G \to S_4$.
+	But the kernel of this homomorphism is a normal subgroup of $G$, so $\ker \varphi$ is trivial or $G$ itself as $G$ simple.
 	If $\ker \varphi = G$, then $\Im \varphi$ is trivial, contradicting Sylow's second theorem.
-	If $\ker \varphi = 1$, then $\Im \varphi$ has order 132, which is impossible.
+	If $\ker \varphi = 1$, then $\Im \varphi$ has order $132 > |S_4|$ \Lightning.
 
-	Thus $n_3 = 22$.
-	This means that $G$ has $22 \cdot (3-1) = 44$ elements of order 3, and further $G$ has $12 \cdot (11 - 1) = 120$ elements of order 11.
+	Thus $n_3 = 22$ and recall $n_{11} = 12$.
+	This means that $G$ has $22 \cdot (3-1) = 44$ elements of order 3\footnote{Each group in $\mathrm{Syl}_3(G)$ intersect trivially, as if they didn't any non trivial element in the intersection would generate both groups as they're all $C_3$.}, and further $G$ has $12 \cdot (11 - 1) = 120$ elements of order 11.
 	However, the sum of these two totals is more than the total of 132 elements, so this is a contradiction.
 	Hence $G$ is not simple.
 \end{example}
