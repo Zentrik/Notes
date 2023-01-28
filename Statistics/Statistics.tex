@@ -15,10 +15,12 @@
 \newcommand{\expect}[1]{\mathbb{E}\left[{#1}\right]}
 \newcommand{\esub}[2]{\mathbb{E}_{#1}\left[{#2}\right]}
 \newcommand{\esubx}[1]{\esub{x}{#1}}
-\newcommand{\Varsub}[2]{\Var_{#1}\left({#2}\right)}
 \newcommand{\Corr}[1]{\Corr\left({#1}\right)}
 \newcommand{\convdist}{\xrightarrow{d}}
 \newcommand{\convprob}{\xrightarrow{\mathbb{P}}}
+\DeclareMathOperator{\Varop}{Var}
+\renewcommand{\Var}[1]{\Varop\left({#1}\right)}
+\newcommand{\Varsub}[2]{\Varop_{#1}\left({#2}\right)}
 
 \newcommand{\tran}{\intercal}
 \newcommand{\wildcard}{{}\cdot{}}

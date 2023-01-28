@@ -246,11 +246,15 @@ We instead seek statistics that maximally compress and summarise the relevant da
 	\begin{align*}
 		S(x) = \qty(\overline X_n, S_{xx});\quad \overline X_n = \frac{1}{n} \sum_i x_i;\quad S_{xx} = \sum_i \qty(X_i - \overline X_n)^2
 	\end{align*}
-	which is a bijection of the above.
+	which is a bijection of the above minimal sufficient statistic so is also minimal sufficient.
 \end{example}
-\begin{example}
+
+\begin{remark}
 	$\theta$ and a minimal statistic $T$ need not have the same dimension.
-	Consider $X_1, \dots, X_n \sim N(\mu, \mu^2)$.
+\end{remark} 
+
+\begin{example}
+	Consider $X_1, \dots, X_n \overset{\text{iid}}{\sim} N(\mu, \mu^2)$. 
 	Here, there is a single parameter $\mu$ but the minimal sufficient statistic is still $S(x)$ as defined above.
 \end{example}
 
@@ -270,6 +274,7 @@ From now, we omit this subscript, as it will be implied for much of the remainde
 	In other words, the mean squared error of $\hat \theta$ is not greater than the mean squared error of $\widetilde \theta$.
 	Further, the inequality is strict unless $\widetilde \theta$ is a function of $T$.
 \end{theorem}
+
 \begin{remark}
 	Starting from any estimator $\widetilde \theta$, if we condition on the sufficient statistic $T$ we obtain a `better' statistic $\hat \theta$.
 	Note that $T$ must be sufficient, otherwise $\hat \theta$ may be a function of $\theta$ and thus not an estimator:
@@ -277,15 +282,18 @@ From now, we omit this subscript, as it will be implied for much of the remainde
 		\hat \theta(X) = \hat \theta(T) = \int \hat \theta(x) \underbrace{f_{X \mid T}(x \mid T)}_{\mathclap{\text{does not depend on } \theta \text{ as } T \text{ is sufficient}}} \dd{x}
 	\end{align*}
 \end{remark}
+
+The message to take away from this theorem is that we can improve the mse of any estimate $\tilde \theta$ by taking a conditional expectation given $T(x)$.
+
 \begin{proof}
 	By the tower property of the expectation, we can find
 	\begin{align*}
 		\expect{\hat \theta} = \expect{\expect{\widetilde \theta \mid T(x)}} = \expect{\widetilde \theta}
 	\end{align*}
-	Hence, subtracting $\widetilde \theta$ from both sides, we find $\mathrm{bias}\qty(\hat\theta) = \mathrm{bias}\qty(\widetilde\theta)$.
+	Hence, $\mathrm{bias}\qty(\hat\theta) = \mathrm{bias}\qty(\widetilde\theta)$.
 	By the conditional variance formula,
 	\begin{align*}
-		\Var{\widetilde \theta} = \expect{\underbrace{\Var{\widetilde \theta \mid T}}_{\geq 0}} + \underbrace{\Var{\expect{\widetilde \theta \mid T}}}_{\Var{\hat\theta}} \geq \Var{\hat \theta}
+		\Var{\widetilde \theta} = \expect{\underbrace{\Var{\widetilde \theta \mid T}}_{\geq 0}} + \underbrace{\Var{\expect{\widetilde \theta \mid T}}}_{\Var{\hat\theta}} \geq \Var{\hat \theta} \quad \forall \; \theta.
 	\end{align*}
 	By the bias-variance decomposition, we know that $\mathrm{mse}\qty(\widetilde \theta) \geq \mathrm{mse}\qty(\hat \theta)$.
 	The inequality is strict unless $\Var{\widetilde \theta \mid T} = 0$ almost surely.
@@ -303,28 +311,32 @@ From now, we omit this subscript, as it will be implied for much of the remainde
 		g(T(x), \theta) = g\qty(\sum x_i, \theta) = \theta^n (-\log\theta)^{\sum x_i};\quad h(x) = \frac{1}{\prod x_i!}
 	\end{align*}
 	so $T(x) = \sum x_i$ is sufficient.
+
 	Note that $\sum X_i$ has a Poisson distribution with parameter $n \lambda$.
+
 	Consider the estimator $\widetilde \theta = \mathbbm 1\qty{X_1 = 0}$.
 	This depends only on $X_1$, hence it is a weak estimator.
 	However, it is unbiased, so when we apply the Rao-Blackwell theorem we will construct an unbiased $\hat \theta$, which is precisely
 	\begin{align*}
 		\hat \theta = \expect{\widetilde \theta \mid \sum X_i = t} & = \prob{X_1 = 0 \mid \sum X_i = t} \\
-		& = \frac{\prob{X_1 = 0, \sum X_i = t}}{\prob{\sum X_i = t}}                      \\
-		& = \frac{\prob{X_1 = 0}\prob{\sum_{i=2}^n X_i = t}}{\prob{\sum_{i=1}^n X_i = t}} \\
+		& = \frac{\prob{X_1 = 0, \sum X_i = t}}{\prob{\sum X_i = t}} \\
+		& = \frac{\prob{X_1 = 0}\prob{\sum_{i=2}^n X_i = t}}{\prob{\sum_{i=1}^n X_i = t}}\footnote{We know the distribution of $\sum X_i$, so simply sub this pmf in.} \\
+		&\vdots \\
 		& = \qty(\frac{n-1}{n})^t
 \end{align*}
 	This may also be written
 	\begin{align*}
 		\hat \theta = \qty(1 - \frac{1}{n})^{\sum x_i}
 	\end{align*}
-	which is an estimator with lower mean squared error than $\widetilde 1$ for all $\theta$.
-	Note that $\hat \theta = \qty(1 = \frac{1}{n})^{n \overline X_n}$ converges in the limit to $e^{-\overline X_n}$.
-	By the strong law of large numbers, $\overline X_n \to \expect{X_1} = \lambda$, so we arrive at $\hat \theta \to e^{-\lambda} = \theta$ almost surely.
+	which is an estimator with strictly lower mean squared error than $\widetilde \theta$ for all $\theta$ by Rao-Blackwell and as $\widetilde \theta$ doesn't depend solely upon $T$.
+
+	Note that $\hat \theta = \qty(1 - \frac{1}{n})^{n \overline X_n}$ converges in the limit to $e^{-\overline X_n}$.
+	By the strong law of large numbers, $\overline X_n \to \expect{X_1} = \lambda$ almost surely, so we arrive at $\hat \theta \to e^{-\lambda} = \theta$ almost surely.
 \end{example}
 \begin{example}
 	Let $X_1, \dots, X_n$ be i.i.d.\ uniform random variables in an interval $[0, \theta]$.
-	We wish to estimate $\theta > 0$.
-	We observed that $T = \max X_i$ is sufficient for $\theta$.
+	We wish to estimate $\theta \geq 0$.
+	We observed that $T = \max X_i$ is sufficient for $\theta$. \\
 	Let $\widetilde \theta = 2 X_1$.
 	This is an unbiased estimator of $\theta$.
 	Then the Rao-Blackwellised estimator $\hat \theta$ is
@@ -332,18 +344,18 @@ From now, we omit this subscript, as it will be implied for much of the remainde
 		\hat \theta & = \expect{\widetilde \theta \mid T = t} \\
 		& = 2 \expect{X_1 \mid \max X_i = t} \\
 		& = 2 \expect{X_1 \mid \max X_i = t, X_1 = \max X_i} \prob{X_1 = \max X_i \mid \max X_i = t} \\
-		& + 2 \expect{X_1 \mid \max X_i = t, X_1 \neq \max X_i} \prob{X_1 \neq \max X_i \mid \max X_i = t} \\
+		& + 2 \expect{X_1 \mid \max X_i = t, X_1 \neq \max X_i} \prob{X_1 \neq \max X_i \mid \max X_i = t}
 	\end{align*}
 	Since $X_1, \dots, X_n$ are i.i.d., the conditional probability $\prob{X_1 = \max X_i \mid \max X_i = t}$ can be reduced to $\prob{X_1 = \max X_i} = \frac{1}{n}$.
 	The complementary event may be reduced in an analogous way.
 	The expectation $\expect{X_1 \mid \max X_i = t, X_1 = \max X_i}$ can be reduced to $t$.
 	\begin{align*}
 		\hat \theta & = \frac{2t}{n} + \frac{2(n-1)}{n} \expect{X_1 \mid X_1 < t, \max_{i=2}^n X_i = t} \\
-		            & = \frac{2t}{n} + \frac{2(n-1)}{n} \expect{X_1 \mid X_1 < t}                       \\
-		            & = \frac{2t}{n} + \frac{2(n-1)}{n} \frac{t}{2}                                     \\
-		            & = \frac{2t}{n} + \frac{t(n-1)}{n} = \frac{n+1}{n} \max_i X_i
+		& = \frac{2t}{n} + \frac{2(n-1)}{n} \expect{X_1 \mid X_1 < t}\footnote{By independence} \\
+		& = \frac{2t}{n} + \frac{2(n-1)}{n} \frac{t}{2} \\
+		& = \frac{2t}{n} + \frac{t(n-1)}{n} = \frac{n+1}{n} \max_i X_i
 	\end{align*}
-	By the Rao-Blackwell theorem, the mean squared error of $\hat \theta$ is not greater than the mean squared error of $\widetilde \theta$.
+	By the Rao-Blackwell theorem, the mean squared error of $\hat \theta$ is strictly better than the mean squared error of $\widetilde \theta$.
 	This is also an unbiased estimator.
 \end{example}
 
