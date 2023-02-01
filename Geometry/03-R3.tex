@@ -1,27 +1,43 @@
 \section{Smooth surfaces in $\mathbb R^3$}
 
 \subsection{Definitions and equivalent characterisations}
-Recall that if $V \subseteq \mathbb R^n$ and $V' \subseteq \mathbb R^m$, then $f \colon V \to V'$ is smooth if it is infinitely differentiable.
-\begin{definition}
-	If $Z$ is an arbitrary subset of $\mathbb R^n$, we say that a continuous function $f \colon Z \to \mathbb R^m$ is smooth at $p \in Z$ if there exists an open ball $p \in B \subseteq \mathbb R^n$ and a smooth map $F \colon B \to \mathbb R^m$ which extends $f$ such that they agree on $B \cap Z$.
+Recall that if $V \subset \mathbb R^n$ and $V' \subset \mathbb R^m$, then $f \colon V \to V'$ is smooth if it is infinitely differentiable.
+
+\begin{definition}[Smooth Function on $\mathbb{R}^n$]
+	If $Z$ is an arbitrary subset of $\mathbb R^n$, we say that $f \colon Z \to \mathbb R^m$ is \vocab{smooth} at $p \in Z$ if $\exists$ an open ball $p \in B \subset \mathbb R^n$ and a smooth map $F \colon B \to \mathbb R^m$ which extends $f$ such that they agree on $B \cap Z$\footnote{$F\mid_{B \cap Z} = f\mid_{B \cap Z}$}.
 	In other words, $f$ is locally the restriction of a smooth map defined on an open set.
 \end{definition}
-\begin{definition}
-	Let $X \subseteq \mathbb R^n$ and $Y \subseteq \mathbb R^m$.
-	We say that $X$ and $Y$ are \textit{diffeomorphic} if there exists a continuous function $f \colon X \to Y$ such that $f$ is a smooth homeomorphism with smooth inverse.
+
+\begin{remark}
+	This is useful as it may be difficult to take partial derivatives on $Z$, as when you consider a small deviation from a point $p$ that deviation might not lie in $Z$.
+\end{remark} 
+
+\begin{figure}[h] 
+    \centering 
+    \includegraphics[height=5cm]{03-smooth} 
+\end{figure}
+
+\begin{definition}[Diffeormorpishms in $\mathbb{R}^n, \mathbb{R}^m$]
+	Let $X \subset \mathbb R^n$ and $Y \subset \mathbb R^m$.
+	We say that $X$ and $Y$ are \vocab{diffeomorphic} if $\exists \; f \colon X \to Y$ smooth with smooth inverse.
 \end{definition}
-\begin{definition}
-	A \textit{smooth surface in $\mathbb R^3$} is a subspace of $\mathbb R^3$ such that for all points $p \in \Sigma$, there exists an open subset $p \in U \subseteq \Sigma$ that is diffeomorphic to an open set in $\mathbb R^2$.
-	In other words, for all $p \in \Sigma$, there exists an open ball $p \in B \subseteq \mathbb R^3$ such that if $U = B \cap \Sigma$ and there exists a map $f \colon B \to V \subseteq \mathbb R^2$ such that $\eval{f}_U \colon U \to V$ is a homeomorphism, and the inverse map $V \to U \subseteq \Sigma \subseteq \mathbb R^3$ is smooth.
-	% TODO: rephrase this
+
+\begin{definition}[Smooth Surface in $\mathbb{R}^3$]
+	A \vocab{smooth surface in $\mathbb R^3$} is a subset of $\Sigma \subset \mathbb R^3$ s.t. $\forall \; p \in \Sigma$, $\exists$ an open subset $p \in U \subset \Sigma$ that is diffeomorphic to an open set in $\mathbb R^2$.
 \end{definition}
-\begin{definition}
-	Let $\sigma \colon V \to U$ where $V \subseteq \mathbb R^2$ is open and $U \subseteq \Sigma \subseteq \mathbb R^3$ is open in $\Sigma$, such that $\sigma$ is a smooth homeomorphism and $D \eval{\sigma}_x$ has rank 2 for all $x \in V$.
-	Then $\sigma$ is called an \textit{allowable parametrisation}.
+
+In other words, for all $p \in \Sigma$, there exists an open ball $p \in B \subset \mathbb R^3$ such that if $U = B \cap \Sigma$ and there exists a map $F \colon B \to V \subseteq \mathbb R^2$ smooth s.t. $\eval{F}_U \colon U \to V$ is a homeomorphism, and the inverse map $V \to U \subset \Sigma \subset \mathbb R^3$ is smooth.
+
+So we have two notions of smoothness, one abstract and one based on the ambient space and we need to reconcile them.
+
+\begin{definition}[Allowable Parameterisation]
+	Let $\sigma \colon V \to U$ where $V \subset \mathbb R^2$ is open and $U \subset \Sigma \subset \mathbb R^3$ is open in $\Sigma$, such that $\sigma$ is a smooth homeomorphism and $D \eval{\sigma}_x$ has rank 2 for all $x \in V$.
+	Then $\sigma$ is called an \vocab{allowable parametrisation}.
 	If $\sigma(0) = p$, we say that $\sigma$ is an allowable parametrisation \textit{near} $p$.
 \end{definition}
+
 \begin{theorem}
-	For a subset $\Sigma \subseteq \mathbb R^3$, the following are equivalent.
+	For a subset $\Sigma \subset \mathbb R^3$, the following are equivalent (TFAE).
 	\begin{enumerate}
 		\item $\Sigma$ is a smooth surface in $\mathbb R^3$;
 		\item $\Sigma$ is locally the graph of a smooth function, over one of the three coordinate planes: for all $p \in \Sigma$ there exists an open ball $p \in B \subseteq \mathbb R^3$ and an open set $V \subseteq \mathbb R^2$ such that
@@ -29,17 +45,21 @@ Recall that if $V \subseteq \mathbb R^n$ and $V' \subseteq \mathbb R^m$, then $f
 			      \Sigma \cap B = \qty{(x, y, g(x,y)) \colon g \colon V \to \mathbb R \text{ smooth}}
 		      \end{align*}
 		      or one of the other coordinate planes;
-		\item $\Sigma$ is locally cut out by a smooth function: for all $p \in \Sigma$ there exists an open ball $p \in B \subseteq \mathbb R^3$ and a smooth function $f \colon B \to \mathbb R$ such that
+		\item $\Sigma$ is locally cut out by a smooth function with non-zero derivative: for all $p \in \Sigma$ there exists an open ball $p \in B \subseteq \mathbb R^3$ and a smooth function $f \colon B \to \mathbb R$ such that
 		      \begin{align*}
-			      \Sigma \cap B = f^{-1}(0);\quad D \eval{f}_x \neq 0
+			      \Sigma \cap B = f^{-1}(0);\quad D \eval{f}_x \neq 0 \ \forall \; x \in B.
 		      \end{align*}
-		      for all $x \in B$;
 		\item $\Sigma$ is locally the image of an allowable parametrisation near all points.
 	\end{enumerate}
 \end{theorem}
+
 \begin{remark}
-	Part (b) implies that if $\Sigma$ is a smooth surface in $\mathbb R^3$, each $p \in \Sigma$ belongs to a chart $(U, \varphi)$ where $\varphi$ is (the restriction of) one of the three coordinate plane projections $\pi_{xy}, \pi_{yz}, \pi_{xz}$ from $\mathbb R^3$ to $\mathbb R^2$.
+	Part (2) implies that if $\Sigma$ is a smooth surface in $\mathbb R^3$, each $p \in \Sigma$ belongs to a chart $(U, \varphi)$ where $\varphi$ is (the restriction of) one of the three coordinate plane projections $\pi_{xy}, \pi_{yz}, \pi_{xz}$ from $\mathbb R^3$ to $\mathbb R^2$.
 	Consider the transition map between two such charts.
+	{\par
+	\centering 
+    \includegraphics[height=5cm]{03-transitionmapremarks} 
+	\par}
 	If the two charts are based on the same projection such as $\pi_{xy}$, then the transition map is the identity.
 	If they are based on different projections $\pi_{xy}$ and $\pi_{yz}$, then the transition map is
 	\begin{align*}
@@ -49,7 +69,7 @@ Recall that if $V \subseteq \mathbb R^n$ and $V' \subseteq \mathbb R^m$, then $f
 	\begin{align*}
 		(y,z) \mapsto (h(y,z),y,z) \mapsto (h(y,z),y)
 	\end{align*}
-	Hence all of the transition maps between such charts involve projection maps and the smooth maps involved in defining $\Sigma$ as a graph.
+	Hence all of the transition maps between such charts are smooth.
 	This gives $\Sigma$ the structure of an abstract smooth surface.
 \end{remark}
 Some of the relations given in the above theorem are easy to prove, but others come as a result of the inverse function theorem.

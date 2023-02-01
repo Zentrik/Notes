@@ -31,7 +31,7 @@ Recall that if $\Sigma$ is a topological surface, any point lies in an open neig
 	\begin{align*}
 		\varphi_2 \circ \eval{\varphi_1^{-1}}_{\varphi_1(U_1 \cap U_2)} : \varphi_1(U_1 \cap U_2) \to \varphi_2(U_1 \cap U_2)
 	\end{align*}
-	converts between the corresponding charts, and is called a \textit{transition map} between charts.
+	converts between the corresponding charts, and is called a \vocab{transition map} between charts.
 	This is a homeomorphism of open sets in $\mathbb R^2$.
 \end{definition}
 
@@ -60,8 +60,9 @@ Equivalently, it is smooth if continuous partial derivatives of all orders in al
 \end{example}
 
 \begin{example}
-	For the torus $T^2 = \faktor{\mathbb R^2}{\mathbb Z^2}$, we can find charts of all points by choosing sufficiently small discs in $\mathbb R^2$ such that they do not intersect any of their non-trivial integer translates.
-	The transition maps for this atlas are all translations of $\mathbb R^2$.
+	For the torus $T^2 = \faktor{\mathbb R^2}{\mathbb Z^2}$, recall that we obtained charts from (the inverses of) the projection restricted to small discs in $\mathbb{R}^2$.
+
+	The transition maps for this atlas are all translations\footnote{If small discs intersect in $\faktor{\mathbb R^2}{\mathbb Z^2}$ then they have points which are integer translations?} of $\mathbb R^2$.
 	Hence $T^2$ inherits the structure of an abstract smooth surface.
 	Explicitly, let us define $e \colon \mathbb R^2 \to T^2$ by $(t,s) \mapsto \qty(e^{2\pi i t}, e^{2 \pi i s})$, then consider the atlas
 	\begin{align*}
@@ -71,31 +72,54 @@ Equivalently, it is smooth if continuous partial derivatives of all orders in al
 	These are charts on $T^2$, and the transition maps are (restricted to appropriate domains) translations in $\mathbb R^2$.
 	Hence $T^2$, via this atlas, has the structure of an abstract smooth surface.
 \end{example}
+
 \begin{remark}
 	The definition of a topological surface is a notion of structure.
 	One can observe a topological space and determine whether it is a topological surface.
 	Conversely, to be an abstract smooth surface is to have a specific set of data; that is, we must provide charts for the surface in order to see that it is indeed an abstract smooth surface.
 \end{remark}
-\begin{definition}
+
+\begin{definition}[Smooth Function]
 	Let $\Sigma$ be an abstract smooth surface, and $f \colon \Sigma \to \mathbb R^n$ be a continuous map.
-	We say that $f$ is \textit{smooth} at $p \in \Sigma$ if, for all charts $(U, \varphi)$ of $p$ belonging to the smooth atlas for $\Sigma$, the map
+	We say that $f$ is \vocab{smooth} at $p \in \Sigma$ if, for all charts $(U, \varphi)$ of $p$\footnote{$p \in U$} belonging to the smooth atlas for $\Sigma$, the map
 	\begin{align*}
-		f \circ \varphi^{-1} \colon \varphi(U) \to \mathbb R^n
+		f \circ \varphi^{-1} \colon \underbracket{\varphi(U)}_{\subset \mathbb{R}^2} \to \mathbb R^n
 	\end{align*}
 	is smooth at $\varphi(p) \in \mathbb R^2$.
 \end{definition}
+
+\begin{figure}[h] 
+    \centering 
+    \includegraphics[height=5cm]{02-smoothfunction} 
+\end{figure}
+
 \begin{remark}
 	Note that the choice of chart and atlas was arbitrary, but smoothness of $f$ at $p$ is independent of the choice of chart, since the transition maps between two such charts are diffeomorphisms.
+	\begin{align*}
+		f \circ \phi_1\inv &= f \circ \phi_2\inv \circ (\phi_2 \circ \phi_1\inv)
+	\end{align*} 
+	$(\phi_2 \circ \phi_1\inv)$ is a transition map and so is a diffeomorphism. So by chain rule follows!
 \end{remark}
-\begin{definition}
-	Let $\Sigma_1, \Sigma_2$ be abstract smooth surfaces.
-	Then a map $f \colon \Sigma_1 \to \Sigma_2$ is \textit{smooth} if it is `smooth in the local charts'.
-	Given a chart $(U, \varphi)$ at $p$ and a chart $(U', \psi)$ at $f(p)$, both mapping to open subsets of $\mathbb R^2$, the map $\psi \circ f \circ \varphi^{-1}$ is smooth at $\varphi(p)$.
-	Smoothness of $f$ does not depend on the choice of chart, provided that the charts all belong to the same atlas.
+
+\begin{definition}[Smooth Function between Surfaces]
+	Let $\Sigma_1, \Sigma_2$ be abstract smooth surfaces. \\
+	Then a map $f \colon \Sigma_1 \to \Sigma_2$ is \vocab{smooth} if it is `smooth in the local charts'.
+	Given a chart $(U, \varphi)$ at $p$ and a chart $(U', \psi)$ at $f(p)$, with $f(U) \subset U'$, the map $\psi \circ f \circ \varphi^{-1}$ is smooth at $\varphi(p)$.
 \end{definition}
-\begin{definition}
-	Two surfaces $\Sigma_1, \Sigma_2$ are \textit{diffeomorphic} if there exists a homeomorphism $f \colon \Sigma_1 \to \Sigma_2$ which is smooth and has smooth inverse.
+
+\begin{figure}[h] 
+    \centering 
+    \includegraphics[height=5cm]{02-smoothfunctionbetweensurfaces} 
+\end{figure}
+
+\begin{remark}
+	Smoothness of $f$ at $p$ does not depend on the choice of chart, provided that the charts all belong to the same atlas.
+\end{remark} 
+
+\begin{definition}[Diffeomorphic Surfaces]
+	Two surfaces $\Sigma_1, \Sigma_2$ are \vocab{diffeomorphic} if $\exists \; f \colon \Sigma_1 \to \Sigma_2$ which is smooth and has smooth inverse.
 \end{definition}
+
 \begin{remark}
 	Often, we convert from a given smooth atlas for an abstract smooth surface $\Sigma$ to the \textit{maximal compatible} smooth atlas.
 	That is, we consider the atlas with the maximal possible set of charts, all of which have transition maps that are diffeomorphisms.
