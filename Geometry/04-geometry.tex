@@ -16,7 +16,7 @@ Then
 	If $\gamma \colon (a,b) \to \mathbb R^3$ is continuously differentiable and $\gamma'(t) \neq 0$, then $\gamma$ can be parametrised by arc length.
 \end{lemma}
 The proof is left as an exercise.
-Let $\Sigma$ be a smooth surface in $\mathbb R^3$, and let $\sigma \colon V \to U \subseteq \Sigma$ be an allowable parametrisation.
+Let $\Sigma$ be a smooth surface in $\mathbb R^3$, and let $\sigma \colon V \to U \subset \Sigma$ be an allowable parametrisation.
 If $\gamma \colon (a,b) \to \mathbb R^3$ is smooth and its image is contained within $U$, then there exist functions $(u(t), v(t)) \colon (a,b) \to V$ such that $\gamma(t) = \sigma(u(t), v(t))$.
 Hence $\gamma'(t) = \sigma_u u'(t) + \sigma_v v'(t)$, giving
 \begin{align*}
@@ -75,7 +75,7 @@ Note that $E, F, G$ depend only on $\sigma$ and not on $\gamma$.
 	We can also say that $\Sigma$ and $\Sigma'$ are locally isometric if they are locally isometric at all points; that is, each point of $\Sigma$ is locally isometric to some point on $\Sigma'$.
 \end{definition}
 \begin{lemma}
-	Smooth surfaces $\Sigma, \Sigma'$ in $\mathbb R^3$ are locally isometric near $p \in \Sigma$ and $q \in \Sigma'$ if and only if there exist allowable parametrisations $\sigma \colon V \to U \subseteq \Sigma$ and $\sigma' \colon V \to U' \subseteq \Sigma'$ such that the first fundamental forms are equivalent.
+	Smooth surfaces $\Sigma, \Sigma'$ in $\mathbb R^3$ are locally isometric near $p \in \Sigma$ and $q \in \Sigma'$ if and only if there exist allowable parametrisations $\sigma \colon V \to U \subset \Sigma$ and $\sigma' \colon V \to U' \subset \Sigma'$ such that the first fundamental forms are equivalent.
 \end{lemma}
 \begin{proof}
 	By definition, the first fundamental form of $\Sigma$ determines the lengths of all curves on $\Sigma$ that lie in $U$.
@@ -214,7 +214,7 @@ where $I$ denotes the first fundamental form of $\sigma$ at zero.
 \end{lemma}
 \begin{proof}
 	Consider curves $\gamma \colon t \mapsto (u(t), v(t))$ and $\widetilde \gamma \colon t \mapsto (\widetilde u(t), \widetilde v(t))$ in $V$, where $\gamma(0) = \widetilde \gamma(0) = 0 \in V$.
-	Let $\sigma$ be a parametrisation $V \to U \subseteq \Sigma$ such that $\sigma(0) = p \in \Sigma$.
+	Let $\sigma$ be a parametrisation $V \to U \subset \Sigma$ such that $\sigma(0) = p \in \Sigma$.
 	Then the curves $\sigma \circ \gamma$ and $\sigma \circ \widetilde \gamma$ meet at angle $\theta$ on $\Sigma$, where
 	\begin{align*}
 		\cos \theta = \frac{E \dot u \dot {\widetilde u} + F \qty(\dot u \dot{\widetilde v} + \dot v \dot{\widetilde u}) + G \dot v \dot{\widetilde v}}{\sqrt{E \dot u^2 + 2F \dot u \dot v + G \dot v^2} \sqrt{E \dot{\widetilde u}^2 + 2F \dot{\widetilde u} \dot {\widetilde v} + G \dot{\widetilde v}^2}}
@@ -235,13 +235,13 @@ where $I$ denotes the first fundamental form of $\sigma$ at zero.
 
 \subsection{Area}
 Recall that a parallelogram spanned by vectors $v, w$ has area $\abs{v \times w} = \inner{v,v}\inner{w,w} - \inner{v,w}^2$, where $\times$ denotes the cross product.
-Let $\sigma \colon V \to U \subseteq \Sigma$ be an allowable parametrisation with $\sigma(0) = p$, and consider $\sigma_u, \sigma_v \in T_p \Sigma$.
+Let $\sigma \colon V \to U \subset \Sigma$ be an allowable parametrisation with $\sigma(0) = p$, and consider $\sigma_u, \sigma_v \in T_p \Sigma$.
 The square of the area of the infinitesimal parallelogram spanned by $\sigma_u, \sigma_v$ is given by
 \begin{align*}
 	\inner{\sigma_u, \sigma_u}\inner{\sigma_v, \sigma_v} - \inner{\sigma_u, \sigma_v}^2 = EG - F^2
 \end{align*}
 \begin{definition}
-	Let $\Sigma$ be a smooth surface in $\mathbb R^3$, and $\sigma \colon V \to U \subseteq \Sigma$ an allowable parametrisation.
+	Let $\Sigma$ be a smooth surface in $\mathbb R^3$, and $\sigma \colon V \to U \subset \Sigma$ an allowable parametrisation.
 	Then,
 	\begin{align*}
 		\mathrm{area}(U) = \int_V \sqrt{EG - F^2} \dd{u}\dd{v}
@@ -269,7 +269,7 @@ The square of the area of the infinitesimal parallelogram spanned by $\sigma_u, 
 	\begin{align*}
 		\int_V \sqrt{EG - F^2} \dd{u}\dd{v} = \int_{\widetilde V} \sqrt{\widetilde E \widetilde G - \widetilde F^2} \dd{u}\dd{v}
 	\end{align*}
-	Note, we can compute the area of an open set $U \subseteq \Sigma$, not necessarily lying in a single parametrisation, by covering the set by a finite amount of open subsets which lie in single charts.
+	Note, we can compute the area of an open set $U \subset \Sigma$, not necessarily lying in a single parametrisation, by covering the set by a finite amount of open subsets which lie in single charts.
 	For instance, if $\Sigma$ is compact, we can compute the area of $\Sigma$ itself.
 \end{remark}
 \begin{example}
@@ -279,7 +279,7 @@ The square of the area of the infinitesimal parallelogram spanned by $\sigma_u, 
 	\begin{align*}
 		\sqrt{EG - F^2} = \sqrt{1+f_u^2+f_v^2}
 	\end{align*}
-	Let $U_R \subseteq \Sigma$ be the part of the graph lying inside the disc $B(0,R) \subseteq \mathbb R^2$.
+	Let $U_R \subset \Sigma$ be the part of the graph lying inside the disc $B(0,R) \subset \mathbb R^2$.
 	Then
 	\begin{align*}
 		\mathrm{area}(U_R) = \int_{B(0,R)} \sqrt{1+f_u^2+f_v^2} \dd{u}\dd{v} \geq \pi R^2
@@ -294,7 +294,7 @@ The square of the area of the infinitesimal parallelogram spanned by $\sigma_u, 
 \end{example}
 
 \subsection{Second fundamental form}
-Let $\sigma \colon V \to U \subseteq \Sigma$ be allowable.
+Let $\sigma \colon V \to U \subset \Sigma$ be allowable.
 By using Taylor's theorem, we can write
 \begin{align*}
 	\sigma(u+h,v+\ell) = \sigma(u,v) + h \sigma_u(u,v) + \ell \sigma_v(u,v) + \frac{1}{2} \qty(h^2 \sigma_{uu}(u,v) + 2h\ell \sigma_{uv}(u,v) + \ell^2 \sigma_{vv}(u,v)) + O(h^3,\ell^3)
@@ -328,7 +328,7 @@ Hence, the orthogonal distance from $\sigma(u+h,v+\ell)$ to the affine tangent p
 	which defined a quadratic form on $T_p \Sigma$ which varies smoothly in $p$.
 \end{definition}
 \begin{lemma}
-	Let $V$ be connected and $\sigma \colon V \to U \subseteq \Sigma$ be an allowable parametrisation such that the second fundamental form vanishes identically with respect to $\sigma$.
+	Let $V$ be connected and $\sigma \colon V \to U \subset \Sigma$ be an allowable parametrisation such that the second fundamental form vanishes identically with respect to $\sigma$.
 	Then $U$ lies in an affine plane.
 \end{lemma}
 \begin{remark}
@@ -363,7 +363,7 @@ Hence, the orthogonal distance from $\sigma(u+h,v+\ell)$ to the affine tangent p
 			n_v \cdot \sigma_u & n_v \cdot \sigma_v
 		\end{pmatrix}
 	\end{align*}
-	Hence, if $\sigma \colon V \to \Sigma$ and $\widetilde \sigma \colon \widetilde V \to \Sigma$ are allowable parametrisations for an open set $U \subseteq \Sigma$ with transition map $\varphi \colon \widetilde V \to V$ given by $\varphi = \sigma^{-1} \circ \widetilde \sigma$, we can use the above expression to find
+	Hence, if $\sigma \colon V \to \Sigma$ and $\widetilde \sigma \colon \widetilde V \to \Sigma$ are allowable parametrisations for an open set $U \subset \Sigma$ with transition map $\varphi \colon \widetilde V \to V$ given by $\varphi = \sigma^{-1} \circ \widetilde \sigma$, we can use the above expression to find
 	\begin{align*}
 		\begin{pmatrix}
 			\widetilde L & \widetilde M \\
@@ -408,7 +408,7 @@ Hence, the orthogonal distance from $\sigma(u+h,v+\ell)$ to the affine tangent p
 \end{lemma}
 \begin{proof}
 	Since smoothness is a local property, it suffices to check the smoothness of the map on an arbitrary parametrised part of $\Sigma$.
-	Let $\sigma \colon V \to U \subseteq \Sigma$ be allowable and compatible with a chosen orientation.
+	Let $\sigma \colon V \to U \subset \Sigma$ be allowable and compatible with a chosen orientation.
 	Then
 	\begin{align*}
 		n(p) = \frac{\sigma_u \times \sigma_v}{\norm{\sigma_u \times \sigma_v}}
@@ -448,7 +448,7 @@ Hence, the orthogonal distance from $\sigma(u+h,v+\ell)$ to the affine tangent p
 		      \end{align*}
 		      where $n$ is the Gauss map.
 	\end{enumerate}
-	If we choose an allowable parametrisation (which for the second fundamental form must be correctly oriented) $\sigma \colon V \to U \subseteq \Sigma$ near $p \in \Sigma$, and if
+	If we choose an allowable parametrisation (which for the second fundamental form must be correctly oriented) $\sigma \colon V \to U \subset \Sigma$ near $p \in \Sigma$, and if
 	\begin{align*}
 		D \eval{\sigma}_0(\hat v) = v;\quad D \eval{\sigma}_0(\hat w) = w;\quad \sigma(0) = p
 	\end{align*}
@@ -518,7 +518,7 @@ If $\sigma, \widetilde \sigma$ are allowable and $\varphi = \sigma^{-1} \circ \s
 Since the sign vanishes under taking determinants, $\kappa$ is intrinsic and does not depend on the choice of parametrisation.
 \begin{example}
 	For a cylinder $\qty{x^2 + y^2 = 1}$ the Gauss map $n \colon \Sigma \to S^2$ has image which lies in the equator.
-	Its derivative $\eval{Dn}_p \colon T_p \Sigma \to T_p \Sigma$ has one-dimensional image, since any $\gamma \colon (-\varepsilon, \varepsilon) \to \Sigma$ has $n \circ \gamma \subseteq S^1$.
+	Its derivative $\eval{Dn}_p \colon T_p \Sigma \to T_p \Sigma$ has one-dimensional image, since any $\gamma \colon (-\varepsilon, \varepsilon) \to \Sigma$ has $n \circ \gamma \subset S^1$.
 	Hence its Gauss curvature is zero.
 \end{example}
 \begin{definition}
@@ -625,7 +625,7 @@ Since the sign vanishes under taking determinants, $\kappa$ is intrinsic and doe
 \end{proof}
 \begin{theorem}
 	Let $\Sigma$ be a smooth surface in $\mathbb R^3$, and let $p \in \Sigma$ such that $\kappa(p) \neq 0$.
-	Let $U$ be an open neighbourhood of $p$, and a decreasing sequence $A_i \subseteq U$ of neighbourhoods that `shrink to $p$', in the sense that for all $\varepsilon > 0$, $A_i \subseteq B(p,\varepsilon)$ for sufficiently large $i$.
+	Let $U$ be an open neighbourhood of $p$, and a decreasing sequence $A_i \subset U$ of neighbourhoods that `shrink to $p$', in the sense that for all $\varepsilon > 0$, $A_i \subset B(p,\varepsilon)$ for sufficiently large $i$.
 	Then,
 	\begin{align*}
 		\abs{\kappa(p)} = \lim_{i \to \infty} \frac{\mathrm{area}_{S^2} (n(A_i))}{\mathrm{area}_{\Sigma} (A_i)}
@@ -686,7 +686,7 @@ Since the sign vanishes under taking determinants, $\kappa$ is intrinsic and doe
 	This proof is given in Part II.
 
 	Alternatively, we can consider a different question: are some allowable parametrisations of a smooth surface in $\mathbb R^3$ `better' than others in some way?
-	If we have a parametrisation $\sigma \colon V \to U \subseteq \Sigma$, this defines certain distinguished curves, which are the images of $\sigma(t,0)$ and $\sigma(0,t)$.
+	If we have a parametrisation $\sigma \colon V \to U \subset \Sigma$, this defines certain distinguished curves, which are the images of $\sigma(t,0)$ and $\sigma(0,t)$.
 	In this sense, looking for a `best' parametrisation is equivalent to looking for `best' distinguished curves near a point.
 	This leads to the study of geodesics.
 	We will later show that every smooth surface in $\mathbb R^3$ admits local parametrisations such that the first fundamental form has form $\dd{u}^2 + G \dd{v}^2$, so $E = 1$ and $F = 0$.

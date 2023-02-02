@@ -45,7 +45,7 @@
 	Recall that the product topology on $X \times Y$ for $X, Y$ topological spaces, has basic open sets $U \times V$, where $U \subset X$, $V \subset Y$ open.
 	Also the product topology has the feature that $g : Z \to X \times Y$ is continuous iff $\pi_x \circ g : Z \to X$ and $\pi_y \circ f : Z \to Y$ are continuous\footnote{$\pi_x, \pi_y$ are the canonical projections, $\pi_x : X \times Y \to X$}.
 
-	Hence, any graph $\Gamma \subseteq X \times Y$ is homeomorphic to $X$ if $f$ is continuous.
+	Hence, any graph $\Gamma \subset X \times Y$ is homeomorphic to $X$ if $f$ is continuous.
 	Indeed, the projection $\pi_x$ projects each point in the graph onto the domain.
 	The function $s : x \mapsto (x,f(x))$ is continuous as $\pi_x \circ s$ and $\pi_y \circ s$ are.
 	So $\pi_x \mid_{\Gamma_f}$ and $s$ are inverse homeomorphisms.
@@ -236,7 +236,7 @@
 	}
 	Let us say without loss of generality that $p = (0,y_0) \sim (1,y_0) = p'$.
 	Let $\delta$ be sufficiently small that the closed half-discs $U, V$ centred on $p, p\inv$ with radius $\delta$ do not intersect any vertices. \\
-	Then we define a map from the union of the two half-discs to the disc $B(0,\delta) \subseteq \mathbb R^2$ via 
+	Then we define a map from the union of the two half-discs to the disc $B(0,\delta) \subset \mathbb R^2$ via 
 	\begin{align*}
 		U : (x,y) &\underset{f_u}{\mapsto} (x,y-y_0) \\
 		V : (x,y) &\underset{f_v}{\mapsto} (x-1,y-y_0)
@@ -262,7 +262,7 @@
 	}
 	and analogously we get that a vertex has a neighbourhood homeomorphic to a disc.
 	% A neighbourhood of each vertex can be identified with a quarter-disc in $\mathbb R^2$.
-	% We can repeatedly apply the gluing lemma to construct the whole disc $B(0,\delta) \subseteq \mathbb R^2$ and complete the argument as before.
+	% We can repeatedly apply the gluing lemma to construct the whole disc $B(0,\delta) \subset \mathbb R^2$ and complete the argument as before.
 
 	Thus, $\faktor{[0,1]^2}{\sim}$ is a topological surface.
 \end{example}
@@ -279,7 +279,7 @@
 		      For this case, all vertices of the polygon have a neighbourhood which is a sector of a circle.
 		      Let there be $r$ vertices in a given equivalence class.
 		      Let $\alpha$ be the sum of the angles of the sectors in a given class. \\
-		      Any sector can be identified with a given sector in the disc $B(0,\delta) \subseteq \mathbb R^2$, which we will choose to have angle $\alpha / r$.
+		      Any sector can be identified with a given sector in the disc $B(0,\delta) \subset \mathbb R^2$, which we will choose to have angle $\alpha / r$.
 		      Then, we can glue each sector together in $\mathbb R^2$, compatibly with the orientations of the edges and arrows, inducing a neighbourhood which is locally homeomorphic to a disc.
 
 		      If $r = 1$, we have an equivalence class comprising a single vertex, which gives a single sector.
@@ -348,7 +348,7 @@
 \begin{definition}[Subdivision]
 	A \vocab{subdivision} of a compact topological surface $\Sigma$ comprises
 	\begin{enumerate}
-		\item a finite subset $V \subseteq \Sigma$ of vertices;
+		\item a finite subset $V \subset \Sigma$ of vertices;
 		\item a finite subset of edges $E = \qty{e_i : [0,1] \to \Sigma}$ s.t. 1) each $e_i$ is a continuous injection on its interior and $e_i\inv V = \{0, 1\}$, the endpoints.
 		2) $e_i, e_j$ have disjoint images except perhaps at their endpoints.
 		\item we require that each connected component of $\Sigma \setminus \qty(\cup_i e_i [0, 1] \cup V)$ is homeomorphic to an open disc called a \vocab{face}.

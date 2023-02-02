@@ -26,7 +26,7 @@ Recall that if $V \subset \mathbb R^n$ and $V' \subset \mathbb R^m$, then $f \co
 	A \vocab{smooth surface in $\mathbb R^3$} is a subset of $\Sigma \subset \mathbb R^3$ s.t. $\forall \; p \in \Sigma$, $\exists$ an open subset $p \in U \subset \Sigma$ that is diffeomorphic to an open set in $\mathbb R^2$.
 \end{definition}
 
-In other words, for all $p \in \Sigma$, there exists an open ball $p \in B \subset \mathbb R^3$ such that if $U = B \cap \Sigma$ and there exists a map $F \colon B \to V \subseteq \mathbb R^2$ smooth s.t. $\eval{F}_U \colon U \to V$ is a homeomorphism, and the inverse map $V \to U \subset \Sigma \subset \mathbb R^3$ is smooth.
+In other words, for all $p \in \Sigma$, there exists an open ball $p \in B \subset \mathbb R^3$ such that if $U = B \cap \Sigma$ and there exists a map $F \colon B \to V \subset \mathbb R^2$ smooth s.t. $\eval{F}_U \colon U \to V$ is a homeomorphism, and the inverse map $V \to U \subset \Sigma \subset \mathbb R^3$ is smooth.
 
 So we have two notions of smoothness, one abstract and one based on the ambient space and we need to reconcile them.
 
@@ -40,12 +40,12 @@ So we have two notions of smoothness, one abstract and one based on the ambient 
 	For a subset $\Sigma \subset \mathbb R^3$, the following are equivalent (TFAE).
 	\begin{enumerate}
 		\item $\Sigma$ is a smooth surface in $\mathbb R^3$;
-		\item $\Sigma$ is locally the graph of a smooth function, over one of the three coordinate planes: for all $p \in \Sigma$ there exists an open ball $p \in B \subseteq \mathbb R^3$ and an open set $V \subseteq \mathbb R^2$ such that
+		\item $\Sigma$ is locally the graph of a smooth function, over one of the three coordinate planes: for all $p \in \Sigma$ there exists an open ball $p \in B \subset \mathbb R^3$ and an open set $V \subset \mathbb R^2$ such that
 		      \begin{align*}
 			      \Sigma \cap B = \qty{(x, y, g(x,y)) \colon g \colon V \to \mathbb R \text{ smooth}}
 		      \end{align*}
 		      or one of the other coordinate planes;
-		\item $\Sigma$ is locally cut out by a smooth function with non-zero derivative: for all $p \in \Sigma$ there exists an open ball $p \in B \subseteq \mathbb R^3$ and a smooth function $f \colon B \to \mathbb R$ such that
+		\item $\Sigma$ is locally cut out by a smooth function with non-zero derivative: for all $p \in \Sigma$ there exists an open ball $p \in B \subset \mathbb R^3$ and a smooth function $f \colon B \to \mathbb R$ such that
 		      \begin{align*}
 			      \Sigma \cap B = f^{-1}(0);\quad D \eval{f}_x \neq 0 \ \forall \; x \in B.
 		      \end{align*}
@@ -76,10 +76,10 @@ Some of the relations given in the above theorem are easy to prove, but others c
 
 \subsection{Inverse and implicit function theorems}
 \begin{theorem}[inverse function theorem]
-	Let $U \subseteq \mathbb R^n$ be open, and $f \colon U \to \mathbb R^n$ be continuously differentiable.
+	Let $U \subset \mathbb R^n$ be open, and $f \colon U \to \mathbb R^n$ be continuously differentiable.
 	Let $p \in U$ and $f(p) = q$.
 	Suppose $D\eval{f}_p$ is invertible.
-	Then there is an open neighbourhood $V$ of $q$ and a differentiable map $g \colon V \to \mathbb R^n$ and $g(q) = p$ with image an open neighbourhood $U' \subseteq U$ of $p$ such that $f \circ g = \id_V$.
+	Then there is an open neighbourhood $V$ of $q$ and a differentiable map $g \colon V \to \mathbb R^n$ and $g(q) = p$ with image an open neighbourhood $U' \subset U$ of $p$ such that $f \circ g = \id_V$.
 	If $f$ is smooth, then $g$ is also.
 \end{theorem}
 \begin{remark}
@@ -105,7 +105,7 @@ Some of the relations given in the above theorem are easy to prove, but others c
 	\end{align*}
 	hence $DF$ is an isomorphism at $(x_0, y_0)$.
 	By the inverse function theorem, $F$ is locally invertible near $F(x_0,y_0) = (x_0,f(x_0,y_0)) = (x_0, 0)$.
-	Consider an open neighbourhood $V \times V' \subseteq \mathbb R^k \times \mathbb R^\ell$ on which this continuously differentiable inverse $G \colon V \times V' \to U' \subseteq U \subseteq \mathbb R^k \times \mathbb R^\ell$ exists, such that $F \circ G = \id_{V \times V'}$.
+	Consider an open neighbourhood $V \times V' \subset \mathbb R^k \times \mathbb R^\ell$ on which this continuously differentiable inverse $G \colon V \times V' \to U' \subset U \subset \mathbb R^k \times \mathbb R^\ell$ exists, such that $F \circ G = \id_{V \times V'}$.
 	Then,
 	\begin{align*}
 		G(x,y) = (\varphi(x,y), \psi(x,y)) \implies F \circ G(x,y) = (\varphi(x,y), f(\varphi(x,y), \psi(x,y))) = (x,y)
@@ -162,7 +162,7 @@ We now prove the theorem stated above, relating equivalent conditions for smooth
 	Consider $\mathrm{pr} \circ \sigma \colon V \to \mathbb R^2$.
 	This has isomorphic derivative at zero, so we can apply the inverse function theorem.
 	Hence $\Sigma$ is locally a graph over the $xy$ coordinate plane, so (b) holds.
-	Moreover, let $\varphi = \mathrm{pr} \circ \sigma$, and consider the open ball $B(p, \delta) \subseteq \mathbb R^3$ and a map such that $(x,y,z) \mapsto \varphi^{-1}(x,y)$ in this ball.
+	Moreover, let $\varphi = \mathrm{pr} \circ \sigma$, and consider the open ball $B(p, \delta) \subset \mathbb R^3$ and a map such that $(x,y,z) \mapsto \varphi^{-1}(x,y)$ in this ball.
 	Here, $\varphi \colon W \to \Sigma$ where $W$ is an open set in $\mathrm{pr}(B(p, \delta))$.
 	This is a locally defined map, which is smooth on an open set in $\mathbb R^3$, which is a smooth inverse to $\sigma$.
 	Hence $\Sigma$ is a smooth surface in $\mathbb R^3$, so (a) holds.
@@ -251,8 +251,8 @@ We now prove the theorem stated above, relating equivalent conditions for smooth
 Recall that an \textit{affine} subspace of a vector space is a translate of a linear subspace.
 \begin{definition}
 	Let $\Sigma$ be a smooth surface in $\mathbb R^3$, and $p \in \Sigma$.
-	Let $\sigma \colon V \to U \subseteq \Sigma$ be an allowable parametrisation of $\Sigma$ near $p$, so $V$ is an open subset of $\mathbb R^2$ and $U$ is open in $\Sigma$, such that $\sigma(0) = p$.
-	The \textit{tangent plane} $T_p \Sigma$ to $p$ at $\Sigma$ is the image of $\qty(D \eval{\sigma}_0) \subseteq \mathbb R^3$, which is a two-dimensional vector subspace of $\mathbb R^3$.
+	Let $\sigma \colon V \to U \subset \Sigma$ be an allowable parametrisation of $\Sigma$ near $p$, so $V$ is an open subset of $\mathbb R^2$ and $U$ is open in $\Sigma$, such that $\sigma(0) = p$.
+	The \textit{tangent plane} $T_p \Sigma$ to $p$ at $\Sigma$ is the image of $\qty(D \eval{\sigma}_0) \subset \mathbb R^3$, which is a two-dimensional vector subspace of $\mathbb R^3$.
 	The \textit{affine tangent plane} is $p + T_p \Sigma$, which is an affine subspace of $\mathbb R^3$.
 \end{definition}
 \begin{remark}
@@ -274,7 +274,7 @@ Recall that an \textit{affine} subspace of a vector space is a translate of a li
 \begin{proof}[Proof (ii)]
 	Let $\gamma \colon (-\varepsilon, \varepsilon) \to \mathbb R^3$ be a smooth map such that $\gamma$ has image inside $\Sigma$, and $\gamma(0) = p$.
 	We will show that $\gamma'(0) \in T_p \Sigma$.
-	If $\sigma \colon V \to U$ is an allowable parametrisation with $\sigma(0) = p$ as above, and $\varepsilon$ is sufficiently small such that $\Im \gamma \subseteq U$, then $\gamma(t) = \sigma(u(t), v(t))$ for some smooth functions $u, v \colon (-\varepsilon, \varepsilon) \to V$.
+	If $\sigma \colon V \to U$ is an allowable parametrisation with $\sigma(0) = p$ as above, and $\varepsilon$ is sufficiently small such that $\Im \gamma \subset U$, then $\gamma(t) = \sigma(u(t), v(t))$ for some smooth functions $u, v \colon (-\varepsilon, \varepsilon) \to V$.
 	Then $\gamma'(t) = \sigma_u u'(t) + \sigma_v v'(t)$ is in the image of $D \eval{\sigma}_t$.
 	Thus, $T_p \Sigma = \vecspan \qty{ \gamma'(0) \colon \gamma \text{ as above} }$.
 \end{proof}
@@ -291,7 +291,7 @@ Recall that an \textit{affine} subspace of a vector space is a translate of a li
 	A smooth surface in $\mathbb R^3$ is orientable (as an abstract smooth surface) if and only if it is two-sided (as a smooth surface in $\mathbb R^3$).
 \end{lemma}
 \begin{proof}
-	Let $\sigma \colon V \to U \subseteq \Sigma$ be an allowable parametrisation.
+	Let $\sigma \colon V \to U \subset \Sigma$ be an allowable parametrisation.
 	Let $\sigma(0) = p$.
 	We will define the positive unit normal with respect to $\sigma$ at $p$ to be the normal vector $n_\sigma(p)$ with the property that $\qty{\sigma_u, \sigma_v, n_\sigma(p)}$ and $\qty{e_1, e_2, e_3}$ are related by a positive determinant change of basis matrix, where $\qty{e_1, e_2, e_3}$ are the standard basis vectors.
 	In other words,
