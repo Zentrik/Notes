@@ -118,12 +118,15 @@
 		      As $p^a \mid \abs{G_X}$ we must have $\abs{G_X} = p^a$.
 		      In other words, the stabiliser $G_X$ is a Sylow $p$-subgroup of $G$.
 		\item We will prove a stronger result for this part of the proof.
-		      We claim that if $P$ is a Sylow $p$-subgroup and $Q \leq G$ is a $p$-subgroup, then $Q \leq g P g\inv$ for some $g \in G$.
+		      \begin{lemma} \label{lem:4.7}
+				If $P$ is a Sylow $p$-subgroup and $Q \leq G$ is a $p$-subgroup, then $Q \leq g P g\inv$ for some $g \in G$.
+			  \end{lemma} 
+
 		      Indeed, let $Q$ act on the set of left cosets of $P$ in $G$ by left multiplication.
 		      By the orbit-stabiliser theorem, each orbit has size which divides $\abs{Q} = p^k$ for some $k$.
 		      Hence each orbit has size $p^r$ for some $r$.
 
-		      Since $\faktor{G}{P}$ has size $m$, which is coprime to $p$, there must exist an orbit of size 1.
+		      Since $\faktor{G}{P}$ has size $m$, which is coprime to $p$, there must exist an orbit of size 1\footnote{Sum of the orbit sizes is $m$, $m$ coprime to $p$.}.
 		      Therefore there exists $g \in G$ such that $q \ast gP = gP$ for all $q \in Q$.
 		      Equivalently, $g\inv q g \in P$ for all $q \in Q$.
 		      This implies that $Q \leq gPg\inv$ as required.
