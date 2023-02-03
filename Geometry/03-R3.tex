@@ -78,17 +78,17 @@ Some of the relations given in the above theorem are easy to prove, but others c
 \begin{theorem}[Inverse Function Theorem]
 	Let $U \subset \mathbb R^n$ be open, and $f \colon U \to \mathbb R^n$ be continuously differentiable.
 	Let $p \in U$ and $f(p) = q$.
-	Suppose $D\eval{f}_p$ is invertible. \\
+	Suppose $\eval{Df}_p$ is invertible. \\
 	Then there is an open neighbourhood $V$ of $q$ and a differentiable map $g \colon V \to \mathbb R^n$ and $g(q) = p$ with image an open neighbourhood $U' \subset U$ of $p$ such that $f \circ g = \id_V$ and $g \circ f = \id_{U'}$.
 	If $f$ is smooth, then $g$ is also.
 \end{theorem}
 
 \begin{remark}
-	The chain rule then implies that $D\eval{g}_q = \qty(D\eval{f}_p)^{-1}$.
+	The chain rule then implies that $\eval{Dg}_q = \qty(\eval{Df}_p)^{-1}$.
 
-	The inverse function theorem concerns functions $\mathbb R^n \to \mathbb R^n$, where $D\eval{f}_p$ is an isomorphism.
-	If we have a map $\mathbb R^n \to \mathbb R^m$ for $n > m$, then we can discuss the behaviour when $D\eval{f}_p$ is surjective.
-	The derivative $D\eval{f}_p$ is an $m \times n$ matrix, so if it has full rank, up to the permutation of coordinates we have that the last $m$ columns are linearly independent.
+	The inverse function theorem concerns functions $\mathbb R^n \to \mathbb R^n$, where $\eval{Df}_p$ is an isomorphism.
+	If we have a map $\mathbb R^n \to \mathbb R^m$ for $n > m$, then we can discuss the behaviour when $\eval{Df}_p$ is surjective.
+	The derivative $\eval{Df}_p$ is an $m \times n$ matrix, so if it has full rank, up to the permutation of coordinates we have that the last $m$ columns are linearly independent.
 \end{remark}
 
 \begin{theorem}[Implicit Function Theorem]
@@ -175,22 +175,30 @@ We now prove \Cref{thm:1.7}, relating equivalent conditions for smoothness of a 
 	Hence $\Sigma$ is locally a graph of $(x, y, \sigma_3(\phi\inv(x, y)))$\footnote{This is true as $(x, y) = \phi(u, v)$ and so $\sigma_3(\phi\inv(x, y)) = \sigma_3(u, v)$ therefore $(x, y, \sigma_3(\phi\inv(x, y))) = (\sigma_1(u,v), \sigma_2(u,v), \sigma_3(u,v)) \in \Sigma$}, so (d) $\implies$(b).
 \end{proof}
 
+\begin{example}[Ellipsoid]
+	The ellipsoid $E \subset \mathbb{R}^3$ is $f\inv(0)$ for $f : \mathbb{R}^3 \to \mathbb{R}$ with $f(x, y, z) = \frac{x^2}{a^2} + \frac{y^2}{b^2} + \frac{z^2}{c^2} - 1$.
+	For all $p \in E = f\inv(0)$, $Df\mid_p \neq 0$ (as $p \neq 0$), so $E$ is a smooth surface in $\mathbb{R}^3$.
+\end{example} 
+
 \begin{example}
 	The unit sphere $S^2$ in $\mathbb R^3$ is $f^{-1}(0)$ for $f(x,y,z) = x^2 + y^2 + z^2 - 1$.
 	For any point on $S^2$, $Df \neq 0$, so $S^2$ is a smooth surface.
 \end{example}
 
-\begin{example}
+\begin{example}[Surface of revolution]
 	Let $\gamma \colon [a,b] \to \mathbb R^3$ be a smooth map with image in the $xz$ plane, so
 	\begin{align*}
 		\gamma(t) = (f(t), 0, g(t))
 	\end{align*}
 	such that $\gamma$ is injective, $\gamma' \neq 0$, and $f > 0$.
-	The \textit{surface of revolution} of $\gamma$ has allowable parametrisation
+	The \textit{surface of revolution} of $\gamma$ about $z$ has allowable parametrisation
 	\begin{align*}
 		\sigma(u,v) = (f(u)\cos v, f(u)\sin v, g(u))
 	\end{align*}
-	where $(u,v) \in (a,b) \times (\theta, \theta + 2\pi)$ for a fixed $\theta$.
+	where $(u,v) \in (a,b)\footnote{We use an open set so that the surface doesn't have a boundary.} \times (\theta, \theta + 2\pi)$ for a fixed $\theta$.
+
+	Left to the reader to check that $\sigma$ is homeomorphic to its image.
+
 	Note that $\sigma_u = (f_u \cos v, f_u \sin v, g_u)$ and $\sigma_v = (-f\sin v, f \cos v, 0)$, and we can check $\norm{\sigma_u \times \sigma_v} = f^2 ((f')^2 + (g')^2)$ which is nonzero on $\gamma$, so this really is an allowable parametrisation.
 \end{example}
 
@@ -202,49 +210,62 @@ We now prove \Cref{thm:1.7}, relating equivalent conditions for smoothness of a 
 \end{example}
 
 \subsection{Orientability}
-\begin{definition}
+
+\begin{definition}[Orientation-Preserving Map]
 	Let $V, V'$ be open sets in $\mathbb R^2$.
 	Let $f \colon V \to V'$ be a diffeomorphism.
-	Then at every point $x \in V$, $D\eval{f}_x \in GL(2,\mathbb R)$; it is invertible since $f$ is a diffeomorphism.
+	Then at every point $x \in V$, $\eval{Df}_x \in GL(2,\mathbb R)$; it is invertible since $f$ is a diffeomorphism. \\
 	Let $GL^+(2,\mathbb R)$ be the subgroup of matrices with positive determinant.
-	We say that $f$ is \textit{orientation-preserving} if its derivative belongs to this subgroup for all points $x \in V$.
+
+	We say that $f$ is \vocab{orientation-preserving} if $\eval{Df}_x \in GL^+(2, \mathbb{R}) \; \forall \; x \in V$.
 \end{definition}
-\begin{definition}
-	An abstract smooth surface $\Sigma$ is \textit{orientable} if it admits an atlas $\qty{(U_i, \varphi_i)}$ where the transition maps are all orientation-preserving.
-	A choice of such an atlas is an \textit{orientation} of $\Sigma$; $\Sigma$ can be called \textit{oriented} when such an orientation is given.
+
+\begin{definition}[Orientable]
+	An abstract smooth surface $\Sigma$ is \vocab{orientable} if it admits an atlas $\qty{(U_i, \varphi_i)}$ where the transition maps are all orientation-preserving diffeomorphisms of of open sets of $\mathbb{R}^2$.
+	A choice of such an atlas is an \vocab{orientation} of $\Sigma$; $\Sigma$ can be called \vocab{oriented} when such an orientation is given.
 \end{definition}
+
 \begin{remark}
 	An orientable atlas belongs to a maximal compatible oriented smooth atlas.
 \end{remark}
+
 \begin{lemma}
-	If $\Sigma_1$ and $\Sigma_2$ are diffeomorphic abstract smooth surfaces, then $\Sigma_1$ is orientable if and only if $\Sigma_2$ is orientable.
+	If $\Sigma_1$ and $\Sigma_2$ are diffeomorphic abstract smooth surfaces, then $\Sigma_1$ is orientable iff $\Sigma_2$ is orientable.
 \end{lemma}
+
 \begin{proof}
 	Let $f \colon \Sigma_1 \to \Sigma_2$ be a diffeomorphism.
-	Suppose $\Sigma_2$ is orientable and equipped with an oriented smooth atlas.
-	Consider the atlas on $\Sigma_1$ of charts of the form $(f^{-1}(U), \eval{\phi \circ f}_{f^{-1}(U)})$, where $(U, \psi)$ is a chart at $f(p)$ in the oriented atlas for $\Sigma_2$.
-	Then, the transition map between two such charts is exactly a transition map between charts in the $\Sigma_2$ atlas.
+	Suppose $\Sigma_2$ is orientable and equipped with an oriented atlas.
 
-	In other words, in the maximal smooth atlas that exists a priori for $\Sigma_1$, we will allow charts of the form $(\widetilde U, \widetilde \psi)$ when for all charts $(U, \psi)$ at $f(p)$ in the $\Sigma_2$ atlas, the map $\psi \circ f \circ (\widetilde \psi)^{-1}$ is orientation-preserving.
-	Informally, if the atlas on $\Sigma_2$ was maximal as an oriented atlas, we can recover the previous set of charts.
+	{\par
+    \centering 
+    \includegraphics[height=5cm]{03-orientable} 
+	\par}
+
+	Consider the atlas on $\Sigma_1$ given by $(f^{-1}(U), \eval{\phi \circ f}_{f^{-1}(U)})$, where $(U, \psi)$ is a chart at $f(p)$ in the oriented atlas for $\Sigma_2$.
+	Then, the transition function\footnote{$(\phi_1 \circ f) \circ (\phi_2 \circ f)\inv = \phi_1 \circ \phi_2\inv$} between two such charts is exactly the transition function between charts in the $\Sigma_2$ atlas.
+	% In other words, in the maximal smooth atlas that exists a priori for $\Sigma_1$, we will allow charts of the form $(\widetilde U, \widetilde \psi)$ when for all charts $(U, \psi)$ at $f(p)$ in the $\Sigma_2$ atlas, the map $\psi \circ f \circ (\widetilde \psi)^{-1}$ is orientation-preserving.
+	% Informally, if the atlas on $\Sigma_2$ was maximal as an oriented atlas, we can recover the previous set of charts.
 \end{proof}
+
 \begin{remark}
-	There is no sensible classification of the set of all smooth surfaces.
-	For instance, $\mathbb R^2 \setminus Z$ for a closed set $Z$ can be shown to yield uncountably many types of homeomorphisms.
-	However, \textit{compact} smooth surfaces may be classified by their Euler characteristic and their orientability, up to diffeomorphism.
-	This theorem will not be proven in this course.
-
-	There is a definition of orientation-preserving \textit{homeomorphism} that does not rely on the determinant, but that instead relies on some algebraic topology which is not covered in this course.
-	The M\"obius band is the surface
-	\tikzfig{mobius_band}
-	where the dashed lines represent the absence of edges.
-	It is provable that an abstract smooth surface is orientable if and only if it contains no subsurface homeomorphic to the M\"obius band.
-	We can therefore say that a topological surface is orientable if and only if it contains no subsurface (an open set) homeomorphic to a M\"obius band.
-
-	We can define other structures on an abstract smooth surface by considering smooth atlases such that if $\varphi_1 \varphi_2^{-1}$ is a transition map, then $D (\varphi_1 \varphi_2^{-1})$ at $x$ belongs to a specific subgroup $G \leq GL(2, \mathbb R)$.
-	For example, defining $G = \qty{e}$ leads to Euclidean surfaces.
-	The group $GL(1, \mathbb C)$ identified as a subgroup of $GL(2, \mathbb R)$ yields the Riemann surfaces.
+	\begin{enumerate}
+		\item 	There is no sensible classification of the set of all smooth or topological surfaces.
+		For instance, $\mathbb R^2 \setminus Z$ for a closed set $Z$ can be shown to yield uncountably many types of homeomorphisms. \\
+		However, \underline{compact} smooth surfaces may be classified by their Euler characteristic and their orientability, up to diffeomorphism.
+		This theorem will not be proven in this course.
+		\item 	There is a definition of orientation-preserving \textit{homeomorphism} that does not rely on the determinant, but that instead relies on some algebraic topology which is not covered in this course.
+		The M\"obius band is the surface
+		\tikzfig{mobius_band}
+		where the dashed lines represent the absence of edges.
+		It is provable that an abstract smooth surface is orientable $\iff$ it contains no subsurface (an open set) homeomorphic to the M\"obius band.
+		We can therefore say that a topological surface is orientable $\iff$ it contains no subsurface (an open set) homeomorphic to a M\"obius band.
+		\item 	We can define other structures on an abstract smooth surface by considering smooth atlases such that if $\varphi_1 \varphi_2^{-1}$ is a transition map, then $D (\varphi_1 \varphi_2^{-1})$ at $x$ belongs to a specific subgroup $G \leq GL(2, \mathbb R)$.
+		For example, defining $G = \qty{e}$ leads to Euclidean surfaces.
+		The group $GL(1, \mathbb C)$ identified as a subgroup of $GL(2, \mathbb R)$ yields the Riemann surfaces, also $D (\varphi_1 \varphi_2^{-1}) \in GL(1, \mathbb C) \implies \varphi_1 \varphi_2^{-1}$ holomorphic as being in $GL(1, \mathbb C)$ implies that the Cauchy Riemann equations hold.
+	\end{enumerate}
 \end{remark}
+
 \begin{example}
 	For $S^2$ with the atlas of two stereographic projections, we can find the transition map to be
 	\begin{align*}
@@ -253,24 +274,40 @@ We now prove \Cref{thm:1.7}, relating equivalent conditions for smoothness of a 
 	on $\mathbb R^2 \setminus \qty{0}$.
 	This has positive determinant, so $S^2$ is orientable.
 
-	For the torus $T^2$, we previously found an atlas such that the transition maps are translations of $\mathbb R^2$.
-	Hence the torus is an oriented surface, and also a Euclidean surface.
+	Note we only need to know the determinant at one point in $\mathbb{R}^2 \setminus \qty{0}$ as $\mathbb{R}^2 \setminus \qty{0}$ is a connected set so the determinant of the differential is a super continuous function, so if it has sign positive at one point it must have sign positive on the whole space. If its sign changed it must be $0$ somewhere but we know its a diffeomorphism so the determinant of the differential can't be 0.
 \end{example}
 
+\begin{example}
+	For the torus $T^2$, we previously found an atlas such that the transition maps are translations of $\mathbb R^2$.
+	Hence the torus is an oriented surface, and also a Euclidean surface.
+\end{example} 
+
+For surfaces in $\mathbb{R}^3$, we'd like to have orientability dictated by some ``ambient feature'', i.e. we want to be able to just look at the surface and know if its orientable or not.
+
 \subsection{Tangent planes}
-Recall that an \textit{affine} subspace of a vector space is a translate of a linear subspace.
-\begin{definition}
+Recall that an \textit{affine} subspace of a vector space is a translation of a linear subspace.
+
+\begin{definition}[Tangent Plane]
 	Let $\Sigma$ be a smooth surface in $\mathbb R^3$, and $p \in \Sigma$.
 	Let $\sigma \colon V \to U \subset \Sigma$ be an allowable parametrisation of $\Sigma$ near $p$, so $V$ is an open subset of $\mathbb R^2$ and $U$ is open in $\Sigma$, such that $\sigma(0) = p$.
-	The \textit{tangent plane} $T_p \Sigma$ to $p$ at $\Sigma$ is the image of $\qty(D \eval{\sigma}_0) \subset \mathbb R^3$, which is a two-dimensional vector subspace of $\mathbb R^3$.
-	The \textit{affine tangent plane} is $p + T_p \Sigma$, which is an affine subspace of $\mathbb R^3$.
+
+	The \vocab{tangent plane} $T_p \Sigma$ of $\Sigma$ at $p$ is the image of $\qty(\eval{D\sigma}_0) \subset \mathbb R^3$, which is a two-dimensional vector subspace of $\mathbb R^3$.
+	The \vocab{affine tangent plane} is $p + T_p \Sigma$, which is an affine subspace of $\mathbb R^3$.
 \end{definition}
+
+\begin{figure}[h] 
+    \centering 
+    \includegraphics[height=5cm]{03-tangentplane} 
+\end{figure}
+
 \begin{remark}
 	The affine tangent plane is the `best' linear approximation to a surface $\Sigma$ at a given point.
 \end{remark}
-\begin{lemma}
-	$T_p \Sigma$ is independent of the choice of allowable parametrisation.
+
+\begin{lemma} \label{lem:1.9}
+	$T_p \Sigma$ is well-defined, i.e. it's independent of the choice of allowable parametrisation near $p$.
 \end{lemma}
+
 \begin{proof}[Proof (i)]
 	Suppose $\sigma \colon V \to U$ and $\widetilde \sigma \colon \widetilde V \to \widetilde U$ are allowable parametrisations with $\sigma(0) = \widetilde \sigma(0) = p$.
 	There exists a transition map $\sigma^{-1} \circ \widetilde \sigma$, which is a diffeomorphism of open sets in $\mathbb R^2$.
@@ -278,9 +315,10 @@ Recall that an \textit{affine} subspace of a vector space is a translate of a li
 	\begin{align*}
 		\widetilde \sigma = \sigma \circ \underbrace{\qty(\sigma^{-1} \circ \widetilde \sigma)}_{\text{diffeomorphism}}
 	\end{align*}
-	Hence $D\eval{(\sigma^{-1} \circ \widetilde \sigma)}_{0}$ is an isomorphism.
+	Hence $\eval{D(\sigma^{-1} \circ \widetilde \sigma)}_{0}$ is an isomorphism.
 	Thus, the images of $D \eval{\widetilde \sigma}_0$ and $D \eval{\sigma}_0$ agree.
 \end{proof}
+
 \begin{proof}[Proof (ii)]
 	Let $\gamma \colon (-\varepsilon, \varepsilon) \to \mathbb R^3$ be a smooth map such that $\gamma$ has image inside $\Sigma$, and $\gamma(0) = p$.
 	We will show that $\gamma'(0) \in T_p \Sigma$.
@@ -333,9 +371,11 @@ Recall that an \textit{affine} subspace of a vector space is a translate of a li
 	By ($\dagger$), the transition maps between such charts are orientation-preserving.
 	Hence $\Sigma$ is orientable.
 \end{proof}
+
 \begin{lemma}
-	If $\Sigma$ is a smooth surface in $\mathbb R^3$ and $A \colon \mathbb R^3 \to \mathbb R^3$ is a smooth map which preserves $\Sigma$ setwise, then $D\eval{A}_p \in L(\mathbb R^3, \mathbb R^3)$ maps $T_p \Sigma$ to $T_{A(p)} \Sigma$ for $p \in \Sigma$.
+	If $\Sigma$ is a smooth surface in $\mathbb R^3$ and $A \colon \mathbb R^3 \to \mathbb R^3$ is a smooth map which preserves $\Sigma$ setwise, then $\eval{DA}_p \in L(\mathbb R^3, \mathbb R^3)$ maps $T_p \Sigma$ to $T_{A(p)} \Sigma$ for $p \in \Sigma$.
 \end{lemma}
+
 \begin{proof}
 	Let $\gamma \colon (-\varepsilon, \varepsilon) \to \mathbb R^3$ be a smooth map such that its image lies on $\Sigma$, and $\gamma(0) = p$.
 	Recall that $T_p \Sigma$ is spanned by $\gamma'(0)$ for such curves $\gamma$.
@@ -344,6 +384,7 @@ Recall that an \textit{affine} subspace of a vector space is a translate of a li
 		D \eval{A}_{\gamma(0)} \circ D \eval{\gamma}_0 = D \eval{A}_p \qty(\gamma'(0)) = D \eval{(A \circ \gamma)}_0 \in T_{A(p)} \Sigma
 	\end{align*}
 \end{proof}
+
 \begin{example}
 	Let $S^2$ be the unit sphere.
 	The normal vector at $p$ is the line through the origin and $p$; indeed, since $SO_3$ acts transitively on $S^2$, it suffices to check at one point, such as the north pole.
