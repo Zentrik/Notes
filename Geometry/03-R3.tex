@@ -31,7 +31,7 @@ In other words, for all $p \in \Sigma$, there exists an open ball $p \in B \subs
 So we have two notions of smoothness, one abstract and one based on the ambient space and we need to reconcile them.
 
 \begin{definition}[Allowable Parameterisation]
-	Let $\sigma \colon V \to U$ where $V \subset \mathbb R^2$ is open and $U \subset \Sigma \subset \mathbb R^3$ is open in $\Sigma$, such that $\sigma$ is a smooth homeomorphism and $D \eval{\sigma}_x$ has rank 2 for all $x \in V$.
+	Let $\sigma \colon V \to U$ where $V \subset \mathbb R^2$ is open and $U \subset \Sigma \subset \mathbb R^3$ is open in $\Sigma$, such that $\sigma$ is a smooth homeomorphism and $\eval{D\sigma}_x$ has rank 2 for all $x \in V$.
 	Then $\sigma$ is called an \vocab{allowable parametrisation}.
 	If $\sigma(0) = p$, we say that $\sigma$ is an allowable parametrisation \textit{near} $p$.
 \end{definition}
@@ -47,7 +47,7 @@ So we have two notions of smoothness, one abstract and one based on the ambient 
 		      or one of the other coordinate planes;
 		\item $\Sigma$ is locally cut out by a smooth function with non-zero derivative: for all $p \in \Sigma$ there exists an open ball $p \in B \subset \mathbb R^3$ and a smooth function $f \colon B \to \mathbb R$ such that
 		      \begin{align*}
-			      \Sigma \cap B = f^{-1}(0);\quad D \eval{f}_x \neq 0 \ \forall \; x \in B.
+			      \Sigma \cap B = f^{-1}(0);\quad \eval{Df}_x \neq 0 \ \forall \; x \in B.
 		      \end{align*}
 		\item $\Sigma$ is locally the image of an allowable parametrisation near all points.
 	\end{enumerate}
@@ -94,7 +94,7 @@ Some of the relations given in the above theorem are easy to prove, but others c
 \begin{theorem}[Implicit Function Theorem]
 	Let $p = (x_0, y_0)$ be a point in an open set $U \subset \mathbb R^k \times \mathbb R^\ell$.
 	Let $f \colon U \to \mathbb R^\ell$ be a continuously differentiable map s.t. $p \mapsto 0$ and $\qty(\pdv{f_i}{y_j})_{\ell \times \ell}$ is an isomorphism at $p$. \\
-	Then there is an open neighbourhood $V$ of $x_0$ in $\mathbb R^k$ and a continuously differentiable map $g \colon V \to \mathbb R^\ell$ with $x_0 \mapsto y_0$ such that if $(x,y) \in U \cap (V \times \mathbb R^\ell)$, then $f(x,y)=0\iff y=g(x)$.
+	Then there is an open neighbourhood $V$ of $x_0$ in $\mathbb R^k$ and a continuously differentiable map $g \colon V \to \mathbb R^\ell$ with $x_0 \mapsto y_0$ such that if $(x,y) \in U \cap (V \times \mathbb R^\ell)$, then $f(x,y)=0 \iff y=g(x)$.
 	If $f$ is smooth, so is $g$.
 \end{theorem}
 
@@ -170,14 +170,14 @@ We now prove \Cref{thm:1.7}, relating equivalent conditions for smoothness of a 
 	\end{align*}
 	This is injective and so has rank 2, hence there exist two rows defining an invertible matrix.
 	Suppose those are the first two rows and consider $\phi = \pi_{xy} \circ \sigma \colon V \to \mathbb R^2$.
-	$D\qty(\pi_{xy} \circ \sigma)\mid_0$ is an isomorphism. \\
+	$\eval{D\qty(\pi_{xy} \circ \sigma)}_0$ is an isomorphism. \\
 	Let us apply the Inverse function theorem.
 	Hence $\Sigma$ is locally a graph of $(x, y, \sigma_3(\phi\inv(x, y)))$\footnote{This is true as $(x, y) = \phi(u, v)$ and so $\sigma_3(\phi\inv(x, y)) = \sigma_3(u, v)$ therefore $(x, y, \sigma_3(\phi\inv(x, y))) = (\sigma_1(u,v), \sigma_2(u,v), \sigma_3(u,v)) \in \Sigma$}, so (d) $\implies$(b).
 \end{proof}
 
 \begin{example}[Ellipsoid]
 	The ellipsoid $E \subset \mathbb{R}^3$ is $f\inv(0)$ for $f : \mathbb{R}^3 \to \mathbb{R}$ with $f(x, y, z) = \frac{x^2}{a^2} + \frac{y^2}{b^2} + \frac{z^2}{c^2} - 1$.
-	For all $p \in E = f\inv(0)$, $Df\mid_p \neq 0$ (as $p \neq 0$), so $E$ is a smooth surface in $\mathbb{R}^3$.
+	For all $p \in E = f\inv(0)$, $\eval{Df}_p \neq 0$ (as $p \neq 0$), so $E$ is a smooth surface in $\mathbb{R}^3$.
 \end{example} 
 
 \begin{example}

@@ -1,36 +1,48 @@
 \section{Inference}
 
-\subsection{Confidence intervals}
+\subsection{Confidence Intervals}
+\begin{question}
+	A vaccine has $76\%$ efficacy in a 3-month period, with a $95\%$ confidence interval $(59\%, 86\%)$. 
+	What does this mean?
+\end{question} 
+
 \begin{definition}
-	A $100 \gamma$\% \textit{confidence interval} for a parameter $\theta$ is a random interval $(A(X), B(X))$ such that $\prob{A(X) \leq \theta \leq B(X)} = \gamma$ for all $\theta \in \Theta$.
+	A $100 \gamma$\% \vocab{confidence interval} for a parameter $\theta$ is a random interval $(A(X), B(X))$ such that $\prob{A(X) \leq \theta \leq B(X)} = \gamma$ for all $\theta \in \Theta$.
 	Note that the parameter $\theta$ is assumed to be fixed for the event $\qty{A(X) \leq \theta \leq B(X)}$, and the confidence interval holds uniformly over $\theta$.
 \end{definition}
-\begin{remark}
+
+\begin{answer}
+	There exist some fixed true parameter $\theta$.
 	Suppose that an experiment is repeated many times.
 	On average, $100 \gamma$\% of the time, the random interval $(A(X), B(X))$ will contain the true parameter $\theta$.
 	This is the \textit{frequentist} interpretation of the confidence interval.
 
 	A misleading interpretation is as follows.
-	Given that a single value of $X$ is observed, there is a probability $\gamma$ that $\theta \in (A(x), B(x))$.
+	Given that a single value of $X = x$ is observed, there is a probability $\gamma$ that $\theta \in (A(x), B(x))$.
 	This is wrong, as will be demonstrated later.
-\end{remark}
+\end{answer}
+
 \begin{example}
-	Let $X_1, \dots, X_n$ be i.i.d.\ normal random variables with unit variance.
-	We will find the 95\% confidence interval for $\mu = \theta$.
+	Let $X_1, \dots, X_n \sim \mathcal{N}(\theta, 1)$ be iid. 
+	We will find the 95\% confidence interval for $\theta$.
 	We have
 	\begin{align*}
-		\overline X = \frac{1}{n} \sum_{i=1}^n X_i \sim N\qty(\theta, \frac{1}{n});\quad Z = \sqrt{n}\qty(\overline X - \theta) \sim N(0,1)
+		\overline X = \frac{1}{n} \sum_{i=1}^n X_i \sim N\qty(\theta, \frac{1}{n});\quad Z = \sqrt{n}\qty(\overline X - \theta) \sim \mathcal{N}(0,1)
 	\end{align*}
+	$Z$ has this distribution $\forall \; \theta$.
+
 	Let $a, b$ be numbers such that $\Phi(b) - \Phi(a) = 0.95$.
 	Then
 	\begin{align*}
 		\prob{a \leq \sqrt{n} \qty(\overline X - \theta) \leq b} = 0.95 \implies \prob{\overline X - \frac{b}{\sqrt{n}} \leq \theta \leq \overline X - \frac{a}{\sqrt{n}}} = 0.95
 	\end{align*}
 	Hence, $\qty(\overline X - \frac{b}{\sqrt{n}}, \overline X - \frac{a}{\sqrt{n}})$ is a 95\% confidence interval for $\theta$.
+	
 	Typically, we wish to centre the interval around some estimator $\hat\theta$ such that its range is minimised for a given $\gamma$.
 	In this case, we want to set $-a = b = z_{0.025} \approx 1.96$, where $z_\alpha = \Phi^{-1}(1-\alpha)$.
 	Hence, the confidence interval is $\qty(\overline X \pm \frac{1.96}{\sqrt{n}})$.
 \end{example}
+
 \begin{remark}
 	In general, to find a confidence interval:
 	\begin{enumerate}

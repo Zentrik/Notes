@@ -361,33 +361,38 @@ The message to take away from this theorem is that we can improve the mse of any
 
 \subsection{Maximum likelihood estimation}
 Let $X_1, \dots, X_n$ be i.i.d.\ random variables with mass or density function $f_X(x \mid \theta)$.
-\begin{definition}
-	For fixed observations $x$, the \textit{likelihood function} $L \colon \Theta \to \mathbb R$ is given by
+\begin{definition}[Likelihood Function]
+	For fixed observations $x$, the \vocab{likelihood function} $L \colon \Theta \to \mathbb R$ is given by
 	\begin{align*}
 		L(\theta) = f_X(x \mid \theta) = \prod_{i=1}^n f_{X_i} (x_i \mid \theta)
 	\end{align*}
-	We will denote the \textit{log-likelihood} by
+\end{definition}
+
+\begin{definition}[Log-Likelihood Function]
+	We will denote the \vocab{log-likelihood} by
 	\begin{align*}
 		\ell(\theta) = \log L(\theta) = \sum_{i=1}^n \log f_{X_i} (x_i \mid \theta)
 	\end{align*}
-\end{definition}
+\end{definition} 
 \begin{definition}
-	A \textit{maximum likelihood estimator} is an estimator that maximises the likelihood function $L$ over $\Theta$.
+	A \vocab{maximum likelihood estimator} is an estimator that maximises the likelihood function $L$ over $\Theta$.
 	Equivalently, the estimator maximises $\ell$.
 \end{definition}
+
 \begin{example}
 	Let $X_1, \dots, X_n$ be i.i.d.\ Bernoulli random variables with parameter $p$.
 	The log-likelihood function is
 	\begin{align*}
-		\ell(p) = \sum_{i=1}^n [X_i \log p + (1-X_i) \log (1-p)] = \log p + \sum X_i + \log(1-p) \qty(n - \sum X_i)
+		\ell(p) = \sum_{i=1}^n [X_i \log p + (1-X_i) \log (1-p)] = \log p \sum X_i + \log(1-p) \qty(n - \sum X_i)
 	\end{align*}
 	The derivative is
 	\begin{align*}
 		\ell'(p) = \frac{\sum X_i}{p} + \frac{n - \sum X_i}{1-p}
 	\end{align*}
-	which has a single stationary point at $p = \frac{1}{n} \sum X_i = \overline X_n$.
+	which has a single stationary point at $p = \frac{1}{n} \sum X_i = \overline X$.
 	We have $\expect{\hat p} = p$, so the maximum likelihood estimator in this case is unbiased.
 \end{example}
+
 \begin{example}
 	Let $X_1, \dots, X_n$ be i.i.d.\ normal random variables with unknown mean $\mu$ and variance $\sigma^2$.
 	\begin{align*}
@@ -396,56 +401,63 @@ Let $X_1, \dots, X_n$ be i.i.d.\ random variables with mass or density function 
 	This function is concave in $\mu$ and $\sigma^2$, so there exists a unique maximiser.
 	In particular, $\ell$ is maximised when $\pdv{\ell}{\mu} = \pdv{\ell}{\sigma^2} = 0$.
 	\begin{align*}
-		\pdv{\ell}{\mu} = -\frac{1}{\sigma^2} \sum (X_i - \mu)
+		\pdv{\ell}{\mu} = \frac{1}{\sigma^2} \sum (X_i - \mu)
 	\end{align*}
-	This is zero if $\mu = \overline X_n$.
+	This is zero if $\mu = \overline X$. \\
 	Further,
 	\begin{align*}
-		\pdv{\ell}{\sigma^2} = -\frac{n}{2\sigma^2} + \frac{1}{2\sigma^4} \sum (X_i - \mu)^2 = -\frac{n}{2\sigma^2} + \frac{1}{2\sigma^4} \sum (X_i - \overline X_n)^2
+		\pdv{\ell}{\sigma^2} = -\frac{n}{2\sigma^2} + \frac{1}{2\sigma^4} \sum (X_i - \mu)^2 = -\frac{n}{2\sigma^2} + \frac{1}{2\sigma^4} \sum (X_i - \overline X)^2
 	\end{align*}
-	This is zero if and only if
+	This is zero iff
 	\begin{align*}
-		\sigma^2 = \frac{1}{n} \sum (X_i - \overline X_n)^2 = \frac{S_{xx}}{n}
+		\sigma^2 = \frac{1}{n} \sum (X_i - \overline X)^2 = \frac{S_{xx}}{n}
 	\end{align*}
 	Hence, the maximum likelihood estimator is $\qty(\hat \mu, \hat \sigma^2) = \qty(\overline X_n, \frac{1}{n} S_{xx})$.
-	We can show that $\hat \mu$ is unbiased.
+
+	We can show that $\hat \mu = \overline{X}$ is unbiased.
+
 	We will later prove that
 	\begin{align*}
 		\frac{S_{xx}}{\sigma^2} = \frac{n\hat \sigma^2}{\sigma^2} \sim \chi_{n-1}^2
 	\end{align*}
 	Hence
 	\begin{align*}
-		\expect{\hat \sigma^2} = \frac{\sigma^2}{n} \expect{\chi_{n-1}^2} = \sigma^2 \frac{n-1}{n}
+		\expect{\hat \sigma^2} = \frac{\sigma^2}{n} \expect{\chi_{n-1}^2} = \sigma^2 \frac{n-1}{n} \neq \sigma^2
 	\end{align*}
-	This is therefore a biased estimator, but the bias converges to zero as $n \to \infty$: $\hat \sigma^2$ is \textit{asymptotically unbiased}.
+	This is therefore a biased estimator, but the bias converges to zero as $n \to \infty \; \forall \; \sigma^2$ : $\hat \sigma^2$ is \vocab{asymptotically unbiased}.
 \end{example}
+
 \begin{example}
 	Let $X_1, \dots, X_n$ be i.i.d.\ uniform random variables on $[0,\theta]$.
 	Here, we derived the unbiased estimator $\hat \theta = \frac{n+1}{n} \max X_i$.
+
 	The likelihood is given by
 	\begin{align*}
 		L(\theta) = \frac{1}{\theta^n} \mathbbm 1\qty{\max X_i \leq \theta}
 	\end{align*}
 	This function is maximised at $\hat \theta_{\mathrm{mle}} = \max X_i$.
-	By comparison to the $\hat \theta$ derived from the Rao-Blackwell process, $\hat \theta_{\mathrm{mle}}$ is biased.
+
+	By comparison to the $\hat \theta$ derived from the Rao-Blackwell process, $\hat \theta_{\mathrm{mle}}$ is biased but asymptotically unbiased.
 	In particular,
 	\begin{align*}
 		\expect{\hat \theta_{\mathrm{mle}}} = \frac{n}{n+1} \expect{\hat \theta} = \frac{n}{n+1} \theta
 	\end{align*}
 \end{example}
+
 \begin{remark}
-	If $T$ is a sufficient statistic for $\theta$, then the maximum likelihood estimator is a function of $T$.
-	Indeed, since $X$ and $T$ are fixed, the maximiser of $L(\theta) = g(T,\theta) h(X)$ depends on $X$ only through $T$.
-	If $\varphi = H(\theta)$ for a bijection $H$, then if $\hat \theta$ is the maximum likelihood estimator for $\theta$, we have that $H(\hat \theta)$ is the maximum likelihood estimator for $\varphi$.
-
-	Under some regularity conditions, as $n \to \infty$ the statistic $\sqrt{n} (\hat \theta - \theta)$ is approximately normal with mean zero and covariance matrix $\Sigma$.
-	More precisely, for `nice' sets $A$, we have
-	\begin{align*}
-		\prob{\sqrt{n} \qty(\hat \theta - \theta) \in A} \to \prob{Z \in A};\quad Z \sim N(0, \Sigma)
-	\end{align*}
-	We say that the maximum likelihood estimator is \textit{asymptotically normal}.
-	The limiting covariance matrix $\Sigma$ is a known function of $\ell$, which will not be defined in this course.
-	In some sense, $\Sigma$ is the smallest variance that any estimator can achieve asymptotically.
-
-	For practical purposes, this estimator can often be found numerically by maximising $\ell$ or $L$.
+	\begin{enumerate}
+		\item If $T$ is a sufficient statistic for $\theta$, then the maximum likelihood estimator is a function of $T(X)$.
+		Indeed, since $X$ and $T(X)$ are fixed, the maximiser of $L(\theta) = g(T(X), \theta) h(X)$ depends on $X$ only through $T$.
+		This is good as otherwise we could use Rao-Blackwell to get a better estimator in terms of the mse.
+		\item If $\varphi = H(\theta)$ for a bijection $H$, then if $\hat \theta$ is the maximum likelihood estimator for $\theta$, we have that $H(\hat \theta)$ is the maximum likelihood estimator for $\varphi$.
+		\item Asymptotic Normality: Under some regularity conditions, as $n \to \infty$ the statistic $\sqrt{n} (\hat \theta - \theta)$ is approximately normal with mean zero and covariance matrix $\Sigma$.
+		More precisely, for `nice' sets $A$ and `regular' values of $\theta$, we have
+		\begin{align*}
+			\prob{\sqrt{n} \qty(\hat \theta(n) - \theta) \in A} \overset{n \to \infty}\to \prob{Z \in A};\quad Z \sim N(0, \Sigma)
+		\end{align*}
+		We say that the maximum likelihood estimator is \textit{asymptotically normal}.
+		The limiting covariance matrix $\Sigma$ is a known function of $\ell$, which will not be defined in this course.
+		There is a theorem (Cramer-Rao) which says in some sense, $\Sigma$ is the smallest variance that any estimator can achieve asymptotically.
+		\item For practical purposes, this estimator can often be found numerically by maximising $\ell$ or $L$.
+	\end{enumerate} 
 \end{remark}
