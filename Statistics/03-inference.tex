@@ -50,18 +50,21 @@
 		      This is known as a \textit{pivot}.
 		      In the example above, $R(X,\theta) = \sqrt{n}\qty(\overline X - \theta)$.
 		\item Consider $\prob{c_1 \leq R(X,\theta) \leq c_2} = \gamma$.
-		      Given some desired level of confidence $\gamma$, find $c_1$ and $c_2$ using the distribution function of the pivot.
+		      Given some desired level of confidence $\gamma$, find $c_1$ and $c_2$ using the distribution function of the pivot, typically a $\mathcal{N}(0,1)$ or $\chi^2_\rho$ distribution.
 		\item Rearrange such that $\prob{A(X) \leq \theta \leq B(X)} = \gamma$, then $(A(X), B(X))$ is the confidence interval as required.
 	\end{enumerate}
 \end{remark}
+
 \begin{proposition}
 	Let $T$ be a monotonically increasing function, and let $(A(X), B(X))$ be a $100 \gamma$\% confidence interval for $\theta$.
 	Then $(T(A(X)), T(B(X)))$ is a $100 \gamma$\% confidence interval for $T(\theta)$.
 \end{proposition}
+
 \begin{remark}
 	If $\theta$ is a vector, we can consider confidence sets instead of confidence intervals.
 	A confidence set is a set $A(X)$ such that $\prob{\theta \in A(X)} = \gamma$.
 \end{remark}
+
 \begin{example}
 	Let $X_1, \dots, X_n$ be i.i.d.\ normal random variables with zero mean and unknown variance $\sigma^2$.
 	We will find a 95\% confidence interval for $\sigma^2$.
@@ -79,7 +82,9 @@
 		\prob{\frac{\sum X_i^2}{c_2} \leq \sigma^2 \leq \frac{\sum X_i^2}{c_1}} = 0.95
 	\end{align*}
 	Hence, the interval $\sum_{i=1}^n X_i^2 \qty(\frac{1}{c_2}, \frac{1}{c_1})$ is a 95\% confidence interval for $\sigma^2$.
+	Additionally, it is immediate from the previous proposition that the interval $\sqrt{\sum_{i=1}^n X_i^2} \qty(\frac{1}{\sqrt{c_2}}, \frac{1}{\sqrt{c_1}})$ is a 95\% confidence interval for $\sigma$.
 \end{example}
+
 \begin{example}
 	Let $X_1, \dots, X_n$ be i.i.d.\ Bernoulli random variables with parameter $p$.
 	Suppose $n$ is large.
@@ -109,9 +114,9 @@
 	\end{align*}
 	This gives the approximate 95\% confidence interval as required.
 \end{example}
+
 \begin{remark}
-	Note that the size of the confidence interval is maximised at $p = \frac{1}{2}$, with a length of $2z_{0.025} \frac{1}{2\sqrt{n}} \approx \frac{1}{\sqrt{n}}$.
-	This is a \textit{conservative} 95\% confidence interval; it may be wider than necessary but holds for all values of $\theta$.
+	Note that the size of the confidence interval is maximised at $\hat{p} = \frac{1}{2}$ and $z_{0.025} \approx 1.96$ so a \textit{conservative} 95\% confidence interval would be $\qty(\hat{p} \pm 1.96 \frac{1}{2} \frac{1}{\sqrt{n}})$; it may be wider than necessary but holds for all values of $p$.
 \end{remark}
 
 \subsection{Interpreting the confidence interval}

@@ -7,6 +7,7 @@ We say that the \textit{prior} distribution $\pi(\theta)$ is a distribution repr
 The data $X$ has a p.d.f.\ or p.m.f.\ conditional on $\theta$ given by $f_X(\wildcard \mid \theta)$.
 Having observed $X$, we can combine this information with the prior distribution to form the \textit{posterior} distribution $\pi(\theta \mid X)$, which is the conditional distribution of $\theta$ given $X$.
 This contains updated information about the value of $\theta$.
+
 By Bayes' rule,
 \begin{align*}
 	\pi(\theta \mid x) = \frac{\pi(\theta) f_X(x \mid \theta)}{f_X(x)}
@@ -32,7 +33,8 @@ It is often easy to recognise that the right hand side of this expression is in 
 		\pi(\theta \mid X) \propto \pi(\theta) g(T(X),\theta) h(X) \propto \pi(\theta) g(T(C),\theta)
 	\end{align*}
 \end{remark}
-\begin{example}
+
+\begin{example}[Clear Prior]
 	Consider a patient who we will test for the presence of a disease, where we have no information about the health or lifestyle of the patient.
 	Let $\theta$ take the value 1 if the patient is infected and 0 otherwise.
 	We have a random variable $X$ which takes the value 1 if a given test returns a positive result and 0 if the test is negative.
@@ -47,10 +49,11 @@ It is often easy to recognise that the right hand side of this expression is in 
 	\end{align*}
 	Even with a positive test result, the posterior distribution may still yield a low probability for $\theta$, which may happen if $\pi(\theta = 1) \ll \pi(\theta = 0)$.
 \end{example}
+
 \begin{example}
 	Let $\theta$ be the mortality rate of a particular surgery, which will take values in $[0,1]$.
 	In the first ten operations, we observed that none of the patients died.
-	We will model $X \sim B(10,\theta)$ and observe $X = 0$.
+	We will model $X_i \sim B(10,\theta)$ and observe $X_i = 0$.
 
 	We must choose a prior.
 	Suppose that we have data from other hospitals that suggests that the mortality for the surgery ranges from 3\% to 20\%, with an average of 10\%.
@@ -58,16 +61,21 @@ It is often easy to recognise that the right hand side of this expression is in 
 	Let $a = 3$ and $b = 27$, which will give $\expect{\theta} = 0.1$ and $\prob{0.03 < \theta < 0.2} \approx 0.9$.
 	In this case, the posterior is
 	\begin{align*}
-		\pi(\theta \mid X) \propto \pi(\theta) f_X(x = 0 \mid \theta) \propto \theta^{a-1} (1-\theta)^{b-1} \theta^x (1-\theta)^{n-x} = \theta^{x+a-1} (1-\theta)^{b-n-x-1}
+		\pi(\theta \mid X) &\propto \pi(\theta) f_X(X\mid \theta) \\
+		&\propto \theta^{a-1} (1-\theta)^{b-1} \theta^{\sum x_i} (1-\theta)^{10 - \sum x_i} \\
+		&= \theta^{\sum x_i +a-1} (1-\theta)^{b - 10 - \sum x_i -1}
 	\end{align*}
-	This is again a beta distribution with parameters $x+a$ and $n-x+b$.
+	This is again a beta distribution with parameters $\sum x_i + a$ and $10 - \sum x_i + b$.
 	The normalising constant does not need to be explicitly calculated since the form of the distribution can be recognised.
 
-	With the above data, we obtain $\pi(\theta \mid x = 0) \sim \mathrm{Beta}(3,37)$.
+	With the above data, we obtain $\pi(\theta \mid \sum x_i = 0) \sim \mathrm{Beta}(3,37)$.
 	This posterior has a smaller variance than the prior, and a smaller expectation due to observing no deaths.
-	In this case, the prior and posterior have the same distribution.
-	This is known as \textit{conjugacy}.
 \end{example}
+
+\begin{note}
+	Here the prior and posterior are in the same family of distributions.
+	This is know as \vocab{conjugacy}.
+\end{note} 
 
 \subsection{Inference from the posterior}
 The posterior distribution $\pi(\theta \mid x)$ represents information about $\theta$ after having observed some data $X$.
@@ -83,27 +91,30 @@ This can be used to make decisions under uncertainty.
 	      \end{align*}
 	      which is the posterior expectation of the loss.
 \end{enumerate}
-
+This method maximises over your preferences if they can be represented using a utility function, see Von Neumann - Morgenstern utility theorem.
 \subsection{Point estimation}
-We can use Bayesian analysis to represent an estimate for the value of $\theta$ as a decision.
-\begin{definition}
-	The \textit{Bayes estimator} $\hat \theta^{(B)}$ minimises
+We can use Bayesian analysis to represent an estimate for the value of $\theta$ as a decision, where the decision is a ``best guess'' for the true parameter.
+
+\begin{definition}[Bayes estimator]
+	The \vocab{Bayes estimator} $\hat \theta^{(B)}$ minimises
 	\begin{align*}
 		h(\delta) = \int_\Theta L(\theta, \delta) \pi(\theta \mid x) \dd{\theta}
 	\end{align*}
 \end{definition}
+
 \begin{example}
 	Suppose the loss function is quadratic, given by $L(\theta, \delta) = (\theta-\delta)^2$.
 	Here,
 	\begin{align*}
 		h(\delta) = \int_\Theta (\theta - \delta)^2 \pi(\theta \mid x) \dd{\theta}
 	\end{align*}
-	Thus, $h(\delta) = 0$ if
+	Thus, $h'(\delta) = 0$ if
 	\begin{align*}
 		\int_\Theta (\theta - \delta) \pi(\theta \mid x) \dd{\theta} = 0 \iff \delta = \int_\Theta \theta \pi(\theta \mid x) \dd{x}
 	\end{align*}
 	Under the quadratic loss function, $\hat \theta^{(B)}$ can be described as the expectation of $\theta$ under the posterior distribution.
 \end{example}
+
 \begin{example}
 	Consider the absolute error loss, given by $L(\theta, \delta) = \abs{\theta - \delta}$.
 	In this case we have
@@ -122,14 +133,26 @@ We can use Bayesian analysis to represent an estimate for the value of $\theta$ 
 \end{example}
 
 \subsection{Credible intervals}
-\begin{definition}
-	A $100\gamma$\% \textit{credible interval} $(A(x), B(x))$ satisfies
+\begin{definition}[Credible Interval]
+	A $100\gamma$\% \vocab{credible interval} $(A(x), B(x))$ satisfies
 	\begin{align*}
 		\pi(A(x) \leq \theta \leq B(x) \mid x) = \gamma
 	\end{align*}
 \end{definition}
+Here $x$ is fixed at the observed value.
+
 \begin{remark}
 	Unlike confidence intervals, credible intervals can be interpreted conditionally on the data.
 	For example, we could say that given a specific observation $x$, we are $100 \gamma$\% certain that $\theta$ lies within $(A(x), B(x))$.
 	This credible interval is also dependent on the choice of prior distribution.
 \end{remark}
+
+\begin{note}
+	If $T$ is a sufficient statistic, $\pi(\theta \mid x)$ only depends on $x$ through $T(x)$.
+	\begin{align*}
+		\pi(\theta \mid x) &\propto \pi(\theta) f_X(x \mid \theta) \\
+		&= \pi(\theta) g(T(x), \theta) h(x) \\
+		&\propto \pi(\theta) g(T(x), \theta).
+	\end{align*} 
+	I.e. any two data sets with the same sufficient statistic will have the same posterior.
+\end{note} 
