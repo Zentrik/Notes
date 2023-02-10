@@ -1,16 +1,20 @@
+\part{Rings}
+
 \section{Rings}
 
 \subsection{Definitions}
-\begin{definition}
-	A \textit{ring} is a triple $(R, +, \cdot)$ where $R$ is a set and $+, \cdot$ are binary operations $R \times R \to R$, satisfying the following axioms.
+\begin{definition}[Ring]
+	A \vocab{ring} is a triple $(R, +, \cdot)$ where $R$ is a set and $+, \cdot$ are binary operations $R \times R \to R$, satisfying the following axioms.
 	\begin{enumerate}
 		\item $(R, +)$ is an abelian group, and we will denote the identity element 0 and the inverse of $x$ as $-x$;
 		\item $(R, \cdot)$ satisfies the group axioms except for the invertibility axiom, and we will denote the identity element 1 and the inverse of $x$ as $x\inv$ if it exists;
 		\item for all $x, y, z \in R$ we have $x \cdot (y+z) = x\cdot y + x\cdot z$ and $(y+z)\cdot x = y \cdot x + z \cdot x$.
 	\end{enumerate}
-	If multiplication is commutative, we say that $R$ is a \textit{commutative} ring.
-	In this course, we will study only commutative rings.
+	If multiplication is commutative, we say that $R$ is a \vocab{commutative} ring.
 \end{definition}
+
+In this course, we will study only commutative rings.
+
 \begin{remark}
 	For all $x \in R$,
 	\begin{align*}
@@ -21,44 +25,59 @@
 		0 = 0 \cdot x = (1 + -1) \cdot x = x + (-1 \cdot x) \implies -1 \cdot x = -x
 	\end{align*}
 \end{remark}
-\begin{definition}
-	A subset $S \subseteq R$ is a \textit{subring}, denoted $S \leq R$, if $(S, +, \cdot)$ is a ring with the same identity elements.
+
+\begin{remark}
+	Addition being commutative follows from distributive law and the other axioms so not necessary for it to be an abelian group.
+\end{remark} 
+
+\begin{definition}[Subring]
+	A subset $S \subset R$ is a \vocab{subring}, denoted $S \leq R$, if $(S, +, \cdot)$ is a ring with the same identity elements.
 \end{definition}
+
 \begin{remark}
 	It suffices to check the closure axioms for addition and multiplication; the other properties are inherited.
 \end{remark}
+
 \begin{example}
 	$\mathbb Z \leq \mathbb Q \leq \mathbb R \leq \mathbb C$ are rings.
 	The set $\mathbb Z[i] = \qty{a+bi \colon a,b\in\mathbb Z}$ is a subring of $\mathbb C$.
 	This is known as the ring of Gaussian integers.
-	The set $\mathbb Q[\sqrt{2}] = \qty{a+b\sqrt{2} \colon a,b \in\mathbb Q}$ is a subring of $\mathbb R$.
 \end{example}
+
+\begin{example}
+	The set $\mathbb Q[\sqrt{2}] = \qty{a+b\sqrt{2} \colon a,b \in\mathbb Q}$ is a subring of $\mathbb R$.
+\end{example} 
+
 \begin{example}
 	The set $\faktor{\mathbb Z}{n\mathbb Z}$ is a ring.
 \end{example}
+
 \begin{example}
 	Let $R, S$ be rings.
-	Then the \textit{product} $R \times S$ is a ring under the binary operations
+	Then the \vocab{product} $R \times S$ is a ring under the binary operations
 	\begin{align*}
 		(a,b) + (c,d) = (a+c,b+d);\quad (a,b) \cdot (c,d) = (a\cdot c,b\cdot d)
 	\end{align*}
 	The additive identity is $(0_R, 0_S)$ and the multiplicative identity is $(1_R, 1_S)$.
+
 	Note that the subset $R \times \qty{0}$ is preserved under addition and multiplication, so it is a ring, but it is not a subring because the multiplicative identity is different.
 \end{example}
 
 \subsection{Polynomials}
-\begin{definition}
+\begin{definition}[Polynomial]
 	Let $R$ be a ring.
-	A \textit{polynomial} $f$ over $R$ is an expression
+	A \vocab{polynomial} $f$ over $R$ is an expression
 	\begin{align*}
 		f = a_0 + a_1 X + a_2 X^2 + \dots + a_n X^n
 	\end{align*}
 	for $a_i \in R$.
 	The term $X$ is a formal symbol, no substitution of $X$ for a value will be made.
 	We could alternatively define polynomials as finite sequences of terms in $R$.
-	The \textit{degree} of a polynomial $f$ is the largest $n$ such that $a_n \neq 0$.
-	A degree-n polynomial is \textit{monic} if $a_n = 1$.
+
+	The \vocab{degree} of a polynomial $f$ is the largest $n$ such that $a_n \neq 0$.
+	A degree-n polynomial is \vocab{monic} if $a_n = 1$.
 	We write $R[X]$ for the set of all such polynomials over $R$.
+
 	Let $g = b_0 + b_1 X + \dots + b_n X^n$.
 	Then we define
 	\begin{align*}
@@ -68,46 +87,58 @@
 	The identity elements are the constant polynomials $0$ and $1$.
 	We can identify the ring $R$ with the subring of $R[X]$ of constant polynomials.
 \end{definition}
-\begin{definition}
-	An element $r \in R$ is a \textit{unit} if $r$ has a multiplicative inverse.
+
+\begin{definition}[Unit]
+	An element $r \in R$ is a \vocab{unit} if $r$ has a multiplicative inverse.
 	The units in a ring, denoted $R^\times$, form an abelian group under multiplication.
-	For instance, $\mathbb Z^\times = \qty{\pm 1}$ and $\mathbb Q^\times = \mathbb Q \setminus \qty{0}$.
 \end{definition}
-\begin{definition}
-	A \textit{field} is a ring where all nonzero elements are units and $0 \neq 1$.
+
+For instance, $\mathbb Z^\times = \qty{\pm 1}$ and $\mathbb Q^\times = \mathbb Q \setminus \qty{0}$.
+
+\begin{definition}[Field]
+	A \vocab{field} is a ring where all nonzero elements are units and $0 \neq 1$.
 \end{definition}
+
 \begin{example}
-	$\faktor{\mathbb Z}{n\mathbb Z}$ is a field only if $n$ is a prime.
+	$\faktor{\mathbb Z}{n\mathbb Z}$ is a field iff $n$ is a prime.
 \end{example}
+
 \begin{remark}
 	If $R$ is a ring such that $0 = 1$, then every element in the ring is equal to zero.
 	Indeed, $x = 1\cdot x = 0\cdot x = 0$.
 	Thus, the exclusion of rings with $0 = 1$ in the definition of a field simply excludes the trivial ring.
 \end{remark}
-\begin{proposition}
+
+\begin{proposition} \label{prp:7.1}
 	Let $f, g \in R[X]$ such that the leading coefficient of $g$ is a unit.
-	Then there exist polynomials $q, r \in R[X]$ such that $f = qg + r$, where the degree of $r$ is less than the degree of $g$.
+	Then there exist polynomials $q, r \in R[X]$ such that $f = qg + r$, where $\deg r < \deg q$.
 \end{proposition}
+
 \begin{remark}
 	This is the Euclidean algorithm for division, adapted to polynomial rings.
 \end{remark}
+
 \begin{proof}
-	Let $n$ be the degree of $f$ and $m$ be the degree of $g$, so
+	Let $n = \deg f$ and $m = \deg g$, so by induction on $n$
 	\begin{align*}
 		f = a_n X^n + \dots + a_0;\quad g = b_m X^m + \dots + b_0
 	\end{align*}
 	By assumption, $b_m \in R^\times$.
+
 	If $n < m$ then let $q = 0$ and $r = f$.
+
 	Conversely, we have $n \geq m$.
-	Consider the polynomial $f_1 = f - a_n b_m\inv g X^{n-m}$.
+	Consider the polynomial $f_1 = f - a_n b_m\inv X^{n-m} g$.
 	This has degree at most $n - 1$.
 	Hence, we can use induction on $n$ to decompose $f_1$ as $f_1 = q_1 g + r$.
 	Thus $f = (q_1 + a_n b_m\inv X^{n-m}) g + r$ as required.
 \end{proof}
+
 \begin{remark}
 	If $R$ is a field, then every nonzero element of $R$ is a unit.
 	Therefore, the above algorithm can be applied for all polynomials $g$ unless $g$ is the constant polynomial zero.
 \end{remark}
+
 \begin{example}
 	Let $R$ be a ring and $X$ be a set.
 	Then the set of functions $X \to R$ is a ring under
@@ -117,74 +148,93 @@
 	The set of continuous functions $\mathbb R \to \mathbb R$ is a subring of the ring of all functions $\mathbb R \to \mathbb R$, since they are closed under addition and multiplication.
 	The set of polynomial functions $\mathbb R \to \mathbb R$ is also a subring, and we can identify this with the ring $\mathbb R[X]$.
 \end{example}
+
 \begin{example}
 	Let $R$ be a ring.
-	Then the \textit{power series ring} $R\Brackets{X}$ is the set of power series on $X$.
+	Then the \textit{power series ring} $R\Brackets{X} = \{a_0 + a_1X + a_2 X^2 + \dots a_i \in R\}$ is the set of power series over $R$.
 	This is defined similarly to the polynomial ring, but we permit infinitely many nonzero elements in the expansion.
 	The power series is defined formally; we cannot actually carry out infinitely many additions in an arbitrary ring.
 	We instead consider the power series as a sequence of numbers.
 \end{example}
+
 \begin{example}
 	Let $R$ be a ring.
-	Then the ring of \textit{Laurent polynomials} is $R[X,X\inv]$ with the restriction that $a_i \neq 0$ for finitely many $i$.
+	Then the ring of \textit{Laurent polynomials} is $R[X,X\inv] = \{\sum_{i \in \mathbb{Z}} a_i X^i : a_i \in \mathbb{R}\}$ with the restriction that $a_i \neq 0$ only for finitely many $i$.
 \end{example}
 
+\section{Homomorphisms, Ideals and Quotients}
 \subsection{Homomorphisms}
-\begin{definition}
+\begin{definition}[Ring Homomorphism]
 	Let $R$ and $S$ be rings.
-	A function $\varphi \colon R \to S$ is a \textit{ring homomorphism} if
+	A function $\varphi \colon R \to S$ is a \vocab{ring homomorphism} if
 	\begin{enumerate}
 		\item $\varphi(r_1 + r_2) = \varphi(r_1) + \varphi(r_2)$;
 		\item $\varphi(r_1 \cdot r_2) = \varphi(r_1) \cdot \varphi(r_2)$;
 		\item $\varphi(1_R) = 1_S$.
 	\end{enumerate}
 	We can derive that $\varphi(0_R) = 0_S$ from (i).
-
-	A ring homomorphism is an \textit{isomorphism} if it is bijective.
-	The \textit{kernel} of a ring homomorphism is $\ker \varphi = \qty{r \in R : \varphi(r) = 0}$.
 \end{definition}
-\begin{lemma}
+
+\begin{definition}[Isomorphism]
+	A ring homomorphism is an \vocab{isomorphism} if it is bijective.
+\end{definition} 
+
+\begin{definition}[Kernel]
+	The \vocab{kernel} of a ring homomorphism is $\ker \varphi = \qty{r \in R : \varphi(r) = 0}$.
+\end{definition} 
+
+\begin{lemma} \label{lem:8.1}
 	Let $R, S$ be rings.
-	Then a ring homomorphism $\varphi \colon R \to S$ is injective if and only if $\ker \varphi = \qty{0}$.
+	Then a ring homomorphism $\varphi \colon R \to S$ is injective iff $\ker \varphi = \qty{0}$.
 \end{lemma}
+
 \begin{proof}
 	Let $\varphi \colon (R, +) \to (S, +)$ be the induced group homomorphism on addition.
 	The result then follows from the corresponding fact about group homomorphisms.
 \end{proof}
 
 \subsection{Ideals}
-\begin{definition}
-	A subset $I \subseteq R$ is an \textit{ideal}, written $I \trianglelefteq R$, if
+\begin{definition}[Ideal]
+	A subset $I \subseteq R$ is an \vocab{ideal}, written $I \triangleleft R$, if
 	\begin{enumerate}
 		\item $I$ is a subgroup of $(R, +)$;
 		\item if $r \in R$ and $x \in I$, then $rx \in I$.
 	\end{enumerate}
-	We say that an ideal is \textit{proper} if $I \neq R$.
 \end{definition}
+
+\begin{definition}[Proper Ideal]
+	We say that an ideal is \vocab{proper} if $I \neq R$.
+\end{definition} 
+
 \begin{lemma}
 	Let $\varphi \colon R \to S$ be a ring homomorphism.
 	Then $\ker \varphi$ is an ideal of $R$.
 \end{lemma}
+
 \begin{proof}
-	We know that $\ker \varphi$ is a subgroup by the equivalent fact from groups.
+	Considering the induced group homomorphism on addition, $\varphi \colon (R, +) \to (S, +)$, $\ker \phi$ is a subgroup of $(R, +)$.
+
 	If $r \in R$ and $x \in \ker \varphi$, then
 	\begin{align*}
 		\varphi(rx) = \varphi(r) \varphi(x) = \varphi(r) \cdot 0 = 0
 	\end{align*}
 	Hence $rx \in \ker \varphi$.
 \end{proof}
+
 \begin{remark}
 	If $I$ contains a unit, then the multiplicative identity lies in $I$.
 	Then all elements lie in $I$.
 	In particular, if $I$ is a proper ideal, $1 \not\in I$.
 	Hence a proper ideal $I$ is not a subring of $R$.
 \end{remark}
-\begin{lemma}
+
+\begin{lemma} \label{lem:8.3}
 	The ideals in $\mathbb Z$ are precisely the subsets of the form $n\mathbb Z$ for any $n = 0, 1, 2, \dots$.
 \end{lemma}
+
 \begin{proof}
 	First, we can check directly that any subset of the form $n\mathbb Z$ is an ideal.
-	Now, let $I$ be any nonzero ideal of $\mathbb Z$ and let $n$ be the smallest positive element.
+	Now, let $I$ be any nonzero ideal of $\mathbb Z$ and let $n$ be the smallest positive element in $I$.
 	Then $n\mathbb Z \subseteq I$.
 	Let $m \in I$.
 	Then by the Euclidean algorithm, $m = qn+r$ for $q,r \in \mathbb Z$ and $r \in \qty{0, 1, \dots, n-1}$.
@@ -193,21 +243,24 @@
 	If $r \neq 0$, this contradicts the minimality of $n$ as chosen above.
 	So $I = n\mathbb Z$ exactly.
 \end{proof}
-\begin{definition}
-	For an element $a \in R$, we write $(a)$ to denote the subset of $R$ given by multiples of $a$; that is, $(a) = \qty{ra \colon r\in R}$.
-	This is an ideal, known as the ideal \textit{generated by $a$}.
-	More generally, if $a_1, \dots, a_n \in R$, then $(a_1, \dots, a_n)$ is the set of elements in $R$ given by linear combinations of the $a_i$.
+
+
+\begin{definition}[Generated Ideals]
+	For an element $a \in R$, we write $(a)$ to denote the subset of $R$ given by multiples of $a$; that is $(a) = \qty{ra \colon r\in R}$.
+	This is an ideal, known as the \vocab{ideal generated by $a$}.
+	More generally, if $a_1, \dots, a_n \in R$, then $(a_1, \dots, a_n) = \qty{r_1 a_1 + \dots r_n a_n : r_i \in R}$ is the set of elements in $R$ given by linear combinations of the $a_i$.
 	This is also an ideal.
 \end{definition}
-\begin{definition}
-	Let $I \trianglelefteq R$.
-	Then $I$ is \textit{principal} if there exists some $a \in R$ such that $I = (a)$.
+
+\begin{definition}[Prinipal Ideal]
+	Let $I \triangleleft R$.
+	Then $I$ is \vocab{principal} if there exists some $a \in R$ such that $I = (a)$.
 \end{definition}
 
 \subsection{Quotients}
-\begin{theorem}
-	Let $I \trianglelefteq R$.
-	Then the set $\faktor{R}{I}$ of cosets of $I$ in $(R, +)$ forms the \textit{quotient ring} under the operations
+\begin{theorem} \label{thm:8.4}
+	Let $I \triangleleft R$.
+	Then the set $\faktor{R}{I}$ of cosets\footnote{Left or right cosets, doesn't matter which.} of $I$ in $(R, +)$ forms the \vocab{quotient ring} under the operations
 	\begin{align*}
 		(r_1 + I) + (r_2 + I) = (r_1 + r_2) + I;\quad (r_1 + I) \cdot (r_2 + I) = (r_1 \cdot r_2) + I
 	\end{align*}
@@ -215,38 +268,46 @@
 	\begin{align*}
 		0_{\faktor{R}{I}} = 0_R + I;\quad 1_{\faktor{R}{I}} = 1_R + I
 	\end{align*}
-	Further, the map $R \to \faktor{R}{I}$ defined by $r \mapsto r + I$ is a ring homomorphism called the \textit{quotient map}.
+	Further, the map $R \to \faktor{R}{I}$ defined by $r \mapsto r + I$ is a ring homomorphism called the \vocab{quotient map}.
 	The kernel of the quotient map is $I$.
 	Hence any ideal is the kernel of some homomorphism.
 \end{theorem}
+
 \begin{proof}
 	From the analogous result from groups, the addition defined on the set of cosets yields the group $\qty(\faktor{R}{I}, +)$.
 	If $r_1 + I = r_1' + I$ and $r_2 + I = r_2' + I$, then $r_1' = r_1 + a_1$ and $r_2' = r_2 + a_2$ for some $a_1, a_2 \in I$.
 	Then
 	\begin{align*}
-		r_1' r_2' = (r_1 + a_1)(r_2 + a_2) = r_1 r_2 + a_1 r_2 + r_1 a_2 + a_1 a_2
+		r_1' r_2' = (r_1 + a_1)(r_2 + a_2) = r_1 r_2 + \underbracket{a_1 r_2}_{\in I}\footnote{Recall we only consider commutative rings in this course so $a_1 r_2 = r_2 a_1$.} + \underbracket{r_1 a_2}_{\in I} + \underbracket{a_1 a_2}_{\in I}
 	\end{align*}
 	Hence $(r_1' r_2') + I = (r_1 r_2) + I$.
+	So the operations are well defined.
+
+	Remaining properties for $\faktor{R}{I}$ follows from those for $R$.
 	The remainder of the proof is trivial.
 \end{proof}
+
 \begin{example}
 	In the integers $\mathbb Z$, the ideals are $n\mathbb Z$.
 	Hence we can form the quotient ring $\faktor{\mathbb Z}{n\mathbb Z}$.
 	The ring $\faktor{\mathbb Z}{n\mathbb Z}$ has elements $n\mathbb Z, 1 + n\mathbb Z, \dots, (n-1) + n\mathbb Z$.
 	Addition and multiplication behave like in modular arithmetic modulo $n$.
 \end{example}
+
 \begin{example}
 	Consider the ideal $(X)$ inside the polynomial ring $\mathbb C[X]$.
 	This ideal is the set of polynomials with zero constant term.
-	Let $f(X) = a_n X^n + \dots + a_0$ be an arbitrary element of $\mathbb C[X]$.
-	Then $f(X) + X = a_0 + X$.
+	Let $f(X) = a_n X^n + \dots + a_0$ be an arbitrary element of $\mathbb C[X]$, $a_n X^n, \dots, a_1 X^1 \in (X)$.
+	Then $f(X) + (X) = a_0 + (X)$. \\
 	Thus, there exists a bijection between $\faktor{\mathbb C[X]}{(X)}$ and $\mathbb C$, defined by $f(x) + (X) \mapsto f(0)$, with inverse $a \mapsto a + (X)$.
 	This bijection is a ring homomorphism, hence $\faktor{\mathbb C[X]}{(X)} \cong \mathbb C$.
 \end{example}
+
 \begin{example}
-	Consider $(X^2 + 1) \triangleleft \mathbb R[X]$.
-	For $f(X) = a_n X^n + \dots + a_0 \in \mathbb R[X]$, we can apply the Euclidean algorithm to write $f(X)$ as $q(X) (X^2 + 1) + r(X)$ where the degree of $r$ is less than two.
-	Hence $r(X) = a+bX$ for some real numbers $a$ and $b$.
+	Consider $(X^2 + 1) \triangleleft \mathbb R[X]$, $\faktor{\mathbb{R}[X]}{(X^2 + 1)} = \{f(X) + (X^2 + 1) : f(X) \in \mathbb{R}[X]\}$.
+	For $f(X) = a_n X^n + \dots + a_0 \in \mathbb R[X]$, by \Cref{prp:7.1} we can apply the Euclidean algorithm to write $f(X) = q(X) (X^2 + 1) + r(X)$ where $\deg r < 2$.
+	Hence $r(X) = a+bX$ for $a, b \in \mathbb{R}$. 
+
 	Thus, any element of $\faktor{\mathbb R[X]}{(X^2 + 1)}$ can be written $a+bX + (X^2 + 1)$.
 	Suppose a coset can be represented by two representatives: $a+bX + (X^2+1) = a' + b'X + (X^2 + 1)$.
 	Then,
@@ -255,28 +316,30 @@
 	\end{align*}
 	Hence $g(X) = 0$, giving $a-a' = 0$ and $b-b' = 0$.
 	Hence the coset representative is unique.
+
 	Consider the bijection $\varphi$ between this quotient ring and the complex numbers given by $a+bX + (X^2 + 1) \mapsto a+bi$.
 	We can show that $\varphi$ is a ring homomorphism.
 	Indeed, it preserves addition, and $1 + (X^2 + 1) \mapsto 1$, so it suffices to check that multiplication is preserved.
 	\begin{align*}
-		\varphi((a+bX + (X^2 + 1)) \cdot (c+dX + (X^2 + 1))) & = \varphi((a+bX)(c+dX) + (X^2 + 1))                        \\
-		                                                     & = \varphi(ac + (ad + bc)X + bd (X^2 + 1) - bd + (X^2 + 1)) \\
-		                                                     & = \varphi(ac-bd+(ad+bc)X + (X^2 + 1))                      \\
-		                                                     & = ac - bd + (ad + bc)i                                     \\
-		                                                     & = (a+bi)(c+di)                                             \\
-		                                                     & = \varphi((a+bX) + (X^2 + 1)) \varphi((c+dX) + (X^2 + 1))
+		\varphi((a+bX + (X^2 + 1)) \cdot (c+dX + (X^2 + 1))) & = \varphi((a+bX)(c+dX) + (X^2 + 1)) \\
+		& = \varphi(ac + (ad + bc)X + bd (X^2 + 1) - bd + (X^2 + 1)) \\
+		& = \varphi(ac-bd+(ad+bc)X + (X^2 + 1))                      \\
+		& = ac - bd + (ad + bc)i                                     \\
+		& = (a+bi)(c+di)                                             \\
+		& = \varphi((a+bX) + (X^2 + 1)) \varphi((c+dX) + (X^2 + 1))
 	\end{align*}
 	Thus $\faktor{\mathbb R[X]}{(X^2 + 1)} \cong \mathbb C$.
 \end{example}
 
 \subsection{Isomorphism theorems}
-\begin{theorem}[first isomorphism theorem]
+\begin{theorem}[First Isomorphism Theorem]
 	Let $\varphi \colon R \to S$ be a ring homomorphism.
 	Then,
 	\begin{align*}
 		\ker \varphi \triangleleft R;\quad \Im \varphi \leq S;\quad \faktor{R}{\ker \varphi} \cong \Im \varphi
 	\end{align*}
 \end{theorem}
+
 \begin{proof}
 	We have $\ker \varphi \triangleleft R$ from above.
 	We know that $\Im \varphi \leq (S, +)$.
