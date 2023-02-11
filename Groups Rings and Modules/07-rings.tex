@@ -206,7 +206,7 @@ For instance, $\mathbb Z^\times = \qty{\pm 1}$ and $\mathbb Q^\times = \mathbb Q
 	We say that an ideal is \vocab{proper} if $I \neq R$.
 \end{definition} 
 
-\begin{lemma}
+\begin{lemma} \label{lem:8.2}
 	Let $\varphi \colon R \to S$ be a ring homomorphism.
 	Then $\ker \varphi$ is an ideal of $R$.
 \end{lemma}
@@ -341,7 +341,8 @@ For instance, $\mathbb Z^\times = \qty{\pm 1}$ and $\mathbb Q^\times = \mathbb Q
 \end{theorem}
 
 \begin{proof}
-	We have $\ker \varphi \triangleleft R$ from above.
+	We already saw that $\ker \varphi \triangleleft R$, \cref{lem:8.2}.
+
 	We know that $\Im \varphi \leq (S, +)$.
 	Now we show that $\Im \varphi$ is closed under multiplication.
 	\begin{align*}
@@ -352,68 +353,88 @@ For instance, $\mathbb Z^\times = \qty{\pm 1}$ and $\mathbb Q^\times = \mathbb Q
 		1_S = \varphi(1_R) \in \Im \varphi
 	\end{align*}
 	Hence $\Im \varphi$ is a subring of $S$.
+
 	Let $K = \ker \varphi$.
 	Then, we define $\Phi \colon \faktor{R}{K} \to \Im \varphi$ by $r+K \mapsto \varphi(r)$.
 	By appealing to the first isomorphism theorem from groups, this is well-defined, a bijection, and a group homomorphism under addition.
 	It therefore suffices to show that $\Phi$ preserves multiplication and maps the multiplicative identities to each other.
 	\begin{align*}
-		\Phi(1_R + K) = \varphi(1_R) = 1_S;\quad \Phi((r_1+K)(r_2+K)) = \Phi(r_1 r_2 +K) = \varphi(r_1 r_2) = \varphi(r_1) \varphi(r_2)
+		\Phi(1_R + K) &= \varphi(1_R) = 1_S \\
+		\Phi((r_1+K)(r_2+K)) &= \Phi(r_1 r_2 +K) \\
+		&= \varphi(r_1 r_2) \\
+		&= \varphi(r_1) \varphi(r_2) \\
+		&= \Phi(r_1 + K) \Phi(r_2 + K).
 	\end{align*}
 	The result follows as required.
 \end{proof}
-\begin{theorem}[second isomorphism theorem]
+
+\begin{theorem}[Second Isomorphism Theorem]
 	Let $R \leq S$ and $J \triangleleft S$.
 	Then,
 	\begin{align*}
-		R \cap J \triangleleft R;\quad R + J = \qty{r+a \colon r\in R, a \in J} \leq S;\quad \faktor{R}{R \cap J} \cong \faktor{R+J}{J} \leq \faktor{S}{J}
+		R \cap J &\triangleleft R \\
+		R + J &= \qty{r+a \colon r\in R, a \in J} \leq S \\
+		\faktor{R}{R \cap J} &\cong \faktor{(R+J)}{J} \leq \faktor{S}{J}
 	\end{align*}
 \end{theorem}
+
 \begin{proof}
 	By the second isomorphism theorem for groups, $R+J \leq (S, +)$.
 	Further, $1_S = 1_S + 0_S$, and since $R$ is a subring, $1_S + 0_S \in R + J$ hence $1_S \in R \cap J$.
+
 	If $r_1, r_2 \in R$ and $a_1, a_2 \in J$, we have
 	\begin{align*}
-		(r_1 + a_1)(r_2 + a_2) = \underbrace{r_1 r_2}_{\in R} + \underbrace{r_1 a_2}_{\in J} + \underbrace{r_2 a_1}_{\in J} + \underbrace{r_2 a_2}_{\in J} \in R + J
+		(r_1 + a_1)(r_2 + a_2) = \underbrace{r_1 r_2}_{\in R} + \underbrace{r_1 a_2}_{\in J} + \underbrace{r_2 a_1}_{\in J} + \underbrace{a_1 a_2}_{\in J} \in R + J
 	\end{align*}
 	Hence $R+J$ is closed under multiplication, giving $R+J \leq S$.
 
 	Let $\varphi \colon R \to \faktor{S}{J}$ be defined by $r \mapsto r + J$.
-	This is a ring homomorphism, since it is the composite of the inclusion homomorphism $R \subseteq S$ and the quotient map $S \to \faktor{S}{J}$.
+	This is a ring homomorphism, since it is the composite of the inclusion homomorphism $R \subseteq S$\footnote{This is just $r \mapsto r$ for $r \in R$.} and the quotient map $S \to \faktor{S}{J}$.
 	The kernel of $\varphi$ is the set $\qty{r \in R \colon r+J = J} = R \cap J$.
 	Since this is the kernel of a ring homomorphism, $R \cap J$ is an ideal in $R$.
-	The image of $\varphi$ is $\qty{r+J \mid r \in R} = \faktor{R+J}{J} \leq \faktor{S}{J}$.
-	By the first isomorphism theorem, $\faktor{R}{R \cap J} \cong \faktor{R+J}{J}$ as required.
+	The image of $\varphi$ is \begin{align*}
+		\qty{r+J \mid r \in R} = \faktor{(R+J)}{J} \leq \faktor{S}{J}.
+	\end{align*}
+	By the first isomorphism theorem, $\faktor{R}{R \cap J} \cong \faktor{(R+J)}{J}$ as required.
 \end{proof}
-\begin{remark}
+
+\begin{remark} \label{rem:correspondence}
 	If $I \triangleleft R$, there exists a bijection between ideals in $\faktor{R}{I}$ and the ideals of $R$ containing $I$.
 	Explicitly,
 	\begin{align*}
-		K \mapsto \qty{r \in R \mid r + I \in K};\quad J \mapsto \faktor{J}{I}
+		K &\mathrel{\reflectbox{\ensuremath{\mapsto}}} \qty{r \in R \mid r + I \in K} \\
+		\faktor{J}{I} &\mapsto J
 	\end{align*}
 \end{remark}
-\begin{theorem}[third isomorphism theorem]
+
+\begin{theorem}[Third Isomorphism Theorem]
 	Let $I \triangleleft R$ and $J \triangleleft R$ with $I \subseteq J$.
 	Then,
 	\begin{align*}
-		\faktor{J}{I} \triangleleft \faktor{R}{I};\quad \faktor{R/I}{J/I} \cong \faktor{R}{J}
+		\faktor{J}{I} &\triangleleft \faktor{R}{I} \\ 
+		\faktor{R/I}{J/I} &\cong \faktor{R}{J}
 	\end{align*}
 \end{theorem}
+
 \begin{proof}
 	Let $\varphi \colon \faktor{R}{I} \to \faktor{R}{J}$ defined by $r+I \mapsto r+J$.
-	We can check that this is a surjective ring homomorphism by considering the third isomorphism theorem for groups.
+	We can check that this is a surjective ring homomorphism (well-defined since $I \subseteq J$) by considering the third isomorphism theorem for groups.
 	Its kernel is $\qty{r + I \colon r \in J} = \faktor{J}{I}$, which is an ideal in $\faktor{R}{I}$, and we conclude by use of the first isomorphism theorem.
 \end{proof}
+
 \begin{remark}
 	$\faktor{J}{I}$ is not a quotient ring, since $J$ is not in general a ring; this notation should be interpreted as a set of cosets.
 \end{remark}
+
 \begin{example}
 	Consider the surjective ring homomorphism $\varphi \colon \mathbb R[X] \to \mathbb C$ which is defined by
 	\begin{align*}
 		f = \sum_n a_n X^n \mapsto f(i) = \sum_n a_n i^n
 	\end{align*}
-	Its kernel can be found by the Euclidean algorithm, yielding $\ker \varphi = (X^2 + 1)$.
+	Its kernel can be found by the Euclidean algorithm due to \Cref{prp:7.1}, yielding $\ker \varphi = (X^2 + 1)$.
 	Applying the first isomorphism theorem, we immediately find $\faktor{\mathbb R[X]}{(X^2 + 1)} \cong \mathbb C$.
 \end{example}
+
 \begin{example}
 	Let $R$ be a ring.
 	Then there exists a unique ring homomorphism $i \colon \mathbb Z \to R$.
@@ -430,34 +451,52 @@ For instance, $\mathbb Z^\times = \qty{\pm 1}$ and $\mathbb Q^\times = \mathbb Q
 		-n \mapsto -(\underbrace{1_R + \dots + 1_R}_{n \text{ times}})
 	\end{align*}
 	We can show that any such construction is a ring homomorphism as required.
+
 	Then, the kernel of the ring homomorphism is an ideal of $\mathbb Z$, hence it is $n\mathbb Z$ for some $n$.
 	Hence, by the first isomorphism theorem, any ring contains a copy of $\faktor{\mathbb Z}{n\mathbb Z}$, since it is isomorphic to the image of $i$.
 	If $n = 0$, then the ring contains a copy of $\mathbb Z$ itself, and if $n = 1$, then the ring is trivial since $0 = 1$.
-	The number $n$ is known as the \textit{characteristic} of $R$.
+\end{example}
 
+\begin{definition}[Characteristic]
+	The number $n$ is known as the \vocab{characteristic} of $R$.
+\end{definition} 
+
+\begin{example}
 	For example, $\mathbb Z, \mathbb Q, \mathbb R, \mathbb C$ have characteristic zero.
 	The rings $\faktor{\mathbb Z}{p \mathbb Z}, \faktor{\mathbb Z}{p \mathbb Z}[X]$ have characteristic $p$.
+\end{example} 
+
+\section{Integral domains, maximal ideals and prime ideals}
+\subsection{Integral domains}
+\begin{definition}[Integral Domain]
+	An \vocab{integral domain} is a ring $R$ with $0 \neq 1$ such that for all $a, b \in R$, $a b = 0$ implies $a = 0$ or $b = 0$.
+\end{definition}
+
+\begin{definition}[Zero-Divisor]
+	A \vocab{zero divisor} in a ring $R$ is a nonzero element $a \in R$ such that $a b = 0$ for some nonzero $b \in R$.
+\end{definition} 
+
+A ring is an integral domain iff it has no zero divisors.
+
+\begin{example}
+	All fields are integral domains (if $ab = 0$ with $b \neq 0$, multiply by $b\inv$ to get $a = 0$).
 \end{example}
 
-\subsection{Integral domains}
-\begin{definition}
-	An \textit{integral domain} is a ring $R$ with $0 \neq 1$ such that for all $a, b \in R$, $a b = 0$ implies $a = 0$ or $b = 0$.
-	A \textit{zero divisor} in a ring $R$ is a nonzero element $a \in R$ such that $a b = 0$ for some nonzero $b \in R$.
-	A ring is an integral domain if and only if it has no zero divisors.
-\end{definition}
 \begin{example}
-	All fields are integral domains.
 	Any subring of an integral domain is an integral domain.
-	For instance, $\mathbb Z[i] \leq \mathbb C$ is an integral domain.
-\end{example}
+	For instance, $\mathbb{Z} \leq \mathbb{Q}$ and $\mathbb Z[i] \leq \mathbb C$ are integral domains.
+\end{example} 
+
 \begin{example}
 	The ring $\mathbb Z \times \mathbb Z$ is not an integral domain.
 	Indeed, $(1,0) \cdot (0,1) = (0,0)$.
 \end{example}
-\begin{lemma}
+
+\begin{lemma} \label{lem:9.1}
 	Let $R$ be an integral domain.
 	Then $R[X]$ is an integral domain.
 \end{lemma}
+
 \begin{proof}
 	We will show that any two nonzero elements produce a nonzero element.
 	In particular, let
@@ -467,58 +506,75 @@ For instance, $\mathbb Z^\times = \qty{\pm 1}$ and $\mathbb Q^\times = \mathbb Q
 	Since these are nonzero, the leading coefficients $a_n$ and $b_m$ are nonzero.
 	Here, the leading term of the product $fg$ has form $a_n b_m X^{n+m}$.
 	Since $R$ is an integral domain, $a_n b_m \neq 0$, so $fg$ is nonzero.
+
 	Further, the degree of $fg$ is $n + m$, the sum of the degrees of $f$ and $g$.
 \end{proof}
-\begin{lemma}
+
+\begin{lemma} \label{lem:9.2}
 	Let $R$ be an integral domain, and $f \neq 0$ be a nonzero polynomial in $R[X]$.
 	We define $\mathrm{roots}(f) = \qty{a \in R \colon f(a) = 0}$.
 	Then $\abs{\mathrm{roots}(f)} \leq \mathrm{deg}(f)$.
 \end{lemma}
+
 \begin{proof}
-	Exercise on the example sheets.
+	Exercise on the Sheet 2.
+	The main idea is to use the Euclidean algorithm on a root to extract out the linear factors.
 \end{proof}
-\begin{theorem}
+
+\begin{theorem} \label{thm:9.3}
 	Let $F$ be a field.
 	Then any finite subgroup $G$ of $(F^\times, \cdot)$ is cyclic.
 \end{theorem}
+
 \begin{proof}
 	$G$ is a finite abelian group.
-	If $G$ is not cyclic, we can apply a previous structure theorem for finite abelian groups to show that there exists $H \leq G$ such that $H \cong C_{d_1} \times C_{d_1}$ for some integer $d_1 \geq 2$.
+	If $G$ is not cyclic, we can apply \Cref{thm:6.4} for finite abelian groups to show that there exists $H \leq G$ such that $H \cong C_{d_1} \times C_{d_1}$\footnote{We get from the theorem $G \cong \prod_i C_{d_i}$, as $G$ not cyclic wlog $d_1 \mid d_2$ and so there exists a subgroup $C_{d_1} \leq C_{d_2}$.} for some integer $d_1 \geq 2$.
 	The polynomial $f(X) = X^{d_1} - 1 \in F[X]$ has degree $d_1$, but has at least $d_1^2$ roots, since any element of $H$ is a root.
-	This contradicts the previous lemma.
+	This contradicts the previous lemma, \Cref{lem:9.2}.
 \end{proof}
+
 \begin{example}
 	$\qty(\faktor{\mathbb Z}{p\mathbb Z})^\times$ is cyclic.
 \end{example}
-\begin{proposition}
+
+\begin{proposition} \label{prp:9.4}
 	Any finite integral domain is a field.
 \end{proposition}
+
 \begin{proof}
 	Let $0 \neq a \in R$, where $R$ is an integral domain.
 	Consider the map $\varphi \colon R \to R$ given by $x \mapsto ax$.
+
 	If $\varphi(x) = \varphi(y)$, then $a(x-y) = 0$.
-	But $a \neq 0$, hence $x - y = 0$.
+	But $a \neq 0$, hence $x - y = 0$ as $R$ is an integral domain.
 	Hence $\varphi$ is injective.
-	Since $R$ is finite, $\varphi$ is a bijection, hence it has an inverse $\varphi\inv$, which yields the multiplicative inverse of $a$ by considering $\varphi\inv(a)$.
-	This may be repeated for all $a$.
+	Since $R$ is finite, $\phi$ is surjective so $\exists \; b$ s.t. $ab = 1$, i.e. $a$ is a unit.
+	% Since $R$ is finite, $\varphi$ is a bijection, hence it has an inverse $\varphi\inv$, which yields the multiplicative inverse of $a$ by considering $\varphi\inv(a)$.
+	This may be repeated for all $a$, thus $R$ is a field.
 \end{proof}
-\begin{theorem}
-	Any integral domain $R$ is a subring of a field $F$, and every element of $F$ can be written in the form $ab\inv$ where $a, b \in R$ and $b \neq 0$.
-	Such a field $F$ is called the \textit{field of fractions} of $R$.
+
+\begin{theorem} \label{thm:9.5}
+	Let $R$ be an integral domain then $\exists$ a field $F$ s.t.
+	\begin{enumerate}
+		\item $R \leq F$
+		\item Every element of $F$ can be written in the form $a b\inv$ where $a, b \in R$ and $b \neq 0$.
+	\end{enumerate} 
+	Such a field $F$ is called the \vocab{field of fractions} of $R$.
 \end{theorem}
+
 \begin{proof}
-	Consider the set $S = \qty{(a,b) \in R \colon b \neq 0}$.
+	Consider the set $S = \qty{(a,b) \in R^2 \colon b \neq 0}$.
 	We can define an equivalence relation
 	\begin{align*}
 		(a,b) \sim (c,d) \iff ad = bc
 	\end{align*}
-	This is reflexive and commutative.
+	This is reflexive and symmetric.
 	We can show directly that it is transitive.
 	\begin{align*}
-		(a,b) \sim (c,d) \sim (e,f) & \implies ad = bc;\; cf = de \\
-		                            & \implies adf = bcf = bde    \\
-		                            & \implies af = be            \\
-		                            & \implies (a,b) \sim (e,f)
+		(a,b) \sim (c,d) \sim (e,f) &\implies ad = bc;\; cf = de \\
+		                            &\implies adf = bcf = bde    \\
+		                            &\implies d(af - be) = 0 \\
+		                            &\implies (a,b) \sim (e,f) \text{ as $d \neq 0$ and $R$ an integral domain.}
 	\end{align*}
 	Hence $\sim$ is indeed an equivalence relation.
 	Now, let $F = \faktor{S}{\sim}$, and we write $\frac{a}{b}$ for the class $[(a,b)]$.
@@ -528,75 +584,97 @@ For instance, $\mathbb Z^\times = \qty{\pm 1}$ and $\mathbb Q^\times = \mathbb Q
 	\end{align*}
 	These can be shown to be well-defined.
 	Thus, $F$ is a ring with identities $0_F = \frac{0_R}{1_R}$ and $1_F = \frac{1_R}{1_R}$.
+
 	If $\frac{a}{b} \neq 0_F$, then $a \neq 0$.
-	Thus, $\frac{b}{a}$ exists, and $\frac{a}{b} \cdot \frac{b}{a} = 1$.
+	Thus, $\frac{b}{a}$ exists, and $\frac{a}{b} \cdot \frac{b}{a} = \frac{ab}{ba} = \frac{1_R}{1_R} = 1_F$.
 	Hence $F$ is a field.
 
-	We can identify $R$ with the subring of $F$ given by $\frac{r}{1}$ for all $r \in R$.
+	1. We can identify $R$ with the subring of $F$ given by $\qty{\frac{r}{1_R} : r \in R} \leq F$.
 	This is clearly isomorphic to $R$.
-	Further, any element of $F$ can be written as $\frac{a}{b} = ab\inv$ as required.
+
+	2.  Further, any element of $F$ can be written as $\frac{a}{b} = ab\inv$ as required.
 \end{proof}
 This is analogous to the construction of the rationals using the integers.
+
+\begin{example}
+	$\mathbb{Z}$ is an integral domain with field of fractions $\mathbb{Q}$.
+\end{example} 
+
 \begin{example}
 	Consider $\mathbb C[X]$.
 	This has field of fractions $\mathbb C(X)$, called the field of \textit{rational functions} in $X$.
 \end{example}
 
 \subsection{Maximal ideals}
-\begin{definition}
-	An ideal $I \triangleleft R$ is \textit{maximal} if $I \neq R$ and, if $I \subseteq J \triangleleft R$, we have $J = I$ or $J = R$.
+\begin{definition}[Maximal Ideal]
+	An ideal $I \triangleleft R$ is \vocab{maximal} if $I \neq R$ and, if $I \subseteq J \triangleleft R$, we have $J = I$ or $J = R$.
 \end{definition}
-\begin{lemma}
-	A nonzero ring $R$ is a field if and only if its only ideals are zero or $R$.
-\end{lemma}
-\begin{proof}
-	Suppose $R$ is a field.
-	If $0 \neq I \triangleleft R$, then $I$ contains a nonzero element, which is a unit since $R$ is a field.
-	Hence $I = R$.
 
-	Now, suppose a ring $R$ has ideals that are only zero or $R$.
+So a maximal ideal is the largest proper ideal.
+
+\begin{lemma} \label{lem:9.6}
+	A nonzero ring $R$ is a field iff its only ideals are zero or $R$.
+\end{lemma}
+
+\begin{proof}
+	$(\implies)$: Suppose $R$ is a field.
+	If $0 \neq I \triangleleft R$, then $I$ contains a nonzero element, which is a unit since $R$ is a field.
+	We have seen that an ideal containing a unit implies it is the whole ring, hence $I = R$.
+
+	$(\Longleftarrow)$: Now, suppose a ring $R$ has ideals that are only zero or $R$.
 	If $0 \neq x \in R$, consider $(x)$.
 	This is nonzero since it contains $x$.
 	By assumption, $(x) = R$.
 	Thus, the element 1 lies in $(x)$.
 	Hence, there exists $y \in R$ such that $xy = 1$, and hence this $y$ is the multiplicative inverse as required.
 \end{proof}
-\begin{proposition}
+
+\begin{proposition} \label{prp:9.7}
 	Let $I \triangleleft R$.
-	Then $I$ is maximal if and only if $\faktor{R}{I}$ is a field.
+	Then $I$ is maximal iff $\faktor{R}{I}$ is a field.
 \end{proposition}
+
 \begin{proof}
-	$\faktor{R}{I}$ is a field if and only if its ideals are either zero, denoted $\faktor{I}{I}$, or $\faktor{R}{I}$ itself.
-	By the correspondence theorem, $I$ and $R$ are the only ideals in $R$ which contain $I$.
+	$\faktor{R}{I}$ is a field iff its ideals are either zero, denoted $\faktor{I}{I}$\footnote{This is not a ring but the set of cosets given by elements of $I$.}, or $\faktor{R}{I}$ itself.
+	By Remark \ref{rem:correspondence}, $I$ and $R$ are the only ideals in $R$ which contain $I$.
 	Equivalently, $I \triangleleft R$ is maximal.
 \end{proof}
 
 \subsection{Prime ideals}
-\begin{definition}
-	An ideal $I \triangleleft R$ is \textit{prime} if $I \neq R$ and, for all $a,b \in R$ such that $ab \in I$, we have $a \in I$ or $b \in I$.
+\begin{definition}[Prime Ideals]
+	An ideal $I \triangleleft R$ is \vocab{prime} if $I \neq R$ and, for all $a,b \in R$ such that $ab \in I$, we have $a \in I$ or $b \in I$.
 \end{definition}
+
 \begin{example}
-	The ideals in the integers are $(n)$ for some $n \geq 0$.
-	$n\mathbb Z$ is a prime ideal if and only if $n$ is prime or zero.
+	The ideals in the integers are $n \mathbb{Z}$ for some $n \geq 0$.
+	$n\mathbb Z$ is a prime ideal iff $n$ is prime or zero.
+
 	The case for $n = 0$ is trivial.
+
 	If $n \neq 0$ we can use the property that $p \mid ab$ implies either $p \mid a$ or $p \mid b$.
+	So if $ab \in p \mathbb{Z}$ then $a \in p \mathbb{Z}$ or $b \in b \mathbb{Z}$.
+
 	Conversely, if $n$ is composite, we can write $n = uv$ for $u, v > 1$.
 	Then $uv \in n\mathbb Z$ but $u,v \not\in n\mathbb Z$.
 \end{example}
-\begin{proposition}
+
+\begin{proposition} \label{prp:9.8}
 	Let $I \triangleleft R$.
-	Then $I$ is prime if and only if $\faktor{R}{I}$ is an integral domain.
+	Then $I$ is prime iff $\faktor{R}{I}$ is an integral domain.
 \end{proposition}
+
 \begin{proof}
 	If $I$ is prime, then for all $ab \in I$ we have $a \in I$ or $b \in I$.
 	Equivalently, for all $a + I, b + I \in \faktor{R}{I}$, we have $(a+I)(b+I) = 0+I$ if $a+I = 0+I$ or $b+I = 0+I$.
 	This is the definition of an integral domain.
 \end{proof}
+
 \begin{remark}
-	If $I$ is a maximal ideal, then $\faktor{R}{I}$ is a field.
+	If $I$ is a maximal ideal, then $\faktor{R}{I}$ is a field by \cref{prp:9.7}.
 	A field is an integral domain.
 	Hence any maximal ideal is prime.
 \end{remark}
+
 \begin{remark}
 	If the characteristic of a ring is $n$, then $\faktor{\mathbb Z}{n\mathbb Z} \leq R$.
 	In particular, if $R$ is an integral domain, then $\faktor{\mathbb Z}{n\mathbb Z}$ must be an integral domain.

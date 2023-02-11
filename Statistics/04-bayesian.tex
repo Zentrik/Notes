@@ -156,3 +156,40 @@ Here $x$ is fixed at the observed value.
 	\end{align*} 
 	I.e. any two data sets with the same sufficient statistic will have the same posterior.
 \end{note} 
+
+\begin{example}
+	Let $X_1, \dots, X_n \sim \mathcal{N}(\mu, 1)$ iid.
+	Our prior is $\pi(\mu) \sim \mathcal{N}(0, \frac{1}{\tau^2})$.
+	\begin{align*}
+		\pi(\mu \mid x) &\propto f_X(x \mid \mu) \pi(\mu) \\
+		&\propto \exp\qty[-\frac{1}{2} \sum_{i=1}^{n} (x_i - \mu)^2] \exp \qty[- \frac{\mu^2 \tau^2}{2}]\footnote{We have omitted constants independent of $\mu$.} \\
+		&\propto \exp\qty[-\frac{1}{2} (n + \tau^2) \qty(\mu - \frac{\sum x_i}{n + \tau^2})].
+	\end{align*} 
+	We recognise this as a $\mathcal{N}\qty(\frac{\sum x_i}{n + \tau^2}, \frac{1}{n + \tau^2})$ distribution.
+	The Bayes estimator $\hat{\mu}^{(B)} = \frac{\sum x_i}{n + \tau^2}$ for both quadratic and absolute error loss.
+	Whereas $\hat{\mu}^{(mle)} = \frac{\sum x_i}{n}$.
+
+	A $95\%$ credible interval is 
+	\begin{align*}
+		(\hat{\mu}^{(B)} - \frac{1.96}{\sqrt{n + \tau^2}}, \hat{\mu}^{(B)} + \frac{1.96}{\sqrt{n + \tau^2}})
+	\end{align*}.
+	This is close to a $95\%$ confidence interval when $n >> \tau^2$.
+\end{example} 
+
+\begin{example}
+	Let $X_1, \dots, X_n \sim \operatorname{Poi}(\lambda)$ iid.
+	Our prior is $\pi(\lambda) \sim \operatorname{Exp}(1)$, i.e. $\pi(\lambda) = e^{-\lambda}$ where $\lambda > 0$.
+	So for $\lambda > 0$,
+	\begin{align*}
+		\pi(\lambda \mid x) &\propto f_X(x \mid \lambda) \pi(\lambda) \\
+		&\propto \frac{e^{-n \lambda} \lambda^{\sum x_i}}{\prod_i x_i!} e^{-\lambda} \\
+		&\propto e^{-(n+1) \lambda} \lambda^{\sum x_i}.
+	\end{align*} 
+	This is a $\operatorname{Gamma}(\sum x_i + 1, n + 1)$ distribution.
+
+	The Bayes estimator for quadratic loss is the posterior mean $\hat{\lambda}^{(B)} = \frac{\sum x_i + 1}{n + 1} \to \frac{\sum x_i}{n} = \hat{\lambda}^{(mle)}$ as $n \to \infty$.
+	Under the absolute error loss the Bayes estimator $\hat{\lambda}^{(B)}$ is 
+	\begin{align*}
+		\int_{0}^{\hat{\lambda}^{(B)}} \frac{(n+1)^{\sum x_i - 1}}{\qty(\sum x_i)!} \lambda^{\sum x_i} e^{-(n+1) \lambda} \dd{\lambda} = \frac{1}{2}.
+	\end{align*} 
+\end{example} 

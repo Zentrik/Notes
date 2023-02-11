@@ -1,74 +1,106 @@
 \section{Hypothesis testing}
 
 \subsection{Hypotheses}
-\begin{definition}
-	A \textit{hypothesis} is an assumption about the distribution of the data $X$.
-	Scientific questions are often phrased as a decision between two hypotheses.
-	The \textit{null hypothesis} $H_0$ is usually a basic hypothesis, often representing the simplest possible distribution of the data.
-	The \textit{alternative hypothesis} $H_1$ is the alternative, if $H_0$ were found to be false.
+\begin{definition}[Hypothesis]
+	A \vocab{hypothesis} is an assumption about the distribution of the data $X$.
 \end{definition}
+
+Scientific questions are often phrased as a decision between two hypotheses.
+
+\begin{definition}[Null Hypothesis]
+	The \vocab{null hypothesis} $H_0$ is usually a basic hypothesis, often representing the simplest possible distribution of the data.
+\end{definition} 
+
+\begin{definition}[Alternative Hypothesis]
+	The \vocab{alternative hypothesis} $H_1$ is the alternative, if $H_0$ were found to be false.
+\end{definition} 
+
 \begin{example}
 	Let $X = (X_1, \dots, X_n)$ be i.i.d.\ Bernoulli random variables with parameter $\theta$.
 	We could take, for example, $H_0 \colon \theta = \frac{1}{2}$ and $H_1 \colon \theta = \frac{3}{4}$.
 	Alternatively, we could take $H_0 \colon \theta = \frac{1}{2}$ and $H_1 \colon \theta \neq \frac{1}{2}$.
 \end{example}
+
 \begin{example}
-	Suppose $X_i$ takes values $0, 1, \dots$.
-	We can take $H_0 \colon X_i \overset{\mathrm{iid}}{\sim} \mathrm{Poi}(\lambda)$ for some $\lambda$, and $H_1 \colon X_i \overset{\mathrm{iid}}{\sim} f_1$ for some other distribution $f_1$.
-	This is known as a \textit{goodness of fit} test, which checks how well the model used for the data fits.
+	Suppose $X_1, \dots, X_n$ takes values in $\{0\} \cup \mathbb{N}$.
+	We can take $H_0 \colon X_i \overset{\mathrm{iid}}{\sim} \mathrm{Poi}(\lambda)$ for some $\lambda > 0$, and $H_1 \colon X_i \overset{\mathrm{iid}}{\sim} f_1$ for some other distribution $f_1$.
+	This is known as a \vocab{goodness of fit} test, which checks how well the model used for the data fits.
 \end{example}
+
+\begin{example}
+	Say $X$ has pdf $f(\cdot \mid \theta)$ with $\theta \in \Theta$.
+	We could say $H_0 : \theta \in A \subset \Theta$ and $H_1 : \theta \notin A$.
+\end{example} 
+
 \begin{definition}
-	A \textit{simple hypothesis} is a hypothesis which fully specifies the p.d.f.\ or p.m.f.\ of the data.
-	A hypothesis that is not simple is called \textit{composite}.
+	A \vocab{simple hypothesis} is a hypothesis which fully specifies the p.d.f.\ or p.m.f.\ of the data.
+	A hypothesis that is not simple is called \vocab{composite}.
 \end{definition}
+
 \begin{example}
 	In the first example above, $H_0 \colon \theta = \frac{1}{2}$ is simple, and $H_1 \colon \theta \neq \frac{1}{2}$ is composite.
 	In the second example, $H_0 \colon X_i \overset{\mathrm{iid}}{\sim} \mathrm{Poi}(\lambda)$ is composite since $\lambda$ was not fixed.
+	In the last example, $H_0$ is simple only if $|A| = 1$.
 \end{example}
 
 \subsection{Testing hypotheses}
 \begin{definition}
-	A \textit{test} of the null hypothesis $H_0$ is defined by a \textit{critical region} $C \subseteq \mathcal X$.
+	A \vocab{test} of the null hypothesis $H_0$ is defined by a \vocab{critical region} $C \subseteq \mathcal X$.
 	When $X \in C$, we \textit{reject} the null hypothesis.
 	This is a positive result.
 	When $X \not\in C$ we \textit{fail to reject} the null hypothesis, or find \textit{no sufficient evidence against} the null hypothesis.
 	This is the negative result.
+\end{definition}
 
-	A \textit{type I} error, or a \textit{false positive}, is the error made by rejecting the null hypothesis when it is true.
-	A \textit{type II} error, or a \textit{false negative}, is the error made by failing to reject the null hypothesis when it is not true.
+\begin{definition}[Type Errors]
+	A \vocab{type I} error, or a \textit{false positive}, is the error made by rejecting the null hypothesis when it is true.
+	A \vocab{type II} error, or a \textit{false negative}, is the error made by failing to reject the null hypothesis when it is false.
 	When $H_0, H_1$ are simple, we define
 	\begin{align*}
-		\alpha = \psub{H_0}{H_0 \text{ is rejected}} = \psub{H_0}{X \in C};\quad \beta = \psub{H_1}{H_0 \text{ is not rejected}} = \psub{H_1}{X \not\in C}
+		\alpha &= \psub{H_0}{H_0 \text{ is rejected}} = \psub{H_0}{X \in C} \\
+		\beta &= \psub{H_1}{H_0 \text{ is not rejected}} = \psub{H_1}{X \not\in C}
 	\end{align*}
-	The \textit{size} of a test is $\alpha$, which is the probability of a type I error.
-	The \textit{power} of a test is $1 - \beta$, which is the probability of not finding a type II error.
+	The \vocab{size} of a test is $\alpha$, which is the probability of a type I error.
+	The \vocab{power} of a test is $1 - \beta$, which is the probability of not finding a type II error.
+\end{definition}
 
+\begin{remark}
 	There is typically a tradeoff between $\alpha$ and $\beta$.
 	Often, statisticians will choose an `acceptable' value for the probability of type I errors $\alpha$, and then maximise the power with respect to this fixed $\alpha$.
 	Computing the size of a test is typically simpler since it does not depend on $H_1$.
-\end{definition}
+\end{remark} 
 
 \subsection{Neyman-Pearson lemma}
 Let $H_0$ and $H_1$ be simple, and let $X$ have a p.d.f.\ or p.m.f.\ $f_i$ under $H_i$.
-The \textit{likelihood ratio statistic} is defined by
-\begin{align*}
-	\Lambda_x(H_0; H_1) = \frac{f_1(x)}{f_0(x)}
-\end{align*}
-The \textit{likelihood ratio test} is a test that rejects $H_0$ when $\Lambda_x$ exceeds a set value $k$, or more formally, $C = \qty{ x \colon \Lambda_x(H_0; H_1) > k }$.
-\begin{lemma}
+
+\begin{definition}[Likelihood Ratio Statistic]
+	The \vocab{likelihood ratio statistic} is defined by
+	\begin{align*}
+		\Lambda_x(H_0; H_1) = \frac{f_1(x)}{f_0(x)}
+	\end{align*}
+\end{definition} 
+
+\begin{definition}[Likelihood Ratio Test]
+	The \vocab{likelihood ratio test} is a test that rejects $H_0$ when $\Lambda_x$ exceeds a set value $k$, or more formally, $C = \qty{ x \colon \Lambda_x(H_0; H_1) > k }$.
+\end{definition} 
+
+\begin{lemma}[Neyman-Pearson]
 	Suppose that $f_0, f_1$ are nonzero on the same set, and suppose that there exists $k > 0$ such that the likelihood ratio test with critical region $C = \qty{x \colon \Lambda_x(H_0; H_1) > k}$ has size $\alpha$.
 	Then out of all tests of size upper bounded by $\alpha$, this test has the largest power.
 \end{lemma}
+
 \begin{remark}
 	A likelihood ratio test with size $\alpha$ does not always exist for any given $\alpha$.
-	However, in general we can find a \textit{randomised test} with arbitrary size $\alpha$.
+	However, in general we can find a \textit{randomised likelihood ratio test} with arbitrary size $\alpha$.
 	This is a test where, for some values of $X$, we reject the null hypothesis; for some values, we fail to reject the null hypothesis; and for some values we reject the null hypothesis with a random chance of rejecting the null hypothesis.
 \end{remark}
+
 \begin{proof}
 	Let $\overline C$ be the complement of $C$ in $\mathcal X$.
 	Then, the likelihood ratio test has
 	\begin{align*}
-		\alpha = \int_C f_0(x) \dd{x};\quad \beta = \int_{\overline C} f_1(x) \dd{x}
+		\alpha &= \mathbb{P}_{H_0}(X \in C) = \int_C f_0(x) \dd{x} \\
+		\beta &= \mathbb{P}_{H_1}(X \notin C) = \int_{\overline C} f_1(x) \dd{x}
 	\end{align*}
 	Let $C^\star$ be a critical region for a different test, with type I and II error probabilities $\alpha^\star, \beta^\star$.
 	Here,
@@ -83,14 +115,15 @@ The \textit{likelihood ratio test} is a test that rejects $H_0$ when $\Lambda_x$
 	By cancelling the integrals on the intersection, and using the definition of $C$,
 	\begin{align*}
 		\beta - \beta^\star & = \int_{\overline C \cap C^\star} f_1(x) \dd{x} - \int_{\overline{C^\star} \cap C} f_1(x) \dd{x}                                                                                         \\
-		                    & = \int_{\overline C \cap C^\star} \underbrace{\frac{f_1(x)}{f_0(x)}}_{\leq k} f_0(x) \dd{x} - \int_{\overline{C^\star} \cap C} \underbrace{\frac{f_1(x)}{f_0(x)}}_{\geq k} f_0(x) \dd{x} \\
-		                    & \leq k \qty[ \int_{\overline C \cap C^\star} f_0(x) \dd{x} - \int_{\overline C^\star \cap C} f_0(x) \dd{x} ]                                                                             \\
-		                    & = k \qty[ \int_{\overline C \cap C^\star} f_0(x) \dd{x} + \int_{C \cap C^\star} f_0(x) \dd{x} - \int_{C \cap C^\star} f_0(x) \dd{x} - \int_{\overline C^\star \cap C} f_0(x) \dd{x} ]    \\
-		                    & = k \qty[ \int_{\cap C^\star} f_0(x) \dd{x} - \int_{C} f_0(x) \dd{x} ]                                                                                                                   \\
-		                    & = k \qty[ \alpha^\star - \alpha ]                                                                                                                                                        \\
-		                    & \leq 0
+		& = \int_{\overline C \cap C^\star} \underbrace{\frac{f_1(x)}{f_0(x)}}_{\leq k \text{ on } \overline C} f_0(x) \dd{x} - \int_{\overline{C^\star} \cap C} \underbrace{\frac{f_1(x)}{f_0(x)}}_{\geq k \text{ on } C} f_0(x) \dd{x} \\
+		& \leq k \qty[ \int_{\overline C \cap C^\star} f_0(x) \dd{x} - \int_{\overline C^\star \cap C} f_0(x) \dd{x} ] \\
+		& = k \qty[ \int_{\overline C \cap C^\star} f_0(x) \dd{x} + \int_{C \cap C^\star} f_0(x) \dd{x} - \int_{C \cap C^\star} f_0(x) \dd{x} - \int_{\overline C^\star \cap C} f_0(x) \dd{x} ]    \\
+		& = k \qty[ \int_{C^\star} f_0(x) \dd{x} - \int_{C} f_0(x) \dd{x} ] \\
+		& = k \qty[ \alpha^\star - \alpha ] \\
+		& \leq 0 \qedhere
 	\end{align*}
 \end{proof}
+
 \begin{example}
 	Let $X_1, \dots, X_n \sim N(\mu, \sigma_0^2)$ be i.i.d., where $\sigma_0^2$ is known and $\mu$ is an unknown.
 	We wish to find the most powerful test of fixed size $\alpha$ for the hypotheses $H_0 \colon \mu = \mu_0$ and $H_1 \colon \mu = \mu_1 > \mu_0$.
