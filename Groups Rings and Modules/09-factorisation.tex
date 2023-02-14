@@ -1,3 +1,5 @@
+\section{Factorisation in integral domains}
+
 In this section, let $R$ be an integral domain.
 
 \subsection{Prime and irreducible elements}
@@ -5,41 +7,53 @@ Recall that an element $a \in R$ is a unit if it has a multiplicative inverse in
 Equivalently, an element $a$ is a unit if and only if $(a) = R$.
 Indeed, if $(a) = R$, then $1 \in (a)$ hence there exists a multiple of $a$ equal to 1.
 We denote the set of units in $R$ by $R^\times$.
-\begin{definition}
-	An element $a \in R$ \textit{divides} $b \in R$, written $a \mid b$, if there exists $c \in R$ such that $b = ac$.
-	Equivalently, $(b) \subseteq (a)$.
 
-	Two elements $a, b \in R$ are \textit{associates} if $a = bc$ where $c$ is a unit.
+\begin{definition}[Divides]
+	An element $a \in R$ \vocab{divides} $b \in R$, written $a \mid b$, if there exists $c \in R$ such that $b = ac$.
+	Equivalently, $(b) \subseteq (a)$.
+\end{definition}
+
+\begin{definition}[Associates]
+	Two elements $a, b \in R$ are \vocab{associates} if $a = bc$ where $c$ is a unit.
 	Informally, the two elements differ by multiplication by a unit.
 	Equivalently, $(a) = (b)$.
-\end{definition}
+\end{definition} 
+
 \begin{definition}
-	An element $r \in R$ is \textit{irreducible} if $r$ is not zero or a unit, and $r = ab$ implies $a$ is a unit or $b$ is a unit.
-	An element $r \in R$ is \textit{prime} if $r$ is not zero or a unit, and $r \mid ab$ implies $r \mid a$ or $r \mid b$.
+	An element $r \in R$ is \vocab{irreducible} if $r \neq 0$ is not a unit, and $r = ab$ implies $a$ or $b$ is a unit.
 \end{definition}
+
+\begin{definition}[Prime]
+	An element $r \in R$ is \vocab{prime} if $r \neq 0$ is not a unit and \underline{$r \mid ab$ implies $r \mid a$ or $r \mid b$}.
+\end{definition} 
+
 \begin{remark}
-	These properties depend on the ambient ring $R$; for instance, 2 is prime and irreducible in $\mathbb Z$, but neither prime nor irreducible in $\mathbb Q$.
+	These properties depend on the ambient ring $R$; for instance, 2 is prime and irreducible in $\mathbb Z$, but neither prime nor irreducible in $\mathbb Q$ as it's a unit. \\
 	The polynomial $2X$ is irreducible in $\mathbb Q[X]$, but not in $\mathbb Z[X]$.
 \end{remark}
-\begin{lemma}
-	$(r) \triangleleft R$ is a prime ideal if and only if $r = 0$ or $r$ is prime.
+
+\begin{lemma} \label{lem:10.1}
+	$(r) \triangleleft R$ is a prime ideal iff $r = 0$ or $r$ is prime.
 \end{lemma}
+
 \begin{proof}
-	Suppose $(r)$ is a prime ideal with $r \neq 0$.
+	$(\implies)$: Suppose $(r)$ is a prime ideal with $r \neq 0$.
 	Since prime ideals are proper, $r$ cannot be a unit.
 	Suppose $r \mid ab$, or equivalently, $ab \in (r)$.
 	By the definition of a prime ideal, $a \in (r)$ or $b \in (r)$.
 	Hence, $r \mid a$ or $r \mid b$.
 	By definition of a prime element, $r$ is prime.
 
-	Conversely, first note that the zero ideal $(0) = \qty{0}$ is a prime ideal, since $R$ is an integral domain.
+	$(\Longleftarrow)$: Conversely, first note that the zero ideal $(0) = \qty{0}$ is a prime ideal, since $R$ is an integral domain. \\
 	Suppose $r$ is prime.
 	We know $(r) \neq R$ since $r$ is not a unit.
 	If $ab \in (r)$, then $r \mid ab$, so $r \mid a$ or $r \mid b$, giving $a \in (r)$ or $b \in (r)$ as required for $(r)$ to be a prime ideal.
 \end{proof}
-\begin{lemma}
+
+\begin{lemma} \label{lem:10.2}
 	Prime elements are irreducible.
 \end{lemma}
+
 \begin{proof}
 	Let $r$ be prime.
 	Then $r$ is nonzero and not a unit.
@@ -50,6 +64,7 @@ We denote the set of units in $R$ by $R^\times$.
 	Then, $r = ab = rcb$, so $r(1-cb) = 0$.
 	Since $R$ is an integral domain, and $r \neq 0$, we have $cb = 1$, so $b$ is a unit.
 \end{proof}
+
 \begin{example}
 	The converse does not hold in general.
 	Let
@@ -76,29 +91,35 @@ We denote the set of units in $R$ by $R^\times$.
 	But $2 \nmid (1 + \sqrt{-5})$ and $2 \nmid (1 - \sqrt{-5})$, which can be checked by taking norms.
 	Hence, 2 is irreducible but not a prime.
 
+	\underline{Takeaways} \\
+	So here is an example showing irreducible $\;\not\nobreak\!\!\!\!\implies$ prime \\
 	In order to construct this example, we have exhibited two factorisations of 6 into irreducibles: $(1 + \sqrt{-5})(1-\sqrt{-5}) = 6 = 2 \cdot 3$.
 	Since $R^\times = \qty{\pm 1}$, these irreducibles in the factorisations are not associates.
 \end{example}
 
 \subsection{Principal ideal domains}
-\begin{definition}
-	An integral domain $R$ is a \textit{principal ideal domain} if all ideals are principal ideals.
-	In other words, for all ideals $I$, there exists an element $r$ such that $I = (r)$.
+\begin{definition}[Principal Ideal Domain]
+	An integral domain $R$ is a \vocab{principal ideal domain} (PID) if all ideals are principal ideals.
+	In other words, for all ideals $I \triangleleft R$, there exists an element $r$ such that $I = (r)$.
 \end{definition}
+
 \begin{example}
-	$\mathbb Z$ is a principal ideal domain.
+	$\mathbb Z$ is a principal ideal domain by \Cref{lem:8.3}.
 \end{example}
-\begin{proposition}
+
+\begin{proposition} \label{prp:10.3}
 	In a principal ideal domain, all irreducible elements are prime.
 \end{proposition}
+
 \begin{proof}
 	Let $r \in R$ be irreducible, and suppose $r \mid ab$.
 	If $r \mid a$, the proof is complete, so suppose $r \nmid a$.
+
 	Since $R$ is a principal ideal domain, the ideal $(a,r)$ is generated by a single element $d \in R$.
 	In particular, since $r \in (d)$, we have $d \mid r$ so $r = cd$ for some $c \in R$.
 
 	Since $r$ is irreducible, either $c$ or $d$ is a unit.
-	If $c$ is a unit, $(a,r) = (r)$, so in particular $r \mid a$, which contradicts the assumption that $r \nmid a$, so $c$ cannot be a unit.
+	If $c$ is a unit, $(a,r) = (d) = (r)$, so in particular $r \mid a$, which contradicts the assumption that $r \nmid a$, so $c$ cannot be a unit. \\
 	Thus, $d$ is a unit.
 	In this case, $(a,r) = R$.
 	By definition of $(a,r)$, there exist $s, t \in R$ such that $1 = sa + tr$.
@@ -106,6 +127,7 @@ We denote the set of units in $R$ by $R^\times$.
 	We have $r \mid sab$ since $r \mid ab$, and we know $r \mid trb$.
 	Hence $r \mid b$ as required.
 \end{proof}
+
 \begin{lemma}
 	Let $R$ be a principal ideal domain.
 	Then an element $r$ is irreducible if and only if $(r)$ is maximal.
