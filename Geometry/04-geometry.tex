@@ -2,22 +2,27 @@
 
 \subsection{First fundamental form}
 Let $\gamma \colon (a,b) \to \mathbb R^3$ be smooth.
-The \textit{length} of $\gamma$ is
+The \vocab{length} of $\gamma$ is
 \begin{align*}
 	L(\gamma) = \int_a^b \norm{\gamma'(t)} \dd{t}
 \end{align*}
 This result is independent of the choice of parametrisation.
-Let $s \colon (A,B) \to (a,b)$ be a monotonically increasing function, and let $\tau(t) = \gamma(s(t))$.
+Let $s \colon (A,B) \to (a,b)$ be a monotonically increasing function, let $\tau(t) = \gamma(s(t))$ and $s \geq 0$.
 Then
 \begin{align*}
-	L(\tau) = \int_A^B \norm{\tau'(t)} \dd{t} = \int_A^B \norm{\gamma'(s(t))} \abs{s'(t)} \dd{t} = \int_a^b \norm{\gamma'(t')} \dd{t'} = L(\gamma)
+	L(\tau) = \int_A^B \norm{\tau'(t)} \dd{t} = \int_A^B \norm{\gamma'(s(t))} \abs{s'(t)} \dd{t} = \int_a^b \norm{\gamma'(t')} \dd{s} = L(\gamma)
 \end{align*}
+
 \begin{lemma}
-	If $\gamma \colon (a,b) \to \mathbb R^3$ is continuously differentiable and $\gamma'(t) \neq 0$, then $\gamma$ can be parametrised by arc length.
+	If $\gamma \colon (a,b) \to \mathbb R^3$ is continuously differentiable and $\gamma'(t) \neq 0$, then $\gamma$ can be parametrised by arc length, i.e. a parameter s.t. $\norm{\gamma'(s)} = 1 \forall \; s$.
 \end{lemma}
-The proof is left as an exercise.
+
+\begin{proof}
+	Left as an exercise.
+\end{proof} 
+
 Let $\Sigma$ be a smooth surface in $\mathbb R^3$, and let $\sigma \colon V \to U \subset \Sigma$ be an allowable parametrisation.
-If $\gamma \colon (a,b) \to \mathbb R^3$ is smooth and its image is contained within $U$, then there exist functions $(u(t), v(t)) \colon (a,b) \to V$ such that $\gamma(t) = \sigma(u(t), v(t))$.
+If $\gamma \colon (a,b) \to U$ is smooth, then there exist functions $(u(t), v(t)) \colon (a,b) \to V$ smooth s.t. $\gamma(t) = \sigma(u(t), v(t))$.
 Hence $\gamma'(t) = \sigma_u u'(t) + \sigma_v v'(t)$, giving
 \begin{align*}
 	\norm{\gamma'(t)}^2 = E u'(t)^2 + 2F u'(t) v'(t) + G v'(t)^2
@@ -27,18 +32,20 @@ for functions
 	E = \inner{\sigma_u, \sigma_u};\quad F = \inner{\sigma_u, \sigma_v} = \inner{\sigma_v, \sigma_u};\quad G = \inner{\sigma_v, \sigma_v}
 \end{align*}
 where $\inner{\wildcard,\wildcard}$ represents the usual Euclidean inner product.
-Note that $E, F, G$ depend only on $\sigma$ and not on $\gamma$.
-\begin{definition}
-	The \textit{first fundamental form} of $\Sigma$ in the parametrisation $\sigma$ is the expression
+Note that $E, F, G$ depend only on $\sigma$ and not on $\gamma$, also they are smooth functions on $V$.
+
+\begin{definition}[First fundamental Form]
+	The \vocab{first fundamental form} of $\Sigma$ in the parametrisation $\sigma$ is the expression
 	\begin{align*}
 		E \dd{u}^2 + 2F \dd{u} \dd{v} + G \dd{v}^2
 	\end{align*}
-	This notation is illustrative of the fact that if $\gamma$ has image in the image of $\sigma(v)$, we find
+	This notation is designed to remind you that
 	\begin{align*}
 		L(\gamma) = \int_a^b \sqrt{E (u')^2 + 2F u'v' + G (v')^2} \dd{t}
 	\end{align*}
 	where $\gamma(t) = \sigma(u(t),v(t))$.
 \end{definition}
+
 \begin{remark}
 	The Euclidean inner product on $\mathbb R^3$ provides an inner product on the subspace $T_p \Sigma$.
 	Choosing a parametrisation $\sigma$, we can say $T_p \Sigma = \Im D \eval{\sigma}_0 = \vecspan{\qty{\sigma_u, \sigma_v}}$ where $\sigma(0) = p$.
@@ -51,35 +58,66 @@ Note that $E, F, G$ depend only on $\sigma$ and not on $\gamma$.
 			F & G
 		\end{pmatrix}
 	\end{align*}
+	This is an example of a \vocab{Riemannian metric}.
 \end{remark}
+
 \begin{example}
 	The plane $\mathbb R^2_{xy} \subset \mathbb R^3$ has the parametrisation $(u,v) \mapsto (u,v,0)$.
 	Hence, $\sigma_u = e_1$ and $\sigma_v = e_2$, hence the first fundamental form is $\dd{u}^2 + \dd{v}^2$.
+
 	We could also use polar coordinates, using $\sigma(r,\theta) = (r\cos\theta,r\sin\theta,0)$.
 	This parametrises the plane without the origin.
 	This gives $\sigma_r = (\cos\theta,\sin\theta,0)$ and $\sigma_\theta = (-r\sin\theta, r\cos\theta,0)$.
 	The first fundamental form is $\dd{r}^2 + r^2 \dd{\theta}^2$.
 \end{example}
-\begin{definition}
+
+\begin{definition}[Isometries]
 	Let $\Sigma, \Sigma'$ be smooth surfaces in $\mathbb R^3$.
-	We say that they are \textit{isometric} if there exists a diffeomorphism $f\colon \Sigma \to \Sigma'$ that preserves the lengths of all curves.
-	More formally, for every smooth curve $\gamma \colon (a,b) \to \Sigma$, the length of $\gamma$ is the same as the length of $f \circ \gamma$.
+	We say that they are \vocab{isometric} if there exists a diffeomorphism $f\colon \Sigma \to \Sigma'$ that preserves the lengths of all curves.
+	More formally, for every smooth curve $\gamma \colon (a,b) \to \Sigma$, $L_\Sigma(\gamma) = L_{\Sigma'}(f \circ \gamma)$.
 \end{definition}
+
 \begin{example}
 	Let $\Sigma' = f(\Sigma)$ where $f \colon \mathbb R^3 \to \mathbb R^3$ is a global isometry, or rigid motion, of $\mathbb R^3$; that is, $v \mapsto Av+b$ for an orthogonal matrix $A$.
-	These isometries preserve the Euclidean inner product on $\mathbb R^3$, hence $f$ preserves length.
+	These isometries preserve the Euclidean inner product on $\mathbb R^3$, hence $f$ preserves length and so it is an isometry.
+	\begin{align*}
+	   \norm{(f \circ \gamma)'(t)} &= \norm{A \gamma'(t)} \\
+	   &= \norm{\gamma'(t)}.  
+	\end{align*} 
 	However, in the definition, we need not map all of $\mathbb R^3$ to itself, just $\Sigma \to \Sigma'$.
 \end{example}
-\begin{definition}
-	We say that $\Sigma$ and $\Sigma'$ are \textit{locally isometric} near points $p \in \Sigma$ and $q \in \Sigma'$ if there exist open neighbourhoods $U$ of $p$ and $V$ of $q$ such that $U$ and $V$ are isometric.
-	We can also say that $\Sigma$ and $\Sigma'$ are locally isometric if they are locally isometric at all points; that is, each point of $\Sigma$ is locally isometric to some point on $\Sigma'$.
+
+Often we're interested in local statements.
+
+\begin{definition}[Locally Isometric]
+	We say that $\Sigma$ and $\Sigma'$ are \vocab{locally isometric} near points $p \in \Sigma$ and $q \in \Sigma'$ if there exist open neighbourhoods $U$ of $p$ and $V$ of $q$ such that $U$ and $V$ are isometric.
 \end{definition}
+
+We can also say that $\Sigma$ and $\Sigma'$ are locally isometric if they are locally isometric at all points; that is, each point of $\Sigma$ is locally isometric to some point on $\Sigma'$.
+
 \begin{lemma}
-	Smooth surfaces $\Sigma, \Sigma'$ in $\mathbb R^3$ are locally isometric near $p \in \Sigma$ and $q \in \Sigma'$ if and only if there exist allowable parametrisations $\sigma \colon V \to U \subset \Sigma$ and $\sigma' \colon V \to U' \subset \Sigma'$ such that the first fundamental forms are equivalent.
+	Smooth surfaces $\Sigma, \Sigma'$ in $\mathbb R^3$ are locally isometric near $p \in \Sigma$ and $q \in \Sigma'$ iff there exist allowable parametrisations $\sigma \colon V \to U \subset \Sigma$ and $\sigma' \colon V \to U' \subset \Sigma'$ such that the first fundamental forms are equal in $V$ ($E = E', F = F', G = G'$).
 \end{lemma}
+
+\begin{figure}[h] 
+    \centering 
+    \includegraphics[height=5cm]{04-locallyIsometric} 
+\end{figure}
+
 \begin{proof}
-	By definition, the first fundamental form of $\Sigma$ determines the lengths of all curves on $\Sigma$ that lie in $U$.
-	We will now show that lengths of curves determine the first fundamental form of a parametrisation.
+	By definition, the first fundamental form of $\Sigma$ determines the lengths of all curves on $\Sigma$ that lie in $\sigma(V) = U$.
+
+	$(\Longleftarrow)$: If we have $\sigma$ and $\sigma'$ with equal fundamental forms, then $\sigma' \circ \sigma\inv : U \to U'$ is an isometry since given curve $\gamma(t)$
+	\begin{align*}
+		\sigma\inv(\gamma(t)) &= (u(t), v(t)) \\
+		\norm{\frac{d}{dt} \underbracket{\sigma' \circ \sigma\inv}_f \circ \gamma}^2 &= \norm{\frac{d}{dt} \sigma'(u(t), v(t))}^2 \\
+		&= E' \dot{u}^2 + 2 F' \dot{u} \dot{v} + G' \dot{v}^2 \\
+		&= E \dot{u}^2 + 2 F \dot{u} \dot{v} + G \dot{v}^2 \\
+		&= \norm{\frac{d}{dt} \gamma(t)}^2 \\
+		\therefore L(\sigma' \circ \sigma\inv \circ \gamma) &= L(\gamma).
+	\end{align*} 
+
+	$(\implies)$: We shall first show that the lengths of curves in $U$ determine the first fundamental form of $\sigma$.
 	Given $\sigma \colon V \to U$, without loss of generality let $V = B(0,\delta)$ for some $\delta > 0$, where $\sigma(0) = p$.
 	Consider, for all $\varepsilon < \delta$, the curve
 	\begin{align*}
@@ -104,7 +142,47 @@ Note that $E, F, G$ depend only on $\sigma$ and not on $\gamma$.
 		\lambda_\varepsilon \colon [0,\varepsilon] \to U;\quad t \mapsto \sigma(t,t)
 	\end{align*}
 	which determines $\sqrt{(E+2F+G)(0,0)}$ which gives $F$ implicitly.
+
+	So if $f: U \to U'$ is a local isometry take any allowable parametrisation $\sigma' : V \to U'$ then $ = f\inv \circ \sigma'$ is s.t. the first fundamental form of $\sigma, \sigma'$ agree.
 \end{proof}
+
+\begin{example}
+	Consider the cone with angle $\arctan a$ to the vertical.
+	{\par
+		\centering 
+		\includegraphics[height=5cm]{04-cone} 
+	\par}
+	For $u > 0$ and $v \in (0,2\pi)$, we define
+	\begin{align*}
+		\sigma(u,v) = (au\cos v, au\sin v, u).
+	\end{align*}
+	This parametrises the cone excluding the line at $v = 0$. \\
+	The first fundamental form is
+	\begin{align*}
+		(1+a^2)\dd{u}^2 + a^2 u^2 \dd{v}^2
+	\end{align*}
+	Consider cutting the cone along the line $v = 0$ and flattening it into a plane sector.
+	{\par
+		\centering 
+		\includegraphics[height=5cm]{04-cone-unrolled} 
+	\par}
+	The circumference of the sector is $2 \pi a$ and the radius is $\sqrt{1+a^2}$, hence the angle traced out by the sector is $\theta_0 = \frac{2 \pi a}{\sqrt{1+a^2}}$.
+	We can parametrise this subset of the plane by
+	\begin{align*}
+		\sigma(r,\theta) = \qty(\sqrt{1+a^2} r\cos\qty(\frac{a\theta}{\sqrt{1+a^2}}), \sqrt{1+a^2} r\sin\qty(\frac{a\theta}{\sqrt{1+a^2}}), 0)
+	\end{align*}
+	for $r > 0$ and $\theta \in (0,2\pi)$.
+	We can then check that the first fundamental form here is
+	\begin{align*}
+		(1+a^2) \dd{r}^2 + r^2 a^2 \dd{\theta}^2
+	\end{align*}
+	which matches the first fundamental form for the cone itself.
+	Hence the cone and the plane are locally isometric.
+
+	However, the cone and plane are not globally isometric, since the two topological spaces are not homeomorphic, so no diffeomorphism that preserves lengths can be constructed.
+	An intuitive way to think about this is that the cone doesn't include the origin so shrinking any curve on the cone to $0$ leaves the cone whilst the same is not true in the plane, this is the notion of simple connectedness.
+\end{example}
+
 \begin{example}
 	The sphere of radius $a$, given by $\qty{x^2 + y^2 + z^2 = a^2}$, has an open set with allowable parametrisation
 	\begin{align*}
@@ -125,6 +203,7 @@ Note that $E, F, G$ depend only on $\sigma$ and not on $\gamma$.
 		a^2 \dd{u}^2 + a^2 \cos^2 u \dd{v}^2
 	\end{align*}
 \end{example}
+
 \begin{example}
 	Consider the surface of revolution given by a curve
 	\begin{align*}
@@ -144,47 +223,24 @@ Note that $E, F, G$ depend only on $\sigma$ and not on $\gamma$.
 		(f_u^2 + g_u^2) \dd{u}^2 + f^2 \dd{v}^2
 	\end{align*}
 \end{example}
-\begin{example}
-	Consider the cone with angle $\arctan a$ to the vertical.
-	For $u > 0$ and $v \in (0,2\pi)$, we define
-	\begin{align*}
-		\sigma(u,v) = (au\cos v, au\sin v, u)
-	\end{align*}
-	The first fundamental form is
-	\begin{align*}
-		(1+a^2)\dd{u}^2 + a^2 u^2 \dd{v}^2
-	\end{align*}
-	Consider cutting the cone along the line $v = 0$ and flattening it into a plane sector.
-	The circumference of the sector is $2 \pi a$ and the radius is $\sqrt{1+a^2}$, hence the angle traced out by the sector is $\theta_0 = \frac{2 \pi a}{\sqrt{1+a^2}}$.
-	We can parametrise this subset of the plane by
-	\begin{align*}
-		\sigma(r,\theta) = \qty(\sqrt{1+a^2} r\cos\qty(\frac{a\theta}{\sqrt{1+a^2}}), \sqrt{1+a^2} r\sin\qty(\frac{a\theta}{\sqrt{1+a^2}}), 0)
-	\end{align*}
-	for $r > 0$ and $\theta \in (0,2\pi)$.
-	We can then check that the first fundamental form here is
-	\begin{align*}
-		(1+a^2) \dd{r}^2 + r^2 a^2 \dd{\theta}^2
-	\end{align*}
-	which matches the first fundamental form for the cone itself.
-	Hence the cone and the plane are locally isometric.
-	However, the cone and plane are not globally isometric, since the two topological spaces are not homeomorphic, so no diffeomorphism that preserves lengths can be constructed.
-\end{example}
-\begin{lemma}
+
+\begin{lemma} \label{lem:2.3}
 	Let $\Sigma$ be a smooth surface in $\mathbb R^3$, and let $p \in \Sigma$.
-	Suppose we have two allowable parametrisations $\sigma \colon V \to U$ and $\sigma' \colon V' \to U$ for the same open neighbourhood of $p$.
-	The two parametrisations differ by a transition map $F = {\sigma'}^{-1} \circ \sigma$ which is a diffeomorphism of open subsets of $\mathbb R^2$.
+	Suppose we have two allowable parametrisations $\sigma \colon V \to U$ and $\sigma' \colon V' \to U$ s.t. $\sigma(0) = \sigma'(0) = p$ and U an open nbd of $p$.
+	The two parametrisations differ by a transition map $f = {\sigma'}^{-1} \circ \sigma$ which is a diffeomorphism of open subsets of $\mathbb R^2$.
 	There exist first fundamental forms for both parametrisations.
 	Then,
 	\begin{align*}
 		\begin{pmatrix}
 			E & F \\
 			F & G
-		\end{pmatrix} = (DF)^\tran \begin{pmatrix}
+		\end{pmatrix} = (Df)^\tran \begin{pmatrix}
 			E' & F' \\
 			F' & G'
-		\end{pmatrix} (DF)
+		\end{pmatrix} (Df)
 	\end{align*}
 \end{lemma}
+
 \begin{proof}
 	By definition,
 	\begin{align*}
@@ -196,62 +252,75 @@ Note that $E, F, G$ depend only on $\sigma$ and not on $\gamma$.
 			\sigma_v \cdot \sigma_u & \sigma_v \cdot \sigma_v
 		\end{pmatrix} = (D\sigma)^\tran (D\sigma)
 	\end{align*}
-	Now, $\sigma = \sigma' \circ F$ hence the result follows.
+	Since, $\sigma = \sigma' \circ F \implies D \sigma = D \sigma' Df$ so $(D\sigma)^\tran (D\sigma) = (D \sigma = D \sigma' Df)^\tran (D \sigma = D \sigma' Df) = (Df)^\tran (D\sigma')^\tran (D\sigma') (Df)$.
 \end{proof}
 
 \subsection{Conformality}
-If $v,w \in \mathbb R^3$, we have $v \cdot w = \abs{v} \cdot \abs{w} \cdot \cos\theta$.
+If $v,w \in \mathbb R^3$, we have $v \cdot w = \norm{v} \cdot \norm{w} \cdot \cos\theta$.
 This allows us to deduce the angle $\theta$ between two vectors given their dot product and lengths.
 This can also be done when $v,w$ are in the tangent plane $T_p \Sigma$, and then we can express the angle in terms of the first fundamental form.
 Let $\sigma$ be an allowable parametrisation for $\Sigma$ near $p$, such that $D\eval{\sigma}_0$ evaluates to $v$ at $v_0$ and $w$ at $w_0$.
 \begin{align*}
-	\cos \theta = \frac{v \cdot w}{\abs{v} \cdot \abs{w}} = \frac{I(v_0, w_0)}{\sqrt{I(v_0,v_0)} \sqrt{I(w_0,w_0)}}
+	\cos \theta &= \frac{v \cdot w}{\norm{v} \cdot \norm{w}} = \frac{I(v_0, w_0)}{\sqrt{I(v_0,v_0)} \sqrt{I(w_0,w_0)}} \\
+	I(v_0, w_0) &= v_0^\tran \begin{pmatrix}
+		E & F \\
+		F & G
+	\end{pmatrix} w_0.
 \end{align*}
 where $I$ denotes the first fundamental form of $\sigma$ at zero.
+
 \begin{lemma}
-	Let $\Sigma$ be a smooth surface in $\mathbb R^3$, and let $\sigma \colon V \to U$ be an allowable parametrisation of $\Sigma$ near $p$.
-	Then $\sigma$ is \textit{conformal} if $E = G$ and $F = 0$ in the first fundamental form.
+	Let $\Sigma$ be a smooth surface in $\mathbb R^3$, and let $\sigma \colon V \to U$ be an allowable parametrisation of $\Sigma$ near $p$. \\
+	Then $\sigma$ is \textit{conformal} (preserves angles) iff $E = G$ and $F = 0$ in the first fundamental form.
 \end{lemma}
+
 \begin{proof}
-	Consider curves $\gamma \colon t \mapsto (u(t), v(t))$ and $\widetilde \gamma \colon t \mapsto (\widetilde u(t), \widetilde v(t))$ in $V$, where $\gamma(0) = \widetilde \gamma(0) = 0 \in V$.
+	$(\implies)$: Consider curves $\gamma \colon t \mapsto (u(t), v(t))$ and $\widetilde \gamma \colon t \mapsto (\widetilde u(t), \widetilde v(t))$ in $V$, where $\gamma(0) = \widetilde \gamma(0) = 0 \in V$.
 	Let $\sigma$ be a parametrisation $V \to U \subset \Sigma$ such that $\sigma(0) = p \in \Sigma$.
 	Then the curves $\sigma \circ \gamma$ and $\sigma \circ \widetilde \gamma$ meet at angle $\theta$ on $\Sigma$, where
 	\begin{align*}
 		\cos \theta = \frac{E \dot u \dot {\widetilde u} + F \qty(\dot u \dot{\widetilde v} + \dot v \dot{\widetilde u}) + G \dot v \dot{\widetilde v}}{\sqrt{E \dot u^2 + 2F \dot u \dot v + G \dot v^2} \sqrt{E \dot{\widetilde u}^2 + 2F \dot{\widetilde u} \dot {\widetilde v} + G \dot{\widetilde v}^2}}
 	\end{align*}
 	In particular, if $\sigma$ is conformal, suppose $\gamma(t) = (t,0)$ and $\widetilde \gamma(t) = (0,t)$.
-	Then, we have that the curves meet at $\frac{\pi}{2}$ in $V$, so they meet at $\frac{\pi}{2}$ in $\Sigma$, so we find that $\cos \theta = 0 \implies F = 0$.
+	Then, we have that the curves meet at $\frac{\pi}{2}$ in $V$, so they meet at $\frac{\pi}{2}$ in $\Sigma$, so we find that $\cos \theta = 0 \implies F = 0$ as $\dot{u} = \dot{\widetilde v} = 1$ and $\dot{\widetilde u} = \dot{v} = 0$. \\
 	Similarly, if $\gamma(t) = (t,t)$ and $\widetilde \gamma(t) = (t,-t)$, we find $\cos \theta = 0 \implies E = G$.
 
-	Conversely, suppose there exists a parametrisation $\sigma$ such that $E = G$ and $F = 0$.
+	$(\Longleftarrow)$: Conversely, suppose there exists a parametrisation $\sigma$ such that $E = G$ and $F = 0$.
 	Then, in this parametrisation, the first fundamental form is of the form $\rho \qty(\dd{u}^2 + \dd{v}^2)$ for $\rho = E \colon V \to \mathbb R$.
-	Hence, the first fundamental form is a pointwise rescaling of the Euclidean fundamental form $\dd{u}^2 + \dd{v}^2$.
+	So \begin{align*}
+		\cos \theta = \frac{\dot u \dot {\widetilde u} + \dot v \dot{\widetilde v}}{\sqrt{\dot u^2 + \dot v^2} \sqrt{\dot{\widetilde u}^2 + \dot{\widetilde v}^2}},
+	\end{align*} i.e. angles don't change.
+
+	Alternatively, the first fundamental form is a pointwise rescaling of the Euclidean fundamental form $\dd{u}^2 + \dd{v}^2$.
 	Rescaling the plane does not change angles, so $\sigma$ is conformal as required.
 \end{proof}
+
 \begin{remark}
 	Conformality in charts is historically important for cartography.
 	The existence of conformal charts is closely connected to Riemann surfaces, which are topological surfaces locally modelled on $\mathbb C$ instead of $\mathbb R^2$.
 \end{remark}
 
 \subsection{Area}
-Recall that a parallelogram spanned by vectors $v, w$ has area $\abs{v \times w} = \inner{v,v}\inner{w,w} - \inner{v,w}^2$, where $\times$ denotes the cross product.
+Recall that a parallelogram spanned by vectors $v, w$ has area \\$\norm{v \times w} = \sqrt{\inner{v,v}\inner{w,w} - \inner{v,w}^2}$, where $\times$ denotes the cross product.
 Let $\sigma \colon V \to U \subset \Sigma$ be an allowable parametrisation with $\sigma(0) = p$, and consider $\sigma_u, \sigma_v \in T_p \Sigma$.
 The square of the area of the infinitesimal parallelogram spanned by $\sigma_u, \sigma_v$ is given by
 \begin{align*}
-	\inner{\sigma_u, \sigma_u}\inner{\sigma_v, \sigma_v} - \inner{\sigma_u, \sigma_v}^2 = EG - F^2
+	\qty(\inner{\sigma_u, \sigma_u}\inner{\sigma_v, \sigma_v} - \inner{\sigma_u, \sigma_v}^2)^{1 / 2} = \sqrt{EG - F^2}.
 \end{align*}
-\begin{definition}
+
+\begin{definition}[Area]
 	Let $\Sigma$ be a smooth surface in $\mathbb R^3$, and $\sigma \colon V \to U \subset \Sigma$ an allowable parametrisation.
 	Then,
 	\begin{align*}
 		\mathrm{area}(U) = \int_V \sqrt{EG - F^2} \dd{u}\dd{v}
 	\end{align*}
 \end{definition}
+
 \begin{remark}
 	This is independent of parametrisation.
 	Indeed, suppose $\sigma \colon V \to U$ and $\widetilde \sigma \colon \widetilde V \to U$ are allowable.
-	Then $\widetilde \sigma = \sigma \circ \varphi$ for some transition map $\varphi \colon \widetilde V \to V$.
-	We know then that
+	Then $\widetilde \sigma = \sigma \circ \varphi$ for some transition map $\varphi = \sigma\inv \circ \widetilde \sigma \colon \widetilde V \to V$.
+	We know then that by \Cref{lem:2.3}
 	\begin{align*}
 		\begin{pmatrix}
 			\widetilde E & \widetilde F \\
@@ -261,17 +330,20 @@ The square of the area of the infinitesimal parallelogram spanned by $\sigma_u, 
 			F & G
 		\end{pmatrix} (D\varphi)
 	\end{align*}
-	Hence,
+	Hence by taking determinants,
 	\begin{align*}
 		\sqrt{\widetilde E \widetilde G - \widetilde F^2} = \abs{\det(D\varphi)} \sqrt{EG - F^2}
 	\end{align*}
 	The usual change of variables formula for integration, combined with the fact that $\varphi$ is a diffeomorphism, gives
 	\begin{align*}
-		\int_V \sqrt{EG - F^2} \dd{u}\dd{v} = \int_{\widetilde V} \sqrt{\widetilde E \widetilde G - \widetilde F^2} \dd{u}\dd{v}
+		\int_V \sqrt{EG - F^2} \dd{u}\dd{v} = \int_{\widetilde V} \sqrt{\widetilde E \widetilde G - \widetilde F^2} \dd{\widetilde u}\dd{\widetilde v}.
 	\end{align*}
+	So $\operatorname{area}(U)$ is intrinsic and well-defined.
+
 	Note, we can compute the area of an open set $U \subset \Sigma$, not necessarily lying in a single parametrisation, by covering the set by a finite amount of open subsets which lie in single charts.
 	For instance, if $\Sigma$ is compact, we can compute the area of $\Sigma$ itself.
 \end{remark}
+
 \begin{example}
 	Consider the graph $\Sigma = \qty{(u,v,f(u,v)) \colon (u,v) \in \mathbb R^2}$, where $f \colon \mathbb R^2 \to \mathbb R$ is a smooth function.
 	This has a global parametrisation $\sigma(u,v) = (u,v,f(u,v))$.
@@ -284,13 +356,14 @@ The square of the area of the infinitesimal parallelogram spanned by $\sigma_u, 
 	\begin{align*}
 		\mathrm{area}(U_R) = \int_{B(0,R)} \sqrt{1+f_u^2+f_v^2} \dd{u}\dd{v} \geq \pi R^2
 	\end{align*}
-	with equality exactly when $f_u = f_v = 0$, so $f$ is constant and $U_R$ is contained inside a plane perpendicular to the $z$ axis.
+	with equality exactly when $f_u = f_v = 0$, which is when $f$ is constant and $U_R$ is contained inside a plane perpendicular to the $z$ axis.
 	Hence, the projection from $\Sigma$ to $\mathbb R^2_{xy}$ is not area-preserving, unless $\Sigma$ is a plane perpendicular to the $z$ axis.
 \end{example}
+
 \begin{example}
 	Consider the sphere enclosed exactly by a cylinder.
 	The cylindrically radial projection from the sphere to the cylinder is area-preserving.
-	This is explored further in the example sheets.
+	You will prove this in Sheet 2.
 \end{example}
 
 \subsection{Second fundamental form}

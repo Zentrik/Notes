@@ -326,28 +326,33 @@ Recall that an \textit{affine} subspace of a vector space is a translation of a 
 	Then $\gamma'(t) = \sigma_u u'(t) + \sigma_v v'(t)$ is in the image of $D \eval{\sigma}_t$.
 	Thus, $T_p \Sigma = \vecspan \qty{ \gamma'(0) \colon \gamma \text{ as above} }$.
 \end{proof}
-\begin{definition}
-	If $\Sigma$ is a smooth surface in $\mathbb R^3$ and $p \in \Sigma$, the \textit{normal direction} to $\Sigma$ at $p$ is $(T_p \Sigma)^\perp$, the Euclidean orthogonal complement to the tangent plane at $p$.
+
+\begin{definition}[Normal Direction]
+	If $\Sigma$ is a smooth surface in $\mathbb R^3$ and $p \in \Sigma$, the \vocab{normal direction} to $\Sigma$ at $p$ is $(T_p \Sigma)^\perp$, the Euclidean orthogonal complement to the tangent plane at $p$.
 \end{definition}
+
 \begin{remark}
 	For all $p \in \Sigma$, there exist exactly two normalised normal vectors.
 \end{remark}
-\begin{definition}
-	A smooth surface in $\mathbb R^3$ is \textit{two-sided} if it admits a continuous global choice of unit normal vector.
+
+\begin{definition}[Two-Sided]
+	A smooth surface in $\mathbb R^3$ is \vocab{two-sided} if it admits a continuous global choice of unit normal vector.
 \end{definition}
+
 \begin{lemma}
-	A smooth surface in $\mathbb R^3$ is orientable (as an abstract smooth surface) if and only if it is two-sided (as a smooth surface in $\mathbb R^3$).
+	A smooth surface in $\mathbb R^3$ is orientable (as an abstract smooth surface) iff it is two-sided (as a smooth surface in $\mathbb R^3$).
 \end{lemma}
+
 \begin{proof}
 	Let $\sigma \colon V \to U \subset \Sigma$ be an allowable parametrisation.
 	Let $\sigma(0) = p$.
-	We will define the positive unit normal with respect to $\sigma$ at $p$ to be the normal vector $n_\sigma(p)$ with the property that $\qty{\sigma_u, \sigma_v, n_\sigma(p)}$ and $\qty{e_1, e_2, e_3}$ are related by a positive determinant change of basis matrix, where $\qty{e_1, e_2, e_3}$ are the standard basis vectors.
+	We will define the positive unit normal with respect to $\sigma$ at $p$ to be the normal vector $n_\sigma(p)$ with the property that $\qty{\sigma_u, \sigma_v, n_\sigma(p)}$ and $\qty{e_1, e_2, e_3}$ are related by a positive determinant change of basis matrix (the two sets of vectors have the same orientation), where $\qty{e_1, e_2, e_3}$ are the standard basis vectors.
 	In other words,
 	\begin{align*}
 		n_\sigma(p) = \frac{\sigma_u \times \sigma_v}{\norm{\sigma_u \times \sigma_v}}
 	\end{align*}
 	Consider an alternative parametrisation $\widetilde \sigma \colon \widetilde V \to \widetilde U$, where $\widetilde \sigma(0) = p$, such that $\widetilde \sigma$ belongs to the same oriented and smooth atlas as $\sigma$.
-	Hence, $\sigma = \widetilde \sigma \circ \varphi$ for some transition map $\varphi$.
+	Hence, $\sigma = \widetilde \sigma \circ \varphi$ for some transition map $\varphi = \widetilde \sigma\inv \circ \sigma$.
 	Let
 	\begin{align*}
 		D \eval{\varphi}_0 = \begin{pmatrix}
@@ -364,13 +369,20 @@ Recall that an \textit{affine} subspace of a vector space is a translation of a 
 		\sigma_u \times \sigma_v = \det\qty(D \eval{\varphi}_0) \widetilde \sigma_u \times \widetilde \sigma_v \tag{$\dagger$}
 	\end{equation}
 	The determinant here is positive since the charts in question belong to an oriented atlas.
-	Thus, the positive normal depends on the orientation of $\Sigma$, but does not depend on the choice of parametrisation.
+	Thus the positive unit normal is intrinsic to the surface, it does not depend on the choice of parametrisation.
 	The expression for $n_\sigma(p)$ is continuous since the cross product is continuous, hence $\Sigma$ is two-sided.
 
-	Conversely, if $\Sigma$ is two-sided and there exists a global continuous choice of normal vector, we can consider the subatlas of the natural smooth atlas with the property that we allow $(U,\varphi)$ if the associated parametrisation $\sigma = \varphi^{-1}$ satisfies $\qty{\sigma_u, \sigma_v, n}$ is a positive basis for $\mathbb R^3$, where $n$ is the given choice of normal.
+	Conversely, if $\Sigma$ is two-sided, there exists a global continuous choice of normal vector, so we can consider the subatlas of the smooth atlas s.t we have a chart $(U,\varphi)$ with $\phi\inv = \sigma$ and $\qty{\sigma_u, \sigma_v, n}$ is an oriented basis of $\mathbb{R}^3$.
+	We can make $\qty{\sigma_u, \sigma_v, n}$ have positive orientation by negating $\sigma$.
 	By ($\dagger$), the transition maps between such charts are orientation-preserving.
 	Hence $\Sigma$ is orientable.
 \end{proof}
+
+\begin{remark}
+	Given $\gamma : (-\epsilon, \epsilon) \to \mathbb{R}^3$ smooth with $\Im(\gamma) \subset \Sigma$ and $\gamma(0) = p$.
+	$\gamma(t) = \sigma(u(t), v(t))$ so $\gamma'(0) = \eval{D \sigma}_0(u'(0), v'(0)) \in T_p \Sigma$.
+	This gives that $T_p \Sigma = \vecspan \qty{ \gamma'(0) \colon \gamma \text{ as above} } =$ ``tangent vectors to curves in $\Sigma$''.
+\end{remark} 
 
 \begin{lemma}
 	If $\Sigma$ is a smooth surface in $\mathbb R^3$ and $A \colon \mathbb R^3 \to \mathbb R^3$ is a smooth map which preserves $\Sigma$ setwise, then $\eval{DA}_p \in L(\mathbb R^3, \mathbb R^3)$ maps $T_p \Sigma$ to $T_{A(p)} \Sigma$ for $p \in \Sigma$.
@@ -385,20 +397,28 @@ Recall that an \textit{affine} subspace of a vector space is a translation of a 
 	\end{align*}
 \end{proof}
 
-\begin{example}
-	Let $S^2$ be the unit sphere.
+\begin{example}[Unit Sphere]
+	Let $S^2 \subset \mathbb{R}^3$ be the unit sphere.
 	The normal vector at $p$ is the line through the origin and $p$; indeed, since $SO_3$ acts transitively on $S^2$, it suffices to check at one point, such as the north pole.
 	We can choose the outward-facing normal vector to be the positive normal, denoted $n(p)$.
 	$S^2$ is two-sided by the construction of this normal vector, hence $S^2$ is orientable.
+
+	Alternatively, take any $\gamma : (-\epsilon, \epsilon) \to S^2$ with $\gamma(0) = p$.
+	$\norm{\gamma(t)}^2 = 1$, so differentiating at $t = 0$, $2 \inner{\gamma'(0), p} = 0$ so $(T_p S^2)^\perp = \mathbb{R} p = \{xp: x \in \mathbb{R}\}$.
+	Let $n(p) = p$, clearly a global continuous choice of normal vector so $S^2$ is 2-sided.
 \end{example}
-\begin{example}
+
+\begin{example}[M\"obius Band]
+	Walk around the unit circle in the $xy$-plane and take an open interval of length 1.
+	Rotate this line in the $cz$-plane as we move around the circle, s.t. it has rotated by $\frac{\theta}{2}$ after moving an angle $\theta$ in the circle (see picture).
+	After a full turn the segment returns to its original position but with end points inverted. \\
 	One embedding of the M\"obius band in $\mathbb R^3$ is
 	\begin{align*}
 		\sigma(t,\theta) = \qty(\qty(1 - t \sin \frac{\theta}{2})\cos \theta, \qty(1 - t \sin \frac{\theta}{2})\sin \theta, t \cos \frac{\theta}{2})
 	\end{align*}
-	where $(t,\theta) \in V_1 = \qty{t \in \qty(-\frac{1}{2}, \frac{1}{2}), \theta \in (0,2\pi)}$ or $(t,\theta) \in V_2 = \qty{t \in \qty(-\frac{1}{2}, \frac{1}{2}), \theta \in (-\pi, \pi)}$.
-	We begin with the unit circle $x^2 + y^2 = 1$, for $t = 0$.
-	Then, at each point on the circle, we consider an open interval of unit length, which will rotate as we move around the circle, such that at the point $\theta$ on the circle it has rotated by $\frac{\theta}{2}$.
+	where $(t,\theta) \in V_1 = \qty{t \in \qty(-\frac{1}{2}, \frac{1}{2}), \theta \in (0,2\pi)}$ or \\$(t,\theta) \in V_2 = \qty{t \in \qty(-\frac{1}{2}, \frac{1}{2}), \theta \in (-\pi, \pi)}$. \\
+	This gives us the standard M\"obius band parametrically, I don't think its worthwhile trying to understand why exactly it works or what the explanation even means.
+
 	We can check that if $\sigma_i$ is $\sigma$ on $V_i$, then $\sigma_i$ is allowable.
 	Further,
 	\begin{align*}

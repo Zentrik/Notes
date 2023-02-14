@@ -320,14 +320,14 @@ For instance, $\mathbb Z^\times = \qty{\pm 1}$ and $\mathbb Q^\times = \mathbb Q
 	Consider the bijection $\varphi$ between this quotient ring and the complex numbers given by $a+bX + (X^2 + 1) \mapsto a+bi$.
 	We can show that $\varphi$ is a ring homomorphism.
 	Indeed, it preserves addition, and $1 + (X^2 + 1) \mapsto 1$, so it suffices to check that multiplication is preserved.
-	\begin{align*}
-		\varphi((a+bX + (X^2 + 1)) \cdot (c+dX + (X^2 + 1))) & = \varphi((a+bX)(c+dX) + (X^2 + 1)) \\
-		& = \varphi(ac + (ad + bc)X + bd (X^2 + 1) - bd + (X^2 + 1)) \\
-		& = \varphi(ac-bd+(ad+bc)X + (X^2 + 1))                      \\
-		& = ac - bd + (ad + bc)i                                     \\
-		& = (a+bi)(c+di)                                             \\
-		& = \varphi((a+bX) + (X^2 + 1)) \varphi((c+dX) + (X^2 + 1))
-	\end{align*}
+	\begin{gather*}
+		\varphi((a+bX + (X^2 + 1)) \cdot (c+dX + (X^2 + 1))) = \varphi((a+bX)(c+dX) + (X^2 + 1)) \\
+		= \varphi(ac + (ad + bc)X + bd (X^2 + 1) - bd + (X^2 + 1)) \\
+		= \varphi(ac-bd+(ad+bc)X + (X^2 + 1))\\
+		= ac - bd + (ad + bc)i \\
+		= (a+bi)(c+di) \\
+		= \varphi((a+bX) + (X^2 + 1)) \varphi((c+dX) + (X^2 + 1))
+	\end{gather*}
 	Thus $\faktor{\mathbb R[X]}{(X^2 + 1)} \cong \mathbb C$.
 \end{example}
 
@@ -341,7 +341,7 @@ For instance, $\mathbb Z^\times = \qty{\pm 1}$ and $\mathbb Q^\times = \mathbb Q
 \end{theorem}
 
 \begin{proof}
-	We already saw that $\ker \varphi \triangleleft R$, \cref{lem:8.2}.
+	We already saw that $\ker \varphi \triangleleft R$, \Cref{lem:8.2}.
 
 	We know that $\Im \varphi \leq (S, +)$.
 	Now we show that $\Im \varphi$ is closed under multiplication.
@@ -642,7 +642,7 @@ So a maximal ideal is the largest proper ideal.
 
 \subsection{Prime ideals}
 \begin{definition}[Prime Ideals]
-	An ideal $I \triangleleft R$ is \vocab{prime} if $I \neq R$ and, for all $a,b \in R$ such that $ab \in I$, we have $a \in I$ or $b \in I$.
+	An ideal $I \triangleleft R$ is \vocab{prime} if $I \neq R$ and for all $a,b \in R$ such that $ab \in I$, we have $a \in I$ or $b \in I$.
 \end{definition}
 
 \begin{example}
