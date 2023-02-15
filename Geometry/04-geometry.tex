@@ -367,10 +367,12 @@ The square of the area of the infinitesimal parallelogram spanned by $\sigma_u, 
 \end{example}
 
 \subsection{Second fundamental form}
+Let's try to measure how much $\Sigma \subset \mathbb{R}^3$ deviates from its own tangent planes.
+
 Let $\sigma \colon V \to U \subset \Sigma$ be allowable.
 By using Taylor's theorem, we can write
 \begin{align*}
-	\sigma(u+h,v+\ell) = \sigma(u,v) + h \sigma_u(u,v) + \ell \sigma_v(u,v) + \frac{1}{2} \qty(h^2 \sigma_{uu}(u,v) + 2h\ell \sigma_{uv}(u,v) + \ell^2 \sigma_{vv}(u,v)) + O(h^3,\ell^3)
+	\sigma(u+h,v+\ell) &= \sigma(u,v) + h \sigma_u(u,v) + \ell \sigma_v(u,v) \\ &+ \frac{1}{2} \qty(h^2 \sigma_{uu}(u,v) + 2h\ell \sigma_{uv}(u,v) + \ell^2 \sigma_{vv}(u,v)) + O(h^3,\ell^3)
 \end{align*}
 where $h,\ell$ are small, and $(u+h,v+\ell) \in V$.
 Recall that if $p = \sigma(u,v)$, we have $T_p \Sigma = \genset{\qty{\sigma_u,\sigma_v}}$.
@@ -378,8 +380,9 @@ Hence, the orthogonal distance from $\sigma(u+h,v+\ell)$ to the affine tangent p
 \begin{align*}
 	\inner{n,\sigma(u+h,v+\ell) - \sigma(u,v)} = \frac{1}{2} \qty(\inner{n,\sigma_{uu}} h^2 + 2\inner{n,\sigma_{uv}} h\ell + \inner{n,\sigma_{vv}}\ell^2) + O(h^3,\ell^3)
 \end{align*}
-\begin{definition}
-	The \textit{second fundamental form} of $\Sigma$ in the allowable parametrisation $\sigma$ is the quadratic form
+
+\begin{definition}[Second Fundamental Form]
+	The \vocab{second fundamental form} of $\Sigma$ in the allowable parametrisation $\sigma$ is the quadratic form
 	\begin{align*}
 		L \dd{u}^2 + 2 M \dd{u} \dd{v} + N \dd{v}^2
 	\end{align*}
@@ -398,15 +401,18 @@ Hence, the orthogonal distance from $\sigma(u+h,v+\ell)$ to the affine tangent p
 			M & N
 		\end{pmatrix}
 	\end{align*}
-	which defined a quadratic form on $T_p \Sigma$ which varies smoothly in $p$.
+	which defines a quadratic form on $T_p \Sigma$ which varies smoothly in $p$.
 \end{definition}
-\begin{lemma}
+
+\begin{lemma} \label{lem:2.5}
 	Let $V$ be connected and $\sigma \colon V \to U \subset \Sigma$ be an allowable parametrisation such that the second fundamental form vanishes identically with respect to $\sigma$.
-	Then $U$ lies in an affine plane.
+	Then $U$ lies in an affine plane in $\mathbb{R}^3$.
 \end{lemma}
+
 \begin{remark}
 	The first fundamental form is a non-degenerate symmetric bilinear form on $T_p \Sigma$, whereas the second fundamental form may be degenerate.
 \end{remark}
+
 \begin{proof}
 	By definition,
 	\begin{align*}
@@ -418,12 +424,19 @@ Hence, the orthogonal distance from $\sigma(u+h,v+\ell)$ to the affine tangent p
 	\end{align*}
 	Some of these terms appear in the definition of the second fundamental form:
 	\begin{align*}
-		L = \inner{n,\sigma_{uu}} = -\inner{n_u, \sigma_u};\quad M = \inner{n,\sigma_{uv}} = -\inner{n_v, \sigma_u} = -\inner{n_u, \sigma_v};\quad N = \inner{n,\sigma_{vv}} = -\inner{n_v, \sigma_v}
+		L &= \inner{n,\sigma_{uu}} = -\inner{n_u, \sigma_u} \\
+		M &= \inner{n,\sigma_{uv}} = -\inner{n_v, \sigma_u} = -\inner{n_u, \sigma_v} \\
+		N &= \inner{n,\sigma_{vv}} = -\inner{n_v, \sigma_v}
 	\end{align*}
-	If the second fundamental form vanishes, then $n_u$ is orthogonal to $\sigma_u$, $\sigma_v$, and $n$ itself.
-	Since $\sigma_u, \sigma_v, n$ form a basis for $\mathbb R^3$, we have $n_u = 0$.
-	Similarly, $n_v = 0$, hence $n$ is constant by the mean value theorem.
+	If the second fundamental form vanishes, then $n_u$ is orthogonal to $\sigma_u$, $\sigma_v$.
+	Also $\inner{n, n} = 1$ so differentiating wrt $u$ we get $2\inner{n, n_u} = 0$ so $n_u$ is orthogonal to $n$ as well.
+	Since $\{\sigma_u, \sigma_v, n\}$ form a basis for $\mathbb R^3$, we have $n_u = 0$.
+	Similarly, $n_v = 0$, hence $n$ is constant by the mean value theorem ($V$ connected and by use of mean value inequality).
+
+	This implies that $\inner{\sigma, n}$ is constant as $\inner{\sigma, n_u} = \inner{\sigma_u, n} = \inner{\sigma, n_v} = \inner{\sigma_v, n} = 0$.
+	So $U$ is contained in a plane.
 \end{proof}
+
 \begin{remark}
 	The first fundamental form in parametrisation $\sigma$ can be written $(D \sigma)^\tran (D \sigma)$.
 	We can similarly write the second fundamental form as
@@ -431,30 +444,31 @@ Hence, the orthogonal distance from $\sigma(u+h,v+\ell)$ to the affine tangent p
 		-(Dn)^\tran (D\sigma) = \begin{pmatrix}
 			L & M \\
 			M & N
-		\end{pmatrix} = -\begin{pmatrix}
+		\end{pmatrix} = \begin{pmatrix}
 			n_u \cdot \sigma_u & n_u \cdot \sigma_v \\
 			n_v \cdot \sigma_u & n_v \cdot \sigma_v
-		\end{pmatrix}
+		\end{pmatrix}.
 	\end{align*}
-	Hence, if $\sigma \colon V \to \Sigma$ and $\widetilde \sigma \colon \widetilde V \to \Sigma$ are allowable parametrisations for an open set $U \subset \Sigma$ with transition map $\varphi \colon \widetilde V \to V$ given by $\varphi = \sigma^{-1} \circ \widetilde \sigma$, we can use the above expression to find
+	Hence, if $\sigma \colon V \to U \subset \Sigma$ and $\widetilde \sigma \colon \widetilde V \to U \subset \Sigma$ are allowable parametrisations for an open set $U \subset \Sigma$ with transition map $\varphi \colon \widetilde V \to V$ given by $\varphi = \sigma^{-1} \circ \widetilde \sigma$, then we know the normals are the same up to a sign by \Cref{lem:1.10} so
+	\begin{align*}
+		n_{\widetilde \sigma}(\widetilde u, \widetilde v) = \pm n_\sigma (\varphi(\widetilde u, \widetilde v))
+	\end{align*} 
+	In particular, if $\det (D \varphi) < 0$, we arrive at a negative sign.
+	Thus
 	\begin{align*}
 		\begin{pmatrix}
 			\widetilde L & \widetilde M \\
 			\widetilde M & \widetilde N
-		\end{pmatrix} = \pm (D\varphi)^\tran \begin{pmatrix}
+		\end{pmatrix} &= -(Dn_{\widetilde \sigma}) D \widetilde{\sigma} \\
+		&= \pm (D\varphi)^\tran \begin{pmatrix}
 			L & M \\
 			M & N
 		\end{pmatrix} (D\varphi)
 	\end{align*}
 	The change in sign depends on whether the transition map preserves or reverses orientation.
-	If the normal vectors agree, there is no negative sign.
-	\begin{align*}
-		\eval{n_{\sigma \circ \varphi}}_{(\widetilde u, \widetilde v)} = \pm \eval{n_\sigma}_{\varphi(\widetilde u, \widetilde v)}
-	\end{align*}
-	for $(\widetilde u, \widetilde v) \in \widetilde V$.
-	In particular, if $\det (D \varphi) < 0$, we arrive at a negative sign.
 	If we assume that $V, \widetilde V$ are connected, the determinant $\det (D \varphi)$ does not change sign.
 \end{remark}
+
 \begin{example}
 	Consider the cylinder with allowable parametrisation
 	\begin{align*}
@@ -472,23 +486,26 @@ Hence, the orthogonal distance from $\sigma(u+h,v+\ell)$ to the affine tangent p
 \end{example}
 
 \subsection{Gauss maps}
-\begin{definition}
+\begin{definition}[Gauss Map]
 	Let $\Sigma$ be a smooth oriented surface in $\mathbb R^3$.
-	The \textit{Gauss map} $n \colon \Sigma \to \mathbb S^2$ is the map $p \mapsto n(p)$, where the normal vector is normalised and hence lies in the unit sphere.
+	The \vocab{Gauss map} $n \colon \Sigma \to \mathbb S^2$\footnote{$\mathbb{S}^2 = \{x \in \mathbb{R}^3 : |x| = 1\}$} is the map $p \mapsto n(p)$, where the normal vector is defined by the orientation of $\Sigma$ and is normalised so it lies in the unit sphere.
 \end{definition}
+
 \begin{lemma}
 	The Gauss map is smooth.
 \end{lemma}
+
 \begin{proof}
 	Since smoothness is a local property, it suffices to check the smoothness of the map on an arbitrary parametrised part of $\Sigma$.
 	Let $\sigma \colon V \to U \subset \Sigma$ be allowable and compatible with a chosen orientation.
-	Then
+	Then at $\sigma(u, v) = p \in \Sigma$ and
 	\begin{align*}
-		n(p) = \frac{\sigma_u \times \sigma_v}{\norm{\sigma_u \times \sigma_v}}
+		n(\sigma(u, v)) = \frac{\sigma_u \times \sigma_v}{\norm{\sigma_u \times \sigma_v}}
 	\end{align*}
+	$n \circ \sigma : V \to \mathbb{S}^2 \subseteq R^3$ which is smooth since $\sigma$ is.
 	Since $\sigma$ is allowable, the denominator is non-vanishing.
-	Hence, $n(p)$ is smooth as required.
 \end{proof}
+
 \begin{remark}
 	If $\Sigma = F^{-1}(0)$ for some function $F \colon \mathbb R^3 \to \mathbb R$ with nonzero derivative $DF$ at all points $x \in \Sigma$ (which was required for $\Sigma$ to be a smooth surface in $\mathbb R^3$), then we can explicitly calculate the Gauss map to be
 	\begin{align*}
@@ -505,7 +522,7 @@ Hence, the orthogonal distance from $\sigma(u+h,v+\ell)$ to the affine tangent p
 	\end{align*}
 	Then, by the chain rule,
 	\begin{align*}
-		D\eval{n}_p(v) = (n \circ \gamma)'(0) \in T_{n(p)} S^2 = T_p \Sigma
+		D\eval{n}_p(v) = D\eval{n}_p(\gamma'(0)) = (n \circ \gamma)'(0) \in T_{n(p)} S^2 = T_p \Sigma
 	\end{align*}
 	Thus, the derivative of the Gauss map is $D\eval{n}_p \colon T_p \Sigma \to T_p \Sigma$.
 	This can be viewed as an endomorphism of a fixed (with respect to parametrisation choice) two-dimensional subspace of $\mathbb R^3$.
