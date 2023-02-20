@@ -128,13 +128,14 @@ We denote the set of units in $R$ by $R^\times$.
 	Hence $r \mid b$ as required.
 \end{proof}
 
-\begin{lemma}
-	Let $R$ be a principal ideal domain.
-	Then an element $r$ is irreducible if and only if $(r)$ is maximal.
+\begin{lemma} \label{lem:10.4}
+	Let $R$ be a principal ideal domain and $0 \neq r \in R$
+	Then $r$ is irreducible iff $(r)$ is maximal.
 \end{lemma}
+
 \begin{proof}
-	Suppose $r$ is irreducible.
-	Since $r$ is not a unit, $(r) \neq R$.
+	$(\implies)$:
+	Since $r$ is not a unit, $(r) \neq R$. \\
 	Suppose $(r) \subseteq J \subseteq R$ where $J$ is an ideal in $R$.
 	Since $R$ is a principal ideal domain, $J = (a)$ for some $a \in R$.
 	In particular, $r = ab$ for some $b \in R$, since $(r) \subseteq J$.
@@ -143,7 +144,7 @@ We denote the set of units in $R$ by $R^\times$.
 	If $b$ is a unit, then $a$ and $r$ are associates so they generate the same ideal.
 	Hence, $(r)$ is maximal.
 
-	Conversely, suppose $(r)$ is maximal.
+	$(\Longleftarrow)$:
 	Note that $r$ is not a unit, since $(r) \neq R$.
 	Suppose $r = ab$.
 	Then $(r) \subseteq (a) \subseteq R$.
@@ -151,37 +152,45 @@ We denote the set of units in $R$ by $R^\times$.
 	If $(a) = (r)$, then $b$ is a unit.
 	If $(a) = R$, then $a$ is a unit.
 	Hence $r$ is irreducible.
-	Note that this direction of the proof did not require that $R$ was a principal ideal domain, however $R$ must still be an integral domain.
 \end{proof}
+
 \begin{remark}
-	Let $R$ be a principal integral domain, and $0 \neq r \in R$.
-	Then, $(r)$ is maximal if and only if $r$ is irreducible, which is true if and only if $r$ is prime, which is equivalent to the fact that $(r)$ is prime.
-	Hence, the maximal ideals are the nonzero prime ideals.
-\end{remark}
-\begin{definition}
-	An integral domain is a \textit{Euclidean domain} if there exists a function $\varphi \colon R \setminus \qty{0} \to \mathbb Z_{\geq 0}$ such that, for all $a, b \in R$.
 	\begin{enumerate}
-		\item if $a \mid b$ then $\varphi(a) \leq \varphi(b)$;
-		\item if $b \neq 0$ then $\exists q, r \in R$ such that $a = bq + r$ and either $r = 0$ or $\varphi(r) < \varphi(b)$.
+		\item The converse direction doesn't depend on $R$ being a PID only that it's an integral domain.
+		\item If $R$ is a PID and $0 \neq r \in R$.
+		Then, $(r)$ is maximal iff $r$ is irreducible (\Cref{lem:10.4}), which is true iff $r$ is prime (\Cref{lem:10.2,prp:10.3}), which is equivalent to the fact that $(r)$ is prime (\Cref{lem:10.1}).
+		Hence, the maximal ideals are the nonzero prime ideals.
+	\end{enumerate} 
+\end{remark}
+
+\begin{definition}[Euclidean Domain]
+	An integral domain is a \vocab{Euclidean domain} if there exists a function $\varphi \colon R \setminus \qty{0} \to \mathbb Z_{\geq 0}$ such that, for all $a, b \in R$.
+	\begin{enumerate}
+		\item If $a \mid b$ then $\varphi(a) \leq \varphi(b)$;
+		\item If $b \neq 0$ then $\exists \; q, r \in R$ such that $a = bq + r$ and either $r = 0$ or $\varphi(r) < \varphi(b)$.
 	\end{enumerate}
-	Such a $\varphi$ is called a \textit{Euclidean function}.
+	Such a $\varphi$ is called a \vocab{Euclidean function}.
 \end{definition}
+
 \begin{example}
 	$\mathbb Z$ is a Euclidean domain, where the Euclidean function $\varphi$ is the absolute value function.
 \end{example}
-\begin{proposition}
+
+\begin{proposition} \label{prp:10.5}
 	Euclidean domains are principal ideal domains.
 \end{proposition}
+
 \begin{proof}
 	Let $R$ have Euclidean function $\varphi$.
-	Let $I \triangleleft R$ be a nonzero ideal.
+	Let $I \triangleleft R$ be a nonzero ideal. \\
 	Let $b \in I \setminus \qty{0}$ that minimises $\varphi(b)$.
-	Then $(b) \subseteq I$.
+	Then $(b) \subseteq I$. \\
 	For any element $a \in I$, we can use the Euclidean algorithm to show $a = bq + r$ where $r = 0$ or $\varphi(r) < \varphi(b)$.
 	But since $r = a - bq \in I$, $\varphi(r)$ cannot be lower than the minimal element $\varphi(b)$.
 	Thus $r = 0$, so $a = bq$.
 	Hence, $I = (b)$, so all ideals are principal.
 \end{proof}
+
 \begin{remark}
 	In the above proof, only the second property of the Euclidean function was used.
 	The first property is included in the definition since it will allow us to easily describe the units in the ring.
@@ -190,16 +199,21 @@ We denote the set of units in $R$ by $R^\times$.
 	\end{align*}
 	It can be shown that, if there exists a function $\varphi$ satisfying (ii), there exists a (possibly not unique) function $\varphi'$ satisfying (i) and (ii).
 \end{remark}
+
 \begin{example}
 	Let $F$ be a field.
 	Then $F[X]$ is a Euclidean domain with Euclidean function $\varphi(f) = \mathrm{deg}(f)$.
-	We have already proven the requisite properties of Euclidean functions.
+	The second property of Euclidean domains is proven using \Cref{prp:7.1} whilst the first is easy to check.
 
-	The ring $R = \mathbb Z[i]$ is a Euclidean domain with $\varphi(u+iv) = N(u+iv) = u^2+v^2$.
-	Since the norm is multiplicative, $N(zw) = N(z)N(w)$ which immediately gives property (i) in the definition.
+	So $F[X]$ is a PID by \Cref{prp:10.5}
+\end{example}
+
+\begin{example}
+	The ring $R = \mathbb Z[i]$ is a Euclidean domain with $\varphi(u+iv) = N(u+iv) = u^2+v^2$. \\
+	Since the norm is multiplicative, $N(zw) = N(z)N(w)$ which immediately gives property (i) in the definition. \\
 	Consider $z, w \in \mathbb Z[i]$ where $w \neq 0$.
 	Consider $\frac{z}{w} \in \mathbb C$.
-	This has distance less than 1 from the nearest element $q$ of $R$.
+	This has distance less than 1 from the nearest element $q$ of $R$, i.e. $|z / w - q| < 1$ as $R$ is every complex point with integer components. \\
 	Let $r = z - w q \in R$.
 	Then $z = w q + r$ where
 	\begin{align*}
@@ -207,19 +221,25 @@ We denote the set of units in $R$ by $R^\times$.
 	\end{align*}
 	So property (ii) is satisfied.
 
-	Hence $F[X]$ and $\mathbb Z[i]$ are principal ideal domains.
-\end{example}
+	So $\mathbb Z[i]$ is a PID by \Cref{prp:10.5}
+\end{example} 
+
 \begin{example}
 	Let $A$ be a nonzero $n \times n$ matrix over a field $F$.
 	Let $I = \qty{f \in F[X] \colon f(A) = 0}$.
+
 	$I$ is an ideal.
 	Indeed, if $f, g \in I$, then $(f-g)(A) = f(A) - g(A) = 0$, and for $f \in I$ and $g \in F[X]$, we have $(f \cdot g)(A) = f(A) \cdot g(A) = 0$ as required.
+
 	Since $F[X]$ is a principal ideal domain, $I = (f)$ for some polynomial $f \in F[X]$.
-	All units in $F[X]$ are the nonzero constant polynomials.
+	All units in $F[X]$ are the nonzero constant polynomials\footnote{Can check by looking at the first property of a Euclidean domain.}.
 	Hence, the polynomial of smallest degree in $I$ is unique up to multiplication by a unit, so without loss of generality we may assume $f$ is monic.
-	This yields the minimal polynomial of $A$.
+
+	Then for $g \in F[X]$, $g(A) = 0 \iff g \in I = (f)$, i.e. $f \mid g$.
+	Thus $f$ is the minimal polynomial of $A$.
 \end{example}
-\begin{example}
+
+\begin{example}[Field of order $8$]
 	Let $\mathbb F_2$ be the finite field of order 2, which is isomorphic to $\faktor{\mathbb Z}{2 \mathbb Z}$.
 	Let $f(X)$ be the polynomial $X^3 + X + 1 \in \mathbb F_2[X]$.
 
@@ -227,17 +247,18 @@ We denote the set of units in $R$ by $R^\times$.
 	Suppose $f = gh$ where the degrees of $g, h$ are positive.
 	Since the degree of $f$ is 3, one of $g, h$ must have degree 1.
 	Hence $f$ has a root.
-	But we can check that $f(0) = f(1) = 1$ so $f$ has no root in $\mathbb F_2$.
+	But we can check that $f(0) = f(1) = 1$\footnote{Note you need to check $f(1) = f(3) = f(5) = \dots = 0$ in $\mathbb{Z}$ i.e. $f(1) = 0$ in $\mathbb{F}_2$.} so $f$ has no root in $\mathbb F_2$.
 	Hence $f$ is irreducible as required.
 
-	Since $\mathbb F_2[X]$ is a principal ideal domain, we have that $(f) \triangleleft \mathbb F_2[X]$ is a maximal ideal.
+	Since $\mathbb F_2[X]$ is a principal ideal domain, we have that $(f) \triangleleft \mathbb F_2[X]$ is a maximal ideal by \Cref{lem:10.4}.
 	Hence, $\faktor{\mathbb F_2[X]}{(f)}$ is a field.
 	We can verify that this field has order 8, using the Euclidean algorithm.
-	Any element in this quotient has coset representative $aX^2 + bX + c$ for $a,b,c \in \mathbb F_2$.
+	Any element in this quotient is $aX^2 + bX + c + (f)$ for $a,b,c \in \mathbb F_2$.
 	We can show that all 8 of these possibilities yields different polynomials.
 	So we have constructed a field of order 8.
 	This technique will be explored further in Part II Galois Theory.
 \end{example}
+
 \begin{example}
 	The ring $\mathbb Z[X]$ is not a principal ideal domain.
 	Consider the ideal $I = (2, X) \triangleleft \mathbb Z[X]$.
@@ -254,6 +275,7 @@ We denote the set of units in $R$ by $R^\times$.
 \end{example}
 
 \subsection{Unique factorisation domains}
+
 \begin{definition}
 	An integral domain is a \textit{unique factorisation domain} if
 	\begin{enumerate}
@@ -261,10 +283,12 @@ We denote the set of units in $R$ by $R^\times$.
 		\item if $p_1 \cdots p_m = q_1 \cdots q_n$ where $p_i, q_i$ are irreducible, then $m = n$, and $p_i, q_i$ are associates, up to reordering.
 	\end{enumerate}
 \end{definition}
+
 \begin{proposition}
 	Let $R$ be an integral domain satisfying property (i) above (every nonzero, non-unit element is a product of irreducibles).
 	Then $R$ is a unique factorisation domain if and only if every irreducible is prime.
 \end{proposition}
+
 \begin{proof}
 	Suppose $R$ is a unique factorisation domain.
 	Let $p \in R$ be irreducible, and $p \mid ab$.
