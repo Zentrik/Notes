@@ -271,33 +271,37 @@ We denote the set of units in $R$ by $R^\times$.
 	By comparing degrees, the degrees of $f$ and $g$ must be zero, since $\mathbb Z$ is an integral domain.
 	Hence $f$ is an integer, so $f = \pm 1$ or $f = \pm 2$.
 	If $f = \pm 1$ then $I = \mathbb Z[X]$, and if $f = \pm 2$ then $I = 2\mathbb Z[X]$.
-	These both lead to contradictions, since $1 \not\in I$ and $X \in I$.
+	These both lead to contradictions, since $1 \in I$ and $X \not\in I$ respectively.
 \end{example}
 
 \subsection{Unique factorisation domains}
 
-\begin{definition}
-	An integral domain is a \textit{unique factorisation domain} if
+\begin{definition}[Unique Factorisation Domain]
+	An integral domain is a \vocab{unique factorisation domain} (UFD) if
 	\begin{enumerate}
-		\item every nonzero, non-unit element is a product of irreducibles;
-		\item if $p_1 \cdots p_m = q_1 \cdots q_n$ where $p_i, q_i$ are irreducible, then $m = n$, and $p_i, q_i$ are associates, up to reordering.
+		\item Every nonzero, non-unit element is a product of irreducibles;
+		\item If $p_1 \cdots p_m = q_1 \cdots q_n$ where $p_i, q_i$ are irreducible, then $m = n$, and $p_i, q_i$ are associates, up to reordering.
 	\end{enumerate}
 \end{definition}
 
-\begin{proposition}
-	Let $R$ be an integral domain satisfying property (i) above (every nonzero, non-unit element is a product of irreducibles).
-	Then $R$ is a unique factorisation domain if and only if every irreducible is prime.
+\underline{GOAL}: Show PID $\implies$ UFD.
+
+\begin{remark}
+	Any field is a UFD as there are no non-unit elements.
+\end{remark} 
+
+\begin{proposition} \label{prp:10.6}
+	Let $R$ be an integral domain satisfying property (1) above (every nonzero, non-unit element is a product of irreducibles).
+	Then $R$ is a unique factorisation domain iff every irreducible is prime.
 \end{proposition}
 
 \begin{proof}
-	Suppose $R$ is a unique factorisation domain.
-	Let $p \in R$ be irreducible, and $p \mid ab$.
+	$(\implies)$: Let $p \in R$ be irreducible, and $p \mid ab$.
 	Then $ab = pc$ for some $c \in R$.
-	Writing $a, b, c$ as products of irreducibles, it follows from uniqueness of factorisation that $p \mid a$ or $p \mid b$.
+	Writing $a, b, c$ as products of irreducibles, it follows from uniqueness of factorisation (2) that $p \mid a$ or $p \mid b$.
 	Hence $p$ is prime.
 
-	Conversely, suppose every irreducible is prime.
-	Suppose $p_1 \cdots p_m = q_1 \cdots q_n$ where $p_i, q_i$ are irreducible and hence prime.
+	$(\Longleftarrow)$: Suppose $p_1 \cdots p_m = q_1 \cdots q_n$ where $p_i, q_i$ are irreducible and hence prime.
 	Since $p_1 \mid q_1 \cdots q_n$, we have $p_1 \mid q_i$ for some $i$.
 	After reordering, we may assume that $p_1 \mid q_1$, so $p_1 u = q_1$ for $u \in R$.
 	Since $q_1$ is irreducible, $u$ is a unit since $p_1$ cannot be a unit.
@@ -307,120 +311,140 @@ We denote the set of units in $R$ by $R^\times$.
 	Inductively, all $p_i$ and $q_i$ are associates, for each $i$.
 	Hence $R$ is a unique factorisation domain.
 \end{proof}
-\begin{definition}
+
+\begin{definition}[Noetherian]
 	Let $R$ be a ring.
-	Suppose, for all nested sequences of ideals in $R$ written $I_1 \subseteq I_2 \subseteq \cdots$, there exists $N$ such that $I_n = I_{n+1}$ for all $n \geq N$.
-	Then, we say that $R$ is a \textit{Noetherian} ring.
+	Suppose, for all nested sequences of ideals in $R$ written $I_1 \subseteq I_2 \subseteq \cdots$, $\exists \; N$ such that $I_n = I_{n+1}$ for all $n \geq N$.
+	Then, we say that $R$ is a \vocab{Noetherian} ring.
 \end{definition}
+
 This condition is known as the `ascending chain condition'.
 In other words, we cannot infinitely nest distinct ideals in a Noetherian ring.
-\begin{lemma}
+
+\begin{lemma} \label{lem:10.7}
 	Principal ideal domains are Noetherian rings.
 \end{lemma}
+
 \begin{proof}
 	Let $I = \bigcup_{i=1}^\infty I_i$.
-	Then, $I$ is an ideal in $R$.
+	Then, $I$ is an ideal in $R$ (Sheet 2).
 	Since $R$ is a principal ideal domain, $I = (a)$ for some $a \in R$.
 	Then $a \in \bigcup_{i=1}^\infty I_i$, so in particular $a \in I_N$ for some $N$.
 	But then for all $n \geq N$, $(a) \subseteq I_N \subseteq I_{n} \subseteq I_{n+1} \subseteq I = (a)$.
 	So all inclusions are equalities, so in particular $I_n = I_{n+1}$.
 \end{proof}
-\begin{theorem}
+
+\begin{theorem} \label{thm:10.8}
 	If $R$ is a principal ideal domain, then it is a unique factorisation domain.
 \end{theorem}
+
 \begin{proof}
-	First, we verify property (i), that every nonzero, non-unit element is a product of irreducibles.
+	First, we verify property (1) of UFD, that every nonzero, non-unit element is a product of irreducibles.
 	Let $x \neq 0$ be an element of $R$ which is not a unit.
 	Suppose $x$ does not factor as a product of irreducibles.
-	This implies in particular that $x$ is not irreducible.
-	By definition, we can write $x$ as the product of two elements $x_1, y_1$ where $x_1, y_1$ are not units.
-	Then either $x_1$ or $y_1$ is not a product of irreducibles, so without loss of generality we can suppose $x_1$ is not a product of irreducibles.
-	We have $(x) \subset (x_1)$.
+	This implies that $x$ is not irreducible.
+	By definition of irreducibility, we can write $x$ as the product of two elements $x_1, y_1$ where $x_1, y_1$ are not units.
+	Then either $x_1$ or $y_1$ is not a product of irreducibles, so wlog we can suppose $x_1$ is not a product of irreducibles.
+	We have $(x) \subseteq (x_1)$.
 	This inclusion is strict, since $y_1$ is not a unit.
-	Now, we can write $x_1 = x_2 y_2$ where $x_2$ is not a unit, and inductively we can create $(x) \subset (x_1) \subset (x_2) \subset \cdots$.
-	But $R$ is Noetherian, so this is a contradiction.
+	Now, we can write $x_1 = x_2 y_2$ where $x_2, y_2$ are not units, and inductively we can create $(x) \subsetneq (x_1) \subsetneq (x_2) \subsetneq \cdots$.
+	But $R$ is Noetherian, so this is a contradiction to \Cref{lem:10.7}.
 	So every nonzero, non-unit element is indeed a product of irreducibles.
 
-	By the proposition above, it suffices to show that every irreducible is prime.
-	This has already been shown previously.
+	By \Cref{prp:10.6}, it suffices to show that every irreducible is prime.
+	This has already been shown previously by \Cref{prp:10.3}.
 	Hence $R$ is a unique factorisation domain.
 \end{proof}
+
 \begin{example}
-	We have shown that all Euclidean domains are principal ideal domains, and all principal ideal domains are unique factorisation domains, and all unique factorisation domains are integral domains.
+	We have shown that ED $\implies$ PID $\implies$ UFD $\implies$ UFD.
 	We now provide examples for counterexamples to the converses.
 
-	The ring $\faktor{\mathbb Z}{4\mathbb Z}$ is not an integral domain since $2$ is a zero divisor.
+	The ring $\faktor{\mathbb Z}{4\mathbb Z}$ is not an integral domain since $2$ is a zero divisor, hence it is not a ED, PID or UFD either.
 
-	The ring $\mathbb Z[\sqrt{-5}] \leq \mathbb C$ is integral, but not a unique factorisation domain.
+	The ring $\mathbb Z[\sqrt{-5}] \leq \mathbb C$ is integral, but not a unique factorisation domain and hence not ED or PID.
 
 	The ring $\mathbb Z[X]$ has been shown to be not a principal ideal domain.
 	We can show using later results that this is a unique factorisation domain.
 
 	We can construct the ring $\mathbb Z\qty[\frac{1+\sqrt{-19}}{2}]$, which can be shown to be not a Euclidean domain, but is a principal ideal domain.
-	This proof is beyond the scope of Part IB Groups, Rings and Modules, but will be proved in Part II Number Fields.
+	This will be proved in Part II Number Fields.
 
 	Finally, $\mathbb Z[i]$ is a Euclidean domain, and is hence a principal ideal domain, a unique factorisation domain, and an integral domain.
 \end{example}
-\begin{definition}
+
+\begin{definition}[Common Divisors and Multiples]
 	Let $R$ be an integral domain.
 	\begin{enumerate}
-		\item $d \in R$ is a \textit{common divisor} of $a_1, \dots, a_n \in R$ if $d \mid a_i$ for all $i$;
-		\item $d \in R$ is a \textit{greatest common divisor} of $a_1, \dots, a_n$ if for all common divisors $d'$, we have $d' \mid d$;
-		\item $m \in R$ is a \textit{common multiple} of $a_1, \dots, a_n$ if $a_i \mid m$ for all $i$;
-		\item $m \in R$ is a \textit{least common multiple} of $a_1, \dots, a_n$ if for all common multiples $m'$, we have $m \mid m'$.
+		\item $d \in R$ is a \vocab{common divisor} of $a_1, \dots, a_n \in R$ if $d \mid a_i$ for all $i$;
+		\item $d \in R$ is a \vocab{greatest common divisor} of $a_1, \dots, a_n$ if for all common divisors $d'$, we have $d' \mid d$;
+		\item $m \in R$ is a \vocab{common multiple} of $a_1, \dots, a_n$ if $a_i \mid m$ for all $i$;
+		\item $m \in R$ is a \vocab{least common multiple} of $a_1, \dots, a_n$ if for all common multiples $m'$, we have $m \mid m'$.
 	\end{enumerate}
 \end{definition}
+
+\begin{warning}
+	These do not need to exist in a given ring.
+\end{warning} 
+
 \begin{remark}
 	Greatest common divisors and lowest common multiples are unique up to associates, if they exist.
 \end{remark}
-\begin{proposition}
+
+\begin{proposition} \label{prp:10.9}
 	In unique factorisation domains, greatest common divisors and least common multiples always exist.
 \end{proposition}
+
 \begin{proof}
 	Let $a_i = u_i \prod_j p_j^{n_{ij}}$ where the $p_j$ are irreducible and pairwise non-associate, $u_i$ is a unit, and $n_{ij} \in \mathbb Z_{\geq 0}$.
 	We claim that $d = \prod_j p_j^{m_j}$, where $m_j = \min_{1 \leq i \leq n} n_{ij}$, is the greatest common divisor.
 	Certainly $d$ is a common divisor.
-	If $d'$ is a common divisor, then $d'$ can be written as a product of irreducibles, which will be denoted $d' = w \prod_j p_i^{t_j}$.
+	If $d'$ is a common divisor, then $d'$ can be written as a product of irreducibles, which will be denoted $d' = w \prod_j p_i^{t_j}$ for a unit $w$.
 	We can see that $t_j \leq n_{ij}$ for all $i$, so in particular, $t_j \leq m_j$.
 	This implies $d' \mid d$.
 	Hence $d$ is a greatest common divisor.
 	The argument for the least common multiple is similar, replacing minima with maxima.
 \end{proof}
 
-\subsection{Factorisation in polynomial rings}
-\begin{theorem}
+\section{Factorisation in polynomial rings}
+\begin{theorem} \label{thm:11.1}
 	Let $R$ be a unique factorisation domain.
 	Then $R[X]$ is also a unique factorisation domain.
 \end{theorem}
-The proof for this theorem will require a number of key lemmas.
+The \hyperref[prf:11.1]{proof} for this theorem will require a number of key lemmas.
 In this subsection, $R$ will denote a unique factorisation domain, with field of fractions $F$.
 We have $R[X] \leq F[X]$.
 Since polynomial rings over fields are Euclidean domains, $F[X]$ is a principal ideal domain, and hence a unique factorisation domain.
 This does not immediately imply that $R[X]$ is a unique factorisation domain, however.
-\begin{definition}
-	The \textit{content} of a polynomial $f = \sum_{i=0}^n a_i X^i \in R[X]$ is $c(f) = \mathrm{gcd}\qty{a_0, \dots, a_n}$.
-	This is well-defined up to multiplication by a unit.
 
-	We say that $f$ is \textit{primitive} if $c(f)$ is a unit.
+\begin{definition}[Content]
+	The \vocab{content} of a polynomial $f = \sum_{i=0}^n a_i X^i \in R[X]$ is $c(f) = \mathrm{gcd}\qty{a_0, \dots, a_n}$.
+	This is well-defined up to multiplication by a unit.
 \end{definition}
-\begin{lemma}
+
+\begin{definition}[Primitive]
+	We say that $f$ is \vocab{primitive} if $c(f)$ is a unit.
+\end{definition} 
+
+\begin{lemma} \label{lem:11.2}
 	The product of primitive polynomials is primitive.
 	Further, for $f, g \in R[X]$, $c(fg)$ and $c(f)c(g)$ are associates.
 \end{lemma}
+
 \begin{proof}
 	Let $f = \sum_{i=0}^n a_i X^i$ and $g = \sum_{i=0}^m b_i X^i$.
 	Suppose $fg$ is not primitive, so $c(fg)$ is not a unit.
 	This implies that there exists a prime $p$ such that $p \mid c(fg)$.
 	Since $f, g$ are primitive, $p \nmid c(f)$ and $p \nmid c(g)$.
 
-	Suppose $p$ does not divide all of the $a_k$ or the $b_\ell$.
+	$p$ does not divide all of the $a_k$ or the $b_\ell$.
 	Let $k, \ell$ be the smallest values such that $p \nmid a_k$ and $p \nmid b_\ell$.
 	Then, the coefficient of $X^{k+\ell}$ in $fg$ is given by
 	\begin{align*}
 		\sum_{i+j=k+\ell} a_i b_j = \underbrace{\cdots + a_{k-1} b_{\ell+1}}_{\text{divisible by } p} + a_k b_\ell + \underbrace{a_{k+1} b_{\ell - 1} + \cdots}_{\text{divisible by } p}
 	\end{align*}
-	Thus $p \mid a_k b_\ell$.
-	This is a contradiction as we have $p \mid a_k$ or $p \mid b_\ell$.
+	Thus $p \mid a_k b_\ell$ as $p \mid c(fg)$.
+	This implies $p \mid a_k$ or $p \mid b_\ell$ as $p$ prime \Lightning.
 
 	To prove the second part, let $f = c(f) f_0$ for some $f_0 \in R[X]$.
 	Here, $f_0$ is primitive.
@@ -428,21 +452,25 @@ This does not immediately imply that $R[X]$ is a unique factorisation domain, ho
 	Thus $fg = c(f) c(g) f_0 g_0$.
 	The expression $f_0 g_0$ is a primitive polynomial by the first part, so $c(fg)$ is equal to $c(f) c(g)$ up to associates.
 \end{proof}
-\begin{corollary}
+
+\begin{corollary} \label{cor:11.3}
 	If $p \in R$ is prime in $R$, then $p$ is prime in $R[X]$.
 \end{corollary}
+
 \begin{proof}
-	Since $R$ is an integral domain, we have $R[X]^\times = R^\times$, so $p$ is not a unit.
+	Since $R$ is an integral domain, we have $R[X]^\times = R^\times$\footnote{Suppose $a, b \in R[X]$ s.t. $ab = 1$ then as degrees of polynomials add under multiplication $\deg a = \deg b = 0$ so $a, b \in R$.}, so $p$ is not a unit.
 	Let $f \in R[X]$.
-	Then $p \mid f$ in $R[X]$ if and only if $p \mid c(f)$ in $R$.
-	Thus, if $p \mid gh$ in $R[X]$, we have $p \mid c(gh) = c(g) c(h)$.
+	Then $p \mid f$ in $R[X] \iff p \mid c(f)$ in $R$.
+	Thus, if $p \mid gh$ in $R[X]$, we have $p \mid c(gh) =\footnote{When we use equality with contents, we implicitly mean they are associates.} c(g) c(h)$.
 	In particular, since $p$ is prime in $R$, we have $p \mid c(g)$ or $p \mid c(h)$, so $p \mid g$ or $p \mid h$.
 	So $p$ is prime in $R[X]$.
 \end{proof}
-\begin{lemma}
-	Let $f,g \in R[X]$, where $g$ is primitive.
+
+\begin{lemma} \label{lem:11.4}
+	Let $f, g \in R[X]$, where $g$ is primitive.
 	Then if $g \mid f$ in $F[X]$, then $g \mid f$ in $R[X]$.
 \end{lemma}
+
 \begin{proof}
 	Let $f = gh$, where $h \in F[X]$.
 	We can find a nonzero $a \in R$, such that $ah \in R[X]$.
@@ -454,35 +482,43 @@ This does not immediately imply that $R[X]$ is a unique factorisation domain, ho
 	This implies $h \in R[X]$.
 	Hence $g \mid f$ in $R[X]$.
 \end{proof}
-\begin{lemma}[Gauss' lemma]
+
+\begin{lemma}[Gauss' lemma] \label{lem:Gauss}
 	Let $f \in R[X]$ be primitive.
 	Then if $f$ is irreducible in $R[X]$, we have that $f$ is irreducible in $F[X]$.
 \end{lemma}
+
 \begin{proof}
-	Since $f \in R[X]$ is irreducible and primitive, its degree must be larger than zero.
+	Since $f \in R[X]$ is irreducible and primitive, its degree must be larger than zero\footnote{If $\deg f = 0$ and $f$ primitive, $f$ is a unit but this contradicts it being irreducible.}.
 	Hence $f$ is not a unit in $F[X]$.
-	Suppose $f$ is not irreducible in $F[X]$, so $f = gh$ for $g,h \in F[X]$ with degree larger than zero.
+
+	Suppose $f$ is not irreducible in $F[X]$, so $f = gh$ for $g,h \in F[X]$ with degrees larger than zero.
 	Let $\lambda \in F^\times$ such that $\lambda\inv g \in R[X]$ is primitive.
-	For example, let $b \in R$ such that $bg \in R[X]$ to clear denominators, then $bg = c(bg) g_0$, giving $\lambda = c(bg) b\inv$.
+	(For example, let $b \in R$ such that $bg \in R[X]$ clears out denominators, then $bg = c(bg) g_0$, giving $\lambda = c(bg) b\inv$.)
 	Replacing $g$ by $\lambda\inv g$ and $h$ by $\lambda h$, we still have a factorisation of $f$.
 	Hence, we may assume without loss of generality that $g \in R[X]$ and is primitive.
-	By the previous lemma, we have that $h \in R[X]$, with degrees larger than zero.
-	This contradicts irreducibility.
+	By \Cref{lem:11.4}, we have that $h \in R[X]$, and we already saw that $\deg h > 0$.
+	This contradicts irreducibility \Lightning.
 \end{proof}
+
 \begin{remark}
 	We will see that the reverse implication in Gauss' lemma also holds.
 \end{remark}
-\begin{lemma}
+
+\begin{lemma} \label{lem:11.5}
 	Let $g \in R[X]$ be primitive.
 	If $g$ is prime in $F[X]$, then $g$ is prime in $R[X]$.
 \end{lemma}
+
 \begin{proof}
 	It suffices to show that if $f_1, f_2 \in R[X]$, then $g \mid f_1 f_2$ implies $g \mid f_1$ or $g \mid f_2$.
 	Since $g$ is prime in $F[X]$, $g \mid f_1$ or $g \mid f_2$ in $F[X]$.
-	By the previous lemma, $g \mid f_1$ or $g \mid f_2$ in $R[X]$ as required.
+	By \Cref{lem:11.4}, $g \mid f_1$ or $g \mid f_2$ in $R[X]$ as required.
 \end{proof}
-We can now prove the first theorem of this subsection, that polynomial rings over unique factorisation domains are unique factorisation domains.
-\begin{proof}
+
+We can now prove \Cref{thm:11.1}, that polynomial rings over unique factorisation domains are unique factorisation domains.
+
+\begin{proof} \label{prf:11.1}
 	Let $f \in R[X]$.
 	Then, $f = c(f) f_0$ for $f_0$ primitive in $R[X]$.
 	Since $R$ is a unique factorisation domain, $c(f)$ is a product of irreducibles in $R$.
@@ -490,30 +526,33 @@ We can now prove the first theorem of this subsection, that polynomial rings ove
 	Hence, it suffices to find a factorisation of $f_0$.
 
 	Suppose $f_0$ is not irreducible, so $f_0 = gh$ for $g,h \in R[X]$.
-	Since $f_0$ is primitive, $g$ and $h$ are primitive, and the degrees of $g, h$ are larger than zero.
+	Since $f_0$ is primitive, $g$ and $h$ are primitive and $\deg g, \deg h > 0$\footnote{If $\deg g = 0$, as $g$ primitive it must be a unit but we assume it is not.}.
 	By induction on the degree, we can factor $f_0$ as a product of primitive irreducibles in $R[X]$.
+	So property (1) of UFD is shown.
 
 	It now suffices to show uniqueness of the factorisation.
-	By a previous proposition, it in fact suffices to show that every irreducible element of $R[X]$ is prime.
+	By \Cref{prp:10.6}, it in fact suffices to show that every irreducible element of $R[X]$ is prime.
 	Let $f$ be irreducible.
 	Write $f = c(f) f_0$, where $f_0$ is primitive.
-	Since $f$ is irreducible, $f$ must be constant or primitive.
+	Since $f$ is irreducible, either $f_0$ a unit so $f$ must be constant or $c(f)$ a unit so $f$ primitive.
 
 	Suppose $f$ is constant.
 	Since $f$ is irreducible in $R[X]$, it must be irreducible in $R$.
 	As $R$ is a unique factorisation domain, $f$ is prime in $R$.
-	By a previous corollary, $f$ is prime in $R[X]$.
+	By \Cref{cor:11.3}, $f$ is prime in $R[X]$.
 
 	Now, suppose $f$ is primitive.
-	Since $f$ is irreducible in $R[X]$, we can use Gauss' lemma to show that $f$ is irreducible in $F[X]$.
+	Since $f$ is irreducible in $R[X]$, we can use \nameref{lem:Gauss} to show that $f$ is irreducible in $F[X]$.
 	Thus, $f$ is prime in $F[X]$, as $F[X]$ is a unique factorisation domain.
-	Finally, we can see that $f$ is prime in $R[X]$ by the previous lemma.
+	Finally, we can see that $f$ is prime in $R[X]$ by \Cref{lem:11.5}.
 \end{proof}
+
 \begin{remark}
-	We know that the prime elements in an integral domain are irreducible.
+	By \Cref{lem:10.2}, we know that the prime elements in an integral domain are irreducible.
 	This implies that the implications in the last paragraph above are in fact equivalences.
-	In particular, in Gauss' lemma, the implication is an equivalence.
+	In particular, in \nameref{lem:Gauss}, the implication is an equivalence.
 \end{remark}
+
 \begin{example}
 	The above theorem implies that $\mathbb Z[X]$ is a unique factorisation domain.
 
