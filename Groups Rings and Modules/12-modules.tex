@@ -1,7 +1,11 @@
+\part{Modules}
+
+\section{Modules}
+
 \subsection{Definitions}
-\begin{definition}
+\begin{definition}[Module]
 	Let $R$ be a ring.
-	A \textit{module over $R$} is a triple $(M, +, \cdot)$ consisting of a set $M$ and two operations $+ \colon M \times M \to M$ and $\cdot \colon R \times M \to M$, that satisfy
+	A \vocab{module over $R$} is a triple $(M, +, \cdot)$ consisting of a set $M$ and two operations $+ : M \times M \to M$ and $\bigcdot : R \times M \to M$, that satisfy
 	\begin{enumerate}
 		\item $(M, +)$ is an abelian group with identity $0 = 0_M$;
 		\item $(r_1 + r_2) \cdot m = r_1 \cdot m + r_2 \cdot m$;
@@ -10,45 +14,60 @@
 		\item $1_R \cdot m = m$;
 	\end{enumerate}
 \end{definition}
+
 \begin{remark}
 	Closure is implicitly required by the types of the $+$ and $\cdot$ operations.
 \end{remark}
+
 \begin{example}
 	A module over a field is precisely a vector space.
+\end{example} 
 
+\begin{example}
 	A $\mathbb Z$-module is precisely the same as an abelian group, since
 	\begin{align*}
-		\cdot \colon \mathbb Z \times A \to A;\quad n \cdot a = \begin{cases}
+		\cdot : \mathbb Z \times A \to A;\quad n \cdot a = \begin{cases}
 			\underbrace{a + \dots + a}_{n \text{ times}}         & \text{if } n > 0 \\
 			0                                                    & \text{if } n = 0 \\
 			-\qty(\underbrace{a + \dots + a}_{-n \text{ times}}) & \text{if } n < 0
 		\end{cases}
 	\end{align*}
+\end{example}
 
+\begin{example}
 	Let $F$ be a field, and $V$ be a vector space over $F$.
-	Let $\alpha \colon V \to V$ be an endomorphism.
+	Let $\alpha : V \to V$ be an endomorphism.
 	We can turn $V$ into an $F[X]$-module by
 	\begin{align*}
-		\cdot \colon F[X] \times V \to V;\quad f \cdot v = (f(\alpha))(v)
+		\bigcdot : F[X] \times V \to V;\quad f \cdot v = (f(\alpha))(v)
 	\end{align*}
+	E.g. $(X^2 + 1) \cdot v = (\alpha^2 + 1_V)(v)$.
+
 	Note that the structure of the $F[X]$-module depends on the choice of $\alpha$.
 	We can write $V = V_\alpha$ to disambiguate.
+\end{example} 
 
+\begin{example}
 	For any ring $R$, we can consider $R^n$ as an $R$-module via
 	\begin{align*}
 		r \cdot (r_1, \dots, r_n) = (r \cdot r_1, \dots, r \cdot r_n)
 	\end{align*}
 	In particular, the case $n = 1$ shows that any ring $R$ can be considered an $R$-module where the scalar multiplication in the ring and the module agree.
+\end{example} 
 
+\begin{example}
 	For an ideal $I \triangleleft R$, we can regard $I$ as an $R$-module, since $I$ is preserved under multiplication by elements in $R$.
 	The quotient ring $\faktor{R}{I}$ is also an $R$-module, defining multiplication as $r \cdot (s+I) = rs + I$.
+\end{example} 
 
-	Let $\varphi \colon R \to S$ be a ring homomorphism.
+\begin{example}
+	Let $\varphi : R \to S$ be a ring homomorphism.
 	Then any $S$-module can be regarded as an $R$-module.
 	We define $r \cdot m = \varphi(r) \cdot m$.
 	In particular, this applies when $R$ is a subring of $S$, and $\varphi$ is the inclusion map.
 	So any module over a ring can be viewed as a module over any subring.
-\end{example}
+\end{example} 
+
 \begin{definition}
 	Let $M$ be an $R$-module.
 	Then $N \subseteq M$ is an \textit{$R$-submodule of $M$}, written $N \leq M$, if $(N, +) \leq (M, +)$, and for all $rn \in N$ for all $r \in R$ and $n \in N$.
@@ -68,18 +87,18 @@
 \end{remark}
 \begin{definition}
 	Let $M, N$ be $R$-modules.
-	Then $f \colon M \to N$ is a \textit{$R$-module homomorphism} if it is a homomorphism of $(M, +)$ and $(N, +)$, and scalar multiplication is preserved: $f(r \cdot m) = r \cdot f(m)$.
+	Then $f : M \to N$ is a \textit{$R$-module homomorphism} if it is a homomorphism of $(M, +)$ and $(N, +)$, and scalar multiplication is preserved: $f(r \cdot m) = r \cdot f(m)$.
 	An \textit{$R$-module isomorphism} is an $R$-module homomorphism that is a bijection.
 \end{definition}
 \begin{example}
 	If $R = F$ is a field, $F$-module homomorphisms are exactly linear maps.
 \end{example}
 \begin{theorem}
-	Let $f \colon M \to N$ be an $R$-module homomorphism.
+	Let $f : M \to N$ be an $R$-module homomorphism.
 	Then
 	\begin{enumerate}
-		\item $\ker f = \qty{m \in M \colon f(m) = 0} \leq M$;
-		\item $\Im f = \qty{f(m) \in N \colon m \in M} \leq N$;
+		\item $\ker f = \qty{m \in M : f(m) = 0} \leq M$;
+		\item $\Im f = \qty{f(m) \in N : m \in M} \leq N$;
 		\item $\faktor{M}{\ker f} \cong \Im f$.
 	\end{enumerate}
 \end{theorem}
@@ -87,7 +106,7 @@
 	Let $A, B \leq M$ be $R$-submodules.
 	Then
 	\begin{enumerate}
-		\item $A + B = \qty{a + b \colon a \in A, b \in B} \leq M$;
+		\item $A + B = \qty{a + b : a \in A, b \in B} \leq M$;
 		\item $A \cap B \leq M$;
 		\item $\faktor{A}{A \cap B} \cong \faktor{A + B}{B}$.
 	\end{enumerate}
@@ -105,10 +124,10 @@ Note that these results apply to vector spaces; for example, the first isomorphi
 \subsection{Finitely generated modules}
 \begin{definition}
 	Let $M$ be an $R$-module.
-	If $m \in M$, then we write $Rm = \qty{rm \colon r \in R}$.
+	If $m \in M$, then we write $Rm = \qty{rm : r \in R}$.
 	This is an $R$-submodule of $M$, known as the submodule \textit{generated by $m$}.
 
-	If $A, B \leq M$, we can define $A + B = \qty{a + b \colon a \in A, b \in B}$, known as the \textit{sum of submodules}.
+	If $A, B \leq M$, we can define $A + B = \qty{a + b : a \in A, b \in B}$, known as the \textit{sum of submodules}.
 	In particular, this sum is commutative.
 \end{definition}
 \begin{definition}
@@ -117,11 +136,11 @@ Note that these results apply to vector spaces; for example, the first isomorphi
 \end{definition}
 This is the analogue of finite dimensionality in linear algebra.
 \begin{lemma}
-	An $R$-module $M$ is finitely generated if and only if there exists a surjective $R$-module homomorphism $f \colon R^n \to M$ for some $n$.
+	An $R$-module $M$ is finitely generated if and only if there exists a surjective $R$-module homomorphism $f : R^n \to M$ for some $n$.
 \end{lemma}
 \begin{proof}
 	If $M$ is finitely generated, we have $M = Rm_1 + \dots + Rm_n$.
-	We define $f \colon R^n \to M$ by $(r_1, \dots, r_n) \mapsto r_1 m_1 + \dots + r_n m_n$.
+	We define $f : R^n \to M$ by $(r_1, \dots, r_n) \mapsto r_1 m_1 + \dots + r_n m_n$.
 	This is surjective.
 
 	Conversely, suppose such a surjective homomorphism $f$ exists.
@@ -134,7 +153,7 @@ This is the analogue of finite dimensionality in linear algebra.
 \end{corollary}
 \begin{proof}
 	Let $N \leq M$, where $M$ is finitely generated.
-	Then there exists a surjective $R$-module homomorphism $f \colon R^n \to M$.
+	Then there exists a surjective $R$-module homomorphism $f : R^n \to M$.
 	Then $q \circ f$, where $q$ is the quotient map, is also a surjective homomorphism.
 	So $\faktor{M}{N}$ is finitely generated.
 \end{proof}
@@ -194,7 +213,7 @@ This is the analogue of finite dimensionality in linear algebra.
 	A subset $S \subseteq M$ \textit{generates $M$ freely} if:
 	\begin{enumerate}
 		\item $S$ generates $M$, so for all $m \in M$, we can find finitely many entries $s_i$ and coefficients $r_i$ such that $m = \sum_{i=1}^k r_i s_i$;
-		\item any function $\psi \colon S \to N$, where $N$ is an $R$-module, extends to an $R$-module homomorphism $\theta \colon M \to N$.
+		\item any function $\psi : S \to N$, where $N$ is an $R$-module, extends to an $R$-module homomorphism $\theta : M \to N$.
 	\end{enumerate}
 \end{definition}
 \begin{remark}
@@ -224,7 +243,7 @@ This is the analogue of finite dimensionality in linear algebra.
 	Suppose $S$ is not independent.
 	Then there exist $r_i$ such that $\sum_{i=1}^n r_i m_i = 0$ but not all $r_i$ are zero.
 	Let $r_j \neq 0$.
-	Since $S$ generates $M$ freely, consider the module homomorphism $\psi \colon S \to R$ given by
+	Since $S$ generates $M$ freely, consider the module homomorphism $\psi : S \to R$ given by
 	\begin{align*}
 		\psi(m_i) = \begin{cases}
 			1 & \text{if } i = j \\
@@ -257,7 +276,7 @@ This is the analogue of finite dimensionality in linear algebra.
 \end{proposition}
 \begin{proof}
 	Let $I \triangleleft R$, and $M$ an $R$-module.
-	We define $IM = \qty{\sum a_i m_i \colon a_i \in I, m_i \in M}$.
+	We define $IM = \qty{\sum a_i m_i : a_i \in I, m_i \in M}$.
 	Since $I$ is an ideal, we can show that $IM$ is a submodule of $M$.
 	The quotient module $\faktor{M}{IM}$ is an $R$-module, but we can also show that it is an $\faktor{R}{I}$-module, by defining scalar multiplication as
 	\begin{align*}
@@ -425,7 +444,7 @@ We can define elementary column operations in an analogous way, using right-mult
 	Let $N \leq R^m$.
 	Consider
 	\begin{align*}
-		I = \qty{r \in R \colon \exists r_2, \dots, r_m \in R,\, (r,r_2, \dots, r_m) \in N}
+		I = \qty{r \in R : \exists r_2, \dots, r_m \in R,\, (r,r_2, \dots, r_m) \in N}
 	\end{align*}
 	Since $N$ is a submodule, this is an ideal.
 	Since $R$ is a principal ideal domain, $I = (a)$ for some $a \in R$.
@@ -461,7 +480,7 @@ We can define elementary column operations in an analogous way, using right-mult
 	The $d_i$ are called invariant factors.
 \end{theorem}
 \begin{proof}
-	Since $n$ is finitely generated, there exists a surjective $R$-module homomorphism $\varphi \colon R^m \to M$ for some $m$.
+	Since $n$ is finitely generated, there exists a surjective $R$-module homomorphism $\varphi : R^m \to M$ for some $m$.
 	By the first isomorphism theorem, $M \cong \faktor{R^m}{\ker \varphi}$.
 	By the previous theorem, there exists a free basis $x_1, \dots, x_m$ for $R^m$ such that $\ker \varphi \leq R^m$ is generated by $d_1 x_1, \dots, d_t x_t$ and where $d_1 \mid \dots \mid d_t$.
 	Then,
@@ -528,7 +547,7 @@ There is an analogous result for principal ideal domains.
 	Hence, there exist $r,s \in R$ such that $ra + sb = 1$.
 	This is a generalisation of B\'ezout's theorem.
 
-	Now, we define an $R$-module homomorphism $\psi \colon R \to \faktor{R}{(a)} + \faktor{R}{(b)}$ by $\psi(x) = (x+(a), x+(b))$.
+	Now, we define an $R$-module homomorphism $\psi : R \to \faktor{R}{(a)} + \faktor{R}{(b)}$ by $\psi(x) = (x+(a), x+(b))$.
 	Then $\psi(sb) = (sb+(a), sb+(b)) = (1-ra+(a),sb+(b)) = (1+(a), (b))$, and similarly $\psi(ra) = ((a),1+(b))$.
 	Hence, $\psi(sbx + rby) = (x+(a),y+(b))$ so $\psi$ is surjective.
 
@@ -560,7 +579,7 @@ There is an analogous result for principal ideal domains.
 \end{proof}
 
 \subsection{Rational canonical form}
-Let $V$ be a vector space over a field $F$, and $\alpha \colon V \to V$ be a linear map.
+Let $V$ be a vector space over a field $F$, and $\alpha : V \to V$ be a linear map.
 Let $V_\alpha$ denote the $F[X]$-module $V$ where scalar multiplication is defined by $f(X) \cdot v = f(\alpha)(v)$.
 \begin{lemma}
 	If $V$ is finite-dimensional as a vector space, then $V_\alpha$ is finitely generated as an $F[X]$-module.
@@ -613,7 +632,7 @@ Let $V_\alpha$ denote the $F[X]$-module $V$ where scalar multiplication is defin
 	The above matrix is known as the \textit{companion matrix} of the monic polynomial.
 \end{example}
 \begin{theorem}[Rational canonical form]
-	Let $F$ be a field, $V$ be a finite-dimensional $F$-vector space, and $\alpha \colon V \to V$ be a linear map.
+	Let $F$ be a field, $V$ be a finite-dimensional $F$-vector space, and $\alpha : V \to V$ be a linear map.
 	Then the $F[X]$-module $V_\alpha$ decomposes as
 	\begin{align*}
 		V_\alpha \cong \faktor{F[X]}{(f_1)} \oplus \dots \oplus \faktor{F[X]}{(f_t)}
@@ -664,7 +683,7 @@ Let $V_\alpha$ denote the $F[X]$-module $V$ where scalar multiplication is defin
 \begin{definition}
 	The \textit{annihilator} of an $R$-module $M$ is
 	\begin{align*}
-		\mathrm{Ann}_R(M) = \qty{r \in R \colon \forall m \in M,\, rm = 0} \triangleleft R
+		\mathrm{Ann}_R(M) = \qty{r \in R : \forall m \in M,\, rm = 0} \triangleleft R
 	\end{align*}
 \end{definition}
 \begin{example}
@@ -690,7 +709,7 @@ The following results are therefore restricted to this particular field.
 	Hence the irreducibles have degree one, and thus are $X - \lambda$ exactly, up to associates.
 \end{proof}
 \begin{theorem}
-	Let $\alpha \colon V \to V$ be an endomorphism of a finite-dimensional $\mathbb C$-vector space $V$.
+	Let $\alpha : V \to V$ be an endomorphism of a finite-dimensional $\mathbb C$-vector space $V$.
 	Let $V_\alpha$ be the set $V$ as a $\mathbb C[X]$-module, where scalar multiplication is defined by $f\cdot v = f(\alpha)(v)$.
 	Then, there exists an isomorphism of $\mathbb C[X]$-modules
 	\begin{align*}

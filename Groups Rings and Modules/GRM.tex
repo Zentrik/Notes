@@ -23,6 +23,11 @@
 \DeclareMathOperator{\sgn}{sgn}
 \DeclareMathOperator{\id}{id}
 
+\makeatletter
+\newcommand*\bigcdot{\mathpalette\bigcdot@{.5}}
+\newcommand*\bigcdot@[2]{\mathbin{\vcenter{\hbox{\scalebox{#2}{$\m@th#1\bullet$}}}}}
+\makeatother
+
 \begin{document}
     \maketitle
     \tableofcontents
@@ -36,11 +41,11 @@
     \include{04-pgroups.tex}
     \include{05-matrix.tex}
     \include{06-finite.tex}
+
     \include{07-rings.tex}
     \include{09-factorisation.tex}
     \include{10-algebraic.tex}
-    \input{11-noetherian.tex}
+    \include{11-noetherian.tex}
     
-    % \section{Modules}
-    % \input{12_modules.tex}
+    \include{12-modules.tex}
 \end{document}

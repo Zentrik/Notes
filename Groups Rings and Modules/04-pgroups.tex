@@ -54,7 +54,7 @@
 \begin{proof}
 	Let $g Z(G)$ be a generator for $\faktor{G}{Z(G)}$.
 	Then, each coset of $Z(G)$ in $G$ is of the form $g^r Z(G)$ for some $r \in \mathbb Z$.
-	Thus, $G = \qty{g^r z \colon r \in \mathbb Z, z \in Z(G)}$.
+	Thus, $G = \qty{g^r z : r \in \mathbb Z, z \in Z(G)}$.
 	Now, we multiply two elements of this group and find
 	\begin{align*}
 		g^{r_1} z_1 g^{r_2} z_2 = g^{r_1 + r_2} z_1 z_2 = g^{r_1 + r_2} z_2 z_1 = z_2 z_1 g^{r_1 + r_2} = g^{r_2} z_2 g^{r_1} z_1
@@ -81,7 +81,7 @@
 	Let $G$ be a finite group of order $p^a m$ where $p$ is a prime and $p$ does not divide $m$.
 	Then:
 	\begin{enumerate}
-		\item The set $\mathrm{Syl}_p(G) = \qty{P \leq G \colon \abs{P} = p^a}$ of Sylow $p$-subgroups is non-empty.
+		\item The set $\mathrm{Syl}_p(G) = \qty{P \leq G : \abs{P} = p^a}$ of Sylow $p$-subgroups is non-empty.
 		\item All Sylow $p$-subgroups are conjugate.
 		\item The amount of Sylow $p$-subgroups $n_p = \abs{\mathrm{Syl}_p(G)}$ satisfies
 		      \begin{align*}
@@ -100,7 +100,7 @@
 		      Note that for $0 \leq k < p^a$, the numbers $p^a m - k$ and $p^a - k$ are divisible by the same power of $p$.
 		      In particular, $\abs{\Omega}$ is coprime to $p$.
 
-		      Let $G$ act on $\Omega$ by left-multiplication, so $g \ast X = \qty{gx \colon x \in X}$.
+		      Let $G$ act on $\Omega$ by left-multiplication, so $g \ast X = \qty{gx : x \in X}$.
 		      For any $X \in \Omega$, the orbit-stabiliser theorem can be applied to show that
 		      \begin{align*}
 			      \abs{G_X} \abs{\mathrm{orb}_G(X)} = \abs{G} = p^a m
@@ -180,7 +180,7 @@
 	Since $G$ is simple, $n_3 \in \qty{4, 22}$.
 
 	Suppose $n_3 = 4$.
-	Then $G$ acts on $\mathrm{Syl}_3(G)$ by conjugation, and this generates a group homomorphism $\varphi \colon G \to S_4$.
+	Then $G$ acts on $\mathrm{Syl}_3(G)$ by conjugation, and this generates a group homomorphism $\varphi : G \to S_4$.
 	But the kernel of this homomorphism is a normal subgroup of $G$, so $\ker \varphi$ is trivial or $G$ itself as $G$ simple.
 	If $\ker \varphi = G$, then $\Im \varphi$ is trivial, contradicting Sylow's second theorem.
 	If $\ker \varphi = 1$, then $\Im \varphi$ has order $132 > |S_4|$ \Lightning.

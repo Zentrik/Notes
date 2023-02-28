@@ -1,8 +1,8 @@
 \section{Algebraic integers}
 
 \subsection{Gaussian integers}
-Recall the ring of Gaussian integers $\mathbb Z[i] = \qty{a+bi \colon a, b \in \mathbb Z} \leq \mathbb C$.
-There is a norm function $N \colon \mathbb Z[i] \to \mathbb Z_{\geq 0}$ given by $a + bi \mapsto a^2 + b^2$, and $N(xy) = N(x) N(y)$.
+Recall the ring of Gaussian integers $\mathbb Z[i] = \qty{a+bi : a, b \in \mathbb Z} \leq \mathbb C$.
+There is a norm function $N : \mathbb Z[i] \to \mathbb Z_{\geq 0}$ given by $a + bi \mapsto a^2 + b^2$, and $N(xy) = N(x) N(y)$.
 This norm is a Euclidean function, giving the Gaussian integers the structure of a Euclidean domain and hence a PID and UFD.
 So the \underline{primes are the irreducibles} in $\mathbb{Z}[i]$.
 The units in $\mathbb Z[i]$ are $\pm 1, \pm i$, since they are the only elements of unit norm.
@@ -130,12 +130,12 @@ The units in $\mathbb Z[i]$ are $\pm 1, \pm i$, since they are the only elements
 	Let $R \leq S$, and $\alpha \in S$.
 	We write $R[\alpha]$ to denote the smallest subring of $S$ containing $R$ and $\alpha$.
 	$R[\alpha]$ is the intersection of all subrings of $S$ containing $R$ and $\alpha$.
-	Further, $R[\alpha] = \Im \varphi$ where $\varphi \colon R[X] \to S$ is the homomorphism $g(X) \mapsto g(\alpha)$\footnote{We map polynomial $g$ to $g(\alpha)$}.
+	Further, $R[\alpha] = \Im \varphi$ where $\varphi : R[X] \to S$ is the homomorphism $g(X) \mapsto g(\alpha)$\footnote{We map polynomial $g$ to $g(\alpha)$}.
 \end{notation} 
 
 \begin{definition}[Minimal Polynomial]
 	Let $\alpha$ be an algebraic number.
-	Consider the homomorphism $\varphi \colon \mathbb Q[X] \to \mathbb C$ where $g(X) \mapsto g(\alpha)$, $\mathbb{Q}[X] = \Im \phi$.
+	Consider the homomorphism $\varphi : \mathbb Q[X] \to \mathbb C$ where $g(X) \mapsto g(\alpha)$, $\mathbb{Q}[X] = \Im \phi$.
 	Since $\mathbb Q[X]$ is a a principal ideal domain, $\ker \varphi = (f)$ for some $f \in \mathbb Q[X]$.
 	This ideal contains a nonzero element since $\alpha$ is an algebraic number, hence $f$ is nonzero.
 	Multiplying $f$ by a unit, we may assume $f$ is monic without loss of generality.
@@ -156,7 +156,7 @@ The units in $\mathbb Z[i]$ are $\pm 1, \pm i$, since they are the only elements
 
 \begin{proposition} \label{12.4}
 	Let $\alpha$ be an algebraic integer, and $f \in \mathbb Q[X]$ be its minimal polynomial.
-	Then $f \in \mathbb Z[X]$, and $(f) = \ker \theta \triangleleft \mathbb Z[X]$ where $\theta \colon \mathbb Z[X] \to \mathbb C$ is given by $g(X) \mapsto g(\alpha)$.
+	Then $f \in \mathbb Z[X]$, and $(f) = \ker \theta \triangleleft \mathbb Z[X]$ where $\theta : \mathbb Z[X] \to \mathbb C$ is given by $g(X) \mapsto g(\alpha)$.
 \end{proposition}
 
 \begin{remark}

@@ -18,7 +18,7 @@
 \end{example}
 
 \begin{definition}[Group Actions]
-	A \vocab{group action} of a group $G$ on a set $X$ is a function $\alpha \colon G \times X \to X$ satisfying
+	A \vocab{group action} of a group $G$ on a set $X$ is a function $\alpha : G \times X \to X$ satisfying
 	\begin{align*}
 		\alpha(e, x) = x;\quad \alpha(g_1 \cdot g_2, x) = \alpha(g_1, \alpha(g_2, x))
 	\end{align*}
@@ -27,11 +27,11 @@
 \end{definition}
 
 \begin{proposition}
-	An action of a group $G$ on a set $X$ is uniquely characterised by a group homomorphism $\varphi \colon G \to \Sym(X)$.
+	An action of a group $G$ on a set $X$ is uniquely characterised by a group homomorphism $\varphi : G \to \Sym(X)$.
 \end{proposition}
 
 \begin{proof}
-	For all $g \in G$, we can define $\varphi_g \colon X \to X$ by $x \mapsto g \ast x$.
+	For all $g \in G$, we can define $\varphi_g : X \to X$ by $x \mapsto g \ast x$.
 	Then, for all $x \in X$,
 	\begin{align*}
 		\varphi_{g_1 g_2} (x) = (g_1 g_2) \ast x = g_1 \ast (g_2 \ast x) = \varphi_{g_1}(\varphi_{g_2}(x))
@@ -40,24 +40,24 @@
 	In particular, $\varphi_g \circ \varphi_{g\inv} = \varphi_e$.
 	We now define
 	\begin{align*}
-		\varphi \colon G \to \Sym(X);\quad \varphi(g) = \varphi_g \implies \varphi(g)(x) = g \ast x
+		\varphi : G \to \Sym(X);\quad \varphi(g) = \varphi_g \implies \varphi(g)(x) = g \ast x
 	\end{align*}
 	This is a homomorphism.
 
-	Conversely, any group homomorphism $\varphi \colon G \to \Sym(X)$ induces a group action $\ast$ by $g \ast x = \varphi(g)$.
+	Conversely, any group homomorphism $\varphi : G \to \Sym(X)$ induces a group action $\ast$ by $g \ast x = \varphi(g)$.
 	This yields $e \ast x = \varphi(e)(x) = \id x = x$ and $(g_1 g_2) \ast x = \varphi(g_1 g_2) x = \varphi(g_1) \varphi(g_2) x = g_1 \ast (g_2 \ast x)$ as required.
 \end{proof}
 
 \begin{definition}[Permutation Representation]
-	The homomorphism $\varphi \colon G \to \Sym(X)$ defined in the above proof is called a \vocab{permutation representation} of $G$.
+	The homomorphism $\varphi : G \to \Sym(X)$ defined in the above proof is called a \vocab{permutation representation} of $G$.
 \end{definition}
 
 \begin{definition}[Orbit, Stabiliser]
 	Let $G$ act on $X$.
 	Then,
 	\begin{enumerate}
-		\item the \vocab{orbit} of $x \in X$ is $\Orb_G(x) = \qty{g \ast x \colon g \in G} \subseteq X$;
-		\item the \vocab{stabiliser} of $x \in X$ is $G_x = \qty{g \in G \colon g \ast x = x} \leq G$.
+		\item the \vocab{orbit} of $x \in X$ is $\Orb_G(x) = \qty{g \ast x : g \in G} \subseteq X$;
+		\item the \vocab{stabiliser} of $x \in X$ is $G_x = \qty{g \in G : g \ast x = x} \leq G$.
 	\end{enumerate}
 \end{definition}
 
@@ -124,7 +124,7 @@
 
 \begin{proof}
 	Let $G$ act on $X = \faktor{G}{H}$ by left multiplication.
-	Let $\varphi \colon G \to \Sym(X)$ be the permutation representation associated to this group action.
+	Let $\varphi : G \to \Sym(X)$ be the permutation representation associated to this group action.
 
 	Since $G$ is simple, $\ker \varphi = 1$ or $\ker \varphi = G$.
 	If $\ker \varphi = G$, then $\Im\varphi = \id$, which is a contradiction since $G$ acts transitively on $X$ and $|X| > 1$.
@@ -154,7 +154,7 @@
 \end{definition}
 
 \begin{remark}
-	$\varphi \colon G \to G$ satisfies
+	$\varphi : G \to G$ satisfies
 	\begin{align*}
 		\varphi(g)(h_1 h_2) = g h_1 h_2 g\inv = h h_1 g\inv g h_2 g\inv = \varphi(g)(h_1) \varphi(g)(h_2)
 	\end{align*}
@@ -166,13 +166,13 @@
 	An isomorphism from a group to itself is known as an \vocab{automorphism}.
 	We define $\mathrm{Aut}(G)$ to be the set of all group automorphisms of a given group.
 	This set is a group.
-	Note, $\mathrm{Aut}(G) \leq \Sym(G)$, and the $\varphi \colon G \to \Sym(G)$ above has image in $\mathrm{Aut}(G)$.
+	Note, $\mathrm{Aut}(G) \leq \Sym(G)$, and the $\varphi : G \to \Sym(G)$ above has image in $\mathrm{Aut}(G)$.
 \end{definition}
 
 \begin{example}
 	Let $X$ be the set of subgroups of $G$.
 	Then $G$ acts on $X$ by conjugation: $g \ast H = g H g\inv$.
-	The stabiliser of a subgroup $H$ is $\qty{ g \in G \colon gHg\inv = H } = N_G(H)$, called the \vocab{normaliser} of $H$ in $G$.
+	The stabiliser of a subgroup $H$ is $\qty{ g \in G : gHg\inv = H } = N_G(H)$, called the \vocab{normaliser} of $H$ in $G$.
 	The normaliser of $H$ is the largest subgroup of $G$ that contains $H$ as a normal subgroup.
 	In particular, $H \triangleleft G$ if and only if $N_G(H) = G$.
 \end{example}
