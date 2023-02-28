@@ -76,17 +76,21 @@ The units in $\mathbb Z[i]$ are $\pm 1, \pm i$, since they are the only elements
 	Otherwise, $p = 2$ or $p \equiv 1 \mod 4$ and $p = a^2 + b^2 = (a+bi)(a-bi)$ where $a \pm bi$ are irreducible in $\mathbb Z[i]$ as they have norm $p$.
 	So we have $p = (a+bi)(a-bi) \mid z \overline z$, so $z$ is an associate of $a+bi$ or $a-bi$ by uniqueness of factorisation.
 \end{proof}
+
 \begin{remark}
-	In the above theorem, if $p = a^2 + b^2$, $a+bi$ and $a-bi$ are not associate unless $p = 2$.
+	In the \Cref{thm:12.2}, if $p = a^2 + b^2$, $a+bi$ and $a-bi$ are not associate unless $p = 2$.
+	[$(1+i), (1-i)$ are associates as $(1+i) = (1 - i)i$ if $p = 2$ so $a+bi, a-bi$ are.]
 \end{remark}
-\begin{corollary}
-	An integer $n \geq 1$ is the sum of two squares if and only if every prime factor $p$ of $n$ with $p \equiv 3 \mod 4$ divides $n$ to an even power.
+
+\begin{corollary} \label{cor:12.1}
+	An integer $n \geq 1$ is the sum of two squares iff every prime factor $p$ of $n$ with $p \equiv 3 \mod 4$ divides $n$ to an even power.
 \end{corollary}
+
 \begin{proof}
 	Suppose $n = a^2 + b^2$.
-	So $n = N(a+bi)$.
+	So $n = N(a \pm bi)$.
 	Hence $n$ is a product of norms of primes in the Gaussian integers.
-	By the classification above, those norms are
+	By \Cref{thm:12.2}, those norms are
 	\begin{enumerate}
 		\item the primes $p \in \mathbb Z$ with $p \not\equiv 3 \mod 4$; and
 		\item squares of primes $p \in \mathbb Z$ with $p \equiv 3 \mod 4$.
@@ -114,63 +118,84 @@ The units in $\mathbb Z[i]$ are $\pm 1, \pm i$, since they are the only elements
 \end{example}
 
 \subsection{Algebraic integers}
-\begin{definition}
-	A number $\alpha \in \mathbb C$ is \textit{algebraic} if $\alpha$ is a root of some nonzero polynomial $f \in \mathbb Q[X]$.
-	$\alpha$ is an \textit{algebraic integer} if it is a root of some monic polynomial $f \in \mathbb Z[X]$.
+\begin{definition}[Algebraic]
+	A number $\alpha \in \mathbb C$ is \vocab{algebraic} if $\alpha$ is a root of some nonzero polynomial $f \in \mathbb Q[X]$.
 \end{definition}
-Let $R \leq S$, and $\alpha \in S$.
-We write $R[\alpha]$ to denote the smallest subring of $S$ containing $R$ and $\alpha$.
-Alternatively, $R[\alpha]$ is the intersection of all subrings of $S$ containing $R$ and $\alpha$.
-Further, $R[\alpha] = \Im \varphi$ where $\varphi \colon R[X] \to S$ is the homomorphism $g(X) \mapsto g(\alpha)$.
-\begin{definition}
+
+\begin{definition}[Algebraic Integer]
+	$\alpha \in \mathbb{C}$ is an \vocab{algebraic integer} if it is a root of some monic polynomial $f \in \mathbb Z[X]$.
+\end{definition} 
+
+\begin{notation}
+	Let $R \leq S$, and $\alpha \in S$.
+	We write $R[\alpha]$ to denote the smallest subring of $S$ containing $R$ and $\alpha$.
+	$R[\alpha]$ is the intersection of all subrings of $S$ containing $R$ and $\alpha$.
+	Further, $R[\alpha] = \Im \varphi$ where $\varphi \colon R[X] \to S$ is the homomorphism $g(X) \mapsto g(\alpha)$\footnote{We map polynomial $g$ to $g(\alpha)$}.
+\end{notation} 
+
+\begin{definition}[Minimal Polynomial]
 	Let $\alpha$ be an algebraic number.
-	Consider the homomorphism $\varphi \colon \mathbb Q[X] \to \mathbb C$ where $g(X) \mapsto g(\alpha)$.
+	Consider the homomorphism $\varphi \colon \mathbb Q[X] \to \mathbb C$ where $g(X) \mapsto g(\alpha)$, $\mathbb{Q}[X] = \Im \phi$.
 	Since $\mathbb Q[X]$ is a a principal ideal domain, $\ker \varphi = (f)$ for some $f \in \mathbb Q[X]$.
 	This ideal contains a nonzero element since $\alpha$ is an algebraic number, hence $f$ is nonzero.
 	Multiplying $f$ by a unit, we may assume $f$ is monic without loss of generality.
-	This unique $f$ is known as the \textit{minimal polynomial} of $\alpha$.
-\end{definition}
+
+	This unique $f$ is known as the \vocab{minimal polynomial} of $\alpha$.
+\end{definition} 
+
 \begin{corollary}
 	All minimal polynomials are irreducible.
+\end{corollary}
+
+\begin{proof}
 	By the isomorphism theorem, $\faktor{\mathbb Q[X]}{(f)} \cong \mathbb Q[\alpha] \leq \mathbb C$.
 	Any subring of a field is an integral domain.
 	Hence $(f)$ is a prime ideal in $\mathbb Q[X]$, and hence $f$ is irreducible.
 	In particular, this implies that $\mathbb Q[\alpha]$ is a field.
-\end{corollary}
-\begin{proposition}
+\end{proof} 
+
+\begin{proposition} \label{12.4}
 	Let $\alpha$ be an algebraic integer, and $f \in \mathbb Q[X]$ be its minimal polynomial.
 	Then $f \in \mathbb Z[X]$, and $(f) = \ker \theta \triangleleft \mathbb Z[X]$ where $\theta \colon \mathbb Z[X] \to \mathbb C$ is given by $g(X) \mapsto g(\alpha)$.
 \end{proposition}
+
 \begin{remark}
 	If $\alpha$ is an algebraic integer, then the polynomial in the definition can be taken to be minimal without loss of generality.
-	$\mathbb Z[X]$ is not a principal ideal domain, so the above argument cannot work verbatim.
+	$\mathbb Z[X]$ is not a principal ideal domain, so the previous argument cannot work verbatim.
 \end{remark}
+
 \begin{proof}
 	Let $f$ be the minimal polynomial of $\alpha$.
 	Let $\lambda \in \mathbb Q^\times$ such that $\lambda f$ has coefficients in $\mathbb Z$ and is primitive.
 	Then $\lambda f(\alpha) = 0$, so $\lambda f \in \ker \theta$.
 
-	Let $g \in \ker \theta$, so in particular $g \in \mathbb Z[X]$.
+	Let $g \in \ker \theta \triangleleft \mathbb{Z}[X]$, so in particular $g \in \mathbb Z[X]$.
 	Then $g \in \ker \varphi$, and hence $\lambda f \mid g$ in $\mathbb Q[X]$.
-	By a previous lemma, $\lambda f \mid g$ in $\mathbb Z[X]$.
+	By \Cref{lem:11.4}, $\lambda f \mid g$ in $\mathbb Z[X]$.
 	Thus, $\ker \theta = (\lambda f)$.
 
 	Now, since $\alpha$ is an algebraic integer, we know that there exists a monic polynomial $g \in \ker \theta$ such that $g(\alpha) = 0$.
 	Then $\lambda f \mid g$ in $\mathbb Z[X]$, so $\lambda = \pm 1$ as both $f, g$ are monic.
 	Hence, $f \in \mathbb Z[X]$, and $(\lambda f) = (f) = \ker \theta$.
 \end{proof}
+
 Let $\alpha \in \mathbb C$ be an algebraic integer.
 Then, applying the isomorphism theorem to $\theta$, $\faktor{\mathbb Z[X]}{(f)} \cong \mathbb Z[\alpha]$.
-For example:
-\begin{align*}
-	\faktor{\mathbb Z[X]}{(X^2 + 1)}     & \cong \mathbb Z[i]                          \\
-	\faktor{\mathbb Z[X]}{(X^2 - 2)}     & \cong \mathbb Z\qty[\sqrt{2}]               \\
-	\faktor{\mathbb Z[X]}{(X^2 + X + 1)} & \cong \mathbb Z\qty[\frac{-1+\sqrt{-3}}{2}] \\
-	\faktor{\mathbb Z[X]}{(X^n - p)}     & \cong \mathbb Z\qty[\sqrt[n]{p}]
-\end{align*}
-\begin{corollary}
+
+\begin{example}
+	$i, \sqrt{2}, \frac{-1 + \sqrt{3}}{2}, \sqrt[n]{p}$ have minimal polynomials $X^2 + 1, X^2 - 2, X^2 + X + 1, X^n - p$.
+	\begin{align*}
+		\faktor{\mathbb Z[X]}{(X^2 + 1)}     & \cong \mathbb Z[i]                          \\
+		\faktor{\mathbb Z[X]}{(X^2 - 2)}     & \cong \mathbb Z\qty[\sqrt{2}]               \\
+		\faktor{\mathbb Z[X]}{(X^2 + X + 1)} & \cong \mathbb Z\qty[\frac{-1+\sqrt{-3}}{2}] \\
+		\faktor{\mathbb Z[X]}{(X^n - p)}     & \cong \mathbb Z\qty[\sqrt[n]{p}]
+	\end{align*}
+\end{example} 
+
+\begin{corollary} \label{cor:12.5}
 	If $\alpha$ is an algebraic integer, and $\alpha \in \mathbb Q$, then $\alpha \in \mathbb Z$.
 \end{corollary}
+
 \begin{proof}
 	Let $\alpha \neq 0$, since the case where $\alpha = 0$ is trivial.
 	Then the minimal polynomial of $\alpha$ has coefficients in $\mathbb Z$.
