@@ -230,7 +230,7 @@ The probabilities of type I and type II error are now dependent on the precise v
 		\intertext{$\frac{\sqrt{n}(\overline X - \mu)}{\sigma_0} \sim \mathcal{N}(0, 1)$ under $\mathbb{P}_\mu$.}
 		&= 1 - \Phi\qty(z_\alpha + \sqrt{n} \frac{\mu_0 - \mu}{\sigma_0})
 	\end{align*}
-	$W(\mu)$ is monotone increasing in $\mu$, so the size is  $\sup_{w \in \Theta_0} W(\mu) = W(\mu_0) = \alpha$.
+	$W(\mu)$ is monotone increasing in $\mu$, so the size is  $\sup_{\mu \in \Theta_0} W(\mu) = W(\mu_0) = \alpha$.
 
 	It remains to show that if $C^\star$ is another test of size $\leq \alpha$ with power function $W^\star$ then $W(\mu_1) \geq W^\star(\mu_1)$ for all $\mu_1 > \mu_0$. \\
 	First, observe that the critical region depends only on $\mu_0$, and not on $\mu_1$.

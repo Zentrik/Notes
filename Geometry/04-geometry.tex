@@ -778,29 +778,39 @@ Using \cref{eq:1} we see that taking determinants:
 	Then $\Sigma$ has an elliptic point.
 \end{proposition}
 
+The idea of the proof is as follows: Take a plane and move it towards the surface until it touches it, then the surface lies on one side of this plane so we have an elliptic/parabolic point.
+If we instead use a bowl and not a plane, then the surface must curve away from the bowl and so must have an elliptic point.
+
 \begin{proof}
 	Since $\Sigma$ is compact, it is closed and bounded as a subset of $\mathbb R^3$.
 	Hence, for $R'$ sufficiently large, $\Sigma$ lies entirely within $\overline{B(0,R')}$.
-	Let $R$ be the minimal such $R'$.
+	Let $R$ be the minimal such $R'$\footnote{The distance of points from the origin is a cts fcn on a compact space so extremum exists and is achieved}.
 	Up to a global isometry of $\mathbb R^3$, there exists a point $p = (0,0,R) \in \Sigma$ on the sphere $S^2(R)$ of radius $R$.
 	Here, $T_p \Sigma = T_p S^2$.
-	Hence, locally near $p$, we can view $\Sigma$ as the graph of a smooth function $f \colon V \to \mathbb R^3$ on the $x, y$ coordinates with the property that $f - \sqrt{R^2 - u^2 - v^2} \leq 0$.
+	Locally near $p$, we can view $\Sigma$ as the graph of a smooth function $f \colon V \to \mathbb R$ on the $x, y$ coordinates with the property that $f - \sqrt{R^2 - u^2 - v^2} \leq 0$.
 	This expresses the fact that $\Sigma$ lies underneath the sphere of radius $R$.
 
 	We can now consider the Taylor series of $f$.
 	Note that $(0,0)$ is a maximum point of $f$, hence $f_u = f_v = 0$ at $0$.
-	Thus, for sufficiently small $u,v$,
+	Let $F(u, v) = f(u, v) - \sqrt{R^2 - u^2 - v^2}$, $F(u, v) \leq 0$.
+	We can see that $F_u = F_v = 0$ and $F_{uu} = f_{uu} + \frac{1}{R}$, $F_{uv} = f_{uv}$, $F_{vv} = f_{vv} + \frac{1}{R}$ at $(0, 0)$.
+	As $F$ has a local maximum at $0$ we know that its Hessian must be negative semi-definite for sufficiently small $u,v$:
 	\begin{align*}
-		\frac{1}{2} \qty(f_{uu} u^2 + 2f_{uv} uv + f_{vv} v^2) + \frac{1}{2R} (u^2 + v^2) \leq 0
+		\qty(f_{uu} + \frac{1}{R})u^2 + 2 f_{uv} uv + \qty(f_{vv} + \frac{1}{R}) v^2 &\leq 0 \\ 
+		\frac{1}{2} \qty(f_{uu} u^2 + 2f_{uv} uv + f_{vv} v^2) &\leq -\frac{1}{2R} (u^2 + v^2) \\
+		\begin{pmatrix}L & M \\M & N\end{pmatrix} &= \begin{pmatrix}f_{uu} & f_{uv} \\f_{uv} & f_{vv}\end{pmatrix}
 	\end{align*}
 	Hence, the second fundamental form is locally negative definite near $(0,0)$.
+	$E = G = 1$ and $F = 0$, which follows from our previous calculation of the first fundamental form for graphs.
 	Hence, $\kappa(p) > 0$, so $p$ is elliptic as required.
 	In particular, the curvature at this point is greater than that of the sphere.
 \end{proof}
 
-\begin{theorem}
+\subsubsection{Gauss curvature and area}
+
+\begin{theorem} \label{thm:2.10}
 	Let $\Sigma$ be a smooth surface in $\mathbb R^3$, and let $p \in \Sigma$ such that $\kappa(p) \neq 0$.
-	Let $U$ be an open neighbourhood of $p$, and a decreasing sequence $A_i \subset U$ of neighbourhoods that `shrink to $p$', in the sense that for all $\varepsilon > 0$, $A_i \subset B(p,\varepsilon)$ for sufficiently large $i$.
+	Let $U$ be an open neighbourhood of $p$, and consider a decreasing sequence $p \in A_i \subset U$ of open neighbourhoods that `shrink to $p$', in the sense that for all $\varepsilon > 0$, $A_i \subset B(p,\varepsilon)$ for sufficiently large $i$.
 	Then,
 	\begin{align*}
 		\abs{\kappa(p)} = \lim_{i \to \infty} \frac{\mathrm{area}_{S^2} (n(A_i))}{\mathrm{area}_{\Sigma} (A_i)}
@@ -815,37 +825,46 @@ Using \cref{eq:1} we see that taking determinants:
 \end{remark}
 
 \begin{proof}
-	Let $\sigma$ be an allowable parametrisation near $p \in \Sigma$.
+	This is all `local' so let $\sigma: V \to U \subset \Sigma$ be an allowable parametrisation near $p \in \Sigma$.
 	Using $\sigma$, we can define the open sets $\sigma^{-1}(A_i) = V_i \subset V$.
-	Since the $A_i$ shrink to $p$, we have that $\bigcap V_i = \qty{(0,0)}$.
+	Since the $A_i$ shrink to $p$, we have that $\bigcap_i V_i = \qty{(0,0)}$.
 	We have
 	\begin{align*}
 		\mathrm{area}_\Sigma(A_i) = \int_{V_1} \sqrt{EG - F^2} \dd{u} \dd{v} = \int_{V_i} \norm{\sigma_u \times \sigma_v} \dd{u}\dd{v}
 	\end{align*}
-	Recall from the chain rule applied to $n \circ \gamma$ that
+	Consider $n \circ \sigma: V \to S^2 \subset \mathbb{R}^3$, by chain rule:
 	\begin{align*}
-		\eval{Dn}_{(u,v)}(\sigma_u) = n_u;\quad \eval{Dn}_{(u,v)}(\sigma_v) = n_v
-	\end{align*}
-	Since $\kappa(p) = \kappa(\sigma(0,0)) \neq 0$, $n \circ \sigma \colon V \to S^2$ has derivative of rank 2.
-	This defines an allowable parametrisation for an open neighbourhood of $n((0,0))$ by the inverse function theorem.
+		\eval{D(n \circ \sigma)}_0 = \eval{Dn}_p \circ \eval{D \sigma}_0.
+	\end{align*} 
+	$\sigma$ allowable so $\eval{D \sigma}$ rank 2 and as $\kappa(p) \neq 0$, $\det \eval{Dn}_p \neq 0$ so it too is rank 2, thus $\eval{D(n \circ \sigma)}_0$ rank 2.
+	Thus $n \circ \sigma$ defines an allowable parametrisation for an open neighbourhood of $n((0,0))$ by the inverse function theorem.
 	Therefore,
 	\begin{align*}
 		\mathrm{area}_{S^2}(n(A_i)) = \int_{V_i} \norm{n_u \times n_v} \dd{u} \dd{v}
 	\end{align*}
 	for sufficiently large $i$ such that $\sigma^{-1} A_i = V_i$ lies in the open neighbourhood of $(0,0)$ where $n \circ \sigma$ is a diffeomorphism.
 	\begin{align*}
-		\int_{V_i} \norm{n_u \times n_v} \dd{u} \dd{v} & = \int_{V_i} \norm{Dn(\sigma_u) \times Dn(\sigma_v)} \dd{u} \dd{v}                \\
-		                                               & = \int_{V_i} \abs{\det (Dn)} \cdot \norm{\sigma_u \times \sigma_v} \dd{u} \dd{v}  \\
-		                                               & = \int_{V_i} \abs{\kappa(u,v)} \cdot \norm{\sigma_u \times \sigma_v} \dd{u}\dd{v}
+		\norm{n_u \times n_v} = \norm{Dn(\sigma_u) \times Dn(\sigma_v)}
+	\end{align*} 
+	Recall from last lecture 
+	\begin{align*}
+		Dn(\sigma_u) &= a_{11} \sigma_u + a_{21} \sigma_v \\
+		Dn(\sigma_v) &= a_{12} \sigma_u + a_{22} \sigma_v \\
+		\implies Du(\sigma_u) \times Du(\sigma_v) &= (a_{11} \sigma_u + a_{21} \sigma_v) \times a_{12} \sigma_u + a_{22} \sigma_v \\
+		&= \underbracket{(a_{11} a_{22} - a_{12} a_{21})}_{\det(Dn) = \kappa(p)} \sigma_u \times \sigma_v \\
+		\therefore \int_{V_i} \norm{n_u \times n_v} \dd{u} \dd{v} & = \int_{V_i} \norm{Dn(\sigma_u) \times Dn(\sigma_v)} \dd{u} \dd{v} \\
+		& = \int_{V_i} \abs{\det (Dn)} \cdot \norm{\sigma_u \times \sigma_v} \dd{u} \dd{v} \\
+		& = \int_{V_i} \abs{\kappa(u,v)} \cdot \norm{\sigma_u \times \sigma_v} \dd{u}\dd{v}
 	\end{align*}
 	As $\kappa$ is continuous, given $\varepsilon > 0$ there exists $\delta > 0$ such that $\abs{\kappa(u,v) - \kappa(0,0)} < \varepsilon$ for all $(u,v) \in B((0,0), \delta)$.
-	In particular, for sufficiently large $i$, we have
+	In particular, for sufficiently large $i$, we have $\forall \; (u, v) \in V_i$
 	\begin{align*}
 		\abs{\kappa(u,v)} \in \qty(\abs{\kappa(p)}-\varepsilon, \abs{\kappa(p)}+\varepsilon)
 	\end{align*}
 	Hence,
 	\begin{align*}
-		\qty(\abs{\kappa(p)}-\varepsilon) \int_{V_i} \norm{\sigma_u \times \sigma_v} \dd{u}\dd{v} \leq \int_{V_i} \abs{\kappa(u,v)} \cdot \norm{\sigma_u \times \sigma_v} \dd{u}\dd{v} \leq \qty(\abs{\kappa(p)}+\varepsilon) \int_{V_i} \norm{\sigma_u \times \sigma_v} \dd{u}\dd{v}
+		\qty(\abs{\kappa(p)}-\varepsilon) \int_{V_i} \norm{\sigma_u \times \sigma_v} \dd{u}\dd{v} &\leq \int_{V_i} \abs{\kappa(u,v)} \cdot \norm{\sigma_u \times \sigma_v} \dd{u}\dd{v} \\
+		&\leq \qty(\abs{\kappa(p)}+\varepsilon) \int_{V_i} \norm{\sigma_u \times \sigma_v} \dd{u}\dd{v}
 	\end{align*}
 	In other words,
 	\begin{align*}
@@ -853,10 +872,12 @@ Using \cref{eq:1} we see that taking determinants:
 	\end{align*}
 	Letting $i \to \infty$ gives the result as required.
 \end{proof}
-\begin{theorem}[\textit{theorema egregium}]
+
+\begin{theorem}[\textit{theorema Egregium}]
 	The Gauss curvature of a smooth surface in $\mathbb R^3$ is isometry invariant.
 	In other words, if $f \colon \Sigma_1 \to \Sigma_2$ is a diffeomorphism of surfaces in $\mathbb R^3$ which is an isometry, then $\kappa(p) = \kappa(f(p))$ for all $p$.
 \end{theorem}
+
 \begin{remark}
 	Isometries rely on only the first fundamental form, but Gauss curvature is defined using both fundamental forms.
 	We can do a direct proof by simply differentiating the formula and rearranging until the result follows.
@@ -873,6 +894,8 @@ Using \cref{eq:1} we see that taking determinants:
 \begin{theorem}[Gauss-Bonnet theorem]
 	If $\Sigma$ is a compact smooth surface in $\mathbb R^3$, then
 	\begin{align*}
-		\int_\Sigma \kappa \dd{A_\Sigma} = 2 \pi \chi(\Sigma)
+		\int_\Sigma \kappa \dd{A_\Sigma}\footnote{Locally $\sqrt{EG - F^2} \dd{u} \dd{v}$} = 2 \pi \chi(\Sigma)\footnote{Euler Characteristic}
 	\end{align*}
 \end{theorem}
+
+The LHS is geometric and the RHS is topological!

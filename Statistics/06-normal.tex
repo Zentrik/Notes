@@ -8,20 +8,23 @@ Then we define
 		\expect{X_1} \\
 		\vdots       \\
 		\expect{X_n}
-	\end{pmatrix};\quad \Var{X} = \qty( \expect{\qty(X_i - \expect{X_i})\qty(X_j - \expect{X_j})} )_{i,j}
+	\end{pmatrix};\quad \Var{X} = V_{ij} = \expect{\qty(X_i - \expect{X_i})\qty(X_j - \expect{X_j})}
 \end{align*}
 The familiar linearity results are
 \begin{align*}
-	\expect{AX+b} = A\expect{X} + b;\quad A \Var{X} A^\tran
+	\expect{AX+b} = A\expect{X} + b;\quad \Var{AX + b} = A \Var{X} A^\tran
 \end{align*}
 where $A \in \mathbb R^{k \times n}, b \in \mathbb R^k$ are constant.
-\begin{definition}
-	We say that $X$ has a \textit{multivariate normal distribution} if, for any fixed $t \in \mathbb R^n$, we have $t^\tran X \sim N(\mu, \sigma^2)$ for some parameters $\mu, \sigma^2$.
+
+\begin{definition}[Multivariate Normal Distribution (MVN)]
+	We say that $X$ has a \vocab{multivariate normal distribution} if, for any fixed $t \in \mathbb R^n$, $t^\tran X$ is normal.
 \end{definition}
+
 \begin{proposition}
 	Let $X$ be multivariate normal.
 	Then $AX+b$ is multivariate normal, where $A \in \mathbb R^{k \times n}, b \in \mathbb R^k$ are constant.
 \end{proposition}
+
 \begin{proof}
 	Let $t \in \mathbb R^k$.
 	Then,
@@ -31,11 +34,13 @@ where $A \in \mathbb R^{k \times n}, b \in \mathbb R^k$ are constant.
 	which is the sum of a normal random variable and a constant.
 	So this is $N(\mu + t^\tran b, \sigma^2)$.
 \end{proof}
+
 \begin{proposition}
-	A multivariate normal distribution is fully specified by its mean and covariance matrix.
+	A MVN is fully specified by its mean and covariance matrix.
 \end{proposition}
+
 \begin{proof}
-	Let $X_1, X_2$ be multivariate normal vectors with the same mean $\mu$ and the same covariance matrix $\Sigma$.
+	Let $X_1, X_2$ be MVN with the same mean $\mu$ and the same covariance matrix $\Sigma$.
 	We will show that these two random variables have the same moment generating function, and hence the same distribution.
 	\begin{align*}
 		M_{X_1}(t) = \expect{ e^{1 \cdot t^\tran X_1} }
@@ -49,59 +54,69 @@ where $A \in \mathbb R^{k \times n}, b \in \mathbb R^k$ are constant.
 \end{proof}
 
 \subsection{Orthogonal projections}
-\begin{definition}
-	A matrix $P \in \mathbb R^{n \times n}$ is an \textit{orthogonal projection} onto its column space $\mathrm{col}(P)$ if, for all $v \in \mathrm{col}(P)$, we have $Pv = v$, and for all $w \in \mathrm{col}(P)^\perp$, we have $Pw = 0$.
+\begin{definition}[Orthogonal Projection]
+	A matrix $P \in \mathbb R^{n \times n}$ is an \vocab{orthogonal projection} onto its column space $\mathrm{col}(P)$ if, for all $v \in \mathrm{col}(P)$, we have $Pv = v$, and for all $w \in \mathrm{col}(P)^\perp$, we have $Pw = 0$.
 \end{definition}
+
 \begin{proposition}
-	$P$ is an orthogonal projection if and only if it is idempotent and symmetric.
+	$P$ is an orthogonal projection iff it is idempotent and symmetric.
 \end{proposition}
+
 \begin{proof}
-	If $P$ is idempotent and symmetric, let $v \in \mathrm{col}(P)$, so $v = Pa$ for some $a \in \mathbb R^n$.
-	Then, $Pv = PPa = Pa = v$.
+	$(\Longleftarrow)$: Let $v \in \mathrm{col}(P)$, so $v = Pa$ for some $a \in \mathbb R^n$.
+	Then, $Pv = PPa = Pa$ as $P$ idempotent, also $Pa = v$. \\
 	Now, let $w \in \mathrm{col}(P)^\perp$.
 	By definition, $P^\tran w = 0$.
 	By symmetry, $Pw = 0$.
 
-	Now, suppose $P$ is an orthogonal projection.
-	Any vector $a \in \mathbb R^n$ can be uniquely written as $a = v + w$ where $v \in \mathrm{col}(P)$ and $w \in \mathrm{col}(P)^\perp$.
+	$(\implies)$: Any vector $a \in \mathbb R^n$ can be uniquely written as $a = v + w$ where $v \in \mathrm{col}(P)$ and $w \in \mathrm{col}(P)^\perp$.
 	Then $PPa = PPv + PPw = Pv = P(v+w) = Pa$.
-	As this holds for all $a$, we have that $P$ is idempotent.
+	As this holds for all $a$, we have that $P$ is idempotent. \\
 	Let $u_1, u_2 \in \mathbb R^n$, and note $(P u_1) \cdot ((I-P) u_2) = 0$, as $P u_1 \in \mathrm{col}(P)$ and $(I-P) u_2 \in \mathrm{col}(P)^\perp$.
 	We have $u_1^\tran P^\tran (I-P) u_2 = 0$.
 	Since this holds for all $u_1, u_2$, $P^\tran (I-P) = 0$ so $P^\tran = P^\tran P$.
 	Note that $P^\tran P$ is symmetric, so $P^\tran$ is symmetric, and hence $P$ is symmetric.
 \end{proof}
+
 \begin{corollary}
 	Let $P$ be an orthogonal projection matrix.
 	Then $I-P$ is also an orthogonal projection matrix.
 \end{corollary}
+
 \begin{proof}
 	Clearly, if $P$ is symmetric, so is $I-P$, so it suffices to prove idempotence.
 	We have $(I-P)(I-P) = I - 2P + P^2 = I - 2P + P = I - P$ as required.
 \end{proof}
+
 \begin{proposition}
-	If $P$ is an orthogonal projection, then $P = UU^\tran$ where the columns of $U$ are an orthonormal basis for the column space of $P$.
+	If $P \in \mathbb{R}^{n \times n}$ is an orthogonal projection, then $P = UU^\tran$\footnote{If $k = \rank P$ then $U \in \mathbb{R}^{n \times k}$} where the columns of $U$ are an orthonormal basis for the column space of $P$.
 \end{proposition}
+
 \begin{proof}
 	First, we show that $UU^\tran$ is an orthogonal projection.
 	This is clearly symmetric.
 	It is idempotent: $U U^\tran U U^\tran = U U^\tran$ since $U^\tran U = I$, as the columns of $U$ form an orthonormal basis for the column space of $P$.
-	Further, the column space of $P$ is exactly the column space of $U U^\tran$.
+
+	Further, the column space of $P$ is exactly the column space of $U U^\tran$, so $P = U U^\tran$.
 \end{proof}
+
 \begin{proposition}
 	The rank of an orthogonal projection matrix is equal to its trace.
 \end{proposition}
+
 \begin{proof}
-	The rank is the dimension of the column space, which is $\rank P = \rank(U^\tran U) = \tr(U^\tran U) = \tr(U U^\tran) = \tr P$.
+	The rank is the dimension of the column space, which is $\rank P = \rank(U^\tran U)$, $U^\tran U = I_k$ where $k = \rank P$ so $\rank (U^\tran U) = k = \tr(U^\tran U) = \tr(U U^\tran) = \tr P$.
 \end{proof}
+
 \begin{theorem}
-	Let $X$ be multivariate normal, where $X \sim N(0,\sigma^2 I)$, and let $P$ be an orthogonal projection.
+	Let $X$ be MVN, where $X \sim N(0,\sigma^2 I)$, and let $P$ be an orthogonal projection.
 	Then
 	\begin{enumerate}
-		\item $PX \sim N(0,\sigma^2 P)$, and $(I-P)X \sim N(0,\sigma^2(I-P))$, and these two random variables are independent;
+		\item $PX \sim N(0,\sigma^2 P)$, $(I-P)X \sim N(0,\sigma^2(I-P))$ and these two random variables are independent;
 		\item $\frac{\norm{PX}^2}{\sigma^2} \sim \chi^2_{\rank P}$.
 	\end{enumerate}
 \end{theorem}
+
 \begin{proof}
 	The vector $(P, I-P)^\tran X$ is multivariate normal, since it is a linear function of $X$.
 	This distribution is fully specified by its mean and variance.
@@ -119,41 +134,53 @@ where $A \in \mathbb R^{k \times n}, b \in \mathbb R^k$ are constant.
 		\Var{\begin{pmatrix}
 				PX \\
 				(I-P)X
-			\end{pmatrix}} = \begin{pmatrix}
+			\end{pmatrix}} &= \begin{pmatrix}
 			P \\
 			I - P
 		\end{pmatrix} \sigma^2 I \begin{pmatrix}
 			P \\
 			I - P
-		\end{pmatrix}^\tran = \sigma^2 \begin{pmatrix}
+		\end{pmatrix}^\tran \\
+		&= \sigma^2 \begin{pmatrix}
 			P^2    & P(I-P)  \\
 			P(I-P) & (I-P)^2
-		\end{pmatrix} = \sigma^2 \begin{pmatrix}
+		\end{pmatrix} \\
+		&= \sigma^2 \begin{pmatrix}
 			P & 0   \\
 			0 & I-P
-		\end{pmatrix}
+		\end{pmatrix}\footnote{$P(I - P) = P - P^2 = P - P = 0$ as $P$ idemptotent.}
 	\end{align*}
 	Now we must show that the variables $PX, (I-P)X$ are independent.
 	Let $Z \sim N(0,\sigma^2 P), Z' \sim N(0,\sigma^2(I-P))$ be independent.
 	Then we can see that $(Z, Z')^\tran$ is multivariate normal with
 	\begin{align*}
-		\mu = 0;\quad \Sigma = \begin{pmatrix}
+		\mu = 0;\quad \Sigma = \sigma^2 \begin{pmatrix}
 			P & 0     \\
 			0 & I - P
 		\end{pmatrix}
 	\end{align*}
 	Hence $(PX, (1-P)X)^\tran$ is equal in distribution to $(Z, Z')^\tran$.
-	So $PX$ is independent of $(I-P)X$.
+	So $PX$ is independent of $(I-P)X$. \\
 
 	We must show that $\frac{\norm{PX}^2}{\sigma^2} \sim \chi^2_{\rank P}$.
 	Note that
 	\begin{align*}
-		\frac{\norm{PX}^2}{\sigma^2} = \frac{X^\tran P^\tran P X}{\sigma^2} = \frac{X^\tran \qty(U U^\tran)^\tran U U^\tran X}{\sigma^2} = \frac{\norm{U^\tran X}^2}{\sigma^2}
+		\frac{\norm{PX}^2}{\sigma^2} = \frac{X^\tran P^\tran P X}{\sigma^2} = \frac{X^\tran \qty(U U^\tran)^\tran U U^\tran X}{\sigma^2} = \frac{X^\tran U U^\tran X}{\sigma^2}
 	\end{align*}
+	The columns of $U$ form an orthogonal basis of the columns of $P$ so
+	\begin{align*}
+		\frac{\norm{PX}^2}{\sigma^2} &= \frac{\norm{U^\tran X}^2}{\sigma^2} \\
+		&= \sum_{i = 1}^{\rank P} \frac{(U^\tran X)^2_i}{\sigma^2}.
+	\end{align*} 
 	Note, $U^\tran X \sim N(0,\sigma^2 U^\tran U) = N(0,\sigma^2 I_{\rank P})$.
+	\begin{align*}
+		\Var{U^\tran X} &= U^\tran \Var X U \\
+		&= \sigma^2 U^\tran U \\
+		&= \sigma^2 I. 
+	\end{align*} 
 	So
 	\begin{align*}
-		\frac{(U^\tran X)_i}{\sigma} \overset{\text{iid}}{\sim} N(0,1)
+		\frac{(U^\tran X)_i}{\sigma} \overset{\text{iid}}{\sim} N(0, \sigma^2)
 	\end{align*}
 	for $i = 1, \dots, \rank P$.
 	Hence
@@ -161,6 +188,7 @@ where $A \in \mathbb R^{k \times n}, b \in \mathbb R^k$ are constant.
 		\frac{\norm{PX}^2}{\sigma^2} = \sum_{i=1}^{\rank P} \qty(\frac{(U^\tran X)_i}{\sigma})^2 \sim \chi^2_{\rank P}
 	\end{align*}
 \end{proof}
+
 \begin{theorem}
 	Let $X_1, \dots, X_n \overset{\text{iid}}{\sim} N(\mu,\sigma^2)$ for some unknown $\mu \in \mathbb R$ and $\sigma^2 > 0$.
 	The maximum likelihood estimators for $\mu$ and $\sigma$ are
@@ -174,7 +202,10 @@ where $A \in \mathbb R^{k \times n}, b \in \mathbb R^k$ are constant.
 		\item $\overline X, S_{xx}$ are independent.
 	\end{enumerate}
 \end{theorem}
+
 \begin{proof}
+	We have proved the first statement before.
+
 	Let $P$ be the square $n \times n$ matrix with all entries $\frac{1}{n}$.
 	This is an orthogonal projection matrix, as it is symmetric and idempotent.
 	Note that
@@ -199,10 +230,11 @@ where $A \in \mathbb R^{k \times n}, b \in \mathbb R^k$ are constant.
 		S_{xx} = \sum_i \qty(X_i - \overline X)^2 = \norm{X - PX}^2 = \norm{(I-P)X}^2 = \norm{(I-P)\varepsilon}^2
 	\end{align*}
 	Hence $S_{xx}$ is a function of $(I-P)\varepsilon$.
-	Since $P\varepsilon$ and $(I-P)\varepsilon$ are independent, $\overline X$ and $S_{xx}$ are independent.
+	By the previous theorem, $P\varepsilon$ and $(I-P)\varepsilon$ are independent, so $\overline X$ and $S_{xx}$ are independent.
+
 	Since $I-P$ is a projection with rank equal to its trace $n-1$, we apply the previous theorem to obtain
 	\begin{align*}
-		S_{xx} = \norm{(I-P)\varepsilon}^2 \chi^2_{n-1}
+		\frac{S_{xx}}{\sigma^2} = \frac{\norm{(I-P)\varepsilon}^2}{\sigma^2} \chi^2_{n-1}
 	\end{align*}
 \end{proof}
 

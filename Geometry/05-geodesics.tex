@@ -3,23 +3,34 @@
 \subsection{Definitions}
 Recall that we defined, for a smooth curve $\gamma \colon [a,b] \to \mathbb R^3$,
 \begin{align*}
-	\mathrm{length}(\gamma) = \int_a^b \norm{\gamma'(t)} \dd{t}
+	\mathrm{length}(\gamma) = L(\gamma) = \int_a^b \norm{\gamma'(t)} \dd{t}
 \end{align*}
-\begin{definition}
-	The \textit{energy} of $\gamma$ is given by
+
+\begin{definition}[Energy]
+	The \vocab{energy} of $\gamma$ is given by
 	\begin{align*}
 		E(\gamma) = \int_a^b \norm{\gamma'(t)}^2 \dd{t}
 	\end{align*}
 \end{definition}
-\begin{definition}
+
+Consider $\Omega_{pq} = \{\text{all smooth curves } \gamma: [a, b] \to \mathbb{R}^3 : \gamma(a) = p, \gamma(b) = q\}$ then $E : \Omega_{pq} \to \mathbb{R}$.
+In fact what we really want is given $\Sigma \subset \mathbb{R}^3$, $\gamma : [a, b] \to \Sigma$.
+Then we want to find the critical points of $E$ exactly like in variational principles.
+
+\begin{definition}[One-Parameter Variation]
 	Let $\gamma \colon [a,b] \to \Sigma$, where $\Sigma$ is a smooth surface in $\mathbb R^3$.
-	A \textit{one-parameter variation} (with fixed endpoints) of $\gamma$ is a smooth map $\Gamma \colon (-\varepsilon, \varepsilon) \times [a,b] \to \Sigma$, such that if $\gamma_s = \Gamma(s,\wildcard)$, then
+	A \vocab{one-parameter variation} (with fixed endpoints) of $\gamma$ is a smooth map $\Gamma \colon (-\varepsilon, \varepsilon) \times [a,b] \to \Sigma$, such that if $\gamma_s = \Gamma(s,\wildcard)\footnote{I.e. $\gamma_s(t) = \Gamma(s, t)$}$, then
 	$\gamma_0(t) = \gamma(t)$, and $\gamma_s(a)$ and $\gamma_s(b)$ are independent of $s$.
 \end{definition}
-\begin{definition}
-	A smooth curve $\gamma \colon [a,b] \to \Sigma$ is a \textit{geodesic} if, for every variation $(\gamma_s)$ of $\gamma$ with fixed endpoints as above, we have $\eval{\dv{s}}_{s=0} E(\gamma_s) = 0$.
-	Alternatively, $\gamma$ is a critical point of the energy functional on curves from $\gamma(a)$ to $\gamma(b)$.
+
+\begin{definition}[Geodesic]
+	A smooth curve $\gamma \colon [a,b] \to \Sigma$ is a \vocab{geodesic} if, for every variation $(\gamma_s)$ of $\gamma$ with fixed endpoints as above, we have $\eval{\dv{s}}_{s=0} E(\gamma_s) = 0$.
+	In other words, $\gamma$ is a critical point of the energy functional on curves from $\gamma(a)$ to $\gamma(b)$.
 \end{definition}
+
+A geodesic is the path that a free particle would follow if the only force acting on it was the one that kept it on the surface.
+E.g take a sphere to a place with no gravity, put a marble on it and give it a kick. 
+The path it follows will be a geodesic.
 
 \subsection{The geodesic equations}
 Let $\gamma$ have image contained within the image of an allowable parametrisation $\sigma \colon V \to U$.
@@ -30,8 +41,10 @@ Suppose that the first fundamental form, with respect to $\sigma$, is
 \end{align*}
 Let
 \begin{align*}
-	R = E \dot u^2 + 2F \dot u \dot v + G \dot v^2
+	R &= E(u(s, t), v(s, t)) \dot u^2 + 2F(u(s, t), v(s, t)) \dot u \dot v + G(u(s, t), v(s, t)) \dot v^2 \\
+	&= E \dot u^2 + 2F \dot u \dot v + G \dot v^2
 \end{align*}
+where $\dot{u} = \frac{\partial u}{\partial t}$, $\dot{v} = \frac{\partial v}{\partial t}$.
 By definition,
 \begin{align*}
 	E(\gamma_s) = \int_a^b R \dd{t}
@@ -44,10 +57,10 @@ Hence,
 \end{align*}
 This gives
 \begin{align*}
-	\dv{s} E(\gamma_s) = \int_a^b \pdv{R}{s} \dd{t}
+	\dv{s} E(\gamma_s) = \int_a^b \pdv{R}{s} \dd{t}.
 \end{align*}
-We can integrate by parts.
-Note that $\pdv{u}{s}$ and $\pdv{v}{s}$ vanish at $a,b$.
+Note $\frac{\partial \dot{u}}{\partial s} = \frac{\partial^2 u}{\partial s \partial t}$, $\frac{\partial \dot{v}}{\partial s} = \frac{\partial^2 v}{\partial s \partial t}$ and so we can integrate by parts.
+Note that $\pdv{u}{s}$ and $\pdv{v}{s}$ vanish at $a,b$ as the endpoints are fixed. 
 Hence,
 \begin{align*}
 	\eval{\dv{s}}_{s=0} E(\gamma_s) = \int_a^b \qty(A \pdv{u}{s} + B \pdv{v}{s}) \dd{t}
@@ -57,123 +70,46 @@ where
 	A & = E_u \dot u^2 + 2F_u \dot u \dot v + G_u \dot v^2 - 2 \pdv{t} \qty(E \dot u + F \dot v) \\
 	B & = E_v \dot u^2 + 2F_v \dot u \dot v + G_v \dot v^2 - 2 \pdv{t} \qty(F \dot u + G \dot v)
 \end{align*}
+
+Note that we have absolute freedom for choosing the ``variational vector field''
+\begin{align*}
+	w(t) = \qty(\frac{\partial u}{\partial s}(0, t), \frac{\partial v}{\partial s}(0, t)),
+\end{align*} which are the $\frac{\partial u}{\partial s}, \frac{\partial v}{\partial s}$ in $\dv{s} E(\gamma_s) = \int_a^b \pdv{R}{s} \dd{t}$.
+
 \begin{corollary}
-	A smooth curve $\gamma \colon [a,b] \to \Sigma$ with image in $\Im \sigma$ is a geodesic if and only if it satisfies the \textit{geodesic equations}:
+	A smooth curve $\gamma \colon [a,b] \to \Sigma$ with image in $\Im \sigma$ is a geodesic iff $A = B = 0$, i.e. it satisfies the \textit{geodesic equations}:
 	\begin{align*}
 		\dv{t} \qty(E \dot u + F \dot v) & = \frac{1}{2} \qty( E_u \dot u^2 + 2F_u \dot u \dot v + G_u \dot v^2 ) \\
 		\dv{t} \qty(F \dot u + G \dot v) & = \frac{1}{2} \qty( E_v \dot u^2 + 2F_v \dot u \dot v + G_v \dot v^2 )
 	\end{align*}
 	Note that these equations are evaluated at $s = 0$, so no choice of variation is required.
 \end{corollary}
+
+\begin{remark}
+	\begin{enumerate}
+		\item If $w(t)$ with $w(a) = w(b) = 0$ then 
+		\begin{align*}
+			\gamma_s(t) = \sigma((u(t), v(t)) + sw(t))
+		\end{align*} 
+		for $s$ small enough is a variation of $\gamma$ with fixed endpoints and variational vector field $w$.
+		\item Recall Q10, Sheet 4 of IA Analysis:
+		\begin{gather*}
+			\int_a^b \underbracket{f(x)}_{\text{cont}} g(x) \,dx = 0 \quad \forall \; g : [a, b] \to \mathbb{R} \text{ s.t. } g(a) = g(b). \\
+			\implies f \equiv 0.
+		\end{gather*} 
+		This justifies why $A = B = 0$
+		\item  The best way to think about the geodesic equations is via the Euler-Lagrange equations of the Lagrangian, $L(u, v, \dot{u}, \dot{v}) = \frac{1}{2} \qty(E \dot{u}^2 + 2 F \dot{u} \dot{v} + G \dot{v}^2)$ (purely kinetic energy).
+		Recall from Variational Principles that the E-L eqns are $\frac{d }{d t} \frac{\partial L}{\partial \dot{q}_i} = \frac{\partial L}{\partial q_i}$ where $q_1 = u, q_2 = v$.
+		These are the geodesic equations.
+	\end{enumerate} 
+\end{remark} 
+
 \begin{remark}
 	Solving a differential equation is a local procedure.
 	The original definition of the geodesic seems to be a global property.
 	However, we can always consider a sub-curve of $\gamma$ to also be a geodesic, since its variations are variations of $\gamma$.
 	So the definition can be thought of as local.
-
-	Energy is sensitive to reparametrisation.
-	If $f, g \colon [a,b] \to \mathbb R$ are smooth, the Cauchy-Schwarz inequality gives that
-	\begin{align*}
-		\qty(\int_a^b fg \dd{t})^2 \leq \int_a^b f^2 \dd{t} \cdot \int_a^b g^2 \dd{t}
-	\end{align*}
-	Let us apply this to $f = \sqrt{R}$, $g = 1$ to find
-	\begin{align*}
-		\mathrm{length}(\gamma)^2 \leq E(\gamma)(b-a)
-	\end{align*}
-	Since equality holds only when the two functions are proportional, we must have that $\norm{\gamma'(t)}$ is constant for the equality to hold.
-	In other words, $\gamma$ must be parametrised proportional to arc length.
 \end{remark}
-\begin{corollary}
-	If $\gamma$ has constant speed and locally minimises length, then it is a geodesic.
-	Further, if $\gamma$ globally minimises energy, then it must globally minimise length, and is parametrised with constant speed.
-\end{corollary}
-\begin{remark}
-	We would like geodesics to be a local property, but not necessarily global length minimisers.
-	For example, all arcs of great circles will be shown to be geodesics, even if large arcs are not global length minimisers between fixed endpoints.
-\end{remark}
-
-\subsection{Geodesics on the plane}
-The plane $\mathbb R^2$ has parametrisation $\sigma(u,v) = (u,v,0)$ and first fundamental form $\dd{u}^2 + \dd{v}^2$.
-The geodesic equations here are
-\begin{align*}
-	\ddot u = 0;\quad \ddot v = 0
-\end{align*}
-In particular, the geodesics on the plane are given by
-\begin{align*}
-	u(t) = \alpha t + \beta;\quad v(t) = \gamma t + \delta
-\end{align*}
-This is a straight line, parametrised at constant speed.
-
-\subsection{Geodesics on the sphere}
-Consider the unit sphere with parametrisation
-\begin{align*}
-	\sigma(u,v) = (\cos u \cos v, \cos u \sin v, \sin u);\quad u \in \qty(-\frac{\pi}{2});\quad v \in \qty(0, 2 \pi)
-\end{align*}
-This has first fundamental form
-\begin{align*}
-	\dd{u}^2 + \cos^2 u \dd{v}^2 \implies E = 1;\; F = 0;\; G = \cos^2 u
-\end{align*}
-The geodesic equations give
-\begin{align*}
-	\dv{t} \qty(\dot u) = \frac{1}{2} 2\cos u \sin u \dot v^2;\quad \dv{t} \qty(\cos^2 u \dot v) = 0
-\end{align*}
-This gives
-\begin{align*}
-	\ddot u + \sin u \cos u \dot v^2 = 0;\quad \ddot v - 2 \tan u \dot u \dot v = 0
-\end{align*}
-Since geodesics are parametrised at constant speed, we can assume that it is parametrised at unit speed without loss of generality.
-\begin{align*}
-	\norm{\gamma'(t)} = 1 \implies \dot u + \cos^2 u \dot v^2 = 1
-\end{align*}
-Hence,
-\begin{align*}
-	\frac{\ddot v}{\dot v} = 2 \tan u \dot u \implies \ln \dot v = -2 \ln \cos u + \text{constant} \implies \dot v = \frac{C}{\cos^2 u}
-\end{align*}
-Substituting into the unit speed equation,
-\begin{align*}
-	\dot u^2 = 1 - \frac{C^2}{\cos^2 u} \implies \dot u = \sqrt{\frac{\cos^2 u - C^2}{\cos^2 u}}
-\end{align*}
-Then,
-\begin{align*}
-	\frac{\dot v}{\dot u} = \dv{v}{u} = \frac{C}{\cos u \sqrt{\cos^2 u - C^2}}
-\end{align*}
-Hence,
-\begin{align*}
-	v = \int \dv{v}{u} \dd{u} = \int \frac{C \sec^2 u}{\sqrt{1-C^2 sec^2 u}} \dd{u}
-\end{align*}
-Using the substitution $w = \frac{C \tan u}{\sqrt{1-C^2}}$, we find
-\begin{align*}
-	v = \int \frac{w}{1-w^2} \dd{w} = \arcsin w + \text{constant} = \arcsin(\lambda \tan u) + \delta
-\end{align*}
-for some constants $\lambda, \delta$.
-Hence,
-\begin{align*}
-	\sin (v - \delta) = \lambda \tan u
-\end{align*}
-Rewriting using the angle addition formula,
-\begin{align*}
-	\underbrace{(\sin v \cos u)}_{x}\cos \delta - \underbrace{(\cos v \cos u)}_{y}\sin \delta - \lambda \underbrace{\sin u}_z = 0
-\end{align*}
-Hence, the geodesic $\gamma$ lies on a plane through the origin, since this is a linear equation in $x, y, z$.
-Such planes intersect the sphere in great circles.
-
-\subsection{Geodesics on the torus}
-Consider the surface of revolution of a circle in the $xz$-plane centred at $(a,0,0)$ about the $z$ axis, giving a torus.
-An allowable parametrisation for this surface is
-\begin{align*}
-	\sigma(u,v) = ((a+\cos u)\cos v, (a+\cos u)\sin v, \sin u)
-\end{align*}
-The first fundamental form is
-\begin{align*}
-	\dd{u}^2 + (a+\cos u)^2 \dd{v}^2 \implies E = 1;\;F = 0;\;G = (a+\cos u)^2
-\end{align*}
-Note that if we were to take $a = 0$, we would arrive at the unit sphere and its first fundamental form.
-We can follow the same procedure as above with the sphere, or formally replace $\cos u$ with $a+\cos u$ in the result.
-\begin{align*}
-	\dv{v}{u} = \frac{C}{(a+\cos u)\sqrt{(a+\cos u)^2 - C^2}}
-\end{align*}
-which cannot be integrated using classical functions.
-This leads to the study of elliptic functions.
 
 \subsection{Equivalent characterisation of geodesics}
 We have so far restricted our analysis to the first fundamental form, without considering its embedding in $\mathbb R^3$.
@@ -181,18 +117,15 @@ Intuitively, we know that straight lines in $\mathbb R^2$ are not just locally s
 We would expect this to hold for other surfaces as well.
 We can charaterise this notion via stating that the change in the tangent vector to a curve is as small as it could be, subject to the constraint that it lies on the surface.
 
-\begin{proposition}
+\begin{proposition} \label{prp:3.1}
 	Let $\Sigma$ be a smooth surface in $\mathbb R^3$.
-	A smooth curve $\gamma \colon [a,b] \to \Sigma$ is a geodesic if and only if $\ddot \gamma(t)$ is everywhere normal to the surface $\Sigma$.
+	A smooth curve $\gamma \colon [a,b] \to \Sigma$ is a geodesic iff $\ddot \gamma(t)$ is everywhere normal to the surface $\Sigma$.
 \end{proposition}
+
 \begin{remark}
 	This proposition makes use of the tangent plane, a notion that exists only because we have an embedding in $\mathbb R^3$.
-	Note that
-	\begin{align*}
-		\dv{t} \inner{\dot \gamma, \dot \gamma} = 2 \inner{\underbrace{\dot \gamma}_{\text{tangent to } \Sigma}, \underbrace{\ddot \gamma}_{\text{normal to } \Sigma}} = 0
-	\end{align*}
-	Hence, $\inner{\dot \gamma, \dot \gamma}$ is constant, giving that geodesics are parametrised proportional to arc length.
 \end{remark}
+
 \begin{proof}
 	The property of being a geodesic as we previously defined is a local property, and so is the condition in the proposition.
 	Hence, we may work entirely within an allowable parametrisation $\sigma \colon V \to U$.
@@ -202,7 +135,7 @@ We can charaterise this notion via stating that the change in the tangent vector
 		\dot \gamma = \sigma_u \dot u + \sigma_v \dot v
 	\end{align*}
 	$\ddot \gamma$ is normal to $\Sigma$ when it is orthogonal to the tangent plane, which is spanned by $\sigma_u, \sigma_v$.
-	This is true if and only if
+	This is true iff
 	\begin{align*}
 		\inner{ \dv{t} \qty(\sigma_u \dot u + \sigma_v \dot v), \sigma_u } = 0 = \inner{ \dv{t} \qty(\sigma_u \dot u + \sigma_v \dot v), \sigma_v }
 	\end{align*}
@@ -228,34 +161,150 @@ We can charaterise this notion via stating that the change in the tangent vector
 	By symmetry, we find the second geodesic equation similarly.
 \end{proof}
 
-\subsection{Planes of symmetry}
-Let $\Sigma$ be a smooth surface in $\mathbb R^3$ such that there exists a plane $\Pi \subset \mathbb R^3$ such that $\Pi \cap \Sigma$ is a smooth embedded curve $C \subset \Sigma$, and $\Sigma$ is setwise preserved by reflection in the plane $\Pi$.
-We will show that $C$ is a geodesic when parametrised at constant speed.
-Consider a point $p$ on $C$.
-We can think of $\mathbb R^3 = \Pi \oplus \Pi^\perp$, where we change coordinates such that $p$ is the origin.
-We can also write $\mathbb R^3 = T_p \Sigma \oplus \mathbb R n_p$, where $\mathbb R n_p$ is the vector subspace of $\mathbb R^3$ generated by $n_p$.
-Clearly, reflection in $\Pi$ acts on $\Pi$ by the identity, and on $\Pi^\perp$ by $-1$.
-Since reflection in $\Pi$ fixes $\Sigma$ setwise and fixes $p$, it must also preserve the subspace $T_p \Sigma$.
-Hence it also preserves $\mathbb R n_p$, so $\mathbb R n_p \subset \Pi$, since $\Pi$ is not the identity on $T_p \Sigma$.
-Now, let us parametrise $C$ locally near $p$ using $t \mapsto \gamma(t) \in C$ at constant speed.
-Since $\gamma(t) \subset \Pi$, we have $\dot \gamma(t), \ddot \gamma(t) \in \Pi$.
-$\gamma$ has constant speed, so $\inner{\dot \gamma, \ddot \gamma} = 0$.
-Hence $\dot \gamma$ lies in $\Pi \cap T_p \Sigma$ and $\ddot \gamma$ is orthogonal to this and lies in $\Pi$, so lies in $\mathbb R n_p \subset \Pi$.
-Hence $\gamma$ is indeed a geodesic.
+\begin{corollary} \label{cor:3.2}
+	If $\gamma : [a, b] \to \Sigma$ is a geodesic, then $|\dot{\gamma}(t)|$ is a constant, so geodesics are parametrised proportional to arc length (i.e. has constant speed).
+\end{corollary} 
 
-In particular, arcs of great circles are geodesics, since they lie in planes of symmetry.
+\begin{proof}
+	\begin{align*}
+		\dv{t} \inner{\dot \gamma, \dot \gamma} = 2 \inner{\underbrace{\dot \gamma}_{\text{tangent to } \Sigma}, \underbrace{\ddot \gamma}_{\text{normal to } \Sigma}} = 0
+	\end{align*}
+\end{proof} 
+
+\subsubsection{Length vs Energy}
+
+Energy is sensitive to reparametrisation.
+If $f, g \colon [a,b] \to \mathbb R$ are smooth, the Cauchy-Schwarz inequality gives that
+\begin{align*}
+	\qty(\int_a^b fg \dd{t})^2 \leq \int_a^b f^2 \dd{t} \cdot \int_a^b g^2 \dd{t}
+\end{align*}
+Let us apply this to $f = |\dot{\gamma}|$, $g = 1$ to find
+\begin{align*}
+	(L(\gamma))^2 = \qty(\int_{a}^{b} |\dot{\gamma}(t)| \cdot 1 \dd{t})^2 &\leq \qty(\int_{a}^{b} |\dot{\gamma}(t)|^2 \dd{t}) \qty(\int_{a}^{b} 1 \dd{t}) = E(\gamma)(b-a).
+\end{align*}
+Since equality holds only when the two functions are proportional, we must have that $\norm{\gamma'(t)}$ is constant for the equality to hold.
+In other words, $\gamma$ must be parametrised proportional to arc length.
+
+\begin{corollary} \label{cor:3.3}
+	A smooth curve $\gamma: [a, b] \to \Sigma \subset \mathbb{R}^3$ that has constant speed and locally minimises length is a geodesic.
+	% Further, if $\gamma$ globally minimises energy, then it must globally minimise length, and is parametrised with constant speed.
+\end{corollary}
+
+\begin{proof}
+	Need to prove $\gamma$ is a critical point of $E$.
+
+	Let $\tau : [a, b] \to \Sigma$ be any other curve connecting $\gamma(a)$ to $\gamma(b)$.
+	\begin{align*}
+		E(\gamma) = \frac{(L(\gamma))^2}{b - a} \leq \frac{(L(\tau))^2}{b - a} \leq E(\tau)
+	\end{align*} 
+	Thus $\gamma$ is a critical point of $E$ and hence a geodesic.
+\end{proof} 
+
+\begin{remark}
+	We would like geodesics to be a local property, but not necessarily global length minimisers.
+	For example, all arcs of great circles will be shown to be geodesics, even if large arcs are not global length minimisers between fixed endpoints.
+
+	While geodesics might not be global minimisers they are always local minimisers (see Wilson's book for proof).
+\end{remark}
+
+\begin{example}[Geodesic on planes]
+	The plane $\mathbb R^2$ has parametrisation $\sigma(u,v) = (u,v,0)$ and first fundamental form $\dd{u}^2 + \dd{v}^2$.
+	The geodesic equations here are
+	\begin{align*}
+		\ddot u = 0;\quad \ddot v = 0
+	\end{align*}
+	In particular, the geodesics on the plane are given by
+	\begin{align*}
+		u(t) = \alpha t + \beta;\quad v(t) = \gamma t + \delta
+	\end{align*}
+	This is a straight line, parametrised at constant speed.
+\end{example}
+
+\begin{example}[Geodesics on unit sphere]
+	Consider the unit sphere with parametrisation
+	\begin{align*}
+		\sigma(u,v) &= (\sin \theta \cos \phi, \sin \theta \sin \phi, \cos \theta) \\
+		\sigma_\phi &= (-\sin \theta \sin \phi, \sin \theta \cos \phi, 0) \\
+		\sigma_\theta &= (\cos \theta \cos \phi, -\cos \theta \sin \phi, -\sin \theta)
+	\end{align*}
+	This has first fundamental form
+	\begin{align*}
+		E = \sin^2 \theta, F = 0, G = 1
+	\end{align*}
+	We have Lagrangian
+	\begin{align*}
+		L(\theta, \phi, \dot{\theta}, \dot{\phi}) = \frac{1}{2} \qty(\dot{\phi}^2 \sin^2 \theta + \dot{\theta}^2)
+	\end{align*} 
+	Euler-Lagrange
+	\begin{align*}
+		\frac{\partial L}{\partial \dot{\theta}} &= \dot{\theta}, \frac{\partial L}{\partial \dot{\phi}} = \sin^2 \dot{\phi} \\
+		\frac{\partial L}{\partial \phi} &= 0, \frac{\partial L}{\partial \theta} = \dot{\phi}^2\sin \theta \cos \theta \\
+		\frac{d }{d t} \qty(\frac{\partial L}{\partial \dot{x}}) &= \frac{\partial L}{\partial x} \\
+		\implies \frac{d}{dt} (\dot{\phi} \sin^2 \theta) &= 0, \ddot{\theta} = \dot{\phi}^2 \sin \theta \cos \theta \tag{$\dagger$}
+	\end{align*} 
+	This gives right away that the equator $t \mapsto (t, \frac{\pi}{2})$ is a geodesic with speed $1$.
+	In fact all great circles parametrised with constant speed are geodesics.
+	We can prove this by integrating $(\dagger)$, but we can see this by geometrically noticing that such curves have $\ddot{\gamma}$ normal to $T_{\gamma(t)} S^2$.
+
+	Since geodesics solve a 2nd order ODE prescribing a point $p \in \Sigma$ and a direction $v \in T_p \Sigma$ determines the geodesic completely.
+	Thus great circles are all possible geodesics, as there exists a great circle for all $p, v$.
+
+	Note that $\gamma$ between $p, q$ as in the picture does \underline{not} minimise length.
+\end{example} 
+
+% \begin{example}[Geodesic on a Torus]
+% 	Consider the surface of revolution of a circle in the $xz$-plane centred at $(a,0,0)$ about the $z$ axis, giving a torus.
+% 	An allowable parametrisation for this surface is
+% 	\begin{align*}
+% 		\sigma(u,v) = ((a+\cos u)\cos v, (a+\cos u)\sin v, \sin u)
+% 	\end{align*}
+% 	The first fundamental form is
+% 	\begin{align*}
+% 		\dd{u}^2 + (a+\cos u)^2 \dd{v}^2 \implies E = 1;\;F = 0;\;G = (a+\cos u)^2
+% 	\end{align*}
+% 	Note that if we were to take $a = 0$, we would arrive at the unit sphere and its first fundamental form.
+% 	We can follow the same procedure as above with the sphere, or formally replace $\cos u$ with $a+\cos u$ in the result.
+% 	\begin{align*}
+% 		\dv{v}{u} = \frac{C}{(a+\cos u)\sqrt{(a+\cos u)^2 - C^2}}
+% 	\end{align*}
+% 	which cannot be integrated using classical functions.
+% 	This leads to the study of elliptic functions.
+% \end{example} 
+
+% \subsection{Planes of symmetry}
+% Let $\Sigma$ be a smooth surface in $\mathbb R^3$ such that there exists a plane $\Pi \subset \mathbb R^3$ such that $\Pi \cap \Sigma$ is a smooth embedded curve $C \subset \Sigma$, and $\Sigma$ is setwise preserved by reflection in the plane $\Pi$.
+% We will show that $C$ is a geodesic when parametrised at constant speed.
+% Consider a point $p$ on $C$.
+% We can think of $\mathbb R^3 = \Pi \oplus \Pi^\perp$, where we change coordinates such that $p$ is the origin.
+% We can also write $\mathbb R^3 = T_p \Sigma \oplus \mathbb R n_p$, where $\mathbb R n_p$ is the vector subspace of $\mathbb R^3$ generated by $n_p$.
+% Clearly, reflection in $\Pi$ acts on $\Pi$ by the identity, and on $\Pi^\perp$ by $-1$.
+% Since reflection in $\Pi$ fixes $\Sigma$ setwise and fixes $p$, it must also preserve the subspace $T_p \Sigma$.
+% Hence it also preserves $\mathbb R n_p$, so $\mathbb R n_p \subset \Pi$, since $\Pi$ is not the identity on $T_p \Sigma$.
+% Now, let us parametrise $C$ locally near $p$ using $t \mapsto \gamma(t) \in C$ at constant speed.
+% Since $\gamma(t) \subset \Pi$, we have $\dot \gamma(t), \ddot \gamma(t) \in \Pi$.
+% $\gamma$ has constant speed, so $\inner{\dot \gamma, \ddot \gamma} = 0$.
+% Hence $\dot \gamma$ lies in $\Pi \cap T_p \Sigma$ and $\ddot \gamma$ is orthogonal to this and lies in $\Pi$, so lies in $\mathbb R n_p \subset \Pi$.
+% Hence $\gamma$ is indeed a geodesic.
+
+% In particular, arcs of great circles are geodesics, since they lie in planes of symmetry.
 
 \subsection{Surfaces of revolution}
-Consider the surface of revolution given by $\eta(u) = (f(u), 0, g(u))$ where $\eta$ is smooth and injective, and $f(u) > 0$, rotated about the $z$ axis.
+This is an important example.
+
+Consider the surface of revolution given by $\eta(u) = (f(u), 0, g(u))$ in the $xz$-plane rotated about the $z$ axis, where $\eta$ is smooth and injective, and $f(u) > 0$. \\
+
 \begin{definition}
 	A circle obtained by rotating a point of $\eta$ is called a \textit{parallel}.
 	A curve optained by rotating $\eta$ itself by a fixed angle about the $z$ axis is called a \textit{meridian}.
 \end{definition}
-A plane in $\mathbb R^3$ containing the $z$ axis is a plane of symmetry, hence meridians are geodesics by the previous discussion.
-Not all parallels are geodesics.
+
+% A plane in $\mathbb R^3$ containing the $z$ axis is a plane of symmetry, hence meridians are geodesics by the previous discussion.
+% Not all parallels are geodesics.
+
 \begin{lemma}
-	A parallel given by $u = u_0$ is a geodesic when parametrised at constant speed if and only if $f'(u_0) = 0$.
+	A parallel given by $u = u_0$ is a geodesic when parametrised at constant speed iff $f'(u_0) = 0$.
 \end{lemma}
+
 \begin{proof}
 	Consider the allowable parametrisation
 	\begin{align*}
@@ -266,49 +315,51 @@ Not all parallels are geodesics.
 	\begin{align*}
 		\qty[ (f')^2 + (g')^2 ] \dd{u}^2 + f^2 \dd{v}^2
 	\end{align*}
-	If without loss of generality we choose to parametrise $\eta$ by arc length, this becomes
+	If wlog we choose to parametrise $\eta$ by arc length, this becomes
 	\begin{align*}
-		\dd{u}^2 + f^2 \dd{v}^2 \implies E = 1;\;F = 0;\;G = f^2
+		\dd{u}^2 + f^2 \dd{v}^2
 	\end{align*}
-	The geodesic equations are
+	The Lagrangian for the geodesic is
 	\begin{align*}
-		\dv{t} \dot u = \ddot u = f f_u \dot v^2;\quad \dv{t} \qty(f^2 \dot v) = 0
-	\end{align*}
-	and $\dot u^2 + f^2 \dot v^2$ is a nonzero constant.
-	Given that we want to only consider parallels of the surface of revolution, we can impose the constraint that $u = u_0$ is constant.
-	Hence, the constant speed condition gives that
-	\begin{align*}
-		\dot v = \frac{\text{constant}}{f(u_0)} = \text{constant}
-	\end{align*}
-	The second equation holds automatically.
-	The first equation is
-	\begin{align*}
-		0 = f(u_0) f_u(u_0) \cdot \text{constant}
-	\end{align*}
-	So this holds exactly when $f_u(u_0) = 0$.
+		L &= \frac{1}{2} \qty(\dot{u}^2 + f^2 \dot{v}^2) \\
+		\frac{\partial L}{\partial u} &= f f' \dot{v}^2, \frac{\partial L}{\partial \dot{u}} = \dot{u}, \frac{\partial L}{\partial v} = 0, \frac{\partial L}{\partial \dot{v}} = f^2 \dot{v} \\
+		\text{E-L eqns} \implies \ddot{u} &= f f' \dot{v}^2, \frac{d }{d t} \qty(f^2 \dot{v}) = 0. \tag{$\dagger$}
+	\end{align*} 
+	We also know that geodesics travel with constant speed so $\dot{u}^2 + f^2 \dot{v}^2$ is a non-zero constant.
+	This is an example of a ``completely integrable'' problem, it has the same number of degrees of freedom as conserved quantities, $2$.
+
+	Meridians: Let $v = v_0$, if $u(t) = t + u_0$, the map $t \mapsto (t + u_0, v_0)$ is a geodesic with speed 1 through $(u_0, v_0)$ as it satisfies $(\dagger)$.
+	As isometries map geodesics to geodesics (Sheet 3) all meridians are geodesics.
+
+	Parallels: Let $u = u_0$ then as $\dot{u}^2 + f^2 \dot{v}^2 = a$ for some $a \neq 0$, $f^2 \dot{v}^2 = a - u_0^2$. 
+	From $(\dagger)$ we need $f f' \dot{v}^2 = 0$ so $f'(u_0) = 0$.
 \end{proof}
-Consider a curve $\gamma(t)$ on $\Sigma$, making angle $\theta$ with the parallel of radius $\rho = f$.
+
+Let's look at the conserved quantity $f^2 \dot{v}$ in more detail.
+
 \begin{proposition}[Clairaut's relation]
+	Consider a curve $\gamma(t)$ on $\Sigma$, making angle $\theta$ with the parallel of radius $\rho = f$.
 	If $\gamma$ is a geodesic, then $\rho \cos \theta$ is constant along $\gamma$.
 \end{proposition}
+
 \begin{proof}
 	Let $\gamma(t) = \sigma(u(t),v(t))$, so $\dot\gamma = \sigma_u \dot u + \sigma_v \dot v$.
-	The tangent vector to the parallel is $\sigma_v$.
+	The tangent vector to the parallel is $\sigma_v = (-f \sin v, f \cos v, 0)$.
 	By the earlier discussion on angles in terms of the first fundamental form,
 	\begin{align*}
 		\cos \theta = \frac{\inner{\sigma_v, \sigma_u \dot u + \sigma_v \dot v}}{\norm{\sigma_v} \cdot \norm{\sigma_u \dot u + \sigma_v \dot v}}
 	\end{align*}
-	If $\gamma$ is parametrised by arc length, $\norm{\dot \gamma} = 1$, so $\norm{\sigma_u \dot u + \sigma_v \dot v} = 1$.
-	So, using our values for $F, G$ above,
+	Assume $\gamma$ is parametrised by arc length, so $\norm{\dot \gamma} = 1$, so $\norm{\sigma_u \dot u + \sigma_v \dot v} = 1$.
+	Using that $F = 0, G = f^2$ we get
 	\begin{align*}
-		\cos \theta = \abs{f(u) \dot v} = \rho \dot v
+		\cos \theta = \frac{f^2 \dot{v}}{f} = f \dot{v}.
 	\end{align*}
-	The second geodesic equation is exactly
-	\begin{align*}
-		\rho \cos \theta = \text{constant}
-	\end{align*}
+	So if $\gamma$ a geodesic then $\rho \cos \theta = f^2 \dot{v}$ is a constant.
 \end{proof}
-\begin{example}
+
+This is just another way to write the conservation law arising from $\frac{\partial L}{\partial v} = 0$.
+
+\begin{example}[Ellisoid of revolution]
 	Usually, for a surface of revolution, we take the assumption that $\eta$ never intersects the $z$-axis, or that $f$ is positive.
 	This ensures that all points on the surface are locally smooth.
 	However, we can allow $\eta$ to meet the $z$-axis orthogonally, as in the ellipsoid or sphere.
@@ -317,8 +368,8 @@ Consider a curve $\gamma(t)$ on $\Sigma$, making angle $\theta$ with the paralle
 	$\rho \cos \theta$ is constant along a geodesic $\gamma$.
 	Suppose that at some point $\gamma$ intersects a parallel of radius $\rho_0$ at angle $\theta_0$, and that $\gamma$ is not a meridian (so $\cos \theta \neq 0$).
 	Hence $\theta_0 \in \left[0, \frac{\pi}{2}\right)$.
-	In particular, for $\rho \cos \theta$ to be constant, we must have that $\rho$ is bounded below.
-	A geodesic which is not a meridian is therefore `trapped' between parallels corresponding to the bound on the size of $\rho$.
+	In particular, $0 < c = \rho \cos \theta \leq \rho$ for $c = \rho_0 \cos \theta_0$ so $\rho$ is bounded below by $c$.
+	A geodesic which is not a meridian is therefore `trapped' between parallels with radius $c$.
 	In particular, any geodesic through a pole is a meridian.
 \end{example}
 
@@ -347,9 +398,9 @@ We can write this as
 	\end{pmatrix} \begin{pmatrix}
 		\ddot u \\
 		\ddot v
-	\end{pmatrix}= R
+	\end{pmatrix}= R(u,v, \dot{u}, \dot{v})
 \end{align*}
-where $R$ is composed of smooth functions of $u,v$.
+where $R$ is composed of smooth functions of $u,v, \dot{u}, \dot{v}$.
 The matrix on the left hand side is invertible, and the inverse map $A \mapsto A^{-1}$ on matrices is smooth.
 Hence, we can write the geodesic equations in the form
 \begin{align*}
@@ -361,21 +412,25 @@ In the usual way we can turn second-order equations into first-order equations b
 \end{align*}
 This is a system of first-order ordinary differential equations as governed by Picard's theorem.
 Since $A, B$ are smooth, a local bound on $\norm{DA}$ and $\norm{DB}$ will give the required Lipschitz condition.
-\begin{corollary}
+
+\begin{corollary} \label{cor:3.4}
 	Let $\Sigma$ be a smooth surface in $\mathbb R^3$.
-	For $p \in \Sigma$ and $v \in T_p \Sigma$ nonzero, then there exists $\varepsilon > 0$ and a geodesic $\gamma \colon [0,\varepsilon) \to \Sigma$ such that
+	For $p \in \Sigma$ and $v \in T_p \Sigma$, then there exists $\varepsilon > 0$ and a unique geodesic $\gamma \colon (-\varepsilon, \varepsilon) \to \Sigma$ such that
 	\begin{align*}
 		\gamma(0) = p;\quad \dot \gamma(0) = v
 	\end{align*}
-	Moreover, this geodesic depends smoothly on $p,v$.
+	Moreover, $\gamma$ depends smoothly on $p,v$.
 \end{corollary}
+
 The local existence of geodesics gives rise to allowable parametrisations of $\Sigma$ with `nice' properties in terms of the first fundamental form.
 Let $p \in \Sigma$, and consider a geodesic arc $\gamma$ starting at $p$ and parametrised by arc length.
 At each point $\gamma(t)$ for small $t > 0$, we can consider a geodesic arc $\gamma_t$ starting at $\gamma(t)$, and $\gamma_t'(0)$ is orthogonal to $\gamma'(t)$, and also parametrised by arc length.
 Now, we define $\sigma(u,v) = \gamma_v(u)$, which is defined for $u \in [0,\varepsilon)$ and $v \in [0,\delta)$.
+
 \begin{lemma}
 	For $\varepsilon, \delta$ sufficiently small, $\sigma \colon (u,v) \mapsto \gamma_v(u)$ defines an allowable parametrisation of an open set in $\Sigma$, taking the interior of the domain.
 \end{lemma}
+
 \begin{proof}
 	Smoothness follows from the addendum to Picard's theorem above.
 	At the origin $(0,0)$, by construction we have $\sigma_u, \sigma_v$ orthogonal.
@@ -383,6 +438,7 @@ Now, we define $\sigma(u,v) = \gamma_v(u)$, which is defined for $u \in [0,\vare
 	So $D\sigma$ has full rank, and (on a smaller set if necessary) $\sigma$ is injective.
 	So $\sigma$ is allowable.
 \end{proof}
+
 \begin{corollary}
 	Any smooth surface $\Sigma$ in $\mathbb R^3$ admits local parametrisations for which the first fundamental form has form $\dd{u}^2 + G(u,v) \dd{v}^2$, so $E = 1$ and $F = 0$.
 \end{corollary}
