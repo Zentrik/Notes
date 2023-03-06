@@ -424,64 +424,79 @@ Since $A, B$ are smooth, a local bound on $\norm{DA}$ and $\norm{DB}$ will give 
 
 The local existence of geodesics gives rise to allowable parametrisations of $\Sigma$ with `nice' properties in terms of the first fundamental form.
 Let $p \in \Sigma$, and consider a geodesic arc $\gamma$ starting at $p$ and parametrised by arc length.
-At each point $\gamma(t)$ for small $t > 0$, we can consider a geodesic arc $\gamma_t$ starting at $\gamma(t)$, and $\gamma_t'(0)$ is orthogonal to $\gamma'(t)$, and also parametrised by arc length.
-Now, we define $\sigma(u,v) = \gamma_v(u)$, which is defined for $u \in [0,\varepsilon)$ and $v \in [0,\delta)$.
+At each point $\gamma(t)$ for small $t$, we can consider a geodesic arc $\gamma_t$ starting at $\gamma(t)$, and $\gamma_t'(0)$ is orthogonal to $\gamma'(t)$, and also parametrised by arc length.
+Now, we define $\sigma(u,v) = \gamma_v(u)$, which is defined for $u \in (-\varepsilon,\varepsilon)$ and $v \in (-\delta,\delta)$.
 
-\begin{lemma}
-	For $\varepsilon, \delta$ sufficiently small, $\sigma \colon (u,v) \mapsto \gamma_v(u)$ defines an allowable parametrisation of an open set in $\Sigma$, taking the interior of the domain.
+\begin{lemma} \label{lem:3.5}
+	For $\varepsilon, \delta$ sufficiently small, $\sigma \colon (u,v) \mapsto \gamma_v(u)$ defines an allowable parametrisation of an open set in $\Sigma$.
 \end{lemma}
 
 \begin{proof}
-	Smoothness follows from the addendum to Picard's theorem above.
-	At the origin $(0,0)$, by construction we have $\sigma_u, \sigma_v$ orthogonal.
-	Hence, they stay linearly independent for sufficiently small $\varepsilon, \delta$.
-	So $D\sigma$ has full rank, and (on a smaller set if necessary) $\sigma$ is injective.
-	So $\sigma$ is allowable.
+	Smoothness follows from \Cref{cor:3.4}.
+	At the origin $(0,0)$, by construction we have $\sigma_u, \sigma_v$ orthogonal and have norm 1.
+	Thus $\eval{D \sigma}_0 : \mathbb{R}^2 \to T_p \Sigma$ is a linear isomorphism.
+	Now we cann apply inverse function theorem as in Q9, Sheet 1 to deduce that $\sigma$ is a local diffeomorphism at $(0, 0)$ and hence for $\epsilon, \delta$ small enough it is an allowable parametrisation.
 \end{proof}
 
-\begin{corollary}
+\begin{proposition} \label{prp:3.6}
 	Any smooth surface $\Sigma$ in $\mathbb R^3$ admits local parametrisations for which the first fundamental form has form $\dd{u}^2 + G(u,v) \dd{v}^2$, so $E = 1$ and $F = 0$.
-\end{corollary}
+\end{proposition}
+
 \begin{proof}
-	Consider the parametrisation $\sigma(u,v) = \gamma_v(u)$.
-	For $v_0$ fixed, the curve $u \mapsto \gamma_{v_0}(u)$ is a geodesic parametrised at unit speed, so $E = 1$.
+	Consider the parametrisation $\sigma(u,v) = \gamma_v(u)$ as above.
+	For $v_0$ fixed, the curve $u \mapsto \gamma_{v_0}(u)$ is a geodesic parametrised by arc-length, so $E = \inner{\sigma_u, \sigma_u} = 1$.
 	One of the geodesic equations is
 	\begin{align*}
 		\dv{t} \qty(F \dot u + G \dot v) = \frac{1}{2} \qty(E_v \dot u^2 + 2F_v \dot u \dot v + G_v \dot v^2)
 	\end{align*}
 	and consider $v(t) = v_0$, $u(t) = t$.
-	$E_v = \dot v = 0$ and $\dot u = 1$, so
+	$E_v = 0, \dot v = 0$ and $\dot u = 1$, so
 	\begin{align*}
 		\dv{t} F = 0 \implies F_u \dot u = 0 \implies F_u = 0
 	\end{align*}
 	So $F$ is independent of $u$.
 	At $u = 0$, then by construction of $\gamma_v$ as being orthogonal to $\gamma$ at $\gamma(v)$, we see $F = 0$.
 \end{proof}
-These coordinates are called \textit{geodesic normal coordinates}.
-Note that by fixing $u$ and letting $v$ vary, the curve obtained is typically not a geodesic, except for $u = 0$ which is $\gamma$ itself.
-In these coordinates, we can also find
-\begin{align*}
-	G(0,v) = 1;\quad G_u(0,v) = 0
-\end{align*}
-The first result holds since $\sigma_v$ has unit length at $u = 0$.
-The second result holds because $u = 0$ yields a geodesic with arc length parametrisation, and then we can use one of the geodesic equations to find
-\begin{align*}
-	\dv{t} \qty(E \dot u + F \dot v) = \frac{1}{2}\qty(E_u \dot u^2 + 2F_u \dot u \dot v + G_u \dot v^2) \implies 0 = \frac{1}{2} G_u(0,v)
-\end{align*}
+
+\begin{remark}
+	\begin{enumerate}
+		\item These coordinates are called \vocab{Fermi coordinates} (and sometimes geodesic normal coordinates).
+		\item Note that by fixing $u$ and letting $v$ vary, the curve obtained is typically not a geodesic, except for $u = 0$ which is $\gamma$ itself.
+		\item In these coordinates, we can also find
+		\begin{align*}
+			G(0,v) = 1;\quad G_u(0,v) = 0
+		\end{align*}
+		The first result holds since $\sigma_v$ has unit length at $u = 0$.
+		The second result holds because $u = 0$ yields a geodesic with arc length parametrisation, and then we can use one of the geodesic equations to find
+		\begin{align*}
+			\dv{t} \qty(E \dot u + F \dot v) = \frac{1}{2}\qty(E_u \dot u^2 + 2F_u \dot u \dot v + G_u \dot v^2) \implies 0 = \frac{1}{2} G_u(0,v)
+		\end{align*}
+		\item Once can show that if $E = 1$ and $F = 0$, then the Gauss curvature is given by
+		\begin{align*}
+			\kappa = \frac{-\qty(\sqrt{G})_{uu}}{\sqrt{G}}
+		\end{align*}
+		This proves \Cref{thm:egregium}!
+		Proving this is not too hard, but beyond the scope of this course.
+	\end{enumerate} 
+\end{remark} 
 
 \subsection{Surfaces of constant curvature}
-In the example sheets, we show that for a smooth surface $\Sigma$ in $\mathbb R^3$ with allowable parametrisation for which $E = 1$ and $F = 0$, we have the following result for the Gauss curvature.
+If $\Sigma \subset \mathbb{R}^3$ and $f \colon \mathbb R^3 \to \mathbb R^3$ is a dilation $f(x,y,z) = (\lambda x,\lambda y,\lambda z), \lambda \neq 0$, then
 \begin{align*}
-	\kappa = \frac{-\qty(\sqrt{G})_{uu}}{\sqrt{G}}
+	\kappa_{f(\Sigma)} = \frac{1}{\lambda^2} \kappa_\Sigma
 \end{align*}
-If $a \colon \mathbb R^3 \to \mathbb R^3$ is a dilation $a(x,y,z) = (ax,ay,az)$, then
-\begin{align*}
-	\kappa_{a(\Sigma)} = \frac{1}{a^2} \kappa_\Sigma
-\end{align*}
-since $E, F, G$ rescale by $a^2$, and $L, N, M$ rescale by $a$.
-This matches the results previously found for spheres of varying radii.
-By dilating, to understand surfaces of constant curvature it suffices to consider surfaces with constant curvature $\pm 1$ or 0.
-\begin{proposition}
+since $E, F, G$ rescale by $\lambda^2$, and $L, N, M$ rescale by $\lambda$.
+% This matches the results previously found for spheres of varying radii.
+
+\begin{question}
+	What do constant curvature surfaces look like?
+\end{question} 
+
+\begin{answer}
+	By dilating, to understand surfaces of constant curvature it suffices to consider surfaces with constant curvature $\pm 1$ or 0.
+\end{answer} 
+
+\begin{proposition} \label{prp:3.7}
 	Let $\Sigma$ be a smooth surface in $\mathbb R^3$.
 	Then,
 	\begin{enumerate}
@@ -489,12 +504,14 @@ By dilating, to understand surfaces of constant curvature it suffices to conside
 		\item if $\kappa \equiv 1$, then $\Sigma$ is locally isometric to $(S^2, \dd{u}^2 + \cos^2 u \dd{v}^2)$.
 	\end{enumerate}
 \end{proposition}
+
 \begin{proof}
-	$\Sigma$ admits an allowable parametrisation with $E = 1$ and $F = 0$ by using geodesic normal coordinates, so
+	$\Sigma$ admits an allowable parametrisation with $E = 1$, $F = 0$, $G(0,v) = 1$ and $G_u(0,v) = 0$ by using Fermi coordinates.
+	Also
 	\begin{align*}
-		\kappa = \frac{-\sqrt{G}_{uu}}{\sqrt{G}};\quad G(0,v) = 1;\quad G_u(0,v) = 0
+		\kappa = \frac{-(\sqrt{G})_{uu}}{\sqrt{G}}
 	\end{align*}
-	If $\kappa \equiv 0$, we have $\sqrt{G}_{uu} = 0$, so $\sqrt{G} = A(v) u + B(v)$, and the boundary conditions give $A \equiv 0, B \equiv 1$.
+	If $\kappa \equiv 0$, we have $(\sqrt{G})_{uu} = 0$, so $\sqrt{G} = A(v) u + B(v)$, and the boundary conditions give $A \equiv 0, B \equiv 1$.
 	In particular, $G \equiv 1$.
 	The fundamental form then is $\dd{u}^2 + \dd{v}^2$, which is that of $\mathbb R^2$.
 
@@ -507,8 +524,8 @@ By dilating, to understand surfaces of constant curvature it suffices to conside
 \end{proof}
 \begin{remark}
 	If $\kappa \equiv -1$, we will find the first fundamental form $\dd{u}^2 + \cosh^2 u \dd{v}^2$.
-	There exists an object known as the tractoid, which is a smooth surface in $\mathbb R^3$, and has this first fundamental form.
+	There exists an object known as the tractoid, which is a smooth surface in $\mathbb R^3$, and has this first fundamental form (Q5, Sheet 2).
 	We could alternatively choose not to embed this surface in $\mathbb R^3$.
 
-	In fact, the change of variables $v = e^v \tanh u, w = e^v \sech u$ turns the fundamental form $\dd{u}^2 + \cosh^2 u \dd{v}^2$ into $\frac{\dd{V}^2 + \dd{W}^2}{W^2}$, which is a `standard' presentation of the first fundamental form, which we will see more of later.
+	In fact, the change of variables $v = e^v \tanh u, w = e^v \sech u$ turns the fundamental form $\dd{u}^2 + \cosh^2 u \dd{v}^2$ into $\frac{\dd{V}^2 + \dd{W}^2}{W^2}$, which is `the standard presentation' of the hyperbolic plane, which we will see more of later.
 \end{remark}
