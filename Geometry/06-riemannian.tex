@@ -1,54 +1,87 @@
 \section{Riemannian metrics}
 
 \subsection{Definitions}
-\begin{definition}
+\begin{definition}[Abstract Riemannian Metric]
 	Let $V \subset \mathbb R^2$ be an open set.
-	An \textit{(abstract) Riemannian metric} is a smooth map from $V$ to the set of positive definite symmetric bilinear forms, given by
+	An \vocab{abstract Riemannian metric} is a smooth map from $V$ to the set of positive definite symmetric bilinear forms, given by
 	\begin{align*}
-		v \mapsto \begin{pmatrix}
-			E(v) & F(v) \\
-			F(v) & G(v)
+		p \mapsto \begin{pmatrix}
+			E(v) & F(p) \\
+			F(p) & G(p)
 		\end{pmatrix}
 	\end{align*}
 	such that $E > 0$, $G > 0$, $EG - F^2 > 0$.
 	The image of this map can be viewed as an open subset of $\mathbb R^4$.
 \end{definition}
-If $v$ is a vector at $p \in V$, we can compute its infinitesimal length by
+
+If $v$ is a vector at $p \in V$, then its norm is:
+
 \begin{align*}
-	\norm{v}^2 = v^\tran \begin{pmatrix}
-		E(v) & F(v) \\
-		F(v) & G(v)
+	\norm{v}_g^2 = v^\tran \begin{pmatrix}
+		E(p) & F(p) \\
+		F(p) & G(p)
 	\end{pmatrix} v
 \end{align*}
-Thus, if $\gamma \colon [a,b] \to V$ is smooth,
+
+Thus, if $\gamma \colon [a,b] \to V$ is smooth, then its length is
+
 \begin{align*}
-	\mathrm{length}(\gamma) = \int_a^b \qty( E \dot u^2 + 2F \dot u \dot v + G \dot v^2 )^{\frac{1}{2}} \dd{t}
+	L(\gamma) = \int_a^b \norm{\dot{\gamma}(t)}_g \dd{t} = \int_a^b \qty( E \dot u^2 + 2F \dot u \dot v + G \dot v^2 )^{\frac{1}{2}} \dd{t}
 \end{align*}
+
 where $\gamma(t) = (u(t),v(t))$.
-\begin{definition}
-	Let $\Sigma$ be an abstract smooth surface, so $\Sigma = \bigcup_{i \in I} U_i$ for open sets $U_i$, with charts $\varphi_i \colon U_i \to V_i \subset \mathbb R^2$ which are homeomorphisms, and with smooth transition maps $\varphi_i \varphi_j^{-1} \colon \varphi_j(U_i \cap U_j) \to \varphi_i(U_i \cap U_j)$.
-	A \textit{Riemannian metric} on $\Sigma$, usually called $g$ or $\dd{s}^2$, is a choice of Riemannian metric in the above sense on each $V_i$, which are compatible in the following sense.
-	Let $\sigma = \varphi_i^{-1}$ and $\widetilde \sigma = \varphi_j^{-1}$ for some $i,j$, and define $f = \widetilde \sigma^{-1} \circ \sigma$.
-	Then we require
+
+\begin{definition}[Isometric]
+	Let $(V_1, g_1), (V_2, g_2)$ be abstract smooth surfaces with abstract Riemannian metrics.
+	They are \vocab{isometric} if there exists a diffeomorphism $f: V_1 \to V_2$ s.t.
 	\begin{align*}
-		(Df)^\tran \begin{pmatrix}
-			\widetilde E & \widetilde F \\
-			\widetilde F & \widetilde G
-		\end{pmatrix} (Df) = \begin{pmatrix}
-			E & F \\
-			F & G
-		\end{pmatrix}
+		\norm{\eval{Df}_p(v)}_{g_2} = \norm{v}_g \quad \forall \; v \in T_p V_1 = \mathbb{R}^2, p \in V_1. \tag{$\star$}
+	\end{align*} 
+	This is equivalent to saying that $f$ preserves the lengths of curves, where lengths are taken with respect to these abstract Riemannian metrics.
+\end{definition} 
+
+\begin{note}
+	$\eval{Df}_p : T_p V_1 \to T_{f(p)} V_2$ where we identify $T_p V_1, T_{f(p)} V_2$ as $\mathbb{R}^2$.
+\end{note} 
+
+Let's spell out the condition ($\star$) using $g_1, g_2$:
+\begin{align*}
+	\norm{\eval{Df}_p(v)}_{g_2}^2 &= \qty(\eval{Df}_p v)^\tran g_2(f(p)) \eval{Df}_p v \\
+	&= v^\tran \qty(\eval{Df}_p)^\tran g_2(f(p)) \eval{Df}_p v \\
+	&= \norm{v}_g^2 = v^\tran g_1(p) v \\
+	\intertext{This holds for all $v$ iff}
+	\qty(\eval{Df}_p)^\tran g_2(f(p)) \eval{Df}_p &= g_1(p) \tag{$\dagger$}
+\end{align*} 
+Recall that $(\dagger)$ is exactly the transformation law \Cref{lem:2.3}.
+
+% \begin{example}
+% 	If $(\Sigma_2, g_2)$ is given, and $f \colon \Sigma_1 \to \Sigma_2$ is a diffeomorphism, we can equip $\Sigma_1$ with a metric known as the \textit{pullback} metric $g_1 = f^\star g_2$ that gives that $f$ is an isometry.
+% \end{example}
+
+\begin{definition}[Riemannian Metric]
+	Let $\Sigma$ be an abstract smooth surface, so $\Sigma = \bigcup_{i \in I} U_i$ for open sets $U_i$, with charts $\varphi_i \colon U_i \to V_i \subset \mathbb R^2$ which are homeomorphisms, $V_i$ open and with smooth transition maps $\varphi_i \varphi_j^{-1} \colon \varphi_j(U_i \cap U_j) \to \varphi_i(U_i \cap U_j)$.\\
+	A \vocab{Riemannian metric} on $\Sigma$, usually called $g$ or $\dd{s}^2$, is a choice of Riemannian metric $g_i$ in the above sense on each $V_i$, which are compatible in the following sense.
+	We want $\phi_i \phi_j\inv$ is an isometry between $\varphi_j(U_i \cap U_j)$ and $\varphi_i(U_i \cap U_j)$, i.e. if we let $f = \phi_i \phi_j\inv$, then
+	\begin{align*}
+		\qty(\eval{Df}_p)^\tran \begin{pmatrix}
+			E_i & F_i \\
+			F_i & G_i
+		\end{pmatrix}_{f(p)} \eval{Df}_p = \begin{pmatrix}
+			E_j & F_j \\
+			F_j & G_j
+		\end{pmatrix}_p \quad \forall \; p \in \phi_j(U_i \cap U_j).
 	\end{align*}
-	So $Df$ defines an isometry from an open set in the chart $(U, \varphi(U) = V)$ to one in $\qty(\widetilde U, \widetilde \varphi\qty(\widetilde U) = \widetilde V)$.
 \end{definition}
+
 This compatibility condition is the transition law for first fundamental forms for smooth surfaces in $\mathbb R^3$.
-\begin{example}
+
+\begin{example}[Torus]
 	Recall the torus $T^2 = \faktor{\mathbb R^2}{\mathbb Z^2}$.
 	\begin{center}
 		\tikzfig{torus_polygon}
 	\end{center}
-	We have an atlas of charts for which the transition maps are the restrictions of translations of open subsets of $\mathbb R^2$.
-	For each $V_i \subset \mathbb R^2$, we associate the natural Euclidean metric $\dd{u}^2 + \dd{v}^2$.
+	We have an atlas of charts for which the transition maps are the restrictions of translations of open subsets of $\mathbb R^2$, which are isometries.
+	For each $V_i \subset \mathbb R^2$ (image of such a chart), we associate the natural Euclidean metric $\dd{u}^2 + \dd{v}^2$ i.e. the $V_i \mapsto I_{2 \times 2}$.
 	If $f$ is a translation, $Df$ is the identity, and so
 	\begin{align*}
 		(Df)^\tran I (Df) = I
@@ -57,41 +90,61 @@ This compatibility condition is the transition law for first fundamental forms f
 	So this gives a global Riemannian metric on $T^2$.
 	This metric is flat, since it is locally isometric to $\mathbb R^2$ at all points.
 
-	Conversely, consider the torus of revolution embedded in $\mathbb R^3$.
+	Since geodesics are well-defined for abstract Riemannian metrics (Energy only depends on $g$!) they are also well-defined on $T^2$ and they are just projections of straight lines in $\mathbb{R}^2$. 
+\end{example}
+
+\begin{exercise}
+	Show that there are infinitely many closed geodesics and also infinitely many non-closed ones (think about lines with rational/irrational slope).
+\end{exercise} 
+
+\begin{note}
+	This flat metric is not induced by any embedding of $T^2$ in $\mathbb{R}^3$.
+
+	Consider the torus of revolution embedded in $\mathbb R^3$.
 	As a compact smooth surface in $\mathbb R^3$, it must contain an elliptic point.
 	Hence, the flat Riemannian metric described above is not the same (up to isometry) as the metric obtained by any possible embedding of the torus in $\mathbb R^3$.
+\end{note} 
 
+\begin{example}[Real Projective Plane]
 	The real projective plane $\mathbb R \mathbb P^2$ admits a Riemannian metric with constant curvature $+1$.
-	We have constructed a smooth atlas for $\mathbb R \mathbb P^2$ where the charts were of the form $(U, \varphi)$, with $U = q \hat U$ and $q \colon S^2 \to \mathbb R \mathbb P^2$ the quotient map, $\hat U \subset S^2$ open and contained within an open hemisphere, and $\varphi \colon U \colon U \to V \subset \mathbb R^2$ is given by $\hat \varphi \circ \eval{q^{-1}}_U$ and $\hat \varphi \colon \hat U \to V$ a chart on $S^2$.
+	We have constructed a smooth atlas for $\mathbb R \mathbb P^2$ where the charts were of the form $(U, \varphi)$, with $U = q \hat U$ and $q \colon S^2 \to \mathbb R \mathbb P^2$ the quotient map, $\hat U \subset S^2$ open and contained within an open hemisphere, and $\varphi \colon U \to V \subset \mathbb R^2$ is given by $\hat \varphi \circ \eval{q^{-1}}_U$ and $\hat \varphi \colon \hat U \to V$ a chart on $S^2$. \\
 	The transition maps for this atlas were found to be locally the identity, or induced from the antipodal map.
 	The antipodal map from $S^2$ to $S^2$ is an isometry, so both types of transition maps preserve the usual round metric on $S^2$.
+\end{example} 
 
+\begin{example}[Klein Bottle]
 	In the first example sheet, we consider the Klein bottle.
 	This has an atlas such that all transition maps are either translations or translations composed with a reflection.
 	These preserve the flat metric in $\mathbb R^2$, so the Klein bottle inherits a flat Riemannian metric.
+\end{example} 
+
+\begin{remark}
 	The Klein bottle and $\mathbb R \mathbb P^2$ are not embedded in $\mathbb R^3$, so we could not construct a `non-abstract' Riemannian metric.
-\end{example}
-\begin{definition}
-	Let $(\Sigma_1, g_1), (\Sigma_2, g_2)$ be abstract smooth surfaces with abstract Riemannian metrics.
-	A diffeomorphism $f \colon \Sigma_1 \to \Sigma_2$ is an \textit{isometry} if it preserves the lengths of all curves, where lengths are taken with respect to these abstract Riemannian metrics.
-\end{definition}
-\begin{example}
-	If $(\Sigma_2, g_2)$ is given, and $f \colon \Sigma_1 \to \Sigma_2$ is a diffeomorphism, we can equip $\Sigma_1$ with a metric known as the \textit{pullback} metric $g_1 = f^\star g_2$ that gives that $f$ is an isometry.
-\end{example}
+\end{remark} 
 
 \subsection{The length metric}
-\begin{definition}
+\begin{definition}[Length Metric]
 	Let $(\Sigma, g)$ be a connected abstract smooth surface with an abstract Riemannian metric.
-	The \textit{length metric} is defined by
+	The \vocab{length metric} is defined by
 	\begin{align*}
 		d_g(p,q) = \inf_\gamma L(\gamma)
 	\end{align*}
 	where $\gamma$ varies over piecewise smooth paths in $\Sigma$ from $p$ to $q$, and $L$ is length computed using $g$.
 \end{definition}
+
 \begin{proposition}
 	Let $(\Sigma, g)$ be a connected abstract smooth surface with an abstract Riemannian metric.
-	Then $d_g$ is indeed a metric, and $d_g$ induces a topology on $\Sigma$ that agrees with the given topology.
+	Then $d_g$ is indeed a metric (in the sense of metric spaces), and $d_g$ induces a topology on $\Sigma$ that agrees with the given topology.
 \end{proposition}
+
+\begin{remark}
+	\begin{enumerate}
+		\item Given $p, q \in V$, there is always a piecewise smooth path connecting $p$ to $q$.
+		\item $d_g(p, q) \geq 0$. Also $d_g(p, q) = d_g(q, p)$ by reversing the path connecting $p, q$. Also $d_g(p, r) \leq d_g(p, q) + d_g(q, r)$.
+		\item The only non-trivial claim is $d_g(p, q) \implies p = q$.
+	\end{enumerate} 
+\end{remark} 
+
 \begin{proof}
 	Let $p, q \in \Sigma$.
 	We will show that there exists some piecewise smooth path $\gamma$ from $p$ to $q$, so $d_g(p,q)$ is well-defined and finite.

@@ -240,8 +240,8 @@ where $A \in \mathbb R^{k \times n}, b \in \mathbb R^k$ are constant.
 
 \subsection{Linear model}
 Suppose we have data in pairs $(x_1, Y_1), \dots, (x_n, Y_n)$, where $Y_i \in \mathbb R, x_i \in \mathbb R^p$.
-The $Y_i$ are known as the \textit{response} variables, or the \textit{dependent} variables.
-The $x_{i1}, x_{ip}$ are the \textit{predictors}, or \textit{independent} variables.
+The $Y_i$ are known as the \vocab{response} variables, or the \vocab{dependent} variables.
+The $x_{i1}, x_{ip}$ are the \vocab{predictors}, or \vocab{independent} variables.
 We will model the expectation of the response $Y_i$ as a linear function of the predictors $(x_{i1}, \dots, x_{ip})$.
 \begin{example}
 	Let $Y_i$ be the number of insurance claims that driver $i$ makes in a given year, and $x_{i1}, \dots, x_{ip}$ is a set of variables about the specific driver.
@@ -251,16 +251,19 @@ We assume that
 \begin{align*}
 	Y_i = \alpha + \beta_1 x_{i1} + \dots + \beta_p x_{ip} + \varepsilon_i
 \end{align*}
-where $\alpha \in \mathbb R$ is an \textit{intercept}, $\beta_i$ are the \textit{coefficients}, and $\varepsilon$ is a \textit{noise vector}, which is a random variable.
+where $\alpha \in \mathbb R$ is an \vocab{intercept}, $\beta_i$ are the \vocab{coefficients}, and $\varepsilon$ is a \vocab{noise vector}, which is a random variable.
 The intercept and coefficients are the parameters of interest.
-We will often eliminate the intercept by making one of the predictors $x_{i1} = 1$ for all $i$, so $\beta_1$ plays the role of the intercept.
 
-Note that we can use a linear model to model nonlinear relationships.
-For example, suppose $Y_i = a + bz_i + cz_i^2 + \varepsilon_i$.
-We can rephrase this as a linear model with $x_i = (1, z_i, z_i^2)$.
-
-The coefficient $\beta_j$ can be interpreted as the effect on $Y_i$ of increasing $x_{ij}$ by one, while keeping all other predictors fixed.
-This cannot be interpreted as a causal relationship, unless this is a randomised control experiment.
+\begin{remark}
+	\begin{enumerate}
+		\item We will often eliminate the intercept by making one of the predictors $x_{i1} = 1$ for all $i$, so $\beta_1$ plays the role of the intercept.
+		\item Note that we can use a linear model to model nonlinear relationships.
+		For example, suppose $Y_i = a + bz_i + cz_i^2 + \varepsilon_i$.
+		We can rephrase this as a linear model with $x_i = (1, z_i, z_i^2)$.
+		\item The coefficient $\beta_j$ can be interpreted as the effect on $Y_i$ of increasing $x_{ij}$ by one, while keeping all other predictors fixed.
+		This cannot be interpreted as a causal relationship in general.
+	\end{enumerate} 
+\end{remark} 
 
 \subsection{Matrix formulation}
 Let
@@ -283,7 +286,7 @@ Let
 		\varepsilon_n
 	\end{pmatrix}
 \end{align*}
-We call $X$ the \textit{design matrix}.
+We call $X$ the \vocab{design matrix}.
 The linear model is that
 \begin{align*}
 	Y = X\beta + \varepsilon
@@ -292,45 +295,54 @@ $X\beta$ is considered fixed.
 Since $\varepsilon$ is random, this makes $Y$ into a random variable.
 
 \subsection{Assumptions}
-We make a number of \textit{moment assumptions} on the noise vector $\varepsilon$.
+We make a number of \vocab{moment assumptions} on the noise vector $\varepsilon$.
 This allows us to deduce more results about the linear model.
 \begin{enumerate}
 	\item $\expect{\varepsilon} = 0 \implies \expect{Y_i} = x_i^\tran \beta$;
 	\item $\Var \varepsilon = \sigma^2 I$, which is equivalent to both $\Var \varepsilon_i = \sigma^2$ and $\Cov{\varepsilon_i, \varepsilon_j} = 0$ for all $i \neq j$.
-	      This property is known as \textit{homoscedasticity}.
+	      This property is known as \vocab{homoscedasticity}.
 \end{enumerate}
 We will always assume that the design matrix $X$ has full rank $p$, or equivalently, that it has linearly independent columns.
 Since $X \in \mathbb R^{n \times p}$, this requires that $n \geq p$, so we need at least as many samples as we have predictors.
 
 \subsection{Least squares estimation}
-\begin{definition}
-	The \textit{least squares estimator} $\hat \beta$ minimises the \textit{residual sum of squares}, which is
+\begin{definition}[Least Squares Estimator]
+	The \vocab{least squares estimator} $\hat \beta$ minimises the \vocab{residual sum of squares}, which is
 	\begin{align*}
 		S(\beta) = \norm{Y-X\beta}^2 = \sum_i \qty(Y_i - x_i^\tran \beta)^2
 	\end{align*}
 	The term $Y_i - x_i^\tran \beta$ is called the \text{$i$th residual}.
 \end{definition}
+
 Since $S(\beta)$ is a positive definite quadratic in $\beta$, it is minimised at the stationary point.
+
 \begin{align*}
 	\eval{\pdv{S(\beta)}{\beta_k}}_{\beta = \hat \beta} = 0 \iff \forall k,\;-2\sum_{i=1}^n x_{ik} \qty(Y_i - \sum_k x_{ij} \hat \beta_j) = 0 \iff X^\tran X \hat \beta = X^\tran Y
 \end{align*}
-As $X$ has full column rank, $X^\tran X$ is invertible.
+
+As $X$ has full column rank, $X^\tran X \in \mathbb{R}^{p \times p}$ is invertible.
+
 \begin{align*}
 	\hat \beta = (X^\tran X)^{-1} X^\tran Y
 \end{align*}
+
 This is notably a linear function of $Y$, given fixed $X$.
 Note that
+
 \begin{align*}
 	\expect{\hat \beta} = (X^\tran X)^{-1} X^\tran \expect{Y} = (X^\tran X)^{-1} X^\tran X\beta = \beta
 \end{align*}
+
 So $\hat \beta$ is an unbiased estimator.
 Further,
+
 \begin{align*}
-	\Var{\hat \beta} & = (X^\tran X)^{-1} X^\tran \Var Y \qty[(X^\tran X)^{-1} X^\tran]^\tran     \\
-	                 & = (X^\tran X)^{-1} X^\tran \sigma^2 I \qty[(X^\tran X)^{-1} X^\tran]^\tran \\
-	                 & = \sigma^2 (X^\tran X)^{-1}
+	\Var{\hat \beta} &= (X^\tran X)^{-1} X^\tran \Var Y \qty[(X^\tran X)^{-1} X^\tran]^\tran     \\
+	                 &= (X^\tran X)^{-1} X^\tran \sigma^2 I \qty[(X^\tran X)^{-1} X^\tran]^\tran \\
+	                 &= \sigma^2 (X^\tran X)^{-1}
 \end{align*}
-\begin{theorem}[Gauss-Markov theorem]
+
+\begin{theorem}[Gauss-Markov theorem] \label{thm:gauss}
 	Let an estimator $\beta^\star$ of $\beta$ be unbiased and a linear function of $Y$, so $\beta^\star = CY$.
 	Then, for any fixed $t \in \mathbb R^p$, we have
 	\begin{align*}
@@ -339,19 +351,21 @@ Further,
 	where $\hat \beta$ is the least squares estimator.
 	We say that $\hat \beta$ is the best linear unbiased estimator (BLUE).
 \end{theorem}
+
 \begin{remark}
 	We can think of $t \in \mathbb R^p$ as a vector of predictors for a new sample.
 	Then $t^\tran \hat \beta$ is the prediction for $\expect{Y_i}$ for this new sample, using the least squares estimator.
 	$t^\tran \beta^\star$ is the prediction with $\beta^\star$.
 	In both cases, the prediction is unbiased.
 \end{remark}
+
 \begin{proof}
 	Note that
 	\begin{align*}
 		\Var{t^\tran \beta^\star} - \Var{t^\tran \hat \beta} = t^\tran \qty[\Var{\beta^\star} - \Var{\hat\beta}] t
 	\end{align*}
 	To prove that this quantity is always non-negative, we must show that $\Var{\beta^\star} - \Var{\hat\beta}$ is positive semidefinite.
-	Let $A = C - (X^\tran X)^{-1} X^\tran$.
+	Recall $\beta^\star = CY, \hat{\beta} = (X^\tran X)\inv X^\tran Y$ so let $A = C - (X^\tran X)^{-1} X^\tran$.
 	Note that $\expect{AY} = \expect{\beta^\star} - \expect{\hat\beta} = 0$.
 	Also, $\expect{AY} = A \expect{Y} = AX\beta$.
 	This holds for all $\beta$, so $AX = 0$.
@@ -370,27 +384,43 @@ Further,
 
 \subsection{Fitted values and residuals}
 \begin{definition}
-	The \textit{fitted values} are $\hat Y = X \hat \beta = X(X^\tran X)^{-1} X^\tran Y$, where $P = X (X^\tran X)^{-1} X^\tran$ is the \textit{hat matrix}.
-	The \textit{residuals} are $Y - \hat Y = (I-P)Y$.
+	The \vocab{fitted values} are $\hat Y = X \hat \beta = X(X^\tran X)^{-1} X^\tran Y$, where $P = X (X^\tran X)^{-1} X^\tran$ is the \vocab{hat matrix}.
+	The \vocab{residuals} are $Y - \hat Y = (I-P)Y$.
 \end{definition}
+
 \begin{proposition}
 	$P$ is the orthogonal projection onto the column space of the design matrix.
 \end{proposition}
+
 \begin{proof}
+	$P$ is clearly symmetric. \\
+	\begin{align*}
+		P^2 &= X (X^\tran X)\inv X^\tran X (X^\tran X)\inv X^\tran \\
+		&= P.
+	\end{align*}
+	Therefore $P$ is an orthogonal projection.
+	We need to show column space of $P$ is the column space of $X$. 
+
 	If $v$ is in the column space of $X$, then $v = Xb$ for some $b$.
 	Hence
 	\begin{align*}
-		Pv = X(X^\tran X)^{-1} X^\tran X b = Xb = v
+		\operatorname{col}(P) \ni Pv = X(X^\tran X)^{-1} X^\tran X b = Xb = v
 	\end{align*}
-	If $w$ is in the orthogonal complement, then
+	For any $a$ 
 	\begin{align*}
-		Pw = X(X^\tran X)^{-1} \underbrace{X^\tran w}_{0} = 0
-	\end{align*}
+		Pa = X(X^\tran X)^{-1} X^\tran X a \in \operatorname{col}(X).
+	\end{align*} 
 \end{proof}
+
 \begin{corollary}
-	The fitted values are an orthogonal projection of the response variables to the column space of the design matrix.
-	The residuals are orthogonal to the column space.
+	The fitted values are an orthogonal projection of $Y$ to the column space of $X$.
+	The residuals are orthogonal to the column space, they are a projection of $Y$ onto the orthogonal of the column space of $X$. 
 \end{corollary}
+
+\begin{figure}[h] 
+    \centering 
+    \includegraphics[height=5cm]{06-geometric} 
+\end{figure}
 
 \subsection{Normal linear model}
 The normal linear model is a linear model under the assumption that $\varepsilon \sim N(0,\sigma^2 I)$, where $\sigma^2$ is unknown.
