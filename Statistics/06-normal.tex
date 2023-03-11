@@ -108,7 +108,7 @@ where $A \in \mathbb R^{k \times n}, b \in \mathbb R^k$ are constant.
 	The rank is the dimension of the column space, which is $\rank P = \rank(U^\tran U)$, $U^\tran U = I_k$ where $k = \rank P$ so $\rank (U^\tran U) = k = \tr(U^\tran U) = \tr(U U^\tran) = \tr P$.
 \end{proof}
 
-\begin{theorem}
+\begin{theorem} \label{thm:6.1}
 	Let $X$ be MVN, where $X \sim N(0,\sigma^2 I)$, and let $P$ be an orthogonal projection.
 	Then
 	\begin{enumerate}
@@ -423,6 +423,7 @@ Further,
 \end{figure}
 
 \subsection{Normal linear model}
+
 The normal linear model is a linear model under the assumption that $\varepsilon \sim N(0,\sigma^2 I)$, where $\sigma^2$ is unknown.
 The parameters in the model are now $(\beta, \sigma^2)$.
 The likelihood function in the normal linear model is
@@ -436,6 +437,7 @@ The log-likelihood is
 To maximise this as a function of $\beta$ for any fixed $\sigma^2$, we must minimise the residual sum of squares $S(\beta) = \norm{Y-X\beta}^2$.
 So $\hat \beta = (X^\tran X)^{-1} X^\tran Y$ is the maximum likelihood estimator of $\beta$.
 Further, $\hat \sigma^2 = n^{-1} \norm{Y-X\hat\beta}^2 = n^{-1} \norm{\hat Y - Y}^2 = n^{-1} \norm{(I-P)Y}^2$.
+
 \begin{theorem}
 	In the normal linear model,
 	\begin{enumerate}
@@ -444,56 +446,66 @@ Further, $\hat \sigma^2 = n^{-1} \norm{Y-X\hat\beta}^2 = n^{-1} \norm{\hat Y - Y
 		\item $\hat \beta, \hat \sigma^2$ are independent.
 	\end{enumerate}
 \end{theorem}
+
 \begin{proof}
 	We prove each part separately.
 	\begin{enumerate}
 		\item We already know that $\expect{\hat \beta} = \beta$, and $\Var{\hat \beta} = \sigma^2 (X^\tran X)^{-1}$.
-		      So it suffices to show that $\hat \beta$ is a normal vector.
-		      Since $\hat \beta = (X^\tran X)^{-1} X^\tran Y$, it is a linear function of a normal vector, so is a normal vector.
+		      So it suffices to show that $\hat \beta$ is a MVN.
+		      Since $\hat \beta = (X^\tran X)^{-1} X^\tran Y$, it is a linear function of $Y$ which is a MVN, so $\hat \beta$ is a MVN.
 		\item Observe that
 		      \begin{align*}
 			      n\frac{\hat\sigma^2}{\sigma^2} = \frac{\norm{(I-P)Y}^2}{\sigma^2} = \frac{\norm{(I-P)(X\beta+\varepsilon)}^2}{\sigma^2}
 		      \end{align*}
 		      Since $(I-P)X = 0$ as $P$ is the orthogonal projection onto the column space of $X$,
 		      \begin{align*}
-			      n\frac{\hat\sigma^2}{\sigma^2} = \frac{\norm{(I-P)\varepsilon}^2}{\sigma^2} \sim \chi^2_{\tr (I-P)}
+			      n\frac{\hat\sigma^2}{\sigma^2} = \frac{\norm{(I-P)\varepsilon}^2}{\sigma^2} \sim \chi^2_{\tr (I-P)}\footnote{By \Cref{thm:6.1}}
 		      \end{align*}
 		      where $\tr (I-P) = \tr I - \tr P = n - p$ since $X \in \mathbb R^{n \times p}$ is assumed to have full rank.
 		\item Note that $\hat \sigma^2$ is a function of $(I-P)\varepsilon$, and
 		      \begin{align*}
-			      \hat\beta & = (X^\tran X)^{-1} X^\tran Y                    \\
-			                & = (X^\tran X)^{-1} X^\tran (X\beta+\varepsilon) \\
-			                & = \beta + (X^\tran X)^{-1} X^\tran \varepsilon  \\
-			                & = \beta + (X^\tran X)^{-1} X^\tran P\varepsilon
+			      \hat\beta &= (X^\tran X)^{-1} X^\tran Y \\
+			                &= (X^\tran X)^{-1} X^\tran (X\beta+\varepsilon) \\
+			                &= \beta + (X^\tran X)^{-1} X^\tran \varepsilon \\
+			                &= \beta + (X^\tran X)^{-1} X^\tran P\varepsilon\footnote{$X^\tran P = X^\tran$ as $P$ acts as the identity in the column space of $X$.}
 		      \end{align*}
 		      is a function of $P\varepsilon$.
-		      Since $(I-P)\varepsilon$ and $P \varepsilon$ are independent, so are $\hat \beta, \hat \sigma^2$.
+		      Since $(I-P)\varepsilon$ and $P \varepsilon$ are independent by \Cref{thm:6.1}, so are $\hat \beta, \hat \sigma^2$.
 	\end{enumerate}
 \end{proof}
-Note,
-\begin{align*}
-	\expect{\frac{n\hat\sigma^2}{\sigma^2}} = \expect{\chi^2_{n-p}} = n-p \implies \expect{\hat\sigma^2} = \sigma^2 \cdot \frac{n-p}{n} < \sigma^2
-\end{align*}
-Hence this $\hat \sigma^2$ is a biased estimator, but asymptotically unbiased.
+
+\begin{corollary}
+	$\hat{\sigma}^2$ is biased, but asymptotically unbiased.
+\end{corollary} 
+
+\begin{proof}
+	\begin{align*}
+		\expect{\frac{n\hat\sigma^2}{\sigma^2}} = \expect{\chi^2_{n-p}} = n-p \implies \expect{\hat\sigma^2} = \sigma^2 \cdot \frac{n-p}{n} < \sigma^2
+	\end{align*}
+\end{proof} 
 
 \subsection{Inference}
-\begin{definition}
+
+\begin{definition}[$t$-distribution]
 	Let $U \sim N(0,1)$ and $V \sim \chi^2_n$ be independent random variables.
 	Then
 	\begin{align*}
 		T = \frac{U}{\sqrt{\frac{V}{n}}}
 	\end{align*}
-	has a \textit{$t_n$-distribution}.
+	has a \vocab{$t_n$-distribution}.
 \end{definition}
+
 As $n \to \infty$, this approaches the standard normal distribution.
-\begin{definition}
+
+\begin{definition}[$F$-distribution]
 	Let $V \sim \chi^2_n$ and $W \sim \chi^2_m$ be independent random variables.
 	Then
 	\begin{align*}
 		F = \frac{V/n}{W/m}
 	\end{align*}
-	has an \textit{$F_{n,m}$-distribution}.
+	has an \vocab{$F_{n,m}$-distribution}.
 \end{definition}
+
 \begin{example}
 	We consider a $100(1-\alpha)\%$ confidence interval for one of the coefficients $\beta$ in the normal linear model $Y = X\beta + \varepsilon$.
 	Without loss of generality, we will consider $\beta_1$.
@@ -529,8 +541,8 @@ As $n \to \infty$, this approaches the standard normal distribution.
 	\end{align*}
 	is a $100(1-\alpha)\%$ confidence interval for $\beta_1$.
 
-	Consider a test for $H_0 \colon \beta_1 = 0$, $H_1 \colon \beta_1 \neq 0$.
-	By connecting tests and confidence intervals, we can test $H_0$ with size $\alpha$ by rejecting this null hypothesis when zero is not contained within the confidence interval $I$.
+	Consider a test for $H_0 \colon \beta_1 = \beta^\star$, $H_1 \colon \beta_1 \neq \beta^\star$.
+	By connecting tests and confidence intervals, we can test $H_0$ with size $\alpha$ by rejecting this null hypothesis when $\beta^\star$ is not contained within the confidence interval $I$ for $\beta_1$.
 
 	Consider a special case where $Y_1, \dots, Y_n \overset{\text{iid}}{\sim} N(\mu,\sigma^2)$ where $\mu, \sigma^2$ are unknown, and we want to infer results about $\mu$.
 	Note that this is a special case of the normal linear model where
@@ -545,21 +557,27 @@ As $n \to \infty$, this approaches the standard normal distribution.
 	\end{align*}
 	So we can infer a confidence interval for $\mu$ using the above statistic.
 \end{example}
+
 \begin{example}
 	Consider a $100(1-\alpha)\%$ confidence set for $\beta$ as a whole.
 	Note that
 	\begin{align*}
 		\hat \beta - \beta \sim N(0,\sigma^2 (X^\tran X)^{-1})
 	\end{align*}
+	As $X$ has full rank, $X^\tran X$ is positive definite.
+	So it has eigendecomposition $X^\tran X = U D U^\tran$ where $D_{ii} > 0$ and $D$ diagonal.
+	We define
+	\begin{align*}
+		(X^\tran X)^\alpha = U D^\alpha U^\tran
+	\end{align*} 
 	Then,
 	\begin{align*}
-		(X^\tran X)^{1/2} (\hat \beta - \beta) \sim N(0,\sigma^2(X^\tran X)^{1/2} (X^\tran X)^{-1} (X^\tran X)^{1/2}) \sim N(0,\sigma^2 I)
+		(X^\tran X)^{1/2} (\hat \beta - \beta) \sim N(0,\sigma^2(X^\tran X)^{1/2} (X^\tran X)^{-1} (X^\tran X)^{1/2}) \sim N(0,\sigma^2 I).
 	\end{align*}
-	where $(X^\tran X)^{1/2}$ is obtained using the eigendecomposition of the positive definite matrix $X^\tran X$.
 	Hence,
 	\begin{align*}
 		\frac{\norm{(X^\tran X)^{1/2} (\hat \beta - \beta)}^2}{\sigma^2} \sim \chi^2_p
-	\end{align*}
+	\end{align*} as this is the sum of $p$ standard normals.
 	We can also write this as
 	\begin{align*}
 		\frac{\norm{(X^\tran X)^{1/2} (\hat \beta - \beta)}^2}{\sigma^2} = \frac{\norm{X(\hat \beta - \beta)}^2}{\sigma^2}
@@ -599,16 +617,18 @@ The null model has $\beta^0 = 0$.
 This is a linear model $Y = X\beta + \varepsilon = X_1 \beta^1 + \varepsilon$.
 We will write $P = X(X^\tran X)^{-1} X^\tran$ and $P_1 = X_1 (X_1^\tran X_1)^{-1} X_1^\tran$.
 Note that as $X$ and $P$ have full rank, so must $X_1, P_1$.
+
 \begin{lemma}
 	$(I-P)(P - P_1) = 0$, and $P - P_1$ is an orthogonal projection with rank $p_0$.
 \end{lemma}
+
 \begin{proof}
 	$P - P_1$ is symmetric since $P$ and $P_1$ are symmetric.
 	It is also idempotent, since
 	\begin{align*}
 		(P-P_1)(P-P_1) = P^2 - P_1 P - P P_1 + P_1^2 = P - P_1 - P_1 + P_1 = P - P_1
 	\end{align*}
-	since $P_1$ projects onto the column space of $X_1$.
+	since $P_1$ projects onto the column space of $X_1$ so $P_1 P = P_1$.
 	Hence $P - P_1$ is indeed an orthogonal projection matrix.
 	The rank is $\rank(P - P_1) = \tr(P - P_1) = \tr P - \tr P_1 = p - (p - p_0) = p_0$.
 	Also,
@@ -616,35 +636,43 @@ Note that as $X$ and $P$ have full rank, so must $X_1, P_1$.
 		(I-P)(P-P_1) = P-P_1 - P + PP_1 = P-P_1 - P + P_1 = 0
 	\end{align*}
 \end{proof}
+
 Recall that the maximum log-likelihood in the normal linear model is given by
+
 \begin{align*}
 	\ell(\hat \beta, \hat \sigma^2) = \frac{-n}{2} \log \hat\sigma^2 - \frac{n}{2} \cdot \text{constant} = \frac{-n}{2} \log \frac{\norm{(I-P)Y}^2}{n} + \text{constant}
 \end{align*}
+
 The generalised likelihood ratio statistic is
 \begin{align*}
-	2 \log \Lambda & = 2 \sup_{\beta \in \mathbb R^p,\sigma^2>0} \ell(\beta, \sigma^2) - 2 \sup_{\beta_0 = 0, \beta_1 \in \mathbb R^{p-p_0},\sigma^2>0} \ell(\beta, \sigma^2) \\
-	               & = n \qty[ -\log \frac{\norm{(I-P)Y}^2}{n} + \log \frac{\norm{(I-P_1)Y}^2}{n} ]
+	2 \log \Lambda &= 2\qty( \sup_{\beta \in \mathbb R^p,\sigma^2>0} \ell(\beta, \sigma^2) -  \sup_{\beta_0 = 0, \beta_1 \in \mathbb R^{p-p_0},\sigma^2>0} \ell(\beta, \sigma^2) )\\
+	&= n \qty[ -\log \frac{\norm{(I-P)Y}^2}{n} + \log \frac{\norm{(I-P_1)Y}^2}{n} ]
 \end{align*}
+
 Wilks' theorem applies here, showing that $2 \log \Lambda \sim \chi^2_{p_0}$ asymptotically as $n \to \infty$ with $p, p_0$ fixed.
 However, we can find an exact test, so using Wilks' theorem will not be necessary.
 $2 \log \Lambda$ is monotone in
+
 \begin{align*}
-	\frac{\norm{(I-P_1)Y}^2}{\norm{(I-P)Y}^2} & = \frac{\norm{(I-P+P-P_1)Y}^2}{\norm{(I-P)Y}^2}                                             \\
-	                                          & = \frac{\norm{(I-P)Y}^2 + \norm{(P-P_1)Y}^2 + 2Y^\tran (I-P)(P-P_1)}{\norm{(I-P)Y}^2 } \\
-	                                          & = \frac{\norm{(I-P)Y}^2 + \norm{(P-P_1)Y}^2}{\norm{(I-P)Y}^2}                               \\
-	                                          & = 1 + \frac{\norm{(P-P_1)Y}^2}{\norm{(I-P)Y}^2}
+	\frac{\norm{(I-P_1)Y}^2}{\norm{(I-P)Y}^2} & = \frac{\norm{(I-P+P-P_1)Y}^2}{\norm{(I-P)Y}^2} \\
+	&= \frac{\norm{(I-P)Y}^2 + \norm{(P-P_1)Y}^2 + 2Y^\tran (I-P)(P-P_1)}{\norm{(I-P)Y}^2 } \\
+	&= \frac{\norm{(I-P)Y}^2 + \norm{(P-P_1)Y}^2}{\norm{(I-P)Y}^2} \\
+	&= 1 + \frac{\norm{(P-P_1)Y}^2}{\norm{(I-P)Y}^2}
 \end{align*}
+
 The generalised likelihood ratio test rejects when the $F$-statistic
 \begin{align*}
 	F = \frac{\norm{(P-P_1)Y}^2}{\norm{(I-P)Y}^2} \cdot \frac{1/p_0}{1/(n-p)}
 \end{align*}
 is large.
+
 \begin{theorem}
 	Under $H_0\colon \beta_1 = \dots = \beta_{p_0} = 0$, in the normal linear model,
 	\begin{align*}
 		F = \frac{\norm{(P-P_1)Y}^2}{\norm{(I-P)Y}^2} \cdot \frac{1/p_0}{1/(n-p)} \sim F_{p_0,n-p}
 	\end{align*}
 \end{theorem}
+
 \begin{proof}
 	Recall that
 	\begin{align*}
@@ -657,6 +685,7 @@ is large.
 	\end{align*}
 	since $P, P_1$ preserve $X_1$.
 	Hence, $\norm{(P-P_1)Y}^2 = \norm{(P-P_1)\varepsilon}^2 \sim \chi^2_{\rank (P-P_1)} \cdot \sigma^2 = \chi^2_{p_0} \cdot \sigma^2$.
+
 	We must now show independence between $(I-P)Y$ and $(P-P_1)Y$.
 	The vectors $(I-P)\varepsilon, (P-P_1)\varepsilon$ are independent; indeed,
 	\begin{align*}
@@ -677,6 +706,7 @@ is large.
 	\end{align*}
 	and since $(I-P)\varepsilon$ and $(P-P_1)\varepsilon$ are elements of a multivariate normal vector and are uncorrelated, they are independent as required.
 \end{proof}
+
 The generalised likelihood ratio test of size $\alpha$ rejects $H_0$ when $F > F^{-1}_{p_0,n-p}(\alpha)$.
 This is an exact test for all $n, p, p_0$.
 Previously, we found a test for $H_0\colon \beta_1 = 0$ against $H_1 \colon \beta_1 \neq 0$.
@@ -685,80 +715,122 @@ The previous test of size $\alpha$ rejects $H_0$ when
 \begin{align*}
 	\abs{\hat\beta} > t_{n-p}\qty(\frac{\alpha}{2}) \sqrt{\frac{\hat\sigma^2 n (X^\tran X)^{-1}_{11}}{n-p}}
 \end{align*}
-We will show that these two tests are equivalent; they reject $H_0$ in the same critical region.
-The $t$-test rejects if and only if
-\begin{align*}
-	\hat \beta_1^2 > t_{n-p}\qty(\frac{\alpha}{2})^2 \frac{\hat\sigma^2 n (X^\tran X)^{-1}_{11}}{n-p}
-\end{align*}
-Note that $t_{n-p}\qty(\frac{\alpha}{2})^2 = F_{1,n-p}(\alpha)$, since
-\begin{align*}
-	U \sim N(0,1);\;W \sin \chi^2_n \implies T = \frac{U}{\sqrt{W/n}} \implies T^2 = \frac{U^2}{W/n} = \frac{V/1}{W/n} \sim F_{1,n}
-\end{align*}
-where $V \sim \chi^2_1$.
-Hence,
-\begin{align*}
-	\frac{\hat \beta_1/(X^\tran X)^{-1}_{11}}{\hat\sigma^2 n/(n-p)} > F_{1,n-p}(\alpha)
-\end{align*}
-It suffices to show that
-\begin{align*}
-	\frac{\hat \beta_1}{(X^\tran X)^{-1}_{11}} = \frac{\norm{(P-P_1)Y}^2}{\underbrace{p_0}_{=1}};\quad \frac{\hat \sigma^2 n}{n-p} = \frac{\norm{(I-P)Y}^2}{n-p}
-\end{align*}
-We have already shown the latter part.
-For $\hat \beta_1$, note that in this case, $P - P_1$ is a projection of rank 1 onto the one-dimensional subspace spanned by the vector $v = (I-P)X^0$ where $X^0$ is the first column in the matrix $X$.
-First, note the following identity.
-\begin{align*}
-	X_0^\tran (I - P_1) = v^\tran = v^\tran (P-P_1) = X_0^\tran (I-P_1)(P-P_1) = X_0^\tran (I-P_1)P
-\end{align*}
-Then,
-\begin{align*}
-	\norm{(P-P_1)Y}^2 & = \norm{\frac{v}{\norm{v}} \qty(\frac{v}{\norm{v}})^\tran Y}^2                                 \\
-	                  & = \frac{(v^\tran Y)^2}{\norm{v}^2} = \frac{(X_0^\tran (I-P_1) Y)^2}{\norm{(I-P_1) X_0}^2} \\
-	                  & = \frac{(X_0^\tran (I-P_1) P Y)^2}{\norm{(I-P_1) X_0}^2}                                       \\
-	                  & = \frac{(X_0^\tran (I-P_1) X \hat\beta)^2}{\norm{(I-P_1) X_0}^2}
-\end{align*}
-Note that $(I-P_1) X = [(I-P_1)X_0, 0, \dots, 0]$.
-Hence,
-\begin{align*}
-	\norm{(P-P_1)Y}^2 & = \frac{\norm{(I-P_1)X_0}^4 \hat \beta_1}{\norm{(I-P_1)X_0}^2} \\
-	                  & = \norm{(I-P_1)X_0}^2 \hat \beta_1
-\end{align*}
-Finally, we show that
-\begin{align*}
-	(X^\tran X)^{-1}_{11} = \frac{1}{\norm{(I-P_1)X_0}^2}
-\end{align*}
-using the Woodbury identity for blockwise matrix inversion.
-Hence,
-\begin{align*}
-	\frac{\hat\beta_1^2}{(X^\tran X)^{-1}_{11}} = \norm{(P-P_1) Y}^2
-\end{align*}
-as required.
+
+\begin{lemma}
+	This test is equivalent to the $F$-test with $p_0 = 1$.
+\end{lemma} 
+
+This proof was left as an exercise to the reader.
+
+\begin{proof}
+	We will show that these two tests are equivalent; they reject $H_0$ in the same critical region.
+	The $t$-test rejects if and only if
+	\begin{align*}
+		\hat \beta_1^2 > t_{n-p}\qty(\frac{\alpha}{2})^2 \frac{\hat\sigma^2 n (X^\tran X)^{-1}_{11}}{n-p}
+	\end{align*}
+	Note that $t_{n-p}\qty(\frac{\alpha}{2})^2 = F_{1,n-p}(\alpha)$, since
+	\begin{align*}
+		U \sim N(0,1);\;W \sin \chi^2_n \implies T = \frac{U}{\sqrt{W/n}} \implies T^2 = \frac{U^2}{W/n} = \frac{V/1}{W/n} \sim F_{1,n}
+	\end{align*}
+	where $V \sim \chi^2_1$.
+	Hence,
+	\begin{align*}
+		\frac{\hat \beta_1/(X^\tran X)^{-1}_{11}}{\hat\sigma^2 n/(n-p)} > F_{1,n-p}(\alpha)
+	\end{align*}
+	It suffices to show that
+	\begin{align*}
+		\frac{\hat \beta_1}{(X^\tran X)^{-1}_{11}} = \frac{\norm{(P-P_1)Y}^2}{\underbrace{p_0}_{=1}};\quad \frac{\hat \sigma^2 n}{n-p} = \frac{\norm{(I-P)Y}^2}{n-p}
+	\end{align*}
+	We have already shown the latter part.
+	For $\hat \beta_1$, note that in this case, $P - P_1$ is a projection of rank 1 onto the one-dimensional subspace spanned by the vector $v = (I-P)X^0$ where $X^0$ is the first column in the matrix $X$.
+	First, note the following identity.
+	\begin{align*}
+		X_0^\tran (I - P_1) = v^\tran = v^\tran (P-P_1) = X_0^\tran (I-P_1)(P-P_1) = X_0^\tran (I-P_1)P
+	\end{align*}
+	Then,
+	\begin{align*}
+		\norm{(P-P_1)Y}^2 &= \norm{\frac{v}{\norm{v}} \qty(\frac{v}{\norm{v}})^\tran Y}^2 \\
+		&= \frac{(v^\tran Y)^2}{\norm{v}^2} = \frac{(X_0^\tran (I-P_1) Y)^2}{\norm{(I-P_1) X_0}^2} \\
+		&= \frac{(X_0^\tran (I-P_1) P Y)^2}{\norm{(I-P_1) X_0}^2} \\
+		&= \frac{(X_0^\tran (I-P_1) X \hat\beta)^2}{\norm{(I-P_1) X_0}^2}
+	\end{align*}
+	Note that $(I-P_1) X = [(I-P_1)X_0, 0, \dots, 0]$.
+	Hence,
+	\begin{align*}
+		\norm{(P-P_1)Y}^2 &= \frac{\norm{(I-P_1)X_0}^4 \hat \beta_1}{\norm{(I-P_1)X_0}^2} \\
+		&= \norm{(I-P_1)X_0}^2 \hat \beta_1
+	\end{align*}
+	Finally, we show that
+	\begin{align*}
+		(X^\tran X)^{-1}_{11} = \frac{1}{\norm{(I-P_1)X_0}^2}
+	\end{align*}
+	using the Woodbury identity for blockwise matrix inversion.
+	Hence,
+	\begin{align*}
+		\frac{\hat\beta_1^2}{(X^\tran X)^{-1}_{11}} = \norm{(P-P_1) Y}^2
+	\end{align*}
+	as required.
+\end{proof}
 
 \subsection{Analysis of variance}
-Suppose we investigate responses of patients after receiving one of three treatments, including a control, which will be given index 1.
-We will consider only one predictor, denoting which treatment a given patient received.
-Consider the linear model
-\begin{align*}
-	Y_{ij} = \alpha + \mu_j + \varepsilon_{ij}
-\end{align*}
-where $j = 1, 2, 3$ is the treatment index, and $i = 1, \dots, N$ is the index of a patient in a given group.
-Let $(\varepsilon_{ij}) \sim N(0, \sigma^2)$ be independent.
-Without loss of generality, we can set $\mu_1 = 0$, since we have an additional parameter $\alpha$; this is known as a \textit{corner point} constraint.
-Then, $\mu_j$ should be interpreted as the effect of treatment $j$ relative to treatment 1, which in this case is the control.
+Suppose we have categorical predictors.
 
-\begin{definition}
-	The \textit{analysis of variance (ANOVA)} test on the linear model
+\begin{example}
+	Let $Y_i \in \mathbb{R}$ be the clinical response.
+	$z_i \in \{\text{control}, \text{treatment 1}, \text{treatment 2}\}$, this is categorical.
+	Let $x_{ij} = 1_{z_i = j}$, i.e. is subject $i$ was in group $j$.
+	$x_i \in \mathbb{R}^3$ so it is numerical.
+
+	Say our model is $Y_i = \alpha + \beta_1 x_{i, 1} + \beta_2 x_{i,2} + \beta_3 x_{i, 3}$\footnote{I think $Y_{ij} = \alpha + \beta_j x_{ij} + \epsilon_{ij}$ where $\epsilon_{ij} \sim \mathcal{N}(0, \sigma^2)$ independent.}.
+	In this case, \begin{align*}
+		X = \begin{pmatrix}
+			1      & 1 		& 0      & 0      \\
+			1      & 1 		& 0      & 0      \\
+			\vdots & \vdots & \vdots & \vdots \\
+			1      & 0 		& 1      & 0      \\
+			1      & 0 		& 1      & 0      \\
+			\vdots & \vdots & \vdots & \vdots \\
+			1      & 0 		& 0      & 1      \\
+			1      & 0 		& 0      & 1
+		\end{pmatrix}.
+	\end{align*} 
+	This has rank $3 < 4$ so to deal with this we add a corner point constraint.
+	This is where we call one of the groups the ``baseline'' and remove it from the linear model.
+	In this case we set $\beta_1 = 0$, removing the second column from $X$.
+
+	The interpretation of $\beta_j$ depends on the baseline, $\beta_j$ is the the effect of being in group $j$ relative to the baseline.
+
+	However $\operatorname{col}(X)$ and the matrix $P$ are insensitive to the choice of baseline.
+	Therefore so are the fitted values, $\hat{Y} = PY$.
+
+	This can be extended to a model with more than $1$ categorical predictor e.g. treatment group and gender. 
+\end{example} 
+
+% Suppose we investigate responses of patients after receiving one of three treatments, including a control, which will be given index 1.
+% We will consider only one predictor, denoting which treatment a given patient received.
+% Consider the linear model
+% \begin{align*}
+% 	Y_{ij} = \alpha + \mu_j + \varepsilon_{ij}
+% \end{align*}
+% where $j = 1, 2, 3$ is the treatment index, and $i = 1, \dots, N$ is the index of a patient in a given group.
+% Let $(\varepsilon_{ij}) \sim N(0, \sigma^2)$ be independent.
+% Without loss of generality, we can set $\mu_1 = 0$, since we have an additional parameter $\alpha$; this is known as a \textit{corner point} constraint.
+% Then, $\mu_j$ should be interpreted as the effect of treatment $j$ relative to treatment 1, which in this case is the control.
+
+\begin{definition}[Analysis of Variance (ANOVA)]
+	The \vocab{analysis of variance (ANOVA)} test on the linear model
 	\begin{align*}
-		Y_{ij} = \alpha + \mu_j + \varepsilon_{ij}
+		Y_{ij} = \alpha + \beta_j x_{ij} + \varepsilon_{ij}
 	\end{align*}
-	where $\mu_1 = 0$ is given by
+	where $\beta_1 = 0$ is given by
 	\begin{align*}
-		H_0 \colon \mu_2 = \mu_3 = \dots = 0;\quad H_1 \colon \mu_2, \mu_3, \dots \in \mathbb R
+		H_0 \colon \beta_2 = \beta_3 = \dots = 0, \alpha \neq 0;\quad H_1 \colon \beta_2, \beta_3, \dots, \alpha \in \mathbb R
 	\end{align*}
 	In particular, $H_0$ gives $\expect{Y_{ij}} = \alpha$.
 \end{definition}
 
-In our example, $H_0 \colon \mu_2 = \mu_3 = 0$ and $H_1 \colon \mu_2, \mu_3 \in \mathbb R$.
-This is a special case of the $F$-test, since we are testing whether the coefficients $\mu_i$ are equal to zero.
+In our example, $H_0 \colon \beta_2 = \beta_3 = 0, \alpha \neq 0$ and $H_1 \colon \beta_2, \beta_3, \alpha \in \mathbb R$.
+This is a special case of the $F$-test, since we are testing whether the coefficients $\beta_i$ are equal to zero.
 \begin{align*}
 	X = \begin{pmatrix}
 		1      & 0      & 0      \\
@@ -775,33 +847,39 @@ This is a special case of the $F$-test, since we are testing whether the coeffic
 \end{align*}
 The first column of $X$, denoted $X_1$, represents $\alpha$, and the other columns, denoted $X_0$, represent $\mu_2, \mu_3$.
 $X_0$ is eliminated under the null hypothesis.
-The predictor can be called \textit{categorical}; it is discrete, and entirely dependent on which treatment category a given patient is placed in.
+
 Note that $X$ has $3N$ rows, where each block of $N$ consecutive rows is identical.
 Recall that the $F$-test uses the test statistic
+
 \begin{align*}
 	F = \frac{\norm{(P-P_1)Y}^2}{\norm{(I-P)Y}^2} \cdot \frac{1/p_0}{1/(n-p)} \sim F_{p_0,n-p}
 \end{align*}
+
 For this test, $P$ projects onto the space of vectors in $\mathbb R^{3N}$ which are constant over treatment groups.
 In other words, let
 \begin{align*}
 	\overline Y_j = \frac{1}{N} \sum_{i=1}^N Y_{ij}
 \end{align*}
+
 Then,
 \begin{align*}
 	P Y = \qty( \underbrace{\overline Y_1, \dots, \overline Y_1}_{N \text{ entries}}, \underbrace{\overline Y_2, \dots, \overline Y_2}_{N \text{ entries}}, \underbrace{\overline Y_3, \dots, \overline Y_3}_{N \text{ entries}} )^\tran
 \end{align*}
-$P_1$ projects onto the subspace of constant vectors in $\mathbb R^{3N}$, so
+$P_1$ projects onto the subspace of constant vectors in $\mathbb R^{3N}$, i.e. $P_1 = \frac{1}{N} 1 1^\tran$ so
 \begin{align*}
 	\overline Y = \frac{1}{3N} \sum_{i=1}^N \sum_{j=1}^3 Y_{ij} \implies P_1 Y = \qty( \underbrace{\overline Y, \dots, \overline Y}_{3N \text{ entries}} )^\tran
 \end{align*}
+
 Hence, we can write the $F$ statistic as
 \begin{align*}
 	F = \frac{\sum_{j=1}^3 N \qty(\overline Y_j - \overline Y)^2 / 2}{\sum_{i=1}^N \sum_{j=1}^3 \qty(Y_{ij} - \overline Y_j)^2 / (3N-3)}
 \end{align*}
-We can generatlise this to the case where there are $J > 3$ treatment groups:
+
+We can generalise this to the case where there are $J > 3$ treatment groups:
 \begin{align*}
 	F = \frac{\sum_{j=1}^J N \qty(\overline Y_j - \overline Y)^2 / (J-1)}{\sum_{i=1}^N \sum_{j=1}^J \qty(Y_{ij} - \overline Y_j)^2 / (JN-J)} = \frac{\text{variance between treatments}}{\text{variance within treatments}}
 \end{align*}
+
 \begin{remark}
 	This test is sometimes called \textit{one-way} analysis of variance.
 	\textit{Two-way} analysis of variance is a similar analysis in an experiment where groups are defined according to two variables.
@@ -822,7 +900,7 @@ We can generatlise this to the case where there are $J > 3$ treatment groups:
 	\end{align*}
 \end{remark}
 
-\subsection{Simple linear regression}
+\subsection{Simple linear regression - Non Examinable}
 In a linear regression model, we often centre predictors to simplify certain expressions.
 \begin{align*}
 	Y_i = \alpha + \beta (x - \overline x) + \varepsilon_i
