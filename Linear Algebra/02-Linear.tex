@@ -26,11 +26,13 @@
         \item If $\alpha \colon U \to V$ and $\beta \colon V \to W$ are linear, then $\beta \circ \alpha$ is linear.
     \end{enumerate}
 \end{remark}
+
 \begin{lemma}
     Let $V, W$ be $F$-vector spaces.
     Let $B$ be a basis for $V$.
-    If $\alpha_0 \colon B \to V$ is \textit{any} map (not necessarily linear), then there exists a unique linear map $\alpha \colon V \to W$ extending $\alpha_0$: $\forall v \in B, \alpha_0(v) = \alpha(v)$.
+    If $\alpha_0 \colon B \to W$ is \textit{any} map (not necessarily linear), then there exists a unique linear map $\alpha \colon V \to W$ extending $\alpha_0$: $\forall v \in B, \alpha_0(v) = \alpha(v)$.
 \end{lemma}
+
 \begin{proof}
     Let $v \in V$.
     Then, given $B = (v_1, \dots, v_n)$.
@@ -39,27 +41,30 @@
     \end{align*}
     By linearity,
     \begin{align*}
-        \alpha(v) = \alpha\qty(\sum_{i=1}^n \lambda_i v_i) = \sum_{i=1}^n \alpha(\lambda_i v_i) = \sum_{i=1}^n \alpha_0(\lambda_i v_i)
+        \alpha(v) = \alpha\qty(\sum_{i=1}^n \lambda_i v_i) = \sum_{i=1}^n \lambda_i \alpha(v_i) = \sum_{i=1}^n \lambda_i \alpha_0(v_i)
     \end{align*}
 \end{proof}
+
 \begin{remark}
     This lemma is also true in infinite-dimensional vector spaces.
     Often, to define a linear map, we instead define its action on the basis vectors, and then we `extend by linearity' to construct the entire map.
 \end{remark}
+
 \begin{remark}
     If $\alpha_1, \alpha_2 \colon V \to W$ are linear maps, then if they agree on any basis of $V$ then they are equal.
 \end{remark}
 
 \subsection{Isomorphism}
-\begin{definition}
+\begin{definition}[Isomorphism]
     Let $V, W$ be $F$-vector spaces.
-    A map $\alpha \colon V \to W$ is an \textit{isomorphism} if and only if
+    A map $\alpha \colon V \to W$ is an \vocab{isomorphism} if and only if
     \begin{enumerate}
         \item $\alpha$ is linear
         \item $\alpha$ is bijective
     \end{enumerate}
     If such an $\alpha$ exists, we say that $V$ and $W$ are isomorphic, written $V \cong W$.
 \end{definition}
+
 \begin{remark}
     If $\alpha$ in the above definition is an isomorphism, then $\alpha\inv \colon W \to V$ is linear.
     Indeed, if $w_1, w_2 \in W$ with $w_1 = \alpha(v_1)$ and $w_2 = \alpha(v_2)$,
@@ -71,9 +76,11 @@
         \alpha\inv(\lambda w) = \lambda \alpha\inv(w)
     \end{align*}
 \end{remark}
+
 \begin{lemma}
     Isomorphism is an equivalence relation on the class of all vector spaces over $F$.
 \end{lemma}
+
 \begin{proof}
     \begin{enumerate}
         \item $i_V \colon V \to V$ is an isomorphism
@@ -82,9 +89,11 @@
     \end{enumerate}
     The proofs of each part are left as an exercise.
 \end{proof}
+
 \begin{theorem}
     If $V$ is an $F$-vector space of dimension $n$, then $V \cong F^n$.
 \end{theorem}
+
 \begin{proof}
     Let $B = (v_1, \dots, v_n)$ be a basis for $V$.
     Then, consider $\alpha \colon V \to F^n$ defined by
@@ -94,9 +103,11 @@
     We claim that this is an isomorphism.
     This is left as an exercise.
 \end{proof}
+
 \begin{remark}
     Choosing a basis for $V$ is analogous to choosing an isomorphism from $V$ to $F^n$.
 \end{remark}
+
 \begin{theorem}
     Let $V, W$ be $F$-vector spaces with finite dimensions $n, m$.
     Then,

@@ -84,9 +84,11 @@
 	\end{align*}
 	as required.
 \end{proof}
+
 \begin{corollary}
 	If $V$ is finite-dimensional, $V^\star$ has the same dimension.\footnote{Very different in infinite dimension.}
 \end{corollary}
+
 \begin{remark}
 	It is sometimes convenient to think of $V^\star$ as the spaces of row vectors of length $\dim V$ over $F$.
 	For instance, consider the basis $B = (e_1, \dots, e_n)$, so $x = \sum_{i=1}^n x_i e_i$.
@@ -222,8 +224,9 @@ Let $\alpha \in L(V,W)$, and $\alpha^\star \in L(W^\star, V^\star)$.
 Let $B$ and $C$ be bases of $V, W$ respectively, and $B^\star, C^\star$ be their duals.
 We have proven that
 \begin{align*}
-	[\alpha]_{B,C} = [\alpha^\star]^\transpose_{B,C}
+	[\alpha]_{B,C} = [\alpha^\star]^\transpose_{C^\star, B^\star}
 \end{align*}
+
 \begin{lemma}
 	Suppose that $E = (e_1, \dots, e_n)$ and $F = (f_1, \dots, f_n)$ are bases of $V$.
 	Let $P = [I]_{F, E}$ be a change of basis matrix from $F$ to $E$.
