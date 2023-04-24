@@ -386,6 +386,7 @@
         \dim_F (U + W) = \dim_F U + \dim_F W - \dim_F (U \cap W)
     \end{align*}
 \end{proposition}
+
 \begin{proof}
     Consider a basis $(v_1, \dots, v_n)$ of the intersection.
     Extend this basis to a basis $(v_1, \dots, v_n, u_1, \dots, u_m)$ of $U$ and $(v_1, \dots, v_n, w_1, \dots, w_k)$ of $W$.
@@ -393,20 +394,22 @@
     Indeed, since any component of $U + W$ can be decomposed as a sum of some element of $U$ and some element of $W$, we can add their decompositions together.
     Now we must show that this new basis is free.
     \begin{align*}
-        \sum_{i=1}^n \alpha_i v_i + \sum_{i=1}^m \beta_i u_i + \sum_{i=1}^k \gamma_i w_i & = 0                                              \\
-        \underbrace{\sum_{i=1}^n \alpha_i v_i + \sum_{i=1}^m \beta_i u_i}_{\in U}        & = \underbrace{\sum_{i=1}^k \gamma_i w_i}_{\in W} \\
-        \sum_{i=1}^k \gamma_i w_i                                                        & \in U \cap W                                     \\
-        \sum_{i=1}^k \gamma_i w_i                                                        & = \sum_{i=1}^n \delta_i v_i                      \\
-        \sum_{i=1}^n (\alpha_i + \delta_i) v_i + \sum_{i=1}^m \beta_i u_i                & = 0                                              \\
-        \beta_i = 0, \alpha_i                                                            & = -\delta_i                                      \\
-        \sum_{i=1}^n \alpha_i v_i + \sum_{i=1}^k \gamma_i w_i                            & = 0                                              \\
-        \alpha_i = 0, \gamma_i                                                           & = 0
+        \sum_{i=1}^n \alpha_i v_i + \sum_{i=1}^m \beta_i u_i + \sum_{i=1}^k \gamma_i w_i & = 0 \\
+        \underbrace{\sum_{i=1}^n \alpha_i v_i + \sum_{i=1}^m \beta_i u_i}_{\in U} &= -\underbrace{\sum_{i=1}^k \gamma_i w_i}_{\in W} \\
+        \sum_{i=1}^k \gamma_i w_i &\in U \cap W \\
+        \sum_{i=1}^k \gamma_i w_i &= \sum_{i=1}^n \delta_i v_i \\
+        \sum_{i=1}^n (\alpha_i + \delta_i) v_i + \sum_{i=1}^m \beta_i u_i &= 0 \\
+        \beta_i = 0, \alpha_i &= -\delta_i \\
+        \sum_{i=1}^n \alpha_i v_i + \sum_{i=1}^k \gamma_i w_i &= 0 \\
+        \alpha_i = 0, \gamma_i &= 0
     \end{align*}
 \end{proof}
+
 \begin{proposition} \label{prp:quotientdim}
     If $V$ is a finite-dimensional $F$-vector space, and $U \leq V$, then $U$ and $V / U$ are also finite-dimensional.
     In particular, $\dim_F V = \dim_F U + \dim_F (V / U)$.
 \end{proposition}
+
 \begin{proof}
     Let $(u_1, \dots, u_\ell)$ be a basis of $U$.
     We extend this basis to a basis of $V$: $(u_1, \dots, u_\ell, w_{\ell + 1}, \dots, w_n)$.

@@ -180,7 +180,7 @@ where $A \in \mathbb R^{k \times n}, b \in \mathbb R^k$ are constant.
 	\end{align*} 
 	So
 	\begin{align*}
-		\frac{(U^\tran X)_i}{\sigma} \overset{\text{iid}}{\sim} N(0, \sigma^2)
+		\frac{(U^\tran X)_i}{\sigma} \overset{\text{iid}}{\sim} N(0, 1)
 	\end{align*}
 	for $i = 1, \dots, \rank P$.
 	Hence
@@ -234,7 +234,7 @@ where $A \in \mathbb R^{k \times n}, b \in \mathbb R^k$ are constant.
 
 	Since $I-P$ is a projection with rank equal to its trace $n-1$, we apply the previous theorem to obtain
 	\begin{align*}
-		\frac{S_{xx}}{\sigma^2} = \frac{\norm{(I-P)\varepsilon}^2}{\sigma^2} \chi^2_{n-1}
+		\frac{S_{xx}}{\sigma^2} = \frac{\norm{(I-P)\varepsilon}^2}{\sigma^2} = \chi^2_{n-1}
 	\end{align*}
 \end{proof}
 
@@ -315,27 +315,22 @@ Since $X \in \mathbb R^{n \times p}$, this requires that $n \geq p$, so we need 
 \end{definition}
 
 Since $S(\beta)$ is a positive definite quadratic in $\beta$, it is minimised at the stationary point.
-
 \begin{align*}
 	\eval{\pdv{S(\beta)}{\beta_k}}_{\beta = \hat \beta} = 0 \iff \forall k,\;-2\sum_{i=1}^n x_{ik} \qty(Y_i - \sum_k x_{ij} \hat \beta_j) = 0 \iff X^\tran X \hat \beta = X^\tran Y
 \end{align*}
 
 As $X$ has full column rank, $X^\tran X \in \mathbb{R}^{p \times p}$ is invertible.
-
 \begin{align*}
 	\hat \beta = (X^\tran X)^{-1} X^\tran Y
 \end{align*}
-
 This is notably a linear function of $Y$, given fixed $X$.
 Note that
-
 \begin{align*}
 	\expect{\hat \beta} = (X^\tran X)^{-1} X^\tran \expect{Y} = (X^\tran X)^{-1} X^\tran X\beta = \beta
 \end{align*}
 
 So $\hat \beta$ is an unbiased estimator.
 Further,
-
 \begin{align*}
 	\Var{\hat \beta} &= (X^\tran X)^{-1} X^\tran \Var Y \qty[(X^\tran X)^{-1} X^\tran]^\tran     \\
 	                 &= (X^\tran X)^{-1} X^\tran \sigma^2 I \qty[(X^\tran X)^{-1} X^\tran]^\tran \\
@@ -371,12 +366,12 @@ Further,
 	This holds for all $\beta$, so $AX = 0$.
 	Now, since $X^\tran X$ is symmetric,
 	\begin{align*}
-		\Var{\beta^\star}                   & = \Var{CY}                                                                                                                          \\
-		                                    & = \Var{(A+(X^\tran X)^{-1} X^\tran)Y}                                                                                     \\
-		                                    & = \qty[A+(X^\tran X)^{-1} X^\tran] \Var Y \qty[A+(X^\tran X)^{-1} X^\tran]^\tran                           \\
-		                                    & = \qty[A+(X^\tran X)^{-1} X^\tran] \sigma^2 I \qty[A+(X^\tran X)^{-1} X^\tran]^\tran                       \\
-		                                    & = \sigma^2 \qty(A A^\tran + (X^\tran X)^{-1} + AX(X^\tran X)^{-1} + (X^\tran X)^{-1} X^\tran A^\tran) \\
-		                                    & = \sigma^2 AA^\tran + \Var{\hat \beta}                                                                                         \\
+		\Var{\beta^\star} & = \Var{CY} \\
+		& = \Var{(A+(X^\tran X)^{-1} X^\tran)Y} \\
+		& = \qty[A+(X^\tran X)^{-1} X^\tran] \Var Y \qty[A+(X^\tran X)^{-1} X^\tran]^\tran \\
+		& = \qty[A+(X^\tran X)^{-1} X^\tran] \sigma^2 I \qty[A+(X^\tran X)^{-1} X^\tran]^\tran \\
+		& = \sigma^2 \qty(A A^\tran + (X^\tran X)^{-1} + \underbracket{AX(X^\tran X)^{-1} + (X^\tran X)^{-1} X^\tran A^\tran}_{AX = 0}) \\
+		& = \sigma^2 AA^\tran + \Var{\hat \beta} \\
 		\Var{\beta^\star} - \Var{\hat\beta} & = \sigma^2 AA^\tran
 	\end{align*}
 	Note that the outer product $A A^\tran$ is always positive semidefinite.
@@ -393,7 +388,8 @@ Further,
 \end{proposition}
 
 \begin{proof}
-	$P$ is clearly symmetric. \\
+	$P$ is clearly symmetric.
+	$P$ is idempotent:
 	\begin{align*}
 		P^2 &= X (X^\tran X)\inv X^\tran X (X^\tran X)\inv X^\tran \\
 		&= P.
@@ -638,7 +634,6 @@ Note that as $X$ and $P$ have full rank, so must $X_1, P_1$.
 \end{proof}
 
 Recall that the maximum log-likelihood in the normal linear model is given by
-
 \begin{align*}
 	\ell(\hat \beta, \hat \sigma^2) = \frac{-n}{2} \log \hat\sigma^2 - \frac{n}{2} \cdot \text{constant} = \frac{-n}{2} \log \frac{\norm{(I-P)Y}^2}{n} + \text{constant}
 \end{align*}
@@ -655,7 +650,7 @@ $2 \log \Lambda$ is monotone in
 
 \begin{align*}
 	\frac{\norm{(I-P_1)Y}^2}{\norm{(I-P)Y}^2} & = \frac{\norm{(I-P+P-P_1)Y}^2}{\norm{(I-P)Y}^2} \\
-	&= \frac{\norm{(I-P)Y}^2 + \norm{(P-P_1)Y}^2 + 2Y^\tran (I-P)(P-P_1)}{\norm{(I-P)Y}^2 } \\
+	&= \frac{\norm{(I-P)Y}^2 + \norm{(P-P_1)Y}^2 + 2Y^\tran (I-P)(P-P_1) Y}{\norm{(I-P)Y}^2} \\
 	&= \frac{\norm{(I-P)Y}^2 + \norm{(P-P_1)Y}^2}{\norm{(I-P)Y}^2} \\
 	&= 1 + \frac{\norm{(P-P_1)Y}^2}{\norm{(I-P)Y}^2}
 \end{align*}

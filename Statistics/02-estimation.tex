@@ -237,7 +237,7 @@ We instead seek statistics that maximally compress and summarise the relevant da
 \begin{example}
 	Let $X_1, \dots, X_n$ be normal with unknown $\mu, \sigma^2$.
 	\begin{align*}
-		\frac{f_X(x \mid \mu, \sigma^2)}{f_X(y \mid \mu, \sigma^2)} & = \frac{(2 \pi \sigma^2)^{-n/2} \exp{-\frac{1}{2\sigma^2} \sum_i (x_i - \mu)^2}}{(2 \pi \sigma^2)^{-n/2} \exp{-\frac{1}{2\sigma^2 \sum_i (y_i - \mu)^2}}} \\
+		\frac{f_X(x \mid \mu, \sigma^2)}{f_X(y \mid \mu, \sigma^2)} & = \frac{(2 \pi \sigma^2)^{-n/2} \exp{-\frac{1}{2\sigma^2} \sum_i (x_i - \mu)^2}}{(2 \pi \sigma^2)^{-n/2} \exp{-\frac{1}{2\sigma^2} \sum_i (y_i - \mu)^2}} \\
 		& = \exp{-\frac{1}{2\sigma^2} \qty(\sum_i x_i^2 - \sum_i y_i^2) + \frac{\mu}{\sigma^2} \qty(\sum_i x_i - \sum_i y_i)}
 	\end{align*}
 	Hence, for minimality, this is constant in the parameters $\mu, \sigma^2$ if and only if $\sum_i x_i^2 = \sum_i y_i^2$ and $\sum_i x_i = \sum_i y_i$.

@@ -48,7 +48,7 @@ Scientific questions are often phrased as a decision between two hypotheses.
 	A \vocab{test} of the null hypothesis $H_0$ is defined by a \vocab{critical region} $C \subseteq \mathcal X$.
 	When $X \in C$, we \textit{reject} the null hypothesis.
 	This is a positive result.
-	When $X \not\in C$ we \textit{fail to reject} the null hypothesis, or find \textit{no sufficient evidence against} the null hypothesis.
+	When $X \not\in C$ we \textit{fail to reject} the null hypothesis, or find \textit{not sufficient evidence against} the null hypothesis.
 	This is the negative result.
 \end{definition}
 
@@ -225,7 +225,7 @@ The probabilities of type I and type II error are now dependent on the precise v
 
 	The power function is
 	\begin{align*}
-		W(\mu) &= \psub{\mu}{\frac{\sqrt{n}(\overline X-\mu_0)}{\sigma_0} < z_\alpha} \\
+		W(\mu) &= \psub{\mu}{\frac{\sqrt{n}(\overline X-\mu_0)}{\sigma_0} > z_\alpha} \\
 		&= \psub{\mu}{\frac{\sqrt{n}(\overline X - \mu)}{\sigma_0} > z_\alpha + \frac{\sqrt{n}(\mu_0 - \mu)}{\sigma_0}} \footnote{Adding $\frac{\sqrt{n}(\mu_0 - \mu)}{\sigma_0}$ to both sides.}
 		\intertext{$\frac{\sqrt{n}(\overline X - \mu)}{\sigma_0} \sim \mathcal{N}(0, 1)$ under $\mathbb{P}_\mu$.}
 		&= 1 - \Phi\qty(z_\alpha + \sqrt{n} \frac{\mu_0 - \mu}{\sigma_0})
