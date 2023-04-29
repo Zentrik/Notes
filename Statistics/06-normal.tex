@@ -64,7 +64,7 @@ where $A \in \mathbb R^{k \times n}, b \in \mathbb R^k$ are constant.
 
 \begin{proof}
 	$(\Longleftarrow)$: Let $v \in \mathrm{col}(P)$, so $v = Pa$ for some $a \in \mathbb R^n$.
-	Then, $Pv = PPa = Pa$ as $P$ idempotent, also $Pa = v$. \\
+	Then, $Pv = PPa = Pa$ as $P$ idempotent. \\
 	Now, let $w \in \mathrm{col}(P)^\perp$.
 	By definition, $P^\tran w = 0$.
 	By symmetry, $Pw = 0$.
@@ -404,7 +404,7 @@ Further,
 	\end{align*}
 	For any $a$ 
 	\begin{align*}
-		Pa = X(X^\tran X)^{-1} X^\tran X a \in \operatorname{col}(X).
+		Pa = X(X^\tran X)^{-1} X^\tran a \in \operatorname{col}(X).
 	\end{align*} 
 \end{proof}
 

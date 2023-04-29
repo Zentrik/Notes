@@ -71,7 +71,7 @@
 	Let $t \in F$.
 	Then,
 	\begin{align*}
-		0 \leq \norm{t u - v} = \inner{tu - v, tu - v} = t \overline t \inner{u,u} - u \inner{u,v} - \overline t \inner{v,u} + \norm{v}^2
+		0 \leq \norm{t u - v} = \inner{tu - v, tu - v} = t \overline t \inner{u,u} - t \inner{u,v} - \overline t \inner{v,u} + \norm{v}^2
 	\end{align*}
 	Since the inner product is Hermitian $\inner{v, u} = \overline{\inner{u, v}}$,
 	\begin{align*}
@@ -133,7 +133,7 @@
 	\end{align*}
 	Then,
 	\begin{align*}
-		0 = \inner{\sum_{i=1}^k \lambda_i, e_j} \implies 0 = \sum_{i=1}^k \lambda_i \inner{e_i, e_j} = \lambda_j
+		0 = \inner{\sum_{i=1}^k \lambda_i e_i, e_j} \implies 0 = \sum_{i=1}^k \lambda_i \inner{e_i, e_j} = \lambda_j
 	\end{align*}
 	Thus $\lambda_j = 0$ for all $j$.
 
@@ -313,7 +313,7 @@
 	Let $(e_1, \dots, e_k)$ be an orthonormal basis for $W$ (by Gram Schmidt).
 	Then,
 	\begin{enumerate}
-		\item $\pi(v) = \sum_{i=1}^k \inner{v, e_i} e_i$ and $W \overset{\perp}{\oplus} W^\perp$
+		\item $\pi(v) = \sum_{i=1}^k \inner{v, e_i} e_i \quad \forall \; v \in V$.
 		\item for all $v \in V, w \in W$, $\norm{v - \pi(v)} \leq \norm{v - w}$ with equality iff $w = \pi(v)$, hence $\pi(v)$ is the point in $W$ closest to $v$.
 	\end{enumerate}
 \end{lemma}
