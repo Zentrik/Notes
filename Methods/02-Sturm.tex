@@ -246,7 +246,7 @@ Consider
 \end{align*}
 By orthogonality \cref{eq:2.13}, this is equivalently
 \begin{align*}
-    \int_a^b \qty[ f^2 - 2 f \sum_n a_n y_n + \sum_n a_n^2 y_n^2 ] w \dd{x} = \int_a^b wf^2 \dd{x} - \sum_{n=1}^{\infty} \qty( 2 a_n \int_a^b f y_n w \dd{x} + a_n^2 \int_a^b w y_n^2 \dd{x} )
+    \int_a^b \qty[ f^2 - 2 f \sum_n a_n y_n + \sum_n a_n^2 y_n^2 ] w \dd{x} = \int_a^b wf^2 \dd{x} - \sum_{n=1}^{\infty} \qty( 2 a_n \int_a^b f y_n w \dd{x} - a_n^2 \int_a^b w y_n^2 \dd{x} )
 \end{align*}
 Note that the second term can be extracted using the definition of $a_n$ ($\int f y_n w \dd{x} = a_n \int w y_n^2 \dd{x}$) \cref{eq:2.17}, giving
 \begin{align*}
@@ -255,7 +255,7 @@ Note that the second term can be extracted using the definition of $a_n$ ($\int 
 If the eigenfunctions are complete, then the result will be zero, showing that the series expansion converges.
 \begin{align}
     \int_a^b w f^2 \dd{x} &= \sum_{n=1}^\infty a_n^2 \int_a^b w y_n^2 \dd{x} \label{eq:2.19} \\
-    &= \sum_{n=1}^\infty A_n^2 \text{ for unit normalised } Y_n \cref{eq:2.18} \notag
+    &= \sum_{n=1}^\infty A_n^2 \text{ for unit normalised } Y_n \ \cref{eq:2.18} \notag
 \end{align}
 If some eigenfunctions are missing, this is Bessel's inequality:
 \begin{align*}
