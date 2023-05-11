@@ -171,7 +171,7 @@ Recall the definition of the Fourier transform.
 \begin{proof}
 	This is because
 	\begin{align*}
-		\int_{-\infty}^\infty f(x) e^{-ikx} \dd{x} = \frac{-1}{i} \dv{k} \int_{-\infty}^\infty f(x) e^{-ikx} \dd{x}
+		\int_{-\infty}^\infty xf(x) e^{-ikx} \dd{x} = \frac{-1}{i} \dv{k} \int_{-\infty}^\infty f(x) e^{-ikx} \dd{x}
 	\end{align*}
 \end{proof} 
 
@@ -272,7 +272,7 @@ Consider the inverse.
 where $f \ast g$ is called the \textit{convolution} of $f$ and $g$.
 By duality \cref{eq:8.14}, we also have
 \begin{align} \label{eq:8.18}
-	h(x) = f(x) g(x) \implies \widetilde h(k) = \frac{1}{2\pi} \int_{-\infty}^\infty \widetilde f(p) \widetilde g(k-p) \dd{p} = \frac{1}{2\pi}\qty(\widetilde f \ast \widetilde g)(k)
+	h(x) = f(x) g(x) \iff \widetilde h(k) = \frac{1}{2\pi} \int_{-\infty}^\infty \widetilde f(p) \widetilde g(k-p) \dd{p} = \frac{1}{2\pi}\qty(\widetilde f \ast \widetilde g)(k)
 \end{align}
 
 \subsection{Parseval's theorem}

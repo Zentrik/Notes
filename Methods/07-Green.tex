@@ -167,7 +167,7 @@ Hence, we have $[G]_{\xi_-}^{\xi^+} = 0$, so we require $G_1(\xi, \xi) = G_2(\xi
 \subsubsection{4. Why the jump condition for $G'$ at $x = \xi$}
 Integrate $\mathcal{L} G(x, \xi) = \delta(x - \xi)$ across $x = \xi$:
 \begin{align*}
-	LHS &= \int_{\xi_i}^{\xi^+} \mathcal{L} G \dd{x} \\
+	LHS &= \int_{\xi_-}^{\xi^+} \mathcal{L} G \dd{x} \\
 	&= \int_{\xi_-}^{\xi^+} \alpha G'' + \beta G' + \gamma G \dd{x}
 	\intertext{Integrate by parts}
 	&= \underbracket{\alpha(\xi) [G']_{\xi_-}^{\xi^+}}_\text{by cty of $\alpha(x)$} + (\beta - \alpha')[G]_{\xi_-}^{\xi^+} + \int_{\xi_-}^{\xi^+} (\gamma - \beta' + \alpha'') G \dd{x}
