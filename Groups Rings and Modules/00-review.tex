@@ -70,9 +70,42 @@ An \textit{isomorphism} is a homomorphism that is bijective.
 This yields an inverse function, which is of course also an isomorphism.
 If $\varphi : G \to H$ is an isomorphism, we say that $G$ and $H$ are isomorphic, written $G \cong H$.
 Isomorphism is an equivalence relation.
-The isomorphism theorems are
-\begin{enumerate}
-	\item if $\varphi : G \to H$, then $\faktor{G}{\ker \varphi} \cong \Im \varphi$;
-	\item if $H \leq G$ and $N \trianglelefteq G$, then $H \cap N \trianglelefteq H$ and $\faktor{H}{H \cap N} \cong \faktor{HN}{N}$;
-	\item if $N \leq M \leq G$ such that $N \trianglelefteq G$ and $M \trianglelefteq G$, then $\faktor{M}{N} \trianglelefteq \faktor{G}{N}$, and $\faktor{G/N}{M/N} = \faktor{G}{M}$.
-\end{enumerate}
+
+\begin{theorem}[First Isomorphism Theorem]
+	If $\varphi : G \to H$, then $\faktor{G}{\ker \varphi} \cong \Im \varphi$;
+\end{theorem}
+
+\begin{theorem}[Second Isomorphism Theorem]
+	If $H \leq G$ and $K \trianglelefteq G$, then $H \cap K \trianglelefteq H$ and $\faktor{H}{H \cap N} \cong \faktor{HN}{N}$
+\end{theorem}
+
+\begin{proof}
+	Let $h_1 k_1, h_2 k_2 \in HK$ (so $h_1, h_2 \in H$, $k_1, k_2 \in K$).
+	$h_1 k_1 (h_2 k_2)\inv = \underbracket{h_1 h_2\inv}_{\in H} \underbracket{h_2 k_1 k_2\inv h_2\inv}_{\in K} \in HK$.
+	Thus $HK \subset G$ (by a previous Remark)
+
+	Let $\phi : H \to \faktor{G}{K}, h \mapsto hK$.
+	This is the composite of $H \to G$ and the quotient map $G \to \faktor{G}{K}$, hence $\phi$ a group homomorphism.
+	$\ker \phi = \{h \in H : hK = K\} = H \cap K \trianglelefteq H$ and $\Im \phi = \{hK : h \in H\} = \faktor{HK}{K}$.
+
+	First isomorphism theorem implies $\faktor{H}{H \cap K} \cong \faktor{HK}{K}$.
+\end{proof} 
+
+\begin{remark}
+	Suppose $K \trianglelefteq G$.
+	There is a bijection between subgroups of $\faktor{G}{K}$ and subgroups of $G$ containing $K$.
+	This also restricts to a bijection between normal subgroups of $\faktor{G}{K}$ and normal subgroups of $G$ containing $K$.
+\end{remark} 
+
+\begin{theorem}[Third Isomorphism Theorem]
+	Let $K \leq H \leq G$ be normal subgroups of $G$.
+	Then $\faktor{G/K}{H/K} = \faktor{G}{H}$
+\end{theorem}
+
+\begin{proof}
+	Let $\phi : \faktor{G}{K} \to \faktor{G}{H}, gK \mapsto gH$.
+	If $g_1 K = g_2 K$, then $g_2\inv g_1 \in K \subset H \implies g_1 H = g_2 H$.
+	Thus $\phi$ well-defined.
+
+	$\phi$ is a surjective group homomorphism with kernel $\faktor{H}{K}$.
+\end{proof} 
