@@ -1,0 +1,384 @@
+\part{Modules}
+
+\section{Modules}
+
+\subsection{Definitions}
+\begin{definition}[Module]
+	Let $R$ be a ring.
+	A \vocab{module over $R$} is a triple $(M, +, \cdot)$ consisting of a set $M$ and two operations $+ : M \times M \to M$ and $\bigcdot : R \times M \to M$, that satisfy
+	\begin{enumerate}
+		\item $(M, +)$ is an abelian group with identity $0 = 0_M$;
+		\item $(r_1 + r_2) \cdot m = r_1 \cdot m + r_2 \cdot m$;
+		\item $r \cdot (m_1 + m_2) = r \cdot m_1 + r \cdot m_2$;
+		\item $r_1 \cdot (r_2 \cdot m) = (r_1 \cdot r_2) \cdot m$;
+		\item $1_R \cdot m = m$;
+	\end{enumerate}
+\end{definition}
+
+\begin{remark}
+	Closure is implicitly required by the types of the $+$ and $\cdot$ operations.
+\end{remark}
+
+\begin{example}
+	A module over a field is precisely a vector space.
+\end{example} 
+
+\begin{example}
+	A $\mathbb Z$-module is precisely the same as an abelian group, since
+	\begin{align*}
+		\cdot : \mathbb Z \times A \to A;\quad n \cdot a = \begin{cases}
+			\underbrace{a + \dots + a}_{n \text{ times}}         & \text{if } n > 0 \\
+			0                                                    & \text{if } n = 0 \\
+			-\qty(\underbrace{a + \dots + a}_{-n \text{ times}}) & \text{if } n < 0
+		\end{cases}
+	\end{align*}
+\end{example}
+
+\begin{example}
+	Let $F$ be a field, and $V$ be a vector space over $F$.
+	Let $\alpha : V \to V$ be an endomorphism.
+	We can turn $V$ into an $F[X]$-module by
+	\begin{align*}
+		\bigcdot : F[X] \times V \to V;\quad f \cdot v = (f(\alpha))(v)
+	\end{align*}
+	E.g. $(X^2 + 1) \cdot v = (\alpha^2 + 1_V)(v)$.
+
+	Note that the structure of the $F[X]$-module depends on the choice of $\alpha$.
+	We can write $V = V_\alpha$ to disambiguate.
+\end{example} 
+
+\begin{example}
+	For any ring $R$, we can consider $R^n$ as an $R$-module via
+	\begin{align*}
+		r \cdot (r_1, \dots, r_n) = (r \cdot r_1, \dots, r \cdot r_n)
+	\end{align*}
+	In particular, the case $n = 1$ shows that any ring $R$ can be considered an $R$-module where the scalar multiplication in the ring and the module agree.
+\end{example} 
+
+\begin{example}
+	For an ideal $I \triangleleft R$, we can regard $I$ as an $R$-module, since $I$ is preserved under multiplication by elements in $R$.
+	The quotient ring $\faktor{R}{I}$ is also an $R$-module, defining multiplication as $r \cdot (s+I) = rs + I$.
+\end{example} 
+
+\begin{example}
+	Let $\varphi : R \to S$ be a ring homomorphism.
+	Then any $S$-module can be regarded as an $R$-module.
+	We define $r \cdot m = \varphi(r) \cdot m$.
+	In particular, this applies when $R$ is a subring of $S$, and $\varphi$ is the inclusion map.
+	So any module over a ring can be viewed as a module over any subring.
+\end{example} 
+
+\begin{definition}[Submodule]
+	Let $M$ be an $R$-module.
+	Then $N \subseteq M$ is an \vocab{$R$-submodule of $M$}, written $N \leq M$, if $(N, +) \leq (M, +)$, and $rn \in N$ for all $r \in R$ and $n \in N$.
+\end{definition}
+
+\begin{example}
+	By considering $R$ as an $R$-module, a subset of $R$ is an $R$-submodule iff it is an ideal.
+\end{example}
+
+\begin{example}
+	If $R = F$ is a field, then a module is equivalent to a vector space and a submodule a vector subspace.
+\end{example} 
+
+\begin{definition}[Quotient]
+	Let $N \leq M$ be $R$-modules.
+	Then, the \vocab{quotient} $\faktor{M}{N}$ is defined as the quotient of groups under addition, and with scalar multiplication defined as $r \cdot (m + N) = rm + N$.
+	This is well-defined, since $N$ is preserved under scalar multiplication.
+	This makes $\faktor{M}{N}$ an $R$-module.
+\end{definition}
+
+\begin{remark}
+	Submodules are analogous both to subrings and to ideals.
+\end{remark}
+
+\begin{definition}[Homomorphism]
+	Let $M, N$ be $R$-modules.
+	Then $f : M \to N$ is a \vocab{$R$-module homomorphism} if it is a homomorphism of $(M, +)$ and $(N, +)$, and scalar multiplication is preserved: $f(r \cdot m) = r \cdot f(m) \; \forall \; r \in R, m \in M$.
+\end{definition}
+
+\begin{definition}[Isomorphism]
+	An \vocab{$R$-module isomorphism} is an $R$-module homomorphism that is a bijection.
+\end{definition} 
+
+\begin{example}
+	If $R = F$ is a field, $F$-module homomorphisms are exactly linear maps.
+\end{example}
+
+\begin{theorem}[First Isomorphism Theorem]
+	Let $f : M \to N$ be an $R$-module homomorphism.
+	Then
+	\begin{enumerate}
+		\item $\ker f = \qty{m \in M : f(m) = 0} \leq M$;
+		\item $\Im f = \qty{f(m) \in N : m \in M} \leq N$;
+		\item $\faktor{M}{\ker f} \cong \Im f$.
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	Similar to before, left as an exercise.
+\end{proof} 
+
+\begin{theorem}[Second Isomorphism Theorem]
+	Let $A, B \leq M$ be $R$-submodules.
+	Then
+	\begin{enumerate}
+		\item $A + B = \qty{a + b : a \in A, b \in B} \leq M$;
+		\item $A \cap B \leq M$;
+		\item $\faktor{A}{A \cap B} \cong \faktor{(A + B)}{B}$.
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	Apply first iso thm to the composite map $A \to M \to \faktor{M}{B}$ by $a \mapsto a \mapsto a + B$.
+	Left as an exercise.
+\end{proof} 
+
+For $N \leq M$, there is a bijection between submodules of $\faktor{M}{N}$ and submodules of $M$ containing $N$.
+
+\begin{theorem}[Third Isomorphism Theorem]
+	For $N \leq L \leq M$ are $R$-submodules, then
+	\begin{align*}
+		\faktor{M/N}{L/N} \cong \faktor{M}{L}
+	\end{align*}
+\end{theorem}
+
+Note that these results apply to vector spaces; for example, the first isomorphism theorem immediately gives the rank-nullity theorem.
+
+\subsection{Finitely generated modules}
+\begin{definition}[Generated Submodule]
+	Let $M$ be an $R$-module.
+	If $m \in M$, then we write $Rm = \qty{rm : r \in R}$.
+	This is an $R$-submodule of $M$, known as the submodule \vocab{generated by $m$}.
+\end{definition}
+
+\begin{definition}[Sum of Submodules]
+	If $A, B \leq M$, we can define $A + B = \qty{a + b : a \in A, b \in B}$, known as the \vocab{sum of submodules}.
+	In particular, this sum is commutative.
+\end{definition} 
+
+\begin{definition}[Cyclic]
+	$M$ is \vocab{cyclic} if $M = Rm$ for some $m \in M$.
+\end{definition} 
+
+\begin{definition}[Finitely Generated]
+	A module $M$ is \vocab{finitely generated} if it is the sum of finitely many cyclic submodules.
+	In other words, $M = Rm_1 + \dots + Rm_n$.
+\end{definition}
+
+This is the analogue of finite dimensionality in linear algebra.
+
+\begin{lemma} \label{lem:14.1}
+	$M$ is cyclic $\iff$ $M \cong \faktor{R}{I}$ for some $I \triangleleft R$.
+\end{lemma} 
+
+\begin{proof}
+	$(\implies)$: Suppose $M = Rm$, then there is a surjective $R$-module homomorphism 
+	\begin{align*}
+		R &\to M \\
+		r &\mapsto rm.
+	\end{align*} 
+	Its kernel is an $R$-submodule of $R$, i.e. an ideal.
+	First iso thm implies that $\faktor{R}{I} \cong M$.
+
+	$(\Longleftarrow)$: $\faktor{R}{I}$ is generated as an $R$-module by $1_R + I$.
+\end{proof} 
+
+\begin{lemma}
+	An $R$-module $M$ is finitely generated iff there exists a surjective $R$-module homomorphism $f : R^n \to M$ for some $n$.
+\end{lemma}
+
+\begin{proof}
+	$(\implies)$: We have $M = Rm_1 + \dots + Rm_n$.
+	We define $f : R^n \to M$ by $(r_1, \dots, r_n) \mapsto r_1 m_1 + \dots + r_n m_n$.
+	This is surjective as $M = Rm_1 + \dots + Rm_n$ also you can check other properties to find it is a $R$-module homomorphism.
+
+	$(\Longleftarrow)$: Let $e_i = (0, \dots, 1, \dots, 0)$ be the element of $R^n$ with all entries zero except for 1 in the $i$th place.
+	Given $f$, let $m_i = f(e_i)$.
+	Then, since $f$ is surjective, any element $m \in M$ is contained in the image of $f$, so is of the form $f(r_1, \dots, r_n) = f(\sum_{i=1}^{n} r_i e_i) = \sum_{i=1}^{n} r_i f(e_i) = \sum_{i=1}^{n} r_i m_i$.
+	Thus $M = R m_1 + \dots = R m_n$.
+\end{proof}
+
+\begin{corollary} \label{cor:14.3}
+	Let $N \leq M$ be a $R$-submodule.
+	If $M$ is finitely generated then $\faktor{M}{N}$ is finitely generated.
+\end{corollary}
+
+\begin{proof}
+	There exists a surjective $R$-module homomorphism $f : R^n \to M$.
+	Then $q \circ f$, where $q$ is the quotient map, is also a surjective homomorphism.
+	So $\faktor{M}{N}$ is finitely generated.
+\end{proof}
+
+\begin{example}
+	It is not always the case that a submodule of a finitely generated module is finitely generated.
+	Let $R$ be a non-Noetherian ring, and $I$ an ideal in $R$ that is not finitely generated (in the ring sense).
+	$R$ is a finitely generated $R$-module, since $R1 = R$.
+	$I$ is a submodule of $R$, which is not finitely generated (in the module sense).
+\end{example}
+
+\begin{remark}
+	If $R$ is Noetherian, it is always the case that submodules of finitely generated $R$-modules are finitely generated (Sheet 4).
+\end{remark}
+
+\begin{lemma}
+	Let $R$ be an integral domain.
+	Every submodule of a cyclic $R$-module is cyclic iff $R$ is a PID.
+\end{lemma} 
+
+\begin{proof}
+	$(\implies)$: $R$ is a cyclic $R$-module.
+	Saying its submodule are cyclic precisely means that every ideal is principal.
+
+	$(\Longleftarrow)$: If $M$ is a cyclic $R$-module its isomorphic to $\faktor{R}{I}$, $I \triangleleft R$ by \Cref{lem:14.1}.
+	Any submodule of $\faktor{R}{I}$ is of the form $\faktor{J}{I}$ for some ideal $J \triangleleft R$ and $I \subseteq J$.
+	$R$ a PID implies $J$ is principal so $\faktor{J}{I}$ is cyclic.
+\end{proof} 
+
+\subsection{Torsion}
+\begin{definition}[Torsion]
+	Let $M$ be an $R$-module.
+	\begin{enumerate}
+		\item $m \in M$ is \vocab{torsion} if there exists $0 \neq r \in R$ such that $rm = 0$;
+		\item $M$ is a \vocab{torsion module} if every element is torsion;
+		\item $M$ is a \vocab{torsion-free module} if 0 is the only torsion element.
+	\end{enumerate}
+\end{definition}
+
+\begin{example}
+	The torsion elements in a $\mathbb Z$-module (which is an abelian group) are precisely the elements of finite order.
+	If $F$ is a field, any $F$-module is torsion-free.
+\end{example}
+
+\subsection{Direct sums}
+\begin{definition}[Direct Sum]
+	Let $M_1, \dots, M_n$ be $R$-modules.
+	Then the \vocab{direct sum} of $M_1, \dots, M_n$, written $M_1 \oplus \dots \oplus M_n$, is the set $M_1 \times \dots \times M_n$, with the operations of addition and scalar multiplication defined componentwise.
+	We can show that the direct sum of (finitely many) $R$-modules is an $R$-module.
+\end{definition}
+
+\begin{example}
+	$R^n = R \oplus \dots \oplus R$, where we take the direct sum of $n$ copies of $R$.
+\end{example}
+
+\begin{lemma} \label{lem:15.1}
+	Let $M = \bigoplus_{i=1}^n M_i$, and for each $M_i$, let $N_i \leq M_i$.
+	Then $N = \bigoplus_{i=1}^n N_i$ is a submodule of $M$.
+	Further,
+	\begin{align*}
+		\faktor{M}{N} = \faktor{\bigoplus_{i=1}^n M_i}{\bigoplus_{i=1}^n N_i} \cong \bigoplus_{i=1}^n \faktor{M_i}{N_i}
+	\end{align*}
+\end{lemma}
+
+\begin{proof}
+	First, we can see that this $N$ is a submodule.
+	Applying the first isomorphism theorem to the surjective $R$-module homomorphism $M \to \bigoplus_{i=1}^n \faktor{M_i}{N_i}$ given by $(m_1, \dots, m_n) \mapsto (m_1 + N_1, \dots, m_n + N_n)$, the result follows as required, since the kernel is $N$.
+\end{proof}
+
+\subsection{Free modules}
+
+\begin{definition}[Independent]
+	Let $m_1, \dots, m_n \in M$.
+	The set $\qty{m_1, \dots, m_n}$ is \vocab{independent} if $\sum_{i=1}^n r_i m_i = 0$ implies that the $r_i$ are all zero.
+\end{definition}
+
+\begin{definition}[Generates Freely]
+	A subset $S \subseteq M$ \vocab{generates $M$ freely} if:
+	\begin{enumerate}
+		\item $S$ generates $M$, so for all $m \in M$, we can find finitely many entries $s_i \in S$ and coefficients $r_i \in R$ such that $m = \sum_{i=1}^k r_i s_i$;
+		\item any function $\psi : S \to N$, where $N$ is an $R$-module, extends to an $R$-module homomorphism $\theta : M \to N$.
+	\end{enumerate}
+\end{definition}
+
+\begin{remark}
+	In (ii), such an extension $\theta$ is always unique if it exists, by (i).
+\end{remark}
+
+\begin{definition}[Free]
+	An $R$-module $M$ freely generated by some subset $S \subseteq M$ is called \vocab{free}.
+	We say that $S$ is a \vocab{free basis} for $M$.
+\end{definition}
+
+\begin{remark}
+	Free bases in the study of modules are analogous to bases in linear algebra.
+	All vector spaces are free modules, but not all modules are free.
+\end{remark}
+
+\begin{proposition} \label{prp:15.2}
+	For a finite subset $S = \qty{m_1, \dots, m_n} \subseteq M$, the following are equivalent.
+	\begin{enumerate}
+		\item $S$ generates $M$ freely;
+		\item $S$ generates $M$ and $S$ is independent;
+		\item Every element of $M$ can be written uniquely as $r_1 m_1 + \dots + r_n m_n$ for some $r_i \in R$;
+		\item The $R$-module homomorphism $R^n \to M$ given by $(r_1, \dots, r_n) \mapsto r_1 m_1 + \dots + r_n m_n$ is bijective, so is an isomorphism.
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	Not all implications are shown, but they are similar to arguments found in Part IB Linear Algebra.
+
+	(i) $\implies$ (ii)
+	Let $S$ generate $M$ freely.
+	Suppose $S$ is not independent.
+	Then there exist $r_i$ such that $\sum_{i=1}^n r_i m_i = 0$ but not all $r_i$ are zero.
+	Let $r_j \neq 0$.
+	Since $S$ generates $M$ freely, consider the module homomorphism $\psi : S \to R$ given by
+	\begin{align*}
+		\psi(m_i) = \begin{cases}
+			1 & \text{if } i = j \\
+			0 & \text{otherwise}
+		\end{cases}
+	\end{align*}
+	This extends to a $R$-module homomorphism $\theta : M \to R$.
+	Then
+	\begin{align*}
+		0 = \theta(0) = \theta\qty(\sum_{i=1}^n r_i m_i) = \sum_{i=1}^n r_i \theta(m_i) = r_j \neq 0
+	\end{align*}
+	This is a contradiction, so $S$ is independent.
+
+	To show (ii) $\implies$ (iii), it suffices to show uniqueness.
+	If there exist two ways to write an element as a linear combination, consider their difference to find a contradiction from (ii).
+
+	We can show (iii) $\implies$ (i).
+	Then it remains to show (iii) $\iff$ (iv).
+\end{proof}
+
+\begin{example}
+	A non-trivial finite abelian group is not a free $\mathbb Z$-module. \\
+	This is because given non-trivial element $x$, we know $\exists nx = 0$ for some $n$, e.g. $n$ is the order of the group.
+	So $x$ cannot be in an independent set.
+\end{example}
+
+\begin{example}
+	The set $\qty{2,3}$ generates $\mathbb Z$ as a $\mathbb Z$-module.
+	This is not a free basis, since they are not independent: $2 \cdot 3 - 3 \cdot 2 = 0$.
+	Furthermore no subset is a free basis, $\{2\}, \{3\}$ do not generate.
+
+	This is different to vector spaces, where we can always construct a basis from a subset of a spanning set.
+\end{example} 
+
+\begin{proposition}[Invariance of Dimension] \label{prp:15.3}
+	Let $R$ be a nonzero ring.
+	If $R^m \cong R^n$ as $R$-modules, then $m = n$.
+\end{proposition}
+
+\begin{proof}
+	First we introduce a general construction.
+	Let $I \triangleleft R$, and $M$ an $R$-module.
+	We define $IM = \qty{\sum a_i m_i : a_i \in I, m_i \in M} \leq M$.
+	Since $I$ is an ideal, we can show that $IM$ is a submodule of $M$.
+	The quotient module $\faktor{M}{IM}$ is an $R$-module, but we can also show that it is an $\faktor{R}{I}$-module, by defining scalar multiplication as
+	\begin{align*}
+		(r+I) \cdot (m+IM) = (r \cdot m + IM)
+	\end{align*}
+	We can check that this is well-defined; this follows from the fact that for $b \in I$, $b \cdot (m + IM) = bm + IM$, but $b \in I$ so $bm \in IM$.
+
+	Now, suppose that $R^m \cong R^n$.
+	Then let $I \triangleleft R$ be a maximal ideal in $R$\footnote{We can prove the existence of such an ideal under the assumption of the axiom of choice, and in particular using Zorn's lemma. With Noetherian Rings this is quite easy to prove by just picking an ideal and if its not maximal then there is one containing it and so on till we have a constant ideal and so it must be maximal}.
+	By \Cref{lem:15.1}, we find an isomorphism of $\faktor{R}{I}$-modules
+	\begin{align*}
+		\qty(\faktor{R}{I})^m \cong \faktor{R^m}{IR^m} \cong \faktor{R^n}{IR^n} \cong \qty(\faktor{R}{I})^n
+	\end{align*}
+	This is an isomorphism of vector spaces over $\faktor{R}{I}$ which is a field, since $I$ is maximal.
+	Hence, using the corresponding result from linear algebra, $n = m$.
+\end{proof}
