@@ -329,6 +329,8 @@ There is an analogous result for principal ideal domains.
 \end{proof}
 
 \subsection{Rational canonical form}
+See \href{https://tartarus.org/gareth/maths/Groups_Rings_and_Modules/FX-modules.pdf}{tartarus} for a good explainer of what $F[X]$ modules are and what is going on.
+
 Let $V$ be a vector space over a field $F$, and $\alpha : V \to V$ be a linear map.
 Let $V_\alpha$ denote the $F[X]$-module $V$ where scalar multiplication, $F[X] \times V \to V$, is defined by $(f(X), v) \mapsto f(X) \cdot v = f(\alpha)(v)$.
 
@@ -338,7 +340,7 @@ Let $V_\alpha$ denote the $F[X]$-module $V$ where scalar multiplication, $F[X] \
 
 \begin{proof}
 	Consider a basis $v_1, \dots, v_n$ of $V$, so $v_1, \dots, v_n$ generate $V$ as an $F$-vector space.
-	Then, these vectors generate $V_\alpha$ as an $F[X]$-module, since $F \leq F[X]$.
+	Then, these vectors generate $V_\alpha$ as an $F[X]$-module, since $F \leq F[X]$\footnote{Any element in $V$ can be written as $\sum \lambda_i v_i$ for $\lambda_i \in F$. As $F \leq F[X]$, $\lambda_i \in F[x]$ so any element in $V$ is a linear combination of the $v_i$ in $F[X]$.}.
 \end{proof}
 
 \begin{example}
