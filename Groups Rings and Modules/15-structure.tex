@@ -165,7 +165,7 @@ We will consider an $m \times n$ matrix with entries in $R$.
 \end{lemma}
 
 \begin{proof}
-	The $m=1$ case was \label{lem:14.4}
+	The $m=1$ case was \cref{lem:14.4}.
 
 	Let $N \leq R^m$.
 	Consider
@@ -297,11 +297,11 @@ There is an analogous result for principal ideal domains.
 
 	Now, we define an $R$-module homomorphism $\psi : R \to \faktor{R}{(a)} \oplus \faktor{R}{(b)}$ by $\psi(x) = (x+(a), x+(b))$.
 	Then $\psi(sb) = (sb+(a), sb+(b)) = (1-ra+(a),sb+(b)) = (1+(a), (b))$, and similarly $\psi(ra) = ((a),1+(b))$.
-	Hence, $\psi(sbx + rby) = (x+(a),y+(b))$ so $\psi$ is surjective.
+	Hence, $\psi(sbx + ray) = (x+(a),y+(b))$ so $\psi$ is surjective.
 
 	Clearly we have $(ab) \subset \ker \psi$, so it suffices to show the converse.
 	If $x \in \ker \psi$, then $x \in (a)$ and $x \in (b)$, so $x \in (a) \cap (b)$.
-	Since $x = x(ra+sb) = r(ax) + s(bx)$, we must have that $s(bx) \in (a)$ and $r(ax) \in (b)$, so $x \in (ab)$.
+	Since $x = x(ra+sb) = r\underbracket{(ax)}_{\in (ab)} + s\underbracket{(bx)}_{\in (ab)}$, $x \in (ab)$.
 	Hence $\ker \psi = (ab)$, and the result follows from the first isomorphism theorem for modules.
 \end{proof}
 
