@@ -131,7 +131,9 @@ The units in $\mathbb Z[i]$ are $\pm 1, \pm i$, since they are the only elements
 	Let $R \leq S$, and $\alpha \in S$.
 	We write $R[\alpha]$ to denote the smallest subring of $S$ containing $R$ and $\alpha$.
 	$R[\alpha]$ is the intersection of all subrings of $S$ containing $R$ and $\alpha$.
-	Further, $R[\alpha] = \Im \varphi$ where $\varphi : R[X] \to S$ is the homomorphism $g(X) \mapsto g(\alpha)$\footnote{We map polynomial $g$ to $g(\alpha)$}.
+	Further, $R[\alpha] = \Im \varphi$ where $\varphi : R[X] \to S$ is the homomorphism $g(X) \mapsto g(\alpha)$\footnote{We map polynomial $g$ to $g(\alpha)$. 
+	The image is the smallest subring containing $R$ and $\alpha$ as: $g(X) = c \in R[X]$ for $c \in R$ and $g(\alpha) = c$ so $R \subset \Im \phi$; also $g(X) = X \in R[X]$ so $g(\alpha) = \alpha$ hence $\alpha \in \Im \phi$. 
+	As we can add terms and multiply $\alpha$ by itself and any element in $R$, we can obtain any polynomial of $\alpha$ so $g(\alpha) \in R[\alpha] \; \forall \; g \in R[X]$.}.
 \end{notation} 
 
 \begin{definition}[Minimal Polynomial]
