@@ -138,12 +138,12 @@
 		      Let $P \in \mathrm{Syl}_p(G)$.
 		      Then let $P$ act on $\mathrm{Syl}_p(G)$ by conjugation.
 		      Since $P$ is a Sylow $p$-subgroup, the orbits of this action have size dividing $\abs{P} = p^a$, so the size is some power of $p$. \\
-		      To show $n_p \equiv 1 \mod p$, it suffices to show that $\qty{P}$ is the unique orbit of size 1, as the orbits of other sizes are multiples of $p$. \\
+		      To show $n_p \equiv 1 \mod p$, it suffices to show that $\qty{P}$ is the unique orbit of size 1, as the orbits of other sizes are multiples of $p$ and orbits partition $\mathrm{Syl}_p(G)$. \\
 		      Suppose $\qty{Q}$ is another orbit of size 1, so $Q$ is a Sylow $p$-subgroup which is preserved under conjugation by $P$.
-		      Thus $P$ normalises $Q$, so $P \leq N_G(Q)$.
+		      Thus $P$ normalises $Q$, so $P \leq N_G(Q)$ and $Q \trianglelefteq N_G(Q)$.
 		      Notice that $P$ and $Q$ are both Sylow $p$-subgroups of $N_G(Q)$.
 		      By (ii), $P$ and $Q$ are conjugate inside $N_G(Q)$.
-		      Hence $P = Q$ since $Q \trianglelefteq N_G(Q)$.
+		      Hence $gPg\inv = Q$ so $P = g\inv Q g = Q$ since $Q \trianglelefteq N_G(Q)$.
 		      Thus, $\abs{P}$ is the unique orbit of size 1, so $n_p \equiv 1 \mod p$ as required.
 	\end{enumerate}
 \end{proof}
