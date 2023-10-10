@@ -1,0 +1,57 @@
+%&../preamble
+
+\def\npart {II}
+\def\nterm {Michaelmas}
+\def\nyear {2023}
+\def\nlecturer {Dr Sarkar}
+\def\ncourse {Probability and Measure}
+
+\input{../preamble-dynamic.tex}
+\usepackage{relsize}
+
+\newcommand{\symmdiff}{\mathrel{\raisebox{1pt}{\( \mathsmaller\triangle \)}}}
+\newcommand{\prob}[1]{\mathbb{P}\left({#1}\right)}
+\let \emptyset \varnothing
+
+\setcounter{section}{-1}
+
+\begin{document}
+    \maketitle
+    \tableofcontents
+
+    \section{Holes in classical theory}
+
+    Analysis
+
+    \begin{enumerate}
+        \item What is the ``volume'' of a subset of $\mathbb{R}^d$.
+        \item Integration (Riemann Integration has holes)
+        \begin{itemize}
+            \item $\{f_n\}$ a sequence of continuous functions on $[0, 1]$ s.t.
+            \begin{itemize}
+                \item $0 \leq f_n(x) \leq 1 \; \forall \; x \in [0, 1]$.
+                \item $f_n(x)$ is monotonically decreasing on $n \to \infty$, i.e. $f_n(x) \geq f_{n+1}(x) \; \forall \; x$/
+            \end{itemize}
+            So, $\lim_{n \to \infty} f_n(x)$ exists. But $f$ is not Riemann integrable . We want a theory of integration s.t. $f$ is integrable and $\lim_{n \to \infty} \int_{0}^{1} f_n(x) \dd{x} = \int_{0}^{1} f(x) \dd{x}$.
+        \end{itemize}
+        \item $L^1 = ()$
+        If $f \in L^1$ is $f$ Riemann integrable? Will have to change the definition of integral. $L^2$ a hilbert space
+    \end{enumerate}
+
+    Probability
+
+    \begin{enumerate}
+        \item Discrete probability has its limitations,
+        \begin{itemize}
+            \item Toss a unbiased coin 5 times. What is the probability if getting 3 heads?
+            \item Take an infinite sequence of coin tosses ($E = \{0, 1\}^\mathbb{N}$ which is uncountable) and an event A that depends on that infinite sequence. How do you define $\mathbb{P}(A)$?
+            E.g. $X_i \sim \operatorname{Ber}\left( \frac{1}{2} \right)$ and $A = \frac{\sum_{i=1}^{n} X_i}{n}$, the average number of heads.
+            By strong law of large numbers $\mathbb{P}\left( \frac{\sum_{i=1}^{n} X_i}{n} \to \frac{1}{2} \right) = 1$.
+            \item How to draw a point uniformly at random from $[0, 1]$? $U \sim U[0, 1]$.
+            Probability needs axioms to be made rigorous.
+        \end{itemize}
+        \item Define Expectation for a r.v.. Also would want the following if $0 \leq X_n \leq 1$ and $X_n \downarrow X$ then $\mathbb{E} X_n \to \mathbb{E} X$.
+    \end{enumerate}
+
+    \include{01_measures.tex}
+\end{document}
