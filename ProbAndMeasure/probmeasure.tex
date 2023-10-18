@@ -9,9 +9,11 @@
 \input{../preamble-dynamic.tex}
 \usepackage{relsize}
 
-\newcommand{\symmdiff}{\mathrel{\raisebox{1pt}{\( \mathsmaller\triangle \)}}}
+\newcommand{\symmdiff}{\mathrel{\raisebox{1pt}{$\mathsmaller\triangle$}}}
 \newcommand{\prob}[1]{\mathbb{P}\left({#1}\right)}
 \let \emptyset \varnothing
+
+\includeonly{02_measurable_functions.tex}
 
 \setcounter{section}{-1}
 
@@ -54,4 +56,5 @@
     \end{enumerate}
 
     \include{01_measures.tex}
+    \include{02_measurable_functions.tex}
 \end{document}

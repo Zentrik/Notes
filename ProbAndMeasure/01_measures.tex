@@ -115,7 +115,7 @@ Goal: Start with a ``measure'' on $\mathcal{A}$ that has some nice properties an
 \end{proposition}
 
 \begin{proof}
-	Define $\widetilde A_n = \bigcup_{j \leq n} A_j$, then $B_{n+1} = \widetilde A_n \setminus \widetilde A_{n-1}$.
+	Define $\widetilde A_n = \bigcup_{j \leq n} A_j$, then $B_n = \widetilde A_n \setminus \widetilde A_{n-1}$.
 \end{proof}
 
 \begin{remark} \label{rem:1}
@@ -623,16 +623,22 @@ This proof did not require that $\mathbb P$ be a probability measure, just that 
 Therefore, we can use this for arbitrary measures.
 
 \begin{lemma}[Second Borel--Cantelli lemma]
-	Let $A_n \in \mathcal F$ be a sequence of independent events, and $\sum_n \prob{A_n} = \infty$.
+	Let $A_n \in \mathcal F$ be a sequence of independent events with= $\sum_n \prob{A_n} = \infty$.
 	Then $\prob{A_n \text{ infinitely often}} = 1$.
 \end{lemma}
 
 \begin{proof}
 	By independence, for all $N \geq n \in \mathbb N$ and using $1 - a \leq e^{-a}$, we find
 	\[ \prob{\bigcap_{m=n}^N A_m^c} = \prod_{m=n}^N \qty(1 - \prob{A_m}) \leq \prod_{m=n}^N e^{-\prob{A_m}} = e^{-\sum_{m=n}^N \prob{A_m}} \]
-	As $N \to \infty$, this approaches zero.
-	Since $\bigcap_{m=n}^N A_m^c$ decreases to $\bigcap_{m=n}^\infty A_m^c$, by countable additivity we must have $\prob{\bigcap_{m=n}^\infty A_m^c} = 0$.
-	But then
-	\[ \prob{A_n \text{ infinitely often}} = \prob{\bigcap_n \bigcup_{m \geq n} A_m} = 1 - \prob{\bigcup_n \bigcap_{m \geq n} A_m^c} \geq 1 - \sum_n \prob{\bigcap_{m \geq n} A_m^c} = 1 \]
-	Hence this probability is equal to one.
+	As $N \to \infty$, this approaches zero. \\
+	Since $\bigcap_{m=n}^N A_m^c$ decreases to $\bigcap_{m=n}^\infty A_m^c$, $\prob{\bigcap_{m=n}^\infty A_m^c} = 0$ as $\prob{\bigcap_{m=n}^\infty A_m^c} \leq \prob{\bigcap_{m=n}^N A_m^c} \leq e^{-\sum_{m=n}^N \prob{A_m}} \to 0$.
+	So by taking complements $\mathbb{P}(\bigcup_{m=n}^\infty A_n) = 1 \;\forall \; n (\dagger)$.
+
+	Let $B_n = \bigcup_{m=n}^\infty A_m$, $B_n$ decreasing and so $B_n \downarrow \bigcap_n B_n = \bigcap_n \bigcup_{m \geq n} A_m = \{A_n \text{ i.o}\}\footnote{$A_n$ occurs infinitely often}$.
+	As $\mathbb{P}(B_n) = 1$ by $(\dagger)$, $\mathbb{P}{\{A_n \text{ i.o}\}} = \lim_{n \to \infty} \mathbb{P}(B_n) = 1$ as probabilities are a finite measure.
 \end{proof}
+
+\begin{remark}
+	If $A_n$ independent, then $\{A_n \text{ i.o}\}$ has either probability $0$ or $1$ and is called a ``tail event''.
+	Kolmogorov 0-1 law shows this is true for all ``tail events''.
+\end{remark}
