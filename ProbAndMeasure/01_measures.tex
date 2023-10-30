@@ -59,7 +59,7 @@
 	\[ \sigma(\mathcal A) = \qty{A \subseteq E \colon A \in \mathcal E \text{ for all $\sigma$-algebras } \mathcal E \supseteq \mathcal A} \]
 	So it is the smallest $\sigma$-algebra containing $\mathcal A$.
 	Equivalently,
-	\[ \sigma(\mathcal A) = \bigcap_{\mathcal E \supseteq \mathcal A, \mathcal E \text{ a $\sigma$-algebra}} \mathcal E \]
+	\[ \sigma(\mathcal A) = \bigcap_{\mathcal E \supseteq \mathcal A,\ \mathcal E \text{ a $\sigma$-algebra}} \mathcal E \]
 \end{definition}
 
 \begin{question}
@@ -131,7 +131,7 @@ We will later prove that this extended measure is unique.
 
 \begin{proof}
 	For $B \subseteq E$, we define the \emph{outer measure} $\mu^\star$ as
-	\[ \mu^\star(B) = \inf \qty{\sum_{n \in \mathbb N} \mu(A_n), A_n \in \mathcal A, B \subseteq \bigcup_{n \in \mathbb N} A_n} \]
+	\[ \mu^\star(B) = \inf \qty{\sum_{n \in \mathbb N} \mu(A_n) : A_n \in \mathcal A, B \subseteq \bigcup_{n \in \mathbb N} A_n} \]
 	If there is no sequence $A_n$ such that $B \subseteq \bigcup_{n \in \mathbb N} A_n$, we declare the outer measure $\mu^\star(B)$ to be $\infty$.
 	Clearly, $\mu^\star(\emptyset)$ and $\mu^\star$ is increasing, so $\mu^\star$ is an increasing set fcn on $\mathcal{P}(E)$.
 
@@ -140,8 +140,8 @@ We will later prove that this extended measure is unique.
 	\end{definition}
 
 	We define the class
-	\[ \mathcal M = \qty{A \subseteq E \mid A \text{ is $\mu^\star$ measurable}} \]
-	We shall show that $M$ is a $\sigma$-algebra that contains $\mathcal{A}$, $\mu^\star \mid_M$ is a measure on $M$ that extends $\mu$ (i.e. $\mu^\star \mid_\mathcal{A} = \mu$).
+	\[ \mathcal M = \qty{A \subseteq E : A \text{ is $\mu^\star$ measurable}} \]
+	We shall show that $M$ is a $\sigma$-algebra that contains $\mathcal{A}$, $\mu^\star \mid_M$ is a measure on $M$ that extends $\mu$ (i.e. $\eval{\mu^\star}_\mathcal{A} = \mu$).
 
 	\emph{Step 1.} $\mu^\star$ is countably sub-additive on $\mathcal P(E)$:
 	It suffices to prove that for $B \subseteq E$ and $B_n \subseteq E$ such that $B \subseteq \bigcup_n B_n$ we have
@@ -150,12 +150,12 @@ We will later prove that this extended measure is unique.
 		\tag{\(\dagger\)}
 	\end{equation}
 	We can assume without loss of generality that $\mu^\star(B_n) < \infty$ for all $n$, otherwise there is nothing to prove.
-	For all $\varepsilon > 0$ there exists a collection $A_{n,m} \in \mathcal{A}$ such that $B_n \subseteq \bigcup_m A_{n,m}$ and
-	\[ \mu^\star(B_n) + \frac{\varepsilon}{2^n} \geq \sum_m \mu(A_{n,m}) \]
+	For all $\epsilon > 0$ there exists a collection $A_{n,m} \in \mathcal{A}$ such that $B_n \subseteq \bigcup_m A_{n,m}$ and
+	\[ \mu^\star(B_n) + \frac{\epsilon}{2^n} \geq \sum_m \mu(A_{n,m}) \]
 	as we took an infimum.
 	Now, since $\mu^\star$ is increasing, and $B \subseteq \bigcup_n B_n \subseteq \bigcup_n \bigcup_m A_{n,m}$, we have
-	\[ \mu^\star(B) \leq \mu^\star\qty(\bigcup_{n,m} A_{n,m}) \leq \sum_{n,m} \mu(A_{n,m}) \leq \sum_n \mu^\star(B_n) + \sum_n \frac{\varepsilon}{2^n} = \sum_n \mu^\star(B_n) + \varepsilon \]
-	Since $\varepsilon$ was arbitrary in the construction, $(\dagger)$ follows by construction.
+	\[ \mu^\star(B) \leq \mu^\star\qty(\bigcup_{n,m} A_{n,m}) \leq \sum_{n,m} \mu(A_{n,m}) \leq \sum_n \mu^\star(B_n) + \sum_n \frac{\epsilon}{2^n} = \sum_n \mu^\star(B_n) + \epsilon \]
+	Since $\epsilon$ was arbitrary in the construction, $(\dagger)$ follows by construction.
 
 	\emph{Step 2.} $\mu^\star$ extends $\mu$:
 	Let $A \in \mathcal A$, and we want to show $\mu^\star(A) = \mu(A)$.
@@ -178,16 +178,16 @@ We will later prove that this extended measure is unique.
 	We have $B \subseteq (B \cap A) \cup (B \cap A^c) \cup \emptyset \cup \dots$, hence by countable subadditivity $(\dagger)$, $\mu^\star(B) \leq \mu^\star(B \cap A) + \mu^\star(B \cap A^c)$.
 
 	It now suffices to prove the converse, that $\mu^\star(B) \geq \mu^\star(B \cap A) + \mu^\star(B \cap A^c)$. \\
-	We can assume $\mu^\star(B)$ is finite, and so $\forall \; \epsilon > 0 \; \exists \; A_n \in \mathcal A$ s.t. $B \subseteq \bigcup_n A_n$ and $\mu^\star(B) + \varepsilon \geq \sum_n \mu(A_n)$.
+	We can assume $\mu^\star(B)$ is finite, and so $\forall \; \epsilon > 0 \; \exists \; A_n \in \mathcal A$ s.t. $B \subseteq \bigcup_n A_n$ and $\mu^\star(B) + \epsilon \geq \sum_n \mu(A_n)$.
 	Now, $B \cap A \subseteq \bigcup_n (A_n \cap A)$, and $B \cap A^c \subseteq \bigcup_n (A_n \cap A^c)$.
 	All of the members of these two unions are elements of $\mathcal A$, since $A_n \cap A^c = A_n \setminus A$.
 	Therefore,
 	\begin{align*}
 		\mu^\star(B \cap A) + \mu^\star(B \cap A^c) &\leq \sum_n \mu(A_n \cap A) + \sum_n \mu(A_n \cap A^c) \\
 		&\leq \sum_n \qty[ \mu(A_n \cap A) + \mu(A_n \cap A^c) ] \\
-		&\leq \sum_n \mu(A_n) \leq \mu^\star(B) + \varepsilon
+		&\leq \sum_n \mu(A_n) \leq \mu^\star(B) + \epsilon
 	\end{align*}
-	Since $\varepsilon$ was arbitrary, $\mu^\star(B) = \mu^\star(B \cap A) + \mu^\star(B \cap A^c)$ as required.
+	Since $\epsilon$ was arbitrary, $\mu^\star(B) = \mu^\star(B \cap A) + \mu^\star(B \cap A^c)$ as required.
 
 	\emph{Step 4.} $\mathcal M$ is an algebra:
 	Clearly $\emptyset$ lies in $\mathcal M$, and by the symmetry in the definition of $\mathcal M$, complements lie in $\mathcal M$.
@@ -284,7 +284,7 @@ To address uniqueness of extension, we introduce further subclasses of $\mathcal
 	It suffices to prove that $\mathcal D$ is a $\pi$-system, because then it is a $\sigma$-algebra\footnote{As $\mathcal{D} \supseteq \mathcal{A}$ and $\sigma(\mathcal{A})$ the intersection of all $\sigma$-algebras containing $\mathcal{A}$, $\mathcal{D} \supseteq \sigma(\mathcal{A})$.}.
 
 	We now define
-	\[ \mathcal D' = \qty{B \in \mathcal D \mid \forall A \in \mathcal A, B \cap A \in \mathcal D} \]
+	\[ \mathcal D' = \qty{B \in \mathcal D : \forall A \in \mathcal A, B \cap A \in \mathcal D} \]
 	We can see that $\mathcal A \subseteq \mathcal{D}'$, as $\mathcal A$ is a $\pi$-system.
 
 	We now show that $\mathcal D'$ is a $d$-system, fix $A \in \mathcal{A}$.
@@ -302,7 +302,7 @@ To address uniqueness of extension, we introduce further subclasses of $\mathcal
 	Thus $\mathcal D = \mathcal D'$, i.e $\forall \; B \in \mathcal{D}$ and $A \in \mathcal{A}, B \cap A \in \mathcal{D} \ (\ast)$.
 
 	We then define
-	\[ \mathcal D'' = \qty{B \in \mathcal D \mid \forall A \in \mathcal D, B \cap A \in \mathcal D} \]
+	\[ \mathcal D'' = \qty{B \in \mathcal D : \forall A \in \mathcal D, B \cap A \in \mathcal D} \]
 	Note that $\mathcal A \subseteq \mathcal D''$ by $(\ast)$.
 	Running the same argument as before, we can show that $\mathcal D''$ is a $d$-system. So $\mathcal{D}'' = \mathbb{D}$.
 	But then (by the definition of $\mathcal{D}''$), $\forall \; B \in \mathcal{D}, A \in \mathcal{D} \implies B \cap A \in \mathcal{D}$, i.e. $\mathcal{D}$ is a $\pi$-system (check that $\emptyset \in \mathcal{D}$).
@@ -318,7 +318,7 @@ To address uniqueness of extension, we introduce further subclasses of $\mathcal
 
 \begin{proof}
 	We define
-	\[ \mathcal D = \qty{A \in \mathcal E \mid \mu_1(A) = \mu_2(A)} \]
+	\[ \mathcal D = \qty{A \in \mathcal E : \mu_1(A) = \mu_2(A)} \]
 	This collection contains $\mathcal A$ by assumption.
 	By Dynkin's lemma, it suffices to prove $\mathcal D$ is a $d$-system, because then $\mathcal D \supseteq \sigma(\mathcal A) \supseteq \mathcal E$ giving $\mathcal D = \mathcal E$ as $\mathcal{D} \subseteq \mathcal{E}$.
 
@@ -438,20 +438,20 @@ Initially, we will perform this construction for $d = 1$, and later we will cons
 
 	We shall prove this by contradiction.
 
-	Suppose this is not the case, so there exist $\varepsilon > 0$ and $B_n \in \mathcal A$ such that $B_n \downarrow \emptyset$ but $\mu(B_n) \geq 2\varepsilon$ for infinitely many $n$ (and so wlog for all $n$). \\
+	Suppose this is not the case, so there exist $\epsilon > 0$ and $B_n \in \mathcal A$ such that $B_n \downarrow \emptyset$ but $\mu(B_n) \geq 2\epsilon$ for infinitely many $n$ (and so wlog for all $n$). \\
 	We can approximate $B_n$ from within by a sequence $\overline C_n\footnote{$\overline C_n$ means the closure of $C_n$, i.e. make it a closed set by including the left endpoint} \in \mathcal{A}$ s.t. $C_n \subseteq B_n$ and $\mu(B_n \setminus C_n) \leq \epsilon / 2^n$.
-	Suppose $B_n = \bigcup_{i=1}^{N_n} (a_{ni},b_{ni}]$, then define $C_n = \bigcup_{i=1}^{N_n} (a_{ni}+\frac{2^{-n}\varepsilon}{N_n}, b_{ni}]$.
-	Note that the $C_n$ lie in $\mathcal A$, and $\mu(B_n \setminus C_n) \leq 2^{-n}\varepsilon$.
+	Suppose $B_n = \bigcup_{i=1}^{N_n} (a_{ni},b_{ni}]$, then define $C_n = \bigcup_{i=1}^{N_n} (a_{ni}+\frac{2^{-n}\epsilon}{N_n}, b_{ni}]$.
+	Note that the $C_n$ lie in $\mathcal A$, and $\mu(B_n \setminus C_n) \leq 2^{-n}\epsilon$.
 	Since $B_n$ is decreasing, we have $B_N = \bigcap_{n \leq N} B_n$, and
 	\begin{align*}
 		B_N \setminus (C_1 \cap \dots \cap C_N) = B_n \cap \qty(\bigcup_{n \leq N} C_n^c) = \bigcup_{n \leq N} B_N \setminus C_n \subseteq \bigcup_{n \leq N} B_n \setminus C_n
 	\end{align*}
 	Since $\mu$ is increasing and finitely additive and thus subadditive on $\mathcal{A}$,
 	\begin{align*}
-		\mu(B_N \setminus (C_1 \cap \dots \cap C_N)) \leq \mu\qty(\bigcup_{n \leq N} B_n \setminus C_n) \leq \sum_{n \leq N} \mu(B_n \setminus C_n) \leq \sum_{n \leq N} 2^{-N}\varepsilon \leq \varepsilon
+		\mu(B_N \setminus (C_1 \cap \dots \cap C_N)) \leq \mu\qty(\bigcup_{n \leq N} B_n \setminus C_n) \leq \sum_{n \leq N} \mu(B_n \setminus C_n) \leq \sum_{n \leq N} 2^{-N}\epsilon \leq \epsilon
 	\end{align*}
 
-	Since $\mu(B_N) \geq 2\varepsilon$, additivity implies that $\mu(C_1 \cap \dots \cap C_N) \geq \varepsilon$.
+	Since $\mu(B_N) \geq 2\epsilon$, additivity implies that $\mu(C_1 \cap \dots \cap C_N) \geq \epsilon$.
 	This means that $C_1 \cap \dots \cap C_N$ cannot be empty.
 	We can add the left endpoints of the intervals, giving $K_N = \overline C_1 \cap \dots \cap \overline C_N \neq \emptyset$.
 	By Analysis I, $K_N$ is a nested sequence of bounded nonempty closed intervals and therefore there is a point $x \in \mathbb R$ such that $x \in K_N$ for all $N$\footnote{As completeness of $\mathbb{R}$ implies $\bigcap_n K_n$ is closed and non empty.}.
@@ -488,7 +488,7 @@ Initially, we will perform this construction for $d = 1$, and later we will cons
 	Not all null sets are countable; the Cantor set is an example.
 
 	The Lebesgue measure is \emph{translation-invariant}.
-	Let $x \in \mathbb R$, then the set $B + x = \qty{b + x \mid b \in B}$ lies in $\mathcal B$ iff $B \in \mathcal B$, and in this case, it satisfies $\lambda(B + x) = \lambda(B)$.
+	Let $x \in \mathbb R$, then the set $B + x = \qty{b + x : b \in B}$ lies in $\mathcal B$ iff $B \in \mathcal B$, and in this case, it satisfies $\lambda(B + x) = \lambda(B)$.
 	We can define the translated Lebesgue measure $\lambda_x(B) = \lambda(B + x)$ for all $B \in \mathcal B$, then $\lambda_x((a,b]) = \lambda((a, b] + x) = \lambda((a + x, b+x]) = b - a = \lambda((a, b])$.
 	So $\lambda_x = \lambda$ on the $\pi$-system of intervals and so $\lambda_x = \lambda$ on the sigma algebra $\mathcal{B}$ (i.e. $\forall \; B \in \mathcal{B}, \lambda(B+x) = \lambda(B)$).
 
@@ -623,7 +623,7 @@ This proof did not require that $\mathbb P$ be a probability measure, just that 
 Therefore, we can use this for arbitrary measures.
 
 \begin{lemma}[Second Borel--Cantelli lemma]
-	Let $A_n \in \mathcal F$ be a sequence of independent events with= $\sum_n \prob{A_n} = \infty$.
+	Let $A_n \in \mathcal F$ be a sequence of independent events with $\sum_n \prob{A_n} = \infty$.
 	Then $\prob{A_n \text{ infinitely often}} = 1$.
 \end{lemma}
 

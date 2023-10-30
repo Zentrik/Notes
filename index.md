@@ -1,6 +1,18 @@
---- 
+---
 title: "Cambridge Maths Notes"
 ---
+
+# II - 2023
+
+## Michaelmas
+
+[Probability and Measure](ProbAndMeasure\probmeasure.pdf)
+
+[Stochastic Financial Models](Stochastic%20Financial%20Models\sfm.pdf)
+
+[Graph Theory](Graph_Theory.pdf)
+
+[Automata and Formal Languages](AFL.pdf)
 
 # IB - 2022
 
@@ -48,7 +60,7 @@ title: "Cambridge Maths Notes"
 
 [Vector Calculus](Vector%20Calculus/vc.pdf) (Annotations)
 
-## Michaelmas 
+## Michaelmas
 
 [Numbers and Sets](Numbers%20and%20Sets/_book/index.html)
 
