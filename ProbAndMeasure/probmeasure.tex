@@ -12,6 +12,10 @@
 \newcommand{\symmdiff}{\mathrel{\raisebox{1pt}{$\mathsmaller\triangle$}}}
 \newcommand{\prob}[1]{\mathbb{P}\left({#1}\right)}
 \let \emptyset \varnothing
+\newcommand{\expect}[1]{\mathbb{E}\left[{#1}\right]}
+% \DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+% \DeclarePairedDelimiter\Brackets{[\![}{]\!]}
 
 % \includeonly{02_measurable_functions.tex}
 
@@ -57,4 +61,5 @@
 
     \include{01_measures.tex}
     \include{02_measurable_functions.tex}
+    \include{03_integration.tex}
 \end{document}

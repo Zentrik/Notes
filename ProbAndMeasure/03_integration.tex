@@ -1,0 +1,247 @@
+\section{Integration}
+\subsection{Notation}
+Let $f \colon (E, \mathcal E, \mu) \to \mathbb R$ be measurable and $f \geq 0$\footnote{$f$ is measurable when mapped to $\mathbb{R}$ and $f \geq 0$, this is different from saying $f$ non-negative, measurable.}.
+
+\begin{notation}
+	We will then define the integral with respect to $\mu$, either written $\mu(f)$ or $\int_E f \dd{\mu} = \int_E f(x) \dd{\mu(x)}$.
+
+	When $(E, \mathcal{E}, \mu) = (\mathbb{R}, \mathcal{B}, \lambda)$, we write it as $\int f(x) dx$.
+\end{notation}
+\begin{notation}
+	If $X$ is a random variable, we will define its expectation $\expect{X} = \int_\Omega X \dd{\mathbb P} = \int_\Omega X(\omega) \dd{\mathbb P(\omega)}$.
+\end{notation}
+
+\subsection{Definition}
+\begin{definition}[Simple]
+	We say that a function $f \colon (E,\mathcal E,\mu) \to \mathbb R$ is \vocab{simple} if it is of the form
+	\begin{align*}
+		f = \sum_{k=1}^m a_k 1_{A_k};\quad a_k \geq 0;\quad A_k \in \mathcal E;\quad m \in \mathbb N
+	\end{align*}
+\end{definition}
+
+\begin{definition}[$\mu$-integral]
+	The \vocab{$\mu$-integral} of a simple function $f$ defined as above is
+	\[ \mu(f) = \sum_{k=1}^m a_k \mu(A_k)\footnote{Note we take $0 \cdot \infty = 0.$} \]
+	which is independent of the choice of representation of the simple function, i.e. well-defined.
+\end{definition}
+
+\begin{remark} \
+	\begin{itemize}
+		\item We have $\mu(\alpha f + \beta g) = \alpha \mu(f) + \beta \mu(g)$ for all nonnegative coefficients $\alpha, \beta$ and simple functions $f, g$.
+		\item If $g \leq f$, $\mu(g) \leq \mu(f)$, so $\mu$ is increasing.
+		\item $f = 0$ a.e. $\iff \mu(f) = 0$.
+	\end{itemize}
+\end{remark}
+
+\begin{definition}[$\mu$-integral]
+	For a general non-negative function $f \colon (E,\mathcal E,\mu) \to \mathbb R$, we define its \vocab{$\mu$-integral} to be
+	\begin{align*}
+		\mu(f) = \sup\qty{\mu(g) : g \leq f, g \text{ simple}}
+	\end{align*}
+	which agrees with the above definition for simple functions.
+\end{definition}
+
+Clearly if $0 \leq f_1 \leq f_2$ then $\mu(f_1) \leq \mu(f_2)$.
+
+Now, for $f \colon (E,\mathcal E,\mu) \to \mathbb R$ measurable but not necessarily non-negative, we define $f^+ = \max(f,0)$ and $f^- = \max(-f,0)$, so that $f = f^+ - f^-$ and $\abs{f} = f^+ + f^-$.
+\begin{definition}[$\mu$-integrable]
+	A measurable function $f \colon (E,\mathcal E,\mu) \to \mathbb R$ is \vocab{$\mu$-integrable} if $\mu(\abs{f}) < \infty$.
+	In this case, we define its integral to be
+	\[ \mu(f) = \mu(f^+) - \mu(f^-) \]
+	which is a well-defined real number.
+\end{definition}
+Later we shall prove that $\mu(|f|) = \mu(f^+) + \mu(f^-)$ hence $|\mu(f)| \leq \mu(|f|)$.
+
+If one of $\mu(f^+)$ or $\mu(f^-)$ is $\infty$ and the other finite, we defined $\mu(f)$ to be $\infty$ or $-\infty$ respectively (though $f$ i sno t integrable).
+
+\subsection{Monotone Convergence Theorem}
+\begin{notation} \
+	\begin{itemize}
+		\item 	We say $x_n \uparrow x$ to mean $x_n \leq x_{n+1} \; \forall \; n$ and $x_n \to x$.
+		\item 	We say $f_n \uparrow f$ to mean $f_n(x) \leq f_{n+1}(x) \; \forall \; n$ and $f_n(x) \to f$.
+	\end{itemize}
+\end{notation}
+
+\begin{theorem}[Monotone Convergence Theorem] \label{thm:mct}
+	Let $f_n, f \colon (E,\mathcal E,\mu) \to \mathbb R$ be measurable and non-negative s.t. $f_n \uparrow f$.
+	Then, $\mu(f_n) \uparrow \mu(f)$.
+\end{theorem}
+
+\begin{remark}
+	This is a theorem that allows us to interchange a pair of limits, $\mu(f) = \mu\qty(\lim_n f_n) = \lim_n \mu(f_n)$, i.e. $\lim_n \int f_n \dd{\mu} = \int \lim_n f_n \dd{\mu}$ for $f_n \geq 0$ and $f_n \uparrow f$. \\
+	If $g_n \geq 0$, letting $f_n = \sum_{k=1}^{n} g_k$ and $f_n \uparrow f = \sum_{k=1}^{\infty} g_k$ we get $\lim_n \int \sum_{k=1}^{n} g_k \dd{\mu} = \int \sum_{k=1}^\infty g_k \dd{\mu} \implies \sum_{k=\infty}^{n} \int g_k \dd{\mu} = \int \sum_k g_k \dd{\mu}$ or equivalently $\mu\qty(\sum_k g_k) = \sum_k \mu(g_k)$.
+	This generalises the countable additivity of $\mu$ to integrals of non-negative functions.
+
+	If we consider the approximating sequence $\widetilde f_n = 2^{-n} \floor*{2^n f}$, as defined in the monotone class theorem, then this is a non-negative sequence converging to $f$.
+	So in particular, $\mu(f)$ is equal to the limit of the integrals of these simple functions.
+
+	It suffices to require convergence of $f_n \to f$ a.e., the general argument does not need to change.
+	The non-negativity constraint is not required if the first term in the sequence $f_0$ is integrable, by subtracting $f_0$ from every term.
+\end{remark}
+
+\begin{proof}
+	Recall that $\mu(f) = \sup\qty{\mu(g) : g \leq f, g \text{ simple}}$.
+	Let $M = \sup_n \mu(f_n)$, then $\mu(f_n) \uparrow M$.
+
+	We now show $M = \mu(f)$.
+
+	Since $f_n \leq f$, $\mu(f_n) \leq \mu(f)$, so taking suprema, $M \leq \mu(f)$.
+
+	Now, we need to show $\mu(f) \leq M$, or equivalently, $\mu(g) \leq M$ for all simple $g$ s.t. $g \leq f$, so by taking suprema, $\mu(f) = \sup_g \mu(g) \leq M$. \\
+	Now let $g = \sum_{k=1}^m a_k 1_{A_k}$ where $a_k \geq 0$ and wlog the $A_k \in \mathcal E$ are disjoint.
+	We define $g_n = \min (\overline f_n, g)$, where $\overline f_n$ is the $n$th approximation of $f_n$ by simple functions as in the \nameref{thm:monclass}.
+	So $g_n$ is simple, $g_n \leq \overline{f}_n \leq f_n \uparrow f$, so $g_n \uparrow \min(f, g) = g$.
+	I.e. $g \uparrow g$ and $g_n$ simple with $g_n \leq f$.
+
+	Fix $\epsilon \in (0, 1)$, and define sets $A_k(n) = \qty{x \in A_k : g_n(x) \geq (1-\varepsilon) a_k}$.
+	Since $g = a_k$ on $A_k$, and since $g_n \uparrow g$, $A_k(n) \uparrow A_k$ for all $k$.
+	Since $\mu$ is a measure, $\mu(A_k(n)) \uparrow \mu(A_k)$ by countable additivity.
+
+	Also, we have $g_n 1_{A_k} \geq g_n 1_{A_k(n)} \geq (1-\epsilon)a_k 1_{A_k(n)}$ as $A_k(n) \subseteq A_k$.
+	So as $\mu(f)$ is increasing, we have $\mu(g_n 1_{A_k}) \geq \mu\qty((1-\epsilon)a_k 1_{A_k(n)})$ and so $\mu(g_n 1_{A_k}) \geq (1-\epsilon)a_k \mu(1_{A_k(n)})$ as they are simple functions.
+
+	Finally, $g_n = \sum_{k=1}^n g_n 1_{A_k}$ as $g_n \leq g$ and $g$ supported on $\bigcup_{k=1}^n A_k$ and $A_k$ disjoint.
+	So
+	So as $g_n 1_{A_k}$ is simple,
+	\begin{align*}
+		\mu(g_n) &= \mu\qty(\sum_{k=1}^{n} g_n 1_{A_k}) \\
+		&= \sum_{k=1}^{n} \mu(g_n 1_{A_k}) \\
+		&\geq \sum_{k=1}^{n} (1-\epsilon)a_k \mu(A_k(n)) \\
+		&\uparrow \sum_{k=1}^{n} (1-\epsilon) a_k \mu(A_k) \\
+		&= (1 - \epsilon) \mu(g).
+	\end{align*}
+	Then,
+	\begin{align*}
+		(1-\epsilon)\mu(g) \leq \lim_n \mu(g_n) \leq\footnote{As $g_n \leq f_n$} \lim_n \mu(f_n) \leq M
+	\end{align*} so $\mu(g) \leq \frac{M}{1 - \epsilon} \; \forall \; \epsilon \in (0, 1)$ hence $\mu(g) \leq M$.
+	Since $\epsilon$ was arbitrary, this completes the proof.
+\end{proof}
+
+\subsection{Linearity of Integral}
+\begin{theorem}[Linearity of Integral]
+	Let $f, g \colon (E, \mathcal E, \mu) \to \mathbb R$ be nonnegative measurable functions.
+	Then $\forall \; \alpha, \beta \geq 0$,
+	\begin{itemize}
+		\item $\mu(\alpha f + \beta g) = \alpha \mu(f) + \beta \mu(g)$;
+		\item $f \leq g \implies \mu(f) \leq \mu(g)$;
+		\item $f = 0$ a.e. $\iff \mu(f) = 0$.
+	\end{itemize}
+\end{theorem}
+
+\begin{proof}
+	If $\widetilde f_n, \widetilde g_n$ are the approximations of $f$ and $g$ by simple functions from the \nameref{thm:monclass} let $f_n = \min(\widetilde f_n, n)$ and $g_n = \min(\widetilde g_n, n)$.
+	Then $f_n, g_n$ are simple and $f_n \uparrow f$ and $g_n \uparrow g$.
+	Then $\alpha f_n + \beta g_n \uparrow \alpha f + \beta g$, so by MCT\footnote{\nameref{thm:mct}}, $\mu(f_n) \uparrow \mu(f)$, $\mu(g_n) \uparrow \mu(g)$ and $\mu(\alpha f_n + \beta g_n) \uparrow \mu(\alpha f + \beta g)$.
+	As $f_n$, $g_n$ simple $\mu(\alpha f_n + \beta g_n) = \alpha \mu(f_n) + \beta \mu(g_n) \uparrow \alpha \mu(f) + \beta \mu(g)$.
+	So $\alpha \mu(f) + \beta \mu(g) = \mu(\alpha f + \beta g)$.
+
+	The second part is obvious from definition.
+
+	If $f = 0$ a.e, then $0 \leq f_n \leq f$, so $f_n = 0$ a.e. but $f_n$ simple $\implies \mu(f_n) = 0$.
+	As $\mu(f_n) \uparrow \mu(f)$ so $\mu(f) = 0$. \\
+	Conversely, if $\mu(f) = 0$, then $0 \leq \mu(f_n) \uparrow \mu(f)$ so $\mu(f_n) = 0 \; \forall \; n \implies f_n = 0$ a.e.
+	But $f_n \uparrow f \implies f = 0$ a.e.
+\end{proof}
+
+\begin{remark}
+	Functions such as $1_{\mathbb Q}$ are integrable and have integral zero.
+	They are `identified' with the zero element in the theory of integration.
+\end{remark}
+
+\begin{theorem}[Linearity of Integral]
+	Let $f, g \colon (E, \mathcal E, \mu) \to \mathbb R$ be integrable.
+	Then $\forall \; \alpha, \beta \in \mathbb{R}$,
+	\begin{itemize}
+		\item $\mu(\alpha f + \beta g) = \alpha \mu(f) + \beta \mu(g)$;
+		\item $f \leq g \implies \mu(f) \leq \mu(g)$;
+		\item $f = 0$ a.e. $\implies \mu(f) = 0$.
+	\end{itemize}
+\end{theorem}
+
+\begin{proof}
+	Left as an exercise, just use $f = f^+ - f^-$ and use definitions and $\mu(f) = \mu(f^+) - \mu(f^-)$ etc.
+\end{proof}
+
+\subsection{Fatou's lemma}
+\begin{lemma}
+	Let $f_n \colon (E, \mathcal E, \mu) \to \mathbb R$ be nonnegative measurable functions.
+	Then $\mu (\liminf_n f_n) \leq \liminf_n \mu(f_n)$.
+\end{lemma}
+\begin{remark}
+	Recall that $\liminf_n x_n = \sup_n \inf_{m \geq n} x_m$ and $\limsup_n x_n = \inf_n \sup_{m \geq n} x_m$.
+	In particular, $\limsup_n x_n = \liminf_n x_n$ implies that $\lim_n x_n$ exists and is equal to $\limsup_n x_n$ and $\liminf_n x_n$.
+	Hence, if the $f_n$ converge to some measurable function $f$, we must have $\mu(f) \leq \liminf_n \mu(f_n)$.
+\end{remark}
+\begin{proof}
+	We have $\inf_{m \geq n} f_m \leq f_k$ for all $k \geq n$, so by taking integrals, $\mu\qty(\inf_{m \geq n} f_m) \leq \mu(f_k)$.
+	Thus,
+	\[ \mu\qty(\inf_{m \geq n} f_m) \leq \inf_{k \geq n} \mu(f_k) \leq \sup_n \inf_{k \geq n} \mu(f_k) = \liminf_n \mu(f_n) \]
+	Note that $\inf_{m \geq n} f_m$ increases to $\sup_n \inf_{m \geq n} f_m = \liminf_n f_n$.
+	By the monotone convergence theorem,
+	\[ \mu\qty(\liminf_n f_n) = \lim_n \mu\qty(\inf_{m \geq n} f_m) \leq \liminf_n \mu(f_n) \]
+	as required.
+\end{proof}
+
+\subsection{Dominated convergence theorem}
+\begin{theorem}
+	Let $f_n, f \colon (E, \mathcal E, \mu)$ be measurable functions such that $\abs{f_n} \leq g$ almost everywhere on $E$, and the dominating function $g$ is $\mu$-integrable, so $\mu(g) < \infty$.
+	Suppose $f_n \to f$ pointwise (or almost everywhere) on $E$.
+	Then $f_n$ and $f$ are also integrable, and $\mu(f_n) \to \mu(f)$ as $n \to \infty$.
+\end{theorem}
+\begin{proof}
+	Clearly $\mu(\abs{f_n}) \leq \mu(g) < \infty$, so the $f_n$ are integrable.
+	Taking limits in $\abs{f_n} \leq g$, we have $\abs{f} \leq g$, so $f$ is also integrable by the same argument.
+	Now, $g \pm f_n$ is a nonnegative function, and converges pointwise to $g \pm f$.
+	Since limits are equal to the limit inferior when they exist, by Fatou's lemma, we have
+	\[ \mu(g) + \mu(f) = \mu(g + f) = \mu\qty(\liminf_n (g + f_n)) \leq \liminf_n \mu(g + f_n) = \mu(g) + \liminf_n \mu(f_n) \]
+	Hence $\mu(f) \leq \liminf_n \mu(f_n)$.
+	Likewise, $\mu(g) - \mu(f) \leq \mu(g) - \liminf_n \mu(f_n)$, so $\mu(f) \geq \limsup_n \mu(f_n)$, so
+	\[ \limsup_n \mu(f_n) \leq \mu(f) \leq \liminf_n \mu(f_n) \]
+	But since $\liminf_n \mu(f_n) \leq \limsup_n \mu(f_n)$, the result follows.
+\end{proof}
+\begin{example}
+	Let $E = [0,1]$ with the Lebesgue measure.
+	Let $f_n \to f$ pointwise and the $f_n$ are uniformly bounded, so $\sup_n \norm{f_n}_\infty \leq g$ for some $g \in \mathbb R$.
+	Then since $\mu(g) = g < \infty$, the dominated convergence theorem implies that $f_n, f$ are integrable and $\mu(f_n) \to \mu(f)$ as $n \to \infty$.
+	In particular, no notion of uniform convergence of the $f_n$ is required.
+\end{example}
+\begin{remark}
+	The proof of the fundamental theorem of calculus requires only the fact that
+	\[ \int_x^{x + h} \dd{t} = h \]
+	This is a fact which is obviously true of the Riemann integral and also of the Lebesgue integral.
+	Therefore, for any continuous function $f \colon [0,1] \to \mathbb R$, we have
+	\[ \underbrace{\int_0^x f(t) \dd{t}}_{\text{Riemann integral}} = F(x) = \underbrace{\int_0^x f(t) \dd{\mu(t)}}_{\text{Lebesgue integral}} \]
+	So these integrals coincide for continuous functions.
+	We can show that all Riemann integrable functions are $\mu^\star$-measurable, where $\mu^\star$ is the outer measure of the Lebesgue measure, as defined in the proof of Carath\'eodory's theorem.
+	However, there exist certain Riemann integrable functions that are not Borel measurable.
+	We can find that a bounded $\mu^\star$-measurable function is Riemann integrable if and only if
+	\[ \mu\qty(\qty{x \in [0,1] \mid f \text{ is discontinuous at } x}) = 0 \]
+	The standard techniques of Riemann integration, such as substitution and integration by parts, extend to all bounded measurable functions by the monotone class theorem.
+\end{remark}
+\begin{theorem}
+	Let $U \subseteq \mathbb R$ be an open set and $(E, \mathcal E, \mu)$ be a measure space.
+	Let $f \colon U \times E \to \mathbb R$ be a map such that $x \mapsto f(t, x)$ is measurable, and $t \mapsto f(t,x)$ is differentiable where $\abs{\pdv{f}{t}} < g(x)$ for all $t \in U$, and $g$ is $\mu$-integrable.
+	Then
+	\[ F(t) = \int_E f(t,x) \dd{\mu(x)} \implies F'(t) = \int_E \pdv{f}{t}\qty(t,x) \dd{\mu(x)} \]
+\end{theorem}
+\begin{proof}
+	By the mean value theorem,
+	\[ g_h(x) = \frac{f(t + h, x) - f(t, x)}{h} - \pdv{f}{t}\qty(t,x) \implies \abs{g_h(x)} = \abs{\pdv{f}{t}\qty(\widetilde t, x) - \pdv{f}{t}\qty(t, x)} \leq 2g(x) \]
+	Note that $g$ is $\mu$-integrable.
+	By differentiability of $f$, we have $g_h \to 0$ as $h \to 0$, so applying the dominated convergence theorem, $\mu(g_h) \to \mu(0) = 0$.
+	By linearity of the integral,
+	\[ \mu(g_h) = \frac{\int_E f(t + h, x) - f(t, x) \dd{\mu(x)}}{h} - \int_E \pdv{f}{t}\qty(t,x) \dd{\mu(x)} \]
+	Hence, $\frac{F(t+h) - F(t)}{h} - F'(t) \to 0$.
+\end{proof}
+\begin{example}
+	For a measurable function $f \colon (E, \mathcal E, \mu) \to (G, \mathcal G)$, if $g \colon G \to \mathbb R$ is a nonnegative function, we show on an example sheet that
+	\[ \mu \circ f^{-1}(g) = \int_G g \dd{\mu\circ f^{-1}} = \int_E g(f(x)) \dd{\mu(x)} = \mu(g \circ f) \]
+	On a probability space $(\Omega, \mathcal F, \mathbb P)$ and a $G$-valued random variable $X$, we then compute
+	\[ \expect{g(X)} = \mu_X(g) = \int_\Omega g(X(\omega)) \dd{\mathbb P(\omega)} = \int_\Omega g \dd{\mathbb {P}} \]
+\end{example}
+\begin{example}[measures with densities]
+	If $f \colon (E, \mathcal E, \mu) \to \mathbb R$ is a nonnegative measurable function, we can define $\nu_f(A) = \mu(f 1_A)$ for any measurable set $A$, which is again a measure on $(E, \mathcal E)$ by the monotone convergence theorem.
+	In particular, if $g \colon (E, \mathcal E) \to \mathbb R$ is measurable, $\nu_f(g) = \int_E g(x) f(x) \dd{\mu(x)} = \int_E g \dd{\nu(f)}$.
+	We call $f$ the \emph{density} of $\nu_f$ with respect to $\mu$.
+	If its integral is one, it is called a \emph{probability density function}.
+\end{example}
