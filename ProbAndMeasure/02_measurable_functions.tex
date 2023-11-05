@@ -322,13 +322,13 @@ Let $(E, \mathcal{E}, \mu)$ be a measure space. Let $A \in \mathcal{E}$ be defin
 		\mu(\qty{x\in E : \abs{f_n(x) - f(x)} > \epsilon}) \to 0,
 	\end{align*} as $n \to \infty$.
 
-	We say $X_n \to X$ in $\mathbb{P}$-probability if $\forall \; \epsilon > 0$
+	We say $X_n \to X$ in \vocab{$\mathbb{P}$-probability} if $\forall \; \epsilon > 0$
 	\begin{align*}
 		\mathbb{P}(\abs{X_n - X} > \epsilon) \to 0
 	\end{align*} as $n \to \infty$.
 \end{definition}
 
-\begin{theorem}
+\begin{theorem} \label{thm:inprobinmeasure}
 	Let $f_n \colon (E,\mathcal E,\mu) \to \mathbb R$ be measurable functions.
 	\begin{enumerate}
 		\item If $\mu(E) < \infty$, then $f_n \to 0$ a.e. $\implies f_n \to 0$ in measure;

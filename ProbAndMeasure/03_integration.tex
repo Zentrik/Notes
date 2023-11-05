@@ -163,85 +163,207 @@ If one of $\mu(f^+)$ or $\mu(f^-)$ is $\infty$ and the other finite, we defined 
 \end{proof}
 
 \subsection{Fatou's lemma}
-\begin{lemma}
-	Let $f_n \colon (E, \mathcal E, \mu) \to \mathbb R$ be nonnegative measurable functions.
+\begin{example}
+	Let $f_n = 1_{(n, n+1)}$, $f_n \geq 0$ with $f_n \to 0$ as $n \to \infty$.
+	$\lambda(f_n) = 1$ but $\lambda(0) = 0$.
+\end{example}
+
+\begin{lemma}[Fatou's lemma]
+	Let $f_n \colon (E, \mathcal E, \mu) \to \mathbb R$ be measurable, non-negative functions.
 	Then $\mu (\liminf_n f_n) \leq \liminf_n \mu(f_n)$.
 \end{lemma}
+
 \begin{remark}
 	Recall that $\liminf_n x_n = \sup_n \inf_{m \geq n} x_m$ and $\limsup_n x_n = \inf_n \sup_{m \geq n} x_m$.
 	In particular, $\limsup_n x_n = \liminf_n x_n$ implies that $\lim_n x_n$ exists and is equal to $\limsup_n x_n$ and $\liminf_n x_n$.
 	Hence, if the $f_n$ converge to some measurable function $f$, we must have $\mu(f) \leq \liminf_n \mu(f_n)$.
 \end{remark}
+
 \begin{proof}
 	We have $\inf_{m \geq n} f_m \leq f_k$ for all $k \geq n$, so by taking integrals, $\mu\qty(\inf_{m \geq n} f_m) \leq \mu(f_k)$.
 	Thus,
-	\[ \mu\qty(\inf_{m \geq n} f_m) \leq \inf_{k \geq n} \mu(f_k) \leq \sup_n \inf_{k \geq n} \mu(f_k) = \liminf_n \mu(f_n) \]
+	\begin{align*}
+		\mu\qty(\inf_{m \geq n} f_m) \leq \inf_{k \geq n} \mu(f_k) \leq \sup_n \inf_{k \geq n} \mu(f_k) = \liminf \mu(f_k) \tag{$\dagger$}
+	\end{align*}
 	Note that $\inf_{m \geq n} f_m$ increases to $\sup_n \inf_{m \geq n} f_m = \liminf_n f_n$.
-	By the monotone convergence theorem,
-	\[ \mu\qty(\liminf_n f_n) = \lim_n \mu\qty(\inf_{m \geq n} f_m) \leq \liminf_n \mu(f_n) \]
-	as required.
+
+	Let $g_n = \inf_{m \geq n} f_n$, then $g_n \geq 0$ and $g_n \uparrow \sup_n g_n = \sup_n \inf_{m \geq n} f_m = \liminf_n f_n$.
+	By MCT $\mu(g_n) \uparrow \mu(\liminf_n f_n)$ so by taking limits in $(\dagger)$, $\mu(\liminf_n f_n) \leq \liminf \mu(f_n)$.
 \end{proof}
 
-\subsection{Dominated convergence theorem}
-\begin{theorem}
-	Let $f_n, f \colon (E, \mathcal E, \mu)$ be measurable functions such that $\abs{f_n} \leq g$ almost everywhere on $E$, and the dominating function $g$ is $\mu$-integrable, so $\mu(g) < \infty$.
-	Suppose $f_n \to f$ pointwise (or almost everywhere) on $E$.
-	Then $f_n$ and $f$ are also integrable, and $\mu(f_n) \to \mu(f)$ as $n \to \infty$.
+\subsection{Dominated Convergence Theorem}
+\begin{theorem}[Dominated Convergence Theorem] \label{thm:dct}
+	Let $f_n, f \colon (E, \mathcal E, \mu)$ be measurable functions s.t. $\abs{f_n} \leq g$ a.e., for some integrable fcn $g$, so $\mu(g) < \infty$\footnote{Note $g \geq \abs{f_n} \geq 0$.}, and $f_n \to f$ pointwise (or a.e.) on $E$. \\
+	Then $f_n$ and $f$ are also integrable, and $\mu(f_n) \to \mu(f)$.
 \end{theorem}
+
 \begin{proof}
 	Clearly $\mu(\abs{f_n}) \leq \mu(g) < \infty$, so the $f_n$ are integrable.
-	Taking limits in $\abs{f_n} \leq g$, we have $\abs{f} \leq g$, so $f$ is also integrable by the same argument.
-	Now, $g \pm f_n$ is a nonnegative function, and converges pointwise to $g \pm f$.
+	Taking limits in $\abs{f_n} \leq g$, we have $\abs{f} \leq g$, so $f$ is also integrable by the same argument and as the limit of measurable fcns is measurable.
+
+	Now, $g \pm f_n \geq 0$, and converges pointwise to $g \pm f$.
 	Since limits are equal to the limit inferior when they exist, by Fatou's lemma, we have
 	\[ \mu(g) + \mu(f) = \mu(g + f) = \mu\qty(\liminf_n (g + f_n)) \leq \liminf_n \mu(g + f_n) = \mu(g) + \liminf_n \mu(f_n) \]
-	Hence $\mu(f) \leq \liminf_n \mu(f_n)$.
-	Likewise, $\mu(g) - \mu(f) \leq \mu(g) - \liminf_n \mu(f_n)$, so $\mu(f) \geq \limsup_n \mu(f_n)$, so
+	Hence $\mu(f) \leq \liminf_n \mu(f_n)$ as $\mu(g)$ finite.
+	Likewise, $\mu(g) - \mu(f) \leq \mu(g) - \limsup_n \mu(f_n)$, so $\mu(f) \geq \limsup_n \mu(f_n)$, so
 	\[ \limsup_n \mu(f_n) \leq \mu(f) \leq \liminf_n \mu(f_n) \]
 	But since $\liminf_n \mu(f_n) \leq \limsup_n \mu(f_n)$, the result follows.
 \end{proof}
+
+\begin{remark}
+	In fact, $\mu(\abs{f_n - f}) \to 0$ as $|f_n - f| \leq |f_n| + |f| \leq g + g = 2g$ and $2g$ is integrable so by DCT (\nameref{thm:dct}) proved.
+
+	If $X_n \to X$ $\mathbb{P}$ a.s., and $|X_n| \leq Y$ and $\mathbb{E}[Y] < \infty$ then $\mathbb{E}[X_n] \to \mathbb{E}[X]$ and $\mathbb{E}[\abs{X_n - X}] \to 0$. \\
+	In particular, if $\abs{X_n} \leq M \; \forall \; n$, for some $M > 0, M \in \mathbb{R}$ then $\mathbb{E}[\abs{X_n - X}] \to 0$ (Bounded Convergence Theorem)\footnote{This works as with finite measure then $\mathbb{E}[M]$ is finite}.
+\end{remark}
+
+\begin{remark}
+	DCT also holds for convergence in $\mathbb{P}$-prob, where if $X_n \to X$ in $\mathbb{P}$ probability then we get $\mathbb{E}[X_n] \to \mathbb{E}[X]$ and $\mathbb{E}[\abs{X_n - X}] \to 0$.
+\end{remark}
+
+\begin{proof}
+	Suppose $\mathbb{E}[\abs{X_n - X}] \not\to 0$.
+	Then $\exists$ a subsequence $n_k$ s.t. $\mathbb{E}\qty[\abs{X_{n_k} - X}] > \epsilon \; \forall \; k$ for some $\epsilon > 0$.
+	Now $X_n \to X$ in $\mathbb{P}$ prob then $X_{n_k} \to X$ in $\mathbb{P}$ prob by definition.
+	By \cref{thm:inprobinmeasure}, $\exists \; n_{k_{l}}$ s.t. $X_{n_{k_l}} \to X$ a.s.
+	But then by DCT, $\mathbb{E}\qty[\abs{X_{n_{k_l}} - X}] \to 0$ \Lightning.
+\end{proof}
+
+\begin{theorem}[Bounded Convergence Theorem]
+	If $X_n \to X$ in $\mathbb{P}$ prob and $\abs{X_n} \leq M$ for some constant $M > 0$, $\forall \; n \geq 0$.
+	Then $\mathbb{E}[\abs{X_n - X}] \to 0$.
+\end{theorem}
+
+This is quite useful in probability.
+
 \begin{example}
 	Let $E = [0,1]$ with the Lebesgue measure.
 	Let $f_n \to f$ pointwise and the $f_n$ are uniformly bounded, so $\sup_n \norm{f_n}_\infty \leq g$ for some $g \in \mathbb R$.
-	Then since $\mu(g) = g < \infty$, the dominated convergence theorem implies that $f_n, f$ are integrable and $\mu(f_n) \to \mu(f)$ as $n \to \infty$.
-	In particular, no notion of uniform convergence of the $f_n$ is required.
+	Then since $\mu(g) = g < \infty$, the DCT implies that $f_n, f$ are integrable and $\mu(f_n) \to \mu(f)$ as $n \to \infty$.
+
+	In particular, no notion of uniform convergence of the $f_n$ is required as in Riemann Integrals.
 \end{example}
+
 \begin{remark}
+	FTC states that
+	\begin{enumerate}
+		\item Let $f : [a, b] \to \mathbb{R}$ be continuous and set $F(t) = \int_{a}^{t} f(x) \dd{x}$\footnote{This is a Lebesgue integral}.
+		Then $F$ is differentiable on $[a, b]$ with $F' = f$.
+		\item Let $F : [a, b] \to \mathbb{R}$ be differentiable and $F'$ is continuous, then $\int_{a}^{b} F'(x) \dd{x} = F(b) - F(a)$.
+	\end{enumerate}
 	The proof of the fundamental theorem of calculus requires only the fact that
 	\[ \int_x^{x + h} \dd{t} = h \]
 	This is a fact which is obviously true of the Riemann integral and also of the Lebesgue integral.
+
 	Therefore, for any continuous function $f \colon [0,1] \to \mathbb R$, we have
 	\[ \underbrace{\int_0^x f(t) \dd{t}}_{\text{Riemann integral}} = F(x) = \underbrace{\int_0^x f(t) \dd{\mu(t)}}_{\text{Lebesgue integral}} \]
 	So these integrals coincide for continuous functions.
+\end{remark}
+
+\begin{remark}
+	We can generalise the FTC for Lebesgue integrals: \\
+	If $f : [a, b] \to \mathbb{R}$ is Lebesgue integrable and $F(t) = \int_{a}^{t} f(x) \dd{x}$.
+	Then,
+	\begin{align*}
+		\lim_{h \to 0} \frac{F(t+h) - F(t)}{h} = \lim_{h \to 0} \frac{\int_{t}^{t + h} f(x) \dd{x}}{h} = f(t) \text{ a.e.}
+	\end{align*}
+	This is the Lebesgue differentiation theorem, studied in Analysis of Functions.
+\end{remark}
+
+\begin{remark}
 	We can show that all Riemann integrable functions are $\mu^\star$-measurable, where $\mu^\star$ is the outer measure of the Lebesgue measure, as defined in the proof of Carath\'eodory's theorem.
 	However, there exist certain Riemann integrable functions that are not Borel measurable.
-	We can find that a bounded $\mu^\star$-measurable function is Riemann integrable if and only if
-	\[ \mu\qty(\qty{x \in [0,1] \mid f \text{ is discontinuous at } x}) = 0 \]
+	We can modify such an $f$ on a Lebesgue measure $0$ set to make it Borel measurable, i.e. $\exists \; \widetilde f$ s.t. $\widetilde{f} = f$ on $A$ and $\lambda(A^c) = 0$ and $\int \widetilde{f} \dd{x} = \int f \dd{x}$.
+
+	A (bounded) Riemann integrable fcn $f : [a, b] \to \mathbb{R}$ is Lebesgue integrable in the following sense.
+	If $f$ is bounded on $[a, b]$, $f$ is $R$-integrable iff
+	\begin{align*}
+		\lambda\qty(\mu\qty(\qty{x \in [0,1] : f \text{ is discontinuous at } x})) = 0,
+	\end{align*} i.e. $f$ is continuous a.e.
+
 	The standard techniques of Riemann integration, such as substitution and integration by parts, extend to all bounded measurable functions by the monotone class theorem.
 \end{remark}
-\begin{theorem}
+
+\begin{example}
+	$1_\mathbb{Q}$ on $[0, 1]$ is a bounded function on a bounded interval.
+	The set of discontinuity points is $[0, 1]$ which is not measure $0$, thus not Riemann Integrable.
+	But this is Lebesgue integrable and $1_\mathbb{Q} = 0$ $\lambda$ a.s., so $\lambda(1_\mathbb{Q}) = 0$.
+\end{example}
+
+\begin{theorem}[Substitution Formula]
+	Let $\phi : [a, b] \to \mathbb{R}$, $\phi$ strictly increasing and continuously differentiable.
+	Then $\forall \; g$ Borel fcns, $g \geq 0$ on $[\phi(a), \phi(b)]$, $\int_{\phi(a)}^{\phi(b)} g(y) \dd{y} = \int_a^b g(\phi(x)) \phi'(x) \dd{x} (\star)$.
+\end{theorem}
+
+\begin{proof}
+	Let $\mathcal{V}$ be the set of all measurable fncs $g$ fo which $(\star)$ holds.
+	Then by linearity of integral, $\mathcal{V}$ is a vector space.
+	\begin{itemize}
+		\item $1 \in \mathcal{V}$ by FTC (2), $1_{(c, d]} \in \mathcal{V}$ by FTC (2).
+		\item If $f_n \in \mathcal{V}$, $f_n \uparrow \mathcal{V}$, $f_n \geq 0$ then by \nameref{thm:mct}.
+	\end{itemize}
+	Hence by \nameref{thm:monclass}, $(\star)$ holds $\forall \; g \geq 0$ measurable.
+\end{proof}
+
+\begin{theorem}[Differentiation Under The Integral Sign]
 	Let $U \subseteq \mathbb R$ be an open set and $(E, \mathcal E, \mu)$ be a measure space.
-	Let $f \colon U \times E \to \mathbb R$ be a map such that $x \mapsto f(t, x)$ is measurable, and $t \mapsto f(t,x)$ is differentiable where $\abs{\pdv{f}{t}} < g(x)$ for all $t \in U$, and $g$ is $\mu$-integrable.
-	Then
+	Let $f \colon U \times E \to \mathbb R$ be a s.t.
+	\begin{enumerate}
+		\item $x \mapsto f(t, x)$ is integrable $\forall \; t$;
+		\item $t \mapsto f(t,x)$ is differentiable $\forall \; x \in E$;
+		\item $\exists \; g : E \to \mathbb{R}$ integrable s.t. $\abs{\pdv{f}{t}(t, x)} < g(x) \; \forall \; t \in U, x \in E$;
+	\end{enumerate}
+	Then $x \mapsto \pdv{f}{t}(t, x)$ is integrable $\forall \; t$ and,
 	\[ F(t) = \int_E f(t,x) \dd{\mu(x)} \implies F'(t) = \int_E \pdv{f}{t}\qty(t,x) \dd{\mu(x)} \]
 \end{theorem}
+
 \begin{proof}
+	Fix $t$.
 	By the mean value theorem,
 	\[ g_h(x) = \frac{f(t + h, x) - f(t, x)}{h} - \pdv{f}{t}\qty(t,x) \implies \abs{g_h(x)} = \abs{\pdv{f}{t}\qty(\widetilde t, x) - \pdv{f}{t}\qty(t, x)} \leq 2g(x) \]
-	Note that $g$ is $\mu$-integrable.
-	By differentiability of $f$, we have $g_h \to 0$ as $h \to 0$, so applying the dominated convergence theorem, $\mu(g_h) \to \mu(0) = 0$.
+	Note that $g$ is integrable.
+	By differentiability of $f$, we have $g_h \to 0$ as $h \to 0$, so by DCT, $\mu(g_h) \to \mu(0) = 0$.
 	By linearity of the integral,
 	\[ \mu(g_h) = \frac{\int_E f(t + h, x) - f(t, x) \dd{\mu(x)}}{h} - \int_E \pdv{f}{t}\qty(t,x) \dd{\mu(x)} \]
 	Hence, $\frac{F(t+h) - F(t)}{h} - F'(t) \to 0$.
 \end{proof}
-\begin{example}
-	For a measurable function $f \colon (E, \mathcal E, \mu) \to (G, \mathcal G)$, if $g \colon G \to \mathbb R$ is a nonnegative function, we show on an example sheet that
-	\[ \mu \circ f^{-1}(g) = \int_G g \dd{\mu\circ f^{-1}} = \int_E g(f(x)) \dd{\mu(x)} = \mu(g \circ f) \]
-	On a probability space $(\Omega, \mathcal F, \mathbb P)$ and a $G$-valued random variable $X$, we then compute
-	\[ \expect{g(X)} = \mu_X(g) = \int_\Omega g(X(\omega)) \dd{\mathbb P(\omega)} = \int_\Omega g \dd{\mathbb {P}} \]
+
+\begin{example}[Integrals and Image Measures.]
+	For a measurable function $f \colon (E, \mathcal E, \mu) \to (G, \mathcal G)$ with image measure $\nu = \mu \circ f\inv$ on $(G, \mathcal{G})$.
+	If $g \colon G \to \mathbb R$ is a measurable, non-negative function then,
+	\begin{align*}
+		\mu \circ f\inv(g) = \nu(g) = \int_G g \dd{\nu} = \int_G g \dd{\mu\circ f^{-1}} = \int_E g(f(x)) \dd{\mu(x)} = \mu(g \circ f)
+	\end{align*}
+	Proof on Sheet 2, use monotone class theorem and first prove for $g$ indicator fcns and then simple functions.
+
+	On a probability space $(\Omega, \mathcal F, \mathbb P)$ and $X \geq 0$ measurable, we have,
+	\[ \expect{g(X)} = \int_\Omega g(X(\omega)) \dd{\mathbb P(\omega)} = \int_\Omega g \dd{\mu_X}, \]
+	where $\mu_X = \mathbb{P} \circ X\inv$ is the distribution of $X$.
 \end{example}
-\begin{example}[measures with densities]
-	If $f \colon (E, \mathcal E, \mu) \to \mathbb R$ is a nonnegative measurable function, we can define $\nu_f(A) = \mu(f 1_A)$ for any measurable set $A$, which is again a measure on $(E, \mathcal E)$ by the monotone convergence theorem.
-	In particular, if $g \colon (E, \mathcal E) \to \mathbb R$ is measurable, $\nu_f(g) = \int_E g(x) f(x) \dd{\mu(x)} = \int_E g \dd{\nu(f)}$.
-	We call $f$ the \emph{density} of $\nu_f$ with respect to $\mu$.
-	If its integral is one, it is called a \emph{probability density function}.
+
+\begin{example}[Densities of Measures]
+	If $f \colon (E, \mathcal E, \mu) \to \mathbb R$ is a measurable non-negative function, we can define $\nu(A) = \mu(f 1_A)$ for any measurable set $A$, which is again a measure on $(E, \mathcal E)$ by the \nameref{thm:mct}.
+	For $A_n$ disjoint,
+	\begin{align*}
+		\nu\qty(\bigcup_{i=1}^\infty A_i) &= \mu(f 1_{\cup A_i}) \\
+		&= \mu(f \sum_{i=1}^{\infty} 1_{A_i}) \\
+		&= \mu(\sum_{i=1}^{\infty} f 1_{A_i}) \\
+		&= \sum_{i=1}^{\infty} \mu(f 1_{A_i}) \text{ by MCT} \\
+		&= \sum_{i=1}^{\infty} \nu(A_i).
+	\end{align*}
+
+	In particular, if $g \colon (E, \mathcal E) \to \mathbb R$ is measurable, $\nu(g) = \mu(fg) = \int_E g(x) f(x) \dd{\mu(x)} = \int_E g \dd{\nu(f)}$.
+	This follows by definition for $g$ indicator functions, by additivity extends to simple functions and by \nameref{thm:mct} to all measurable non-negative functions.
+
+	We call $f$ the \vocab{density} of $\nu$ with respect to $\mu$.
+	This is unique as $\mu(f 1_A) = \mu(g 1_A) \ \forall \; A \in \mathcal{E} \implies f = g$ $\mu$ a.e. (proved on Sheet 2).
+
+	In particular, for $\mu = \lambda$, $\forall \; f$ Borel $\exists$ a Borel measure $\nu$ on $\mathbb{R}$ given by $\nu(A) = \int_A f(x) \dd{x}$ and then $\forall \; g$ Borel, $g \geq 0$ $\nu(g) = \int f(x) g(x) \dd{x}$.
+	We say $\nu$ has \vocab{density} $f$.
+	This $\nu$ is a prob measure on $(\mathbb{R}, \mathcal{B})$ iff $\int f(x) \dd{x} = 1$.
+
+	For $\lambda : (\Omega, \mathcal{F}, \mathbb{P}) \to \mathbb{R}$, if the law $\mu_X = \mathbb{P} \circ X\inv$ has the density $f_X$ (wrt $\lambda$), we call $f_X$ the \vocab{probability density function} of $X$.
+	Then $\mathbb{P}(X \in A) = \mathbb{P} \circ X\inv (A) = \mu_X(A) = \int_A f_X(x) \dd{x} \ \forall \; A \in \mathcal{B}$ and $\forall \; g$ Borel, $g \geq 0$.
+	Taking $A = (-\infty, x]$, we get $\mathbb{P}(X \leq x) = F_X(x) = \int_{-\infty}^{x} f_X(x) \dd{x}$. \\
+	$\mathbb{E}[g(x)] = \int g(x) \dd{\mu_X(x)}$ from previous example and $\int g(x) \dd{\mu_X(x)} = \nu(g) = \int g(x) f_X(x) \dd{x}$.
 \end{example}
