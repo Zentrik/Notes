@@ -130,7 +130,7 @@ Goal: Start with a ``measure'' on $\mathcal{A}$ that has some nice properties an
 We will later prove that this extended measure is unique.
 
 \begin{proof}
-	For $B \subseteq E$, we define the \emph{outer measure} $\mu^\star$ as
+	For $B \subseteq E$, we define the \vocab{outer measure} $\mu^\star$ as
 	\[ \mu^\star(B) = \inf \qty{\sum_{n \in \mathbb N} \mu(A_n) : A_n \in \mathcal A, B \subseteq \bigcup_{n \in \mathbb N} A_n} \]
 	If there is no sequence $A_n$ such that $B \subseteq \bigcup_{n \in \mathbb N} A_n$, we declare the outer measure $\mu^\star(B)$ to be $\infty$.
 	Clearly, $\mu^\star(\emptyset)$ and $\mu^\star$ is increasing, so $\mu^\star$ is an increasing set fcn on $\mathcal{P}(E)$.
@@ -310,7 +310,7 @@ To address uniqueness of extension, we introduce further subclasses of $\mathcal
 	So $\mathcal{D}$ is a $\sigma$-algebra containing $\mathcal{A}$, hence $\mathcal{D} \supseteq \sigma(\mathcal{A})$.
 \end{proof}
 
-\begin{theorem}[Uniqueness of extension] \label{thm:uni}
+\begin{theorem}[Uniqueness of Extension] \label{thm:uni}
 	Let $\mu_1, \mu_2$ be measures on a measurable space $(E, \mathcal E)$, such that $\mu_1(E) = \mu_2(E) < \infty$.
 	Suppose that $\mu_1$ and $\mu_2$ coincide on a $\pi$-system $\mathcal A$, such that $\mathcal E \subseteq \sigma(\mathcal A)$.
 	Then $\mu_1 = \mu_2$ on $\sigma(\mathcal A)$, and hence on $\mathcal E$.
@@ -343,7 +343,7 @@ To address uniqueness of extension, we introduce further subclasses of $\mathcal
 \end{question}
 
 \begin{answer} \label{ans:1}
-	Consider set $\mathcal{G} = \{A \subseteq E : A \text{ has the property } \mathcal{P}\}$ and have that all elements of $\mathcal{A}$ have the property $\mathcal{A}$.
+	Consider set $\mathcal{G} = \{A \subseteq E : A \text{ has the property } \mathcal{P}\}$ and have that all elements of $\mathcal{A}$ have the property $\mathcal{P}$.
 
 	Method 1: Show that $\mathcal{G}$ is a $\sigma$-algebra, as it then must contain $\sigma(\mathcal{A}) = \mathcal{E}$.
 
