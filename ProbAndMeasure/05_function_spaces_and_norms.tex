@@ -1,0 +1,443 @@
+\section{$L^p$ Spaces, Norms and Inequalities}
+\subsection{Norms}
+\begin{definition}[Norm]
+	A \vocab{norm} on a real vector space is a map $\norm{\wildcard}_V \colon V \to \mathbb [0, \infty)$ s.t.
+	\begin{enumerate}
+		\item $\norm{\lambda v} = \abs{\lambda} \cdot \norm{v}$;
+		\item $\norm{u + v} \leq \norm{u} + \norm{v}$;
+		\item $\norm{v} = 0 \iff v = 0$.
+	\end{enumerate}
+\end{definition}
+
+\begin{definition}
+	Let $(E, \mathcal E, \mu)$ be a measure space.
+	We define $L^p(E,\mathcal E,\mu) = L^p(\mu) = L^p$ for the space of measurable functions $f \colon E \to \mathbb R$ s.t. $\norm{f}_p$ is finite, where
+	\[ \norm{f}_p = \begin{cases}
+		\qty(\int_E \abs{f(x)}^p \dd{\mu(x)})^{\frac{1}{p}} & 1 \leq p < \infty \\
+		\esssup \abs{f} = \inf \qty{\lambda \geq 0 : \abs{f} \leq \lambda \text{ $\mu$-a.e.}} & p = \infty
+	\end{cases} \]
+\end{definition}
+
+We must check that $\norm{\wildcard}_p$ as defined is a norm. \\
+Clearly (1) holds for all $1 \leq p < \infty$ by linearity of integral and for $p = \infty$ its obvious. \\
+Property (2) holds for $p = 1$ and $p = \infty$, and we will prove later that this holds for other values of $p$ by Minkowski inequality. \\
+The last property does not hold: $f = 0$ implies $\norm{f}_p = 0$, but $\norm{f}_p = 0$ implies only that $\abs{f}^p = 0$ a.e., so $f$ is zero a.e. on $E$.
+
+Therefore, to rigorously define the norm, we must construct the quotient space $\mathcal L^p$ of functions that coincide a.e..
+We write $[f]$ for the equivalence class of functions that are equal a.e.
+The functional $\norm{\wildcard}_p$ is then a norm on $\mathcal L^p = \qty{[f] : f \in L^p}$.
+
+\begin{proposition}[Chebyshev's inequality, Markov's inequality]
+	Let $f \colon E \to \mathbb R$ be non-negative and measurable.
+	Then $\forall \; \lambda > 0$,
+	\[ \mu(\qty{x \in E : f(x) \geq \lambda}) = \mu(f \geq \lambda) \leq \frac{\mu(f)}{\lambda} \]
+\end{proposition}
+
+\begin{proof}
+	Integrate the inequality $\lambda 1_{\qty{f \geq \lambda}} \leq f$, which holds on $E$.
+\end{proof}
+
+In particular if $g \in L^p$, $p < \infty$ and $\lambda > 0$ then $\mu(\abs{g} \geq \lambda) = \mu(\abs{g}^p \geq \lambda^p) \leq \frac{\mu(|g|^p)}{\lambda^p} \leq \infty$ this gives the tail estimates as $\lambda \to \infty$.
+
+\begin{definition}[Convex Function]
+	Let $I \subseteq R$ be an interval.
+	Then we say a map $c \colon I \to \mathbb R$ is \vocab{convex} if for all $x, y \in I$ and $t \in [0,1]$, we have $c(tx + (1-t)y) \leq tc(x) + (1-t)c(y)$.
+	Equivalently, for all $x < t < y$ and $x, y \in I$, we have $\frac{c(t) - c(x)}{t-x} \leq \frac{c(y) - c(t)}{y-t}$.
+\end{definition}
+
+Thus a convex function is continuous on the interior of the interval and so is Borel measurable.
+
+\begin{lemma}
+	Let $I \subseteq R$ be an interval and $c : I \to \mathbb{R}$, and let $m \in$ the interior of $I$.
+	If $c$ is convex on $I$, $\exists \; a, b$ s.t. $c(x) \geq ax + b \ \forall \; x \in I$, and $c(m) = am + b$.
+\end{lemma}
+
+\begin{proof}
+	Define $a = \sup \qty{\frac{c(m) - c(x)}{m - x} : x < m, x \in I}$.
+	This exists in $\mathbb R$ by the second definition of convexity.
+	Let $x, y \in I$, and $y > m > x$.
+	Then $\frac{c(m) - c(x)}{m - x} \leq a \leq \frac{c(y) - c(m)}{y - m}$, so $c(y) \geq ay - am + c(m) = ay + b$ where we define $b = c(m) - am$.
+	Similarly, for $x$, we have $c(x) \geq ax + b$.
+\end{proof}
+
+\begin{theorem}[Jensen's inequality]
+	Let $X$ be a integrable\footnote{$\expect{\abs{X}} < \infty$} r.v. taking values in an interval $I \subseteq \mathbb R$.
+	Let $c \colon I \to \mathbb R$ be a convex function.
+	Then $\expect{c(X)}$ well-defined and
+	\begin{align*}
+		c(\expect{X}) \leq \expect{c(X)}.
+	\end{align*}
+\end{theorem}
+
+% Note that the integral $\expect{c(X)}$ is defined as $\expect{c^+(X)} - \expect{c^-(X)}$, and this is well-defined and takes values in $(-\infty, \infty]$.
+
+\begin{proof}
+	If $X$ is a constant a.s., then done.
+
+	Otherwise, then $m = \mathbb{E}[X] \in \operatorname{int}\footnote{Interior of} I$
+
+	Using the previous lemma, $\exists \; a, b$ s.t. $c(X) \geq aX + b$.
+	In particular, $(c(X))^- \leq |a| |X| + |b|$\footnote{$f \geq g$ gives $-f \leq -g$ so $f^- \leq g^- \leq |g|$.}.
+	Hence, $\expect{c^-(X)} \leq \abs{a} \expect{\abs{X}} + \abs{b} < \infty$, and $\expect{c(X)} = \expect{c^+(X)} - \expect{c^-(X)}$ is well-defined in $(-\infty,\infty]$.
+
+	Integrating $c(X) \geq aX + b$\footnote{If $\mathbb{E}[c(X)] = \infty$ done.},
+	\[ \expect{c(X)} \geq a \expect{X} + b\footnote{Expectation of $\Omega$ is 1, this is why we need a probability measure.} = am + b = c(m) = c(\expect{X}) \]
+\end{proof}
+
+\begin{example}
+	$(\Omega, \mathcal{F}, \mathbb{P})$ and $1 \leq p \leq \infty$.
+	If $X \in L^\infty(\mathbb{P})$ then $X \in L^p(\mathbb{P})$ as $\norm{X}_p \leq \norm{X}_\infty$ as $\mathbb{P}(\Omega)$ finite.
+\end{example}
+
+\begin{example}
+	If $1 \leq p < q < \infty$, $c(x) = \abs{x}^{\frac{q}{p}}$ is a convex function.
+	If $X$ is a bounded r.v. (so lies in $L^\infty(\mathbb P)$), we then have
+	\[ \norm{X}_p = \expect{\abs{X^p}}^{\frac{1}{p}} = c(\expect{\abs{X}^p})^{\frac{1}{q}} \mathcolor{red}{\leq}\footnote{By Jensen} \expect{c(\abs{X}^p)}^{\frac{1}{q}} = \norm{X}_q \]
+	Using the monotone convergence theorem, this extends to all $X \in L^q(\mathbb P)$ when $\norm{X}_q$ is finite.
+	So $X \in L^q \implies X \in L^p$ so $L^q(\mathbb P) \subseteq L^p(\mathbb P)$ for all $1 \leq p \leq q \leq \infty$.
+\end{example}
+
+\begin{theorem}[H\"older's inequality]
+	Let $f, g$ be measurable functions on $(E,\mathcal E,\mu)$.
+	If $p, q$ are \vocab{conjugate}, so $\frac{1}{p} + \frac{1}{q} = 1$ and $1 \leq p \leq q \leq \infty$, we have
+	\[ \mu(\abs{fg}) = \int_E \abs{f(x)g(x)} \dd{\mu} \leq \norm{f}_p \cdot \norm{g}_q \]
+\end{theorem}
+
+\begin{remark}
+	For $p = q = 2$, this is exactly the Cauchy--Schwarz inequality on $L^2$ (Simpler proof on Sheet 3 by considering $\int (f+g)^2 \geq 0$.).
+\end{remark}
+
+\begin{proof}
+	The cases $p = 1$ or $p = \infty$ are obvious.
+	We can assume $f \in L^p$ and $g \in L^q$ wlog since the right hand side would otherwise be infinite.
+	We can also assume $f$ is not equal to zero a.e., otherwise this reduces to $0 \leq 0$.
+
+	Hence, $\norm{f}_p > 0$.
+	Then, we can divide both sides by $\norm{f}_p$ and then assume $\norm{f}_p = 1$.
+
+	Define a prob measure $\mathbb{P}$ on $\mathcal{E}$ by $\mathbb{P}(A) = \int_A |f|^p \dd{\mu}$ ($\mathbb{P}$ has prob density $|f|^p$ wrt $\mu$).
+	Note, for $h \geq 0$ $\int h \dd{\mathbb{P}} = \int h |f|^p \dd{\mu}$.
+
+	The
+	\begin{align*}
+		\mu(|fg|) &= \mu(|fg| 1_{|f| > 0}) \\
+		&= \int |f| |g| 1_{|f| > 0} \dd{\mu} \\
+		&= \int \frac{|f|^p}{|f|^{p-1}} |g| 1_{|f| > 0} \dd{\mu} \\
+		&= \int \frac{|g|}{|f|^{p-1}} 1_{|f| > 0} |f|^p \dd{\mu} \\
+		&= \int \frac{|g|}{|f|^{p-1}} 1_{|f| > 0} \dd{\mathbb{P}} \\
+		&= \mathbb{E}\qty[\frac{|g|}{|f|^{p-1}} 1_{|f| > 0}] \\
+		&\leq \mathbb{E}\qty[\qty(\frac{|g|}{|f|^{p-1}} 1_{|f| > 0})^q]^{\frac{1}{q}}\footnote{Proven earlier by Jensen's that $\norm{X}_p \leq \norm{X}_q$ for $1 \leq p \leq q$.} \\
+		&= \mathbb{E}\qty[\frac{|g|^q}{|f|^p} 1_{|f| > 0}]^{\frac{1}{q}} \\
+		&= \qty(\int \frac{|g|^q}{|f|^p} 1_{|f| > 0} \dd{\mathbb{P}})^{\frac{1}{q}} \\
+		&= \qty(\int |g|^q 1_{|f| > 0} \dd{\mu})^{\frac{1}{q}} \\
+		&\leq \qty(\int |g|^q \dd{\mu})^{\frac{1}{q}} \\
+		&= \norm{g}_q
+	\end{align*}
+\end{proof}
+
+\begin{theorem}[Minkowski's inequality]
+	Let $f, g \colon (E, \mathcal E, \mu) \to \mathbb R$ be measurable functions.
+	Then for all $1 \leq p \leq \infty$, we have $\norm{f + g}_p \leq \norm{f}_p + \norm{g}_p$.
+\end{theorem}
+
+\begin{proof}
+	The results for $p = 1, \infty$ are clear.
+	Suppose $1 < p < \infty$.
+	We can assume wlog that $f, g \in L^p$.
+
+	We can integrate the pointwise inequality $\abs{f + g}^p \leq 2^p (\abs{f}^p + \abs{g}^p)$ to deduce that $\mu(|f+g|^p) \leq 2^p \qty[\mu(|f|^p) + \mu(|g|^p)] < \infty$ so $f + g \in L^p$.
+	We assume that $0 < \norm{f+g}_p$, otherwise the result is trivial.
+	Now, using H\"older's inequality with $q$ conjugate to $p$,
+	\begin{align*}
+		\norm{f+g}_p^p = \int \abs{f + g}^p \dd{\mu} &= \int \abs{f + g}^{p-1} \abs{f + g} \dd{\mu} \\
+		&\leq \int \abs{f + g}^{p-1} \abs{f} \dd{\mu} + \int \abs{f + g}^{p-1} \abs{g} \dd{\mu} \\
+		&\leq\footnote{By Holder's Inequality} \norm{f}_p \norm{(f+g)^{p-1}}_q + \norm{g}_p \norm{(f+g)^{p-1}}_q \\
+		&\leq \qty(\int \abs{f + g}^{q(p-1)} \dd{\mu})^{\frac{1}{q}} \qty(\norm{f}_p + \norm{g}_p) \\
+		&\leq \qty(\int \abs{f + g}^p \dd{\mu})^{\frac{1}{q}} \qty(\norm{f}_p + \norm{g}_p) \\
+		&\leq \norm{f+g}_p^{\frac{p}{q}} \qty(\norm{f}_p + \norm{g}_p)
+	\end{align*}
+	Dividing both sides by $\norm{f+g}_p^{\frac{p}{q}}$ noting $\frac{p}{q} = p-1$, we obtain $\norm{f+g}_p \leq \norm{f}_p + \norm{g}_p$.
+\end{proof}
+
+So the $L^p$ spaces are indeed normed spaces.
+
+\subsection{Banach spaces}
+
+\begin{definition}[Banach Space]
+	A \vocab{Banach space} is a complete normed vector space.
+\end{definition}
+
+\begin{theorem}[$\mathcal L^p$ is a Banach space]
+	Let $1 \leq p \leq \infty$, and let $f_n \in L^p$ be a Cauchy sequence, so $\forall \; \varepsilon > 0 \ \exists \; N$ s.t. $\forall \; m, n \geq N$, we have $\norm{f_m - f_n}_p < \varepsilon$.
+	Then $\exists \; f \in L^p$ s.t. $f_n \to f$ in $L^p$, so $\norm{f_n - f}_p \to 0$ as $n \to \infty$.
+\end{theorem}
+
+\begin{proof}
+	For this proof, we assume $p < \infty$; the other case is already proven in IB Analysis and Topology.
+
+	Since $f_n$ is Cauchy, using $\varepsilon = 2^{-k}$ we extract a subsequence $f_{N_k}$ of $L^p$ functions s.t.
+	\[ S = \sum_{k=1}^\infty \norm{f_{N_{k+1}} - f_{N_k}}_p \leq \sum_{k=1}^\infty 2^{-k} < \infty \]
+	By Minkowski's inequality, for any $K$, we have
+	\[ \norm{\sum_{k=1}^K \abs{f_{N_{k+1}} - f_{N_k}}}_p \leq \sum_{k=1}^K \norm{f_{N_{k+1}} - f_{N_k}}_p \leq S < \infty. \]
+	So $\int \abs{\sum_{k=1}^K \abs{f_{N_{k+1}} - f_{N_k}}}^p \dd{\mu} \leq S^p < \infty$.
+
+	By the monotone convergence theorem applied to $\abs{\sum_{k=1}^K \abs{f_{N_{k+1}} - f_{N_k}}}^p$ which increases to $\abs{\sum_{k=1}^\infty \abs{f_{N_{k+1}} - f_{N_k}}}^p$, we find
+	\[ \norm{\sum_{k=1}^\infty \abs{f_{N_{k+1}} - f_{N_k}}}_p \leq S < \infty \]
+	Since the integral is finite, we see that $\sum_{k=1}^\infty \abs{f_{N_{k+1}} - f_{N_k}}$ is finite $\mu$-a.e..
+	Let $A$ be the set where this sum is finite, then $\mu(A^c) = 0$.
+	For any $x \in A$, $(f_{N_k}(x))$ is Cauchy as sum finite, and since $\mathbb{R}$ complete it converges.
+	Define,
+	\[ f(x) = \begin{cases}
+		\lim_{k \to \infty} f_{N_k}(x) & x \in A \\
+		0 & x \in A^c
+	\end{cases} \]
+	so $f_{N_k} \to f$ as $k \to \infty$ $\mu$-a.e. and $f$ measurable as the limit of measurable fcns.
+
+	Now, by Fatou's lemma,
+	\begin{align*}
+		\norm{f_n - f}_p^p &= \mu(\abs{f_n - f}^p) \\
+		&= \mu(\lim_k \abs{f_n - f_{N_k}}^p) \\
+		&= \mu(\liminf_k \abs{f_n - f_{N_k}}^p) \\
+		&\leq \liminf_k \mu(\abs{f_n - f_{N_k}}^p) \\
+		&\leq \epsilon^p \quad \forall \; n \geq N.
+	\end{align*}
+
+	Since the $f_n$ are Cauchy,
+	\[ \norm{f}_p \leq \underbrace{\norm{f - f_N}_p}_{\leq \varepsilon} + \underbrace{\norm{f_N}_p}_{< \infty} < \infty \]
+	so $f \in L^p$ and so $f_n \to f$ in $L^p$.
+\end{proof}
+
+\begin{remark}
+	If $V$ is any of the spaces
+	\[ C([0, 1]);\quad\qty{f \text{ simple}};\quad\qty{f \text{ a finite linear combination of indicators of intervals}} \]
+	then $V$ is dense in $L^p((0, 1), \mathcal{B}, \lambda)$.
+	So the completion $\overline{(V,\norm{\wildcard})}$ is exactly $L^1(\lambda)$ (Proof on Sheet 3, first prove for finite linear combinations, use monotone class theorem, approximate continuous fcns by indicators of intervals so done).
+\end{remark}
+
+\subsection{Hilbert spaces}
+
+\begin{definition}[Inner Product]
+	A symmetric bilinear form $\inner{\wildcard, \wildcard} \colon V \times V \to \mathbb R$ on a real vector space $V$ is called an \vocab{inner product} if $\inner{v,v} \geq 0$ and $\inner{v,v} = 0 \iff v = 0$. \\
+	In this case, we can define a norm\footnote{Cauchy-Schwarz gives triangle inequality} $\norm{v} = \sqrt{\inner{v,v}}$.
+\end{definition}
+
+\begin{definition}[Hilbert Space]
+	If $(V,\inner{\wildcard,\wildcard})$ is complete, we say that it is a \vocab{Hilbert space}.
+\end{definition}
+
+\begin{corollary}
+	The space $\mathcal L^2$ is a Hilbert space for the inner product $\inner{f,g} = \int_E fg \dd{\mu}$.
+\end{corollary}
+
+\begin{example}
+	An analog of the Pythagorean theorem holds.
+	Let $f, g \in L^2$, then $\norm{f + g}_2^2 = \norm{f}_2^2 + 2\inner{f,g} + \norm{g}_2^2$.
+\end{example}
+
+\begin{example}
+	The parallelogram identity holds: $\norm{f+g}_2^2 + \norm{f-g}_2^2 = 2 \qty(\norm{f}_2^2 + \norm{g}_2^2)$
+\end{example}
+
+\begin{definition}[Orthogonal]
+	We say $f$ is \vocab{orthogonal} to $g$ if $\inner{f,g} = 0$.
+\end{definition}
+
+\begin{remark}
+	$f$ and $g$ are orthogonal iff $\norm{f + g}_2^2 = \norm{f}_2^2 + \norm{g}_2^2$.
+
+	For centred (mean zero) r.v.s $X, Y$, we have $\inner{X,Y} = \expect{XY} = \expect{(X - \expect{X})(Y - \expect{Y})} = \Cov{X,Y}$ which vanishes when $X$ and $Y$ are orthogonal.
+\end{remark}
+
+\begin{definition}[Orthogonal Complement]
+	Let $V \subseteq L^2(\mu)$.
+	We define its \vocab{orthogonal complement} to be
+	\[ V^\perp = \qty{f \in L^2(\mu) : \inner{f,g} = 0 \quad \forall g \in V} \]
+\end{definition}
+
+\begin{definition}[Closed Set]
+	We say that a subset $V$ of $\mathcal L^2$ is \vocab{closed} if any sequence $f_n \in V$ that converges in $\mathcal L^2$, its limit $f$ coincides a.e. with some $v \in V$.
+\end{definition}
+
+\begin{theorem}[Orthogonal Projection]
+	Let $V$ be a \underline{closed linear subspace} of $\mathcal L^2(\mu)$.
+	Then $\forall \; f \in \mathcal L^2$, $\exists$ an orthogonal decomposition $f = v + u$ where $v \in V$ and $u \in V^\perp$. \\
+	Moreover, $\norm{f - v}_2 \leq \norm{f - g}_2 \ \forall \; g \in V$ with equality iff $v = g$ a.e..
+\end{theorem}
+
+\begin{definition}[Projection]
+	We call $v$ the \vocab{projection} of $f$ onto $V$.
+\end{definition}
+
+\begin{proof}
+	In this proof, we use $p = 2$ for all norms.
+	We define $d(f,V) = \inf_{g \in V} \norm{g - f}$, and let $g_n \in V$ be a sequence of functions s.t. $\norm{g_n - f} \to d(f,V)$. \\
+	By the parallelogram law,
+	\begin{align*}
+		2\norm{f - g_n}^2 + 2\norm{f - g_m}^2 &= \norm{2f - (g_n + g_m)}^2 + \norm{g_n - g_m}^2 \\
+		&= 4 \norm{f - \underbrace{\frac{g_n + g_m}{2}}_{\in V}}^2 + \norm{g_n - g_m}^2 \\
+		&\geq 4 d(f,V)^2 + \norm{g_n - g_m}^2
+	\end{align*}
+	Taking the limit superior as $n, m \to \infty$, $\limsup_{m,n} 0$.
+	So the sequence $g_n$ is Cauchy in $L^2$, so by completeness, it converges to some $v \in L^2$.
+	Since $V$ is closed, $v \in V$.
+	In particular, $d(f,V) = \inf_{g \in V} \norm{g - f} = \norm{v - f}$.
+
+	Note that $d(f,V)^2 \leq F(t) = \norm{f - (v+th)}^2 > d(f, V)^2 - 2t \inner{f-v, h} + t^2 \norm{h}^2$ where $t \in \mathbb R$ and $h \in V$.
+	Letting $t \downarrow 0$ and $t \uparrow 0$, we obtain $\inner{f - v, h} = 0$ for all $h$.
+	Defining $f - v = u$, we have $f = u + v$ and $u \in V^\perp$ since $h$ was arbitrary.
+
+	For any $g \in V$, $f - g = \underbrace{f-v}_{\in V^\perp} + \underbrace{v - g}_{\in V}$.
+	So $\norm{f - g}^2 = \norm{f - v}^2 + \norm{v - g}^2$ hence $\norm{f - g} \geq \norm{f - v}$ with equality iff $\norm{v - g} = 0$, i.e. $v = g$ a.e..
+
+	% For uniqueness, suppose $f = w + z$ with $w \in V$ and $z \in V^\perp$.
+	% Then $v - w + u - z = f - f = 0$, so taking norms, $0 = \norm{v - w + u - z}^2 = \norm{v - w}^2 + \norm{u - z}^2$ so $v = w$ and $u = z$ (a.e.) by orthogonality.
+\end{proof}
+
+\subsection{Conditional Expectation}
+
+% \begin{definition}[Sub-$\sigma$ algebra]
+
+% \end{definition}
+
+If $\mathcal{G}$ a sub-$\sigma$ algebra of $\mathcal{F}$ (i.e. $\mathcal{G} \subseteq \mathcal{F}$), then $L^2(\Omega, \mathcal{G}, \mathbb{P})$ is a closed subspace of $L^2(\Omega, \mathcal{F}, \mathbb{P})$.
+
+\begin{definition}[Conditional Expectation]
+	For $X \in L^2(\Omega, \mathcal{F}, \mathbb{P})$ s.t. $X$ measurable wrt $\mathcal{G}$, $\norm{X - Y}_2 \geq \norm{X - \mathbb{E}[X \mid \mathcal{G}]}_2 \quad \forall \; Y$ that are $\mathcal{G}$ measurable.\\
+	The\footnote{A variant of the} \vocab{conditional expectation of $X$ given $\mathcal{G}$}, $\mathbb{E}[X \mid \mathcal{G}]$ is defined as the orthogonal projection of $X$ on $L^2(\Omega, \mathcal{G}, \mathbb{P})$.
+\end{definition}
+
+\begin{question}
+	How to define $\mathcal{E}[X \mid \mathcal{G}]$ if $X \in L^1(\Omega, \mathcal{F}, \mathbb{P})$, see Advanced Probability.
+\end{question}
+
+\begin{example}
+	Let $(G_i)_{i \in I}$ be a countable family of disjoint events whose union is $\Omega$ and set $\mathcal{G} = \sigma(G_i : i \in I)$.
+	Let $X$ be integrable.
+	Then the conditional expectation of $X$ given $\mathcal{G}$ is given by:
+	\begin{align*}
+		\mathbb{E}[X \mid G_i] = \frac{\mathbb{E}[X 1_{G_i}]}{\mathbb{P}(G_i)} \quad \forall \; i \in I.
+	\end{align*}
+	Let $Y = \sum_i \mathbb{E}[X \mid G_i] 1_{G_i}$ (i.e. if $\omega \in G_i$, $Y(\omega) = \mathbb{E}[X \mid G_i]$).
+	Check that $Y$ is $\mathcal{G}$-measurable; $Y \in L^2(\Omega, \mathcal{G}, \mathbb{P})$; and that $Y$ is ``the'' orthogonal projection of $X$ onto $L^2(\Omega, \mathcal{G}, \mathbb{P})$ if $X \in L^2(\Omega, \mathcal{F}, \mathbb{P})$.
+\end{example}
+
+\subsection{$L^p$ Convergence and Uniform Integrability}
+
+For $(\Omega, \mathcal{F}, \mathbb{P})$, what are the implications between convergence: a.s., in $L^p$ for $1 \leq p < \infty$, in $\mathbb{P}$ and in distribution.
+
+Let $f_n = n 1_{(0, 1/n)}$ on $\qty((0, 1), \mathcal{B}, \lambda)$.
+$f_n \to 0$ a.s. but $\mathbb{E}\abs{f_n} = \mathbb{E}[f_n] = 1 \ \forall \; n$ so a.s. $\centernot\implies$ $L^p$ convergence.
+
+$\mathbb{P}(|X_n - X| > \epsilon) \leq \frac{\mathbb{E}|X_n - X|^p}{\epsilon^p}$ by Markov's Inequality, so convergence in $L^p$ for $1 \leq p < \infty \implies$ convergence in $\mathbb{P}$.
+
+\begin{theorem}[Dominated Convergence Theorem]
+	Let $X_n$ be r.v.s on $(\Omega, \mathcal F, \mathbb P)$ s.t. $\abs{X_n} \leq Y$ for integrable r.v. $Y$ and they converge in $\mathbb{P}$ to $X$.
+	Then $X_n \to X$ in $L^1(\mathbb P)$, i.e. $\mathbb{E}|X_n - X| \to 0$.
+\end{theorem}
+
+\begin{question}
+	What is the ``minimum condition'' on $(X_n)$ under which $X_n \to X$ in $\mathbb{P}$ implies $X_n \to X$ in $L^1(\mathbb{P})$.
+\end{question}
+
+\begin{answer}
+	Uniformly Integrable
+\end{answer}
+
+% \begin{proof}
+% 	We know that $X_{n_k} \to X$ almost surely along a subsequence $n_k$.
+% 	So $\abs{X} = \lim_k \abs{X_{n_k}} \leq C < \infty$ almost surely.
+% 	Then
+% 	\begin{align*}
+% 		\expect{\abs{X_n - X}} &= \expect{\abs{X_n - X} \qty(1_{\qty{\abs{X_n - X} > \frac \varepsilon 2}} + 1_{\qty{\abs{X_n - x} \leq \frac \varepsilon 2}})} \\
+% 		&\leq 2 C \prob{\abs{X_n - X} \geq \frac{\varepsilon}{2}} + \frac \varepsilon 2 \\
+% 		&< \varepsilon
+% 	\end{align*}
+% 	for sufficiently large $n$.
+% \end{proof}
+
+For $X \in L^1(\mathbb P)$, then as $\delta \to 0$,
+\[ I_X(\delta) = \sup \qty{ \expect{\abs{X} 1_A} : \prob{A} \leq \delta, A \in \mathcal{F}} \to 0 \]
+If not, $\exists \; \varepsilon > 0$ and $A_n \in \mathcal F$ s.t. $\prob{A_n} \leq 2^{-n}$ but $\expect{\abs{X} 1_{A_n}} \geq \varepsilon$.
+Since $\sum_n \prob{A_n} < \infty$, by the first Borel--Cantelli lemma, we have $\prob{\bigcap_n \bigcup_{m \geq n} A_m} = 0$.
+But $\expect{\abs{X} 1_{A_n}} \leq \expect{\abs{X} 1_{\bigcup_{m \geq n} A_m}}$.
+Note that $1_{\bigcup_{m \geq n} A_m} \to 1_{\bigcap_n \bigcup_{m \geq n} A_n} = 0$ a.s., so $\expect{\abs{X} 1_{\bigcup_{m \geq n} A_m}} \to \expect{\abs{X} 1_{\bigcap_n \bigcup_{m \geq n}}} = 0$ by DCT \Lightning.
+
+\begin{definition}[Uniformly Integrable]
+	For a collection $\mathcal X \subseteq L^1(\mathbb P)$ of r.v.s, we say $\mathcal X$ is \vocab{uniformly integrable (UI)} if it is bounded in $L^1(\mathbb P)$\footnote{I.e. $\sup_{x \in \mathcal{X}} \norm{X}_1 = \sup_{x \in \mathcal{X}} |X| = I_{\mathcal{X}}(1) < \infty$.}, and
+	\[ I_{\mathcal X}(\delta) = \sup \qty{ \expect{\abs{X}1_A} : \prob{A} \leq \delta, X \in \mathcal X} \to 0 \text{ as } \delta \to 0.\]
+\end{definition}
+
+\begin{remark}
+	\begin{enumerate}
+		\item Any single integrable r.v. is UI.
+		Also, true for any finite collection of integrable r.v.s.
+		Also, if $\mathcal{X} = \qty{X : X \text{ a r.v. s.t. } |X| \leq Y \text{ for some } Y \in L^1}$ as $\sup_{X \in \mathcal{X}} \mathbb{E}[|X| 1_A] \leq \mathbb{E}[Y 1_A]$ implies $I_{\mathcal{X}}(\delta) \leq I_Y(\lambda) \to 0$ as $\delta \to 0$.
+		\item If $\mathcal X$ is bounded in $L^p(\mathbb P)$ for $p > 1$, then by H\"older's inequality,
+		\[ \expect{\abs{X}1_A} \leq \underbrace{\norm{X}_p}_{\text{bounded}} \cdot \underbrace{\prob{A}^{\frac 1 q}}_{\leq \delta^{\frac 1 q} \to 0} \]
+	\end{enumerate}
+\end{remark}
+
+% \begin{remark}
+% 	Note that $X_n = n1_{\qty[0,\frac{1}{n}]}$ for the Lebesgue measure $\mu$ on $[0,1]$ is bounded in $L^1(\mathbb P)$ but not uniformly integrable.
+% \end{remark}
+
+\begin{lemma}
+	$\mathcal X \subseteq L^1(\mathbb P)$ is UI $\iff \sup_{X \in \mathcal X} \expect{\abs{X} 1_{\qty{\abs{X} > K}}} \to 0$ as $K \to \infty$.
+\end{lemma}
+
+\begin{proof}
+	$(\implies)$: Applying Markov's inequality, as $K \to \infty$,
+	\[ \prob{\abs{X} > K} \leq \frac{\expect{\abs{X}}}{K} = \frac{\expect{\abs{X}1_{\Omega}}}{K} \leq \frac{I_{\mathcal X}(1)}{K} \to 0 \]
+	Using the uniform integrability property using $A = \qty{\abs{X} > K}$, we obtain the required limit.
+
+	$(\Longleftarrow)$:
+	\[ \expect{\abs{X}} = \expect{\abs{X}\qty(1_{\qty{\abs{X} \leq K}} + 1_{\qty{\abs{X} > K}})} \leq K + \frac{\varepsilon}{2} \]
+	for sufficiently large $K$.
+	So $\mathcal X$ is bounded in $L^1(\mathbb P)$ as required.
+	Then for $A$ s.t. $\prob{A} \leq \delta$,
+	\[ \expect{\abs{X}1_A\qty(1_{\qty{\abs{X} \leq K}} + 1_{\qty{\abs{X} > K}})} \leq K\prob{A} + \expect{\abs{X}1_{\qty{\abs{X} > K}}} \leq K\delta + \frac{\varepsilon}{2} < \varepsilon \]
+	for sufficiently small $\delta$.
+\end{proof}
+
+\begin{theorem}
+	Let $X_n, X$ be r.v.s on $(\Omega, \mathcal F, \mathbb P)$.
+	Then the following are equivalent.
+	\begin{enumerate}
+		\item $X_n, X \in L^1(\mathbb P)$ and $X_n \to X$ in $L^1(\mathbb P)$.
+		\item $\qty{X_n : n \in \mathbb N}$ is uniformly integrable, and $X_n \to X$ in $\mathbb{P}$.
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	(1) $\implies$ (2i):
+	Using Markov's inequality,
+	\[ \prob{\abs{X_n - X} > \varepsilon} \leq \frac{\expect{\abs{X_n - X}}}{\varepsilon} \to 0 \]
+	so $X_n \to X$ in $\mathbb{P}$.
+
+	Choose $N$ s.t. $\mathbb{E}|X_n - X| < \frac{\epsilon}{2} \ \forall \; n \geq N$.
+	Choose $\delta$ s.t. $\mathbb{E}[|X| 1_A] \leq \frac{\epsilon}{2}$ and $\mathbb{E}[|X_n|1_A] \leq \epsilon \quad \forall \; n = 1, \dots, N-1$ when $\mathbb{P}(A) < \delta$.
+	\begin{align*}
+		\expect{\abs{X_n} 1_A} \leq \expect{\abs{X_n - X} 1_A} + \expect{\abs{X} 1_A} \leq \frac{\varepsilon}{2} + \frac{\varepsilon}{2}
+	\end{align*}
+	$\{X_1, \dots, X_{N-1}, X\}$ is finite so UI.
+	So $\mathcal{X}$ is UI.
+
+	(2) $\implies$ (1):
+	$X_n \to X$ in $\mathbb{P}$, so take a subsequence $n_k$ s.t. $X_{n_k} \to X$ a.s..
+	Then,
+	\begin{align*}
+		\expect{\abs{X}} = \expect{\liminf_k \abs{X_{n_k}}} \leq\footnote{Fatou's lemma} \liminf_k \expect{\abs{X_{n_k}}} \leq I_{\mathcal X}(1) <\footnote{As $\mathcal{X}$ is UI, hence $L^1$ bounded.} \infty,
+	\end{align*}
+	so $X \in L^1(\mathbb P)$.
+
+	Next, we define truncated r.v.s $X_n^K = \max(-K, \min(K, X_n))$ and $X^K = \max(-K, \min(K, X))$.
+	Then $X_n^K \to X^K$ in $\mathbb{P}$ (as $\mathbb{P}(|X_n^K - X^K| > \epsilon) \leq \mathbb{P}(|X_n - X| < \epsilon)$)\footnote{Aside: If $X_n \to X$ in $\mathbb{P}$ and $f$ cts, then $f(X_n) \to f(X)$ in $\mathbb{P}$.}.
+	And $|X_n^K| \leq K \quad \forall \; n$ so by BCT, $X_n^K \to X^K$ in $L^1$.
+	Now,
+	\begin{align*}
+		\expect{\abs{X_n - X}} &\leq \expect{\abs{X_n - X_n^K}} + \expect{\abs{X_n^K - X^K}} + \expect{\abs{X^K - X}} \\
+		&= \expect{\abs{X_n} 1_{\qty{\abs{X_n} > k}}} + \expect{\abs{X_n^K - X^K}} + \expect{\abs{X}1_{\qty{\abs{X} > K}}} \\
+		&< \varepsilon
+	\end{align*}
+	by choosing sufficiently large $K$ (by UI) and $n$.
+\end{proof}

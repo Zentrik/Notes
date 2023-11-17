@@ -15,7 +15,11 @@
 \newcommand{\expect}[1]{\mathbb{E}\left[{#1}\right]}
 % \DeclarePairedDelimiter\ceil{\lceil}{\rceil}
 \DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+% \renewcommand{\norm}[1]{\left \lVert #1 \right \rVert}
+\newcommand{\wildcard}{{}\cdot{}}
+\DeclareMathOperator*{\esssup}{ess\ sup}
 % \DeclarePairedDelimiter\Brackets{[\![}{]\!]}
+\newcommand{\hhat}[1]{\hat{\hat{#1}}}
 
 % \includeonly{02_measurable_functions.tex}
 
@@ -63,4 +67,6 @@
     \include{02_measurable_functions.tex}
     \include{03_integration.tex}
     \include{04_product_measures.tex}
+    \include{05_function_spaces_and_norms.tex}
+    \include{06_fourier_analysis.tex}
 \end{document}

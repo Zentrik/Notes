@@ -107,7 +107,7 @@ If the $E_i$ are topological spaces with a countable basis, then $\mathcal B(E_1
 		\item Let $f \colon E \to \mathbb R$ be a $\mu$-integrable function (on the product measure).
 		Let
 		\[ A_1 = \qty{x_1 \in E_1 : \int_{E_2} \abs{f(x_1,x_2)} \dd{\mu_2(x_2)} < \infty}. \]
-		Define $f_1 : E_1 \to \mathbb{R}$ by $f_1(x_1) = \int_{E_2} f(x_1,x_2) \dd{\mu_2(x_2)}$ on $A_1$ and zero elsewhere. \\
+		Define $f_1 : E_1 \to \mathbb{R}$ by $f_1(x_1) = \int_{E_2} f(x_1,x_2) \dd{\mu_2(x_2)}$ on $A_1$ and 0 elsewhere. \\
 		Then $\mu_1(A_1^c) = 0$, $f_1$ is $\mu_1$-integrable and $\mu(f) = \mu_1(f_1) = \mu_1(f_1 1_{A_1})$, and defining $A_2$ symmetrically, $\mu(f) = \mu_2(f_2) = \mu_2(f_2 1_{A_2})$.
 	\end{enumerate}
 \end{theorem}
@@ -129,8 +129,9 @@ If the $E_i$ are topological spaces with a countable basis, then $\mathcal B(E_1
 	So $f_1$ is $\mu_1$-integrable.
 	We have $\mu_1(A_1^c) = 0$, otherwise $\mu_1(h) \geq \mu_1(h 1_{A_1^c}) = \infty$ \Lightning.
 
-	Note that $f_1^\pm = \int_{E_2} f^\pm(x_1,x_2) \dd{\mu_2(x_2)}$, and $\mu(f_1) = \mu_1(f_1^+) - \mu_1(f_1^-)$.
-	Hence, by the first part, $\mu(f) = \mu(f^+) - \mu(f^-) = \mu_1(f_1^+) - \mu_1(f_1^-) = \mu_1(f_1)$ as required.
+	Setting, $f_1^\pm = \int_{E_2} f^\pm(x_1,x_2) \dd{\mu_2(x_2)}$ we see than $f_1 = (f_1^+ - f_1^-) 1_{A_1}$.
+	Also by the first part, $\mu_1(f_1^+) = \mu(f^+) < \infty$ and $\mu_1(f_1^-) = \mu(f^-) < \infty$.
+	Hence, $\mu(f) =\footnote{As $f$ integrable} \mu(f^+) - \mu(f^-) = \mu_1(f_1^+) - \mu_1(f_1^-) =\footnote{As $f_1$ integrable due to $\mu_1(A_1^c) = 0$.} \mu_1(f_1)$ as required.
 \end{proof}
 
 \begin{remark}
@@ -138,18 +139,19 @@ If the $E_i$ are topological spaces with a countable basis, then $\mathcal B(E_1
 
 	Let $(E_i, \mathcal E_i, \mu_i)$ be measure spaces with $\sigma$-finite measures.
 	Note that $(\mathcal E_1 \otimes \mathcal E_2) \otimes \mathcal E_3 = \mathcal E_1 \otimes (\mathcal E_2 \otimes \mathcal E_3)$, by a $\pi$-system argument using Dynkin's lemma.
-	So we can iterate the construction of the product measure to obtain a measure $\mu_1 \otimes \dots \mu_n$, which is a unique measure on $\qty(\prod_{i=1}^n E_i \bigotimes_{i=1}^n \mathcal E_i)$ with the property that the measure of a hypercube $\mu(A_1 \times A_n)$ is the product of the measures of its sides $\mu_i(A_i)$.
+	So we can iterate the construction of the product measure to obtain a measure $\mu_1 \otimes \dots \otimes \mu_n$\footnote{This is associative.}, which is a unique measure on $\qty(\prod_{i=1}^n E_i, \bigotimes_{i=1}^n \mathcal E_i)$ with the property that the measure of a hypercube $\mu(A_1 \times A_n)$ is the product of the measures of its sides $\mu_i(A_i)$.
 
 	In particular, we have constructed the Lebesgue measure $\mu^n = \bigotimes_{i=1}^n \mu$ on $\mathbb R^n$.
-	Applying Fubini's theorem, for functions $f$ that are either nonnegative and measurable or $\mu^n$-integrable, we have
+	Applying Fubini's theorem, for functions $f$ that are either non-negative and measurable or $\mu^n$-integrable, we have
 	\[ \int_{\mathbb R^n} f \dd{\mu^n} = \idotsint_{\mathbb R \dots \mathbb R} f(x_1, \dots, x_n) \dd{\mu(x_1)} \dots \dd{\mu(x_n)} \]
 \end{remark}
 
 \subsection{Product probability spaces and independence}
 \begin{proposition}
-	Let $(\Omega, \mathcal F, \mathbb P)$, and $(E, \mathcal E) = \qty(\prod_{i=1}^n E_i, \bigotimes_{i=1}^n \mathcal E_i)$.
-	Let $X \colon (\Omega, \mathcal F) \to (E, \mathcal E)$ be a measurable function, and define $X(\omega) = (X_1(\omega), X_2(\omega), \dots, X_n(\omega))$.
-	Then the following are equivalent.
+	Let $X_1, \dots, X_n$ be r.v.s, $X_i : (\Omega, \mathcal F, \mathbb P) \to (E_i, \mathcal{E}_i)$.
+	Set $(E, \mathcal E) = \qty(\prod_{i=1}^n E_i, \bigotimes_{i=1}^n \mathcal E_i)$.
+	Consider $X \colon (\Omega, \mathcal F, \mathbb{P}) \to (E, \mathcal E)$ given by $X(\omega) = (X_1(\omega), X_2(\omega), \dots, X_n(\omega))$.
+	Then $X$ is $\mathcal{E}$-measurable and the following are equivalent.
 	\begin{enumerate}
 		\item $X_1, \dots, X_n$ are independent random variables;
 		\item $\mu_X = \bigotimes_{i=1}^n \mu_{X_i}$;
@@ -157,24 +159,33 @@ If the $E_i$ are topological spaces with a countable basis, then $\mathcal B(E_1
 	\end{enumerate}
 \end{proposition}
 \begin{proof}
-	\emph{(i) implies (ii).}
-	Consider the $\pi$-system $\mathcal A$ of rectangles $A = \prod_{i=1}^n A_i$ for $A_i \in \mathcal E_i$.
-	Since $\mu_X$ is an image measure,
-	Then
-	\[ \mu_X(A_1 \times \dots \times A_n) = \prob{X_1 \in A_1, \dots, X_n \in A_n} = \prob{X_1} \dots \prob{A_n} = \prod_{i=1}^n \mu_{X_i}(A_i) \]
-	So by uniqueness, the result follows.
+	To show $X$ measurable suffices to check $X\inv(A_1 \times \dots \times A_n) \in \mathcal{F}$, where $A_i \in \mathcal{E}_i \ \forall \; i$ as this is a $\pi$-system generating $\mathcal{E}$.
+	\begin{align*}
+		X\inv(A_1 \times \dots \times A_n) &= \qty{\omega : X_1(\omega) \in A_1, \dots, X_n(\omega) \in A_n} \\
+		&= \bigcap_{i = 1}^n X_i\inv(A_i).
+	\end{align*}
+	$X_i$ measurable so $X_i\inv(A_i) \in \mathcal{F}$ and so the intersection is in $\mathcal{F}$.
 
-	\emph{(ii) implies (iii).}
+	(1) $\implies$ (2):
+	Consider the $\pi$-system $\mathcal A$ of rectangles $A = \prod_{i=1}^n A_i$ for $A_i \in \mathcal E_i$, as this generates $\mathcal{E}$ suffices to check equality on it.
+
+	Since $\mu_X$ is an image measure, then
+	\begin{align*}
+		\mu_X(A_1 \times \dots \times A_n) = \prob{X_1 \in A_1, \dots, X_n \in A_n} = \prob{X_1} \dots \prob{A_n} &= \prod_{i=1}^n \mu_{X_i}(A_i) \\
+		&= \qty(\bigotimes_{i=1}^n \mu_{X_i})(A).
+	\end{align*}
+
+	(2) $\implies$ (3):
 	By Fubini's theorem,
 	\begin{align*}
 		\expect{\prod_{i=1}^n f_i(X_i)} &= \mu_X\qty(\prod_{i=1}^n f_i(x_i)) \\
-		&= \int_E f(x) \dd{\mu(x)} \\
+		&= \int_E f(x) \dd{\mu_X(x)} \\
 		&= \idotsint_{E_i} \qty(\prod_{i=1}^n f_i(x_i)) \dd{\mu_{X_1}(x_1)} \dots \dd{\mu_{X_2}(x_2)} \\
 		&= \prod_{i=1}^n \int_{E_i} f_i(x_i) \dd{\mu_{X_i}(x_i)} \\
 		&= \prod_{i=1}^n \expect{f_i(X_i)}
 	\end{align*}
 
-	\emph{(iii) implies (i).}
+	(3) $\implies$ (1):
 	Let $f_i = 1_{A_i}$ for any $A_i \in \mathcal E_i$.
 	These are bounded and measurable functions.
 	Then
