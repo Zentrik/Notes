@@ -336,8 +336,8 @@ This is quite useful in probability.
 	\end{align*}
 	Proof on Sheet 2, use monotone class theorem and first prove for $g$ indicator fcns and then simple functions.
 
-	On a probability space $(\Omega, \mathcal F, \mathbb P)$ and $X \geq 0$ measurable, we have,
-	\[ \expect{g(X)} = \int_\Omega g(X(\omega)) \dd{\mathbb P(\omega)} = \int_\Omega g \dd{\mu_X}, \]
+	In particular, for $X : (\Omega, \mathcal{F}, \mathbb{P}) \to \mathbb{R}$ and $X \geq 0$ measurable, we have,
+	\[ \expect{g(X)} = \int_\Omega g(X(\omega)) \dd{\mathbb P(\omega)} = \int g \dd{\mu_X}, \]
 	where $\mu_X = \mathbb{P} \circ X\inv$ is the distribution of $X$.
 \end{example}
 

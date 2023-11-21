@@ -1,15 +1,15 @@
 \section{Fourier transforms}
 \subsection{Fourier transforms}
-In this section, we will write $L^p = L^p(\mathbb R^d)$ for the space of \underline{complex valued} Borel measurable fcns on $\mathbb{R}^d$, i.e. $f \colon \mathbb R^d \to \mathbb C$ s.t. $\norm{f}_p = \qty(\int_{\mathbb R^d} \abs{f(x)}^p \dd{x})^{\frac 1p} < \infty$ for $1 \leq p < \infty$.
+In this section, we will write $L^p = L^p(\mathbb R^d)$ for the space of \underline{complex valued} Borel measurable fcns on $\mathbb{R}^d$, i.e. $f \colon \mathbb R^d \to \mathbb C$ s.t. $\norm{f}_p = \qty(\int_{\mathbb R^d} \abs{f(x)}^p \dd{\mu(x)})^{\frac 1p} < \infty$ for $1 \leq p < \infty$.
 
 \begin{remark}
-	For $g$ measurable s.t. $\int |g| < \infty$, define $\int g(x) \dd{x} = \int \Re(g(x)) \dd{x} + i \int \Im(g(x)) \dd{x}$.
+	For $g$ measurable s.t. $\int |g| < \infty$, define $\int g(x) \dd{\mu(x)} = \int \Re(g(x)) \dd{\mu(x)} + i \int \Im(g(x)) \dd{\mu(x)}$.
 
-	Note that for some $u + iv = \alpha \in \mathbb C$ with $\abs{\alpha} = 1$,
-	\[ \abs{\int_{\mathbb R^d} f(x) \dd{x}} = \int_{\mathbb R^d} \alpha f(x) \dd{x} = \int_{\mathbb R^d} u(x) \dd{x} + i \int_{\mathbb R^d} v(x) \dd{x} \]
-	But since the left hand side is real-valued, the $i \int_{\mathbb R^d} v(x) \dd{x}$ term vanishes.
-	So
-	\[ \abs{\int_{\mathbb R^d} f(x) \dd{x}} = \int_{\mathbb R^d} u(x) \dd{x} \leq \int_{\mathbb R^d} \abs{f(x)} \dd{x} \]
+	% Note that for some $u + iv = \alpha \in \mathbb C$ with $\abs{\alpha} = 1$,
+	% \[ \abs{\int_{\mathbb R^d} f(x) \dd{x}} = \int_{\mathbb R^d} \alpha f(x) \dd{x} = \int_{\mathbb R^d} u(x) \dd{x} + i \int_{\mathbb R^d} v(x) \dd{x} \]
+	% But since the left hand side is real-valued, the $i \int_{\mathbb R^d} v(x) \dd{x}$ term vanishes.
+	% So
+	% \[ \abs{\int_{\mathbb R^d} f(x) \dd{x}} = \int_{\mathbb R^d} u(x) \dd{x} \leq \int_{\mathbb R^d} \abs{f(x)} \dd{x} \]
 \end{remark}
 
 For $f, g \in L^2$, $\inner{f, g} = \int f(x) \overline{g(x)} \dd{\mu(x)}$ is an inner product on $L^2(\mu)$.
@@ -60,53 +60,80 @@ If $\mu$ has a density $f$ (wrt $\lambda$), $\hat\mu = \int_{\mathbb R^d} e^{i\i
 
 In particular if $X$ has pdf $f$, then $\phi_X(u) = \hat{f}(u)$.
 
-\begin{definition}[Fourier inversion formula]
+\begin{definition}[Fourier Inversion Formula]
 	Let $f \in L^1(\mathbb R^d)$ s.t. $\hat f \in L^1(\mathbb R^d)$.
 	Then we say that the \vocab{Fourier inversion formula} holds for $f$ if
 	\[ f(x) = \frac{1}{(2\pi)^d} \int_{\mathbb R^d} \hat f(u) e^{-i\inner{u,x}} \dd{u} \]
 	a.e. in $\mathbb R^d$.
 \end{definition}
 
-\begin{definition}[Plancherel identity]
-	Let $f \in L^1(\mathbb R^d) \cap L^2(\mathbb R^d)$.
-	Then the \vocab{Plancherel identity} holds for $f$ if
-	\[ \norm{\hat f}_2 = (2\pi)^{\frac d2} \norm{f}_2 \]
-\end{definition}
-
-We will show that the Fourier inversion formula holds whenever $\hat f \in L^1(\mathbb R^d)$, and the Plancherel identity holds for all $f \in L^1(\mathbb R^d) \cap L^2(\mathbb R^d)$.
-
 \begin{remark}
-	Given the Plancherel identity, the Fourier transform is a linear isometry of $L^2(\mathbb R^d)$, by approximating any function in $L^2(\mathbb R^d)$ by integrable functions.
+	The RHS is cts by DCT, so for $f$ cts the equality is everywhere.
 \end{remark}
 
+\begin{remark}
+	The map from $L^1 \to C_0$ by $f \mapsto \hat{f}$ is $1-1$ (for $f, g \in L^1$ with $\hat{f} = \hat{g}$, then $f - g \in L^1$ and $\widehat{f - g} = \hat{f} - \hat{g} = 0$. So by Fourier Inversion $f - g = 0$ a.e.)
+\end{remark}
+
+% \begin{definition}[Plancherel identity]
+% 	Let $f \in L^1(\mathbb R^d) \cap L^2(\mathbb R^d)$.
+% 	Then the \vocab{Plancherel identity} holds for $f$ if
+% 	\[ \norm{\hat f}_2 = (2\pi)^{\frac d2} \norm{f}_2 \]
+% \end{definition}
+
+% We will show that the Fourier inversion formula holds whenever $\hat f \in L^1(\mathbb R^d)$, and the Plancherel identity holds for all $f \in L^1(\mathbb R^d) \cap L^2(\mathbb R^d)$.
+
+% \begin{remark}
+% 	Given the Plancherel identity, the Fourier transform is a linear isometry of $L^2(\mathbb R^d)$, by approximating any function in $L^2(\mathbb R^d)$ by integrable functions.
+% \end{remark}
+
 \subsection{Convolutions}
-\begin{definition}
-	Let $f \in L^1(\mathbb R^d)$ and $\nu$ be a probability measure on $\mathbb R^d$.
-	We define their \emph{convolution} $f \ast \nu$ by
+
+A key concept in Fourier analysis is convolutions.
+
+\begin{definition}[Convolution]
+	Let $f \in L^p(\mathbb R^d)$, $1 \leq p < \infty$ and $\nu$ be a probability measure on $\mathbb R^d$.
+	We define their \vocab{convolution} $f \ast \nu$ by
 	\[ (f \ast \nu)(x) = \begin{cases}
-		\int_{\mathbb R^d} f(x-y) \dd{\nu(y)} & \text{if } (y \mapsto f(x-y)) \in L^1(\nu) \\
-		0 & \text{else}
+		\int_{\mathbb R^d} f(x-y) \dd{\nu(y)} & \text{if integral exists;} \\
+		0 & \text{else.}
 	\end{cases} \]
 \end{definition}
 
 \begin{remark}
 	If $1 \leq p < \infty$, by Jensen's inequality,
 	\begin{align*}
-		\int_{\mathbb R^d} \qty( \int_{\mathbb R^d} \abs{f(x-y)} \dd{\nu(y)} )^p \dd{x} &\leq \int_{\mathbb R^d} \int_{\mathbb R^d} \abs{f(x-y)}^p \dd{\nu(y)} \dd{x} \\
+		\int_{\mathbb{R}^d} \abs{f \ast \nu(x)}^p \dd{x} &\leq \int_{\mathbb R^d} \qty( \int_{\mathbb R^d} \abs{f(x-y)} \dd{\nu(y)} )^p \dd{x} \\
+		&\leq \int_{\mathbb R^d} \int_{\mathbb R^d} \abs{f(x-y)}^p \dd{\nu(y)} \dd{x} \quad \text{as $p \geq 1$}\\
 		&= \int_{\mathbb R^d} \int_{\mathbb R^d} \abs{f(x-y)}^p \dd{x} \dd{\nu(y)} \\
 		&= \int_{\mathbb R^d} \int_{\mathbb R^d} \abs{f(x)} \dd{\nu(y)} \dd{x} \\
 		&= \int_{\mathbb R^d} \abs{f(x)} \dd{x} \\
-		&= \norm{f}_p^p
+		&= \norm{f}_p^p < \infty.
 	\end{align*}
-	So $f \in L^p(\mathbb R^d)$, we have $(y \mapsto f(x-y)) \in L^p(\nu)$ almost everywhere, and again by Jensen's inequality,
-	\[ \norm{f \ast \nu}_p^p = \int_{\mathbb R^d} \abs{ \int_{\mathbb R^d} f(x-y)\dd{\nu(y)} }^p \dd{x} \leq \int_{\mathbb R^d} \qty( \int_{\mathbb R^d} \abs{f(x-y)} \dd{\nu(y)} )^p \dd{x} \leq \norm{f}_p^p \]
-	Hence $f \mapsto f \ast \nu$ is a contraction on $L^p(\mathbb R^d)$.
+	Hence $f \ast v$ is defined a.e., and $\norm{f \ast v}_p \leq \norm{f}_p < \infty$.
+	When $\nu$ has pdf $g \in L^1$\footnote{wrt Lebesgue measure}, $f \ast v(x) = \int f(x-y) g(y) \dd{y} = f \ast g(x)$.
+
+	% For two probability measures $\mu, \nu$ on $\mathbb{R}^d$, the convolution $\mu \ast \nu$ is a new prob measure defined as
+	% \begin{align*}
+	% 	\mu \ast \nu(A) &= \int \int 1_A(x+y) \dd{\mu(x)} \dd{\nu(x)} = \mu \otimes \nu (x + y \in A) \\
+	% 	&= \mathbb{P}(X + Y \in A)
+	% \end{align*} where $X, Y$ independent and $X \sim \mu$ and $Y \sim \nu$.
+
+	% If $\mu$ has pdf $f \in L^1$ then
+	% \begin{align*}
+	% 	\mu \ast \nu(A) &= \int \left(  \right)
+	% \end{align*}
+
+
+	% So $f \in L^p(\mathbb R^d)$, we have $(y \mapsto f(x-y)) \in L^p(\nu)$ almost everywhere, and again by Jensen's inequality,
+	% \[ \norm{f \ast \nu}_p^p = \int_{\mathbb R^d} \abs{ \int_{\mathbb R^d} f(x-y)\dd{\nu(y)} }^p \dd{x} \leq \int_{\mathbb R^d} \qty( \int_{\mathbb R^d} \abs{f(x-y)} \dd{\nu(y)} )^p \dd{x} \leq \norm{f}_p^p \]
+	% Hence $f \mapsto f \ast \nu$ is a contraction on $L^p(\mathbb R^d)$.
 \end{remark}
 
 In the case where $\nu$ has a density $g$ with respect to the Lebesgue measure, we write $f \ast g = f \ast \nu$.
 
-\begin{definition}
-	For probability measures $\mu, \nu$ on $\mathbb R^d$, their convolution $\mu \ast \nu$ is a probability measure on $\mathbb R^d$ given by the law of $X + Y$ where $X, Y$ are independent r.v.s with laws $\mu$ and $\nu$, so
+\begin{definition}[Convolution]
+	For probability measures $\mu, \nu$ on $\mathbb R^d$, their \vocab{convolution} $\mu \ast \nu$ is a probability measure on $\mathbb R^d$ given by the law of $X + Y$ where $X, Y$ are independent r.v.s with laws $\mu$ and $\nu$, so
 	\begin{align*}
 		(\mu \ast \nu)(A) &= \prob{X+Y \in A} \\
 		&= \int_{\mathbb R^d \times \mathbb R^d} 1_A(x+y) \dd{(\mu \otimes \nu)(x, y)} \\
@@ -114,61 +141,72 @@ In the case where $\nu$ has a density $g$ with respect to the Lebesgue measure, 
 	\end{align*}
 \end{definition}
 
-If $\mu$ has density $f$ with respect to the Lebesgue measure, $\mu \ast \nu$ has density $f \ast \nu$ with respect to the Lebesgue measure.
+If $\mu$ has density $f \in L^1$ wrt the Lebesgue measure, $\mu \ast \nu$ has density $f \ast \nu$ wrt the Lebesgue measure.
 Indeed,
-
 \begin{align*}
 	(\mu \ast \nu)(A) &= \int_{\mathbb R^d} \int_{\mathbb R^d} 1_A(x+y) f(x) \dd{x} \dd{\nu(y)} \\
-	&= \int_{\mathbb R^d} \int_{\mathbb R^d} 1_A(v) f(v-y) \dd{v} \dd{\nu(y)} \\
-	&= \int_{\mathbb R^d} 1_A(v) \int_{\mathbb R^d}f(v-y) \dd{\nu(y)} \dd{v} \\
-	&= \int_{\mathbb R^d} 1_A(v) (f \ast \nu)(v) \dd{v}
+	&= \int_{\mathbb R^d} \int_{\mathbb R^d} 1_A(x) f(x-y) \dd{x} \dd{\nu(y)} \\
+	&= \int_{\mathbb R^d} 1_A(x) \int_{\mathbb R^d}f(x-y) \dd{\nu(y)} \dd{x} \\
+	&= \int_{\mathbb R^d} 1_A(x) (f \ast \nu)(x) \dd{x}
 \end{align*}
 
 \begin{proposition}
-	$\widehat{f \ast \nu}(u) = \hat f(u) \hat \nu(u)$.
+	$\widehat{f \ast \nu}(u) = \hat f(u) \hat \nu(u)$ for all $f \in L^1$ and $\nu$ a prob measure.
 \end{proposition}
 
 \begin{proposition}
-	$\widehat{\mu \ast \nu}(u) = \expect{e^{i\inner{u,X+Y}}} = \expect{e^{i\inner{u,X}}e^{i\inner{u,Y}}} = \hat \mu(u) \hat \nu(u)$.
+	$\widehat{\mu \ast \nu}(u) = \expect{e^{i\inner{u,X+Y}}} = \expect{e^{i\inner{u,X}}e^{i\inner{u,Y}}} = \hat \mu(u) \hat \nu(u)$ for all $\mu, \nu$ prob measures.
 \end{proposition}
 
 \subsection{Fourier transforms of Gaussians}
-\begin{definition}
-	The \emph{normal distribution} $N(0,t)$ is given by the probability density function
+
+\begin{definition}[Normal Distribution]
+	The \vocab{normal distribution} $N(0,t)$ is given by the probability density function
 	\[ g_t(x) = \frac{1}{\sqrt{2\pi t}} e^{-\frac{x^2}{2t}} \]
 \end{definition}
-If $\varphi_X$ is the characteristic function of a standard normal r.v., by integration by parts,
+
+If $\varphi_Z$ is the characteristic function of $Z \sim N(0, 1)$, i.e. $\phi_Z(u) = \int \frac{1}{\sqrt{2 \pi}} e^{-z^2 / 2} e^{iuz} \dd{z}$ then by a previous thm, $\phi_z$ is differentiable and can use DUTIS.
 \begin{align*}
-	\dv{u} \varphi_X(u) &= \dv{u} \int_{\mathbb R} e^{iux} g_1(x) \dd{x} \\
-	&= \int_{\mathbb R} g_1(x) \dv{u} e^{iux} \dd{x} \\
-	&= \frac{i}{\sqrt{2\pi}} \int_{\mathbb R} \underbrace{e^{iux}}_{v} \underbrace{x e^{-\frac{x^2}{2}}}_{w'} \dd{x} \\
-	&= \frac{i^2}{\sqrt{2\pi}} \int_{\mathbb R} u e^{iux} e^{-\frac{x^2}{2}} \dd{x} \\
-	&= -u \varphi_X(u)
+	\dv{u} \varphi_Z(u) &= \frac{1}{\sqrt{2 \pi}} \int \dv{u} \left(e^{-z^2 / 2} e^{iuz}\right) \dd{z} \\
+	&= \frac{1}{\sqrt{2 \pi}} \int iz e^{-z^2 / 2} e^{iuz} \dd{z} \\
+	&= \frac{i}{\sqrt{2\pi}} \int \underbrace{e^{iuz}}_{v} \underbrace{z e^{-\frac{z^2}{2}}}_{w'} \dd{z} \\
+	&= \frac{i}{\sqrt{2\pi}} \int iu e^{iux} e^{-\frac{z^2}{2}} \dd{x} \\
+	&= -u \varphi_Z(u)
 \end{align*}
+
 Hence,
-\[ \dv{u}\qty(e^{\frac{u^2}{2}} \varphi_X(u)) = ue^{\frac{u^2}{2}} \varphi_X(u) - e^{\frac{u^2}{2}} u \varphi_X(u) = 0 \]
-In particular, $\varphi_X(u) = \varphi_X(0) e^{-\frac{u^2}{2}} = e^{-\frac{u^2}{2}}$.
+\[ \dv{u}\qty(e^{\frac{u^2}{2}} \varphi_Z(u)) = ue^{\frac{u^2}{2}} \varphi_Z(u) - e^{\frac{u^2}{2}} u \varphi_Z(u) = 0 \]
+In particular, $\varphi_Z(u) = \varphi_Z(0) e^{-\frac{u^2}{2}} = e^{-\frac{u^2}{2}}$.
 In other words, $\hat g_1(u) = \sqrt{2\pi} g_1(u)$.
 
-In $\mathbb R^d$, consider a Gaussian random vector $Z = (Z_1, \dots, Z_d)$ with independent and identically distributed entries $Z_i \sim N(0,1)$.
-Then, the joint probability density function of $\sqrt{t}Z$ is
+In $\mathbb R^d$, consider a Gaussian r.v. $Z = (Z_1, \dots, Z_d)$ with iid entries $N(0,1)$.
+Then, the joint pdf (wrt $\lambda^d$) of $\sqrt{t}Z$ is
 \[ g_t(x) = \prod_{j=1}^d \frac{1}{\sqrt{2\pi t}} e^{-\frac{x_j^2}{2t}} = (2\pi t)^{-\frac{d}{2}} e^{-\frac{\norm{x}^2}{2t}} \]
 The Fourier transform of $g_t$ is
-\[ \hat g_t(u) = \expect{e^{i\inner{u,\sqrt{t}Z}}} = \expect{\prod_{j=1}^d e^{iu_j \sqrt{t} z_j}} = \prod_{j=1}^d \expect{e^{iu_j \sqrt{t} z_j}} = \prod_{j=1}^d e^{-u_j^2 \frac{t}{2}} = e^{-\frac{\norm{u}^2 t}{2}} \]
-which implies that in general, $\hat g_t(u) = (2\pi)^{\frac{d}{2}} t^{\frac{d}{2}} g_{\frac{1}{t}}(u)$.
-Taking the Fourier transform with respect to $u$, $\hhat g_t = (2\pi)^d g_t$, and since $g_t(-x) = g_t(x)$ and the Lebesgue measure is translation invariant, we have
-\[ g_t(x) = \frac{1}{(2\pi)^d} \hhat g_t(x) = \frac{1}{(2\pi)^d} \int_{\mathbb R^d} e^{-i\inner{u,x}} \hat g_t(u) \dd{u} \]
-so the Fourier inversion theorem holds for such Gaussian random vectors.
-\begin{definition}
-	We say that a function on $\mathbb R^d$ is a \emph{Gaussian convolution} if it is of the form
+\[ \hat g_t(u) = \expect{e^{i\inner{u,\sqrt{t}Z}}} = \expect{\prod_{j=1}^d e^{iu_j \sqrt{t} z_j}} = \prod_{j=1}^d \underbrace{\expect{e^{iu_j \sqrt{t} z_j}}}_{\phi_{Z_i}(\sqrt{t}u_i)} = \prod_{j=1}^d e^{-u_j^2 \frac{t}{2}} = e^{-\frac{\norm{u}^2 t}{2}} \]
+which implies that in general, $\hat g_t(u) = \frac{(2\pi)^{\frac{d}{2}}}{t^{\frac{d}{2}}} \frac{t^{\frac{d}{2}}}{(2\pi)^{\frac{d}{2}}} e^{-\frac{\norm{u}^2 t}{2}} = (2\pi)^{\frac{d}{2}} t^{-\frac{d}{2}} g_{\frac{1}{t}}(u)$.
+Taking the Fourier transform with respect to $u$, $\hhat g_t = (2\pi)^{\frac{d}{2}} t^{-\frac{d}{2}} \hat{g}_{\frac{1}{t}}(u) = (2\pi)^d g_t$.
+Since $g_t(-x) = g_t(x)$ and the Lebesgue measure is translation invariant, we have
+\begin{align*}
+	g_t(x) = \frac{1}{(2\pi)^d} \hhat g_t(x) = \frac{1}{(2\pi)^d} \int_{\mathbb R^d} e^{-i\inner{u,x}} \hat g_t(u) \dd{u}
+\end{align*}
+so the Fourier inversion theorem holds for $g_t$.
+
+\begin{definition}[Gaussian Convolution]
+	We say that a function on $\mathbb R^d$ is a \vocab{Gaussian convolution} if it is of the form
 	\[ f \ast g_t(x) = \int_{\mathbb R^d} f(x-y) g_t(y) \dd{y} \]
 	where $x \in \mathbb R^d, t > 0, f \in L^1(\mathbb R^d)$.
 \end{definition}
-We can show that $f \ast g_t$ is continuous on $\mathbb R^d$, and $\norm{f \ast g_t}_1 \leq \norm{f}_1$.
+
+Hence, $f \ast g_t \in L^1$ as $f \in L^1$ (proved earlier) and $\norm{f \ast g_t}_1 \leq \norm{f}_1 < \infty$.
+Also $f \ast g_t$ is continuous on $\mathbb R^d$ by noting $f \ast g_t(x) = \int_{\mathbb R^d} f(y) g_t(x-y) \dd{y}$ by translation invariance, then using DCT noting $g$ bounded as cts.
+
 Note that $\widehat{f \ast g_t}(u) = \hat f(u) e^{-\frac{\norm{u}^2 t}{2}}$, so $\norm{\widehat{f \ast g_t}}_\infty \leq \norm{f}_1$, giving $\norm{\widehat{f \ast g_t}}_1 \leq \norm{f}_1 (2\pi)^{\frac{d}{2}} t^{-\frac{d}{2}} < \infty$.
+
 \begin{lemma}
 	The Fourier inversion theorem holds for all Gaussian convolutions.
 \end{lemma}
+
 \begin{proof}
 	We can use the Fourier inversion theorem for $g_t(y)$ to see that
 	\begin{align*}
@@ -180,13 +218,16 @@ Note that $\widehat{f \ast g_t}(u) = \hat f(u) e^{-\frac{\norm{u}^2 t}{2}}$, so 
 		&= \int_{\mathbb R^d} e^{-i\inner{u,x}} \widehat{f \ast g_t}(u) \dd{u}
 	\end{align*}
 \end{proof}
+
 \begin{remark}
 	If $\mu$ is a finite measure, then $\mu \ast g_t = \mu \ast g_{\frac{t}{2}} \ast g_{\frac{t}{2}}$ with $\mu \ast g_{\frac{t}{2}} \in L^1$, so is also a Gaussian convolution.
 \end{remark}
+
 \begin{lemma}[Gaussian convolutions are dense in $L^p$]
 	Let $f \in L^p$ where $1 \leq p < \infty$.
 	Then $\norm{f \ast g_t - f}_p \to 0$ as $t \to 0$.
 \end{lemma}
+
 \begin{proof}
 	One can easily show that the space $C_c(\mathbb R^d)$ of continuous functions of compact support is dense in $L^p$.
 	Hence, for all $\varepsilon > 0$, there exists $h \in C_c(\mathbb R^d)$ s.t. $\norm{f - h}_p < \frac{\varepsilon}{3}$, and by properties of the convolution, we also obtain
