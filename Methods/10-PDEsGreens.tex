@@ -40,7 +40,7 @@ This is also known as the diffusion kernel or the source function.
 	\end{align}
 	where $\eta$ is the similarity parameter.
 	I.e. for $t \geq 0$ spreads smoothly as a Gaussian.
-\end{note} 
+\end{note}
 
 \subsection{Gaussian pulse for heat equation}
 Suppose that the initial conditions for the heat equation are given by
@@ -171,9 +171,9 @@ Hence,
 \begin{align} \label{eq:10.11}
 	G(x,t;\xi,\tau) = \frac{1}{2c} H(c(t-\tau) - \abs{x - \xi})
 \end{align}
-\begin{figure}[h] 
-    \centering 
-    \includegraphics[height=5cm]{10-causality} 
+\begin{figure}[h]
+    \centering
+    \includegraphics[height=5cm]{10-causality}
 \end{figure}
 
 Thus, the solution is
@@ -184,7 +184,7 @@ Thus, the solution is
 
 \begin{exercise}
 	Relate \cref{eq:10.12} to D'Alembert's solution with ICs \cref{eq:9.18} at $t = 0, \phi = 0, \phi_t = g(x)$ as an example of Duhamel's principle.
-\end{exercise} 
+\end{exercise}
 
 \subsection{Poisson's equation}
 Consider
@@ -201,15 +201,15 @@ The Dirac $\delta$ function, when defined in $\mathbb R^3$, has the following pr
 		\begin{cases}
 			\int_D \delta(r - r') \dd[3]{r} = 1 & r' \in D \\
 			0 & \text{otherwise}
-		\end{cases} 
-	\end{align} 
+		\end{cases}
+	\end{align}
 	\item $\int_D f(r) \delta(r - r') \dd[3]{r} = f(r')$.
 \end{enumerate}
 First, we consider $D = \mathbb R^3$ with the homogeneous boundary conditions that $G \to 0$ as $\norm{r} \to \infty$.
 This is known as the \textit{free-space} Green's function, denoted $G_{\mathrm{FS}}$,
 \begin{align} \label{eq:10.15}
 	\laplacian{G_{\mathrm{FS}}}(r, r') = \delta(r - r')
-\end{align} 
+\end{align}
 The potential here is spherically symmetric, so the Green's function is a function only of the distance between the point and the source, i.e. $G(r, r') = G(\norm{r - r'})$.
 Without loss of generality, let $r' = 0$, so $G$ is a function only of the radius, now denoted $r$.
 Integrating the left hand side of Poisson's equation, \cref{eq:10.15}, over a ball $B$ with radius $r$ around zero, we find
@@ -299,8 +299,8 @@ The first integral is the Green's function solution, and the second integral yie
 	Use \cref{eq:10.18} to show that the Green's function is symmetric (3rd identity)
 	\begin{align*}
 		G(r, r') = G(r', r),\quad \forall \; r \neq r'.
-	\end{align*} 
-\end{exercise} 
+	\end{align*}
+\end{exercise}
 
 \subsection{Neumann Green's Function}
 For Neumann B.Cs, specifying $\pdv{\phi}{n} = k(r)$ on $\partial D$ we have
@@ -311,7 +311,7 @@ For Neumann B.Cs, specifying $\pdv{\phi}{n} = k(r)$ on $\partial D$ we have
 \subsection{Method of images for Laplace's equation}
 For symmetric domains $D$, we can construct Green's functions with $G = 0$ on $\partial D$ by cancelling the boundary potential out by using an opposite `mirror image' Green's function placed outside the domain.
 
-\subsubsection{Lapalce's equation on half-space}
+\subsubsection{Laplace's equation on half-space}
 Consider Laplace's equation $\laplacian{\phi} = 0$ on half of $\mathbb R^3$, in particular, the subset of $\mathbb R^3$ such that $z > 0$.
 Let $\phi(x,y,0) = h(x,y)$ and $\phi \to 0$ as $\norm{r} \to \infty$.
 The free space Green's function satisfies $G_{\mathrm{FS}} \to 0$ as $\norm{r} \to \infty$, but does not satisfy the boundary condition that $G_{\mathrm{FS}} = 0$ at $z = 0$.
@@ -352,7 +352,7 @@ Here, for $x > 0$ we have
 	\phi(x,t) = \exp[-(x-\xi + ct)^2] - \exp[-(-x - \xi + ct)^2]
 \end{align}
 \begin{figure}[h]
-    \centering 
-    \includegraphics[height=5cm]{10-neumannImage} 
+    \centering
+    \includegraphics[height=5cm]{10-neumannImage}
 \end{figure}
 The solution travels to the left, cancelling with the image at $t = \frac{\xi}{c}$, which emerges and travels right as the reflected wave.
