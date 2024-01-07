@@ -198,16 +198,22 @@ so the Fourier inversion theorem holds for $g_t$.
 	where $x \in \mathbb R^d, t > 0, f \in L^1(\mathbb R^d)$.
 \end{definition}
 
-Hence, $f \ast g_t \in L^1$ as $f \in L^1$ (proved earlier) and $\norm{f \ast g_t}_1 \leq \norm{f}_1 < \infty$.
-Also $f \ast g_t$ is continuous on $\mathbb R^d$ by noting $f \ast g_t(x) = \int_{\mathbb R^d} f(y) g_t(x-y) \dd{y}$ by translation invariance, then using DCT noting $g$ bounded as cts.
-
-Note that $\widehat{f \ast g_t}(u) = \hat f(u) e^{-\frac{\norm{u}^2 t}{2}}$, so $\norm{\widehat{f \ast g_t}}_\infty \leq \norm{f}_1$, giving $\norm{\widehat{f \ast g_t}}_1 \leq \norm{f}_1 (2\pi)^{\frac{d}{2}} t^{-\frac{d}{2}} < \infty$.
+\begin{enumerate}
+	\item $f \ast g_t \in L^1$ as $f \in L^1$ (proved earlier) and $\norm{f \ast g_t}_1 \leq \norm{f}_1 < \infty$.
+	\item $f \ast g_t$ is continuous on $\mathbb R^d$ by noting $f \ast g_t(x) = \int_{\mathbb R^d} f(y) g_t(x-y) \dd{y}$ by translation invariance, then using DCT noting $g$ bounded as cts.
+	\item $f \ast g_t$ is bdd.
+	\item  $\widehat{f \ast g_t}(u) = \hat{f}(u) \hat{g}_t(u) = \hat{f}(u) e^{-\frac{\norm{u}^2 t}{2}}$.
+	\item $\widehat{f \ast g_t}$ is bdd cts as $f \ast g_t \in L_1$.
+	\item $\norm{\widehat{f \ast g_t}} \leq c_t \norm{\hat{f}}_\infty \leq c_t \norm{\hat{f}}_1$.
+	\item For $\mu$ a prob measure and any $t > 0$, $\mu \ast g_t$ is a Gaussian convolution. As, $g_t = g_{t / 2} \ast g_{t / 2}$ as $g_t$ is the density of a $N(0, t)$ r.v.. Then $\mu \ast g_t = \underbracket{(\mu \ast g_{t / 2})}_{L_1} \ast g_{t / 2}$.
+\end{enumerate}
 
 \begin{lemma}
 	The Fourier inversion theorem holds for all Gaussian convolutions.
 \end{lemma}
 
 \begin{proof}
+	Let $f \in L_1$ and $t > 0$.
 	We can use the Fourier inversion theorem for $g_t(y)$ to see that
 	\begin{align*}
 		(2\pi)^d f \ast g_t(x) &= (2\pi)^d \int_{\mathbb R^d} f(x-y) g_t(y) \dd{y} \\
@@ -219,138 +225,211 @@ Note that $\widehat{f \ast g_t}(u) = \hat f(u) e^{-\frac{\norm{u}^2 t}{2}}$, so 
 	\end{align*}
 \end{proof}
 
-\begin{remark}
-	If $\mu$ is a finite measure, then $\mu \ast g_t = \mu \ast g_{\frac{t}{2}} \ast g_{\frac{t}{2}}$ with $\mu \ast g_{\frac{t}{2}} \in L^1$, so is also a Gaussian convolution.
-\end{remark}
+% \begin{remark}
+% 	If $\mu$ is a finite measure, then $\mu \ast g_t = \mu \ast g_{\frac{t}{2}} \ast g_{\frac{t}{2}}$ with $\mu \ast g_{\frac{t}{2}} \in L^1$, so is also a Gaussian convolution.
+% \end{remark}
 
 \begin{lemma}[Gaussian convolutions are dense in $L^p$]
-	Let $f \in L^p$ where $1 \leq p < \infty$.
+	Let $f \in L^p(\mathbb{R}^d)$ where $1 \leq p < \infty$.
 	Then $\norm{f \ast g_t - f}_p \to 0$ as $t \to 0$.
 \end{lemma}
 
 \begin{proof}
 	One can easily show that the space $C_c(\mathbb R^d)$ of continuous functions of compact support is dense in $L^p$.
-	Hence, for all $\varepsilon > 0$, there exists $h \in C_c(\mathbb R^d)$ s.t. $\norm{f - h}_p < \frac{\varepsilon}{3}$, and by properties of the convolution, we also obtain
+	Hence, given $\varepsilon > 0$, $\exists \; h \in C_c(\mathbb R^d)$ s.t. $\norm{f - h}_p < \frac{\varepsilon}{3}$.
+	Then by linearity of convolution,
 	\[ \norm{f \ast g_t - h \ast g_t}_p = \norm{(f - h) \ast g_t}_p \leq \norm{f - h}_p < \frac{\varepsilon}{3} \]
-	So
-	\[ \norm{f \ast g_t - f}_p \leq \norm{f \ast g_t - h \ast g_t}_p + \norm{h \ast g_t + h}_p + \norm{h - f}_p < \frac{\varepsilon}{2} + \norm{h \ast g_t - h}_p \]
+	So by Minkowski's inequality,
+	\begin{align*}
+		\norm{f \ast g_t - f}_p \leq \underbracket{\norm{f \ast g_t - h \ast g_t}_p}_{\leq \epsilon / 3} + \underbracket{\norm{h - f}_p}_{\leq \epsilon / 3} + \norm{h \ast g_t + h}_p
+		\leq \frac{2\varepsilon}{3} + \norm{h \ast g_t - h}_p
+	\end{align*}
 	so it suffices to prove the result for $f = h \in C_c(\mathbb R^d)$.
 	We define a new map
 	\[ e(y) = \int_{\mathbb R^d} \abs{h(x-y) - h(x)}^p \dd{x} \]
-	Since $h$ is bounded on its bounded support, the dominated convergence theorem implies that $e$ is continuous at $y = 0$.
-	Note that $e(y) \leq 2^{p+1} \norm{h}_p^p$.
+	Since $h$ is bdd (cts on compact support) and supported on $[-M, M]$ say, for some $M > 0$.
+	As $y \to 0$, $|h(x-y) - h(x)|^p \to 0$ as $h$ cts.
+	Also for $|y| < 1$, $|h(x-y) - h(x)|^p \leq 2^p \norm{h(x)}^p_\infty 1_{|x| \leq M + 1}$, with the RHS being integrable.
+	Hence by DCT, $e(y) \to 0$ as $y \to 0$.
+
 	Hence, by Jensen's inequality,
 	\begin{align*}
-		\norm{h \ast g_t - h}_p^p &= \int_{\mathbb R^d} \abs{ \int_{\mathbb R^d} (h(x-y) - h(x)) g_t(y) \dd{y} }^p \dd{x} \\
+		\norm{h \ast g_t - h}_p^p &= \int_{\mathbb R^d} \abs{ \int_{\mathbb R^d} h(x-y) g_t(y) \dd{y} - h(x)}^p \dd{x} \\
+		&= \int_{\mathbb R^d} \abs{ \int_{\mathbb R^d} (h(x-y) - h(x)) g_t(y) \dd{y} }^p \dd{x} \\
 		&\leq \int_{\mathbb R^d} \int_{\mathbb R^d} \abs{h(x-y) - h(x)}^p \dd{x} g_t(y) \dd{y} \\
 		&= \int_{\mathbb R^d} e(y) g_t(y) \dd{y} \\
-		&= \int_{\mathbb R^d} \underbrace{e(\sqrt{t} z)}_{\to e(0) = 0 \text{ as } t \to 0} g_1(z) \dd{z} \\
-		&\to 0
+		&= \int_{\mathbb R^d} e(y) \frac{1}{t^{d/2}} g_1 \qty(\frac{y}{\sqrt{t}})\footnote{Note that $g_t(u) = \frac{1}{t^{d/2}} g_1 \qty(\frac{u}{\sqrt{t}})$} \dd{y} \\
+		&= \int_{\mathbb R^d} \underbracket{e(\sqrt{t} z)}_{\to e(0) = 0 \text{ as } t \to 0} g_1(z) \dd{z} \\
+		&\to 0 \text{ by DCT.}
 	\end{align*}
 \end{proof}
 % TODO: Convert random instances of g into g_t
-\begin{theorem}[Fourier inversion]
+\begin{theorem}[Fourier Inversion]
 	Let $f \in L^1(\mathbb R^d)$ be s.t. $\hat f \in L^1(\mathbb R^d)$.
-	Then for almost all $x \in \mathbb R^d$,
+	Then a.e. in $\mathbb{R}^d$,
 	\[ f(x) = \frac{1}{(2\pi)^d} \int_{\mathbb R^d} e^{-i\inner{u,x}} \hat f(u) \dd{u} \]
 \end{theorem}
+
 \begin{remark}
 	This proves that the Fourier transform is injective; $\hat f = \hat g$ implies $\widehat{f - g} = 0$ so by Fourier inversion, $f = g$ almost everywhere.
 	The identity holds everywhere on $\mathbb R^d$ for the (unique) continuous representative $f$ in its equivalence class.
 \end{remark}
+
 \begin{proof}
-	The Fourier inversion theorem holds for the following Gaussian convolution for all $t$.
-	\[ f \ast g_t(x) = \frac{1}{(2\pi)^d} \int_{\mathbb R^d} e^{-i\inner{u,x}} \hat f(u) e^{\frac{-\abs{u}^2 t}{2}} \dd{u} = f_t(x) \]
-	Now, since Gaussian convolutions are dense, $f \ast g_t \to f$ in $L^1$, so $f \ast g_t \to f$ in measure by Markov's inequality.
-	Hence, along a subsequence, $f \ast g_{t_k} \to f$ almost everywhere.
-	On the other hand, by the dominated convergence theorem with dominating function $\abs{\hat f}$, the right hand side converges to $\frac{1}{(2\pi)^d} \int_{\mathbb R^d} e^{-i\inner{u,x}} \hat f(u) \dd{u}$.
-	So this is equal to $\lim_{t_k \to 0} f_{t_k}$ almost everywhere by uniqueness of limits.
+	Consider $f \ast g_t$ and
+	\begin{align*}
+		f_t(x) = \frac{1}{(2\pi)^d} \int_{\mathbb R^d} e^{-i\inner{u,x}} \hat f(u) \underbracket{e^{\frac{-\abs{u}^2 t}{2}}}_{\hat{g_t}(u)} \dd{u}
+	\end{align*}
+	As FI holds for $f \ast g_t$, $f \ast g_t = f_t$.
+
+	So, $\norm{f_t - f}_1 \overset{t \to 0}{\longrightarrow} 0$ by density of Gaussian convolutions and as $f \in L^1$.
+	So $f_t \to f$ in $\mathbb{P}$ and thus $\exists$ a subsequence s.t. $f_{t_n} \to f_t$ a.e.
+
+	Also, $e^{-i\inner{u,x}} \hat f(u) e^{\frac{-\abs{u}^2 t}{2}}$ is bounded by $\abs{\hat f(u)}$, which is integrable, and $\to e^{-i\inner{u,x}} \hat f(u)$ as $t \to 0$.
+	So by DCT, $f_t(x) \to \frac{1}{(2\pi)^d} \int e^{-i\inner{u,x}} \hat f(u) \dd{u}$ as $t \to 0$ a.e.
+
+	Hence $f = \frac{1}{(2\pi)^d} \int e^{-i\inner{u,x}} \hat f(u) \dd{u}$ a.e. as $f_t$ converges to it a.e. and $f_{t_n} \to f$.
 \end{proof}
+
 \begin{theorem}[Plancherel]
 	Let $f \in L^1(\mathbb R^d) \cap L^2(\mathbb R^d)$.
 	Then $\norm{f}_2 = (2\pi)^{-\frac{d}{2}} \norm{\hat f}_2$.
 \end{theorem}
+
 \begin{remark}
 	By the Pythagorean identity, $\inner{f, g} = (2\pi)^{-d} \inner{\hat f, \hat g}$.
 \end{remark}
+
 \begin{proof}
-	Initially, we assume $\hat f \in L^1$.
+	Initially, we assume $f, \hat f \in L^1$.
 	In this case, $f, \hat f \in L^\infty$, and $(x,u) \mapsto f(x)\hat f(u)$ is integrable for the product Lebesgue measure $\dd{x} \otimes \dd{u}$ on $\mathbb R^d \times \mathbb R^d$, so Fubini's theorem for bounded functions applies.
 	\begin{align*}
 		(2\pi)^d \norm{f}_2^2 &= (2\pi)^d \int_{\mathbb R^d} f(x) \overline{f(x)} \dd{x} \\
-		&= \int_{\mathbb R^d} \qty(\int_{\mathbb R^d} e^{-i\inner{u,x}} \hat f(u) \dd{u}) \overline{f(x)} \dd{x} \\
+		&= \int_{\mathbb R^d} \qty(\int_{\mathbb R^d} e^{-i\inner{u,x}} \hat f(u) \dd{u}) \overline{f(x)} \dd{x} < \infty (\text{ and } f \in L^2) \\
 		&= \int_{\mathbb R^d} \hat f(u) \overline{\int_{\mathbb R^d} e^{i\inner{u,x}} f(x) \dd{x}} \dd{u} \\
 		&= \int_{\mathbb R^d} \hat f(u) \overline{\hat f(u)} \dd{u} \\
 		&= \norm{\hat f}_2^2
 	\end{align*}
-	To extend this result to general $f$, we take the Gaussian convolutions $f \ast g_t = f_t$ s.t. $f_t \to f$ in $L^2$.
-	By the continuity of the norm, $\norm{f_t}_2 \to \norm{f}_2$.
-	Since $\abs{\hat f(u) e^{-\frac{\abs{u}^2 t}{2}}}^2$ increases to $\abs{\hat f(u)}^2$, we have by monotone convergence that $\norm{\hat f_t}_2^2 \uparrow \norm{\hat f}_2^2$.
-	Therefore, since the Plancherel identity holds for the $f_t$,
-	\[ \norm{f}_2^2 = \lim_{t \to 0} \norm{f_t}_2^2 = \lim_{t \to 0} (2\pi)^{-d} \norm{\hat f_t}_2^2 = (2\pi)^{-d} \norm{\hat f}_2^2 \]
+
+	Now, let $f \in L^1 \cap L^2$.
+	For $t > 0$, take $f_t = f \ast g_t \underset{t \to 0}{\longrightarrow} f$ in $L^2$ and so $\norm{f_t}_2 \underset{t \to 0}{\longrightarrow} \norm{f}_2$ continuity of the norm.
+	Also, $\hat{f_t}(u) = \hat{f}(u) \hat{g_t}(u) = \hat f(u) e^{-\frac{\abs{u}^2 t}{2}}$.
+	So $\abs{\hat{f_t}(u)} \uparrow \abs{\hat{f}(u)}$ as $t \to 0$.
+	Thus $\norm{\hat{f_t}(u)}_2^2 = \int |\hat{f_t}(u)|^2 \dd{u} \underset{t \to 0}{\longrightarrow} \int |\hat{f}(u)|^2 \dd{u} = \norm{\hat{f}}_2^2$ by MCT.
+
+	But, $f_t = f \ast g_t \in L^1$, and $\hat{f_t} \in L^1$.
+	So by the first part of the proof, $(2\pi)^d \norm{f_t}_2^2 = \norm{\hat{f_t}}_2^2$.
+	Letting $t \to 0$, we get $(2\pi)^d \norm{f}_2^2 = \norm{\hat{f}}_2^2$.
 \end{proof}
+
 \begin{remark}
 	Since $L_1 \cap L_2$ is dense in $L^2$, we can extend the linear operator $F_0(f) = (2\pi)^{-\frac{d}{2}} \hat f$ to $L^2$ by continuity to a linear isometry $F \colon L^2 \to L^2$ known as the \emph{Fourier--Plancherel transform}.
 	One can show that $F$ is surjective with inverse $F^{-1} \colon L^2 \to L^2$.
 \end{remark}
+
+\subsection{Characteristic fcns, Weak Convergence and the CLT}
+
+\begin{definition}[Characteristic Function]
+	For a r.v. $X$, its \vocab{characteristic function} is
+	\begin{align*}
+		\phi_X(t) = \mathbb{E}[e^{itx}] = \widehat{\mu_X} = \int e^{i \inner{t, x}} \dd{\mu_X(x)}
+	\end{align*}
+\end{definition}
+
 \begin{example}
 	Consider the Dirac measure $\delta_0$ on $\mathbb R$, so $\hat \delta_0(u) = \int_{\mathbb R} e^{iux} \dd{\delta_0(x)} = 1$.
 	But the inverse Fourier transform would be $\frac{1}{2\pi} \int_{\mathbb R} e^{iux} \dd{u}$ which is not a Lebesgue integrable function.
 \end{example}
+
+To circumvent this, we test `$\mu$' on nice test fcns $f$.
+
+\begin{remark}
+	2 p.m.s $\mu, \nu$ on $\mathbb{R}^d$ coincide $\iff$ $\int f \dd{\mu} = \int f \dd{\nu} \quad \forall \; f : \mathbb{R}^d \to \mathbb{R}$ bdd cts\footnote{RHS implies LHS, as if true for $f = 1_{[a, b]}$ then true on a $\pi$-system so done. We can approximate such $f$ with bdd cts fcns and so done.}.
+	In fact, enough to have condition holding $\forall \; f \in C_c^\infty$ (space of infinitely differentiable fcns with compact support).
+\end{remark}
+
+\begin{aside}{Aside}
+	($\mu : f \mapsto \mu(f)$ mapping from $C_c^\infty \to \mathbb{R}$ is a linear, cts (on $L_f$ topology), hence $\mu$ is ``Schwartz distribution'').
+
+\end{aside}
+
+\begin{definition}[Weak Convergence]
+	Let $(\mu_n), \mu$ be Borel prob measures on $\mathbb{R}^d$.
+	Then \vocab{$\mu_n$ converges to $\mu$ weakly} if $\int f \dd{\mu_n} \to \int f \dd{\mu}$ as $n \to \infty$ for all $f : \mathbb{R}^d \to \mathbb{R}$ bdd cts.
+\end{definition}
+
+\begin{remark} \
+	\begin{enumerate}
+		\item For a sequence of r.v.s $X_n$ and $X$ another r.v., $X_n \to X$ weakly if $\mu_{X_n} \to \mu_X$ weakly.
+		\item A sequence of prob measures, $\mu_n$, can have at most one weak limit by previous remark (the one about 2 p.m.s. coinciding).
+		\item If $X_n \to X$ weakly, and $h : \mathbb{R}^d \to \mathbb{R}^k$ cts, then $h(X_n) \to h(X)$ weakly (as r.v. in $\mathbb{R}^k$). (Continuous Mapping Theorem) (from definition as $f \circ h$ bdd cts if $f$ bdd cts).
+		\item Suffices to check condition in definition for all $f \in C_c^\infty$. (``tightness'' argument, i.e. $\exists \; K$ compact s.t. $\mu_n(K^c) < \epsilon \quad \forall \; n$ if $\mu_n \to \mu$ weakly. Sheet 4)
+		\item When $d = 1$, this is equivalent to $X_n \to X$ in distribution (i.e., $F_{X_n}(x) \to F_X(x)$ at all points where $x \mapsto F_X(x)$ is cts). Sheet 4 Q1, approximate indictators.
+	\end{enumerate}
+\end{remark}
+
 \begin{theorem}
-	Let $X$ be a random vector in $\mathbb R^d$ with law $\mu_X$.
+	Let $X$ be a r.v. in $\mathbb R^d$ with law $\mu_X$.
 	Then the characteristic function $\varphi_X = \hat \mu_X$ uniquely determines $\mu_X$.
-	In addition, if $\varphi_X \in L^1$, then $\mu_X$ has a probability density function $f_X$ which can be computed almost everywhere by $\frac{1}{(2\pi)^d} \int_{\mathbb R^d} e^{-i\inner{u,x}} \varphi_X(u) \dd{u}$.
+	In addition, if $\varphi_X \in L^1$, then $\mu_X$ has a bdd cts pdf $f_X(x) = \frac{1}{(2\pi)^d} \int_{\mathbb R^d} e^{-i\inner{u,x}} \varphi_X(u) \dd{u}$ a.e..
 \end{theorem}
+
 \begin{proof}
 	Let $Z = (Z_1, \dots, Z_d)$ be a vector of independent and identically distributed r.v.s, independent of $X$, with $Z_j \sim N(0,1)$.
-	Then $\sqrt{t} Z$ has probability density function $g_t$.
-	Then $X + \sqrt{t} Z$ has probability density function $f_t = \mu_X \ast g_t$.
-	This is a Gaussian convolution since $\mu_X \ast g_t = \mu_X \ast g_{\frac t 2} \ast g_{\frac t 2}$.
-	Hence,
-	\[ f_t(x) = \frac{1}{(2\pi)^d} \int_{\mathbb R^d} e^{i\inner{u,x}} \varphi_X(u) e^{-\frac{\abs{u}^2 t}{2}} \dd{u} \]
+	Then $\sqrt{t} Z$ has pdf $g_t$ and $X + \sqrt{t} Z$ has pdf $f_t = \mu_X \ast g_t$.
+	Then, $\hat{f_t}(u) = \hat{\mu_X}(u) \hat{g_t}(u) = \phi_X(u) e^{-\frac{\abs{u}^2 t}{2}}$.
+	So by F.I. of Gaussian convolutions,
+	\[ f_t(x) = \frac{1}{(2\pi)^d} \int_{\mathbb R^d} e^{-i\inner{u,x}} \varphi_X(u) e^{-\frac{\abs{u}^2 t}{2}} \dd{u} \]
 	which is uniquely determined by $\varphi_X$.
-	We show on an example sheet that two Borel probability measures $\mu, \nu$ on $\mathbb R^d$ coincide if and only if $\mu(g) = \nu(g)$ for all $g \colon \mathbb R^d \to \mathbb R$ that are bounded, continuous, and have compact support.
+
+	We show on an example sheet that two Borel prob measures $\mu, \nu$ on $\mathbb R^d$ coincide iff $\mu(g) = \nu(g) \quad \forall \; g \colon \mathbb R^d \to \mathbb R$ bdd, cts with compact support.
 	Now,
 	\[ \int_{\mathbb R^d} g(x) f_t(x) \dd{x} = \expect{\underbrace{g(X + \sqrt{t} Z)}_{\to X \text{ a.s.}}} \]
-	Since $\abs{g(X + \sqrt{t}Z)} \leq \norm{g}_\infty < \infty$, by the bounded convergence theorem, this converges to $\expect{g(X)} = \int_{\mathbb R^d} g(x) \dd{\mu_X(x)}$.
+	Since $\abs{g(X + \sqrt{t}Z)} \leq \norm{g}_\infty < \infty$, by BCT, this converges as $t \to 0$ to $\expect{g(X)} = \int_{\mathbb R^d} g(x) \dd{\mu_X(x)} (\ast)$.
 	So by uniqueness of limits, $\varphi_X$ determines $\mu_X$.
 
-	If $\varphi_X \in L^1$, by dominated convergence, $f_t(x)$ converges everywhere to some function $f_X$.
-	In particular, since $\mu_X \ast g_t \geq 0$, the limit $f_X$ is also nonnegative on $\mathbb R^d$.
-	Then, for any bounded continuous function on compact support $g \in C^b_c(\mathbb R^d)$,
-	\[ \int_{\mathbb R^d} g(x) f_X(x) \dd{x} = \int_{\mathbb R^d} g(x) \lim_{t \to 0} \underbrace{f_t(x)}_{\norm{\varphi_X}_1} \dd{x} = \lim_{t \to 0} \int_{\mathbb R^d} g(x) f_t(x) \dd{x} = \int_{\mathbb R^d} g(x) \dd{\mu_X(x)} \]
-	by the dominated convergence theorem, since $g$ has compact support.
+	If $\varphi_X \in L^1$, then $ e^{-i\inner{u,x}} \varphi_X(u) e^{-\frac{\abs{u}^2 t}{2}} \underset{t \to 0}{\longrightarrow} e^{-i\inner{u,x}} \phi_X(u)$.
+	By DCT, $f_t(x) \to f_X(x)$ as $t \to 0 \; \forall \; x$.
+
+	In particular, since $\mu_X \ast g_t \geq 0$, $f_X \geq$ on $\mathbb R^d$.
+	Then, for any bdd cts $g$ with compact support,
+
+	\begin{align*}
+		\int \underbracket{g(x) f_t(x)}_{\text{As } t \to 0, \to g(x) f_X(x)} \dd{x} &\to \int g(x) f_X(x) \dd{x} \text{ by DCT as } |f_t(x)| \leq \frac{1}{(2\pi)^d} \norm{\phi_X}_1
+	\end{align*}
+	By $(\ast)$, $\int g(x) \dd{\mu_X(x)} = \int g(x) f_X(x) \dd{x} \quad \forall \; g$ bdd cts with compact support.
+
+	Thus $\mu_X$ has density $f_X$.
 \end{proof}
-\begin{definition}
-	A sequence $(\mu_n)_{n \in \mathbb N}$ of Borel probability measures on $\mathbb R^d$ \emph{converges weakly} to a Borel probability measure $\mu$ if $\mu_n(g) \to \mu(g)$ for all $g \colon \mathbb R^d \to \mathbb R$ bounded and continuous.
-	If $(X_n)_{n \in \mathbb N}, X$ are random vectors with laws $(\mu_{X_n}), \mu_X$ s.t. $\mu_{X_n}$ converges weakly to $\mu_X$, we say $(X_n)$ converges weakly to $X$.
-\end{definition}
-\begin{remark}
-	If $d = 1$, weak convergence is equivalent to convergence in distribution; this is proven on an example sheet.
-	One can also show that convergence of $\mu_n(g)$ to $\mu(g)$ for all $g \in C_c^\infty(\mathbb R^d)$ suffices to show weak convergence, where $C_c^\infty(\mathbb R^d)$ is the space of smooth functions of compact support.
-	This is equivalent to the notion of weak-${}^\star$ convergence on the function space $C_b(\mathbb R^d)$.
-\end{remark}
+
 \begin{theorem}[L\'evy's continuity theorem]
-	Let $X_n, X$ be random vectors in $\mathbb R^d$, s.t. $\varphi_{X_n}(u) \to \varphi_X(u)$ for all $u$, as $n \to \infty$.
-	Then $\mu_{X_n} \to \mu_X$ weakly.
+	Let $X_n, X$ be r.v.s on $\mathbb R^d$, s.t. $\varphi_{X_n}(u) \to \varphi_X(u) \; \forall \; u$, as $n \to \infty$.
+	Then $X_n \to X$ weakly.
 \end{theorem}
+
 \begin{remark}
-	The converse holds by definition of weak convergence, testing against the complex exponentials in the Fourier transform.
+	\begin{enumerate}
+		\item A stronger version of this theorem is that if $\phi_{X_n}(u) \to \phi(u) \; \forall \; u$ for some fcn $\phi$ that is cts in a nbd of $0$, then $\phi$ is the c.f. of some r.v. $X$ and $X_n \to X$ weakly.
+		\item \underline{Cramer' Wold device}: Let $(X_n), X$ be r.v.s on $\mathbb{R}^d$, then $X_n \to X$ weakly iff $\inner{u, X_n} \to \inner{u, X} \; \forall \; u \in \mathbb{R}^d$ weakly or in distribution in $\mathbb{R}$. LHS $\implies RHS$ by continuous mapping theorem, the converse holds as $e^{i \inner{u, x}}$ is bdd cts so $\mathbb{E}[f(X_n)] = \phi_{X_n}(u) \to \mathbb{E}[f(x)] = \phi_X(u) \; \forall \; u$. So done by L\'evy's.
+		\item The converse holds by definition of weak convergence, testing against the complex exponentials in the Fourier transform.
+	\end{enumerate}
 \end{remark}
+
 \begin{proof}
-	Let $Z = (Z_1, \dots, Z_d)$ be a vector of standard normal r.v.s, independent from each other, $X_n$, and $X$.
-	Let $g \in C_c^\infty(\mathbb R^d)$.
-	Then $g \in L^1(\mathbb R^d)$, and is Lipschitz by the mean value theorem, as its first derivative is bounded.
-	Let $\abs{g(x) - g(y)} \leq \norm{g}_{\mathrm{Lip}} \abs{x - y}$.
-	Let $\varepsilon > 0$.
-	Let $t > 0$ be sufficiently small s.t. $\sqrt t \norm{g}_{\mathrm{Lip}} \expect{\abs{Z}} < \frac{\varepsilon}{3}$.
+	Let $g : \mathbb{R}^d \to \mathbb{R}$ be compactly suppored and Lipschitz cts, i.e. $|g(x) - g(y)| \leq C_g |x-y| \; \forall \; x, y \in \mathbb{R}^d$.
+	This includes all $g \in C_c^\infty$ as any fcn with bounded derivative is Lipschitz.
+	Enough to show, $\mathbb{E}[g(X_n)] \to \mathbb{E}[g(X)]$.
+
+	Let $Z \sim N(0, I_d)$ indep of $(X_n), X$.
+	Then for fixed $\epsilon > 0$, choose $t > 0$ small enough s.t. $C_g \sqrt t \expect{\abs{Z}} \leq \frac{\varepsilon}{3}$.
 	Then,
 	\begin{align*}
 		\abs{\mu_{X_n}(g) - \mu_X(g)} &= \abs{\expect{g(X_n)} - \expect{g(X)}} \\
+		&\leq \abs{\expect{g(X_n) - g(X_n + \sqrt t Z)}} + \abs{\expect{g(X) - g(X + \sqrt t Z)}} \\
+		&+ \abs{\expect{g(X_n + \sqrt t Z) - g(X + \sqrt t Z)}} \\
 		&\leq \expect{\abs{g(X_n) - g(X_n + \sqrt t Z)}} + \expect{\abs{g(X) - g(X + \sqrt t Z)}} \\
 		&+ \abs{\expect{g(X_n + \sqrt t Z) - g(X + \sqrt t Z)}} \\
-		&\leq 2\norm{g}_{\mathrm{Lip}}\sqrt t \expect{\abs{Z}} + \abs{\expect{g(X_n + \sqrt t Z) - g(X + \sqrt t Z)}} \\
+		&\leq 2 C_g \sqrt t \expect{\abs{Z}} + \abs{\expect{g(X_n + \sqrt t Z) - g(X + \sqrt t Z)}} \\
 		&\leq \frac{2\varepsilon}{3} + \abs{\expect{g(X_n + \sqrt t Z) - g(X + \sqrt t Z)}}
 	\end{align*}
 	We show that the remaining term can be made less than $\frac{\varepsilon}{3}$ as $n \to \infty$.
@@ -360,7 +439,7 @@ Note that $\widehat{f \ast g_t}(u) = \hat f(u) e^{-\frac{\norm{u}^2 t}{2}}$, so 
 		\expect{g(X_n + \sqrt t Z)} &= \int_{\mathbb R^d} g(x) f_{t,n}(x) \dd{x} \\
 		&= \frac{1}{(2\pi)^d} \int_{\mathbb R^d} g(x) \int_{\mathbb R^d} e^{-i\inner{u,x}} \varphi_{X_n}(u) e^{-\frac{\abs{u}^2 t}{2}} \dd{u} \dd{x}
 	\end{align*}
-	Since characteristic functions are bounded by 1, we can apply the dominated convergence theorem with dominating function $\abs{g(x)} e^{-\frac{\abs{u}^2 t}{2}}$ to find
+	Since characteristic functions are bounded by 1, we can use DCT with dominating function $\abs{g(x)} e^{-\frac{\abs{u}^2 t}{2}}$ to find
 	\begin{align*}
 		\expect{g(X_n + \sqrt t Z)} &\to \frac{1}{(2\pi)^d} \int_{\mathbb R^d} g(x) \int_{\mathbb R^d} e^{-i\inner{u,x}} \varphi_X(u) e^{-\frac{\abs{u}^2 t}{2}} \dd{u} \dd{x} \\
 		&= \int_{\mathbb R^d} g(x) f_t(x) \dd{x} \\
@@ -369,17 +448,24 @@ Note that $\widehat{f \ast g_t}(u) = \hat f(u) e^{-\frac{\norm{u}^2 t}{2}}$, so 
 	where $f_t = g_t \ast \mu_X$.
 	So as $n \to \infty$, the difference between these two terms can be made less than $\frac{\varepsilon}{3}$ as required.
 \end{proof}
-\begin{theorem}[central limit theorem]
-	Let $X_1, \dots, X_n$ be independent and identically distributed r.v.s with $\expect{X_i} = 0$ and $\Var{X_i} = 1$.
+
+\begin{note}
+	We like adding Gaussians, as pdf of $X + Z$ exists due to $Z$ having a pdf. Also, pdf is a Gaussian convolution, which is nice.
+\end{note}
+
+\begin{theorem}[Central Limit Theorem]
+	Let $X_1, \dots, X_n$ be iid r.v.s on $\mathbb{R}$ with $\expect{X_i} = 0$ and $\Var{X_i} = 1$.
 	Let $S_n = \sum_{i=1}^n X_n$.
 	Then
-	\[ \frac{1}{\sqrt{n}} S_n \xrightarrow{\text{weakly}} Z \sim N(0,1) \]
+	\[ \frac{1}{\sqrt{n}} S_n \xrightarrow{\text{weakly}}\footnote{As $d = 1$ equiv to in distribution convergence} Z \sim N(0,1) \]
 	In particular,
 	\[ \prob{\frac{1}{\sqrt{n}} S_n \leq x} \to \prob{Z \leq x} \]
 \end{theorem}
+
 \begin{proof}
 	Let $X = X_1$.
-	The characteristic function $\varphi(u) = \varphi_X(u) = \expect{e^{iuX}}$ satisfies $\varphi(0) = 1$, $\varphi'(u) = i \expect{X e^{iuX}}$, $\varphi''(u) = i^2 \expect{X^2 e^{iuX}}$.
+	The characteristic function $\varphi(u) = \varphi_X(u) = \expect{e^{iuX}}$ satisfies $\varphi(0) = 1$.
+	As $\mathbb{E}[X^2] < \infty$ by DUTIS $\varphi'(u) = i \expect{X e^{iuX}}$,    $\varphi''(u) = i^2 \expect{X^2 e^{iuX}}$ (Sheet 3).
 	We can find $\varphi'(0) = i\expect{X} = 0$ and $\varphi''(0) = -\expect{X^2} = -\Var X = -1$.
 	By Taylor's theorem, $\varphi(v) = 1 - \frac{v^2}{2} + o(v^2)$ as $v \to 0$.
 	Now, denoting $\varphi_n(u) = \varphi_{\frac{1}{\sqrt n} S_n}(u)$, we can write
@@ -387,58 +473,86 @@ Note that $\widehat{f \ast g_t}(u) = \hat f(u) e^{-\frac{\norm{u}^2 t}{2}}$, so 
 		\varphi_n(u) &= \expect{e^{i\frac{u}{\sqrt n} (X_1 + \dots + X_n)}} \\
 		&= \prod_{j=1}^n \expect{e^{i\frac{u}{\sqrt n} X_j}} \\
 		&= \qty[\varphi\qty(\frac{u}{\sqrt n})]^n \\
-		&= \qty[1 - \frac{u^2}{2n} + o\qty(\frac{1}{n})]^n
+		&= \qty[1 - \frac{u^2}{2n} + o\qty(\frac{u^2}{n})]^n \\
+		&= \qty[1 - \frac{u^2}{2n} + o\qty(\frac{1}{n})]^n \text{ fixing $u$ and letting $n \to \infty$}
 	\end{align*}
 	The complex logarithm satisfies $\log(1 + z) = z + o(z)$, so by taking logarithms, we find
 	\[ \log \varphi_n(u) = n \log\qty(1 - \frac{u^2}{2n} + o\qty(\frac{1}{n})) = -\frac{u^2}{2} \]
 	Hence, $\varphi_n(u) \to e^{-\frac{\abs{u}^2}{2}} = \varphi_Z(u)$.
 	So by L\'evy's continuity theorem, the result follows.
 \end{proof}
+
 \begin{remark}
-	This theorem extends to $\mathbb R^d$ by using the next proposition, using the fact that $X_n \to X$ weakly in $\mathbb R^d$ if and only if $\inner{X_n, v} \to \inner{X, v}$ weakly in $\mathbb R$ for all $v \in \mathbb R^d$.
+	The CLT in $\mathbb{R}^d$ can be proved similarly using the Cramer-Wold device and properties of multi-variate Guassians.
+
+	% This theorem extends to $\mathbb R^d$ by using the next proposition, using the fact that $X_n \to X$ weakly in $\mathbb R^d$ if and only if $\inner{X_n, v} \to \inner{X, v}$ weakly in $\mathbb R$ for all $v \in \mathbb R^d$.
 \end{remark}
-\begin{definition}
-	A r.v. $X$ in $\mathbb R^d$ is called a \emph{Gaussian vector} if $\inner{X_n, v}$ are Gaussian for each $v \in \mathbb R^d$.
+
+\begin{definition}[Gaussian]
+	A r.v. on $\mathbb{R}$ is \vocab{Gaussian} ($N(\mu, \sigma)$), if it has density
+	\begin{align*}
+		\frac{1}{\sqrt{2\pi} \sigma} e^{- \frac{(x - \mu)^2}{2\sigma^2}}
+	\end{align*}
+	for $\mu \in \mathbb{R}$, $\sigma > 0$.
 \end{definition}
+
+\begin{definition}[Gaussian]
+	A r.v. $X$ in $\mathbb R^d$ is \vocab{Gaussian} if $\inner{X_n, v}$ are Gaussian for each $v \in \mathbb R^d$.
+\end{definition}
+
+\begin{example}
+	If $X_1, \dots, X_n \overset{\text{iid}}{\sim} N(0, 1)$, then $X = (X_1, \dots, X_n)$ is Gaussian in $\mathbb{R}^n$.
+	Check the c.f. of $\inner{X, v}$
+\end{example}
+
 \begin{proposition}
-	Let $X$ be a Gaussian vector in $\mathbb R^d$.
-	Then $Z = AX + b$ is a Gaussian vector in $\mathbb R^m$ where $A$ is an $m \times d$ matrix and $b \in \mathbb R^m$.
-	Also, $X \in L^2(\mathbb R^d)$, and $\mu = \expect{X}$ and $V = \Cov{X_i, X_j}$ exist and determine $\mu_X$.
-	The characteristic function is
-	\[ \varphi_X(u) = e^{i\inner{\mu,u} - \frac{\inner{u,Vu}}{2}} \]
-	If $V$ is invertible, then $\mu_X$ has a probability density function
-	\[ f_X(x) = (2\pi)^{-\frac{d}{2}} (\det V)^{-\frac{1}{2}} \exp{-\inner{x-\mu, V^{-1}(x - \mu)}} \]
-	Subvectors $X_{(1)}, X_{(2)}$ of $X$ are independent if and only if $\Cov{X_{(1)}, X_{(2)}} = 0$.
-\end{proposition}
-\begin{proposition}
-	Let $X_n \to X$ weakly in $\mathbb R^d$ as $n \to \infty$.
-	Then,
+	Let $X$ be Gaussian in $\mathbb R^n$, $A$ is an $m \times n$ matrix and $b \in \mathbb R^m$.
+	Then
 	\begin{enumerate}
-		\item if $h \colon \mathbb R^d \to \mathbb R^k$ is continuous, then $h(X_n) \to h(X)$ weakly;
-		\item if $\abs{X_n - Y_n} \to 0$ in probability, then $Y_n \to X$ weakly;
-		\item if $Y_n \to c$ in probability where $c$ is constant on $\Omega$, then $(X_n, Y_n) \to (X, c)$ weakly in $\mathbb R^d \times \mathbb R^d$.
+		\item $AX + b$ is Guassian in $\mathbb{R}^m$.
+		\item $X \in L^2(\mathbb R^d)$, and $\mu = \expect{X}$ and $V = \Cov{(X_i, X_j)}$ exist and determine $\mu_X$.
+		\item $\varphi_X(u) = e^{i\inner{\mu,u} - \frac{\inner{u,Vu}}{2}}$
+		\item If $V$ is invertible, then $\mu_X$ has pdf
+		\[ f_X(x) = (2\pi)^{-\frac{d}{2}} (\det V)^{-\frac{1}{2}} \exp{-\frac{1}{2} \inner{x-\mu, V^{-1}(x - \mu)}} \]
+		\item Subvectors $X_{(1)}, X_{(2)}$\footnote{$X_{(1)}, X_{(2)}$ partition $X$} of $X$ are indep iff $\Cov{(X_{(1)}, X_{(2)})} = 0$.
 	\end{enumerate}
 \end{proposition}
-\begin{remark}
-	Combining parts (iii) and (i), $X_n + Y_n \to X + c$ weakly if $Y_n \to c$ in probability.
-	If $d = 1$, then in addition $X_n Y_n \to c X$ weakly.
-\end{remark}
+
 \begin{proof}
-	\emph{Part (i).}
-	This follows from the fact that $gh$ is continuous for any test function $g$.
-
-	\emph{Part (ii).}
-	Let $g \colon \mathbb R^d \to \mathbb R$ be bounded and Lipschitz continuous.
-	Then
-	\[ \abs{\expect{g(Y_n)} - \expect{g(X)}} \leq \underbrace{\abs{\expect{g(X_n)} - \expect{g(X)}}}_{< \frac{\varepsilon}{3}} + \expect{\abs{g(X_n) - g(Y_n)}} \]
-	where the bound on $\expect{g(X_n)} - \expect{g(X)}$ holds for sufficiently large $n$.
-	Then the remaining term is upper bounded by
-	\[ \expect{\abs{g(X_n) - g(Y_n)}} \qty(1_{\qty{\abs{X_n - Y_n} \leq \frac{\varepsilon}{3\norm{g}_{\mathrm{Lip}}}}} + 1_{\qty{\abs{X_n - Y_n} > \frac{\varepsilon}{3\norm{g}_{\mathrm{Lip}}}}} ) \]
-	\[ \leq \norm{g}_{\mathrm{Lip}} \frac{\varepsilon}{3\norm{g}_{\mathrm{Lip}}} + 2\norm{g}_\infty \prob{\abs{X_n - Y_n} > \frac{\varepsilon}{3\norm{g}_{\mathrm{Lip}}}} < \frac{2\varepsilon}{3} \]
-	for sufficiently large $n$.
-
-	\emph{Part (iii).}
-	$\abs{(X_n, c) - (X_n, Y_n)} = \abs{Y_n - c} \to 0$ in probability.
-	Also, $\expect{g(X_n, c)} \to \expect{g(X, c)}$ for all bounded continuous maps $g \colon \mathbb R^d \times \mathbb R^d \to \mathbb R$, so $(X_n, c) \to (X, c)$ weakly.
-	Hence, by (ii), $(X_n, Y_n) \to (X, c)$ weakly.
+	Proofs are easy, and in examples sheets and James Norris' notes.
 \end{proof}
+
+% \begin{proposition}
+% 	Let $X_n \to X$ weakly in $\mathbb R^d$ as $n \to \infty$.
+% 	Then,
+% 	\begin{enumerate}
+% 		\item if $h \colon \mathbb R^d \to \mathbb R^k$ is continuous, then $h(X_n) \to h(X)$ weakly;
+% 		\item if $\abs{X_n - Y_n} \to 0$ in probability, then $Y_n \to X$ weakly;
+% 		\item if $Y_n \to c$ in probability where $c$ is constant on $\Omega$, then $(X_n, Y_n) \to (X, c)$ weakly in $\mathbb R^d \times \mathbb R^d$.
+% 	\end{enumerate}
+% \end{proposition}
+
+% \begin{remark}
+% 	Combining parts (iii) and (i), $X_n + Y_n \to X + c$ weakly if $Y_n \to c$ in probability.
+% 	If $d = 1$, then in addition $X_n Y_n \to c X$ weakly.
+% \end{remark}
+
+% \begin{proof}
+% 	\emph{Part (i).}
+% 	This follows from the fact that $gh$ is continuous for any test function $g$.
+
+% 	\emph{Part (ii).}
+% 	Let $g \colon \mathbb R^d \to \mathbb R$ be bounded and Lipschitz continuous.
+% 	Then
+% 	\[ \abs{\expect{g(Y_n)} - \expect{g(X)}} \leq \underbrace{\abs{\expect{g(X_n)} - \expect{g(X)}}}_{< \frac{\varepsilon}{3}} + \expect{\abs{g(X_n) - g(Y_n)}} \]
+% 	where the bound on $\expect{g(X_n)} - \expect{g(X)}$ holds for sufficiently large $n$.
+% 	Then the remaining term is upper bounded by
+% 	\[ \expect{\abs{g(X_n) - g(Y_n)}} \qty(1_{\qty{\abs{X_n - Y_n} \leq \frac{\varepsilon}{3\norm{g}_{\mathrm{Lip}}}}} + 1_{\qty{\abs{X_n - Y_n} > \frac{\varepsilon}{3\norm{g}_{\mathrm{Lip}}}}} ) \]
+% 	\[ \leq \norm{g}_{\mathrm{Lip}} \frac{\varepsilon}{3\norm{g}_{\mathrm{Lip}}} + 2\norm{g}_\infty \prob{\abs{X_n - Y_n} > \frac{\varepsilon}{3\norm{g}_{\mathrm{Lip}}}} < \frac{2\varepsilon}{3} \]
+% 	for sufficiently large $n$.
+
+% 	\emph{Part (iii).}
+% 	$\abs{(X_n, c) - (X_n, Y_n)} = \abs{Y_n - c} \to 0$ in probability.
+% 	Also, $\expect{g(X_n, c)} \to \expect{g(X, c)}$ for all bounded continuous maps $g \colon \mathbb R^d \times \mathbb R^d \to \mathbb R$, so $(X_n, c) \to (X, c)$ weakly.
+% 	Hence, by (ii), $(X_n, Y_n) \to (X, c)$ weakly.
+% \end{proof}
