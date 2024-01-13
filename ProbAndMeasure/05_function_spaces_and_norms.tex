@@ -363,7 +363,7 @@ But $\expect{\abs{X} 1_{A_n}} \leq \expect{\abs{X} 1_{\bigcup_{m \geq n} A_m}}$.
 Note that $1_{\bigcup_{m \geq n} A_m} \to 1_{\bigcap_n \bigcup_{m \geq n} A_n} = 0$ a.s., so $\expect{\abs{X} 1_{\bigcup_{m \geq n} A_m}} \to \expect{\abs{X} 1_{\bigcap_n \bigcup_{m \geq n}}} = 0$ by DCT \Lightning.
 
 \begin{definition}[Uniformly Integrable]
-	For a collection $\mathcal X \subseteq L^1(\mathbb P)$ of r.v.s, we say $\mathcal X$ is \vocab{uniformly integrable (UI)} if it is bounded in $L^1(\mathbb P)$\footnote{I.e. $\sup_{x \in \mathcal{X}} \norm{X}_1 = \sup_{x \in \mathcal{X}} |X| = I_{\mathcal{X}}(1) < \infty$.}, and
+	For a collection $\mathcal X \subseteq L^1(\mathbb P)$ of r.v.s, we say $\mathcal X$ is \vocab{uniformly integrable (UI)} if it is bounded in $L^1(\mathbb P)$\footnote{I.e. $\sup_{x \in \mathcal{X}} \norm{X}_1 = \sup_{x \in \mathcal{X}} \mathbb{E}[|X|] = I_{\mathcal{X}}(1) < \infty$.}, and
 	\[ I_{\mathcal X}(\delta) = \sup \qty{ \expect{\abs{X}1_A} : \prob{A} \leq \delta, X \in \mathcal X} \to 0 \text{ as } \delta \to 0.\]
 \end{definition}
 

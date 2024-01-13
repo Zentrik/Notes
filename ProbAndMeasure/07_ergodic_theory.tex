@@ -23,7 +23,7 @@ This result has several weaknesses, and we can provide stronger results.
 \end{proposition}
 
 \begin{proposition}
-	Let $(X_n)_{n \in \mathbb N}$ be iid s.t. $\expect{X_n} = \mu < \infty$ and $\expect{X_n^4} \leq M$.
+	Let $(X_n)_{n \in \mathbb N}$ be indep with $\expect{X_n} = \mu$ and $\expect{X_n^4} \leq M \ \forall \; n$.
 	Then $\frac{1}{n} \sum_{i=1}^n X_i \to \mu$ a.s. as $n \to \infty$.
 \end{proposition}
 
@@ -42,157 +42,219 @@ This result has several weaknesses, and we can provide stronger results.
 	Let $S_n = \sum_{i=1}^n X_i$.
 	Then,
 	\begin{align*}
-        \expect{\sum_{n=1}^\infty \qty(\frac{S_n}{n})^4} \leq \sum_{n=1}^\infty \frac{1}{n^4} 3n^2 M < \infty
+		\expect{\qty(\frac{S_n}{n})^4} &\leq \frac{1}{n^4} 3n^2 M \\
+        \expect{\sum_{n=1}^\infty \qty(\frac{S_n}{n})^4} &= \sum_{i=1}^{\infty} \expect{\qty(\frac{S_n}{n})} \text{ by MCT} \\
+		&\leq \sum_{n=1}^\infty \frac{3M}{n^2} < \infty
     \end{align*}
 	Hence $\sum_{n=1}^\infty \qty(\frac{S_n}{n})^4 < \infty$ almost surely.
 	But then $\qty(\frac{S_n}{n})^4 \to 0$ almost surely, so $\frac{S_n}{n} \to 0$ almost surely.
 \end{proof}
 
-\subsection{Invariants}
+\subsection{Invariants - Measure Preserving Transformations}
 
 Let $(E, \mathcal E, \mu)$ be a $\sigma$-finite measure space.
-\begin{definition}
-	A measurable transformation $\Theta \colon E \to E$ is \emph{measure-preserving} if $\mu(\Theta^{-1}(A)) = \mu(A)$ for all $A \in \mathcal E$.
+
+\begin{definition}[Measure Preserving]
+	A measurable map $\Theta \colon E \to E$ is \vocab{measure-preserving} (m.p.) if $\mu \circ \Theta\inv = \mu$, i.e. $\mu(\Theta^{-1}(A)) = \mu(A) \; \forall \; A \in \mathcal E$.
 \end{definition}
-In this case, for any integrable function $f \in L^1(\mu)$, we have $\int_E f \dd{\mu} = \int_E f \circ \Theta \dd{\mu}$.
-\begin{definition}
-	A measurable map $f \colon E \to \mathbb R$ is called \emph{$\Theta$-invariant} if $f \circ \Theta = f$.
-	A set $A \in \mathcal E$ is $\Theta$-invariant if $\Theta^{-1}(A) = A$, or equivalently, $1_A$ is $\Theta$-invariant.
+
+In this case, for any integrable function $f \in L^1(\mu)$, we have $\int_E f \dd{\mu} = \int_E f \circ \Theta \dd{\mu}$ as $\int_E f \circ \Theta \dd{\mu} = \int_E f \dd{\mu \circ \Theta\inv}$.
+
+\begin{definition}[$\Theta$-Invariant]
+	A measurable map $f \colon E \to \mathbb R$ is called \vocab{$\Theta$-invariant} if $f \circ \Theta = f$. \\
+	A set $A \in \mathcal E$ is \vocab{$\Theta$-invariant} if $\Theta^{-1}(A) = A$, or equivalently, $1_A$ is $\Theta$-invariant.
 \end{definition}
+
 The collection $\mathcal E_\Theta$ of $\Theta$-invariant sets forms a $\sigma$-algebra over $E$.
-A function $f \colon E \to \mathbb R$ is invariant if and only if $f$ is $\mathcal E_\Theta$-measurable; this is a question on an example sheet.
-\begin{definition}
-	$\Theta$ is called \emph{ergodic} if the $\Theta$-invariant sets $A$ satisfy either $\mu(A) = 0$ or $\mu(E \setminus A) = 0$.
+A function $f \colon E \to \mathbb R$ is invariant iff $f$ is $\mathcal E_\Theta$-measurable (Sheet 4).
+
+\begin{definition}[Ergodic]
+	$\Theta$ is called \vocab{ergodic} if the $\mathcal{E}_\Theta$ is $\mu$-trivial, i.e. $\forall \; A \in \mathcal{E}_\Theta$ $\mu(A) = 0$ or $\mu(A^c) = 0$.
 \end{definition}
-If $f$ is $\Theta$-invariant and $\Theta$ is ergodic, then one can show that $f$ is constant almost everywhere on $E$.
+
+The point is an ergodic tranformation mixes the sets well.
+Boltzman (1880), Ergodic hypothesis - over long times, a gas particle in some space will ``fill the whole space'', it will be arbitrarly close to any point in the space.
+You could imagine a trajectory, $x, \Theta(x), \Theta^2(x), \dots$
+
+
+For Markov Chains, ergodicity $\iff$ irreducibility.
+
+\begin{fact}
+	If $f$ is $\Theta$-invariant, $\Theta$ is ergodic iff $f$ is constant a.s. on $E$ (Sheet 4).
+\end{fact}
+
+\begin{proof}
+	See Sheet 4.
+	We want to show distribution of $f$ is a step function.
+	We know $f \in \mathcal{E}_\Theta$ so $\mu(f\inv(-\infty, x)) = 0$ or $\mu(f\inv[x, \infty)) = 0$.
+	Hence $f$ is constant. % with the constant being the sup of the $x$ s.t. $\mu(f\inv(-\infty, x)) = 0$.
+\end{proof}
+
 \begin{example}
 	Consider $(E, \mathcal E) = ((0,1], \mathcal B)$ with the Lebesgue measure $\mu$.
-	The maps $\Theta_a(x) = x + a$ modulo 1 and $\Theta(x) = 2x$ modulo 1 are both measure-preserving, and ergodic unless $a \in \mathbb Q$.
-	This is a question on an example sheet.
+	The maps $\Theta_a(x) = x + a$ modulo 1 and $\Theta(x) = 2x$ modulo 1 are both m.p., and ergodic unless $a \in \mathbb Q$ (Sheet 4).
 \end{example}
-\begin{lemma}[maximal ergodic lemma]
+
+\subsection{Ergodic theorems}
+\begin{lemma}[Maximal Ergodic Lemma] \label{lem:max}
     Let $(E, \mathcal E, \mu)$ be a $\sigma$-finite measure space.
-	Let $\Theta \colon E \to E$ be measure-preserving.
+	Let $\Theta \colon E \to E$ be m.p..
 	For $f \in L^1(\mu)$, we define $S_0(f) = 0$ and $S_n(f) = \sum_{k=0}^{n-1} f \circ \Theta^k$.
     Let $S^\star = S^\star(f) = \sup_{n \geq 0} S_n(f)$.
     Then $\int_{\qty{S^\star > 0}} f \dd{\mu} \geq 0$.
 \end{lemma}
+
 \begin{proof}
     Define $S_n^\star = \max_{k \leq n} S_k$.
     Then clearly $S_n^\star \uparrow S^\star$, and $S_k \leq S_n^\star$ for all $k \leq n$.
-    Note that $S_{k+1} = S_k \circ \Theta + f \leq S_n^\star \circ \Theta + f$.
+    Note that for $m \leq n+1$, $S_m = S_{m-1} \circ \Theta + f \leq S_n^\star \circ \Theta + f$.
 
-    Define $A_n = \qty{S_n^\star > 0}$, so $A_n \uparrow \qty{S^\star > 0}$.
+    Define $A_n = \qty{S_n^\star > 0}$.
     On $A_n$, we have
     \begin{align*}
-        S_n^\star = \max_{1 \leq k \leq n} S_k \leq \max_{0 \leq k \leq n} S_{k+1} \leq S_n^\star \circ \Theta + f
+        S_n^\star = \max_{1 \leq k \leq n} S_k \leq \max_{1 \leq k \leq n+1} S_k \leq S_n^\star \circ \Theta + f
     \end{align*}
     since $S_0 = 0$.
     We can integrate this inequality to find
     \begin{align*}
         \int_{A_n} S_n^\star \dd{\mu} \leq \int_{A_n} S_n^\star \circ \Theta \dd{\mu} + \int_{A_n} f \dd{\mu}
     \end{align*}
-    On the complement $A_n^c$, we must have $S_n^\star = 0 \leq S_n^\star \circ \Theta$.
+    On $A_n^c$, we must have $S_n^\star = 0 \leq S_n^\star \circ \Theta$.
     Hence,
     \begin{align*}
         \int_E S_n^\star \dd{\mu} \leq \int_E S_n^\star \circ \Theta \dd{\mu} + \int_{A_n} f \dd{\mu}
     \end{align*}
-    Since $\Theta$ is measure-preserving,
+    Since $\Theta$ is m.p.,
     \begin{align*}
         \int_E S_n^\star \dd{\mu} \leq \int_E S_n^\star \dd{\mu} + \int_{A_n} f \dd{\mu}
     \end{align*}
-    so we obtain
+    so we obtain (as $S_n^\star \in L_1$)
     \begin{align*}
-        \int_{A_n} f \dd{\mu} \geq 0
+        \int_{A_n} f \dd{\mu} \geq 0 \quad \forall \; n.
     \end{align*}
-    Since $f 1_{A_n} \to f 1_{\qty{S^\star > 0}}$ pointwise, and $\abs{f 1_{A_n}} \leq \abs{f} \in L^1(\mu)$, we can apply the dominated convergence theorem to show that
+
+	$A_n = \qty{S_n^\star > 0} = \qty{\max_{0 \leq m \leq n} S_m > 0} = \bigcup_{m = 0}^n \qty{S_m > 0} \uparrow \bigcup_{m = 0}^\infty \qty{S_m > 0} = \qty{\sup S_m > 0} = S^\star$. \\
+	Hence, $1_{A_n} \to 1_{S^\star > 0}$ and so $f 1_{A_n} \to f 1_{\qty{S^\star > 0}}$ pointwise, and $\abs{f 1_{A_n}} \leq \abs{f} \in L^1(\mu)$, by DCT
     \begin{align*}
         \int_{\qty{S^\star > 0}} f \dd{\mu} = \lim_{n \to \infty} \int_{A_n} f \dd{\mu} \geq 0
     \end{align*}
     as required.
 \end{proof}
 
-\subsection{Ergodic theorems}
-\begin{theorem}[Birkhoff]
+\begin{remark}
+	Let $\mu$ be a finite measure.
+	Then for $f \in L^1$ and any $\alpha > 0$, define $\overline S_k = \frac{S_k(f)}{k}$ and $\overline S^\star = \sup_{k \geq 0} \overline S_k$, then
+	\begin{align*}
+		\mu\qty(\overline S^\star > \alpha) \leq \frac{1}{\alpha} \int_{\overline S^\star > \alpha} f \dd{\mu} \leq \frac{1}{\alpha} \int_E \abs{f} \dd{\mu}.
+	\end{align*}
+\end{remark}
+
+\begin{proof}
+	Proof is left as an exercise, follows from shifting $f$ by $\alpha$ and then applying the maximal ergodic theorem.
+\end{proof}
+
+\begin{exercise}
+	For $\mu$ a prob measure and $f \in L^1(\mu)$, show that $\qty{\frac{S_n(f)}{n} : n \in \mathbb{N}}$ is UI.
+	Hence $\frac{S_n(f)}{n} \to \overline f$ in $L^1$ by Birkhoff's.
+	If $\Theta$ is ergodic, then $\overline f = \int f \dd{\mu}$ a.s..
+\end{exercise}
+
+\begin{theorem}[Birkhoff's Ergodic Theorem]
 	Let $(E, \mathcal E, \mu)$ be a $\sigma$-finite measure space.
-	Let $\Theta \colon E \to E$ be measure-preserving.
-	For $f \in L^1(\mu)$, we define $S_0(f) = 0$ and $S_n(f) = \sum_{k=0}^{n-1} f \circ \Theta^k$.
-	Then there exists a $\Theta$-invariant integrable function $\overline f \in L^1(\mu)$ with $\mu\qty(\abs{\overline f}) \leq \mu(\abs{f})$ s.t. $\frac{S_n(f)}{n} \to \overline f$ almost everywhere.
+	Let $\Theta \colon E \to E$ be m.p..
+	For $f \in L^1(E, \mathcal{E}, \mu)$, we define $S_0 = 0$ and $S_n = S_n(f) = \sum_{k=0}^{n-1} f \circ \Theta^k$.
+	Then $\exists$ a $\Theta$-invariant integrable fcn $\overline f \in L^1(E, \mathcal{E}, \mu)$ with $\mu\qty(\abs{\overline f}) \leq \mu(\abs{f})$ s.t. $\frac{S_n(f)}{n} \to \overline f$ a.e. as $n \to \infty$.
 \end{theorem}
+
+\begin{remark}
+	If $\Theta$ ergodic, $\hat{f}$ is constant a.e..
+
+	Relating back to the gas example, $x, \Theta(x), \dots$ is the trajectory of a gas particle.
+	Then $\frac{S_n(f)}{n}$ is the average of $f$ along the trajectory (time average).
+	Then $\overline f$ is the average of $f$ over the whole space.
+\end{remark}
+
 The proof of Birkhoff's ergodic theorem is non-examinable.
+
 \begin{proof}[Proof (non-examinable)]
+	Since $\mu(\abs{f \circ \Theta^{n-1}}) = \mu(\abs{f})$, we have $\mu(\abs{S_n}) \leq n \mu(\abs{f})$ and thus by Fatou's
+    \begin{align*}
+        \mu\qty(\abs{\overline f}) = \mu\qty(\liminf_n \abs{\frac{S_n}{n}}) \leq \liminf_n \mu\qty(\abs{\frac{S_n}{n}}) \leq \mu(\abs{f}).
+    \end{align*}
+
     Note that
     \begin{align*}
-        \limsup_n \frac{S_n(f)}{n} =  \limsup_n \frac{S_n(f) \circ \Theta}{n}
+		\frac{S_n \circ \Theta}{n} &= \frac{S_{n+1} - f}{n + 1} \frac{n + 1}{n} \\
+        \text{So, } \limsup_n \frac{S_n \circ \Theta}{n} &= \limsup_n \frac{S_{n+1}}{n+1} = \limsup_n \frac{S_n}{n}
     \end{align*}
     and the same holds for $\liminf_n$.
-    Hence $\limsup_n \frac{S_n(f)}{n}$ and $\liminf_n \frac{S_n(f)}{n}$ are invariant functions.
+    Hence $\limsup_n \frac{S_n}{n}$ and $\liminf_n \frac{S_n}{n}$ are invariant functions.
     So they are $\mathcal E_\Theta$-measurable.
     Hence
     \begin{align*}
-        D = D_{a,b} = \qty{\liminf_n \frac{S_n(f)}{n} < a < b < \limsup_n \frac{S_n(f)}{n}}
+        D = D_{a,b} = \qty{\liminf_n \frac{S_n}{n} < a < b < \limsup_n \frac{S_n}{n}}
     \end{align*}
     are measurable and invariant sets.
-    Without loss of generality, let $b > 0$.
+
+	It suffices to show that $\mu(D) = 0$.
+	As letting $\Delta = \qty{\liminf \qty(\frac{S_n}{n}) < \limsup \qty(\frac{S_n}{n})} = \bigcup_{a < b \in \mathbb{Q}} D_{a, b}$.
+	Hence if $\mu(D) = 0 \implies \mu\qty(\bigcup_{a < b \in \mathbb{Q}} D_{a, b}) = 0 \implies \mu(\Delta) = 0$.
+	Define,
+	\begin{align*}
+		\overline f = \begin{cases}
+			\liminf \frac{S_n}{n} = \limsup \frac{S_n}{n} & x \in \Delta^c \\
+			0 & x \in \Delta
+		\end{cases}
+	\end{align*}
+	then $S_n/n \to \overline f$ $\mu$-a.e. and $\overline f$ is $\Theta$ invariant (as $\liminf \frac{S_n}{n}$ and $\Delta$ are $\Theta$-invariant).
+
+	Fix $a < b$.
+	Note that $\Theta : D \to D$ by invariance and $\Theta$ is $\mu \mid_D$-measure preserving as
+	\begin{align*}
+        \eval{\mu}_D(A) &= \mu(A \cap D) = \mu(\Theta^{-1}(A \cap D)) = \mu(\Theta^{-1}(A) \cap \Theta^{-1}(D)) \\
+		&= \mu(\Theta^{-1}(A) \cap D) = \eval{\mu}_D(\Theta^{-1}(A))
+    \end{align*}
+	Also either $b > 0$ or $a < 0$ (if $a < 0$ change $f$ to $-f$ and $a$ to $-b$, then $b = -a > 0$).
+	So assume $b > 0$ wlog.
+
+	We will apply the \nameref{lem:max} with $E = D$ and $\mu = \eval{\mu}_D$.
     Let $B \in \mathcal E$, where $B \subseteq D$ s.t. $\mu(B) < \infty$.
     Let $g = f - b 1_B \in L^1(\mu)$.
     Then,
     \begin{align*}
-        S_n(g) = S_n(f) - bS_n(1_B) \geq S_n(f) - bn
+        S_n(g) = S_n(f) - bS_n(1_B) \geq S_n - bn
     \end{align*}
     which is positive on $D$ for some $n$ by the definition of $\limsup_n$.
-    We will apply the maximal ergodic lemma with $E = D$ and $\mu = \eval{\mu}_D$; $\Theta$ is still measure-preserving on this new measure since
+	Hence, $S^\star(g) = \sup_{n \geq 0} S_n(g) > 0$ on $D$.
+
+    % Note that $\qty{S^\star > 0} \subseteq D$ as we restrict our measure space to $D$, but by the previous inequality, $S^\star > 0$ on $D$.
+    So $D = \qty{S^\star > 0} \cap D$.
+    Then by the \nameref{lem:max} on $D$,
     \begin{align*}
-        \eval{\mu}_D(A) = \mu(A \cap D) = \mu(\Theta^{-1}(A \cap D)) = \mu(\Theta^{-1}(A) \cap \Theta^{-1}(D)) = \mu(\Theta^{-1}(A) \cap D) = \eval{\mu}_D(\Theta^{-1}(A))
-    \end{align*}
-    Note that $\qty{S^\star > 0} \subseteq D$ as we restrict our measure space to $D$, but by the previous inequality, $S^\star > 0$ on $D$.
-    So $D = \qty{S^\star > 0}$.
-    Then the maximal ergodic lemma gives
-    \begin{align*}
-        0 \leq \int_{S^\star > 0} g \dd{\mu} = \int_D g \dd{\mu} = \int_D f \dd{\mu} - b \mu(B)
+        0 \leq \int_{D \cap \qty{S^\star > 0}} g \dd{\mu} = \int_D g \dd{\mu} = \int_D f \dd{\mu} - b \mu(B)
     \end{align*}
     Hence, $b \mu(B) \leq \int_D f \dd{\mu}$.
-    By $\sigma$-finiteness, this inequality extends to $D$; one can choose an approximating sequence $B_n \uparrow D$ where $\mu(B_n) < \infty$, then take limits to show $b\mu(D) = b \lim_n \mu(B_n) \leq \int_D f \dd{\mu}$.
-    Repeating the above argument for $-f$ and $-a$, we obtain $-a\mu(D) \leq \int_D -f \dd{\mu}$.
+
+    By $\sigma$-finiteness, this inequality extends to $D$; $\exists$ measurable sets $B_n \uparrow D$ where $\mu(B_n) < \infty$.
+	Hence taking limits, $b\mu(D) = b \lim_n \mu(B_n) \leq \int_D f \dd{\mu}$.
+	Thus $\mu(D) < \infty$ as $f \in L^1$. \\
+    Repeating a similar arguments to above\footnote{Now however we take $D$ instead of $B$ and $g' = -f - (-a) 1_D$. On $D$, $S_n(g') = S_n(-f) - (-a) S_(1_D) = S_n(-f) - (-a) n 1_D = S_n(-f) - (-a)n$ as $D$ is $\Theta$ invariant, i.e. $S_n(1_D) = 1_D$.} for $-f$ and $-a$, we obtain $-a\mu(D) \leq \int_D -f \dd{\mu}$.
     Combining these two inequalities gives
     \begin{align*}
         b\mu(D) \leq \int_D f \dd{\mu} \leq a\mu(D)
     \end{align*}
-    But $a < b$, so $\mu(D) = 0$ or $\infty$, but $f$ is integrable, so $\mu(D) = 0$.
-    Now, define
-    \begin{align*}
-        \Delta = \qty{\liminf_n \frac{S_n(f)}{n} < \limsup_n \frac{S_n(f)}{n}}  = \bigcup_{a < b \in \mathbb Q} D_{a,b}
-    \end{align*}
-    By countable additivity,
-    \begin{align*}
-        \mu(\Delta) = \mu\qty(\bigcup_{a < b \in \mathbb Q} D_{a,b}) = \sum_{a < b \in \mathbb Q} \mu(D_{a,b}) = 0
-    \end{align*}
-    On $\Delta^c$, $\frac{S_n}{n}$ converges in $[-\infty, \infty]$.
-    We define the invariant function $\overline f$ by
-    \begin{align*}
-        \overline f = \begin{cases}
-        \lim_n \frac{S_n}{n} & x \in \Delta^c \\
-        0 & x \in \Delta
-    \end{cases}
-    \end{align*}
-    so $\frac{S_n}{f} \to \overline f$ almost everywhere as $n \to \infty$.
-    Since $\mu(\abs{f \circ \Theta^{n-1}}) = \mu(\abs{f})$, we have $\mu(\abs{S_n}) \leq n \mu(\abs{f})$ and thus
-    \begin{align*}
-        \mu\qty(\abs{\overline f}) = \mu\qty(\liminf_n \abs{\frac{S_n}{n}}) \leq \liminf_n \mu\qty(\abs{\frac{S_n}{n}}) \leq \mu(\abs{f})
-    \end{align*}
-    which is one of the results required by the theorem.
-    In particular, $\mu\qty(\abs{\overline f}) < \infty$ so $\abs{\overline f} < \infty$ almost everywhere.
+    But $a < b$ and $\mu(D) < \infty$, so $\mu(D) = 0$.
 \end{proof}
-\begin{theorem}[von Neumann]
-	Let $(E, \mathcal E, \mu)$ be a finite measure space (not $\sigma$-finite).
-	Let $\Theta \colon E \to E$ be measure-preserving.
-	Let $f \in L^p(E)$ with $1 \leq p < \infty$.
-	Then $\frac{S_n(f)}{n} \to \overline f$ in $L^p$.
+
+\begin{theorem}[von Neumann's $L^p$ ergodic theorem]
+	Let $\mu(E) < \infty$ and $1 \leq p < \infty$.
+	Then for $f \in L^p(\mu)$, $\frac{S_n(f)}{n} \to \overline f$ in $L^p$ as $n \to \infty$.
 \end{theorem}
+
 \begin{proof}
-	Since $\Theta$ is measure-preserving, we have
+	Since $\Theta$ is m.p., we have
 	\begin{align*}
-        \norm{f \circ \Theta^i}_p^p = \int_E \abs{f}^p \circ \Theta^i \dd{\mu} = \int_E \abs{f}^p \dd{\mu} = \int_E \abs{f}^p \dd{\mu} = \norm{f}_p^p
+        \norm{f \circ \Theta^n}_p^p = \int_E \abs{f}^p \circ \Theta^n \dd{\mu} = \int_E \abs{f}^p \dd{\mu} = \int_E \abs{f}^p \dd{\mu} = \norm{f}_p^p
     \end{align*}
 	Thus, by Minkowski's inequality, for all $f \in L^p$ we have
 	\begin{align*}
@@ -204,9 +266,10 @@ The proof of Birkhoff's ergodic theorem is non-examinable.
 	\begin{align*}
         \norm{f - f_K}_p^p = \int_E \abs{f - f_K}^p 1_{\abs{f} > K} \dd{\mu}
     \end{align*}
-	Since $1_{\abs{f} > K}$ converges to zero pointwise, and $\abs{f - f_K} \leq 2\abs{f}^p \in L^1$, we find $\norm{f - f_K}_p < \frac{\varepsilon}{3}$ by dominated convergence, for sufficiently large $K = K_\varepsilon$.
+	Since $1_{\abs{f} > K} \to 0$ pointwise, and $\abs{f - f_K} \leq 2\abs{f}^p \in L^1$, we find $\norm{f - f_K}_p < \frac{\varepsilon}{3}$ by DCT, for sufficiently large $K = K_\varepsilon$.
+
 	As $\abs{f_K} \leq K$, we have $\abs{\frac{S_n(f_K)}{n}} \leq K$.
-	Since $\mu$ is finite, $f_K \in L^1(\mu)$, so by Birkhoff's ergodic theorem, $\frac{S_n(f_K)}{n} \to \overline f_K$ almost everywhere for some invariant function $\overline f_K$.
+	Since $\mu$ is finite, $f_K \in L^1(\mu)$, so by Birkhoff's ergodic theorem, $\frac{S_n(f_K)}{n} \to \overline f_K$ a.e. for some invariant $\overline f_K \in L^1$.
 	Note that $\overline f_k$ is bounded by $K$ as $\frac{S_n(f_K)}{n}$ is bounded by $K$.
 	By the bounded convergence theorem, we deduce that $\norm{\frac{S_n(f_K)}{n} - \overline f_K} \to 0$ as $n \to \infty$.
 	Further, this holds in $L^p$ since
@@ -214,18 +277,19 @@ The proof of Birkhoff's ergodic theorem is non-examinable.
         \norm{\frac{S_n(f_K)}{n} - \overline f_K}_p \leq (2K)^{\frac{p-1}{p}} \norm{\frac{S_n(f_K)}{n} - \overline f_K}_1 < \frac{\varepsilon}{3}
     \end{align*}
 	where the last inequality holds for sufficiently large $n$.
-	Since $\mu$ is a finite measure, $L^p(\mu) \subseteq L^1(\mu)$, hence by Birkhoff's ergodic theorem, $\frac{S_n(f)}{n} \to \overline f$ almost everywhere as $f \to \infty$.
+	Since $\mu$ is a finite measure, $L^p(\mu) \subseteq L^1(\mu)$, hence by Birkhoff's ergodic theorem, $\frac{S_n(f)}{n} \to \overline f$ a.e. as $f \to \infty$.
 	Then, by the contraction property applied to $f - f_K$,
 	\begin{align*}
 		\norm{\overline f - \overline f_K}_p^p &= \int_E \abs{\overline f - \overline f_K}^p \dd{\mu} \\
 		&= \int_E \liminf_n \abs{\frac{S_n(f) - S_n(f_K)}{n}}^p \dd{\mu} \\
-		&\leq \liminf_n \int_E \abs{\frac{S_n(f) - S_n(f_K)}{n}}^p \dd{\mu} \\
+		&\leq \liminf_n \int_E \abs{\frac{S_n(f) - S_n(f_K)}{n}}^p \dd{\mu} \quad \text{by Fatou} \\
 		&= \liminf_n \int_E \abs{\frac{S_n(f - f_K)}{n}}^p \dd{\mu} \\
-		&\leq \liminf_n \norm{f - f_K}_p^p \\
+		&= \liminf_n \norm{\frac{S_n(f - f_K)}{n}}_p^p \\
+		&\leq \liminf_n \norm{f - f_K}_p^p \quad \text{shown earlier by Minkowski}\\
 		&= \norm{f - f_K}_p^p < \qty(\frac{\varepsilon}{3})^p
 	\end{align*}
 	So in particular, $\overline f \in L^p$.
-	Then by the triangle inequality,
+	Then by Minkowski,
 	\begin{align*}
 			\norm{\frac{S_n(f)}{n} - \overline f}_p &\leq \norm{\frac{S_n(f) - S_n(f_K)}{n}}_p + \norm{\frac{S_n(f_K)}{n} - \overline f_K}_p + \norm{\overline f - \overline f_K}_p \\
 			&< \norm{\frac{S_n(f) - S_n(f_K)}{n}}_p + \frac{2\varepsilon}{3} \\
@@ -233,6 +297,10 @@ The proof of Birkhoff's ergodic theorem is non-examinable.
 	\end{align*}
 	for sufficiently large $n$.
 \end{proof}
+
+\begin{remark}
+	
+\end{remark} 
 
 \subsection{Infinite product spaces}
 Let $E = \mathbb R^{\mathbb N} = \qty{x = (x_n)_{n \in \mathbb N}}$ be the space of real sequences.
@@ -271,7 +339,7 @@ We call $(E, \mathcal E, \mu) = (\mathbb R^{\mathbb N}, \sigma(\mathcal C), m^{\
 			&= \prob{X_2 \in A_1} \cdots \prob{X_{N+1} \in A_N} \\
 			&= \mu(\Theta^{-1}(A))
 	\end{align*}
-	so $\Theta$ is measure-preserving.
+	so $\Theta$ is m.p..
 	Recall that the tail $\sigma$-algebra is defined by $\mathcal T = \bigcap_n \mathcal T_n$ where $\mathcal T_n = \sigma(\qty{X_k \mid k \geq n + 1})$.
 	Note that for all $A \in \mathcal C$, we have
 	\begin{align*}
