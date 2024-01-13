@@ -1,0 +1,2 @@
+#!/bin/bash
+gs -dSAFER -dBATCH -dNOPAUSE -sDEVICE=pdfwrite -sPDFPassword='' -dPDFSETTINGS=/prepress -dPassThroughJPEGImages=true -dPreserveAnnots=false -sOutputFile="${1%.*} (Flattened).pdf" "$1"

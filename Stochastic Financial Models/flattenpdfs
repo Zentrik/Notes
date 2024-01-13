@@ -1,0 +1,2 @@
+#!/bin/bash
+for filename in lecture0{1..9} lecture{10..24}; do ./flattenpdf $filename.pdf && mv "$filename (Flattened).pdf" $filename.pdf; done
