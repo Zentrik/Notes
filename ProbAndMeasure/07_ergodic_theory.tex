@@ -104,7 +104,7 @@ For Markov Chains, ergodicity $\iff$ irreducibility.
     Then $\int_{\qty{S^\star > 0}} f \dd{\mu} \geq 0$.
 \end{lemma}
 
-\begin{proof}
+\begin{proof}[Proof (non-examinable)]
     Define $S_n^\star = \max_{k \leq n} S_k$.
     Then clearly $S_n^\star \uparrow S^\star$, and $S_k \leq S_n^\star$ for all $k \leq n$.
     Note that for $m \leq n+1$, $S_m = S_{m-1} \circ \Theta + f \leq S_n^\star \circ \Theta + f$.
@@ -173,8 +173,6 @@ For Markov Chains, ergodicity $\iff$ irreducibility.
 	Then $\frac{S_n(f)}{n}$ is the average of $f$ along the trajectory (time average).
 	Then $\overline f$ is the average of $f$ over the whole space.
 \end{remark}
-
-The proof of Birkhoff's ergodic theorem is non-examinable.
 
 \begin{proof}[Proof (non-examinable)]
 	Since $\mu(\abs{f \circ \Theta^{n-1}}) = \mu(\abs{f})$, we have $\mu(\abs{S_n}) \leq n \mu(\abs{f})$ and thus by Fatou's
@@ -304,7 +302,7 @@ The proof of Birkhoff's ergodic theorem is non-examinable.
 		Also, $\int f \dd{\mu} = \int \frac{S_n(f)}{n} \dd{\mu} \to \int \bar f \dd{\mu} \; \forall \; n$.
 		Hence $\int \bar f \dd{\mu} = \int f \dd{\mu}$. \\
 		Then, $\frac{S_n(f)}{n} \xrightarrow{n \to \infty} \mathbb{E}[f]$ $\mu$ a.s. and in $L^1$.
-		\item For $\Theta$ m.p. and $f \in L^1$, $\frac{S_n(f)}{n} \xrightarrow{\mu a.s and L^1} \mathbb{E}[f \mid \mathcal{E}_\Theta]$.
+		\item For $\Theta$ m.p. and $f \in L^1$, $\frac{S_n(f)}{n} \xrightarrow{\mu \text{ a.s and } L^1} \mathbb{E}[f \mid \mathcal{E}_\Theta]$.
 		For $f \in L^2$, $\mathbb{E}[f \mid \mathcal{E}_\Theta]$ is (a version of) the projection of $f$ on $L^2(\mathcal{E}_\Theta)$.
 	\end{enumerate}
 \end{remark}
