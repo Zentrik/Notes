@@ -298,26 +298,34 @@ The proof of Birkhoff's ergodic theorem is non-examinable.
 	for sufficiently large $n$.
 \end{proof}
 
-\begin{remark}
-
+\begin{remark} \label{rem:ergodic} \
+	\begin{enumerate}
+		\item If $\mu$ a prob measure and $\Theta$ ergodic, then $\bar f$ is a constant a.s., so $\bar f = \int \bar f \dd{\mu}$.
+		Also, $\int f \dd{\mu} = \int \frac{S_n(f)}{n} \dd{\mu} \to \int \bar f \dd{\mu} \; \forall \; n$.
+		Hence $\int \bar f \dd{\mu} = \int f \dd{\mu}$. \\
+		Then, $\frac{S_n(f)}{n} \xrightarrow{n \to \infty} \mathbb{E}[f]$ $\mu$ a.s. and in $L^1$.
+		\item For $\Theta$ m.p. and $f \in L^1$, $\frac{S_n(f)}{n} \xrightarrow{\mu a.s and L^1} \mathbb{E}[f \mid \mathcal{E}_\Theta]$.
+		For $f \in L^2$, $\mathbb{E}[f \mid \mathcal{E}_\Theta]$ is (a version of) the projection of $f$ on $L^2(\mathcal{E}_\Theta)$.
+	\end{enumerate}
 \end{remark}
 
 \subsection{Infinite product spaces}
 Let $E = \mathbb R^{\mathbb N} = \qty{x = (x_n)_{n \in \mathbb N}}$ be the space of real sequences.
 Consider
 \begin{align*}
-        \mathcal C = \qty{A = \prod_{n=1}^\infty A_n \midd A_n \in \mathcal B, \exists N \in \mathbb N, \forall n > N, A_n = \mathbb R}
+        \mathcal C = \qty{A = \prod_{n=1}^\infty A_n : A_n \in \mathcal B, \exists N \in \mathbb N, \forall n > N, A_n = \mathbb R}
     \end{align*}
 This forms a $\pi$-system, which generates the \emph{cylindrical $\sigma$-algebra} $\sigma(\mathcal C)$.
-One shows that $\sigma(\mathcal C) = \sigma(\qty{f_n \mid n \in \mathbb N})$ where $f_n(x) = x_n$ are the coordinate projection functions on $E$.
-We can also show $\sigma(\mathcal C) = \mathcal B(\mathbb R^{\mathbb N})$ for the product topology.
-Let $(X_n)_{n \in \mathbb N}$ be a sequence of iid r.v.s defined on $(\Omega, \mathcal F, \mathbb P)$ with marginal distributions $\mu_{X_n} = m$ for all $n$; this exists by an earlier theorem.
-We define a map $X \colon \Omega \to E$ by $X(\omega)_n = X_n(\omega)$.
+We can show that $\sigma(\mathcal C) = \sigma(\qty{f_n : n \in \mathbb N})$ where $f_n(x) = x_n$ are the coordinate projection functions on $E$.
+We can also show $\sigma(\mathcal C) = \mathcal B(\mathbb R^{\mathbb N})$ for the product topology or the topology of pointwise convergence.
+
+Let $(X_n)_{n \in \mathbb N}$ be a sequence of iid r.v.s defined on $(\Omega, \mathcal F, \mathbb P)$ with common law $\mu_{X_n} = m$ for all $n$; this exists by an earlier theorem.
+We define a map $X \colon \Omega \to E$ by $X(\omega) = (X_1(\omega), X_2(\omega), \dots)$.
 This is $\mathcal F$--$\sigma(\mathcal C)$ measurable, since for all $A \in \mathcal C$, we have
 \begin{align*}
-        X^{-1}(A) = \qty{\omega \mid X_1(\omega) \in A_1, \dots, X_N(\omega) \in A_n} = \bigcap_{n=1}^N X_n^{-1}(A_n) \in \mathcal F
+        X^{-1}(A) = \qty{\omega : X_1(\omega) \in A_1, \dots, X_N(\omega) \in A_N} = \bigcap_{n=1}^N X_n^{-1}(A_n) \in \mathcal F
     \end{align*}
-We denote $\mu = \mathbb P \circ X^{-1}$, which is the unique product probability measure in $\mathbb R^{\mathbb N}$ satisfying
+We denote $\mu = \mathbb P \circ X^{-1}$, which is the unique product prob measure in $E$ satisfying
 \begin{align*}
 		\mu\qty(\prod_{n=1}^\infty A_n) &= \lim_{N \to \infty} \mu\qty(\prod_{n=1}^N A_n) \\
 		&= \lim_{N \to \infty} \prob{X_1 \in A_1, \dots, X_N \in A_N} \\
@@ -326,11 +334,19 @@ We denote $\mu = \mathbb P \circ X^{-1}$, which is the unique product probabilit
 		&= \prod_{n=1}^\infty m(A_n)
 \end{align*}
 Note that we need to use finiteness of $N$ to exploit independence of the $X_i$.
-We call $(E, \mathcal E, \mu) = (\mathbb R^{\mathbb N}, \sigma(\mathcal C), m^{\mathbb N})$ the \emph{canonical model} for an infinite sequence of r.v.s of law $m$.
+We call $(E, \mathcal E, \mu) = (\mathbb R^{\mathbb N}, \sigma(\mathcal C), m^{\mathbb N})$ the \emph{canonical model} for an infinite sequence of iid r.v.s of law $m$.
+
+\begin{definition}[Shift Map]
+	The shift map $\Theta \colon E \to E$ is defined by $\Theta(x_1, x_2, \dots) = (x_2, x_3, \dots)$.
+\end{definition}
+
 \begin{theorem}
-	The shift map $\Theta \colon E \to E$ defined by $\Theta(x)_n = x_{n+1}$ is measure preserving and ergodic.
+	On $(E, \mathcal{E}, \mu)$, the shift map $\Theta$ is measurable, m.p. and ergodic.
 \end{theorem}
+
 \begin{proof}
+	Measurability is obvious.
+
 	For $A \in \mathcal C$,
 	\begin{align*}
 			\mu(A) &= \prob{X_1 \in A_1, \dots, X_N \in A_N} \\
@@ -339,14 +355,16 @@ We call $(E, \mathcal E, \mu) = (\mathbb R^{\mathbb N}, \sigma(\mathcal C), m^{\
 			&= \prob{X_2 \in A_1} \cdots \prob{X_{N+1} \in A_N} \\
 			&= \mu(\Theta^{-1}(A))
 	\end{align*}
-	so $\Theta$ is m.p..
-	Recall that the tail $\sigma$-algebra is defined by $\mathcal T = \bigcap_n \mathcal T_n$ where $\mathcal T_n = \sigma(\qty{X_k \mid k \geq n + 1})$.
+	so $\Theta$ is m.p. as m.p. on $\pi$-system $\mathcal{C}$.
+
+	Recall that the tail $\sigma$-algebra is defined by $\mathcal T = \bigcap_n \mathcal T_n$ where $\mathcal T_n = \sigma(X_{n+1}, X_{n+2}, \dots) = \sigma(f_{n+1}, f_{n+2}, \dots)$.
 	Note that for all $A \in \mathcal C$, we have
 	\begin{align*}
-        \Theta^{-n}(A) = \qty{x \in \mathbb R^{\mathbb N} \mid (x_{n+1}, x_{n+2}, \dots) \in A} \in \mathcal T_n
+        \Theta^{-n}(A) &= \mathbb{R}^n \times A_1 \times A_2 \times \dots \\
+		&= \qty{x \in \mathbb R^{\mathbb N} : (x_{n+1}, x_{n+2}, \dots) \in A} \in \mathcal T_n
     \end{align*}
-	Now, if $A$ is invariant, $A = \Theta^{-n}(A) \in \mathcal T_n$ for all $n$, so $A \in \mathcal T$.
-	By Kolmogorov's zero-one law, $\mu(A) = 0$ or $\mu(A) = 1$ as required for ergodicity.
+	Now, if $A$ is invariant, $A = \Theta^{-n}(A) \in \mathcal T_n \; \forall \; n$, so $A \in \mathcal T$.
+	By Kolmogorov's zero-one law as $(X_i)$ iid, $\mu(A) = 0$ or $\mu(A) = 1$ as required for ergodicity.
 \end{proof}
 We can apply Birkhoff's ergodic theorem to $\Theta$.
 If $f \in L^1(\mu)$, then $\frac{S_n(f)}{n} \to \overline f \in L^1(\mu)$ almost surely.
@@ -354,35 +372,37 @@ Since $\overline f$ is invariant and $\Theta$ is ergodic, $\overline f$ is almos
 By von Neumann's $L^p$-ergodic theorem, convergence holds in fact in $L^1$.
 
 \subsection{Strong law of large numbers}
-\begin{theorem}
-	Let $\int_{\mathbb R} \abs{x} \dd{m(x)} < \infty$, and let $\int_{\mathbb R} x \dd{m(x)} = \nu$.
+
+\begin{theorem} \label{thm:canonical}
+	Let $m$ be a prob measure on $\mathbb{R}$ s.t. $\int_{\mathbb R} \abs{x} \dd{m(x)} < \infty$ and $\int_{\mathbb R} x \dd{m(x)} = \nu$.
+	Let $(E, \mathcal{E}, \mu)$ be the canonical model where the coordinate maps $f_n(x) = x_n$ are iid with law $m$.
 	Then
 	\begin{align*}
-        \mu\qty(\qty{x \in \mathbb R^{\mathbb N} \midd \frac{x_1 + x_2 + \dots + x_n}{n} \to \nu}) = 1
+        \mu\qty(\qty{x \in \mathbb R^{\mathbb N} : \frac{x_1 + x_2 + \dots + x_n}{n} \to \nu}) = 1
     \end{align*}
 \end{theorem}
+
 \begin{proof}
-	Let $f(x) = x_1$.
-	Then $f \in L^1(\mu)$, since $\int_E \abs{f} \dd{\mu} = \int_{\mathbb R} \abs{x} \dd{m(x)} < \infty$.
-	So by Birkhoff's ergodic theorem,
-	\begin{align*}
-        \mu\qty(\qty{ \frac{x_1 + \dots + x_n}{n} \to \nu }) = \mu\qty(\qty{ \frac{S_n(f)}{n} \to \overline f }) = 1
-    \end{align*}
-	where we also use von Neumann's ergodic theorem to deduce that
-	\begin{align*}
-        \overline f = \mu(\overline f) = \lim_n \mu\qty(\frac{S_n(f)}{n}) = \frac{n}{n} \nu = \nu
-    \end{align*}
+	Let $\Theta : E \to E$ be the shift map $\Theta(x_1, x_2, \dots) = (x_2, x_3, \dots)$.
+	It is m.p. and ergodic by previous thm.
+	Consider $f : E \to \mathbb{R}$ as $f(x) = x_1$.
+	Then $f \in L^1(\mu)$, since $\int_E \abs{f} \dd{\mu} = \int_{\mathbb{R}} \dd{\mu \circ f\inv(x)} = \int_{\mathbb R} \abs{x_1} \dd{m(x_1)} < \infty$.
+	So by Birkhoff and von-Neumann, as $\Theta$ ergodic, by \cref{rem:ergodic}, $\frac{S_n(f)}{n} = \frac{x_1 + \dots + x_n}{n} \to \bar f = \int f \dd{\mu} = \int_{\mathbb R} x_1 \dd{m(x_1)} = \nu$ $\mu$ a.s.
 \end{proof}
-\begin{theorem}[strong law of large numbers]
+
+\begin{theorem}[Kolmogorov SLLN (1930)]
 	Let $(X_n)_{n \in \mathbb N}$ be iid r.v.s s.t. $\expect{\abs{X_1}} < \infty$.
-	Then $\frac{1}{n} \sum_{i=1}^n X_i \to \expect{X}$ almost surely.
+	Then $\frac{1}{n} \sum_{i=1}^n X_i \to \expect{X_1}$ almost surely.
 \end{theorem}
+
 \begin{proof}
-	Inject $X$ from $\Omega$ to $E = \mathbb R^{\mathbb N}$ as before, and notice that
+	Let $m$ be the law of $X_n$, $\nu = \mathbb{E}[X_1]$ and $\mu = \mathbb{P} \circ X\inv$ where $X : \Omega \to E = \mathbb{R}^\mathbb{N}$ is $X(\omega) = (X_1(\omega), X_2(\omega), \dots)$.
+	Then apply \cref{thm:canonical},
 	\begin{align*}
-        \prob{\frac{1}{n} \sum_{i=1}^n X_i \to \expect{X}} = \mu\qty(\qty{ x \midd \frac{x_1 + \dots + x_n}{n} \to \nu }) = 1
+        \prob{\frac{1}{n} \sum_{i=1}^n X_i \to \expect{X_1}} = \mu\qty(\qty{ x : \frac{x_1 + \dots + x_n}{n} \to \nu }) = 1
     \end{align*}
 \end{proof}
+
 \begin{remark}
 	The hypothesis $\expect{\abs{X}} < \infty$ cannot be weakened; we see on an example sheet that $\frac{1}{n} \sum_{i=1}^n X_i$ can exhibit various behaviours.
 	Note that this notion of convergence is stronger than the weak convergence seen in the central limit theorem.
@@ -393,6 +413,19 @@ By von Neumann's $L^p$-ergodic theorem, convergence holds in fact in $L^1$.
 	almost surely, and $-1$ for the limit inferior.
 	In particular, the central limit theorem does not hold almost surely.
 \end{remark}
+
 \begin{corollary}
 	By von Neumann's ergodic theorem, in the strong law of large numbers, we have $\expect{\abs{\frac{1}{n} \sum_{i=1}^n X_i - \expect{X}}} \to 0$ as $n \to \infty$.
 \end{corollary}
+
+\begin{aside}{Aside}
+	\begin{enumerate}
+		\item If $(\mu_n)$ is a sequence in $\mathbb{R}^n$ of prob measures that converges weakly to $\mu$, then $(\mu_n)$ is ``tight'', i.e. $\forall \; \epsilon > 0$, $\exists$ a compact set $K$ s.t. $\mu_n(K^c) < \epsilon \; \forall \; n$.
+		\item If $(\mu_n)$ a sequence of prob measures that are tight, then $\exists$ a subsequence $(n_k)$ and a prob measure $\mu$ s.t. $\qty(\mu_{n_k}) \to \mu$ weakly (Prokhorov's  thm or Banach-Alaoglu thm).
+		\item If distributions $F_n \xrightarrow{d} F$, then $\exists$ a prob space s.t. $\mu_{X_n}$ is $F_n$ and $X_n \to X$ a.s..
+		\item If $X_n \xrightarrow{d} X$ and $Y_n \xrightarrow{d} Y$ then $X_n + Y_n \not\to X + Y$, in fact $X, Y$ are not necessarily even defined in the same prob space so $X + Y$ doesn't even make sense. \\
+		However, if $X_n \xrightarrow{d} X$ and $Y_n \xrightarrow{\mathbb{P}} c$, where $c$ is a constant.
+		Then $(X_n, Y_n) \to (X, c)$ so by continuous mapping thm $X_n + Y_n \xrightarrow{d} X + c$ (Slutsky's thm). \\
+		This is quite useful in stats where with CLT if variance is unknown we can replace it with std deviation which converges to the true value a.s. and hence in $\mathbb{P}$.
+	\end{enumerate}
+\end{aside}
