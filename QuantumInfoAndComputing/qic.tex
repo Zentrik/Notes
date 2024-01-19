@@ -1,0 +1,28 @@
+%&../preamble
+
+\def\npart {II}
+\def\nterm {Lent}
+\def\nyear {2023}
+\def\nlecturer {Dr ...}
+\def\ncourse {Quantum Information and Computation}
+
+\input{../preamble-dynamic.tex}
+\usepackage{qcircuit}
+\usepackage{faktor}
+\RequirePackage{unicode-math}
+
+\newcommand{\transpose}{\intercal}
+\DeclareMathOperator{\vecspan}{span}
+\newcommand{\prob}[1]{\mathbb{P}\left({#1}\right)}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+\begin{document}
+    \maketitle
+    \tableofcontents
+
+    \input{01_mathematical_background.tex}
+    \input{02_quantum_states_as_information_carriers.tex}
+    \input{03_quantum_cryptography.tex}
+    \input{04_quantum_computation.tex}
+\end{document}
