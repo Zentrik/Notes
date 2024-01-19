@@ -12,6 +12,7 @@
 \usepackage{mathrsfs}
 \usepackage{mathtools}
 \usepackage{lmodern}
+% \usepackage{tgpagella}
 \usepackage{ifxetex,ifluatex}
 
 % Use upquote if available, for straight quotes in verbatim environments
@@ -452,3 +453,28 @@
 
 \let\phi\varphi
 \let\epsilon\varepsilon
+\let \emptyset \varnothing
+
+\usepackage{relsize}
+\newcommand{\symmdiff}{\mathrel{\raisebox{1pt}{$\mathsmaller\triangle$}}}
+
+\newcommand{\prob}[1]{\mathbb{P}\left({#1}\right)}
+\newcommand{\expect}[1]{\mathbb{E}\left[{#1}\right]}
+
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+% \renewcommand{\norm}[1]{\left \lVert #1 \right \rVert}
+\newcommand{\wildcard}{{}\cdot{}}
+\DeclareMathOperator*{\esssup}{ess\ sup}
+\newcommand{\hhat}[1]{\hat{\hat{#1}}}
+\newcommand{\midd}{\,\middle|\,}
+\DeclarePairedDelimiter\Brackets{[\![}{]\!]}
+
+\newcommand{\genset}[1]{\langle{} #1 \rangle}
+\DeclareMathOperator{\vecspan}{span}
+\newcommand{\transpose}{\intercal}
+\DeclareMathOperator{\nullity}{null}
+\newcommand{\sstar}{{\star\star}}
+\DeclareMathOperator{\adj}{adj}
+
+\usepackage{faktor}
