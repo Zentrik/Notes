@@ -20,7 +20,7 @@ The \vocab{language} $L = L(P)$ is a set of \vocab{propositions} (or \vocab{comp
     $((p_1 \implies p_2) \implies (p_1 \implies p_3)) \in L$.
     $(p_4 \implies \bot) \in L$.
 
-    If $p in L$ then $((p \implies \bot) \implies \bot) \in L$.
+    If $p \in L$ then $((p \implies \bot) \implies \bot) \in L$.
 \end{example}
 
 \begin{remark}
@@ -96,7 +96,7 @@ We can now introduce the abbreviations $\neg, \wedge, \vee, \top$, which are not
     Then, $v((p_1 \implies p_3) \implies p_2) = 0$.
 \end{example}
 
-\begin{definition}[tautology]
+\begin{definition}[Tautology]
     A \vocab{tautology} is $t \in L$ s.t. $v(t) = 1 \forall$ valuations $v$.
     We write $\models t$.
 \end{definition}
@@ -115,7 +115,7 @@ We can now introduce the abbreviations $\neg, \wedge, \vee, \top$, which are not
     Since the right-hand column is always 1, $\models p \implies (q \implies p)$.
 \end{example}
 
-\begin{example}
+\begin{example}[Law of Excluded Middle]
     $\neg \neg p \implies p$, which expands to $((p \implies \bot) \implies \bot) \implies p$.
     \begin{align*}
 \begin{array}{cccc}
@@ -126,25 +126,51 @@ We can now introduce the abbreviations $\neg, \wedge, \vee, \top$, which are not
 \end{align*}
     Hence $\models \neg \neg p \implies p$.
 \end{example}
+
+\begin{example}
+    $\neg p \vee p$, which expands to $((p \implies \bot) \vee p)$.
+    \begin{align*}
+\begin{array}{cccc}
+        v(p) & v(\neg p) & v(\neg p \vee p) \\
+        0 & 1 & 1 \\
+        1 & 0 & 1
+    \end{array}
+\end{align*}
+    Hence $\models \neg p \vee p$.
+\end{example}
+
 \begin{example}
     $(p \implies (q \implies r)) \implies ((p \implies q) \implies (p \implies r))$.
     Suppose this is not a tautology.
     Then we have a valuation $v$ s.t. $v(p \implies (q \implies r)) = 1$ and $v((p \implies q) \implies (p \implies r)) = 0$.
     Hence, $v(p \implies q) = 1, v(p \implies r) = 0$, so $v(p) = 1, v(r) = 0$, giving $v(q) = 1$, but then $v(p \implies (q \implies r)) = 0$ contradicting the assumption.
 \end{example}
-\begin{definition}
+
+\begin{definition}[Semantic Implication]
     Let $S \subseteq L$ and $t \in L$.
-    We say $S$ \vocab{entails} or \vocab{semantically implies} $t$, written $S \models t$, if $v(t) = 1$ whenever $v(s) = 1$ for all $s \in S$.
+    We say $S$ \vocab{entails} or \vocab{semantically implies} $t$, written $S \models t$, if for every valuation $v$ on $L$, $v(s) = 1 \; \forall \; s \in S \implies v(t) = 1$.
 \end{definition}
+
+\begin{example}
+    $\qty{p, p \implies q} \models q$.
+\end{example}
+
 \begin{example}
     Let $S = \qty{p \implies q, q \implies r}$, and let $t = p \implies r$.
     Suppose $S \not\models t$, so there is a valuation $v$ s.t. $v(p \implies q) = 1, v(q \implies r) = 1, v(p \implies r) = 0$.
-    Then $v(p) = 1, v(r) = 0$, so $v(q) = 1$ and $v(q) = 0$.
+    Then $v(p) = 1, v(r) = 0$, so $v(q) = 1$ and $v(q) = 0$ \Lightning.
 \end{example}
-\begin{definition}
-    We say that $v$ is a \vocab{model} of $S$ in $L$ if $v(s) = 1$ for all $s \in S$.
+
+\begin{definition}[Model]
+    Given $t \in L$, say a valuation \vocab{$v$ is a model for $t$} (or \vocab{$t$ is true in $v$}) if $v(t) = 1$.
 \end{definition}
-Thus, $S \models t$ is the statement that every model of $S$ is also a model of $t$.
+
+\begin{definition}[Model]
+    We say that \vocab{$v$ is a model of $S$} in $L$ if $v(s) = 1$ for all $s \in S$.
+\end{definition}
+
+Thus, $S \models t$ is the statement that every model of $S$ is also a model of $t$/ $t$ is true in every model of $S$.
+
 \begin{remark}
     The notation $\models t$ is equivalent to $\varnothing \models t$.
 \end{remark}
@@ -157,23 +183,29 @@ As axioms, we take (for any $p, q, r \in L$),
     \item $(p \implies (q \implies r)) \implies ((p \implies q) \implies (p \implies r))$;
     \item $((p \implies \bot) \implies \bot) \implies p$.
 \end{enumerate}
+
 \begin{remark}
     Sometimes, these three axioms are considered axiom \vocab{schemes}, since they are really a different axiom for each $p, q, r \in L$.
+
     These are all tautologies.
 \end{remark}
-For deduction rules, we will have only the rule \vocab{modus ponens}, that from $p$ and $p \implies q$ one can deduce $q$.
-\begin{definition}
+For deduction rules, we will have only the rule \vocab{modus ponens (MP)}, that from $p$ and $p \implies q$ one can deduce $q$.
+
+\begin{definition}[Proof]
     Let $S \subseteq L$, $t \in L$.
-    We say $S$ \vocab{proves} or \vocab{syntactically implies} $t$, written $S \vdash t$, if there exists a sequence $t_1, \dots, t_n = t$ in $L$ s.t. every $t_i$ is either
+    A \vocab{proof of $t$ from $S$} is a finite sequence $t_1, \dots, t_n$ of propositions in $L$ s.t. $t_n = t$ and every $t_i$ is either
     \begin{enumerate}
         \item an axiom;
-        \item an element of $S$; or
-        \item $q$, where $t_j = p$ and $t_k = p \implies q$ where $j, k < i$.
+        \item an element of $S$ ($t_i$ is a premise or hypothesis); or
+        \item follows by MP, where $t_j = p$ and $t_k = p \implies q$ where $j, k < i$.
     \end{enumerate}
     We say that $S$ is the set of \vocab{premises} or \vocab{hypotheses}, and $t$ is the \vocab{conclusion}.
+
+    We say $S$ \vocab{proves} or \vocab{syntactically implies} $t$, written $S \vdash t$, if there exists a proof of $t$ from $S$.
 \end{definition}
+
 \begin{example}
-    We will show $\qty{p \implies q, q \implies r} \vdash p \implies r$.
+    We will show $\qty{p \implies q, q \implies r} \vdash (p \implies r)$.
     \begin{enumerate}
         \item $q \implies r$ (hypothesis)
         \item $(q \implies r) \implies (p \implies (q \implies r))$ (axiom 1)
@@ -184,11 +216,13 @@ For deduction rules, we will have only the rule \vocab{modus ponens}, that from 
         \item $p \implies r$ (modus ponens on lines 5, 6)
     \end{enumerate}
 \end{example}
-\begin{definition}
+
+\begin{definition}[Theorem]
     If $\varnothing \vdash t$, we say $t$ is a \vocab{theorem}, written $\vdash t$.
 \end{definition}
+
 \begin{example}
-    $\vdash p \implies p$.
+    $\vdash (p \implies p)$.
     \begin{enumerate}
         \item $(p \implies ((p \implies p) \implies p)) \implies ((p \implies (p \implies p)) \implies (p \implies p))$ (axiom 2)
         \item $p \implies ((p \implies p) \implies p)$ (axiom 1)
@@ -199,23 +233,28 @@ For deduction rules, we will have only the rule \vocab{modus ponens}, that from 
 \end{example}
 
 \subsection{Deduction theorem}
-\begin{theorem}
+\begin{theorem}[Deduction Theorem] \label{thm:ded}
     Let $S \subseteq L$, and $p, q \in L$.
-    Then $S \vdash (p \implies q)$ if and only if $S \cup \qty{p} \vdash q$.
+    Then $S \vdash (p \implies q)$ iff $S \cup \qty{p} \vdash q$.
 \end{theorem}
-Intuitively, provability corresponds to the implication connective in $L$.
-\begin{proof}
-    For the forward direction, given a proof of $p \implies q$ from $S$, add the line $p$ by hypothesis and deduce $q$ from modus ponens, to obtain a proof of $q$ from $S \cup \qty{p}$.
 
-    Conversely, suppose we have a proof of $q$ from $S \cup \qty{p}$.
+% Intuitively, provability corresponds to the implication connective in $L$.
+\begin{remark}
+    This show `$\implies$' really does behave like implication in formal proofs.
+\end{remark}
+
+\begin{proof}
+    $(\implies)$: Given a proof of $p \implies q$ from $S$, add the line $p$ to the hypothesis and deduce $q$ from modus ponens, to obtain a proof of $q$ from $S \cup \qty{p}$.
+
+    $(\Leftarrow)$: Suppose we have a proof of $q$ from $S \cup \qty{p}$.
     Let $t_1, \dots, t_n$ be the lines of the proof.
-    We will prove that $S \vdash (p \implies t_i)$ for all $i$.
+    We will prove that $S \vdash (p \implies t_i)$ for all $i$ by induction.
     \begin{itemize}
         \item If $t_i$ is an axiom, we write $t_i$ (axiom); $t_i \implies (p \implies t_i)$ (axiom 1); $p \implies t_i$ (modus ponens).
         \item If $t_i \in S$, we write $t_i$ (hypothesis); $t_i \implies (p \implies t_i)$ (axiom 1); $p \implies t_i$ (modus ponens).
         \item If $t_i = p$, we write the proof of $\vdash p \implies p$ given above.
-        \item Suppose $t_i$ is obtained by modus ponens from $t_j$ and $t_k = t_j \implies t_i$.
-        We may assume by induction that $S \vdash p \implies t_k$ and $S \vdash p \implies (t_j \implies t_i)$.
+        \item Suppose $t_i$ is obtained by modus ponens from $t_j$ and $t_k = t_j \implies t_i$ where $j, k < i$.
+        We may assume by induction that $S \vdash p \implies t_j$ and $S \vdash p \implies (t_j \implies t_i)$.
         We write
         \begin{enumerate}
             \item $(p \implies (t_j \implies t_i)) \implies ((p \implies t_j) \implies (p \implies t_i))$ (axiom 2)
@@ -225,19 +264,22 @@ Intuitively, provability corresponds to the implication connective in $L$.
         giving $S \vdash p \implies t_i$.
     \end{itemize}
 \end{proof}
+
 \begin{example}
     Consider $\qty{p \implies q, q \implies r} \vdash p \implies r$.
-    By the deduction theorem, it suffices to prove $\qty{p \implies q, q \implies r, p} \vdash r$, which is obtained easily from modus ponens.
+    By the \nameref{thm:ded}, it suffices to prove $\qty{p \implies q, q \implies r, p} \vdash r$, which is obtained easily from modus ponens.
 \end{example}
 
 \subsection{Soundness}
-We aim to show $S \models t$ if and only if $S \vdash t$.
+We aim to show $S \models t$ iff $S \vdash t$.
 The direction $S \vdash t$ implies $S \models t$ is called \vocab{soundness}, which is a way of verifying that our axioms and deduction rule make sense.
 The direction $S \models t$ implies $S \vdash t$ is called \vocab{adequacy}, which states that our axioms are powerful enough to deduce everything that is (semantically) true.
-\begin{proposition}
+
+\begin{proposition}[Soundness Theorem]
     Let $S \subseteq L$ and $t \in L$.
     Then $S \vdash t$ implies $S \models t$.
 \end{proposition}
+
 \begin{proof}
     We have a proof $t_1, \dots, t_n$ of $t$ from $S$.
     We aim to show that any model of $S$ is also a model of $t$, so if $v$ is a valuation that maps every element of $S$ to 1, then $v(t) = 1$.
