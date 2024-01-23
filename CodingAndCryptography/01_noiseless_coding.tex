@@ -3,27 +3,33 @@
 Let $\mathcal A$ be a finite alphabet.
 We write $\mathcal A^\star$ for the set of strings of elements of $\mathcal A$, defined by $\mathcal A^\star = \bigcup_{n \geq 0} A^n$.
 The \vocab{concatenation} of two strings $x = x_1 \dots x_r$ and $y = y_1 \dots y_s$ is the string $xy = x_1 \dots x_r y_1 \dots y_s$.
-\begin{definition}
+
+\begin{definition}[Code]
     Let $\mathcal A, \mathcal B$ be alphabets.
     A \vocab{code} is a function $c \colon \mathcal A \to \mathcal B^\star$.
     The \vocab{codewords} of $c$ are the elements of $\Im c$.
 \end{definition}
+
 \begin{example}[Greek fire code]
     Let $\mathcal A = \qty{\alpha, \beta, \dots, \omega}$, and $B = \qty{1, 2, 3, 4, 5}$.
     We map $c(\alpha) = 11, c(\beta) = 12, \dots, c(\psi) = 53, c(\omega) = 54$.
     $xy$ means to hold up $x$ torches and another $y$ torches nearby.
     This code was described by the historian Polybius.
 \end{example}
+
 \begin{example}
     Let $\mathcal A$ be a set of words in some dictionary.
     Let $\mathcal B$ be the letters of English $\qty{A, \dots, Z, \text{\textvisiblespace}}$
     The code is to spell the word and follow with a space.
 \end{example}
+
 The general idea is to send a message $x_1, \dots, x_n \in \mathcal A^\star$ as $c(x_1) \dots c(x_n) \in \mathcal B^\star$.
 So $c$ extends to a function $c^\star \colon \mathcal A^\star \to \mathcal B^\star$.
-\begin{definition}
+
+\begin{definition}[Decipherable]
     A code $c$ is \vocab{decipherable} (or \vocab{uniquely decodable}) if $c^\star$ is injective.
 \end{definition}
+
 If $c$ is decipherable, each string in $\mathcal B^\star$ corresponds to at most one message.
 It does not suffice to require that $c$ be injective.
 Consider $\mathcal A = \qty{1, 2, 3, 4}, \mathcal B = \qty{0,1}$, and let $c(1) = 0, c(2) = 1, c(3) = 00, c(4) = 01$.
@@ -44,40 +50,48 @@ Such codes require no lookahead to determine if we have reached the end of a wor
 One can easily find decipherable codes that are not prefix-free.
 
 \subsection{Kraft's inequality}
-\begin{definition}
+
+\begin{definition}[Kraft's Inequality]
     Let $\mathcal A$ be an alphabet of size $m$, and $\mathcal B$ be an alphabet of size $a$.
     Let $c \colon \mathcal A \to \mathcal B^\star$ be a code with codewords are of length $\ell_1, \dots, \ell_m$.
     Then, \vocab{Kraft's inequality} is
     \[ \sum_{i=1}^m a^{-\ell_i} \leq 1 \]
 \end{definition}
+
 \begin{theorem}
-    A prefix-free code (with given codeword lengths) exists if and only if Kraft's inequality holds.
+    A prefix-free code (with given codeword lengths) exists iff Kraft's inequality holds.
 \end{theorem}
+
 \begin{proof}
     Let us rewrite Kraft's inequality as $\sum_{\ell=1}^s n_\ell a^{-\ell} \leq 1$, where $n_\ell$ is the number of codewords of length $\ell$, and $s$ is the length of the longest codeword.
-    Suppose $c \colon \mathcal A \to \mathcal B^\star$ is prefix-free.
+
+    $(\implies)$: Suppose $c \colon \mathcal A \to \mathcal B^\star$ is prefix-free.
     Then,
     \[ n_1 a^{s-1} + n_2 a^{s-2} + \dots + n_{s-1} a + n_s \leq a^s \]
     since the left hand side counts the number of strings of length $s$ in $\mathcal B$ with some codeword of $c$ as a prefix, and the right hand side counts the total number of strings of length $s$.
     Dividing by $a^s$ gives the desired result.
 
-    Now, suppose that $\sum_{\ell=1}^s n_\ell a^{-\ell} \leq 1$.
+    $(\Longleftarrow)$: Now, suppose that $\sum_{\ell=1}^s n_\ell a^{-\ell} \leq 1$.
     We aim to construct a prefix-free code $c$ with $n_\ell$ codewords of length $\ell$ for all $\ell \leq s$.
     Proceed by induction on $s$.
+
     The case $s = 1$ is clear; in this case, the inequality gives $n_1 \leq a$.
+
     By the inductive hypothesis, we have constructed a prefix-free code $\hat c$ with $n_\ell$ codewords of length $\ell$ for all $\ell < s$.
     The inequality gives $n_1 a^{s-1} + \dots + n_{s-1} a + n_s \leq a^s$.
     The first $s - 1$ terms on the left hand side gives the number of strings of length $s$ with some codeword of $\hat c$ as a prefix.
     So we are free to add $n_s$ additional codewords of length $s$ to $\hat c$ to form $c$ without exhausting our supply of $a^s$ total strings of length $s$.
 \end{proof}
+
 \begin{remark}
     The proof of existence of such a code is constructive; one can choose codewords in order of increasing length, ensuring that we do not introduce prefixes at each stage.
 \end{remark}
 
 \subsection{McMillan's inequality}
-\begin{theorem}
+\begin{theorem}[McMillan's inequality]
     Any decipherable code satisfies Kraft's inequality.
 \end{theorem}
+
 \begin{proof}
     Let $c \colon \mathcal A \to \mathcal B^\star$ be decipherable with word lengths $\ell_1, \dots, \ell_m$.
     Let $s = \max_{i \leq m} \ell_i$.
@@ -90,8 +104,9 @@ One can easily find decipherable codes that are not prefix-free.
     \[ \qty(\sum_{i=1}^m a^{-\ell_i})^R \leq Rs \implies \sum_{i=1}^m a^{-\ell_i} \leq \qty(Rs)^{\frac{1}{R}} \]
     As $R \to \infty$, the right hand side converges to 1, giving Kraft's inequality as required.
 \end{proof}
+
 \begin{corollary}
-    A decipherable code with prescribed word lengths exists if and only if a prefix-free code with the same word lengths exists.
+    A decipherable code with prescribed word lengths exists iff a prefix-free code with the same word lengths exists.
 \end{corollary}
 We can therefore restrict our attention to prefix-free codes.
 
@@ -99,23 +114,29 @@ We can therefore restrict our attention to prefix-free codes.
 \vocab{Entropy} is a measure of `randomness' or `uncertainty' in an input message.
 Suppose that we have a random variable $X$ taking a finite number of values $x_1, \dots, x_n$ with probability $p_1, \dots, p_n$.
 Then, the entropy of this random variable is the expected number of fair coin tosses required to determine $X$.
+
 \begin{example}
     Suppose $p_1 = p_2 = p_3 = p_4 = \frac{1}{4}$.
     Identifying $\qty{x_1, x_2, x_3, x_4} = \qty{00, 01, 10, 11}$, we would expect $H(X) = 2$.
 \end{example}
+
 \begin{example}
     Suppose $p_1 = \frac{1}{2}$, $p_2 = \frac{1}{4}$, and $p_3 = p_4 = \frac{1}{8}$.
     Identifying $\qty{x_1, x_2, x_3, x_4} = \qty{0, 10, 110, 111}$, we obtain $H(X) = \frac{1}{2} \cdot 1 + \frac{1}{4} \cdot 2 + \frac{1}{8} \cdot 3 + \frac{1}{8} \cdot 3 = \frac{7}{4}$.
 \end{example}
+
 In a sense, the first example is `more random' than the second, as its entropy is higher.
-\begin{definition}
+
+\begin{definition}[Entropy]
     The \vocab{entropy} of a random variable $X$ taking a finite number of values $x_1, \dots, x_n$ with probabilities $p_1, \dots, p_n$ is defined to be
     \[ H(X) = H(p_1, \dots, p_n) = -\sum_{i=1}^n p_i \log p_i = -\expect{\log p_i} \]
     where the logarithm is taken with base 2.
 \end{definition}
+
 Note that $H(X) \geq 0$, and equality holds exactly when $X$ is constant with probability 1.
 It is measured in \vocab{bits}, binary digits.
 By convention, we write $0 \log 0 = 0$ (note that $x \log x \to 0$ as $x \to 0$).
+
 \begin{example}
     For a biased coin with probability $p$ of a head, we write $H(p,1-p) = H(p)$.
     We find
