@@ -33,10 +33,12 @@ Noisy coding is adapted to the channel, which in this case is the human reading 
 
 \begin{example}
     The \vocab{binary symmetric channel} with error probability $p \in [0,1]$ is a discrete memoryless channel with input and output alphabets $\qty{0, 1}$, where the channel matrix is
-    \[ \begin{pmatrix}
+    \begin{align*}
+        \begin{pmatrix}
             1-p & p \\
             p & 1-p
-    \end{pmatrix} \]
+    \end{pmatrix}
+    \end{align*}
     Here, a symbol is transmitted correctly with probability $1 - p$.
     Usually, we assume $p < \frac{1}{2}$.
 \end{example}
@@ -44,10 +46,12 @@ Noisy coding is adapted to the channel, which in this case is the human reading 
 \begin{example}
     The \vocab{binary erasure channel} has $\mathcal A = \qty{0, 1}$ and $\mathcal B = \qty{0, 1, \star}$.
     The channel matrix is
-    \[ \begin{pmatrix}
+    \begin{align*}
+        \begin{pmatrix}
         1-p & 0 & p \\
         0 & 1-p & p
-    \end{pmatrix} \]
+    \end{pmatrix}
+    \end{align*}
     $p$ can be interpreted as the probability that the symbol received is unreadable.
     If $\star$ is received, we say that we have received a \vocab{splurge error}.
 \end{example}

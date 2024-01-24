@@ -80,9 +80,13 @@ We make the following assumptions.
     \item All sequences of ciphertext are equally likely, so $H\qty(C^{(n)}) = n \log \abs{\mathcal A}$.
 \end{enumerate}
 Hence,
-\[ H\qty(K \mid C^{(n)}) = \log \abs{\mathcal K} + nH - n \log \abs{\mathcal A} \]
-This is nonnegative if and only if
-\[ n \leq U = \frac{\log \abs{\mathcal K}}{\log \abs{\mathcal A} - H} \]
+\begin{align*}
+    H\qty(K \mid C^{(n)}) = \log \abs{\mathcal K} + nH - n \log \abs{\mathcal A}
+\end{align*}
+This is nonnegative iff
+\begin{align*}
+    n \leq U = \frac{\log \abs{\mathcal K}}{\log \abs{\mathcal A} - H}
+\end{align*}
 Equivalently, $\frac{\log \abs{\mathcal A}}{R\log \abs{\mathcal A}}$ where $R = 1 - \frac{H}{\log \abs{\mathcal A}}$ is the \vocab{redundancy} of the source.
 Recall that $0 \leq H \leq \log \abs{\mathcal A}$.
 To make the unicity distance large, we can make the number of keys large, or use a message source with little redundancy.
@@ -121,9 +125,13 @@ We then apply the following result.
     Encryption and decryption can be performed on-the-fly, without needing the entire codeword first, and it is error-tolerant.
 \end{remark}
 Recall that the stream produced by a linear feedback shift register is given by
-\[ x_n = \sum_{i=1}^d a_{d-i} x_{n-i} \]
+\begin{align*}
+    x_n = \sum_{i=1}^d a_{d-i} x_{n-i}
+\end{align*}
 for all $n \geq d$, and has auxiliary polynomial
-\[ P(X) = X^d + a_{d-1}X^{d-1} + \dots + a_0 \]
+\begin{align*}
+    P(X) = X^d + a_{d-1}X^{d-1} + \dots + a_0
+\end{align*}
 with $a_d = 1$.
 The solutions to the recursion relations are linear combinations of powers of roots of $P$.
 Over $\mathbb C$, the general solution is a linear combination of $\alpha^n, n\alpha^n, \dots, n^{t-1} \alpha^n$ where $\alpha$ is a root of $P(X)$ with multiplicity $t$.
@@ -191,7 +199,9 @@ We base asymmetric cryptosystems on certain mathematical problems in number theo
 
     The best known methods for solving the examples above use a factor base method, called the \vocab{modular number sieve}.
     It has running time
-    \[ O\qty(\exp(c (\log N)^{\frac{1}{3}} (\log \log N)^{\frac{2}{3}})) \]
+    \begin{align*}
+        O\qty(\exp(c (\log N)^{\frac{1}{3}} (\log \log N)^{\frac{2}{3}}))
+    \end{align*}
     where $c$ is a known constant.
 \end{example}
 
@@ -229,7 +239,7 @@ Indeed, running the Euclidean algorithm on $p, q$ gives integers $r, s$ such tha
 \end{lemma}
 \begin{proof}
     \vocab{Part (i).}
-    $x^2 \equiv y^2$ mod $p$ if and only if $p \mid (x^2 - y^2) = (x-y)(x+y)$, so either $p \mid x-y$ or $p \mid x+y$, so $x = \pm y$.
+    $x^2 \equiv y^2$ mod $p$ iff $p \mid (x^2 - y^2) = (x-y)(x+y)$, so either $p \mid x-y$ or $p \mid x+y$, so $x = \pm y$.
 
     \vocab{Part (ii).}
     If $x_0$ is a solution, then by the Chinese remainder theorem, there exist solutions $x$ with $x \equiv \pm x_0$ mod $p$ and $x \equiv \pm x_0$ mod $q$.
@@ -256,7 +266,9 @@ We claim that if we know a multiple $m$ of $\varphi(N) = (p-1)(q-1)$, then facto
 Write $o_p(x)$ for the order of $x$ as an element of $\qty(\faktor{\mathbb Z}{p\mathbb Z})^\times$.
 Write $m = 2^a b$ where $a \geq 1, b$ odd.
 Let
-\[ X = \qty{x \in \qty(\faktor{\mathbb Z}{N\mathbb Z})^\times \midd o_p(x^b) \neq o_q(x^b)} \]
+\begin{align*}
+    X = \qty{x \in \qty(\faktor{\mathbb Z}{N\mathbb Z})^\times \midd o_p(x^b) \neq o_q(x^b)}
+\end{align*}
 \begin{theorem}
     \begin{enumerate}
         \item If $x \in X$, then there exists $0 \leq t < a$ such that $(x^{2^t b} - 1, N)$ is a nontrivial factor of $N$.
@@ -301,26 +313,37 @@ Hence, the decrypting function is inverse to the encrypting function.
 We now prove part (ii) of the above theorem.
 \begin{proof}
     The Chinese remainder theorem provides a multiplicative group isomorphism
-    \[ \qty(\faktor{\mathbb Z}{N\mathbb Z})^\times \to \qty(\faktor{\mathbb Z}{p\mathbb Z})^\times \times \qty(\faktor{\mathbb Z}{q\mathbb Z})^\times \]
+    \begin{align*}
+        \qty(\faktor{\mathbb Z}{N\mathbb Z})^\times \to \qty(\faktor{\mathbb Z}{p\mathbb Z})^\times \times \qty(\faktor{\mathbb Z}{q\mathbb Z})^\times
+    \end{align*}
     mapping $x$ to $(x \text{ mod } p, x \text{ mod } q)$.
     We claim that if we partition $\qty(\faktor{\mathbb Z}{p\mathbb Z})^\times$ according to the value of $o_p(x^b)$, then each equivalence class has size at most
-    \[ \frac{1}{2} \abs{\qty(\faktor{\mathbb Z}{p\mathbb Z})^\times} = \frac{1}{2}(p-1) \]
+    \begin{align*}
+        \frac{1}{2} \abs{\qty(\faktor{\mathbb Z}{p\mathbb Z})^\times} = \frac{1}{2}(p-1)
+    \end{align*}
     We show that one of these subsets has size exactly $\frac{1}{2}(p-1)$.
     Let $g$ be a primitive root mod $p$, so $\qty(\faktor{\mathbb Z}{p\mathbb Z})^\times = \genset{g}$.
     By Fermat's little theorem, $g^{p-1} \equiv 1$ mod $p$, so $g^m = g^{2^a b} \equiv 1$ mod $p$.
     Hence, $o_p(g^b)$ is a power of 2, say $2^t \leq a$.
     Let $x = g^k$ for some $0 \leq k \leq p - 2$, then $x^b = (g^b)^k$, so $o_p(x^b) = \frac{2^t}{(2^t, k)}$.
-    So $o_p(x^b) = 2^t$ if and only if $k$ is odd, so
-    \[ o_p(x^b) = o_p(g^{bk}) = \begin{cases}
-        o_p(g^b) = 2^t & \text{if } k \text{ odd} \\
-        < 2^t & \text{if } k \text{ even}
-    \end{cases} \]
+    So $o_p(x^b) = 2^t$ iff $k$ is odd, so
+    \begin{align*}
+        o_p(x^b) = o_p(g^{bk}) =
+        \begin{cases}
+            o_p(g^b) = 2^t & \text{if } k \text{ odd} \\
+            < 2^t & \text{if } k \text{ even}
+        \end{cases}
+    \end{align*}
     Thus, $\qty{g^k \text{ mod } p \mid k \text{ odd}}$ is the set as required, proving the claim.
     To finish, for each $y \in \qty(\faktor{\mathbb Z}{q\mathbb Z})^\times$, the set
-    \[ \qty{x \in \qty(\faktor{\mathbb Z}{p\mathbb Z})^\times \midd o_p(x^b) \neq o_q(x^b)} \]
+    \begin{align*}
+        \qty{x \in \qty(\faktor{\mathbb Z}{p\mathbb Z})^\times \midd o_p(x^b) \neq o_q(x^b)}
+    \end{align*}
     has at least $\frac{1}{2}(p-1)$ elements.
     Applying the Chinese remainder theorem,
-    \[ \abs{X} = \abs{\qty{(x,y) \in \qty(\faktor{\mathbb Z}{p\mathbb Z})^\times \times \qty(\faktor{\mathbb Z}{q\mathbb Z})^\times \midd o_p(x^b) \neq o_q(x^b)}} \geq \frac{1}{2}(p-1)(q-1) = \frac{1}{2}\varphi(N) \]
+    \begin{align*}
+        \abs{X} = \abs{\qty{(x,y) \in \qty(\faktor{\mathbb Z}{p\mathbb Z})^\times \times \qty(\faktor{\mathbb Z}{q\mathbb Z})^\times \midd o_p(x^b) \neq o_q(x^b)}} \geq \frac{1}{2}(p-1)(q-1) = \frac{1}{2}\varphi(N)
+    \end{align*}
 \end{proof}
 \begin{remark}
     We have shown that finding $(N, d)$ from the public key $(N, e)$ is as hard as factoring $N$.
@@ -343,13 +366,15 @@ We now prove part (ii) of the above theorem.
     She sends this back to Bob, who computes $e^{b'}$ mod $p$.
     By Fermat's little theorem, $e^{b'} \equiv d^{a'b'} \equiv c^{ba'b'} \equiv m^{aba'b'} \equiv m$.
     % https://q.uiver.app/?q=WzAsNSxbMCwwLCJtIl0sWzEsMCwibV5hIl0sWzIsMCwiY15iIl0sWzMsMCwiZF57YSd9Il0sWzQsMCwiZV57Yid9Il0sWzAsMSwiQSJdLFsxLDIsIkIiXSxbMiwzLCJBIl0sWzMsNCwiQiJdXQ==
-    \[\begin{tikzcd}
-        m & {m^a} & {c^b} & {d^{a'}} & {e^{b'}}
-        \arrow["A", from=1-1, to=1-2]
-        \arrow["B", from=1-2, to=1-3]
-        \arrow["A", from=1-3, to=1-4]
-        \arrow["B", from=1-4, to=1-5]
-    \end{tikzcd}\]
+    \[
+        \begin{tikzcd}
+            m & {m^a} & {c^b} & {d^{a'}} & {e^{b'}}
+            \arrow["A", from=1-1, to=1-2]
+            \arrow["B", from=1-2, to=1-3]
+            \arrow["A", from=1-3, to=1-4]
+            \arrow["B", from=1-4, to=1-5]
+        \end{tikzcd}
+    \]
 \end{example}
 \begin{example}[Diffie--Hellman key exchange]
     Alice and Bob wish to agree on a secret key $k$.
@@ -414,11 +439,15 @@ Let $h \colon \mathcal M \to \qty{1, \dots, p-1}$ be a collision-resistant hash 
 
 To send a message $m$ with $0 \leq m \leq p-1$, Alice randomly chooses $k$ with $1 \leq k \leq p-2$ coprime to $p-1$.
 She computes $r, s$ with $1 \leq r \leq p-1$ and $1 \leq s \leq p-2$ satisfying
-\[ r \equiv g^k \mod p;\quad h(m) \equiv ur + ks \mod (p-1) \]
+\begin{align*}
+    r \equiv g^k \mod p;\quad h(m) \equiv ur + ks \mod (p-1)
+\end{align*}
 Since $k$ is coprime to $p-1$, the congruence for $s$ always has a solution.
 Alice signs the message with the signature $(r, s)$.
 Now,
-\[ g^{h(m)} \equiv g^{ur + ks} \equiv (g^u)^r (g^k)^s \equiv y^r r^s \mod p \]
+\begin{align*}
+    g^{h(m)} \equiv g^{ur + ks} \equiv (g^u)^r (g^k)^s \equiv y^r r^s \mod p
+\end{align*}
 Bob accepts a signature if $g^{h(m)} \equiv y^r r^s$ mod $p$.
 To forge a signature, obvious attacks involve the discrete logarithm problem, finding $u$ from $y = g^u$.
 \begin{lemma}
@@ -434,14 +463,20 @@ To forge a signature, obvious attacks involve the discrete logarithm problem, fi
 It is vital that Alice chooses a new value of $k$ to sign each message.
 Suppose she sends $m_1, m_2$ using the same value of $k$.
 Denote the signatures $(r, s_1)$ and $(r, s_2)$; note that $r$ depends only on $k$ and is hence fixed.
-\[ h(m_1) \equiv ur + ks_1 \mod (p-1);\quad h(m_2) \equiv ur + ks_2 \mod (p-1) \]
+\begin{align*}
+    h(m_1) \equiv ur + ks_1 \mod (p-1);\quad h(m_2) \equiv ur + ks_2 \mod (p-1)
+\end{align*}
 Hence,
-\[ h(m_1) - h(m_2) \equiv k(s_1 - s_2) \mod (p-1) \]
+\begin{align*}
+    h(m_1) - h(m_2) \equiv k(s_1 - s_2) \mod (p-1)
+\end{align*}
 Let $d = \gcd(p-1, s_1 - s_2)$.
 By the previous lemma, this is the number of solutions for $k$ modulo $p-1$.
 Choose the solution that gives the correct value in the first congruence $r \equiv g^k$ mod $p$.
 Then,
-\[ s_1 \equiv \frac{h(m_1) - ur}{k} \mod (p-1) \]
+\begin{align*}
+    s_1 \equiv \frac{h(m_1) - ur}{k} \mod (p-1)
+\end{align*}
 This gives $ur \equiv h(m_1) - ks_1$.
 Hence, using the lemma again, there are $\gcd(p-1, r)$ solutions for $u$.
 Choose the solution for $u$ that gives $y \equiv g^u$.
@@ -459,7 +494,9 @@ The public key is $(p, q, g)$ constructed as follows.
 \end{itemize}
 Let $m$ be a message with $0 \leq m < q$.
 She chooses a random $k$ with $1 < k < q$, and computes
-\[ s_1 \equiv (g^k \text{ mod } p) \text{ mod } q;\quad s_2 \equiv k^{-1}(m+xs_1) \text{ mod } q \]
+\begin{align*}
+    s_1 \equiv (g^k \text{ mod } p) \text{ mod } q;\quad s_2 \equiv k^{-1}(m+xs_1) \text{ mod } q
+\end{align*}
 The signature is $(s_1, s_2)$.
 To verify a signature, we perform the following procedure.
 Bob computes $w \equiv s_2^{-1}$ mod $q$, $u_1 \equiv mw$ mod $q$, $u_2 \equiv s_1 w$ mod $q$, and $v = (g^{u_1} y^{u_2} \text{ mod } p) \text{ mod } q$.
@@ -536,19 +573,23 @@ Let $0 \leq S \leq N$ be the secret, which can be chosen at random by the Leader
 The Leader chooses and publishes a prime $p > n, N$.
 They then choose independent random coefficients $a_1, \dots, a_{k-1}$ with $0 \leq a_j \leq p-1$ where we take $a_0 = S$, and distinct integers $x_1, \dots, x_n$ with $1 \leq x_j \leq p-1$.
 Define
-\[ P(r) \equiv a_0 + \sum_{j=1}^{k-1} a_j x_r^j \mod p \]
+\begin{align*}
+    P(r) \equiv a_0 + \sum_{j=1}^{k-1} a_j x_r^j \mod p
+\end{align*}
 choosing $0 \leq P(r) \leq p-1$.
 The $r$th participant is given their shadow pair $(x_r, P(r))$ to be kept secret.
 The Leader can then discard their computations.
 
 Suppose $k$ members of the Faculty assemble with shadow pairs $(y_j, Q(j)) = (x_{i_j}, P(i_j))$ for $1 \leq j \leq k$.
 By properties of the Vandermonde determinant,
-\[ \det\begin{pmatrix}
+\begin{align*}
+    \det\begin{pmatrix}
     1 & y_1 & \cdots & y_1^{k-1} \\
     1 & y_2 & \cdots & y_2^{k-1} \\
     \vdots & \vdots & \ddots & \vdots \\
     1 & y_k & \cdots & y_k^{k-1}
-\end{pmatrix} = \prod_{1 \leq j < i \leq k} (y_i - y_j) \]
+    \end{pmatrix} = \prod_{1 \leq j < i \leq k} (y_i - y_j)
+\end{align*}
 The $y_i$ are distinct, so this determinant does not vanish.
 Hence, we can uniquely solve the system of $k$ simultaneous equations
 \begin{align*}
@@ -560,12 +601,14 @@ Hence, we can uniquely solve the system of $k$ simultaneous equations
 In particular, $z_0 = a_0 = S$ is the secret, as $(a_0, \dots, a_{k-1})$ is also a solution to these equations by construction.
 Suppose $k-1$ people attempt to reconstruct the secret.
 In this case, the Vandermonde determinant gives
-\[ \det\begin{pmatrix}
+\begin{align*}
+    \det\begin{pmatrix}
     y_1 & y_1^2 & \cdots & y_1^{k-1} \\
     y_2 & y_2^2 & \cdots & y_2^{k-1} \\
     \vdots & \vdots & \ddots & \vdots \\
     y_{k-1} & y_{k-1}^2 & \cdots & y_{k-1}^{k-1}
-\end{pmatrix} = y_1 y_2 \dots y_{k-1} \prod_{1 \leq j < i \leq k-1} (y_i - y_j) \]
+    \end{pmatrix} = y_1 y_2 \dots y_{k-1} \prod_{1 \leq j < i \leq k-1} (y_i - y_j)
+\end{align*}
 This is nonzero modulo $p$, so the system of equations
 \begin{align*}
     z_0 + y_1 z_1 + y_1^2 z_2 + \dots + y_k^{k-1} z_{k-1} &\equiv Q(1) \\

@@ -12,7 +12,9 @@ If $m = 1$, $\rho(C) = 0$, and if $C = \qty{0,1}^n$, $\rho(C) = 1$.
 \begin{definition}
     Let $x, y \in \qty{0,1}^n$.
     The \vocab{Hamming distance} between $x$ and $y$ is
-    \[ d(x,y) = \abs{\qty{i \mid x_i \neq y_i}} \]
+    \begin{align*}
+        d(x,y) = \abs{\qty{i \mid x_i \neq y_i}}
+    \end{align*}
 \end{definition}
 In this section, we consider only the binary symmetric channel with probability $p$.
 \begin{definition}
@@ -36,14 +38,18 @@ Channels with $p = 0$ are called \vocab{lossless channels}, and channels with $p
 \begin{proof}
     \vocab{Part (i).}
     By Bayes' rule,
-    \[ \prob{c \text{ sent} \mid x \text{ received}} = \frac{\prob{c \text{ sent, } x \text{ received}}}{x \text{ received}} = \frac{\prob{c \text{ sent}}}{\prob{x \text{ received}}} \prob{x \text{ received} \mid c \text{ sent}} \]
+    \begin{align*}
+        \prob{c \text{ sent} \mid x \text{ received}} = \frac{\prob{c \text{ sent, } x \text{ received}}}{x \text{ received}} = \frac{\prob{c \text{ sent}}}{\prob{x \text{ received}}} \prob{x \text{ received} \mid c \text{ sent}}
+    \end{align*}
     By hypothesis, $\prob{c \text{ sent}}$ is independent of $c$.
     Hence, for some fixed received message $x$, maximising $\prob{c \text{ sent} \mid x \text{ received}}$ is the same as maximising $\prob{x \text{ received} \mid c \text{ sent}}$.
 
     \vocab{Part (ii).}
     Let $r = d(x,c)$.
     Then,
-    \[ \prob{x \text{ received} \mid c \text{ sent}} = p^r (1-p)^{n-r} = (1-p)^n \qty(\frac{p}{1-p})^r \]
+    \begin{align*}
+        \prob{x \text{ received} \mid c \text{ sent}} = p^r (1-p)^{n-r} = (1-p)^n \qty(\frac{p}{1-p})^r
+    \end{align*}
     As $p < \frac{1}{2}$, $\frac{p}{1-p} < 1$.
     Hence, maximising $\prob{x \text{ received} \mid c \text{ sent}}$ is equivalent to minimising $r = d(x,c)$.
 \end{proof}
@@ -86,11 +92,15 @@ The aim when constructing codes for noisy channels is to detect errors, and if p
 \end{example}
 \begin{example}
     Hamming's original code is a 1-error correcting binary $[7,16]$-code, defined on a subset of $\mathbb F_2^7$ by
-    \[ C = \qty{c \in \mathbb F_2^7 \mid c_1 + c_3 + c_5 + c_7 = 0; c_2 + c_3 + c_6 + c_7 = 0; c_4 + c_5 + c_6 + c_7 = 0} \]
+    \begin{align*}
+        C = \qty{c \in \mathbb F_2^7 \mid c_1 + c_3 + c_5 + c_7 = 0; c_2 + c_3 + c_6 + c_7 = 0; c_4 + c_5 + c_6 + c_7 = 0}
+    \end{align*}
     The bits $c_3, c_5, c_6, c_7$ are chosen arbitrarily, and $c_1, c_2, c_4$ are check digits, giving a size of $2^4 = 16$.
     Suppose that we receive $x \in \mathbb F_2^7$.
     We form the \vocab{syndrome} $z = z_x = (z_1, z_2, z_4) \in \mathbb F_2^3$ where
-    \[ z_1 = x_1 + x_3 + x_5 + x_7;\quad z_2 = x_2 + x_3 + x_6 + x_7;\quad z_4 = x_4 + x_5 + x_6 + x_7 \]
+    \begin{align*}
+        z_1 = x_1 + x_3 + x_5 + x_7;\quad z_2 = x_2 + x_3 + x_6 + x_7;\quad z_4 = x_4 + x_5 + x_6 + x_7
+    \end{align*}
     By definition of $C$, if $x \in C$ then $z = (0, 0, 0)$.
     If $d(x,c) = 1$ for some $c \in C$, then the place where $x$ and $c$ differ is given by $z_1 + 2z_2 + 4z_4$ (not modulo 2).
     Indeed, if $x = c + e_i$ where $e_i$ is the zero vector with a one in the $i$th position, $z_x = z_{e_i}$, and one can check that this holds for each $1 \leq i \leq 7$.
@@ -100,10 +110,12 @@ The aim when constructing codes for noisy channels is to detect errors, and if p
     The Hamming distance is a metric on $\mathbb F_2^n$.
 \end{lemma}
 \begin{proof}
-    Clearly, $d(x,y) \geq 0$ and equality holds if and only if $x = y$, and $d(x,y) = d(y,x)$.
+    Clearly, $d(x,y) \geq 0$ and equality holds iff $x = y$, and $d(x,y) = d(y,x)$.
     Let $x, y, z \in \mathbb F_2^n$.
     Then,
-    \[ \qty{i \mid x_i \neq z_i} \subseteq \qty{i \mid x_i \neq y_i} \cup \qty{i \mid y_i \neq z_i} \]
+    \begin{align*}
+        \qty{i \mid x_i \neq z_i} \subseteq \qty{i \mid x_i \neq y_i} \cup \qty{i \mid y_i \neq z_i}
+    \end{align*}
     Hence $d(x,z) \leq d(x,y) + d(y,z)$.
 \end{proof}
 \begin{remark}
@@ -145,7 +157,7 @@ The aim when constructing codes for noisy channels is to detect errors, and if p
 \begin{definition}
     An $[n,m]$-code with minimum distance $d$ is called an $[n,m,d]$-code.
 \end{definition}
-Note that $m \leq 2^n$ with equality if and only if $C = \mathbb F_2^n$.
+Note that $m \leq 2^n$ with equality iff $C = \mathbb F_2^n$.
 Similarly, $d \leq n$, with equality in the case of the repetition code.
 \begin{example}
     The repetition code of length $n$ is an $[n,2,n]$-code.
@@ -163,12 +175,16 @@ Similarly, $d \leq n$, with equality in the case of the repetition code.
 \end{definition}
 \begin{lemma}[Hamming's bound; sphere packing bound]
     An $e$-error correcting code $C$ of length $n$ has
-    \[ \abs{C} \leq \frac{2^n}{V(n,e)} \]
+    \begin{align*}
+        \abs{C} \leq \frac{2^n}{V(n,e)}
+    \end{align*}
 \end{lemma}
 \begin{proof}
     $C$ is $e$-error correcting, so $B(c_1, e) \cap B(c_2, e)$ is empty for all codewords $c_1 \neq c_2$.
     Hence,
-    \[ \sum_{c \in C} \abs{B(c,e)}  \leq \abs{\mathbb F_2^n} \implies \abs{C} V(n,e) \leq 2^n \]
+    \begin{align*}
+        \sum_{c \in C} \abs{B(c,e)}  \leq \abs{\mathbb F_2^n} \implies \abs{C} V(n,e) \leq 2^n
+    \end{align*}
     as required.
 \end{proof}
 \begin{definition}
@@ -181,11 +197,13 @@ Similarly, $d \leq n$, with equality in the case of the repetition code.
 \begin{example}
     Consider Hamming's $[7,16,3]$-code.
     This is 1-error correcting, and
-    \[ \frac{2^n}{V(n,e)} = \frac{2^7}{V(7,1)} = \frac{2^7}{1+7} = 2^4 = \abs{C} \]
+    \begin{align*}
+        \frac{2^n}{V(n,e)} = \frac{2^7}{V(7,1)} = \frac{2^7}{1+7} = 2^4 = \abs{C}
+    \end{align*}
     So Hamming's original code is perfect.
 \end{example}
 \begin{example}
-    The binary repetition code of length $n$ is perfect if and only if $n$ is odd.
+    The binary repetition code of length $n$ is perfect iff $n$ is odd.
 \end{example}
 \begin{remark}
     If $\frac{2^n}{V(n,e)}$ is not an integer, there does not exist a perfect $e$-error correcting code of length $n$.
@@ -215,7 +233,9 @@ The values of the $A(n,d)$ are unknown in general.
     Equivalently, $A(n,d) = \max \qty{m \mid \exists [n,m,d'] \text{-code, for some } d' \geq d}$.
 \end{corollary}
 \begin{theorem}
-    \[ \frac{2^n}{V(n,d-1)} \leq A(n,d) \leq \frac{2^n}{V\qty(n,\floor*{\frac{d-1}{2}})} \]
+    \begin{align*}
+        \frac{2^n}{V(n,d-1)} \leq A(n,d) \leq \frac{2^n}{V\qty(n,\floor*{\frac{d-1}{2}})}
+    \end{align*}
 \end{theorem}
 The upper bound is Hamming's bound; the lower bound is known as the GSV (Gilbert--Shannon--Varshamov) bound.
 The upper bound can be thought of as a sphere packing bound, and the lower bound is a sphere covering bound.
@@ -225,7 +245,9 @@ The upper bound can be thought of as a sphere packing bound, and the lower bound
     Then, there exists no $x \in \mathbb F_2^n$ with $d(x,c) \geq d$ for all codewords.
     Indeed, if such an $x$ exists, we could consider the code $C \cup \qty{x}$, which would be an $[n,m+1,d]$-code, contradicting maximality of $m$.
     Then,
-    \[ \mathbb F_2^n \subseteq \bigcup_{c \in C} B(c,d-1) \implies 2^n \leq \sum_{c \in C} \abs{B(c,d-1)} = mV(n,d-1) \]
+    \begin{align*}
+        \mathbb F_2^n \subseteq \bigcup_{c \in C} B(c,d-1) \implies 2^n \leq \sum_{c \in C} \abs{B(c,d-1)} = mV(n,d-1)
+    \end{align*}
     as required.
 \end{proof}
 \begin{example}
@@ -251,9 +273,13 @@ We study the information rate $\frac{\log A(n,\floor*{n\delta})}{n}$ as $n \to \
 \begin{proof}
     \vocab{(i) implies (ii).}
     By the GSV bound, we find
-    \[ A(n,\floor*{n\delta}) \geq \frac{2^n}{V(n,\floor*{n\delta} - 1)} \geq \frac{2^n}{V(n,\floor*{n\delta})} \]
+    \begin{align*}
+        A(n,\floor*{n\delta}) \geq \frac{2^n}{V(n,\floor*{n\delta} - 1)} \geq \frac{2^n}{V(n,\floor*{n\delta})}
+    \end{align*}
     Taking logarithms,
-    \[ \frac{1}{n}\log A(n,\floor*{n\delta}) \geq 1 - \frac{\log V(n,\floor*{n\delta})}{n} \geq 1 - H(\delta) \]
+    \begin{align*}
+        \frac{1}{n}\log A(n,\floor*{n\delta}) \geq 1 - \frac{\log V(n,\floor*{n\delta})}{n} \geq 1 - H(\delta)
+    \end{align*}
     \vocab{Part (i).}
     $H(\delta)$ is increasing for $\delta < \frac{1}{2}$.
     Therefore, without loss of generality, we may assume $n\delta$ is an integer.
@@ -267,7 +293,9 @@ We study the information rate $\frac{\log A(n,\floor*{n\delta})}{n}$ as $n \to \
         &= \delta^{n\delta} (1-\delta)^{n(1-\delta)} V(n,n\delta)
     \end{align*}
     Taking logarithms,
-    \[ 0 \geq n\delta \log \delta + n(1-\delta) \log(1-\delta) + \log V(n,n\delta) \]
+    \begin{align*}
+        0 \geq n\delta \log \delta + n(1-\delta) \log(1-\delta) + \log V(n,n\delta)
+    \end{align*}
     as required.
 \end{proof}
 The constant $H(\delta)$ in the proposition is optimal.
@@ -283,18 +311,24 @@ The constant $H(\delta)$ in the proposition is optimal.
 Let $C$ be an $[n,m,d]$-code.
 \begin{example}
     The \vocab{parity check extension} is an $[n+1,m,d']$-code given by
-    \[ C^+ = \qty{\qty(c_1, \dots, c_n, \sum_{i=1}^n c_i) \midd (c_1, \dots, c_n) \in C} \]
+    \begin{align*}
+        C^+ = \qty{\qty(c_1, \dots, c_n, \sum_{i=1}^n c_i) \midd (c_1, \dots, c_n) \in C}
+    \end{align*}
     where $d'$ is either $d$ or $d + 1$, depending on whether $d$ is odd or even.
 \end{example}
 \begin{example}
     Let $1 \leq i \leq n$.
     Then, deleting the $i$th digit from each codeword gives the \vocab{punctured code}
-    \[ C^- = \qty{(c_1, \dots, c_{i-1}, c_{i+1}, \dots, c_n) \midd (c_1, \dots, c_n) \in C} \]
+    \begin{align*}
+        C^- = \qty{(c_1, \dots, c_{i-1}, c_{i+1}, \dots, c_n) \midd (c_1, \dots, c_n) \in C}
+    \end{align*}
     If $d \geq 2$, this is an $[n-1, m, d']$-code where $d'$ is either $d$ or $d - 1$.
 \end{example}
 \begin{example}
     Let $1 \leq i \leq n$ and let $\alpha \in \mathbb F_2$.
     The \vocab{shortened code} is
-    \[ C' = \qty{(c_1, \dots, c_{i-1}, c_{i+1}, \dots, c_n) \midd (c_1, \dots, c_{i-1}, \alpha, c_{i+1}, \dots, c_n) \in C} \]
+    \begin{align*}
+        C' = \qty{(c_1, \dots, c_{i-1}, c_{i+1}, \dots, c_n) \midd (c_1, \dots, c_{i-1}, \alpha, c_{i+1}, \dots, c_n) \in C}
+    \end{align*}
     This is an $[n-1,m',d']$ with $d' \geq d$ and $m' \geq \frac{m}{2}$ for a suitable choice of $\alpha$.
 \end{example}
