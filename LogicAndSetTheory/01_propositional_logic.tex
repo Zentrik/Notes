@@ -25,7 +25,7 @@ The \vocab{language} $L = L(P)$ is a set of \vocab{propositions} (or \vocab{comp
 
 \begin{remark}
     Note that the phrase `$L$ is defined inductively' means more precisely the following.
-    Let $L_1 = P \cup \qty{\bot}$, and define $L_{n+1} = L_n \cup \qty{(p \implies q) \mid p, q \in L_n}$.
+    Let $L_1 = P \cup \qty{\bot}$, and define $L_{n+1} = L_n \cup \qty{(p \implies q) : p, q \in L_n}$.
     We set $L = \bigcup_{n=1}^\infty L_n$.
 
     Note that the elements of $L$ are just finite strings of symbols from the alphabet $P \cup \qty{(, ), \implies, \bot}$.
@@ -73,7 +73,7 @@ We can now introduce the abbreviations $\neg, \wedge, \vee, \top$, which are not
 \begin{proposition}
     Let $v, v' \colon L \to \qty{0,1}$ be valuations that agree on the primitives $p_i$.
     Then $v = v'$.
-    Further, any function $w \colon P \to \qty{0,1}$ extends to a valuation $v : L \to \qty{0, 1}$ s.t. $v\mid_P = w$.
+    Further, any function $w \colon P \to \qty{0,1}$ extends to a valuation $v : L \to \qty{0, 1}$ s.t. $v:_P = w$.
 \end{proposition}
 
 \begin{remark}
@@ -88,7 +88,7 @@ We can now introduce the abbreviations $\neg, \wedge, \vee, \top$, which are not
     Let $v(p) = w(p)$ for all $p \in P$, and $v(\bot) = 0$ to obtain $v$ on the set $L_1$.
     Assuming $v$ is defined on $p, q \in L_n$ we can define it at $p \implies q$ in the obvious way.
     This defines $v$ on $L_{n+1}$, hence $v$ is defined on $\cup L_n = L$.
-    By construction, $v$ is a valuation on $L$ and $v \mid_P = w$.
+    By construction, $v$ is a valuation on $L$ and $v :_P = w$.
 \end{proof}
 
 \begin{example}
@@ -311,7 +311,7 @@ v(t) = \begin{cases}
 but this does not work on the set $S = \qty{p_1, p_1 \implies p_2}$ as it would evaluate $p_2$ to false.
 
 We say a set $S \subseteq L$ is \vocab{deductively closed} if $p \in S$ whenever $S \vdash p$.
-Any set $S$ has a \vocab{deductive closure}, which is the (deductively closed) set of statements $\qty{t \in L \mid S \vdash t}$ that $S$ proves.
+Any set $S$ has a \vocab{deductive closure}, which is the (deductively closed) set of statements $\qty{t \in L : S \vdash t}$ that $S$ proves.
 If $S$ is consistent, then the deductive closure is also consistent.
 Computing the deductive closure before the valuation solves the problem for $S = \qty{p_1, p_1 \implies p_2}$.
 However, if a primitive proposition $p$ is not in $S$, but $\neg p$ is also not in $S$, this technique still does not work, as it would assign false to both $p$ and $\neg p$.

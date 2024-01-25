@@ -360,7 +360,7 @@ So $p(0) = \ev{P_{00}}{\psi} + \ev{P_{11}}{\psi}$.
 Let $S_1, S_2$ be quantum systems with state spaces $\mathcal V, \mathcal W$ with dimensions $m, n$, and we consider the composite system $S_1 S_2$.
 Let $\qty{\ket{e_i}}$ be a complete orthonormal basis of $\mathcal V$, and let $\qty{\ket{f_j}}$ be a complete orthonormal basis of $\mathcal W$.
 Suppose the composite system is in an initial state $\ket{\psi} = \sum a_{ij} \ket{e_i} \ket{f_j}$.
-Suppose now that we want to measure $\ket{\psi}$ in the basis $\qty{\ket{e_i}}$; this amounts to an incomplete measurement with subspaces $\mathcal E_i = \vecspan \qty{\ket{e_i} \otimes \ket{\varphi} \mid \ket{\varphi} \in \mathcal W}$ for $1 \leq i \leq m$.
+Suppose now that we want to measure $\ket{\psi}$ in the basis $\qty{\ket{e_i}}$; this amounts to an incomplete measurement with subspaces $\mathcal E_i = \vecspan \qty{\ket{e_i} \otimes \ket{\varphi} : \ket{\varphi} \in \mathcal W}$ for $1 \leq i \leq m$.
 The outcomes of such a measurement are $\qty{1, \dots, m}$, and the $\mathcal E_i$ are mutually orthogonal.
 The probability of a given outcome is $p(k) = \ev{P_k \otimes I}{\psi}$, where $P_k = \op{e_k}{e_k}$.
 Hence,
