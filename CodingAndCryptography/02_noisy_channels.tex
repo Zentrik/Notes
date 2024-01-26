@@ -1,14 +1,16 @@
 \section{Noisy channels}
 
 \subsection{Decoding rules}
-\begin{definition}
+\begin{definition}[Binary {$[n,m]$}-code]
     A \vocab{binary $[n,m]$-code} is a subset $C$ of $\qty{0,1}^n$ of size $m = \abs{C}$.
     We say $n$ is the \vocab{length} of the code, and elements of $C$ are called \vocab{codewords}.
 \end{definition}
+
 We use an $[n,m]$-code to send one of $m$ messages through a channel using $n$ bits.
 For instance, if the channel is a binary symmetric channel, we use the channel $n$ times.
 Note that $1 \leq m \leq 2^n$, so the information rate $\rho(C) = \frac{1}{n} \log m$ satisfies $0 \leq \rho(C) \leq 1$.
 If $m = 1$, $\rho(C) = 0$, and if $C = \qty{0,1}^n$, $\rho(C) = 1$.
+
 \begin{definition}
     Let $x, y \in \qty{0,1}^n$.
     The \vocab{Hamming distance} between $x$ and $y$ is
@@ -16,7 +18,9 @@ If $m = 1$, $\rho(C) = 0$, and if $C = \qty{0,1}^n$, $\rho(C) = 1$.
         d(x,y) = \abs{\qty{i \mid x_i \neq y_i}}
     \end{align*}
 \end{definition}
+
 In this section, we consider only the binary symmetric channel with probability $p$.
+
 \begin{definition}
     Let $C$ be a binary $[n,m]$-code.
     \begin{itemize}

@@ -341,13 +341,14 @@ Then, we append 0 and 1 to the codeword for $\nu$ to obtain the new codewords fo
     which yields a prefix-free code with strictly smaller expected word length.
 \end{proof}
 
-\begin{theorem}
+\begin{theorem}[Huffman 1952]
     Huffman codes are optimal.
 \end{theorem}
 
 \begin{proof}
     The proof is by induction on $m$.
     If $m = 2$, then the codewords are 0 and 1, which is clearly optimal.
+
     Assume $m > 2$, and let $c_m$ be the Huffman code for $X_m$ which takes values $\mu_1, \dots, \mu_m$ with probabilities $p_1 \geq \dots \geq p_m$.
     $c_m$ is constructed from a Huffman code $c_{m-1}$ with random variable $X_{m-1}$ taking values $\mu_1, \dots, \mu_{n-2}, \nu$ with probabilities $p_1, \dots, p_{m-2}, p_{m-1} + p_m$.
     The code $c_{m-1}$ is optimal by the inductive hypothesis.
