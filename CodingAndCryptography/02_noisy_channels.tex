@@ -11,17 +11,17 @@ For instance, if the channel is a binary symmetric channel, we use the channel $
 Note that $1 \leq m \leq 2^n$, so the information rate $\rho(C) = \frac{1}{n} \log m$ satisfies $0 \leq \rho(C) \leq 1$.
 If $m = 1$, $\rho(C) = 0$, and if $C = \qty{0,1}^n$, $\rho(C) = 1$.
 
-\begin{definition}
+\begin{definition}[Hamming Distance]
     Let $x, y \in \qty{0,1}^n$.
     The \vocab{Hamming distance} between $x$ and $y$ is
     \begin{align*}
-        d(x,y) = \abs{\qty{i \mid x_i \neq y_i}}
+        d(x,y) = \abs{\qty{i : x_i \neq y_i}}
     \end{align*}
 \end{definition}
 
 In this section, we consider only the binary symmetric channel with probability $p$.
 
-\begin{definition}
+\begin{definition}[Decoding Rules]
     Let $C$ be a binary $[n,m]$-code.
     \begin{itemize}
         \item The \vocab{ideal observer} decoding rule decodes $x \in \qty{0,1}^n$ as the $c \in C$ maximising the probability that $c$ was sent given that $x$ was received;
@@ -29,6 +29,7 @@ In this section, we consider only the binary symmetric channel with probability 
         \item The \vocab{minimum distance} decoding rule decodes $x \in \qty{0,1}^n$ as the $c \in C$ minimising the Hamming distance $d(x,c)$.
     \end{itemize}
 \end{definition}
+
 \begin{lemma}
     Let $C$ be a binary $[n,m]$-code.
     \begin{enumerate}
@@ -40,15 +41,15 @@ Note that the hypothesis in part (i) is reasonable if we first encode a message 
 The hypothesis in part (ii) is reasonable, since a channel with $p = \frac{1}{2}$ can carry no information, and a channel with $p > \frac{1}{2}$ can be used as a channel with probability $1 - p$ by inverting its outputs.
 Channels with $p = 0$ are called \vocab{lossless channels}, and channels with $p = \frac{1}{2}$ are called \vocab{useless channels}.
 \begin{proof}
-    \vocab{Part (i).}
+    \emph{Part (1).}
     By Bayes' rule,
     \begin{align*}
-        \prob{c \text{ sent} \mid x \text{ received}} = \frac{\prob{c \text{ sent, } x \text{ received}}}{x \text{ received}} = \frac{\prob{c \text{ sent}}}{\prob{x \text{ received}}} \prob{x \text{ received} \mid c \text{ sent}}
+            \prob{c \text{ sent} \mid x \text{ received}} = \frac{\prob{c \text{ sent, } x \text{ received}}}{\prob{x \text{ received}}} = \frac{\prob{c \text{ sent}}}{\prob{x \text{ received}}} \prob{x \text{ received} \mid c \text{ sent}}
     \end{align*}
     By hypothesis, $\prob{c \text{ sent}}$ is independent of $c$.
     Hence, for some fixed received message $x$, maximising $\prob{c \text{ sent} \mid x \text{ received}}$ is the same as maximising $\prob{x \text{ received} \mid c \text{ sent}}$.
 
-    \vocab{Part (ii).}
+    \emph{Part (2).}
     Let $r = d(x,c)$.
     Then,
     \begin{align*}
@@ -57,7 +58,9 @@ Channels with $p = 0$ are called \vocab{lossless channels}, and channels with $p
     As $p < \frac{1}{2}$, $\frac{p}{1-p} < 1$.
     Hence, maximising $\prob{x \text{ received} \mid c \text{ sent}}$ is equivalent to minimising $r = d(x,c)$.
 \end{proof}
+
 We can therefore choose to use minimum distance decoding from this point.
+
 \begin{example}
     Suppose codewords $000, 111$ are sent with probabilities $\alpha = \frac{9}{10}$ and $1 - \alpha = \frac{1}{10}$, through a binary symmetric channel with error probability $p = \frac{1}{4}$.
     Suppose that we receive $110$.
@@ -69,6 +72,7 @@ We can therefore choose to use minimum distance decoding from this point.
     The ideal observer therefore decodes $110$ as $000$.
     The maximum likelihood or minimum distance decoding rules decode $110$ as $111$.
 \end{example}
+
 \begin{remark}
     Minimum distance decoding may be expensive in terms of time and storage if $\abs{C}$ is large, since the distance to all codewords must be calculated \vocab{a priori}.
     One must also specify a convention in case of a tie between the probabilities or distances, for instance, using a random choice, or requesting a retransmission.
@@ -76,28 +80,32 @@ We can therefore choose to use minimum distance decoding from this point.
 
 \subsection{Error detection and correction}
 The aim when constructing codes for noisy channels is to detect errors, and if possible, to correct them.
-\begin{definition}
+
+\begin{definition}[Error Correcting Code]
     A binary $[n,m]$-code $C$ is
     \begin{itemize}
         \item \vocab{$d$-error detecting} if, when changing up to $d$ digits in each codeword, we can never produce another codeword;
         \item \vocab{$e$-error correcting} if, knowing that $x \in \qty{0,1}^n$ differs from a codeword in at most $e$ positions, we can deduce the codeword.
     \end{itemize}
 \end{definition}
+
 \begin{example}
     A \vocab{repetition code} of length $n$ has codewords $0^n, 1^n$.
     This is an $[n,2]$-code.
     It is $(n-1)$-error detecting, and $\floor*{\frac{n-1}{2}}$-error correcting.
     Its information rate is $\frac{1}{n}$.
 \end{example}
+
 \begin{example}
-    A \vocab{simple parity check code} or \vocab{paper tape code} of length $n$ identifies the set $\qty{0,1}$ with the field $\mathbb F_2$ of two elements, and defines $C = \qty{(x_1, \dots, x_n) \in \mathbb F_2^n \mid \sum x_i = 0}$.
+    A \vocab{simple parity check code} or \vocab{paper tape code} of length $n$ identifies the set $\qty{0,1}$ with the field $\mathbb F_2$ of two elements, and defines $C = \qty{(x_1, \dots, x_n) \in \mathbb F_2^n : \sum x_i = 0}$.
     This is an $[n,2^{n-1}]$-code.
     This is 1-error detecting and 0-error correcting, but has information rate $\frac{n-1}{n}$.
 \end{example}
+
 \begin{example}
     Hamming's original code is a 1-error correcting binary $[7,16]$-code, defined on a subset of $\mathbb F_2^7$ by
     \begin{align*}
-        C = \qty{c \in \mathbb F_2^7 \mid c_1 + c_3 + c_5 + c_7 = 0; c_2 + c_3 + c_6 + c_7 = 0; c_4 + c_5 + c_6 + c_7 = 0}
+        C = \qty{c \in \mathbb F_2^7 : c_1 + c_3 + c_5 + c_7 = 0; c_2 + c_3 + c_6 + c_7 = 0; c_4 + c_5 + c_6 + c_7 = 0}
     \end{align*}
     The bits $c_3, c_5, c_6, c_7$ are chosen arbitrarily, and $c_1, c_2, c_4$ are check digits, giving a size of $2^4 = 16$.
     Suppose that we receive $x \in \mathbb F_2^7$.
@@ -107,18 +115,20 @@ The aim when constructing codes for noisy channels is to detect errors, and if p
     \end{align*}
     By definition of $C$, if $x \in C$ then $z = (0, 0, 0)$.
     If $d(x,c) = 1$ for some $c \in C$, then the place where $x$ and $c$ differ is given by $z_1 + 2z_2 + 4z_4$ (not modulo 2).
-    Indeed, if $x = c + e_i$ where $e_i$ is the zero vector with a one in the $i$th position, $z_x = z_{e_i}$, and one can check that this holds for each $1 \leq i \leq 7$.
+    Indeed, if $x = c + e_i$ where $e_i$ is the zero vector with a one in the $i$th position, $z_x = z_{e_i}$\footnote{E.g. $z_{e_3} = (1, 1, 0)$, the binary expansion of $3$}, and one can check that this holds for each $1 \leq i \leq 7$.
     Therefore, Hamming's original code is 1-error correcting.
 \end{example}
+
 \begin{lemma}
     The Hamming distance is a metric on $\mathbb F_2^n$.
 \end{lemma}
+
 \begin{proof}
     Clearly, $d(x,y) \geq 0$ and equality holds iff $x = y$, and $d(x,y) = d(y,x)$.
     Let $x, y, z \in \mathbb F_2^n$.
     Then,
     \begin{align*}
-        \qty{i \mid x_i \neq z_i} \subseteq \qty{i \mid x_i \neq y_i} \cup \qty{i \mid y_i \neq z_i}
+        \qty{i : x_i \neq z_i} \subseteq \qty{i : x_i \neq y_i} \cup \qty{i : y_i \neq z_i}
     \end{align*}
     Hence $d(x,z) \leq d(x,y) + d(y,z)$.
 \end{proof}
@@ -127,9 +137,10 @@ The aim when constructing codes for noisy channels is to detect errors, and if p
 \end{remark}
 
 \subsection{Minimum distance}
-\begin{definition}
+\begin{definition}[Minimum Distance]
     The \vocab{minimum distance} of a code is the minimum value of $d(c_1, c_2)$ for codewords $c_1 \neq c_2$.
 \end{definition}
+
 \begin{lemma}
     Let $C$ be a code with minimum distance $d > 0$.
     Then,
@@ -138,14 +149,15 @@ The aim when constructing codes for noisy channels is to detect errors, and if p
         \item $C$ is $\floor*{\frac{d-1}{2}}$-error correcting, but cannot correct all sets of $\floor*{\frac{d-1}{2}} + 1$ errors.
     \end{enumerate}
 \end{lemma}
+
 \begin{proof}
-    \vocab{Part (i).}
+    \emph{Part (1).}
     If $x \in \mathbb F_2^n$ and $c$ is a codeword with $1 \leq d(x,c) \leq d - 1$.
     Then $x \not\in C$, so $d - 1$ errors are detected.
     Suppose $c_1, c_2$ are codewords with $d(c_1, c_2) = d$.
     Then $c_1$ can be corrupted into $c_2$ with only $d$ errors, and this is undetectable.
 
-    \vocab{Part (ii).}
+    \emph{Part (2).}
     Let $e = \floor*{\frac{d-1}{2}}$.
     By definition, $e \leq \frac{d-1}{2} < e + 1$, so $2e < d \leq 2(e+1)$.
     Let $x \in \mathbb F_2^n$.
@@ -158,11 +170,14 @@ The aim when constructing codes for noisy channels is to detect errors, and if p
     Then $d(x,c_1) = e + 1$, and $d(x,c_2) = d - (e+1) \leq e + 1$.
     Hence, $C$ cannot correct all sets of $e + 1$ errors.
 \end{proof}
-\begin{definition}
+
+\begin{definition}[{$[n,m,d]$}-code]
     An $[n,m]$-code with minimum distance $d$ is called an $[n,m,d]$-code.
 \end{definition}
+
 Note that $m \leq 2^n$ with equality iff $C = \mathbb F_2^n$.
 Similarly, $d \leq n$, with equality in the case of the repetition code.
+
 \begin{example}
     The repetition code of length $n$ is an $[n,2,n]$-code.
     The simple parity check code of length $n$ is an $[n,2^{n-1},2]$-code.
@@ -172,17 +187,19 @@ Similarly, $d \leq n$, with equality in the case of the repetition code.
 \end{example}
 
 \subsection{Covering estimates}
-\begin{definition}
+\begin{definition}[Closed Haming Ball]
     Let $x \in \mathbb F_2^n$ and $r \geq 0$.
     Then, we denote the \vocab{closed Hamming ball} with centre $x$ and radius $r$ by $B(x,r)$.
     We write $V(n,r) = \abs{B(x,r)} = \sum_{i=0}^r \binom{n}{i}$ for the \vocab{volume} of this ball.
 \end{definition}
+
 \begin{lemma}[Hamming's bound; sphere packing bound]
     An $e$-error correcting code $C$ of length $n$ has
     \begin{align*}
         \abs{C} \leq \frac{2^n}{V(n,e)}
     \end{align*}
 \end{lemma}
+
 \begin{proof}
     $C$ is $e$-error correcting, so $B(c_1, e) \cap B(c_2, e)$ is empty for all codewords $c_1 \neq c_2$.
     Hence,
@@ -191,13 +208,16 @@ Similarly, $d \leq n$, with equality in the case of the repetition code.
     \end{align*}
     as required.
 \end{proof}
-\begin{definition}
+
+\begin{definition}[Perfect Code]
     An $e$-error correcting code $C$ of length $n$ such that $\abs{C} = \frac{2^n}{V(n,e)}$ is called \vocab{perfect}.
 \end{definition}
+
 \begin{remark}
-    Equivalently, a code is perfect if for all $x \in \mathbb F_2^n$, there exists a unique $c \in C$ such that $d(x,c) \leq e$.
+    Equivalently, a code is perfect if for all $x \in \mathbb F_2^n$, $\exists! \; c \in C$ such that $d(x,c) \leq e$.
     Alternatively, $\mathbb F_2^n$ is a union of disjoint balls $B(c,e)$ for all $c \in C$, or that any collection of $e + 1$ will cause the message to be decoded incorrectly.
 \end{remark}
+
 \begin{example}
     Consider Hamming's $[7,16,3]$-code.
     This is 1-error correcting, and
@@ -206,25 +226,32 @@ Similarly, $d \leq n$, with equality in the case of the repetition code.
     \end{align*}
     So Hamming's original code is perfect.
 \end{example}
+
 \begin{example}
     The binary repetition code of length $n$ is perfect iff $n$ is odd.
 \end{example}
+
 \begin{remark}
     If $\frac{2^n}{V(n,e)}$ is not an integer, there does not exist a perfect $e$-error correcting code of length $n$.
     The converse is false; the case $n = 90, e = 2$ is discussed on the second example sheet.
 \end{remark}
-\begin{definition}
+
+\begin{definition}[$A(n,d)$]
     $A(n,d)$ is the largest possible size $m$ of an $[n,m,d]$-code.
 \end{definition}
+
 The values of the $A(n,d)$ are unknown in general.
+
 \begin{example}
     $A(n,1) = 2^n$, considering the trivial code.
     $A(n,2) = 2^{n-1}$, maximised at the simple parity check code.
     $A(n,n) = 2$, maximised at the repetition code.
 \end{example}
+
 \begin{lemma}
     $A(n,d+1) \leq A(n,d)$.
 \end{lemma}
+
 \begin{proof}
     Let $m = A(n,d+1)$, and let $C$ be an $[n,m,d+1]$-code.
     Let $c_1, c_2 \in C$ be distinct codewords such that $d(c_1,c_2) = d+1$.
@@ -233,16 +260,20 @@ The values of the $A(n,d)$ are unknown in general.
     If $c \in C$ is any codeword not equal to $c_1$, then $d(c,c_1) \leq d(c,c_1') + d(c_1',c_1)$ hence $d + 1 \leq d(c,c_1') + 1$, so the code given by $C \cup \qty{c_1'} \setminus \qty{c_1}$ has minimum distance $d$, but has length $n$ and size $m$.
     This is therefore an $[n,m,d]$-code as required.
 \end{proof}
+
 \begin{corollary}
-    Equivalently, $A(n,d) = \max \qty{m \mid \exists [n,m,d'] \text{-code, for some } d' \geq d}$.
+    Equivalently, $A(n,d) = \max \qty{m : \exists [n,m,d'] \text{-code, for some } d' \geq d}$.
 \end{corollary}
+
 \begin{theorem}
     \begin{align*}
         \frac{2^n}{V(n,d-1)} \leq A(n,d) \leq \frac{2^n}{V\qty(n,\floor*{\frac{d-1}{2}})}
     \end{align*}
 \end{theorem}
+
 The upper bound is Hamming's bound; the lower bound is known as the GSV (Gilbert--Shannon--Varshamov) bound.
 The upper bound can be thought of as a sphere packing bound, and the lower bound is a sphere covering bound.
+
 \begin{proof}
     We prove the lower bound.
     Let $m = A(n,d)$, and let $C$ be an $[n,m,d]$-code.

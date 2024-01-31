@@ -28,11 +28,13 @@ Quantum copying involves three systems:
 The initial state of this composite system $ABM$ is $\ket{\psi} \ket{0} \ket{M_0}$.
 Note that the $\ket{\psi}$ and $\ket{0}\ket{M_0}$ are \vocab{uncorrelated} in this state, as we are using the tensor product to combine them.
 Suppose that the cloning process is performed using some unitary operator $U$, so $U\ket{\psi_A}\ket{0}\ket{M_0} = \ket{\psi_A}\ket{\psi_B}\ket{M_\psi}$.
+Note $\ket{\psi_A} = \ket{\psi}_A = \ket{\psi}$.
 This cloning process may be required to work either for all states of $A$, or for some subset of $A$.
 \begin{theorem}
-    Let $\mathcal S$ be any set of states of the system $A$ that contains at least one pair of distinct non-orthogonal states.
-    Then there does not exist any unitary operator $U$ that clones all states in $\mathcal S$.
+    Let $\mathcal S$ be any set of states of the system $A$ that contains at least one pair of distinct non-orthogonal\footnote{I.e. $\bra{\xi}\ket{\psi} \neq 1$ iff $\xi, \psi$ distinct states.} states.
+    Then $\nexists$ any unitary operator $U$ that clones all states in $\mathcal S$.
 \end{theorem}
+
 \begin{proof}
     Let $\ket{\xi}, \ket{\eta}$ be distinct non-orthogonal states in $\mathcal S$, so $\ip{\xi}{\eta} \neq 0$.
     Suppose such a unitary operator $U$ exists.
@@ -41,13 +43,13 @@ This cloning process may be required to work either for all states of $A$, or fo
     Unitary operators preserve inner products.
     Hence,
     \[ \ip{\xi_A}{\eta_A} \ip{0_B}{0_B} \ip{M_0}{M_0} = \ip{\xi_A}{\eta_A} \ip{\xi_B}{\eta_B} \ip{M_\xi}{M_\eta} \]
-    Hence, $\ip{\xi}{\eta} = \qty(\ip{\xi}{\eta})^2 \ip{M_\xi}{M_\eta}$.
+    Hence, $\ip{\xi}{\eta} = \qty(\ip{\xi}{\eta})^2 \ip{M_\xi}{M_\eta}$\footnote{As we assume states are normalised so $\ip{M_0}{M_0} = \ip{0_B}{0_B} = 1$.}.
     By taking the absolute value, $\abs{\ip{\xi}{\eta}} = \abs{\ip{\xi}{\eta}}^2 \abs{\ip{M_\xi}{M_\eta}}$.
     Since $\xi \neq \eta$, we must have $0 < \abs{\ip{\xi}{\eta}} < 1$, and $0 \leq \abs{\ip{M_\xi}{M_\eta}} \leq 1$.
     Therefore, $1 = \abs{\ip{\xi}{\eta}} \abs{\ip{M_\xi}{M_\eta}} < 1$, which is a contradiction.
 \end{proof}
 If quantum cloning were possible, superluminal (indeed, instantaneous) communication would also be possible.
-Suppose we have a state $\ket{\psi^+_{AB}} = \frac{1}{\sqrt{2}} \qty(\ket{00} + \ket{11}) \in \mathbb C^2 \otimes \mathbb C^2$.
+Suppose we have a state $\ket{\psi^+_{AB}} = \frac{1}{\sqrt{2}} \qty(\ket{0}_A \ket{0}_B + \ket{1}_A \ket{1}_B) \in \mathbb C^2 \otimes \mathbb C^2$.
 Let $A, B$ be the entangled parts of this quantum state, and suppose that we send qubit $A$ to Alice and $B$ to Bob, far apart from each other.
 
 If we want to send the bit `yes' from Alice to Bob, we measure the qubit $A$ in the basis $\qty{\ket{0}, \ket{1}}$, which gives outcomes $0, 1$ with probability $\frac{1}{2}$.
@@ -56,7 +58,7 @@ If we want to send `no', we instead measure $A$ in the basis $\qty{\ket{+}, \ket
 Similarly, the final state of $B$ is $\ket{+}$ or $\ket{-}$.
 
 We claim that these `yes' $(\ket{0}, \ket{1})$ and `no' $(\ket{+}, \ket{-})$ \vocab{preparations} of qubit $B$ are indistinguishable by Bob with any local action on the qubit.
-That is, they each give exactly the same probability distribution of outcomes of any measurement.
+That is, they each give exactly the same probability distribution of outcomes of any measurement so no superluminal communication yet.
 In fact, the distribution matches the prior distribution before qubit $A$ was measured.
 
 Let $\Pi_i$ be the projection operator for outcome $i$ on qubit $B$.
@@ -92,7 +94,7 @@ We will consider a two-outcome measurement $\qty{\Pi_0, \Pi_1}$, where $\Pi_0 + 
 The average success probability is
 \begin{align*}
     p_S(\Pi_0, \Pi_1) &= \frac{1}{2} \prob{0 \mid \ket{\psi} = \ket{\alpha_0}} + \frac{1}{2} \prob{1 \mid \ket{\psi} = \ket{\alpha_1}} \\
-    &= \frac{1}{2}\ev{\Pi_0}{\alpha_0} + \frac{1}{2}\ev{\Pi_1}{\alpha_1} \\
+    &= \frac{1}{2}\ev{\Pi_0}{\alpha_0} + \frac{1}{2}\ev{\underbracket{\Pi_1}_{I - \Pi_0}}{\alpha_1} \\
     &= \frac{1}{2} + \frac{1}{2} \Tr \qty[\Pi_0 \qty(\op{\alpha_0}{\alpha_0} - \op{\alpha_1}{\alpha_1})]
 \end{align*}
 as $\Tr(A\op{\psi}{\psi}) = \ev{A}{\alpha}$.
@@ -183,10 +185,10 @@ The outcome of the first measurement is $a$ with probability $p(a) = \ev{\qty(P_
 We denote the post-measurement state of the joint system by $\ket{\phi_{AB}''}= \frac{(P_a \otimes I_B) \ket{\phi_{AB}}}{\sqrt{p(a)}}$.
 Then, the outcome of the second measurement is $b$ with probability
 \begin{align*}
-    p(a \mid b) &= \ev{\qty(I_A \otimes P_b)}{\phi_{AB}''} \\
-    &= \frac{1}{p(a)} \ev{(P_a \otimes I_B) (I_A \otimes P_b) (P_a \otimes I_B)}{\phi_{AB}} \\
+    p(b \mid a) &= \ev{\qty(I_A \otimes P_b)}{\phi_{AB}''} \\
+    &= \frac{1}{p(a)} \ev{\underbracket{(P_a \otimes I_B) (I_A \otimes P_b)}_{\text{As projections: } (P_a \otimes P_B)} (P_a \otimes I_B)}{\phi_{AB}} \\
     &= \frac{1}{p(a)} \ev{(P_a \otimes P_b)}{\phi_{AB}} \\
-    p(a,b) = p(a) p(a \mid b) &= \ev{(P_a \otimes P_b)}{\phi_{AB}} = \abs{c_{ab}}^2
+    p(a,b) = p(a) p(b \mid a) &= \ev{(P_a \otimes P_b)}{\phi_{AB}} = \abs{c_{ab}}^2
 \end{align*}
 Hence $p(b) = \sum_{a=1}^{\dim \mathcal V_A} \abs{c_{ab}}^2$, which is exactly the distribution we obtained when no measurement on $A$ was performed.
 This proves the no-signalling principle.
