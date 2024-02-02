@@ -204,21 +204,21 @@ Note that this does not hold for general linear orderings, such as $\mathbb Q$ t
     For uniqueness, we apply induction on $x$.
     If $f, f'$ agree below $x$, then they must agree at $x$ since $f(x) = G\qty(\eval{f}_{I_x}) = G\qty(\eval{f'}_{I_x}) = f'(x)$.
 
-    We say that $h$ is an \vocab{attempt} to mean that $h \colon I \to Y$ where $I$ is some initial segment of $X$, s.t. $\forall \; x \in I$ we have that $h(x) = G\qty(\eval{h}_{I_x})$ (note $I_x \subseteq I$).
+    We say that $h$ is an \vocab{attempt} to mean that $h \colon I \to Y$ where $I$ is some i.s. of $X$, s.t. $\forall \; x \in I,\ h(x) = G\qty(\eval{h}_{I_x})$ (note $I_x \subseteq I$).
 
     Let $h, h'$ be attempts.
     We show that $\forall \; x \in X$ if $x \in \operatorname{dom}(h) \cap \operatorname{dom}(h')$ then $h(x) = h'(x)$ ($\operatorname{dom}(h)$ is the domain of h, i.e. $I$ above).
     Fix $x \in \operatorname{dom}(h) \cap \operatorname{dom}(h')$ and assume $h(y) = h'(y)$ for every $y < x$ (note $y < x$ implies $y \in \operatorname{dom}(h) \cap \operatorname{dom}(h')$).
-    Then $\eval{h}_{I_x} = \eval{h'}_{I_x}$, so $h(x) = G(\eval{h}_{I_x}) = G(\eval{h'}_{I_x}) h'(x)$.
+    Then $\eval{h}_{I_x} = \eval{h'}_{I_x}$ so $h(x) = G(\eval{h}_{I_x}) = G(\eval{h'}_{I_x}) = h'(x)$.
     Done by induction.
 
     Now we need to show that $\forall \; x \in X \; \exists$ attempt $h$ s.t. $x \in \operatorname{dom}(h)$.
     We prove this by induction.
-    Fix $x \in X$ and assume that for $y < x$ there's an attempt defined at $y$, and let $h_y$ be the unique attempt with domain $\qty{z \in X : z \in Y} = I_y \cup \qty{y}$.
+    Fix $x \in X$ and assume that for $y < x$ there's an attempt defined at $y$, and let $h_y$ be the unique attempt with domain $\qty{z \in X : z \leq y} = I_y \cup \qty{y}$.
     Then $h = \bigcup_{y < x} h_y$ is a well defined fcn on $I_x$ and it is an attempt since for $y < x$, $h(y) = h_y(y) = G(\eval{h_y}_{I_y}) = G(\eval{h}_{I_y})$.
 
     The attempt $h' = h \cup \qty{(x, G(h))}$ is an attempt with domain $I_x \cup \qty{x}$.
-    Therefore, there is an attempt defined at each $x$, so we can define the function $f \colon X \to Y$ by setting $f(x)$ to be the value of $h(x)$ where $h$ is some attempt defined at $x$.
+    Therefore, there is an attempt defined at each $x$, so we can define $f \colon X \to Y$ by $f(x) = h(x)$ where $h$ is some attempt defined at $x$.
     This is well defined by above and $f(x) = h(x) = G(\eval{h}_{I_x}) = G(\eval{f}_{I_x})$.
 \end{proof}
 

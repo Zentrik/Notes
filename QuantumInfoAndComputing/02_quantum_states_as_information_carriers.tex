@@ -31,7 +31,7 @@ Suppose that the cloning process is performed using some unitary operator $U$, s
 Note $\ket{\psi_A} = \ket{\psi}_A = \ket{\psi}$.
 This cloning process may be required to work either for all states of $A$, or for some subset of $A$.
 \begin{theorem}
-    Let $\mathcal S$ be any set of states of the system $A$ that contains at least one pair of distinct non-orthogonal\footnote{I.e. $\bra{\xi}\ket{\psi} \neq 1$ iff $\xi, \psi$ distinct states.} states.
+    Let $\mathcal S$ be any set of states of the system $A$ that contains at least one pair of distinct\footnote{$\bra{\xi}\ket{\psi} \neq 1$ iff $\xi, \psi$ distinct states.} non-orthogonal states.
     Then $\nexists$ any unitary operator $U$ that clones all states in $\mathcal S$.
 \end{theorem}
 
@@ -210,6 +210,8 @@ For example, we can encode the classical message 01 using the state $\ket{\phi^-
 We can perform a complete projective measurement on both qubits in the Bell basis to recover the encoded information with certainty.
 For instance, $P_{00} = \op{\phi^+}{\phi^+}$.
 If we prepare a pair of electrons $\ket{\phi}$ in the state $\ket{\phi^-}$ for example, we obtain $p(00) = p(10) = p(11) = 0$ and $p(01) = 1$.
+
+Note $(A \otimes I) \ket{\phi^+} = (I \otimes A^\transpose) \ket{\phi^+}$.
 
 \subsection{Superdense coding}
 Suppose Alice wants to send a classical message to Bob.
