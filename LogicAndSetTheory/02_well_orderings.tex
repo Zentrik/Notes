@@ -222,7 +222,7 @@ Note that this does not hold for general linear orderings, such as $\mathbb Q$ t
     This is well defined by above and $f(x) = h(x) = G(\eval{h}_{I_x}) = G(\eval{f}_{I_x})$.
 \end{proof}
 
-\begin{proposition}[Subset Collapse]
+\begin{proposition}[Subset Collapse] \label{prp:sbs}
     Let $Y$ be a w.o. set where $X \subseteq Y$.
     Then $X$ is order-isomorphic to a unique initial segment of $Y$.
 \end{proposition}
@@ -245,127 +245,199 @@ This is not true for general linear orderings, such as $\qty{1, 2, 3} \subset \m
 \end{remark}
 
 \subsection{Relating well-orderings}
-\begin{definition}
-    For well-orderings $X, Y$, we will write $X \leq Y$ if $X$ is isomorphic to an initial segment of $Y$.
+\begin{definition}[Less than or equal]
+    For well-ordered sets $X, Y$, we will write $X \leq Y$ if $X$ is o.i. to an i.s. of $Y$.
 \end{definition}
-$X \leq Y$ iff $X$ is isomorphic to some subset of $Y$.
+
+$X \leq Y$ iff $X$ is o.i. to some subset of $Y$.
+
 \begin{example}
     $\mathbb N \leq \qty{\frac{1}{2}, \frac{2}{3}, \dots}$.
+
 \end{example}
 \begin{proposition}
-    Let $X, Y$ be well-orderings.
+    Let $X, Y$ be well-ordered sets.
     Then either $X \leq Y$ or $Y \leq X$.
 \end{proposition}
+
 \begin{proof}
-    By recursion we define the function $f \colon X \to Y$ by letting $f(x)$ be the least element of $Y$ not of the form $f(y)$ for all $y < x$.
-    If a least element of this form always exists, this is a well-defined isomorphism from $X$ to an initial segment of $Y$ as required.
-    Suppose that $Y \setminus \qty{f(y) : y < x}$ is empty, so $\qty{f(y) : y < x} = Y$.
-    Then $Y$ is isomorphic to $I_x \subseteq X$, so $Y \leq X$.
+    Assume $Y \nleq X$.
+    Then in particular, $Y \neq \emptyset$.
+    Fix $y_0 \in Y$ and define by recursion $f \colon X \to Y$ by
+    \begin{align*}
+        f(x) = \begin{cases}
+            \min (Y \setminus \qty{f(y) : y < x}) & \text{if exists} \\
+            y_0 & \text{else}
+        \end{cases}
+    \end{align*}
+    If the `otherwise' clause ever arises, then let $x$ be the least element of $X$ for which this happens.
+    Then $f(I_x) = Y$ and for $y < x$ the `otherwise' clause does not occur.
+    It follows as in the proof of \nameref{prp:sbs} that $f$ is an o.i. from $I_x$ to $Y$, so $Y \leq X$ \Lightning.
+
+    Hence, the `otherwise' clause never arises, and so it follows as in the proof of \nameref{prp:sbs} that $f$ is an o.i. from $X$ to an i.s. of $Y$.
 \end{proof}
+
 \begin{proposition}
-    Let $X, Y$ be well-orderings, and suppose $X \leq Y$ and $Y \leq X$.
-    Then $X$ is isomorphic to $Y$.
+    Let $X, Y$ be well-ordered sets s.t. $X \leq Y$ and $Y \leq X$.
+    Then $X$ is o.i. to $Y$.
 \end{proposition}
+
 \begin{proof}
-    Let $f \colon X \to Y$ and $g \colon Y \to X$ be isomorphisms to initial segments.
-    Then $g \circ f$ is an isomorphism from $X$ to some initial segment of $X$, as an initial segment of an initial segment is an initial segment.
-    So by uniqueness, $g \circ f$ is the identity map on $X$.
-    Similarly, $f \circ g$ is the identity on $Y$, so $f$ and $g$ are inverses.
+    Let $f \colon X \to Y$ and $g \colon Y \to X$ be o.i.s to i.s. of $Y$ and $X$ respectively.
+    Then $g \circ f$ is an o.i. from $X$ to some i.s. of $X$.
+    So by uniqueness in \nameref{prp:sbs}, $g \circ f = \eval{\operatorname{id}}_X$.
+    Similarly, $f \circ g = \eval{\operatorname{id}}_Y$, so $f$ and $g$ are inverses.
 \end{proof}
+
+\begin{remark}
+    This shows that $\leq$ is a linear-order (reflexive, antisymmetric, transitive and trichotomous) provided we identified w.o. sets that are o.i. to each other. \\
+\end{remark}
 
 \subsection{Constructing larger well-orderings}
-\begin{definition}
-    For well-orderings $X, Y$, we write $X < Y$ if $X \leq Y$ and $X$ is not isomorphic to $Y$.
+
+\begin{definition}[Less than]
+    For w.o. sets $X, Y$, we write $X < Y$ if $X \leq Y$ and $X$ not o.i. to $Y$.
 \end{definition}
-Equivalently, $X < Y$ if $X$ is isomorphic to a proper initial segment of $Y$.
+So $X < Y \iff X$ o.i. to a proper i.s. of $Y$.
 
-Let $X$ be a well-ordering, and let $x \not\in X$.
-Construct the well-ordering on $X \cup \qty{x}$ by setting $y < x$ for all $y \in X$.
-This well-ordering is strictly greater than $X$, since $X$ is isomorphic to a proper initial segment.
-This is called the \vocab{successor} of $X$, written $X^+$.
+\begin{question}
+    Do the w.o. sets form a set? If so, is it a w.o. set?
+\end{question}
 
-For well-orderings $(X, <_X), (Y, <_Y)$, we say that $(Y, <_Y)$ \vocab{extends} $(X, <_X)$ if $X \subseteq Y$, $\eval{<_Y}_{X} =\, <_X$, and $X$ is an initial segment of $Y$.
-We say that well-orderings $X_i$ for $i \in I$ are \vocab{nested} if for all $i, j \in I$, either $X_i$ extends $X_j$ or $X_j$ extends $X_i$.
-\begin{proposition}
-    Let $X_i$ for $i \in I$ be a nested set of well-orderings.
-    Then, there exists a well-ordering $X$ s.t. $X_i \leq X$ for all $i \in I$.
+\begin{answer}
+    First we construct new w.o. sets from old.
+    ``There is always another'': Let $X$ be w.o. and let $x_0 \not\in X$. \\
+    $X \cup \qty{x_0}$ is w.o. by setting $x < x_0$ for all $x \in X$.
+    This is unique up to o.i. and $X < X^+$.
+\end{answer}
+
+\underline{Upper Bounds}: Given set $\qty{X_i : i \in I}$ of w.o. sets.
+We seek a w.o. set $X$ s.t. $X_i \leq X \; \forall \; i \in I$.
+
+\begin{definition}[Extends]
+    For well-orderings $(X, <_X), (Y, <_Y)$, we say that $(Y, <_Y)$ \vocab{extends} $(X, <_X)$ if $X \subseteq Y$, $\eval{<_Y}_{X} =\, <_X$, and $X$ is an i.s. of $Y$. \\
+    Then $\qty{X_i : i \in I}$ is \vocab{nested} if $\forall \; i, j \in I$ either $X_i$ extends $X_j$ or $X_j$ extends $X_i$.
+\end{definition}
+
+\begin{proposition} \label{prp:8}
+    Let $\qty{X_i : i \in I}$ be a nested set of w.o. sets.
+    Then, $\exists$ w.o. set $X$ s.t. $X_i \leq X \; \forall \; i \in I$.
 \end{proposition}
+
 \begin{proof}
-    Let $X = \bigcup_{i \in I} X_i$ with ordering $<_X\, = \bigcup_{i \in I} <_i$.
-    Then, as the $X_i$ are nested, each $X_i$ is an initial segment of $X$.
+    Let $X = \bigcup_{i \in I} X_i$ with $x < y$ iff $\exists \; i \in I$ s.t. $x, y \in X_i$ and $x <_i y$ where $<_i$ the well-ordering of $X_i$.
+    Since the $X_i$'s are nested, this is a well-defined linear order s.t. each $X_i$ is an i.s. of $X$.
+
     We show that this is a well-ordering.
     Let $S \subseteq X$ be a nonempty set.
-    Then $S \cap X_i \neq \varnothing$ for some $i \in I$.
-    Let $x$ be the least element of $S \cap X_i$.
-    Thus, $x$ is the least element of $S$, as $X_i$ is an initial segment of $X$.
+    Since $S = \bigcup_{i \in I} (S \cap X_i)$, $\exists \; i \in I$ s.t. $S \cap X_i \neq \emptyset$.
+    Let $x$ be a least element of $S \cap X_i$ (since $X$ is w.o.).
+    Then $x$ is a least element of $S$ since $X_i$ is an i.s. and if $y < x$, $y \in X_i$.
 \end{proof}
+
 \begin{remark}
-    The proposition holds without the nestedness assumption.
+    The proposition holds without the nestedness assumption (see Section 5).
 \end{remark}
 
 \subsection{Ordinals}
-\begin{definition}
-    An \vocab{ordinal} is a well-ordered set, where we regard two ordinals as equal if they are isomorphic.
+\begin{definition}[Ordinal]
+    An \vocab{ordinal} is a w.o. set, where we regard two ordinals as equal if they are o.i.
 \end{definition}
+
 \begin{remark}
     We cannot construct ordinals as equivalence classes of well-orderings, due to Russell's paradox.
-    Later, we will see a different construction that deals with this problem.
+    Later, we will see a different construction that deals with this problem in Section 5.
 \end{remark}
-\begin{definition}
+
+\begin{definition}[Order Type]
+    The \vocab{order type} of a w.o. set $X$ is the unique ordinal $\alpha$ o.i. to $X$.
     Let $X$ be a well-ordering corresponding to an ordinal $\alpha$.
-    Then, we say that $X$ has \vocab{order type} $\alpha$.
 \end{definition}
-The order type of the unique well-ordering on a collection of $k \in \mathbb N$ points is named $k$.
-The order type of $(\mathbb N, <)$ is named $\omega$.
+
+\begin{notation}
+    Write ``$\alpha$ is the O.T. of $X$''.
+\end{notation}
+
+\begin{example}
+    For $k \in \mathbb{N}_0$, we let $k$ be the O.T. of a w.o. set of size $k$ (this is unique). \\
+    Let $\omega$ be the O.T. of $\mathbb{N}$ (also of $\mathbb{N}_0$).
+\end{example}
+
 \begin{example}
     In the reals, the set $\qty{-2, 3, -\pi, 5}$ has order type 4.
     The set $\qty{\frac{1}{2}, \frac{2}{3}, \frac{3}{4}, \dots}$ has order type $\omega$.
 \end{example}
-We will write $\alpha \leq \beta$ if $X \leq Y$ where $X$ has order type $\alpha$ and $Y$ has order type $\beta$.
-This does not depend on the choice of representative $X$ or $Y$.
-We define $\alpha < \beta$ and $\alpha^+$ in a similar way.
-Note that $\alpha \leq \beta, \beta \leq \alpha$ implies $\alpha = \beta$.
-Therefore, ordinals are totally ordered.
-\begin{proposition}
+
+\begin{note}
+    For ordinals $\alpha, \beta$ write $\alpha \leq \beta$ if $X \leq Y$ where $X$ is a w.o. set with O.T. $\alpha$ and $Y$ has O.T. $\beta$.
+    This does not depend on the choice of representative $X$ or $Y$.
+
+    We define $\alpha < \beta$ for $X < Y$. \\
+    Let $\alpha^+$ be the O.T. of $X^+$.
+\end{note}
+
+\begin{remark}
+    Note that $\leq$ is a linear order; if $\alpha \leq \beta, \beta \leq \alpha$ then $\alpha = \beta$.
+\end{remark}
+
+\begin{theorem} \label{thm:9}
     Let $\alpha$ be an ordinal.
-    Then the set of ordinals less than $\alpha$ form a well-ordered set of order type $\alpha$.
-\end{proposition}
+    Then the set of ordinals less than $\alpha$ form a w.o. set of O.T. $\alpha$.
+\end{theorem}
+
 \begin{proof}
-    Let $X$ be a well-ordering with order type $\alpha$.
-    Then, the well-orderings less than $X$ are precisely the proper initial segments of $X$, up to isomorphism.
-    The initial segments of $X$ are precisely the sets $I_x = \qty{y \in X : y < x}$ for $x \in X$.
-    But these are order isomorphic to $X$ itself by mapping $I_x \mapsto x$.
+    Let $X$ be a w.o. set with O.T. $\alpha$.
+
+    Then, w.o. sets less than $X$ are the proper i.s. of $X$, up to o.i..
+    Let $\widetilde{X} = \qty{Y \subset X : Y \text{ a proper i.s. of } X}$.
+    Then $<$ (for w.o. sets) is a linear order on $\widetilde{X}$.
+
+    Note the fcn $X \to \widetilde{X}$ defined by $x \mapsto I_x$ is an o.i.
+    So $\widetilde{X}$ is a w.o. set of O.T. $\alpha$.
+    So $\qty{\operatorname{O.T.}(Y) : Y \in \widetilde{X}}$ is a set of ordinals $< \alpha$, and $Y \mapsto \operatorname{O.T.}(Y)$ is an o.i. from $\widetilde{X}$ to this set.
 \end{proof}
-We define $I_\alpha = \qty{\beta < \alpha}$, which is a well-ordered set of order type $\alpha$.
-This is often a convenient representative to choose for an ordinal.
-\begin{proposition}
+
+\begin{notation}
+    We define $I_\alpha = \qty{\beta : \beta < \alpha}$, which is a nice example of a w.o. set of O.T. $\alpha$.
+    This is often a convenient representative to choose for an ordinal.
+\end{notation}
+
+\begin{proposition} \label{prp:10}
     Every nonempty set $S$ of ordinals has a least element.
 \end{proposition}
+
 \begin{proof}
     Let $\alpha \in S$.
     Suppose $\alpha$ is not the least element of $S$.
     Then $S \cap I_\alpha$ is nonempty.
-    But $I_\alpha$ is well-ordered, so $S \cap I_\alpha$ has a minimal element as required.
+    But $I_\alpha$ is w.o., so $S \cap I_\alpha$ has a minimal element $\beta$.
+    Then $\beta$ is a least element of $S$, as if $\gamma \in S$ s.t. $\gamma < \alpha$, then $\gamma \in I_\alpha \cap S$ and so $\beta \leq \gamma$.
 \end{proof}
+
 \begin{theorem}[Burali-Forti paradox]
     The ordinals do not form a set.
 \end{theorem}
+
 \begin{proof}
     Suppose $X$ is the set of all ordinals.
-    Then $X$ is a well-ordered set, so it has an order type $\alpha$.
-    Then $X$ is isomorphic to $I_\alpha$, which is a proper initial segment of $X$.
+    Then $X$ is a w.o.., so it has an order type, say $\alpha$.
+    Then $X$ is o.i. to $I_\alpha$, which is a proper i.s. of $X$. \Lightning
 \end{proof}
+
 \begin{remark}
-    Given a set $S = \qty{\alpha_i \colon i \in I}$ of ordinals, there exists an upper bound $\alpha$ for $S$, so $\alpha_i \leq \alpha$ for all $i \in I$, by considering the nested family of well-orderings $I_{\alpha_i}$.
-    Hence, by the previous proposition, there exists a least upper bound, as $I_\alpha$ is a set.
-    We write $\alpha = \sup S$.
+    Let $S = \qty{\alpha_i \colon i \in I}$ be a set of ordinals.
+    Then by \cref{prp:8}, the nested set $\qty{I_{\alpha_i} : i \in I}$ has an upper bound.
+    So $\exists$ ordinal $\alpha$ s.t. $\alpha_i \leq \alpha \; \forall \; i \in I$.
+    By \cref{thm:9}, $I_\alpha$ is w.o., so we can the least such $\alpha$: \\
+    Take the least element of $\qty{\beta \in I_\alpha \cup \qty{\alpha} : \forall \; i \in I, \alpha_i \leq \beta}$. \\
+    We denote by ``$\sup S$'' the \vocab{least upper bound on $S$}.
+
+    Note if $\alpha = \sup S$, then $I_\alpha = \cup_{i \in I} I_{\alpha_i}$.
 \end{remark}
+
 \begin{example}
     $\sup \qty{2, 4, 6, \dots} = \omega$.
 \end{example}
-\begin{remark}
-    If we represent ordinals by sets of smaller ordinals, $\sup S = \bigcup_{\alpha \in S} \alpha$.
-\end{remark}
 
 \subsection{Some ordinals}
 \begin{align*}
@@ -375,11 +447,11 @@ Write $\alpha + 1$ for the successor $\alpha^+$ of $\alpha$.
 \begin{align*}
        \omega + 1, \omega + 2, \omega + 3, \dots, \omega + \omega = \omega \cdot 2
     \end{align*}
-where $\omega + \omega = \omega \cdot 2$ is defined by $\sup \qty{\omega, \omega + 1, \omega + 2, \dots}$.
+where $\omega + \omega = \omega \cdot 2$ is defined by $\sup \qty{\omega + n : n < \omega}$.
 \begin{align*}
        \omega \cdot 2 + 1, \omega \cdot 2 + 2, \dots, \omega \cdot 3, \omega \cdot 4, \omega \cdot 5, \dots, \omega \cdot \omega = \omega^2
     \end{align*}
-where we define $\omega \cdot \omega = \sup \qty{\omega \cdot 2, \omega \cdot 3, \dots}$.
+where we define $\omega \cdot \omega = \sup \qty{\omega \cdot n : n < \omega}$.
 \begin{align*}
        \omega^2 + 1, \omega^2 + 2, \dots, \omega^2 + \omega, \dots, \omega^2 + \omega \cdot 2, \dots, \omega^2 + \omega^2 = \omega^2 \cdot 2
     \end{align*}
@@ -387,11 +459,11 @@ Continue in the same way.
 \begin{align*}
        \omega^2 \cdot 3, \omega^2 \cdot 4, \dots, \omega^3
     \end{align*}
-where $\omega^3 = \sup\qty{\omega^2 \cdot 2, \omega^2 \cdot 3, \dots}$.
+where $\omega^3 = \sup\qty{\omega^2 \cdot n : n < \omega}$.
 \begin{align*}
        \omega^3 + \omega^2 \cdot 7 + \omega \cdot 4 + 13, \dots, \omega^4, \omega^5, \dots, \omega^\omega
     \end{align*}
-where $\omega^\omega = \sup \qty{\omega, \omega^2, \omega^3, \dots}$.
+where $\omega^\omega = \sup \qty{\omega^n : n < \omega}$.
 \begin{align*}
        \omega^\omega \cdot 2, \omega^\omega \cdot 3, \dots, \omega^\omega \cdot \omega = \omega^{\omega + 1}
     \end{align*}
@@ -409,119 +481,192 @@ where $\varepsilon_0^{\varepsilon_0} = \sup\qty{\varepsilon_0^\omega, \varepsilo
 All of these ordinals are countable, as each operation only takes a countable union of countable sets.
 
 \subsection{Uncountable ordinals}
-\begin{theorem}
+\begin{question}
+    Can $\exists$ an uncountable ordinal/ w.o. set?
+    Can we well order $\mathbb{R}$?
+\end{question}
+
+\begin{answer}
+    The reals cannot be explicitly well-ordered.
+\end{answer}
+
+\begin{theorem} \label{thm:12}
     There exists an uncountable ordinal.
 \end{theorem}
-\begin{remark}
-    The reals cannot be explicitly well-ordered.
-\end{remark}
+
+\underline{Idea}: Assume $\alpha$ an uncountable ordinal.
+Then there is a least such $\alpha$: \\
+$\qty{\beta \in I_\alpha \cup \qty{\alpha} : \beta \text{ uncountable}} \neq \emptyset$, so has a least element, say $\gamma$.
+So $I_\gamma$ is exactly the set of all countable ordinals.
+
+If $X$ is a countable w.o. set, then $\exists$ injection $f : X \to \mathbb{N}$.
+Then $Y = f(X)$ is w.o. by $f(x) < f(y) \iff x < y$ in $X$.
+Then $Y$ is an o.i. to $X$.
+
 \begin{proof}
-    Let $A \subseteq \mathcal P (\omega \times \omega)$ be the set of well-orderings of subsets of $\mathbb N$.
-    Let $B$ be the set of order types of $A$.
-    Then $B$ is the set of all countable ordinals.
+    Let $A = \qty{(Y, <) \in \mathcal{P}(\mathbb{N}) \times \mathcal{P}(\mathbb{N} \times \mathbb{N}) : Y \text{ is a w.o. by } <}$.
+    Let $B = \qty{\operatorname{O.T.}(Y, <) : (Y, <) \in A}$.
+    By above, $B$ is exactly the set of all countable ordinals.
+
     Let $\omega_1 = \sup B$.
-    $\omega_1$ is uncountable, and in particular, the least uncountable ordinal.
-    Indeed, if it were countable, it would be the greatest element of $B$, but $\omega_1 + 1$ would also lie in $B$.
+    If $\omega_1 \in B$, then $\omega_1^+ \in B$ \Lightning \ as $\omega$ countable $\implies \omega^+$ countable.
 \end{proof}
+
 \begin{remark}
     Without introducing $A$, it would be difficult to show that $B$ was in fact a set.
 \end{remark}
+
 \begin{remark}
     Another ending to the proof above is as follows.
     $B$ cannot be the set of all ordinals, since the ordinals do not form a set by the Burali-Forti paradox, so there exists an uncountable ordinal.
     In particular, there exists a least uncountable ordinal.
 \end{remark}
+
 The ordinal $\omega_1$ has a number of remarkable properties.
 \begin{enumerate}
-    \item $\omega_1$ is uncountable, but $\qty{\beta : \beta < \alpha}$ is countable for all $\alpha < \omega_1$.
+    \item It is the least uncountable order.
+    \item $\omega_1$ is uncountable, but $\qty{\beta : \beta < \alpha}$ is countable for all $\alpha < \omega_1$, i.e. every proper i.s. of $\omega_1$ is countable.
     \item There exists no sequence $\alpha_1, \alpha_2, \dots$ in $I_{\omega_1}$ with supremum $\omega_1$, as it is bounded by $\sup\qty{\alpha_1, \alpha_2, \dots}$, which is a countable ordinal.
 \end{enumerate}
-\begin{theorem}[Hartogs' lemma]
-    For every set $X$, there exists an ordinal $\gamma$ that does not inject into $X$.
+
+\begin{theorem}[Hartog's Lemma]
+    For every set $X$, $\exists$ an ordinal $\alpha$ that does not inject into $X$.
 \end{theorem}
+
 \begin{proof}
-    Use the argument above from the existence of an uncountable ordinal.
+    Repeat proof of \cref{thm:12} with $X$ instead of $\mathbb{N}$.
 \end{proof}
-We write $\gamma(X)$ for the least ordinal that does not inject into $X$.
-For example $\gamma(\omega) = \omega_1$.
+
+\begin{remark}
+    We write $\gamma(X)$ for the least ordinal that does not inject into $X$.
+    For example $\gamma(\omega) = \omega_1$.
+
+    $0, 1, \dots, \omega, \dots, \epsilon_0 = \omega^{\omega^{\omega^{\dots}}}, \dots, \epsilon_1, \dots, \epsilon_{\epsilon_{\epsilon}}, \dots, \omega_1, \dots, \omega_1 \cdot 2, \dots, \omega_2 = \gamma(\omega), \dots$
+\end{remark}
 
 \subsection{Successors and limits}
-\begin{definition}
-    We say that an ordinal $\alpha$ is a \vocab{successor} if there exists $\beta$ s.t. $\alpha = \beta^+$.
-    Otherwise, $\alpha$ is a \vocab{limit}.
+
+Let $\alpha$ be an ordinal, consider whether $\alpha$ has a greatest element(i.e. if $X$ has O.T. $\alpha$, does $X$ have a greatest element).
+\begin{definition}[Successor]
+    If $\exists$ greatest element of $I_\alpha$, say $\beta$, then $I_\alpha = I_\beta \cup \qty{\beta}$.
+    So $\alpha = \beta^+$ and $\alpha = (\sup I_\alpha)^+$.
+    We call such $\alpha$ a \vocab{successor}.
+
+    Else, $I_\alpha = \sup I_\alpha$. i.e. $\alpha = \sup{\beta : \beta < \alpha}$.
+    Say $\alpha$ is a \vocab{limit}.
 \end{definition}
-Equivalently, an ordinal is a successor iff it has a greatest element.
-An ordinal $\alpha$ is a limit iff it has no greatest element, or equivalently, for all $\beta < \alpha$, there exists $\gamma < \alpha$ with $\gamma > \beta$, giving $\alpha = \sup \qty{\beta : \beta < \alpha}$.
+
 \begin{example}
+    $1 = 0^+$ is a successor.
     5 is a successor.
     $\omega + 2 = (\omega^+)^+$ is a successor.
-    $\omega$ is a limit as it has no greatest element.
+    $\omega = \sup \qty{n < \omega}$ is a limit as it has no greatest element.
+    $\omega_1$ is a limit.
     0 is a limit.
 \end{example}
 
 \subsection{Ordinal arithmetic}
 Let $\alpha, \beta$ be ordinals.
-We define $\alpha + \beta$ by induction on $\beta$, by
+We define $\alpha + \beta$ by induction on $\beta$ with $\alpha$ fixed, by
 \begin{itemize}
     \item $\alpha + 0 = \alpha$;
     \item $\alpha + \beta^+ = (\alpha + \beta)^+$;
-    \item $\alpha + \lambda = \sup\qty{\alpha + \gamma : \gamma < \lambda}$ for a nonzero limit ordinal.
+    \item $\alpha + \lambda = \sup\qty{\alpha + \gamma : \gamma < \lambda}$ for $\lambda \neq 0$ a limit ordinal.
 \end{itemize}
-\begin{example}
-    $\omega + 1 = \omega + 0^+ = (\omega + 0)^+ = \omega^+$.
-    $\omega + 2 = \omega + 1^+ = (\omega + 1)^+ = (\omega^+)^+$.
-    $1 + \omega = \sup\qty{1 + \gamma : \gamma < \omega} = \omega$.
-    Therefore, addition is noncommutative.
-\end{example}
+
 \begin{remark}
     As the ordinals do not form a set, we must technically define addition $\alpha + \gamma$ by induction on the set $\qty{\gamma : \gamma \leq \beta}$.
     The choice of $\beta$ does not change the definition of $\alpha + \gamma$ as defined for $\gamma \leq \beta$.
+    This gives a well-defined ``$+$'' by uniqueness in the recursion thm.
+
+    Similarly, we can prove things by induction:
+    Let $P(\alpha)$ be a statement for each ordinal $\alpha$, then
+    \begin{align*}
+        (\forall \; \alpha) \qty((\forall \; \beta) \qty[(\beta < \alpha) \implies P(\beta)] \implies P(\alpha)) \implies (\forall \; \alpha) P(\alpha).
+    \end{align*}
+    If not, then $\exists \; \alpha$ s.t. $P(\alpha)$ is false.
+    Then $\exists$ least such $\alpha$ ($\qty{\beta \leq \alpha : P(\beta) \text{ false}} \neq \emptyset$).
+    By \cref{prp:10}, $\alpha$ is the least element.
+    So $P(\beta)$ is true $\forall \; \beta < \alpha$.
+    By assumption $P(\alpha)$ is true.
 \end{remark}
-\begin{proposition}
-    Ordinal addition is associative.
+
+\begin{example}
+    For any $\alpha$, $\alpha + 1 = \alpha + 0^+ = (\alpha + 0)^+ = \alpha^+$. \\
+    If $m < \omega$, then we have $m + 0 = m$ and for $n < \omega$, $m + (n + 1) = m + n^+ = (m + n)^+ = (m+n) + 1$.
+
+    So on $\omega$, ordered addition is the normal addition.
+
+    $\omega + 2 = \omega + 1^+ = (\omega + 1)^+ = (\omega^+)^+$. \\
+    $\omega + \omega = \sup \qty{\omega + n : n < \omega} = \sup{\omega + 1, \omega + 2, \dots}$
+
+    $1 + \omega = \sup\qty{1 + \gamma : \gamma < \omega} = \sup{1, 2, 3, \dots} = \omega \neq \omega + 1$. \\
+    Therefore, ``$+$'' is noncommutative.
+\end{example}
+
+\begin{proposition} \label{prp:14}
+    $\forall \; \alpha, \beta, \gamma$ ordinals, $\beta \leq \gamma \implies \alpha + \beta \leq \alpha + \gamma$.
 \end{proposition}
+
 \begin{proof}
-    Let $\alpha, \beta, \gamma$ be ordinals.
-    We use induction on $\gamma$.
-    Suppose $\alpha + (\beta + \delta) = (\alpha + \beta) + \delta$ for all $\delta < \gamma$.
+    We prove this by induction on $\gamma$, with $\alpha, \beta$ fixed.
 
-    First, suppose $\gamma = 0$.
-    $\alpha + (\beta + 0) = \alpha + \beta = (\alpha + \beta) = 0$, as required.
-    Now consider $\gamma^+$.
-    \begin{align*}
-       \alpha + (\beta + \gamma^+) = \alpha + (\beta + \gamma)^+ = (\alpha + (\beta + \gamma))^+ = ((\alpha + \beta) + \gamma)^+ = (\alpha + \beta) + \gamma^+
-    \end{align*}
+    \underline{$\gamma = 0$}: If $\beta \leq \gamma$, then $\beta = 0$, so the result is true.
 
-    Finally, consider $\lambda$ a nonzero limit.
-    \begin{align*}
-       (\alpha + \beta) + \lambda = \sup \qty{(\alpha + \beta) + \gamma : \gamma < \lambda} = \sup \qty{\alpha + (\beta + \gamma) : \gamma < \lambda}
-    \end{align*}
-    We claim that $\beta + \lambda$ is a limit.
-    Indeed, $\beta + \lambda = \sup\qty{\beta + \gamma : \gamma < \lambda}$, but for every $\gamma < \lambda$ there exists $\gamma' < \lambda$ with $\gamma < \gamma'$ as $\lambda$ is a limit, so $\beta + \gamma < \beta + \gamma'$.
-    Thus, there is no greatest element in the set $\qty{\beta + \gamma : \gamma < \lambda}$, so $\beta + \lambda$ is a limit.
+    \underline{$\gamma = \delta^+$}: If $\beta \leq \gamma$, then \underline{either} $\beta = \gamma$ and we are done.
+    \underline{Or} $\beta \leq \delta$ and so $\alpha + \beta \leq \alpha + \delta$ as $\delta < \gamma$ and induction hypothesis.
+    Further $\alpha + \delta < (\alpha + \delta)^+ = \alpha + \delta^+ = \alpha + \gamma$.
 
-    Now, $\alpha + (\beta + \lambda) = \sup\qty{\alpha + \delta : \delta < \beta + \lambda}$.
-    So it suffices to show that
-    \begin{align*}
-       \sup\qty{\alpha + (\beta + \gamma) : \gamma < \lambda} = \sup\qty{\alpha + \delta : \delta < \beta + \lambda}
-    \end{align*}
-    Certainly
-    \begin{align*}
-       \qty{\alpha + (\beta + \gamma) : \gamma < \lambda} \subseteq \qty{\alpha + \delta : \delta < \beta + \lambda}
-    \end{align*}
-    as $\gamma < \lambda$ implies $\beta + \gamma < \beta + \lambda$.
-    Further, for any $\delta < \beta + \lambda$, $\delta \leq \beta + \gamma$ for some $\gamma < \lambda$ by definition of $\beta + \lambda$.
-    Therefore, $\alpha + \delta \leq \alpha + (\beta + \gamma)$, so each element of $\qty{\alpha + \delta : \delta < \beta + \lambda}$ is at most some element of $\qty{\alpha + (\beta + \gamma) : \gamma < \lambda}$.
-    So the two suprema agree.
+    \underline{$\gamma \neq 0$ limit}: If $\beta \leq \gamma$, then wlog $\beta < \gamma$, so $\alpha + \beta \leq \sup \qty{\alpha + \delta : \delta < \gamma} = \alpha + \gamma$.
 \end{proof}
+
 \begin{remark}
-    We used the facts
-    \begin{enumerate}
-        \item $\beta \leq \gamma \implies \alpha + \beta \leq \alpha + \gamma$, which is trivial by induction on $\gamma$;
-        \item $\beta < \gamma \implies \alpha + \beta < \alpha + \gamma$, as $\beta^+ \leq \gamma$ so $\alpha + \beta^+ \leq \alpha + \gamma$ by (i).
-    \end{enumerate}
-    However, $1 < 2$ but $1 + \omega \not < 2 + \omega$.
+    From \cref{prp:14}, we get $\beta < \gamma \implies \alpha + \beta < \alpha + \gamma$. \\
+    Indeed, $\alpha + \beta < (\alpha + \beta)^+ = \alpha + \beta^+ \leq \alpha + \gamma$ since $\beta^+ \leq \gamma$ (from \cref{prp:14}).
+
+    Note that $1 < 2$ but $1 + \omega = 2 + \omega = \omega$.
 \end{remark}
+
+\begin{lemma} \label{lem:15}
+    Let $\alpha$ be an ordinal and $S$ a non-empty set of ordinals.
+    Then $\alpha + \sup S = \sup \qty{\alpha + \beta : \beta \in S}$.
+\end{lemma}
+
+\begin{proof}
+    If $\beta \in S$, then $\alpha + \beta \leq \alpha + \sup S$ (\cref{prp:14}).
+    Hence $\sup \qty{\alpha + \beta : \beta \in S} \leq \alpha + \sup S$.
+
+    For the reverse inequality, consider two cases.
+    If $S$ has greatest element, $\beta$ say, then $\alpha + \sup S = \alpha + \beta$.
+    $\forall \; \gamma \in S, \gamma \leq \beta$, so by \cref{prp:14}, $\alpha + \gamma \leq \alpha + \beta$.
+    It follows that $\sup{\alpha + \gamma : \gamma \in S} = \alpha + \beta$. \\
+    If $S$ has no greatest element, then $\lambda = \sup S$ is a $\neq 0$ limit ordinal (If $\lambda = \gamma^+$, then $\gamma < \lambda$ so $\exists \; \delta \in S$ s.t. $\gamma < \delta$ then $\lambda = \gamma^+ \leq \delta$ so $\lambda = \delta \in S$ \Lightning).
+    So $\alpha + \sup S = \sup \qty{\alpha + \beta : \beta < \lambda}$ by defn. \\
+    If $\beta < \lambda$, then $\exists \; \delta \in S$ s.t. $\beta < \delta$.
+    By \cref{prp:14}, $\alpha + \beta \leq \alpha + \delta$.
+    It follows that $\sup \qty{\alpha + \beta : \beta < \lambda} \leq \sup \qty{\alpha + \delta : \delta \in S}$.
+\end{proof}
+
+\begin{proposition}
+    $\forall \; \alpha, \beta, \gamma$, $(\alpha + \beta) + \gamma = \alpha + (\beta + \gamma)$.
+\end{proposition}
+
+\begin{proof}
+    By induction on $\gamma$.
+
+    \underline{$\gamma = 0$}: $(\alpha + \beta) + 0 = \alpha + \beta = \alpha + (\beta + 0)$.
+
+    \underline{$\gamma = \delta^+$}: $(\alpha + \beta) + \delta^+ = \qty((\alpha + \beta) + \delta)^+ = (\alpha + (\beta + \delta))^+ = \alpha + (\beta + \gamma)^+ = \alpha + (\beta + \gamma^+) = \alpha + (\beta + \gamma)$.
+
+    \underline{$\gamma \neq 0$ limit}:
+    \begin{align*}
+        (\alpha + \beta) + \gamma &= \sup \qty{(\alpha + \beta) + \delta : \delta < \gamma} \\
+        &= \sup \qty{\alpha + (\beta + \delta) : \delta < \gamma} \\
+        &= \alpha + \sup{\beta + \delta : \delta < \gamma} \text{ by \cref{lem:15}} \\
+        &= \alpha + (\beta + \gamma).
+    \end{align*}
+\end{proof}
+
 The above is the \vocab{inductive} definition of addition; there is also a \vocab{synthetic} definition of addition.
 We can define $\alpha + \beta$ to be the order type of $\alpha \sqcup \beta$, where every element of $\alpha$ is taken to be less than every element of $\beta$.
 
