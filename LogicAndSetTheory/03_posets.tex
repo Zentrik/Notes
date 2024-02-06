@@ -81,120 +81,243 @@ The rationals cannot, since no element covers another.
 \end{tikzcd}\]
 \end{enumerate}
 \end{example}
-\begin{definition}
-    A subset $S$ of a poset $X$ is a \vocab{chain} if it is totally ordered.
+
+\begin{definition}[Chain]
+    A subset $S$ of a poset $X$ is a \vocab{chain} if it is linearly ordered by the partial order.
 \end{definition}
+
+\begin{example}
+    Every linearly ordered set is a chain in itself.
+\end{example}
+
+\begin{example}
+    Any subset of a chain in a poset is a chain.
+\end{example}
+
 \begin{example}
     The powers of 2 in $(\mathbb N^+, \mid)$ is a chain.
 \end{example}
-\begin{definition}
-    A subset $S$ of a poset $X$ is an \vocab{antichain} if no two distinct elements are related.
+
+\begin{example}
+    In $\mathcal{P}(\mathbb{Q})$, $\qty{(-\infty, x) \cap \mathbb{Q} : x \in \mathbb{R}}$
+\end{example}
+
+\begin{definition}[Antichain]
+    A subset $S$ of a poset $X$ is an \vocab{antichain} if no two distinct elements are related: $\forall \; x, y \in S$, $x \leq y \implies x = y$.
 \end{definition}
+
+\begin{example}
+    In a linearly ordered set, there is no antichain of size $> 1$.
+\end{example}
+
 \begin{example}
     The set of primes in $(\mathbb N^+, \mid)$ is an antichain.
 \end{example}
-\begin{definition}
-    For $S \subseteq X$, an \vocab{upper bound} for $S$ is an $x \in X$ s.t. $x \geq y$ for all $y \in S$.
-    A \vocab{least upper bound} is an upper bound $x \in X$ for $S$ s.t. for all upper bounds $y \in X$ for $S$, $x \leq y$.
+
+\begin{definition}[Supremum]
+    For $S \subseteq X$ where $X$ a poset, an \vocab{upper bound} for $S$ is an $x \in X$ s.t. $y \leq x \; \forall \; y \in S$.
+    A \vocab{least upper bound} or \vocab{supremum} is an upper bound $x \in X$ for $S$ s.t. for all upper bounds $y \in X$ for $S$, $x \leq y$.
 \end{definition}
+
+\begin{notation}
+    If the supremum exists, denote it by $\sup S$ or $\bigvee S$ (``join'' of $S$).
+\end{notation}
+
 \begin{example}
-    If $S = \qty{x \mid x < \sqrt{2}} \subset \mathbb R$, 7 is an upper bound, and $\sqrt{2}$ is a least upper bound.
-    We write $\sqrt{2} = \sup S = \bigvee S$ for the least upper bound or \vocab{join} of $S$.
-
-    In $\mathbb Q$, the set $\qty{x \mid x^2 < 2}$ has 7 as an upper bound but has no least upper bound.
-
-    In example (v), $\qty{a, b}$ has upper bounds $b$ and $c$, so the least upper bound is $b$.
-    $\qty{b, d}$ has no upper bound.
-    In example (vii), $\qty{a, b}$ has upper bounds $c, d, e$, so does not have a least upper bound.
+    In $\mathbb{R}$, $\sup [0, 1] = 1$, $\sup (0, 1) = 1$.
 \end{example}
-\begin{definition}
-    A poset $X$ is \vocab{complete} if every $S \subseteq X$ has a least upper bound.
-\end{definition}
+
 \begin{example}
-    $\mathbb R$ is not complete, as $\mathbb Z$ has no upper bound.
-    $[0,1] \subseteq \mathbb R$ is complete.
+    $\mathbb{Q}$ has no sup in $\mathbb{Q}$, it doesn't have any upper bound.
+\end{example}
+
+\begin{example}
+    If $S = \qty{x : x < \sqrt{2}} \subset \mathbb R$, 7 is an upper bound, and $\sup S = \sqrt{2}$.
+
+    In $\mathbb Q \cap [0, 2]$, the set $\qty{x : x^2 < 2}$ has 2 as an upper bound but no supremum.
+\end{example}
+
+\begin{example}
+    % https://q.uiver.app/#q=WzAsNCxbMCwxLCJhIl0sWzAsMCwiYyJdLFsyLDEsImIiXSxbMiwwLCJkIl0sWzAsMSwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsyLDMsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMCwzLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzIsMSwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dXQ==
+    \[\begin{tikzcd}
+        c && d \\
+        a && b
+        \arrow[no head, from=2-1, to=1-1]
+        \arrow[no head, from=2-3, to=1-3]
+        \arrow[no head, from=2-1, to=1-3]
+        \arrow[no head, from=2-3, to=1-1]
+    \end{tikzcd}\]
+    $\qty{a, b}$ has upper bounds, e.g. $c$ and $d$ but no sup.
+\end{example}
+
+\begin{example}
+    If $X = \mathcal{P}(A)$ where $A$ is any set and $S \subseteq X$, then $\sup S = \cup \qty{B \subseteq A : B \in S}$.
+\end{example}
+
+\begin{definition}[Complete]
+    A poset $X$ is \vocab{complete} if every $S \subseteq X$ has a sup.
+\end{definition}
+
+\begin{example}
+    $\mathbb R$ is not complete, as $\mathbb Z$ has no upper bound. \\
+    $[0,1] \subseteq \mathbb R$ is complete. \\
     $(0,1) \subseteq \mathbb R$ is not complete, as $(0,1)$ has no upper bound.
 \end{example}
+
 \begin{example}
-    $X = \mathcal P(S)$ is always complete as a poset under inclusion, with $\sup\qty{A_i \mid i \in I} = \bigcup_{i \in I} A_i$.
+    $\mathbb{Q} \cap [0, 2]$ is not complete by earlier example.
 \end{example}
-Note that every complete poset $X$ has a greatest element $\sup X$.
-A complete poset also has a least element $\sup \varnothing$.
-In the case $X = \mathcal P(S)$, $\sup X = S$ and $\sup \varnothing = \varnothing$.
-\begin{definition}
-    Let $f \colon X \to Y$ be a function where $X, Y$ are posets.
-    We say $f$ is \vocab{order-preserving} if $x \leq y$ implies $f(x) \leq f(y)$.
+
+\begin{example}
+    $\mathcal P(A)$ is complete under inclusion for any $A$.
+\end{example}
+
+\begin{remark}
+    Note that every complete poset $X$ has a greatest element $\sup X$.
+    A complete poset also has a least element $\sup \varnothing$.
+    In particular, $X \neq \emptyset$.
+    % In the case $X = \mathcal P(S)$, $\sup X = S$ and $\sup \varnothing = \varnothing$.
+\end{remark}
+
+\begin{definition}[Order-Preserving]
+    Let $f \colon X \to Y$ be a fcn where $X, Y$ are posets.
+    We say $f$ is \vocab{order-preserving} if $x \leq y \implies f(x) \leq f(y)$.
 \end{definition}
+
+\begin{note}
+    $f$ need not be injective.
+    But $f$ order-preserving and injective $\iff$ $x < y \implies f(x) < f(y)$.
+\end{note}
+
 \begin{example}
-    The function $f \colon \mathbb N \to \mathbb N$ defined by $f(x) = x + 1$ is order-preserving.
-    The function $f \colon [0,1] \to [0,1]$ defined by $x \mapsto \frac{x+1}{2}$ is order-preserving.
-    The function $f \colon \mathcal P(S) \to \mathcal P(S)$ defined by $f(A) = A \cup \qty{i}$ for some fixed $i \in S$ is order-preserving.
+    The fcn $f \colon \mathbb N \to \mathbb N$ defined by $f(x) = x + 1$ is order-preserving. \\
+    The fcn $f \colon [0,1] \to [0,1]$ defined by $x \mapsto \frac{x+1}{2}$ is order-preserving. \\
+    The fcn $f \colon \mathcal P(S) \to \mathcal P(S)$ defined by $f(A) = A \cup B$ for some fixed $B \subseteq S$ is order-preserving.
 \end{example}
-Not all order-preserving functions have a fixed point $x$ s.t. $f(x) = x$, for example $f(x) = x + 1$ on $\mathbb N$.
-\begin{theorem}[Knaster--Tarski fixed point theorem]
+
+\begin{definition}[Fixed Point]
+    Let $X$ be any set.
+    Then a \vocab{fixed point} for a fcn $f : X \to X$ is an element $x \in X$ s.t. $f(x) = x$.
+\end{definition}
+
+Not all order-preserving fcns have a fixed point, e.g. $f(x) = x + 1$ on $\mathbb N$.
+
+\begin{theorem}[Knaster--Tarski Fixed Point Theorem] \label{thm:fixed}
     Let $X$ be a complete poset.
     Then every order-preserving $f \colon X \to X$ has a fixed point.
 \end{theorem}
+
 \begin{proof}
-    Let $E = \qty{x \in X \mid x \leq f(x)}$, and let $s = \sup E$.
+    Let $E = \qty{x \in X : x \leq f(x)}$, and let $s = \sup E$.
     We show that $s$ is a fixed point for $f$.
 
     First, we show $s \leq f(s)$, so $s \in E$.
-    It suffices to show $f(s)$ is an upper bound for $E$, then the result holds as $s$ is the least such upper bound.
-    If $x \in E$, we know $x \leq s$, so $f(x) \leq f(s)$ as $f$ is order-preserving, as required.
+    % It suffices to show $f(s)$ is an upper bound for $E$, then the result holds as $s$ is the least such upper bound.
+    If $x \in E$, we know $x \leq s$, so $f(x) \leq f(s)$.
+    Since $x \in E$, $x \leq f(x)$, so by transitivity $x \leq f(s)$.
+    Thus $f(s)$ an upper bound for $S$ so $s \leq f(s)$.
 
     Now, we show $f(s) \leq s$.
-    It suffices to show $f(s) \in E$, as $s$ is an upper bound for $E$.
-    Since $s \leq f(s)$, we have $f(s) \leq f(f(s))$, but this is precisely the fact that $f(s) \in E$.
+    Since $s \leq f(s)$, we have $f(s) \leq f(f(s))$, i.e. $f(s) \in E$ thus $f(s) \leq s$.
 \end{proof}
-\begin{corollary}[Schr\"oder--Bernstein theorem]
-    Let $f \colon A \to B$ and $g \colon B \to A$ be injections.
-    Then there is a bijection $A \to B$.
+
+\begin{corollary}[Schr\"oder--Bernstein Theorem]
+    Let $A, B$ be sets and assume $\exists$ injections $f \colon A \to B$ and $g \colon B \to A$.
+    Then $\exists$ bijection $h : A \to B$.
 \end{corollary}
+
 \begin{proof}
-    We seek partitions $A = P \sqcup Q$, $B = R \sqcup S$ s.t. $f(P) = R$ and $g(S) = Q$; then we define $h$ to equal to $f$ on $P$ and $g^{-1}$ on $Q$.
-    Thus, we need a set $P$ that is a fixed point of $\theta \colon \mathcal P(A) \to \mathcal P(A)$ given by $P \mapsto A \setminus g(B \setminus f(P))$.
-    But $\theta$ is order-preserving and $\mathcal P(A)$ is a complete poset.
-    So $P$ exists by the Knaster--Tarski fixed point theorem.
+    We seek partitions $A = P \cup Q$, $B = R \cup S$ s.t. ($P \cap Q = R \cap S = \emptyset$), $f(P) = R$ and $g(S) = Q$. \\
+    Then $h = \begin{cases}
+        f & \text{on } P \\
+        g\inv & \text{on } Q
+    \end{cases}$ is a bijection.
+
+    Such partitions exists $\iff$ $\exists \; P \subseteq A$ s.t. $A \setminus g\qty(B \setminus f(P)) = P$.
+
+    Let $X = \mathcal{P}(A)$ with ``$\subseteq$'' and define $H : X \to X$ by $H(P) = A \setminus g\qty(B \setminus f(P))$.
+    $H$ is order-preserving and $X$ is a complete poset.
+    So $P$ exists by the \nameref{thm:fixed}.
 \end{proof}
 
 \subsection{Zorn's lemma}
-\begin{definition}
+\begin{definition}[Maximal]
     Let $X$ be a poset.
-    We say that $x \in X$ is \vocab{maximal} if there is no $y \in X$ with $y > x$.
+    We say that $x \in X$ is \vocab{maximal} if there is no $y \in X$ with $y > x$, or $\forall \; y \in X$, $x \leq y \implies x = y$.
 \end{definition}
+
+\begin{example}
+    In $\mathcal{P}(A)$, $A$ is maximal, $A$ is even a greatest element.
+\end{example}
+
+\begin{note}
+    In general, ``greatest'' $\implies$ maximal.
+
+    The converse is false, e.g.
+    % https://q.uiver.app/#q=WzAsNCxbMCwxLCJhIl0sWzAsMCwiYyJdLFsyLDEsImIiXSxbMiwwLCJkIl0sWzAsMSwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsyLDMsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMCwzLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d
+    \[\begin{tikzcd}
+        c && d \\
+        a && b
+        \arrow[no head, from=2-1, to=1-1]
+        \arrow[no head, from=2-3, to=1-3]
+        \arrow[no head, from=2-1, to=1-3]
+    \end{tikzcd}\]
+    $c, d$ both maximal but not greatest element.
+\end{note}
+
 \begin{example}
     In $[0,1]$, $1$ is maximal.
-    In example (v), there are two maximal elements $c$ and $e$.
 \end{example}
+
 Note that $(\mathbb R, \leq)$ and $(\mathbb N, \mid)$ have no maximal elements, and they both have a chain with no upper bound, such as $\mathbb N \subset \mathbb R$, and powers of two.
-\begin{theorem}[Zorn's lemma]
-    Let $X$ be a poset in which every chain has an upper bound.
+
+\begin{theorem}[Zorn's Lemma (ZL)]
+    Let $X$ be a (non-empty) poset s.t. every chain in $X$ has an upper bound in $X$.
     Then $X$ has a maximal element.
 \end{theorem}
-The empty chain must have an upper bound in $X$, so $X$ must be nonempty to apply Zorn's lemma.
-Zorn's lemma can be equivalently be stated as the following.
-\begin{theorem}
-    Let $X$ be a nonempty poset in which every nonempty chain has an upper bound.
-    Then $X$ has a maximal element.
-\end{theorem}
-One can view Zorn's lemma as a fixed point theorem on a function $f \colon X \to X$ with the property that $x \leq f(x)$.
+
+\begin{remark}
+    $\emptyset$ is a chain in $X$, so it has an UB, so $X \neq \emptyset$. \\
+    Often we check the chain condition by checking it for $\emptyset$ (i.e. that $X \neq \emptyset$) and then check for non-empty chains.
+\end{remark}
+
+% Zorn's lemma can be equivalently be stated as the following.
+
+% \begin{theorem}
+%     Let $X$ be a nonempty poset in which every nonempty chain has an upper bound.
+%     Then $X$ has a maximal element.
+% \end{theorem}
+
+One can view Zorn's lemma as a fixed point theorem on a fcn $f \colon X \to X$ with the property that $x \leq f(x)$.
+
 \begin{proof}
     Suppose that $X$ has no maximal element.
     Then for each $x \in X$, we have $x' \in X$ and $x' > x$.
     For each chain $C$, we have an upper bound $u(C)$.
-    Let $x \in X$ be any element, and define $x_\alpha$ for each $\alpha < \gamma(X)$ by recursion.
-    \begin{itemize}
-        \item $x_0 = x$;
-        \item $x_{\alpha + 1} = x_\alpha'$;
-        \item $x_\lambda = u\qty{x_\beta \mid \beta < \lambda}$ for $\lambda$ a nonzero limit.
-    \end{itemize}
-    Note that $\qty{x_\beta \mid \beta < \lambda}$ forms a chain, so it has an upper bound as required.
-    Then, we have an injection from $\gamma(X)$ into $X$, contradicting the definition of $\gamma(X)$.
+
+    Let $\gamma = \gamma(X)$ (from Hartog's lemma - the least ordinal that doesn't inject into $X$).
+
+    Define $f : \gamma \to X$ by recursion:
+    \begin{align*}
+        f(0) &= u(\emptyset) \\
+        f(\alpha + 1) &= f(\alpha)' \\
+        f(\lambda) &= u(\qty{f(\alpha) : \alpha < \lambda})' \text{ for $\lambda \neq 0$ limit}.
+    \end{align*}
+
+    Any easy induction (on $\beta$ with $\alpha$ fixed) shows that $\forall \; \alpha < \beta$ (in $\gamma$), $f(\alpha) < f(\beta)$ (also shows that $\qty{f(\alpha) : \alpha < \beta}$ is a chain $\forall \; \beta < \gamma$).
+
+    Hence $f$ is an injection, \Lightning \ defn of $\gamma$.
 \end{proof}
+
+\begin{remark}
+    Technically, for $\lambda \neq 0$ limit, $f(\lambda)$ should be defined as above if $\qty{f(\alpha) : \alpha < \lambda}$ is a chain and $f(\lambda) = u(\emptyset)$ otherwise.
+    Then by induction $\alpha < \beta \implies f(\alpha) < f(\beta)$, so the ``otherwise'' clause never happens.
+\end{remark}
+
 \begin{remark}
     Although this proof was short, it relied on the infrastructure of well-orderings, recursion, ordinals, and Hartogs' lemma.
 \end{remark}
+
 We show that every vector space has a basis.
 Recall that a basis is a linearly independent spanning set; no nontrivial finite linear combination of basis elements is zero, and each element of the vector space is a finite linear combination of the basis elements.
 For instance, the space of real polynomials has basis $1, X, X^2, \dots$.
@@ -266,10 +389,10 @@ This requires potentially infinitely many arbitrary choices.
 Other proofs, such as that the countable union of countable sets is countable, also required infinitely many choices; in this example, we chose arbitrary enumerations of the countable sets $A_1, A_2, \dots$ at once.
 
 Formally, this process of making infinitely many arbitrary choices is known as the \vocab{axiom of choice} $\mathsf{AC}$: if we have a family of nonempty sets, one can choose an element from each one.
-More precisely, for any family of nonempty sets $(A_i)_{i \in I}$, there is a \vocab{choice function} $f \colon I \to \bigcup_{i \in I} A_i$ s.t. $f(i) \in A_i$ for all $i$.
+More precisely, for any family of nonempty sets $(A_i)_{i \in I}$, there is a \vocab{choice fcn} $f \colon I \to \bigcup_{i \in I} A_i$ s.t. $f(i) \in A_i$ for all $i$.
 
-Unlike the other axioms of set theory, the function obtained from the axiom of choice is not uniquely defined.
-For instance, the axiom of union allows for the construction of $A \cup B$ given $A$ and $B$, which can be fully described; but applying the axiom of choice to the family $\star \mapsto \qty{1, 2}$ could give the choice function $\star \mapsto 1$ or $\star \mapsto 2$.
+Unlike the other axioms of set theory, the fcn obtained from the axiom of choice is not uniquely defined.
+For instance, the axiom of union allows for the construction of $A \cup B$ given $A$ and $B$, which can be fully described; but applying the axiom of choice to the family $\star \mapsto \qty{1, 2}$ could give the choice fcn $\star \mapsto 1$ or $\star \mapsto 2$.
 
 Use of the axiom of choice gives rise to nonconstructive proofs.
 In modern mathematics it is sometimes considered useful to note when the axiom of choice is being used.
@@ -277,7 +400,7 @@ However, many proofs that do not even use the axiom of choice are nonconstructiv
 
 Although our proof of Zorn's lemma required the axiom of choice, it is not immediately clear that all such proofs require it.
 However, it can be shown that Zorn's lemma implies the axiom of choice in the presence of the other axioms of $\mathsf{ZF}$ set theory.
-Indeed, if $(A_i)_{i \in I}$ is a family of sets, we can well-order it using the well-ordering principle, and define the choice function by setting $f(i)$ to be the least element of $A_i$.
+Indeed, if $(A_i)_{i \in I}$ is a family of sets, we can well-order it using the well-ordering principle, and define the choice fcn by setting $f(i)$ to be the least element of $A_i$.
 Hence, Zorn's lemma, the axiom of choice, and the well-ordering principle are equivalent, given $\mathsf{ZF}$.
 
 $\mathsf{AC}$ can be proven trivially in $\mathsf{ZF}$ for the case $\abs{I} = 1$, because a set being nonempty means precisely that there exists an element inside it.
