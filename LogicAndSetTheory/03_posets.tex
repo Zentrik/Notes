@@ -1,5 +1,7 @@
+\section{Posets}
+
 \subsection{Definitions}
-\begin{definition}
+\begin{definition}[Poset]
     A \vocab{partially ordered set} or \vocab{poset} is a pair $(X, \leq)$ where $X$ is a set, and $\leq$ is a relation on $X$ s.t.
     \begin{itemize}
         \item (reflexivity) for all $x \in X$, $x \leq x$;
@@ -7,12 +9,15 @@
         \item (antisymmetry) for all $x, y \in X$, $x \leq y$ and $y \leq x$ implies $x = y$.
     \end{itemize}
 \end{definition}
+
 We write $x < y$ for $x \leq y$ and $x \neq y$.
-Alternatively, a post is a pair $(X, <)$ where $X$ is a set, and $<$ is a relation on $X$ s.t.
+Alternatively, a poset is a pair $(X, <)$ where $X$ is a set, and $<$ is a relation on $X$ s.t.
+
 \begin{itemize}
     \item (irreflexivity) for all $x \in X$, $x \not < x$;
     \item (transitivity) for all $x, y, z \in X$, $x < y$ and $y < z$ implies $x < z$.
 \end{itemize}
+
 \begin{example}
     \begin{enumerate}
         \item Any total order is a poset.

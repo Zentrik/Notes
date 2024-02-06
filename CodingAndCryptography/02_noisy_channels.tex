@@ -210,11 +210,11 @@ Similarly, $d \leq n$, with equality in the case of the repetition code.
 \end{proof}
 
 \begin{definition}[Perfect Code]
-    An $e$-error correcting code $C$ of length $n$ such that $\abs{C} = \frac{2^n}{V(n,e)}$ is called \vocab{perfect}.
+    An $e$-error correcting code $C$ of length $n$ s.t. $\abs{C} = \frac{2^n}{V(n,e)}$ is called \vocab{perfect}.
 \end{definition}
 
 \begin{remark}
-    Equivalently, a code is perfect if for all $x \in \mathbb F_2^n$, $\exists! \; c \in C$ such that $d(x,c) \leq e$.
+    Equivalently, a code is perfect if for all $x \in \mathbb F_2^n$, $\exists! \; c \in C$ s.t. $d(x,c) \leq e$.
     Alternatively, $\mathbb F_2^n$ is a union of disjoint balls $B(c,e)$ for all $c \in C$, or that any collection of $e + 1$ will cause the message to be decoded incorrectly.
 \end{remark}
 
@@ -254,7 +254,7 @@ The values of the $A(n,d)$ are unknown in general.
 
 \begin{proof}
     Let $m = A(n,d+1)$, and let $C$ be an $[n,m,d+1]$-code.
-    Let $c_1, c_2 \in C$ be distinct codewords such that $d(c_1,c_2) = d+1$.
+    Let $c_1, c_2 \in C$ be distinct codewords s.t. $d(c_1,c_2) = d+1$.
     Let $c_1'$ differ from $c_1$ in exactly one of the places where $c_1$ and $c_2$ differ.
     Then $d(c_1', c_2) = d$.
     If $c \in C$ is any codeword not equal to $c_1$, then $d(c,c_1) \leq d(c,c_1') + d(c_1',c_1)$ hence $d + 1 \leq d(c,c_1') + 1$, so the code given by $C \cup \qty{c_1'} \setminus \qty{c_1}$ has minimum distance $d$, but has length $n$ and size $m$.
@@ -265,7 +265,7 @@ The values of the $A(n,d)$ are unknown in general.
     Equivalently, $A(n,d) = \max \qty{m : \exists [n,m,d'] \text{-code, for some } d' \geq d}$.
 \end{corollary}
 
-\begin{theorem}
+\begin{theorem} ~\vspace*{-1.5\baselineskip}
     \begin{align*}
         \frac{2^n}{V(n,d-1)} \leq A(n,d) \leq \frac{2^n}{V\qty(n,\floor*{\frac{d-1}{2}})}
     \end{align*}
@@ -285,6 +285,7 @@ The upper bound can be thought of as a sphere packing bound, and the lower bound
     \end{align*}
     as required.
 \end{proof}
+
 \begin{example}
     Let $n = 10, d = 3$.
     Then $V(n,1) = 11$ and $V(n,2) = 56$, so the GSV bound is $\frac{2^{10}}{56} \leq A(10,3) \leq \frac{2^{10}}{11}$.
@@ -305,19 +306,20 @@ We study the information rate $\frac{\log A(n,\floor*{n\delta})}{n}$ as $n \to \
     \end{enumerate}
     where $H(\delta) = -\delta \log \delta - (1-\delta)\log (1-\delta)$.
 \end{proposition}
+
 \begin{proof}
-    \vocab{(i) implies (ii).}
+    \emph{(i) implies (ii).}
     By the GSV bound, we find
     \begin{align*}
         A(n,\floor*{n\delta}) \geq \frac{2^n}{V(n,\floor*{n\delta} - 1)} \geq \frac{2^n}{V(n,\floor*{n\delta})}
     \end{align*}
-    Taking logarithms,
+    Taking logarithms and dividing by $n$,
     \begin{align*}
         \frac{1}{n}\log A(n,\floor*{n\delta}) \geq 1 - \frac{\log V(n,\floor*{n\delta})}{n} \geq 1 - H(\delta)
     \end{align*}
-    \vocab{Part (i).}
+    \emph{Part (i).}
     $H(\delta)$ is increasing for $\delta < \frac{1}{2}$.
-    Therefore, without loss of generality, we may assume $n\delta$ is an integer.
+    Therefore, wlog, we may assume $n\delta$ is an integer.
     Now, as $\frac{\delta}{1-\delta} < 1$,
     \begin{align*}
         1 &= (\delta + (1-\delta))^n \\
@@ -333,37 +335,59 @@ We study the information rate $\frac{\log A(n,\floor*{n\delta})}{n}$ as $n \to \
     \end{align*}
     as required.
 \end{proof}
+
 The constant $H(\delta)$ in the proposition is optimal.
+
 \begin{lemma}
     $\lim_{n \to \infty} \frac{\log V(n,\floor*{n\delta})}{n} = H(\delta)$.
 \end{lemma}
+
 \begin{proof}
-    Exercise.
-    Follows from Stirling's approximation to factorials.
+    Wlog assume $0 < \delta < \frac{1}{2}$.
+    Let $0 \leq r \leq \frac{n}{2}$.
+    Recall $V(n, r) = \sum_{i=0}^{r} \binom{n}{i}$.
+    Then
+    \begin{align*}
+        \binom{n}{r} \leq V(n, r) \leq (r + 1) \binom{n}{r} \quad (\ast)
+    \end{align*}
+    Recall Stirling's formula: $\ln n! = n \ln n - n + O(\log n)$.
+    \begin{align*}
+        \ln \binom{n}{r} &= (n \ln n - n) - (r \ln r - r) \\ &- \qty((n - r) \log(n - r) - (n - r)) + O(\log n) \\
+        \log \binom{n}{r} &= -r \log \frac{r}{n} - (n - r) \log \frac{n - r}{n} + O(\log n) \\
+        &= n H\qty(\frac{r}{n}) + O(\log n).
+        \intertext{By $(\ast)$}
+        H\qty(\frac{r}{n}) + O\qty(\frac{\log n}{n}) &\leq \frac{\log V(n, r)}{n} \leq H\qty(\frac{r}{n}) + O\qty(\frac{\log n}{n}) \\
+        \lim\limits_{n \to \infty} \frac{\log V(n \floor{n \delta})}{n} &= H(\delta)
+    \end{align*}
 \end{proof}
 
 \subsection{Constructing new codes from old}
 Let $C$ be an $[n,m,d]$-code.
-\begin{example}
+
+\begin{example}[Parity Check Extension]
     The \vocab{parity check extension} is an $[n+1,m,d']$-code given by
     \begin{align*}
-        C^+ = \qty{\qty(c_1, \dots, c_n, \sum_{i=1}^n c_i) \midd (c_1, \dots, c_n) \in C}
+        C^+ = \qty{\qty(c_1, \dots, c_n, \sum_{i=1}^n c_i \mod 2) : (c_1, \dots, c_n) \in C}
     \end{align*}
     where $d'$ is either $d$ or $d + 1$, depending on whether $d$ is odd or even.
 \end{example}
-\begin{example}
+
+\begin{example}[Punctured Code]
     Let $1 \leq i \leq n$.
     Then, deleting the $i$th digit from each codeword gives the \vocab{punctured code}
     \begin{align*}
-        C^- = \qty{(c_1, \dots, c_{i-1}, c_{i+1}, \dots, c_n) \midd (c_1, \dots, c_n) \in C}
+        C^- = \qty{(c_1, \dots, c_{i-1}, c_{i+1}, \dots, c_n) : (c_1, \dots, c_n) \in C}
     \end{align*}
     If $d \geq 2$, this is an $[n-1, m, d']$-code where $d'$ is either $d$ or $d - 1$.
 \end{example}
-\begin{example}
-    Let $1 \leq i \leq n$ and let $\alpha \in \mathbb F_2$.
+
+\begin{example}[Shortened Code]
+    Fix $1 \leq i \leq n$ and $\alpha \in \mathbb F_2$.
     The \vocab{shortened code} is
     \begin{align*}
-        C' = \qty{(c_1, \dots, c_{i-1}, c_{i+1}, \dots, c_n) \midd (c_1, \dots, c_{i-1}, \alpha, c_{i+1}, \dots, c_n) \in C}
+        C' = \qty{(c_1, \dots, c_{i-1}, c_{i+1}, \dots, c_n) : (c_1, \dots, c_{i-1}, \alpha, c_{i+1}, \dots, c_n) \in C}
     \end{align*}
     This is an $[n-1,m',d']$ with $d' \geq d$ and $m' \geq \frac{m}{2}$ for a suitable choice of $\alpha$.
+
+    Note that puncturing and shortenings are not the same thing.
 \end{example}

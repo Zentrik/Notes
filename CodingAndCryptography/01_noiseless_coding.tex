@@ -120,8 +120,8 @@ We can therefore restrict our attention to prefix-free codes.
 
 \subsection{Entropy}
 \vocab{Entropy} is a measure of `randomness' or `uncertainty' in an input message.
-Suppose that we have a random variable $X$ taking a finite number of values $x_1, \dots, x_n$ with probability $p_1, \dots, p_n$.
-Then, the entropy of this random variable is the expected number of fair coin tosses required to determine $X$.
+Suppose that we have a r.v. $X$ taking a finite number of values $x_1, \dots, x_n$ with probability $p_1, \dots, p_n$.
+Then, the entropy of this r.v. is the expected number of fair coin tosses required to determine $X$.
 
 \begin{example}
     Suppose $p_1 = p_2 = p_3 = p_4 = \frac{1}{4}$.
@@ -136,7 +136,7 @@ Then, the entropy of this random variable is the expected number of fair coin to
 In a sense, the first example is `more random' than the second, as its entropy is higher.
 
 \begin{definition}[Entropy]
-    The \vocab{entropy} of a random variable $X$ taking a finite number of values $x_1, \dots, x_n$ with probabilities $p_1, \dots, p_n$ is defined to be
+    The \vocab{entropy} of a r.v. $X$ taking a finite number of values $x_1, \dots, x_n$ with probabilities $p_1, \dots, p_n$ is defined to be
     \begin{align*}
         H(X) = H(p_1, \dots, p_n) = -\sum_{i=1}^n p_i \log p_i = -\expect{\log p_i}
     \end{align*}
@@ -195,7 +195,7 @@ The right hand side is sometimes called the \vocab{cross entropy}, or \vocab{mix
 
 \subsection{Optimal codes}
 Let $\mathcal A = \qty{\mu_1, \dots, \mu_m}$ be an alphabet of $m \geq 2$ messages, and let $\mathcal B$ be an alphabet of length $a \geq 2$.
-Let $X$ be a random variable taking values in $A$ with probabilities $p_1, \dots, p_m$.
+Let $X$ be a r.v. taking values in $A$ with probabilities $p_1, \dots, p_m$.
 
 \begin{definition}[Optimal Code]
     A code $c \colon \mathcal A \to \mathcal B^\star$ is called \vocab{optimal} if it has the smallest possible expected word length $\sum p_i \ell_i = \expect{S}$ among all decipherable codes.
@@ -350,7 +350,7 @@ Then, we append 0 and 1 to the codeword for $\nu$ to obtain the new codewords fo
     If $m = 2$, then the codewords are 0 and 1, which is clearly optimal.
 
     Assume $m > 2$, and let $c_m$ be the Huffman code for $X_m$ which takes values $\mu_1, \dots, \mu_m$ with probabilities $p_1 \geq \dots \geq p_m$.
-    $c_m$ is constructed from a Huffman code $c_{m-1}$ with random variable $X_{m-1}$ taking values $\mu_1, \dots, \mu_{n-2}, \nu$ with probabilities $p_1, \dots, p_{m-2}, p_{m-1} + p_m$.
+    $c_m$ is constructed from a Huffman code $c_{m-1}$ with r.v. $X_{m-1}$ taking values $\mu_1, \dots, \mu_{n-2}, \nu$ with probabilities $p_1, \dots, p_{m-2}, p_{m-1} + p_m$.
     The code $c_{m-1}$ is optimal by the inductive hypothesis.
     The expected word length $\expect{S_m}$ is given by
     \begin{align*}
@@ -384,16 +384,16 @@ Then, we append 0 and 1 to the codeword for $\nu$ to obtain the new codewords fo
 \end{remark}
 
 \subsection{Joint entropy}
-Let $X, Y$ be random variables with values in $\mathcal A, \mathcal B$.
-Then, the pair $(X, Y)$ is also a random variable, taking values in $\mathcal A \times \mathcal B$.
+Let $X, Y$ be r.v.s with values in $\mathcal A, \mathcal B$.
+Then, the pair $(X, Y)$ is also a r.v., taking values in $\mathcal A \times \mathcal B$.
 This has entropy $H(X,Y)$, called the \vocab{joint entropy} for $X$ and $Y$.
 \begin{align*}
     H(X,Y) = - \sum_{x \in \mathcal A} \sum_{y \in \mathcal B} \prob{X = x, Y = y} \log \prob{X = x, Y = y}
 \end{align*}
-This construction generalises to finite tuples of random variables.
+This construction generalises to finite tuples of r.v.s.
 
 \begin{lemma}
-    Let $X, Y$ be random variables taking values in $\mathcal A, \mathcal B$.
+    Let $X, Y$ be r.v.s taking values in $\mathcal A, \mathcal B$.
     Then $H(X,Y) \leq H(X) + H(Y)$, with equality iff $X$ and $Y$ are independent.
 \end{lemma}
 

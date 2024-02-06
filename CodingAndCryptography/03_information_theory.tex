@@ -1,34 +1,40 @@
 \section{Information theory}
 
 \subsection{Sources and information rate}
-\begin{definition}
-    A \vocab{source} is a sequence of random variables $X_1, X_2, \dots$ taking values in $\mathcal A$.
+\begin{definition}[Source]
+    A \vocab{source} is a sequence of r.v.s $X_1, X_2, \dots$ taking values in the alphabet $\mathcal A$.
 \end{definition}
-\begin{example}
-    The \vocab{Bernoulli} (or \vocab{memoryless}) source is a source where the $X_i$ are independent and identically distributed according to a Bernoulli distribution.
+
+\begin{example}[Bernoulli Source]
+    The \vocab{Bernoulli} (or \vocab{memoryless}) source is a source where the $X_i$ are iid Bernoulli's.
 \end{example}
-\begin{definition}
-    A source $X_1, X_2, \dots$ is \vocab{reliably encodable} at rate $r$ if there exist subsets $A_n \subseteq \mathcal A^n$ such that
+
+\begin{definition}[Reliably Encodable]
+    A source $X_1, X_2, \dots$ is \vocab{reliably encodable} at rate $r$ if $\exists$ subsets $A_n \subseteq \mathcal A^n$ s.t.
     \begin{enumerate}
-        \item $\lim \frac{\log \abs{A_n}}{n} = r$;
-        \item $\lim \prob{(X_1, \dots, X_n) \in A_n} = 1$.
+        \item $\lim_{n \to \infty} \frac{\log \abs{A_n}}{n} = r$;
+        \item $\lim_{n \to \infty} \prob{(X_1, \dots, X_n) \in A_n} = 1$.
     \end{enumerate}
 \end{definition}
-\begin{definition}
+
+\begin{definition}[Information Rate]
     The \vocab{information rate} $H$ of a source is the infimum of all reliable encoding rates.
 \end{definition}
+
 \begin{example}
     $0 \leq H \leq \log\abs{\mathcal A}$, with both bounds attainable.
     The proof is left as an exercise.
 \end{example}
+
 Shannon's first coding theorem computes the information rate of certain sources, including Bernoulli sources.
 
-Recall from IA Probability that a probability space is a tuple $(\Omega, \mathcal F, \mathbb P)$, and a discrete random variable is a function $X \colon \Omega \to \mathcal A$.
+Recall from IA Probability that a probability space is a tuple $(\Omega, \mathcal F, \mathbb P)$, and a discrete r.v. is a function $X \colon \Omega \to \mathcal A$.
 The probability mass function is the function $p_X \colon \mathcal A \to [0,1]$ given by $p_X(x) = \prob{X = x}$.
-We can consider the function $p(X) \colon \Omega \to [0,1]$ defined by the composition $p_X \circ X$, which assigns $p(X)(\omega) = \prob{X = X(\omega)}$; hence, $p(X)$ is also a random variable.
+We can consider the function $p(X) \colon \Omega \to [0,1]$ defined by the composition $p_X \circ X$, which assigns $p(X)(\omega) = \prob{X = X(\omega)}$; hence, $p(X)$ is also a r.v..
 
-Similarly, given a source $X_1, X_2, \dots$ of random variables with values in $\mathcal A$, the probability mass function of any tuple $X^{(n)} = (X_1, \dots, X_n)$ is $p_{X^{(n)}}(x_1, \dots, x_n) = \prob{X_1 = x_1, \dots, X_n = x_n}$.
+Similarly, given a source $X_1, X_2, \dots$ of r.v.s with values in $\mathcal A$, the probability mass function of any tuple $X^{(n)} = (X_1, \dots, X_n)$ is $p_{X^{(n)}}(x_1, \dots, x_n) = \prob{X_1 = x_1, \dots, X_n = x_n}$.
 As $p_{X^{(n)}} \colon \mathcal A^n \to [0,1]$, and $X^{(n)} \colon \Omega \to \mathcal A^n$, we can consider $p(X^{(n)}) = p_{X^{(n)}} \circ X^{(n)}$ defined by $\omega \mapsto p_{X^{(n)}}(X^{(n)}(\omega))$.
+
 \begin{example}
     Let $\mathcal A = \qty{A, B, C}$.
     Suppose
@@ -54,26 +60,30 @@ As $p_{X^{(n)}} \colon \mathcal A^n \to [0,1]$, and $X^{(n)} \colon \Omega \to \
     \end{cases}
     \end{align*}
 \end{example}
-We say that a source $X_1,X_2, \dots$ converges in probability to a random variable $L$ if for all $\varepsilon > 0$, $\lim_{n \to \infty} \prob{\abs{X_n - L} > \varepsilon} = 0$.
+
+We say that a source $X_1,X_2, \dots$ converges in probability to a r.v. $L$ if $\forall \; \varepsilon > 0$, $\lim_{n \to \infty} \prob{\abs{X_n - L} > \varepsilon} = 0$.
 We write $X_n \xrightarrow{\mathbb P} L$.
-The weak law of large numbers states that if $X_1, X_2, \dots$ is a sequence of independent identically distributed real-valued random variables with finite expectation $\expect{X_1}$, then $\frac{1}{n} \sum_{i=1}^n X_i \xrightarrow{\mathbb P} \expect{X}$.
+The weak law of large numbers states that if $X_1, X_2, \dots$ are iid real-valued r.v.s with finite $\expect{X_1}$, then $\frac{1}{n} \sum_{i=1}^n X_i \xrightarrow{\mathbb P} \expect{X}$.
+
 \begin{example}
     Let $X_1, X_2, \dots$ be a Bernoulli source.
-    Then $p(X_1), p(X_2), \dots$ are independent and identically distributed random variables, and $p(X_1, \dots, X_n) = p(X_1) \dots p(X_n)$.
-    Note that by the weak law of large numbers,
+    Then $p(X_1), p(X_2), \dots$ are iid r.v.s, and $p(X_1, \dots, X_n) = p(X_1) \dots p(X_n)$.
+    Note that by the WLLN,
     \begin{align*}
         -\frac{1}{n} \log p(X_1, \dots, X_n) = -\frac{1}{n} \sum_{i=1}^n \log p(X_i) \xrightarrow{\mathbb P} \expect{-\log p(X_1)} = H(X_1)
     \end{align*}
 \end{example}
+
 \begin{lemma}
     The information rate of a Bernoulli source $X_1, X_2, \dots$ is at most the expected word length of an optimal code $c \colon \mathcal A \to \qty{0,1}^\star$ for $X_1$.
 \end{lemma}
+
 \begin{proof}
     Let $\ell_1, \ell_2, \dots$ be the codeword lengths when we encode $X_1, X_2, \dots$ using $c$.
     Let $\varepsilon > 0$.
     Let
     \begin{align*}
-        A_n = \qty{x \in \mathcal A^n \mid c^\star(x) \text{ has length less than } n \qty(\expect{\ell_1} + \varepsilon)}
+        A_n = \qty{x \in \mathcal A^n : c^\star(x) \text{ has length less than } n \qty(\expect{\ell_1} + \varepsilon)}
     \end{align*}
     Then,
     \begin{align*}
@@ -93,7 +103,7 @@ The weak law of large numbers states that if $X_1, X_2, \dots$ is a sequence of 
     Combine the previous lemma with the noiseless coding theorem.
 \end{proof}
 Suppose we encode $X_1, X_2, \dots$ in blocks of size $N$.
-Let $Y_1 = (X_1, \dots, X_N), Y_2 = (X_{N+1}, \dots, X_{2N})$ and so on, such that $Y_1, Y_2, \dots$ take values in $\mathcal A^N$.
+Let $Y_1 = (X_1, \dots, X_N), Y_2 = (X_{N+1}, \dots, X_{2N})$ and so on, s.t. $Y_1, Y_2, \dots$ take values in $\mathcal A^N$.
 One can show that if the source $X_1, X_2, \dots$ has information rate $H$, then $Y_1, Y_2, \dots$ has information rate $NH$.
 \begin{proposition}
     The information rate $H$ of a Bernoulli source is at most $H(X_1)$.
@@ -101,18 +111,19 @@ One can show that if the source $X_1, X_2, \dots$ has information rate $H$, then
 \begin{proof}
     Apply the previous corollary to the $Y_i$ to obtain
     \begin{align*}
-        NH < H(Y_1) + 1 = H(X_1, \dots, X_N) + 1 = NH(X_1) + 1 \implies H < H(X_1) + \frac{1}{N}
+        NH < H(Y_1) + 1 = H(X_1, \dots, X_N) + 1 = NH(X_1) + 1 \implies H < H(X_1) + \frac{1}{N}.
     \end{align*}
-    as required.
+    But $N > 1$ is arbitrary so can take limit.
 \end{proof}
 
 \subsection{Asymptotic equipartition property}
-\begin{definition}
-    A source $X_1, X_2, \dots$ satisfies the \vocab{asymptotic equipartition property} if there exists a constant $H \geq 0$ such that
+\begin{definition}[Asymptotic Equipartition Property (AEP)]
+    A source $X_1, X_2, \dots$ satisfies the \vocab{asymptotic equipartition property} if $\exists$ a constant $H \geq 0$ s.t.
     \begin{align*}
         -\frac{1}{n} \log p(X_1, \dots, X_n) \xrightarrow{\mathbb P} H
     \end{align*}
 \end{definition}
+
 \begin{example}
     Suppose we toss a biased coin with probability $p$ of obtaining a head.
     Let $X_1, X_2, \dots$ be the results of independent coin tosses.
@@ -124,18 +135,21 @@ One can show that if the source $X_1, X_2, \dots$ has information rate $H$, then
     Not every sequence of tosses is of this form, but there is only a small probability of `atypical sequences'.
     With high probability, it is a `typical sequence' which has a probability close to $2^{-NH(X)}$.
 \end{example}
+
 \begin{lemma}
-    The asymptotic equipartition property for a source $X_1, X_2, \dots$ is equivalent to the property that for all $\varepsilon > 0$, there exists $n \in \mathbb N$ such that for all $n \geq n_0$, there exists a `typical set' $T_n \subseteq \mathcal A^n$ such that
+    The AEP for a source $X_1, X_2, \dots$ is equivalent to the property that $\forall \; \varepsilon > 0 \ \exists \; n_0 \in \mathbb N$ s.t. $\forall \; n \geq n_0$, $\exists \;$ `typical set' $T_n \subseteq \mathcal A^n$ s.t.
     \begin{enumerate}
         \item $\prob{(X_1, \dots, X_n) \in T_n} > 1 - \varepsilon$;
-        \item $2^{-n(H+\varepsilon)} \leq p(x_1, \dots, x_n) \leq 2^{-n(H-\varepsilon)}$ for all $(x_1, \dots, x_n) \in T_n$.
+        \item $2^{-n(H+\varepsilon)} \leq p(x_1, \dots, x_n) \leq 2^{-n(H-\varepsilon)} \quad \forall \; (x_1, \dots, x_n) \in T_n$.
     \end{enumerate}
 \end{lemma}
-\begin{proof}[Proof sketch]
-    First, we show that the asymptotic equipartition property implies the alternative definition.
+
+\begin{proof}[Proof sketch (Not Lectured)]
+    First, we show that the AEP implies the alternative definition.
     We define
     \begin{align*}
-        T_n = \qty{(x_1, \dots, x_n) \midd \abs{-\frac{1}{n} \log p(x_1, \dots, x_n) - H} \leq \varepsilon} = \qty{(x_1, \dots, x_n) \mid \text{condition (ii) holds}}
+        T_n &= \qty{(x_1, \dots, x_n) \midd \abs{-\frac{1}{n} \log p(x_1, \dots, x_n) - H} \leq \varepsilon} \\
+        &= \qty{(x_1, \dots, x_n) \mid \text{condition (ii) holds}}
     \end{align*}
     For the converse,
     \begin{align*}
@@ -144,10 +158,11 @@ One can show that if the source $X_1, X_2, \dots$ has information rate $H$, then
 \end{proof}
 
 \subsection{Shannon's first coding theorem}
-\begin{theorem}
-    Let $X_1, X_2, \dots$ be a source satisfying the asymptotic equipartition property with constant $H$.
+\begin{theorem}[Shannon's First Coding Theorem]
+    Let $X_1, X_2, \dots$ be a source satisfying AEP with constant $H$.
     Then this source has information rate $H$.
 \end{theorem}
+
 \begin{proof}
     Let $\varepsilon > 0$, and let $T_n \subseteq \mathcal A^n$ be typical sets.
     Then, for all $n \geq n_0(\varepsilon)$, for all $(x_1, \dots, x_n) \in T_n$ we have $p(x_1, \dots, x_n) \geq 2^{-n(H + \varepsilon)}$.
@@ -165,19 +180,22 @@ One can show that if the source $X_1, X_2, \dots$ has information rate $H$, then
     But $\prob{T_n} \leq \prob{A_n \cap T_n} + \prob{\mathcal A^n \setminus A_n} \to 0 + 0$, contradicting typicality.
     So we cannot reliably encode at rate $H - \varepsilon$, so the information rate is at least $H$.
 \end{proof}
+
 \begin{corollary}
     A Bernoulli source $X_1, X_2, \dots$ has information rate $H(X_1)$.
 \end{corollary}
+
 \begin{proof}
-    In a previous example we showed that for a Bernoulli source, $-\frac{1}{n} \log p(X_1, \dots, X_n) \xrightarrow{\mathbb P} H(X_1)$.
-    So the asymptotic equipartition property holds with $H = H(X_1)$, giving the result by Shannon's first coding theorem.
+    In a previous example we showed that for a Bernoulli source, \\ $-\frac{1}{n} \log p(X_1, \dots, X_n) \xrightarrow{\mathbb P} H(X_1)$.
+    So the AEP holds with $H = H(X_1)$, giving the result by Shannon's first coding theorem.
 \end{proof}
+
 \begin{remark}
-    The asymptotic equipartition property is useful for noiseless coding.
+    The AEP is useful for noiseless coding.
     We can encode the typical sequences using a block code, and encode the atypical sequences arbitrarily.
 
     Many sources, which are not necessarily Bernoulli, also satisfy the property.
-    Under suitable hypotheses, the sequence $\frac{1}{n} H(X_1, \dots, X_n)$ is decreasing, and the asymptotic equipartition property is satisfied with constant $H = \lim_{n \to \infty} \frac{1}{n} H(X_1, \dots, X_n)$.
+    Under suitable hypotheses, the sequence $\frac{1}{n} H(X_1, \dots, X_n)$ is decreasing, and the AEP is satisfied with constant $H = \lim_{n \to \infty} \frac{1}{n} H(X_1, \dots, X_n)$.
 \end{remark}
 
 \subsection{Capacity}
@@ -189,7 +207,7 @@ The \vocab{error rate} is
         \hat e(C) = \max_{c \in C} \prob{\text{error} \mid c \text{ sent}}
     \end{align*}
 The \vocab{information rate} is $\rho(C) = \frac{\log \abs{C}}{n}$.
-A channel can \vocab{transmit reliably at rate $R$} if there exist codes $C_1, C_2, \dots$ where $C_n$ has length $n$ such that $\lim_{n \to \infty} \rho(C_n) = R$ and $\lim_{n \to \infty} \hat e(C_n) = 0$.
+A channel can \vocab{transmit reliably at rate $R$} if there exist codes $C_1, C_2, \dots$ where $C_n$ has length $n$ s.t. $\lim_{n \to \infty} \rho(C_n) = R$ and $\lim_{n \to \infty} \hat e(C_n) = 0$.
 The \vocab{(operational) capacity} of a channel is the supremum of all rates at which it can transmit reliably.
 
 Suppose we are given a source with information rate $r$ bits per second that emits symbols at a rate of $s$ symbols per second.
@@ -202,7 +220,7 @@ We will now compute the capacity of the binary symmetric channel with error prob
     A binary symmetric channel with error probability $p < \frac{1}{4}$ has nonzero capacity.
 \end{proposition}
 \begin{proof}
-    Let $\delta$ be such that $2p < \delta < \frac{1}{2}$.
+    Let $\delta$ be s.t. $2p < \delta < \frac{1}{2}$.
     We claim that we can reliably transmit at rate $R = 1 - H(\delta) > 0$.
     Let $C_n$ be a code of length $n$, and suppose it has minimum distance $\floor*{n\delta}$ of maximal size.
     Then, by the GSV bound,
@@ -215,7 +233,7 @@ We will now compute the capacity of the binary symmetric channel with error prob
         \hat e(C_n) &\leq \prob{\text{in $n$ uses, the channel makes at least } \floor*{\frac{\floor*{n\delta}-1}{2}} \text{ errors}} \\
         &\leq \prob{\text{in $n$ uses, the channel makes at least } \floor*{\frac{n\delta - 1}{2}} \text{ errors}}
     \end{align*}
-    Let $\varepsilon > 0$ be such that $p + \varepsilon < \frac{\delta}{2}$.
+    Let $\varepsilon > 0$ be s.t. $p + \varepsilon < \frac{\delta}{2}$.
     Then, for $n$ sufficiently large, $\frac{n\delta - 1}{2} = n\qty(\frac{\delta}{2} - \frac{1}{2n}) > n(p + \varepsilon)$.
     Hence, $\hat e(C_n) \leq \prob{\text{in $n$ uses, the channel makes at least } n(p+\varepsilon) \text{ errors}}$.
     We show that this value converges to zero as $n \to \infty$ using the next lemma.
@@ -229,8 +247,8 @@ We will now compute the capacity of the binary symmetric channel with error prob
     \end{align*}
 \end{lemma}
 \begin{proof}
-    Consider random variables $U_i = 1\qty[\text{the $i$th digit is mistransmitted}]$.
-    The $U_i$ are independent and identically distributed with $\prob{U_i = 1} = p$.
+    Consider r.v.s $U_i = 1\qty[\text{the $i$th digit is mistransmitted}]$.
+    The $U_i$ are iid with $\prob{U_i = 1} = p$.
     In particular, $\expect{U_i} = p$.
     Therefore, the probability that the channel makes at least $n(p + \varepsilon)$ errors is
     \begin{align*}
@@ -241,7 +259,7 @@ We will now compute the capacity of the binary symmetric channel with error prob
 
 \subsection{Conditional entropy}
 \begin{definition}
-    Let $X, Y$ be random variables taking values in alphabets $\mathcal A, \mathcal B$ respectively.
+    Let $X, Y$ be r.v.s taking values in alphabets $\mathcal A, \mathcal B$ respectively.
     Then, the \vocab{conditional entropy} is defined by
     \begin{align*}
         H(X \mid Y = y) = - \sum_{x \in \mathcal A} \prob{X = x \mid Y = y} \log \prob{X = x \mid Y = y}
@@ -268,7 +286,7 @@ We will now compute the capacity of the binary symmetric channel with error prob
     \end{align*}
 \end{proof}
 \begin{example}
-    Let $X$ be a uniform random variable on $\qty{1, \dots, 6}$ modelling a dice roll, and $Y$ is defined to be zero if $X$ is even, and one if $X$ is odd.
+    Let $X$ be a uniform r.v. on $\qty{1, \dots, 6}$ modelling a dice roll, and $Y$ is defined to be zero if $X$ is even, and one if $X$ is odd.
     Then, $H(X,Y) = H(X) = \log 6$ and $H(Y) = \log 2$.
     Therefore, $H(X \mid Y) = \log 3$ and $H(Y \mid X) = 0$.
 \end{example}
@@ -278,11 +296,11 @@ We will now compute the capacity of the binary symmetric channel with error prob
 \begin{proof}
     Combine this result with the fact that $H(X,Y) \leq H(X) + H(Y)$ where equality holds iff $H(X), H(Y)$ are independent.
 \end{proof}
-Now, replace random variables $X$ and $Y$ with random vectors $X^{(r)} = (X_1, \dots, X_r)$ and $Y^{(s)} = (Y_1, \dots, Y_s)$.
+Now, replace r.v.s $X$ and $Y$ with random vectors $X^{(r)} = (X_1, \dots, X_r)$ and $Y^{(s)} = (Y_1, \dots, Y_s)$.
 Similarly, we can define $H(X_1, \dots, X_r \mid Y_1, \dots, Y_s) = H(X^{(r)} \mid Y^{(s)})$.
 Note that $H(X,Y\mid Z)$ is the entropy of $X$ and $Y$ combined, given the value of $Z$, and is not the entropy of $X$, together with $Y$ given $Z$.
 \begin{lemma}
-    Let $X, Y, Z$ be random variables.
+    Let $X, Y, Z$ be r.v.s.
     Then, $H(X \mid Y) \leq H(X \mid Y, Z) + H(Z)$.
 \end{lemma}
 \begin{proof}
@@ -296,7 +314,7 @@ Note that $H(X,Y\mid Z)$ is the entropy of $X$ and $Y$ combined, given the value
     \end{align*}
 \end{proof}
 \begin{proposition}[Fano's inequality]
-    Let $X, Y$ be random variables taking values in $\mathcal A$.
+    Let $X, Y$ be r.v.s taking values in $\mathcal A$.
     Let $\abs{\mathcal A} = m$, and let $p = \prob{X \neq Y}$.
     Then $H(X \mid Y) \leq H(p) + p \log(m-1)$.
 \end{proposition}
@@ -317,12 +335,12 @@ Note that $H(X,Y\mid Z)$ is the entropy of $X$ and $Y$ combined, given the value
     \end{align*}
     as required.
 \end{proof}
-Let $X$ be a random variable describing the input to a channel and $Y$ be a random variable describing the output of the channel.
+Let $X$ be a r.v. describing the input to a channel and $Y$ be a r.v. describing the output of the channel.
 $H(p)$ provides the information required to decide whether an error has occurred, and $p\log(m-1)$ gives the information needed to resolve that error in the worst possible case.
 
 \subsection{Shannon's second coding theorem}
 \begin{definition}
-    Let $X, Y$ be random variables taking values in $\mathcal A$.
+    Let $X, Y$ be r.v.s taking values in $\mathcal A$.
     The \vocab{mutual information} is $I(X;Y) = H(X) - H(X \mid Y)$.
 \end{definition}
 This is nonnegative, as $I(X;Y) = H(X) + H(Y) - H(X,Y) \geq 0$.
@@ -330,11 +348,11 @@ Equality holds iff $X, Y$ are independent.
 Clearly, $I(X;Y) = I(Y;X)$.
 \begin{definition}
     Consider a discrete memoryless channel with input alphabet $\mathcal A$ of size $m$ and output alphabet $\mathcal B$.
-    Let $X$ be a random variable taking values in $\mathcal A$, used as the input to this channel.
-    Let $Y$ be the random variable output by the channel, depending on $X$ and the channel matrix.
+    Let $X$ be a r.v. taking values in $\mathcal A$, used as the input to this channel.
+    Let $Y$ be the r.v. output by the channel, depending on $X$ and the channel matrix.
     The \vocab{information capacity} of the channel is $\max_{X} I(X;Y)$.
 \end{definition}
-The maximum is taken over all discrete random variables $X$ taking values in $\mathcal A$, or equivalently.
+The maximum is taken over all discrete r.v.s $X$ taking values in $\mathcal A$, or equivalently.
 This maximum is attained since $I$ is continuous and the space
 \begin{align*}
         \qty{(p_1, \dots, p_m) \in \mathbb R^m \midd p_i \geq 0, \sum_{i=1}^m p_i = 1}
@@ -395,7 +413,7 @@ We will now model using a channel $n$ times as the \vocab{$n$th extension}, repl
         &= \sum_{i=1}^n \qty[H(Y_i) - H(Y_i \mid X_i)] \\
         &= \sum_{i=1}^n I(X_i;Y_i) \leq nC
     \end{align*}
-    Equality is attained by taking $X_1, \dots, X_n$ independent and identically distributed such that $I(X_i;Y_i) = C$.
+    Equality is attained by taking $X_1, \dots, X_n$ iid s.t. $I(X_i;Y_i) = C$.
     Indeed, if $X_1, \dots, X_n$ are independent, then so are $Y_1, \dots, Y_n$, so $H(Y_1, \dots, Y_n) = \sum_{i=1}^n H(Y_i)$.
     Therefore,
     \begin{align*}
@@ -407,14 +425,14 @@ We now prove part of Shannon's second coding theorem, that the operational capac
 \begin{proof}
     Let $C$ be the information capacity.
     Suppose reliable transmission is possible at a rate $R > C$.
-    Then, there is a sequence of codes $(C_n)_{n \geq 1}$ where $C_n$ has length $n$ and size $\floor*{2^{nR}}$, such that $\lim_{n \to \infty} \rho(C_n) = R$ and $\lim_{n \to \infty} \hat e(C_n) = 0$.
+    Then, there is a sequence of codes $(C_n)_{n \geq 1}$ where $C_n$ has length $n$ and size $\floor*{2^{nR}}$, s.t. $\lim_{n \to \infty} \rho(C_n) = R$ and $\lim_{n \to \infty} \hat e(C_n) = 0$.
 
     Recall that $\hat e(C_n) = \max_{c \in C_n} \prob{\text{error} \mid c \text{ sent}}$.
     Define the \vocab{average error rate} $e(C)$ by $e(C) = \frac{1}{\abs{C_n}} \sum_{c \in C} \prob{\text{error} \mid c \text{ sent}}$.
     Note that $e(C_n) \leq \hat e(C_n)$.
     As $\hat e(C_n) \to 0$, we also have $e(C_n) \to 0$.
 
-    Consider an input random variable $X$ distributed uniformly over $C_n$.
+    Consider an input r.v. $X$ distributed uniformly over $C_n$.
     Let $Y$ be the output given by $X$ and the channel matrix.
     Then $e(C_n) = \prob{X \neq Y} = p$.
     Hence, $H(X) = \log \abs{C_n} = \log \floor*{2^{nR}} \geq nR - 1$ for sufficiently large $n$.
@@ -432,7 +450,7 @@ We now prove part of Shannon's second coding theorem, that the operational capac
 To complete the proof of Shannon's second coding theorem for the binary symmetric channel with error probability $p$, we prove that the operational capacity is at least $1 - H(p)$.
 \begin{proposition}
     Consider a binary symmetric channel with error probability $p$, and let $R < 1 - H(p)$.
-    Then there exists a sequence of codes $(C_n)_{n \geq 1}$ with $C_n$ of length $n$ and size $\floor*{2^{nR}}$ such that $\lim_{n \to \infty} \rho(C_n) = R$ and $\lim_{n \to \infty} e(C_n) = 0$.
+    Then there exists a sequence of codes $(C_n)_{n \geq 1}$ with $C_n$ of length $n$ and size $\floor*{2^{nR}}$ s.t. $\lim_{n \to \infty} \rho(C_n) = R$ and $\lim_{n \to \infty} e(C_n) = 0$.
 \end{proposition}
 \begin{remark}
     This proposition deals with the average error rate, instead of the error rate $\hat e$.
@@ -440,13 +458,13 @@ To complete the proof of Shannon's second coding theorem for the binary symmetri
 \begin{proof}
     We use the method of random coding.
     Without loss of generality let $p < \frac{1}{2}$.
-    Let $\varepsilon > 0$ such that $p + \varepsilon < \frac{1}{2}$ and $R < 1 - H(p + \varepsilon)$.
+    Let $\varepsilon > 0$ s.t. $p + \varepsilon < \frac{1}{2}$ and $R < 1 - H(p + \varepsilon)$.
     We use minimum distance decoding, and in the case of a tie, we make an arbitrary choice.
     Let $m = \floor*{2^{nR}}$, and let $C = \qty{c_1, \dots, c_m}$ be a code chosen uniformly at random from $\mathcal C = \qty{[n,m]\text{-codes}}$, a set of size $\binom{2^n}{m}$.
 
     Choose $1 \leq i \leq m$ uniformly at random, and send $c_i$ through the channel, and obtain an output $Y$.
     Then, $\prob{Y \text{ not decoded as } c_i}$ is the average value of $e(C)$ for $C$ ranging over $\mathcal C$, giving $\frac{1}{\abs{\mathcal C}} \sum_{C \in \mathcal C} e(C)$.
-    We can choose a code $C_n \in \mathcal C$ such that $e(C_n) \leq \frac{1}{\abs{\mathcal C}}\sum_{C \in \mathcal C} e(C)$.
+    We can choose a code $C_n \in \mathcal C$ s.t. $e(C_n) \leq \frac{1}{\abs{\mathcal C}}\sum_{C \in \mathcal C} e(C)$.
     So it suffices to show $\prob{Y \text{ not decoded as } c_i} \to 0$.
 
     Let $r = \floor*{n(p + \varepsilon)}$.
@@ -479,7 +497,7 @@ To complete the proof of Shannon's second coding theorem for the binary symmetri
     We can replace $e$ with $\hat e$ in the previous result.
 \end{proposition}
 \begin{proof}
-    Let $R'$ be such that $R < R' < 1 - H(p)$.
+    Let $R'$ be s.t. $R < R' < 1 - H(p)$.
     Then, apply the previous result to $R'$ to construct a sequence of codes $(C_n')_{n \geq 1}$ of length $n$ and size $\floor*{2^{nR'}}$, where $e(C_n') \to 0$.
     Order the codewords of $C_n'$ by the probability of error given that the codeword was sent, and delete the worst half.
     This gives a code $C_n$ with $\hat e(C_n) \leq 2 e(C_n')$.
@@ -506,8 +524,8 @@ The bankroll after the toss is
     X_n(1-w) & (n + 1)\text{th toss is a tail}
 \end{cases}
     \end{align*}
-Define $Y_{n+1} = \frac{X_{n+1}}{X_n}$, then the $Y_i$ are independent and identically distributed.
-Then $\log Y_i$ is a sequence of independent and identically distributed random variables.
+Define $Y_{n+1} = \frac{X_{n+1}}{X_n}$, then the $Y_i$ are iid.
+Then $\log Y_i$ is a sequence of iid r.v.s.
 Note that $\log X_n = \sum_{i=1}^n \log Y_i$.
 \begin{lemma}
     Let $\mu = \expect{\log Y_1}, \sigma^2 = \Var{\log Y_1}$.
@@ -515,7 +533,7 @@ Note that $\log X_n = \sum_{i=1}^n \log Y_i$.
     \begin{enumerate}
         \item $\prob{\abs{\frac{1}{n} \sum_{i=1}^n \log Y_i - \mu} \geq a} \leq \frac{\sigma^2}{na^2}$ by Chebyshev's inequality;
         \item $\prob{\abs{\frac{\log X_n}{n} - \mu} \geq a} \leq \frac{\sigma^2}{na^2}$;
-        \item given $\varepsilon > 0$ and $\delta > 0$, there exists $N$ such that $\prob{\abs{\frac{\log X_n}{n} - \mu} \geq \delta} \leq \varepsilon$ for all $n \geq N$.
+        \item given $\varepsilon > 0$ and $\delta > 0$, there exists $N$ s.t. $\prob{\abs{\frac{\log X_n}{n} - \mu} \geq \delta} \leq \varepsilon$ for all $n \geq N$.
     \end{enumerate}
 \end{lemma}
 Consider a single coin toss, with probability $p < 1$ of a head.

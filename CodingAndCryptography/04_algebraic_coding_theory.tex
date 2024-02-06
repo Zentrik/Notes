@@ -30,7 +30,7 @@ The information rate is $\frac{k}{n}$.
     Define $x \cdot y = \sum_{i=1}^n x_i y_i \in \mathbb F_2$.
     This is symmetric and bilinear.
 \end{definition}
-There are nonzero $x$ such that $x \cdot x = 0$.
+There are nonzero $x$ s.t. $x \cdot x = 0$.
 \begin{definition}
     Let $P \subseteq \mathbb F_2^n$.
     The \vocab{parity check code} defined by $P$ is
@@ -181,7 +181,7 @@ The proof is left as an exercise.
     Any two columns of $H$ are linearly independent, but there are three linearly dependent columns.
     Hence, $d(C) = 3$.
     Hence, $C$ is $\floor*{\frac{3-1}{2}} = 1$-error correcting.
-    A perfect code is one such that $\abs{C} = \frac{2^n}{V(n,e)}$.
+    A perfect code is one s.t. $\abs{C} = \frac{2^n}{V(n,e)}$.
     In this case, $n = 2^d - 1$ and $e = 1$, so $\frac{2^n}{1 + 2^d - 1} = 2^{n-d} = \abs{C}$ as required.
 \end{proof}
 
@@ -319,7 +319,7 @@ Such ideals correspond to ideals of $\mathbb F_2[X]$ that contain $X^n - 1$.
 Since $\mathbb F_2[X]$ is a principal ideal domain, these ideals correspond to polynomials $g(X) \in \mathbb F_2[X]$ dividing $X^n - 1$.
 \begin{theorem}
     Let $C \trianglelefteq \faktor{\mathbb F_2[X]}{(X^n - 1)}$ be a cyclic code.
-    Then, there exists a unique \vocab{generator} polynomial $g(X) \in \mathbb F_2[X]$ such that
+    Then, there exists a unique \vocab{generator} polynomial $g(X) \in \mathbb F_2[X]$ s.t.
     \begin{enumerate}
         \item $C = (g)$;
         \item $g(X) \mid X^n - 1$.
@@ -365,7 +365,7 @@ Since $\mathbb F_2[X]$ is a principal ideal domain, these ideals correspond to p
 \end{corollary}
 \begin{definition}
     Let $g$ be a generator for $C$.
-    The \vocab{parity check polynomial} is the polynomial $h$ such that $g(X) h(X) = X^n - 1$.
+    The \vocab{parity check polynomial} is the polynomial $h$ s.t. $g(X) h(X) = X^n - 1$.
 \end{definition}
 \begin{corollary}
     Writing $h(X) = b_0 + b_1 X + \dots + b_{n-k} X^{n-k}$, the parity check matrix is
@@ -402,11 +402,11 @@ Moreover, any finite field arises in this way.
 
 If $q = p^\alpha$ is a prime power where $\alpha \geq 1$, there exists a unique field $\mathbb F_q$ of order $q$, up to isomorphism.
 Note that $\mathbb F_q \not\simeq \faktor{\mathbb Z}{q\mathbb Z}$ if $\alpha > 1$.
-The multiplicative group $\mathbb F_q^\times$ is cyclic; there exists $\beta \in \mathbb F_q$ such that $\mathbb F_q^\times = \genset{\beta} = \qty{1, \beta, \dots, \beta^{q-2}}$.
+The multiplicative group $\mathbb F_q^\times$ is cyclic; there exists $\beta \in \mathbb F_q$ s.t. $\mathbb F_q^\times = \genset{\beta} = \qty{1, \beta, \dots, \beta^{q-2}}$.
 Such a $\beta$ is called a \vocab{primitive element}.
 % BCH codes are a particular type of cyclic code.
 
-Let $n$ be an odd integer, and let $r \geq 1$ such that $2^r \equiv 1$ mod $n$, which always exists as $2$ is coprime to $n$.
+Let $n$ be an odd integer, and let $r \geq 1$ s.t. $2^r \equiv 1$ mod $n$, which always exists as $2$ is coprime to $n$.
 Let $K = \mathbb F_{2^r}$, and define $\bm \mu_n(K) = \qty{x \in K \mid x^n = 1} \leq K^\times$, which is a cyclic group.
 Since $n \mid (2^r - 1) = \abs{K^\times}$, $\bm \mu_n(K)$ is the cyclic group of order $n$.
 Hence, $\bm \mu_n(K) = \qty{1, \alpha, \alpha^2, \dots, \alpha^{n-1}}$ for some primitive $n$th root of unity $\alpha \in K$.
@@ -416,7 +416,7 @@ Hence, $\bm \mu_n(K) = \qty{1, \alpha, \alpha^2, \dots, \alpha^{n-1}}$ for some 
         C = \qty{f(X) \in \faktor{\mathbb F_2[X]}{(X^n - 1)} \midd \forall a \in A,\, f(a) = 0}
     \end{align*}
 \end{definition}
-The generator polynomial $g(X)$ is the nonzero polynomial of least degree such that $g(a) = 0$ for all $a \in A$.
+The generator polynomial $g(X)$ is the nonzero polynomial of least degree s.t. $g(a) = 0$ for all $a \in A$.
 Equivalently, $g$ is the least common multiple of the minimal polynomials of the elements of $A$.
 \begin{definition}
     The cyclic code of length $n$ with defining set $\qty{\alpha, \alpha^2, \dots, \alpha^{\delta - 1}}$ is a \vocab{BCH code} with \vocab{design distance} $\delta$.
@@ -469,7 +469,7 @@ Hence, $r(\alpha^j) = e(\alpha^j)$.
 Assuming that $\deg \sigma = \abs{\mathcal E}$, where $2t + 1 \leq \delta$, we must recover $\sigma$ from $r(X)$.
 \begin{theorem}
     Suppose $\deg \sigma = \abs{\mathcal E} \leq t$ where $2t + 1 \leq \delta$.
-    Then $\sigma(X)$ is the unique polynomial in $K[X]$ of least degree such that
+    Then $\sigma(X)$ is the unique polynomial in $K[X]$ of least degree s.t.
     \begin{enumerate}
         \item $\sigma(0) = 1$;
         \item $\sigma(X) \sum_{j=1}^{2t} r(\alpha^j) X^j = \omega(X)$ mod $X^{2t+1}$ for some $\omega \in K[X]$ of degree at most $t$.
@@ -556,7 +556,7 @@ We sometimes write $a_d = 1$, so $P(X) = \sum_{i=0}^d a_i X^i$.
     A sequence $y_0, \dots$ of elements of $\mathbb F_2$ has \vocab{generating function} $\sum_{j=0}^\infty y_j X^j \in \mathbb F_2\Brackets{X}$.
 \end{definition}
 \begin{theorem}
-    The stream $(y_n)_{n \in \mathbb N}$ comes from a linear feedback shift register with auxiliary polynomial $P(X)$ iff its generating function is (formally) of the form $\frac{A(X)}{\check{P}(X)}$ with $A \in \mathbb F_2[X]$ such that $\deg A < \deg \check{P}$.
+    The stream $(y_n)_{n \in \mathbb N}$ comes from a linear feedback shift register with auxiliary polynomial $P(X)$ iff its generating function is (formally) of the form $\frac{A(X)}{\check{P}(X)}$ with $A \in \mathbb F_2[X]$ s.t. $\deg A < \deg \check{P}$.
 \end{theorem}
 Note that $\check{P}(X) = X^{\deg P}P(X^{-1})$.
 \begin{proof}
@@ -574,7 +574,7 @@ The problem of recovering the linear feedback shift register from its stream and
 
 \subsection{The Berlekamp--Massey method}
 Let $(x_n)_{n \in \mathbb N}$ be the output of a binary linear feedback shift register.
-We wish to find the unknown length $d$ and values $a_0, \dots, a_{d-1}$ such that $x_n + \sum_{i=1}^d a_{d-i} x_{n-i} = 0$ for all $n \geq d$.
+We wish to find the unknown length $d$ and values $a_0, \dots, a_{d-1}$ s.t. $x_n + \sum_{i=1}^d a_{d-i} x_{n-i} = 0$ for all $n \geq d$.
 We have
 \begin{align*}
     \underbrace{\begin{pmatrix}
