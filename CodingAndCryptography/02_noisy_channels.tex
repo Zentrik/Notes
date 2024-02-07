@@ -89,20 +89,20 @@ The aim when constructing codes for noisy channels is to detect errors, and if p
     \end{itemize}
 \end{definition}
 
-\begin{example}
+\begin{example}[Repetition Code]
     A \vocab{repetition code} of length $n$ has codewords $0^n, 1^n$.
     This is an $[n,2]$-code.
     It is $(n-1)$-error detecting, and $\floor*{\frac{n-1}{2}}$-error correcting.
     Its information rate is $\frac{1}{n}$.
 \end{example}
 
-\begin{example}
+\begin{example}[Simple Parity Check Code]
     A \vocab{simple parity check code} or \vocab{paper tape code} of length $n$ identifies the set $\qty{0,1}$ with the field $\mathbb F_2$ of two elements, and defines $C = \qty{(x_1, \dots, x_n) \in \mathbb F_2^n : \sum x_i = 0}$.
     This is an $[n,2^{n-1}]$-code.
     This is 1-error detecting and 0-error correcting, but has information rate $\frac{n-1}{n}$.
 \end{example}
 
-\begin{example}
+\begin{example}[Hamming Code]
     Hamming's original code is a 1-error correcting binary $[7,16]$-code, defined on a subset of $\mathbb F_2^7$ by
     \begin{align*}
         C = \qty{c \in \mathbb F_2^7 : c_1 + c_3 + c_5 + c_7 = 0; c_2 + c_3 + c_6 + c_7 = 0; c_4 + c_5 + c_6 + c_7 = 0}

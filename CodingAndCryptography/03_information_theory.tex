@@ -65,7 +65,7 @@ We say that a source $X_1,X_2, \dots$ converges in probability to a r.v. $L$ if 
 We write $X_n \xrightarrow{\mathbb P} L$.
 The weak law of large numbers states that if $X_1, X_2, \dots$ are iid real-valued r.v.s with finite $\expect{X_1}$, then $\frac{1}{n} \sum_{i=1}^n X_i \xrightarrow{\mathbb P} \expect{X}$.
 
-\begin{example}
+\begin{example}[Bernoulli] \label{exm:ber}
     Let $X_1, X_2, \dots$ be a Bernoulli source.
     Then $p(X_1), p(X_2), \dots$ are iid r.v.s, and $p(X_1, \dots, X_n) = p(X_1) \dots p(X_n)$.
     Note that by the WLLN,
@@ -165,20 +165,20 @@ One can show that if the source $X_1, X_2, \dots$ has information rate $H$, then
 
 \begin{proof}
     Let $\varepsilon > 0$, and let $T_n \subseteq \mathcal A^n$ be typical sets.
-    Then, for all $n \geq n_0(\varepsilon)$, for all $(x_1, \dots, x_n) \in T_n$ we have $p(x_1, \dots, x_n) \geq 2^{-n(H + \varepsilon)}$.
-    Therefore, $1 \geq \prob{T_n} \geq 2^{-n(H + \varepsilon)} \cdot \abs{T_n}$, giving $\frac{1}{n} \log \abs{T_n} \leq H + \varepsilon$.
-    Taking $A_n = T_n$ in the definition of reliable encoding shows that the source is reliably encodable at rate $H + \varepsilon$.
+    Then, $\forall \; n \geq n_0(\varepsilon)$, $\forall \; (x_1, \dots, x_n) \in T_n$ we have $p(x_1, \dots, x_n) \geq 2^{-n(H + \varepsilon)}$.
+    Therefore, $1 \geq \prob{T_n} \geq \abs{T_n} 2^{-n(H + \varepsilon)}$, giving $\frac{1}{n} \log \abs{T_n} \leq H + \varepsilon$.
+    Taking $A_n = T_n$ in the defn of reliable encoding shows that the source is reliably encodable at rate $H + \varepsilon$.
 
     Conversely, if $H = 0$ the proof concludes, so we may assume $H > 0$.
     Let $0 < \varepsilon < \frac{H}{2}$, and suppose that the source is reliably encodable at rate $H - 2\varepsilon$ with sets $A_n \subseteq \mathcal A^n$.
     Let $T_n \subseteq \mathcal A^n$ be typical sets.
-    Then, for all $(x_1, \dots, x_n) \in T_n$, $p(x_1, \dots, x_n) \leq 2^{-n(H - \varepsilon)}$, so $\prob{A_n \cap T_n} \leq 2^{-n(H - \varepsilon)} \abs{A_n}$, giving
+    Then, $\forall \; (x_1, \dots, x_n) \in T_n$, $p(x_1, \dots, x_n) \leq 2^{-n(H - \varepsilon)}$, so $\prob{A_n \cap T_n} \leq 2^{-n(H - \varepsilon)} \abs{A_n}$, giving
     \begin{align*}
         \frac{1}{n} \log \prob{A_n \cap T_n} \leq -(H - \varepsilon) + \frac{1}{n} \log \abs{A_n} \to -(H - \varepsilon) + (H - 2 \varepsilon) = -\varepsilon
     \end{align*}
     Then, $\log \prob{A_n \cap T_n} \to -\infty$, so $\prob{A_n \cap T_n} \to 0$.
     But $\prob{T_n} \leq \prob{A_n \cap T_n} + \prob{\mathcal A^n \setminus A_n} \to 0 + 0$, contradicting typicality.
-    So we cannot reliably encode at rate $H - \varepsilon$, so the information rate is at least $H$.
+    So we cannot reliably encode at rate $H - 2\varepsilon$, so the information rate is at least $H$.
 \end{proof}
 
 \begin{corollary}
@@ -186,7 +186,7 @@ One can show that if the source $X_1, X_2, \dots$ has information rate $H$, then
 \end{corollary}
 
 \begin{proof}
-    In a previous example we showed that for a Bernoulli source, \\ $-\frac{1}{n} \log p(X_1, \dots, X_n) \xrightarrow{\mathbb P} H(X_1)$.
+    In \cref{exm:ber} we showed that for a Bernoulli source, \\ $-\frac{1}{n} \log p(X_1, \dots, X_n) \xrightarrow{\mathbb P} H(X_1)$.
     So the AEP holds with $H = H(X_1)$, giving the result by Shannon's first coding theorem.
 \end{proof}
 
@@ -194,8 +194,10 @@ One can show that if the source $X_1, X_2, \dots$ has information rate $H$, then
     The AEP is useful for noiseless coding.
     We can encode the typical sequences using a block code, and encode the atypical sequences arbitrarily.
 
-    Many sources, which are not necessarily Bernoulli, also satisfy the property.
-    Under suitable hypotheses, the sequence $\frac{1}{n} H(X_1, \dots, X_n)$ is decreasing, and the AEP is satisfied with constant $H = \lim_{n \to \infty} \frac{1}{n} H(X_1, \dots, X_n)$.
+    Many sources, which are not necessarily Bernoulli, also satisfy AEP.
+    Under suitable hypotheses, the sequence $\frac{1}{n} H(X_1, \dots, X_n)$ is decreasing and bounded below, and the AEP is satisfied with constant $H = \lim_{n \to \infty} \frac{1}{n} H(X_1, \dots, X_n)$.
+
+    For a Bernoulli source, $H(X_1, \dots, X_n) = n H(X_1)$.
 \end{remark}
 
 \subsection{Capacity}
@@ -207,8 +209,11 @@ The \vocab{error rate} is
         \hat e(C) = \max_{c \in C} \prob{\text{error} \mid c \text{ sent}}
     \end{align*}
 The \vocab{information rate} is $\rho(C) = \frac{\log \abs{C}}{n}$.
-A channel can \vocab{transmit reliably at rate $R$} if there exist codes $C_1, C_2, \dots$ where $C_n$ has length $n$ s.t. $\lim_{n \to \infty} \rho(C_n) = R$ and $\lim_{n \to \infty} \hat e(C_n) = 0$.
-The \vocab{(operational) capacity} of a channel is the supremum of all rates at which it can transmit reliably.
+A channel can \vocab{transmit reliably at rate $R$} if $\exists$ codes $C_1, C_2, \dots$ where $C_n$ has length $n$ s.t. $\lim_{n \to \infty} \rho(C_n) = R$ and $\lim_{n \to \infty} \hat e(C_n) = 0$.
+
+\begin{definition}[(Operational) Capacity]
+    The \vocab{(operational) capacity} of a channel is the supremum of all rates at which it can transmit reliably.
+\end{definition}
 
 Suppose we are given a source with information rate $r$ bits per second that emits symbols at a rate of $s$ symbols per second.
 Suppose we also have a channel with capacity $R$ bits per transmission that transmits symbols at a rate of $S$ transmissions per second.
