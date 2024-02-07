@@ -546,13 +546,13 @@ The ordinal $\omega_1$ has a number of remarkable properties.
 
 \subsection{Successors and limits}
 
-Let $\alpha$ be an ordinal, consider whether $\alpha$ has a greatest element(i.e. if $X$ has O.T. $\alpha$, does $X$ have a greatest element).
+Let $\alpha$ be an ordinal, consider whether $\alpha$ has a greatest element (i.e. if $X$ has O.T. $\alpha$, does $X$ have a greatest element).
 \begin{definition}[Successor]
     If $\exists$ greatest element of $I_\alpha$, say $\beta$, then $I_\alpha = I_\beta \cup \qty{\beta}$.
     So $\alpha = \beta^+$ and $\alpha = (\sup I_\alpha)^+$.
     We call such $\alpha$ a \vocab{successor}.
 
-    Else, $I_\alpha = \sup I_\alpha$. i.e. $\alpha = \sup{\beta : \beta < \alpha}$.
+    Else, $I_\alpha = \sup I_\alpha$. i.e. $\alpha = \sup \qty{\beta : \beta < \alpha}$.
     Say $\alpha$ is a \vocab{limit}.
 \end{definition}
 
@@ -598,9 +598,9 @@ We define $\alpha + \beta$ by induction on $\beta$ with $\alpha$ fixed, by
     So on $\omega$, ordered addition is the normal addition.
 
     $\omega + 2 = \omega + 1^+ = (\omega + 1)^+ = (\omega^+)^+$. \\
-    $\omega + \omega = \sup \qty{\omega + n : n < \omega} = \sup{\omega + 1, \omega + 2, \dots}$
+    $\omega + \omega = \sup \qty{\omega + n : n < \omega} = \sup\qty{\omega + 1, \omega + 2, \dots}$
 
-    $1 + \omega = \sup\qty{1 + \gamma : \gamma < \omega} = \sup{1, 2, 3, \dots} = \omega \neq \omega + 1$. \\
+    $1 + \omega = \sup\qty{1 + \gamma : \gamma < \omega} = \sup\qty{1, 2, 3, \dots} = \omega \neq \omega + 1$. \\
     Therefore, ``$+$'' is noncommutative.
 \end{example}
 
@@ -639,7 +639,7 @@ We define $\alpha + \beta$ by induction on $\beta$ with $\alpha$ fixed, by
     For the reverse inequality, consider two cases.
     If $S$ has greatest element, $\beta$ say, then $\alpha + \sup S = \alpha + \beta$.
     $\forall \; \gamma \in S, \gamma \leq \beta$, so by \cref{prp:14}, $\alpha + \gamma \leq \alpha + \beta$.
-    It follows that $\sup{\alpha + \gamma : \gamma \in S} = \alpha + \beta$. \\
+    It follows that $\sup\qty{\alpha + \gamma : \gamma \in S} = \alpha + \beta$. \\
     If $S$ has no greatest element, then $\lambda = \sup S$ is a $\neq 0$ limit ordinal (If $\lambda = \gamma^+$, then $\gamma < \lambda$ so $\exists \; \delta \in S$ s.t. $\gamma < \delta$ then $\lambda = \gamma^+ \leq \delta$ so $\lambda = \delta \in S$ \Lightning).
     So $\alpha + \sup S = \sup \qty{\alpha + \beta : \beta < \lambda}$ by defn. \\
     If $\beta < \lambda$, then $\exists \; \delta \in S$ s.t. $\beta < \delta$.
@@ -662,7 +662,7 @@ We define $\alpha + \beta$ by induction on $\beta$ with $\alpha$ fixed, by
     \begin{align*}
         (\alpha + \beta) + \gamma &= \sup \qty{(\alpha + \beta) + \delta : \delta < \gamma} \\
         &= \sup \qty{\alpha + (\beta + \delta) : \delta < \gamma} \\
-        &= \alpha + \sup{\beta + \delta : \delta < \gamma} \text{ by \cref{lem:15}} \\
+        &= \alpha + \sup\qty{\beta + \delta : \delta < \gamma} \text{ by \cref{lem:15}} \\
         &= \alpha + (\beta + \gamma).
     \end{align*}
 \end{proof}
