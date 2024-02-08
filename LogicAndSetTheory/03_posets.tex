@@ -350,7 +350,7 @@ We can now prove the completeness theorem for propositional logic with no restri
     Then $S$ has a model.
 \end{theorem}
 \begin{proof}
-    We will extend $S$ to a consistent set $\overline S$ s.t. for all $t \in L$, either $t \in S$ or $\neg t \in \overline S$; we then complete the proof by defining a valuation $v$ s.t. $v(t) = 1$ if $t \in \overline S$.
+    We will extend $S$ to a consistent set $\overline S$ s.t. for all $t \in L$, either $t \in \overline S$ or $\neg t \in \overline S$; we then complete the proof by defining a valuation $v$ s.t. $v(t) = 1$ if $t \in \overline S$.
 
     Let $X = \qty{T \supseteq S \mid T \text{ consistent}}$ be the poset of consistent extensions of $S$, ordered by inclusion.
     We seek a maximal element of $X$.
@@ -366,7 +366,7 @@ We can now prove the completeness theorem for propositional logic with no restri
 \end{proof}
 
 \subsection{Well-ordering principle}
-\begin{theorem}
+\begin{theorem}[Well-Ordering Principle (WP)]
     Every set has a well-ordering.
 \end{theorem}
 There exist sets with no definable well-ordering, such as $\mathbb R$.
@@ -375,13 +375,17 @@ There exist sets with no definable well-ordering, such as $\mathbb R$.
     We define the partial order on $X$ by $(A, R) \leq (A', R')$ if $(A', R')$ extends $(A, R)$, so $\eval{R'}_A = A$ and $A$ is an i.s. of $A'$ for $R'$.
 
     $X$ is nonempty as the empty relation is a well-ordering of the empty set.
-    Given a nonempty chain $(A_i, R_i)_{i \in I}$, there is an upper bound $\qty(\bigcup_{i \in I} A_i, \bigcup_{i \in I} R_i)$, because the well-orderings are nested.
+    Given a nonempty chain $(A_i, R_i)_{i \in I}$, there is an upper bound $\qty(\bigcup_{i \in I} A_i, \bigcup_{i \in I} R_i)$, because the well-orderings are nested so by \cref{prp:8}.
     By Zorn's lemma, there exists a maximal element $(A, R) \in X$.
 
     Suppose $x \in S \setminus A$.
     Then we can construct the well-ordering on $A \cup \qty{x}$ by defining $a < x$ for $a \in A$, contradicting maximality of $A$.
     Hence $A = S$, so $R$ is a well-ordering on $S$.
 \end{proof}
+
+\begin{remark}
+    Often in application of ZL, the maximal object whose existence it asserts cannot be described explicitly (``magical'').
+\end{remark}
 
 \subsection{Zorn's lemma and the axiom of choice}
 In the proof of Zorn's lemma, for each $x \in S$ we chose an arbitrary $x' > x$.

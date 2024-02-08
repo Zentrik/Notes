@@ -4,19 +4,31 @@ title: "Cambridge Maths Notes"
 
 # II - 2023
 
+## Lent
+
+[Algebraic Topology](at.pdf) (Annotations)
+
+[Applied Probability](AppliedProbSousi.pdf) (Annotations)
+
+[Coding and Cryptography](CodingAndCryptography\cc.pdf)
+
+[Logic and Set Theory](LogicAndSetTheory/logicandsettheory.pdf)
+
+[Quantum Information and Computing](QuantumInfoAndComputing\qic.pdf)
+
 ## Michaelmas
 
 [Probability and Measure](ProbAndMeasure\probmeasure.pdf)
 
-[Stochastic Financial Models](Stochastic%20Financial%20Models\sfm.pdf)
+[Stochastic Financial Models](Stochastic%20Financial%20Models\sfm.pdf) (Annotations)
 
-[Graph Theory](Graph_Theory.pdf)
+[Graph Theory](Graph_Theory.pdf) (Annotations)
 
-[Automata and Formal Languages](AFL.pdf)
+[Automata and Formal Languages](AFL.pdf) (Annotations, old version, new version from lecturer is significantly updated)
 
 # IB - 2022
 
-## Lent - 2022
+## Lent
 <!-- [Complex Methods] -->
 
 [GRM](Groups%20Rings%20and%20Modules\GRM.pdf)
@@ -25,7 +37,7 @@ title: "Cambridge Maths Notes"
 
 [Geometry](Geometry\Geometry.pdf)
 
-## Michaelmas - 2022
+## Michaelmas
 
 [Analysis and Topology](Analysis%20and%20Topology\AnalTop.pdf)
 
