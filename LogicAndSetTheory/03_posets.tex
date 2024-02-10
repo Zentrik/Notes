@@ -414,3 +414,67 @@ However, $\mathsf{ZF}$ does not prove the most general form of $\mathsf{AC}$.
 Zorn's lemma is a difficult lemma to prove from first principles because of its reliance on ordinals and Hartogs' lemma; the use of the axiom of choice does not contribute significantly to its difficulty.
 The construction and properties of the ordinals did not rely on the axiom of choice.
 The axiom of choice was only used twice in the section on well-orderings: the fact that in a set that is not well-ordered, there is an infinite decreasing sequence; and the fact that $\omega_1$ is not a countable supremum.
+
+\begin{aside}{Aside - Non Examinable}
+    \begin{definition}[Chain-Complete]
+        A poset $X$ is \vocab{chain-complete} if $X \neq \emptyset$ and every non-empty chain has a sup.
+    \end{definition}
+
+    \begin{example}
+        Every complete poset. \\
+        Finite non-empty poset. \\
+        If $S$ in a poset, then $X = \qty{X \subseteq S : C \text{ is a chain}}$ ordered by ``$\subseteq$'' is chain-complete, but not complete in general.
+    \end{example}
+
+    \begin{definition}[Inflationary]
+        A function $f : X \to X$, $X$ a poset, is \vocab{inflationary} if $x \leq f(x) \ \forall \; x \in X$.
+    \end{definition}
+
+    \begin{theorem}[Bourbalei-Witt Fixed Point Theorem]
+        If $X$ is chain-complete and $f : X \to X$ is inflationary, then $f$ has a fixed point.
+    \end{theorem}
+
+    \begin{proof}[Proof (With AC)]
+        By ZL, $X$ has a minimal element $x$.
+        Then $x \leq f(x)$, so $x = f(x)$.
+    \end{proof}
+
+    \begin{proof}[Proof (without AC)]
+        Fix $x_0 \in X$.
+        Let $\gamma = \gamma(X)$.
+
+        Define $g : \gamma \to X$ by recursion:
+        \begin{align*}
+            g(0) &= x_0 \\
+            g(\alpha + 1) &= f(g(\alpha)) \\
+            g(\lambda) &= \sup \qty{g(\alpha) : \alpha < \lambda} \quad \text{$\lambda \neq 0$ limit}
+        \end{align*}
+
+        By induction, $\forall \; \alpha < \gamma$, $g(\alpha) \leq g(\alpha + 1)$.
+        Either $\exists \; \alpha < \gamma$, $g(\alpha + 1) = g(\alpha)$.
+        Then $g(\alpha)$ is a fixed point of $f$. \\
+        Otherwise $g$ injective \Lightning.
+    \end{proof}
+
+    \begin{remark}
+        AC + Bourbalei-Witt $\implies$ ZL. Bourbalei-Witt is the ``choice-free'' part of $ZL$.
+    \end{remark}
+
+    \begin{proof}[Proof of remark]
+        Let $X$ be a poset in which every chain has an upper bound.
+
+        \underline{Case 1}: $X$ is chain-complete. \\
+        Assume $X$ has no maximal element.
+        Fix a choice fcn $g : \mathcal{P}(X) \setminus \emptyset \to X$.
+        Define $f : X \to X$, $f(x) = g(\qty{y \in X : x < y})$.
+        Then $x < f(x) \; \forall \; x \in X$. \Lightning \ of Bourbalei-Witt.
+
+        \underline{Case 2}: Several case. \\
+        We first prove that $\mathcal{C} = \qty{C \subseteq X : C \text{ is a chain}}$ has a maximal element.
+        (This is the Hausdorff Maximality Principle).
+        Follows from Case $1$, since $\mathcal{C}$ is chain-complete.
+        Let $C$ be a maximal chain in $X$, let $x$ be an upper bound of $C$.
+        If $x < y$ in $X$, then $C \cup \qty{y}$ is a chain left $\subsetneq$ \Lightning.
+        So $x$ is maximal.
+    \end{proof}
+\end{aside}

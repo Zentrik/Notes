@@ -307,7 +307,7 @@ So $X < Y \iff X$ o.i. to a proper i.s. of $Y$.
 \begin{answer}
     First we construct new w.o. sets from old.
     ``There is always another'': Let $X$ be w.o. and let $x_0 \not\in X$. \\
-    $X \cup \qty{x_0}$ is w.o. by setting $x < x_0$ for all $x \in X$.
+    $X^+ = X \cup \qty{x_0}$ is w.o. by setting $x < x_0$ for all $x \in X$.
     This is unique up to o.i. and $X < X^+$.
 \end{answer}
 
@@ -524,9 +524,9 @@ Then $Y$ is an o.i. to $X$.
 
 The ordinal $\omega_1$ has a number of remarkable properties.
 \begin{enumerate}
-    \item It is the least uncountable order.
+    \item It is the least uncountable ordinal.
     \item $\omega_1$ is uncountable, but $\qty{\beta : \beta < \alpha}$ is countable for all $\alpha < \omega_1$, i.e. every proper i.s. of $\omega_1$ is countable.
-    \item There exists no sequence $\alpha_1, \alpha_2, \dots$ in $I_{\omega_1}$ with supremum $\omega_1$, as it is bounded by $\sup\qty{\alpha_1, \alpha_2, \dots}$, which is a countable ordinal.
+    \item There exists no sequence $\alpha_1, \alpha_2, \dots$ in $I_{\omega_1}$ with supremum $\omega_1$, as $\sup{\alpha_i}$ is the O.T of $\bigcup_{i \in \mathbb{N}} I_{\alpha_i}$ which is countable.
 \end{enumerate}
 
 \begin{theorem}[Hartog's Lemma]

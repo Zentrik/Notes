@@ -221,9 +221,11 @@ Usually, information theorists take $S = s = 1$.
 We will show that reliable encoding and transmission is possible iff $rs \leq RS$.
 
 We will now compute the capacity of the binary symmetric channel with error probability $p$.
+
 \begin{proposition}
     A binary symmetric channel with error probability $p < \frac{1}{4}$ has nonzero capacity.
 \end{proposition}
+
 \begin{proof}
     Let $\delta$ be s.t. $2p < \delta < \frac{1}{2}$.
     We claim that we can reliably transmit at rate $R = 1 - H(\delta) > 0$.
@@ -243,6 +245,7 @@ We will now compute the capacity of the binary symmetric channel with error prob
     Hence, $\hat e(C_n) \leq \prob{\text{in $n$ uses, the channel makes at least } n(p+\varepsilon) \text{ errors}}$.
     We show that this value converges to zero as $n \to \infty$ using the next lemma.
 \end{proof}
+
 \begin{lemma}
     Let $\varepsilon > 0$.
     A binary symmetric channel with error probability $p$ is used to transmit $n$ digits.
@@ -251,8 +254,9 @@ We will now compute the capacity of the binary symmetric channel with error prob
         \lim_{n \to \infty} \prob{\text{in $n$ uses, the channel makes at least $n(p + \varepsilon)$ errors}} = 0
     \end{align*}
 \end{lemma}
+
 \begin{proof}
-    Consider r.v.s $U_i = 1\qty[\text{the $i$th digit is mistransmitted}]$.
+    Consider r.v.s $U_i = 1_\text{the $i$th digit is mistransmitted}$.
     The $U_i$ are iid with $\prob{U_i = 1} = p$.
     In particular, $\expect{U_i} = p$.
     Therefore, the probability that the channel makes at least $n(p + \varepsilon)$ errors is
@@ -262,8 +266,12 @@ We will now compute the capacity of the binary symmetric channel with error prob
     so the result holds by the weak law of large numbers.
 \end{proof}
 
+\begin{remark}
+    $\sum U_i \sim \operatorname{Bin}(n, p)$.
+\end{remark}
+
 \subsection{Conditional entropy}
-\begin{definition}
+\begin{definition}[Conditional Entropy]
     Let $X, Y$ be r.v.s taking values in alphabets $\mathcal A, \mathcal B$ respectively.
     Then, the \vocab{conditional entropy} is defined by
     \begin{align*}
@@ -273,11 +281,13 @@ We will now compute the capacity of the binary symmetric channel with error prob
     \begin{align*}
         H(X \mid Y) = \sum_{y \in \mathcal B} \prob{Y = y} H(X \mid Y = y)
     \end{align*}
-    Note that $H(X \mid Y) \geq 0$.
+    Note that $H(X \mid Y) \geq 0$. (Also called the \vocab{equivocation} of $Y$ about $X$).
 \end{definition}
+
 \begin{lemma}
-    $H(X,Y) = H(X \mid Y) + H(Y)$.
+    $H(X,Y) = H(X \mid Y) - H(Y)$.
 \end{lemma}
+
 \begin{proof}
     \begin{align*}
         H(X \mid Y) &= -\sum_{y \in \mathcal B} \sum_{x \in \mathcal A} \prob{X = x \mid Y = y} \prob{Y = y} \log \qty(\prob{X = x \mid Y = y}) \\
@@ -290,24 +300,30 @@ We will now compute the capacity of the binary symmetric channel with error prob
         &= H(X,Y) - H(Y)
     \end{align*}
 \end{proof}
+
 \begin{example}
     Let $X$ be a uniform r.v. on $\qty{1, \dots, 6}$ modelling a dice roll, and $Y$ is defined to be zero if $X$ is even, and one if $X$ is odd.
     Then, $H(X,Y) = H(X) = \log 6$ and $H(Y) = \log 2$.
     Therefore, $H(X \mid Y) = \log 3$ and $H(Y \mid X) = 0$.
 \end{example}
+
 \begin{corollary}
     $H(X\mid Y) \leq H(X)$, with equality iff $X$ and $Y$ are independent.
 \end{corollary}
+
 \begin{proof}
     Combine this result with the fact that $H(X,Y) \leq H(X) + H(Y)$ where equality holds iff $H(X), H(Y)$ are independent.
 \end{proof}
+
 Now, replace r.v.s $X$ and $Y$ with random vectors $X^{(r)} = (X_1, \dots, X_r)$ and $Y^{(s)} = (Y_1, \dots, Y_s)$.
 Similarly, we can define $H(X_1, \dots, X_r \mid Y_1, \dots, Y_s) = H(X^{(r)} \mid Y^{(s)})$.
 Note that $H(X,Y\mid Z)$ is the entropy of $X$ and $Y$ combined, given the value of $Z$, and is not the entropy of $X$, together with $Y$ given $Z$.
+
 \begin{lemma}
     Let $X, Y, Z$ be r.v.s.
     Then, $H(X \mid Y) \leq H(X \mid Y, Z) + H(Z)$.
 \end{lemma}
+
 \begin{proof}
     Expand $H(X,Y,Z)$ in two ways.
     \begin{align*}
@@ -318,11 +334,13 @@ Note that $H(X,Y\mid Z)$ is the entropy of $X$ and $Y$ combined, given the value
         H(X \mid Y) \leq H(X \mid Y,Z) + H(Z \mid Y) \leq H(X \mid Y,Z) + H(Z)
     \end{align*}
 \end{proof}
-\begin{proposition}[Fano's inequality]
+
+\begin{proposition}[Fano's Inequality]
     Let $X, Y$ be r.v.s taking values in $\mathcal A$.
     Let $\abs{\mathcal A} = m$, and let $p = \prob{X \neq Y}$.
     Then $H(X \mid Y) \leq H(p) + p \log(m-1)$.
 \end{proposition}
+
 \begin{proof}
     Define $Z$ to be zero if $X = Y$ and one if $X \neq Y$.
     Then, $\prob{Z = 0} = \prob{X = Y} = 1 - p$, and $\prob{Z = 1} = \prob{X \neq Y} = p$.
@@ -340,23 +358,27 @@ Note that $H(X,Y\mid Z)$ is the entropy of $X$ and $Y$ combined, given the value
     \end{align*}
     as required.
 \end{proof}
+
 Let $X$ be a r.v. describing the input to a channel and $Y$ be a r.v. describing the output of the channel.
 $H(p)$ provides the information required to decide whether an error has occurred, and $p\log(m-1)$ gives the information needed to resolve that error in the worst possible case.
 
 \subsection{Shannon's second coding theorem}
-\begin{definition}
+\begin{definition}[Mutual Information]
     Let $X, Y$ be r.v.s taking values in $\mathcal A$.
     The \vocab{mutual information} is $I(X;Y) = H(X) - H(X \mid Y)$.
 \end{definition}
+
 This is nonnegative, as $I(X;Y) = H(X) + H(Y) - H(X,Y) \geq 0$.
 Equality holds iff $X, Y$ are independent.
 Clearly, $I(X;Y) = I(Y;X)$.
-\begin{definition}
+
+\begin{definition}[Information Capacity]
     Consider a discrete memoryless channel with input alphabet $\mathcal A$ of size $m$ and output alphabet $\mathcal B$.
     Let $X$ be a r.v. taking values in $\mathcal A$, used as the input to this channel.
     Let $Y$ be the r.v. output by the channel, depending on $X$ and the channel matrix.
     The \vocab{information capacity} of the channel is $\max_{X} I(X;Y)$.
 \end{definition}
+
 The maximum is taken over all discrete r.v.s $X$ taking values in $\mathcal A$, or equivalently.
 This maximum is attained since $I$ is continuous and the space
 \begin{align*}
