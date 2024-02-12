@@ -373,7 +373,7 @@ Equality holds iff $X, Y$ are independent.
 Clearly, $I(X;Y) = I(Y;X)$.
 
 \begin{definition}[Information Capacity]
-    Consider a discrete memoryless channel with input alphabet $\mathcal A$ of size $m$ and output alphabet $\mathcal B$.
+    Consider a DMC with input alphabet $\mathcal A$ of size $m$ and output alphabet $\mathcal B$.
     Let $X$ be a r.v. taking values in $\mathcal A$, used as the input to this channel.
     Let $Y$ be the r.v. output by the channel, depending on $X$ and the channel matrix.
     The \vocab{information capacity} of the channel is $\max_{X} I(X;Y)$.
@@ -386,15 +386,18 @@ This maximum is attained since $I$ is continuous and the space
     \end{align*}
 is compact.
 The information capacity depends only on the channel matrix.
-\begin{theorem}
-    For a discrete memoryless channel, the (operational) capacity is equal to the information capacity.
+
+\begin{theorem}[Shannon's Second Coding Theorem]
+    For a DMC, the (operational) capacity is equal to the information capacity.
 \end{theorem}
+
 We prove that the operational capacity is at most the information capacity in general, and we will prove the other inequality for the special case of the binary symmetric channel.
+
 \begin{example}
     Assuming this result holds, we compute the capacity of certain specific channels.
     \begin{enumerate}
         \item Consider the binary symmetric channel with error probability $p$, input $X$, and output $Y$.
-        Let $\prob{X = 0} = \alpha, \prob{X = 1} = 1 - \alpha$, so $\prob{Y = 0} = (1-p)\alpha p(1-\alpha), \prob{Y = 1} = (1-p)(1-\alpha) + p\alpha$.
+        Let $\prob{X = 0} = \alpha, \prob{X = 1} = 1 - \alpha$, so $\prob{Y = 0} = (1-p)\alpha + p(1-\alpha), \prob{Y = 1} = (1-p)(1-\alpha) + p\alpha$.
         Then, as $H(Y \mid X) = \prob{X=0} H(p) + \prob{X = 1} H(p)$,
         \begin{align*}
             C &= \max_\alpha I(X;Y) = \max_\alpha [H(Y) - H(Y\mid X)] \\
@@ -419,14 +422,17 @@ We prove that the operational capacity is at most the information capacity in ge
         with maximum attained at $\alpha = \frac{1}{2}$.
     \end{enumerate}
 \end{example}
+
 We will now model using a channel $n$ times as the \vocab{$n$th extension}, replacing $\mathcal A$ with $\mathcal A^n$ and $\mathcal B$ with $\mathcal B^n$, and use the channel matrix defined by
 \begin{align*}
-        \prob{y_1 \dots y_n \text{ received} \mid x_1 \dots x_n \text{ sent}} = \prod_{i=1}^n \prob{y_i \mid x_i}
-    \end{align*}
+    \prob{y_1 \dots y_n \text{ received} \mid x_1 \dots x_n \text{ sent}} = \prod_{i=1}^n \prob{y_i \mid x_i}
+\end{align*}
+
 \begin{lemma}
-    Consider a discrete memoryless channel with information capacity $C$.
+    Consider a DMC with information capacity $C$.
     Then, its $n$th extension has information capacity $nC$.
 \end{lemma}
+
 \begin{proof}
     Let $X_1, \dots, X_n$ be the input producing an output $Y_1, \dots, Y_n$.
     Since the channel is memoryless,
@@ -448,14 +454,19 @@ We will now model using a channel $n$ times as the \vocab{$n$th extension}, repl
     \end{align*}
     as required.
 \end{proof}
-We now prove part of Shannon's second coding theorem, that the operational capacity is at most the information capacity for a discrete memoryless channel.
+
+We now prove part of Shannon's second coding theorem.
+
+\begin{proposition}
+    For a DMC, the (operational) capacity is at most the information capacity.
+\end{proposition}
+
 \begin{proof}
     Let $C$ be the information capacity.
-    Suppose reliable transmission is possible at a rate $R > C$.
-    Then, there is a sequence of codes $(C_n)_{n \geq 1}$ where $C_n$ has length $n$ and size $\floor*{2^{nR}}$, s.t. $\lim_{n \to \infty} \rho(C_n) = R$ and $\lim_{n \to \infty} \hat e(C_n) = 0$.
+    Suppose reliable transmission is possible at a rate $R > C$, i.e. $\exists$ sequence of codes $(C_n)_{n \geq 1}$ where $C_n$ has length $n$ and size $\floor*{2^{nR}}$, s.t. $\lim_{n \to \infty} \rho(C_n) = R$ and $\lim_{n \to \infty} \hat e(C_n) = 0$.
 
     Recall that $\hat e(C_n) = \max_{c \in C_n} \prob{\text{error} \mid c \text{ sent}}$.
-    Define the \vocab{average error rate} $e(C)$ by $e(C) = \frac{1}{\abs{C_n}} \sum_{c \in C} \prob{\text{error} \mid c \text{ sent}}$.
+    Define the \vocab{average error rate} $e(C)$ by $e(C) = \frac{1}{\abs{C_n}} \sum_{c \in C_n} \prob{\text{error} \mid c \text{ sent}}$.
     Note that $e(C_n) \leq \hat e(C_n)$.
     As $\hat e(C_n) \to 0$, we also have $e(C_n) \to 0$.
 
@@ -463,25 +474,29 @@ We now prove part of Shannon's second coding theorem, that the operational capac
     Let $Y$ be the output given by $X$ and the channel matrix.
     Then $e(C_n) = \prob{X \neq Y} = p$.
     Hence, $H(X) = \log \abs{C_n} = \log \floor*{2^{nR}} \geq nR - 1$ for sufficiently large $n$.
-    Also, by Fano's inequality, $H(X \mid Y) \leq H(p) + p \log(\abs{C_n} - 1) \leq 1 + pnR$.
+    Also, by Fano's inequality, $H(X \mid Y) \leq H(p) + p \log(\abs{C_n} - 1) \leq 1 + pnR$ since $|C_n| \leq \floor{2^{nR}}$.
 
     Recall that $I(X;Y) = H(X) - H(X \mid Y)$.
     By the previous lemma, $nC \geq I(X;Y)$, so
     \begin{align*}
         nC \geq nR - 1 - 1 - pnR \implies pnR \geq n(R - c) - 2 \implies p \geq \frac{n(R - C) - 2}{nR}
     \end{align*}
-    As $n \to \infty$, the right hand side converges to $\frac{R - C}{R} > 0$.
+    As $n \to \infty$, the right hand side converges to $\frac{R - C}{R} > 0$ as $R > C$.
     This contradicts the fact that $p = e(C_n) \to 0$.
     Hence, we cannot transmit reliably at any rate which exceeds $C$, hence the capacity is at most $C$.
 \end{proof}
+
 To complete the proof of Shannon's second coding theorem for the binary symmetric channel with error probability $p$, we prove that the operational capacity is at least $1 - H(p)$.
+
 \begin{proposition}
     Consider a binary symmetric channel with error probability $p$, and let $R < 1 - H(p)$.
     Then there exists a sequence of codes $(C_n)_{n \geq 1}$ with $C_n$ of length $n$ and size $\floor*{2^{nR}}$ s.t. $\lim_{n \to \infty} \rho(C_n) = R$ and $\lim_{n \to \infty} e(C_n) = 0$.
 \end{proposition}
+
 \begin{remark}
     This proposition deals with the average error rate, instead of the error rate $\hat e$.
 \end{remark}
+
 \begin{proof}
     We use the method of random coding.
     Without loss of generality let $p < \frac{1}{2}$.
@@ -520,9 +535,11 @@ To complete the proof of Shannon's second coding theorem for the binary symmetri
     \end{align*}
     as required.
 \end{proof}
+
 \begin{proposition}
     We can replace $e$ with $\hat e$ in the previous result.
 \end{proposition}
+
 \begin{proof}
     Let $R'$ be s.t. $R < R' < 1 - H(p)$.
     Then, apply the previous result to $R'$ to construct a sequence of codes $(C_n')_{n \geq 1}$ of length $n$ and size $\floor*{2^{nR'}}$, where $e(C_n') \to 0$.
@@ -533,6 +550,7 @@ To complete the proof of Shannon's second coding theorem for the binary symmetri
     But $2^{nR' - 1} = 2^{n(R' - \frac{1}{n})} \geq 2^{nR}$ for sufficiently large $n$.
     So we can replace $C_n'$ with a code of smaller size $\floor*{2^{nR}}$ and still have $\hat e(C_n) \to 0$ and $\rho(C_n) \to R$ as $n \to \infty$.
 \end{proof}
+
 Therefore, a binary symmetric channel with error probability $p$ has operational capacity $1 - H(p)$, as we can transmit reliably at any rate $R < 1 - H(p)$, and the capacity is at most $1 - H(p)$.
 The result shows that codes with certain properties exist, but does not give a way to construct them.
 
