@@ -216,7 +216,7 @@ If $N = p$ is prime, $a^{p-1} \equiv 1$ mod $p$, which is Fermat's little theore
 \end{lemma}
 \begin{proof}
     Suppose $x_0$ is a solution, so $x_0^2 \equiv d$ mod $p$.
-    Without loss of generality we can assume $x_0 \not\equiv 0$, or equivalently, $x_0 \nmid p$.
+    WLOG we can assume $x_0 \not\equiv 0$, or equivalently, $x_0 \nmid p$.
     Then $x_0^2 \equiv d$ so $d^{2k-1} \equiv x_0^{2(2k-1)} \equiv x_0^{p-1} \equiv 1$.
     Hence, $\qty(d^k)^2 \equiv d$.
 \end{proof}
@@ -281,7 +281,7 @@ Let
     Hence $x^m \equiv 1$ mod $N$.
     But $m = 2^a b$, so setting $y = x^b$ mod $N$, we obtain $y^{2^a} \equiv 1$ mod $N$.
     In particular, $o_p(y)$ and $o_q(y)$ are powers of 2.
-    Since $x \in X$, $o_p(y) \neq o_q(y)$, so without loss of generality suppose $o_p(y) < o_q(y)$.
+    Since $x \in X$, $o_p(y) \neq o_q(y)$, so wlog suppose $o_p(y) < o_q(y)$.
     Let $o_p(y) = 2^t$, so $0 \leq t < a$.
     Then $y^{2^t} \equiv 1$ mod $p$, but $y^{2^t} \not\equiv 1$ mod $q$.
     So $(y^{2^t} - 1, N) = p$ as required.

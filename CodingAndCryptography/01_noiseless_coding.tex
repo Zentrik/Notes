@@ -258,7 +258,7 @@ Let $X$ be a r.v. taking values in $A$ with probabilities $p_1, \dots, p_m$.
 \subsection{Huffman coding}
 Let $\mathcal A = \qty{\mu_1, \dots, \mu_m}$ and $p_i = \prob{X = \mu_i}$.
 We assume $a = 2$ and $\mathcal B = \qty{0,1}$ for simplicity.
-Without loss of generality, we can assume $p_1 \geq p_2 \geq \dots \geq p_m$.
+WLOG, we can assume $p_1 \geq p_2 \geq \dots \geq p_m$.
 We construct an optimal code inductively.
 
 If $m = 2$, we take codewords $0$ and $1$.
@@ -356,8 +356,8 @@ Then, we append 0 and 1 to the codeword for $\nu$ to obtain the new codewords fo
     \begin{align*}
         \expect{S_m} = \expect{S_{m-1}} + p_{m-1} + p_m
     \end{align*}
-    Let $c_m'$ be an optimal code for $X_m$, which without loss of generality can be chosen to be prefix-free.
-    Without loss of generality, the last two codewords of $c_m'$ can be chosen to have the largest possible length and differ only in the final position, by the previous lemma.
+    Let $c_m'$ be an optimal code for $X_m$, which wlog can be chosen to be prefix-free.
+    WLOG, the last two codewords of $c_m'$ can be chosen to have the largest possible length and differ only in the final position, by the previous lemma.
     Then, $c_m'(\mu_{m-1}) = y 0$ and $c_m'(\mu_m) = y 1$ for some $y \in \qty{0,1}^\star$.
     Let $c_{m-1}'$ be the prefix-free code for $X_{m-1}$ given by
     \begin{align*}

@@ -685,7 +685,8 @@ Associativity is clear, as $(\alpha + \beta) + \gamma$ and $\alpha + (\beta + \g
     Let $\lambda$ be a nonzero limit.
     We have $\alpha + \lambda = \sup\qty{\alpha + \gamma : \gamma < \lambda}$.
     But $\alpha + \gamma = \alpha +' \gamma$ for $\gamma < \lambda$, so $\alpha + \lambda = \sup\qty{\alpha +' \gamma : \gamma < \lambda}$.
-    As the set $\qty{\alpha +' \gamma : \gamma < \lambda}$ is nested, it is equal to its union, which is $\alpha +' \lambda$.
+    % As the sets $\alpha \sqcup \gamma$ are nested, their supremum is their union $\cup_{\gamma < \lambda} (\alpha \sqcup \gamma) = \alpha \sqcup \lambda$ which has OT $\alpha +' \lambda$.
+    As the set $\qty{\alpha +' \gamma : \gamma < \lambda}$ is nested, it's sup is equal to its union, which is $\alpha +' \lambda$.
 \end{proof}
 Synthetic definitions can be easier to work with if such definitions exist.
 However, there are many definitions that can only easily be represented inductively, and not synthetically.

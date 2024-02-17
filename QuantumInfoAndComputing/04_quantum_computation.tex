@@ -33,7 +33,7 @@ If $T(n) = O(n^k)$ for some $k > 0$, we say that $T(n)$ is $O(\mathrm{poly}(n))$
 The class of languages for which the membership problem has a classical poly-time algorithm is called $\mathsf{P}$.
 The class of languages for which the membership problem has a randomised classical poly-time algorithm that gives the correct answer with probability at least $\frac{2}{3}$ is called $\mathsf{BPP}$, short for \vocab{bounded-error probabilistic poly-time}.
 The problem $\mathsf{FACTOR}(M,N)$ which determines if there is a nontrivial factor of $N$ that is at most $M$ does not lie in $\mathsf{BPP}$.
-The best known runtime is $T(n) = O\qty(n^{\frac{1}{3}}\qty(\log n)^\frac{2}{3})$.
+The best known runtime is $T(n) = \exp\qty(O\qty(n^{\frac{1}{3}}\qty(\log n)^\frac{2}{3}))$.
 
 A black box promise problem is a computational task where the input is a \vocab{black box} or \vocab{oracle} which can compute a Boolean function $f \colon B_m \to B_n$, and there is an \vocab{a priori promise} on $f$ restricting the possible values of $f$.
 For example, the black box promise problem for constant vs.\ balanced functions takes a function $f \colon B_n \to B$ such that $f$ is constant or \vocab{balanced}, in which case $f$ is equal to zero for exactly half of the $2^n$ possible inputs.

@@ -246,7 +246,7 @@ We will now compute the capacity of the binary symmetric channel with error prob
     We show that this value converges to zero as $n \to \infty$ using the next lemma.
 \end{proof}
 
-\begin{lemma}
+\begin{lemma} \label{lem:9.5}
     Let $\varepsilon > 0$.
     A binary symmetric channel with error probability $p$ is used to transmit $n$ digits.
     Then,
@@ -382,7 +382,7 @@ Clearly, $I(X;Y) = I(Y;X)$.
 The maximum is taken over all discrete r.v.s $X$ taking values in $\mathcal A$, or equivalently.
 This maximum is attained since $I$ is continuous and the space
 \begin{align*}
-        \qty{(p_1, \dots, p_m) \in \mathbb R^m \midd p_i \geq 0, \sum_{i=1}^m p_i = 1}
+        \qty{(p_1, \dots, p_m) \in \mathbb R^m : p_i \geq 0, \sum_{i=1}^m p_i = 1}
     \end{align*}
 is compact.
 The information capacity depends only on the channel matrix.
@@ -498,9 +498,9 @@ To complete the proof of Shannon's second coding theorem for the binary symmetri
 \end{remark}
 
 \begin{proof}
-    We use the method of random coding.
-    Without loss of generality let $p < \frac{1}{2}$.
-    Let $\varepsilon > 0$ s.t. $p + \varepsilon < \frac{1}{2}$ and $R < 1 - H(p + \varepsilon)$.
+    We use the `method of random coding'.
+    WLOG let $p < \frac{1}{2}$.
+    Let $\varepsilon > 0$ s.t. $p + \varepsilon < \frac{1}{2}$ and $R < 1 - H(p + \varepsilon)$ as $H$ cts.
     We use minimum distance decoding, and in the case of a tie, we make an arbitrary choice.
     Let $m = \floor*{2^{nR}}$, and let $C = \qty{c_1, \dots, c_m}$ be a code chosen uniformly at random from $\mathcal C = \qty{[n,m]\text{-codes}}$, a set of size $\binom{2^n}{m}$.
 
@@ -518,7 +518,7 @@ To complete the proof of Shannon's second coding theorem for the binary symmetri
     We consider the two cases separately.
 
     In the first case with $d(c_i,Y) > r$, $\prob{d(c_i,Y) > r}$ is the probability that the channel makes more than $r$ errors, and hence more than $n(p + \varepsilon)$ errors.
-    We have already shown that this converges to zero as $n \to \infty$.
+    We have already shown that this converges to zero as $n \to \infty$ in \cref{lem:9.5}.
 
     In the second case with $d(c_i,Y) \leq r$, if $j \neq i$,
     \begin{align*}
@@ -543,16 +543,40 @@ To complete the proof of Shannon's second coding theorem for the binary symmetri
 \begin{proof}
     Let $R'$ be s.t. $R < R' < 1 - H(p)$.
     Then, apply the previous result to $R'$ to construct a sequence of codes $(C_n')_{n \geq 1}$ of length $n$ and size $\floor*{2^{nR'}}$, where $e(C_n') \to 0$.
-    Order the codewords of $C_n'$ by the probability of error given that the codeword was sent, and delete the worst half.
+    Order the codewords of $C_n'$ by $\mathbb{P}(\text{error} \mid c \text{ sent})$ and delete the worst half.
     This gives a code $C_n$ with $\hat e(C_n) \leq 2 e(C_n')$.
     Hence $\hat e(C_n) \to 0$ as $n \to \infty$.
+
     Since $C_n$ has length $n$, and size $\frac{1}{2} \floor*{2^{nR'}} = \floor*{2^{nR' - 1}}$.
     But $2^{nR' - 1} = 2^{n(R' - \frac{1}{n})} \geq 2^{nR}$ for sufficiently large $n$.
     So we can replace $C_n'$ with a code of smaller size $\floor*{2^{nR}}$ and still have $\hat e(C_n) \to 0$ and $\rho(C_n) \to R$ as $n \to \infty$.
 \end{proof}
 
-Therefore, a binary symmetric channel with error probability $p$ has operational capacity $1 - H(p)$, as we can transmit reliably at any rate $R < 1 - H(p)$, and the capacity is at most $1 - H(p)$.
-The result shows that codes with certain properties exist, but does not give a way to construct them.
+\begin{remark}
+    \begin{enumerate}
+        \item A BSC with error prob $p$ has operational capacity $1 - H(p)$, as we can transmit reliably at any rate $R < 1 - H(p)$.
+        \item This result shows us that good codes exists, but the proof does not tell us how to construct them
+    \end{enumerate}
+\end{remark}
+
+\begin{example}
+    Suppose capacity is $0.8$.
+    Let us have a message string of $0$s and $1$s.
+    Take $R = 0.75$ ($< 0.8$).
+    For $n$ large, $\exists$ set of $2^{0.75n}$ codewords of length $n$ that have error prob below some prescribed threshold. \\
+    To encode message stream from the source, we:
+    \begin{itemize}
+        \item Break it into blocks of size $3 \ceil{\frac{n}{4}} = m$ sufficiently large ($\geq \frac{3}{4} n_0(\epsilon)$)
+        \item encode these $m$-blocks into $C_n$ using codewords of length $\frac{4}{3} m$ for each $m$-block
+        \item transmit new message through channel.
+    \end{itemize}
+    You then get
+    \begin{itemize}
+        \item marked \underline{reduction} in error prob but
+        \item at the cost of \underline{complexity} of encoding and \underline{slower} rate of transmission.
+    \end{itemize}
+    % \underline{we don't yet know the code}!
+\end{example}
 
 \subsection{The Kelly criterion}
 Let $0 < p < 1$, $u > 0$, $0 \leq w < 1$.
