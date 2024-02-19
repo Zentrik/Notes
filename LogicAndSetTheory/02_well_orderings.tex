@@ -8,7 +8,7 @@
         \item (transitivity) $\forall \; x, y, z \in X$, $(x < y \wedge y < z) \implies (x < z)$;
         \item (trichotomy) $\forall \; x, y \in X$, either $x < y$, $y < x$, or $x = y$.
     \end{itemize}
-    We say $X$ is linearly ordered by $<$, or simply say $X$ is a linearly ordered set.
+    We say $X$ is linearly/totally ordered by $<$, or simply say $X$ is a linearly/totally ordered set.
 \end{definition}
 
 \begin{note}
@@ -24,7 +24,7 @@ In terms of the $\leq$ relation, we can equivalently write the axioms of a linea
     \item (trichotomy, or totality) $\forall \; x, y \in X$, either $x \leq y$ or $y \leq x$.
 \end{itemize}
 
-\begin{example}
+\begin{example} ~\vspace*{-1.5\baselineskip}
     \begin{enumerate}
         \item $(\mathbb N, \leq)$ is a linear order.
         \item $(\mathbb Q, \leq)$ is a linear order.
@@ -50,7 +50,7 @@ In terms of the $\leq$ relation, we can equivalently write the axioms of a linea
     This least element is unique by antisymmetry.
 \end{note}
 
-\begin{example}
+\begin{example} ~\vspace*{-1.5\baselineskip}
     \begin{enumerate}
         \item $(\mathbb N, <)$ is a well-ordering.
         \item $(\mathbb Z, <)$ is not a well-ordering, since $\mathbb Z$ has no least element.
@@ -88,7 +88,7 @@ Examples (1) and (6) are isomorphic, and (7) and (8) are isomorphic.
 Examples (1) and (7) are not isomorphic, since example (7) has a greatest element and (1) does not.
 Example (9) is not isomorphic to (6) or (7).
 
-\begin{example}
+\begin{example} ~\vspace*{-1.5\baselineskip}
     \begin{enumerate}
         \item $\mathbb{N}, \mathbb{Q}$ are not order-isomorphic.
         \item $\mathbb{Q}, \mathbb{Q} \setminus \qty{0}$ are.
@@ -96,7 +96,7 @@ Example (9) is not isomorphic to (6) or (7).
 \end{example}
 
 \begin{definition}[Initial Segment]
-    A subset $I$ of a totally ordered set $X$ is an \vocab{initial segment} (i.s.) if $x \in I$ implies $y \in I$ for all $y < x$.
+    A subset $I$ of a linearly ordered set $X$ is an \vocab{initial segment} (i.s.) if $x \in I$ implies $y \in I$ for all $y < x$.
 \end{definition}
 
 \begin{example}

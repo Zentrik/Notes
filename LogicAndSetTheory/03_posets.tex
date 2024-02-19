@@ -18,68 +18,68 @@ Alternatively, a poset is a pair $(X, <)$ where $X$ is a set, and $<$ is a relat
     \item (transitivity) for all $x, y, z \in X$, $x < y$ and $y < z$ implies $x < z$.
 \end{itemize}
 
-\begin{example}
+\begin{example} ~\vspace*{-1.5\baselineskip}
     \begin{enumerate}
         \item Any total order is a poset.
         \item $\mathbb N^+$ with the divides relation is a poset.
         \item $(\mathcal P(S), \subseteq)$ is a poset.
         \item $(X, \subseteq)$ is a poset where $X \subseteq \mathcal P(S)$, such as the set of vector subspaces of a vector space.
-\item The following diagram is also a poset, where the lines from $a$ upwards to $b$ denote relations $a \leq b$.
-% https://q.uiver.app/?q=WzAsNSxbMiwyLCJhIl0sWzEsMSwiYiJdLFswLDAsImMiXSxbMywxLCJkIl0sWzQsMCwiZSJdLFswLDEsIiIsMix7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMSwyLCIiLDIseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzAsMywiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFszLDQsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
-\[\begin{tikzcd}
-	c &&&& e \\
-	& b && d \\
-	&& a
-	\arrow[no head, from=3-3, to=2-2]
-	\arrow[no head, from=2-2, to=1-1]
-	\arrow[no head, from=3-3, to=2-4]
-	\arrow[no head, from=2-4, to=1-5]
-\end{tikzcd}\]
-This is called a \vocab{Hasse diagram}.
-An upwards line from $x$ to $y$ is drawn if $y$ \vocab{covers} $x$, so $y > x$ and no $z$ has $y > z > x$.
-The natural numbers can be represented as a Hasse diagram.
+        \item The following diagram is also a poset, where the lines from $a$ upwards to $b$ denote relations $a \leq b$.
+        % https://q.uiver.app/?q=WzAsNSxbMiwyLCJhIl0sWzEsMSwiYiJdLFswLDAsImMiXSxbMywxLCJkIl0sWzQsMCwiZSJdLFswLDEsIiIsMix7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMSwyLCIiLDIseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzAsMywiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFszLDQsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
+        \[\begin{tikzcd}
+            c &&&& e \\
+            & b && d \\
+            && a
+            \arrow[no head, from=3-3, to=2-2]
+            \arrow[no head, from=2-2, to=1-1]
+            \arrow[no head, from=3-3, to=2-4]
+            \arrow[no head, from=2-4, to=1-5]
+        \end{tikzcd}\]
+        This is called a \vocab{Hasse diagram}.
+        An upwards line from $x$ to $y$ is drawn if $y$ \vocab{covers} $x$, so $y > x$ and no $z$ has $y > z > x$.
+        The natural numbers can be represented as a Hasse diagram.
 
-% https://q.uiver.app/?q=WzAsNSxbMCw0LCIwIl0sWzAsMywiMSJdLFswLDIsIjIiXSxbMCwxLCIzIl0sWzAsMCwiXFx2ZG90cyJdLFswLDEsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMSwyLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzIsMywiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFszLDQsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
-\[\begin{tikzcd}
-	\vdots \\
-	3 \\
-	2 \\
-	1 \\
-	0
-	\arrow[no head, from=5-1, to=4-1]
-	\arrow[no head, from=4-1, to=3-1]
-	\arrow[no head, from=3-1, to=2-1]
-	\arrow[no head, from=2-1, to=1-1]
-\end{tikzcd}\]
-The rationals cannot, since no element covers another.
-\item There is no notion of `height' in a poset, illustrated by the following diagram.
-% https://q.uiver.app/?q=WzAsNSxbMiw0LCJhIl0sWzMsMywiZCJdLFszLDEsImUiXSxbMiwwLCJiIl0sWzAsMiwiYyJdLFswLDEsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMSwyLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzIsMywiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFswLDQsIiIsMix7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNCwzLCIiLDIseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d
-\[\begin{tikzcd}
-	&& b \\
-	&&& e \\
-	c \\
-	&&& d \\
-	&& a
-	\arrow[no head, from=5-3, to=4-4]
-	\arrow[no head, from=4-4, to=2-4]
-	\arrow[no head, from=2-4, to=1-3]
-	\arrow[no head, from=5-3, to=3-1]
-	\arrow[no head, from=3-1, to=1-3]
-\end{tikzcd}\]
-\item
-% https://q.uiver.app/?q=WzAsNSxbMCwyLCJhIl0sWzAsMSwiYyJdLFsxLDAsImUiXSxbMiwyLCJiIl0sWzIsMSwiZCJdLFswLDEsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMSwyLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzMsNCwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs0LDIsIiIsMSx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMCw0LCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzMsMSwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dXQ==
-\[\begin{tikzcd}
-	& e \\
-	c && d \\
-	a && b
-	\arrow[no head, from=3-1, to=2-1]
-	\arrow[no head, from=2-1, to=1-2]
-	\arrow[no head, from=3-3, to=2-3]
-	\arrow[no head, from=2-3, to=1-2]
-	\arrow[no head, from=3-1, to=2-3]
-	\arrow[no head, from=3-3, to=2-1]
-\end{tikzcd}\]
-\end{enumerate}
+        % https://q.uiver.app/?q=WzAsNSxbMCw0LCIwIl0sWzAsMywiMSJdLFswLDIsIjIiXSxbMCwxLCIzIl0sWzAsMCwiXFx2ZG90cyJdLFswLDEsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMSwyLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzIsMywiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFszLDQsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
+        \[\begin{tikzcd}
+            \vdots \\
+            3 \\
+            2 \\
+            1 \\
+            0
+            \arrow[no head, from=5-1, to=4-1]
+            \arrow[no head, from=4-1, to=3-1]
+            \arrow[no head, from=3-1, to=2-1]
+            \arrow[no head, from=2-1, to=1-1]
+        \end{tikzcd}\]
+        The rationals cannot, since no element covers another.
+        \item There is no notion of `height' in a poset, illustrated by the following diagram.
+        % https://q.uiver.app/?q=WzAsNSxbMiw0LCJhIl0sWzMsMywiZCJdLFszLDEsImUiXSxbMiwwLCJiIl0sWzAsMiwiYyJdLFswLDEsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMSwyLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzIsMywiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFswLDQsIiIsMix7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNCwzLCIiLDIseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d
+        \[\begin{tikzcd}
+            && b \\
+            &&& e \\
+            c \\
+            &&& d \\
+            && a
+            \arrow[no head, from=5-3, to=4-4]
+            \arrow[no head, from=4-4, to=2-4]
+            \arrow[no head, from=2-4, to=1-3]
+            \arrow[no head, from=5-3, to=3-1]
+            \arrow[no head, from=3-1, to=1-3]
+        \end{tikzcd}\]
+        \item
+        % https://q.uiver.app/?q=WzAsNSxbMCwyLCJhIl0sWzAsMSwiYyJdLFsxLDAsImUiXSxbMiwyLCJiIl0sWzIsMSwiZCJdLFswLDEsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMSwyLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzMsNCwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs0LDIsIiIsMSx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMCw0LCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzMsMSwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dXQ==
+        \[\begin{tikzcd}
+            & e \\
+            c && d \\
+            a && b
+            \arrow[no head, from=3-1, to=2-1]
+            \arrow[no head, from=2-1, to=1-2]
+            \arrow[no head, from=3-3, to=2-3]
+            \arrow[no head, from=2-3, to=1-2]
+            \arrow[no head, from=3-1, to=2-3]
+            \arrow[no head, from=3-3, to=2-1]
+        \end{tikzcd}\]
+    \end{enumerate}
 \end{example}
 
 \begin{definition}[Chain]
