@@ -214,15 +214,19 @@ The proof is left as an exercise.
 \begin{definition}
     Let $d \geq 1$, and let $n = 2^d - 1$.
     Let $H$ be the $d \times n$ matrix with columns given by the nonzero elements of $\mathbb F_2^d$.
-    The \vocab{Hamming $(n, n-d)$-linear code} is the code with parity check matrix $H$.
+    The \vocab{Hamming $(n, n-d)$-linear code} is the (linear) code with parity check matrix $H$.
 \end{definition}
+
+\begin{remark}
+    This is only defined up to equivalence.
+\end{remark}
 
 \begin{lemma}
     The Hamming $(n, n-d)$-code $C$ has minimum distance $d(C) = 3$, and is a perfect 1-error correcting code.
 \end{lemma}
 
 \begin{proof}
-    Any two columns of $H$ are linearly independent, but there are three linearly dependent columns.
+    Any two columns of $H$ are linearly independent, but there are three linearly dependent columns as $n = 2^d-1$.
     Hence, $d(C) = 3$.
     Hence, $C$ is $\floor*{\frac{3-1}{2}} = 1$-error correcting.
     A perfect code is one s.t. $\abs{C} = \frac{2^n}{V(n,e)}$.
@@ -231,17 +235,17 @@ The proof is left as an exercise.
 
 \subsection{Reed--Muller codes}
 Let $X = \qty{p_1, \dots, p_n}$ be a set of size $n$.
-There is a correspondence between the power set $\mathcal P(X)$ and $\mathbb F_2^n$.
+There is a correspondence between $\mathcal P(X)$ and $\mathbb F_2^n$.
 \begin{align*}
     \mathcal P(X) \xrightarrow{A \mapsto 1_A} \qty{f \colon X \to \mathbb F_2} \xrightarrow{f \mapsto (f(p_1), \dots, f(p_n))} \mathbb F_2^n
 \end{align*}
-The \vocab{symmetric difference} of two sets $A, B$ is defined to be $A \symmdiff B = A\setminus B \cup B \setminus A$, which corresponds to vector addition in $\mathbb F_2^n$.
+The \vocab{symmetric difference} of two sets $A, B$ is $A \symmdiff B = (A\setminus B) \cup (B \setminus A)$, which corresponds to vector addition in $\mathbb F_2^n$.
 Intersection $A \cap B$ corresponds to the \vocab{wedge product} $x \wedge y = (x_1 y_1, \dots, x_n y_n)$.
 
-Let $X = \mathbb F_2^d$, so $n = 2^d - \abs{X}$.
-Let $v_0 = (1, \dots, 1)$, and let $v_i = 1_{H_i}$ where $H_i = \qty{p \in X \mid p_i = 0}$ is a coordinate hyperplane.
+Let $X = \mathbb F_2^d$, so $n = 2^d = \abs{X}$.
+Let $v_0 = (1, \dots, 1)$, and let $v_i = 1_{H_i}$ where $H_i = \qty{p \in X : p_i = 0}$ is the \vocab{coordinate hyperplane} ($1 \leq i \leq d$).
 
-\begin{definition}
+\begin{definition}[Reed--Muller Code]
     Let $0 \leq r \leq d$.
     The \vocab{Reed--Muller code} $RM(d,r)$ of \vocab{order} $r$ and length $2^d$ is the linear code spanned by $v_0$ and all wedge products of at most $r$ of the the $v_i$ for $1 \leq i \leq d$.
 \end{definition}
@@ -263,7 +267,7 @@ By convention, the empty wedge product is $v_0$.
             v_1 \wedge v_2 \wedge v_3 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0
         \end{array}
     \end{align*}
-    A generator matrix for Hamming's original code is a submatrix in the top-right corner.
+    A generator matrix for Hamming's original code is a $4 \times 7$ submatrix in the top-right corner.
 \end{example}
 
 $RM(3,0)$ is spanned by $v_0$, and is hence the repetition code of length 8.
@@ -271,7 +275,7 @@ $RM(3,1)$ is spanned by $v_0, v_1, v_2, v_3$, which is equivalent to a parity ch
 $RM(3,2)$ is an $(8,7)$-code, and can be shown to be equivalent to a simple parity check code of length 8.
 $RM(3,3)$ is the trivial code $\mathbb F_2^8$ of length 8.
 
-\begin{theorem}
+\begin{theorem} ~\vspace*{-1.5\baselineskip}
     \begin{enumerate}
         \item The vectors $v_{i_1} \wedge \dots \wedge v_{i_s}$ for $i_1 < \dots < i_s$ and $0 \leq s \leq d$ form a basis for $\mathbb F_2^n$.
         \item The rank of $RM(d,r)$ is $\sum_{s=0}^r \binom{d}{s}$.
@@ -279,26 +283,29 @@ $RM(3,3)$ is the trivial code $\mathbb F_2^8$ of length 8.
 \end{theorem}
 
 \begin{proof}
-    \vocab{Part (i).}
+    \emph{Part (i).}
     There are $\sum_{s=0}^d \binom{d}{s} = 2^d = n$ vectors listed, so it suffices to show they are a spanning set, or equivalently $RM(d,d)$ is the trivial code.
     Let $p \in X$, and let $y_i$ be $v_i$ if $p_i = 0$ and $v_0 + v_i$ if $p_i = 1$.
     Then $1_{\qty{p}} = y_1 \wedge \dots \wedge y_d$.
     Expanding this using the distributive law, $1_{\qty{p}} \in RM(d,d)$.
     But the set of $1_{\qty{p}}$ for $p \in X$ spans $\mathbb F_2^n$, as required.
 
-    \vocab{Part (ii).}
+    \emph{Part (ii).}
     $RM(d,r)$ is spanned by $v_{i_1} \wedge \dots \wedge v_{i_s}$ where $i_1 < \dots < i_s$ and $0 \leq s \leq r$.
-    Since these are linearly independent, the rank of $RM(d,r)$ is the number of such vectors, which is $\sum_{s=0}^d \binom{d}{s}$.
+    Since these are linearly independent by (i), so a basis.
+    Hence the rank of $RM(d,r)$ is the number of such vectors, which is $\sum_{s=0}^r \binom{d}{s}$.
 \end{proof}
 
-\begin{definition}
+\subsection{New codes from old (again)}
+
+\begin{definition}[Bar Product]
     Let $C_1, C_2$ be linear codes of length $n$ where $C_2 \subseteq C_1$.
-    The \vocab{bar product} is $C_1 \mid C_2 = \qty{(x \mid x + y) \mid x \in C_1, y \in C_2}$.
+    The \vocab{bar product} is $C_1 \mid C_2 = \qty{(x \mid x + y)\footnote{The concatenation of $x$ and $x + y$.} : x \in C_1, y \in C_2}$.
 \end{definition}
 
 This is a linear code of length $2n$.
 
-\begin{lemma}
+\begin{lemma} ~\vspace*{-1.5\baselineskip} \label{lem:12.6}
     \begin{enumerate}
         \item $\rank (C_1 \mid C_2) = \rank C_1 + \rank C_2$.
         \item $d(C_1 \mid C_2) = \min \qty{2d(C_1), d(C_2)}$.
@@ -306,13 +313,14 @@ This is a linear code of length $2n$.
 \end{lemma}
 
 \begin{proof}
-    \vocab{Part (i).}
+    \emph{Part (i).}
     If $C_1$ has basis $x_1, \dots, x_k$ and $C_2$ has basis $y_1, \dots, y_\ell$, then $C_1 \mid C_2$ has basis
     \begin{align*}
-        \qty{(x_i \mid x_i) \mid 1 \leq i \leq k} \cup \qty{(0 \mid y_i) \mid 1 \leq i \leq \ell}
+        \qty{(x_i \mid x_i) : 1 \leq i \leq k} \cup \qty{(0 \mid y_i) : 1 \leq i \leq \ell}
     \end{align*}
-    \vocab{Part (ii).}
-    Let $0 \neq (x \mid x + y) \in C_1 \mid C_2$.
+
+    \emph{Part (ii).}
+    Let $0 \neq (x \mid x + y)\footnote{$x \in C_1, y \in C_2$ not both $0$.} \in C_1 \mid C_2$.
     If $y \neq 0$, then $w(x \mid x + y) = w(x) + w(x + y) \geq w(y) \geq d(C_2)$.
     If $y = 0$, then $w(x \mid x + y) = w(x \mid x) = 2w(x) \geq 2d(C_1)$.
     Hence, $d(C_1 \mid C_2) \geq \min\qty{2d(C_1), d(C_2)}$.
@@ -321,7 +329,7 @@ This is a linear code of length $2n$.
     There is a nonzero $y \in C_2$ with $w(y) = d(C_2)$, giving $d(C_1 \mid C_2) \leq w(0 \mid 0 + y) = d(C_2)$, giving the other inequality as required.
 \end{proof}
 
-\begin{theorem}
+\begin{theorem} ~\vspace*{-1.5\baselineskip}
     \begin{enumerate}
         \item $RM(d,r) = RM(d-1,r) \mid RM(d-1,r-1)$ for $0 < r < d$.
         \item $RM(d,r)$ has minimum distance $2^{d-r}$ for all $r$.
@@ -329,37 +337,82 @@ This is a linear code of length $2n$.
 \end{theorem}
 
 \begin{proof}
-    \vocab{Part (i).}
-    Exercise.
-    % see notes
+    \emph{Part (i).}
+    $RM(d-1, r-1) \subseteq RM(d-1, r)$, so bar product defined.
+    Order the elements of $X = \mathbb{F}_2^d$ s.t. $v_d = (\underbracket{0, \dots, 0}_{2^{d-1}} \mid \underbracket{1, \dots, 1}_{2^{d-1}})$ and $v_i = (v_i' \mid v_i')$ ($1 \leq i \leq d - 1$).
+    If $z \in RM(d, r)$ then $z$ is sum of wedge products of $v_1, \dots, v_d$.
+    Write $z = x + (y \wedge v_d)$ for $x, y$ sums of wedge products of $v_1, \dots, v_{d-1}$.
+    Then $x = (x' \mid x')$\footnote{Note $x'$ is the vector containing the first $2^{d-1}$ components of $x$. Similarly for $y$.}, some $x' \in RM(d-1, r)$ and $y = (y' \mid y')$, some $y' \in RM(d-1, r-1)$.
+    Then $z = x + (y \wedge v_d) = $
+    \begin{align*}
+        z = x + (y \wedge v_d) &= (x' \mid x') + (y' \mid y') \wedge (0, \dots, 0 \mid 1, \dots, 1) \\
+        &= (x' \mid x' + y') \in RM(d-1, r) \mid RM(d-1, r-1).
+    \end{align*}
 
-    \vocab{Part (ii).}
-    If $r = 0$, then $RM(d,r)$ is the repetition code of length $2^d$, which has minimum distance $2^d$.
-    If $r = d$, $RM(d,r)$ is the trivial code of length $2^d$, which has minimum distance $1 = 2^{d-d}$.
+    \emph{Part (ii).}
+    If $r = 0$, then $RM(d,r)$ is the repetition code of length $2^d$, which has min distance $2^d$. \\
+    If $r = d$, $RM(d,r)$ is the trivial code of length $2^d$, which has min distance $1 = 2^{d-d}$. \\
     We prove the remaining cases by induction on $d$.
     From part (i), $RM(d,r) = RM(d-1,r) \mid RM(d-1,r-1)$.
-    By induction, the minimum distance of $RM(d-1,r)$ is $2^{d-1-r}$ and the minimum distance of $RM(d-1,r-1)$ is $2^{d-r}$.
-    By part (ii) of the previous lemma, the minimum distance of $RM(d,r)$ is $\min\qty{2\cdot 2^{d-1-r}, 2^{d-r}} = 2^{d-r}$.
+    By induction, the min distance of $RM(d-1,r)$ is $2^{d-1-r}$ and the min distance of $RM(d-1,r-1)$ is $2^{d-r}$.
+    By part (ii) of \cref{lem:12.6}, the min distance of $RM(d,r)$ is $\min\qty{2\cdot 2^{d-1-r}, 2^{d-r}} = 2^{d-r}$.
 \end{proof}
 
-\subsection{Cyclic codes}
-% Recall that every field is either an extension of $\mathbb Q$, in which case we say it has characteristic zero, or $\mathbb F_p$ for some $p$, in which case is has characteristic $p$.
-% In a polynomial ring $R[X]$, $\sum_{i=0}^n a_i X^i = 0$ iff each $a_i$ is zero.
-% Note that $X^2 + X \in \mathbb F_2[X]$ is nonzero, but always evaluates to zero.
-% If $F$ is a field, $F[X]$ is a Euclidean domain using the degree function as the Euclidean function, and has a Euclidean division algorithm.
-If $F$ is a field and $f \in F[X]$, $\faktor{F[X]}{(f)}$ is in bijection with $F^n$ where $n = \deg f$, since $\faktor{F[X]}{(f)}$ is represented by the set of functions of degree less than $\deg f$.
+\begin{remark}
+    \begin{enumerate}
+        \item One could define $RM(d, 0)$ and $RM(d, d)$ and also define recursively $RM(d, r)$ as a bar product.
+        \item $RM(5, 1)$ was used by NASA for the Mariner 9 mission to Mars.
+        \item Decoding procedure using `successive majority verdicts' is outline in (Goldie and Pinch, pages 165-167).
+    \end{enumerate}
+\end{remark}
 
-\begin{definition}
+\subsection{GRM Recap}
+\begin{definition}[Ring]
+    A \vocab{ring} $R$ is a set with operations $+, \times$ (e.g. $\mathbb{Z}$, $\mathbb{Z}_n$).
+\end{definition}
+\begin{definition}[Field]
+    A \vocab{field} is a commutative ring where every non-zero element has a multiplicative inverse (e.g. $\mathbb{Q}$, $\mathbb{R}$, $\mathbb{C}$, $\mathbb{F}_p$).
+\end{definition}
+Every field is an extension (subfield) of $\mathbb{F}_p$, in which case we say its has characteristic $p$, or of $\mathbb{Q}$, characteristic 0. \\
+\begin{definition}[Polynomial Ring]
+    A \vocab{polynomial ring} with coefficients in $R$ is $R[X] = \qty{\sum_{i=0}^{n} a_i X^i : a_i \in R, n \in \mathbb{N}_0}$.
+\end{definition}
+By defn, $\sum_{i=0}^n a_i X^i = 0$ iff each $a_i$ is zero.
+Note that $X^2 + X \in \mathbb F_2[X]$ is nonzero, but always evaluates to zero. \\
+If $F$ is a field, $F[X]$ is a Euclidean domain using the degree function as the Euclidean function, and has a Euclidean division algorithm.
+If $f, g \in F[X]$, $g \neq 0$, $\exists \; q, r \in F[X]$ s.t. $f = qg + r$ with $\deg r < \deg q$.
+
+\begin{definition}[Ideal]
+    An \vocab{ideal} $I \subseteq R$ is a subgroup under $+$ s.t. $r \in R$, $x \in I \implies rx \in I$ (e.g. $2 \mathbb{Z} \triangleleft \mathbb{Z}$).
+\end{definition}
+\begin{definition}[Principal Ideal]
+    The \vocab{principal ideal} generated by $x \in R$ is $(x) = Rx = xR = \qty{rx : r \in R}$.
+\end{definition}
+By division algorithm, every ideal in $\mathbb{Z}$ or $F[X]$ is principal, generated by an element of least absolute value and least degree respectively.
+The generator of a prime ideal is unique up to multiplication by a unit (an element with multiplicative inverse).
+$\mathbb{Z}$ hash units $\qty{\pm 1}$, $F[X]$ has units $F \setminus \qty{0}$.
+
+Every non-zero element of $\mathbb{Z}$ or $F[X]$ can be factored into irreducibles, uniquely up to order and multiplication by units.
+
+If $I \trianglelefteq R$ ideal then set of cosets $\faktor{R}{I} = \qty{x + I : x \in R}$ is the \vocab{quotient ring} under natural choice of $+, \times$.
+In practice identify $\faktor{\mathbb{Z}}{n \mathbb{Z}}$ and $\qty{0, 1, \dots, n-1}$ and agree to reduce $\mod n$ after each $+, \times$. \\
+Similarly, $\faktor{F[X]}{(f(X))} \longleftrightarrow \qty{\sum_{i=0}^{n-1} a_i X^i : a_i \in F} \longleftrightarrow F^n$ where $n = \deg f$, reducing after each multiplication using division algo.
+
+% If $F$ is a field and $f \in F[X]$, $\faktor{F[X]}{(f)}$ is in bijection with $F^n$ where $n = \deg f$, since $\faktor{F[X]}{(f)}$ is represented by the set of functions of degree less than $\deg f$.
+
+\subsection{Cyclic Codes}
+
+\begin{definition}[Cyclic Code]
     A linear code $C \subseteq \mathbb F_2^n$ is \vocab{cyclic} if
     \begin{align*}
         (a_0, a_1, \dots, a_{n-1}) \in C \implies (a_{n-1}, a_0, \dots, a_{n-2}) \in C
     \end{align*}
 \end{definition}
 
-We identify $\faktor{\mathbb F_2[X]}{(X^n - 1)}$ with $\mathbb F_2^n$, letting $\pi(a_0 + a_1X + \dots + a_{n-1}X^{n-1}) = (a_0, a_1, \dots, a_{n-1})$.
+We identify $\faktor{\mathbb F_2[X]}{(X^n - 1)}$ with $\mathbb F_2^n$ as above, letting $\pi(a_0, a_1, \dots, a_{n-1}) = a_0 + a_1X + \dots + a_{n-1}X^{n-1} \mod (X^n - 1)$.
 
 \begin{lemma}
-    A code $C \subseteq \mathbb F_2^n$ is cyclic iff $\pi(\mathcal C) = C$ satisfies
+    A code $C \subseteq \mathbb F_2^n$ is cyclic iff $\mathcal C = \pi(C)$ satisfies
     \begin{enumerate}
         \item $0 \in \mathcal C$;
         \item $f, g \in \mathcal C$ implies $f + g \in \mathcal C$;
@@ -370,55 +423,69 @@ We identify $\faktor{\mathbb F_2[X]}{(X^n - 1)}$ with $\mathbb F_2^n$, letting $
 Equivalently, $\mathcal C$ is an ideal of $\faktor{\mathbb F_2[X]}{(X^n - 1)}$.
 
 \begin{proof}
-    If $g(X) = a_0 + a_1X + \dots + a_{n-1}X^{n-1}$, multiplication by $X$ gives $Xg(X) = a_{n-1} + a_0X + \dots + a_{n-2}X^{n-1}$.
-    So $\mathcal C$ is cyclic iff (i) and (ii) hold and $g(X) \in C$ implies $Xg(X) \in C$.
-    Linearity then gives (iii).
+    If $g(X) = a_0 + a_1X + \dots + a_{n-1}X^{n-1} \mod (X^n - 1)$, then $Xg(X) = a_{n-1} + a_0X + \dots + a_{n-2}X^{n-1} \mod (X^n - 1)$.
+    So $\mathcal C$ is cyclic iff (i) and (ii) hold and if (iii)': $g(X) \in C \implies Xg(X) \in C$.
+    Note (iii)' is the case $f(X) = X$ of (iii).
+    In general, $f(X) = \sum a_i X^i$ so
+    \begin{align*}
+        f(X) g(X) &= \sum_i a_i \underbracket{X^i g(X)}_{\in \mathcal{C} \text{ by (iii)}} \in \mathcal{C} \text{ by (ii)}
+    \end{align*}
 \end{proof}
 
-We will identify $C$ with $\mathcal C$.
+Henceforth, we will identify $C$ with $\mathcal C$.
+
+\underline{Basic problem}: to find all cyclic codes of length $n$. \\
 The cyclic codes of length $n$ correspond to ideals in $\faktor{\mathbb F_2[X]}{(X^n - 1)}$.
 Such ideals correspond to ideals of $\mathbb F_2[X]$ that contain $X^n - 1$.
 Since $\mathbb F_2[X]$ is a principal ideal domain, these ideals correspond to polynomials $g(X) \in \mathbb F_2[X]$ dividing $X^n - 1$.
 
 \begin{theorem}
     Let $C \trianglelefteq \faktor{\mathbb F_2[X]}{(X^n - 1)}$ be a cyclic code.
-    Then, there exists a unique \vocab{generator} polynomial $g(X) \in \mathbb F_2[X]$ s.t.
+    Then $\exists!$ \vocab{generating polynomial} $g(X) \in \mathbb F_2[X]$ s.t.
     \begin{enumerate}
-        \item $C = (g)$;
+        \item $C = \qty{f(X) g(X) \mod (X^n -1) : f(X) \in \mathbb{F}_2[X]} = (g)$;
         \item $g(X) \mid X^n - 1$.
     \end{enumerate}
     In particular, $p(X) \in \mathbb F_2[X]$ represents a codeword iff $g \mid p$.
 \end{theorem}
 
 \begin{proof}
-    Let $g(X) \in \mathbb F_2[X]$ be the polynomial of smallest degree that represents a nonzero codeword of $C$.
+    Let $g(X) \in \mathbb F_2[X]$ be a poly poly of least degree representing a $\neq 0$ codeword of $C$.
     Note that $\deg g < n$.
-    Since $C$ is cyclic, $(g) \subseteq C$.
+    Since $C$ is cyclic, $(g) \subseteq C$. \\
     Now let $p(X) \in \mathbb F_2[X]$ represent a codeword.
     By the division algorithm, $p = qg + r$ for $q, r \in \mathbb F_2[X]$ where $\deg r < \deg g$.
     Then, $r = p - qg \in C$ as $C$ is an ideal.
     But $\deg r < \deg g$, so $r = 0$.
     Hence, $g \mid p$.
+    This shows $C \subseteq (g)$ in (i). \\
     For part (ii), let $p(X) = X^n - 1$, giving $g \mid X^n - 1$.
 
     Now we show uniqueness.
     Suppose $C = (g_1) = (g_2)$.
     Then $g_1 \mid g_2$ and $g_2 \mid g_1$.
-    So $g_1 = cg_2$ where $c \in \mathbb F_2^\star$, so $c = 1$.
+    So $g_1 = cg_2$ for some unit in $c$.
+    Units in $\mathbb{F}_2[X]$ are $\mathbb{F}_2 \setminus \qty{0} = \qty{1}$, so $g_1(x) = g_2(x)$.
 \end{proof}
 
 \begin{lemma}
-    Let $C$ be a cyclic code of length $n$ with generator $g(X) = a_0 + a_1 X + \dots + a_k X^k$ with $a_k \neq 0$.
+    Let $C$ be a cyclic code of length $n$ with gen poly $g(X) = a_0 + a_1 X + \dots + a_k X^k$ with $a_k \neq 0$.
     Then $C$ has basis $\qty{g, Xg, X^2g, \dots, X^{n-k-1}g}$.
     In particular, $\rank C = n - k$.
 \end{lemma}
 
 \begin{proof}
-    Exercise.
+    \underline{Linear Independence}: Suppose $f(X) g(X) = 0 \mod (X^n - 1)$ for some $f(X) \in \mathbb{F}_2[X]$ with $\deg f < n - k$.
+    Then $\deg fg < n$, so $f(X)g(X) = 0$, hence $f(X) = 0$, i.e. every dependence relation is trivial.
+
+    \underline{Spanning}: Let $p(x) \in \mathbb{F}_2[X]$ represent a codeword.
+    WLOG  $\deg p < n$.
+    Since $g(X)$ is the gen poly, $g(x) \mid p(X)$ i.e. $p(X) = f(X) g(X)$ for some $f(X) \in \mathbb{F}_2[X]$.
+    Also $\deg f = \deg p - \deg q < n - k$, so $p(X)$ lies in the span of $g(X), \dots, X^{n - k - 1} g(X)$.
 \end{proof}
 
 \begin{corollary}
-    Let $C$ be a cyclic code of length $n$ with generator $g(X) = a_0 + a_1 X + \dots + a_k X^k$ with $a_k \neq 0$.
+    Let $C$ be a cyclic code of length $n$ with gen poly $g(X) = a_0 + a_1 X + \dots + a_k X^k$ with $a_k \neq 0$.
     Then, a generator matrix for $C$ is given by
     \begin{align*}
         G = \begin{pmatrix}
@@ -431,7 +498,7 @@ Since $\mathbb F_2[X]$ is a principal ideal domain, these ideals correspond to p
     This is an $(n - k) \times n$ matrix.
 \end{corollary}
 
-\begin{definition}
+\begin{definition}[Parity Check polynomial]
     Let $g$ be a generator for $C$.
     The \vocab{parity check polynomial} is the polynomial $h$ s.t. $g(X) h(X) = X^n - 1$.
 \end{definition}
