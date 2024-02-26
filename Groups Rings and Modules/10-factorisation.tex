@@ -17,15 +17,15 @@ We denote the set of units in $R$ by $R^\times$.
 	Two elements $a, b \in R$ are \vocab{associates} if $a = bc$ where $c$ is a unit.
 	Informally, the two elements differ by multiplication by a unit.
 	Equivalently, $(a) = (b)$.
-\end{definition} 
+\end{definition}
 
-\begin{definition}
+\begin{definition}[Irreducible]
 	An element $r \in R$ is \vocab{irreducible} if $r \neq 0$ is not a unit, and $r = ab$ implies $a$ or $b$ is a unit.
 \end{definition}
 
 \begin{definition}[Prime]
 	An element $r \in R$ is \vocab{prime} if $r \neq 0$ is not a unit and \underline{$r \mid ab$ implies $r \mid a$ or $r \mid b$}.
-\end{definition} 
+\end{definition}
 
 \begin{remark}
 	These properties depend on the ambient ring $R$; for instance, 2 is prime and irreducible in $\mathbb Z$, but neither prime nor irreducible in $\mathbb Q$ as it's a unit. \\
@@ -160,7 +160,7 @@ We denote the set of units in $R$ by $R^\times$.
 		\item If $R$ is a PID and $0 \neq r \in R$.
 		Then, $(r)$ is maximal iff $r$ is irreducible (\Cref{lem:10.4}), which is true iff $r$ is prime (\Cref{lem:10.2,prp:10.3}), which is equivalent to the fact that $(r)$ is prime (\Cref{lem:10.1}).
 		Hence, the maximal ideals are the nonzero prime ideals.
-	\end{enumerate} 
+	\end{enumerate}
 \end{remark}
 
 \begin{definition}[Euclidean Domain]
@@ -222,7 +222,7 @@ We denote the set of units in $R$ by $R^\times$.
 	So property (ii) is satisfied.
 
 	So $\mathbb Z[i]$ is a PID by \Cref{prp:10.5}
-\end{example} 
+\end{example}
 
 \begin{example}
 	Let $A$ be a nonzero $n \times n$ matrix over a field $F$.
@@ -288,7 +288,7 @@ We denote the set of units in $R$ by $R^\times$.
 
 \begin{remark}
 	Any field is a UFD as there are no non-unit elements.
-\end{remark} 
+\end{remark}
 
 \begin{proposition} \label{prp:10.6}
 	Let $R$ be an integral domain satisfying property (1) above (every nonzero, non-unit element is a product of irreducibles).
@@ -385,7 +385,7 @@ In other words, we cannot infinitely nest distinct ideals in a Noetherian ring.
 
 \begin{warning}
 	These do not need to exist in a given ring.
-\end{warning} 
+\end{warning}
 
 \begin{remark}
 	Greatest common divisors and lowest common multiples are unique up to associates, if they exist.
@@ -424,7 +424,7 @@ This does not immediately imply that $R[X]$ is a unique factorisation domain, ho
 
 \begin{definition}[Primitive]
 	We say that $f$ is \vocab{primitive} if $c(f)$ is a unit.
-\end{definition} 
+\end{definition}
 
 \begin{lemma} \label{lem:11.2}
 	The product of primitive polynomials is primitive.
@@ -562,7 +562,7 @@ We can now prove \Cref{thm:11.1}, that polynomial rings over unique factorisatio
 	Define inductively $R[X_1, \dots, X_n] = R[X_1, \dots, X_{n - 1}][X_n]$.
 	Applying \Cref{thm:11.1} inductively $\implies R[X_1, \dots, X_n]$ is a UFD if $R$ is.
 	% We can rewrite this as $R[X_1]\dots[X_n]$, so by induction this is a unique factorisation domain if $R$ is.
-\end{example} 
+\end{example}
 
 \subsection{Eisenstein's criterion}
 \begin{proposition}[Eisenstein's Criterion] \label{prp:eisen}
