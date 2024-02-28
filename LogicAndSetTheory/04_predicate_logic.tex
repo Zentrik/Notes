@@ -479,7 +479,7 @@ We define the following deduction rules.
 \underline{Aim}: Want to show $S \vdash p$ iff $S \models p$.
 
 \subsection{Soundness}
-This proof in this section are non-examinable.
+The proofs in this section are non-examinable.
 
 \begin{proposition}[Soundness Theorem]
     Let $S$ be a set of formulae and $p$ a formula.
@@ -493,7 +493,7 @@ This proof in this section are non-examinable.
 \end{proof}
 
 \subsection{Adequacy}
-This proof in this section are non-examinable.
+The proofs in this section are non-examinable.
 
 We want to show that $S \models p$ implies $S \vdash p$.
 Equivalently, $S \cup \qty{\neg p} \models \bot$ implies $S \cup \qty{\neg p} \vdash \bot$.
@@ -503,25 +503,13 @@ In other words, if $S \cup \qty{\neg p}$ is consistent, it has a model.
     Every consistent\footnote{If $S$ a consistent theory then $S \not\vdash \bot$.} theory has a model.
 \end{theorem}
 
-\begin{proof}
-    Idea: We build a model from $L = L(\Omega, \Pi)$.
-    Let $A$ be a set of closed terms in $L$, i.e. terms with no variables.
-
-    \underline{E.g.} $S$ is theory of fields, $L$ the language of rings with $1$.
-    If $A$ consists of $1+1$, $1+0+0+1$, $1 \cdot 1$, $1 \cdot 0$, $1 + (-1)$, \dots, etc.
-    Then $(1 + 1) +_A (1 + 0) = 1 + 1 + 1 + 0 \in A$\dots
-\end{proof}
-
-\begin{corollary}[Adequacy]
-    Let $S$ be a set of formulae and $p$ a formula.
-    If $S \models p$ then $S \vdash p$.
-\end{corollary}
-
 % \begin{proof}
-%     WLOG $S$ is a theory and $p$ is a sentence.
-%     Since $S \models p$, we have $S \cup \qty{\neg p} \models \bot$.
-%     By \nameref{thm:predmodel}, $S \cup \qty{\neg p} \vdash \bot$.
-%     So $S \vdash \neg \neg p$ by \nameref{prp:predded}, and thus $S \vdash p$ by A3.
+%     Idea: We build a model from $L = L(\Omega, \Pi)$.
+%     Let $A$ be a set of closed terms in $L$, i.e. terms with no variables.
+
+%     \underline{E.g.} $S$ is theory of fields, $L$ the language of rings with $1$.
+%     If $A$ consists of $1+1$, $1+0+0+1$, $1 \cdot 1$, $1 \cdot 0$, $1 + (-1)$, \dots, etc.
+%     Then $(1 + 1) +_A (1 + 0) = 1 + 1 + 1 + 0 \in A$\dots
 % \end{proof}
 
 We will need a number of key ideas in order to prove this.
@@ -544,6 +532,7 @@ We will need a number of key ideas in order to prove this.
     \item The resulting set may no longer be maximal, as we have extended our language with new constants.
     We must then return to step (iii) then step (iv); it is not clear if this process ever terminates.
 \end{enumerate}
+
 \begin{proof}
     Let $S$ be a consistent set in a language $L = L(\Omega, \Pi)$.
     Extend $S$ to a maximal consistent set $S_1$, using Zorn's lemma.
@@ -591,6 +580,18 @@ We will need a number of key ideas in order to prove this.
     This is true exactly when $(\exists x)p$ holds in $A$, as $A$ is precisely the set of equivalence classes of closed terms.
 \end{proof}
 
+\begin{corollary}[Adequacy]
+    Let $S$ be a set of formulae and $p$ a formula.
+    If $S \models p$ then $S \vdash p$.
+\end{corollary}
+
+\begin{proof}
+    WLOG $S$ is a theory and $p$ is a sentence.
+    Since $S \models p$, we have $S \cup \qty{\neg p} \models \bot$.
+    By \nameref{thm:predmodel}, $S \cup \qty{\neg p} \vdash \bot$.
+    So $S \vdash \neg \neg p$ by \nameref{prp:predded}, and thus $S \vdash p$ by A3.
+\end{proof}
+
 \subsection{Completeness}
 \begin{theorem}[G\"odel's Completeness Theorem for First Order Logic]
     If $S$ is a set of formulae and $p$ is a formula, then $S \vdash p$ iff $S \models p$.
@@ -599,94 +600,142 @@ We will need a number of key ideas in order to prove this.
 \begin{proof}
     Follows from soundness and adequacy.
 \end{proof}
+
 Note that \vocab{first order} refers to the fact that variables quantify over elements, rather than sets of elements.
+
 \begin{remark}
     If $L$ is countable, or equivalently $\Omega$ and $\Pi$ are countable, Zorn's lemma is not needed in the above proof.
 \end{remark}
-\begin{theorem}[compactness theorem]
-    Let $S \subseteq L$ be a theory.
-    Then if every finite subset $S' \subseteq S$ has a model, $S$ has a model.
+
+\begin{theorem}[Compactness Theorem]
+    Let $S$ be a first-order theory.
+    If every finite subset $S' \subseteq S$ has a model, $S$ has a model.
 \end{theorem}
+
 \begin{proof}
-    Trivial after applying completeness as proofs are finite.
+    If $S \models \bot$, then $S \vdash \bot$.
+    Proofs are finite, so $\exists S' \subseteq S$ s.t. $S' \vdash \bot$.
+    Hence $S' \models \bot$ \Lightning.
 \end{proof}
+
 There is no decidability theorem for first order logic, as $S \models p$ can only be verified by checking its valuation in every $L$-structure.
+
+\underline{Applications}: Can we axiomatise finite groups?
+Does there exists theory $T$ whose models are the finite groups?
+
+For $n \in \mathbb{N}$, let $t_n = (\exists x_1) \dots (\exists x_n) (\forall x) (x = x_1 \vee x = x_2 \vee \dots \vee x = x_n)$.
+We want $T$ to be the theory of groups $\cup \qty{t_1 \vee t_2 \dots}$.
+But $\qty{t_1 \vee t_2 \dots}$ is not a sentence.
+
 \begin{corollary}
-    The class of finite groups is not axiomatisable in the language of groups: there is no theory $S$ s.t. a group is finite iff each $p \in S$ holds in the group.
+    The class of finite groups is not axiomatisable as a first order theory.
+    % in the language of groups: there is no theory $S$ s.t. a group is finite iff each $p \in S$ holds in the group.
 \end{corollary}
+
 \begin{proof}
-    Suppose $S$ is a set of sentences that axiomatises the theory of finite groups.
-    Consider $S$ together with the sentences $(\exists x_1)(\exists x_2)(x_1 \neq x_2)$, $(\exists x_1)(\exists x_2)(\exists x_3)(x_1 \neq x_2 \wedge x_1 \neq x_3 \wedge x_2 \neq x_3)$ and so on, which collectively assert that the group has at least $k$ elements for every $k$.
-    Each finite subset $S' \subseteq S$ has a model, such as a cyclic group of sufficiently large order.
-    So by compactness, there is a model of $S$, which is a finite group with at least $k$ elements for every $k$, giving a contradiction.
+    Assume it is, and let $T$ be such a theory.
+    Consider $T' = T \cup \qty{\neg t_1, \neg t_2, \dots}$ where $t_n$ are as above.
+    If $\neg t_i$, then the group has at least $i$ elements.
+    Every finite subset of $T'$ has a model : $C_N$\footnote{Cyclic group of order $N$.} for some large $N$.
+    By compactness, $T'$ has a model \Lightning as this implies $T$ has at least $i$ elements for every $i$, so cannot be finite.
 \end{proof}
+
 \begin{corollary}
-    Let $S$ be a theory with arbitrarily large finite models.
-    Then $S$ has an infinite model.
+    Let $T$ be a first order theory with arbitrarily large finite models.
+    Then $T$ has an infinite model.
 \end{corollary}
+
 \begin{proof}
-    Add sentences and apply compactness as in the previous corollary.
+    Consider $T' = T \cup \{(\exists x_1)(\exists x_2)(x_1 \neq x_2),(\exists x_2)(\exists x_2)(\exists x_3)(x_1 \neq x_2 \wedge x_2 \neq x_3 \wedge x_1 \neq x_3), \dots\}$.
+    By assumption every finite subset of $T$ has a model, so $T'$ has a model.
+    A model of $T'$ is just an infinite model of $T$.
 \end{proof}
-Finiteness is not a first-order property.
-\begin{theorem}[upward L\"owenheim--Skolem theorem]
-    Let $S$ be a theory with an infinite model.
+
+Finiteness is not a first order property.
+
+\begin{theorem}[Upward L\"owenheim--Skolem Theorem]
+    Let $S$ be a first order theory with an infinite model.
     Then $S$ has an uncountable model.
 \end{theorem}
+
 \begin{proof}
-    Add constants $\qty{c_i \mid i \in I}$ to the language, where $I$ is an uncountable set.
-    Add sentences $c_i \neq c_j$ to the theory for all $i \neq j$ to obtain a theory $S'$.
+    Add constants $\qty{c_i : i \in I}$ to the language, where $I$ is uncountable.
+    Let $S' = S \cup \qty{\neg (c_i = c_j) : i, j \in I, i \neq j}$.
     Any finite set of sentences in $S'$ has a model: indeed, the infinite model of $S$ suffices.
     By compactness, $S'$ has a model.
+    A model of $S'$ is a model $B$ of $S$ together with an injection $I \to B$ so $B$ is countable.
 \end{proof}
+
 \begin{remark}
     Similarly, we can prove the existence of models of $S$ that do not inject into $X$ for any fixed set $X$.
-    Adding $\gamma(X)$ constants or $\mathcal P(X)$ constants both suffice.
+    Adding $\gamma(X)$\footnote{From Hartog's Lemma.} constants or $\mathcal P(X)$ constants both suffice.
 \end{remark}
+
 \begin{example}
     There is an uncountable field, as there is an infinite field $\mathbb Q$.
     There is also a field that does not inject into $X$ for any fixed set $X$.
 \end{example}
-\begin{theorem}[downard L\"owenheim--Skolem theorem]
-    Let $S$ be a theory in a countable language $L$, or equivalently, $\Omega$ and $\Pi$ are countable.
+
+\begin{theorem}[Downard L\"owenheim--Skolem theorem]
+    Let $S$ be a first order theory in a countable language $L$, or equivalently, $\Omega$ and $\Pi$ are countable.
     Then if $S$ has a model, it has a countable model.
 \end{theorem}
+
 \begin{proof}
-    $S$ is consistent, so the model constructed in the proof of the model existence lemma is countable.
+    $S$ is consistent (by soundness), so the model constructed in the proof of the \nameref{thm:predmodel} is countable.
 \end{proof}
 
-\subsection{Peano arithmetic}
-Consider the language $L$ given by $\Omega = \qty{0, s, +, \cdot}$ with $\alpha(0) = 0, \alpha(s) = 1, \alpha(+) = \alpha(\cdot) = 2$, and $\Pi = \varnothing$.
-It has axioms
+\subsection{Peano Arithmetic}
+
+We want to axiomatise $\mathbb{N}$ as a first order theory. \\
+Consider the language $L$ given by $\Omega = \qty{0, s, +, \cdot}$ with $\alpha(0) = 0, \alpha(s) = 1, \alpha(+) = \alpha(\cdot) = 2$, and $\Pi = \varnothing$.\\
+Axioms of Peano Arithmetic (PA)
 \begin{enumerate}
     \item $(\forall x)(s(x) \neq 0)$;
     \item $(\forall x)(\forall y)(s(x) = s(y) \implies x = y)$;
-    \item $(\forall y_1)\dots(\forall y_n)\qty[p[0/x] \wedge (\forall x)(p \implies p[s(x)/x]) \implies (\forall x)p]$ for each formula $p$ with free variables $x, y_1, \dots, y_n$;
     \item $(\forall x)(x + 0 = x)$;
     \item $(\forall x)(\forall y)(x + s(y) = s(x + y))$;
     \item $(\forall x)(x \cdot 0 = 0)$;
     \item $(\forall x)(\forall y)(x \cdot s(y) = x \cdot y + x)$.
+    \item $(\forall y_1)\dots(\forall y_n)\qty[p[0/x] \wedge (\forall x)(p \implies p[s(x)/x]) \implies (\forall x)p]$ for each formula $p$ with free variables $x, y_1, \dots, y_n$;
 \end{enumerate}
-These axioms are sometimes called Peano arithmetic, $\mathsf{PA}$, or formal number theory.
-The $y_i$ in (iii) are called \vocab{parameters}.
-Without the parameters, we would not be able to perform induction on sets such as $\qty{x \mid x \geq y}$ if $y$ is a variable.
+This is the axiom scheme for induction.
 
-Note that $\mathsf{PA}$ clearly has an infinite model, namely $\mathbb N$.
-So by the upward L\"owenheim--Skolem theorem, it has an uncountable model, which in particular is not isomorphic to $\mathbb N$.
-This is because (iii) is not `true' induction, stating that all subsets of $\mathbb N$ either have a least element not in it, or it is $\mathbb N$ itself.
-Axiom (iii) applies only to countably many formulae $p$, and therefore only asserts that induction holds for countably many subsets of $\mathbb N$.
-\begin{definition}
-    A set $S \subseteq \mathbb N$ is \vocab{definable} in the language of $\mathsf{PA}$ if there is a formula $p$ with a free variable $x$ s.t. for each $m \in \mathbb N$, $m \in S$ iff $p[m/x]$ holds in $\mathbb N$.
+These axioms are sometimes called Peano arithmetic, $\mathsf{PA}$, or formal number theory.
+The $y_i$ in (7) are called \vocab{parameters}.
+Without the parameters, we would not be able to perform induction on sets such as $\qty{x : x \geq y}$ if $y$ is a variable.
+
+\begin{remark}
+    Let $p$ be the formula $x + (y + z) = (x + y) + z$.
+    Then you can prove in PA that $(\forall x) (\forall y) (\forall z) p$ by induction on $z$ with $x, y$ parameters.
+    You prove $(\forall x) (\forall y) \qty(p\qty[0/z] \wedge (\forall z) (p \implies p [\frac{sz}{z}]))$.
+\end{remark}
+
+Note that $\mathbb{N}_0$ is a model of $\mathsf{PA}$ (so is $\mathbb{N}$).
+So by the upward L\"owenheim--Skolem theorem, it has an uncountable model. \\
+Didn't we learn $\mathbb{N}_0$ is uniquely determined by its properties? \\
+Yes, but \underline{true} induction says $(\forall A \subseteq \mathbb{N}_0)(((0 \in A) \wedge (\forall x)(x \in A \implies sx \in A)) \implies A = \mathbb{N}_0)$.
+In first order theory we cannot quantify over subsets of structures.
+% The axiom scheme for induction captures only countably many sub
+Axiom (7) applies only to countably many formulae $p$, and therefore only asserts that induction holds for countably many subsets of $\mathbb N_0$.
+
+\begin{definition}[Definable]
+    A subset $A \subseteq \mathbb N_0$ is \vocab{definable} in the language of $\mathsf{PA}$ if there is a formula $p$ with a free variable $x$ s.t. $p_{\mathbb{N}_0} = A$, i.e. $\qty{a \in \mathbb{N}_0 : a \text{ satisfies } p} = A$.
 \end{definition}
+
 Only countably many formulae exist, so only countably many sets are definable.
+
 \begin{example}
-    The set of squares is definable, as it can be defined by the formula $(\exists y)(y\cdot y = x)$.
-    The set of primes is also definable by $x \neq 0 \wedge x \neq 1 \wedge (\forall y)(y \mid x \implies y = 1 \wedge y = x)$, where $y \mid x$ is defined to mean $(\exists z)(z \cdot y = x)$.
-    The set of powers of 2 can be defined by $(\forall y)(y \text{ is prime} \wedge y \mid x \implies y = 2)$.
+    The set of squares is definable, as it can be defined by the formula $(\exists y)(y\cdot y = x)$. \\
+    The set of primes is also definable by $x \neq 0 \wedge x \neq 1 \wedge (\forall y)((y \mid x) \implies y = 1 \wedge y = x)$, where $y \mid x$ is defined to mean $(\exists z)(z \cdot y = x)$. \\
+    The set of powers of 2 can be defined by $(\forall y)((y \text{ is prime} \wedge y \mid x) \implies y = 2)$. \\
     The set of powers of 4 and the set of powers of 6 are also definable.
 \end{example}
-\begin{theorem}[G\"odel's incompleteness theorem]
+
+\begin{theorem}[G\"odel's Incompleteness Theorem]
     $\mathsf{PA}$ is not complete.
 \end{theorem}
+
 This theorem shows that there is a sentence $p$ s.t. $\mathsf{PA} \not\vdash p$ and $\mathsf{PA} \not\vdash \neg p$.
-However, one of $p, \neg p$ must hold in $\mathbb N$, so there is a sentence $p$ that is true in $\mathbb N$ that $\mathsf{PA}$ does not prove.
+However, one of $p, \neg p$ must hold in $\mathbb N_0$, so there is a sentence $p$ that is true in $\mathbb N_0$ that $\mathsf{PA}$ does not prove.
 This does not contradict the completeness theorem, which is that if $p$ is true in \vocab{every} model in $\mathsf{PA}$ then $\mathsf{PA} \vdash p$.
