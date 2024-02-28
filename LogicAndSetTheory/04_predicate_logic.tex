@@ -51,7 +51,7 @@ The \vocab{formulae} are defined inductively by
 \begin{enumerate}
     \item each atomic formula is a formula;
     \item $\bot$ is a formula;
-    \item if $p$ and $q$ are formulae then $(p \Rightarrow q)$ is a formula;
+    \item if $p$ and $q$ are formulae then $(p \implies q)$ is a formula;
     \item if $p$ is a formula and the variable $x$ has a \vocab{free occurrence in $p$}, then $(\forall x) p$ is a formula.
 \end{enumerate}
 
@@ -75,7 +75,7 @@ The \vocab{language} $L = L(\Omega, \Pi, \alpha)$ is the set of formulae.
 
 \begin{example}
     In the language of groups, $(\forall x) (m(x,x) = e)$ is a formula.
-    Another formula is $m(x,x) = e \Rightarrow (\exists y) (m(y,y) = x)$.
+    Another formula is $m(x,x) = e \implies (\exists y) (m(y,y) = x)$.
 \end{example}
 
 \begin{remark}
@@ -93,8 +93,8 @@ For example, $e, m(e,i(e))$ are closed in the language of groups, but $m(x,i(x))
 
 \begin{example}
     In the formula $(\forall x)(m(x,x) = e)$, each occurrence of $x$ is bound. \\
-    In $m(x,x) = e \Rightarrow (\exists y)(m(y,y) = x)$, the occurrences of $x$ are free and the occurrences of $y$ are bound. \\
-    In the formula $m(x,x) = e \Rightarrow (\forall x)(\forall y)(m(x,y) = m(y,x))$, the occurrences of $x$ on the left hand side are free, and the occurrences of $x$ on the right hand side are bound.
+    In $m(x,x) = e \implies (\exists y)(m(y,y) = x)$, the occurrences of $x$ are free and the occurrences of $y$ are bound. \\
+    In the formula $m(x,x) = e \implies (\forall x)(\forall y)(m(x,y) = m(y,x))$, the occurrences of $x$ on the left hand side are free, and the occurrences of $x$ on the right hand side are bound.
 
     \begin{enumerate}
         \item $(\exists x) (m(x, x) = y) \implies (\forall z) \neg (mmzzz = y)$. The $x$ (not the $x$ in $\exists x$) are bound, all $y$s are free, the $z$ (not the $z$ in $\forall z$) are bound.
@@ -111,11 +111,11 @@ For example, $e, m(e,i(e))$ are closed in the language of groups, but $m(x,i(x))
 
 \begin{definition}[Free]
     A variable $x$ in a formula is \vocab{free} if it has a free occurrence in $p$.
-    Let $\operatorname{FV}(p)$ denote the set of free variables in $p$.
+    Let $\FV(p)$ denote the set of free variables in $p$.
 \end{definition}
 
 \begin{example}
-    For instance, $(\forall x)(m(x,x) = e)$ is a sentence, and $(\forall x)(m(x,x) \Rightarrow (\exists y)(m(y,y) = x))$ is a sentence. \\
+    For instance, $(\forall x)(m(x,x) = e)$ is a sentence, and $(\forall x)(m(x,x) \implies (\exists y)(m(y,y) = x))$ is a sentence. \\
     In the language of posets, $(\forall x)(\exists y)(x \geq y \wedge \neg(x = y))$ is a sentence.
 \end{example}
 
@@ -203,9 +203,7 @@ Next interpret a formula $p$ with $FV(p) \subseteq \qty{x_1, \dots, x_n}$ as a s
     A \vocab{model} for a theory $T$ is an $L$-structure $A$ that is a model $\forall \; p \in T$.
 \end{definition}
 
-% For a theory $T$ and a sentence $p$, we say that $T \models p$, read $T$ \vocab{entails} or \vocab{semantically implies} $p$, if every model of $T$ is a model of $p$.
-
-\begin{example}
+\begin{example}[Groups]
     Let $L$ be the language of groups.
     The language is specified by $\Omega = \qty{m, i, e}$, $\Pi = \emptyset$, $\alpha$ is $2, 1, 0$ for $m, i, e$ respectively.
 
@@ -221,7 +219,7 @@ Next interpret a formula $p$ with $FV(p) \subseteq \qty{x_1, \dots, x_n}$ as a s
     We say that $T$ \vocab{axiomatises} the theory of groups or the class of groups.
 \end{example}
 
-\begin{example}
+\begin{example}[Posets]
     Let $L$ be the language of posets.
     $\Omega = \emptyset$, $\Pi = \qty{\leq}$, $\alpha(\leq) = 2$.
 
@@ -235,88 +233,259 @@ Next interpret a formula $p$ with $FV(p) \subseteq \qty{x_1, \dots, x_n}$ as a s
     The models are partially ordered sets, i.e. $T$ axiomatises the class of posets.
 \end{example}
 
-\begin{example}
-    Let $L$ be the language of fields, so $\Omega = \qty{0, 1, +, \cdot, -}$ with $\alpha(0) = \alpha(1) = 0, \alpha(+) = \alpha(\cdot) = 2, \alpha(-) = 1$.
-    $T$ is the usual field axioms, including the statement $(\forall x)(\neg (x = 0) \Rightarrow (\exists y)(x \cdot y = 1))$.
-    Then $T$ entails the statement that inverses are unique: $(\forall x)(\neg (x = 0) \Rightarrow (\forall y)(\forall z) (y \cdot x = 1 \wedge z \cdot x = 1 \Rightarrow y = z))$.
+\begin{example}[Rings with $1$]
+    $\Omega = \qty{0, 1, +, \cdot, -}$ with $\alpha(0) = \alpha(1) = 0, \alpha(+) = \alpha(\cdot) = 2, \alpha(-) = 1$ and $\Pi = \emptyset$.
+
+    \begin{align*}
+        T = \{
+            &(\forall x) (\forall y) (\forall z) ((x + y) + z = x + (y + z)) \\
+            &(\forall x) ((x + 0 = x) \wedge (0 + x = x)) \\
+            &(\forall x) (x + (-x) = 0) \wedge ((-x) + x = 0) \\
+            &(\forall x) (\forall y) (x + y = y + x) \\
+            &(\forall x) (\forall y) (\forall z) ((xy)z = x(yz)) \\
+            &(\forall x) (1 \cdot x = x \wedge x \cdot 1 = x) \\
+            &(\forall x) (\forall y) (\forall z) ((x \cdot (y + z) = xy + xz) \wedge ((x+y) \cdot z = xz + yz))
+        \}
+    \end{align*}
+
+    The models are rings with $1$.
 \end{example}
 
-\begin{example}
-    Let $L$ be the language of graphs, defined by $\Omega = \varnothing$ and $\Pi = \qty{a}$ where $\alpha(a) = 2$ is the adjacency relation.
-    Define $T = \qty{(\forall x)(\neg a(x,x)), (\forall x)(\forall y)(a(x,y) \Rightarrow a(y,x))}$.
+\begin{example}[Fields]
+    We use the same language as in rings with $1$.
+
+    The theory is the same as rings with $1$, plus
+    \begin{align*}
+        &(\forall x)(\forall y) (x \cdot y = y \cdot x) \\
+        &\neg(0 = 1) \\
+        &(\forall x) (\neg(x = 0) \implies (\exists y)(x \cdot y = 1))
+    \end{align*}
+
+    The models are fields.
+
+    % Then $T$ entails the statement that inverses are unique: $(\forall x)(\neg (x = 0) \implies (\forall y)(\forall z) (y \cdot x = 1 \wedge z \cdot x = 1 \implies y = z))$.
+\end{example}
+
+\begin{example}[Graph Theory]
+    Let $L$ be the language of graphs, defined by $\Omega = \emptyset$, $\Pi = \qty{a}$ ($a =$ `is adjacent to') and $\alpha(a) = 2$.
+    Define $T = \qty{(\forall x)(\neg a(x,x)), (\forall x)(\forall y)(a(x,y) \implies a(y,x))}$.
     Then $T$ axiomatises the class of graphs.
 \end{example}
 
-\subsection{Syntactic implication}
+\begin{example}[Propositional Theories]
+    $\Omega = \emptyset$, $\Pi$ s.t. $\alpha(p) = 0 \; \forall \; p \in \Pi$. \\
+    A structure is a nonempty set $A$ together with $p_A \subset A^0$ for all $p \in \Pi$ (equivalently $p_A \in \qty{0, 1}$). \\
+    A structure is a nonempty set $A$ together with a fcn $v : \Pi \to \qty{0, 1}$.
+
+    Every $p \in \Pi$ is an atomic formula.
+    Formula w/o variables are precisely elements of $L(\Pi)$ as defined in section 1, i.e. they are propositions in $\Pi$.
+    Interpreting these in a structure $A$ is just a fcn $v : L(\Pi) \to \qty{0, 1}$ obtained from $v : \Pi \to \qty{0, 1}$ as in section 1, i.e. a valuation.
+
+    A \vocab{propositional theory} is a set $S$ of formulae not using variables.
+    A model for $S$ is a nonempty set $A$ with a valuation $v : L(\Pi) \to \qty{0, 1}$ s.t. $v(s) = 1 \; \forall \; s \in S$ (Here $A$ is irrelevant).
+\end{example}
+
+\subsection{Semantic Entailment}
+
+\begin{definition}[Semantic Entailment]
+    For a set $S$ of sentences (i.e. a theory) and a sentence $t$ (in some first-order language $L$) we say $S$ \vocab{(semantically) entails} $t$ if $t$ is satisfied in every model of $S$.
+    We write $S \models t$.
+\end{definition}
+
+\begin{example}[Groups]
+    Let $S$ be the theory of groups.
+    $S \models (\forall x)(x \cdot x = e) \implies (\forall x) (\forall y) (xy = yx)$.
+\end{example}
+
+\begin{example}[Fields]
+    Let $S$ be the theory of fields.
+    $S \models (\forall x) (\neg(x = 0) \implies (\forall y) (\forall z) ((xy = 1 \wedge xz = 1) \implies (y = z)))$.
+\end{example}
+
+Next, we want to define $S \models t$ for formulae:
+\begin{example}
+    Let $T$ be the theory of fields.
+    Take $S = T \cup \qty{\neg(x = 0)}$, $t = (\exists y) (xy = 1)$.
+
+    Does $S \models t$?
+    Yes.
+
+    Suppose $F$ is a structure in which all members of $S$ are true.
+    $F$ is a field and for $u = \neg(x = 0)$, $u_F = \qty{a \in F : a \neq 0_F} = F$ \Lightning.
+
+    Also, we'll soon define ``$S \vdash t$'', then $S \vdash t \iff T \vdash \neg(x = 0) \implies (\exists y)(xy = 1)$.
+    This will help motivate our defn.
+\end{example}
+
+Let $S$ be a set of formulae and $t$ a formula in a language $L$.
+For every variable $x$ that occurs free in $S \cup \qty{t}$, introduce a constant $c_x$ (add it to $\Omega$).
+Let $L'$ be our new language. \\
+For a formula $p$, let $p'$ be the formula obtained from $p$ by replacing free occurrences of $x$ in $p$ by $c_x$ for every $x$. \\
+Let $S' = \qty{s' : s \in S}$.
+
+\begin{definition}[Semantic Entailment]
+    Say $S$ \vocab{(semantically) entails} $t$, written $S \models t$, if $S' \models t'$.
+\end{definition}
+
+\begin{definition}[Substitution]
+    If $x$ occurs free in a formula $p$ and $t$ is a term that contains no variable that occurs bound in $p$, we let the \vocab{substitution} $p[t / x]$ be the formula obtained from $p$ by replacing free occurrences of $x$ in $p$ by $t$.
+\end{definition}
+
+\begin{example}
+    Let $p = (\exists y)(m(y,y) = x)$ then $p[e/x] = (\exists y)(m(y,y) = e)$.
+\end{example}
+
+\begin{example}
+    In language of groups:
+    $p = (\forall y)(mxx = y)$.
+    \begin{itemize}
+        \item $t = mzz$, then $p[t / x] = (\forall y)(mmzzmzz = y)$.
+        \item $t = mzy$ cannot be used since $y$ is bound in $p$.
+        \item $t = mxx$, $p[t / x] = (\forall y)(mmxxmxx = y)$.
+    \end{itemize}
+\end{example}
+
+\subsection{Syntactic Entailment}
 We need to define (logical) axioms and deduction rules in order to construct proofs.
+
+The Axioms (the previous 3, 2 more for ``='', 2 for ``$\forall$'') are:
 \begin{enumerate}
-    \item $p \Rightarrow (q \Rightarrow p)$ for formulae $p, q$.
-    \item $(p \Rightarrow (q \Rightarrow r)) \Rightarrow ((p \Rightarrow q) \Rightarrow (p \Rightarrow r))$ for formulae $p, q, r$.
-    \item $\neg\neg p \Rightarrow p$ for each formula $p$.
+    \item $p \implies (q \implies p)$ for formulae $p, q$.
+    \item $(p \implies (q \implies r)) \implies ((p \implies q) \implies (p \implies r))$ for formulae $p, q, r$.
+    \item $\neg\neg p \implies p$ for each formula $p$.
     \item $(\forall x)(x = x)$ for any variable $x$.
-    \item $(\forall x)(\forall y)(x = y \Rightarrow (p \Rightarrow p[y/x]))$ for any variables $x, y$ where $y$ is not bound in the formula $p$.
-    \item $((\forall x)p) \Rightarrow p[t/x]$ for any variable $x$, formula $p$, and term $t$ that has no free variable that occurs bound in $p$.
-    \item $(\forall x)(p \Rightarrow q) \Rightarrow (p \Rightarrow (\forall x)q)$ for any formulae $p, q$ and variable $x$ that does not appear free in $p$.
+    \item $(\forall x)(\forall y)((x = y) \implies (p \implies p[y/x]))$ for any distinct variables $x, y$ where $y$ is not bound in the formula $p$ and $x \in \FV(p)$.
+    \item $((\forall x)p) \implies p[t/x]$ for any variable $x \in \FV(p)$, formula $p$, and term $t$ that has no variable that occurs bound in $p$.
+    \item $(\forall x)(p \implies q) \implies (p \implies (\forall x)q)$ for any formulae $p, q$ and variable $x \notin \FV(p)$, $x \in \FV(q)$.
 \end{enumerate}
-Note that all of these axioms are tautologies; they hold in every structure.
+
+\begin{note}
+    Every axiom is a tautology ($t$ is a tautology if $\emptyset \models t$, i.e. $t$ holds in every structure).
+\end{note}
+
 We define the following deduction rules.
 \begin{enumerate}
-    \item (modus ponens) From $p$ and $p \Rightarrow q$, we can deduce $q$.
-    \item (generalisation) From $p$, we can deduce $(\forall x)p$ provided that $x$ does not occur free in any premise used to deduce $p$.
+    \item \vocab{Modus Ponens (MP)} From $p$, $p \implies q$, we can deduce $q$.
+    \item \vocab{Generalisation (Gen)} From $p$ s.t. $x \in FV(p)$, we can deduce $(\forall x)p$ provided that $x$ does not occur free in any premise used in the proof of $p$.
 \end{enumerate}
-For $S \subseteq L$ and $t \in L$, we say that $S \vdash p$, read $S$ \vocab{proves} $p$, if there exists a \vocab{proof} of $p$ from $S$, which is a finite sequence of formulae ending with $p$ s.t. each formula is a logical axiom, a hypothesis in $S$, or obtained from earlier lines by one of the deduction rules.
+
+\begin{definition}[Proof]
+    Let $S$ be a set of formulae and $p$ a formula.
+    A \vocab{proof} of $p$ from $S$ is a finite sequence $t_1, \dots, t_n$ of formulae s.t. $t_n = p$ and $\forall i \; t_i$ is an axiom, a premise or deduced form previous lines (i.e. $\exists j, x < i$ s.t. $t_x = (t_j \implies t_i)$ or $\exists j < i$ s.t. $t_i = (\forall x)t_j$, $x \in \FV(t_j)$ and $\forall k < j$ if $t_k \in S$ then $x \notin \FV(t_k)$). \\
+    We say $S$ \vocab{proves} $p$ and write $S \vdash p$.
+\end{definition}
+
 \begin{remark}
-    Suppose we allow the empty structure for a language with no constants.
-    Then, $\bot$ is false in $A$, and the statement $(\forall x)\bot$ is true in $A$.
-    Therefore, $((\forall x)\bot) \Rightarrow \bot$ is false by modus ponens.
-    But this is an instance of axiom (vi), showing that it would not be a tautology.
+    Suppose we allow $\emptyset$ as a structure.
+    Then $(\forall x) \neg (x = x)$ is satisfied in $\emptyset$ whereas $\bot$ is not.
+    So $\qty{(\forall x) \neg (x = x)} \not\models \bot$.
+    However, $\qty{(\forall x) \neg (x = x)} \vdash \bot$:
+    \begin{enumerate}
+        \item $(\forall x) \neg (x = x)$ (premise)
+        \item $((\forall x) \neg (x = x)) \implies (x=x)$ (A6)
+        \item $\neg (x = x)$ (MP)
+        \item $(\forall x) (x = x)$ (A4)
+        \item $x = x$ (A6 + MP)
+        \item $\bot$ (MP)
+    \end{enumerate}
 \end{remark}
+
+\begin{example}
+    We show $\qty{x = y} \vdash (y = x)$.
+    \begin{enumerate}
+        \item $(\forall x) (\forall y) (x = y) \implies ((x = z) \implies (y = z))$ (A5)
+        \item $(x = y) \implies ((x = z) \implies (y = z))$ (A6 + MP twice)
+        \item $x = y$ (premise)
+        \item $(x = z) \implies (y = z)$ (MP)
+        \item $(\forall z) ((x = z) \implies (y = z))$ (Gen)
+        \item $(\forall z) ((x = z) \implies (y = z)) \implies ((x = x) \implies (y = x))$ (A6)
+        \item $(x = x) \implies (y = x)$ (MP)
+        \item $(\forall x) (x = x)$ (A4)
+        \item $x = x$ (A6 + MP)
+        \item $y = x$ (MP)
+    \end{enumerate}
+\end{example}
+
 \begin{example}
     We show $\qty{x = y, x = z} \vdash y = z$ where $x, y, z$ are different variables.
     \begin{enumerate}
-        \item $(\forall x)(\forall y)(x = y \Rightarrow (x = z \Rightarrow y = z))$ (axiom 5)
-        \item $\qty((\forall x)(\forall y)(x = y \Rightarrow (x = z \Rightarrow y = z))) \Rightarrow (\forall y)(x = y \Rightarrow (x = z \Rightarrow y = z))$ (axiom 6)
-        \item $(\forall y)(x = y \Rightarrow (x = z \Rightarrow y = z))$ (modus ponens on lines 1, 2)
-        \item $\qty((\forall y)(x = y \Rightarrow (x = z \Rightarrow y = z))) \Rightarrow (x = y \Rightarrow (x = z \Rightarrow y = z))$ (axiom 6)
-        \item $x = y \Rightarrow (x = z \Rightarrow y = z)$ (modus ponens on lines 3, 4)
+        \item $(\forall x)(\forall y)(x = y \implies (x = z \implies y = z))$ (axiom 5)
+        \item $\qty((\forall x)(\forall y)(x = y \implies (x = z \implies y = z))) \implies (\forall y)(x = y \implies (x = z \implies y = z))$ (axiom 6)
+        \item $(\forall y)(x = y \implies (x = z \implies y = z))$ (modus ponens on lines 1, 2)
+        \item $\qty((\forall y)(x = y \implies (x = z \implies y = z))) \implies (x = y \implies (x = z \implies y = z))$ (axiom 6)
+        \item $x = y \implies (x = z \implies y = z)$ (modus ponens on lines 3, 4)
         \item $x = y$ (hypothesis)
-        \item $x = z \Rightarrow y = z$ (modus ponens on lines 5, 6)
+        \item $x = z \implies y = z$ (modus ponens on lines 5, 6)
         \item $x = z$ (hypothesis)
         \item $y = z$ (modus ponens on lines 7, 8)
     \end{enumerate}
 \end{example}
 
 \subsection{Deduction theorem}
-\begin{proposition}
-    Let $S \subseteq L$, and $p, q \in L$.
-    Then $S \vdash (p \Rightarrow q)$ iff $S \cup \qty{p} \vdash q$.
+
+\begin{proposition}[Deduction Theorem] \label{prp:predded}
+    Let $S$ be a set of formulae, and $p, q$ formulae.
+    Then $S \vdash (p \implies q)$ iff $S \cup \qty{p} \vdash q$.
 \end{proposition}
+
 \begin{proof}
-    As before, given a proof of $p \Rightarrow q$ from $S$, one can establish a proof of $q$ from $S \cup \qty{p} \vdash q$ by writing $p$ and applying modus ponens to the original proof.
+    $(\implies)$: Write down a proof of $p \implies q$ from $S$, one can establish a proof of $q$ from $S \cup \qty{p} \vdash q$ by writing $p$ and applying modus ponens to the original proof.
 
-    Conversely, suppose we have a proof $S \cup \qty{p} \vdash q$.
-    We convert each line $t_i$ into $p \Rightarrow t_i$ as in the proof in propositional logic.
-    The only new case is generalisation.
-    Suppose we have the line $r$ and then the line $(\forall x) r$ obtained by generalisation, and we have a proof $S \vdash p \Rightarrow r$ by induction.
-    In the proof $S \cup \qty{p} \vdash r$, no hypothesis has a free occurrence of $x$.
-    Therefore, in the proof $S \vdash p \Rightarrow r$, the same holds.
-    Thus, $S \vdash (\forall x)(p \Rightarrow r)$ by generalisation.
+    $(\Leftarrow)$:
+    Let $t_1, \dots, t_n = q$ be a proof of $q$ from $S \cup \qty{p}$.
+    We prove that $S \vdash \qty{p \implies t_i}$ by induction on $p_i$. \\
+    \underline{Induction hypothesis} at step $i$: for $j < i$, $S \vdash (p \implies t_j)$ s.t. if the proof of $t_j$ from $S \cup \qty{p}$ did not use any premise in which a variable $x$ occurs free, then the proof of $(p \implies t_j)$ from $S$ does not use any premise where $x$ occurs free.
 
-    Suppose $x$ is not free in $p$.
-    Then, $S \vdash p \Rightarrow (\forall x)r$ by axiom 7 and modus ponens.
+    To see $S \vdash (p \implies t_i)$ consider the following cases:
+    \begin{itemize}
+        \item If $t_i \in S$ or an axiom then write
+        \begin{enumerate}
+            \item $t_i$ (premise or axiom)
+            \item $t_i \implies (p \implies t_i)$ (A1)
+            \item $p \implies t_i$ (MP)
+        \end{enumerate}
+        \item If $t_i = p$ write down a proof of $p \implies p$ from $\emptyset$.
+        \item If $\exists j, k < i$ s.t. $t_k = (t_j \implies t_i)$ then write
+        \begin{enumerate}
+            \item $(p \implies (t_j \implies t_i)) \implies ((p \implies t_j) \implies (p \implies t_i))$ (A2)
+            \item $p \implies t_k$ (Induction hypothesis)
+            \item $(p \implies t_j) \implies (p \implies t_i)$ (MP)
+            \item $p \implies t_j$ (Induction hypothesis)
+            \item $p \implies t_i$ (MP)
+        \end{enumerate}
+        \item Finally if $\exists j < i$ s.t. $x \in \FV(t_j)$ and $t_i = (\forall x)t_j$, then the proof of $t_j$ from $S \cup \qty{p}$ did not use any premise where $x$ occurs free.
+        There are two cases
+        \begin{itemize}
+            \item If $x$ occurs free in $p$, $p$ did not occur in the proof of $t_j$ from $S \cup \qty{p}$ so it is a proof of $t_j$ from $S$.
+            So by (Gen), $S \vdash (\forall x) t_j$, i.e. $S \vdash t_j$.
+            Write lines:
+            \begin{enumerate}
+                \item $t_i \implies (p \implies t_i)$ (A1)
+                \item $p \implies t_i$ (MP)
+            \end{enumerate}
+            \item If $x$ doesn't occur free in $p$, then we have a proof of $p \implies t_j$ by induction hypothesis which does not use any premise where $x$ occurs free.
+            So add the lines
+            \begin{enumerate}
+                \item $(\forall x) (p \implies t_j)$ (Gen)
+                \item $(\forall x) (p \implies t_j) \implies (p \implies (\forall x) t_j)$ (A7)
+                \item $p \implies (\forall x) t_j$, i.e. $p \implies t_i$ (MP).
+            \end{enumerate}
+        \end{itemize}
 
-    Now, suppose $x$ occurs free in $p$.
-    In this case, the proof $S \cup \qty{p} \vdash r$ cannot have used the hypothesis $p$.
-    Hence, $S \vdash r$, and so $S \vdash (\forall x)r$ by generalisation.
-    This gives $S \vdash p \Rightarrow (\forall x)r$ by axiom 1.
+        In all cases, the condition on free variables in the induction hypothesis remains true.
+    \end{itemize}
 \end{proof}
 
+\underline{Aim}: Want to show $S \vdash p$ iff $S \models p$.
+
 \subsection{Soundness}
-This section is non-examinable.
-\begin{proposition}
-    Let $S$ be a set of sentences in $L$, and $p$ a sentence in $L$.
-    Then $S \vdash t$ implies $S \models t$.
+This proof in this section are non-examinable.
+
+\begin{proposition}[Soundness Theorem]
+    Let $S$ be a set of formulae and $p$ a formula.
+    If $S \vdash t$ then $S \models t$.
 \end{proposition}
+
 \begin{proof}
     We have a proof $t_1, \dots, t_n$ of $p$ from $S$.
     We show that if $A$ is a model of $S$, $A$ is also a model of $t_i$ for each $i$ (interpreting free variables as quantified); this can be shown by induction.
@@ -324,15 +493,39 @@ This section is non-examinable.
 \end{proof}
 
 \subsection{Adequacy}
-This section is non-examinable.
+This proof in this section are non-examinable.
 
 We want to show that $S \models p$ implies $S \vdash p$.
 Equivalently, $S \cup \qty{\neg p} \models \bot$ implies $S \cup \qty{\neg p} \vdash \bot$.
 In other words, if $S \cup \qty{\neg p}$ is consistent, it has a model.
-\begin{theorem}[model existence lemma]
-    Every consistent theory has a model.
+
+\begin{theorem}[Model Existence Lemma] \label{thm:predmodel}
+    Every consistent\footnote{If $S$ a consistent theory then $S \not\vdash \bot$.} theory has a model.
 \end{theorem}
+
+\begin{proof}
+    Idea: We build a model from $L = L(\Omega, \Pi)$.
+    Let $A$ be a set of closed terms in $L$, i.e. terms with no variables.
+
+    \underline{E.g.} $S$ is theory of fields, $L$ the language of rings with $1$.
+    If $A$ consists of $1+1$, $1+0+0+1$, $1 \cdot 1$, $1 \cdot 0$, $1 + (-1)$, \dots, etc.
+    Then $(1 + 1) +_A (1 + 0) = 1 + 1 + 1 + 0 \in A$\dots
+\end{proof}
+
+\begin{corollary}[Adequacy]
+    Let $S$ be a set of formulae and $p$ a formula.
+    If $S \models p$ then $S \vdash p$.
+\end{corollary}
+
+% \begin{proof}
+%     WLOG $S$ is a theory and $p$ is a sentence.
+%     Since $S \models p$, we have $S \cup \qty{\neg p} \models \bot$.
+%     By \nameref{thm:predmodel}, $S \cup \qty{\neg p} \vdash \bot$.
+%     So $S \vdash \neg \neg p$ by \nameref{prp:predded}, and thus $S \vdash p$ by A3.
+% \end{proof}
+
 We will need a number of key ideas in order to prove this.
+
 \begin{enumerate}
     \item We will construct our model out of the language itself using the closed terms of $L$.
     For instance, if $L$ is the language of fields and $S$ is the usual field axioms, we take the closed terms and combine them with $+$ and $\cdot$ in the obvious way.
@@ -387,26 +580,22 @@ We will need a number of key ideas in order to prove this.
     This is precisely the statement that $s = t$ holds in $A$.
     The same holds for relations.
 
-    Now consider $p \Rightarrow q$.
-    $\overline S \vdash p \Rightarrow q$ iff $\overline S \vdash \neg p$ or $\overline S \vdash q$ as $\overline S$ is complete and consistent; if $\overline S \not\vdash \neg p$ and $\overline S \not\vdash q$, then $\overline S \vdash p$ and $\overline S \vdash \neg p$.
+    Now consider $p \implies q$.
+    $\overline S \vdash p \implies q$ iff $\overline S \vdash \neg p$ or $\overline S \vdash q$ as $\overline S$ is complete and consistent; if $\overline S \not\vdash \neg p$ and $\overline S \not\vdash q$, then $\overline S \vdash p$ and $\overline S \vdash \neg p$.
     By induction on the length of the formula, this holds iff $p_A = 0$ or $q_A = 1$.
-    This is the definition of the interpretation of $p \Rightarrow q$ in $A$.
+    This is the definition of the interpretation of $p \implies q$ in $A$.
 
     Finally, consider the existential $(\exists x)p$.
     $\overline S \vdash (\exists x)p$ iff there is a closed term $t$ s.t. $\overline S \vdash p[t/x]$, as $\overline S$ has witnesses to every existential.
     By induction (for example on the amount of quantifiers in a formula), this holds iff $p[t/x]_A = 1$ for some closed term $t$.
     This is true exactly when $(\exists x)p$ holds in $A$, as $A$ is precisely the set of equivalence classes of closed terms.
 \end{proof}
-\begin{corollary}[adequacy]
-    Let $S \subseteq L$ be a theory and $t \in L$ be a sentence.
-    Then $S \models t$ implies $S \vdash t$.
-\end{corollary}
 
 \subsection{Completeness}
-\begin{theorem}[G\"odel's completeness theorem for first order logic]
-    Let $S \subseteq L$ be a theory and $t \in L$ be a sentence.
-    Then $S \models t$ iff $S \vdash t$.
+\begin{theorem}[G\"odel's Completeness Theorem for First Order Logic]
+    If $S$ is a set of formulae and $p$ is a formula, then $S \vdash p$ iff $S \models p$.
 \end{theorem}
+
 \begin{proof}
     Follows from soundness and adequacy.
 \end{proof}
@@ -470,8 +659,8 @@ Consider the language $L$ given by $\Omega = \qty{0, s, +, \cdot}$ with $\alpha(
 It has axioms
 \begin{enumerate}
     \item $(\forall x)(s(x) \neq 0)$;
-    \item $(\forall x)(\forall y)(s(x) = s(y) \Rightarrow x = y)$;
-    \item $(\forall y_1)\dots(\forall y_n)\qty[p[0/x] \wedge (\forall x)(p \Rightarrow p[s(x)/x]) \Rightarrow (\forall x)p]$ for each formula $p$ with free variables $x, y_1, \dots, y_n$;
+    \item $(\forall x)(\forall y)(s(x) = s(y) \implies x = y)$;
+    \item $(\forall y_1)\dots(\forall y_n)\qty[p[0/x] \wedge (\forall x)(p \implies p[s(x)/x]) \implies (\forall x)p]$ for each formula $p$ with free variables $x, y_1, \dots, y_n$;
     \item $(\forall x)(x + 0 = x)$;
     \item $(\forall x)(\forall y)(x + s(y) = s(x + y))$;
     \item $(\forall x)(x \cdot 0 = 0)$;
@@ -491,8 +680,8 @@ Axiom (iii) applies only to countably many formulae $p$, and therefore only asse
 Only countably many formulae exist, so only countably many sets are definable.
 \begin{example}
     The set of squares is definable, as it can be defined by the formula $(\exists y)(y\cdot y = x)$.
-    The set of primes is also definable by $x \neq 0 \wedge x \neq 1 \wedge (\forall y)(y \mid x \Rightarrow y = 1 \wedge y = x)$, where $y \mid x$ is defined to mean $(\exists z)(z \cdot y = x)$.
-    The set of powers of 2 can be defined by $(\forall y)(y \text{ is prime} \wedge y \mid x \Rightarrow y = 2)$.
+    The set of primes is also definable by $x \neq 0 \wedge x \neq 1 \wedge (\forall y)(y \mid x \implies y = 1 \wedge y = x)$, where $y \mid x$ is defined to mean $(\exists z)(z \cdot y = x)$.
+    The set of powers of 2 can be defined by $(\forall y)(y \text{ is prime} \wedge y \mid x \implies y = 2)$.
     The set of powers of 4 and the set of powers of 6 are also definable.
 \end{example}
 \begin{theorem}[G\"odel's incompleteness theorem]
