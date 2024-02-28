@@ -13,14 +13,14 @@ We will replace primitive propositions with non mathematical statements.
         m(x, i(x)) = e
     \end{align*}
     In language of posets: $x \leq y$. \\
-    This will need variables $(x, y, z, \dots)$, operation symbols  ($m, i, e$ with arities $2, 1, 0$ respectively) and predicated (e.g. $\leq$ with arity $2$).
+    This will need variables $(x, y, z, \dots)$, operation symbols  ($m, i, e$ with arities $2, 1, 0$ respectively) and predicates (e.g. $\leq$ with arity $2$).
 
     We will then combine these to build formulae: \\
     In language of cosets,
     \begin{align*}
-        (\forall \; x) (\forall \; y) (\forall \; z) \qty( (x \leq y \wedge y \leq z) \implies (x \leq z) )
+        (\forall x) (\forall y) (\forall z) \qty( (x \leq y \wedge y \leq z) \implies (x \leq z) )
     \end{align*}
-    In language of groups, $(\forall \; x) \qty( m(x, i(x)) = e)$.
+    In language of groups, $(\forall x) \qty( m(x, i(x)) = e)$.
 
     Valuations will be replaced by a structure, a set $A$, and ``truth-functions'' $p_A : A^n \to {0, 1}$ for every formula $p$.
 
@@ -87,15 +87,33 @@ The \vocab{language} $L = L(\Omega, \Pi, \alpha)$ is the set of formulae.
 A term is \vocab{closed} if it contains no variables.
 For example, $e, m(e,i(e))$ are closed in the language of groups, but $m(x,i(x))$ is not closed.
 
-An occurrence of a variable $x$ in a formula $p$ is \vocab{bound} if it is inside the brackets of a $(\forall x)$ quantifier.
-Otherwise, we say the occurrence is \vocab{free}.
+\begin{definition}[Free/ Bound Occurence]
+    An occurrence of a variable $x$ in a formula $p$ is always \vocab{free} except if $p = (\forall x) q$ in which the $\forall x$ quantifier \vocab{binds} every free occurrence of $x$ and then such occurrences of $x$ are called \vocab{bound occurences}\footnote{The formal defn is by induction on $L$}.
+\end{definition}
+
 \begin{example}
     In the formula $(\forall x)(m(x,x) = e)$, each occurrence of $x$ is bound. \\
     In $m(x,x) = e \Rightarrow (\exists y)(m(y,y) = x)$, the occurrences of $x$ are free and the occurrences of $y$ are bound. \\
     In the formula $m(x,x) = e \Rightarrow (\forall x)(\forall y)(m(x,y) = m(y,x))$, the occurrences of $x$ on the left hand side are free, and the occurrences of $x$ on the right hand side are bound.
+
+    \begin{enumerate}
+        \item $(\exists x) (m(x, x) = y) \implies (\forall z) \neg (mmzzz = y)$. The $x$ (not the $x$ in $\exists x$) are bound, all $y$s are free, the $z$ (not the $z$ in $\forall z$) are bound.
+        \item $(\forall x) (\forall y) (\forall z) (mm xyz = mx myz)$, this is the associativity law. There are no free variables.
+        \item $(\exists x)(m xx = y) \implies (\forall y) (\forall x) (m yz = m zy)$. The $y$ on the LHS is free, the $y$s on the RHS are bound.
+        This is technically a correct formula, but in mathematical practice we avoid this.
+        \item In the language of posets: $(\forall x) (\forall y) \qty(\qty((x \leq y) \wedge (y \leq x)) \implies (x = y))$ has no free variables.
+    \end{enumerate}
 \end{example}
 
-A \vocab{sentence} is a formula with no free variables.
+\begin{definition}[Sentence]
+    A \vocab{sentence} is a formula with no free variables.
+\end{definition}
+
+\begin{definition}[Free]
+    A variable $x$ in a formula is \vocab{free} if it has a free occurrence in $p$.
+    Let $\operatorname{FV}(p)$ denote the set of free variables in $p$.
+\end{definition}
+
 \begin{example}
     For instance, $(\forall x)(m(x,x) = e)$ is a sentence, and $(\forall x)(m(x,x) \Rightarrow (\exists y)(m(y,y) = x))$ is a sentence. \\
     In the language of posets, $(\forall x)(\exists y)(x \geq y \wedge \neg(x = y))$ is a sentence.
@@ -108,13 +126,13 @@ For example,
 \end{align*}
 
 \subsection{Semantic implication}
-\begin{definition}
-    Let $L = L(\Omega, \Pi, \alpha)$ be a language.
-    An \vocab{$L$-structure} is
+\begin{definition}[Structure]
+    Let $L = L(\Omega, \Pi, \alpha)$ be a first-order language.
+    An \vocab{structure} in $L$ or \vocab{$L$-structure} is
     \begin{itemize}
         \item a nonempty set $A$;
         \item for each $f \in \Omega$, a function $f_A \colon A^n \to A$ where $n = \alpha(f)$;
-        \item for each $\varphi \in \Pi$, a subset $\varphi_A \subseteq A^n$ where $n = \alpha(\varphi)$.
+        \item for each $\varphi \in \Pi$, a subset $\varphi_A \subseteq A^n$ where $n = \alpha(\varphi)$\footnote{Equivalently $\phi_A : A^n \to \qty{0, 1}$ by identifying a set with its indicator fcn.}.
     \end{itemize}
 \end{definition}
 
@@ -123,59 +141,98 @@ For example,
 \end{remark}
 
 \begin{example}
-    In the language of groups, an $L$-structure is a nonempty set $A$ with functions $m_A \colon A^2 \to A, i_A \colon A \to A, e_A \in A$.
+    In the language of groups, a structure is a nonempty set $A$ with fcns $m_A \colon A^2 \to A, i_A \colon A \to A, e_A \in A$\footnote{$A^0$ is the singleton set}.
+
     Such a structure may not be a group, as we have not placed any axioms on $A$.
 \end{example}
 
 \begin{example}
-    In the language of posets, an $L$-structure is a nonempty set $A$ with a relation $(\leq_A) \subseteq A^2$.
+    In the language of posets, a structure is a nonempty set $A$ with a relation $(\leq_A) \subseteq A^2$.
     This is not yet a poset.
 \end{example}
 
 \underline{Next Step}: to define for a formula $p$ what it means that `$p$ is satisfied in $A$'.
 
-We define the \vocab{interpretation} $p_A \in \qty{0,1}$ of a sentence $p$ in an $L$-structure $A$ as follows.
+\begin{example}
+    $p = (\forall x)(m x i x = e)$ in the language of groups.
+    $p$ satisfied in structure $A$ should mean that $\forall a \in A$ we have $m_A(a, i_A(a)) = e_A$.
+\end{example}
+
+Let $A$ be an $L$-structure.
+A term $t$ in $L$ with $FV(t) \subseteq \qty{x_1, \dots, x_n}$ has \vocab{interpretation} $t_A : A^n \to A$ defined as follows:
 \begin{itemize}
-    \item The interpretation $t_A$ of a closed term $t$ in an $L$-structure $A$ is defined inductively as $(f\ t_1\dots t_n)_A = f_A({t_1}_A, \dots, {t_n}_A)$ for $f \in \Omega, \alpha(f) = n$, where $t_1, \dots, t_n$ are closed.
-    \item The interpretation of an atomic sentence is defined inductively.
-    \begin{itemize}
-            \item $\bot_A = 0$.
-        \item $(s = t)_A$ is 1 if $s_A = t_A$ and 0 if $s_A \neq t_A$.
-        \item $(\varphi(t_1, \dots, t_n))_A$ is 1 if $({t_1}_A, \dots, {t_n}_A) \in \varphi_A$ and 0 otherwise, for $\varphi \in \Pi, \alpha(\varphi) = n$, where $t_1, \dots, t_n$ are closed.
-    \end{itemize}
-    \item We now inductively define the interpretation of sentences, which is technically induction by length over all languages at once.
-    \begin{itemize}
-        \item $(p \Rightarrow q)_A$ is 0 if $p_A = 1$ and $q_A = 0$, and 1 otherwise.
-        \item $((\forall x)p)_A$ is 1 if $p[\overline a/x]$ is 1 for all $a \in A$ and 0 otherwise, where we add a constant symbol $\overline a$ to $L$ for a fixed $a \in A$ to form the language $L'$, and we make $A$ into an $L'$-structure by defining $\overline a_A = a$.
-    \end{itemize}
+    \item If $t = x_i$ for $1 \leq i \leq n$ then $t_A(a_1, \dots, a_n) = a_i$.
+    \item If $t = \omega t_1 \dots t_m$ with $\omega \in \Omega$, $m = \alpha(w)$, $t_1, \dots, t_m$ terms, then $t_A(a_1, \dots, a_n) = \omega_A((t_1)_A (a_1, \dots, a_n), \dots, (t_m)_A (a_1, \dots, a_n))$.
 \end{itemize}
 
-\begin{remark}
-    For a formula $p$ with free variables, we can define $p_A$ to be the subset of $A^k$ where $k$ is the number of free variables, defined s.t. $x \in p_A$ iff the substitution of $x$ in $p$ is evaluated to 1.
+\begin{example}
+    In groups $t = m x_1 m x_2 x_3$, $t_A(a_1, a_2, a_3) = m_A(a_1, m_A(a_2, a_3))$.
+\end{example}
 
-\end{remark}
-\begin{definition}
-    If $p_A = 1$, we say $p$ \vocab{holds} in $A$, or $p$ is \vocab{true} in $A$, or $A$ is a \vocab{model} of $p$.
-    A \vocab{theory} is a set of sentences, known as its \vocab{axioms}.
-    We say that $A$ is a \vocab{model} of a theory $T$ if $p_A = 1$ for all $p \in T$.
-    For a theory $T$ and a sentence $p$, we say that $T \models p$, read $T$ \vocab{entails} or \vocab{semantically implies} $p$, if every model of $T$ is a model of $p$.
-\end{definition}
+Next interpret a formula $p$ with $FV(p) \subseteq \qty{x_1, \dots, x_n}$ as a subset $p_A \subset A^n$ or equivalently a fcn $p_A : A^n \to \qty{0, 1}$.
+\begin{itemize}
+    \item If $p = (s = t)$, $p_A(a_1, \dots, a_n) = 1 \iff s_A(a_1, \dots, a_n) = t_A(a_1, \dots, a_n)$.
+    \item If $p = \phi t_1, \dots, t_m$, with $\phi \in \Pi$, $m = \alpha(\phi)$, $t_1, \dots, t_m$ terms.
+    Then $p_A(a_1, \dots, a_n) = 1$ iff $\phi_A((t_1)_A(a_1, \dots, a_n), \dots, (t_m)_A(a_1, \dots, a_n)) = 1$.
+    \item $\bot_A \equiv 0$.
+    \item If $p = (q \implies r)$, then $p_A(a_1, \dots, a_n) = 0$ iff $q_A(a_1, \dots, a_n) = 1$ and $r_A(a_1, \dots, a_n) = 0$.
+    \item If $p = (\forall x_{n+1}) q$ where $FV(q) \subseteq \qty{x_1, \dots, x_{n+1}}$, \\
+    $p_A = \qty{(a_1, \dots, a_n) \in A^n : (a_1, \dots, a_{n+1}) \in q_A \; \forall a_{n + 1} \in A}$.
+\end{itemize}
 
 \begin{example}
-    Let $L$ be the language of groups, and let
+    In groups, $p = mm xyz = mx myz$. \\
+    $p_A = \qty{(a, b, c) \in A^3 : m_A(m_A(a, b), c) = m_A(a, m_A(b, c))}$. \\
+    $q = (\forall x) (\forall y) (\forall z) p$ then $q_A = 1 \iff p_A = A^3$.
+\end{example}
+
+% \begin{remark}
+%     For a formula $p$ with free variables, we can define $p_A$ to be the subset of $A^k$ where $k$ is the number of free variables, defined s.t. $x \in p_A$ iff the substitution of $x$ in $p$ is evaluated to 1.
+% \end{remark}
+
+\begin{definition}[Satisfied]
+    If $p_A \equiv 1$ or $p_A = A^n\footnote{$n$ is the number of free variables in $p$.}$ we say the formula $p$ is \vocab{satisfied} in a $L$-structure $A$. \\
+    We also say $p$ \vocab{holds} in $A$, $p$ is \vocab{true} in $A$ or $A$ is a \vocab{model} for $p$.
+\end{definition}
+
+\begin{definition}[Theory]
+    A \vocab{theory} is a set of sentences in $L$, known as $L$'s \vocab{axioms}.
+\end{definition}
+
+\begin{definition}[Model]
+    A \vocab{model} for a theory $T$ is an $L$-structure $A$ that is a model $\forall \; p \in T$.
+\end{definition}
+
+% For a theory $T$ and a sentence $p$, we say that $T \models p$, read $T$ \vocab{entails} or \vocab{semantically implies} $p$, if every model of $T$ is a model of $p$.
+
+\begin{example}
+    Let $L$ be the language of groups.
+    The language is specified by $\Omega = \qty{m, i, e}$, $\Pi = \emptyset$, $\alpha$ is $2, 1, 0$ for $m, i, e$ respectively.
+
+    Let
     \begin{align*}
-        T &= \{(\forall x)(\forall y)(\forall z)(m(x,m(y,z)) = m(m(x,y), z)), \\
+        T = \{&(\forall x)(\forall y)(\forall z)(m(x,m(y,z)) = m(m(x,y), z)), \\
         &(\forall x)(m(x,e) = x \wedge m(e,x) = x), \\
         &(\forall x)(m(x,i(x)) = e \wedge m(i(x),x) = e)\}
     \end{align*}
     Then, an $L$-structure is a model of $T$ iff it is a group.
     Note that this statement has two assertions; every $L$-structure that is a model of $T$ is a group, and that every group can be turned into an $L$-structure that models $T$.
+
     We say that $T$ \vocab{axiomatises} the theory of groups or the class of groups.
 \end{example}
 
 \begin{example}
-    Let $L$ be the language of posets, and $T$ be the poset axioms.
-    Then $T$ axiomatises the class of posets.
+    Let $L$ be the language of posets.
+    $\Omega = \emptyset$, $\Pi = \qty{\leq}$, $\alpha(\leq) = 2$.
+
+    Let
+    \begin{align*}
+        T = \{&(\forall x) (x \leq x) \\
+        &(\forall x) (\forall y) \qty(\qty((x \leq y) \wedge (y \leq x)) \implies (x = y)) \\
+        &(\forall x) (\forall y) (\forall z) \qty( \qty( (x \leq y) \wedge (y \leq z)) \implies (x \leq z))\}.
+    \end{align*}
+
+    The models are partially ordered sets, i.e. $T$ axiomatises the class of posets.
 \end{example}
 
 \begin{example}
