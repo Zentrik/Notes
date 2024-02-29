@@ -17,7 +17,7 @@ We now define the axioms (there are 2 + 4 + 3 axioms) of $\mathsf{ZF}$ set theor
     \item \vocab{Axiom of Existensionality (Ext)} \\
     `If two sets have the same members, then they are equal'
     \begin{align*}
-        (\forall x)(\forall y)((\forall z)(z \in x \Leftrightarrow z \in y) \Rightarrow x = y)
+        (\forall x)(\forall y)((\forall z)(z \in x \Leftrightarrow z \in y) \implies x = y)
     \end{align*}
     Note that the converse follows from the definition of equality.
     This implies that sets have no duplicate elements, and have no ordering.
@@ -63,14 +63,14 @@ We now define the axioms (there are 2 + 4 + 3 axioms) of $\mathsf{ZF}$ set theor
     We introduce abbreviations
     \begin{itemize}
         \item ``$x$ is an ordered pair'' if $(\exists y)(\exists z)(x = (y,z))$.
-        \item ``$f$ is a function'' if $(\forall x)(x \in f \Rightarrow x \text{ is an ordered pair}) \wedge (\forall x)(\forall y)(\forall z)((x,y) \in f \wedge (x,z) \in f \Rightarrow y = z)$
+        \item ``$f$ is a function'' if $(\forall x)(x \in f \implies x \text{ is an ordered pair}) \wedge (\forall x)(\forall y)(\forall z)((x,y) \in f \wedge (x,z) \in f \implies y = z)$
         \item We call a set $x$ the domain of $f$, written $x = \dom f$, if $f$ is a function and
         \begin{align*}
             (\forall y)(y \in x \Leftrightarrow (\exists z)((y,z) \in f))
         \end{align*}
         \item The notation $f \colon x \to y$ means that $f$ is a function, if $x = \dom f$ and
         \begin{align*}
-            (\forall z)(\forall t)((z, t) \in f \Rightarrow t \in y)
+            (\forall z)(\forall t)((z, t) \in f \implies t \in y)
         \end{align*}
     \end{itemize}
 
@@ -95,11 +95,11 @@ We now define the axioms (there are 2 + 4 + 3 axioms) of $\mathsf{ZF}$ set theor
         Given $x, y$, denote $z \in \cap \qty{x, y} \iff (z \in x \wedge z \in y)$ by $z \in x \cap y$.
     \end{remark}
 
-    \item \vocab{Power-set Axiom (Pow)}.
+    \item \vocab{Power-set Axiom (Pow)} \\
     \begin{align*}
         (\forall x)(\exists y)(\forall z)(z \in y \Leftrightarrow z \subseteq x)
     \end{align*}
-    where $z \subseteq x$ is an abbreviation for $(\forall t)(t \in z \Rightarrow t \in x)$.
+    where $z \subseteq x$ is an abbreviation for $(\forall t)(t \in z \implies t \in x)$.
     Denote $y$ by $\mathcal{P}(x)$.
 
     We can form the Cartesian product $x \times y$ for sets $x, y$: an element of $x \times y$ is an ordered pair $(s, t)$ where $s \in x$ and $t \in y$.
@@ -107,33 +107,114 @@ We now define the axioms (there are 2 + 4 + 3 axioms) of $\mathsf{ZF}$ set theor
 
     We can also form, from sets $x, y$, $y^x = \qty{f \in \mathcal{P}(x \times y) : f : x \to y}$ which is the set of all functions from $x \to y$.
 
-    \item \vocab{Axiom of infinity}.
-    Using our currently defined axioms, any model $V$ must be infinite.
-    For example, writing $x^+$ for the \vocab{successor} of $x$ defined as $x \cup \qty{x}$, the sets $\varnothing, \varnothing^+, \varnothing^{++}, \dots$ are distinct.
-    \begin{align*}
-        \varnothing^+ = \qty{\varnothing};\quad \varnothing^{++} = \qty{\varnothing, \qty{\varnothing}};\quad \varnothing^{+++} = \qty{\varnothing, \qty{\varnothing}, \qty{\varnothing, \qty{\varnothing}}};\quad \dots
-    \end{align*}
+    \item \vocab{Axiom of Infinity (Inf)} \\
+    Using our currently defined axioms, any model $V$ must be infinite, e.g. $\emptyset, \mathcal{P}\emptyset, \mathcal{P}\mathcal{P} \emptyset, \dots$ are all distinct elements of $V$.
+
+    \begin{definition}[Successor]
+        For a set $x$, the \vocab{successor} of $x$ is $x^+ = x \cup \qty{x}$.
+    \end{definition}
+    \begin{example}
+        Then $\emptyset, \emptyset^+, \emptyset^{++}, \dots$ are distinct elements of $V$.
+        \begin{align*}
+            \varnothing^+ = \qty{\varnothing};\quad \varnothing^{++} = \qty{\varnothing, \qty{\varnothing}};\quad \varnothing^{+++} = \qty{\varnothing, \qty{\varnothing}, \qty{\varnothing, \qty{\varnothing}}};\quad \dots
+        \end{align*}
+    \end{example}
+
     We write $0 = \varnothing, 1 = \varnothing^+, 2 = \varnothing^{++}, \dots$ for the successors created in this way.
     For instance, $3 = \qty{0, 1, 2}$.
-    $V$ may not have an infinite element, even though $V$ itself is infinite, because no $x \in V$ has all $y \in V$ as elements: $V$ does not think of itself as a set, because Russell's paradox follows from the axioms defined so far.
+    We have a copy of $\mathbb{N}_0$ in $V$.
+    From the outside, $V$ is infinite.
+    From the inside, $V$ is not a set: $\neg(\exists x)(\forall y) (y \in x)$ (Russell's paradox) (If such $x$ exists, form $\qty{y \in x : \neg y \in y} = z$ \Lightning).
 
-    We say that $x$ is a successor set if $\varnothing \in x$ and $(\forall y)(y \in x \Rightarrow y^+ \in x)$.
+    Abbreviate ``$x$ is a successor set'': $\varnothing \in x$ and $(\forall y)(y \in x \implies y^+ \in x)$.
     Note that this is a finite-length formula that characterises an infinite set.
     The axiom of infinity is that there exists a successor set.
     \begin{align*}
-        (\exists x)(\varnothing \in x \wedge (\forall y)(y \in x \Rightarrow y^+ \in x))
+        (\exists x)(\varnothing \in x \wedge (\forall y)(y \in x \implies y^+ \in x))
     \end{align*}
     Note that this set is not uniquely defined, but any intersection of successor sets is a successor set.
-    We can therefore take the intersection of all successor sets by the axiom of separation, giving a least successor set denoted $\omega$.
-    Thus, $(\forall x)(x \in \omega \Leftrightarrow (\forall y)(y \text{ is a successor set} \Rightarrow x \in y))$.
-    For example, we can prove that $3 \in \omega$.
+    So we can construct ``smallest'' successor set, i.e. we can prove
+    \begin{align*}
+        (\exists x)((x \text{ is a successor set} \wedge (\forall y)(y \text{ is a successor set} \implies  x \subseteq y)))
+    \end{align*}
+    [Pick any successor set $z$, let $x = \cap \{y \in \mathcal{P}(z) : y \text{ is a successor set}\}$.
+    $x$ is then a successor set and if $y$ is any successor set then $x \subset (y \cap z)$].
+    We denote the smallest successor set by $\omega$.
 
-    In particular, if $x$ is a successor set and a subset of $\omega$, then $x = \omega$.
-    Hence, $(\forall x)(x \subseteq \omega \wedge \varnothing \in x \wedge (\forall y)(y \in x \Rightarrow y^+ \in x) \Rightarrow x = \omega)$.
-    This is `proper' induction over all subsets of $\omega$, unlike the weaker first-order induction defined in the Peano axioms.
-    It is easy to check that $(\forall x)(x \in \omega \Rightarrow x^+ \neq \varnothing)$ and $(\forall x)(\forall y)(x \in \omega \wedge y \in \omega \wedge x^+ = y^+ \Rightarrow x = y)$, so $\omega$ satisfies (in $V$) the usual axioms for the natural numbers.
-    We can now define `$x$ is finite' to mean $(\exists y)(y \in \omega \wedge x \text{ bijects with } y)$, and define `$x$ is countable' to mean that $x$ is finite or bijects with $\omega$.
-    \item \vocab{Axiom of foundation} or \vocab{regularity}.
+    If $x \subseteq \omega$ is a successor set then $x = \omega$, i.e. $(\forall x)(x \subseteq \omega \wedge \varnothing \in x \wedge (\forall y)(y \in x \implies y^+ \in x) \implies x = \omega)$.
+    This is true induction.
+
+    It is easy to check that $(\forall x)(x \in \omega \implies x^+ \neq \varnothing)$ and $(\forall x)(\forall y)((x \in \omega \wedge y \in \omega \wedge x^+ = y^+) \implies x = y)$, so $\omega$ satisfies (in $V$) the usual axioms for the natural numbers.
+
+    We can define abbreviations: \\
+    ``$x$ is finite'' for $(\exists y)(y \in \omega \wedge (\exists f)(f : x \to y \wedge \text{`$f$ is bijective'}))$; \\
+    ``$x$ is countable'' for $(\exists f)(f : x \to \omega \wedge \text{`$f$ in injective'})$.
+
+    \item \vocab{Axiom of Replacement (Rep)} \\
+    (Inf) says that there exist sets containing $0, 1, 2, 3, \dots$
+    Are there sets containing $\emptyset, \mathcal{P}\emptyset, \mathcal{P}\mathcal{P}\emptyset, \dots$
+    There is a function-like\footnote{We have not yet defined functions.} object that sends $0 \mapsto \emptyset$, $1 \mapsto \mathcal{P}\mathcal{P}\emptyset$, \dots
+
+    We need an axiom that the image of a set under a function-like object is a set.
+
+    % Often, we are given an index set $I$ and construct a set $A_i$ for each $i \in I$, then take the collection $\qty{A_i \mid i \in I}$.
+    % In order to write this down, the mapping $i \mapsto A_i$ must be a function, or equivalently, there must be a set $\qty{(i, A_i) \mid i \in I}$.
+    % This is not clear from the other axioms.
+    % We would like to say that the image of a set under something that looks like a function (since we do not yet have such a set-theoretic function) is a set.
+
+    \begin{definition}[Class]
+        A \vocab{class} is a subset $C$ of a structure $V$ of the language of $\mathsf{ZF}$ s.t. $\exists$ formula $p$ with $\FV(p) = \{x\}$ s.t. $p_V = C$, i.e. $x \in C \iff p(x)$ holds in $V$.
+    \end{definition}
+
+    $C$ is a set outside of our model; it may not correspond to a set $x \in V$ inside the model.
+
+    \begin{example} ~\vspace*{-1.5\baselineskip}
+        \begin{itemize}
+            \item For instance, $V$ is a class, taking $p$ to be $x = x$.
+            \item The set of sets of size $1$ in a class, e.g. take $p$ to be $(\exists y)(x = \{y\})$
+            \item There is a class of infinite sets, taking $p$ to be `$x$ is not finite'.
+            \item For any $t \in V$, the collection of $x$ with $t \in x$ is a class; here, $t$ is a parameter to the class.
+            \item Every set $y \in V$ is a class by setting $p$ to be $x \in y$.
+        \end{itemize}
+    \end{example}
+
+    Say the class $C$ is a \vocab{set} if $(\exists y)(\forall x)(x \in y \iff p)$ holds in $V$.
+
+    \begin{definition}[Proper Class]
+        If $C$ is not a set, we say $C$ is a \vocab{proper class}
+    \end{definition}
+
+    \begin{example}
+        $V$ is a proper class by Russell's paradox.
+    \end{example}
+
+    When writing about classes inside $\mathsf{ZF}$, we instead write about their defining formulae, as classes have no direct representation in the language.
+
+    \begin{definition}[Function-Class]
+        A \vocab{function-class} is a subset $G$ of $V \times V$ s.t. $\exists$ formula $p$ with $\FV(p) = \{x, y\}$ s.t. $(\forall x)(\forall y)(\forall z)((p \wedge p[z/y]) \implies y = z)$ holds in $V$ and $G = p_V$. \\
+        I.e. $(x, y) \in G \iff p(x, y)$ holds in $V$.
+    \end{definition}
+
+    \begin{example}
+        $G = \{(x, \{x\}) : x \in V\}$ is the fcn class that maps $x$ to $\{x\}$ and is given by $p : (y = \{x\})$.
+    \end{example}
+
+    This is intuitively a function whose domain may not be a set.
+    This is not a function, for example, every $f$ has a domain which is a set in $V$, and this function has domain $V$ which is not a set.
+
+    We can now define the axiom of replacement: the image of a set under a function-class is a set.
+    \begin{align*}
+        (\forall t_1)\dots(\forall t_n)[(\forall x)(\forall y)(\forall z)(p \wedge p[z/y] \implies y = z) \implies \\
+        (\forall x)(\exists y)(\forall z)(z \in y \Leftrightarrow (\exists t)(t \in x \wedge p[t/x,z/y]))]
+    \end{align*}
+    for any formula $p$ with $\FV(p) = \{x, y, t_1, \dots, t_n\}$.
+
+    \begin{example}
+        For any set $x$, we can form the set $\qty{\qty{t} : t \in x}$, which is the image of $x$ under the function class $t \mapsto \qty{t}$.
+        This set could alternatively have been formed using the power-set and separation axioms; we will later present some examples of sets built with this axiom that cannot be constructed from the other axioms.
+    \end{example}
+
+    \item \vocab{Axiom of Foundation (Fnd)} or \vocab{regularity} \\
     We require that sets are built out of simpler sets.
     For example, we want to disallow a set from being a member of itself, and similarly forbid $x \in y$ and $y \in x$.
     In general, we want to forbid sets $x_i$ s.t. $x_{i+1} \in x_i$ for each $i \in \mathbb N$.
@@ -141,69 +222,65 @@ We now define the axioms (there are 2 + 4 + 3 axioms) of $\mathsf{ZF}$ set theor
     Note that if $x \in x$, $\qty{x}$ has no $\in$-minimal element.
     If $x \in y, y \in x$, $\qty{x, y}$ has no $\in$-minimal element.
     In the last example, $\qty{x_0, x_1, \dots}$ has no $\in$-minimal element.
+
     We now define the axiom of foundation: every nonempty set has an $\in$-minimal element.
     \begin{align*}
-        (\forall x)(x \neq \varnothing \Rightarrow (\exists y)(y \in x \wedge (\forall z)(z \in x \Rightarrow z \not\in y)))
+        (\forall x)(x \neq \varnothing \implies (\exists y)(y \in x \wedge (\forall z)(z \in x \implies z \not\in y)))
     \end{align*}
     Any model of $\mathsf{ZF}$ without this axiom has a submodel of all of $\mathsf{ZF}$.
-    \item \vocab{Axiom of replacement}.
-    Often, we are given an index set $I$ and construct a set $A_i$ for each $i \in I$, then take the collection $\qty{A_i \mid i \in I}$.
-    In order to write this down, the mapping $i \mapsto A_i$ must be a function, or equivalently, there must be a set $\qty{(i, A_i) \mid i \in I}$.
-    This is not clear from the other axioms.
-    We would like to say that the image of a set under something that looks like a function (since we do not yet have such a set-theoretic function) is a set.
-
-    Let $(V, \in)$ be an $L$-structure.
-    A \vocab{class} is a set $C \subseteq V$ s.t. for some formula $p$ with free variables $x$ and some parameters, we have $x \in C$ if and only if $p$ holds in $V$.
-    $C$ is a set outside of our model; it may not correspond to a set $x \in V$ inside the model.
-    For instance, $V$ is a class, taking $p$ to be $x = x$.
-    There is a class of infinite sets, taking $p$ to be `$x$ is not finite'.
-    For any $t \in V$, the collection of $x$ with $t \in x$ is a class; here, $t$ is a parameter to the class.
-    Every set $y \in V$ is a class by setting $p$ to be $x \in y$.
-    A \vocab{proper class} is a class that does not correspond to a set $x \in V$: $\neg(\exists y)(\forall x)(x \in y \Leftrightarrow p)$.
-    When writing about classes inside $\mathsf{ZF}$, we instead write about their defining formulae, as classes have no direct representation in the language.
-
-    Similarly, a \vocab{function-class} is a set $F \subseteq V$ of ordered pairs from $V$ s.t. for some formula $p$ with free variables $x, y$ and parameters, we have $(x, y)$ belongs to $F$ if and only if $p$, and if $(x, y), (x, z)$ belong to $F$, $y = z$.
-    This is intuitively a function whose domain may not be a set.
-    For example, the mapping $x \mapsto \qty{x}$ is a function-class, taking $p$ to be $y = \qty{x}$.
-    This is not a function, for example, every $f$ has a domain which is a set in $V$, and this function has domain $V$ which is not a set.
-
-    We can now define the axiom of replacement: the image of a set under a function-class is a set.
-    \begin{align*}
-        (\forall t_1)\dots(\forall t_n)[(\forall x)(\forall y)(\forall z)(p \wedge p[z/y] \Rightarrow y = z) \Rightarrow
-    \end{align*}
-    \begin{align*}
-        (\forall x)(\exists y)(\forall z)(z \in y \Leftrightarrow (\exists t)(t \in x \wedge p[t/x,z/y]))]
-    \end{align*}
-    For example, for any set $x$, we can form the set $\qty{\qty{t} \mid t \in x}$, which is the image of $x$ under the function class $t \mapsto \qty{t}$.
-    This set could alternatively have been formed using the power-set and separation axioms; we will later present some examples of sets built with this axiom that cannot be constructed from the other axioms.
 \end{enumerate}
+
 This completes the description of the axioms of $\mathsf{ZF}$.
 We write $\mathsf{ZFC}$ for $\mathsf{ZF} + \mathsf{AC}$, where $\mathsf{AC}$ is the axiom
 \begin{align*}
-        (\forall f)[f\text{ is a function} \wedge (\forall x)(x \in \dom f \Rightarrow f(x) \neq \varnothing) \Rightarrow
-    \end{align*}
-\begin{align*}
-        (\exists g)(g\text{ is a function} \wedge (\dom g = \dom f) \wedge (\forall x)(x \in \dom f \Rightarrow g(x) \in f(x)))]
-    \end{align*}
+    (\forall x)(\forall y)(y \in x \implies y \neq \emptyset) \implies (\exists f)(f: x \to \cup x) \wedge (\forall y)(y \in x \implies f(y) \in y)
+\end{align*}
+% \begin{align*}
+%     (\forall f)[f\text{ is a function} \wedge (\forall x)(x \in \dom f \implies f(x) \neq \varnothing) \implies \\
+%     (\exists g)(g\text{ is a function} \wedge (\dom g = \dom f) \wedge (\forall x)(x \in \dom f \implies g(x) \in f(x)))]
+% \end{align*}
+
+For the rest of this section we work in ZF.
+\underline{Aim}: Describe the set-theoretic universe, i.e. any model $V$ of $\mathsf{ZF}$.
 
 \subsection{Transitive sets}
-\begin{definition}
+
+\begin{definition}[Transitive]
     $x$ is \vocab{transitive} if each member of a member of $x$ is a member of $x$.
     \begin{align*}
-        (\forall y)((\exists z)(y \in z \wedge z \in x) \Rightarrow y \in x)
+        (\forall y)(\underbracket{(\exists z)(y \in z \wedge z \in x)}_{y \in \cup x} \implies y \in x)
     \end{align*}
 \end{definition}
-Equivalently, $\bigcup x \subseteq x$.
+
+Equivalently, $\cup x \subseteq x$.
+
+\begin{warning}
+    This is \underline{not} the same as saying $\in$ is a transitive relation on $x$.
+\end{warning}
+
 \begin{example}
     $\varnothing$ is a transitive set.
     $\qty{\varnothing}$ is also transitive, and $\qty{\varnothing, \qty{\varnothing}}$ is transitive.
-    In general, elements of $\omega$ are transitive.
-    This can be proven by $\omega$-induction (inside a model): $\varnothing$ is transitive, and if $y$ is transitive, $y^+ = y \cup \qty{y}$ is clearly transitive.
+    % In general, elements of $\omega$ are transitive.
+    % This can be proven by $\omega$-induction (inside a model): $\varnothing$ is transitive, and if $y$ is transitive, $y^+ = y \cup \qty{y}$ is clearly transitive.
 \end{example}
+
+\begin{example}
+    $\omega$ is transitive.
+\end{example}
+
+\begin{proof}
+    NTS that $x \subseteq \omega \; \forall \; x \in \omega$. \\
+    Form the set $z = \{y \in \omega : y \subseteq \omega\}$ by (Sep).
+    Check $z$ is a successor set, so $z = \omega$.
+    Similarly, $\{x \in \omega : \text{`$x$ is transitive'}\}$ is also a successor set ($\cup x^+ = x$) so it is $\omega$.
+    So every element of $\omega$ is a transitive set.
+\end{proof}
+
 \begin{lemma}
-    Every set is contained in a transitive set.
+    Every set is contained in a transitive set, i.e. $(\forall x)(\exists y)(\text{`$i$ is transitive'} \wedge x \subseteq y)$.
 \end{lemma}
-Here, we define `$x$ contains $y$' to mean $y \subseteq x$, not $y \in x$.
+
 \begin{remark}
     This proof takes place inside an arbitrary model of $\mathsf{ZF}$.
     Technically, the statement of the lemma is `let $(V, \in)$ be a model of $\mathsf{ZF}$, then for all sets $x \in V$, $x$ is contained in a transitive set $y \in V$'.
@@ -212,36 +289,44 @@ Here, we define `$x$ contains $y$' to mean $y \subseteq x$, not $y \in x$.
     Note also that once this lemma is proven, any $x$ is contained in a least transitive set by taking intersections, called its \vocab{transitive closure}, written $TC(x)$.
     This holds as any intersection of transitive sets is transitive.
 \end{remark}
+
+\underline{Idea}: If $x \subseteq y$ and y transitive then $\bigcup x \subseteq y$ so $\bigcup \bigcup x \subseteq y$, $\bigcup \bigcup \bigcup x \subseteq y$, \dots \\
+We want to form $\bigcup \{x, \bigcup x, \bigcup \bigcup x, \dots\}$, this is a set by (Rep).
+We need a function-class $0 \mapsto x$, $1 \mapsto \bigcup x$, $2 \mapsto \bigcup \bigcup x$, \dots
+
 \begin{proof}
-    We want to form $x \cup (\bigcup x) \cup (\bigcup\bigcup x) \cup \dots$; if this is a set, it is clearly transitive and contains $x$.
-    We can show that this is a set by the union axiom applied to the set $\qty{x, \bigcup x, \bigcup\bigcup x, \dots}$.
-    This is a set by applying the axiom of replacement, it is an image of $\omega$ under the function-class $0 \mapsto x, 1 \mapsto \bigcup x, 2 \mapsto \bigcup \bigcup x$ and so on.
     We want to define the function-class $p(z,w)$ to be $(z = 0 \wedge w = x) \vee ((\exists t)(\exists u) z = t^+ \wedge w = \bigcup u \wedge p(t,u))$, but this is not a first-order formula.
 
     Define that $f$ is an \vocab{attempt} to mean that
     \begin{align*}
-        (f \text{ is a function}) \wedge (\dom f \in \omega) \wedge (\dom f \neq \varnothing) \wedge (f(0) = x)\, \wedge
-    \end{align*}
-    \begin{align*}
-        (\forall n)\qty(n \in \omega \wedge n \in \dom f \wedge n \neq 0 \Rightarrow f(n) = \bigcup f(n-1))
+        (f \text{ is a function}) \wedge (\dom f \in \omega) \wedge (\dom f \neq \varnothing) \wedge (f(0) = x)\, \wedge \\
+        (\forall m)(\forall n)\qty((m \in \dom f \wedge n \in \dom f \wedge n = m^+) \implies f(n) = \bigcup f(m))
     \end{align*}
     Then,
     \begin{align*}
-        (\forall n)(n \in \omega \Rightarrow (\exists f)(f \text{ is an attempt} \wedge n \in \dom f))
+        (\forall n)(n \in \omega \implies (\exists f)(f \text{ is an attempt} \wedge n \in \dom f)) \quad (\ast\ast)
     \end{align*}
     can be proven by $\omega$-induction.
     We can similarly prove
     \begin{align*}
-        (\forall n)(n \in \omega \Rightarrow (\forall f)(\forall g)(f, g \text{ are attempts} \wedge n \in \dom f \cap \dom g \Rightarrow f(n) = g(n)))
+        (\forall f)(\forall g)(\forall n)((f, g \text{ are attempts} \wedge (n \in \dom f \cap \dom g)) \implies f(n) = g(n)) \quad (\ast)
     \end{align*}
     by $\omega$-induction.
-    We now define the function-class $p = p(z,w)$ to be
+    We now define the function-class $p = p(y, z)$ to be
     \begin{align*}
-        (\exists f)(f \text{ is an attempt} \wedge z \in \dom f \wedge f(z) = w)
+        (\exists f)(f \text{ is an attempt} \wedge y \in \dom f \wedge f(y) = z).
     \end{align*}
+
+    By $(\ast)$ we have $(\forall y)(\forall z)(\forall w)((p \wedge p[w/z]) \implies w = z)$.
+    By (Rep) we can form $w = \{z : (\exists y)(y \in \omega \wedge p(y, z))\}$ which is $\{x, \bigcup x, \bigcup \bigcup x, \dots\}$.
+    Also by (Un) we can form $t = \bigcup w$.
+
+    Then $x \in t$, since $x \in w$ ($\{(0, x)\}$ is an attempt).
+    Given $a \in t$, we have $z \in w$, $a \in z$.
+    Then there's an attempt $f$ and $n \in w$ s.t. $z = f(n)$. \\
+    By $(\ast\ast)$ there's an attempt $g$ with $n^+ \in \dom g$.
+    Then $n \in \dom g$ so $\bigcup z = \bigcup f(n) = \bigcup g(n)$ by $(\ast)$ and $\bigcup g(n) = \bigcup g(n^+) \in w$, hence $a \subseteq t$.
 \end{proof}
-Intuitively, we needed to use the axiom of replacement because we started with a set $x$ and needed to go `far away' from it, forming $\bigcup^n x$ for all $x$.
-We could not have used the other axioms such as the power-set axiom, as the $\bigcup^n x$ are not contained in an obvious larger set.
 
 Transitive closures allow us to pass from the large universe of sets, which is not a set itself, into a smaller world which is a set closed under $\in$ that contains the relevant sets in question.
 
@@ -250,11 +335,11 @@ We want the axiom of foundation to capture the idea that sets are built out of s
 \begin{theorem}[principle of $\in$-induction]
     For each formula $p$ with free variables $t_1, \dots, t_n, x$,
     \begin{align*}
-        (\forall t_1)\dots(\forall t_n)[(\forall x)((\forall y)(y \in x \Rightarrow p(y)) \Rightarrow p(x)) \Rightarrow (\forall x)p(x)]
+        (\forall t_1)\dots(\forall t_n)[(\forall x)((\forall y)(y \in x \implies p(y)) \implies p(x)) \implies (\forall x)p(x)]
     \end{align*}
 \end{theorem}
 \begin{proof}
-    Given $t_1, \dots, t_n$ and the statement $(\forall x)((\forall y)(y \in x \Rightarrow p(y)) \Rightarrow p(x))$, we want to show $(\forall x)p(x)$.
+    Given $t_1, \dots, t_n$ and the statement $(\forall x)((\forall y)(y \in x \implies p(y)) \implies p(x))$, we want to show $(\forall x)p(x)$.
     Suppose this is not the case, so there exists $x$ s.t. $\neg p(x)$.
     We want to look at the set $\qty{t \mid \neg p(t)}$ and take an $\in$-minimal element, but this is not necessarily a set, for instance if $p(x)$ is the assertion $x \neq x$.
 
@@ -266,7 +351,7 @@ We want the axiom of foundation to capture the idea that sets are built out of s
 The name of this theorem should be read `epsilon-induction', even though the membership relation is denoted $\in$ and not $\epsilon$ or $\varepsilon$.
 
 The principle of $\in$-induction is equivalent to the axiom of foundation in the presence of the other axioms of $\mathsf{ZF}$.
-We say that $x$ is \vocab{regular} if $(\forall y)(x \in y \Rightarrow y \text{ has a minimal element})$.
+We say that $x$ is \vocab{regular} if $(\forall y)(x \in y \implies y \text{ has a minimal element})$.
 The axiom of foundation is equivalent to the assertion that every set is regular.
 Given $\in$-induction, we can prove every set is regular.
 Suppose $(\forall y \in x)(y \text{ is regular})$; we need to show $x$ is regular.
@@ -290,12 +375,12 @@ Note that $\eval{F}_x = \qty{(y, F(y)) \mid y \in x}$ is a set by the axiom of r
 \begin{proof}
     Define that $f$ is an \vocab{attempt} if
     \begin{align*}
-        f \text{ is a function} \wedge \dom f \text{ is transitive} \wedge (\forall x)\qty(x \in \dom f \Rightarrow f(x) = G\qty(\eval{f}_x))
+        f \text{ is a function} \wedge \dom f \text{ is transitive} \wedge (\forall x)\qty(x \in \dom f \implies f(x) = G\qty(\eval{f}_x))
     \end{align*}
     Note that $\eval{f}_x$ is defined as $\dom f$ is transitive.
     Then,
     \begin{align*}
-        (\forall x)(\forall f)(\forall f')(f, f' \text{ are attempts} \wedge x \in \dom f \cap \dom f' \Rightarrow f(x) = f'(x))
+        (\forall x)(\forall f)(\forall f')(f, f' \text{ are attempts} \wedge x \in \dom f \cap \dom f' \implies f(x) = f'(x))
     \end{align*}
     by $\in$-induction: if $f(y) = f'(y)$ for all $y \in x$, then $f(x) = f'(x)$.
     Also,
@@ -333,7 +418,7 @@ This models the relation $r$ by $\in$.
 
 We say that a relation $r$ on a set $a$ is \vocab{extensional} if
 \begin{align*}
-        (\forall x \in a)(\forall y \in a)((\forall z \in a)(zrx \Leftrightarrow zry) \Rightarrow x = y)
+        (\forall x \in a)(\forall y \in a)((\forall z \in a)(zrx \Leftrightarrow zry) \implies x = y)
     \end{align*}
 The relation $r$ in the above example is extensional.
 \begin{theorem}[Mostowski's collapsing theorem]
@@ -356,10 +441,10 @@ Note that the well-foundedness and extensionality conditions are clearly necessa
     We claim that $f$ is injective, and then we have that $yrx$ if and only if $f(y) \in f(x)$ by definition of $f$.
     We show
     \begin{align*}
-        (\forall x \in a)(\forall x' \in a)(f(x') = f(x) \Rightarrow x' = x)
+        (\forall x \in a)(\forall x' \in a)(f(x') = f(x) \implies x' = x)
     \end{align*}
     by $r$-induction on $x$.
-    Suppose that $(\forall y r x)(\forall z \in a)(f(y) = f(z) \Rightarrow y = z)$, we have $f(x) = f(x')$, and we want to show that $x = x'$.
+    Suppose that $(\forall y r x)(\forall z \in a)(f(y) = f(z) \implies y = z)$, we have $f(x) = f(x')$, and we want to show that $x = x'$.
     Note that $\qty{f(y) \mid y r x} = \qty{f(z) \mid z r x'}$ by the definition of $f$ as $f(x) = f(x')$.
     So $\qty{y \mid y r x} = \qty{z \mid z r x'}$, so $x = x'$ as $r$ is extensional.
     Uniqueness holds by $r$-induction, as we must have $f(x) = \qty{f(y) \mid y r x}$ for all $x \in a$.
