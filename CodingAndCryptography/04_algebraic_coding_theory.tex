@@ -594,7 +594,7 @@ Equivalently, $g$ is the lcm of the minimal polys of the elements of $A$.
     The cyclic code of length $n$ with defining set $\qty{\alpha, \alpha^2, \dots, \alpha^{\delta - 1}}$ is a \vocab{BCH code} with \vocab{design distance} $\delta$.
 \end{definition}
 
-\begin{theorem} \label{thm:bch}
+\begin{theorem} \label{thm:14.3}
     A BCH code $C$ with design distance $\delta$ has minimum distance $d(C) \geq \delta$.
 \end{theorem}
 
@@ -617,7 +617,7 @@ This proof needs the following result.
     Look it up.
 \end{proof}
 
-\begin{proof}[Proof of \Cref{thm:bch}]
+\begin{proof}[Proof of \Cref{thm:14.3}]
     Consider
     \begin{align*}
         H = \begin{pmatrix}
@@ -634,29 +634,32 @@ This proof needs the following result.
 \end{proof}
 
 Note that $H$ in the proof above is not a parity check matrix, as its entries do not lie in $\mathbb F_2$.
+If worried about the proof, look at the addendum on moodle.
+
+\subsubsection{Decoding BCH Codes}
 
 Let $C$ be a cyclic code with defining set $\qty{\alpha, \alpha^2, \dots, \alpha^{\delta - 1}}$ where $\alpha \in K$ is a primitive $n$th root of unity.
-Its minimum distance is at least $\delta$, so we should be able to correct $t = \floor*{\frac{\delta - 1}{2}}$ errors.
+By \cref{thm:14.3}, its minimum distance is at least $\delta$, so we should be able to correct $t = \floor*{\frac{\delta - 1}{2}}$ errors.
 Suppose we send $c \in C$ through the channel, and receive $r = c + e$ where $e$ is the error pattern with at most $t$ nonzero errors.
-Note that $r, c, e$ correspond to polynomials $r(X), c(X), e(X)$, and $c(\alpha^j) = 0$ for $j \in \qty{1, \dots, \delta - 1}$ as $c$ is a codeword.
+Note that $r, c, e$ correspond to polynomials $r(X), c(X), e(X) = \sum_{i=0}^{n-1} e_i X^i$, and $c(\alpha^j) = 0$ for $j \in \qty{1, \dots, \delta - 1}$ as $c$ is a codeword.
 Hence, $r(\alpha^j) = e(\alpha^j)$.
 
-\begin{definition}
+\begin{definition}[Error Locator Polynomial]
     The \vocab{error locator polynomial} of an error pattern $e \in \mathbb F_2^n$ is
     \begin{align*}
         \sigma(X) = \prod_{i \in \mathcal E} (1 - \alpha^i X) \in K[X]
     \end{align*}
-    where $\mathcal E = \qty{i \mid e_i = 1}$.
+    where $\mathcal E = \qty{i : e_i = 1}$.
 \end{definition}
 
-Assuming that $\deg \sigma = \abs{\mathcal E}$, where $2t + 1 \leq \delta$, we must recover $\sigma$ from $r(X)$.
+\underline{Aim}: Assuming that $\deg \sigma = \abs{\mathcal E} \leq t$, where $2t + 1 \leq \delta$, we want to recover $\sigma$ from $r(X)$.
 
 \begin{theorem}
     Suppose $\deg \sigma = \abs{\mathcal E} \leq t$ where $2t + 1 \leq \delta$.
-    Then $\sigma(X)$ is the unique polynomial in $K[X]$ of least degree s.t.
+    Then $\sigma(X)$ is the \underline{unique} polynomial in $K[X]$ of least degree s.t.
     \begin{enumerate}
         \item $\sigma(0) = 1$;
-        \item $\sigma(X) \sum_{j=1}^{2t} r(\alpha^j) X^j = \omega(X)$ mod $X^{2t+1}$ for some $\omega \in K[X]$ of degree at most $t$.
+        \item $\sigma(X) \sum_{j=1}^{2t} r(\alpha^j) X^j = \omega(X)$ mod $X^{2t+1}$ for some $\omega(W) \in K[X]$ of degree at most $t$.
     \end{enumerate}
 \end{theorem}
 
@@ -664,10 +667,10 @@ Assuming that $\deg \sigma = \abs{\mathcal E}$, where $2t + 1 \leq \delta$, we m
     Define $\omega(X) = -X\sigma'(X)$, called the \vocab{error co-locator}.
     Hence,
     \begin{align*}
-        \omega(X) = \sum_{i \in \mathcal E} \alpha^i X \prod_{j \neq i} (1 - \alpha^j X)
+        \omega(X) = \sum_{i \in \mathcal E} \alpha^i X \prod_{\substack{j \neq i \\ j \in \mathcal{E}}} (1 - \alpha^j X)
     \end{align*}
     This polynomial has $\deg \omega = \deg \sigma$.
-    Consider the ring $K\Brackets{X}$ of formal power series.
+    Consider the ring $K\Brackets{X} = \qty{\sum_{i=0}^{\infty} p_i X^i : p_i \in K}$ of formal power series.
     In this ring,
     \begin{align*}
         \frac{\omega(X)}{\sigma(X)} = \sum_{i \in \mathcal E} \frac{\alpha^i X}{1 - \alpha^i X} = \sum_{i \in \mathcal E} \sum_{j = 1}^\infty (\alpha^i X)^j = \sum_{j=1}^\infty X^j \sum_{i \in \mathcal E} (\alpha^j)^i = \sum_{j=1}^\infty e(\alpha^j) X^j
@@ -676,29 +679,63 @@ Assuming that $\deg \sigma = \abs{\mathcal E}$, where $2t + 1 \leq \delta$, we m
     By definition of $C$, we have $c(\alpha^j) = 0$ for all $1 \leq j \leq \delta - 1$.
     Hence $c(\alpha^j) = 0$ for $1 \leq j \leq 2t$.
     As $r = c + e$, $r(\alpha^j) = e(\alpha^j)$ for all $1 \leq j \leq 2t$, hence $\sigma(X) \sum_{j=1}^{2t} r(\alpha^j) X^j = \omega(X)$ mod $X^{2t+1}$.
-    This verifies (i) and (ii) for this choice of $\omega$, so $\deg \omega = \deg \sigma = \abs{\mathcal E} \leq t$.
+    This verifies (i) and (ii) for this choice of $\omega$.
+    $\omega(X) = -X\sigma'(X)$ so $\deg \omega = \deg \sigma = \abs{\mathcal E} \leq t$.
 
-    For uniqueness, suppose there exist $\widetilde \sigma, \widetilde \omega$ with the properties (i), (ii).
+    For uniqueness, suppose there exist $\widetilde \sigma, \widetilde \omega \in K[X]$ with the properties (i), (ii).
     WLOG, we can assume $\deg \widetilde \sigma \leq \deg \sigma$.
     $\sigma(X)$ has distinct nonzero roots, so $\omega(X) = -X\sigma'(X)$ is nonzero at these roots.
-    Hence $\sigma, \omega$ are coprime polynomials.
-    By property (ii), $\widetilde \sigma(X) \omega(X) = \sigma(X) \widetilde \omega(X)$ mod $X^{2t+1}$.
+    Hence $\sigma, \omega$ are coprime. \\
+    By (ii), $\widetilde \sigma(X) \omega(X) = \sigma(X) \widetilde \omega(X)$ mod $X^{2t+1}$.
     But the degrees of $\sigma, \widetilde \sigma, \omega, \widetilde \omega$ are at most $t$, so this congruence is an equality.
     But $\sigma(X)$ and $\omega(X)$ are coprime, so $\sigma \mid \widetilde \sigma$, but $\deg \widetilde \sigma \leq \deg \sigma$ by assumption, so $\widetilde \sigma = \lambda \sigma$ for some $\lambda \in K$.
-    By property (i), $\sigma(0) = \widetilde\sigma(0)$ hence $\lambda = 1$, giving $\widetilde \sigma = \sigma$.
+    By (i), $\sigma(0) = \widetilde\sigma(0)$ hence $\lambda = 1$, giving $\widetilde \sigma = \sigma$.
 \end{proof}
 
+\underline{Decoding Algorithm} \\
 Suppose that we receive $r(X)$ and wish to decode it.
 
+Recall $e(\alpha^j) = r(\alpha^j)$ for $j = 1, 2, \dots, 2t$.
 \begin{itemize}
-    \item Compute $\sum_{j=1}^{2t} r(\alpha^j) X^j$.
-    \item Set $\sigma(X) = 1 + \sigma_1 X + \dots + \sigma_t X^t$, and compute the coefficients of $X^i$ for $t + 1 \leq i \leq 2t$ to obtain linear equations for $\sigma_1, \dots, \sigma_t$, which are of the form $\sum_0^t \sigma_j r(\alpha^{i-j}) = 0$.
-    \item Then solve these polynomials over $K$, keeping solutions of least degree.
-    \item Compute $\mathcal E = \qty{i \mid \sigma(\alpha^{-i}) = 0}$, and check that $\abs{\mathcal E} = \deg \sigma$.
-    \item Set $e(X) = \sum_{i \in \mathcal E} X^i$, then $c(X) = r(X) + e(X)$, and check that $c$ is a codeword.
+    \item Set $\sigma(X) = \sigma_0 + \sigma_1 X + \dots + \sigma_t X^t$ and $\sigma(X)(r(\alpha) X + r(\alpha^2) X^2 \dots + r(\alpha^{2t})X^{2t} + e(\alpha^{2t + 1}) X^{2t + 1}) = \sum_{i=0}^{t} \omega_i x^i$.
+    \item Coeffs of $X^i$ for $t < i \leq 2i$ are $\sum_{j=0}^t \sigma_j r(\alpha^{i-j}) = 0$ which don't involve any of $e(\alpha^j)X^j$ for all $1 \leq j \leq 2t$.
+    \item So we obtain a system of linear equations
+    \begin{align*}
+        \begin{pmatrix}
+        r(\alpha^{t+1}) & r(\alpha^t) & \dots & r(\alpha) \\
+        r(\alpha^{t+2}) & r(\alpha^{t+1}) & \dots & r(\alpha^2) \\
+        \vdots &  &  &  \\
+        r(\alpha^{2t}) & r(\alpha^{2t-1}) & \dots & r(\alpha^{t})
+        \end{pmatrix}
+        \begin{pmatrix}\sigma_0 \\ \sigma_1 \\ \vdots\\ \sigma_t \end{pmatrix}
+        = 0
+    \end{align*}
+    \item So $\exists \sigma \neq 0$ in kernel.
+    This determines $\sigma(X)$, hence what the errors are that we need to correct.
+    % \item Then solve these polynomials over $K$, keeping solutions of least degree.
+    % \item Compute $\mathcal E = \qty{i : \sigma(\alpha^{-i}) = 0}$, and check that $\abs{\mathcal E} = \deg \sigma$.
+    % \item Set $e(X) = \sum_{i \in \mathcal E} X^i$, then $c(X) = r(X) + e(X)$, and check that $c$ is a codeword.
 \end{itemize}
 
+\begin{example}[Reed-Solomon]
+    If $\mathbb{F} = \mathbb{F}_q$, $n = q - 1$ this is \vocab{Reed-Solomon} code.
+    This is used in CDs.
+    There are two RS codes over $\mathbb{F}_{2^8}$ with $\delta = 5$ with length $n = 32$, $28$ respectively.
+    Error bursts caused by scratches on the CDs of about 4000 bits can be corrected.
+\end{example}
+
 \begin{example}
+    % Consider $n = 7$, the roots of $X^7 - 1$ over $\mathbb{F}_2$ form cyclic group of order $7$, so every root is primitive.
+    % $X^7 - 1 = (X + 1)(X^3 + X + 1)(X^3 + X^2 + 1)$ in irreducible form.
+    % Let $\alpha$ be a root of $X^3 + X + 1$.
+    % If $\alpha^7 = 1$, $(\alpha^2)^3 + (\alpha^2) + 1 = \alpha^6 (1 + \alpha^3 + \alpha) = 0$.
+    % So $\alpha^2$ also a root of $X^3 + X + 1$.
+    % Similarly $\alpha^4 = (\alpha^2)^2$ is also a root.
+    % These roots are distinct.
+    % \begin{align*}
+    %     \therefore X^3 + X + 1
+    % \end{align*}
+
     Consider $n = 7$, and $X^7 - 1 = (X + 1)(X^3 + X + 1)(X^3 + X^2 + 1)$ in $\mathbb F_2[X]$.
     Let $g(X) = X^3 + X + 1$, so $h(X) = (X + 1)(X^3 + X^2 + 1) = X^4 + X^2 + X + 1$.
     The parity check matrix is
