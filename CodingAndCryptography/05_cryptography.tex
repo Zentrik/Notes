@@ -2,52 +2,83 @@
 
 \subsection{Cryptosystems}
 We want to modify a message s.t. it becomes unintelligible to an eavesdropper Eve.
-Certain secret information is shared between two participants Alice and Bob, called the \vocab{key}, chosen from a set of possible keys $\mathcal K$.
+Certain (secret) information is shared between two participants Alice and Bob, called the \vocab{key}, chosen from a set of possible keys $\mathcal K$.
 The unencrypted message is called the \vocab{plaintext}, which lies in a set $\mathcal M$, and the encrypted message is called the \vocab{ciphertext}, and lies in a set $\mathcal C$.
 A \vocab{cryptosystem} consists of $(\mathcal K, \mathcal M, \mathcal C)$ together with the \vocab{encryption} function $e \colon \mathcal M \times \mathcal K \to \mathcal C$ and \vocab{decryption} function $d \colon \mathcal C \times \mathcal K \to \mathcal M$.
 These maps have the property that $d(e(m, k), k) = m$ for all $m \in \mathcal M, k \in \mathcal K$.
+
 \begin{example}
     Suppose $\mathcal M = \mathcal C = \qty{A, B, \dots, Z}^\star = \Sigma^\star$.
-    The \vocab{simple substitution cipher} defines $\mathcal K$ to be the set of permutations of $\Sigma$.
-    To encrypt a message, each letter of plaintext is replaced with its image under a chosen permutation $\pi \in \mathcal K$.
+    \begin{itemize}
+        \item The \vocab{simple substitution cipher} defines $\mathcal K$ to be the set of permutations of $\Sigma$.
+        To encrypt a message, each letter of plaintext is replaced with its image under a chosen permutation $\pi \in \mathcal K$.
+    \end{itemize}
+
 
     The \vocab{Vigen\`ere cipher} has $\mathcal K = \Sigma^d$ for some $d$.
     We identify $\Sigma$ and $\faktor{\mathbb Z}{26\mathbb Z}$.
-    Write out the key repeatedly below the plaintext, and add each plaintext letter with the corresponding key letter to produce a letter of ciphertext.
-    For instance, encrypting the plaintext ATTACKATDAWN with the key LEMON gives ciphertext LXFOPVEFRNHR.
-    Note, for instance, that each occurrence of the letter A in the plaintext corresponds to a letter of the key in the ciphertext.
+    To encode a message we add it to the key $\operatorname{mod} 26$, repeating the key so that it is the correct length.
+    For instance, encrypting the plaintext ATTACKATDAWN with the key LEMON gives ciphertext ATTACKATDAWN + LEMONLEMONLE = LXFOPVEFRNHR.
+    % Note, for instance, that each occurrence of the letter A in the plaintext corresponds to a letter of the key in the ciphertext.
     If $d = 1$, this is the \vocab{Caesar cipher}.
 \end{example}
 
 \subsection{Breaking cryptosystems}
-Eve may know $e$ and $d$, as well as the probability distributions of $\mathcal K, \mathcal M$, but she does not know the key itself.
+Eve may know $e$ and $d$, as well as the prob distributions of $\mathcal K, \mathcal M$, but she does not know the key itself.
 She seeks to recover the plaintext from a given string of ciphertext.
 There are three possible attack levels.
+
 \begin{enumerate}
     \item (ciphertext-only) Eve only knows some piece of ciphertext.
     \item (known-plaintext) Eve knows a considerable length of plaintext and its corresponding ciphertext, but not the key.
     In other words, she knows $m$ and $e(m,k)$, but not $k$.
     \item (chosen plaintext) Eve can acquire the ciphertext for any plaintext message; she can generate $e(m,k)$ for any $m$.
 \end{enumerate}
+
 \begin{remark}
     The simple substitution cipher and Vigen\`ere cipher fail at Level 1 in English if the messages are sufficiently long, as we can perform frequency analysis.
     Even if the plaintext is suitably random, both examples can fail at Level 2.
     For modern applications, Level 3 security is desirable.
 \end{remark}
-Consider a cryptosystem $(\mathcal M, \mathcal K, \mathcal C)$.
+
+Consider a cryptosystem $(\mathcal K, \mathcal M, \mathcal C)$.
 We model the keys and messages as independent r.v.s $K, M$ taking values in $\mathcal K, \mathcal M$.
-The ciphertext r.v. is $C = e(K,M) \in \mathcal C$.
-\begin{definition}
+The ciphertext r.v. is $C = e(M, K) \in \mathcal C$.
+
+\begin{definition}[Perfect Accuracy]
     A cryptosystem $(\mathcal M, \mathcal K, \mathcal C)$ has \vocab{perfect secrecy} if $H(M \mid C) = H(M)$, or equivalently, $M$ and $C$ are independent, or $I(M;C) = 0$.
 \end{definition}
-One can show that perfect secrecy implies that $\abs{\mathcal K} \geq \abs{\mathcal M}$.
-\begin{definition}
+
+\begin{lemma}
+    Perfect secrecy $\implies \abs{\mathcal K} \geq \abs{\mathcal M}$
+\end{lemma}
+
+\begin{proof}
+    We need to prove that there must be at least as many possible keys as there are possible plaintext messages.
+    ``Possible'' means the prob of being chosen is $> 0$.
+
+    Fix message $m_0 \in \mathcal{M}$ and a key $k_0 \in K$, both with prob $> 0$.
+    Then $c_0 = e(m_0, k_0)$ has prob $> 0$. \\
+    For any possible message $m \in \mathcal{M}$,
+    \begin{align*}
+        \mathbb{P}(C = c_0 \mid M = m) = \mathbb{P}(C = c_0) > 0.
+    \end{align*}
+    So for each $m \in \mathcal{M}$ $\exists \; k \in \mathcal{K}$ s.t. $e(m, k) = c_0$.
+    Thus $\abs{\mathcal{K}} \geq \abs{\mathcal{M}}$.
+\end{proof}
+
+\begin{definition}[Message Equivocation]
     The \vocab{message equivocation} is $H(M \mid C)$.
+\end{definition}
+
+\begin{definition}[Key Equivocation]
     The \vocab{key equivocation} is $H(K \mid C)$.
 \end{definition}
+
 \begin{lemma}
     $H(M \mid C) \leq H(K \mid C)$.
 \end{lemma}
+
 \begin{proof}
     Note that $M = d(C,K)$, hence $H(M \mid C, K) = 0$.
     Therefore, $H(C,K) = H(M,C,K)$.
@@ -57,28 +88,31 @@ One can show that perfect secrecy implies that $\abs{\mathcal K} \geq \abs{\math
         &= H(M,C,K) - H(M \mid K,C) - H(C) \\
         &= H(M,K,C) - H(C) \\
         &= H(K \mid M,C) + H(M,C) - H(C) \\
-        &= H(K \mid M, C) + H(M \mid C)
+        &= \underbracket{H(K \mid M, C)}_{\geq 0} + H(M \mid C)
     \end{align*}
     Hence $H(K \mid C) \geq H(M \mid C)$.
 \end{proof}
+
 Let $\mathcal M = \mathcal C = \mathcal A$, and suppose we send $n$ messages modelled as $M^{(n)} = (M_1, \dots, M_n)$ encrypted as $C^{(n)} = (C_1, \dots, C_n)$ using the same key $K$.
-\begin{definition}
+
+\begin{definition}[Unicity Distance]
     The \vocab{unicity distance} is the least $n$ s.t. $H\qty(K \mid C^{(n)}) = 0$; it is the smallest number of encrypted messages required to uniquely determine the key.
 \end{definition}
+
 Now,
 \begin{align*}
     H\qty(K \mid C^{(n)}) &= H\qty(K, C^{(n)}) - H\qty(C^{(n)}) \\
     &= H\qty(K, M^{(n)}, C^{(n)}) - H\qty(C^{(n)}) \\
     &= H\qty(K, M^{(n)}) - H\qty(C^{(n)}) \\
-    &= H(K) + H\qty(M^{(n)}) - H\qty(C^{(n)})
+    &= H(K) + H\qty(M^{(n)}) - H\qty(C^{(n)}) \quad \text{as $K, M^{(n)}$ are independent.}
 \end{align*}
-as $K, M^{(n)}$ are independent.
 We make the following assumptions.
 \begin{enumerate}
     \item All keys are equally likely, so $H(K) = \log \abs{\mathcal K}$.
-    \item $H\qty(M^{(n)}) \approx nH$ for some constant $H$ and sufficiently large $n$.
-    \item All sequences of ciphertext are equally likely, so $H\qty(C^{(n)}) = n \log \abs{\mathcal A}$.
+    \item $H\qty(M^{(n)}) \approx nH$ for some constant $H$ and sufficiently large $n$ (true for many sources, including Bernoulli sources).
+    \item All sequences of ciphertext are equally likely, so $H\qty(C^{(n)}) = n \log \abs{\mathcal A}$. Good cryptosystems satisfy this.
 \end{enumerate}
+
 Hence,
 \begin{align*}
     H\qty(K \mid C^{(n)}) = \log \abs{\mathcal K} + nH - n \log \abs{\mathcal A}
@@ -92,74 +126,94 @@ Recall that $0 \leq H \leq \log \abs{\mathcal A}$.
 To make the unicity distance large, we can make the number of keys large, or use a message source with little redundancy.
 
 \subsection{One-time pad}
-Consider streams in $\mathbb F_2$ representing the plaintext $p_0, p_1, \dots$, the key stream $k_0, k_1, \dots$, and the ciphertext $z_0, z_1, \dots$ where $z_n = p_n + k_n$.
-\begin{definition}
-    A \vocab{one-time pad} is a cryptosystem where $k$ is generated randomly; the $k_i$ are independent and take values of 0 or 1 with probability $\frac{1}{2}$.
+Consider streams (sequences) in $\mathbb F_2$ representing the plaintext $p_0, p_1, \dots$, the key stream $k_0, k_1, \dots$, and the ciphertext $z_0, z_1, \dots$ where $z_n = p_n + k_n$.
+
+\begin{definition}[One-Time Pad]
+    A \vocab{one-time pad} is a cryptosystem where $k$ is generated randomly; the $k_i$ are iid uniform on $0, 1$.
 \end{definition}
-$z = p + k$ is now a stream of iid r.v.s taking values of 0 or 1 with probability $\frac{1}{2}$.
+
+$z = p + k$ is now a stream of iid r.v.s taking values of 0 or 1 with prob $\frac{1}{2}$.
 Hence, without the key stream, deciphering is impossible, so the unicity distance is infinite.
-One can show that a one-time pad has perfect secrecy.
+
+\begin{lemma}
+    A one-time pad has perfect secrecy
+\end{lemma}
+
+\begin{proof}
+    $\mathbb{P}(M = m, C = c) = \mathbb{P}(M = m, K = c - m) = \mathbb{P}(M = m) \mathbb{P}(K = c - m) = \mathbb{P}(M = m) \frac{1}{2^n}$ for a message of length $n$ and $c - m$ is $\operatorname{mod} 2$.
+    So $M, C$ independent.
+\end{proof}
 
 In order to effectively use a one-time pad, we need to generate a random key stream.
 We then need to share the key stream to the recipient, which is exactly the initial problem.
-In most applications, the one-time pad is not practical.
-Instead, we share an initial fill $k_0, \dots, k_{d-1}$ to be used in a shared feedback shift register of length $d$ to generate $k$.
+In most applications, the one-time pad is not practical. \\
+Instead, we share an initial fill $k_0, \dots, k_{d-1}$ to be used in a shared FSR of length $d$ to generate $k$.
 We then apply the following result.
-\begin{lemma}
-    Let $x_0, x_1, \dots$ be a stream in $\mathbb F_2$ produced by a feedback shift register of length $d$.
-    Then there exist $M, N \leq 2^d$ s.t. $x_{N+r} = x_{r}$ for all $r \geq M$.
+
+\begin{lemma} \label{17.2}
+    Let $x_0, x_1, \dots$ be a stream in $\mathbb F_2$ produced by a FSR of length $d$.
+    Then $\exists \; M, N \leq 2^d$ s.t. $x_{N+r} = x_{r} \ \forall \; r \geq M$.
 \end{lemma}
+
 \begin{proof}
     Let the register be $f \colon \mathbb F_2^d \to \mathbb F_2^d$, and let $v_i = (x_i, \dots, x_{i+d-1})$.
     Then for all $i$, we have $f(v_i) = v_{i+1}$.
-    Since $\abs{\mathbb F_2^d} = 2^d$, the tuples $v_0, v_1, \dots, v_{2^d}$ cannot all be distinct.
-    Let $a < b \leq 2^d$ s.t. $v_a = v_b$.
-    Let $M = a$ and $N = b - a$, so $v_M = v_{M+N}$ so by induction we have $v_r = v_{r+N}$ for all $r \geq M$.
+    Since $\abs{\mathbb F_2^d} = 2^d$, the vectors $v_0, v_1, \dots, v_{2^d}$ cannot all be distinct.
+    So $\exists \; 0 \leq a < b \leq 2^d$ s.t. $v_a = v_b$.
+    Let $M = a$ and $N = b - a$, so $v_M = v_{M+N}$ so by induction\footnote{By applying $f$.} we have $v_r = v_{r+N}$ for all $r \geq M$.
 \end{proof}
-\begin{remark}
-    The maximum period of a feedback shift register of length $d$ is $2^d$.
-    For a linear feedback shift register, the maximum period is $2^d - 1$; this result is shown on the fourth example sheet.
 
-    Stream ciphers using linear feedback shift registers fail at level 2 due to the Berlekamp--Massey method.
-    However, this cryptosystem is cheap, fast, and easy to use.
-    Encryption and decryption can be performed on-the-fly, without needing the entire codeword first, and it is error-tolerant.
+\begin{remark} ~
+    \begin{itemize}
+        \item The maximum period of a FSR of length $d$ is $2^d$.
+        \item For a LFSR, the maximum period is $2^d - 1$.
+        Indeed the bound in \cref{17.2} is improved by $1$ (Sheet 4).
+        \item Stream ciphers using LFSR fail at level 2 due to the Berlekamp--Massey method.
+        \item Why should we use this cryptosystem?
+        \begin{itemize}
+            \item It's cheap, fast, and easy to use.
+            \item Encryption and decryption can be performed on-the-fly, without needing the entire codeword first.
+            \item Error tolerant.
+        \end{itemize}
+    \end{itemize}
 \end{remark}
-Recall that the stream produced by a linear feedback shift register is given by
-\begin{align*}
-    x_n = \sum_{i=1}^d a_{d-i} x_{n-i}
-\end{align*}
-for all $n \geq d$, and has auxiliary polynomial
-\begin{align*}
-    P(X) = X^d + a_{d-1}X^{d-1} + \dots + a_0
-\end{align*}
-with $a_d = 1$.
-The solutions to the recursion relations are linear combinations of powers of roots of $P$.
-Over $\mathbb C$, the general solution is a linear combination of $\alpha^n, n\alpha^n, \dots, n^{t-1} \alpha^n$ where $\alpha$ is a root of $P(X)$ with multiplicity $t$.
 
-As $n^2 = n$ in $\mathbb F_2$, we cannot use this method directly.
-First, we must work in a splitting field $K$ of $P$, a field containing $\mathbb F_2$ in which $P$ is expressible as a product of linear factors.
-In addition, we replace the $n^i \alpha^n$ term with $\binom{n}{i} \alpha^n$.
-The general solution is now a linear combination of these terms in $K$.
+% Recall that the stream produced by a LFSR is given by
+% \begin{align*}
+%     x_n = \sum_{i=1}^d a_{d-i} x_{n-i}
+% \end{align*}
+% for all $n \geq d$, and has auxiliary polynomial
+% \begin{align*}
+%     P(X) = X^d + a_{d-1}X^{d-1} + \dots + a_0
+% \end{align*}
+% with $a_d = 1$.
+% The solutions to the recursion relations are linear combinations of powers of roots of $P$.
+% Over $\mathbb C$, the general solution is a linear combination of $\alpha^n, n\alpha^n, \dots, n^{t-1} \alpha^n$ where $\alpha$ is a root of $P(X)$ with multiplicity $t$.
+
+% As $n^2 = n$ in $\mathbb F_2$, we cannot use this method directly.
+% First, we must work in a splitting field $K$ of $P$, a field containing $\mathbb F_2$ in which $P$ is expressible as a product of linear factors.
+% In addition, we replace the $n^i \alpha^n$ term with $\binom{n}{i} \alpha^n$.
+% The general solution is now a linear combination of these terms in $K$.
 
 We can also generate new key streams from old ones.
 \begin{lemma}
-    Let $(x_n)$, $(y_n)$ be outputs from linear feedback shift registers of length $M, N$ respectively.
+    Let $(x_n)$, $(y_n)$ be outputs from LFSRs of length $M, N$ respectively.
     Then,
     \begin{enumerate}
-        \item the sequence $(x_n + y_n)$ is the output of a linear feedback shift register of length $M + N$;
-        \item the sequence $(x_n y_n)$ is the output of a linear feedback shift register of length $MN$.
+        \item the sequence $(x_n + y_n)$ is the output of a LFSR of length $M + N$;
+        \item the sequence $(x_n y_n)$ is the output of a LFSR of length $MN$.
     \end{enumerate}
 \end{lemma}
-The following proof is non-examinable.
-\begin{proof}
+
+\begin{proof}[Proof (Not Lectured)]
     Assume for simplicity that the auxiliary polynomials $P(X), Q(X)$ each have distinct roots $\alpha_1, \alpha_M$ and $\beta_1, \dots, \beta_N$ in a field $K$ extending $\mathbb F_2$.
     Then $x_n = \sum_{i=1}^M \lambda_i \alpha_i^n$ and $y_n = \sum_{i=1}^N \mu_j \beta_j^n$ where $\lambda_i, \mu_j \in K$.
-    Now, $x_n + y_n = \sum_{i=1}^M \lambda_i \alpha_i^n \sum_{i=1}^N \mu_j \beta_j^n$ is produced by a linear feedback shift register with auxiliary polynomial $P(X) Q(X)$.
-    For the second part, $x_n y_n = \sum_{i=1}^M \sum_{j=1}^n \lambda_i \mu_j (\alpha_i \beta_j)^n$ is the output of a linear feedback shift register with auxiliary polynomial $\prod_{i=1}^N \prod_{j=1}^M (X - \alpha_i \beta_j)$.
+    Now, $x_n + y_n = \sum_{i=1}^M \lambda_i \alpha_i^n \sum_{i=1}^N \mu_j \beta_j^n$ is produced by a LFSR with auxiliary polynomial $P(X) Q(X)$.
+    For the second part, $x_n y_n = \sum_{i=1}^M \sum_{j=1}^n \lambda_i \mu_j (\alpha_i \beta_j)^n$ is the output of a LFSR with auxiliary polynomial $\prod_{i=1}^N \prod_{j=1}^M (X - \alpha_i \beta_j)$.
 \end{proof}
-Adding outputs of linear feedback shift registers is no more economical than producing the same string with a single linear feedback shift register.
-Muliplying streams does increase the effective length of the linear feedback shift register, but $x_n y_n = 0$ when either $x_n$ or $y_n$ are zero, so we gain little extra data.
-Nonlinear feedback shift registers are in general hard to analyse; in particular, an eavesdropper may understand the feedback shift register better than Alice and Bob.
+Adding outputs of LFSRs is no more economical than producing the same string with a single LFSR.
+Muliplying streams does increase the effective length of the LFSR, but $x_n y_n = 0$ when either $x_n$ or $y_n$ are zero, so we gain little extra data.
+NonLFSRs are in general hard to analyse; in particular, an eavesdropper may understand the FSR better than Alice and Bob.
 
 \subsection{Asymmetric ciphers}
 Stream ciphers are examples of symmetric cryptosystems.
@@ -255,9 +309,9 @@ Messages should include enough redundancy to uniquely determine which of these f
     If we can factorise $N$ as $pq$, we have seen that we can decrypt messages.
     Conversely, suppose we can break the cryptosystem, so we have an algorithm to find square roots modulo $N$.
     Choose $x$ mod $N$ at random, and use the algorithm to find $y$ s.t. $y^2 \equiv x^2$ mod $N$.
-    With probability $\frac{1}{2}$, $x \neq \pm y$ mod $N$.
+    With prob $\frac{1}{2}$, $x \neq \pm y$ mod $N$.
     Then, $(N, x-y)$ is a nontrivial factor of $N$.
-    If this fails, choose another $x$, and repeat until the probability of failure $\qty(\frac{1}{2})^r$ is acceptably low.
+    If this fails, choose another $x$, and repeat until the prob of failure $\qty(\frac{1}{2})^r$ is acceptably low.
 \end{proof}
 
 \subsection{RSA cryptosystem}
@@ -294,7 +348,7 @@ By Euclid's algorithm, there exist $d, k$ s.t. $de - k\varphi(N) = 1$; $d$ is ca
 
 The public key is $(N, e)$, and we encrypt $m \in \mathcal M$ as $c \equiv m^e$ mod $N$.
 The private key is $(N, d)$, and we decrypt $c \in \mathcal C$ as $x \equiv c^d$ mod $N$.
-By the Fermat--Euler theorem, $x \equiv m^{de} \equiv m^{1+k\varphi(N)} \equiv m$ mod $N$, noting that the probability that $(m, N) \neq 1$ is small enough to be ignored.
+By the Fermat--Euler theorem, $x \equiv m^{de} \equiv m^{1+k\varphi(N)} \equiv m$ mod $N$, noting that the prob that $(m, N) \neq 1$ is small enough to be ignored.
 Hence, the decrypting function is inverse to the encrypting function.
 %
 % Suppose that Eve intercepts the ciphertext $c$, and wants to find the plaintext given the public key $(N, e)$.
@@ -307,8 +361,8 @@ Hence, the decrypting function is inverse to the encrypting function.
     Conversely, suppose there is an algorithm to find $d$ given $N$ and $e$.
     Then $de \equiv 1$ mod $\varphi(N)$.
     Taking $m = de-1$ in the proof of part (i) of the theorem above, we can factorise $N$.
-    If this fails, repeat until the probability of failure is acceptably low.
-    After $r$ such random choices, we find a factor of $N$ with probability $1 - \qty(\frac{1}{2})^r$.
+    If this fails, repeat until the prob of failure is acceptably low.
+    After $r$ such random choices, we find a factor of $N$ with prob $1 - \qty(\frac{1}{2})^r$.
 \end{proof}
 We now prove part (ii) of the above theorem.
 \begin{proof}
@@ -536,7 +590,7 @@ Under the assumption that the cipher is secure, Bob cannot decipher the message.
 To reveal her choice, Alice sends her private key to Bob, who can then use it to decipher the message $d_A(c) = d_A(e_A(m)) = m$.
 He can also check that $d_A, e_A$ are inverse functions and thus ensure that Alice sent the correct private key.
 
-Alternatively, suppose that Alice has two ways to communicate to Bob: a clear channel which transmits with no errors, and a binary symmetric channel with error probability $p$.
+Alternatively, suppose that Alice has two ways to communicate to Bob: a clear channel which transmits with no errors, and a binary symmetric channel with error prob $p$.
 Suppose $0 < p < \frac{1}{2}$, and the noisy channel corrupts bits independent of any action of Alice or Bob, so neither can affect its behaviour.
 Bob publishes a binary linear code $C$ of length $N$ and minimum distance $d$, and Alice publishes a random non-trivial linear map $\theta \colon C \to \mathbb F_2$.
 To send a bit $m \in \mathbb F_2$, Alice chooses a random codeword $c \in C$ s.t. $\theta(c) = m$, and sends $c$ to Bob via the noisy channel.
@@ -547,12 +601,12 @@ $N$ is chosen s.t. $Np \gg d$, so Bob cannot tell what the original codeword $c$
 To reveal, Alice sends $c$ to Bob using the clear channel.
 Bob can check that $d(c,r) \approx Np$; if so, he accepts the message.
 It is possible that many more or many fewer bits of $c$ were corrupted by the noisy channel, which may make Bob reject the message even if Alice correctly committed and revealed the message.
-$N, d$ should be chosen s.t. the probability of this occurring is negligible.
+$N, d$ should be chosen s.t. the prob of this occurring is negligible.
 
 We have shown that Bob cannot read Alice's guess until she reveals it.
 In addition, Alice cannot cheat by changing her guess, because she knows $c$ but not how it was corrupted by the noisy channel.
 All she knows is that the received message $r$ has distance approximately $Np$ from $c$.
-If she were to send $c' \neq c$, she must ensure that $d(r,c') \approx Np$, but the probability that this happens is small unless she chooses $c'$ very close to $c$.
+If she were to send $c' \neq c$, she must ensure that $d(r,c') \approx Np$, but the prob that this happens is small unless she chooses $c'$ very close to $c$.
 But any two distinct codewords have distance at least $d$, so she cannot cheat.
 
 \subsection{Secret sharing schemes}
