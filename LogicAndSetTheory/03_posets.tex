@@ -215,7 +215,7 @@ Not all order-preserving fcns have a fixed point, e.g. $f(x) = x + 1$ on $\mathb
     % It suffices to show $f(s)$ is an upper bound for $E$, then the result holds as $s$ is the least such upper bound.
     If $x \in E$, we know $x \leq s$, so $f(x) \leq f(s)$.
     Since $x \in E$, $x \leq f(x)$, so by transitivity $x \leq f(s)$.
-    Thus $f(s)$ an upper bound for $S$ so $s \leq f(s)$.
+    Thus $f(s)$ an upper bound for $E$ so $s \leq f(s)$.
 
     Now, we show $f(s) \leq s$.
     Since $s \leq f(s)$, we have $f(s) \leq f(f(s))$, i.e. $f(s) \in E$ thus $f(s) \leq s$.
@@ -304,7 +304,7 @@ One can view Zorn's lemma as a fixed point theorem on a fcn $f \colon X \to X$ w
         f(\lambda) &= u(\qty{f(\alpha) : \alpha < \lambda})' \text{ for $\lambda \neq 0$ limit}.
     \end{align*}
 
-    Any easy induction (on $\beta$ with $\alpha$ fixed) shows that $\forall \; \alpha < \beta$ (in $\gamma$), $f(\alpha) < f(\beta)$ (also shows that $\qty{f(\alpha) : \alpha < \beta}$ is a chain $\forall \; \beta < \gamma$).
+    An easy induction (on $\beta$ with $\alpha$ fixed) shows that $\forall \; \alpha < \beta$ (in $\gamma$), $f(\alpha) < f(\beta)$ (also shows that $\qty{f(\alpha) : \alpha < \beta}$ is a chain $\forall \; \beta < \gamma$).
 
     Hence $f$ is an injection, \Lightning \ defn of $\gamma$.
 \end{proof}
@@ -430,7 +430,7 @@ The axiom of choice was only used twice in the section on well-orderings: the fa
         A function $f : X \to X$, $X$ a poset, is \vocab{inflationary} if $x \leq f(x) \ \forall \; x \in X$.
     \end{definition}
 
-    \begin{theorem}[Bourbalei-Witt Fixed Point Theorem]
+    \begin{theorem}[Bourbaki-Witt Fixed Point Theorem]
         If $X$ is chain-complete and $f : X \to X$ is inflationary, then $f$ has a fixed point.
     \end{theorem}
 
@@ -457,7 +457,7 @@ The axiom of choice was only used twice in the section on well-orderings: the fa
     \end{proof}
 
     \begin{remark}
-        AC + Bourbalei-Witt $\implies$ ZL. Bourbalei-Witt is the ``choice-free'' part of $ZL$.
+        AC + Bourbaki-Witt $\implies$ ZL. Bourbaki-Witt is the ``choice-free'' part of $ZL$.
     \end{remark}
 
     \begin{proof}[Proof of remark]
@@ -467,7 +467,7 @@ The axiom of choice was only used twice in the section on well-orderings: the fa
         Assume $X$ has no maximal element.
         Fix a choice fcn $g : \mathcal{P}(X) \setminus \emptyset \to X$.
         Define $f : X \to X$, $f(x) = g(\qty{y \in X : x < y})$.
-        Then $x < f(x) \; \forall \; x \in X$. \Lightning \ of Bourbalei-Witt.
+        Then $x < f(x) \; \forall \; x \in X$. \Lightning \ of Bourbaki-Witt.
 
         \underline{Case 2}: Several case. \\
         We first prove that $\mathcal{C} = \qty{C \subseteq X : C \text{ is a chain}}$ has a maximal element.

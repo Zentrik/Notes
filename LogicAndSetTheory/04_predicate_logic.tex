@@ -235,7 +235,6 @@ Next interpret a formula $p$ with $FV(p) \subseteq \qty{x_1, \dots, x_n}$ as a s
 
 \begin{example}[Rings with $1$]
     $\Omega = \qty{0, 1, +, \cdot, -}$ with $\alpha(0) = \alpha(1) = 0, \alpha(+) = \alpha(\cdot) = 2, \alpha(-) = 1$ and $\Pi = \emptyset$.
-
     \begin{align*}
         T = \{
             &(\forall x) (\forall y) (\forall z) ((x + y) + z = x + (y + z)) \\
@@ -394,7 +393,9 @@ We define the following deduction rules.
     We show $\qty{x = y} \vdash (y = x)$.
     \begin{enumerate}
         \item $(\forall x) (\forall y) (x = y) \implies ((x = z) \implies (y = z))$ (A5)
-        \item $(x = y) \implies ((x = z) \implies (y = z))$ (A6 + MP twice)
+        \item $(x = y) \implies ((x = z) \implies (y = z))$ (A6 + MP twice)\footnote{Set $p = (\forall y) (x = y) \implies ((x = z) \implies (y = z))$ and $t = x$ so A6 gives $(\forall x) (\forall y) (x = y) \implies ((x = z) \implies (y = z)) \implies (\forall y) (x = y) \implies ((x = z) \implies (y = z))$.
+        Then by MP we get $(\forall y) (x = y) \implies ((x = z) \implies (y = z))$.
+        Then repeat.}
         \item $x = y$ (premise)
         \item $(x = z) \implies (y = z)$ (MP)
         \item $(\forall z) ((x = z) \implies (y = z))$ (Gen)
@@ -637,7 +638,7 @@ But $\qty{t_1 \vee t_2 \dots}$ is not a sentence.
     Consider $T' = T \cup \qty{\neg t_1, \neg t_2, \dots}$ where $t_n$ are as above.
     If $\neg t_i$, then the group has at least $i$ elements.
     Every finite subset of $T'$ has a model : $C_N$\footnote{Cyclic group of order $N$.} for some large $N$.
-    By compactness, $T'$ has a model \Lightning as this implies $T$ has at least $i$ elements for every $i$, so cannot be finite.
+    By compactness, $T'$ has a model \Lightning \ as this implies $T$ has at least $i$ elements for every $i$, so cannot be finite.
 \end{proof}
 
 \begin{corollary}
