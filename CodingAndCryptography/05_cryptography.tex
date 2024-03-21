@@ -225,24 +225,26 @@ In this case, there is also no key exchange problem, since the public key can be
 
 We base asymmetric cryptosystems on certain mathematical problems in number theory which are believed to be `hard', such as the following.
 \begin{enumerate}
-    \item Factoring.
+    \item \underline{Factoring}.
     Let $N = pq$ for $p, q$ large prime numbers.
     Given $N$, the task is to find $p$ and $q$.
-    \item Discrete logarithm problem.
-    Let $p$ be a large prime and $g$ be a primitive root mod $p$ (a generator of $\mathbb F_p^\star$).
+    \item \underline{Discrete logarithm problem}.
+    Let $p$ be a large prime and $g$ be a primitive root mod $p$ (a generator of $\mathbb F_p^\times$).
     Given $x$, we wish to find $a$ s.t. $x \equiv g^a$ mod $p$.
 \end{enumerate}
-\begin{definition}
+
+\begin{definition}[Polynomial Time]
     An algorithm runs in \vocab{polynomial time} if the number of operations needed to perform the algorithm is at most $c N^d$ where $N$ is the input size, and $c, d$ are constants.
 \end{definition}
+
 \begin{example}
     An algorithm for factoring $N$ has input size $\log_2 N$, roughly the number of bits in its binary expansion.
     Polynomial time algorithms include arithmetic operations on integers including the division algorithm, computation of greatest common divisors, and the Euclidean algorithm.
     We can also compute $x^\alpha$ mod $N$ in polynomial time using repeated squaring; this is called modular exponentiation.
     Primality testing can be performed in polynomial time.
 
-    Polynomial time algorithms are not known for examples (i) and (ii) above.
-    However, we have elementary methods for computing (i) and (ii) that take exponential time.
+    Polynomial time algorithms are not known for factoring and discrete logarithms.
+    However, we have elementary methods for computing them that take exponential time.
     If $N = pq$, dividing $N$ by successive primes up to $\sqrt{N}$ will find $p$ and $q$ but takes $O(\sqrt{N}) = O(2^{\frac{B}{2}})$ steps where $B = \log_2 N$.
 
     We describe the \vocab{baby-step, giant-step} algorithm for the discrete logarithm problem.
@@ -263,17 +265,20 @@ We base asymmetric cryptosystems on certain mathematical problems in number theo
 Recall that \vocab{Euler's totient function} is denoted $\varphi$, where $\varphi(n)$ is the number of integers less than $n$ which are coprime to $n$.
 Equivalently, $\varphi(n) = \abs{\qty(\faktor{\mathbb Z}{n\mathbb Z})^\times}$.
 By Lagrange's theorem, $a^{\varphi(N)} \equiv 1$ mod $N$ for each $a$ coprime to $N$; this result is sometimes known as the Fermat--Euler theorem.
-If $N = p$ is prime, $a^{p-1} \equiv 1$ mod $p$, which is Fermat's little theorem.
+If $N = p$ is prime, $a^p \equiv a$ mod $p$, which is Fermat's little theorem.
+
 \begin{lemma}
     Let $p = 4k - 1$ be a prime, and let $d \in \mathbb Z$.
-    If $x^2 \equiv d$ mod $p$ is soluble, one solution is $x \equiv d^k$ mod $p$.
+    If $x^2 \equiv d$ mod $p$ is solvable, one solution is $x \equiv d^k$ mod $p$.
 \end{lemma}
+
 \begin{proof}
     Suppose $x_0$ is a solution, so $x_0^2 \equiv d$ mod $p$.
     WLOG we can assume $x_0 \not\equiv 0$, or equivalently, $x_0 \nmid p$.
-    Then $x_0^2 \equiv d$ so $d^{2k-1} \equiv x_0^{2(2k-1)} \equiv x_0^{p-1} \equiv 1$.
+    Then $x_0^2 \equiv d$ so $d^{2k-1} \equiv x_0^{2(2k-1)} \equiv x_0^{p-1} \equiv 1$ by Fermat's little thm.
     Hence, $\qty(d^k)^2 \equiv d$.
 \end{proof}
+
 In the Rabin cryptosystem, the private key consists of two large distinct primes $p, q \equiv 3$ mod 4.
 The public key is $N = pq$.
 $\mathcal M = \mathcal C = \qty{1, \dots, N-1} = \mathbb Z_N^\times$.
@@ -283,28 +288,33 @@ Usually, we restrict our messages so that $(m, N) = 1$ and $m > \sqrt{N}$.
 Receiving ciphertext $c$, we can solve for $x_1, x_2$ s.t. $x_1^2 \equiv c$ mod $p$ and $x_2^2 \equiv c$ mod $q$ using the previous lemma.
 Then, applying the Chinese remainder theorem, we can find $x$ s.t. $x \equiv x_1$ mod $p$ and $x \equiv x_2$ mod $q$, hence $x^2 \equiv c$ mod $N$.
 Indeed, running the Euclidean algorithm on $p, q$ gives integers $r, s$ s.t. $rp + sq = 1$, then we can take $x = sqx_1 + rpx_2$.
-\begin{lemma}
+
+\begin{lemma} ~\vspace*{-1.5\baselineskip}
     \begin{enumerate}
         \item Let $p$ be an odd prime, and let $(d, p) = 1$.
-        Then $x^2 \equiv d$ mod $p$ has no solutions or exactly two solutions.
+        Then $x^2 \equiv d$ mod $p$ has no or exactly two solutions.
         \item Let $N = pq$ where $p, q$ are distinct odd primes, and let $(d, N) = 1$.
-        Then $x^2 \equiv d$ mod $N$ has no solutions or exactly four solutions.
+        Then $x^2 \equiv d$ mod $N$ has no or exactly four solutions.
     \end{enumerate}
 \end{lemma}
+
 \begin{proof}
-    \vocab{Part (i).}
+    \emph{Part (i).}
     $x^2 \equiv y^2$ mod $p$ iff $p \mid (x^2 - y^2) = (x-y)(x+y)$, so either $p \mid x-y$ or $p \mid x+y$, so $x = \pm y$.
 
-    \vocab{Part (ii).}
+    \emph{Part (ii).}
     If $x_0$ is a solution, then by the Chinese remainder theorem, there exist solutions $x$ with $x \equiv \pm x_0$ mod $p$ and $x \equiv \pm x_0$ mod $q$.
     This gives four solutions as required.
     By (i), these are the only possible solutions.
 \end{proof}
+
 Hence, to decrypt the Rabin cipher, we must find all four solutions to $x^2 \equiv c$ mod $N$.
 Messages should include enough redundancy to uniquely determine which of these four solutions is the intended plaintext.
+
 \begin{theorem}
     Breaking the Rabin cryptosystem is essentially as difficult as factoring $N$.
 \end{theorem}
+
 \begin{proof}
     If we can factorise $N$ as $pq$, we have seen that we can decrypt messages.
     Conversely, suppose we can break the cryptosystem, so we have an algorithm to find square roots modulo $N$.
@@ -321,16 +331,18 @@ Write $o_p(x)$ for the order of $x$ as an element of $\qty(\faktor{\mathbb Z}{p\
 Write $m = 2^a b$ where $a \geq 1, b$ odd.
 Let
 \begin{align*}
-    X = \qty{x \in \qty(\faktor{\mathbb Z}{N\mathbb Z})^\times \midd o_p(x^b) \neq o_q(x^b)}
+    X = \qty{x \in \qty(\faktor{\mathbb Z}{N\mathbb Z})^\times : o_p(x^b) \neq o_q(x^b)}
 \end{align*}
-\begin{theorem}
+
+\begin{theorem} ~\vspace*{-1.5\baselineskip}
     \begin{enumerate}
-        \item If $x \in X$, then there exists $0 \leq t < a$ s.t. $(x^{2^t b} - 1, N)$ is a nontrivial factor of $N$.
+        \item If $x \in X$, $\exists \; 0 \leq t < a$ s.t. $(x^{2^t b} - 1, N)$ is a nontrivial factor of $N$.
         \item $\abs{X} \geq \frac{1}{2} \abs{\qty(\faktor{\mathbb Z}{N\mathbb Z})^\times} = \frac{1}{2}(p-1)(q-1)$.
     \end{enumerate}
 \end{theorem}
+
 \begin{proof}
-    \vocab{Part (i).}
+    \emph{Part (1).}
     By the Fermat--Euler theorem, $x^{\varphi(N)} \equiv 1$ mod $N$.
     Hence $x^m \equiv 1$ mod $N$.
     But $m = 2^a b$, so setting $y = x^b$ mod $N$, we obtain $y^{2^a} \equiv 1$ mod $N$.
@@ -340,32 +352,9 @@ Let
     Then $y^{2^t} \equiv 1$ mod $p$, but $y^{2^t} \not\equiv 1$ mod $q$.
     So $(y^{2^t} - 1, N) = p$ as required.
 \end{proof}
-The proof of part (ii) will be seen later.
 
-In the RSA cryptosystem, the private key consists of large distinct primes $p, q$ chosen at random.
-Let $N = pq$, and choose the \vocab{encrypting exponent} $e$ randomly s.t. $(e, \varphi(N)) = 1$, for instance taking $e$ prime larger than $p, q$.
-By Euclid's algorithm, there exist $d, k$ s.t. $de - k\varphi(N) = 1$; $d$ is called the \vocab{decrypting exponent}.
-
-The public key is $(N, e)$, and we encrypt $m \in \mathcal M$ as $c \equiv m^e$ mod $N$.
-The private key is $(N, d)$, and we decrypt $c \in \mathcal C$ as $x \equiv c^d$ mod $N$.
-By the Fermat--Euler theorem, $x \equiv m^{de} \equiv m^{1+k\varphi(N)} \equiv m$ mod $N$, noting that the prob that $(m, N) \neq 1$ is small enough to be ignored.
-Hence, the decrypting function is inverse to the encrypting function.
-%
-% Suppose that Eve intercepts the ciphertext $c$, and wants to find the plaintext given the public key $(N, e)$.
-% This problem is essentially as difficult as finding the factors $p$ and $q$ of $N$ so that $\varphi(N) = (p-1)(q-1)$ can be computed.
-\begin{corollary}
-    Finding the RSA private key $(N, d)$ is essentially as difficult as factoring $N$.
-\end{corollary}
-\begin{proof}
-    We have already shown that if we can factorise $N$, we can find $d$.
-    Conversely, suppose there is an algorithm to find $d$ given $N$ and $e$.
-    Then $de \equiv 1$ mod $\varphi(N)$.
-    Taking $m = de-1$ in the proof of part (i) of the theorem above, we can factorise $N$.
-    If this fails, repeat until the prob of failure is acceptably low.
-    After $r$ such random choices, we find a factor of $N$ with prob $1 - \qty(\frac{1}{2})^r$.
-\end{proof}
-We now prove part (ii) of the above theorem.
-\begin{proof}
+\begin{proof}[Proof (Non Examinable)]
+    \emph{Part (2).}
     The Chinese remainder theorem provides a multiplicative group isomorphism
     \begin{align*}
         \qty(\faktor{\mathbb Z}{N\mathbb Z})^\times \to \qty(\faktor{\mathbb Z}{p\mathbb Z})^\times \times \qty(\faktor{\mathbb Z}{q\mathbb Z})^\times
@@ -399,18 +388,51 @@ We now prove part (ii) of the above theorem.
         \abs{X} = \abs{\qty{(x,y) \in \qty(\faktor{\mathbb Z}{p\mathbb Z})^\times \times \qty(\faktor{\mathbb Z}{q\mathbb Z})^\times \midd o_p(x^b) \neq o_q(x^b)}} \geq \frac{1}{2}(p-1)(q-1) = \frac{1}{2}\varphi(N)
     \end{align*}
 \end{proof}
+
+To factorise $N$ when $x \in X$, compute $(y^{2^t}-1, N)$ for $0 \leq t < a$.
+We know it is $p$ for one of these choices, and hence obtain a factor of $N$.
+
+\subsection{The RSA Cryptosystem}
+
+In the RSA cryptosystem, the private key consists of large distinct primes $p, q$ chosen at random.
+Let $N = pq$, and choose the \vocab{encrypting exponent} $e$ randomly s.t. $(e, \varphi(N)) = 1$, for instance taking $e$ prime larger than $p, q$.
+By Euclid's algorithm, there exist $d, k$ s.t. $de - k\varphi(N) = 1$; $d$ is called the \vocab{decrypting exponent}.
+
+The public key is $(N, e)$, and we encrypt $m \in \mathcal M$ as $c \equiv m^e$ mod $N$.
+The private key is $(N, d)$, and we decrypt $c \in \mathcal C$ as $x \equiv c^d$ mod $N$.
+By the Fermat--Euler theorem, $x \equiv m^{de} \equiv m^{1+k\varphi(N)} \equiv m$ mod $N$, noting that the prob that $(m, N) \neq 1$ is small enough to be ignored.
+Hence, the decrypting function is inverse to the encrypting function.
+%
+% Suppose that Eve intercepts the ciphertext $c$, and wants to find the plaintext given the public key $(N, e)$.
+% This problem is essentially as difficult as finding the factors $p$ and $q$ of $N$ so that $\varphi(N) = (p-1)(q-1)$ can be computed.
+\begin{corollary}
+    Finding the RSA private key, $d$, from the public key $(N, e)$ is essentially as difficult as factoring $N$.
+\end{corollary}
+
+\begin{proof}
+    We have already shown that if we can factorise $N$, we can find $d$.
+    Conversely, suppose there is an algorithm to find $d$ given $N$ and $e$.
+    Then $de \equiv 1$ mod $\varphi(N)$.
+    Taking $m = de-1$ in the proof of part (1) of the theorem above, we can factorise $N$ if we have a $x \in X$.
+    A random $x \in \qty(\faktor{\mathbb{Z}}{n \mathbb{Z}})^\times$ will lie in $X$ with prob $\geq \frac{1}{2}$.
+    Thus after $r$ such random choices, we find a factor of $N$ with prob $\geq 1 - \qty(\frac{1}{2})^r$.
+\end{proof}
+
 \begin{remark}
     We have shown that finding $(N, d)$ from the public key $(N, e)$ is as hard as factoring $N$.
     It is unknown whether decrypting messages sent via RSA is as hard as factoring.
 
     RSA avoids the issue of needing to share keys, but it is slow.
     Symmetric ciphers are often faster.
+    So we are still interested in sharing keys.
 \end{remark}
+
+Shamir proposed:
 \begin{example}[Shamir's padlock example]
     Let $\mathcal A = \mathbb Z_p$.
-    Alice chooses $a \in \mathbb Z_{p-1}^\star$ and computes $g^a$.
-    She finds $a'$ s.t. $aa' = 1$ mod $p-1$.
-    Bob chooses $b \in \mathbb Z_{p-1}^\star$ and computes $g^b$.
+    Alice chooses $a \in \mathbb Z_{p-1}^\times$ and computes $g^a$.
+    She finds $a'$ s.t. $aa' = 1$ mod $p-1$ by Euclid.
+    Bob chooses $b \in \mathbb Z_{p-1}^\times$ and computes $g^b$.
     He similarly finds $b'$ s.t. $bb' = 1$ mod $p-1$.
 
     Let $m$ be a message in $\mathbb Z_p$.
@@ -430,6 +452,7 @@ We now prove part (ii) of the above theorem.
         \end{tikzcd}
     \]
 \end{example}
+This suggests:
 \begin{example}[Diffie--Hellman key exchange]
     Alice and Bob wish to agree on a secret key $k$.
     Let $p$ be a large prime, and $g$ a primitive root mod $p$.
@@ -443,33 +466,40 @@ We now prove part (ii) of the above theorem.
 \subsection{Secrecy and attacks}
 Consider a message $m$ sent by Alice to Bob.
 Here are some possible aims that the participants may have in communication.
+
 \begin{enumerate}
     \item \vocab{Secrecy}: Alice and Bob can be sure that no third party can read the message.
     \item \vocab{Integrity}: Alice and Bob can be sure that no third party can alter the message.
     \item \vocab{Authenticity}: Bob can be sure that Alice sent the message.
     \item \vocab{Non-repudiation}: Bob can prove to a third party that Alice sent the message.
 \end{enumerate}
-\begin{example}[authenticity using RSA]
+
+\begin{example}[Authenticity using RSA]
     Suppose Alice uses a private key $(N, d)$ to encrypt $m$.
     Anyone can decrypt $m$ using the public key $(N, e)$ as $(m^d)^e = (m^e)^d = m$, but they cannot forge a message sent by Alice.
     Suppose Bob picks a random message $m$ and sends it to Alice; if Bob then receives a message back from Alice which after decryption ends in $m$, then he can be sure it comes from Alice.
 \end{example}
+
 Signature schemes preserve integrity and non-repudiation.
 They also prevent tampering in the following sense.
-\begin{example}[homomorphism attack]
+
+\begin{example}[Homomorphism Attack]
     Suppose a bank sends messages of the form $(M_1, M_2)$ where $M_1$ represents the client's name and $M_2$ represents an amount of money to be transferred into their account.
     Suppose that messages are encoded using RSA as $(Z_1, Z_2) = (M_1^e, M_2^e)$, where all calculations are performed modulo $N$.
     A client $C$ transfers $\pounds 100$ to their account, and observes the encrypted message $(Z_1, Z_2)$.
     Then, sending $(Z_1, Z_2^3)$ to the bank, $C$ becomes a millionaire without breaking RSA.
     Alternatively, one could simply send $(Z_1, Z_2)$ to the bank many times, gaining more money each time; this particular attack is defeated by timestamping the messages.
 \end{example}
-\begin{definition}
+
+\begin{definition}[Signed]
     A message $m$ is \vocab{signed} as $(m, s)$ where the \vocab{signature} $s = s(m,k)$ is a function of $m$ and the private key $k$.
 \end{definition}
+
 The recipient can check the signature using the public key to verify authenticity of the message.
 The signature function or \vocab{trapdoor} function $s \colon \mathcal M \times \mathcal K \to \mathcal S$ is designed s.t. without knowledge of the private key, one cannot sign messages, but anyone can check whether a signature is valid.
 Note that the signature is associated to each message, not to each sender.
-\begin{example}[signatures using RSA]
+
+\begin{example}[Signatures using RSA]
     Suppose Alice has a private key $(N, d)$, and broadcasts a public key $(N, e)$.
     She signs a message $m$ as $(m, s)$ where $s = m^d \text{ mod } N$.
     The signature is verified by checking $s^e = m$.
@@ -484,7 +514,7 @@ Note that the signature is associated to each message, not to each sender.
     Examples of hash functions include MD5 and the SHA family.
 \end{example}
 
-\subsection{Elgamal signature scheme}
+\subsection{Elgamal Signature Scheme}
 Alice chooses a large prime $p$ and a random integer $u$ with $1 < u < p$.
 Let $g$ be a primitive root mod $p$.
 The public key is $p, g, y = g^u \text{ mod } p$.
@@ -497,24 +527,27 @@ She computes $r, s$ with $1 \leq r \leq p-1$ and $1 \leq s \leq p-2$ satisfying
     r \equiv g^k \mod p;\quad h(m) \equiv ur + ks \mod (p-1)
 \end{align*}
 Since $k$ is coprime to $p-1$, the congruence for $s$ always has a solution.
-Alice signs the message with the signature $(r, s)$.
+Alice signs the message $m$ with the signature $(r, s)$.
 Now,
 \begin{align*}
     g^{h(m)} \equiv g^{ur + ks} \equiv (g^u)^r (g^k)^s \equiv y^r r^s \mod p
 \end{align*}
 Bob accepts a signature if $g^{h(m)} \equiv y^r r^s$ mod $p$.
 To forge a signature, obvious attacks involve the discrete logarithm problem, finding $u$ from $y = g^u$.
+
 \begin{lemma}
     Let $a, b, m \in \mathbb N$ and consider the congruence $ax \equiv b$ mod $m$.
-    This has either no solutions or $\gcd(a,m)$ solutions for $x$ mod $m$.
+    This has either no or $\gcd(a,m)$ solutions for $x$ mod $m$.
 \end{lemma}
+
 \begin{proof}
     Let $d = \gcd(a,m)$.
     If $d \nmid b$, there is no solution.
     If $d \mid b$, we can rewrite the congruence as $\frac{a}{d} x \equiv \frac{b}{d}$ mod $\frac{m}{d}$.
-    Note that $\frac{a}{d}, \frac{m}{d}$ are coprime, so this congruence has a unique solution.
+    Note that $\frac{a}{d}, \frac{m}{d}$ are coprime, so this congruence has a unique solution $\mod \frac{m}{d}$, hence we have $d$ solns $\mod m$.
 \end{proof}
-It is vital that Alice chooses a new value of $k$ to sign each message.
+
+It is \underline{vital} that Alice chooses a new value of $k$ to sign each message.
 Suppose she sends $m_1, m_2$ using the same value of $k$.
 Denote the signatures $(r, s_1)$ and $(r, s_2)$; note that $r$ depends only on $k$ and is hence fixed.
 \begin{align*}
@@ -524,8 +557,7 @@ Hence,
 \begin{align*}
     h(m_1) - h(m_2) \equiv k(s_1 - s_2) \mod (p-1)
 \end{align*}
-Let $d = \gcd(p-1, s_1 - s_2)$.
-By the previous lemma, this is the number of solutions for $k$ modulo $p-1$.
+By the previous lemma, there are $d = \gcd(p-1, s_1 - s_2)$ of solutions for $k$ modulo $p-1$.
 Choose the solution that gives the correct value in the first congruence $r \equiv g^k$ mod $p$.
 Then,
 \begin{align*}
@@ -535,6 +567,11 @@ This gives $ur \equiv h(m_1) - ks_1$.
 Hence, using the lemma again, there are $\gcd(p-1, r)$ solutions for $u$.
 Choose the solution for $u$ that gives $y \equiv g^u$.
 This allows us to deduce Alice's private key $u$, as well as the exponent $k$ used in both messages.
+
+\begin{remark}
+    Several existential forgeries are known, i.e. we can find solns $m, r, s$ to $g^m = y^r y^s \mod p$ but with no control over $m$.
+    In practice, this is stopped by signing a hash value of the message instead of the message itself.
+\end{remark}
 
 \subsection{The digital signature algorithm}
 The digital signature algorithm is a variant of the Elgamal signature scheme developed by the NSA.
@@ -584,32 +621,36 @@ The result of the coin and Bob's guess can be viewed as messages of this form.
 As another example, consider a poll whose result cannot be viewed until everyone has voted.
 We will see two examples of such a \vocab{commit-and-reveal} strategy, known as \vocab{bit commitment}.
 
-Suppose that we have a publicly known encryption function $e_A$ and a decryption function $d_A$ known only to Alice.
-Alice makes a choice for her message $m$, and commits to Bob the ciphertext $c = e_A(m)$.
-Under the assumption that the cipher is secure, Bob cannot decipher the message.
+\subsubsection{Using a Public Key Cryptosystem}
+Suppose that we have a publicly known encryption function $e_A$ and a decryption function $d_A$ known only to Alice. \\
+Alice makes a choice for her message $m \in \mathbb{F}_2$, and commits to Bob the ciphertext $c = e_A(m)$.
+Under the assumption that the cipher is secure, Bob cannot decipher the message. \\
 To reveal her choice, Alice sends her private key to Bob, who can then use it to decipher the message $d_A(c) = d_A(e_A(m)) = m$.
 He can also check that $d_A, e_A$ are inverse functions and thus ensure that Alice sent the correct private key.
 
+\subsubsection{Using Coding Theory}
 Alternatively, suppose that Alice has two ways to communicate to Bob: a clear channel which transmits with no errors, and a binary symmetric channel with error prob $p$.
 Suppose $0 < p < \frac{1}{2}$, and the noisy channel corrupts bits independent of any action of Alice or Bob, so neither can affect its behaviour.
-Bob publishes a binary linear code $C$ of length $N$ and minimum distance $d$, and Alice publishes a random non-trivial linear map $\theta \colon C \to \mathbb F_2$.
-To send a bit $m \in \mathbb F_2$, Alice chooses a random codeword $c \in C$ s.t. $\theta(c) = m$, and sends $c$ to Bob via the noisy channel.
-Bob receives $r = c + e \in \mathbb F_2^N$ where $e$ is the error pattern.
-The expected value of $d(r,c) = d(e,0)$ is $Np$.
-$N$ is chosen s.t. $Np \gg d$, so Bob cannot tell what the original codeword $c$ was, and hence cannot find $\theta(c) = m$.
 
-To reveal, Alice sends $c$ to Bob using the clear channel.
-Bob can check that $d(c,r) \approx Np$; if so, he accepts the message.
-It is possible that many more or many fewer bits of $c$ were corrupted by the noisy channel, which may make Bob reject the message even if Alice correctly committed and revealed the message.
-$N, d$ should be chosen s.t. the prob of this occurring is negligible.
+\begin{itemize}
+    \item Bob publishes a binary linear code $C$ of length $N$ and min dist $d$.
+    \item Alice publishes a random non-trivial linear map $\theta \colon C \to \mathbb F_2$.
+    \item To send a bit $m \in \mathbb F_2$, Alice chooses a random codeword $c \in C$ s.t. $\theta(c) = m$, and sends $c$ to Bob via the noisy channel. Bob receives $r = c + e \in \mathbb F_2^N$ where $e$ is the error pattern.
+    \item The expected value of $d(r,c) = d(e,0)$ is $Np$. $N$ is chosen s.t. $Np \gg d$, so Bob cannot tell what the original codeword $c$ was, and hence cannot find $\theta(c) = m$.
+    \item To reveal, Alice sends $c$ to Bob using the clear channel.
+    Bob can check that $d(c,r) \approx Np$; if so, he accepts the message.
+    \item It is possible that many more or many fewer bits of $c$ were corrupted by the noisy channel, which may make Bob reject the message even if Alice correctly committed and revealed the message.
+    $N, d$ should be chosen s.t. the prob of this occurring is negligible.
+    \item If it \underline{does} occur, $A$, $B$ repeat the process.
+\end{itemize}
 
 We have shown that Bob cannot read Alice's guess until she reveals it.
 In addition, Alice cannot cheat by changing her guess, because she knows $c$ but not how it was corrupted by the noisy channel.
 All she knows is that the received message $r$ has distance approximately $Np$ from $c$.
 If she were to send $c' \neq c$, she must ensure that $d(r,c') \approx Np$, but the prob that this happens is small unless she chooses $c'$ very close to $c$.
-But any two distinct codewords have distance at least $d$, so she cannot cheat.
+But any two distinct codewords have distance at least $d$, so she \underline{cannot} cheat.
 
-\subsection{Secret sharing schemes}
+\subsection{Secret sharing schemes - Non Examinable?}
 % This has been made nonexaminable.
 Suppose that the CMS is attacked by the MIO.
 % (mathematical institute, oxford)
