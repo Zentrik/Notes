@@ -157,8 +157,8 @@ We now define the axioms (there are 2 + 4 + 3 axioms) of $\mathsf{ZF}$ set theor
 
     We need an axiom that the image of a set under a function-like object is a set.
 
-    % Often, we are given an index set $I$ and construct a set $A_i$ for each $i \in I$, then take the collection $\qty{A_i \mid i \in I}$.
-    % In order to write this down, the mapping $i \mapsto A_i$ must be a function, or equivalently, there must be a set $\qty{(i, A_i) \mid i \in I}$.
+    % Often, we are given an index set $I$ and construct a set $A_i$ for each $i \in I$, then take the collection $\qty{A_i : i \in I}$.
+    % In order to write this down, the mapping $i \mapsto A_i$ must be a function, or equivalently, there must be a set $\qty{(i, A_i) : i \in I}$.
     % This is not clear from the other axioms.
     % We would like to say that the image of a set under something that looks like a function (since we do not yet have such a set-theoretic function) is a set.
 
@@ -205,14 +205,14 @@ We now define the axioms (there are 2 + 4 + 3 axioms) of $\mathsf{ZF}$ set theor
     We can now define the axiom of replacement: the image of a set under a function-class is a set.
     \begin{align*}
         (\forall t_1)\dots(\forall t_n)[(\forall x)(\forall y)(\forall z)(p \wedge p[z/y] \implies y = z) \implies \\
-        (\forall x)(\exists y)(\forall z)(z \in y \Leftrightarrow (\exists t)(t \in x \wedge p[t/x,z/y]))]
+        (\forall x)(\exists y)(\forall z)(z \in y \Leftrightarrow (\exists t)(t \in x \wedge p[t/x, z/y]))]
     \end{align*}
     for any formula $p$ with $\FV(p) = \{x, y, t_1, \dots, t_n\}$.
 
-    \begin{example}
-        For any set $x$, we can form the set $\qty{\qty{t} : t \in x}$, which is the image of $x$ under the function class $t \mapsto \qty{t}$.
-        This set could alternatively have been formed using the power-set and separation axioms; we will later present some examples of sets built with this axiom that cannot be constructed from the other axioms.
-    \end{example}
+    % \begin{example}
+    %     For any set $x$, we can form the set $\qty{\qty{t} : t \in x}$, which is the image of $x$ under the function class $t \mapsto \qty{t}$.
+    %     This set could alternatively have been formed using the power-set and separation axioms; we will later present some examples of sets built with this axiom that cannot be constructed from the other axioms.
+    % \end{example}
 
     \item \vocab{Axiom of Foundation (Fnd)} or \vocab{regularity} \\
     We require that sets are built out of simpler sets.
@@ -241,6 +241,7 @@ We write $\mathsf{ZFC}$ for $\mathsf{ZF} + \mathsf{AC}$, where $\mathsf{AC}$ is 
 % \end{align*}
 
 For the rest of this section we work in ZF.
+
 \underline{Aim}: Describe the set-theoretic universe, i.e. any model $V$ of $\mathsf{ZF}$.
 
 \subsection{Transitive sets}
@@ -278,7 +279,7 @@ Equivalently, $\cup x \subseteq x$.
 \end{proof}
 
 \begin{lemma}
-    Every set is contained in a transitive set, i.e. $(\forall x)(\exists y)(\text{`$i$ is transitive'} \wedge x \subseteq y)$.
+    Every set is contained in a transitive set, i.e. $(\forall x)(\exists y)(\text{`$y$ is transitive'} \wedge x \subseteq y)$.
 \end{lemma}
 
 \begin{remark}
@@ -325,33 +326,37 @@ We need a function-class $0 \mapsto x$, $1 \mapsto \bigcup x$, $2 \mapsto \bigcu
     Given $a \in t$, we have $z \in w$, $a \in z$.
     Then there's an attempt $f$ and $n \in w$ s.t. $z = f(n)$. \\
     By $(\ast\ast)$ there's an attempt $g$ with $n^+ \in \dom g$.
-    Then $n \in \dom g$ so $\bigcup z = \bigcup f(n) = \bigcup g(n)$ by $(\ast)$ and $\bigcup g(n) = \bigcup g(n^+) \in w$, hence $a \subseteq t$.
+    Then $n \in \dom g$ so $\bigcup z = \bigcup f(n) = \bigcup g(n)$ by $(\ast)$ and $\bigcup g(n) = g(n^+) \in w$, hence $a \subseteq t$.
 \end{proof}
 
 Transitive closures allow us to pass from the large universe of sets, which is not a set itself, into a smaller world which is a set closed under $\in$ that contains the relevant sets in question.
 
 \subsection{\texorpdfstring{$\in$}{∈}-induction}
 We want the axiom of foundation to capture the idea that sets are built out of simpler sets.
-\begin{theorem}[principle of $\in$-induction]
-    For each formula $p$ with free variables $t_1, \dots, t_n, x$,
+\begin{theorem}[Principle of $\in$-induction]
+    For each formula $p$ with free variables $x, t_1, \dots, t_n$,
     \begin{align*}
-        (\forall t_1)\dots(\forall t_n)[(\forall x)((\forall y)(y \in x \implies p(y)) \implies p(x)) \implies (\forall x)p(x)]
+        (\forall t_1)\dots(\forall t_n)[(\forall x)[(\forall y)(y \in x \implies p(y)) \implies p(x)] \implies (\forall x)p(x)]
     \end{align*}
+    where $p(x) = p$ and $p(y) = p[y/x]$.
 \end{theorem}
-\begin{proof}
-    Given $t_1, \dots, t_n$ and the statement $(\forall x)((\forall y)(y \in x \implies p(y)) \implies p(x))$, we want to show $(\forall x)p(x)$.
-    Suppose this is not the case, so there exists $x$ s.t. $\neg p(x)$.
-    We want to look at the set $\qty{t \mid \neg p(t)}$ and take an $\in$-minimal element, but this is not necessarily a set, for instance if $p(x)$ is the assertion $x \neq x$.
 
-    Let $u = \qty{t \in TC(\qty{x}) \mid \neg p(t)}$; this is clearly a set in the model, and $u \neq \varnothing$ as $x \in u$.
-    Let $t$ be an $\in$-minimal element of $u$, guaranteed by the axiom of foundation.
-    Then $\neg p(t)$ as $t \in u$, but $p(z)$ for all $z \in t$ by minimality of $t$, noting that $z \in t$ implies $z \in TC(\qty{x})$.
-    This gives a contradiction.
+\begin{proof}
+    Fix $t_1, \dots, t_n$ and assume $(\forall x)((\forall y)(y \in x \implies p(y)) \implies p(x))$ holds, we want to show $(\forall x)p(x)$.
+    Assume not, i.e. $\exists \; x$ s.t. $\neg p(x)$.
+    We want to look at the set $\qty{t : \neg p(t)}$ and take an $\in$-minimal element, but this may not be a set, e.g. for $p = (x \neq x)$.
+
+    Choose a transitive set $t$ s.t. $x \in t$, e.g. $t = TC(\qty{x})$.
+    By (Sep) form the set $u = \qty{y \in t : \neg p(y)}$; this is clearly a set in the model, and $u \neq \varnothing$ as $x \in u$.
+    Let $z$ be an $\in$-minimal element of $u$ (exists by (Fnd)).
+    If $y \in z$, then $y \in t$ (as $t$ transitive) and $y \notin u$ (by minimality), so $p(y)$.
+    By assumption $p(z)$ holds \Lightning\ of $z \in u$.
 \end{proof}
 The name of this theorem should be read `epsilon-induction', even though the membership relation is denoted $\in$ and not $\epsilon$ or $\varepsilon$.
 
-The principle of $\in$-induction is equivalent to the axiom of foundation in the presence of the other axioms of $\mathsf{ZF}$.
-We say that $x$ is \vocab{regular} if $(\forall y)(x \in y \implies y \text{ has a minimal element})$.
+The principle of $\in$-induction is equivalent to the axiom of foundation (Fnd) in the presence of the other axioms of $\mathsf{ZF}$.
+
+\underline{Clever Idea}: We say that $x$ is \vocab{regular} if $(\forall y)(x \in y \implies y \text{ has a $\in$-minimal element})$.
 The axiom of foundation is equivalent to the assertion that every set is regular.
 Given $\in$-induction, we can prove every set is regular.
 Suppose $(\forall y \in x)(y \text{ is regular})$; we need to show $x$ is regular.
@@ -361,9 +366,10 @@ So $z$ has a minimal element as $y$ is regular.
 Hence $x$ is regular.
 
 \subsection{\texorpdfstring{$\in$}{∈}-recursion}
-We want to be able to define $f(x)$ given $f(y)$ for all $y \in x$.
-\begin{theorem}[$\in$-recursion theorem]
-    Let $G$ be a function-class, so $(x,y) \in G$ if and only if $p(x,y)$ for some formula $p$.
+We want to be able to define $f(x)$ given $f(y)$ for all $y \in x$, i.e. $f(x)$ depends on $\eval{f}_x$.
+
+\begin{theorem}[$\in$-recursion Theorem]
+    Let $G$ be a function-class, i.e. $(x,y) \in G$ iff $p(x,y)$ for some formula $p$.
     Suppose that $G$ is defined for all sets.
     Then there is a function-class $F$ defined for all sets by a formula $q(x,y)$ s.t.
     \begin{align*}
@@ -371,11 +377,14 @@ We want to be able to define $f(x)$ given $f(y)$ for all $y \in x$.
     \end{align*}
     Moreover, this $F$ is unique.
 \end{theorem}
-Note that $\eval{F}_x = \qty{(y, F(y)) \mid y \in x}$ is a set by the axiom of replacement.
+
+Note that $\eval{F}_x = \qty{(y, F(y)) : y \in x}$ is a set by (Rep) and is the image of the set $x$ under the fcn class $s \mapsto (s, F(s))$.
+
 \begin{proof}
+    \underline{Existence}:
     Define that $f$ is an \vocab{attempt} if
     \begin{align*}
-        f \text{ is a function} \wedge \dom f \text{ is transitive} \wedge (\forall x)\qty(x \in \dom f \implies f(x) = G\qty(\eval{f}_x))
+        f \text{ is a function} \wedge \dom f \text{ is transitive} \wedge (\forall x)\qty(x \in \dom f \implies f(x) = G\qty(\eval{f}_x)) \tag{$\ast$}
     \end{align*}
     Note that $\eval{f}_x$ is defined as $\dom f$ is transitive.
     Then,
@@ -388,132 +397,256 @@ Note that $\eval{F}_x = \qty{(y, F(y)) \mid y \in x}$ is a set by the axiom of r
         (\forall x)(\exists f)(f \text{ is an attempt} \wedge x \in \dom f)
     \end{align*}
     by $\in$-induction.
-    Indeed, if for all $y \in x$ there exists an attempt defined at $y$, then for each $y \in x$ there is a unique attempt $f_y$ defined on $TC(\qty{y})$.
-    Let $f = \bigcup\qty{f_y \mid y \in x}$, which is an attempt with domain $TC(x)$.
-    We can then define $f' = f \cup \qty{\qty(x, G\qty(\eval{f}_x))}$.
-    This is an attempt defined at $x$.
-    We can then take $q(x,y)$ to be
+
+    Fix $x$.
+    Assume every $y \in x$ is in the domain of some attempt, which is then defined on $TC(\qty{y})$ and unique by $(\ast)$, say $f_y$.
+    Then $f' = \bigcup \underbracket{\qty{f_y : y \in x}}_{\text{a set by (Rep)}}$ is an attempt by $(\ast)$.
+    Finally, $f = f' \cup \qty{\qty(x, G\qty(f'))}$ is an attempt defined at $x$.
+    Note that $\eval{f}_x = f'$. \\
+    We can then take $q(x,y)$ to be the formula
     \begin{align*}
         (\exists f)(f \text{ is an attempt} \wedge x \in \dom f \wedge f(x) = y)
     \end{align*}
     This defines the function-class $F$ as required.
-    Uniqueness follows from the fact that if $F, F'$ are suitable function-classes, we have $(\forall x)(F(x) = F'(x))$ by $\in$-induction.
+
+    \underline{Uniqueness}: Assume $F, F'$ satisfy the theorem, then we have $(\forall x)(F(x) = F'(x))$ by $\in$-induction.
+    If $F(y) = F'(y) \; \forall \; y \in x$, then $\eval{F}_x = \eval{F'}_x$, then $F(x) = F'(x)$.
 \end{proof}
 
 \subsection{Well-founded relations}
 Note the similarity between the proofs of $\in$-induction and $\in$-recursion and the proofs of induction and recursion on ordinals.
 These proofs are not specific to the relation $\in$; we only used some of its properties.
-\begin{enumerate}
-    \item $p$ is \vocab{well-founded}: every nonempty set has a $p$-minimal element.
-    \item $p$ is \vocab{local}: $\qty{x \mid p(x,y)}$ is a set.
-    This was required to build the $p$-transitive closure.
-\end{enumerate}
-Therefore, $p$-induction and $p$-recursion hold for all relation-classes $p$ that are well-founded and local.
-In particular, if $r$ is a well-founded relation on a set $a$, it is clearly local and hence we have $r$-induction and $r$-recursion.
-The theorems about induction and recursion on ordinals are therefore special cases of this, as a well-ordering is precisely a well-founded total order.
 
-On the set $\qty{a, b, c}$, let $r$ be the relation $arb, brc$.
-Choosing $a' = \varnothing, b' = \qty{\varnothing}, c' = \qty{\qty{\varnothing}}$, the map $f \colon \qty{a, b, c} \to \qty{a', b', c'}$ given by $x \mapsto x'$ is a bijection with a transitive set s.t. $xry$ if and only if $f(x) \in f(y)$.
-This models the relation $r$ by $\in$.
+\begin{definition}[Well-Founded]
+    $r$ is \vocab{well-founded} if $(\forall x)(x \neq \varnothing \implies (\exists y)(y \in x \wedge (\forall z)(z \in x \implies \neg z r y)))$, i.e. every nonempty set has an $r$-minimal element.
+\end{definition}
 
-We say that a relation $r$ on a set $a$ is \vocab{extensional} if
-\begin{align*}
+\begin{example}
+    If $r$ is $(x \in y)$, then $r$ is the $\in$-relation which is well-founded by (Fnd).
+\end{example}
+
+\begin{definition}[Local]
+    $r$ is \vocab{local} if $(\forall x)(\forall y)(\exists z)(z r x \wedge z r y\footnote{$zry = r(z, y)$})$, i.e. the $r$-predecessors of $x$ form a set.
+\end{definition}
+
+\begin{example}
+    Clearly $\in$.
+\end{example}
+
+`local' is needed for $r$-closure.
+Then we can prove $r$-induction and $r$-recursion.
+
+We can restrict $r$ to a class or set.
+If $r$ is a relation on a set $a$, then for any $x \in a$, $\qty{y \in a: y r x}$ is a set by (Sep).
+So we only need well-foundedness to have $r$-induction and $r$-recursion on $a$.
+
+Is this really more general than $\in$?
+No, provided we also assume that $r$ is \vocab{extensional} on $a$.
+
+\begin{definition}[Extensional]
+    $r$ is \vocab{extensional} on $a$ if
+    \begin{align*}
         (\forall x \in a)(\forall y \in a)((\forall z \in a)(zrx \Leftrightarrow zry) \implies x = y)
     \end{align*}
-The relation $r$ in the above example is extensional.
-\begin{theorem}[Mostowski's collapsing theorem]
-    Let $r$ be a relation on a set $a$ that is well-founded and extensional.
-    Then, there exists a transitive set $b$ and a bijection $f \colon a \to b$ s.t.
+\end{definition}
+
+% Therefore, $p$-induction and $p$-recursion hold for all relation-classes $p$ that are well-founded and local.
+% In particular, if $r$ is a well-founded relation on a set $a$, it is clearly local and hence we have $r$-induction and $r$-recursion.
+% The theorems about induction and recursion on ordinals are therefore special cases of this, as a well-ordering is precisely a well-founded total order.
+
+% On the set $\qty{a, b, c}$, let $r$ be the relation $arb, brc$.
+% Choosing $a' = \varnothing, b' = \qty{\varnothing}, c' = \qty{\qty{\varnothing}}$, the map $f \colon \qty{a, b, c} \to \qty{a', b', c'}$ given by $x \mapsto x'$ is a bijection with a transitive set s.t. $xry$ if and only if $f(x) \in f(y)$.
+% This models the relation $r$ by $\in$.
+% The relation $r$ is extensional.
+
+\begin{theorem}[Mostowski's Collapsing Theorem]
+    Let $r$ be a well-founded and extensional relation on a set $a$.
+    Then, $\exists$ a transitive set $b$ and a bijection $f \colon a \to b$ s.t.
     \begin{align*}
         (\forall x \in a)(\forall y \in a)(x r y \Leftrightarrow f(x) \in f(y))
     \end{align*}
     Moreover, $b$ and $f$ are unique.
 \end{theorem}
+
 This is an analogue of subset collapse from the section on ordinals.
 Transitive sets are playing the role of initial segments.
 Note that the well-foundedness and extensionality conditions are clearly necessary for the theorem, consider $(\mathbb Z, <)$ or $(\qty{a,b,c,},<)$ with $a<b, a<c$ for counterexamples.
-\begin{proof}
-    We define the function $f$ by $f(x) = \qty{f(y) \mid y r x}$ using $r$-recursion.
-    Note that $f$ is a function by the axiom of replacement as it is given by a function-class $F$ obtained from $r$-recursion that is defined on the set $a$.
-    Let $b = \qty{f(x) \mid x \in a}$; this is a set by the axiom of replacement.
-    Clearly $f$ is surjective by the definition of $b$, and $b$ is transitive by definition.
 
-    We claim that $f$ is injective, and then we have that $yrx$ if and only if $f(y) \in f(x)$ by definition of $f$.
-    We show
+\begin{proof}
+    By $r$-recursion on $a$, there's a function class $f$ s.t. $\forall \; x \in a$, $f(x) = \{f(y) : y \in a \wedge y r x \}$.
+    Note that $f$ i s a function, not just a fcn class since $\qty{(x, f(x)) : x \in a}$ is a set by (Rep).
+
+    Then $b = \qty{f(x) : x \in a}$ is a set by (Rep). \\
+    $b$ is transitive: Let $z \in b$ and $w \in z$.
+    There's $x \in a$ s.t. $z = f(x)$, and so $y \in a$ s.t. $y r x$ and $w = f(y) \in b$.
+
+    Clearly $f$ surjective and $\forall \; x, y \in a$, $xry \implies f(x) \in f(y)$.
+
+    It remains to show that $f$ is injective, it will then follow that $\forall \; x, y \in a$, $f(x) \in f(y) \implies x r y$.
+    Indeed, if $f(x) \in f(y)$, then $f(x) = f(z)$ for some $z \in a$ with $z r y$.
+    Since $f$ is injective, $x = z$ so $x r y$.
+
+    We will show
     \begin{align*}
         (\forall x \in a)(\forall x' \in a)(f(x') = f(x) \implies x' = x)
     \end{align*}
     by $r$-induction on $x$.
-    Suppose that $(\forall y r x)(\forall z \in a)(f(y) = f(z) \implies y = z)$, we have $f(x) = f(x')$, and we want to show that $x = x'$.
-    Note that $\qty{f(y) \mid y r x} = \qty{f(z) \mid z r x'}$ by the definition of $f$ as $f(x) = f(x')$.
-    So $\qty{y \mid y r x} = \qty{z \mid z r x'}$, so $x = x'$ as $r$ is extensional.
-    Uniqueness holds by $r$-induction, as we must have $f(x) = \qty{f(y) \mid y r x}$ for all $x \in a$.
+
+    Fix $x \in a$ and assume $f$ is injective at $s$ whenever $s \in a$ and $srx$.
+    Assume $f(x) = f(y)$ for some $y \in a$, i.e. $\qty{f(s): s \in a \wedge s r x} = \qty{f(t) : t \in a \wedge try}$.
+    Since $f$ is injective at every $s \in a$ with $srx$, it follows that $x = y$.
+
+    \underline{Uniqueness}: Assume $(b, f)$ and $(b', f')$ both satisfy the theorem.
+    We prove $(\forall \; x \in a)(f(x) = f'(x))$ by $r$-induction.
+    Fix $x \in a$ and assume $f(y) = f'(y)$ whenever $y \in a \wedge y r x$.
+    If $z \in f(x)$ then $z \in b$ ($b$ transitive), so $z = f(y)$ for some $y \in a$ with $y r x$.
+    Then $z = f(y) = f'(y)$ (induction hypothesis).
+    Then $z = f'(y) \in f'(x)$.
+    Similarly, if $z \in f'(x)$ then $z \in f(x)$.
+    By (Ext), $f(x) = f'(x)$.
 \end{proof}
+
 In particular, every well-ordered set has a unique order isomorphism to a unique transitive set well-ordered by $\in$.
-We can now define that an ordinal is a transitive set well-ordered by $\in$ (or equivalently, totally-ordered, due to the axiom of foundation).
-For example, $\varnothing$ is an ordinal, $n \in \omega$ is an ordinal, $\omega$ is also an ordinal, and so on.
-Therefore, each well-ordering is order-isomorphic to a unique ordinal called its order type, by Mostowski collapse.
+
+\begin{definition}[Ordinal]
+    An \vocab{ordinal} is a transitive set well-ordered by $\in$. (Equivalently, linearly ordered by $\in$ since $\in$ is well-founded by (Fnd)).
+\end{definition}
+
+Note that, if $a$ a set and $r$ a well-ordering on $a$, then $r$ is well-founded and extensional (if $x, y \in a$ and $x \neq y$, then $xry$ or $yrx$, but not both).
+By Mostowski, $\exists$ a transitive set $b$ and bijection $f : a \to b$ s.t. $x r y \iff f(x) \in f(y)$, i.e. $f: (a, r) \to (b, \in)$ is an order isomorphism.
+So $b$ is an ordinal.
+So by Mostowski, every well-ordered set, $x$, is order-isomorphic to a unique ordinal, called the order type of $x$.
+
+We let $ON$ denote the class of ordinals (given by formula `$x$ is an ordinal').
+It is a proper class by Buralti-Forti.
+
+\begin{proposition}
+    Let $\alpha, \beta \in ON$ and $a$ a set of ordinals.
+    \begin{enumerate}
+        \item Every member of $\alpha$ is an ordinal
+        \item $\beta \in \alpha \iff \beta$ is o.i. to an i.s. of $\alpha$ ($\beta < \alpha$).
+        \item $\alpha \in \beta$ or $\alpha = \beta$ or $\beta \in \alpha$.
+        \item $\alpha^+ = \alpha \cup \qty{\alpha}$ ($+$ in the sense of section 2).
+        \item $\cup a$ is an ordinal and $\cup a = \sup a$.
+    \end{enumerate}
+\end{proposition}
+
 \begin{remark}
-    If $x, y$ are elements of a well-ordered set $a$ with $y < x$, then the order type of $I_x$, which is precisely the image $f(x)$ under the Mostowski collapse, has an element $f(y)$, the order type of $I_y$.
-    In particular, given two ordinals $\alpha, \beta$, the statement $\alpha < \beta$ is equivalent to $\alpha \in \beta$.
-    Hence $\alpha = \qty{\beta \mid \beta < \alpha}$.
-    Thus, $\alpha^+ = \alpha \cup \qty{\alpha}$, and $\sup \qty{\alpha_i \mid i \in I} = \bigcup \qty{\alpha_i \mid i \in I}$.
+    (2) says that $\alpha$ really \underline{is} the set of ordinals $< \alpha$; \\
+    (3) says that $\in$ linearly orders the class $ON$; \\
+    (4) resolves the class of notation $x^+$ in section $2$ and $5$; \\
+    (5) now shows that any set of well-ordered sets has an upper bound.
 \end{remark}
 
+\begin{proof}
+    \begin{enumerate}
+        \item Let $\gamma \in \alpha$.
+        Then $\gamma \subseteq \alpha$ ($\alpha$ is transitive) and hence $\in$ linearly orders $\gamma$.
+        Given $\eta \in \delta$, $\delta \in \gamma$ then $\delta \in \alpha$ and so $\eta \in \alpha$ ($\alpha$ is transitive).
+        Since $\in$ is transitive on $\alpha$, we have $\eta \in \gamma$.
+        So $\gamma$ is a transitive set, so $\gamma$ is an ordinal.
+        \item If $\beta \in \alpha$, then $I_\beta = \qty{\gamma \in \alpha : \gamma \in \beta} = \beta$, so $\beta < \alpha$.
+        Any proper i.s. of $\alpha$ is of the form $I_\gamma$ for some $\gamma \in \alpha$.
+        So $\beta < \alpha \implies \beta \in \alpha$.
+        \item Done by (2)
+        \item Let $\beta = \alpha \cup \qty{\alpha}$(successor of $\alpha$ in section 5).
+        If $\gamma \in \beta$, then either $\gamma = \alpha \subseteq \beta$ or $\gamma \in \alpha$, so $\gamma \subseteq \alpha \subseteq \beta \implies \beta$ is transitive, linearly ordered by $\in$ (by (3)), and $\alpha$ is the greatest element.
+        So $\beta = \alpha^+$ in section 2.
+        \item $\cup a$ is a union of transitive sets, hence transitive.
+        Every member of $\cup a$ is an ordinal, so $\cup a$ linearly ordered by $\in$ (by (3)). \\
+        If $\gamma \in a$, then $\gamma \subseteq \cup a$ so either $\gamma = \cup a$ or $\gamma \in \cup a$ (by (3)), i.e. $\gamma \leq \cup a$. \\
+        If $\gamma \leq \delta$ for all $\gamma \in a$, then $\gamma = \delta$ or $\gamma \in \delta$ for all $\gamma \in a$, i.e. $\gamma \subseteq \delta$ (by (3)).
+        So $\cup a \subseteq \delta$ i.e. $\cup a \leq \delta$.
+        [If $\gamma < \cup a$, then $\gamma \in \cup a$, i.e. $\gamma \in \delta$ for some $\delta \in a$, i.e. $\gamma < \cup a$ (by (3)), so $\gamma$ is not an upper bound for $a$.]
+    \end{enumerate}
+\end{proof}
+
+\begin{example}
+    $0 = \emptyset \in ON$, hence $n \in ON$ for all $n \in \omega$ (by $\omega$-induction).
+    $\omega$ is transitive, so $\cup \omega \subseteq \omega$.
+    If $n \in \omega$, then $n \in n^+ \subseteq \omega$, so $n \in \cup \omega$.
+    So $\omega \subseteq \cup \omega \implies \omega = \cup \omega$ is an ordinal and $\omega = \sup \omega$.
+\end{example}
+
 \subsection{The universe of sets}
-We would like the universe to be V-shaped, in the sense that we begin with $\varnothing$ and continue taking power sets to create larger and larger sets.
-Define sets $V_\alpha$ for each ordinal $\alpha$ by
+
+\underline{Idea}: Everything is build up from $\emptyset$ using $\mathcal{P}$ and $\cup$.
+We can have $V_0 = \emptyset$, $V_1 = \mathcal{P} \emptyset = \qty{\emptyset}$, $V_2 = \mathcal{P} \mathcal{P} \emptyset = \qty{\emptyset, \qty{\emptyset}}$, \dots, $V_\omega = \cup \qty{V_0, V_1, \dots}$, $V_{\omega + 1} = \mathcal{P} V_\omega$ etc.
+
+It will be (Fnd) that guarantees that every set appears in a $V_\alpha$.
+
+Define sets $V_\alpha$ for each ordinal $\alpha \in ON$ by $\in$-recursion:
 \begin{itemize}
     \item $V_0 = \varnothing$;
     \item $V_{\alpha+1} = \mathcal P(V_\alpha)$;
-    \item $V_\lambda = \bigcup \qty{V_\alpha \mid \alpha < \lambda}$ for a nonzero limit ordinal $\lambda$.
+    \item $V_\lambda = \bigcup \qty{V_\alpha : \alpha < \lambda}$ for a nonzero limit ordinal $\lambda$.
 \end{itemize}
 This can be viewed as a well-founded recursion on ordinals, or $\in$-recursion on the universe but mapping non-ordinals to $\varnothing$.
-For example, $V_\omega = V_0 \cup V_1 \cup \dots$, and $V_{\omega+1} = \mathcal P(V_\omega)$.
-We will now show that every set is contained within some $V_\alpha$.
-\begin{lemma}
-    Each $V_\alpha$ is transitive.
+The sets $V_\alpha$ form the \vocab{von Neumann Hierarchy}.
+
+\underline{Aim}: Show that every set is contained in some $V_\alpha$.
+
+\begin{lemma} \label{lem:5-6}
+    $V_\alpha$ is transitive $\forall \; \alpha \in ON$.
 \end{lemma}
+
 \begin{proof}
-    We show this by induction on $\alpha$.
-    Clearly $V_0 = \varnothing$ is transitive.
+    We show this by induction on $\alpha$. \\
+    Clearly $V_0 = \varnothing$ is transitive. \\
     Suppose $V_\alpha$ is transitive.
-    Then $V_{\alpha+1}$ is transitive as the power set of a transitive set is transitive.
-    Indeed, if $x$ is transitive and $z \in y \in \mathcal P(x)$, we have $z \in x$, so $z \subseteq x$ as $x$ is transitive, so $z \in \mathcal P(x)$.
-    Now suppose $\lambda$ is a limit ordinal, and that the $V_\alpha$ are transitive for $\alpha < \lambda$.
-    Any union of transitive sets is transitive, so $V_\lambda$ is transitive.
+    If $x \in V_{\alpha^+}$ then $x \subseteq V_\alpha$.
+    If $y \in x$, then $y \in V_\alpha$.
+    So by the induction hypothesis, $y \subseteq V_\alpha$.
+    So every $y \in x$ has $y \in \mathcal{P}(V_\alpha) = V_{\alpha^+}$ thus $V_{\alpha^+}$ is transitive. \\
+    Now suppose $\lambda \neq 0$ is a limit ordinal, if $x \in V_\lambda$ then $\exists \; \gamma < \alpha$ s.t. $x \in V_\gamma$.
+    By the induction hypothesis, $V_\gamma$ is transitive, so $x \subseteq V_\gamma \subseteq V_\lambda$.
 \end{proof}
-\begin{lemma}
+
+\begin{lemma} \label{lem:5-7}
     Let $\alpha \leq \beta$.
     Then $V_\alpha \subseteq V_\beta$.
 \end{lemma}
+
 \begin{proof}
-    We show this by induction on $\beta$ for a fixed $\alpha$.
-    If $\beta = \alpha$, $V_\alpha \subseteq V_\beta$ is trivial.
-    For successors, note that $V_\beta \subseteq \mathcal P(V_\beta)$ as $V_\beta$ is transitive.
-    So if $V_\alpha \subseteq V_\beta$, then $V_\alpha \subseteq V_{\beta+1}$.
+    We show this by induction on $\beta$ for a fixed $\alpha$. \\
+    If $\beta = 0$, $\alpha \leq \beta \implies \alpha = 0$ so $V_\alpha = V_\beta$. \\
+    If $\beta = \gamma^+$: If $\alpha = \beta$ then $V_\alpha = V_\beta$. \\
+    If $\alpha < \beta$, then $\alpha \leq \gamma$, so by IH $V_\alpha \subseteq V_\gamma$.
+    If $x \in V_\gamma$ then $x \subseteq V_\gamma$ ($V_\gamma$ transitive) so $x \in \mathcal{P}(V_\gamma) = V_\beta$.
+    Thus $V_\gamma \subseteq V_{\gamma^+} = V_\beta$ and hence $V_\alpha \subseteq V_\beta$. \\
+    If $\beta \neq 0$ a limit and $\alpha < \beta$ then $V_\alpha \subseteq V_\beta$ by defn.
     Limits are trivial.
 \end{proof}
+
 \begin{theorem}
-    Every set $x$ belongs to $V_\alpha$ for some $\alpha$.
+    The von Neumann hierarchy exhausts the set-theoretic universe $V\footnote{$V = \cup_{\alpha \in ON} V_\alpha$.}$, i.e. $(\forall x)(\exists \alpha \in ON)(x \in V_\alpha)$.
+    `Every set $x$ belongs to $V_\alpha$ for some $\alpha$'.
 \end{theorem}
+
 If we could construct the set $V$ defined as the union of the $V_\alpha$ over all ordinals $\alpha$, $V$ would be a model of $\mathsf{ZF}$.
+
 \begin{remark}
-    Note that $x \subseteq V_\alpha$ if and only if $x \in V_{\alpha+1}$, so it suffices to show that each set $x$ is a subset of some $V_\alpha$.
-    Once we have $x \subseteq V_\alpha$ for some $\alpha$, there is a least such $\alpha$, called the \vocab{rank} of $x$.
-    For example, the rank of $\varnothing$ is 0, the rank of 1 is 1, the rank of $\omega$ is $\omega$, and in general the rank of any ordinal $\alpha$ is $\alpha$.
+    If $x \in V_\alpha$ then $x \subseteq V_\alpha$ by \cref{lem:5-6}. \\
+    If $x \subseteq V_\alpha$ then $x \in \mathcal{P}(V_\alpha) = V_{\alpha+1}$.
+    If $\exists \; \alpha \in ON$ s.t. $x \subset V_\alpha$ define the \vocab{rank} of $x$ to be the least such $\alpha$.
+
+    For example, the rank of $\emptyset$ is 0, the rank of 1 is 1, the rank of $\omega$ is $\omega$, and in general the rank of any ordinal $\alpha$ is $\alpha$.
     Intuitively, the rank of a set is the time at which it was created.
 \end{remark}
+
 \begin{proof}
-    We proceed by $\in$-induction on $x$; we may assume that for all $y \in x$, there exists $\alpha$ s.t. $y \subseteq V_\alpha$, so $y \subseteq V_{\mathrm{rank}(y)}$.
-    Thus, for each $y \in x$, $y \in V_{\mathrm{rank}(y)+1}$, so define $\alpha = \sup\qty{\mathrm{rank}(y) + 1 \mid y \in x}$.
+    We proceed by $\in$-induction on $x$.
+    Fix $x$ and assume $\forall \; y \in x$, $y \subseteq V_\alpha$ for some $\alpha \in ON$.
+    So $\forall \; y \in x$, $y \subseteq V_{\operatorname{rank}(y)}$.
+    ; we may assume that for all $y \in x$, there exists $\alpha$ s.t. $y \subseteq V_\alpha$, so $y \subseteq V_{\mathrm{rank}(y)}$.
+    Thus, for each $y \in x$, $y \in V_{\mathrm{rank}(y)+1}$, so define $\alpha = \sup\qty{\mathrm{rank}(y) + 1 : y \in x}$.
     Then for all $y \in x$, we have $y \in V_\alpha$.
     So $x \subseteq V_\alpha$ as required.
 \end{proof}
 The ordinals can be viewed as the backbone of the universe of sets; each $V_\alpha$ can be thought of as resting on the ordinal $\alpha$.
 \begin{remark}
     The $V_\alpha$ are called the \vocab{von Neumann hierarchy}.
-    The above proof shows that for all $x$, $\mathrm{rank}(x) = \sup\qty{\mathrm{rank}(y) + 1 \mid y \in x}$.
+    The above proof shows that for all $x$, $\mathrm{rank}(x) = \sup\qty{\mathrm{rank}(y) + 1 : y \in x}$.
     For example, the rank of $\qty{\qty{2, 3}, 6}$ is
     \begin{align*}
         \sup\qty{\mathrm{rank}\qty{2, 3} + 1, 6 + 1} = \sup\qty{5, 7} = 7
