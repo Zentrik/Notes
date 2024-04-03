@@ -271,7 +271,7 @@ Equivalently, $\cup x \subseteq x$.
 \end{example}
 
 \begin{proof}
-    NTS that $x \subseteq \omega \; \forall \; x \in \omega$. \\
+    NTS that $x \subseteq \omega \; \forall x \in \omega$. \\
     Form the set $z = \{y \in \omega : y \subseteq \omega\}$ by (Sep).
     Check $z$ is a successor set, so $z = \omega$.
     Similarly, $\{x \in \omega : \text{`$x$ is transitive'}\}$ is also a successor set ($\cup x^+ = x$) so it is $\omega$.
@@ -410,7 +410,7 @@ Note that $\eval{F}_x = \qty{(y, F(y)) : y \in x}$ is a set by (Rep) and is the 
     This defines the function-class $F$ as required.
 
     \underline{Uniqueness}: Assume $F, F'$ satisfy the theorem, then we have $(\forall x)(F(x) = F'(x))$ by $\in$-induction.
-    If $F(y) = F'(y) \; \forall \; y \in x$, then $\eval{F}_x = \eval{F'}_x$, then $F(x) = F'(x)$.
+    If $F(y) = F'(y) \; \forall y \in x$, then $\eval{F}_x = \eval{F'}_x$, then $F(x) = F'(x)$.
 \end{proof}
 
 \subsection{Well-founded relations}
@@ -473,16 +473,16 @@ Transitive sets are playing the role of initial segments.
 Note that the well-foundedness and extensionality conditions are clearly necessary for the theorem, consider $(\mathbb Z, <)$ or $(\qty{a,b,c,},<)$ with $a<b, a<c$ for counterexamples.
 
 \begin{proof}
-    By $r$-recursion on $a$, there's a function class $f$ s.t. $\forall \; x \in a$, $f(x) = \{f(y) : y \in a \wedge y r x \}$.
+    By $r$-recursion on $a$, there's a function class $f$ s.t. $\forall x \in a$, $f(x) = \{f(y) : y \in a \wedge y r x \}$.
     Note that $f$ i s a function, not just a fcn class since $\qty{(x, f(x)) : x \in a}$ is a set by (Rep).
 
     Then $b = \qty{f(x) : x \in a}$ is a set by (Rep). \\
     $b$ is transitive: Let $z \in b$ and $w \in z$.
     There's $x \in a$ s.t. $z = f(x)$, and so $y \in a$ s.t. $y r x$ and $w = f(y) \in b$.
 
-    Clearly $f$ surjective and $\forall \; x, y \in a$, $xry \implies f(x) \in f(y)$.
+    Clearly $f$ surjective and $\forall x, y \in a$, $xry \implies f(x) \in f(y)$.
 
-    It remains to show that $f$ is injective, it will then follow that $\forall \; x, y \in a$, $f(x) \in f(y) \implies x r y$.
+    It remains to show that $f$ is injective, it will then follow that $\forall x, y \in a$, $f(x) \in f(y) \implies x r y$.
     Indeed, if $f(x) \in f(y)$, then $f(x) = f(z)$ for some $z \in a$ with $z r y$.
     Since $f$ is injective, $x = z$ so $x r y$.
 
@@ -497,7 +497,7 @@ Note that the well-foundedness and extensionality conditions are clearly necessa
     Since $f$ is injective at every $s \in a$ with $srx$, it follows that $x = y$.
 
     \underline{Uniqueness}: Assume $(b, f)$ and $(b', f')$ both satisfy the theorem.
-    We prove $(\forall \; x \in a)(f(x) = f'(x))$ by $r$-induction.
+    We prove $(\forall x \in a)(f(x) = f'(x))$ by $r$-induction.
     Fix $x \in a$ and assume $f(y) = f'(y)$ whenever $y \in a \wedge y r x$.
     If $z \in f(x)$ then $z \in b$ ($b$ transitive), so $z = f(y)$ for some $y \in a$ with $y r x$.
     Then $z = f(y) = f'(y)$ (induction hypothesis).
@@ -587,7 +587,7 @@ The sets $V_\alpha$ form the \vocab{von Neumann Hierarchy}.
 \underline{Aim}: Show that every set is contained in some $V_\alpha$.
 
 \begin{lemma} \label{lem:5-6}
-    $V_\alpha$ is transitive $\forall \; \alpha \in ON$.
+    $V_\alpha$ is transitive $\forall \alpha \in ON$.
 \end{lemma}
 
 \begin{proof}
@@ -636,8 +636,8 @@ If we could construct the set $V$ defined as the union of the $V_\alpha$ over al
 
 \begin{proof}
     We proceed by $\in$-induction on $x$.
-    Fix $x$ and assume $\forall \; y \in x$, $y \subseteq V_\alpha$ for some $\alpha \in ON$.
-    So $\forall \; y \in x$, $y \subseteq V_{\operatorname{rank}(y)}$.
+    Fix $x$ and assume $\forall y \in x$, $y \subseteq V_\alpha$ for some $\alpha \in ON$.
+    So $\forall y \in x$, $y \subseteq V_{\operatorname{rank}(y)}$.
     ; we may assume that for all $y \in x$, there exists $\alpha$ s.t. $y \subseteq V_\alpha$, so $y \subseteq V_{\mathrm{rank}(y)}$.
     Thus, for each $y \in x$, $y \in V_{\mathrm{rank}(y)+1}$, so define $\alpha = \sup\qty{\mathrm{rank}(y) + 1 : y \in x}$.
     Then for all $y \in x$, we have $y \in V_\alpha$.

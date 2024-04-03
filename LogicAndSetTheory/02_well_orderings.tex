@@ -4,9 +4,9 @@
 \begin{definition}[Linear Order]
     A \vocab{linear order} or \vocab{total order} is a pair $(X, <)$ where $X$ is a set, and $<$ is a relation on $X$ s.t.
     \begin{itemize}
-        \item (irreflexivity) $\forall \; x \in X$, $\neg(x < x)$;
-        \item (transitivity) $\forall \; x, y, z \in X$, $(x < y \wedge y < z) \implies (x < z)$;
-        \item (trichotomy) $\forall \; x, y \in X$, either $x < y$, $y < x$, or $x = y$.
+        \item (irreflexivity) $\forall x \in X$, $\neg(x < x)$;
+        \item (transitivity) $\forall x, y, z \in X$, $(x < y \wedge y < z) \implies (x < z)$;
+        \item (trichotomy) $\forall x, y \in X$, either $x < y$, $y < x$, or $x = y$.
     \end{itemize}
     We say $X$ is linearly/totally ordered by $<$, or simply say $X$ is a linearly/totally ordered set.
 \end{definition}
@@ -18,10 +18,10 @@
 If $X$ is linearly ordered by $<$, we use the obvious notation $x > y$ to denote $y < x$.
 In terms of the $\leq$ relation, we can equivalently write the axioms of a linear order as
 \begin{itemize}
-    \item (reflexivity) $\forall \; x \in X$, $x \leq x$;
-    \item (transitivity) $\forall \; x, y, z \in X$, $(x \leq y \wedge y \leq z) \implies (x \leq z)$;
-    \item (antisymmetry) $\forall \; x, y \in X$, if $(x \leq y \wedge y \leq x) \implies (x = y)$.
-    \item (trichotomy, or totality) $\forall \; x, y \in X$, either $x \leq y$ or $y \leq x$.
+    \item (reflexivity) $\forall x \in X$, $x \leq x$;
+    \item (transitivity) $\forall x, y, z \in X$, $(x \leq y \wedge y \leq z) \implies (x \leq z)$;
+    \item (antisymmetry) $\forall x, y \in X$, if $(x \leq y \wedge y \leq x) \implies (x = y)$.
+    \item (trichotomy, or totality) $\forall x, y \in X$, either $x \leq y$ or $y \leq x$.
 \end{itemize}
 
 \begin{example} ~\vspace*{-1.5\baselineskip}
@@ -41,7 +41,7 @@ In terms of the $\leq$ relation, we can equivalently write the axioms of a linea
 \begin{definition}[Well-Ordering]
     A linear order $(X, <)$ is a \vocab{well-ordering} if every nonempty subset $S \subseteq X$ has a least element.
     \begin{align*}
-       \forall \; S \subseteq X,\, S \neq \varnothing \implies \exists \; x \in S,\, \forall \; y \in S,\, x \leq y
+       \forall S \subseteq X,\, S \neq \varnothing \implies \exists \; x \in S,\, \forall y \in S,\, x \leq y
     \end{align*}
     We say $X$ is well-ordered by $<$, or simply say $X$ is a well-ordered set.
 \end{definition}
@@ -76,7 +76,7 @@ In terms of the $\leq$ relation, we can equivalently write the axioms of a linea
 \end{remark}
 
 \begin{definition}[Order-Isomorphism]
-    Linear ordered sets $X, Y$ are \vocab{order-isomorphic} if there $\exists$ bijection $f : X \to Y$ which is \vocab{order-preserving}: $\forall \; x < y$ in $X$, $f(x) < f(y)$.
+    Linear ordered sets $X, Y$ are \vocab{order-isomorphic} if there $\exists$ bijection $f : X \to Y$ which is \vocab{order-preserving}: $\forall x < y$ in $X$, $f(x) < f(y)$.
     Such an $f$ is an \vocab{order-isomorphism} and $f\inv$ is also an order-isomorphism.
 \end{definition}
 
@@ -119,7 +119,7 @@ Example (9) is not isomorphic to (6) or (7).
 
 \begin{lemma} \label{lem:1}
     Let $X, Y$ be well-ordered sets, $I$ an i.s. of $Y$ and $f : X \to Y$ be an order-isomorphism between $X$ and $I$. \\
-    Then $\forall \; x \in X$, $f(x)$ is the least element of $Y \setminus \qty{f(t) : t < x}$.
+    Then $\forall x \in X$, $f(x)$ is the least element of $Y \setminus \qty{f(t) : t < x}$.
 \end{lemma}
 
 \begin{proof}
@@ -135,7 +135,7 @@ Example (9) is not isomorphic to (6) or (7).
 \begin{proposition}[Proof by Induction]
     Let $X$ be a well-ordered set, and let $S \subseteq X$ be s.t. for every $x \in X$
     \begin{align*}
-    (\forall \; y < x,\, y \in S) \implies x \in S
+    (\forall y < x,\, y \in S) \implies x \in S
     \end{align*}
     Then $S = X$.
 \end{proposition}
@@ -144,7 +144,7 @@ Example (9) is not isomorphic to (6) or (7).
     Equivalently, if $p(x)$ is a property s.t. if $p(y)$ is true for all $y < x$ then $p(x)$, then $p(x)$ holds for all $x$.
 
     Formally, if $S$ is given by a property $p$, $S = \qty{x \in X : p(x)}$. \\
-    $(\forall \; x \in X)\qty((\forall \; y < x, p(y)) \implies p(x)) \implies (\forall \; x \in X, p(x))$ (base case is included).
+    $(\forall x \in X)\qty((\forall y < x, p(y)) \implies p(x)) \implies (\forall x \in X, p(x))$ (base case is included).
 \end{remark}
 
 \begin{proof}
@@ -180,8 +180,8 @@ Note that this does not hold for general linear orderings, such as $\mathbb Q$ t
 \begin{note}
     A function from a set $X$ to a set $Y$ is a subset of $f$ of $X \times Y$ s.t.
     \begin{enumerate}
-        \item $\forall \; x \in X \; \exists \; y \in Y \ (x, y) \in f$;
-        \item $\forall \; x \in X \; \forall \; y, z \in Y \ ((x, y) \in f \wedge (x, z) \in f) \implies (y = z)$.
+        \item $\forall x \in X \; \exists \; y \in Y \ (x, y) \in f$;
+        \item $\forall x \in X \; \forall y, z \in Y \ ((x, y) \in f \wedge (x, z) \in f) \implies (y = z)$.
     \end{enumerate}
 
     Of course we write $y = f(x)$ instead of $(x, y) \in f$.
@@ -204,15 +204,15 @@ Note that this does not hold for general linear orderings, such as $\mathbb Q$ t
     For uniqueness, we apply induction on $x$.
     If $f, f'$ agree below $x$, then they must agree at $x$ since $f(x) = G\qty(\eval{f}_{I_x}) = G\qty(\eval{f'}_{I_x}) = f'(x)$.
 
-    We say that $h$ is an \vocab{attempt} to mean that $h \colon I \to Y$ where $I$ is some i.s. of $X$, s.t. $\forall \; x \in I,\ h(x) = G\qty(\eval{h}_{I_x})$ (note $I_x \subseteq I$).
+    We say that $h$ is an \vocab{attempt} to mean that $h \colon I \to Y$ where $I$ is some i.s. of $X$, s.t. $\forall x \in I,\ h(x) = G\qty(\eval{h}_{I_x})$ (note $I_x \subseteq I$).
 
     Let $h, h'$ be attempts.
-    We show that $\forall \; x \in X$ if $x \in \operatorname{dom}(h) \cap \operatorname{dom}(h')$ then $h(x) = h'(x)$ ($\operatorname{dom}(h)$ is the domain of h, i.e. $I$ above).
+    We show that $\forall x \in X$ if $x \in \operatorname{dom}(h) \cap \operatorname{dom}(h')$ then $h(x) = h'(x)$ ($\operatorname{dom}(h)$ is the domain of h, i.e. $I$ above).
     Fix $x \in \operatorname{dom}(h) \cap \operatorname{dom}(h')$ and assume $h(y) = h'(y)$ for every $y < x$ (note $y < x$ implies $y \in \operatorname{dom}(h) \cap \operatorname{dom}(h')$).
     Then $\eval{h}_{I_x} = \eval{h'}_{I_x}$ so $h(x) = G(\eval{h}_{I_x}) = G(\eval{h'}_{I_x}) = h'(x)$.
     Done by induction.
 
-    Now we need to show that $\forall \; x \in X \; \exists$ attempt $h$ s.t. $x \in \operatorname{dom}(h)$.
+    Now we need to show that $\forall x \in X \; \exists$ attempt $h$ s.t. $x \in \operatorname{dom}(h)$.
     We prove this by induction.
     Fix $x \in X$ and assume that for $y < x$ there's an attempt defined at $y$, and let $h_y$ be the unique attempt with domain $\qty{z \in X : z \leq y} = I_y \cup \qty{y}$.
     Then $h = \bigcup_{y < x} h_y$ is a well defined fcn on $I_x$ and it is an attempt since for $y < x$, $h(y) = h_y(y) = G(\eval{h_y}_{I_y}) = G(\eval{h}_{I_y})$.
@@ -312,16 +312,16 @@ So $X < Y \iff X$ o.i. to a proper i.s. of $Y$.
 \end{answer}
 
 \underline{Upper Bounds}: Given set $\qty{X_i : i \in I}$ of w.o. sets.
-We seek a w.o. set $X$ s.t. $X_i \leq X \; \forall \; i \in I$.
+We seek a w.o. set $X$ s.t. $X_i \leq X \; \forall i \in I$.
 
 \begin{definition}[Extends]
     For well-orderings $(X, <_X), (Y, <_Y)$, we say that $(Y, <_Y)$ \vocab{extends} $(X, <_X)$ if $X \subseteq Y$, $\eval{<_Y}_{X} =\, <_X$, and $X$ is an i.s. of $Y$. \\
-    Then $\qty{X_i : i \in I}$ is \vocab{nested} if $\forall \; i, j \in I$ either $X_i$ extends $X_j$ or $X_j$ extends $X_i$.
+    Then $\qty{X_i : i \in I}$ is \vocab{nested} if $\forall i, j \in I$ either $X_i$ extends $X_j$ or $X_j$ extends $X_i$.
 \end{definition}
 
 \begin{proposition} \label{prp:8}
     Let $\qty{X_i : i \in I}$ be a nested set of w.o. sets.
-    Then, $\exists$ w.o. set $X$ s.t. $X_i \leq X \; \forall \; i \in I$.
+    Then, $\exists$ w.o. set $X$ s.t. $X_i \leq X \; \forall i \in I$.
 \end{proposition}
 
 \begin{proof}
@@ -427,9 +427,9 @@ We seek a w.o. set $X$ s.t. $X_i \leq X \; \forall \; i \in I$.
 \begin{remark}
     Let $S = \qty{\alpha_i \colon i \in I}$ be a set of ordinals.
     Then by \cref{prp:8}, the nested set $\qty{I_{\alpha_i} : i \in I}$ has an upper bound.
-    So $\exists$ ordinal $\alpha$ s.t. $\alpha_i \leq \alpha \; \forall \; i \in I$.
+    So $\exists$ ordinal $\alpha$ s.t. $\alpha_i \leq \alpha \; \forall i \in I$.
     By \cref{thm:9}, $I_\alpha$ is w.o., so we can the least such $\alpha$: \\
-    Take the least element of $\qty{\beta \in I_\alpha \cup \qty{\alpha} : \forall \; i \in I, \alpha_i \leq \beta}$. \\
+    Take the least element of $\qty{\beta \in I_\alpha \cup \qty{\alpha} : \forall i \in I, \alpha_i \leq \beta}$. \\
     We denote by ``$\sup S$'' the \vocab{least upper bound on $S$}.
 
     Note if $\alpha = \sup S$, then $I_\alpha = \cup_{i \in I} I_{\alpha_i}$.
@@ -582,12 +582,12 @@ We define $\alpha + \beta$ by induction on $\beta$ with $\alpha$ fixed, by
     Similarly, we can prove things by induction:
     Let $P(\alpha)$ be a statement for each ordinal $\alpha$, then
     \begin{align*}
-        (\forall \; \alpha) \qty((\forall \; \beta) \qty[(\beta < \alpha) \implies P(\beta)] \implies P(\alpha)) \implies (\forall \; \alpha) P(\alpha).
+        (\forall \alpha) \qty((\forall \beta) \qty[(\beta < \alpha) \implies P(\beta)] \implies P(\alpha)) \implies (\forall \alpha) P(\alpha).
     \end{align*}
     If not, then $\exists \; \alpha$ s.t. $P(\alpha)$ is false.
     Then $\exists$ least such $\alpha$ ($\qty{\beta \leq \alpha : P(\beta) \text{ false}} \neq \emptyset$).
     By \cref{prp:10}, $\alpha$ is the least element.
-    So $P(\beta)$ is true $\forall \; \beta < \alpha$.
+    So $P(\beta)$ is true $\forall \beta < \alpha$.
     By assumption $P(\alpha)$ is true.
 \end{remark}
 
@@ -605,7 +605,7 @@ We define $\alpha + \beta$ by induction on $\beta$ with $\alpha$ fixed, by
 \end{example}
 
 \begin{proposition} \label{prp:14}
-    $\forall \; \alpha, \beta, \gamma$ ordinals, $\beta \leq \gamma \implies \alpha + \beta \leq \alpha + \gamma$.
+    $\forall \alpha, \beta, \gamma$ ordinals, $\beta \leq \gamma \implies \alpha + \beta \leq \alpha + \gamma$.
 \end{proposition}
 
 \begin{proof}
@@ -638,7 +638,7 @@ We define $\alpha + \beta$ by induction on $\beta$ with $\alpha$ fixed, by
 
     For the reverse inequality, consider two cases.
     If $S$ has greatest element, $\beta$ say, then $\alpha + \sup S = \alpha + \beta$.
-    $\forall \; \gamma \in S, \gamma \leq \beta$, so by \cref{prp:14}, $\alpha + \gamma \leq \alpha + \beta$.
+    $\forall \gamma \in S, \gamma \leq \beta$, so by \cref{prp:14}, $\alpha + \gamma \leq \alpha + \beta$.
     It follows that $\sup\qty{\alpha + \gamma : \gamma \in S} = \alpha + \beta$. \\
     If $S$ has no greatest element, then $\lambda = \sup S$ is a $\neq 0$ limit ordinal (If $\lambda = \gamma^+$, then $\gamma < \lambda$ so $\exists \; \delta \in S$ s.t. $\gamma < \delta$ then $\lambda = \gamma^+ \leq \delta$ so $\lambda = \delta \in S$ \Lightning).
     So $\alpha + \sup S = \sup \qty{\alpha + \beta : \beta < \lambda}$ by defn. \\
@@ -648,7 +648,7 @@ We define $\alpha + \beta$ by induction on $\beta$ with $\alpha$ fixed, by
 \end{proof}
 
 \begin{proposition} \label{prp:16}
-    $\forall \; \alpha, \beta, \gamma$, $(\alpha + \beta) + \gamma = \alpha + (\beta + \gamma)$.
+    $\forall \alpha, \beta, \gamma$, $(\alpha + \beta) + \gamma = \alpha + (\beta + \gamma)$.
 \end{proposition}
 
 \begin{proof}

@@ -148,7 +148,7 @@ We can now introduce the abbreviations $\neg, \wedge, \vee, \top$, which are not
 
 \begin{definition}[Semantic Implication]
     Let $S \subseteq L$ and $t \in L$.
-    We say $S$ \vocab{entails} or \vocab{semantically implies} $t$, written $S \models t$, if for every valuation $v$ on $L$, $v(s) = 1 \; \forall \; s \in S \implies v(t) = 1$.
+    We say $S$ \vocab{entails} or \vocab{semantically implies} $t$, written $S \models t$, if for every valuation $v$ on $L$, $v(s) = 1 \; \forall s \in S \implies v(t) = 1$.
 \end{definition}
 
 \begin{example}
@@ -335,7 +335,7 @@ However, if a primitive proposition $p$ is not in $S$, but $\neg p$ is also not 
     Now, $L$ is a countable set as each $L_n$ is countable, so we can enumerate $L$ as $t_1, t_2, \dots$.
     Let $S_0 = S$, and define $S_1 = S_0 \cup \qty{t_1}$ or $S_1 = S_0 \cup \qty{\neg t_1}$, chosen s.t. $S_1$ is consistent.
     Continuing inductively, define $\overline S = \bigcup_{i} S_i$. \\
-    Then, $\forall \; t \in L$, either $t \in \overline S$ or $\neg t \in \overline S$. \\
+    Then, $\forall t \in L$, either $t \in \overline S$ or $\neg t \in \overline S$. \\
     Note that $\overline S$ is consistent since proofs are finite; indeed, if $\overline S \vdash \bot$, then this proof uses hypotheses only in $S_n$ for some $n$, but then $S_n \vdash \bot$ contradicting consistency of $S_n$. \\
     Note also that $\overline S$ is deductively closed, so if $\overline S \vdash p$, we must have $p \in \overline S$; otherwise, $\neg p \in \overline S$ so $\overline S \vdash \neg p$, giving $\overline S \vdash \bot$ by MP, contradicting consistency of $\overline S$.
 

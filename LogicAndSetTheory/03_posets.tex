@@ -103,7 +103,7 @@ Alternatively, a poset is a pair $(X, <)$ where $X$ is a set, and $<$ is a relat
 \end{example}
 
 \begin{definition}[Antichain]
-    A subset $S$ of a poset $X$ is an \vocab{antichain} if no two distinct elements are related: $\forall \; x, y \in S$, $x \leq y \implies x = y$.
+    A subset $S$ of a poset $X$ is an \vocab{antichain} if no two distinct elements are related: $\forall x, y \in S$, $x \leq y \implies x = y$.
 \end{definition}
 
 \begin{example}
@@ -115,7 +115,7 @@ Alternatively, a poset is a pair $(X, <)$ where $X$ is a set, and $<$ is a relat
 \end{example}
 
 \begin{definition}[Supremum]
-    For $S \subseteq X$ where $X$ a poset, an \vocab{upper bound} for $S$ is an $x \in X$ s.t. $y \leq x \; \forall \; y \in S$.
+    For $S \subseteq X$ where $X$ a poset, an \vocab{upper bound} for $S$ is an $x \in X$ s.t. $y \leq x \; \forall y \in S$.
     A \vocab{least upper bound} or \vocab{supremum} is an upper bound $x \in X$ for $S$ s.t. for all upper bounds $y \in X$ for $S$, $x \leq y$.
 \end{definition}
 
@@ -247,7 +247,7 @@ Not all order-preserving fcns have a fixed point, e.g. $f(x) = x + 1$ on $\mathb
 \subsection{Zorn's lemma}
 \begin{definition}[Maximal]
     Let $X$ be a poset.
-    We say that $x \in X$ is \vocab{maximal} if there is no $y \in X$ with $y > x$, or $\forall \; y \in X$, $x \leq y \implies x = y$.
+    We say that $x \in X$ is \vocab{maximal} if there is no $y \in X$ with $y > x$, or $\forall y \in X$, $x \leq y \implies x = y$.
 \end{definition}
 
 \begin{example}
@@ -308,7 +308,7 @@ One can view Zorn's lemma as a fixed point theorem on a fcn $f \colon X \to X$ w
         f(\lambda) &= u(\qty{f(\alpha) : \alpha < \lambda})' \text{ for $\lambda \neq 0$ limit}.
     \end{align*}
 
-    An easy induction (on $\beta$ with $\alpha$ fixed) shows that $\forall \; \alpha < \beta$ (in $\gamma$), $f(\alpha) < f(\beta)$ (also shows that $\qty{f(\alpha) : \alpha < \beta}$ is a chain $\forall \; \beta < \gamma$).
+    An easy induction (on $\beta$ with $\alpha$ fixed) shows that $\forall \alpha < \beta$ (in $\gamma$), $f(\alpha) < f(\beta)$ (also shows that $\qty{f(\alpha) : \alpha < \beta}$ is a chain $\forall \beta < \gamma$).
 
     Hence $f$ is an injection, \Lightning \ defn of $\gamma$.
 \end{proof}
@@ -431,7 +431,7 @@ The axiom of choice was only used twice in the section on well-orderings: the fa
     \end{example}
 
     \begin{definition}[Inflationary]
-        A function $f : X \to X$, $X$ a poset, is \vocab{inflationary} if $x \leq f(x) \ \forall \; x \in X$.
+        A function $f : X \to X$, $X$ a poset, is \vocab{inflationary} if $x \leq f(x) \ \forall x \in X$.
     \end{definition}
 
     \begin{theorem}[Bourbaki-Witt Fixed Point Theorem]
@@ -454,7 +454,7 @@ The axiom of choice was only used twice in the section on well-orderings: the fa
             g(\lambda) &= \sup \qty{g(\alpha) : \alpha < \lambda} \quad \text{$\lambda \neq 0$ limit}
         \end{align*}
 
-        By induction, $\forall \; \alpha < \gamma$, $g(\alpha) \leq g(\alpha + 1)$.
+        By induction, $\forall \alpha < \gamma$, $g(\alpha) \leq g(\alpha + 1)$.
         Either $\exists \; \alpha < \gamma$, $g(\alpha + 1) = g(\alpha)$.
         Then $g(\alpha)$ is a fixed point of $f$. \\
         Otherwise $g$ injective \Lightning.
@@ -471,7 +471,7 @@ The axiom of choice was only used twice in the section on well-orderings: the fa
         Assume $X$ has no maximal element.
         Fix a choice fcn $g : \mathcal{P}(X) \setminus \emptyset \to X$.
         Define $f : X \to X$, $f(x) = g(\qty{y \in X : x < y})$.
-        Then $x < f(x) \; \forall \; x \in X$. \Lightning \ of Bourbaki-Witt.
+        Then $x < f(x) \; \forall x \in X$. \Lightning \ of Bourbaki-Witt.
 
         \underline{Case 2}: Several case. \\
         We first prove that $\mathcal{C} = \qty{C \subseteq X : C \text{ is a chain}}$ has a maximal element.
