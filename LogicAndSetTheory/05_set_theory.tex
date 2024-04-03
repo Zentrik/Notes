@@ -637,18 +637,44 @@ If we could construct the set $V$ defined as the union of the $V_\alpha$ over al
 \begin{proof}
     We proceed by $\in$-induction on $x$.
     Fix $x$ and assume $\forall y \in x$, $y \subseteq V_\alpha$ for some $\alpha \in ON$.
-    So $\forall y \in x$, $y \subseteq V_{\operatorname{rank}(y)}$.
-    ; we may assume that for all $y \in x$, there exists $\alpha$ s.t. $y \subseteq V_\alpha$, so $y \subseteq V_{\mathrm{rank}(y)}$.
-    Thus, for each $y \in x$, $y \in V_{\mathrm{rank}(y)+1}$, so define $\alpha = \sup\qty{\mathrm{rank}(y) + 1 : y \in x}$.
-    Then for all $y \in x$, we have $y \in V_\alpha$.
+    So $\forall y \in x$, $y \subseteq V_{\rank(y)}$. \\
+    Let $\alpha = \sup \underbracket{\qty{\rank(y)^+ : y \in x}}_{\text{a set by (Rep)}}$. \\
+    We'll show $x \subseteq V_\alpha$.
+    If $y \in x$, then $y \subseteq V_{\rank(y)}$, so $y \in \mathcal{P}(V_{\rank(y)}) = V_{\rank(y)^+} \subseteq V_\alpha$ by \cref{lem:5-7}.
     So $x \subseteq V_\alpha$ as required.
 \end{proof}
+
+\begin{corollary}
+    For every set $x$, $\rank(x) = \sup \qty{\rank(y)^+ : y \in x}$.
+\end{corollary}
+
+\begin{proof}
+    ``$\leq$' follows form the proof above. \\
+    ``$\geq$': We first show that $x \in V_\alpha \implies \rank(x) < \alpha$. \\
+    $\alpha = 0$: $\checkmark$ \\
+    $\alpha = \beta^+$: $x \in \mathcal{P}(V_\beta)$ so $x \subseteq V_\beta$ so $\rank(x) \leq \beta < \alpha$. $\checkmark$ \\
+    $\alpha \neq 0$ a limit: $x \in V_\alpha \implies \exists \gamma < \alpha$ s.t. $x \in V_\gamma$ so $\rank(x) < \gamma < \alpha$. $\checkmark$.
+
+    Now let $\alpha = \rank(x)$.
+    Then $x \subseteq V_\alpha$, so for $y \in x$, $y \in V_\alpha$ and so $\rank(y) < \alpha$.
+    Hence $\sup \qty{\rank(y)^+ : y \in x} \leq \alpha$.
+\end{proof}
+
+\begin{example}
+    $\rank(\alpha) = \alpha \quad \forall \alpha \in ON$. \\
+    By induction:
+    \begin{align*}
+        \rank(\alpha) &= \sup \qty{\rank(\beta)^+ : \beta < \alpha} \\
+        &= \sup\qty{\beta^+ : \beta < \alpha} \text{ by IH} \\
+        &= \alpha.
+    \end{align*}
+\end{example}
+
 The ordinals can be viewed as the backbone of the universe of sets; each $V_\alpha$ can be thought of as resting on the ordinal $\alpha$.
-\begin{remark}
-    The $V_\alpha$ are called the \vocab{von Neumann hierarchy}.
-    The above proof shows that for all $x$, $\mathrm{rank}(x) = \sup\qty{\mathrm{rank}(y) + 1 : y \in x}$.
-    For example, the rank of $\qty{\qty{2, 3}, 6}$ is
+
+\begin{example}
+    The rank of $\qty{\qty{2, 3}, 6}$ is
     \begin{align*}
         \sup\qty{\mathrm{rank}\qty{2, 3} + 1, 6 + 1} = \sup\qty{5, 7} = 7
     \end{align*}
-\end{remark}
+\end{example}
