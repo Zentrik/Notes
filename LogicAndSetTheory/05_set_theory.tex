@@ -343,7 +343,7 @@ We want the axiom of foundation to capture the idea that sets are built out of s
 
 \begin{proof}
     Fix $t_1, \dots, t_n$ and assume $(\forall x)((\forall y)(y \in x \implies p(y)) \implies p(x))$ holds, we want to show $(\forall x)p(x)$.
-    Assume not, i.e. $\exists \; x$ s.t. $\neg p(x)$.
+    Assume not, i.e. $\exists x$ s.t. $\neg p(x)$.
     We want to look at the set $\qty{t : \neg p(t)}$ and take an $\in$-minimal element, but this may not be a set, e.g. for $p = (x \neq x)$.
 
     Choose a transitive set $t$ s.t. $x \in t$, e.g. $t = TC(\qty{x})$.
@@ -598,7 +598,7 @@ The sets $V_\alpha$ form the \vocab{von Neumann Hierarchy}.
     If $y \in x$, then $y \in V_\alpha$.
     So by the induction hypothesis, $y \subseteq V_\alpha$.
     So every $y \in x$ has $y \in \mathcal{P}(V_\alpha) = V_{\alpha^+}$ thus $V_{\alpha^+}$ is transitive. \\
-    Now suppose $\lambda \neq 0$ is a limit ordinal, if $x \in V_\lambda$ then $\exists \; \gamma < \alpha$ s.t. $x \in V_\gamma$.
+    Now suppose $\lambda \neq 0$ is a limit ordinal, if $x \in V_\lambda$ then $\exists \gamma < \alpha$ s.t. $x \in V_\gamma$.
     By the induction hypothesis, $V_\gamma$ is transitive, so $x \subseteq V_\gamma \subseteq V_\lambda$.
 \end{proof}
 
@@ -628,7 +628,7 @@ If we could construct the set $V$ defined as the union of the $V_\alpha$ over al
 \begin{remark}
     If $x \in V_\alpha$ then $x \subseteq V_\alpha$ by \cref{lem:5-6}. \\
     If $x \subseteq V_\alpha$ then $x \in \mathcal{P}(V_\alpha) = V_{\alpha+1}$.
-    If $\exists \; \alpha \in ON$ s.t. $x \subset V_\alpha$ define the \vocab{rank} of $x$ to be the least such $\alpha$.
+    If $\exists \alpha \in ON$ s.t. $x \subset V_\alpha$ define the \vocab{rank} of $x$ to be the least such $\alpha$.
 
     For example, the rank of $\emptyset$ is 0, the rank of 1 is 1, the rank of $\omega$ is $\omega$, and in general the rank of any ordinal $\alpha$ is $\alpha$.
     Intuitively, the rank of a set is the time at which it was created.

@@ -41,7 +41,7 @@ In terms of the $\leq$ relation, we can equivalently write the axioms of a linea
 \begin{definition}[Well-Ordering]
     A linear order $(X, <)$ is a \vocab{well-ordering} if every nonempty subset $S \subseteq X$ has a least element.
     \begin{align*}
-       \forall S \subseteq X,\, S \neq \varnothing \implies \exists \; x \in S,\, \forall y \in S,\, x \leq y
+       \forall S \subseteq X,\, S \neq \varnothing \implies \exists x \in S,\, \forall y \in S,\, x \leq y
     \end{align*}
     We say $X$ is well-ordered by $<$, or simply say $X$ is a well-ordered set.
 \end{definition}
@@ -180,7 +180,7 @@ Note that this does not hold for general linear orderings, such as $\mathbb Q$ t
 \begin{note}
     A function from a set $X$ to a set $Y$ is a subset of $f$ of $X \times Y$ s.t.
     \begin{enumerate}
-        \item $\forall x \in X \; \exists \; y \in Y \ (x, y) \in f$;
+        \item $\forall x \in X \; \exists y \in Y \ (x, y) \in f$;
         \item $\forall x \in X \; \forall y, z \in Y \ ((x, y) \in f \wedge (x, z) \in f) \implies (y = z)$.
     \end{enumerate}
 
@@ -325,12 +325,12 @@ We seek a w.o. set $X$ s.t. $X_i \leq X \; \forall i \in I$.
 \end{proposition}
 
 \begin{proof}
-    Let $X = \bigcup_{i \in I} X_i$ with $x < y$ iff $\exists \; i \in I$ s.t. $x, y \in X_i$ and $x <_i y$ where $<_i$ the well-ordering of $X_i$.
+    Let $X = \bigcup_{i \in I} X_i$ with $x < y$ iff $\exists i \in I$ s.t. $x, y \in X_i$ and $x <_i y$ where $<_i$ the well-ordering of $X_i$.
     Since the $X_i$'s are nested, this is a well-defined linear order s.t. each $X_i$ is an i.s. of $X$.
 
     We show that this is a well-ordering.
     Let $S \subseteq X$ be a nonempty set.
-    Since $S = \bigcup_{i \in I} (S \cap X_i)$, $\exists \; i \in I$ s.t. $S \cap X_i \neq \emptyset$.
+    Since $S = \bigcup_{i \in I} (S \cap X_i)$, $\exists i \in I$ s.t. $S \cap X_i \neq \emptyset$.
     Let $x$ be a least element of $S \cap X_i$ (since $X$ is w.o.).
     Then $x$ is a least element of $S$ since $X_i$ is an i.s. and if $y < x$, $y \in X_i$.
 \end{proof}
@@ -584,7 +584,7 @@ We define $\alpha + \beta$ by induction on $\beta$ with $\alpha$ fixed, by
     \begin{align*}
         (\forall \alpha) \qty((\forall \beta) \qty[(\beta < \alpha) \implies P(\beta)] \implies P(\alpha)) \implies (\forall \alpha) P(\alpha).
     \end{align*}
-    If not, then $\exists \; \alpha$ s.t. $P(\alpha)$ is false.
+    If not, then $\exists \alpha$ s.t. $P(\alpha)$ is false.
     Then $\exists$ least such $\alpha$ ($\qty{\beta \leq \alpha : P(\beta) \text{ false}} \neq \emptyset$).
     By \cref{prp:10}, $\alpha$ is the least element.
     So $P(\beta)$ is true $\forall \beta < \alpha$.
@@ -640,9 +640,9 @@ We define $\alpha + \beta$ by induction on $\beta$ with $\alpha$ fixed, by
     If $S$ has greatest element, $\beta$ say, then $\alpha + \sup S = \alpha + \beta$.
     $\forall \gamma \in S, \gamma \leq \beta$, so by \cref{prp:14}, $\alpha + \gamma \leq \alpha + \beta$.
     It follows that $\sup\qty{\alpha + \gamma : \gamma \in S} = \alpha + \beta$. \\
-    If $S$ has no greatest element, then $\lambda = \sup S$ is a $\neq 0$ limit ordinal (If $\lambda = \gamma^+$, then $\gamma < \lambda$ so $\exists \; \delta \in S$ s.t. $\gamma < \delta$ then $\lambda = \gamma^+ \leq \delta$ so $\lambda = \delta \in S$ \Lightning).
+    If $S$ has no greatest element, then $\lambda = \sup S$ is a $\neq 0$ limit ordinal (If $\lambda = \gamma^+$, then $\gamma < \lambda$ so $\exists \delta \in S$ s.t. $\gamma < \delta$ then $\lambda = \gamma^+ \leq \delta$ so $\lambda = \delta \in S$ \Lightning).
     So $\alpha + \sup S = \sup \qty{\alpha + \beta : \beta < \lambda}$ by defn. \\
-    If $\beta < \lambda$, then $\exists \; \delta \in S$ s.t. $\beta < \delta$.
+    If $\beta < \lambda$, then $\exists \delta \in S$ s.t. $\beta < \delta$.
     By \cref{prp:14}, $\alpha + \beta \leq \alpha + \delta$.
     It follows that $\sup \qty{\alpha + \beta : \beta < \lambda} \leq \sup \qty{\alpha + \delta : \delta \in S}$.
 \end{proof}
