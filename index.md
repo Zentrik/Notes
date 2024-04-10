@@ -8,7 +8,8 @@ title: "Cambridge Maths Notes"
 
 [Algebraic Topology](at.pdf) (Annotations)
 
-[Applied Probability](AppliedProbSousi.pdf) (Annotations)
+[Applied Probability - Excluding Last Section](Applied%20Probability\AppliedProbSousi.pdf) (Annotations)
+[Applied Probablity - Last Section](Applied%20Probability\notes.pdf) (Annotations)
 
 [Coding and Cryptography](CodingAndCryptography\cc.pdf)
 
