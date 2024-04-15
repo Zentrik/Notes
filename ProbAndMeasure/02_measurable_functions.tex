@@ -246,7 +246,7 @@ We start with Bernoulli random variables.
 Any $\omega \in (0,1)$ has a binary representation given by $(\omega_i) \in \qty{0,1}^{\mathbb N}$ where $\omega = \sum_{i=1}^{\infty} 2^{-i} \omega_i$, which is unique if we exclude infinitely long tails of zeroes from the binary representation (same reasoning as $1.00000\ldots = 0.99999\dots$).
 
 \begin{definition}[$n$th Rademacher function]
-	The \vocab{$n$th Rademacher function} $R_n : \Omega \to {0, 1}$ is given by $R_n(\omega) = \omega_n$, it extracts the $n$th bit from the binary expansion.
+	The \vocab{$n$th Rademacher function} $R_n : \Omega \to \{0, 1\}$ is given by $R_n(\omega) = \omega_n$, it extracts the $n$th bit from the binary expansion.
 \end{definition}
 
 Observe that $R_1 = 1_{(1/2, 1]}$, $R_2 = 1_{(1/4, 1/2]} + 1_{(3/4, 1]}$ and so on.
@@ -272,13 +272,13 @@ The next step is to construct a sequence of iid r.v.s on $\operatorname{U}(0, 1)
 Now, take a bijection $m \colon \mathbb N^2 \to \mathbb N$ and define $Y_{k,n} = R_{m(k, n)}$, the Rademacher functions.
 We now define $Y_n = \sum_{k=1}^\infty 2^{-k} Y_{k,n}$\footnote{This converges for all $\omega \in \Omega$ since $\abs{Y_{k,n}} \leq 1$.}.
 
-\begin{claim}
-	$Y_n$ are iid $\operatorname{U}(0, 1)$, i.e. $\mu_{Y_n} = \eval{\lambda}_{(0, 1)}$ and $Y_n$ independent.
-\end{claim}
-
 \begin{lemma}
 	Any measurable functions of independent random variables are independent.
 \end{lemma}
+
+\begin{claim}
+	$Y_n$ are iid $\operatorname{U}(0, 1)$, i.e. $\mu_{Y_n} = \eval{\lambda}_{(0, 1)}$ and $Y_n$ independent.
+\end{claim}
 
 \begin{proof}
 	They are independent because the $Y_i$ are measurable functions of independent random variables, e.g. $Y_1$ is a measurable function of $Y_{1,1}, Y_{2, 1}, \dots$; $Y_2$ of $Y_{1, 2}, Y_{2, 2}, \dots$

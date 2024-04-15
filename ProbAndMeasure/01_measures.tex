@@ -129,7 +129,7 @@ Goal: Start with a ``measure'' on $\mathcal{A}$ that has some nice properties an
 
 We will later prove that this extended measure is unique.
 
-\begin{proof}
+\begin{proof}[Proof (Non Examinable)]
 	For $B \subseteq E$, we define the \vocab{outer measure} $\mu^\star$ as
 	\[ \mu^\star(B) = \inf \qty{\sum_{n \in \mathbb N} \mu(A_n) : A_n \in \mathcal A, B \subseteq \bigcup_{n \in \mathbb N} A_n} \]
 	If there is no sequence $A_n$ such that $B \subseteq \bigcup_{n \in \mathbb N} A_n$, we declare the outer measure $\mu^\star(B)$ to be $\infty$.
@@ -583,13 +583,13 @@ Kolmogorov showed that these definitions are sufficient to derive the law of lar
 \begin{proof}
 	Fix $A_1 \in \mathcal{A}_1$, and define for all $A \in \sigma(\mathcal{A}_2)$.
 	\begin{align*}
-		\mu(A) = \mathbb{P}(A_1 \cap A), \nu(A) = \mathbb{P}(A_1)(A).
+		\mu(A) = \mathbb{P}(A_1 \cap A),\ \nu(A) = \mathbb{P}(A_1) \mathbb{P}(A).
 	\end{align*}
 	Then $\mu, \nu$ are finite measures and they agree on the $\pi$-system $\mathcal{A}_2$. Hence by \nameref{thm:uni}, $\mu(A) = \nu(A) \; \forall \; A \in \sigma(\mathcal{A}_2)$, i.e. $\mathbb{P}(A_1 \cap A) = \mathbb{P}(A_1)\mathbb{P}(A) \; \forall \; A_1 \in \mathcal{A}_1, A_2 \in \sigma(\mathcal{A}_2)$.
 
 	Now repeat same argument, but now by fixing $A_2 \in \mathcolor{red}{\sigma(\mathcal{A}_2)}$ define for all $A \in \sigma(\mathcal{A}_1)$
 	\begin{align*}
-		\mu'(A) = \mathbb{P}(A \cap A_2), \nu'(A) = \mathbb{P}(A)(A_2).
+		\mu'(A) = \mathbb{P}(A \cap A_2),\ \nu'(A) = \mathbb{P}(A) \mathbb{P}(A_2).
 	\end{align*}
 	Then $\mu', \nu'$ are finite measures and they agree on the $\pi$-system $\mathcal{A}_1$. Hence by \nameref{thm:uni}, $\mu'(A) = \nu'(A) \; \forall \; A \in \sigma(\mathcal{A}_1)$, i.e. $\mathbb{P}(A_1 \cap A) = \mathbb{P}(A_1)\mathbb{P}(A) \; \forall \; A_1 \in \sigma(\mathcal{A}_1), A_2 \in \sigma(\mathcal{A}_2)$.
 
