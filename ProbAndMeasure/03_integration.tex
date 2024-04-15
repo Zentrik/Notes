@@ -57,8 +57,8 @@ If one of $\mu(f^+)$ or $\mu(f^-)$ is $\infty$ and the other finite, we define $
 \subsection{Monotone Convergence Theorem}
 \begin{notation} \
 	\begin{itemize}
-		\item 	We say $x_n \uparrow x$ to mean $x_n \leq x_{n+1} \; \forall \; n$ and $x_n \to x$.
-		\item 	We say $f_n \uparrow f$ to mean $f_n(x) \leq f_{n+1}(x) \; \forall \; n$ and $f_n(x) \to f$.
+		\item 	We say $x_n \uparrow x$ to mean $x_n \leq x_{n+1} \; \forall n$ and $x_n \to x$.
+		\item 	We say $f_n \uparrow f$ to mean $f_n(x) \leq f_{n+1}(x) \; \forall n$ and $f_n(x) \to f$.
 	\end{itemize}
 \end{notation}
 
@@ -113,14 +113,14 @@ If one of $\mu(f^+)$ or $\mu(f^-)$ is $\infty$ and the other finite, we define $
 	Then,
 	\begin{align*}
 		(1-\epsilon)\mu(g) \leq \lim_n \mu(g_n) \leq\footnote{As $g_n \leq f_n$} \lim_n \mu(f_n) \leq M
-	\end{align*} so $\mu(g) \leq \frac{M}{1 - \epsilon} \; \forall \; \epsilon \in (0, 1)$ hence $\mu(g) \leq M$.
+	\end{align*} so $\mu(g) \leq \frac{M}{1 - \epsilon} \; \forall \epsilon \in (0, 1)$ hence $\mu(g) \leq M$.
 	Since $\epsilon$ was arbitrary, this completes the proof.
 \end{proof}
 
 \subsection{Linearity of Integral}
 \begin{theorem}[Linearity of Integral]
 	Let $f, g \colon (E, \mathcal E, \mu) \to \mathbb R$ be nonnegative measurable functions.
-	Then $\forall \; \alpha, \beta \geq 0$,
+	Then $\forall \alpha, \beta \geq 0$,
 	\begin{itemize}
 		\item $\mu(\alpha f + \beta g) = \alpha \mu(f) + \beta \mu(g)$;
 		\item $f \leq g \implies \mu(f) \leq \mu(g)$;
@@ -139,7 +139,7 @@ If one of $\mu(f^+)$ or $\mu(f^-)$ is $\infty$ and the other finite, we define $
 
 	If $f = 0$ a.e, then $0 \leq f_n \leq f$, so $f_n = 0$ a.e. but $f_n$ simple $\implies \mu(f_n) = 0$.
 	As $\mu(f_n) \uparrow \mu(f)$ so $\mu(f) = 0$. \\
-	Conversely, if $\mu(f) = 0$, then $0 \leq \mu(f_n) \uparrow \mu(f)$ so $\mu(f_n) = 0 \; \forall \; n \implies f_n = 0$ a.e.
+	Conversely, if $\mu(f) = 0$, then $0 \leq \mu(f_n) \uparrow \mu(f)$ so $\mu(f_n) = 0 \; \forall n \implies f_n = 0$ a.e.
 	But $f_n \uparrow f \implies f = 0$ a.e.
 \end{proof}
 
@@ -150,7 +150,7 @@ If one of $\mu(f^+)$ or $\mu(f^-)$ is $\infty$ and the other finite, we define $
 
 \begin{theorem}[Linearity of Integral]
 	Let $f, g \colon (E, \mathcal E, \mu) \to \mathbb R$ be integrable.
-	Then $\forall \; \alpha, \beta \in \mathbb{R}$,
+	Then $\forall \alpha, \beta \in \mathbb{R}$,
 	\begin{itemize}
 		\item $\mu(\alpha f + \beta g) = \alpha \mu(f) + \beta \mu(g)$;
 		\item $f \leq g \implies \mu(f) \leq \mu(g)$;
@@ -214,7 +214,7 @@ If one of $\mu(f^+)$ or $\mu(f^-)$ is $\infty$ and the other finite, we define $
 	In fact, $\mu(\abs{f_n - f}) \to 0$ as $|f_n - f| \leq |f_n| + |f| \leq g + g = 2g$ and $2g$ is integrable so by DCT (\nameref{thm:dct}) proved.
 
 	If $X_n \to X$ $\mathbb{P}$ a.s., and $|X_n| \leq Y$ and $\mathbb{E}[Y] < \infty$ then $\mathbb{E}[X_n] \to \mathbb{E}[X]$ and $\mathbb{E}[\abs{X_n - X}] \to 0$. \\
-	In particular, if $\abs{X_n} \leq M \; \forall \; n$, for some $M > 0, M \in \mathbb{R}$ then $\mathbb{E}[\abs{X_n - X}] \to 0$ (Bounded Convergence Theorem)\footnote{This works as with finite measure then $\mathbb{E}[M]$ is finite}.
+	In particular, if $\abs{X_n} \leq M \; \forall n$, for some $M > 0, M \in \mathbb{R}$ then $\mathbb{E}[\abs{X_n - X}] \to 0$ (Bounded Convergence Theorem)\footnote{This works as with finite measure then $\mathbb{E}[M]$ is finite}.
 \end{remark}
 
 \begin{remark}
@@ -223,14 +223,14 @@ If one of $\mu(f^+)$ or $\mu(f^-)$ is $\infty$ and the other finite, we define $
 
 \begin{proof}
 	Suppose $\mathbb{E}[\abs{X_n - X}] \not\to 0$.
-	Then $\exists$ a subsequence $n_k$ s.t. $\mathbb{E}\qty[\abs{X_{n_k} - X}] > \epsilon \; \forall \; k$ for some $\epsilon > 0$.
+	Then $\exists$ a subsequence $n_k$ s.t. $\mathbb{E}\qty[\abs{X_{n_k} - X}] > \epsilon \; \forall k$ for some $\epsilon > 0$.
 	Now $X_n \to X$ in $\mathbb{P}$ prob then $X_{n_k} \to X$ in $\mathbb{P}$ prob by definition.
-	By \cref{thm:inprobinmeasure}, $\exists \; n_{k_{l}}$ s.t. $X_{n_{k_l}} \to X$ a.s.
+	By \cref{thm:inprobinmeasure}, $\exists n_{k_{l}}$ s.t. $X_{n_{k_l}} \to X$ a.s.
 	But then by DCT, $\mathbb{E}\qty[\abs{X_{n_{k_l}} - X}] \to 0$ \Lightning.
 \end{proof}
 
 \begin{theorem}[Bounded Convergence Theorem]
-	If $X_n \to X$ in $\mathbb{P}$ prob and $\abs{X_n} \leq M$ for some constant $M > 0$, $\forall \; n \geq 0$.
+	If $X_n \to X$ in $\mathbb{P}$ prob and $\abs{X_n} \leq M$ for some constant $M > 0$, $\forall n \geq 0$.
 	Then $\mathbb{E}[\abs{X_n - X}] \to 0$.
 \end{theorem}
 
@@ -273,7 +273,7 @@ This is quite useful in probability.
 \begin{remark}
 	We can show that all Riemann integrable functions are $\mu^\star$-measurable, where $\mu^\star$ is the outer measure of the Lebesgue measure, as defined in the proof of Carath\'eodory's theorem.
 	However, there exist certain Riemann integrable functions that are not Borel measurable.
-	We can modify such an $f$ on a Lebesgue measure $0$ set to make it Borel measurable, i.e. $\exists \; \widetilde f$ s.t. $\widetilde{f} = f$ on $A$ and $\lambda(A^c) = 0$ and $\int \widetilde{f} \dd{x} = \int f \dd{x}$.
+	We can modify such an $f$ on a Lebesgue measure $0$ set to make it Borel measurable, i.e. $\exists \widetilde f$ s.t. $\widetilde{f} = f$ on $A$ and $\lambda(A^c) = 0$ and $\int \widetilde{f} \dd{x} = \int f \dd{x}$.
 
 	A (bounded) Riemann integrable fcn $f : [a, b] \to \mathbb{R}$ is Lebesgue integrable in the following sense.
 	If $f$ is bounded on $[a, b]$, $f$ is $R$-integrable iff
@@ -292,7 +292,7 @@ This is quite useful in probability.
 
 \begin{theorem}[Substitution Formula]
 	Let $\phi : [a, b] \to \mathbb{R}$, $\phi$ strictly increasing and continuously differentiable.
-	Then $\forall \; g$ Borel fcns, $g \geq 0$ on $[\phi(a), \phi(b)]$, $\int_{\phi(a)}^{\phi(b)} g(y) \dd{y} = \int_a^b g(\phi(x)) \phi'(x) \dd{x} (\star)$.
+	Then $\forall g$ Borel fcns, $g \geq 0$ on $[\phi(a), \phi(b)]$, $\int_{\phi(a)}^{\phi(b)} g(y) \dd{y} = \int_a^b g(\phi(x)) \phi'(x) \dd{x} (\star)$.
 \end{theorem}
 
 \begin{proof}
@@ -302,18 +302,18 @@ This is quite useful in probability.
 		\item $1 \in \mathcal{V}$ by FTC (2), $1_{(c, d]} \in \mathcal{V}$ by FTC (2).
 		\item If $f_n \in \mathcal{V}$, $f_n \uparrow \mathcal{V}$, $f_n \geq 0$ then by \nameref{thm:mct}.
 	\end{itemize}
-	Hence by \nameref{thm:monclass}, $(\star)$ holds $\forall \; g \geq 0$ measurable.
+	Hence by \nameref{thm:monclass}, $(\star)$ holds $\forall g \geq 0$ measurable.
 \end{proof}
 
 \begin{theorem}[Differentiation Under The Integral Sign]
 	Let $U \subseteq \mathbb R$ be an open set and $(E, \mathcal E, \mu)$ be a measure space.
 	Let $f \colon U \times E \to \mathbb R$ be s.t.
 	\begin{enumerate}
-		\item $x \mapsto f(t, x)$ is integrable $\forall \; t$;
-		\item $t \mapsto f(t,x)$ is differentiable $\forall \; x \in E$;
-		\item $\exists \; g : E \to \mathbb{R}$ integrable s.t. $\abs{\pdv{f}{t}(t, x)} < g(x) \; \forall \; t \in U, x \in E$;
+		\item $x \mapsto f(t, x)$ is integrable $\forall t$;
+		\item $t \mapsto f(t,x)$ is differentiable $\forall x \in E$;
+		\item $\exists g : E \to \mathbb{R}$ integrable s.t. $\abs{\pdv{f}{t}(t, x)} < g(x) \; \forall t \in U, x \in E$;
 	\end{enumerate}
-	Then $x \mapsto \pdv{f}{t}(t, x)$ is integrable $\forall \; t$ and,
+	Then $x \mapsto \pdv{f}{t}(t, x)$ is integrable $\forall t$ and,
 	\[ F(t) = \int_E f(t,x) \dd{\mu(x)} \implies F'(t) = \int_E \pdv{f}{t}\qty(t,x) \dd{\mu(x)} \]
 \end{theorem}
 
@@ -356,14 +356,14 @@ This is quite useful in probability.
 	This follows by definition for $g$ indicator functions, by additivity extends to simple functions and by \nameref{thm:mct} to all measurable non-negative functions.
 
 	We call $f$ the \vocab{density} of $\nu$ with respect to $\mu$.
-	This is unique as $\mu(f 1_A) = \mu(g 1_A) \ \forall \; A \in \mathcal{E} \implies f = g$ $\mu$ a.e. (proved on Sheet 2).
+	This is unique as $\mu(f 1_A) = \mu(g 1_A) \ \forall A \in \mathcal{E} \implies f = g$ $\mu$ a.e. (proved on Sheet 2).
 
-	In particular, for $\mu = \lambda$, $\forall \; f$ Borel $\exists$ a Borel measure $\nu$ on $\mathbb{R}$ given by $\nu(A) = \int_A f(x) \dd{x}$ and then $\forall \; g$ Borel, $g \geq 0$ $\nu(g) = \int f(x) g(x) \dd{x}$.
+	In particular, for $\mu = \lambda$, $\forall f$ Borel $\exists$ a Borel measure $\nu$ on $\mathbb{R}$ given by $\nu(A) = \int_A f(x) \dd{x}$ and then $\forall g$ Borel, $g \geq 0$ $\nu(g) = \int f(x) g(x) \dd{x}$.
 	We say $\nu$ has \vocab{density} $f$.
 	This $\nu$ is a prob measure on $(\mathbb{R}, \mathcal{B})$ iff $\int f(x) \dd{x} = 1$.
 
 	For $\lambda : (\Omega, \mathcal{F}, \mathbb{P}) \to \mathbb{R}$, if the law $\mu_X = \mathbb{P} \circ X\inv$ has the density $f_X$ (wrt $\lambda$), we call $f_X$ the \vocab{probability density function} of $X$.
-	Then $\mathbb{P}(X \in A) = \mathbb{P} \circ X\inv (A) = \mu_X(A) = \int_A f_X(x) \dd{x} \ \forall \; A \in \mathcal{B}$ and $\forall \; g$ Borel, $g \geq 0$.
+	Then $\mathbb{P}(X \in A) = \mathbb{P} \circ X\inv (A) = \mu_X(A) = \int_A f_X(x) \dd{x} \ \forall A \in \mathcal{B}$ and $\forall g$ Borel, $g \geq 0$.
 	Taking $A = (-\infty, x]$, we get $\mathbb{P}(X \leq x) = F_X(x) = \int_{-\infty}^{x} f_X(x) \dd{x}$. \\
 	$\mathbb{E}[g(x)] = \int g(x) \dd{\mu_X(x)}$ from previous example and $\int g(x) \dd{\mu_X(x)} = \nu(g) = \int g(x) f_X(x) \dd{x}$.
 \end{example}

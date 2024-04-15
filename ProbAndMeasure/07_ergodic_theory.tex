@@ -23,7 +23,7 @@ This result has several weaknesses, and we can provide stronger results.
 \end{proposition}
 
 \begin{proposition}
-	Let $(X_n)_{n \in \mathbb N}$ be indep with $\expect{X_n} = \mu$ and $\expect{X_n^4} \leq M \ \forall \; n$.
+	Let $(X_n)_{n \in \mathbb N}$ be indep with $\expect{X_n} = \mu$ and $\expect{X_n^4} \leq M \ \forall n$.
 	Then $\frac{1}{n} \sum_{i=1}^n X_i \to \mu$ a.s. as $n \to \infty$.
 \end{proposition}
 
@@ -55,7 +55,7 @@ This result has several weaknesses, and we can provide stronger results.
 Let $(E, \mathcal E, \mu)$ be a $\sigma$-finite measure space.
 
 \begin{definition}[Measure Preserving]
-	A measurable map $\Theta \colon E \to E$ is \vocab{measure-preserving} (m.p.) if $\mu \circ \Theta\inv = \mu$, i.e. $\mu(\Theta^{-1}(A)) = \mu(A) \; \forall \; A \in \mathcal E$.
+	A measurable map $\Theta \colon E \to E$ is \vocab{measure-preserving} (m.p.) if $\mu \circ \Theta\inv = \mu$, i.e. $\mu(\Theta^{-1}(A)) = \mu(A) \; \forall A \in \mathcal E$.
 \end{definition}
 
 In this case, for any integrable function $f \in L^1(\mu)$, we have $\int_E f \dd{\mu} = \int_E f \circ \Theta \dd{\mu}$ as $\int_E f \circ \Theta \dd{\mu} = \int_E f \dd{\mu \circ \Theta\inv}$.
@@ -69,7 +69,7 @@ The collection $\mathcal E_\Theta$ of $\Theta$-invariant sets forms a $\sigma$-a
 A function $f \colon E \to \mathbb R$ is invariant iff $f$ is $\mathcal E_\Theta$-measurable (Sheet 4).
 
 \begin{definition}[Ergodic]
-	$\Theta$ is called \vocab{ergodic} if the $\mathcal{E}_\Theta$ is $\mu$-trivial, i.e. $\forall \; A \in \mathcal{E}_\Theta$ $\mu(A) = 0$ or $\mu(A^c) = 0$.
+	$\Theta$ is called \vocab{ergodic} if the $\mathcal{E}_\Theta$ is $\mu$-trivial, i.e. $\forall A \in \mathcal{E}_\Theta$ $\mu(A) = 0$ or $\mu(A^c) = 0$.
 \end{definition}
 
 The point is an ergodic transformation mixes the sets well.
@@ -130,7 +130,7 @@ For Markov Chains, ergodicity $\iff$ irreducibility.
     \end{align*}
     so we obtain (as $S_n^\star \in L_1$)
     \begin{align*}
-        \int_{A_n} f \dd{\mu} \geq 0 \quad \forall \; n.
+        \int_{A_n} f \dd{\mu} \geq 0 \quad \forall n.
     \end{align*}
 
 	$A_n = \qty{S_n^\star > 0} = \qty{\max_{0 \leq m \leq n} S_m > 0} = \bigcup_{m = 0}^n \qty{S_m > 0} \uparrow \bigcup_{m = 0}^\infty \qty{S_m > 0} = \qty{\sup S_m > 0} = S^\star$. \\
@@ -299,7 +299,7 @@ For Markov Chains, ergodicity $\iff$ irreducibility.
 \begin{remark} \label{rem:ergodic} \
 	\begin{enumerate}
 		\item If $\mu$ a prob measure and $\Theta$ ergodic, then $\bar f$ is a constant a.s., so $\bar f = \int \bar f \dd{\mu}$.
-		Also, $\int f \dd{\mu} = \int \frac{S_n(f)}{n} \dd{\mu} \to \int \bar f \dd{\mu} \; \forall \; n$.
+		Also, $\int f \dd{\mu} = \int \frac{S_n(f)}{n} \dd{\mu} \to \int \bar f \dd{\mu} \; \forall n$.
 		Hence $\int \bar f \dd{\mu} = \int f \dd{\mu}$. \\
 		Then, $\frac{S_n(f)}{n} \xrightarrow{n \to \infty} \mathbb{E}[f]$ $\mu$ a.s. and in $L^1$.
 		\item For $\Theta$ m.p. and $f \in L^1$, $\frac{S_n(f)}{n} \xrightarrow{\mu \text{ a.s and } L^1} \mathbb{E}[f \mid \mathcal{E}_\Theta]$.
@@ -361,7 +361,7 @@ We call $(E, \mathcal E, \mu) = (\mathbb R^{\mathbb N}, \sigma(\mathcal C), m^{\
         \Theta^{-n}(A) &= \mathbb{R}^n \times A_1 \times A_2 \times \dots \\
 		&= \qty{x \in \mathbb R^{\mathbb N} : (x_{n+1}, x_{n+2}, \dots) \in A} \in \mathcal T_n
     \end{align*}
-	Now, if $A$ is invariant, $A = \Theta^{-n}(A) \in \mathcal T_n \; \forall \; n$, so $A \in \mathcal T$.
+	Now, if $A$ is invariant, $A = \Theta^{-n}(A) \in \mathcal T_n \; \forall n$, so $A \in \mathcal T$.
 	By Kolmogorov's zero-one law as $(X_i)$ iid, $\mu(A) = 0$ or $\mu(A) = 1$ as required for ergodicity.
 \end{proof}
 We can apply Birkhoff's ergodic theorem to $\Theta$.
@@ -418,7 +418,7 @@ By von Neumann's $L^p$-ergodic theorem, convergence holds in fact in $L^1$.
 
 \begin{aside}{Aside}
 	\begin{enumerate}
-		\item If $(\mu_n)$ is a sequence in $\mathbb{R}^n$ of prob measures that converges weakly to $\mu$, then $(\mu_n)$ is ``tight'', i.e. $\forall \; \epsilon > 0$, $\exists$ a compact set $K$ s.t. $\mu_n(K^c) < \epsilon \; \forall \; n$.
+		\item If $(\mu_n)$ is a sequence in $\mathbb{R}^n$ of prob measures that converges weakly to $\mu$, then $(\mu_n)$ is ``tight'', i.e. $\forall \epsilon > 0$, $\exists$ a compact set $K$ s.t. $\mu_n(K^c) < \epsilon \; \forall n$.
 		\item If $(\mu_n)$ a sequence of prob measures that are tight, then $\exists$ a subsequence $(n_k)$ and a prob measure $\mu$ s.t. $\qty(\mu_{n_k}) \to \mu$ weakly (Prokhorov's  thm or Banach-Alaoglu thm).
 		\item If distributions $F_n \xrightarrow{d} F$, then $\exists$ a prob space s.t. $\mu_{X_n}$ is $F_n$ and $X_n \to X$ a.s..
 		\item If $X_n \xrightarrow{d} X$ and $Y_n \xrightarrow{d} Y$ then $X_n + Y_n \not\to X + Y$, in fact $X, Y$ are not necessarily even defined in the same prob space so $X + Y$ doesn't even make sense. \\

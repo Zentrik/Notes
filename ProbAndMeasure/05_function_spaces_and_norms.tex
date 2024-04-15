@@ -29,7 +29,7 @@ The functional $\norm{\wildcard}_p$ is then a norm on $\mathcal L^p = \qty{[f] :
 
 \begin{proposition}[Chebyshev's inequality, Markov's inequality]
 	Let $f \colon E \to \mathbb R$ be non-negative and measurable.
-	Then $\forall \; \lambda > 0$,
+	Then $\forall \lambda > 0$,
 	\[ \mu(\qty{x \in E : f(x) \geq \lambda}) = \mu(f \geq \lambda) \leq \frac{\mu(f)}{\lambda} \]
 \end{proposition}
 
@@ -49,7 +49,7 @@ Thus a convex function is continuous on the interior of the interval and so is B
 
 \begin{lemma}
 	Let $I \subseteq R$ be an interval and $c : I \to \mathbb{R}$, and let $m \in$ the interior of $I$.
-	If $c$ is convex on $I$, $\exists \; a, b$ s.t. $c(x) \geq ax + b \ \forall \; x \in I$, and $c(m) = am + b$.
+	If $c$ is convex on $I$, $\exists a, b$ s.t. $c(x) \geq ax + b \ \forall x \in I$, and $c(m) = am + b$.
 \end{lemma}
 
 \begin{proof}
@@ -76,7 +76,7 @@ Thus a convex function is continuous on the interior of the interval and so is B
 
 	Otherwise, then $m = \mathbb{E}[X] \in \operatorname{int}\footnote{Interior of} I$
 
-	Using the previous lemma, $\exists \; a, b$ s.t. $c(X) \geq aX + b$.
+	Using the previous lemma, $\exists a, b$ s.t. $c(X) \geq aX + b$.
 	In particular, $(c(X))^- \leq |a| |X| + |b|$\footnote{$f \geq g$ gives $-f \leq -g$ so $f^- \leq g^- \leq |g|$.}.
 	Hence, $\expect{c^-(X)} \leq \abs{a} \expect{\abs{X}} + \abs{b} < \infty$, and $\expect{c(X)} = \expect{c^+(X)} - \expect{c^-(X)}$ is well-defined in $(-\infty,\infty]$.
 
@@ -168,8 +168,8 @@ So the $L^p$ spaces are indeed normed spaces.
 \end{definition}
 
 \begin{theorem}[$\mathcal L^p$ is a Banach space]
-	Let $1 \leq p \leq \infty$, and let $f_n \in L^p$ be a Cauchy sequence, so $\forall \; \varepsilon > 0 \ \exists \; N$ s.t. $\forall \; m, n \geq N$, we have $\norm{f_m - f_n}_p < \varepsilon$.
-	Then $\exists \; f \in L^p$ s.t. $f_n \to f$ in $L^p$, so $\norm{f_n - f}_p \to 0$ as $n \to \infty$.
+	Let $1 \leq p \leq \infty$, and let $f_n \in L^p$ be a Cauchy sequence, so $\forall \varepsilon > 0 \ \exists N$ s.t. $\forall m, n \geq N$, we have $\norm{f_m - f_n}_p < \varepsilon$.
+	Then $\exists f \in L^p$ s.t. $f_n \to f$ in $L^p$, so $\norm{f_n - f}_p \to 0$ as $n \to \infty$.
 \end{theorem}
 
 \begin{proof}
@@ -199,7 +199,7 @@ So the $L^p$ spaces are indeed normed spaces.
 		&= \mu(\lim_k \abs{f_n - f_{N_k}}^p) \\
 		&= \mu(\liminf_k \abs{f_n - f_{N_k}}^p) \\
 		&\leq \liminf_k \mu(\abs{f_n - f_{N_k}}^p) \\
-		&\leq \epsilon^p \quad \forall \; n \geq N.
+		&\leq \epsilon^p \quad \forall n \geq N.
 	\end{align*}
 
 	Since the $f_n$ are Cauchy,
@@ -260,8 +260,8 @@ So the $L^p$ spaces are indeed normed spaces.
 
 \begin{theorem}[Orthogonal Projection]
 	Let $V$ be a \underline{closed linear subspace} of $\mathcal L^2(\mu)$.
-	Then $\forall \; f \in \mathcal L^2$, $\exists$ an orthogonal decomposition $f = v + u$ where $v \in V$ and $u \in V^\perp$. \\
-	Moreover, $\norm{f - v}_2 \leq \norm{f - g}_2 \ \forall \; g \in V$ with equality iff $v = g$ a.e..
+	Then $\forall f \in \mathcal L^2$, $\exists$ an orthogonal decomposition $f = v + u$ where $v \in V$ and $u \in V^\perp$. \\
+	Moreover, $\norm{f - v}_2 \leq \norm{f - g}_2 \ \forall g \in V$ with equality iff $v = g$ a.e..
 \end{theorem}
 
 \begin{definition}[Projection]
@@ -302,7 +302,7 @@ So the $L^p$ spaces are indeed normed spaces.
 If $\mathcal{G}$ a sub-$\sigma$ algebra of $\mathcal{F}$ (i.e. $\mathcal{G} \subseteq \mathcal{F}$), then $L^2(\Omega, \mathcal{G}, \mathbb{P})$ is a closed subspace of $L^2(\Omega, \mathcal{F}, \mathbb{P})$.
 
 \begin{definition}[Conditional Expectation]
-	For $X \in L^2(\Omega, \mathcal{F}, \mathbb{P})$ s.t. $X$ measurable wrt $\mathcal{G}$, $\norm{X - Y}_2 \geq \norm{X - \mathbb{E}[X \mid \mathcal{G}]}_2 \quad \forall \; Y$ that are $\mathcal{G}$ measurable.\\
+	For $X \in L^2(\Omega, \mathcal{F}, \mathbb{P})$ s.t. $X$ measurable wrt $\mathcal{G}$, $\norm{X - Y}_2 \geq \norm{X - \mathbb{E}[X \mid \mathcal{G}]}_2 \quad \forall Y$ that are $\mathcal{G}$ measurable.\\
 	The\footnote{This is actually only a variant of the conditional expectation.} \vocab{conditional expectation of $X$ given $\mathcal{G}$}, $\mathbb{E}[X \mid \mathcal{G}]$ is defined as the orthogonal projection of $X$ on $L^2(\Omega, \mathcal{G}, \mathbb{P})$.
 \end{definition}
 
@@ -315,7 +315,7 @@ If $\mathcal{G}$ a sub-$\sigma$ algebra of $\mathcal{F}$ (i.e. $\mathcal{G} \sub
 	Let $X$ be integrable.
 	Then the conditional expectation of $X$ given $\mathcal{G}$ is given by:
 	\begin{align*}
-		\mathbb{E}[X \mid G_i] = \frac{\mathbb{E}[X 1_{G_i}]}{\mathbb{P}(G_i)} \quad \forall \; i \in I.
+		\mathbb{E}[X \mid G_i] = \frac{\mathbb{E}[X 1_{G_i}]}{\mathbb{P}(G_i)} \quad \forall i \in I.
 	\end{align*}
 	Let $Y = \sum_i \mathbb{E}[X \mid G_i] 1_{G_i}$ (i.e. if $\omega \in G_i$, $Y(\omega) = \mathbb{E}[X \mid G_i]$).
 	Check that $Y$ is $\mathcal{G}$-measurable; $Y \in L^2(\Omega, \mathcal{G}, \mathbb{P})$; and that $Y$ is ``the'' orthogonal projection of $X$ onto $L^2(\Omega, \mathcal{G}, \mathbb{P})$ if $X \in L^2(\Omega, \mathcal{F}, \mathbb{P})$.
@@ -326,7 +326,7 @@ If $\mathcal{G}$ a sub-$\sigma$ algebra of $\mathcal{F}$ (i.e. $\mathcal{G} \sub
 For $(\Omega, \mathcal{F}, \mathbb{P})$, what are the implications between convergence: a.s., in $L^p$ for $1 \leq p < \infty$, in $\mathbb{P}$ and in distribution.
 
 Let $f_n = n 1_{(0, 1/n)}$ on $\qty((0, 1), \mathcal{B}, \lambda)$.
-$f_n \to 0$ a.s. but $\mathbb{E}\abs{f_n} = \mathbb{E}[f_n] = 1 \ \forall \; n$ so a.s. $\centernot\implies$ $L^p$ convergence.
+$f_n \to 0$ a.s. but $\mathbb{E}\abs{f_n} = \mathbb{E}[f_n] = 1 \ \forall n$ so a.s. $\centernot\implies$ $L^p$ convergence.
 
 $\mathbb{P}(|X_n - X| > \epsilon) \leq \frac{\mathbb{E}|X_n - X|^p}{\epsilon^p}$ by Markov's Inequality, so convergence in $L^p$ for $1 \leq p < \infty \implies$ convergence in $\mathbb{P}$.
 
@@ -357,7 +357,7 @@ $\mathbb{P}(|X_n - X| > \epsilon) \leq \frac{\mathbb{E}|X_n - X|^p}{\epsilon^p}$
 
 For $X \in L^1(\mathbb P)$, then as $\delta \to 0$,
 \[ I_X(\delta) = \sup \qty{ \expect{\abs{X} 1_A} : \prob{A} \leq \delta, A \in \mathcal{F}} \to 0 \]
-If not, $\exists \; \varepsilon > 0$ and $A_n \in \mathcal F$ s.t. $\prob{A_n} \leq 2^{-n}$ but $\expect{\abs{X} 1_{A_n}} \geq \varepsilon$.
+If not, $\exists \varepsilon > 0$ and $A_n \in \mathcal F$ s.t. $\prob{A_n} \leq 2^{-n}$ but $\expect{\abs{X} 1_{A_n}} \geq \varepsilon$.
 Since $\sum_n \prob{A_n} < \infty$, by the first Borel--Cantelli lemma, we have $\prob{\bigcap_n \bigcup_{m \geq n} A_m} = 0$.
 But $\expect{\abs{X} 1_{A_n}} \leq \expect{\abs{X} 1_{\bigcup_{m \geq n} A_m}}$.
 Note that $1_{\bigcup_{m \geq n} A_m} \to 1_{\bigcap_n \bigcup_{m \geq n} A_n} = 0$ a.s., so $\expect{\abs{X} 1_{\bigcup_{m \geq n} A_m}} \to \expect{\abs{X} 1_{\bigcap_n \bigcup_{m \geq n}}} = 0$ by DCT \Lightning.
@@ -414,8 +414,8 @@ Note that $1_{\bigcup_{m \geq n} A_m} \to 1_{\bigcap_n \bigcup_{m \geq n} A_n} =
 	\[ \prob{\abs{X_n - X} > \varepsilon} \leq \frac{\expect{\abs{X_n - X}}}{\varepsilon} \to 0 \]
 	so $X_n \to X$ in $\mathbb{P}$.
 
-	Choose $N$ s.t. $\mathbb{E}|X_n - X| < \frac{\epsilon}{2} \ \forall \; n \geq N$.
-	Choose $\delta$ s.t. $\mathbb{E}[|X| 1_A] \leq \frac{\epsilon}{2}$ and $\mathbb{E}[|X_n|1_A] \leq \epsilon \quad \forall \; n = 1, \dots, N-1$ when $\mathbb{P}(A) < \delta$.
+	Choose $N$ s.t. $\mathbb{E}|X_n - X| < \frac{\epsilon}{2} \ \forall n \geq N$.
+	Choose $\delta$ s.t. $\mathbb{E}[|X| 1_A] \leq \frac{\epsilon}{2}$ and $\mathbb{E}[|X_n|1_A] \leq \epsilon \quad \forall n = 1, \dots, N-1$ when $\mathbb{P}(A) < \delta$.
 	\begin{align*}
 		\expect{\abs{X_n} 1_A} \leq \expect{\abs{X_n - X} 1_A} + \expect{\abs{X} 1_A} \leq \frac{\varepsilon}{2} + \frac{\varepsilon}{2}
 	\end{align*}
@@ -432,7 +432,7 @@ Note that $1_{\bigcup_{m \geq n} A_m} \to 1_{\bigcap_n \bigcup_{m \geq n} A_n} =
 
 	Next, we define truncated r.v.s $X_n^K = \max(-K, \min(K, X_n))$ and $X^K = \max(-K, \min(K, X))$.
 	Then $X_n^K \to X^K$ in $\mathbb{P}$ (as $\mathbb{P}(|X_n^K - X^K| > \epsilon) \leq \mathbb{P}(|X_n - X| < \epsilon)$)\footnote{Aside: If $X_n \to X$ in $\mathbb{P}$ and $f$ cts, then $f(X_n) \to f(X)$ in $\mathbb{P}$.}.
-	And $|X_n^K| \leq K \quad \forall \; n$ so by BCT, $X_n^K \to X^K$ in $L^1$.
+	And $|X_n^K| \leq K \quad \forall n$ so by BCT, $X_n^K \to X^K$ in $L^1$.
 	Now,
 	\begin{align*}
 		\expect{\abs{X_n - X}} &\leq \expect{\abs{X_n - X_n^K}} + \expect{\abs{X_n^K - X^K}} + \expect{\abs{X^K - X}} \\

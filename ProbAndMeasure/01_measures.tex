@@ -49,7 +49,7 @@
 	Define $m : E \to [0, \infty]$ s.t. $m(x) = \mu(\{x\})$, such an $m$ is called a ``mass function'', and measures $\mu$ are in $1$-$1$ correspondence with the mass function $m$.
 	This corresponds to the notion of a probability mass function.
 
-	Here $\mathcal{E} = \mathcal{P}(E)$ and this is the theory in elementary discrete prob. (when $\mu(\{x\}) = 1 \; \forall \; x \in E$, $\mu$ is called the counting measure. Here $\mu(A) = |A| \; \forall \; A \subset E$).
+	Here $\mathcal{E} = \mathcal{P}(E)$ and this is the theory in elementary discrete prob. (when $\mu(\{x\}) = 1 \; \forall x \in E$, $\mu$ is called the counting measure. Here $\mu(A) = |A| \; \forall A \subset E$).
 
 	For uncountable $E$  however, the story is not so simple and $\mathcal{E} = \mathcal{P}(E)$ is generally not feasible. Indeed measures are defined on $\sigma$-algebra ``generated'' by a smaller class $\mathcal{A}$ of simple subsets of $E$.
 \end{remark}
@@ -136,7 +136,7 @@ We will later prove that this extended measure is unique.
 	Clearly, $\mu^\star(\emptyset)$ and $\mu^\star$ is increasing, so $\mu^\star$ is an increasing set fcn on $\mathcal{P}(E)$.
 
 	\begin{definition}[$\mu^\star$ measurable]
-		A set $A \subseteq E$ \vocab{$\mu^\star$ measurable} if $\forall \; B \subseteq E \ \mu^\star(B) = \mu^\star(B \cap A) + \mu^\star(B \cap A^c)$.
+		A set $A \subseteq E$ \vocab{$\mu^\star$ measurable} if $\forall B \subseteq E \ \mu^\star(B) = \mu^\star(B \cap A) + \mu^\star(B \cap A^c)$.
 	\end{definition}
 
 	We define the class
@@ -178,7 +178,7 @@ We will later prove that this extended measure is unique.
 	We have $B \subseteq (B \cap A) \cup (B \cap A^c) \cup \emptyset \cup \dots$, hence by countable subadditivity $(\dagger)$, $\mu^\star(B) \leq \mu^\star(B \cap A) + \mu^\star(B \cap A^c)$.
 
 	It now suffices to prove the converse, that $\mu^\star(B) \geq \mu^\star(B \cap A) + \mu^\star(B \cap A^c)$. \\
-	We can assume $\mu^\star(B)$ is finite, and so $\forall \; \epsilon > 0 \; \exists \; A_n \in \mathcal A$ s.t. $B \subseteq \bigcup_n A_n$ and $\mu^\star(B) + \epsilon \geq \sum_n \mu(A_n)$.
+	We can assume $\mu^\star(B)$ is finite, and so $\forall \epsilon > 0 \; \exists A_n \in \mathcal A$ s.t. $B \subseteq \bigcup_n A_n$ and $\mu^\star(B) + \epsilon \geq \sum_n \mu(A_n)$.
 	Now, $B \cap A \subseteq \bigcup_n (A_n \cap A)$, and $B \cap A^c \subseteq \bigcup_n (A_n \cap A^c)$.
 	All of the members of these two unions are elements of $\mathcal A$, since $A_n \cap A^c = A_n \setminus A$.
 	Therefore,
@@ -299,13 +299,13 @@ To address uniqueness of extension, we introduce further subclasses of $\mathcal
 	Hence $\mathcal D'$ is a $d$-system.
 	Also, $\mathcal D' \subseteq \mathcal D$ by construction of $\mathcal D'$.
 	But also $\mathcal{A} \subseteq \mathcal{D}'$ and $\mathcal{D}'$ is a $d$-system so $\mathcal{D} \subset \mathcal{D}'$ as $\mathcal{D}$ is the smallest $d$-system containing $\mathcal{A}$.
-	Thus $\mathcal D = \mathcal D'$, i.e $\forall \; B \in \mathcal{D}$ and $A \in \mathcal{A}, B \cap A \in \mathcal{D} \ (\ast)$.
+	Thus $\mathcal D = \mathcal D'$, i.e $\forall B \in \mathcal{D}$ and $A \in \mathcal{A}, B \cap A \in \mathcal{D} \ (\ast)$.
 
 	We then define
 	\[ \mathcal D'' = \qty{B \in \mathcal D : \forall A \in \mathcal D, B \cap A \in \mathcal D} \]
 	Note that $\mathcal A \subseteq \mathcal D''$ by $(\ast)$.
 	Running the same argument as before, we can show that $\mathcal D''$ is a $d$-system. So $\mathcal{D}'' = \mathbb{D}$.
-	But then (by the definition of $\mathcal{D}''$), $\forall \; B \in \mathcal{D}, A \in \mathcal{D} \implies B \cap A \in \mathcal{D}$, i.e. $\mathcal{D}$ is a $\pi$-system (check that $\emptyset \in \mathcal{D}$).
+	But then (by the definition of $\mathcal{D}''$), $\forall B \in \mathcal{D}, A \in \mathcal{D} \implies B \cap A \in \mathcal{D}$, i.e. $\mathcal{D}$ is a $\pi$-system (check that $\emptyset \in \mathcal{D}$).
 
 	So $\mathcal{D}$ is a $\sigma$-algebra containing $\mathcal{A}$, hence $\mathcal{D} \supseteq \sigma(\mathcal{A})$.
 \end{proof}
@@ -380,7 +380,7 @@ Note that in a Hausdorff space, compact sets are closed and hence measurable.
 \end{definition}
 
 \begin{definition}[$\sigma$-finite Measure]
-	If $\exists$ sequence $E_n \in \mathcal{E}$ s.t. $\mu(E_n) < \infty \; \forall \; n$ and $E = \bigcup_n E_n$, then $\mu$ is called a \vocab{$\sigma$-finite measure}.
+	If $\exists$ sequence $E_n \in \mathcal{E}$ s.t. $\mu(E_n) < \infty \; \forall n$ and $E = \bigcup_n E_n$, then $\mu$ is called a \vocab{$\sigma$-finite measure}.
 \end{definition}
 
 \begin{remark}
@@ -467,7 +467,7 @@ Initially, we will perform this construction for $d = 1$, and later we will cons
 	\end{align*}
 	Then $\mu_n, \lambda_n$ are \emph{probability measures} on $\mathcal{B}$ and $\mu_n = \lambda_n$ on the $\pi$-system of intervals of the form $(a, b]$ with $a < b$\footnote{As $(a, b] \cap (c, d] = \emptyset$ or $(e, f]$.}.
 	This $\pi$-system generates $\mathcal{B}$, so by the uniqueness theorem for finite measures (\cref{thm:uni}) $\mu_n = \lambda_n$ on $\mathcal B$.
-	Hence $\forall \; A \in \mathcal{B}$
+	Hence $\forall A \in \mathcal{B}$
 	\begin{align*}
 		\mu(A) &= \mu\left(\bigcup_n A \cap (n,n+1]\right) \\
 		&= \sum_{n \in \mathbb Z} \mu(A \cap (n,n+1]) \\
@@ -490,7 +490,7 @@ Initially, we will perform this construction for $d = 1$, and later we will cons
 	The Lebesgue measure is \emph{translation-invariant}.
 	Let $x \in \mathbb R$, then the set $B + x = \qty{b + x : b \in B}$ lies in $\mathcal B$ iff $B \in \mathcal B$, and in this case, it satisfies $\lambda(B + x) = \lambda(B)$.
 	We can define the translated Lebesgue measure $\lambda_x(B) = \lambda(B + x)$ for all $B \in \mathcal B$, then $\lambda_x((a,b]) = \lambda((a, b] + x) = \lambda((a + x, b+x]) = b - a = \lambda((a, b])$.
-	So $\lambda_x = \lambda$ on the $\pi$-system of intervals and so $\lambda_x = \lambda$ on the sigma algebra $\mathcal{B}$ (i.e. $\forall \; B \in \mathcal{B}, \lambda(B+x) = \lambda(B)$).
+	So $\lambda_x = \lambda$ on the $\pi$-system of intervals and so $\lambda_x = \lambda$ on the sigma algebra $\mathcal{B}$ (i.e. $\forall B \in \mathcal{B}, \lambda(B+x) = \lambda(B)$).
 
 	\begin{question}
 		Is the Lebesgue measure the only such translation invariant measure on $\mathcal{B}$?
@@ -585,13 +585,13 @@ Kolmogorov showed that these definitions are sufficient to derive the law of lar
 	\begin{align*}
 		\mu(A) = \mathbb{P}(A_1 \cap A),\ \nu(A) = \mathbb{P}(A_1) \mathbb{P}(A).
 	\end{align*}
-	Then $\mu, \nu$ are finite measures and they agree on the $\pi$-system $\mathcal{A}_2$. Hence by \nameref{thm:uni}, $\mu(A) = \nu(A) \; \forall \; A \in \sigma(\mathcal{A}_2)$, i.e. $\mathbb{P}(A_1 \cap A) = \mathbb{P}(A_1)\mathbb{P}(A) \; \forall \; A_1 \in \mathcal{A}_1, A_2 \in \sigma(\mathcal{A}_2)$.
+	Then $\mu, \nu$ are finite measures and they agree on the $\pi$-system $\mathcal{A}_2$. Hence by \nameref{thm:uni}, $\mu(A) = \nu(A) \; \forall A \in \sigma(\mathcal{A}_2)$, i.e. $\mathbb{P}(A_1 \cap A) = \mathbb{P}(A_1)\mathbb{P}(A) \; \forall A_1 \in \mathcal{A}_1, A_2 \in \sigma(\mathcal{A}_2)$.
 
 	Now repeat same argument, but now by fixing $A_2 \in \mathcolor{red}{\sigma(\mathcal{A}_2)}$ define for all $A \in \sigma(\mathcal{A}_1)$
 	\begin{align*}
 		\mu'(A) = \mathbb{P}(A \cap A_2),\ \nu'(A) = \mathbb{P}(A) \mathbb{P}(A_2).
 	\end{align*}
-	Then $\mu', \nu'$ are finite measures and they agree on the $\pi$-system $\mathcal{A}_1$. Hence by \nameref{thm:uni}, $\mu'(A) = \nu'(A) \; \forall \; A \in \sigma(\mathcal{A}_1)$, i.e. $\mathbb{P}(A_1 \cap A) = \mathbb{P}(A_1)\mathbb{P}(A) \; \forall \; A_1 \in \sigma(\mathcal{A}_1), A_2 \in \sigma(\mathcal{A}_2)$.
+	Then $\mu', \nu'$ are finite measures and they agree on the $\pi$-system $\mathcal{A}_1$. Hence by \nameref{thm:uni}, $\mu'(A) = \nu'(A) \; \forall A \in \sigma(\mathcal{A}_1)$, i.e. $\mathbb{P}(A_1 \cap A) = \mathbb{P}(A_1)\mathbb{P}(A) \; \forall A_1 \in \sigma(\mathcal{A}_1), A_2 \in \sigma(\mathcal{A}_2)$.
 
 \end{proof}
 
@@ -603,7 +603,7 @@ This follows by uniqueness.
 	Let $A_n \in \mathcal F$ be a sequence of events.
 	Then the \vocab{limit superior} of $A_n$ is
 	\begin{align*}
-		\limsup_n A_n = \bigcap_n \bigcup_{m \geq n} A_m = \qty{A_n \text{ infinitely often}}\footnote{Consider $\omega$, if $\omega \in \limsup_n A_n$ then $\forall \; n, \omega \in \bigcup_{m \geq n} A_m$ thus $\omega$ must be in an infinite number of $A_n$s.}
+		\limsup_n A_n = \bigcap_n \bigcup_{m \geq n} A_m = \qty{A_n \text{ infinitely often}}\footnote{Consider $\omega$, if $\omega \in \limsup_n A_n$ then $\forall n, \omega \in \bigcup_{m \geq n} A_m$ thus $\omega$ must be in an infinite number of $A_n$s.}
 	\end{align*}
 	The \vocab{limit inferior} of $A_n$ is
 	\[ \liminf_n A_n = \bigcup_n \bigcap_{m \geq n} A_m = \qty{A_n \text{ eventually}}\footnote{$\omega$ is in all but finitely many $A_n$.} \]
@@ -632,7 +632,7 @@ Therefore, we can use this for arbitrary measures.
 	\[ \prob{\bigcap_{m=n}^N A_m^c} = \prod_{m=n}^N \qty(1 - \prob{A_m}) \leq \prod_{m=n}^N e^{-\prob{A_m}} = e^{-\sum_{m=n}^N \prob{A_m}} \]
 	As $N \to \infty$, this approaches zero. \\
 	Since $\bigcap_{m=n}^N A_m^c$ decreases to $\bigcap_{m=n}^\infty A_m^c$, $\prob{\bigcap_{m=n}^\infty A_m^c} = 0$ as $\prob{\bigcap_{m=n}^\infty A_m^c} \leq \prob{\bigcap_{m=n}^N A_m^c} \leq e^{-\sum_{m=n}^N \prob{A_m}} \to 0$.
-	So by taking complements $\mathbb{P}(\bigcup_{m=n}^\infty A_n) = 1 \;\forall \; n (\dagger)$.
+	So by taking complements $\mathbb{P}(\bigcup_{m=n}^\infty A_n) = 1 \;\forall n (\dagger)$.
 
 	Let $B_n = \bigcup_{m=n}^\infty A_m$, $B_n$ decreasing and so $B_n \downarrow \bigcap_n B_n = \bigcap_n \bigcup_{m \geq n} A_m = \{A_n \text{ i.o}\}\footnote{$A_n$ occurs infinitely often}$.
 	As $\mathbb{P}(B_n) = 1$ by $(\dagger)$, $\mathbb{P}{\{A_n \text{ i.o}\}} = \lim_{n \to \infty} \mathbb{P}(B_n) = 1$ as probabilities are a finite measure.

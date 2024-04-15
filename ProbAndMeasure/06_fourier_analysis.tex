@@ -30,7 +30,7 @@ Also, for $a \in \mathbb{R}$ with $a \neq 0$, $\int f(ax) \dd{x} = \frac{1}{a^d}
 \end{definition}
 
 \begin{remark}
-	Note that $\abs{\hat f(u)} \leq \norm{f}_1 \quad \forall \; u \in \mathbb{R}^d$, i.e. $\hat{f} \in L^\infty$.
+	Note that $\abs{\hat f(u)} \leq \norm{f}_1 \quad \forall u \in \mathbb{R}^d$, i.e. $\hat{f} \in L^\infty$.
 
 	Also, if $u_n \to u$, then $e^{i\inner{u_n,x}} \to e^{i\inner{u,x}}$ so $f(x) e^{i\inner{u_n,x}} \to f(x) e^{i\inner{u,x}}$; $|f(x) e^{i\inner{u_n,x}}| \leq |f(x)|$ and $f \in L^1$.
 	By the DCT $\hat f(u_n) \to \hat f(u)$.
@@ -236,7 +236,7 @@ so the Fourier inversion theorem holds for $g_t$.
 
 \begin{proof}
 	One can easily show that the space $C_c(\mathbb R^d)$ of continuous functions of compact support is dense in $L^p$.
-	Hence, given $\varepsilon > 0$, $\exists \; h \in C_c(\mathbb R^d)$ s.t. $\norm{f - h}_p < \frac{\varepsilon}{3}$.
+	Hence, given $\varepsilon > 0$, $\exists h \in C_c(\mathbb R^d)$ s.t. $\norm{f - h}_p < \frac{\varepsilon}{3}$.
 	Then by linearity of convolution,
 	\[ \norm{f \ast g_t - h \ast g_t}_p = \norm{(f - h) \ast g_t}_p \leq \norm{f - h}_p < \frac{\varepsilon}{3} \]
 	So by Minkowski's inequality,
@@ -344,8 +344,8 @@ so the Fourier inversion theorem holds for $g_t$.
 To circumvent this, we test `$\mu$' on nice test fcns $f$.
 
 \begin{remark}
-	2 p.m.s $\mu, \nu$ on $\mathbb{R}^d$ coincide $\iff$ $\int f \dd{\mu} = \int f \dd{\nu} \quad \forall \; f : \mathbb{R}^d \to \mathbb{R}$ bdd cts\footnote{RHS implies LHS, as if true for $f = 1_{[a, b]}$ then true on a $\pi$-system so done. We can approximate such $f$ with bdd cts fcns and so done.}.
-	In fact, enough to have condition holding $\forall \; f \in C_c^\infty$ (space of infinitely differentiable fcns with compact support).
+	2 p.m.s $\mu, \nu$ on $\mathbb{R}^d$ coincide $\iff$ $\int f \dd{\mu} = \int f \dd{\nu} \quad \forall f : \mathbb{R}^d \to \mathbb{R}$ bdd cts\footnote{RHS implies LHS, as if true for $f = 1_{[a, b]}$ then true on a $\pi$-system so done. We can approximate such $f$ with bdd cts fcns and so done.}.
+	In fact, enough to have condition holding $\forall f \in C_c^\infty$ (space of infinitely differentiable fcns with compact support).
 \end{remark}
 
 \begin{aside}{Aside}
@@ -363,7 +363,7 @@ To circumvent this, we test `$\mu$' on nice test fcns $f$.
 		\item For a sequence of r.v.s $X_n$ and $X$ another r.v., $X_n \to X$ weakly if $\mu_{X_n} \to \mu_X$ weakly.
 		\item A sequence of prob measures, $\mu_n$, can have at most one weak limit by previous remark (the one about 2 p.m.s. coinciding).
 		\item If $X_n \to X$ weakly, and $h : \mathbb{R}^d \to \mathbb{R}^k$ cts, then $h(X_n) \to h(X)$ weakly (as r.v. in $\mathbb{R}^k$). (Continuous Mapping Theorem) (from definition as $f \circ h$ bdd cts if $f$ bdd cts).
-		\item Suffices to check condition in definition for all $f \in C_c^\infty$. (``tightness'' argument, i.e. $\exists \; K$ compact s.t. $\mu_n(K^c) < \epsilon \quad \forall \; n$ if $\mu_n \to \mu$ weakly. Sheet 4)
+		\item Suffices to check condition in definition for all $f \in C_c^\infty$. (``tightness'' argument, i.e. $\exists K$ compact s.t. $\mu_n(K^c) < \epsilon \quad \forall n$ if $\mu_n \to \mu$ weakly. Sheet 4)
 		\item When $d = 1$, this is equivalent to $X_n \to X$ in distribution (i.e., $F_{X_n}(x) \to F_X(x)$ at all points where $x \mapsto F_X(x)$ is cts). Sheet 4 Q1, approximate indictators.
 	\end{enumerate}
 \end{remark}
@@ -382,14 +382,14 @@ To circumvent this, we test `$\mu$' on nice test fcns $f$.
 	\[ f_t(x) = \frac{1}{(2\pi)^d} \int_{\mathbb R^d} e^{-i\inner{u,x}} \varphi_X(u) e^{-\frac{\abs{u}^2 t}{2}} \dd{u} \]
 	which is uniquely determined by $\varphi_X$.
 
-	We show on an example sheet that two Borel prob measures $\mu, \nu$ on $\mathbb R^d$ coincide iff $\mu(g) = \nu(g) \quad \forall \; g \colon \mathbb R^d \to \mathbb R$ bdd, cts with compact support.
+	We show on an example sheet that two Borel prob measures $\mu, \nu$ on $\mathbb R^d$ coincide iff $\mu(g) = \nu(g) \quad \forall g \colon \mathbb R^d \to \mathbb R$ bdd, cts with compact support.
 	Now,
 	\[ \int_{\mathbb R^d} g(x) f_t(x) \dd{x} = \expect{\underbrace{g(X + \sqrt{t} Z)}_{\to X \text{ a.s.}}} \]
 	Since $\abs{g(X + \sqrt{t}Z)} \leq \norm{g}_\infty < \infty$, by BCT, this converges as $t \to 0$ to $\expect{g(X)} = \int_{\mathbb R^d} g(x) \dd{\mu_X(x)} (\ast)$.
 	So by uniqueness of limits, $\varphi_X$ determines $\mu_X$.
 
 	If $\varphi_X \in L^1$, then $ e^{-i\inner{u,x}} \varphi_X(u) e^{-\frac{\abs{u}^2 t}{2}} \underset{t \to 0}{\longrightarrow} e^{-i\inner{u,x}} \phi_X(u)$.
-	By DCT, $f_t(x) \to f_X(x)$ as $t \to 0 \; \forall \; x$.
+	By DCT, $f_t(x) \to f_X(x)$ as $t \to 0 \; \forall x$.
 
 	In particular, since $\mu_X \ast g_t \geq 0$, $f_X \geq$ on $\mathbb R^d$.
 	Then, for any bdd cts $g$ with compact support,
@@ -397,26 +397,26 @@ To circumvent this, we test `$\mu$' on nice test fcns $f$.
 	\begin{align*}
 		\int \underbracket{g(x) f_t(x)}_{\text{As } t \to 0, \to g(x) f_X(x)} \dd{x} &\to \int g(x) f_X(x) \dd{x} \text{ by DCT as } |f_t(x)| \leq \frac{1}{(2\pi)^d} \norm{\phi_X}_1
 	\end{align*}
-	By $(\ast)$, $\int g(x) \dd{\mu_X(x)} = \int g(x) f_X(x) \dd{x} \quad \forall \; g$ bdd cts with compact support.
+	By $(\ast)$, $\int g(x) \dd{\mu_X(x)} = \int g(x) f_X(x) \dd{x} \quad \forall g$ bdd cts with compact support.
 
 	Thus $\mu_X$ has density $f_X$.
 \end{proof}
 
 \begin{theorem}[L\'evy's continuity theorem]
-	Let $X_n, X$ be r.v.s on $\mathbb R^d$, s.t. $\varphi_{X_n}(u) \to \varphi_X(u) \; \forall \; u$, as $n \to \infty$.
+	Let $X_n, X$ be r.v.s on $\mathbb R^d$, s.t. $\varphi_{X_n}(u) \to \varphi_X(u) \; \forall u$, as $n \to \infty$.
 	Then $X_n \to X$ weakly.
 \end{theorem}
 
 \begin{remark}
 	\begin{enumerate}
-		\item A stronger version of this theorem is that if $\phi_{X_n}(u) \to \phi(u) \; \forall \; u$ for some fcn $\phi$ that is cts in a nbd of $0$, then $\phi$ is the c.f. of some r.v. $X$ and $X_n \to X$ weakly.
-		\item \underline{Cramer' Wold device}: Let $(X_n), X$ be r.v.s on $\mathbb{R}^d$, then $X_n \to X$ weakly iff $\inner{u, X_n} \to \inner{u, X} \; \forall \; u \in \mathbb{R}^d$ weakly or in distribution in $\mathbb{R}$. LHS $\implies RHS$ by continuous mapping theorem, the converse holds as $e^{i \inner{u, x}}$ is bdd cts so $\mathbb{E}[f(X_n)] = \phi_{X_n}(u) \to \mathbb{E}[f(x)] = \phi_X(u) \; \forall \; u$. So done by L\'evy's.
+		\item A stronger version of this theorem is that if $\phi_{X_n}(u) \to \phi(u) \; \forall u$ for some fcn $\phi$ that is cts in a nbd of $0$, then $\phi$ is the c.f. of some r.v. $X$ and $X_n \to X$ weakly.
+		\item \underline{Cramer' Wold device}: Let $(X_n), X$ be r.v.s on $\mathbb{R}^d$, then $X_n \to X$ weakly iff $\inner{u, X_n} \to \inner{u, X} \; \forall u \in \mathbb{R}^d$ weakly or in distribution in $\mathbb{R}$. LHS $\implies RHS$ by continuous mapping theorem, the converse holds as $e^{i \inner{u, x}}$ is bdd cts so $\mathbb{E}[f(X_n)] = \phi_{X_n}(u) \to \mathbb{E}[f(x)] = \phi_X(u) \; \forall u$. So done by L\'evy's.
 		\item The converse holds by definition of weak convergence, testing against the complex exponentials in the Fourier transform.
 	\end{enumerate}
 \end{remark}
 
 \begin{proof}
-	Let $g : \mathbb{R}^d \to \mathbb{R}$ be compactly suppored and Lipschitz cts, i.e. $|g(x) - g(y)| \leq C_g |x-y| \; \forall \; x, y \in \mathbb{R}^d$.
+	Let $g : \mathbb{R}^d \to \mathbb{R}$ be compactly suppored and Lipschitz cts, i.e. $|g(x) - g(y)| \leq C_g |x-y| \; \forall x, y \in \mathbb{R}^d$.
 	This includes all $g \in C_c^\infty$ as any fcn with bounded derivative is Lipschitz.
 	Enough to show, $\mathbb{E}[g(X_n)] \to \mathbb{E}[g(X)]$.
 

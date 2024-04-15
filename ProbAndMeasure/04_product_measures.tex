@@ -8,13 +8,13 @@ If the $E_i$ are topological spaces with a countable basis, then $\mathcal B(E_1
 
 \begin{lemma}
 	Let $f \colon (E, \mathcal E) \to \mathbb R$ be measurable.
-	Then $\forall \; x_1 \in E_1$, the fcn $(x_2 \mapsto f(x_1, x_2)) \colon (E_2, \mathcal E_2) \to \mathbb R$ is $\mathcal E_2$-measurable.
+	Then $\forall x_1 \in E_1$, the fcn $(x_2 \mapsto f(x_1, x_2)) \colon (E_2, \mathcal E_2) \to \mathbb R$ is $\mathcal E_2$-measurable.
 \end{lemma}
 
 \begin{proof}
 	Let
 	\[ \mathcal V = \qty{f \colon (E,\mathcal E) \to \mathbb R : f \text{ bounded, measurable, conclusion of the lemma holds}} \]
-	This is a $\mathbb R$-vector space, and $1_E, 1_A \in \mathcal{V} \ \forall \; A = A_1 \times A_2 \in \mathcal A$, since $1_A(x_1, x_2) = 1_{A_1}(x_1) 1_{A_2}(x_2)$ thus fixing $x_1$ gives $0$ or $1_{A_2}$.
+	This is a $\mathbb R$-vector space, and $1_E, 1_A \in \mathcal{V} \ \forall A = A_1 \times A_2 \in \mathcal A$, since $1_A(x_1, x_2) = 1_{A_1}(x_1) 1_{A_2}(x_2)$ thus fixing $x_1$ gives $0$ or $1_{A_2}$.
 
 	Now, let $0 \leq f_n$ increase to $f$, $f_n \in \mathcal V$.
 	Then $(x_2 \mapsto f(x_1, x_2)) = \lim_n (x_2 \mapsto f_n(x_1, x_2))$, so it is $\mathcal E_2$-measurable as it's a limit of a sequence of measurable functions.
@@ -36,7 +36,7 @@ If the $E_i$ are topological spaces with a countable basis, then $\mathcal B(E_1
 	\[ \qty{x_1 \in E_1 : \int_{E_2} f(x_1,x_2) \dd{\mu_2(x_2)} = \infty} \]
 	lies in $\mathcal E_1$.
 
-	Generally, a fcn $f$ taking values in $[0, \infty]$ is measurable means $f\inv(\{\infty\}) \in \mathcal{E}_1$ and $f\inv(A) \in \mathcal{E}_1 \ \forall \; A \in \mathcal{B}$.
+	Generally, a fcn $f$ taking values in $[0, \infty]$ is measurable means $f\inv(\{\infty\}) \in \mathcal{E}_1$ and $f\inv(A) \in \mathcal{E}_1 \ \forall A \in \mathcal{B}$.
 \end{remark}
 
 \begin{proof}
@@ -44,7 +44,7 @@ If the $E_i$ are topological spaces with a countable basis, then $\mathcal B(E_1
 	\[ \mathcal V = \qty{f \colon (E,\mathcal E) \to \mathbb R : f \text{ bounded, measurable, conclusion of the lemma holds}} \]
 	This is a vector space by linearity of the integral.
 	$1_E \in \mathcal V$, since $\int_{E_2} 1_E(x_1,x_2) \dd{\mu_2(x_2)} = 1_{E_1} \mu_2(E_2)$ is non-negative and bounded.
-	$1_A \in \mathcal V \ \ \forall \; A \in \mathcal A$, because $1_{A_1}(x_1) \mu_2(A_2)$ is $\mathcal E_1$-measurable, non-negative, and bounded since it is at most $\mu_2(E_2) < \infty$.
+	$1_A \in \mathcal V \ \ \forall A \in \mathcal A$, because $1_{A_1}(x_1) \mu_2(A_2)$ is $\mathcal E_1$-measurable, non-negative, and bounded since it is at most $\mu_2(E_2) < \infty$.
 
 	Now let $f_n$ be a sequence of non-negative functions that increase to $f$, where $f_n \in \mathcal V$.
 	Then by the \nameref{thm:mct},
@@ -159,7 +159,7 @@ If the $E_i$ are topological spaces with a countable basis, then $\mathcal B(E_1
 	\end{enumerate}
 \end{proposition}
 \begin{proof}
-	To show $X$ measurable suffices to check $X\inv(A_1 \times \dots \times A_n) \in \mathcal{F}$, where $A_i \in \mathcal{E}_i \ \forall \; i$ as this is a $\pi$-system generating $\mathcal{E}$.
+	To show $X$ measurable suffices to check $X\inv(A_1 \times \dots \times A_n) \in \mathcal{F}$, where $A_i \in \mathcal{E}_i \ \forall i$ as this is a $\pi$-system generating $\mathcal{E}$.
 	\begin{align*}
 		X\inv(A_1 \times \dots \times A_n) &= \qty{\omega : X_1(\omega) \in A_1, \dots, X_n(\omega) \in A_n} \\
 		&= \bigcap_{i = 1}^n X_i\inv(A_i).
