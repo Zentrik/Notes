@@ -340,7 +340,7 @@ Let $\mathcal V$ be a vector space, and let $\ket{v} \in \mathcal V$.
 We define the rank 1 projection operator $\Pi_{\ket{\alpha}} = \op{\alpha}{\alpha}$, and the reflection operator $I_{\ket{\alpha}} = I - 2 \op{\alpha}{\alpha}$.
 Note that $I_{\ket{\alpha}} \ket{\alpha} = - \ket{\alpha}$.
 Let $\ket{\psi} \in \mathcal S_{\ket{v}}^\perp = \vecspan\qty{\ket{\beta} \in \mathcal V \mid \ip{\alpha}{\beta} = 0}$ .
-Then $I_{\ket{\alpha}} \ket{\psi} = \ket{\psi} - \ket{\alpha}\ip{\alpha}{\psi} = \ket{\psi}$.
+Then $I_{\ket{\alpha}} \ket{\psi} = \ket{\psi} - 2\ket{\alpha}\ip{\alpha}{\psi} = \ket{\psi}$.
 
 For any unitary operator $U$ acting on $\mathcal V$, we have $U \Pi_{\ket{\alpha}} U^\dagger = U \op{\alpha}{\alpha} U^\dagger = \Pi_{U\ket{\alpha}}$.
 Note also that $U I_{\ket{\alpha}} U^\dagger = U(I - 2 \op{\alpha}{\alpha}) U^\dagger = I - 2 \op{U\alpha}{U\alpha} = I_{U\ket{\alpha}}$.
