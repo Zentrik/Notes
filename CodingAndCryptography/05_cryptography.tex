@@ -286,7 +286,7 @@ We encrypt a plaintext message $m$ as $c = m^2$ mod $N$.
 Usually, we restrict our messages so that $(m, N) = 1$ and $m > \sqrt{N}$.
 
 Receiving ciphertext $c$, we can solve for $x_1, x_2$ s.t. $x_1^2 \equiv c$ mod $p$ and $x_2^2 \equiv c$ mod $q$ using the previous lemma.
-Then, applying the Chinese remainder theorem, we can find $x$ s.t. $x \equiv x_1$ mod $p$ and $x \equiv x_2$ mod $q$, hence $x^2 \equiv c$ mod $N$.
+Then, we use the Chinese remainder theorem, we can find $x$ s.t. $x \equiv x_1$ mod $p$ and $x \equiv x_2$ mod $q$, hence $x^2 \equiv c$ mod $N$\footnote{By squaring $x^2 \equiv x_1^2$ mod $p$ and $x^2 \equiv x_2^2$ mod $q$ so $x = pn + c = qm + c$. As $p, q$ coprime $x = pqa + c$.}.
 Indeed, running the Euclidean algorithm on $p, q$ gives integers $r, s$ s.t. $rp + sq = 1$, then we can take $x = sqx_1 + rpx_2$.
 
 \begin{lemma} ~\vspace*{-1.5\baselineskip}
@@ -299,10 +299,11 @@ Indeed, running the Euclidean algorithm on $p, q$ gives integers $r, s$ s.t. $rp
 \end{lemma}
 
 \begin{proof}
-    \emph{Part (i).}
-    $x^2 \equiv y^2$ mod $p$ iff $p \mid (x^2 - y^2) = (x-y)(x+y)$, so either $p \mid x-y$ or $p \mid x+y$, so $x = \pm y$.
+    \emph{Part (1).}
+    If there is a solution $x$, $-x$ also works.
+    If $x, y$ are solutions, then $x^2 \equiv y^2$ mod $p$ so $p \mid (x^2 - y^2) = (x-y)(x+y)$, so either $p \mid x-y$ or $p \mid x+y$, so $x = \pm y$.
 
-    \emph{Part (ii).}
+    \emph{Part (2).}
     If $x_0$ is a solution, then by the Chinese remainder theorem, there exist solutions $x$ with $x \equiv \pm x_0$ mod $p$ and $x \equiv \pm x_0$ mod $q$.
     This gives four solutions as required.
     By (i), these are the only possible solutions.

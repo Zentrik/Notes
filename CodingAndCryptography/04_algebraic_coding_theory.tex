@@ -212,7 +212,7 @@ The proof is left as an exercise.
 \subsection{Hamming codes}
 
 \begin{definition}[Hamming Code]
-    Let $d \geq 1$, and let $n = 2^d - 1$.
+    Let $d \geq 2$, and let $n = 2^d - 1$.
     Let $H$ be the $d \times n$ matrix with columns given by the nonzero elements of $\mathbb F_2^d$.
     The \vocab{Hamming $(n, n-d)$-linear code} is the (linear) code with parity check matrix $H$.
 \end{definition}
@@ -226,7 +226,8 @@ The proof is left as an exercise.
 \end{lemma}
 
 \begin{proof}
-    Any two columns of $H$ are linearly independent, but there are three linearly dependent columns as $n = 2^d-1$.
+    Any two columns of $H$ are linearly independent as otherwise they would be the same.
+    $H$ has $3$ columns $100\dots0, 010\dots0, 110\dots0$ which are linearly dependent.
     Hence, $d(C) = 3$.
     Hence, $C$ is $\floor*{\frac{3-1}{2}} = 1$-error correcting.
     A perfect code is one s.t. $\abs{C} = \frac{2^n}{V(n,e)}$.
@@ -362,7 +363,7 @@ This is a linear code of length $2n$.
     \begin{enumerate}
         \item One could define $RM(d, 0)$ and $RM(d, d)$ and also define recursively $RM(d, r)$ as a bar product.
         \item $RM(5, 1)$ was used by NASA for the Mariner 9 mission to Mars.
-        \item Decoding procedure using `successive majority verdicts' is outline in (Goldie and Pinch, pages 165-167).
+        \item Decoding procedure using `successive majority verdicts' is outlined in (Goldie and Pinch, pages 165-167).
     \end{enumerate}
 \end{remark}
 
@@ -430,11 +431,11 @@ Equivalently, $\mathcal C$ is an ideal of $\faktor{\mathbb F_2[X]}{(X^n - 1)}$.
 
 \begin{proof}
     If $g(X) = a_0 + a_1X + \dots + a_{n-1}X^{n-1} \mod (X^n - 1)$, then $Xg(X) = a_{n-1} + a_0X + \dots + a_{n-2}X^{n-1} \mod (X^n - 1)$.
-    So $\mathcal C$ is cyclic iff (i) and (ii) hold and if (iii)': $g(X) \in C \implies Xg(X) \in C$.
-    Note (iii)' is the case $f(X) = X$ of (iii).
+    So $\mathcal C$ is cyclic iff (1) and (2) hold and if (3)': $g(X) \in C \implies Xg(X) \in C$ holds.
+    Note (3)' is the special case $f(X) = X$ of (3).
     In general, $f(X) = \sum a_i X^i$ so
     \begin{align*}
-        f(X) g(X) &= \sum_i a_i \underbracket{X^i g(X)}_{\in \mathcal{C} \text{ by (iii)}} \in \mathcal{C} \text{ by (ii)}
+        f(X) g(X) &= \sum_i a_i \underbracket{X^i g(X)}_{\in \mathcal{C} \text{ by (iii)}} \in \mathcal{C} \text{ by (2)}
     \end{align*}
 \end{proof}
 
@@ -456,7 +457,7 @@ Since $\mathbb F_2[X]$ is a principal ideal domain, these ideals correspond to p
 \end{theorem}
 
 \begin{proof}
-    Let $g(X) \in \mathbb F_2[X]$ be a poly poly of least degree representing a $\neq 0$ codeword of $C$.
+    Let $g(X) \in \mathbb F_2[X]$ be a poly of least degree representing a $\neq 0$ codeword of $C$.
     Note that $\deg g < n$.
     Since $C$ is cyclic, $(g) \subseteq C$. \\
     Now let $p(X) \in \mathbb F_2[X]$ represent a codeword.
@@ -481,12 +482,13 @@ Since $\mathbb F_2[X]$ is a principal ideal domain, these ideals correspond to p
 \end{lemma}
 
 \begin{proof}
-    \underline{Linear Independence}: Suppose $f(X) g(X) = 0 \mod (X^n - 1)$ for some $f(X) \in \mathbb{F}_2[X]$ with $\deg f < n - k$.
+    \underline{Linear Independence}: Consider $a_1 g + a_2 Xg + \dots + a_{n - k} X^{n - k - 1} g$ as $f(X) g(X)$.
+    Suppose $f(X) g(X) = 0 \mod (X^n - 1)$ for some $f(X) \in \mathbb{F}_2[X]$ with $\deg f < n - k$.
     Then $\deg fg < n$, so $f(X)g(X) = 0$, hence $f(X) = 0$, i.e. every dependence relation is trivial.
 
     \underline{Spanning}: Let $p(x) \in \mathbb{F}_2[X]$ represent a codeword.
     WLOG  $\deg p < n$.
-    Since $g(X)$ is the gen poly, $g(x) \mid p(X)$ i.e. $p(X) = f(X) g(X)$ for some $f(X) \in \mathbb{F}_2[X]$.
+    Since $g(X)$ is the gen poly, $g(X) \mid p(X)$ i.e. $p(X) = f(X) g(X)$ for some $f(X) \in \mathbb{F}_2[X]$.
     Also $\deg f = \deg p - \deg q < n - k$, so $p(X)$ lies in the span of $g(X), \dots, X^{n - k - 1} g(X)$.
 \end{proof}
 
@@ -629,7 +631,8 @@ This proof needs the following result.
     \end{align*}
     This is a $(\delta - 1) \times n$ matrix.
     Any collection of $(\delta - 1)$ columns is independent as it forms a Vandermonde matrix.
-    But any codeword of $C$ is a dependence relation between the columns of $H$.
+    As any codeword of $C$ is s.t. $Hc = 0$, $c$ satisfies $\delta - 1$ independent linear relations.
+    % But any codeword of $C$ is a dependence relation between the columns of $H$.
     Hence every nonzero codeword has weight at least $\delta$, giving $d(C) \geq \delta$.
 \end{proof}
 
@@ -697,7 +700,7 @@ Suppose that we receive $r(X)$ and wish to decode it.
 
 Recall $e(\alpha^j) = r(\alpha^j)$ for $j = 1, 2, \dots, 2t$.
 \begin{itemize}
-    \item Set $\sigma(X) = \sigma_0 + \sigma_1 X + \dots + \sigma_t X^t$ and $\sigma(X)(r(\alpha) X + r(\alpha^2) X^2 \dots + r(\alpha^{2t})X^{2t} + e(\alpha^{2t + 1}) X^{2t + 1} + \dots) = \sum_{i=0}^{t} \omega_i x^i$.
+    \item Set $\sigma(X) = \sigma_0 + \sigma_1 X + \dots + \sigma_t X^t$ and $\sum_{i=0}^{t} \omega_i X^i = \sigma(X)(r(\alpha) X + r(\alpha^2) X^2 + \dots + r(\alpha^{2t})X^{2t})$ mod $X^{2t + 1}$.
     \item Coeffs of $X^i$ for $t < i \leq 2i$ are $\sum_{j=0}^t \sigma_j r(\alpha^{i-j}) = 0$ which don't involve any of $e(\alpha^j)X^j$ for all $1 \leq j \leq 2t$.
     \item So we obtain a system of linear equations
     \begin{align*}
