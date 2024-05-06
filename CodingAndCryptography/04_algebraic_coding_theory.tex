@@ -700,8 +700,8 @@ Suppose that we receive $r(X)$ and wish to decode it.
 
 Recall $e(\alpha^j) = r(\alpha^j)$ for $j = 1, 2, \dots, 2t$.
 \begin{itemize}
-    \item Set $\sigma(X) = \sigma_0 + \sigma_1 X + \dots + \sigma_t X^t$ and $\sum_{i=0}^{t} \omega_i X^i = \sigma(X)(r(\alpha) X + r(\alpha^2) X^2 + \dots + r(\alpha^{2t})X^{2t})$ mod $X^{2t + 1}$.
-    \item Coeffs of $X^i$ for $t < i \leq 2i$ are $\sum_{j=0}^t \sigma_j r(\alpha^{i-j}) = 0$ which don't involve any of $e(\alpha^j)X^j$ for all $1 \leq j \leq 2t$.
+    \item Set $\sigma(X) = \sigma_0 + \sigma_1 X + \dots + \sigma_t X^t$ and $\sum_{i=0}^{t} \omega_i X^i = \sigma(X)(r(\alpha) X + r(\alpha^2) X^2 + \dots + r(\alpha^{2t})X^{2t} + e(\alpha^{2t + 1}) X^{2t + 1} + \dots)$\footnote{We proved the degree of $\omega(X)$ is a most $t$ in previous thm and this eqn is not modulo anything.}.
+    \item Coeffs of $X^i$ for $t < i \leq 2t$ are $\sum_{j=0}^t \sigma_j r(\alpha^{i-j}) = 0$ which don't involve any of $e(\alpha^j)X^j$ for all $1 \leq j \leq 2t$.
     \item So we obtain a system of linear equations
     \begin{align*}
         \begin{pmatrix}
@@ -721,7 +721,7 @@ Recall $e(\alpha^j) = r(\alpha^j)$ for $j = 1, 2, \dots, 2t$.
 \end{itemize}
 
 \begin{example}[Reed-Solomon]
-    If $\mathbb{F} = \mathbb{F}_q$, $n = q - 1$ this is \vocab{Reed-Solomon} code.
+    If $K = \mathbb{F}_q$ and $n \leq q - 1$, where $q$ must be a prime power for $K$ to be a field, this is the \vocab{Reed-Solomon} code.
     This is used in CDs.
     There are two RS codes over $\mathbb{F}_{2^8}$ with $\delta = 5$ with length $n = 32$, $28$ respectively.
     Error bursts caused by scratches on the CDs of about 4000 bits can be corrected.
@@ -754,7 +754,7 @@ Recall $e(\alpha^j) = r(\alpha^j)$ for $j = 1, 2, \dots, 2t$.
 
     Let $K$ be a splitting field\footnote{This is from Galois Theory. We want to add roots till $X^7 - 1$ splits into linear factors.} for $X^7 - 1$; we can take $K = \mathbb F_8$.
     Let $\beta \in K$ be a root of $g$.
-    Note that $\beta^3 = \beta + 1$, so $\beta^6 = \beta^2 + 1$, so $g(\beta^2) = 0$. %, and hence $g(\beta^4) = 0$.
+    Note that $\beta^3 = \beta + 1$\footnote{In $\mathbb{F}_2$.}, so $\beta^6 = \beta^2 + 1$, so $g(\beta^2) = 0$. %, and hence $g(\beta^4) = 0$.
     So the BCH code defined by $\qty{\beta, \beta^2}$ has generator polynomial $g(X)$, again proving that this is Hamming's $(7,4)$-code.
     This code has design distance $3$, so $d(C) \geq 3$, and we know Hamming's code has minimum distance exactly 3.
 \end{example}
@@ -779,14 +779,14 @@ Recall $e(\alpha^j) = r(\alpha^j)$ for $j = 1, 2, \dots, 2t$.
     We usually set $a_0 = 1$.
 \end{definition}
 
-The stream produced by a LFSR is now given by the recurrence relation $y_n = \sum_{i=0}^{d-1} a_i y_{n-d+i}$.
+The stream produced by a LFSR is now given by the recurrence relation $y_n = \sum_{i=0}^{d-1} a_i y_{n-d+i}$ over $\mathbb{F}_2$.
 We can define the \vocab{auxiliary polynomial} $P(X) = X^d + a_{d-1} X^{d-1} + \dots + a_1 X + a_0$.
 We sometimes write $a_d = 1$, so $P(X) = \sum_{i=0}^d a_i X^i$.
 
-\underline{Over $\mathbb{C}$}: general solution is linear combinations of $\alpha^n, n \alpha^n, \dots, n^{t-1} \alpha^n$ for $\alpha$ running over roots of $P(X)$ and $\alpha$ root of mult $t$.
+\underline{Over $\mathbb{C}$}: The general solution to a recurrence relation is a linear combination of $\alpha^n, n \alpha^n, \dots, n^{t-1} \alpha^n$ for $\alpha$ a root of $P(X)$ with multiplicity $t$.
 
-\underline{Over $\mathbb{F}_2$}: $n^2 \equiv n \mod 2$ so this doesn't give enough solns.
-Resolved by replacing $n^j \alpha^n$ by $\binom{n}{j} \alpha^n$.
+\underline{Over $\mathbb{F}_2$}: However, we have a recurrence relation over $\mathbb{F}_2$ and $n^2 \equiv n \mod 2$ so we only get two solutions, which is not enough.
+We resolve this by replacing $n^j \alpha^n$ by $\binom{n}{j} \alpha^n$, i.e. the general solution if a linear combination of $\binom{n}{0} \alpha^n, \binom{n}{1} \alpha^n, \dots$
 
 \begin{definition}[Feedback Polynomial]
     The \vocab{feedback polynomial} is $\check{P}(X) = a_0 X^d + \dots + a_{d-1} X + 1 = \sum_{i=0}^d a_{d-i} X^i$.
@@ -832,7 +832,7 @@ We have
         \vdots \\
         a_1 \\
         a_0
-    \end{pmatrix} = 0 (\ast)
+    \end{pmatrix} = 0 \tag{$\ast$}
 \end{align*}
 We look successively at $A_0 = \begin{pmatrix}
     x_0
@@ -845,6 +845,10 @@ If $\abs{A_i} \neq 0$, then $d \neq i$.
 If $\abs{A_i} = 0$, we solve $(\ast)$ on the assumption that $d = i$, giving a candidate for the coefficients $a_0, \dots, a_{d-1}$.
 This candidate can be checked over as many terms of the stream as desired.
 If the test fails, we know $d > i$.
+
+\begin{remark}
+    We are just finding the minimal $d$ s.t. $\exists \; a$ satisfying $x_n = \sum_{i=1}^d {a_{n-i} x_{n - i}}$ over $\mathbb{F}_2$.
+\end{remark}
 
 \begin{remark}
     Usually Gaussian elimination is easier than expanding rows/ cols.

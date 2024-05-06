@@ -106,9 +106,8 @@ A key concept in Fourier analysis is convolutions.
 		\int_{\mathbb{R}^d} \abs{f \ast \nu(x)}^p \dd{x} &\leq \int_{\mathbb R^d} \qty( \int_{\mathbb R^d} \abs{f(x-y)} \dd{\nu(y)} )^p \dd{x} \\
 		&\leq \int_{\mathbb R^d} \int_{\mathbb R^d} \abs{f(x-y)}^p \dd{\nu(y)} \dd{x} \quad \text{as $p \geq 1$}\\
 		&= \int_{\mathbb R^d} \int_{\mathbb R^d} \abs{f(x-y)}^p \dd{x} \dd{\nu(y)} \\
-		&= \int_{\mathbb R^d} \int_{\mathbb R^d} \abs{f(x)} \dd{\nu(y)} \dd{x} \\
-		&= \int_{\mathbb R^d} \abs{f(x)} \dd{x} \\
-		&= \norm{f}_p^p < \infty.
+		&= \int_{\mathbb R^d} \int_{\mathbb R^d} \abs{f(x)}^p \dd{x} \dd{\nu(y)} \text{ as $\lambda$ translation invariant} \\
+		&= \norm{f}_p^p < \infty \text{ as $\nu$ a prob measure.}
 	\end{align*}
 	Hence $f \ast v$ is defined a.e., and $\norm{f \ast v}_p \leq \norm{f}_p < \infty$.
 	When $\nu$ has pdf $g \in L^1$\footnote{wrt Lebesgue measure}, $f \ast v(x) = \int f(x-y) g(y) \dd{y} = f \ast g(x)$.
@@ -170,7 +169,7 @@ If $\varphi_Z$ is the characteristic function of $Z \sim N(0, 1)$, i.e. $\phi_Z(
 	\dv{u} \varphi_Z(u) &= \frac{1}{\sqrt{2 \pi}} \int \dv{u} \left(e^{-z^2 / 2} e^{iuz}\right) \dd{z} \\
 	&= \frac{1}{\sqrt{2 \pi}} \int iz e^{-z^2 / 2} e^{iuz} \dd{z} \\
 	&= \frac{i}{\sqrt{2\pi}} \int \underbrace{e^{iuz}}_{v} \underbrace{z e^{-\frac{z^2}{2}}}_{w'} \dd{z} \\
-	&= \frac{i}{\sqrt{2\pi}} \int iu e^{iux} e^{-\frac{z^2}{2}} \dd{x} \\
+	&= \frac{i}{\sqrt{2\pi}} \int iu e^{iuz} e^{-\frac{z^2}{2}} \dd{z} \\
 	&= -u \varphi_Z(u)
 \end{align*}
 
@@ -241,7 +240,7 @@ so the Fourier inversion theorem holds for $g_t$.
 	\[ \norm{f \ast g_t - h \ast g_t}_p = \norm{(f - h) \ast g_t}_p \leq \norm{f - h}_p < \frac{\varepsilon}{3} \]
 	So by Minkowski's inequality,
 	\begin{align*}
-		\norm{f \ast g_t - f}_p \leq \underbracket{\norm{f \ast g_t - h \ast g_t}_p}_{\leq \epsilon / 3} + \underbracket{\norm{h - f}_p}_{\leq \epsilon / 3} + \norm{h \ast g_t + h}_p
+		\norm{f \ast g_t - f}_p \leq \underbracket{\norm{f \ast g_t - h \ast g_t}_p}_{\leq \epsilon / 3} + \underbracket{\norm{h - f}_p}_{\leq \epsilon / 3} + \norm{h \ast g_t - h}_p
 		\leq \frac{2\varepsilon}{3} + \norm{h \ast g_t - h}_p
 	\end{align*}
 	so it suffices to prove the result for $f = h \in C_c(\mathbb R^d)$.
@@ -256,7 +255,7 @@ so the Fourier inversion theorem holds for $g_t$.
 	\begin{align*}
 		\norm{h \ast g_t - h}_p^p &= \int_{\mathbb R^d} \abs{ \int_{\mathbb R^d} h(x-y) g_t(y) \dd{y} - h(x)}^p \dd{x} \\
 		&= \int_{\mathbb R^d} \abs{ \int_{\mathbb R^d} (h(x-y) - h(x)) g_t(y) \dd{y} }^p \dd{x} \\
-		&\leq \int_{\mathbb R^d} \int_{\mathbb R^d} \abs{h(x-y) - h(x)}^p \dd{x} g_t(y) \dd{y} \\
+		&\leq \int_{\mathbb R^d} \int_{\mathbb R^d} \abs{h(x-y) - h(x)}^p \dd{x} g_t(y)\footnote{$g_t$ the measure for our expectation in Jensen's so unaffected.} \dd{y} \\
 		&= \int_{\mathbb R^d} e(y) g_t(y) \dd{y} \\
 		&= \int_{\mathbb R^d} e(y) \frac{1}{t^{d/2}} g_1 \qty(\frac{y}{\sqrt{t}})\footnote{Note that $g_t(u) = \frac{1}{t^{d/2}} g_1 \qty(\frac{u}{\sqrt{t}})$} \dd{y} \\
 		&= \int_{\mathbb R^d} \underbracket{e(\sqrt{t} z)}_{\to e(0) = 0 \text{ as } t \to 0} g_1(z) \dd{z} \\
