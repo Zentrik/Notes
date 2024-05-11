@@ -44,19 +44,20 @@ She then prepares the $m$-qubit state $\ket{\psi_{xy}} = \ket{\psi_{x_1 y_1}} \o
     \ket{-} & x_i = 1; y_i = 1
 \end{cases} \]
 Alice sends the qubits $\ket{\psi_{xy}}$ to Bob with $m$ uses of the quantum channel.
-The qubits received are not necessarily in the state $\ket{\psi_{xy}}$ due to noise or malicious manipulation of the channel.
+The qubits received are not necessarily in the state $\ket{\psi_{xy}}$ due to noise or malicious manipulation of the channel, but for now assume they are.
+
 Bob then generates an $m$-bit string $y' = y_1' \dots y_m' \in \qty{0,1}^m$ uniformly at random.
 If $y_i' = 0$, he measures the $i$th qubit in the basis $\mathcal B_0 = \qty{\ket{0}, \ket{1}}$.
 If $y_i' = 1$, he acts on the $i$th qubit by the Hadamard gate and then measures in $\mathcal B_0$.
 Equivalently, he measures the $i$th qubit in the basis $\mathcal B_1 = \qty{\ket{+}, \ket{-}}$.
 Let the sequence of outcomes be $x' = x_1' \dots x_m' \in \qty{0,1}^m$.
 
-If $y_i' = y_i$, we have $x_i' = x_i$.
-Indeed, suppose $y_i' = 0 = y_i$.
-Then $\ket{\pi_{x_i y_i}} \in \mathcal B_0$, and Bob measures in basis $\mathcal B_0$, so he can determine $x_i$ with probability 1.
-If $y_i' = 1 = y_i$, $\ket{\pi_{x_i y_i}} \in \mathcal B_1$, and Bob measures in basis $\mathcal B_1$.
+If $y_i' = y_i$, we have $x_i' = x_i$ else $x_i$ and $x_i'$ are uncorrelated.
+% Indeed, suppose $y_i' = 0 = y_i$.
+% Then $\ket{\psi_{x_i y_i}} \in \mathcal B_0$, and Bob measures in basis $\mathcal B_0$, so he can determine $x_i$ with probability 1.
+% If $y_i' = 1 = y_i$, $\ket{\psi_{x_i y_i}} \in \mathcal B_1$, and Bob measures in basis $\mathcal B_1$.
 
-Now, Alice and Bob compare their values of $y$ and $y'$ over the classical channel, and discard all $x_i$ and $x_i'$ for which $y_i \neq y_i'$.
+Now, Alice and Bob publically compare their values of $y$ and $y'$ over the classical channel, and discard all $x_i$ and $x_i'$ for which $y_i \neq y_i'$.
 The remaining $x_i$ and $x_i'$ match, given that Bob receives $\ket{\psi_{xy}}$ exactly, and this forms the shared private key $\widetilde x = \widetilde x'$.
 The average length of $\widetilde x$ is $\frac{m}{2}$.
 
