@@ -390,7 +390,7 @@ We repeatedly apply $Q$ to $\ket{\psi_0}$ to obtain the rotated vector $\ket{\ps
 Hence, the probability that the outcome is $x_0$ is $\abs{a_0}^2 = \abs{\ip{x_0}{\psi_0'}}^2 = \abs{\cos \delta}^2 \approx 1$ where $\delta$ is the angle between $\ket{\psi_0'}$ and $\ket{x_0}$.
 
 If $n$ is large, $\ket{\psi_0}$ is almost orthogonal to $\ket{x_0}$, with $\ip{x_0}{\psi_0} = \frac{1}{\sqrt{2^n}} = \cos \beta$.
-By property (i), $Q$ acting on $\ket{\psi_0}$ rotates the state by $2\alpha$, where $\sin\alpha = \frac{1}{\sqrt{2^n}}$.
+By property (1), $Q$ acting on $\ket{\psi_0}$ rotates the state by $2\alpha$, where $\sin\alpha = \frac{1}{\sqrt{2^n}}$.
 Let $m$ be the number of iterations needed to rotate $\ket{\psi_0}$ close to $\ket{x_0}$.
 Then
 \[ m = \frac{\beta}{2\alpha} = \frac{\arccos\qty(\frac{1}{\sqrt{2^n}})}{2\arcsin\qty(\frac{1}{\sqrt{2^n}})} \]
@@ -425,11 +425,11 @@ In our case, the angle between the lines perpendicular to $\ket{x_0}$ and $\ket{
 Therefore, $I_{\ket{\psi_0}} I_{\ket{x_0}}$ is an anticlockwise rotation by an angle of $2\beta$.
 For any real unit vector $v \in \mathbb R^2$, we have $-I_v = I_{v^\perp}$ where $v_\perp$ is a unit vector orthogonal to $v$.
 Hence, $-I_{\ket{\psi_0}} I_{\ket{x_0}} = I_{\ket{\psi_0^\perp}} I_{\ket{x_0}}$, which is an anticlockwise rotation by an angle of $2\alpha$, as $\alpha + \beta = \frac{\pi}{2}$.
-This proves property (i).
+This proves property (1).
 
 Now consider $\ket{\xi} \in \mathcal P(x_0)^\perp$ perpendicular to $\ket{\psi_0}$ and to $\ket{x_0}$.
 Clearly $I_{\ket{x_0}} \ket{\xi} = \ket{\xi}$ and $I_{\ket{\psi_0}} \ket{\xi} = \ket{\xi}$.
-So $Q \ket{\xi} = -\ket{\xi}$, giving property (ii).
+So $Q \ket{\xi} = -\ket{\xi}$, giving property (2).
 
 Grover's algorithm achieves an unstructured search for a unique good item in approximately $\frac{\pi}{4}\sqrt{N}$ queries, and there is no algorithm that has smaller asymptotic query complexity.
 Any quantum algorithm that achieves this search in an unstructured database of size $N$ must use $O(\sqrt{N})$ queries.
