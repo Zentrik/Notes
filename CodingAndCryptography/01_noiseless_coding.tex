@@ -184,7 +184,7 @@ The right hand side is sometimes called the \vocab{cross entropy}, or \vocab{mix
     As the $p_i$ form a probability distribution, $\sum_{i \in I} p_i = 1$ and $\sum_{i \in I} q_i \leq 1$, so the right hand side is at most 0.
     Therefore,
     \begin{align*}
-        -\sum_{i=1}^n p_i \ln p_i = -\sum_{i \in I} p_i \ln p_i \leq -\sum_{i \in I} p_i \ln q_i \leq -\sum_{i=1}^n p_i \ln q_i
+        -\sum_{i=1}^n p_i \ln p_i = -\sum_{i \in I} p_i \ln p_i \leq -\sum_{i \in I} p_i \ln q_i = -\sum_{i=1}^n p_i \ln q_i
     \end{align*}
     If equality holds, we must have $\sum_{i \in I} q_i = 1$ and $\frac{q_i}{p_i} = 1$ for all $i \in I$, giving that $p_i = q_i$ for all $i$.
 \end{proof}
