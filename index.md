@@ -25,7 +25,7 @@ title: "Cambridge Maths Notes"
 
 [Graph Theory](Graph_Theory.pdf) (Annotations)
 
-[Automata and Formal Languages](AFL.pdf) (Annotations, old version, new version from lecturer is significantly updated)
+[Automata and Formal Languages](AFL_updated.pdf) (Annotations, old version, new version from lecturer is significantly updated)
 
 # IB - 2022
 
