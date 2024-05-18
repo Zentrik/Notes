@@ -107,7 +107,7 @@ Example (9) is not isomorphic to (6) or (7).
 \begin{remark}
     In any linear ordering $X$ and element $x \in X$, the set $\qty{y : y < x}$ is an initial segment by transitivity.
 
-    Not every initial segment is of this form, for instance $\qty{x : x \leq 3}$ in $\mathbb R$, or $\qty{x : x > 0, x^2 < 2}$ in $\mathbb Q$.
+    Not every initial segment is of this form, for instance $\qty{x : x \leq 3}$ in $\mathbb R$.
 \end{remark}
 
 \begin{remark}
@@ -118,7 +118,7 @@ Example (9) is not isomorphic to (6) or (7).
 \end{remark}
 
 \begin{lemma} \label{lem:1}
-    Let $X, Y$ be well-ordered sets, $I$ an i.s. of $Y$ and $f : X \to Y$ be an order-isomorphism between $X$ and $I$. \\
+    Let $X, Y$ be well-ordered sets, $I$ an i.s. of $Y$ and $f : X \to I$ be an order-isomorphism. \\
     Then $\forall x \in X$, $f(x)$ is the least element of $Y \setminus \qty{f(t) : t < x}$.
 \end{lemma}
 
@@ -128,14 +128,14 @@ Example (9) is not isomorphic to (6) or (7).
     Then $a \leq f(x)$ and $f(x) \in I$ and so $a \in I$.
     Thus $a = f(z)$ for some $z \in X$.
     Note that $z > x$ implies that $a = f(z) > f(x)$ \Lightning, so $z \leq x$.
-    If $z < x$ then $a = f(x) \in {f(t) : t < x}$ \Lightning \ as $a \in A$.
+    If $z < x$ then $a = f(z) \in \qty{f(t) : t < x}$ \Lightning \ as $a \in A$.
     So $z = x$ and $a = f(z) = f(x)$.
 \end{proof}
 
 \begin{proposition}[Proof by Induction]
     Let $X$ be a well-ordered set, and let $S \subseteq X$ be s.t. for every $x \in X$
     \begin{align*}
-    (\forall y < x,\, y \in S) \implies x \in S
+    (\forall y < x,\, y \in S) \implies x \in S\footnote{If $y \in S$ for all $y < x$, then $x \in S$}
     \end{align*}
     Then $S = X$.
 \end{proposition}
@@ -150,7 +150,7 @@ Example (9) is not isomorphic to (6) or (7).
 \begin{proof}
     Suppose $S \neq X$.
     Then $X \setminus S$ is nonempty, and therefore has a least element $x$.
-    But all elements $y < x$ lie in $S$, and so by the property of $S$, we must have $x \in S$, contradicting the assumption.
+    But all elements $y < x$ lie in $S$ as o/w they are the least element, and so by the property of $S$, we must have $x \in S$, contradicting the assumption.
 \end{proof}
 
 \begin{proposition}
@@ -163,11 +163,10 @@ Note that this does not hold for general linear orderings, such as $\mathbb Q$ t
 \begin{proof}
     Let $f, g \colon X \to Y$ be order-isomorphisms.
     We show that $f(x) = g(x)$ for all $x$ by induction on $x$.
+
     Suppose $f(y) = g(y)$ for all $y < x$.
-    We must have that $f(x) = a$, where $a$ is the least element of $Y \setminus \qty{f(y) : y < x}$.
-    Indeed, if not, we have $f(x') = a$ for some $x' > x$ by bijectivity, contradicting the order-preserving property.
-    Note that the set $Y \setminus \qty{f(x) : y < x}$ is nonempty as it contains $f(x)$.
-    So $f(x) = a = g(x)$, as required.
+    By \cref{lem:1}, $f(x)$ is the least element of $A = Y \setminus \qty{f(y) : y < x}$, and $g(x)$ the least element of $B = Y \setminus \qty{g(y) : y < x}$.
+    By the induction hypothesis, $A = B$ and hence $f(x) = g(x)$.
 \end{proof}
 
 \begin{remark}
@@ -201,13 +200,13 @@ Note that this does not hold for general linear orderings, such as $\mathbb Q$ t
 \end{remark}
 
 \begin{proof}
-    For uniqueness, we apply induction on $x$.
-    If $f, f'$ agree below $x$, then they must agree at $x$ since $f(x) = G\qty(\eval{f}_{I_x}) = G\qty(\eval{f'}_{I_x}) = f'(x)$.
+    % For uniqueness, we apply induction on $x$.
+    % If $f, f'$ agree below $x$, then they must agree at $x$ since $f(x) = G\qty(\eval{f}_{I_x}) = G\qty(\eval{f'}_{I_x}) = f'(x)$.
 
     We say that $h$ is an \vocab{attempt} to mean that $h \colon I \to Y$ where $I$ is some i.s. of $X$, s.t. $\forall x \in I,\ h(x) = G\qty(\eval{h}_{I_x})$ (note $I_x \subseteq I$).
 
     Let $h, h'$ be attempts.
-    We show that $\forall x \in X$ if $x \in \operatorname{dom}(h) \cap \operatorname{dom}(h')$ then $h(x) = h'(x)$ ($\operatorname{dom}(h)$ is the domain of h, i.e. $I$ above).
+    We show that $\forall x \in X$ if $x \in \operatorname{dom}(h)\footnote{$\operatorname{dom}(h)$ is the domain of h, i.e. $I$ above.} \cap \operatorname{dom}(h')$ then $h(x) = h'(x)$.
     Fix $x \in \operatorname{dom}(h) \cap \operatorname{dom}(h')$ and assume $h(y) = h'(y)$ for every $y < x$ (note $y < x$ implies $y \in \operatorname{dom}(h) \cap \operatorname{dom}(h')$).
     Then $\eval{h}_{I_x} = \eval{h'}_{I_x}$ so $h(x) = G(\eval{h}_{I_x}) = G(\eval{h'}_{I_x}) = h'(x)$.
     Done by induction.
@@ -234,10 +233,23 @@ This is not true for general linear orderings, such as $\qty{1, 2, 3} \subset \m
     By \cref{lem:1}, $f(x) = \min(Y \setminus \qty{f(y) : y < x, y \in X})$.
     So by induction, $f$ and hence $I$ are uniquely determined.
 
-    Existence:
-    If $f$ is some such isomorphism, we must have that $f(x)$ is the least element of $X$ not of the form $f(y)$ for $y < x$.
-    We define $f$ in this way by recursion, and this is an isomorphism as required.
-    Note that this is always well-defined as $f(y) \leq y$, so there is always some element of $X$ (namely, $x$) not of the form $f(y)$ for $y < x$.
+    For existence, we may assume $Y \neq \emptyset$. Fix $y_0 \in Y$ and define $f : X \to Y$ by recursion as follows:
+    \begin{align*}
+        f(x) =
+        \begin{cases}
+        \min \left( Y \setminus \{f(y) : y \in X, y < x\} \right) & \text{if this exists,} \\
+        y_0 & \text{otherwise.}
+        \end{cases}
+    \end{align*}
+    We first show that the `otherwise' clause never arises by showing that $f(x) \leq x$ for all $x \in X$. Indeed, fix $x \in X$ and assume that $f(y) \leq y$ holds for all $y \in X$ with $y < x$. Then $x \in Y \setminus \{f(y) : y \in X, y < x\}$, and hence $f(x) \leq x$. The claim follows by induction.
+
+    Given $y < x$ in $X$, since
+    \begin{align*}
+        f(x) \in Y \setminus \{f(z) : z \in X, z < x\} \subseteq Y \setminus \{f(z) : z \in X, z < y\},
+    \end{align*}
+    it follows that $f(y) < f(x)$. Thus, $f$ is order-preserving.
+
+    Finally, assume that $a \in Y \setminus \operatorname{Im}(f)$. We show by induction that $f(x) < a$ for all $x \in X$, which shows that $\operatorname{Im}(f)$ is an initial segment of $Y$. Fix $x \in X$ and assume that $f(y) < a$ for all $y \in X$ with $y < x$. Then $a \in Y \setminus \{f(y) : y \in X, y < x\}$, and thus $f(x) < a$, as required.
 \end{proof}
 
 \begin{remark}
@@ -290,7 +302,7 @@ $X \leq Y$ iff $X$ is o.i. to some subset of $Y$.
 \end{proof}
 
 \begin{remark}
-    This shows that $\leq$ is a linear-order (reflexive, antisymmetric, transitive and trichotomous) provided we identified w.o. sets that are o.i. to each other. \\
+    This shows that $\leq$ is a linear-order (reflexive, antisymmetric, transitive and trichotomous) on the collection of well-ordered sets provided we identified w.o. sets that are o.i. to each other.
 \end{remark}
 
 \subsection{Constructing larger well-orderings}
@@ -331,7 +343,7 @@ We seek a w.o. set $X$ s.t. $X_i \leq X \; \forall i \in I$.
     We show that this is a well-ordering.
     Let $S \subseteq X$ be a nonempty set.
     Since $S = \bigcup_{i \in I} (S \cap X_i)$, $\exists i \in I$ s.t. $S \cap X_i \neq \emptyset$.
-    Let $x$ be a least element of $S \cap X_i$ (since $X$ is w.o.).
+    Let $x$ be a least element of $S \cap X_i$ (since $X_i$ is w.o.).
     Then $x$ is a least element of $S$ since $X_i$ is an i.s. and if $y < x$, $y \in X_i$.
 \end{proof}
 
@@ -372,9 +384,12 @@ We seek a w.o. set $X$ s.t. $X_i \leq X \; \forall i \in I$.
     For ordinals $\alpha, \beta$ write $\alpha \leq \beta$ if $X \leq Y$ where $X$ is a w.o. set with O.T. $\alpha$ and $Y$ has O.T. $\beta$.
     This does not depend on the choice of representative $X$ or $Y$.
 
-    We define $\alpha < \beta$ for $X < Y$. \\
-    Let $\alpha^+$ be the O.T. of $X^+$.
+    We define $\alpha < \beta$ for $X < Y$.
 \end{note}
+
+\begin{notation}
+    Let $\alpha^+$ be the O.T. of $X^+$.
+\end{notation}
 
 \begin{remark}
     Note that $\leq$ is a linear order; if $\alpha \leq \beta, \beta \leq \alpha$ then $\alpha = \beta$.
@@ -389,7 +404,7 @@ We seek a w.o. set $X$ s.t. $X_i \leq X \; \forall i \in I$.
     Let $X$ be a w.o. set with O.T. $\alpha$.
 
     Then, w.o. sets less than $X$ are the proper i.s. of $X$, up to o.i..
-    Let $\widetilde{X} = \qty{Y \subset X : Y \text{ a proper i.s. of } X}$.
+    Let $\widetilde{X} = \{Y \subset X : Y \text{ a proper i.s. of } X\}$.
     Then $<$ (for w.o. sets) is a linear order on $\widetilde{X}$.
 
     Note the fcn $X \to \widetilde{X}$ defined by $x \mapsto I_x$ is an o.i.
@@ -420,7 +435,7 @@ We seek a w.o. set $X$ s.t. $X_i \leq X \; \forall i \in I$.
 
 \begin{proof}
     Suppose $X$ is the set of all ordinals.
-    Then $X$ is a w.o.., so it has an order type, say $\alpha$.
+    Then $X$ is a w.o. by \cref{prp:10}, so it has an order type, say $\alpha$.
     Then $X$ is o.i. to $I_\alpha$, which is a proper i.s. of $X$. \Lightning
 \end{proof}
 
@@ -428,7 +443,7 @@ We seek a w.o. set $X$ s.t. $X_i \leq X \; \forall i \in I$.
     Let $S = \qty{\alpha_i \colon i \in I}$ be a set of ordinals.
     Then by \cref{prp:8}, the nested set $\qty{I_{\alpha_i} : i \in I}$ has an upper bound.
     So $\exists$ ordinal $\alpha$ s.t. $\alpha_i \leq \alpha \; \forall i \in I$.
-    By \cref{thm:9}, $I_\alpha$ is w.o., so we can the least such $\alpha$: \\
+    By \cref{thm:9}, $I_\alpha$ is w.o., so we can take the least such $\alpha$: \\
     Take the least element of $\qty{\beta \in I_\alpha \cup \qty{\alpha} : \forall i \in I, \alpha_i \leq \beta}$. \\
     We denote by ``$\sup S$'' the \vocab{least upper bound on $S$}.
 
@@ -497,19 +512,20 @@ All of these ordinals are countable, as each operation only takes a countable un
 \underline{Idea}: Assume $\alpha$ an uncountable ordinal.
 Then there is a least such $\alpha$: \\
 $\qty{\beta \in I_\alpha \cup \qty{\alpha} : \beta \text{ uncountable}} \neq \emptyset$, so has a least element, say $\gamma$.
-So $I_\gamma$ is exactly the set of all countable ordinals.
+So $I_\gamma$ is exactly the set of all countable ordinals, i.e. the set of order-types of well-orderings of subsets of $\mathbb{N}$.
 
 If $X$ is a countable w.o. set, then $\exists$ injection $f : X \to \mathbb{N}$.
 Then $Y = f(X)$ is w.o. by $f(x) < f(y) \iff x < y$ in $X$.
 Then $Y$ is an o.i. to $X$.
 
 \begin{proof}
-    Let $A = \qty{(Y, <) \in \mathcal{P}(\mathbb{N}) \times \mathcal{P}(\mathbb{N} \times \mathbb{N}) : Y \text{ is a w.o. by } <}$.
+    Let $A = \{(Y, <) \in \mathcal{P}(\mathbb{N}) \times \mathcal{P}(\mathbb{N} \times \mathbb{N}) : Y \text{ is a w.o. by } <\}$ be the set of well-orderings of subsets of $\mathbb{N}$.
     Let $B = \qty{\operatorname{O.T.}(Y, <) : (Y, <) \in A}$.
     By above, $B$ is exactly the set of all countable ordinals.
 
     Let $\omega_1 = \sup B$.
-    If $\omega_1 \in B$, then $\omega_1^+ \in B$ \Lightning \ as $\omega$ countable $\implies \omega^+$ countable.
+    If $\omega_1 \in B$, i.e. $\omega_1$ countable then so is $\omega_1^+$ and then $\omega_1^+ \in B$.
+    Thus $\omega_1 \leq \omega$ \Lightning
 \end{proof}
 
 \begin{remark}
@@ -535,6 +551,8 @@ The ordinal $\omega_1$ has a number of remarkable properties.
 
 \begin{proof}
     Repeat proof of \cref{thm:12} with $X$ instead of $\mathbb{N}$.
+    Letting $\gamma = (\sup B)^+$, if there is an injection from $\gamma$ to $X$, this induces a well-ordering on a subset of $X$ with order type $\gamma$.
+    Thus $\gamma \in B$, and so $\gamma \leq B < \gamma$ \Lightning.
 \end{proof}
 
 \begin{remark}
@@ -549,7 +567,7 @@ The ordinal $\omega_1$ has a number of remarkable properties.
 Let $\alpha$ be an ordinal, consider whether $\alpha$ has a greatest element (i.e. if $X$ has O.T. $\alpha$, does $X$ have a greatest element).
 \begin{definition}[Successor]
     If $\exists$ greatest element of $I_\alpha$, say $\beta$, then $I_\alpha = I_\beta \cup \qty{\beta}$.
-    So $\alpha = \beta^+$ and $\alpha = (\sup I_\alpha)^+$.
+    So $\alpha = \beta^+$ and $\beta = \sup I_{\alpha} < \alpha$.
     We call such $\alpha$ a \vocab{successor}.
 
     Else, $I_\alpha = \sup I_\alpha$. i.e. $\alpha = \sup \qty{\beta : \beta < \alpha}$.
@@ -560,7 +578,7 @@ Let $\alpha$ be an ordinal, consider whether $\alpha$ has a greatest element (i.
     $1 = 0^+$ is a successor.
     5 is a successor.
     $\omega + 2 = (\omega^+)^+$ is a successor.
-    $\omega = \sup \qty{n < \omega}$ is a limit as it has no greatest element.
+    $\omega = \sup \qty{n : n < \omega}$ is a limit as it has no greatest element.
     $\omega_1$ is a limit.
     0 is a limit.
 \end{example}
