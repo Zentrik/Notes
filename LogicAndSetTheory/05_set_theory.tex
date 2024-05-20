@@ -14,7 +14,7 @@ If $a, b \in V$ and $(a, b) \in [\in]_V$, say `$a$ belongs to $b$' or `$a$ is an
 
 We now define the axioms (there are 2 + 4 + 3 axioms) of $\mathsf{ZF}$ set theory.
 \begin{enumerate}
-    \item \vocab{Axiom of Existensionality (Ext)} \\
+    \item \vocab{Axiom of Extensionality (Ext)} \\
     `If two sets have the same members, then they are equal'
     \begin{align*}
         (\forall x)(\forall y)((\forall z)(z \in x \Leftrightarrow z \in y) \implies x = y)
@@ -46,6 +46,10 @@ We now define the axioms (there are 2 + 4 + 3 axioms) of $\mathsf{ZF}$ set theor
     \begin{example}
         For instance, $p(\varnothing)$ is the sentence $(\exists x)((\forall y)(\neg y \in x) \wedge p(x))$.
     \end{example}
+
+    Strictly speaking, this axiom is not needed as it follows from (Sep).
+    Indeed, in a structure $V$, we can pick any set $x$ and form the set $\{y \in x : \neg (y = y)\}$ by (Sep).
+    However, if in first-order logic we allow the empty set as a structure, then (Emp) is needed (or some axiom asserting the existence of some set).
     \item \vocab{Pair-set Axiom (Pair)} \\
     `We can form unordered pairs'
     \begin{align*}
@@ -148,7 +152,7 @@ We now define the axioms (there are 2 + 4 + 3 axioms) of $\mathsf{ZF}$ set theor
 
     We can define abbreviations: \\
     ``$x$ is finite'' for $(\exists y)(y \in \omega \wedge (\exists f)(f : x \to y \wedge \text{`$f$ is bijective'}))$; \\
-    ``$x$ is countable'' for $(\exists f)(f : x \to \omega \wedge \text{`$f$ in injective'})$.
+    ``$x$ is countable'' for $(\exists f)(f : x \to \omega \wedge \text{`$f$ is injective'})$.
 
     \item \vocab{Axiom of Replacement (Rep)} \\
     (Inf) says that there exist sets containing $0, 1, 2, 3, \dots$
@@ -171,7 +175,7 @@ We now define the axioms (there are 2 + 4 + 3 axioms) of $\mathsf{ZF}$ set theor
     \begin{example} ~\vspace*{-1.5\baselineskip}
         \begin{itemize}
             \item For instance, $V$ is a class, taking $p$ to be $x = x$.
-            \item The set of sets of size $1$ in a class, e.g. take $p$ to be $(\exists y)(x = \{y\})$
+            \item The set of sets of size $1$ is a class, e.g. take $p$ to be $(\exists y)(x = \{y\})$
             \item There is a class of infinite sets, taking $p$ to be `$x$ is not finite'.
             \item For any $t \in V$, the collection of $x$ with $t \in x$ is a class; here, $t$ is a parameter to the class.
             \item Every set $y \in V$ is a class by setting $p$ to be $x \in y$.
