@@ -60,13 +60,13 @@ Each of these ordinals is initial, and every initial ordinal $\beta$ is of the f
 
     Conversely, let $\delta$ be an infinite initial ordinal.
     We need $\delta = \omega_\alpha$ for some $\alpha$. \\
-    Easy induction show that $\alpha \leq \omega_\alpha \; \forall a$ so $\delta < \omega_{\delta + 1}$.
+    Easy induction show that $\alpha \leq \omega_\alpha \; \forall \alpha$ so $\delta < \omega_{\delta + 1}$.
     Take the least $\alpha$ s.t. $\delta < \omega_\alpha$.
-    Then $\alpha \neq 0$ and $a$ is not a limit, o/w $\delta < \omega$ for some $\gamma < \alpha$ \Lightning. \\
+    Then $\alpha \neq 0$ and $\alpha$ is not a limit, o/w $\delta < \omega_\gamma$ for some $\gamma < \alpha$ \Lightning. \\
     So $\alpha = \beta^+$ for some $\beta$.
     So we have $\omega_\beta \leq \delta < \omega_{\beta^+} = \gamma(\omega_\beta)$.
     Hence $\delta \hookrightarrow \omega_\beta$ and $\omega_\beta \hookrightarrow \delta$.
-    So by Schr\"oder-Bernstein, $\omega_\beta \equiv \delta$, so $\delta = \omega_\beta$ as $\delta$ is initial.
+    So by Schr\"oder-Bernstein, $\omega_\beta \equiv \delta$\footnote{As $\gamma(\omega_\beta)$ minimal order which doesn't inject into $\omega_\beta$}, so $\delta = \omega_\beta$ as $\delta$ is initial.
 \end{proof}
 
 \begin{definition}[Aleph Numbers]
@@ -93,7 +93,7 @@ This is in fact a total order in $\mathsf{ZFC}$, since we can well-order the two
 Let $m, n$ be cardinals.
 Then,
 \begin{enumerate}
-    \item $m + n = \mathrm{card}\qty(M \amalg N)$;
+    \item $m + n = \mathrm{card}\qty(M \sqcup N)$;
     \item $m \cdot n = \mathrm{card}(M \times N)$;
     \item $m^n = \mathrm{card}(M^N)$;
 \end{enumerate}
@@ -103,7 +103,7 @@ This is well-defined.
 \underline{Some Properties} \\
 $m + n = n + m$ ($M \sqcup N \equiv N \sqcup M$) \\
 $m \cdot n = n \cdot m$ ($M \times N \equiv N \times M$) \\
-$m (n + p) = mn + mp$ ($M \times (N \sqcup P) \equiv M \times N \sqcup M \times P$)
+$m (n + p) = mn + mp$ ($M \times (N \sqcup P) \equiv M \times N \sqcup M \times P$) \\
 $(m^n)^p = m^{np}$, $m^n m^p = m^{n + p}$, $m^p \cdot n^p = (mn)^p$ (not true for ordinals though)
 
 $m \leq n \implies m + p \leq n + p$, $mp \leq np$, $m^p \leq n^p$ etc.
@@ -161,6 +161,8 @@ A consequence of this result is that addition and multiplication of alephs is ea
     \[ \aleph_\beta \leq \aleph_\alpha + \aleph_\beta \leq 2 \cdot \aleph_\beta \leq \aleph_\alpha \aleph_\beta \leq \aleph_\beta^2 = \aleph_\beta \]
 \end{proof}
 
+Hence, for example, $X \sqcup X$ bijects with $X$ for any infinite set $X$.
+
 \begin{note}
     In ZFC one can define more general infinite sums and products of cardinals. In the definitions below, as earlier, lower-case letters denote cardinals and upper-case letters denote sets with cardinality the corresponding lower-case letter.
 \end{note}
@@ -193,12 +195,10 @@ So it is of interest to study cardinals of the form $2^{\aleph_\beta}$. We know 
 \begin{align*}
     2^{\aleph_0}=\aleph_1
 \end{align*}
-P. Cohen proved in the 1960 s that if $\mathrm{ZFC}$ is consistent, then so are $\mathrm{ZFC}+\mathrm{CH}$ and $\mathrm{ZFC}+\neg \mathrm{CH}$. So $\mathrm{CH}$ is independent of $\mathrm{ZFC}$.
+P. Cohen proved in the 1960s that if $\mathrm{ZFC}$ is consistent, then so are $\mathrm{ZFC}+\mathrm{CH}$ and $\mathrm{ZFC}+\neg \mathrm{CH}$. So $\mathrm{CH}$ is independent of $\mathrm{ZFC}$.
 
-Hence, for example, $X \amalg X$ bijects with $X$ for any infinite set $X$.
-
+Extra stuff on cardinal exponentiation: \\
 Cardinal exponentiation is not as simple as addition and multiplication.
 For instance, in $\mathsf{ZF}$, $2^{\aleph_0}$ need not even be an aleph number, for instance if $\mathbb R$ is not well-orderable.
-In $\mathsf{ZFC}$, the statement $2^{\aleph_0} = \aleph_1$ is independent of the axioms; this is called the \vocab{continuum hypothesis}.
 $\mathsf{ZFC}$ does not even decide if $2^{\aleph_0} < 2^{\aleph_1}$.
 Even today, not all implications about cardinal exponentiation (such as $\aleph_\alpha^{\aleph_\beta}$) are known.

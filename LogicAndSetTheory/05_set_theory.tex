@@ -277,7 +277,8 @@ Equivalently, $\cup x \subseteq x$.
 \begin{proof}
     NTS that $x \subseteq \omega \; \forall x \in \omega$. \\
     Form the set $z = \{y \in \omega : y \subseteq \omega\}$ by (Sep).
-    Check $z$ is a successor set, so $z = \omega$.
+    Check $z$ is a successor set, so $z = \omega$, i.e. $\omega$ transitive.
+
     Similarly, $\{x \in \omega : \text{`$x$ is transitive'}\}$ is also a successor set ($\cup x^+ = x$) so it is $\omega$.
     So every element of $\omega$ is a transitive set.
 \end{proof}
@@ -295,7 +296,7 @@ Equivalently, $\cup x \subseteq x$.
     This holds as any intersection of transitive sets is transitive.
 \end{remark}
 
-\underline{Idea}: If $x \subseteq y$ and y transitive then $\bigcup x \subseteq y$ so $\bigcup \bigcup x \subseteq y$, $\bigcup \bigcup \bigcup x \subseteq y$, \dots \\
+\underline{Idea}: If $x \subseteq y$ and $y$ transitive then $\bigcup x \subseteq y$ so $\bigcup \bigcup x \subseteq y$, $\bigcup \bigcup \bigcup x \subseteq y$, \dots \\
 We want to form $\bigcup \{x, \bigcup x, \bigcup \bigcup x, \dots\}$, this is a set by (Rep).
 We need a function-class $0 \mapsto x$, $1 \mapsto \bigcup x$, $2 \mapsto \bigcup \bigcup x$, \dots
 
@@ -327,10 +328,11 @@ We need a function-class $0 \mapsto x$, $1 \mapsto \bigcup x$, $2 \mapsto \bigcu
     Also by (Un) we can form $t = \bigcup w$.
 
     Then $x \in t$, since $x \in w$ ($\{(0, x)\}$ is an attempt).
-    Given $a \in t$, we have $z \in w$, $a \in z$.
+    Given $a \in t$, we have $a \in z$ for some $z \in w$.
     Then there's an attempt $f$ and $n \in w$ s.t. $z = f(n)$. \\
     By $(\ast\ast)$ there's an attempt $g$ with $n^+ \in \dom g$.
-    Then $n \in \dom g$ so $\bigcup z = \bigcup f(n) = \bigcup g(n)$ by $(\ast)$ and $\bigcup g(n) = g(n^+) \in w$, hence $a \in t$.
+    Then $n \in \dom g$ so $\bigcup z = \bigcup f(n) = \bigcup g(n)$ by $(\ast)$ and $\bigcup g(n) = g(n^+) \in w$.
+    Thus for any $b \in a$, $b \in \cup z \in w$ so $b \in t$, i.e. $t$ transitive.
 \end{proof}
 
 Transitive closures allow us to pass from the large universe of sets, which is not a set itself, into a smaller world which is a set closed under $\in$ that contains the relevant sets in question.
@@ -356,14 +358,14 @@ We want the axiom of foundation to capture the idea that sets are built out of s
     If $y \in z$, then $y \in t$ (as $t$ transitive) and $y \notin u$ (by minimality), so $p(y)$.
     By assumption $p(z)$ holds \Lightning\ of $z \in u$.
 \end{proof}
-The name of this theorem should be read `epsilon-induction', even though the membership relation is denoted $\in$ and not $\epsilon$ or $\varepsilon$.
+The name of this theorem should be read `epsilon-induction', even though the membership relation is denoted $\in$ and not $\epsilon$.
 
 The principle of $\in$-induction is equivalent to the axiom of foundation (Fnd) in the presence of the other axioms of $\mathsf{ZF}$.
 
-\underline{Clever Idea}: We say that $x$ is \vocab{regular} if $(\forall y)(x \in y \implies y \text{ has a $\in$-minimal element})$.
+\underline{Clever Idea}: We say that $x$ is \vocab{regular} if $(\forall y)(x \in y \implies y \text{ has a $\in$-minimal element})$ (this defn is the clever part).
 The axiom of foundation is equivalent to the assertion that every set is regular.
 Given $\in$-induction, we can prove every set is regular.
-Suppose $(\forall y \in x)(y \text{ is regular})$; we need to show $x$ is regular.
+Fix some $x$ and suppose $(\forall y \in x)(y \text{ is regular})$; we need to show $x$ is regular.
 For a set $z$ with $x \in z$, if $x$ is minimal in $z$, $x$ is clearly regular as required.
 If $x$ is not minimal in $z$, there exists $y \in x$ s.t. $y \in z$.
 So $z$ has a minimal element as $y$ is regular.
@@ -430,7 +432,7 @@ These proofs are not specific to the relation $\in$; we only used some of its pr
 \end{example}
 
 \begin{definition}[Local]
-    $r$ is \vocab{local} if $(\forall x)(\forall y)(\exists z)(z r x \wedge z r y\footnote{$zry = r(z, y)$})$, i.e. the $r$-predecessors of $x$ form a set.
+    $r$ is \vocab{local} if $(\forall x)(\exists y)(\forall z)(z \in y \wedge z r x\footnote{$zrx = r(z, x)$})$, i.e. the $r$-predecessors of $x$ form a set.
 \end{definition}
 
 \begin{example}
@@ -453,6 +455,7 @@ No, provided we also assume that $r$ is \vocab{extensional} on $a$.
         (\forall x \in a)(\forall y \in a)((\forall z \in a)(zrx \Leftrightarrow zry) \implies x = y)
     \end{align*}
 \end{definition}
+This is just the axiom of extensionality applied to the relation $r$.
 
 % Therefore, $p$-induction and $p$-recursion hold for all relation-classes $p$ that are well-founded and local.
 % In particular, if $r$ is a well-founded relation on a set $a$, it is clearly local and hence we have $r$-induction and $r$-recursion.
@@ -478,11 +481,11 @@ Note that the well-foundedness and extensionality conditions are clearly necessa
 
 \begin{proof}
     By $r$-recursion on $a$, there's a function class $f$ s.t. $\forall x \in a$, $f(x) = \{f(y) : y \in a \wedge y r x \}$.
-    Note that $f$ i s a function, not just a fcn class since $\qty{(x, f(x)) : x \in a}$ is a set by (Rep).
+    Note that $f$ is a function, not just a fcn class since $\qty{(x, f(x)) : x \in a}$ is a set by (Rep).
 
     Then $b = \qty{f(x) : x \in a}$ is a set by (Rep). \\
     $b$ is transitive: Let $z \in b$ and $w \in z$.
-    There's $x \in a$ s.t. $z = f(x)$, and so $y \in a$ s.t. $y r x$ and $w = f(y) \in b$.
+    There's $x \in a$ s.t. $z = f(x)$, and so a $y \in a$ s.t. $y r x$ and $w = f(y) \in b$.
 
     Clearly $f$ surjective and $\forall x, y \in a$, $xry \implies f(x) \in f(y)$.
 
@@ -538,18 +541,22 @@ It is a proper class by Buralti-Forti.
 \begin{remark}
     (2) says that $\alpha$ really \underline{is} the set of ordinals $< \alpha$; \\
     (3) says that $\in$ linearly orders the class $ON$; \\
-    (4) resolves the class of notation $x^+$ in section $2$ and $5$; \\
+    (4) resolves the clash of notation $x^+$ in section $2$ and $5$.
+    According to the definition in section $2$, $\alpha^+$ is the unique (up to order-isomorphism) well-ordered set that consists of $\alpha$ as a proper initial segment and one extra element that is a maximum.
+    By Mostowski, this well-ordered set is order-isomorpic to a unique ordinal (its order-type).
+    (4) shows that this ordinal is the successor of the set $\alpha$ as defined in this section.
+    In particular, this shows that the successor of an ordinal is an ordinal; \\
     (5) now shows that any set of well-ordered sets has an upper bound.
 \end{remark}
 
 \begin{proof}
     \begin{enumerate}
         \item Let $\gamma \in \alpha$.
-        Then $\gamma \subseteq \alpha$ ($\alpha$ is transitive) and hence $\in$ linearly orders $\gamma$.
+        Then $\gamma \subseteq \alpha$ ($\alpha$ is transitive) and hence $\in$ linearly orders $\gamma$\footnote{$\in$ linearly orders $\alpha$ and $\gamma$ a subset so $\eval{\in}_\gamma$ linearly orders it.}.
         Given $\eta \in \delta$, $\delta \in \gamma$ then $\delta \in \alpha$ and so $\eta \in \alpha$ ($\alpha$ is transitive).
-        Since $\in$ is transitive on $\alpha$, we have $\eta \in \gamma$.
+        Since $\in$ is transitive\footnote{As $\in$ a well ordering.} on $\alpha$, we have $\eta \in \gamma$.
         So $\gamma$ is a transitive set, so $\gamma$ is an ordinal.
-        \item If $\beta \in \alpha$, then $I_\beta = \qty{\gamma \in \alpha : \gamma \in \beta} = \beta$, so $\beta < \alpha$.
+        \item If $\beta \in \alpha$, then $I_\beta = \qty{\gamma \in \alpha : \gamma \in\footnote{We are well-ordered by $\in$ not $<$ so we use $\in$ to define initial segments} \beta} = \beta$ as $\beta \subset \alpha$ by transitivity of $\alpha$, so $\beta < \alpha$.
         Any proper i.s. of $\alpha$ is of the form $I_\gamma$ for some $\gamma \in \alpha$.
         So $\beta < \alpha \implies \beta \in \alpha$.
         \item Done by (2)
