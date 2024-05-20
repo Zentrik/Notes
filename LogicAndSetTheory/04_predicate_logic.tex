@@ -370,7 +370,7 @@ We define the following deduction rules.
 
 \begin{definition}[Proof]
     Let $S$ be a set of formulae and $p$ a formula.
-    A \vocab{proof} of $p$ from $S$ is a finite sequence $t_1, \dots, t_n$ of formulae s.t. $t_n = p$ and $\forall i \; t_i$ is an axiom, a premise or deduced form previous lines (i.e. $\exists j, x < i$ s.t. $t_x = (t_j \implies t_i)$ or $\exists j < i$ s.t. $t_i = (\forall x)t_j$, $x \in \FV(t_j)$ and $\forall k < j$ if $t_k \in S$ then $x \notin \FV(t_k)$). \\
+    A \vocab{proof} of $p$ from $S$ is a finite sequence $t_1, \dots, t_n$ of formulae s.t. $t_n = p$ and $\forall i \; t_i$ is an axiom, a premise or deduced from previous lines (i.e. $\exists j, x < i$ s.t. $t_x = (t_j \implies t_i)$ (MP) or $\exists j < i$ s.t. $t_i = (\forall x)t_j$, $x \in \FV(t_j)$ and $\forall k < j$ if $t_k \in S$ then $x \notin \FV(t_k)$ (Gen)). \\
     We say $S$ \vocab{proves} $p$ and write $S \vdash p$.
 \end{definition}
 
@@ -381,10 +381,11 @@ We define the following deduction rules.
     However, $\qty{(\forall x) \neg (x = x)} \vdash \bot$:
     \begin{enumerate}
         \item $(\forall x) \neg (x = x)$ (premise)
-        \item $((\forall x) \neg (x = x)) \implies (x=x)$ (A6)
+        \item $((\forall x) \neg (x = x)) \implies \neg (x=x)$ (A6)
         \item $\neg (x = x)$ (MP)
         \item $(\forall x) (x = x)$ (A4)
-        \item $x = x$ (A6 + MP)
+        \item $(\forall x) (x = x) \implies (x = x)$ (A6)
+        \item $x = x$ (MP)
         \item $\bot$ (MP)
     \end{enumerate}
 \end{remark}
@@ -458,7 +459,7 @@ We define the following deduction rules.
         There are two cases
         \begin{itemize}
             \item If $x$ occurs free in $p$, $p$ did not occur in the proof of $t_j$ from $S \cup \qty{p}$ so it is a proof of $t_j$ from $S$.
-            So by (Gen), $S \vdash (\forall x) t_j$, i.e. $S \vdash t_j$.
+            So by (Gen), $S \vdash (\forall x) t_j$, i.e. $S \vdash t_i$.
             Write lines:
             \begin{enumerate}
                 \item $t_i \implies (p \implies t_i)$ (A1)
@@ -664,7 +665,7 @@ Finiteness is not a first order property.
     Let $S' = S \cup \qty{\neg (c_i = c_j) : i, j \in I, i \neq j}$.
     Any finite set of sentences in $S'$ has a model: indeed, the infinite model of $S$ suffices.
     By compactness, $S'$ has a model.
-    A model of $S'$ is a model $B$ of $S$ together with an injection $I \to B$ so $B$ is countable.
+    A model of $S'$ is a model $B$ of $S$ together with an injection $I \to B$ so $B$ is uncountable.
 \end{proof}
 
 \begin{remark}
@@ -677,7 +678,7 @@ Finiteness is not a first order property.
     There is also a field that does not inject into $X$ for any fixed set $X$.
 \end{example}
 
-\begin{theorem}[Downard L\"owenheim--Skolem theorem]
+\begin{theorem}[Downard L\"owenheim--Skolem Theorem]
     Let $S$ be a first order theory in a countable language $L$, or equivalently, $\Omega$ and $\Pi$ are countable.
     Then if $S$ has a model, it has a countable model.
 \end{theorem}

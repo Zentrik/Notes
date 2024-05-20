@@ -99,7 +99,7 @@ Alternatively, a poset is a pair $(X, <)$ where $X$ is a set, and $<$ is a relat
 \end{example}
 
 \begin{example}
-    In $\mathcal{P}(\mathbb{Q})$, $\qty{(-\infty, x) \cap \mathbb{Q} : x \in \mathbb{R}}$
+    In $\mathcal{P}(\mathbb{Q})$, $\qty{(-\infty, x) \cap \mathbb{Q} : x \in \mathbb{R}}$ is an uncountable chain.
 \end{example}
 
 \begin{definition}[Antichain]
@@ -376,7 +376,7 @@ We can now prove the completeness theorem for propositional logic with no restri
 There exist sets with no definable well-ordering, such as $\mathbb R$.
 \begin{proof}
     Let $S$ be a set, and let $X$ be the set of pairs $(A, R)$ s.t. $A \subseteq S$ and $R$ is a well-ordering on $A$.
-    We define the partial order on $X$ by $(A, R) \leq (A', R')$ if $(A', R')$ extends $(A, R)$, so $\eval{R'}_A = A$ and $A$ is an i.s. of $A'$ for $R'$.
+    We define the partial order on $X$ by $(A, R) \leq (A', R')$ if $(A', R')$ extends $(A, R)$, so $\eval{R'}_A = R$ and $A$ is an i.s. of $A'$ for $R'$.
 
     $X$ is nonempty as the empty relation is a well-ordering of the empty set.
     Given a nonempty chain $(A_i, R_i)_{i \in I}$, there is an upper bound $\qty(\bigcup_{i \in I} A_i, \bigcup_{i \in I} R_i)$, because the well-orderings are nested so by \cref{prp:8}.
