@@ -329,9 +329,9 @@ We need a function-class $0 \mapsto x$, $1 \mapsto \bigcup x$, $2 \mapsto \bigcu
 
     Then $x \in t$, since $x \in w$ ($\{(0, x)\}$ is an attempt).
     Given $a \in t$, we have $a \in z$ for some $z \in w$.
-    Then there's an attempt $f$ and $n \in w$ s.t. $z = f(n)$. \\
+    Then there's an attempt $f$ and $n \in \dom f$ s.t. $z = f(n)$. \\
     By $(\ast\ast)$ there's an attempt $g$ with $n^+ \in \dom g$.
-    Then $n \in \dom g$ so $\bigcup z = \bigcup f(n) = \bigcup g(n)$ by $(\ast)$ and $\bigcup g(n) = g(n^+) \in w$.
+    Then $n \in \dom g$\footnote{$\dom g$ transitive as members of $\omega$ transitive and $n \in n^+$.} so $\bigcup z = \bigcup f(n) = \bigcup g(n)$ by $(\ast)$ and $\bigcup g(n) = g(n^+) \in w$.
     Thus for any $b \in a$, $b \in \cup z \in w$ so $b \in t$, i.e. $t$ transitive.
 \end{proof}
 
