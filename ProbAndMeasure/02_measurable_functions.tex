@@ -365,7 +365,7 @@ Let $(E, \mathcal{E}, \mu)$ be a measure space. Let $A \in \mathcal{E}$ be defin
 	\begin{align*}
 		\mu\qty(\abs{f_n} > \frac{1}{k}) \to 0.
 	\end{align*}
-	So we can choose $n_k$ s.t. $\mu\qty(\abs{f_n} > \frac{1}{k}) \leq \frac{1}{k^2}$.
+	So we can choose $n_k$ s.t. $\mu\qty(\abs{f_{n_k}} > \frac{1}{k}) \leq \frac{1}{k^2}$.
 	We can choose $n_{k+1}$ in the same way s.t. $n_{k+1} > n_k$.
 	So we get a subsequence $n_k$ s.t. $\mu\qty(\abs{f_{n_k}} > \frac{1}{k}) < \frac{1}{k^2}$.
 	Also $\sum_k \frac{1}{k^2} < \infty$, so $\sum_k \mu\qty(\abs{f_{n_k}} > \frac{1}{k}) < \infty$.
@@ -408,9 +408,12 @@ Let $(E, \mathcal{E}, \mu)$ be a measure space. Let $A \in \mathcal{E}$ be defin
 \end{example}
 
 \subsection{Kolmogorov's zero-one law}
-Let $(X_n)_{n \in \mathbb N}$ be a sequence of r.v.s.
-We can define $\mathcal T_n = \sigma(X_{n+1}, X_{n+2}, \dots)\footnote{The smallest $\sigma$-algebra s.t. $X_{n+1}, \dots$ are measurable.}$.
-Let $\mathcal T = \bigcap_{n \in \mathbb N} \mathcal T_n$ be the \vocab{tail $\sigma$-algebra}, which contains all events in $\mathcal F$ that depend only on the `limiting behaviour' of $(X_n)$.
+
+\begin{definition}[Tail $\sigma$-Algebra]
+	Let $(X_n)_{n \in \mathbb N}$ be a sequence of r.v.s.
+	We can define $\mathcal T_n = \sigma(X_{n+1}, X_{n+2}, \dots)\footnote{The smallest $\sigma$-algebra s.t. $X_{n+1}, \dots$ are measurable.}$.
+	Let $\mathcal T = \bigcap_{n \in \mathbb N} \mathcal T_n$ be the \vocab{tail $\sigma$-algebra}, which contains all events in $\mathcal F$ that depend only on the `limiting behaviour' of $(X_n)$.
+\end{definition}
 
 \begin{theorem}[Kolmogorov 0-1 Law]
 	Let $(X_n)_{n \in \mathbb N}$ be a sequence of independent r.v.s.
