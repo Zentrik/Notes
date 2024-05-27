@@ -69,7 +69,7 @@ If one of $\mu(f^+)$ or $\mu(f^-)$ is $\infty$ and the other finite, we define $
 
 \begin{remark}
 	This is a theorem that allows us to interchange a pair of limits, $\mu(f) = \mu\qty(\lim_n f_n) = \lim_n \mu(f_n)$, i.e. $\lim_n \int f_n \dd{\mu} = \int \lim_n f_n \dd{\mu}$ for $f_n \geq 0$ and $f_n \uparrow f$. \\
-	If $g_n \geq 0$, letting $f_n = \sum_{k=1}^{n} g_k$ and $f_n \uparrow f = \sum_{k=1}^{\infty} g_k$ we get $\lim_n \int \sum_{k=1}^{n} g_k \dd{\mu} = \int \sum_{k=1}^\infty g_k \dd{\mu} \implies \sum_{k=\infty}^{n} \int g_k \dd{\mu} = \int \sum_k g_k \dd{\mu}$ or equivalently $\mu\qty(\sum_k g_k) = \sum_k \mu(g_k)$.
+	If $g_n \geq 0$, letting $f_n = \sum_{k=1}^{n} g_k$ and $f_n \uparrow f = \sum_{k=1}^{\infty} g_k$ we get $\lim_n \int \sum_{k=1}^{n} g_k \dd{\mu} = \int \sum_{k=1}^\infty g_k \dd{\mu} \implies \sum_{k=1}^{\infty} \int g_k \dd{\mu} = \int \sum_k g_k \dd{\mu}$ or equivalently $\mu\qty(\sum_k g_k) = \sum_k \mu(g_k)$.
 	This generalises the countable additivity of $\mu$ to integrals of non-negative functions.
 
 	If we consider the approximating sequence $\widetilde f_n = 2^{-n} \floor*{2^n f}$, as defined in the monotone class theorem, then this is a non-negative sequence converging to $f$.
@@ -91,7 +91,7 @@ If one of $\mu(f^+)$ or $\mu(f^-)$ is $\infty$ and the other finite, we define $
 	Now let $g = \sum_{k=1}^m a_k 1_{A_k}$ where $a_k \geq 0$ and wlog the $A_k \in \mathcal E$ are disjoint.
 	We define $g_n = \min (\overline f_n, g)$, where $\overline f_n$ is the $n$th approximation of $f_n$ by simple functions as in the \nameref{thm:monclass}.
 	So $g_n$ is simple, $g_n \leq \overline{f}_n \leq f_n \uparrow f$, so $g_n \uparrow \min(f, g) = g$.
-	I.e. $g \uparrow g$ and $g_n$ simple with $g_n \leq f$.
+	I.e. $g_n \uparrow g$ and $g_n$ simple with $g_n \leq f_n$.
 
 	Fix $\epsilon \in (0, 1)$, and define sets $A_k(n) = \qty{x \in A_k : g_n(x) \geq (1-\varepsilon) a_k}$.
 	Since $g = a_k$ on $A_k$, and since $g_n \uparrow g$, $A_k(n) \uparrow A_k$ for all $k$.
