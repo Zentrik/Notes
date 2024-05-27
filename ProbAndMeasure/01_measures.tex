@@ -394,7 +394,7 @@ One of the main goals for this course is to define a notion of volume for arbitr
 % \[ \mu\qty(\prod_{i=1}^d [a_i, b_i]) = \prod_{i=1}^d \abs{b_i - a_i} \]
 Initially, we will perform this construction for $d = 1$, and later we will consider product measures to extend this to higher dimensions.
 
-\begin{theorem}[Construction of the Lebesgue Measure]
+\begin{theorem}[Construction of the Lebesgue Measure] \label{thm:leb}
 	There exists a unique Borel measure $\mu$ on $\mathbb R$ such that
 	\begin{align*}
 		a < b \implies \mu \left( (a,b] \right) = b - a. \tag{$\dagger$}
@@ -632,10 +632,10 @@ Therefore, we can use this for arbitrary measures.
 	\[ \prob{\bigcap_{m=n}^N A_m^c} = \prod_{m=n}^N \qty(1 - \prob{A_m}) \leq \prod_{m=n}^N e^{-\prob{A_m}} = e^{-\sum_{m=n}^N \prob{A_m}} \]
 	As $N \to \infty$, this approaches zero. \\
 	Since $\bigcap_{m=n}^N A_m^c$ decreases to $\bigcap_{m=n}^\infty A_m^c$, $\prob{\bigcap_{m=n}^\infty A_m^c} = 0$ as $\prob{\bigcap_{m=n}^\infty A_m^c} \leq \prob{\bigcap_{m=n}^N A_m^c} \leq e^{-\sum_{m=n}^N \prob{A_m}} \to 0$.
-	So by taking complements $\mathbb{P}(\bigcup_{m=n}^\infty A_n) = 1 \;\forall n (\dagger)$.
+	So by taking complements $\mathbb{P}(\bigcup_{m=n}^\infty A_n) = 1 \; \forall n \ (\dagger)$.
 
 	Let $B_n = \bigcup_{m=n}^\infty A_m$, $B_n$ decreasing and so $B_n \downarrow \bigcap_n B_n = \bigcap_n \bigcup_{m \geq n} A_m = \{A_n \text{ i.o}\}\footnote{$A_n$ occurs infinitely often}$.
-	As $\mathbb{P}(B_n) = 1$ by $(\dagger)$, $\mathbb{P}{\{A_n \text{ i.o}\}} = \lim_{n \to \infty} \mathbb{P}(B_n) = 1$ as probabilities are a finite measure.
+	As $\mathbb{P}(B_n) = 1$ by $(\dagger)$, $\mathbb{P}(\{A_n \text{ i.o}\}) = \lim_{n \to \infty} \mathbb{P}(B_n) = 1$ as probabilities are a finite measure\footnote{Recall the equivalent condition to countable additivity given in the proof of \nameref{thm:leb}.}.
 \end{proof}
 
 \begin{remark}

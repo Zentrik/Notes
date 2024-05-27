@@ -11,7 +11,7 @@ Moreover, if $E$ is a topological space and $\mathcal E = \mathcal B(E)$, we say
 
 Note that preimages $f^{-1}$ commute with many set operations such as intersection, union, and complement.
 This implies that $\qty{f^{-1}(A) : A \in \mathcal G}$ is a $\sigma$-algebra over $E$, and likewise, $\qty{A : f^{-1}(A) \in \mathcal E}$ is a $\sigma$-algebra over $G$.
-Hence, if $\mathcal A$ is a collection of subsets s.t. $G \supset \sigma(\mathcal{A})$ then if $f^{-1}(A) \in \mathcal E$ for all $A \in \mathcal A$, the class $\qty{A : f^{-1} \in \mathcal E}$ is a $\sigma$-algebra that contains $\mathcal A$ and so $\sigma(\mathcal{A})$.
+Hence, if $\mathcal A$ is a collection of subsets s.t. $G \supset \sigma(\mathcal{A})$ then if $f^{-1}(A) \in \mathcal E$ for all $A \in \mathcal A$, the class $\qty{A : f^{-1}(A) \in \mathcal E}$ is a $\sigma$-algebra that contains $\mathcal A$ and so $\sigma(\mathcal{A})$.
 So $f$ is measurable.
 
 If $f \colon (E, \mathcal E) \to \mathbb R$, the collection $\mathcal A = \qty{(-\infty,y] \colon y \in \mathbb R}$ generates $\mathcal B$ (Sheet 1).
@@ -55,8 +55,7 @@ Hence, continuous functions to the real line are measurable.
 	Then $\mathcal{D}$ is a $d$-system as $1_E \in \mathcal{V}$ and for $A \subseteq B$, $1_{B \setminus A} = 1_B - 1_A \in \mathcal{V}$ as $\mathcal{V}$ a vector space so $B \setminus A \in \mathcal{D}$. \\
 	If $A_n \in \mathcal D$ increases to $A$, we have $1_{A_n}$ increases pointwise to $1_A$, which lies in $\mathcal V$ by the (3.) so $A \in \mathcal{D}$.
 
-
-	$\mathcal{D}$ contains $\mathcal A$ by (2.), as well as $E$ itself.
+	$\mathcal{D}$ contains $\mathcal A$ by (2.).
 	So by Dynkin's lemma $\mathcal{D}$ contains $\sigma(\mathcal{A}) = \mathcal{E}$ so $\mathcal E = \mathcal D$ i.e. $1_A \in V \ \forall A \in \mathcal{E}$.
 
 	Since $V$ a vector space it contains all finite linear combinations of indicators of measurable sets.
@@ -65,7 +64,7 @@ Hence, continuous functions to the real line are measurable.
 	\begin{align*}
 		f_n(x) &= 2^{-n} \lfloor 2^n f(x) \rfloor \\
 		&= 2^{-n} \sum_{j=0}^\infty 1_{A_{n, j}}(x) \\
-		A_{n, j} &= \qty{2^n f(x) \in [j, j+1)} \\
+		A_{n, j} &= \qty{x : 2^n f(x) \in [j, j+1)} \\
 		&= f\inv\left(\left[\frac{j}{2^n}, \frac{j+1}{2^n}\right)\right) \in \mathcal{E}.
 	\end{align*}
 	As $f$ is bounded we do not need an infinite sum but only a finite one.
@@ -77,7 +76,7 @@ Hence, continuous functions to the real line are measurable.
 	Finally, for any $f$ bounded and measurable, $f = f^+\footnote{$\max(f, 0)$} - f^-\footnote{$\max(-f, 0)$}$. $f^+, f^-$ are bounded, nonnegative and measurable, so in $\mathcal{V}$ and $\mathcal{V}$ a vector space thus $f \in \mathcal{V}$.
 \end{proof}
 
-\subsection{Image measures}
+\subsection{Image Measures}
 
 \begin{definition}[Image Measure]
 	Let $f \colon (E,\mathcal E) \to (G,\mathcal G)$ be a measurable function and $\mu$ a measure on $(E, \mathcal E)$.
@@ -148,7 +147,7 @@ Starting from the Lebesgue measure, we can get all probability measures (in fact
 		\nu((0,y]) & \text{if } y \geq 0 \\
 		-\nu((y,0]) & \text{if } y < 0
 	\end{cases} \]
-	$\nu$ Radon tells us that $g$ is finite.
+	$\nu$ Radon tells us that $g(y)$ is finite for all $y$ so $g : \mathbb{R} \to \mathbb{R}$.
 	Easy to check $g$ is right-continuous\footnote{For $y_n \downarrow y$ where $y \geq 0$, $(0, y_n] \downarrow (0, y]$ and then $\nu((0, y_n]) \downarrow \nu((0, y])$ by countably additivity. Similarly for $y < 0$.}.
 	This is an increasing function in $y$, since $\nu$ is a measure.
 	Finally, $\nu((a,b]) = g(b) - g(a)$ which can be seen by case analysis and additivity of the measure $\nu$.
@@ -188,7 +187,7 @@ When $E = \mathbb R$ or $\mathbb R^d$ with the Borel $\sigma$-algebra, we simply
 	\begin{align*}
 		F_X(z) = \mu_X((-\infty, z]) = \mathbb P(X^{-1}(-\infty,z]) = \prob{\qty{\omega \in \Omega : X(\omega) \leq z}} = \prob{X \leq z}
 	\end{align*}
-	The function $F_x$ is called the \vocab{distribution function} of $X$, because it uniquely determines the distribution of $X$.
+	The function $F_X$ is called the \vocab{distribution function} of $X$, because it uniquely determines the distribution of $X$.
 \end{definition}
 
 Using the properties of measures, we can show that any distribution function satisfies:
@@ -337,9 +336,9 @@ Let $(E, \mathcal{E}, \mu)$ be a measure space. Let $A \in \mathcal{E}$ be defin
 	% If $\mu(E) < \infty$, then $f_n \to 0$ a.e. $\implies$ $f_n \to 0$ in measure;
 \end{theorem}
 
-\begin{example}
-	Let $f_n = 1_{(n, \infty)}$ and the Lebesgue measure, then $f_n \to 0$ a.e. but $\mu(|f_n| > \epsilon) = \infty \; \forall n$.
-\end{example}
+% \begin{example}
+% 	Let $f_n = 1_{(n, \infty)}$ and the Lebesgue measure, then $f_n \to 0$ a.e. but $\mu(|f_n| > \epsilon) = \infty \; \forall n$.
+% \end{example}
 
 \begin{proof}
 	Fix $\epsilon > 0$.
@@ -378,7 +377,7 @@ Let $(E, \mathcal{E}, \mu)$ be a measure space. Let $A \in \mathcal{E}$ be defin
 \end{proof}
 
 \begin{remark}
-	The first statement is false if $\mu(E)$ is infinite: consider $f_n = 1_{(n,\infty)}$ on $(\mathbb R,\mathcal B,\mu)$, since $f_n \to 0$ almost everywhere but $\mu(f_n) = \infty$.
+	The first statement is false if $\mu(E)$ is infinite: consider $f_n = 1_{(n,\infty)}$ on $(\mathbb R,\mathcal B,\mu)$, since $f_n \to 0$ a.e. but $\mu(|f_n| > \epsilon) = \infty \; \forall n$.
 
 	The second statement is false if we do not restrict to subsequences: consider independent events $A_n$ such that $\prob{A_n} = \frac{1}{n}$, then $1_{A_n} \to 0$ in probability since $\prob{1_{A_n} > \epsilon} = \prob{A_n} = \frac{1}{n} \to 0$, but $\sum_n \prob{A_n} = \infty$, and by the second Borel--Cantelli lemma, $\prob{1_{A_n} > \epsilon \text{ infinitely often}} = 1$, so $1_{A_n} \nrightarrow 0$ almost surely.
 \end{remark}
