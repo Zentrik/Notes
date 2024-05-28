@@ -98,7 +98,7 @@ If one of $\mu(f^+)$ or $\mu(f^-)$ is $\infty$ and the other finite, we define $
 	Since $\mu$ is a measure, $\mu(A_k(n)) \uparrow \mu(A_k)$ by countable additivity.
 
 	Also, we have $g_n 1_{A_k} \geq g_n 1_{A_k(n)} \geq (1-\epsilon)a_k 1_{A_k(n)}$ as $A_k(n) \subseteq A_k$.
-	So as $\mu(f)$ is increasing, we have $\mu(g_n 1_{A_k}) \geq \mu\qty((1-\epsilon)a_k 1_{A_k(n)})$ and so $\mu(g_n 1_{A_k}) \geq (1-\epsilon)a_k \mu(1_{A_k(n)})$ as they are simple functions.
+	So as $\mu(\cdot)$ is increasing, we have $\mu(g_n 1_{A_k}) \geq \mu\qty((1-\epsilon)a_k 1_{A_k(n)})$ and so $\mu(g_n 1_{A_k}) \geq (1-\epsilon)a_k \mu(1_{A_k(n)})$ as they are simple functions.
 
 	Finally, $g_n = \sum_{k=1}^n g_n 1_{A_k}$ as $g_n \leq g$ and $g$ supported on $\bigcup_{k=1}^n A_k$ and $A_k$ disjoint.
 	So
@@ -114,7 +114,6 @@ If one of $\mu(f^+)$ or $\mu(f^-)$ is $\infty$ and the other finite, we define $
 	\begin{align*}
 		(1-\epsilon)\mu(g) \leq \lim_n \mu(g_n) \leq\footnote{As $g_n \leq f_n$} \lim_n \mu(f_n) \leq M
 	\end{align*} so $\mu(g) \leq \frac{M}{1 - \epsilon} \; \forall \epsilon \in (0, 1)$ hence $\mu(g) \leq M$.
-	Since $\epsilon$ was arbitrary, this completes the proof.
 \end{proof}
 
 \subsection{Linearity of Integral}
@@ -129,7 +128,7 @@ If one of $\mu(f^+)$ or $\mu(f^-)$ is $\infty$ and the other finite, we define $
 \end{theorem}
 
 \begin{proof}
-	If $\widetilde f_n, \widetilde g_n$ are the approximations of $f$ and $g$ by simple functions from the \nameref{thm:monclass} let $f_n = \min(\widetilde f_n, n)$ and $g_n = \min(\widetilde g_n, n)$.
+	If $\widetilde f_n, \widetilde g_n$ are the approximations of $f$ and $g$ by simple functions from the \nameref{thm:monclass} let $f_n = \min(\widetilde f_n, n)$\footnote{This ensures that $f_n$ is not an infinite sum of indicators, as discussed in proof of \nameref{thm:monclass} (we assumed $f$ bounded).} and $g_n = \min(\widetilde g_n, n)$.
 	Then $f_n, g_n$ are simple and $f_n \uparrow f$ and $g_n \uparrow g$.
 	Then $\alpha f_n + \beta g_n \uparrow \alpha f + \beta g$, so by MCT\footnote{\nameref{thm:mct}}, $\mu(f_n) \uparrow \mu(f)$, $\mu(g_n) \uparrow \mu(g)$ and $\mu(\alpha f_n + \beta g_n) \uparrow \mu(\alpha f + \beta g)$.
 	As $f_n$, $g_n$ simple $\mu(\alpha f_n + \beta g_n) = \alpha \mu(f_n) + \beta \mu(g_n) \uparrow \alpha \mu(f) + \beta \mu(g)$.
@@ -139,7 +138,7 @@ If one of $\mu(f^+)$ or $\mu(f^-)$ is $\infty$ and the other finite, we define $
 
 	If $f = 0$ a.e, then $0 \leq f_n \leq f$, so $f_n = 0$ a.e. but $f_n$ simple $\implies \mu(f_n) = 0$.
 	As $\mu(f_n) \uparrow \mu(f)$ so $\mu(f) = 0$. \\
-	Conversely, if $\mu(f) = 0$, then $0 \leq \mu(f_n) \uparrow \mu(f)$ so $\mu(f_n) = 0 \; \forall n \implies f_n = 0$ a.e.
+	Conversely, if $\mu(f) = 0$, then $0 \leq \mu(f_n) \uparrow \mu(f)$ so $\mu(f_n) = 0 \; \forall n \implies f_n = 0$ a.e..
 	But $f_n \uparrow f \implies f = 0$ a.e.
 \end{proof}
 
