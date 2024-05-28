@@ -97,7 +97,7 @@ Thus a convex function is continuous on the interior of the interval and so is B
 	So $X \in L^q \implies X \in L^p$ so $L^q(\mathbb P) \subseteq L^p(\mathbb P)$ for all $1 \leq p \leq q \leq \infty$.
 \end{example}
 
-\begin{theorem}[H\"older's inequality]
+\begin{theorem}[H\"older's Inequality]
 	Let $f, g$ be measurable functions on $(E,\mathcal E,\mu)$.
 	If $p, q$ are \vocab{conjugate}, so $\frac{1}{p} + \frac{1}{q} = 1$ and $1 \leq p \leq q \leq \infty$, we have
 	\[ \mu(\abs{fg}) = \int_E \abs{f(x)g(x)} \dd{\mu} \leq \norm{f}_p \cdot \norm{g}_q \]
@@ -199,7 +199,7 @@ So the $L^p$ spaces are indeed normed spaces.
 		&= \mu(\lim_k \abs{f_n - f_{N_k}}^p) \\
 		&= \mu(\liminf_k \abs{f_n - f_{N_k}}^p) \\
 		&\leq \liminf_k \mu(\abs{f_n - f_{N_k}}^p) \\
-		&\leq \epsilon^p \quad \forall n \geq N.
+		&\leq \epsilon^p \quad \forall n \geq N\footnote{This is the $N$ defined in the statement of the theorem.}.
 	\end{align*}
 
 	Since the $f_n$ are Cauchy,
@@ -211,7 +211,7 @@ So the $L^p$ spaces are indeed normed spaces.
 	If $V$ is any of the spaces
 	\[ C([0, 1]);\quad\qty{f \text{ simple}};\quad\qty{f \text{ a finite linear combination of indicators of intervals}} \]
 	then $V$ is dense in $L^p((0, 1), \mathcal{B}, \lambda)$.
-	So the completion $\overline{(V,\norm{\wildcard})}$ is exactly $L^1(\lambda)$ (Proof on Sheet 3, first prove for finite linear combinations, use monotone class theorem, approximate continuous fcns by indicators of intervals so done).
+	So the completion $\overline{(V,\norm{\wildcard}_1)}$ is exactly $L^1(\lambda)$ (Proof on Sheet 3, first prove for finite linear combinations, use monotone class theorem, approximate continuous fcns by indicators of intervals so done).
 \end{remark}
 
 \subsection{Hilbert spaces}
@@ -245,7 +245,7 @@ So the $L^p$ spaces are indeed normed spaces.
 \begin{remark}
 	$f$ and $g$ are orthogonal iff $\norm{f + g}_2^2 = \norm{f}_2^2 + \norm{g}_2^2$.
 
-	For centred (mean zero) r.v.s $X, Y$, we have $\inner{X,Y} = \expect{XY} = \expect{(X - \expect{X})(Y - \expect{Y})} = \Cov{X,Y}$ which vanishes when $X$ and $Y$ are orthogonal.
+	For centred (mean zero) r.v.s $X, Y$, we have $\inner{X,Y} = \expect{XY} = \mathbb{E}[(X - \mathbb{E}[X])(Y - \mathbb{E}[Y])] = \Cov{X,Y}$ which vanishes when $X$ and $Y$ are orthogonal.
 \end{remark}
 
 \begin{definition}[Orthogonal Complement]
@@ -255,12 +255,12 @@ So the $L^p$ spaces are indeed normed spaces.
 \end{definition}
 
 \begin{definition}[Closed Set]
-	We say that a subset $V$ of $\mathcal L^2$ is \vocab{closed} if any sequence $f_n \in V$ that converges in $\mathcal L^2$, its limit $f$ coincides a.e. with some $v \in V$.
+	We say that a subset $V$ of $L^2$ is \vocab{closed} if for any sequence $f_n \in V$ that converges in $L^2$, its limit $f$ coincides a.e. with some $v \in V$.
 \end{definition}
 
 \begin{theorem}[Orthogonal Projection]
-	Let $V$ be a \underline{closed linear subspace} of $\mathcal L^2(\mu)$.
-	Then $\forall f \in \mathcal L^2$, $\exists$ an orthogonal decomposition $f = v + u$ where $v \in V$ and $u \in V^\perp$. \\
+	Let $V$ be a \underline{closed linear subspace} of $L^2(\mu)$.
+	Then $\forall f \in L^2$, $\exists$ an orthogonal decomposition $f = v + u$ where $v \in V$ and $u \in V^\perp$. \\
 	Moreover, $\norm{f - v}_2 \leq \norm{f - g}_2 \ \forall g \in V$ with equality iff $v = g$ a.e..
 \end{theorem}
 
@@ -277,12 +277,11 @@ So the $L^p$ spaces are indeed normed spaces.
 		&= 4 \norm{f - \underbrace{\frac{g_n + g_m}{2}}_{\in V}}^2 + \norm{g_n - g_m}^2 \\
 		&\geq 4 d(f,V)^2 + \norm{g_n - g_m}^2
 	\end{align*}
-	Taking the limit superior as $n, m \to \infty$, $\limsup_{m,n} 0$.
-	So the sequence $g_n$ is Cauchy in $L^2$, so by completeness, it converges to some $v \in L^2$.
+	Thus $\lim_{n,m \to \infty} \norm{g_n - g_m}^2 \to 0$, i.e. $g_n$ is Cauchy in $L^2$, so by completeness, it converges to some $v \in L^2$.
 	Since $V$ is closed, $v \in V$.
 	In particular, $d(f,V) = \inf_{g \in V} \norm{g - f} = \norm{v - f}$.
 
-	Note that $d(f,V)^2 \leq F(t) = \norm{f - (v+th)}^2 > d(f, V)^2 - 2t \inner{f-v, h} + t^2 \norm{h}^2$ where $t \in \mathbb R$ and $h \in V$.
+	Note that $d(f,V)^2 \leq F(t) = \norm{f - (v+th)}^2 = d(f, V)^2 - 2t \inner{f-v, h} + t^2 \norm{h}^2$ where $t \in \mathbb R$ and $h \in V$.
 	Letting $t \downarrow 0$ and $t \uparrow 0$, we obtain $\inner{f - v, h} = 0$ for all $h$.
 	Defining $f - v = u$, we have $f = u + v$ and $u \in V^\perp$ since $h$ was arbitrary.
 
