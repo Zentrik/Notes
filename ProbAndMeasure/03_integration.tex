@@ -291,7 +291,7 @@ This is quite useful in probability.
 
 \begin{theorem}[Substitution Formula]
 	Let $\phi : [a, b] \to \mathbb{R}$, $\phi$ strictly increasing and continuously differentiable.
-	Then $\forall g$ Borel fcns, $g \geq 0$ on $[\phi(a), \phi(b)]$, $\int_{\phi(a)}^{\phi(b)} g(y) \dd{y} = \int_a^b g(\phi(x)) \phi'(x) \dd{x} (\star)$.
+	Then $\forall g$ Borel fcns, $g \geq 0$ on $[\phi(a), \phi(b)]$, $\int_{\phi(a)}^{\phi(b)} g(y) \dd{y} = \int_a^b g(\phi(x)) \phi'(x) \dd{x} \ (\star)$.
 \end{theorem}
 
 \begin{proof}
@@ -299,7 +299,7 @@ This is quite useful in probability.
 	Then by linearity of integral, $\mathcal{V}$ is a vector space.
 	\begin{itemize}
 		\item $1 \in \mathcal{V}$ by FTC (2), $1_{(c, d]} \in \mathcal{V}$ by FTC (2).
-		\item If $f_n \in \mathcal{V}$, $f_n \uparrow \mathcal{V}$, $f_n \geq 0$ then by \nameref{thm:mct}.
+		\item If $f_n \in \mathcal{V}$, $f_n \uparrow f$, $f_n \geq 0$ then by \nameref{thm:mct} $f \in \mathcal{V}$.
 	\end{itemize}
 	Hence by \nameref{thm:monclass}, $(\star)$ holds $\forall g \geq 0$ measurable.
 \end{proof}
@@ -362,7 +362,7 @@ This is quite useful in probability.
 	This $\nu$ is a prob measure on $(\mathbb{R}, \mathcal{B})$ iff $\int f(x) \dd{x} = 1$.
 
 	For $\lambda : (\Omega, \mathcal{F}, \mathbb{P}) \to \mathbb{R}$, if the law $\mu_X = \mathbb{P} \circ X\inv$ has the density $f_X$ (wrt $\lambda$), we call $f_X$ the \vocab{probability density function} of $X$.
-	Then $\mathbb{P}(X \in A) = \mathbb{P} \circ X\inv (A) = \mu_X(A) = \int_A f_X(x) \dd{x} \ \forall A \in \mathcal{B}$ and $\forall g$ Borel, $g \geq 0$.
+	Then $\mathbb{P}(X \in A) = \mathbb{P} \circ X\inv (A) = \mu_X(A) = \int_A f_X(x) \dd{x} \ \forall A \in \mathcal{B}$.
 	Taking $A = (-\infty, x]$, we get $\mathbb{P}(X \leq x) = F_X(x) = \int_{-\infty}^{x} f_X(x) \dd{x}$. \\
-	$\mathbb{E}[g(x)] = \int g(x) \dd{\mu_X(x)}$ from previous example and $\int g(x) \dd{\mu_X(x)} = \nu(g) = \int g(x) f_X(x) \dd{x}$.
+	$\forall g$ Borel, $g \geq 0$, $\mathbb{E}[g(x)] = \int g(x) \dd{\mu_X(x)}$ from previous example and $\int g(x) \dd{\mu_X(x)} = \nu(g) = \int g(x) f_X(x) \dd{x}$.
 \end{example}

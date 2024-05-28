@@ -125,11 +125,11 @@ If the $E_i$ are topological spaces with a countable basis, then $\mathcal B(E_1
 	Now let $f$ be $\mu$-integrable.
 	Define $h : E_1 \to [0, \infty]$ as $h(x_1) = \int_{E_2} \abs{f(x_1,x_2)} \dd{\mu_2(x_2)}$.
 	By \Cref{lem:4-2}, $h$ is measurable (as $\abs{f} \geq 0$), is non-negative, so $A_1 \in \mathcal{E}_1$\footnote{$h$ measurable $\implies h\inv(\{\infty\}) \in \mathcal{E}_1$. $A_1 = h\inv(\{\infty\})^c$ thus in $\mathcal{E}_1$.}. \\
-	Then by the first part, $\mu_1(h) \leq \mu(\abs{f}) < \infty$.
+	Then by the first part, $\mu_1(h) = \mu(\abs{f}) < \infty$.
 	So $f_1$ is $\mu_1$-integrable.
 	We have $\mu_1(A_1^c) = 0$, otherwise $\mu_1(h) \geq \mu_1(h 1_{A_1^c}) = \infty$ \Lightning.
 
-	Setting, $f_1^\pm = \int_{E_2} f^\pm(x_1,x_2) \dd{\mu_2(x_2)}$ we see than $f_1 = (f_1^+ - f_1^-) 1_{A_1}$.
+	Setting, $f_1^\pm = \int_{E_2} f^\pm(x_1,x_2) \dd{\mu_2(x_2)}$ we see that $f_1 = (f_1^+ - f_1^-) 1_{A_1}$.
 	Also by the first part, $\mu_1(f_1^+) = \mu(f^+) < \infty$ and $\mu_1(f_1^-) = \mu(f^-) < \infty$.
 	Hence, $\mu(f) =\footnote{As $f$ integrable} \mu(f^+) - \mu(f^-) = \mu_1(f_1^+) - \mu_1(f_1^-) =\footnote{As $f_1$ integrable due to $\mu_1(A_1^c) = 0$.} \mu_1(f_1)$ as required.
 \end{proof}

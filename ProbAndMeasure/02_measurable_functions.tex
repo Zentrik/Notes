@@ -301,7 +301,7 @@ Then $G_n$ are Borel functions, set $X_n = G_n(Y_n)$ for $n \in \mathbb{N}$, the
 \subsection{Convergence of measurable functions}
 Let $(E, \mathcal{E}, \mu)$ be a measure space. Let $A \in \mathcal{E}$ be defined by some property.
 
-\begin{definition}[Almost everywhere]
+\begin{definition}[Almost Everywhere]
 	We say that a property defining a set $A \in \mathcal E$ holds \vocab{$\mu$-almost everywhere} if $\mu(A^c) = 0$.
 \end{definition}
 
@@ -309,7 +309,7 @@ Let $(E, \mathcal{E}, \mu)$ be a measure space. Let $A \in \mathcal{E}$ be defin
 	If $\mu$ is a $\mathbb P$- measure, we say a property holds \vocab{$\mathbb P$-almost surely} or \vocab{with probability one}, if $\mathbb{P}(A^c) = 0$, i.e. if $\mathbb P(A) = 1$.
 \end{definition}
 
-\begin{definition}[Convergence almost everywhere]
+\begin{definition}[Convergence Almost Everywhere]
 	If $f_n$ and $f$ are measurable functions on $(E,\mathcal E,\mu) \to (\mathbb{R}, \mathcal{B})$, we say \vocab{$f_n$ converges to $f$ $\mu$-almost everywhere} if $\mu(\qty{x \in E : f_n(x) \nrightarrow f(x)}) = 0$.
 
 	For r.v.s, we say $X_n \to X$ \vocab{$\mathbb P$-almost surely} if $\mathbb{P}(\qty{\omega \in \Omega : X_n(\omega) \to X(\omega)}) = 1$.
@@ -344,7 +344,7 @@ Let $(E, \mathcal{E}, \mu)$ be a measure space. Let $A \in \mathcal{E}$ be defin
 	Fix $\epsilon > 0$.
 	Suppose $f_n \to 0$ a.e., then for every $n$,
 	\begin{align*}
-		\mu(E) \geq \mu(\abs{f_n} \leq \epsilon) \geq \mu\qty(\bigcap_{m \geq n} \qty{\abs{f_m} \leq \epsilon})
+		\mu(\abs{f_n} \leq \epsilon) \geq \mu\qty(\bigcap_{m \geq n} \qty{\abs{f_m} \leq \epsilon})
 	\end{align*}
 	Let $A_n = \bigcap_{m \geq n} \qty{\abs{f_m} \leq \epsilon}$ which is increasing to $\bigcup_n \bigcap_{m \geq n} \qty{\abs{f_m} \leq \epsilon}$.
 	So by the countable additivity of $\mu$,
@@ -356,7 +356,7 @@ Let $(E, \mathcal{E}, \mu)$ be a measure space. Let $A \in \mathcal{E}$ be defin
 	\end{align*}
 	Hence,
 	\begin{align*}
-		\liminf_{n \to \infty} \mu(\abs{f_n} \leq \epsilon) = \mu(E) \implies \limsup_{n \to \infty} \mu(\abs{f_n} > \epsilon) \leq 0 \implies \mu(\abs{f_n} > \epsilon) \to 0
+		\lim_{n \to \infty} \mu(\abs{f_n} \leq \epsilon) = \mu(E) \implies \mu(\abs{f_n} > \epsilon) \to 0
 	\end{align*}
 \end{proof}
 

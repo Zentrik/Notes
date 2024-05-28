@@ -40,7 +40,7 @@ The functional $\norm{\wildcard}_p$ is then a norm on $\mathcal L^p = \qty{[f] :
 In particular if $g \in L^p$, $p < \infty$ and $\lambda > 0$ then $\mu(\abs{g} \geq \lambda) = \mu(\abs{g}^p \geq \lambda^p) \leq \frac{\mu(|g|^p)}{\lambda^p} \leq \infty$ this gives the tail estimates as $\lambda \to \infty$.
 
 \begin{definition}[Convex Function]
-	Let $I \subseteq R$ be an interval.
+	Let $I \subseteq \mathbb{R}$ be an interval.
 	Then we say a map $c \colon I \to \mathbb R$ is \vocab{convex} if for all $x, y \in I$ and $t \in [0,1]$, we have $c(tx + (1-t)y) \leq tc(x) + (1-t)c(y)$.
 	Equivalently, for all $x < t < y$ and $x, y \in I$, we have $\frac{c(t) - c(x)}{t-x} \leq \frac{c(y) - c(t)}{y-t}$.
 \end{definition}
@@ -91,9 +91,9 @@ Thus a convex function is continuous on the interior of the interval and so is B
 
 \begin{example}
 	If $1 \leq p < q < \infty$, $c(x) = \abs{x}^{\frac{q}{p}}$ is a convex function.
-	If $X$ is a bounded r.v. (so lies in $L^\infty(\mathbb P)$), we then have
+	If $X \in L^q(\mathbb P)$, we then have
 	\[ \norm{X}_p = \expect{\abs{X^p}}^{\frac{1}{p}} = c(\expect{\abs{X}^p})^{\frac{1}{q}} \mathcolor{red}{\leq}\footnote{By Jensen} \expect{c(\abs{X}^p)}^{\frac{1}{q}} = \norm{X}_q \]
-	Using the monotone convergence theorem, this extends to all $X \in L^q(\mathbb P)$ when $\norm{X}_q$ is finite.
+
 	So $X \in L^q \implies X \in L^p$ so $L^q(\mathbb P) \subseteq L^p(\mathbb P)$ for all $1 \leq p \leq q \leq \infty$.
 \end{example}
 
