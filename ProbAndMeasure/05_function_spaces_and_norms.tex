@@ -9,7 +9,7 @@
 	\end{enumerate}
 \end{definition}
 
-\begin{definition}
+\begin{definition}[$L^p$]
 	Let $(E, \mathcal E, \mu)$ be a measure space.
 	We define $L^p(E,\mathcal E,\mu) = L^p(\mu) = L^p$ for the space of measurable functions $f \colon E \to \mathbb R$ s.t. $\norm{f}_p$ is finite, where
 	\[ \norm{f}_p = \begin{cases}
@@ -27,7 +27,7 @@ Therefore, to rigorously define the norm, we must construct the quotient space $
 We write $[f]$ for the equivalence class of functions that are equal a.e.
 The functional $\norm{\wildcard}_p$ is then a norm on $\mathcal L^p = \qty{[f] : f \in L^p}$.
 
-\begin{proposition}[Chebyshev's inequality, Markov's inequality]
+\begin{proposition}[Chebyshev's Inequality, Markov's Inequality]
 	Let $f \colon E \to \mathbb R$ be non-negative and measurable.
 	Then $\forall \lambda > 0$,
 	\[ \mu(\qty{x \in E : f(x) \geq \lambda}) = \mu(f \geq \lambda) \leq \frac{\mu(f)}{\lambda} \]
@@ -36,6 +36,10 @@ The functional $\norm{\wildcard}_p$ is then a norm on $\mathcal L^p = \qty{[f] :
 \begin{proof}
 	Integrate the inequality $\lambda 1_{\qty{f \geq \lambda}} \leq f$, which holds on $E$.
 \end{proof}
+
+\begin{remark}
+	Let $f(x) = (x - \mu)^2$ to obtain Chebyshev's Inequality.
+\end{remark}
 
 In particular if $g \in L^p$, $p < \infty$ and $\lambda > 0$ then $\mu(\abs{g} \geq \lambda) = \mu(\abs{g}^p \geq \lambda^p) \leq \frac{\mu(|g|^p)}{\lambda^p} \leq \infty$ this gives the tail estimates as $\lambda \to \infty$.
 
@@ -301,12 +305,12 @@ So the $L^p$ spaces are indeed normed spaces.
 If $\mathcal{G}$ a sub-$\sigma$ algebra of $\mathcal{F}$ (i.e. $\mathcal{G} \subseteq \mathcal{F}$), then $L^2(\Omega, \mathcal{G}, \mathbb{P})$ is a closed subspace of $L^2(\Omega, \mathcal{F}, \mathbb{P})$.
 
 \begin{definition}[Conditional Expectation]
-	For $X \in L^2(\Omega, \mathcal{F}, \mathbb{P})$ s.t. $X$ measurable wrt $\mathcal{G}$, $\norm{X - Y}_2 \geq \norm{X - \mathbb{E}[X \mid \mathcal{G}]}_2 \quad \forall Y$ that are $\mathcal{G}$ measurable.\\
+	For $X \in L^2(\Omega, \mathcal{F}, \mathbb{P})$ s.t. $X$ measurable wrt $\mathcal{G}$, $\norm{X - Y}_2 \geq \norm{X - \mathbb{E}[X \mid \mathcal{G}]}_2 \; \forall Y$ that are $\mathcal{G}$ measurable.\\
 	The\footnote{This is actually only a variant of the conditional expectation.} \vocab{conditional expectation of $X$ given $\mathcal{G}$}, $\mathbb{E}[X \mid \mathcal{G}]$ is defined as the orthogonal projection of $X$ on $L^2(\Omega, \mathcal{G}, \mathbb{P})$.
 \end{definition}
 
 \begin{question}
-	How to define $\mathcal{E}[X \mid \mathcal{G}]$ if $X \in L^1(\Omega, \mathcal{F}, \mathbb{P})$, see Advanced Probability.
+	How to define $\mathbb{E}[X \mid \mathcal{G}]$ if $X \in L^1(\Omega, \mathcal{F}, \mathbb{P})$, see Advanced Probability.
 \end{question}
 
 \begin{example}
@@ -325,13 +329,13 @@ If $\mathcal{G}$ a sub-$\sigma$ algebra of $\mathcal{F}$ (i.e. $\mathcal{G} \sub
 For $(\Omega, \mathcal{F}, \mathbb{P})$, what are the implications between convergence: a.s., in $L^p$ for $1 \leq p < \infty$, in $\mathbb{P}$ and in distribution.
 
 Let $f_n = n 1_{(0, 1/n)}$ on $\qty((0, 1), \mathcal{B}, \lambda)$.
-$f_n \to 0$ a.s. but $\mathbb{E}\abs{f_n} = \mathbb{E}[f_n] = 1 \ \forall n$ so a.s. $\centernot\implies$ $L^p$ convergence.
+$f_n \to 0$ a.s. but $\mathbb{E}[\abs{f_n}] = \mathbb{E}[f_n] = 1 \ \forall n$ so a.s. $\centernot\implies$ $L^p$ convergence.
 
 $\mathbb{P}(|X_n - X| > \epsilon) \leq \frac{\mathbb{E}|X_n - X|^p}{\epsilon^p}$ by Markov's Inequality, so convergence in $L^p$ for $1 \leq p < \infty \implies$ convergence in $\mathbb{P}$.
 
 \begin{theorem}[Dominated Convergence Theorem]
 	Let $X_n$ be r.v.s on $(\Omega, \mathcal F, \mathbb P)$ s.t. $\abs{X_n} \leq Y$ for integrable r.v. $Y$ and they converge in $\mathbb{P}$ to $X$.
-	Then $X_n \to X$ in $L^1(\mathbb P)$, i.e. $\mathbb{E}|X_n - X| \to 0$.
+	Then $X_n \to X$ in $L^1(\mathbb P)$, i.e. $\mathbb{E}[|X_n - X|] \to 0$.
 \end{theorem}
 
 \begin{question}
@@ -362,17 +366,19 @@ But $\expect{\abs{X} 1_{A_n}} \leq \expect{\abs{X} 1_{\bigcup_{m \geq n} A_m}}$.
 Note that $1_{\bigcup_{m \geq n} A_m} \to 1_{\bigcap_n \bigcup_{m \geq n} A_n} = 0$ a.s., so $\expect{\abs{X} 1_{\bigcup_{m \geq n} A_m}} \to \expect{\abs{X} 1_{\bigcap_n \bigcup_{m \geq n}}} = 0$ by DCT \Lightning.
 
 \begin{definition}[Uniformly Integrable]
-	For a collection $\mathcal X \subseteq L^1(\mathbb P)$ of r.v.s, we say $\mathcal X$ is \vocab{uniformly integrable (UI)} if it is bounded in $L^1(\mathbb P)$\footnote{I.e. $\sup_{x \in \mathcal{X}} \norm{X}_1 = \sup_{x \in \mathcal{X}} \mathbb{E}[|X|] = I_{\mathcal{X}}(1) < \infty$.}, and
-	\[ I_{\mathcal X}(\delta) = \sup \qty{ \expect{\abs{X}1_A} : \prob{A} \leq \delta, X \in \mathcal X} \to 0 \text{ as } \delta \to 0.\]
+	For a collection $\mathcal X \subseteq L^1(\mathbb P)$ of r.v.s, we say $\mathcal X$ is \vocab{uniformly integrable (UI)} if it is bounded in $L^1(\mathbb P)$\footnote{I.e. $\sup_{X \in \mathcal{X}} \norm{X}_1 = \sup_{X \in \mathcal{X}} \mathbb{E}[|X|] = I_{\mathcal{X}}(1) < \infty$.}, and
+	\[ I_{\mathcal X}(\delta) = \sup \qty{ \expect{\abs{X}1_A} : \prob{A} \leq \delta, A \in \mathcal{F}, X \in \mathcal X} \to 0 \text{ as } \delta \to 0.\]
 \end{definition}
 
 \begin{remark}
 	\begin{enumerate}
 		\item Any single integrable r.v. is UI.
 		Also, true for any finite collection of integrable r.v.s.
-		Also, if $\mathcal{X} = \qty{X : X \text{ a r.v. s.t. } |X| \leq Y \text{ for some } Y \in L^1}$ as $\sup_{X \in \mathcal{X}} \mathbb{E}[|X| 1_A] \leq \mathbb{E}[Y 1_A]$ implies $I_{\mathcal{X}}(\delta) \leq I_Y(\lambda) \to 0$ as $\delta \to 0$.
+		Also, if $\mathcal{X} = \qty{X : X \text{ a r.v. s.t. } |X| \leq Y \text{ for some } Y \in L^1}$ as $\sup_{X \in \mathcal{X}} \mathbb{E}[|X| 1_A] \leq \mathbb{E}[Y 1_A]$ implies $I_{\mathcal{X}}(\delta) \leq I_Y(\delta) \to 0$ as $\delta \to 0$.
 		\item If $\mathcal X$ is bounded in $L^p(\mathbb P)$ for $p > 1$, then by H\"older's inequality,
 		\[ \expect{\abs{X}1_A} \leq \underbrace{\norm{X}_p}_{\text{bounded}} \cdot \underbrace{\prob{A}^{\frac 1 q}}_{\leq \delta^{\frac 1 q} \to 0} \]
+		Hence, $\mathcal{X}$ is UI.
+		\item Note that $X_n = n1_{\qty[0,\frac{1}{n}]}$ for the Lebesgue measure $\mu$ on $[0,1]$ is bounded in $L^1(\mathbb P)$ but not uniformly integrable.
 	\end{enumerate}
 \end{remark}
 
@@ -408,17 +414,17 @@ Note that $1_{\bigcup_{m \geq n} A_m} \to 1_{\bigcap_n \bigcup_{m \geq n} A_n} =
 \end{theorem}
 
 \begin{proof}
-	(1) $\implies$ (2i):
+	(1) $\implies$ (2):
 	Using Markov's inequality,
 	\[ \prob{\abs{X_n - X} > \varepsilon} \leq \frac{\expect{\abs{X_n - X}}}{\varepsilon} \to 0 \]
 	so $X_n \to X$ in $\mathbb{P}$.
 
-	Choose $N$ s.t. $\mathbb{E}|X_n - X| < \frac{\epsilon}{2} \ \forall n \geq N$.
-	Choose $\delta$ s.t. $\mathbb{E}[|X| 1_A] \leq \frac{\epsilon}{2}$ and $\mathbb{E}[|X_n|1_A] \leq \epsilon \quad \forall n = 1, \dots, N-1$ when $\mathbb{P}(A) < \delta$.
+	Choose $N$ s.t. $\mathbb{E}[|X_n - X|] < \frac{\epsilon}{2} \ \forall n \geq N$.
+	$\{X_1, \dots, X_{N-1}, X\}$ is finite so UI.
+	So Choose $\delta$ s.t. $\mathbb{E}[|X| 1_A] \leq \frac{\epsilon}{2}$ and $\mathbb{E}[|X_n|1_A] \leq \epsilon \; \forall n = 1, \dots, N-1$ when $\mathbb{P}(A) < \delta$.
 	\begin{align*}
 		\expect{\abs{X_n} 1_A} \leq \expect{\abs{X_n - X} 1_A} + \expect{\abs{X} 1_A} \leq \frac{\varepsilon}{2} + \frac{\varepsilon}{2}
 	\end{align*}
-	$\{X_1, \dots, X_{N-1}, X\}$ is finite so UI.
 	So $\mathcal{X}$ is UI.
 
 	(2) $\implies$ (1):
@@ -430,8 +436,8 @@ Note that $1_{\bigcup_{m \geq n} A_m} \to 1_{\bigcap_n \bigcup_{m \geq n} A_n} =
 	so $X \in L^1(\mathbb P)$.
 
 	Next, we define truncated r.v.s $X_n^K = \max(-K, \min(K, X_n))$ and $X^K = \max(-K, \min(K, X))$.
-	Then $X_n^K \to X^K$ in $\mathbb{P}$ (as $\mathbb{P}(|X_n^K - X^K| > \epsilon) \leq \mathbb{P}(|X_n - X| < \epsilon)$)\footnote{Aside: If $X_n \to X$ in $\mathbb{P}$ and $f$ cts, then $f(X_n) \to f(X)$ in $\mathbb{P}$.}.
-	And $|X_n^K| \leq K \quad \forall n$ so by BCT, $X_n^K \to X^K$ in $L^1$.
+	Then $X_n^K \to X^K$ in $\mathbb{P}$ (as $\mathbb{P}(|X_n^K - X^K| > \epsilon) \leq \mathbb{P}(|X_n - X| > \epsilon)$)\footnote{Aside: If $X_n \to X$ in $\mathbb{P}$ and $f$ cts, then $f(X_n) \to f(X)$ in $\mathbb{P}$.}.
+	And $|X_n^K| \leq K \; \forall n$ so by BCT, $X_n^K \to X^K$ in $L^1$.
 	Now,
 	\begin{align*}
 		\expect{\abs{X_n - X}} &\leq \expect{\abs{X_n - X_n^K}} + \expect{\abs{X_n^K - X^K}} + \expect{\abs{X^K - X}} \\

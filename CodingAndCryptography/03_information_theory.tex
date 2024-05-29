@@ -163,13 +163,15 @@ One can show that if the source $X_1, X_2, \dots$ has information rate $H$, then
     Then this source has information rate $H$.
 \end{theorem}
 
-\begin{proof}
+\begin{proof}[Proof (Non Examinable)]
     % Let $\varepsilon > \frac{1}{n}$, for each $\epsilon_n$ $\exists n_0(\epsilon_n)$ s.t. $\exists$ typical sets $T_n \; \forall n \geq n_0(\epsilon_0)$.
     % Let $T_k \subseteq \mathcal A^n$ be $\epsilon_n$ typical sets where $n_0(\epsilon_n) \leq k \leq n_0(\epsilon_{n+1})$.
     % Define $n_k = \min \qty{n : T_k}$
     % Then, $\forall \; n \geq n_0(\varepsilon)$, $\forall \; (x_1, \dots, x_n) \in T_n$ we have $p(x_1, \dots, x_n) \geq 2^{-n(H + \varepsilon)}$.
     % Therefore, $1 \geq \prob{T_n} \geq \abs{T_n} 2^{-n(H + \varepsilon)}$, giving $\frac{1}{n} \log \abs{T_n} \leq H + \varepsilon$.
     % Taking $A_n = T_n$ in the defn of reliable encoding shows that the source is reliably encodable at rate $H + \varepsilon$.
+
+    Note the first part of this proof is incorrect.
 
     Let $\varepsilon > 0$, and let $T_n \subseteq \mathcal A^n$ be typical sets.
     Then, $\forall \; n \geq n_0(\varepsilon)$, $\forall \; (x_1, \dots, x_n) \in T_n$ we have $p(x_1, \dots, x_n) \geq 2^{-n(H + \varepsilon)}$.

@@ -33,7 +33,8 @@ This result has several weaknesses, and we can provide stronger results.
 	So we can assume $\mu = 0$.
 	For distinct indices $i, j, k, \ell$, by independence and the Cauchy--Schwarz inequality, we have
 	\begin{align*}
-        0 = \expect{X_i X_j X_k X_\ell} = \expect{X_i^2 X_j X_k} = \expect{X_i^3 X_j};\quad \expect{X_i^2 X_j^2} \leq \sqrt{\expect{X_i^4}}\sqrt{\expect{X_j^4}} \leq M
+        0 &= \expect{X_i X_j X_k X_\ell} = \expect{X_i^2 X_j X_k} = \expect{X_i^3 X_j} \\
+		\expect{X_i^2 X_j^2} &\leq \sqrt{\expect{X_i^4}}\sqrt{\expect{X_j^4}} \leq M
     \end{align*}
 	So we can compute
 	\begin{align*}
@@ -95,7 +96,7 @@ For Markov Chains, ergodicity $\iff$ irreducibility.
 	The maps $\Theta_a(x) = x + a$ modulo 1 and $\Theta(x) = 2x$ modulo 1 are both m.p., and ergodic unless $a \in \mathbb Q$ (Sheet 4).
 \end{example}
 
-\subsection{Ergodic theorems}
+\subsection{Ergodic Theorems}
 \begin{lemma}[Maximal Ergodic Lemma] \label{lem:max}
     Let $(E, \mathcal E, \mu)$ be a $\sigma$-finite measure space.
 	Let $\Theta \colon E \to E$ be m.p..
@@ -167,7 +168,7 @@ For Markov Chains, ergodicity $\iff$ irreducibility.
 \end{theorem}
 
 \begin{remark}
-	If $\Theta$ ergodic, $\hat{f}$ is constant a.e..
+	If $\Theta$ ergodic, $\bar{f}$ is constant a.e..
 
 	Relating back to the gas example, $x, \Theta(x), \dots$ is the trajectory of a gas particle.
 	Then $\frac{S_n(f)}{n}$ is the average of $f$ along the trajectory (time average).
@@ -244,7 +245,7 @@ For Markov Chains, ergodicity $\iff$ irreducibility.
     But $a < b$ and $\mu(D) < \infty$, so $\mu(D) = 0$.
 \end{proof}
 
-\begin{theorem}[von Neumann's $L^p$ ergodic theorem]
+\begin{theorem}[von Neumann's $L^p$ Ergodic Theorem]
 	Let $\mu(E) < \infty$ and $1 \leq p < \infty$.
 	Then for $f \in L^p(\mu)$, $\frac{S_n(f)}{n} \to \overline f$ in $L^p$ as $n \to \infty$.
 \end{theorem}
