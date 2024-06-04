@@ -16,7 +16,7 @@ For $f, g \in L^2$, $\inner{f, g} = \int f(x) \overline{g(x)} \dd{\mu(x)}$ is an
 
 For any $y \in \mathbb{R}^d$,
 \begin{align*}
-	\int f(x - y) \dd{x} &= \int f(y - x) \dd{x} - \int f(x) \dd{x} \\
+	\int f(x - y) \dd{x} &= \int f(y - x) \dd{x} = \int f(x) \dd{x} \\
 	&= \int f(-x) \dd{x}.
 \end{align*}
 This is by the translation invariance and $x \mapsto -x$ symmetry of $\lambda$, proved in Sheet 3.
@@ -282,7 +282,7 @@ so the Fourier inversion theorem holds for $g_t$.
 	As FI holds for $f \ast g_t$, $f \ast g_t = f_t$.
 
 	So, $\norm{f_t - f}_1 \overset{t \to 0}{\longrightarrow} 0$ by density of Gaussian convolutions and as $f \in L^1$.
-	So $f_t \to f$ in $\mathbb{P}$ and thus $\exists$ a subsequence s.t. $f_{t_n} \to f_t$ a.e.
+	So $f_t \to f$ in $\mathbb{P}$ and thus $\exists$ a subsequence s.t. $f_{t_n} \to f$ a.e.
 
 	Also, $e^{-i\inner{u,x}} \hat f(u) e^{\frac{-\abs{u}^2 t}{2}}$ is bounded by $\abs{\hat f(u)}$, which is integrable, and $\to e^{-i\inner{u,x}} \hat f(u)$ as $t \to 0$.
 	So by DCT, $f_t(x) \to \frac{1}{(2\pi)^d} \int e^{-i\inner{u,x}} \hat f(u) \dd{u}$ as $t \to 0$ a.e.

@@ -37,8 +37,8 @@ In this section, we consider only the binary symmetric channel with probability 
         \item If $p < \frac{1}{2}$, then the maximum likelihood and minimum distance decoding rules agree.
     \end{enumerate}
 \end{lemma}
-Note that the hypothesis in part (i) is reasonable if we first encode a message using noiseless coding.
-The hypothesis in part (ii) is reasonable, since a channel with $p = \frac{1}{2}$ can carry no information, and a channel with $p > \frac{1}{2}$ can be used as a channel with probability $1 - p$ by inverting its outputs.
+Note that the hypothesis in part (1) is reasonable if we first encode a message using noiseless coding.
+The hypothesis in part (2) is reasonable, since a channel with $p = \frac{1}{2}$ can carry no information, and a channel with $p > \frac{1}{2}$ can be used as a channel with probability $1 - p$ by inverting its outputs.
 Channels with $p = 0$ are called \vocab{lossless channels}, and channels with $p = \frac{1}{2}$ are called \vocab{useless channels}.
 \begin{proof}
     \emph{Part (1).}
@@ -136,7 +136,7 @@ The aim when constructing codes for noisy channels is to detect errors, and if p
     We could write $d(x,y)$ as $\sum d_1(x_i,y_i)$ where $d_1$ is the discrete metric on $\mathbb F_2$.
 \end{remark}
 
-\subsection{Minimum distance}
+\subsection{Minimum Distance}
 \begin{definition}[Minimum Distance]
     The \vocab{minimum distance} of a code is the minimum value of $d(c_1, c_2)$ for codewords $c_1 \neq c_2$.
 \end{definition}
@@ -186,14 +186,14 @@ Similarly, $d \leq n$, with equality in the case of the repetition code.
     The minimum distance can easily be shown to be exactly 3 as $0000000, 1110000$ are codewords, so it is a $[7,16,3]$-code.
 \end{example}
 
-\subsection{Covering estimates}
+\subsection{Covering Estimates}
 \begin{definition}[Closed Haming Ball]
     Let $x \in \mathbb F_2^n$ and $r \geq 0$.
     Then, we denote the \vocab{closed Hamming ball} with centre $x$ and radius $r$ by $B(x,r)$.
     We write $V(n,r) = \abs{B(x,r)} = \sum_{i=0}^r \binom{n}{i}$ for the \vocab{volume} of this ball.
 \end{definition}
 
-\begin{lemma}[Hamming's bound; sphere packing bound]
+\begin{lemma}[Hamming's Bound; Sphere Packing Bound]
     An $e$-error correcting code $C$ of length $n$ has
     \begin{align*}
         \abs{C} \leq \frac{2^n}{V(n,e)}
@@ -215,7 +215,7 @@ Similarly, $d \leq n$, with equality in the case of the repetition code.
 
 \begin{remark}
     Equivalently, a code is perfect if for all $x \in \mathbb F_2^n$, $\exists! \; c \in C$ s.t. $d(x,c) \leq e$.
-    Alternatively, $\mathbb F_2^n$ is a union of disjoint balls $B(c,e)$ for all $c \in C$, or that any collection of $e + 1$ will cause the message to be decoded incorrectly.
+    Alternatively, $\mathbb F_2^n$ is a union of disjoint balls $B(c,e)$ for all $c \in C$, or that any $e + 1$ errors will cause the message to be decoded incorrectly.
 \end{remark}
 
 \begin{example}
@@ -297,7 +297,7 @@ The upper bound can be thought of as a sphere packing bound, and the lower bound
 
 \subsection{Asymptotics}
 We study the information rate $\frac{\log A(n,\floor*{n\delta})}{n}$ as $n \to \infty$ to see how large the information rate can be for a fixed error rate.
-\begin{proposition}
+\begin{proposition} \label{prp:aym}
     Let $0 < \delta < \frac{1}{2}$.
     Then,
     \begin{enumerate}
@@ -308,7 +308,7 @@ We study the information rate $\frac{\log A(n,\floor*{n\delta})}{n}$ as $n \to \
 \end{proposition}
 
 \begin{proof}
-    \emph{(i) implies (ii).}
+    \emph{(1) implies (2).}
     By the GSV bound, we find
     \begin{align*}
         A(n,\floor*{n\delta}) \geq \frac{2^n}{V(n,\floor*{n\delta} - 1)} \geq \frac{2^n}{V(n,\floor*{n\delta})}
@@ -317,7 +317,7 @@ We study the information rate $\frac{\log A(n,\floor*{n\delta})}{n}$ as $n \to \
     \begin{align*}
         \frac{1}{n}\log A(n,\floor*{n\delta}) \geq 1 - \frac{\log V(n,\floor*{n\delta})}{n} \geq 1 - H(\delta)
     \end{align*}
-    \emph{Part (i).}
+    \emph{Part (1).}
     $H(\delta)$ is increasing for $\delta < \frac{1}{2}$.
     Therefore, wlog, we may assume $n\delta$ is an integer.
     Now, as $\frac{\delta}{1-\delta} < 1$,
@@ -352,7 +352,7 @@ The constant $H(\delta)$ in the proposition is optimal.
     \end{align*}
     Recall Stirling's formula: $\ln n! = n \ln n - n + O(\log n)$.
     \begin{align*}
-        \ln \binom{n}{r} &= (n \ln n - n) - (r \ln r - r) \\ &- \qty((n - r) \log(n - r) - (n - r)) + O(\log n) \\
+        \ln \binom{n}{r} &= (n \ln n - n) - (r \ln r - r) \\ &- \qty((n - r) \ln(n - r) - (n - r)) + O(\log n) \\
         \log \binom{n}{r} &= -r \log \frac{r}{n} - (n - r) \log \frac{n - r}{n} + O(\log n) \\
         &= n H\qty(\frac{r}{n}) + O(\log n).
         \intertext{By $(\ast)$}

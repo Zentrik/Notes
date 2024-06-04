@@ -284,16 +284,16 @@ $RM(3,3)$ is the trivial code $\mathbb F_2^8$ of length 8.
 \end{theorem}
 
 \begin{proof}
-    \emph{Part (i).}
+    \emph{Part (1).}
     There are $\sum_{s=0}^d \binom{d}{s} = 2^d = n$ vectors listed, so it suffices to show they are a spanning set, or equivalently $RM(d,d)$ is the trivial code.
     Let $p \in X$, and let $y_i$ be $v_i$ if $p_i = 0$ and $v_0 + v_i$ if $p_i = 1$.
     Then $1_{\qty{p}} = y_1 \wedge \dots \wedge y_d$.
     Expanding this using the distributive law, $1_{\qty{p}} \in RM(d,d)$.
     But the set of $1_{\qty{p}}$ for $p \in X$ spans $\mathbb F_2^n$, as required.
 
-    \emph{Part (ii).}
+    \emph{Part (2).}
     $RM(d,r)$ is spanned by $v_{i_1} \wedge \dots \wedge v_{i_s}$ where $i_1 < \dots < i_s$ and $0 \leq s \leq r$.
-    Since these are linearly independent by (i), so a basis.
+    Since these are linearly independent by (1), so a basis.
     Hence the rank of $RM(d,r)$ is the number of such vectors, which is $\sum_{s=0}^r \binom{d}{s}$.
 \end{proof}
 
@@ -314,13 +314,13 @@ This is a linear code of length $2n$.
 \end{lemma}
 
 \begin{proof}
-    \emph{Part (i).}
+    \emph{Part (1).}
     If $C_1$ has basis $x_1, \dots, x_k$ and $C_2$ has basis $y_1, \dots, y_\ell$, then $C_1 \mid C_2$ has basis
     \begin{align*}
         \qty{(x_i \mid x_i) : 1 \leq i \leq k} \cup \qty{(0 \mid y_i) : 1 \leq i \leq \ell}
     \end{align*}
 
-    \emph{Part (ii).}
+    \emph{Part (2).}
     Let $0 \neq (x \mid x + y)\footnote{$x \in C_1, y \in C_2$ not both $0$.} \in C_1 \mid C_2$.
     If $y \neq 0$, then $w(x \mid x + y) = w(x) + w(x + y) \geq w(y) \geq d(C_2)$.
     If $y = 0$, then $w(x \mid x + y) = w(x \mid x) = 2w(x) \geq 2d(C_1)$.
@@ -338,25 +338,25 @@ This is a linear code of length $2n$.
 \end{theorem}
 
 \begin{proof}
-    \emph{Part (i).}
+    \emph{Part (1).}
     $RM(d-1, r-1) \subseteq RM(d-1, r)$, so bar product defined.
     Order the elements of $X = \mathbb{F}_2^d$ s.t. $v_d = (\underbracket{0, \dots, 0}_{2^{d-1}} \mid \underbracket{1, \dots, 1}_{2^{d-1}})$ and $v_i = (v_i' \mid v_i')$ ($1 \leq i \leq d - 1$).
     If $z \in RM(d, r)$ then $z$ is sum of wedge products of $v_1, \dots, v_d$.
     Write $z = x + (y \wedge v_d)$ for $x, y$ sums of wedge products of $v_1, \dots, v_{d-1}$.
     Then $x = (x' \mid x')$\footnote{Note $x'$ is the vector containing the first $2^{d-1}$ components of $x$. Similarly for $y$.}, some $x' \in RM(d-1, r)$ and $y = (y' \mid y')$, some $y' \in RM(d-1, r-1)$.
-    Then $z = x + (y \wedge v_d) = $
+    Then
     \begin{align*}
         z = x + (y \wedge v_d) &= (x' \mid x') + (y' \mid y') \wedge (0, \dots, 0 \mid 1, \dots, 1) \\
         &= (x' \mid x' + y') \in RM(d-1, r) \mid RM(d-1, r-1).
     \end{align*}
 
-    \emph{Part (ii).}
+    \emph{Part (2).}
     If $r = 0$, then $RM(d,r)$ is the repetition code of length $2^d$, which has min distance $2^d$. \\
     If $r = d$, $RM(d,r)$ is the trivial code of length $2^d$, which has min distance $1 = 2^{d-d}$. \\
     We prove the remaining cases by induction on $d$.
-    From part (i), $RM(d,r) = RM(d-1,r) \mid RM(d-1,r-1)$.
+    From part (1), $RM(d,r) = RM(d-1,r) \mid RM(d-1,r-1)$.
     By induction, the min distance of $RM(d-1,r)$ is $2^{d-1-r}$ and the min distance of $RM(d-1,r-1)$ is $2^{d-r}$.
-    By part (ii) of \cref{lem:12.6}, the min distance of $RM(d,r)$ is $\min\qty{2\cdot 2^{d-1-r}, 2^{d-r}} = 2^{d-r}$.
+    By part (2) of \cref{lem:12.6}, the min distance of $RM(d,r)$ is $\min\qty{2\cdot 2^{d-1-r}, 2^{d-r}} = 2^{d-r}$.
 \end{proof}
 
 \begin{remark}
@@ -435,7 +435,7 @@ Equivalently, $\mathcal C$ is an ideal of $\faktor{\mathbb F_2[X]}{(X^n - 1)}$.
     Note (3)' is the special case $f(X) = X$ of (3).
     In general, $f(X) = \sum a_i X^i$ so
     \begin{align*}
-        f(X) g(X) &= \sum_i a_i \underbracket{X^i g(X)}_{\in \mathcal{C} \text{ by (iii)}} \in \mathcal{C} \text{ by (2)}
+        f(X) g(X) &= \sum_i a_i \underbracket{X^i g(X)}_{\in \mathcal{C} \text{ by (3)}} \in \mathcal{C} \text{ by (2)}
     \end{align*}
 \end{proof}
 
@@ -465,8 +465,8 @@ Since $\mathbb F_2[X]$ is a principal ideal domain, these ideals correspond to p
     Then, $r = p - qg \in C$ as $C$ is an ideal.
     But $\deg r < \deg g$, so $r = 0$.
     Hence, $g \mid p$.
-    This shows $C \subseteq (g)$ in (i). \\
-    For part (ii), let $p(X) = X^n - 1$, giving $g \mid X^n - 1$.
+    This shows $C \subseteq (g)$ in (1). \\
+    For part (2), let $p(X) = X^n - 1$, giving $g \mid X^n - 1$.
 
     Now we show uniqueness.
     Suppose $C = (g_1) = (g_2)$.
@@ -682,17 +682,17 @@ Hence, $r(\alpha^j) = e(\alpha^j)$.
     By definition of $C$, we have $c(\alpha^j) = 0$ for all $1 \leq j \leq \delta - 1$.
     Hence $c(\alpha^j) = 0$ for $1 \leq j \leq 2t$.
     As $r = c + e$, $r(\alpha^j) = e(\alpha^j)$ for all $1 \leq j \leq 2t$, hence $\sigma(X) \sum_{j=1}^{2t} r(\alpha^j) X^j = \omega(X)$ mod $X^{2t+1}$.
-    This verifies (i) and (ii) for this choice of $\omega$.
+    This verifies (1) and (2) for this choice of $\omega$.
     $\omega(X) = -X\sigma'(X)$ so $\deg \omega = \deg \sigma = \abs{\mathcal E} \leq t$.
 
-    For uniqueness, suppose there exist $\widetilde \sigma, \widetilde \omega \in K[X]$ with the properties (i), (ii).
+    For uniqueness, suppose there exist $\widetilde \sigma, \widetilde \omega \in K[X]$ with the properties (1), (2).
     WLOG, we can assume $\deg \widetilde \sigma \leq \deg \sigma$.
     $\sigma(X)$ has distinct nonzero roots, so $\omega(X) = -X\sigma'(X)$ is nonzero at these roots.
     Hence $\sigma, \omega$ are coprime. \\
-    By (ii), $\widetilde \sigma(X) \omega(X) = \sigma(X) \widetilde \omega(X)$ mod $X^{2t+1}$.
+    By (2), $\widetilde \sigma(X) \omega(X) = \sigma(X) \widetilde \omega(X)$ mod $X^{2t+1}$.
     But the degrees of $\sigma, \widetilde \sigma, \omega, \widetilde \omega$ are at most $t$, so this congruence is an equality.
     But $\sigma(X)$ and $\omega(X)$ are coprime, so $\sigma \mid \widetilde \sigma$, but $\deg \widetilde \sigma \leq \deg \sigma$ by assumption, so $\widetilde \sigma = \lambda \sigma$ for some $\lambda \in K$.
-    By (i), $\sigma(0) = \widetilde\sigma(0)$ hence $\lambda = 1$, giving $\widetilde \sigma = \sigma$.
+    By (1), $\sigma(0) = \widetilde\sigma(0)$ hence $\lambda = 1$, giving $\widetilde \sigma = \sigma$.
 \end{proof}
 
 \underline{Decoding Algorithm} \\
@@ -786,7 +786,7 @@ We sometimes write $a_d = 1$, so $P(X) = \sum_{i=0}^d a_i X^i$.
 \underline{Over $\mathbb{C}$}: The general solution to a recurrence relation is a linear combination of $\alpha^n, n \alpha^n, \dots, n^{t-1} \alpha^n$ for $\alpha$ a root of $P(X)$ with multiplicity $t$.
 
 \underline{Over $\mathbb{F}_2$}: However, we have a recurrence relation over $\mathbb{F}_2$ and $n^2 \equiv n \mod 2$ so we only get two solutions, which is not enough.
-We resolve this by replacing $n^j \alpha^n$ by $\binom{n}{j} \alpha^n$, i.e. the general solution if a linear combination of $\binom{n}{0} \alpha^n, \binom{n}{1} \alpha^n, \dots$
+We resolve this by replacing $n^j \alpha^n$ by $\binom{n}{j} \alpha^n$, i.e. the general solution is a linear combination of $\binom{n}{0} \alpha^n, \binom{n}{1} \alpha^n, \dots$
 
 \begin{definition}[Feedback Polynomial]
     The \vocab{feedback polynomial} is $\check{P}(X) = a_0 X^d + \dots + a_{d-1} X + 1 = \sum_{i=0}^d a_{d-i} X^i$.
@@ -817,7 +817,7 @@ Note that $\check{P}(X) = X^{\deg P}P(X^{-1})$ is the reverse of $P$.
 
 \subsection{The Berlekamp--Massey method}
 Let $(x_n)_{n \geq 0}$ be the output of a (binary) LFSR.
-We wish to find the unknown length $d$ and values $a_0 (=1), a_1, \dots, a_{d-1}, a_d(=1)$ s.t. $a_0 x_n + \sum_{i=1}^d a_{d-i} x_{n-i} = 0$ for all $n \geq d$.
+We wish to find the unknown length $d$ and values $a_0 (=1), a_1, \dots, a_{d-1}, a_d(=1)$ s.t. $a_d x_n + \sum_{i=1}^d a_{d-i} x_{n-i} = 0$ for all $n \geq d$.
 We have
 \begin{align*}
     \underbrace{\begin{pmatrix}

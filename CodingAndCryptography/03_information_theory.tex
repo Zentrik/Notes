@@ -149,7 +149,7 @@ One can show that if the source $X_1, X_2, \dots$ has information rate $H$, then
     We define
     \begin{align*}
         T_n &= \qty{(x_1, \dots, x_n) \midd \abs{-\frac{1}{n} \log p(x_1, \dots, x_n) - H} \leq \varepsilon} \\
-        &= \qty{(x_1, \dots, x_n) \mid \text{condition (ii) holds}}
+        &= \qty{(x_1, \dots, x_n) \mid \text{condition (2) holds}}
     \end{align*}
     For the converse,
     \begin{align*}
@@ -237,11 +237,11 @@ We will now compute the capacity of the binary symmetric channel with error prob
 
 \begin{proof}
     Let $\delta$ be s.t. $2p < \delta < \frac{1}{2}$.
-    We claim that we can reliably transmit at rate $R = 1 - H(\delta)\footnote{$-\delta \log \delta$} > 0$.
+    We claim that we can reliably transmit at rate $R = 1 - H(\delta) > 0$.
     Let $C_n$ be a code of length $n$, and suppose it has minimum distance $\floor*{n\delta}$ and it's of maximal size.
-    Then, by the GSV bound,
+    Then, by \cref{prp:aym},
     \begin{align*}
-        \abs{C_n} = A(n, \floor*{n\delta}) \geq \frac{2^n}{V(n, \floor*{n\delta} - 1)} \geq \frac{2^n}{2^{-n\delta \log \delta\footnote{$-\log \delta > 1$.}}} = 2^{n(1 - H(\delta))} = 2^{nR}
+        \abs{C_n} = A(n, \floor*{n\delta}) \geq 2^n(1-H(\delta)) = 2^{nR}
     \end{align*}
     Replacing $C_n$ with a subcode if necessary, we can assume $\abs{C_n} = \floor*{2^{nR}}$, with minimum distance at least $\floor*{n\delta}$.
     Using minimum distance decoding,
@@ -451,6 +451,7 @@ We will now model using a channel $n$ times as the \vocab{$n$th extension}, repl
     Therefore,
     \begin{align*}
         I(X_1, \dots, X_n; Y_1, \dots, Y_n) &= H(Y_1, \dots, Y_n) - H(Y_1, \dots, Y_n \mid X_1, \dots, X_n) \\
+        &= H(Y_1, \dots, Y_n) - \sum_{i=1}^n H(Y_i \mid X_i) \\
         &\leq \sum_{i=1}^n H(Y_i) - \sum_{i=1}^n H(Y_i \mid X_i) \\
         &= \sum_{i=1}^n \qty[H(Y_i) - H(Y_i \mid X_i)] \\
         &= \sum_{i=1}^n I(X_i;Y_i) \leq nC

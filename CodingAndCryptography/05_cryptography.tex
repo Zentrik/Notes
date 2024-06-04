@@ -45,7 +45,7 @@ Consider a cryptosystem $(\mathcal K, \mathcal M, \mathcal C)$.
 We model the keys and messages as independent r.v.s $K, M$ taking values in $\mathcal K, \mathcal M$.
 The ciphertext r.v. is $C = e(M, K) \in \mathcal C$.
 
-\begin{definition}[Perfect Accuracy]
+\begin{definition}[Perfect Secrecy]
     A cryptosystem $(\mathcal M, \mathcal K, \mathcal C)$ has \vocab{perfect secrecy} if $H(M \mid C) = H(M)$, or equivalently, $M$ and $C$ are independent, or $I(M;C) = 0$.
 \end{definition}
 
@@ -301,12 +301,12 @@ Indeed, running the Euclidean algorithm on $p, q$ gives integers $r, s$ s.t. $rp
 \begin{proof}
     \emph{Part (1).}
     If there is a solution $x$, $-x$ also works.
-    If $x, y$ are solutions, then $x^2 \equiv y^2$ mod $p$ so $p \mid (x^2 - y^2) = (x-y)(x+y)$, so either $p \mid x-y$ or $p \mid x+y$, so $x = \pm y$.
+    If $x, y$ are solutions, then $x^2 \equiv y^2$ mod $p$ so $p \mid (x^2 - y^2) = (x-y)(x+y)$, so either $p \mid x-y$ or $p \mid x+y$, so $x = \pm y \mod p$.
 
     \emph{Part (2).}
     If $x_0$ is a solution, then by the Chinese remainder theorem, there exist solutions $x$ with $x \equiv \pm x_0$ mod $p$ and $x \equiv \pm x_0$ mod $q$.
     This gives four solutions as required.
-    By (i), these are the only possible solutions.
+    By (1), these are the only possible solutions.
 \end{proof}
 
 Hence, to decrypt the Rabin cipher, we must find all four solutions to $x^2 \equiv c$ mod $N$.
@@ -520,20 +520,19 @@ Alice chooses a large prime $p$ and a random integer $u$ with $1 < u < p$.
 Let $g$ be a primitive root mod $p$.
 The public key is $p, g, y = g^u \text{ mod } p$.
 The private key is $u$.
-Let $h \colon \mathcal M \to \qty{1, \dots, p-1}$ be a collision-resistant hash function.
 
 To send a message $m$ with $0 \leq m \leq p-1$, Alice randomly chooses $k$ with $1 \leq k \leq p-2$ coprime to $p-1$.
 She computes $r, s$ with $1 \leq r \leq p-1$ and $1 \leq s \leq p-2$ satisfying
 \begin{align*}
-    r \equiv g^k \mod p;\quad h(m) \equiv ur + ks \mod (p-1)
+    r \equiv g^k \mod p;\quad m \equiv ur + ks \mod (p-1)
 \end{align*}
 Since $k$ is coprime to $p-1$, the congruence for $s$ always has a solution.
 Alice signs the message $m$ with the signature $(r, s)$.
 Now,
 \begin{align*}
-    g^{h(m)} \equiv g^{ur + ks} \equiv (g^u)^r (g^k)^s \equiv y^r r^s \mod p
+    g^{m} \equiv g^{ur + ks} \equiv (g^u)^r (g^k)^s \equiv y^r r^s \mod p
 \end{align*}
-Bob accepts a signature if $g^{h(m)} \equiv y^r r^s$ mod $p$.
+Bob accepts a signature if $g^{m} \equiv y^r r^s$ mod $p$.
 To forge a signature, obvious attacks involve the discrete logarithm problem, finding $u$ from $y = g^u$.
 
 \begin{lemma}
@@ -552,19 +551,19 @@ It is \underline{vital} that Alice chooses a new value of $k$ to sign each messa
 Suppose she sends $m_1, m_2$ using the same value of $k$.
 Denote the signatures $(r, s_1)$ and $(r, s_2)$; note that $r$ depends only on $k$ and is hence fixed.
 \begin{align*}
-    h(m_1) \equiv ur + ks_1 \mod (p-1);\quad h(m_2) \equiv ur + ks_2 \mod (p-1)
+    m_1 \equiv ur + ks_1 \mod (p-1);\quad m_2 \equiv ur + ks_2 \mod (p-1)
 \end{align*}
 Hence,
 \begin{align*}
-    h(m_1) - h(m_2) \equiv k(s_1 - s_2) \mod (p-1)
+    m_1 - m_2 \equiv k(s_1 - s_2) \mod (p-1)
 \end{align*}
 By the previous lemma, there are $d = \gcd(p-1, s_1 - s_2)$ of solutions for $k$ modulo $p-1$.
 Choose the solution that gives the correct value in the first congruence $r \equiv g^k$ mod $p$.
 Then,
 \begin{align*}
-    s_1 \equiv \frac{h(m_1) - ur}{k} \mod (p-1)
+    s_1 \equiv \frac{m_1 - ur}{k} \mod (p-1)
 \end{align*}
-This gives $ur \equiv h(m_1) - ks_1$.
+This gives $ur \equiv m_1 - ks_1$.
 Hence, using the lemma again, there are $\gcd(p-1, r)$ solutions for $u$.
 Choose the solution for $u$ that gives $y \equiv g^u$.
 This allows us to deduce Alice's private key $u$, as well as the exponent $k$ used in both messages.
@@ -574,7 +573,7 @@ This allows us to deduce Alice's private key $u$, as well as the exponent $k$ us
     In practice, this is stopped by signing a hash value of the message instead of the message itself.
 \end{remark}
 
-\subsection{The digital signature algorithm}
+\subsection{The digital signature algorithm - Not Lectured}
 The digital signature algorithm is a variant of the Elgamal signature scheme developed by the NSA.
 The public key is $(p, q, g)$ constructed as follows.
 % TODO: verify previous line
@@ -629,7 +628,7 @@ Under the assumption that the cipher is secure, Bob cannot decipher the message.
 To reveal her choice, Alice sends her private key to Bob, who can then use it to decipher the message $d_A(c) = d_A(e_A(m)) = m$.
 He can also check that $d_A, e_A$ are inverse functions and thus ensure that Alice sent the correct private key.
 
-\subsubsection{Using Coding Theory}
+\subsubsection{Using Coding Theory - Not Lectured}
 Alternatively, suppose that Alice has two ways to communicate to Bob: a clear channel which transmits with no errors, and a binary symmetric channel with error prob $p$.
 Suppose $0 < p < \frac{1}{2}$, and the noisy channel corrupts bits independent of any action of Alice or Bob, so neither can affect its behaviour.
 
@@ -651,7 +650,7 @@ All she knows is that the received message $r$ has distance approximately $Np$ f
 If she were to send $c' \neq c$, she must ensure that $d(r,c') \approx Np$, but the prob that this happens is small unless she chooses $c'$ very close to $c$.
 But any two distinct codewords have distance at least $d$, so she \underline{cannot} cheat.
 
-\subsection{Secret sharing schemes - Non Examinable?}
+\subsection{Secret sharing schemes - Non Examinable}
 % This has been made nonexaminable.
 Suppose that the CMS is attacked by the MIO.
 % (mathematical institute, oxford)
