@@ -304,7 +304,7 @@ so the Fourier inversion theorem holds for $g_t$.
 	In this case, $f, \hat f \in L^\infty$, and $(x,u) \mapsto f(x)\hat f(u)$ is integrable for the product Lebesgue measure $\dd{x} \otimes \dd{u}$ on $\mathbb R^d \times \mathbb R^d$, so Fubini's theorem for bounded functions applies.
 	\begin{align*}
 		(2\pi)^d \norm{f}_2^2 &= (2\pi)^d \int_{\mathbb R^d} f(x) \overline{f(x)} \dd{x} \\
-		&= \int_{\mathbb R^d} \qty(\int_{\mathbb R^d} e^{-i\inner{u,x}} \hat f(u) \dd{u}) \overline{f(x)} \dd{x} < \infty (\text{ and } f \in L^2) \\
+		&= \int_{\mathbb R^d} \qty(\int_{\mathbb R^d} e^{-i\inner{u,x}} \hat f(u) \dd{u}) \overline{f(x)} \dd{x} < \infty \ (\text{and } f \in L^2) \\
 		&= \int_{\mathbb R^d} \hat f(u) \overline{\int_{\mathbb R^d} e^{i\inner{u,x}} f(x) \dd{x}} \dd{u} \\
 		&= \int_{\mathbb R^d} \hat f(u) \overline{\hat f(u)} \dd{u} \\
 		&= \norm{\hat f}_2^2
@@ -331,7 +331,7 @@ so the Fourier inversion theorem holds for $g_t$.
 \begin{definition}[Characteristic Function]
 	For a r.v. $X$, its \vocab{characteristic function} is
 	\begin{align*}
-		\phi_X(t) = \mathbb{E}[e^{itx}] = \widehat{\mu_X} = \int e^{i \inner{t, x}} \dd{\mu_X(x)}
+		\phi_X(t) = \mathbb{E}[e^{itX}] = \widehat{\mu_X} = \int e^{i \inner{t, x}} \dd{\mu_X(x)}
 	\end{align*}
 \end{definition}
 
@@ -362,7 +362,7 @@ To circumvent this, we test `$\mu$' on nice test fcns $f$.
 		\item For a sequence of r.v.s $X_n$ and $X$ another r.v., $X_n \to X$ weakly if $\mu_{X_n} \to \mu_X$ weakly.
 		\item A sequence of prob measures, $\mu_n$, can have at most one weak limit by previous remark (the one about 2 p.m.s. coinciding).
 		\item If $X_n \to X$ weakly, and $h : \mathbb{R}^d \to \mathbb{R}^k$ cts, then $h(X_n) \to h(X)$ weakly (as r.v. in $\mathbb{R}^k$). (Continuous Mapping Theorem) (from definition as $f \circ h$ bdd cts if $f$ bdd cts).
-		\item Suffices to check condition in definition for all $f \in C_c^\infty$. (``tightness'' argument, i.e. $\exists K$ compact s.t. $\mu_n(K^c) < \epsilon \quad \forall n$ if $\mu_n \to \mu$ weakly. Sheet 4)
+		\item Suffices to check condition in definition for all $f \in C_c^\infty$. (``tightness'' argument, i.e. $\exists K$ compact s.t. $\mu_n(K^c) < \epsilon \; \forall n$ if $\mu_n \to \mu$ weakly. Sheet 4)
 		\item When $d = 1$, this is equivalent to $X_n \to X$ in distribution (i.e., $F_{X_n}(x) \to F_X(x)$ at all points where $x \mapsto F_X(x)$ is cts). Sheet 4 Q1, approximate indictators.
 	\end{enumerate}
 \end{remark}
