@@ -1,16 +1,16 @@
 \section{Matrix Groups}
 
-Let $M_n(\mathbb{R})$ denote the set of all $n \times n$ matrices with entries in $\mathbb{R}$. 
+Let $M_n(\mathbb{R})$ denote the set of all $n \times n$ matrices with entries in $\mathbb{R}$.
 \begin{definition}[General Linear Group] ~\vspace*{-1.5\baselineskip}
     \begin{align*}
         \operatorname{GL}_n(\mathbb{R}) = \{A \in M_n(\mathbb{R}) : \det A \neq 0\}.
-    \end{align*} 
-\end{definition} 
+    \end{align*}
+\end{definition}
 
 \begin{proposition} \label{prp:8}
     $\operatorname{GL}_n(\mathbb{R})$ is a group under matrix multiplication.
     It is called the \emph{general linear group}.
-\end{proposition} 
+\end{proposition}
 
 \begin{proof}
     closure: $A, B \in \operatorname{GL}_n(\mathbb{R})$, clearly $AB \in \operatorname{M_n}(\mathbb{R})$ and $\det(AB) = \det A \det B \neq 0$ so $AB \in \operatorname{GL}_n(\mathbb{R})$.
@@ -23,14 +23,14 @@ Let $M_n(\mathbb{R})$ denote the set of all $n \times n$ matrices with entries i
 
     inverse: $\det A \neq 0 \implies A^{-1}$ exists, $\det A^{-1} = \frac{1}{\det A} \neq 0$.
 
-    matrix multiplication is associative: 
+    matrix multiplication is associative:
     \begin{align*}
         (A(BC))_{ij} &= A_{ik} (BC)_{kj} \\
         &= A_{ik} B_{kt} C_{tj} \\
         ((AB)C)_{ij} &= (AB)_{ik} C_{kj} \\
         &= A_{it} B_{tk} C_{kj}.
-    \end{align*} 
-\end{proof} 
+    \end{align*}
+\end{proof}
 
 \begin{example} ~\vspace*{-1.5\baselineskip}
     \begin{align*}
@@ -46,14 +46,14 @@ Let $M_n(\mathbb{R})$ denote the set of all $n \times n$ matrices with entries i
         -c & a
         \end{pmatrix}.
     \end{align*}
-\end{example} 
+\end{example}
 
 \begin{proposition}\label{prp:9} ~\vspace*{-1.5\baselineskip}
     \begin{align*}
         \operatorname{Det} : \operatorname{GL}_n(\mathbb{R}) &\to (\mathbb{R} \setminus \{0\}, \times) \\
         A &\mapsto \det A.
     \end{align*} is a surjective group homomorphism.
-\end{proposition} 
+\end{proposition}
 
 \begin{proof}
     Note $(\mathbb{R} \setminus \{0\}, \times)$ is a group.
@@ -62,9 +62,9 @@ Let $M_n(\mathbb{R})$ denote the set of all $n \times n$ matrices with entries i
         \operatorname{Det}(AB) &= \det(AB) \hspace{0.5cm} \text{($AB$ is multiplication in } \operatorname{GL}_n)\\
         &= \det A \cdot \det B \hspace{0.5cm} \text{(multiplication in } (\mathbb{R} \setminus \{0\}, \times))\\
         &= \operatorname{Det} A \operatorname{Det} B
-    \end{align*} 
+    \end{align*}
     and that Det is surjective.
-    Let $r \in (\mathbb{R} \setminus \{0\}, \times)$ then 
+    Let $r \in (\mathbb{R} \setminus \{0\}, \times)$ then
     \begin{align*}
         A = \begin{pNiceMatrix}
             r   &       & \Block{2-3}<\huge>{0} \\
@@ -75,24 +75,24 @@ Let $M_n(\mathbb{R})$ denote the set of all $n \times n$ matrices with entries i
                 &       &       &      &   1   \\
           \end{pNiceMatrix} \in \operatorname{GL}_n(\mathbb{R}) \mapsto \det(A) = r.
     \end{align*}
-\end{proof} 
+\end{proof}
 
 By \nameref{thm:six} $\ker(\text{Det}) \trianglelefteq \operatorname{GL}_n(\mathbb{R})$.
 \begin{align*}
     \ker(\text{Det}) &= \{A \in \operatorname{GL}_n(\mathbb{R}) : \det A = 1\} \\
     &= \operatorname{SL}_n(\mathbb{R}) \text{ the special linear group}.
-\end{align*} 
+\end{align*}
 Furthermore, by \nameref{thm:six}
 \begin{align*}
     \operatorname{GL}_n(\mathbb{R}) / \operatorname{SL}_n(\mathbb{R}) \cong (\mathbb{R} \setminus \{0\}, \times).
-\end{align*} 
+\end{align*}
 
 \begin{remark}
     More generally we can define the general linear group and special linear group over any field. \\
     Examples of fields: \\
     $\mathbb{R}, \mathbb{C}, \mathbb{Q}, \mathbb{F}_p$ where $\mathbb{F}_p = \left( \{0, 1, 2, \dots, p- 1\}, +_p, \times_p \right)$ and $p$ is prime.
     Note $\operatorname{GL}_n(\mathbb{F}_p)$ and $\operatorname{SL}_n(\mathbb{F}_p)$ are finite groups.
-\end{remark} 
+\end{remark}
 
 What is $|GL_3(\mathbb{F}_p)|$? \\
 Non-zero determinant means we have linearly independent columns.
@@ -101,11 +101,11 @@ The second column is not a multiple of first so $p^3 - p$ (there are $p$ multipl
 Third column not in space spanned by first two columns, this space has size $p^2$ (consider $\alpha c_1 + \beta c_2$ with $\alpha, \beta \in \mathbb{F}_p$), so $p^3 - p^2$. \\
 $\implies |GL_3(\mathbb{F}_p)| = (p^3 - 1)(p^3 - p)(p^3 - p^2)$.
 
-We can still consider 
+We can still consider
 \begin{align*}
     \mathrm{Det} : \operatorname{GL}_3(\mathbb{F}_p) &\to (\mathbb{F}_p \setminus \{0\}, \times) \\
     A &\mapsto \det(A).
-\end{align*} 
+\end{align*}
 Note $(\mathbb{F}_p \setminus \{0\}, \times)$ is a group: we have closure, identity $= 1$ and associativity.
 Let $a \in \mathbb{F}_p \setminus \{0\}$, by Bezout's Thm $\exists \; x, y$ s.t.
 \begin{align*}
@@ -113,12 +113,12 @@ Let $a \in \mathbb{F}_p \setminus \{0\}$, by Bezout's Thm $\exists \; x, y$ s.t.
     \therefore ax &\equiv 1 \pmod p \\
     \text{Choose } \bar{x} &\equiv x \pmod p, \\
     1 \leq \bar{x} &\leq p - 1,\ a^{-1} = x
-\end{align*} 
+\end{align*}
 Det is a surjective homomorphism to $(\mathbb{F}_p \setminus \{0\}, \times)$ so by \nameref{thm:six}
 \begin{align*}
     |\operatorname{GL}_3(\mathbb{F}_p)| / |\operatorname{SL}_3(\mathbb{F}_p)| &= p - 1 \\
     \implies |\operatorname{SL}_3(\mathbb{F}_p)| &= \frac{(p^3 - 1)(p^3 - p)(p^3 - p^2)}{p - 1}.
-\end{align*} 
+\end{align*}
 
 \subsection{Actions of \texorpdfstring{$\operatorname{GL}_n(\mathbb{C})$}{GLₙ(ℂ)}}
 
@@ -127,7 +127,7 @@ Det is a surjective homomorphism to $(\mathbb{F}_p \setminus \{0\}, \times)$ so 
     \begin{align*}
         \operatorname{GL}_n(\mathbb{C}) \times \mathbb{C}^n &\to \mathbb{C}^n \\
         (A, v) &\mapsto Av.
-    \end{align*} 
+    \end{align*}
     Note $Iv = v$, $(AB)v = A(B(v))$.
     This action is faithful: $Av = v \quad \forall \; v \in \mathbb{C}^n \implies A = I_n$ (consider $v = e_i$).
     The action has two orbits
@@ -142,13 +142,13 @@ Det is a surjective homomorphism to $(\mathbb{F}_p \setminus \{0\}, \times)$ so 
     \text{Note: } PQ(A) &= PQ A (PQ)^{-1} \\
         &= PQ A Q^{-1} P^{-1} \\
         &= P(Q(A)).
-    \end{align*} 
-\end{enumerate} 
+    \end{align*}
+\end{enumerate}
 
 \begin{remark}
-    Matrices $A$ and $B$ are conjugate if they represent the same linear map. 
+    Matrices $A$ and $B$ are conjugate if they represent the same linear map.
     If $PAP^{-1} = B$, then $P$ represents a change of basis matrix. (See LA next year)
-\end{remark} 
+\end{remark}
 
 \begin{example} ~\vspace*{-1.5\baselineskip}
     \begin{align*}
@@ -183,7 +183,7 @@ Det is a surjective homomorphism to $(\mathbb{F}_p \setminus \{0\}, \times)$ so 
         \text{i.e. } e_2 &\mapsto 3e_2 \\
         e_1 &\mapsto 2 e_1.
     \end{align*}
-\end{example} 
+\end{example}
 
 We will use the following result from V\&M when investigating M\"obius groups.
 
@@ -194,17 +194,17 @@ Then precisely one of the following occurs
     \item The orbit of $A$ contains a diagonal matrix $\begin{pmatrix}\lambda & 0 \\0 & \mu\end{pmatrix}$ with $\lambda \neq \mu$.
     \item The orbit of $A$ is $\begin{pmatrix}\lambda & 0 \\0 & \lambda\end{pmatrix} = \lambda I$ for some $\lambda$.
     \item The orbit of $A$ contains a matrix $\begin{pmatrix}\lambda & 1 \\0 & \lambda\end{pmatrix}$ for some $\lambda$.
-\end{enumerate} 
+\end{enumerate}
 
 \begin{proof}
-    See V\&M but essentially 
+    See V\&M but essentially
     \begin{enumerate}
         \item In this case $A$ has $2$ distinct eigenvalues $\lambda \neq u$, take a basis consisting of an eigenvector for $\lambda$ and an eigenvector for $\mu$.
         Distinct pairs given distinct orbits.
         \item $PAP^{-1} = \lambda I \implies A = P \lambda I P^{-1} = \lambda I$, eigenvalues $\lambda, \lambda$, 2 linearly independent eigenvectors.
         \item In this case $A$ has a repeated eigenvalue, but just one linearly independent eigenvector.
-    \end{enumerate} 
-\end{proof} 
+    \end{enumerate}
+\end{proof}
 
 \subsection{Orthogonal Group}
 
@@ -214,7 +214,7 @@ Recall if $A \in M_n(\mathbb{R})$, $A^T$ is defined by $(A^T)_{ij} = A_{ji}$, i.
 \begin{align*}
     A &= \begin{pmatrix}2 & 4 \\3 & 5\end{pmatrix} \\
     A^T &= \begin{pmatrix}2 & 3 \\4 & 5\end{pmatrix}
-\end{align*} 
+\end{align*}
 
 \emph{Note}
 \begin{enumerate}
@@ -224,7 +224,7 @@ Recall if $A \in M_n(\mathbb{R})$, $A^T$ is defined by $(A^T)_{ij} = A_{ji}$, i.
         &= A_{jk}B_{ki} \\
         [B^T A^T]_{ij} &= B^T_{ik} A^T_{kj} \\
         &= B_{ki} A_{jk} \checkmark
-    \end{align*} 
+    \end{align*}
     \mathitem \begin{align*}
         A A^T &= I \\
         \implies 1 &= \det (A^T A) \\
@@ -237,28 +237,28 @@ Recall if $A \in M_n(\mathbb{R})$, $A^T$ is defined by $(A^T)_{ij} = A_{ji}$, i.
         \implies A^T A &= A^{-1} \underbrace{A A^T}_I A \\
         &= A^{-1} A \\
         &= I.
-    \end{align*} 
+    \end{align*}
     \mathitem \begin{align*}
         (A^T)^{-1} &= (A^{-1})^T \\
         \text{Since } I_n &= (A A^{-1})^T \\
         &= (A^{-1})^T A^T
-    \end{align*} 
+    \end{align*}
     \mathitem \begin{align*}
         \det A^T &= \det A.
-    \end{align*} 
-\end{enumerate} 
+    \end{align*}
+\end{enumerate}
 
 \end{aside}
 
 \begin{definition}[Orthogonal group] ~\vspace*{-1.5\baselineskip}
     \begin{align*}
         O_n(\mathbb{R}) &= \{ A \in M_n(\mathbb{R}) : A^T A = I\}
-    \end{align*} (so columns of $A$ form an orthonormal basis for $\mathbb{R}^n$).  
-\end{definition} 
+    \end{align*} (so columns of $A$ form an orthonormal basis for $\mathbb{R}^n$).
+\end{definition}
 
 \begin{proposition}\label{prp:10}
     $O_n(\mathbb{R})$ is a subgroup of $\operatorname{GL}_n(\mathbb{R})$ called the \emph{orthogonal group}.
-\end{proposition} 
+\end{proposition}
 
 \begin{proof} ~
     \begin{itemize}
@@ -268,12 +268,12 @@ Recall if $A \in M_n(\mathbb{R})$, $A^T$ is defined by $(A^T)_{ij} = A_{ji}$, i.
             (AB)^T (AB) &= B^T A^T A B \\
             &= B^T B = I \\
             \implies AB &\in O_n(\mathbb{R})
-        \end{align*} 
+        \end{align*}
         \item $I_n \in O_n(\mathbb{R})$
         \item Associativity is inherited.
         \item inverse: $A^T A = I_n \implies A^T = A^{-1}$ and $A^T \in O_n(\mathbb{R})$ since $(A^T)^T = A$ and $A A^T = I$.
-    \end{itemize} 
-\end{proof} 
+    \end{itemize}
+\end{proof}
 
 Note $1 = (\det A)^2 \implies \det A = \pm 1$ if $A \in O_n(\mathbb{R})$. \\
 So, \begin{align*}
@@ -292,16 +292,16 @@ So, \begin{align*}
     &= SO_n(\mathbb{R}) \trianglelefteq O_n(\mathbb{R}).
 \intertext{By \nameref{thm:six}:}
     O_n(\mathbb{R}) / SO_n(\mathbb{R}) &\cong C_2.
-\end{align*} 
+\end{align*}
 
 \begin{lemma}\label{lem:20}
     Let $A \in O_n(\mathbb{R})$ and $\underline{x}, \underline{y} \in \mathbb{R}^n$. Then
     \begin{enumerate}
         \item $A \underline{x} \cdot A \underline{y} = \underline{x} \cdot \underline{y}$
         \item $|A \underline{x}| = |\underline{x}|$. \label{07-itm-2}
-    \end{enumerate} 
+    \end{enumerate}
     So $A$ is an isometry (distance preserving map) of Euclidean space $\mathbb{R}^n$.
-\end{lemma} 
+\end{lemma}
 
 \begin{proof} ~
     \begin{enumerate}
@@ -310,14 +310,14 @@ So, \begin{align*}
             &= \underline{x}^T A^T A \underline{y} \\
             &= \underline{x}^T \underline{y} \\
             &= \underline{x} \cdot \underline{y}.
-        \end{align*} 
+        \end{align*}
         \mathitem \begin{align*}
             |A \underline{x}|^2 &= A \underline{x} \cdot A \underline{x} \\
             &= \underline{x} \cdot \underline{x} \\
             &= |\underline{x}|^2
-        \end{align*} 
-    \end{enumerate} 
-\end{proof} 
+        \end{align*}
+    \end{enumerate}
+\end{proof}
 
 Note by \Cref{07-itm-2} if $\lambda$ is an eigenvalue of $A$, $A \underline{x} = \lambda \underline{x} \implies |\lambda \underline{x}| = |\underline{x}|$ i.e. $|\lambda| = 1$.
 
@@ -331,21 +331,21 @@ Let $A = \begin{pmatrix}a & b \\c & d\end{pmatrix} \in \operatorname{GL}_2(\math
     I &= A^T A \\
     &= \begin{pmatrix}a & c \\b & d\end{pmatrix}  \begin{pmatrix}a & b \\c & d\end{pmatrix} \\
     \implies 1 &= a^2 + c^2 = b^2 + d^2 \\
-    0 &= ab + cd. \\
+    0 &= ab + cd.
 \end{align*}
 
-For $0 \leq \theta < 2 \pi$ let 
+For $0 \leq \theta < 2 \pi$ let
 \begin{align*}
     \begin{pmatrix}a \\c\end{pmatrix} &= \begin{pmatrix}\cos \theta \\ \sin \theta\end{pmatrix} \\
     \text{so } \begin{pmatrix}b \\ d\end{pmatrix} &= \begin{pmatrix}\mp \sin \theta \\ \pm \cos \theta\end{pmatrix}. \\
     A &= \begin{pmatrix}
     \cos \theta & -\sin \theta \\
-    \sin \theta & \cos \theta 
-    \end{pmatrix} \\ 
+    \sin \theta & \cos \theta
+    \end{pmatrix} \\
     \det A &= 1 \text{ so a rotation and all elements of $SO_2(\mathbb{R})$ are of this form}. \\
     \text{Or } A &= \begin{pmatrix}
         \cos \theta & \sin \theta \\
-        \sin \theta & - \cos \theta 
+        \sin \theta & - \cos \theta
         \end{pmatrix} \\
     \det A &= - 1 \\
     A \begin{pmatrix}x \\y\end{pmatrix} &= e^{i \theta} \overline{x + iy} = e^{i \theta} \bar{z}
@@ -355,8 +355,8 @@ For $0 \leq \theta < 2 \pi$ let
     &\iff z = e^{i \theta / 2} t. \\
     &\implies \text{ a reflection in line } e^{i \theta / 2} \\
     \intertext{All elmenents of $O_2(\mathbb{R}) \setminus SO_2(\mathbb{R})$ of this form.}
-    \text{So, } O_2(\mathbb{R}) &= \underbrace{SO_2(\mathbb{R})}_\text{rotations} \mathbin{\dot{\cup}} \underbrace{\begin{pmatrix}1 & 0 \\0 & -1\end{pmatrix} SO_2(\mathbb{R})}_\text{reflections} 
-\end{align*} 
+    \text{So, } O_2(\mathbb{R}) &= \underbrace{SO_2(\mathbb{R})}_\text{rotations} \mathbin{\dot{\cup}} \underbrace{\begin{pmatrix}1 & 0 \\0 & -1\end{pmatrix} SO_2(\mathbb{R})}_\text{reflections}
+\end{align*}
 Note any element of $O_2(\mathbb{R})$ is a product of at most two reflections.
 Since if $A \in SO_2(\mathbb{R})$ then $A = \underbrace{\left( A \begin{pmatrix}1 & 0 \\0 & -1\end{pmatrix} \right)}_\text{reflection} \underbrace{\begin{pmatrix}1 & 0 \\0 & -1\end{pmatrix}}_\text{reflection}$.
 
@@ -364,7 +364,7 @@ Since if $A \in SO_2(\mathbb{R})$ then $A = \underbrace{\left( A \begin{pmatrix}
 \begin{proposition}\label{prp:11}
     Let $A \in SO_3(\mathbb{R})$.
     Then $A$ has an eigenvector with eigenvalue $1$.
-\end{proposition} 
+\end{proposition}
 
 \begin{proof}
     \begin{align*}
@@ -375,14 +375,14 @@ Since if $A \in SO_2(\mathbb{R})$ then $A = \underbrace{\left( A \begin{pmatrix}
         &= (-1)^3 \det (A - I) \\
         &= - \det (A - I) \\
         \implies \det (A - I) &= 0 \text{ and $A$ has an eigenvalue $= 1$}.
-    \end{align*} 
-\end{proof} 
+    \end{align*}
+\end{proof}
 
 \begin{proof}[Alternative Proof]
     Consider $\chi_A(x)$ (characteristic poly of $A$), it is a cubic in $\mathbb{R}$ and its roots multiply to 1 ($\det A = 1 = \Pi_i \lambda_i$).
-    Thus it has a real root, and $|\lambda| = 1 \implies \lambda = \pm 1$\footnote{$|\lambda| = 1$ by \Cref{lem:20}}. 
+    Thus it has a real root, and $|\lambda| = 1 \implies \lambda = \pm 1$\footnote{$|\lambda| = 1$ by \Cref{lem:20}}.
     But the other eigenvalues are either a complex conjugate pair, then $\lambda = 1$ as product of eigenvalues give $\det A = 1$, or all are real so either $1, -1, -1$ or $1, 1, 1$.
-\end{proof} 
+\end{proof}
 
 \begin{theorem} \label{thm:11}
     Let $A \in SO_3(\mathbb{R})$ then $A$ is conjugate (i.e. there is a change of basis) to a matrix of the form $\begin{pmatrix}
@@ -391,14 +391,14 @@ Since if $A \in SO_2(\mathbb{R})$ then $A = \underbrace{\left( A \begin{pmatrix}
     0 & 0 & 1
     \end{pmatrix}$ for some $\theta \in [0, 2 \pi]$.
     In particular, $A$ is a rotation around an axis through the origin.
-\end{theorem} 
+\end{theorem}
 
 \begin{proof}
     By \Cref{prp:11} $\exists \; \underline{v} \in \mathbb{R}^3$ with $A \underline{v} = \underline{v}$, we can assume $|\underline{v}| = 1$.
     Let $\{e_1, e_2, e_3\}$ be the standard orthonormal basis for $\mathbb{R}^3$.
     There exists $P \in SO_3(\mathbb{R})$ s.t. $P \underline{v} = e_3$.
     So $PAP^{-1}(e_3) = e_3$ and for $\Pi$ plane perpendicular to $e_3$ then $PAP^{-1}(\Pi)$ is perpendicular to $e_3$.
-    So, 
+    So,
     \begin{align*}
         PAP^{-1} &= \begin{pNiceArray}{cc|c}[margin]
             \Block{2-2}{\text{action} \\ \text{on $\Pi$}} & & 0 \\
@@ -416,8 +416,8 @@ Since if $A \in SO_2(\mathbb{R})$ then $A = \underbrace{\left( A \begin{pmatrix}
             \implies \det Q &= 1 \\
             (P A P^{-1}) (P A P^{-1})^T &= I \implies Q Q^T = I.\\
             \text{So, } Q &\in SO_2(\mathbb{R}).
-    \end{align*} 
-\end{proof}  
+    \end{align*}
+\end{proof}
 
 Suppose $\underline{r}$ is a reflection in a plane $\Pi$ through 0.
 Let $\underline{n}$ be a unit vector perpendicular to $\Pi$.
@@ -425,24 +425,24 @@ Then $r(\underline{x}) = \underline{x} - 2 (\underline{x} \cdot \underline{n}) \
 So $\underline{r}$ is conjugate to $\begin{pmatrix}-1 & 0 & 0 \\0 & 1 & 0 \\0 & 0 & 1\end{pmatrix} \in O_3(\mathbb{R})$ by taking basis $\underline{n}$ and two orthogonal unit vectors in $\Pi$.
 \begin{align*}
     O_3(\mathbb{R}) = \underbrace{SO_3(\mathbb{R})}_\text{rotations, $\det = 1$} \mathbin{\dot{\cup}} \underbrace{\begin{pmatrix}-1 & 0 & 0 \\0 & 1 & 0 \\0 & 0 & 1\end{pmatrix} SO_3(\mathbb{R})}_{\det = -1}
-\end{align*} 
+\end{align*}
 $\begin{pmatrix}-1 & 0 & 0 \\0 & 1 & 0 \\0 & 0 & 1\end{pmatrix} SO_3(\mathbb{R})$ includes
 \begin{itemize}
     \item reflections
     \item inversion in origin, $-I_3$
     \item combinations of rotations and reflections
-\end{itemize} 
+\end{itemize}
 
 \begin{theorem}\label{thm:13}
     Any element of $O_3(\mathbb{R})$ is a product of at most 3 reflections.
-\end{theorem} 
+\end{theorem}
 
 \begin{proof}
     Let $\{e_1, e_2, e_3\}$ be the standard orthonormal basis for $\mathbb{R}^3$.
     Let $A \in O_3(\mathbb{R})$.
     \begin{align*}
         |A e_3| = |e_3| = 1 \text{ since $A$ is an isometry.}
-    \end{align*} 
+    \end{align*}
     So $\exists$ a reflection $r_1$ s.t. $r_1 A(e_3) = e_3$.
     Let $\Pi = \langle e_1, e_2 \rangle \perp e_3$.
     So $r_1 A(\Pi) = \Pi$, as angles are preserved. \\
@@ -451,7 +451,7 @@ $\begin{pmatrix}-1 & 0 & 0 \\0 & 1 & 0 \\0 & 0 & 1\end{pmatrix} SO_3(\mathbb{R})
     So $r_2 r_1 A (e_1) = \pm e_1$, if $e_1 = e_1$, set $r_3 = \text{id}$.
     Else $e_1 = - e_1$, let $r_3$ be the reflection in the plane $\bot$ to $e_1$. \\
     So $r_3 r_2 r_1 A$ fixes $e_1, e_2, e_3$, so $r_3 r_2 r_1 A = \text{id} \implies A = r_1^{-1} r_2^{-1} r_3^{-1} = r_1 r_2 r_3$.
-\end{proof} 
+\end{proof}
 
 Alternatively, any element in $SO_3(\mathbb{R})$ is a product of at most 2 reflections, via 2-dimensional case.
 Thus any element of $\begin{pmatrix}-1 & 0 & 0 \\0 & 1 & 0 \\0 & 0 & 1\end{pmatrix} SO_3(\mathbb{R})$ is a product of at most 3 reflections.

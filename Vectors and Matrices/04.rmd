@@ -8,18 +8,18 @@
 A *linear map* or *linear transformation* is a function
 \begin{align*}
     T : V \to W
-\end{align*} between vector spaces $V\ (\dim n)$ and $W\ (\dim m)$ such that 
+\end{align*} between vector spaces $V\ (\dim n)$ and $W\ (\dim m)$ such that
 \begin{align*}
     T(\lambda \underline{x} + \mu \underline{y}) &= \lambda T(\underline{x}) + \mu T(\underline{y}) \\
     \forall \; \underline{x}, \underline{y} \in V \\
-    \forall \; \lambda, \mu \in \mathbb{R} \text{ or } \mathbb{C} \\
-\end{align*} 
+    \forall \; \lambda, \mu \in \mathbb{R} \text{ or } \mathbb{C}
+\end{align*}
 for $V, W$ both real or complex vector spaces.^[Mostly concerned with $V = \mathbb{R}^n,\ W = \mathbb{R}^m$ or $V = \mathbb{C}^n,\ W = \mathbb{C}^m$]
 :::
 
 *Note*: a linear map is completely determined by its action on a basis $\{ \underline{e}_1, \dots, \underline{e}_n \}$ for $V$, since \begin{align*}
     T\left( \sum_i x_i \underline{e}_i \right) = \sum_i x_i T(\underline{e}_i)
-\end{align*} 
+\end{align*}
 
 $\underline{x}' = T(\underline{x}) \in W$ is the *image* of $\underline{x} \in V$ under T.\
 $\operatorname{Im}(T) = \{ \underline{x}' \in W: \underline{x}' = T(\underline{x}) \text{ for some } \underline{x} \in V \}$ is the *image* of $T$.\
@@ -53,7 +53,7 @@ $V = W = \mathbb{R}^3$, $\underline{x}' = T(\underline{x})$ given by
     x_3' &= 2 x_1 + x_2 + 3 x_3 \\
     \ker(T) &= \left\{ \lambda \begin{pmatrix}2 \\-1 \\-1\end{pmatrix} \right\} \hspace{0.5cm} (\dim 1) \\
     \operatorname{Im}(T) &= \left\{ \lambda \begin{pmatrix}3 \\-1 \\2\end{pmatrix} + \mu \begin{pmatrix}1 \\0 \\1\end{pmatrix} \right\} \hspace{0.5cm} (\dim 2)
-\end{align*} 
+\end{align*}
 :::
 
 ### Rank and Nullity
@@ -64,7 +64,7 @@ $\dim \ker(T)$ is the *nullity* of $T$ ($\leq n$).\
 For $T : V \to W$ a linear map, \@ref(def:lmp)
 \begin{align*}
     \operatorname{rank}(T) + \operatorname{null}(T) &= n = \dim V
-\end{align*} 
+\end{align*}
 :::
 
 
@@ -82,8 +82,8 @@ Non-examinable
 
 ::: {.proof}
 Let $\underline{e}_1, \dots, \underline{e}_k$ be a basis for $\ker(T)$ so $T(\underline{e}_i) = 0$ for $i = 1, \dots, k$.\
-Extend by $\underline{e}_{k + 1}, \dots, \underline{e}_n$ to get a basis for $V$. 
-Claim 
+Extend by $\underline{e}_{k + 1}, \dots, \underline{e}_n$ to get a basis for $V$.
+Claim
 \begin{align*}
     \mathcal{B} &= \{ T(\underline{e}_{k + 1}), \dots, T(\underline{e}_n) \}
 \end{align*} is the basis for $\operatorname{Im}(T)$.
@@ -93,19 +93,19 @@ To check claim:\
 $\mathcal{B}$ spans $\operatorname{Im}(T)$ since $\underline{x} = \sum_{i=1}^{n} x_i \underline{e}_i$
 \begin{align*}
     \implies T(\underline{x}) = \sum_{i=1}^{n} x_i T(\underline{e}_i) = \sum_{i = k + 1}^{n} x_i T(\underline{e}_i)
-\end{align*} 
-$\mathcal{B}$ is linearly independent since 
+\end{align*}
+$\mathcal{B}$ is linearly independent since
 \begin{align*}
     \sum_{i=k+1}^{n} \lambda_i T(\underline{e}_i) &= \underline{0} \\
     \implies T(\sum_{i=k+1}^{n} \lambda_i \underline{e}_i) &= \underline{0} \\
     \implies \sum_{i=k+1}^{n} \lambda_i \underline{e}_i &\in \ker(T) \\
-    \implies \sum_{i=k+1}^{n} \lambda_i \underline{e}_i &= \sum_{i=1}^{k} \mu_i \underline{e}_i \\
-\end{align*} 
+    \implies \sum_{i=k+1}^{n} \lambda_i \underline{e}_i &= \sum_{i=1}^{k} \mu_i \underline{e}_i
+\end{align*}
 But $\underline{e}_1, \dots, \underline{e}_n$ are linearly independent in $V$
 \begin{align*}
     \implies \lambda_i &= 0 \\
     \mu_i &= 0
-\end{align*} 
+\end{align*}
 :::
 
 ## Geometrical Examples
@@ -116,16 +116,16 @@ In $\mathbb{R}^2$, a rotation about $\underline{0}$ through angle $\theta$ is de
 \begin{align*}
     \underline{e}_1 &\mapsto \underline{e}_1' = \ \; (\cos \theta) \underline{e}_1 + (\sin \theta) \underline{e}_2 \\
     \underline{e}_2 &\mapsto \underline{e}_2' = -(\sin \theta) \underline{e}_1 + (\cos \theta) \underline{e}_2
-\end{align*} 
+\end{align*}
 
-```{r 04-rotations, echo = FALSE, fig.cap = "", fig.align="center", out.width = "500cm"} 
-knitr::include_graphics("figures/04-rotations.png") 
+```{r 04-rotations, echo = FALSE, fig.cap = "", fig.align="center", out.width = "500cm"}
+knitr::include_graphics("figures/04-rotations.png")
 ```
 
 In $\mathbb{R}^3$, rotation about axis given by $\underline{e}_3$ is defined as above, with
 \begin{align*}
     \underline{e}_3 \mapsto \underline{e}_3' = \underline{e}_3
-\end{align*} 
+\end{align*}
 
 Now consider rotation about any axis $\underline{n}$ (a unit vector).
 Given $\underline{x}$, resolve $\parallel$ and $\perp$ to $\underline{n}$:
@@ -136,14 +136,14 @@ Given $\underline{x}$, resolve $\parallel$ and $\perp$ to $\underline{n}$:
     \underline{x}_\perp &\mapsto \underline{x}_\perp' = (\cos \theta) \underline{x}_\perp + (\sin \theta) \underline{n} \wedge \underline{x},
 \end{align*} by considering plane $\perp \underline{n}$, comparing to rotation in $\mathbb{R}^2$ and noting that $|\underline{x}_\perp| = | \underline{n} \wedge \underline{x} |$.
 
-```{r 04-3d-rotation, echo = FALSE, fig.cap = "", fig.align="center", out.width = "300cm"} 
-knitr::include_graphics("figures/04-3d-rotation.png") 
+```{r 04-3d-rotation, echo = FALSE, fig.cap = "", fig.align="center", out.width = "300cm"}
+knitr::include_graphics("figures/04-3d-rotation.png")
 ```
 
 \begin{align*}
     \underline{x} \mapsto \underline{x}' &= \underline{x}_\parallel' + \underline{x}_\perp' \\
     &= (\cos \theta) \underline{x} + (1 - \cos \theta) (\underline{n} \cdot \underline{x}) \underline{n} + \sin \theta \underline{n} \wedge \underline{x}.
-\end{align*} 
+\end{align*}
 
 ### Reflections
 
@@ -154,13 +154,13 @@ Given $\underline{x}$, resolve $\parallel$ and $\perp$ to $\underline{n}$:
     \underline{x}_\perp &\mapsto \underline{x}_\perp' = \underline{x}_\perp
 \end{align*}
 
-```{r 04-reflection-3d, echo = FALSE, fig.cap = "", fig.align="center", out.width = "600"} 
-knitr::include_graphics("figures/04-reflection-3d.png") 
+```{r 04-reflection-3d, echo = FALSE, fig.cap = "", fig.align="center", out.width = "600"}
+knitr::include_graphics("figures/04-reflection-3d.png")
 ```
 
 \begin{align*}
-    \underline{x} &\mapsto \underline{x}' = \underline{x} - 2 (\underline{x} \cdot \underline{n}) \underline{n} \\
-\end{align*} 
+    \underline{x} &\mapsto \underline{x}' = \underline{x} - 2 (\underline{x} \cdot \underline{n}) \underline{n}
+\end{align*}
 
 ### Dilations
 
@@ -174,13 +174,13 @@ A dilation maps a unit cube to a cuboid.
 
 ### Shears
 
-Given $\underline{a}, \underline{b}$ orthogonal unit vectors define a shear with parameter $\lambda$ by 
+Given $\underline{a}, \underline{b}$ orthogonal unit vectors define a shear with parameter $\lambda$ by
 \begin{align*}
     \underline{x} &\mapsto \underline{x}' = \underline{x} + \lambda (\underline{x} \cdot \underline{b}) \underline{a}
-\end{align*} 
+\end{align*}
 
-```{r 04-shear, echo = FALSE, fig.cap = "", fig.align="center", out.width = "500cm"} 
-knitr::include_graphics("figures/04-shear.png") 
+```{r 04-shear, echo = FALSE, fig.cap = "", fig.align="center", out.width = "500cm"}
+knitr::include_graphics("figures/04-shear.png")
 ```
 
 Definition applies in $\mathbb{R}^n$ and $\underline{u}' = u$ for any vector $\underline{u} \perp \underline{b}$.
@@ -188,14 +188,14 @@ Definition applies in $\mathbb{R}^n$ and $\underline{u}' = u$ for any vector $\u
 ## Matrices as Linear Maps $\mathbb{R}^n \to \mathbb{R}^m$
 ### Definitions
 Consider a linear map $T : \mathbb{R}^n \to \mathbb{R}^m$ and standard bases $\{ \underline{e}_i \}$ and $\{ \underline{f}_a \}$ respectively.\
-Let $\underline{x}' = T(\underline{x})$ with 
+Let $\underline{x}' = T(\underline{x})$ with
 \begin{align*}
     \underline{x} = \sum_i x_i \underline{e}_i = \begin{pmatrix}x_1 \\ \vdots \\ x_n\end{pmatrix},\ \underline{x}' = \sum_a x_a' \underline{f}_a = \begin{pmatrix}x_1' \\ \vdots \\ x_m'\end{pmatrix}
-\end{align*} 
+\end{align*}
 Linearity implies $T$ is determined by $T(\underline{e}_i) = \underline{e}_i' = \underline{C}_i \in \mathbb{R}^m \ (i = 1, \dots, n)$; take these as *columns* of a $m \times n$ *array* or *matrix* $M$ with *rows*
 \begin{align*}
     \underline{R}_a \in \mathbb{R}^n \ (a = 1, \dots, m).
-\end{align*} 
+\end{align*}
 $M$ has entries $M_{ai} \in \mathbb{R}$ where $a$ labels rows and $i$ labels columns.
 
 \begin{align*}
@@ -203,13 +203,13 @@ $M$ has entries $M_{ai} \in \mathbb{R}$ where $a$ labels rows and $i$ labels col
     \uparrow &  & \uparrow \\
     \underline{C}_1 & \dots & \underline{C}_n \\
     \downarrow &  & \downarrow
-    \end{pmatrix} = M = 
+    \end{pmatrix} = M =
     \begin{pmatrix}
     \leftarrow & \underline{R}_1 & \rightarrow \\
      & \vdots &  \\
     \leftarrow & \underline{R}_m & \rightarrow
     \end{pmatrix}
-\end{align*} 
+\end{align*}
 
 $(\underline{C}_i)_a = M_{ai} = (\underline{R}_a)_i$.
 
@@ -219,14 +219,14 @@ Action of $T$ is given by matrix $M$ multiplying vector $\underline{x}$,
 $\underline{x}' = M \underline{x}$ defined by $x_a' = M_{ai} x_i$ ($\sum$ convention).
 :::
 
-This follows from definitions above since 
+This follows from definitions above since
 \begin{align*}
     \underline{x}' &= T\left( \sum_i x_i \underline{e}_i \right) = \sum_i x_i \underline{C}_i \\
     \implies (\underline{x}')_a &= \sum_i x_i (\underline{C}_i)_a \\
     &= \sum_i M_{ai} x_i \\
     &= \sum_i (\underline{R}_a) x_i \\
     &= \underline{R}_a \cdot x
-\end{align*} 
+\end{align*}
 
 Now regard properties of $T$ as properties of $M$.\
 $\operatorname{Im}(T) = \operatorname{Im}(M) = \operatorname{span} \{ \underline{C}_1, \dots, \underline{C}_n \}$, the *image of M* (or T) is the span of the columns.\
@@ -252,15 +252,15 @@ Identity map $\mathbb{R}^n \to \mathbb{R}^n$ corresponds to *identity matrix*
 :::
 
 ::: {.example}
-$\mathbb{R}^3 \to \mathbb{R}^3$, $\underline{x}' = T(\underline{x}) = M \underline{x}$ with 
+$\mathbb{R}^3 \to \mathbb{R}^3$, $\underline{x}' = T(\underline{x}) = M \underline{x}$ with
 \begin{align*}
     M &= \begin{pmatrix}
     3 & 1 & 5 \\
     -1 & 0 & -2 \\
     2 & 1 & 3
-    \end{pmatrix}, 
-    \underline{C}_1 = \begin{pmatrix}3 \\-1 \\2\end{pmatrix}, 
-    \underline{C}_2 = \begin{pmatrix}1 \\0 \\1\end{pmatrix}, 
+    \end{pmatrix},
+    \underline{C}_1 = \begin{pmatrix}3 \\-1 \\2\end{pmatrix},
+    \underline{C}_2 = \begin{pmatrix}1 \\0 \\1\end{pmatrix},
     \underline{C}_3 = \begin{pmatrix}5 \\-2 \\3\end{pmatrix} \\
     \operatorname{T} &= \operatorname{M} \\
     &= \operatorname{span} \{ \underline{C}_1, \underline{C}_2, \underline{C}_3 \} \\
@@ -271,7 +271,7 @@ $\mathbb{R}^3 \to \mathbb{R}^3$, $\underline{x}' = T(\underline{x}) = M \underli
     \underline{R}_2 \wedge \underline{R}_3 &= \begin{pmatrix}2 & -1 & -1\end{pmatrix} \\
     &= \underline{u}, \text{ say } \perp \text{ all rows (in fact)} \\
     \ker (T) &= \ker (M) = \{ \lambda \underline{u} \}
-\end{align*} 
+\end{align*}
 :::
 
 ::: {.example}
@@ -283,7 +283,7 @@ Rotation through $\theta$ about $\underline{0}$ in $\mathbb{R}^2$
     \cos \theta & - \sin \theta \\
     \sin \theta & \cos \theta
     \end{pmatrix}.
-\end{align*} 
+\end{align*}
 :::
 
 ::: {.example}
@@ -294,7 +294,7 @@ Dilation $\underline{x}' = M \underline{x}$ with scale factors $\alpha, \beta, \
     0 & \beta & 0 \\
     0 & 0 & \gamma
     \end{pmatrix}.
-\end{align*} 
+\end{align*}
 :::
 
 ::: {.example #reflection-matrix}
@@ -310,7 +310,7 @@ Reflection in plane $\perp \underline{n}$ (a unit vector).
     -2 & 1 & -2 \\
     -2 & -2 & 1
     \end{pmatrix}
-\end{align*} 
+\end{align*}
 :::
 
 ::: {.example}
@@ -319,14 +319,14 @@ Shear
     \underline{x}' &= S \underline{x} = \underline{x} + \lambda (\underline{b} \cdot \underline{x})\underline{a} \\
     x_i' &= S_{ij} x_j \\
     \text{with } S_{ij} &= \delta_{ij} + \lambda a_i b_j
-\end{align*} 
-e.g. in $\mathbb{R}^2$ with $\underline{a} = \begin{pmatrix}1 \\0\end{pmatrix}$ and $\underline{b} = \begin{pmatrix}0 \\1\end{pmatrix}$, 
+\end{align*}
+e.g. in $\mathbb{R}^2$ with $\underline{a} = \begin{pmatrix}1 \\0\end{pmatrix}$ and $\underline{b} = \begin{pmatrix}0 \\1\end{pmatrix}$,
 \begin{align*}
     S = \begin{pmatrix}
     1 & \lambda \\
     0 & 1
     \end{pmatrix}.
-\end{align*} 
+\end{align*}
 :::
 
 ::: {.example #threedrotatation}
@@ -342,7 +342,7 @@ Rotation in $\mathbb{R}^3$ with axis $\underline{n}$ and angle $\theta$,
 Consider a linear map $\mathbb{R}^2 \to \mathbb{R}^2$ given by $2 \times 2$ matrix $M$:
 \begin{align*}
     \underline{x} \mapsto \underline{x}' = M \underline{x}
-\end{align*} 
+\end{align*}
 
 i. When is $M$ an *isometry*, preserving lengths $|\underline{x}'| = |\underline{x}|$?
 
@@ -381,16 +381,16 @@ Compare with expression for reflection in \@ref(exm:reflection-matrix)
 \end{align*} agreeing with H above.
 This is reflection in a line in $\mathbb{R}^2$ as shown
 
-```{r 04-isometry, echo = FALSE, fig.cap = "", fig.align="center", out.width=500} 
-knitr::include_graphics("figures/04-isometry.png") 
+```{r 04-isometry, echo = FALSE, fig.cap = "", fig.align="center", out.width=500}
+knitr::include_graphics("figures/04-isometry.png")
 ```
 
 ii. How does $M$ change *areas* in $\mathbb{R}^2$ (in general)?
 
 Consider unit square in $\mathbb{R}^2$, mapped to parallelogram as shown, with signed area $[M \underline{e}_1, M \underline{e}_1]$ "scalar cross product".
 
-```{r 04-area, echo = FALSE, fig.cap = "", fig.align="center", out.width=500} 
-knitr::include_graphics("figures/04-area.png") 
+```{r 04-area, echo = FALSE, fig.cap = "", fig.align="center", out.width=500}
+knitr::include_graphics("figures/04-area.png")
 ```
 
 \begin{align*}
@@ -414,7 +414,7 @@ Consider a linear map
     T : V \to W
 \end{align*} between real or complex vector spaces of $\dim n, m$ respectively and choose bases $\{ \underline{e}_i \}$ with $i = 1, \dots, n$ for $V$ and $\{ \underline{f}_a \}$ with $a = 1, \dots, m$ for $W$.\
 The matrix $M$ for $T$ wrt the bases in an $m \times n$ array with entries $M_{ai} \in \mathbb{R}$ or $\mathbb{C}$.
-It is defined by 
+It is defined by
 \begin{align*}
     T(\underline{e}_i) &= \sum_a \underline{f}_a M_{ai} \text{ note index positions}.
 \end{align*}
@@ -423,10 +423,10 @@ This is chose to ensure that $T(\underline{x}) = \underline{x}'$ where $\underli
     \text{i.e. } \begin{pmatrix}x_1' \\ \vdots \\ x_m'\end{pmatrix} = \begin{pmatrix}
     M_{11} & \dots & M_{1n} \\
     \vdots &  & \vdots \\
-    M_{m1} & \dots & M_{mn} 
-    \end{pmatrix} 
+    M_{m1} & \dots & M_{mn}
+    \end{pmatrix}
     \begin{pmatrix}x_1 \\ \vdots \\ x_n\end{pmatrix}.
-\end{align*} 
+\end{align*}
 
 *Moral*: given choice of bases $\{ \underline{e}_i \}$ and $\{ \underline{f}_a \}$\
 $V$ is identified with $\mathbb{R}^n$ (or $\mathbb{C}^n$)\
@@ -441,7 +441,7 @@ Or if $S : U \to V$ is also linear, then so is $T \circ S : U \to W$ (compositio
 
 ### Linear Combinations
 
-If $M$ and $N$ are $m \times n$ matrices then $\alpha M + \beta N$ is an $m \times n$ matrix defined by 
+If $M$ and $N$ are $m \times n$ matrices then $\alpha M + \beta N$ is an $m \times n$ matrix defined by
 \begin{align*}
     (\alpha M + \beta N)_{ai} &= \alpha M_{ai} + \beta N_{ai} \\
     (a = 1, \dots, m&; i = 1, \dots, n)
@@ -456,14 +456,14 @@ The product $AB$ is not defined unless no. of cols of $A =$ no. of rows of B.
     a &= 1, \dots, m \\
     i &= 1, \dots, n \\
     r &= 1, \dots, p.
-\end{align*} 
+\end{align*}
 
 Matrix multiplication corresponds to the composition of linear maps.
 \begin{align*}
     [(AB) \underline{x}]_a &= (AB)_{ar} x_r \text{ and compare} \\
     [A(B \underline{x})]_a &= A_{ai}(B \underline{x})_i = A_{ai} (B_{ir} x_r) \\
-    &= (A_{ai} B_{ir}) x_r 
-\end{align*} 
+    &= (A_{ai} B_{ir}) x_r
+\end{align*}
 
 ::: {.example}
 \begin{align*}
@@ -477,7 +477,7 @@ Matrix multiplication corresponds to the composition of linear maps.
     -1 & 2 \\
     13 & 9
     \end{pmatrix}
-\end{align*} 
+\end{align*}
 :::
 
 #### Helpful points of view
@@ -490,15 +490,15 @@ iii. \begin{align*}
     AB &= \begin{pmatrix}
      & \vdots &  \\
     \longleftarrow & \underline{R}_a (A) & \longrightarrow \\
-     & \vdots & 
+     & \vdots &
     \end{pmatrix} \begin{pmatrix}
      & \big\uparrow &  \\
     \dots & \underline{C}_r(B) & \dots \\
-     & \big\downarrow & 
+     & \big\downarrow &
     \end{pmatrix} \\
     (AB)_{ar} &= [\underline{R}_a (A)]_i [\underline{C}_r (B)]_i \\
     &= \underline{R}_a (A) \cdot \underline{C}_r (B) \text{ dot product in $\mathbb{R}^n$ for real matrices.}
-\end{align*} 
+\end{align*}
 
 #### Properties of matrix products
 
@@ -506,22 +506,22 @@ iii. \begin{align*}
     (\lambda M + \mu N) P &= \lambda (MP) + \mu (NP) \\
     P(\lambda M + \mu N) &= \lambda (PM) + \mu (PN) \\
     (MN)P &= M (NP)
-\end{align*}  
+\end{align*}
 
 ### Matrix Inverses
 
 Consider $A$ $m \times n$ matrix and $B, C$ $n \times m$ matrices, $B$ is a *left* inverse for $A$ if \begin{align*}
     BA = I_n;
 \end{align*}
-$C$ is a right inverse for $A$ if 
+$C$ is a right inverse for $A$ if
 \begin{align*}
     AC = I_m.
-\end{align*} 
+\end{align*}
 
 If $m = n$, $A$ is *square*, one of these implies the other and $B = C = A^{-1}$, *the* inverse.
 \begin{align*}
     A A^{-1} = A^{-1} A = I.
-\end{align*} 
+\end{align*}
 Not every matrix has an inverse; if it does it is called *invertible* or *non-singular*.
 
 Consider map $\mathbb{R}^n \to \mathbb{R}^n$ given by real matrix $M$.
@@ -531,8 +531,8 @@ For $n = 2$
     x_1' &= M_{11} x_1 + M_{12} x_2 \\
     x_2' &= M_{21} x_1 + M_{22} x_2 \\
     \implies M_{22} x_1' - M_{12} x_2' &= (\det M) x_1 \\
-    \text{and } - M_{21} x_1' + M_{11} x_2' &= (\det M) x_2 \\
-\end{align*} 
+    \text{and } - M_{21} x_1' + M_{11} x_2' &= (\det M) x_2
+\end{align*}
 So if $\det M = M_{11} M_{22} - M_{12} M_{21} \neq 0$ then $M^{-1} = \frac{1}{\det M} \begin{pmatrix}
 M_{22} & -M_{12} \\
 -M_{21} & M_{11}
@@ -545,18 +545,18 @@ M_{22} & -M_{12} \\
     \sin \theta & \cos \theta
     \end{pmatrix} \\
     R(\theta)^{-1} &= R (-\theta)
-\end{align*} 
+\end{align*}
 :::
 
 ::: {.example}
-Reflection. 
+Reflection.
 \begin{align*}
     H (\theta) &= \begin{pmatrix}
     \cos \theta & \sin \theta \\
     - \sin \theta & \cos \theta
     \end{pmatrix} \\
     H(\theta)^{-1} &= H (\theta)
-\end{align*} 
+\end{align*}
 :::
 
 ::: {.example}
@@ -566,7 +566,7 @@ Reflection.
     0 & 1
     \end{pmatrix} \\
     S(\lambda)^{-1} &= S (-\lambda)
-\end{align*} 
+\end{align*}
 :::
 
 ### Transpose and Hermitian Conjugate
@@ -574,7 +574,7 @@ Reflection.
 #### Transpose
 
 ::: {.definition name="Transpose"}
-If $M$ is an $m \times n$ matrix, the transpose $M^T$ is an $n \times m$ matrix defined by 
+If $M$ is an $m \times n$ matrix, the transpose $M^T$ is an $n \times m$ matrix defined by
 \begin{align*}
     (M^T)_{ia} &= M_{ai} \ ``\text{exchange rows and columns"} \\
     [a &= 1, \dots, m;\ i = 1, \dots, n]
@@ -591,7 +591,7 @@ If $M$ is an $m \times n$ matrix, the transpose $M^T$ is an $n \times m$ matrix 
     &= (A^T)_{ia} (B^T)_{ri} \\
     &= (B^T)_{ri} (A^T)_{ia} \\
     &= (B^T A^T)_{ra}
-\end{align*} 
+\end{align*}
 
 *Note*: $\underline{x} = \begin{pmatrix}x_1 \\\vdots \\x_n\end{pmatrix}$ is a column vector or a $n \times 1$ matrix.\
 $\implies \underline{x}^T = \begin{pmatrix}x_1 & \dots & x_n\end{pmatrix}$ is a row vector or $1 \times n$ matrix.\
@@ -600,12 +600,12 @@ Inner product on $\mathbb{R}^n$ is $\underline{x} \cdot \underline{y} = \underli
 ::: {.definition name="Symmetric and Antisymmetric matrix"}
 If $M$ is square, $n \times n$, then $M$ is *symmetric* iff $M^T = M$ or $M_{ij} = M_{ji}$ and *antisymmetric* iff $M^T = - M$ or $M_{ij} = - M_{ji}$.
 :::
- 
+
 Any square matrix can be written as a sum of a symmetric and antisymmetric parts:
 \begin{align*}
     M = S + A \text{ where } S &= \frac{1}{2} (M + M^T) \\
     \text{and } A &= \frac{1}{2} (M - M^T)
-\end{align*} 
+\end{align*}
 
 ::: {.example}
 If $A$ is $3 \times 3$ antisymmetric, then it can be rewritten in terms of vec $\underline{a}$
@@ -618,7 +618,7 @@ If $A$ is $3 \times 3$ antisymmetric, then it can be rewritten in terms of vec $
     A_{ij} &= \epsilon_{ijk} a_k \text{ and } a_k = \frac{1}{2} \epsilon_{kij} A_{ij} \\
     \text{Then } (A \underline{x})_i &= A_{ij} x_j = \epsilon_{ijk} a_k x_j \\
     &= (\underline{x} \wedge \underline{a})_i
-\end{align*} 
+\end{align*}
 :::
 
 #### Hermitian Conjugate
@@ -631,8 +631,8 @@ If $M$ is a $m \times n$ matrix the *hermitian conjugate* $M^\dagger$ is defined
 
 \begin{align*}
     (\alpha A + \beta B)^\dagger &= \overline{\alpha} A^\dagger + \overline{\beta} B^\dagger \\
-    (AB)^\dagger &= B^\dagger A^\dagger \\
-\end{align*} 
+    (AB)^\dagger &= B^\dagger A^\dagger
+\end{align*}
 
 *Note*: $\underline{z} = \begin{pmatrix}x_1 \\\vdots \\x_n\end{pmatrix}$ is a column vector or a $n \times 1$ matrix.\
 $\implies \underline{z}^\dagger = \begin{pmatrix}x_1 & \dots & x_n\end{pmatrix}$ is a row vector or $1 \times n$ matrix.\
@@ -645,10 +645,10 @@ If $M$ is *square* $n \times n$ then $M$ is *hermitian* if $M^\dagger = M$ or $M
 #### Trace
 
 ::: {.definition name="Trace"}
-For any square $n \times n$ matrix $M$, the *trace* is defined by 
+For any square $n \times n$ matrix $M$, the *trace* is defined by
 \begin{align*}
     \operatorname{tr} (M) = M_{ii} \text{ (the sum of diagonal entries.)}
-\end{align*} 
+\end{align*}
 :::
 
 ##### Properties
@@ -661,7 +661,7 @@ For any square $n \times n$ matrix $M$, the *trace* is defined by
     \operatorname{tr} (M) &= \operatorname{tr} (M^T) \\
     \operatorname{tr} (I_n) &= n \\
     [I_{ij} = \delta_{ij} \text{ and } I_{ii} = \delta_{ii} = n]
-\end{align*} 
+\end{align*}
 
 We previously decomposed $M = S + A$ (symmetric/ anti-symmetric parts).\
 Let $T = S - \frac{1}{n} (\operatorname{tr} (S)) I$ or $T_{ij} = S_{ij} - \frac{1}{n} \operatorname{tr} (S) \delta_{ij}$, then $T_{ii} = \operatorname{tr}(T) = 0$; and note $\operatorname{tr}(M) = \operatorname{tr}(S)$ and $\operatorname{tr}(A) = 0$^[$A$ has zeros on its diagonal.].
@@ -691,8 +691,8 @@ So $M = \underset{\text{symm and traceless}}{T} + \underset{\text{antisymm part}
     2 & 4 & 0
     \end{pmatrix} \\
     M &= T + A + 3I \\
-    \text{Furthermore } A \underline{x} &= \underline{x} \wedge \underline{a} \text{ where } \underline{a} = \begin{pmatrix}2 & -1 & -1\end{pmatrix}. 
-\end{align*} 
+    \text{Furthermore } A \underline{x} &= \underline{x} \wedge \underline{a} \text{ where } \underline{a} = \begin{pmatrix}2 & -1 & -1\end{pmatrix}.
+\end{align*}
 :::
 
 ## Orthogonal and Unitary Matrices
@@ -702,40 +702,40 @@ A real $n \times n$ matrix is *orthogonal* iff
 \begin{align*}
     u^T u &= u u^T = I \\
     \text{i.e. } u^T &= u^{-1}.
-\end{align*} 
+\end{align*}
 :::
 
-These conditions can be written 
+These conditions can be written
 \begin{align*}
     (u^T u)_{ij} &= (u u^T)_{ij} = I_{ij} \\
     \underbrace{u_{ki} u_{kj}}_\text{cols of $u$ are othornormal} &= \underbrace{u_{ik} u_{jk}}_\text{rows of $u$ are othornormal} = \delta_{ij}
-\end{align*} 
+\end{align*}
 [recall $[\underline{C}_i (u)]_k = u_{ki} = [R_k(u)]_i$]
 
 \begin{align*}
     \underbrace{\begin{pmatrix}
      & \vdots &  \\
     \longleftarrow & \underline{C}_i & \longrightarrow \\
-     & \vdots & 
+     & \vdots &
     \end{pmatrix}}_{u^T}
     \underbrace{\begin{pmatrix}
         & \big\uparrow &  \\
        \dots & \underline{C}_j & \dots \\
-        & \big\downarrow & 
+        & \big\downarrow &
     \end{pmatrix}}_{u} &= I \\
     \underline{C}_i \cdot \underline{C}_j = \delta_{ij}
-\end{align*} 
+\end{align*}
 
 *Equivalent definition*: u is orthogonal iff it preserves the inner product on $\mathbb{R}^n$.
 \begin{align*}
     (u \underline{x}) \cdot (u \underline{y}) &= \underline{x} \cdot \underline{y} \quad \forall \; x, y \in \mathbb{R}^n
-\end{align*} 
-To check equivalence, write this as 
+\end{align*}
+To check equivalence, write this as
 \begin{align*}
     (u \underline{x}) \cdot (u \underline{y}) &= x^T (u^T u) y \\
     &= x^T y \iff u^T u = I \\
     &= \underline{x} \cdot \underline{y} \quad \forall \; x, y \in \mathbb{R}^n
-\end{align*} 
+\end{align*}
 Note, since $\underline{C}_i = u \underline{e}_i$, columns being orthonormal $\iff (u \underline{e}_i) \cdot (u \underline{e}_j) = \underline{e}_i \cdot \underline{e}_j = \delta_{ij}$.
 
 ::: {.example}
@@ -753,12 +753,12 @@ In $\mathbb{R}^3$ we found the matrix $R(\theta)$ for rotation through $\theta$ 
 \begin{align*}
     R(\theta)^T &= R(-\theta) \\
     \text{Since } R(\theta)_{ij} &= R(-\theta)_{ji}
-\end{align*} 
+\end{align*}
 and can check explicitly
 \begin{align*}
     R(\theta)^T R(\theta) &= R(-\theta)R(\theta) = I \\
     \text{or } R(\theta)_{ki} R(\theta)_{kj} &= \delta_{ij}
-\end{align*} 
+\end{align*}
 :::
 
 ::: {.definition name="Unitary matrix"}
@@ -766,18 +766,18 @@ A complex $n \times n$ matrix $u$ is *unitary* iff
 \begin{align*}
     u^\dagger u &= u u^\dagger = I \\
     \text{i.e. } u^\dagger &= u^{-1}.
-\end{align*} 
+\end{align*}
 :::
 
 *Equivalent definition*: u is unitary iff it preserves the inner product on $\mathbb{C}^n$.
 \begin{align*}
     (u \underline{z}, u \underline{w}) &= (\underline{z}, \underline{w}) \quad \forall \; z, w \in \mathbb{C}^n
-\end{align*} 
+\end{align*}
 
-To check equivalence, write this as 
+To check equivalence, write this as
 \begin{align*}
     (u \underline{z})^\dagger (u \underline{w}) &= \underline{z}^\dagger (u^\dagger u) \underline{w} \\
     &= \underline{z}^\dagger \underline{w} \iff u^\dagger u = I \\
     &= (\underline{z}, \underline{w}) \quad \forall \; \underline{z}, \underline{w}
-\end{align*} 
+\end{align*}
 Note, since $\underline{C}_i = u \underline{e}_i$, columns being orthonormal $\iff (u \underline{e}_i) \cdot (u \underline{e}_j) = \underline{e}_i \cdot \underline{e}_j = \delta_{ij}$.

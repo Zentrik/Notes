@@ -7,7 +7,7 @@
 ::: {.definition name="Eigenvector and eigenvalue"}
 For a linear map $T : V \to V$ ($V$ a real vector or complex vector space) a vector $\underline{v} \in V$ with $\underline{v} \neq \underline{0}$ is an *eigenvector* of $T$ with eigenvalue $\lambda$ if \begin{align*}
     T(\underline{v}) = \lambda \underline{v}.
-\end{align*} 
+\end{align*}
 :::
 
 If $V = \mathbb{R}^n$ or $\mathbb{C}^n$ and $T$ is given by an $n \times n$ matrix $A$ then
@@ -31,7 +31,7 @@ We find eigenvalues as roots of the characteristic equation/ polynomial and then
     \end{vmatrix} \\
     &= (2 - \lambda)^2 - 1 \\
     &= 0 \iff \lambda = 1 \text{ or } 3.
-\end{align*} 
+\end{align*}
 To find eigenvectors $\underline{v} = \begin{pmatrix}v_1 \\v_2\end{pmatrix}$:
 
 - $\lambda = 1$:
@@ -40,8 +40,8 @@ To find eigenvectors $\underline{v} = \begin{pmatrix}v_1 \\v_2\end{pmatrix}$:
         1 & i \\
         -i & 1
         \end{pmatrix} \begin{pmatrix}v_1 \\v_2\end{pmatrix} = \underline{0} \\
-    \implies \underline{v} &= \alpha \begin{pmatrix}1 \\i\end{pmatrix} \text{ any } \alpha \neq 0 
-\end{align*} 
+    \implies \underline{v} &= \alpha \begin{pmatrix}1 \\i\end{pmatrix} \text{ any } \alpha \neq 0
+\end{align*}
 
 - $\lambda = 3$:
 \begin{align*}
@@ -49,8 +49,8 @@ To find eigenvectors $\underline{v} = \begin{pmatrix}v_1 \\v_2\end{pmatrix}$:
         -1 & i \\
         -i & -1
         \end{pmatrix} \begin{pmatrix}v_1 \\v_2\end{pmatrix} = \underline{0} \\
-    \implies \underline{v} &= \beta \begin{pmatrix}1 \\ -i\end{pmatrix} \text{ any } \beta \neq 0 
-\end{align*} 
+    \implies \underline{v} &= \beta \begin{pmatrix}1 \\ -i\end{pmatrix} \text{ any } \beta \neq 0
+\end{align*}
 :::
 
 ::: {.example}
@@ -65,7 +65,7 @@ To find eigenvectors $\underline{v} = \begin{pmatrix}v_1 \\v_2\end{pmatrix}$:
     \end{vmatrix} \\
     &= (1 - \lambda)^2\\
     &= 0 \iff \lambda = 1.
-\end{align*} 
+\end{align*}
 To find eigenvectors $\underline{v} = \begin{pmatrix}v_1 \\v_2\end{pmatrix}$:
 
 \begin{align*}
@@ -73,8 +73,8 @@ To find eigenvectors $\underline{v} = \begin{pmatrix}v_1 \\v_2\end{pmatrix}$:
         0 & 1 \\
         0 & 0
         \end{pmatrix} \begin{pmatrix}v_1 \\v_2\end{pmatrix} = \underline{0} \\
-    \implies \underline{v} &= \alpha \begin{pmatrix}1 \\ 0\end{pmatrix} \text{ any } \alpha \neq 0 
-\end{align*} 
+    \implies \underline{v} &= \alpha \begin{pmatrix}1 \\ 0\end{pmatrix} \text{ any } \alpha \neq 0
+\end{align*}
 :::
 
 ::: {.example #sone}
@@ -88,7 +88,7 @@ To find eigenvectors $\underline{v} = \begin{pmatrix}v_1 \\v_2\end{pmatrix}$:
     &= t^2 - 2t \cos \theta + 1 \\
     \implies \lambda &= e^{\pm i \theta} \\
     \implies \underline{v} &= \theta \begin{pmatrix}1 \\ \mp i\end{pmatrix} \ (\alpha \neq 0 )
-\end{align*} 
+\end{align*}
 :::
 
 ### Deductions involving $\chi_A(t)$
@@ -99,7 +99,7 @@ For $A$ $n \times n$, characteristic polynomial has degree $n$
     A_{11} - t & A_{12} & \dots & A_{1n} \\
     A_{21} & A_{22} - t & \dots & A_{2n} \\
     \vdots & \vdots & \ddots & \vdots \\
-    A_{n1} & A_{n2} & \dots & A_{nn} - t 
+    A_{n1} & A_{n2} & \dots & A_{nn} - t
     \end{pmatrix} \\
     &= \sum_{j=0}^{n} c_j t^j, \text{ for some } c_j \in \mathbb{C} \\
     &= (-1)^n (t - \lambda_1) \dots (t - \lambda_n)
@@ -147,7 +147,7 @@ The *algebraic multiplicity* $M_\lambda$ is the multiplicity of $\lambda$ as a r
 ::: {.proposition}
 \begin{align*}
     M_\lambda \geq m_\lambda
-\end{align*} 
+\end{align*}
 Further discussion in 6.3.
 :::
 
@@ -185,7 +185,7 @@ i. \begin{align*}
     \implies E_{-3} &= \left\{ \alpha \begin{pmatrix}-2 \\1 \\0\end{pmatrix} + \beta \begin{pmatrix}3 \\0 \\1\end{pmatrix} \right\} \\ \\
     m_5 &= \dim E_5 = 1 = M_5 \\
     m_{-3} &= \dim E_{-3} = 2 = M_{-3}
-\end{align*} 
+\end{align*}
 
 ii. \begin{align*}
     A &= \begin{pmatrix}
@@ -207,7 +207,7 @@ ii. \begin{align*}
     \implies E_{-2} &= \left\{ \alpha \begin{pmatrix}-1 \\1 \\0\end{pmatrix} + \beta \begin{pmatrix}1 \\0 \\1\end{pmatrix} \right\} \\
     m_{-2} &= \dim E_{-2} = 2 \\
     \text{but } M_{-2} &= 3
-\end{align*} 
+\end{align*}
 :::
 
 ### Linear Independence of Eigenvectors
@@ -219,7 +219,7 @@ ii. \begin{align*}
 i. Let $\underline{v}_1, \dots, \underline{v}_r$ be eigenvectors of matrix $A$ ($n \times n$) with eigenvalues $\lambda_1, \dots, \lambda_r$.
 If the eigenvalues are distinct, $\lambda_i \neq \lambda_j$ for $i \neq j$, then the eigenvectors are linearly independent.
 
-ii. With conditions as in (i), let $\mathcal{B}_{\lambda_i}$ be a basis for $E_{\lambda_i}$, then 
+ii. With conditions as in (i), let $\mathcal{B}_{\lambda_i}$ be a basis for $E_{\lambda_i}$, then
 \begin{align*}
     \mathcal{B}_{\lambda_1} \cup \mathcal{B}_{\lambda_2} \cup \dots \cup \mathcal{B}_{\lambda_r}
 \end{align*} is linearly independent.
@@ -229,17 +229,17 @@ ii. With conditions as in (i), let $\mathcal{B}_{\lambda_i}$ be a basis for $E_{
 
 \
 
-i. 
+i.
 \begin{align*}
     \text{Note } \underline{w} &= \sum_{j=1}^{r} \alpha_j \underline{v}_j \\
-    \implies (A - \lambda I) \underline{w} &= \sum_{j=1}^{r} \alpha_j (\lambda_j - \lambda) \underline{v}_j, \text{ as } A \underline{v}_j = \lambda_j \underline{v}_j \\
-\end{align*} 
+    \implies (A - \lambda I) \underline{w} &= \sum_{j=1}^{r} \alpha_j (\lambda_j - \lambda) \underline{v}_j, \text{ as } A \underline{v}_j = \lambda_j \underline{v}_j
+\end{align*}
 
 First, suppose the eigenvectors are linear dependent, so $\exists$ linear relations $\underline{w} = 0$ with a number of non-zero coefficients $p \geq 2$.
 Pick a $\underline{w}$ for which $p$ is least and assume (wlog) $\alpha_1 \neq 0$.
 Then $(A - \lambda_1 I) \underline{w} = \sum_{j>1} \alpha_j (\lambda_j - \lambda_1) \underline{v}_j = \underline{0}$^[$\alpha_1 (\lambda_1 - \lambda_1) = 0$ so $j > 1$.] is a linear relation with $p - 1$ non-zero coefficients ⨳.
 
-Or secondly, 
+Or secondly,
 \begin{align*}
     \underline{w} = \underline{0} \implies &\Pi_{j \neq k} (A - \lambda_j I) \underline{w} \text{ for some chosen } k \\
     &= \alpha_k \left[ \Pi_{j \neq k} (\lambda_k - \lambda_j) \right] \underline{v}_k = \underline{0}, \\
@@ -249,7 +249,7 @@ Or secondly,
 ii. It suffices to show that if $\underline{w} = \underline{w}_1 + \underline{w}_2 + \dots + \underline{w}_r = \underline{0}$ with $\underline{w}_i \in E_{\lambda_i}$
 \begin{align*}
     \implies \underline{w}_i = \underline{0}.
-\end{align*} 
+\end{align*}
 This follows by same arguments as in (i).
 :::
 
@@ -262,25 +262,25 @@ For a $n \times n$ matrix $A$ acting on $V = \mathbb{R}^n$ or $\mathbb{C}^n$, th
 
 i. There exists a basis of eigenvectors for $V$, $\underline{v}_1, \underline{v}_2, \dots, \underline{v}_n$ with $A \underline{v}_i = \lambda_i \underline{v}_i$ (not summation notation and $\lambda_i$ need not be distinct).
 
-ii. There exists an $n \times n$ invertible matrix $P$ with 
+ii. There exists an $n \times n$ invertible matrix $P$ with
 \begin{align*}
     P^{-1} A P = D = \begin{pmatrix}
     \lambda_1 &  &  \\
      & \ddots &  \\
      &  & \lambda_n
     \end{pmatrix}
-\end{align*} 
+\end{align*}
 
 If either of these conditions holds, $A$ is *diagonalisable*.
 :::
 
 ::: {.proof}
 Note that for any matrix $P$, $AP$ has columns $A \underline{C}_i(P)$ and $PD$ has columns $\lambda_i \underline{C}_i(P)$ for each $i$.
-Then (i) and (ii) are related by 
+Then (i) and (ii) are related by
 \begin{align*}
     \underline{v}_i &= \underline{C}_i(P): \\
     P^{-1} A P &= D \iff AP = PD \iff A \underline{v}_i = \lambda_i \underline{v}_i.
-\end{align*} 
+\end{align*}
 :::
 
 ::: {.example}
@@ -298,20 +298,20 @@ Eigenvalues $e^{\pm i \theta}$ and eigenvectors $\begin{pmatrix}1 \\ \mp i\end{p
     e^{i\theta} & 0 \\
     0 & e^{-i \theta}
     \end{pmatrix}
-\end{align*} 
+\end{align*}
 $U$ is diagonalisable over $\mathbb{C}$ but not over $\mathbb{R}$.
 :::
 
-### Criteria for Diagonalisability 
+### Criteria for Diagonalisability
 
 ::: {.theorem}
 Let $A$ be a $n \times n$ matrix and $\lambda_1, \dots, \lambda_r$ all its distinct eigenvalues.
 
 i. A necessary and sufficient condition:
-$A$ is diagonalisable iff 
+$A$ is diagonalisable iff
 \begin{align*}
     M_{\lambda_i} = m_{\lambda_i} \text{ for } i = 1, \dots, r
-\end{align*} 
+\end{align*}
 
 ii. A sufficient condition:
 $A$ is diagonalisable if there are $n$ distinct eigenvalues, i.e. $r = n$.
@@ -335,7 +335,7 @@ But
 Hence we have a basis iff
 \begin{align*}
     M_{\lambda_i} = m_{\lambda_i} \text{ for each } i.
-\end{align*} 
+\end{align*}
 :::
 
 ::: {.examples}
@@ -364,7 +364,7 @@ i. \begin{align*}
     0 & -3 & 0 \\
     0 & 0 & -3
     \end{pmatrix} \text{ as expected}.
-\end{align*} 
+\end{align*}
 
 ii. \begin{align*}
     A &= \begin{pmatrix}
@@ -377,12 +377,12 @@ ii. \begin{align*}
     \implies A &\text{ is not diagonalisable} \\
     \text{Check: if it was } &P^{-1} A P = - 2 I \\
     \implies A &= P (-2 I) P^{-1} = - 2I ⨳.
-\end{align*} 
+\end{align*}
 :::
 
 ### Similarity
 
-Matrices $A$ and $B$ ($n \times n$) are *similar* if 
+Matrices $A$ and $B$ ($n \times n$) are *similar* if
 \begin{align*}
     B = P^{-1} A P
 \end{align*} for some invertible $P$ ($n \times n$).
@@ -402,7 +402,7 @@ iv. $\det B = \det A$
 v. $\chi_B(t) = \chi_A(t)$
 :::
 
-::: {.proof} 
+::: {.proof}
 
 \
 
@@ -414,21 +414,21 @@ ii. is immediate.
     \operatorname{tr}(B) &= \operatorname{tr}(P^{-1} A P) \\
     &= \operatorname{tr}(APP^{-1}) \\
     &= \operatorname{tr}(A).
-\end{align*} 
+\end{align*}
 
 (iv) \begin{align*}
     \det(B) &= \det(P^{-1} A P) \\
     &= \det(P^{-1}) \det(A) \det(P) \\
     &= \det A.
-\end{align*} 
+\end{align*}
 
 (v) \begin{align*}
     \det(B - tI) &= \det(P^{-1}AP - tI) \\
     &= \det(P^{-1} (A - tI) P) \\
     &= \det(A - tI) \text{ as in (iv)}.
-\end{align*} 
+\end{align*}
 :::
- 
+
 ## Hermitian and Symmetric Matrices
 
 ### Real Eigenvalues and Orthogonal Eigenvectors
@@ -436,24 +436,24 @@ ii. is immediate.
 Recall: matrix $A$ ($n \times n$) is hermitian if
 \begin{align*}
     A^\dagger = \overline{A}^T = A \text{ or } A_{ij} = \overline{A}_{ji}
-\end{align*} 
+\end{align*}
 special case: $A$ is real and symmetric
 \begin{align*}
     \overline{A} = A \text{ and } A^T = A \text{ or } \begin{cases}
         A_{ij} = \overline{A}_{ij} \\
         A_{ij} = A_{ji}
-    \end{cases}. 
-\end{align*} 
+    \end{cases}.
+\end{align*}
 Recall: complex inner-product for $\underline{v}, \underline{w} \in \mathbb{C}^n$ is
 \begin{align*}
     \underline{v}^\dagger \underline{w} &= \sum_i \overline{v}_i w_i
 \end{align*} and for $\underline{v}, \underline{w} \in \mathbb{R}^n$ this reduces to
 \begin{align*}
     \underline{v}^T \underline{w} = \underline{v} \cdot \underline{w} = \sum_i v_i w_i
-\end{align*} 
+\end{align*}
 *Observation*: If $A$ is hermitian then
 \begin{align*}
-    (A \underline{v})^\dagger \underline{w} &= \underline{v}^\dagger (A \underline{w}) \ \forall \; \underline{v}, \underline{w} \in \mathbb{C}^n \\
+    (A \underline{v})^\dagger \underline{w} &= \underline{v}^\dagger (A \underline{w}) \ \forall \; \underline{v}, \underline{w} \in \mathbb{C}^n
 \end{align*}
 
 ::: {.proof}
@@ -461,7 +461,7 @@ Recall: complex inner-product for $\underline{v}, \underline{w} \in \mathbb{C}^n
     (A \underline{v})^\dagger \underline{w} &= (\underline{v}^\dagger A^\dagger) \underline{w} \\
     &= \underline{v}^\dagger A \underline{w} \\
     &= \underline{v}^\dagger (A \underline{w})
-\end{align*} 
+\end{align*}
 :::
 
 ::: {.theorem}
@@ -477,7 +477,7 @@ ii. Eigenvectors $\underline{v}, \underline{w}$ with distinct eigenvalues $\lamb
 iii. If $A$ is real and symmetric then for each $\lambda$ in (i) we can choose a real eigenvector $\underline{v}$ and (ii) becomes
 \begin{align*}
     \underline{v}^T \underline{w} = \underline{v} \cdot \underline{w} = 0
-\end{align*} 
+\end{align*}
 :::
 
 ::: {.proof}
@@ -487,8 +487,8 @@ iii. If $A$ is real and symmetric then for each $\lambda$ in (i) we can choose a
 i. \begin{align*}
     \underline{v}^\dagger (A \underline{v}) &= (A \underline{v})^\dagger \underline{v} \\
     \implies \underline{v}^\dagger (\lambda \underline{v}) &= (\lambda \underline{v})^\dagger \underline{v} \\
-    \implies \lambda \underline{v}^\dagger \underline{v} &= \overline{\lambda} \underline{v}^\dagger \underline{v} \\
-\end{align*} 
+    \implies \lambda \underline{v}^\dagger \underline{v} &= \overline{\lambda} \underline{v}^\dagger \underline{v}
+\end{align*}
 for $\underline{v}$ an eigenvector with eigenvalue $\lambda$.
 But $\underline{v} \neq 0$ so $\underline{v}^\dagger \underline{v} \neq 0$ and so $\lambda = \overline{\lambda}$.
 
@@ -497,7 +497,7 @@ ii. \begin{align*}
     \implies \underline{v}^\dagger (\mu \underline{w}) &= (\lambda \underline{v})^\dagger \underline{w} \\
     \implies \mu \underline{v}^\dagger \underline{w} &= \overline{\lambda} \underline{v}^\dagger \underline{w} \\
     &= \lambda \underline{v}^\dagger \underline{w} \text{ (from (i))}
-\end{align*}  
+\end{align*}
 But $\mu \neq \lambda$ so $\underline{v}^\dagger \underline{w} = 0$.
 
 iii. Given $A \underline{v} = \lambda \underline{v}$ with $\underline{v} \in \mathbb{C}^n$ and $A, \lambda$ real, let $\underline{v} = \underline{u} + i \underline{u'}$ with $\underline{u}, \underline{u'} \in \mathbb{R}^n$.
@@ -532,7 +532,7 @@ $\lambda_1 = 1, \lambda_2 = 3$ and choose
 Let $P = \frac{1}{\sqrt{2}} \begin{pmatrix}1 & 1 \\i & -i\end{pmatrix}$ then $P^\dagger = P^{-1}$ so unitary and $P^\dagger A P = \begin{pmatrix}1 & 0 \\0 & 3\end{pmatrix}$.
 
 2. $A = \begin{pmatrix}0 & 1 & 1 \\1 & 0 & 1 \\1 & 1 & 0\end{pmatrix}, A^T = A$ so real and symmetric.
-$\lambda_1 = \lambda_2 = -1, \lambda_3 = 2$ and can choose 
+$\lambda_1 = \lambda_2 = -1, \lambda_3 = 2$ and can choose
 \begin{align*}
     \underline{u}_1 = \frac{1}{\sqrt{2}}  \begin{pmatrix}1 \\-1 \\0\end{pmatrix}, \underline{u}_2 = \frac{1}{\sqrt{6}} \begin{pmatrix}1 \\1 \\-2\end{pmatrix}, \underline{u}_3 = \frac{1}{\sqrt{3}} \begin{pmatrix}1 \\1 \\1\end{pmatrix}.
 \end{align*}^[For symmetric $3 \times 3$ matrices, we may guess that $\begin{pmatrix}1 & 1 & 1\end{pmatrix}^T$ is an eigenvector.]
@@ -541,12 +541,12 @@ Let $P$ be the matrix with columns $\underline{u}_1, \underline{u}_2, \underline
 
 ## Quadratic Forms
 Consider $\mathcal{F} : \mathbb{R}^2 \to \mathbb{R}$ defined by $\mathcal{F}(\underline{x}) = 2 x_1^2 - 4 x_1 x_2 + 5 x_2^2$.
-This can be expressed as $\mathcal{F}(\underline{x}) = x_1'^2 + 6 x_2'^2$ where 
+This can be expressed as $\mathcal{F}(\underline{x}) = x_1'^2 + 6 x_2'^2$ where
 \begin{align*}
     x_1' &= \frac{1}{\sqrt{5}} (2 x_1 + x_2) \\
     x_2' &= \frac{1}{\sqrt{5}} (- x_1 + 2 x_2)
 \end{align*} with $x_1'^2 + x_2'^2 = x_1^2 + x_2^2$.
-To understand this better, note $\mathcal{F}(\underline{x}) = \underline{x}^T A \underline{x}$ where $A = \begin{pmatrix}2 & -2 \\-2 & 5\end{pmatrix}$ and we can diagonalise $A$: $\lambda_1 = 1, \lambda_2 = 6$ and orthonormal eigenvectors 
+To understand this better, note $\mathcal{F}(\underline{x}) = \underline{x}^T A \underline{x}$ where $A = \begin{pmatrix}2 & -2 \\-2 & 5\end{pmatrix}$ and we can diagonalise $A$: $\lambda_1 = 1, \lambda_2 = 6$ and orthonormal eigenvectors
 \begin{align*}
     \underline{u}_1 &= \frac{1}{\sqrt{5}} \begin{pmatrix}2 \\1\end{pmatrix}, \underline{u}_2 = \frac{1}{\sqrt{5}} \begin{pmatrix}-1 \\2\end{pmatrix} \\
     \text{Then } x_1' &= \underline{u}_1 \cdot \underline{x} \\
@@ -569,7 +569,7 @@ Let $\underline{x}' = P^T \underline{x}$ or $\underline{x} = P \underline{x}'$, 
     &=  (\underline{x}')^T D \underline{x}' \\
     &= \sum_i \lambda_i x_i'^2 \\
     &= \lambda_1 x_1'^2 + \dots + \lambda_n x_n'^2.
-\end{align*} 
+\end{align*}
 $\mathcal{F}$ has been *diagonalised*.
 \begin{align*}
     \text{Now } \underline{x}' &= x_1' \underline{e}_1 + \dots + x_n' \underline{e}_n \\
@@ -581,7 +581,7 @@ Thus, $x_i'$ are coordinates w.r.t new axes given by orthonormal basis vectors $
 Relation to original axes along standard basis vectors $\underline{e}_i$ and coordinates $x_i$ is given by an orthogonal transformations
 \begin{align*}
     |\underline{x}|^2 &= x_i x_i = x_i' x_i'.
-\end{align*} 
+\end{align*}
 
 ### Examples in $\mathbb{R}^2$ and $\mathbb{R}^3$
 
@@ -595,7 +595,7 @@ Relation to original axes along standard basis vectors $\underline{e}_i$ and coo
     &= (\alpha + \beta) x_1'^2 + (\alpha - \beta) x_2'^2 \\
     \text{with } x_1' &= \frac{1}{\sqrt{2}} (x_1 + x_2) \\
     x_2' &= \frac{1}{\sqrt{2}} (-x_1 + x_2)
-\end{align*} 
+\end{align*}
 
 i.
 \begin{align*}
@@ -603,8 +603,8 @@ i.
     \implies \lambda_1 &= 1, \lambda_2 = 2 \\
     \mathcal{F}(x) &= x_1'^2 + 2 x_2'^2 = 1
 \end{align*} defines an ellipse
-```{r 06-quadratic-R2-1, echo = FALSE, fig.cap = "", fig.align="center", out.width="500"} 
-knitr::include_graphics("figures/06-quadratic-R2-1.png") 
+```{r 06-quadratic-R2-1, echo = FALSE, fig.cap = "", fig.align="center", out.width="500"}
+knitr::include_graphics("figures/06-quadratic-R2-1.png")
 ```
 
 ii. \begin{align*}
@@ -612,8 +612,8 @@ ii. \begin{align*}
     \implies \lambda_1 &= 1, \lambda_2 = - 2 \\
     \mathcal{F}(x) &= x_1'^2 - 2 x_2'^2 = 1
 \end{align*} defines an hyperbola
-```{r 06-quadratic-R2-2, echo = FALSE, fig.cap = "", fig.align="center", out.width="500"} 
-knitr::include_graphics("figures/06-quadratic-R2-2.png") 
+```{r 06-quadratic-R2-2, echo = FALSE, fig.cap = "", fig.align="center", out.width="500"}
+knitr::include_graphics("figures/06-quadratic-R2-2.png")
 ```
 
 #### In $\mathbb{R}^3$
@@ -629,28 +629,28 @@ Hence
     \mathcal{F} &= 1 \iff 2 x_3'^2 = 1 + x_1'^2 + x_2'^2
 \end{align*} defines a hyperboloid (2 sheeted)
 
-```{r 06-hyperboloid-1, echo = FALSE, fig.cap = "", fig.align="center", out.width="500"} 
-knitr::include_graphics("figures/06-hyperboloid-1.png") 
+```{r 06-hyperboloid-1, echo = FALSE, fig.cap = "", fig.align="center", out.width="500"}
+knitr::include_graphics("figures/06-hyperboloid-1.png")
 ```
 
 $\mathcal{F} = -1 \iff x_1'^2 + x_2'^2 = 1 + 2 x_3'^2$ defined a hyperboloid (2 sheeted).
 
-```{r 06-hyperboloid-2, echo = FALSE, fig.cap = "", fig.align="center", out.width="500"} 
-knitr::include_graphics("figures/06-hyperboloid-2.png") 
+```{r 06-hyperboloid-2, echo = FALSE, fig.cap = "", fig.align="center", out.width="500"}
+knitr::include_graphics("figures/06-hyperboloid-2.png")
 ```
 
 ## Cayley-Hamilton Theorem
 
-If $A$ is a $n \times n$ complex matrix and 
+If $A$ is a $n \times n$ complex matrix and
 $f(t) = c_0 + c_1 t + \dots + c_k t^k$ is a poly of degree k, then
 \begin{align*}
     f(A) = c_0 I + c_1 A + \dots + c_k A^k.
-\end{align*} 
+\end{align*}
 We can also define power series of matrices subject to convergence
 \begin{align*}
     \text{e.g. } \exp A = I + A + \dots + \frac{1}{r!} A^r + \dots
 \end{align*} converges for any $A$. \
-Note 
+Note
 
 i. If $D = \begin{pmatrix}\lambda_1 &  &  \\ & \ddots &  \\ &  & \lambda_n\end{pmatrix}$ is diagonal then $D^r = \begin{pmatrix}\lambda_1^r &  &  \\ & \ddots &  \\ &  & \lambda_n^r\end{pmatrix}$ and $f(D) = \begin{pmatrix}f(\lambda_1) &  &  \\ & \ddots &  \\ &  & f(\lambda_n)\end{pmatrix}$.
 
@@ -660,16 +660,16 @@ Recall the characteristic polynomial is $\chi_A(t) = \det (A - tI) = c_0 + c_1 t
 ::: {.theorem name="Cayley-Hamilton" #CH}
 \begin{align*}
     \chi_A(A) &= c_0 I + c_1 A + \dots + c_n A^n = 0
-\end{align*} 
+\end{align*}
 "a matrix satisfies its own characteristic equation"
 :::
-Note Cayley-Hamilton, \@ref(thm:CH), implies 
+Note Cayley-Hamilton, \@ref(thm:CH), implies
 \begin{align*}
-    c_0 I = - A \left(c_1 I + \dots + c_n A^{n-1} \right) 
-\end{align*} and if $c_0 = \det A \neq 0$ then 
+    c_0 I = - A \left(c_1 I + \dots + c_n A^{n-1} \right)
+\end{align*} and if $c_0 = \det A \neq 0$ then
 \begin{align*}
     A^{-1} &= - \frac{1}{c_0} \left(c_1 I + \dots + c_n A^{n-1} \right)
-\end{align*} 
+\end{align*}
 
 ::: {.proof}
 
@@ -687,5 +687,5 @@ ii. Diagonalisable $n \times n$ matrix: consider $A$ with evals $\lambda_i$ and 
     \text{Then } \chi_A(A) &= \chi_A(P^{-1} D P) \\
     &= P^{-1} \chi_A(D) P \\
     &= 0
-\end{align*} 
+\end{align*}
 :::

@@ -10,16 +10,16 @@
 
   <meta property="og:title" content="2 Elementary Number Theory | Numbers and Sets 2021 - 2022" />
   <meta property="og:type" content="book" />
-  
-  
+
+
   <meta property="og:description" content="Notes" />
-  
+
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="2 Elementary Number Theory | Numbers and Sets 2021 - 2022" />
-  
+
   <meta name="twitter:description" content="Notes" />
-  
+
 
 <meta name="author" content="Author" />
 
@@ -29,8 +29,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  
-  
+
+
 <link rel="prev" href="introduction.html"/>
 <link rel="next" href="the-reals.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
@@ -220,7 +220,7 @@ Thus <span class="math inline">\(P(n)\)</span> is false <span class="math inline
 We also have
 <span class="math display">\[\begin{align*}
     &amp;10.\ \forall \; a \in \mathbb{Z} &amp; a + 0 &amp;= a &amp; &amp;(\text{identity for } +) \\
-    &amp;11.\ \forall \; a \in \mathbb{Z}, &amp; \exists \; b \in \mathbb{Z} \text{ s.t. } a + b &amp;= 0 &amp; &amp;(\text{inverses for } + ) \\
+    &amp;11.\ \forall \; a \in \mathbb{Z}, &amp; \exists \; b \in \mathbb{Z} \text{ s.t. } a + b &amp;= 0 &amp; &amp;(\text{inverses for } + )
 \end{align*}\]</span></p>
 <p>Define ‘<span class="math inline">\(a &lt; b\)</span>’ if <span class="math inline">\(a + c = b\)</span> for some <span class="math inline">\(c \in \mathbb{N}\)</span>. Rules 6, 8, 9 continue to hold, but 7 must be modified</p>
 <p>7’. <span class="math inline">\(\forall \; a, b, c \in \mathbb{Z}, a &lt; b \text{ and } c &gt; 0 \implies ac &lt; bc.\)</span></p>
@@ -566,7 +566,7 @@ Then <span class="math inline">\(7x \equiv 7x&#39; \mod 30\)</span>, so <span cl
 <span class="math display">\[\begin{align*}
     10x \equiv 12 \mod 34 &amp;\iff 10x = 12 + 34y \text{ for some } y \in \mathbb{Z} \\
     &amp;\iff 5x = 6 + 17y \text{ for some } y \in \mathbb{Z} \\
-    &amp;\iff 5x \equiv 6 \mod 17 
+    &amp;\iff 5x \equiv 6 \mod 17
 \end{align*}\]</span>
 so now we’re back in situation 1, and solve this as before.</p>
 </div>
@@ -588,7 +588,7 @@ We inspect
 What about <span class="math display">\[\begin{align*}
     \begin{cases}
         x \equiv \mod 4 \\
-        x \equiv \mod 6   
+        x \equiv \mod 6
     \end{cases}?
 \end{align*}\]</span></p>
 <div class="theorem">
@@ -644,7 +644,7 @@ Hence the numbers <span class="math inline">\(a, 2a, 3a, \dots, (p - 1)a\)</span
 <p>Hence
 <span class="math display">\[\begin{align*}
     a \cdot 2a \cdot 3a \cdot \dots \cdot (p - 1)a &amp;\equiv 1 \cdot 2 \cdot 3 \dots \cdot (p - 1) \mod p \\
-    a^{p-1} (p - 1)! &amp;= (p - 1)! \mod p. \\
+    a^{p-1} (p - 1)! &amp;= (p - 1)! \mod p.
 \end{align*}\]</span>
 But <span class="math inline">\((p - 1)!\)</span> is a unit mod <span class="math inline">\(p\)</span> (since it is a product of units), so we can cancel it to obtain <span class="math inline">\(a^{p-1} \equiv 1 \mod p\)</span>.</p>
 </div>
@@ -659,7 +659,7 @@ Then <span class="math inline">\(a u_1, a u_2, \dots, a u_{\phi(m)}\)</span> are
 <p>It follows that
 <span class="math display">\[\begin{align*}
     a u_1 \cdot a u_2 \cdot \dots \cdot a u_{\phi(m)} &amp;\equiv u_1 \cdot u_2 \cdot \dots u_{\phi(m)} \mod m,
-    \text{that is, }a^{\phi(m)} z &amp;= z \mod p. \\
+    \text{that is, }a^{\phi(m)} z &amp;= z \mod p.
 \end{align*}\]</span>
 that is <span class="math inline">\(a^{\phi(m)} z = z \mod m\)</span> where <span class="math inline">\(z = u_1 \cdot u_2 \cdot \dots u_{\phi(m)}\)</span> is a product of units modulo <span class="math inline">\(m\)</span>, therefore it itself is a unit.
 So we may cancel it to obtain <span class="math inline">\(a^{\phi(m)} = 1 \mod m\)</span></p>
@@ -720,7 +720,7 @@ Then <span class="math inline">\(-1\)</span> is a square modulo <span class="mat
 By Wilson’s Theorem, <a href="elementary-number-theory.html#thm:fifteen">2.9</a>,
 <span class="math display">\[\begin{align*}
     -1 \equiv (p - 1)! &amp;\equiv 1 \cdot 2 \cdot 3 \cdot \dots \cdot \frac{p - 1}{2} \cdot - \frac{p - 1}{2} \cdot \dots -3 \cdot -2 \cdot -1 \mod p \\
-    &amp;\equiv (-1)^{\frac{p-1}{2}} \left( \left(\frac{p-1}{2} \right)! \right)^2 \mod p \\
+    &amp;\equiv (-1)^{\frac{p-1}{2}} \left( \left(\frac{p-1}{2} \right)! \right)^2 \mod p
 \end{align*}\]</span> (<span class="math inline">\(p-2 \equiv -1 \mod p\)</span>)
 But if <span class="math inline">\(p = 4k + 1\)</span> for some <span class="math inline">\(k \in \mathbb{Z}\)</span>, then
 <span class="math display">\[\begin{align*}

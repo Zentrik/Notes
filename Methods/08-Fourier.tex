@@ -60,28 +60,28 @@
 
 \begin{exercise}
     Show that $\mathcal{F}\inv(e^{-k^2 \sigma^2 / 4}) = f(x)$ (try completing the square).
-\end{exercise} 
+\end{exercise}
 
 \begin{exercise}
-    Show that $f(x) = e^{-a |x|}$, $a > 0$, has FT 
+    Show that $f(x) = e^{-a |x|}$, $a > 0$, has FT
     \begin{align} \label{eq:8.6}
         \widetilde{f} = \frac{2a}{a^2 + k^2}
     \end{align} in two ways.
     \begin{enumerate}
         \item Integrate $2 \int_{0}^{\infty} e^{-ax} \cos kx \dd{x}$ by parts twice.
         \item Integrate $\int_{0}^{\infty} e^{-(a - ik) x} \dd{x} + \int_{-\infty}^{0} e^{(a + ik)x} \dd{x}$ directly.
-    \end{enumerate} 
+    \end{enumerate}
     Note that if $f(x) = \begin{cases}
         e^{-ax} & x > 0 \\
         0 & x \leq 0
-    \end{cases}$ ($a > 0$) then 
+    \end{cases}$ ($a > 0$) then
     \addtocounter{equation}{-1}
     \begin{subequations}
         \begin{align} \label{eq:8.6a}
             \widetilde{f}(k) = \frac{1}{ik + a}
-        \end{align} 
+        \end{align}
     \end{subequations}
-\end{exercise} 
+\end{exercise}
 
 \subsection{Converting Fourier series into Fourier transforms}
 Recall that the complex form of the Fourier series, \cref{eq:1.13}, is
@@ -104,7 +104,7 @@ But interpreting the sum multiplied by $\Delta k$ as a Riemann integral,
 	\addtocounter{equation}{1}
 	\begin{align} \label{eq:8.6b}
 		\sum_{n=-\infty}^{\infty} \Delta k g(k_n) \to \int_{-\infty}^{\infty} g(k) \dd{k}
-	\end{align} 
+	\end{align}
 \end{subequations}
 So,
 \begin{align*}
@@ -131,69 +131,69 @@ Recall the definition of the Fourier transform.
 	\begin{align} \label{eq:8.8}
 		h(x) = \lambda f(x) + \mu g(x) \iff \widetilde h(k) = \lambda \widetilde f(k) + \mu \widetilde g(k)
 	\end{align}
-\end{proposition} 
+\end{proposition}
 
 \begin{proposition}[Translation]
 	Translated functions transform to multiplicative factors.
 	\begin{align} \label{eq:8.9}
 		h(x) = f(x - \lambda) \iff \widetilde h(k) = e^{-i\lambda k} \widetilde f(k)
 	\end{align}
-\end{proposition} 
+\end{proposition}
 
 \begin{proof}
 	This is because
 	\begin{align*}
 		\widetilde h(k) = \int f(x - \lambda) e^{-ikx} \dd{x} = \int f(y) e^{-ik(y + \lambda)} \dd{y} = e^{-i\lambda k} \widetilde f(k)
 	\end{align*}
-\end{proof} 
+\end{proof}
 
 \begin{proposition}[Frequency Shift]
 	Frequency shifts transform to translations in frequency space.
 	\begin{align} \label{eq:8.10}
 		h(x) = e^{i\lambda x}f(x) \implies \widetilde h(k) = \widetilde f(k - \lambda)
 	\end{align}
-\end{proposition} 
+\end{proposition}
 
 \begin{proposition}[Scaling]
 	A scalar multiple applied to the argument transforms into an inverse scalar multiple.
 	\begin{align} \label{eq:8.11}
 		h(x) = f(\lambda x) \iff \widetilde h(k) = \frac{1}{\abs{\lambda}} \widetilde f\qty(\frac{k}{\lambda})
 	\end{align}
-\end{proposition} 
+\end{proposition}
 
 \begin{proposition}[Multiplication by $x$]
 	Multiplication by $x$ transforms into an imaginary derivative.
 	\begin{align} \label{eq:8.12}
 		h(x) = xf(x) \iff \widetilde h(k) = i\widetilde f'(k)
 	\end{align}
-\end{proposition} 
+\end{proposition}
 
 \begin{proof}
 	This is because
 	\begin{align*}
 		\int_{-\infty}^\infty xf(x) e^{-ikx} \dd{x} = \frac{-1}{i} \dv{k} \int_{-\infty}^\infty f(x) e^{-ikx} \dd{x}
 	\end{align*}
-\end{proof} 
+\end{proof}
 
 \begin{proposition}[Derivatives]
 	Derivatives transform into a multiplication by $ik$.
 	\begin{align} \label{eq:8.13}
 		h(x) = f'(x) \iff \widetilde h(k) = ik \widetilde f(k)
 	\end{align}
-\end{proposition} 
+\end{proposition}
 
 \begin{proof}
 	This is because we can integrate by parts and find
 	\begin{align*}
 		\widetilde h(k) = \int_{-\infty}^\infty f'(x) e^{-ikx} \dd{x} = \underbrace{\qty[f(x) e^{-ikx}]_{-\infty}^\infty}_{=0} + ik\int_{-\infty}^\infty f(x) e^{-ikx} \dd{x}
 	\end{align*}
-\end{proof} 
+\end{proof}
 
 \begin{proposition}[General duality] ~\vspace*{-1.5\baselineskip}
 	\begin{align} \label{eq:8.14}
 		g(x) = \widetilde{f}(x) \iff \widetilde{g}(k) = 2 \pi f(-k)
-	\end{align} 
-\end{proposition} 
+	\end{align}
+\end{proposition}
 
 \begin{proof}
 	Consider \cref{eq:8.2} with mapping $x \mapsto -x$, we get
@@ -208,7 +208,7 @@ Recall the definition of the Fourier transform.
 	\begin{align*}
 		g(x) = \widetilde f(x) \iff \widetilde g(k) = 2\pi f(-k)
 	\end{align*}
-\end{proof} 
+\end{proof}
 
 \begin{corollary} ~\vspace*{-1.5\baselineskip}
 	\begin{align*}
@@ -218,11 +218,11 @@ Recall the definition of the Fourier transform.
 	\begin{align*}
 		\mathcal F^4(f)(x) = 4\pi^2 f(x)
 	\end{align*}
-\end{corollary} 
+\end{corollary}
 
 \begin{exercise}
 	Verify these properties.
-\end{exercise} 
+\end{exercise}
 
 \begin{example}
 	Consider a function defined by
@@ -332,7 +332,7 @@ So we identify
 		\widetilde f(k) = e^{-ika}
 	\end{align}
 	This is a translation of the original Fourier transform for the $\delta$ function above.
-\end{itemize} 
+\end{itemize}
 
 \subsection{Trigonometric functions}
 Let $f(x) = \cos \omega x = \frac{1}{2} \qty(e^{i\omega x} + e^{-i \omega x})$.
@@ -536,8 +536,8 @@ The sampling frequency is therefore $\Delta\inv$, so the sampling angular veloci
 	The \vocab{Nyquist frequency} is the highest frequency actually sampled at $\Delta$,
 	\begin{align} \label{eq:8.37}
 		f_c = \frac{1}{2 \Delta}
-	\end{align} 
-\end{definition} 
+	\end{align}
+\end{definition}
 
 Suppose we have a signal $g_f$ with a given frequency $f$.
 We will write
@@ -614,7 +614,7 @@ Only the cosine term is even, hence
 Hence, $g(t)$ can be written \textit{exactly} as a combination of countably many discrete sample points.
 
 \subsection{Discrete Fourier transform}
-Suppose we have a finite number of samples 
+Suppose we have a finite number of samples
 \begin{align} \label{eq:8.45}
 	h_m = h(t_m) \text{ for } t_m = m \Delta, \text{ where } m = 0,\dots, N-1
 \end{align}
@@ -628,7 +628,7 @@ Since frequencies above the Nyquist frequency are aliased to below it, \cref{eq:
 we can instead use the convention $f_n = n \Delta_f = \frac{n}{N\Delta}$ for
 \begin{align} \label{eq:8.46}
 	n = 0, \dots, N - 1
-\end{align} 
+\end{align}
 This counts the Nyquist frequency only once.
 
 The \vocab{discrete FT} at a frequency $f_n$ becomes
@@ -640,7 +640,7 @@ The \vocab{discrete FT} at a frequency $f_n$ becomes
 \end{align}
 where the function $\widetilde h_d(f_n)$ is the discrete Fourier transform.
 
-The matrix 
+The matrix
 \begin{align} \label{eq:8.48}
 	[\mathrm{DFT}]_{mn} = e^{-2\pi i m n / N},\ m, n = 0, 1, \dots, N-1
 \end{align} defines the discrete Fourier transform for the vector $h = \qty{h_m}$.
@@ -681,7 +681,7 @@ Parseval's theorem becomes,
 \end{align}
 \begin{exercise}
 	Prove this.
-\end{exercise} 
+\end{exercise}
 The convolution theorem for $g_m, h_m$ is
 \begin{align} \label{eq:8.50}
 	c_k = \sum_{m=0}^{N-1} g_m h_{k-m} \iff \widetilde c_k = \widetilde g_k \widetilde h_k
@@ -695,6 +695,6 @@ We can split the discrete Fourier transform into even and odd parts, noting that
 	\widetilde h_k & = \sum_{n=0}^{N-1} h_n \omega_N^{nk}                                                                           \\
     & = \sum_{m=0}^{N/2-1} h_{2m} \omega_N^{2mk} + \sum_{m=0}^{N/2-1} h_{2m + 1} \omega_N^{(2m+1)k}                  \\
     & = \sum_{m=0}^{N/2-1} h_{2m} (\omega_N^2)^{mk} + \omega_N^k \sum_{m=0}^{N/2-1} h_{2m + 1} (\omega_N^2)^{mk}     \\
-    & = \sum_{m=0}^{N/2-1} h_{2m} (\omega_{N/2})^{mk} + \omega_N^k \sum_{m=0}^{N/2-1} h_{2m + 1} (\omega_{N/2})^{mk} \\
+    & = \sum_{m=0}^{N/2-1} h_{2m} (\omega_{N/2})^{mk} + \omega_N^k \sum_{m=0}^{N/2-1} h_{2m + 1} (\omega_{N/2})^{mk}
 \end{align*}
 This algorithm iteratively reduces the Fourier transform's complexity by a factor of two, until the trivial case of finding the discrete Fourier transform of two data points.

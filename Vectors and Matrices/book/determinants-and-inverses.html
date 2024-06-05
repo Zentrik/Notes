@@ -10,16 +10,16 @@
 
   <meta property="og:title" content="5 Determinants and inverses | Vectors and Matrices 2021 - 2022" />
   <meta property="og:type" content="book" />
-  
-  
+
+
   <meta property="og:description" content="Notes" />
-  
+
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="5 Determinants and inverses | Vectors and Matrices 2021 - 2022" />
-  
+
   <meta name="twitter:description" content="Notes" />
-  
+
 
 <meta name="author" content="Author" />
 
@@ -29,8 +29,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  
-  
+
+
 <link rel="prev" href="matrices-and-linear-maps.html"/>
 <link rel="next" href="eigenvalues-and-eigenvectors.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
@@ -270,7 +270,7 @@ If <span class="math inline">\(T\)</span> is invertible then
 These conditions are equivalent by rank-nullity theorem <a href="matrices-and-linear-maps.html#thm:rank">4.1</a>.
 Conversely, if these conditions hold, then
 <span class="math display">\[\begin{align*}
-    \underline{e}_1&#39; &amp;= T(\underline{e}_1), \dots, \underline{e}_n&#39; = T(\underline{e}_n) \\
+    \underline{e}_1&#39; &amp;= T(\underline{e}_1), \dots, \underline{e}_n&#39; = T(\underline{e}_n)
 \end{align*}\]</span> is a basis (where <span class="math inline">\(\{ \underline{e}_i \}\)</span> is the standard basis) and we can define a linear map <span class="math inline">\(T^{-1}\)</span> by <span class="math inline">\(T^{^-1}(\underline{e}_1&#39;) = \underline{e}_1, \dots, T^{-1}(\underline{e}_n&#39;) = \underline{e}_n\)</span>.</p>
 <p>How can we test whether the conditions holds from matrix <span class="math inline">\(M\)</span> representing <span class="math inline">\(T:\)</span> <span class="math inline">\(T(\underline{x}) = M \underline{x}\)</span> and how can we find <span class="math inline">\(M^{-1}\)</span> when they do hold?</p>
 <p>For any <span class="math inline">\(M\)</span> (<span class="math inline">\(n \times n\)</span>) we will define a related matrix <span class="math inline">\(\widetilde{M}\)</span> (<span class="math inline">\(n \times n\)</span>) and a scalar, the <em>determinant</em> <span class="math inline">\(\det M\)</span> or <span class="math inline">\(| M |\)</span> such that
@@ -419,7 +419,7 @@ If <span class="math inline">\(i = \rho(1), j = \rho(2), \dots, l = \rho(n)\)</s
 \end{align*}\]</span></p></li>
 <li><p><em>Totally antisymmetric</em>
 <span class="math display">\[\begin{align*}
-[\underline{v}_{\sigma(1)}, \underline{v}_{\sigma(2)}, \dots \underline{v}_{\sigma(n)}] &amp;= \epsilon (\sigma) [\underline{v}_1, \underline{v}_2, \dots, \underline{v}_n] 
+[\underline{v}_{\sigma(1)}, \underline{v}_{\sigma(2)}, \dots \underline{v}_{\sigma(n)}] &amp;= \epsilon (\sigma) [\underline{v}_1, \underline{v}_2, \dots, \underline{v}_n]
 \end{align*}\]</span></p></li>
 <li><p><span class="math display">\[\begin{align*}
     [\underline{e}_1, \underline{e}_2, \dots, \underline{e}_n] = 1
@@ -710,9 +710,9 @@ This is based on the following lemma</p>
 </div>
 <div class="proof">
 <p><span id="unlabeled-div-86" class="proof"><em>Proof</em> (Proof of Theorem). </span><span class="math display">\[\begin{align*}
-    \det (MN) &amp;= \epsilon_{i_1 \dots i_n} (MN)_{i_1 1} \dots (MN)_{i_n n} \\ 
-    &amp;= \epsilon_{i_1 \dots i_n} M_{i_1 k_1} N_{k_1 1} \dots  M_{i_n k_n} N_{k_n n} \\ 
-    &amp;= \epsilon_{i_1 \dots i_n} M_{i_1 k_1} \dots  M_{i_n k_n} N_{k_1 1} \dots N_{k_n n} \\ 
+    \det (MN) &amp;= \epsilon_{i_1 \dots i_n} (MN)_{i_1 1} \dots (MN)_{i_n n} \\
+    &amp;= \epsilon_{i_1 \dots i_n} M_{i_1 k_1} N_{k_1 1} \dots  M_{i_n k_n} N_{k_n n} \\
+    &amp;= \epsilon_{i_1 \dots i_n} M_{i_1 k_1} \dots  M_{i_n k_n} N_{k_1 1} \dots N_{k_n n} \\
     &amp;= (\det M)  \epsilon_{k_1 \dots k_n} N_{k_1 1} \dots N_{k_n n} \text{by lemma } \\
     &amp;= (\det M) (\det N)
 \end{align*}\]</span></p>
@@ -759,47 +759,47 @@ U^\dagger U = I &amp;\implies \det(U^\dagger) \det U \\
     &amp;= \sum_i M_{ia} \Delta_{ia} \hspace{0.5cm} \text{(no sum over $a$)} \\
     \text{where the } &amp;\emph{cofactor } \Delta_{ia} \text{ is defined by} \\
     \Delta_{ia} &amp;= [\underline{C}_1, \underline{C}_2, \dots, \underline{C}_{a- 1}, \underline{e}_i, \underline{C}_{a + 1}, \dots, \underline{C}_n] \\
-    &amp;= \det \left( \begin{array}{c|c|c} 
-        A &amp; \begin{array}{c} 
-            0 \\  
+    &amp;= \det \left( \begin{array}{c|c|c}
+        A &amp; \begin{array}{c}
+            0 \\
             \vdots \\
             0
-        \end{array} &amp; B \\ 
-        \hline 
-        \begin{array}{ccc} 
+        \end{array} &amp; B \\
+        \hline
+        \begin{array}{ccc}
             0 &amp; \dots &amp; 0
-        \end{array} &amp; 1 &amp; \begin{array}{ccc} 
+        \end{array} &amp; 1 &amp; \begin{array}{ccc}
             0 &amp; \dots &amp; 0
         \end{array} \\
         \hline
-        C &amp; \begin{array}{c} 
-            0 \\  
+        C &amp; \begin{array}{c}
+            0 \\
             \vdots \\
             0
         \end{array} &amp; D
     \end{array} \right) \\
-    &amp;= (-1)^{n - a} (-1)^{n - i} \det 
+    &amp;= (-1)^{n - a} (-1)^{n - i} \det
     \left(
-    \begin{array}{c|c} 
-        \begin{array}{c|c} 
-            A &amp; B \\ 
-            \hline 
-            C &amp; D 
-        \end{array} &amp; \begin{array}{c} 
-            0 \\  
+    \begin{array}{c|c}
+        \begin{array}{c|c}
+            A &amp; B \\
+            \hline
+            C &amp; D
+        \end{array} &amp; \begin{array}{c}
+            0 \\
             \vdots \\
             0
-        \end{array} \\ 
-        \hline 
-        \begin{array}{ccc} 
+        \end{array} \\
+        \hline
+        \begin{array}{ccc}
             0 &amp; \dots &amp; 0
         \end{array} &amp; 1
     \end{array} \right) \\
     &amp;= (-1)^{a + i} M^{i a} \\
-    \text{where } M^{ia} &amp;= \det \left( \begin{array}{c|c} 
-        A &amp; B \\ 
-        \hline 
-        C &amp; D 
+    \text{where } M^{ia} &amp;= \det \left( \begin{array}{c|c}
+        A &amp; B \\
+        \hline
+        C &amp; D
     \end{array} \right) \text{by lemma } \\
     \therefore \det M &amp;= \sum_i M_{ia} \Delta_{ia} \\
     &amp;= \sum_i M_{ia} (-1)^{i + a} M^{ia}
@@ -844,7 +844,7 @@ This justifies <a href="determinants-and-inverses.html#eq:inverse">(5.1)</a> wit
     1 &amp; 1 &amp; a \\
     a &amp; 1 &amp; 1 \\
     1 &amp; a &amp; 1
-    \end{pmatrix},\ a \in \mathbb{C} \\
+    \end{pmatrix},\ a \in \mathbb{C}
 \end{align*}\]</span>, previously found in Example <a href="determinants-and-inverses.html#exm:exchanges">5.5</a> <span class="math inline">\(\det A = (1 - a)^2 (a + 2)\)</span>.
 Hence <span class="math inline">\(A^{-1}\)</span> exists if <span class="math inline">\(a \neq 1\)</span>, <span class="math inline">\(a \neq - 2\)</span>.</p>
 <p>Matrix of cofactors is <span class="math display">\[\begin{align*}
@@ -919,7 +919,7 @@ Then <span class="math inline">\(A^{-1}\)</span> exists and we have a solutions 
   b &amp;\in \operatorname{Im} A \iff c = 1; \\
   \text{particular solution } \underline{x}_0 &amp;= \begin{pmatrix}1 \\0 \\0\end{pmatrix} \\
   \text{general solution } \underline{x} &amp;= \underline{x}_0 + \underline{u} \\
-  &amp;= \begin{pmatrix}1 - \lambda - \mu \\ \lambda \\ \mu \end{pmatrix} \\
+  &amp;= \begin{pmatrix}1 - \lambda - \mu \\ \lambda \\ \mu \end{pmatrix}
 \end{align*}\]</span> This is case (iii), and forms a plane of solutions.
 For <span class="math inline">\(a = 1, c \neq 1\)</span> we have no solutions - case (ii).</p></li>
 <li><p><span class="math inline">\(a = -2\)</span>
@@ -934,7 +934,7 @@ For <span class="math inline">\(a = 1, c \neq 1\)</span> we have no solutions - 
   \underline{b} &amp;\in \operatorname{Im} A \iff c = 2, \text{ (case (iii))} \\
   \text{particular solution } \underline{x}_0 &amp;= \begin{pmatrix}1 \\0 \\0\end{pmatrix} \\
   \text{general solution } \underline{x} &amp;= \underline{x}_0 + \underline{u} \\
-  &amp;= \begin{pmatrix}1 + \lambda \\ \lambda \\ \lambda \end{pmatrix} \\
+  &amp;= \begin{pmatrix}1 + \lambda \\ \lambda \\ \lambda \end{pmatrix}
 \end{align*}\]</span> If <span class="math inline">\(c \neq 2\)</span>, no solution, case (ii).</p></li>
 </ul>
 </div>
@@ -946,7 +946,7 @@ For <span class="math inline">\(a = 1, c \neq 1\)</span> we have no solutions - 
     A \underline{u} = \underline{0} \iff \begin{cases}
         \underline{R}_1 \cdot \underline{u} = 0 \\
         \underline{R}_2 \cdot \underline{u} = 0 \\
-        \underline{R}_3 \cdot \underline{u} = 0 
+        \underline{R}_3 \cdot \underline{u} = 0
     \end{cases} \text{planes through $\underline{0}$, normals $\underline{R}_i (\neq \underline{0})$}
 \end{align*}\]</span>
 So solutions of homogenous problem (finding <span class="math inline">\(\ker A\)</span>) is given by intersection of these planes.</p>
@@ -972,7 +972,7 @@ Figure 5.2: Three identical planes
     A \underline{x} &amp;= \underline{b} \iff \begin{cases}
         \underline{R}_1 \cdot \underline{x} = b_1 \\
         \underline{R}_2 \cdot \underline{x} = b_2 \\
-        \underline{R}_3 \cdot \underline{x} = b_3 
+        \underline{R}_3 \cdot \underline{x} = b_3
     \end{cases}
 \end{align*}\]</span> planes with normals <span class="math inline">\(\underline{R}_i\)</span> but not passing through <span class="math inline">\(\underline{0}\)</span> unless <span class="math inline">\(b_i = 0\)</span>.</p>
 <ul>
@@ -1005,7 +1005,7 @@ Gaussian elimination is a direct approach to solving system of equations:
     A_{m1} x_1 + \dots + A_{mn} x_n &amp;= b_m
 \end{align*}\]</span></p>
 <p><em>Example</em></p>
-<p><span class="math display" id="eq:gauss-3" id="eq:gauss-2" id="eq:gauss-1">\[\begin{align*} 
+<p><span class="math display" id="eq:gauss-3" id="eq:gauss-2" id="eq:gauss-1">\[\begin{align*}
     3 x_1 + 2 x_2 + x_3 &amp;= b_1 \tag{5.2} \\
     6 x_1 + 3 x_2 + 3 x_3 &amp;= b_2 \tag{5.3} \\
     6 x_1 + 2 x_2 + 4 x_3 &amp;= b_3 \tag{5.4}

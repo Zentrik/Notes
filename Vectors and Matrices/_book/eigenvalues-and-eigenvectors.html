@@ -10,16 +10,16 @@
 
   <meta property="og:title" content="6 Eigenvalues and Eigenvectors | Vectors and Matrices 2021 - 2022" />
   <meta property="og:type" content="book" />
-  
-  
+
+
   <meta property="og:description" content="Notes" />
-  
+
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="6 Eigenvalues and Eigenvectors | Vectors and Matrices 2021 - 2022" />
-  
+
   <meta name="twitter:description" content="Notes" />
-  
+
 
 <meta name="author" content="Author" />
 
@@ -29,8 +29,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  
-  
+
+
 <link rel="prev" href="determinants-and-inverses.html"/>
 <link rel="next" href="changing-bases-canonical-forms-and-symmetries.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
@@ -296,7 +296,7 @@ To find eigenvectors <span class="math inline">\(\underline{v} = \begin{pmatrix}
       1 &amp; i \\
       -i &amp; 1
       \end{pmatrix} \begin{pmatrix}v_1 \\v_2\end{pmatrix} = \underline{0} \\
-  \implies \underline{v} &amp;= \alpha \begin{pmatrix}1 \\i\end{pmatrix} \text{ any } \alpha \neq 0 
+  \implies \underline{v} &amp;= \alpha \begin{pmatrix}1 \\i\end{pmatrix} \text{ any } \alpha \neq 0
 \end{align*}\]</span></p></li>
 <li><p><span class="math inline">\(\lambda = 3\)</span>:
 <span class="math display">\[\begin{align*}
@@ -304,7 +304,7 @@ To find eigenvectors <span class="math inline">\(\underline{v} = \begin{pmatrix}
       -1 &amp; i \\
       -i &amp; -1
       \end{pmatrix} \begin{pmatrix}v_1 \\v_2\end{pmatrix} = \underline{0} \\
-  \implies \underline{v} &amp;= \beta \begin{pmatrix}1 \\ -i\end{pmatrix} \text{ any } \beta \neq 0 
+  \implies \underline{v} &amp;= \beta \begin{pmatrix}1 \\ -i\end{pmatrix} \text{ any } \beta \neq 0
 \end{align*}\]</span></p></li>
 </ul>
 </div>
@@ -327,7 +327,7 @@ To find eigenvectors <span class="math inline">\(\underline{v} = \begin{pmatrix}
         0 &amp; 1 \\
         0 &amp; 0
         \end{pmatrix} \begin{pmatrix}v_1 \\v_2\end{pmatrix} = \underline{0} \\
-    \implies \underline{v} &amp;= \alpha \begin{pmatrix}1 \\ 0\end{pmatrix} \text{ any } \alpha \neq 0 
+    \implies \underline{v} &amp;= \alpha \begin{pmatrix}1 \\ 0\end{pmatrix} \text{ any } \alpha \neq 0
 \end{align*}\]</span></p>
 </div>
 <div class="example">
@@ -352,7 +352,7 @@ To find eigenvectors <span class="math inline">\(\underline{v} = \begin{pmatrix}
     A_{11} - t &amp; A_{12} &amp; \dots &amp; A_{1n} \\
     A_{21} &amp; A_{22} - t &amp; \dots &amp; A_{2n} \\
     \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
-    A_{n1} &amp; A_{n2} &amp; \dots &amp; A_{nn} - t 
+    A_{n1} &amp; A_{n2} &amp; \dots &amp; A_{nn} - t
     \end{pmatrix} \\
     &amp;= \sum_{j=0}^{n} c_j t^j, \text{ for some } c_j \in \mathbb{C} \\
     &amp;= (-1)^n (t - \lambda_1) \dots (t - \lambda_n)
@@ -478,7 +478,7 @@ If the eigenvalues are distinct, <span class="math inline">\(\lambda_i \neq \lam
 <ol style="list-style-type: lower-roman">
 <li><span class="math display">\[\begin{align*}
  \text{Note } \underline{w} &amp;= \sum_{j=1}^{r} \alpha_j \underline{v}_j \\
- \implies (A - \lambda I) \underline{w} &amp;= \sum_{j=1}^{r} \alpha_j (\lambda_j - \lambda) \underline{v}_j, \text{ as } A \underline{v}_j = \lambda_j \underline{v}_j \\
+ \implies (A - \lambda I) \underline{w} &amp;= \sum_{j=1}^{r} \alpha_j (\lambda_j - \lambda) \underline{v}_j, \text{ as } A \underline{v}_j = \lambda_j \underline{v}_j
 \end{align*}\]</span></li>
 </ol>
 <p>First, suppose the eigenvectors are linear dependent, so <span class="math inline">\(\exists\)</span> linear relations <span class="math inline">\(\underline{w} = 0\)</span> with a number of non-zero coefficients <span class="math inline">\(p \geq 2\)</span>.
@@ -682,7 +682,7 @@ special case: <span class="math inline">\(A\)</span> is real and symmetric
     \overline{A} = A \text{ and } A^T = A \text{ or } \begin{cases}
         A_{ij} = \overline{A}_{ij} \\
         A_{ij} = A_{ji}
-    \end{cases}. 
+    \end{cases}.
 \end{align*}\]</span>
 Recall: complex inner-product for <span class="math inline">\(\underline{v}, \underline{w} \in \mathbb{C}^n\)</span> is
 <span class="math display">\[\begin{align*}
@@ -693,7 +693,7 @@ Recall: complex inner-product for <span class="math inline">\(\underline{v}, \un
 \end{align*}\]</span>
 <em>Observation</em>: If <span class="math inline">\(A\)</span> is hermitian then
 <span class="math display">\[\begin{align*}
-    (A \underline{v})^\dagger \underline{w} &amp;= \underline{v}^\dagger (A \underline{w}) \ \forall \; \underline{v}, \underline{w} \in \mathbb{C}^n \\
+    (A \underline{v})^\dagger \underline{w} &amp;= \underline{v}^\dagger (A \underline{w}) \ \forall \; \underline{v}, \underline{w} \in \mathbb{C}^n
 \end{align*}\]</span></p>
 <div class="proof">
 <p><span id="unlabeled-div-108" class="proof"><em>Proof</em>. </span><span class="math display">\[\begin{align*}
@@ -723,7 +723,7 @@ Recall: complex inner-product for <span class="math inline">\(\underline{v}, \un
 <li><p><span class="math display">\[\begin{align*}
  \underline{v}^\dagger (A \underline{v}) &amp;= (A \underline{v})^\dagger \underline{v} \\
  \implies \underline{v}^\dagger (\lambda \underline{v}) &amp;= (\lambda \underline{v})^\dagger \underline{v} \\
- \implies \lambda \underline{v}^\dagger \underline{v} &amp;= \overline{\lambda} \underline{v}^\dagger \underline{v} \\
+ \implies \lambda \underline{v}^\dagger \underline{v} &amp;= \overline{\lambda} \underline{v}^\dagger \underline{v}
 \end{align*}\]</span>
 for <span class="math inline">\(\underline{v}\)</span> an eigenvector with eigenvalue <span class="math inline">\(\lambda\)</span>.
 But <span class="math inline">\(\underline{v} \neq 0\)</span> so <span class="math inline">\(\underline{v}^\dagger \underline{v} \neq 0\)</span> and so <span class="math inline">\(\lambda = \overline{\lambda}\)</span>.</p></li>
@@ -887,7 +887,7 @@ Recall the characteristic polynomial is <span class="math inline">\(\chi_A(t) = 
 </div>
 <p>Note Cayley-Hamilton, <a href="eigenvalues-and-eigenvectors.html#thm:CH">6.4</a>, implies
 <span class="math display">\[\begin{align*}
-    c_0 I = - A \left(c_1 I + \dots + c_n A^{n-1} \right) 
+    c_0 I = - A \left(c_1 I + \dots + c_n A^{n-1} \right)
 \end{align*}\]</span> and if <span class="math inline">\(c_0 = \det A \neq 0\)</span> then
 <span class="math display">\[\begin{align*}
     A^{-1} &amp;= - \frac{1}{c_0} \left(c_1 I + \dots + c_n A^{n-1} \right)

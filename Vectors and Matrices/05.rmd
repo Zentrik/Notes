@@ -2,32 +2,32 @@
 
 ## Introduction
 
-Consider a linear map 
+Consider a linear map
 \begin{align*}
     T : \mathbb{R}^n \to \mathbb{R}^n.
-\end{align*} 
-If $T$ is invertible then 
+\end{align*}
+If $T$ is invertible then
 \begin{align*}
     \underbrace{\ker T = \{ \underline{0} \}}_\text{because $T$ is one-to-one} \text{ and } \underbrace{\operatorname{Im} T = \mathbb{R}^n}_\text{$T$ is onto}.
 \end{align*}
 These conditions are equivalent by rank-nullity theorem \@ref(thm:rank).
-Conversely, if these conditions hold, then 
+Conversely, if these conditions hold, then
 \begin{align*}
-    \underline{e}_1' &= T(\underline{e}_1), \dots, \underline{e}_n' = T(\underline{e}_n) \\
+    \underline{e}_1' &= T(\underline{e}_1), \dots, \underline{e}_n' = T(\underline{e}_n)
 \end{align*} is a basis (where $\{ \underline{e}_i \}$ is the standard basis) and we can define a linear map $T^{-1}$ by $T^{-1}(\underline{e}_1') = \underline{e}_1, \dots, T^{-1}(\underline{e}_n') = \underline{e}_n$.
 
 How can we test whether the conditions holds from matrix $M$ representing $T:$ $T(\underline{x}) = M \underline{x}$ and how can we find $M^{-1}$ when they do hold?
 
-For any $M$ ($n \times n$) we will define a related matrix $\widetilde{M}$ ($n \times n$) and a scalar, the *determinant* $\det M$ or $| M |$ such that 
+For any $M$ ($n \times n$) we will define a related matrix $\widetilde{M}$ ($n \times n$) and a scalar, the *determinant* $\det M$ or $| M |$ such that
 \begin{align}
     \widetilde{M} M = (\det M )I (\#eq:inverse)
 \end{align}
-Then if $\det M \neq 0$, $M$ is invertible with 
+Then if $\det M \neq 0$, $M$ is invertible with
 \begin{align*}
     M^{-1} = \frac{1}{\det M} \widetilde{M}.
-\end{align*} 
+\end{align*}
 
-*For $n = 2$* we found in [Matrix Inverses] that \@ref(eq:inverse) holds with 
+*For $n = 2$* we found in [Matrix Inverses] that \@ref(eq:inverse) holds with
 \begin{align*}
     M &= \begin{pmatrix}
     M_{11} & M_{12} \\
@@ -48,7 +48,7 @@ The factor by which areas are scaled under $M$
 \begin{align*}
     \det M \neq 0 &\iff \{ M \underline{e}_1, M \underline{e}_2 \} \text{ are linearly independent} \\
     &\iff \operatorname{Im}(M) = \mathbb{R}^2
-\end{align*} 
+\end{align*}
 
 *For $n = 3$* consider similarly
 \begin{align*}
@@ -56,14 +56,14 @@ The factor by which areas are scaled under $M$
     &= [\underline{C}_1 (M), \underline{C}_2 (M), \underline{C}_3 (M)] \\
     &= \epsilon_{ijk} M_{i1} M_{j2} M_{k3} \\
     &= \det M, \text{ defn for $n = 3$}.
-\end{align*} 
+\end{align*}
 This is the factor by which volumes are scaled under $M$ and
 \begin{align*}
     \det M \neq 0 &\iff  [M \underline{e}_1, M \underline{e}_2, M \underline{e}_3] \text{ are linearly independent} \\
     &\iff \operatorname{Im}(M) = \mathbb{R}^3
-\end{align*} 
+\end{align*}
 
-Now define $\widetilde{M}$ from $M$ using row/ column notation 
+Now define $\widetilde{M}$ from $M$ using row/ column notation
 \begin{align*}
     \underline{R}_1 (\widetilde{M}) &= \underline{C}_2 (M) \wedge \underline{C}_3 (M) \\
     \underline{R}_2 (\widetilde{M}) &= \underline{C}_3 (M) \wedge \underline{C}_1 (M) \\
@@ -71,7 +71,7 @@ Now define $\widetilde{M}$ from $M$ using row/ column notation
     \text{and note that} \\
     (\widetilde{M} M)_{ij} &= \underline{R}_i (\widetilde{M}) \cdot \underline{C}_j (M) \\
     &= \underbrace{(\underline{C}_1 (M) \cdot \underline{C}_2 (M) \wedge \underline{C}_3 (M))}_{\det M} \delta_{ij}
-\end{align*} 
+\end{align*}
 
 ::: {.example}
 \begin{align*}
@@ -114,7 +114,7 @@ Now define $\widetilde{M}$ from $M$ using row/ column notation
     \end{pmatrix} \\
     \widetilde{M} M &= (\det M) I \text{ where} \\
     \det M &= \underline{C}_1 \cdot \underline{C}_2 \wedge \underline{C}_3 = 23.
-\end{align*} 
+\end{align*}
 :::
 
 ## $\epsilon$ and Alternating Forms
@@ -122,7 +122,7 @@ Now define $\widetilde{M}$ from $M$ using row/ column notation
 ### $\epsilon$ and Permutation
 
 Recall: a permutation $\sigma$ on the set $\{1, 2, \dots, n \}$ is a bijection from this set to itself, specified by list $\sigma(1), \sigma(2), \sigma(n)$.
-Permutation $\sigma$ form a group, the symmetric group $S_n$ of order $n!$. 
+Permutation $\sigma$ form a group, the symmetric group $S_n$ of order $n!$.
 The *sign* or *signature* $\epsilon(\sigma) = (-1)^k$ where $k$ is the number of transpositions (two cycles, this is well defined).
 The *alternating* or $\epsilon$ symbol in $\mathbb{R}^n$ or $\mathbb{C}^n$ is defined by
 \begin{align*}
@@ -133,16 +133,16 @@ The *alternating* or $\epsilon$ symbol in $\mathbb{R}^n$ or $\mathbb{C}^n$ is de
     \end{cases} \\
     \epsilon(\sigma) &= (-1)^k \text{ with $\sigma$ product of $k$ transpositions} \\
     &= \pm 1.
-\end{align*} 
-If $\sigma$ is any permutation of $1, 2, \dots, n$ then 
+\end{align*}
+If $\sigma$ is any permutation of $1, 2, \dots, n$ then
 \begin{align*}
     \epsilon_{\sigma(1) \sigma(2) \dots \sigma(n)} &= \epsilon(\sigma).
-\end{align*} 
+\end{align*}
 
 ::: {.lemma}
 \begin{align*}
     \epsilon_{\sigma(i) \sigma(j) \dots \sigma(l)} = \epsilon(\sigma) \epsilon_{ij \dots l}
-\end{align*} 
+\end{align*}
 $\epsilon$ is totally antisymmetric.
 :::
 
@@ -151,27 +151,27 @@ If $i, j, \dots l$ is *not* a permutation of $1, 2, \dots, n$ then $RHS = LHS = 
 If $i = \rho(1), j = \rho(2), \dots, l = \rho(n)$ for some permutation $\rho$ then
 \begin{align*}
     RHS &= \epsilon(\sigma) \epsilon (\rho) = \epsilon (\sigma \rho) = LHS.
-\end{align*} 
+\end{align*}
 :::
 
 ### Alternating Forms and Linear (In)dependence
- 
-Given $\underline{v}_1, \dots, \underline{v}_n \in \mathbb{R}^n$ or $\mathbb{C}^n$ (these are $n$ vectors) the *alternating form* combines them to produce a scalar, defined by 
+
+Given $\underline{v}_1, \dots, \underline{v}_n \in \mathbb{R}^n$ or $\mathbb{C}^n$ (these are $n$ vectors) the *alternating form* combines them to produce a scalar, defined by
 \begin{align*}
     [\underline{v}_1, \underline{v}_2, \dots, \underline{v}_n] &= \epsilon_{ij \dots l}(\underline{v}_1)_i (\underline{v}_2)_j \dots (\underline{v}_n)_l \ \left(\sum \text{ convention}\right) \\
     &= \sum_\sigma \epsilon(\sigma) (\underline{v}_1)_{\sigma(1)} (\underline{v}_2)_{\sigma(2)} \dots (\underline{v}_n)_{\sigma(n)} \ \left[\sum_\sigma \text{ means sum over all } \sigma \in S_n \right]
-\end{align*} 
+\end{align*}
 
 #### Properties
-i. *Multilinear* 
+i. *Multilinear*
 \begin{align*}
     [\underline{v}_1, \dots, \underline{v}_{p-1}, \alpha \underline{u} + \beta \underline{w}, \underline{v}_{p+1}, \underline{v}_n] &= \alpha [\underline{v}_1, \dots, \underline{v}_{p-1}, \underline{u}, \underline{v}_{p+1}, \underline{v}_n] + \beta [\underline{v}_1, \dots, \underline{w}, \underline{v}_{p+1}, \underline{v}_n]
-\end{align*} 
+\end{align*}
 
 ii. *Totally antisymmetric*
 \begin{align*}
-    [\underline{v}_{\sigma(1)}, \underline{v}_{\sigma(2)}, \dots \underline{v}_{\sigma(n)}] &= \epsilon (\sigma) [\underline{v}_1, \underline{v}_2, \dots, \underline{v}_n] 
-\end{align*} 
+    [\underline{v}_{\sigma(1)}, \underline{v}_{\sigma(2)}, \dots \underline{v}_{\sigma(n)}] &= \epsilon (\sigma) [\underline{v}_1, \underline{v}_2, \dots, \underline{v}_n]
+\end{align*}
 
 iii. \begin{align*}
     [\underline{e}_1, \underline{e}_2, \dots, \underline{e}_n] = 1
@@ -179,12 +179,12 @@ iii. \begin{align*}
 
 Properties i, ii, iii fix the alternating form, and they also imply iv
 
-iv. If $\underline{v}_p = \underline{v}_q$ for some $p \neq q$ then 
+iv. If $\underline{v}_p = \underline{v}_q$ for some $p \neq q$ then
 \begin{align*}
     [\underline{v}_1, \dots, \underline{v}_p, \dots, \underline{v}_q, \dots, \underline{v}_n] &= 0
 \end{align*} (from ii, exchanging $\underline{v}_p \leftrightarrow \underline{v}_q$ changes sign of alternating from).
 
-v. If $\underline{v}_p = \sum_{i \neq p} \lambda_i \underline{v}_i$ then 
+v. If $\underline{v}_p = \sum_{i \neq p} \lambda_i \underline{v}_i$ then
 \begin{align*}
     [\underline{v}_1, \dots, \underline{v}_p, \dots, \underline{v}_n] &= 0
 \end{align*} (sub in and use i and iv).
@@ -216,7 +216,7 @@ Note: properties i and iii follow immediately from definition
 ::: {.proposition}
 \begin{align*}
     [\underline{v}_1, \underline{v}_2, \dots, \underline{v}_n] \neq 0 \iff \underline{v}_1, \dots, \underline{v}_n \text{ are linearly independent}.
-\end{align*} 
+\end{align*}
 :::
 
 ::: {.proof}
@@ -226,10 +226,10 @@ If $\underline{v}_1, \dots \underline{v}_n$ are linearly dependent then $\sum \a
 Suppose wlog that $\alpha_p \neq 0$, then express $\underline{v}_p$ as a linear combination of $\underline{v}_i (i \neq p)$ and so
 \begin{align*}
     [\underline{v}_1, \underline{v}_2, \dots, \underline{v}_n] = 0.
-\end{align*} 
+\end{align*}
 
 $\Longleftarrow$: \
-Note that $\underline{v}_1, \dots, \underline{v}_n$ being linearly independent means that they span (in $\mathbb{R}^n$ or $\mathbb{C}^n$) so we can write the standard basis vectors as 
+Note that $\underline{v}_1, \dots, \underline{v}_n$ being linearly independent means that they span (in $\mathbb{R}^n$ or $\mathbb{C}^n$) so we can write the standard basis vectors as
 \begin{align*}
     \underline{e}_i &= A_{ai} \underline{v}_a \text{ for some } A_{ai} \in \mathbb{R} \text{ or } \mathbb{C}. \\
     \text{But then} & \\
@@ -250,14 +250,14 @@ Example \@ref(exm:fone) are linearly independent.
 For an $n \times n$ matrix $M$ with columns
 \begin{align*}
     \underline{C}_a &= M \underline{e}_a
-\end{align*} 
-the *determinant* $\det M$ or $|M| \in \mathbb{R}$ or $\mathbb{C}$ is defined by 
+\end{align*}
+the *determinant* $\det M$ or $|M| \in \mathbb{R}$ or $\mathbb{C}$ is defined by
 \begin{align*}
     \det M &= [\underline{C}_1, \underline{C}_2, \dots, \underline{C}_n] \\
     &= [M \underline{e}_1, M \underline{e}_2, \dots, M \underline{e}_n] \\
     &= \epsilon_{ij \dots l} M_{i1} M_{j2} \dots M_{ln} \\
     &= \sum_\sigma \epsilon(\sigma) M_{\sigma(1) 1} M_{\sigma(2) 2} \dots M_{\sigma(n) n}
-\end{align*} 
+\end{align*}
 :::
 
 ::: {.proposition name="Transpose Property"}
@@ -266,7 +266,7 @@ the *determinant* $\det M$ or $|M| \in \mathbb{R}$ or $\mathbb{C}$ is defined by
     \text{so } \det M &= [\underline{R}_1, \underline{R}_2, \dots, \underline{R}_n] \\
     &= \epsilon_{ij \dots l} M_{1i} M_{2j} \dots M_{nl} \\
     &= \sum_\sigma \epsilon(\sigma) M_{1 \sigma(1)} M_{2 \sigma(2)} \dots M_{n \sigma(n)}
-\end{align*} 
+\end{align*}
 :::
 
 ::: {.example}
@@ -283,11 +283,11 @@ In $\mathbb{R}^3$ or $\mathbb{C}^3$
     M_{12} & M_{13} \\
     M_{22} & M_{23}
     \end{vmatrix}
-\end{align*} 
+\end{align*}
 :::
 
 ::: {.properties}
-$\det M$ is a function of rows or columns of $M$ that is 
+$\det M$ is a function of rows or columns of $M$ that is
 
 i. multilinear
 
@@ -303,7 +303,7 @@ iii. $\det I = 1$
     &\iff \operatorname{rank} M = n \quad (M \text{ is } n \times n) \\
     &\iff \ker M = \{ \underline{0} \} \\
     &\iff M^{-1} \text{ exists}
-\end{align*} 
+\end{align*}
 :::
 
 ::: {.proof}
@@ -311,7 +311,7 @@ All equivalences follow immediately from earlier results including the discussio
 :::
 
 ::: {.proof name="Transpose property"}
-Suffices to show 
+Suffices to show
 \begin{align*}
     \sum_\sigma \epsilon(\sigma) M_{\sigma(1) 1} \dots M_{\sigma(n) n} &= \sum_\sigma \epsilon(\sigma) M_{1 \sigma(1)} \dots M_{n \sigma(n)}
 \end{align*}
@@ -345,7 +345,7 @@ See [Cofactors and Determinants].
     0 & 5i & 0 & -i \\
     2 & 0 & 0 & 1
     \end{pmatrix}.
-\end{align*} Expand by row $3$ to find 
+\end{align*} Expand by row $3$ to find
 \begin{align*}
     \det M &= \sum_a (-1)^{3 + a} M_{3a} M^{3a} \\
     M_{31} &= M_{33} = 0 \\
@@ -379,17 +379,17 @@ See [Cofactors and Determinants].
     \det M &= \sum_i (-1)^{2 + i} M_{i2} M^{i2} \\
     &= (-1)^{2 + 3} M_{32} M^{32} \\
     &= 10i.
-\end{align*} 
+\end{align*}
 (Calculated this previously as example of alternating form in $\mathbb{C}^4$)
 :::
 
 ::: {.lemma #block}
 If $M = \left(
-    \begin{array}{c|c} 
-      A & O \\ 
-      \hline 
-      O & I 
-    \end{array} \right)$ 
+    \begin{array}{c|c}
+      A & O \\
+      \hline
+      O & I
+    \end{array} \right)$
 block form with $A$ a $r \times r$ matrix; $I \ (n - r) \times (n - r)$ identity, then $\det M = \det A$.
 :::
 
@@ -411,7 +411,7 @@ If *all* rows or columns are scaled
 \begin{align*}
     M &\mapsto \lambda M, \\
     \text{then } \det M &\mapsto \lambda^n \det M
-\end{align*} 
+\end{align*}
 
 #### Row or column Operations
 
@@ -425,7 +425,7 @@ then $\det M \mapsto \det M$ as we can use multilinearity and then we have two r
     \text{If } \underline{R}_i &\leftrightarrow \underline{R}_j \hspace{0.5cm} \text{for } i \neq j \\
     \text{If } \underline{C}_a &\leftrightarrow \underline{C}_b \hspace{0.5cm} \text{for } a \neq b \\
     \text{then } \det M &\mapsto -\det M.
-\end{align*} 
+\end{align*}
 
 ::: {.example #exchanges}
 \begin{align*}
@@ -467,7 +467,7 @@ then $\det M \mapsto \det M$ as we can use multilinearity and then we have two r
     0 & -1
     \end{vmatrix} \\
     &= (1 - a)^2 (a + 2)
-\end{align*} 
+\end{align*}
 :::
 
 ### Multiplicative Property
@@ -476,24 +476,24 @@ then $\det M \mapsto \det M$ as we can use multilinearity and then we have two r
 For $n \times n$ matrices $M$ and $N$
 \begin{align*}
     \det (MN) = \det M \det N
-\end{align*}  
+\end{align*}
 This is based on the following lemma
 :::
 
 ::: {.lemma}
 \begin{align*}
     \epsilon_{i_1 \dots i_n} M_{i_1 a_1} \dots M_{i_n a_n} &= (\det M) \epsilon_{a_1 \dots a_n}
-\end{align*} 
+\end{align*}
 :::
 
 :::{.proof name="Proof of Theorem"}
 \begin{align*}
-    \det (MN) &= \epsilon_{i_1 \dots i_n} (MN)_{i_1 1} \dots (MN)_{i_n n} \\ 
-    &= \epsilon_{i_1 \dots i_n} M_{i_1 k_1} N_{k_1 1} \dots  M_{i_n k_n} N_{k_n n} \\ 
-    &= \epsilon_{i_1 \dots i_n} M_{i_1 k_1} \dots  M_{i_n k_n} N_{k_1 1} \dots N_{k_n n} \\ 
+    \det (MN) &= \epsilon_{i_1 \dots i_n} (MN)_{i_1 1} \dots (MN)_{i_n n} \\
+    &= \epsilon_{i_1 \dots i_n} M_{i_1 k_1} N_{k_1 1} \dots  M_{i_n k_n} N_{k_n n} \\
+    &= \epsilon_{i_1 \dots i_n} M_{i_1 k_1} \dots  M_{i_n k_n} N_{k_1 1} \dots N_{k_n n} \\
     &= (\det M)  \epsilon_{k_1 \dots k_n} N_{k_1 1} \dots N_{k_n n} \text{ by lemma } \\
     &= (\det M) (\det N)
-\end{align*}  
+\end{align*}
 :::
 
 :::{.proof name="Proof of Lemma"}
@@ -505,40 +505,40 @@ Use total antisymmetry of LHS and RHS and then check taking $a_1 = 1, \dots, a_n
 \
 
 i. If $M = \left(
-    \begin{array}{c|c} 
-      A & O \\ 
-      \hline 
-      O & B 
-    \end{array} \right)$ 
+    \begin{array}{c|c}
+      A & O \\
+      \hline
+      O & B
+    \end{array} \right)$
 block form, with $A$ $r \times r$ and $B$ $(n - r) \times (n - r)$ then $\det M = \det A \det B$.
 Since $\left(
-    \begin{array}{c|c} 
-      A & O \\ 
-      \hline 
-      O & B 
+    \begin{array}{c|c}
+      A & O \\
+      \hline
+      O & B
     \end{array} \right) = \left(
-    \begin{array}{c|c} 
-        A & O \\ 
-        \hline 
-        O & I 
+    \begin{array}{c|c}
+        A & O \\
+        \hline
+        O & I
     \end{array} \right) \left(
-    \begin{array}{c|c} 
-        I & O \\ 
-        \hline 
-        O & B 
+    \begin{array}{c|c}
+        I & O \\
+        \hline
+        O & B
     \end{array} \right)$
 and we can use Lemma \@ref(lem:block) above.
 
 ii. \begin{align*}
     M^{-1}M &= I \implies \det(M^{-1}) \det M = \det I = 1 \\
     \text{so } \det(M^{-1}) &= (\det M)^{-1}
-\end{align*} 
+\end{align*}
 
 iii. For $R$ real and orthogonal,
 \begin{align*}
     R^T R &= I \implies \det(R^T) \det R = (\det R)^2 = 1 \\
     \implies \det R &= \pm 1
-\end{align*} 
+\end{align*}
 
 iv. For $U$ complex and unitary,
 \begin{align*}
@@ -546,7 +546,7 @@ iv. For $U$ complex and unitary,
     &= \overline{\det(U)} \det(U) \\
     &= |\det U|^2 = 1 \\
     \implies |\det U| &= 1.
-\end{align*} 
+\end{align*}
 :::
 
 ## Minors, Cofactors and Inverses
@@ -560,47 +560,47 @@ Consider column $\underline{C}_a$ of matrix $M$ ($a$ fixed) and write $\underlin
     &= \sum_i M_{ia} \Delta_{ia} \hspace{0.5cm} \text{(no sum over $a$)} \\
     \text{where the } &\textit{cofactor } \Delta_{ia} \text{ is defined by} \\
     \Delta_{ia} &= [\underline{C}_1, \underline{C}_2, \dots, \underline{C}_{a- 1}, \underline{e}_i, \underline{C}_{a + 1}, \dots, \underline{C}_n] \\
-    &= \det \left( \begin{array}{c|c|c} 
-        A & \begin{array}{c} 
-            0 \\  
+    &= \det \left( \begin{array}{c|c|c}
+        A & \begin{array}{c}
+            0 \\
             \vdots \\
             0
-        \end{array} & B \\ 
-        \hline 
-        \begin{array}{ccc} 
+        \end{array} & B \\
+        \hline
+        \begin{array}{ccc}
             0 & \dots & 0
-        \end{array} & 1 & \begin{array}{ccc} 
+        \end{array} & 1 & \begin{array}{ccc}
             0 & \dots & 0
         \end{array} \\
         \hline
-        C & \begin{array}{c} 
-            0 \\  
+        C & \begin{array}{c}
+            0 \\
             \vdots \\
             0
         \end{array} & D
     \end{array} \right) \\
-    &= (-1)^{n - a} (-1)^{n - i} \det 
+    &= (-1)^{n - a} (-1)^{n - i} \det
     \left(
-    \begin{array}{c|c} 
-        \begin{array}{c|c} 
-            A & B \\ 
-            \hline 
-            C & D 
-        \end{array} & \begin{array}{c} 
-            0 \\  
+    \begin{array}{c|c}
+        \begin{array}{c|c}
+            A & B \\
+            \hline
+            C & D
+        \end{array} & \begin{array}{c}
+            0 \\
             \vdots \\
             0
-        \end{array} \\ 
-        \hline 
-        \begin{array}{ccc} 
+        \end{array} \\
+        \hline
+        \begin{array}{ccc}
             0 & \dots & 0
         \end{array} & 1
     \end{array} \right) \\
     &= (-1)^{a + i} M^{i a} \\
-    \text{where } M^{ia} &= \det \left( \begin{array}{c|c} 
-        A & B \\ 
-        \hline 
-        C & D 
+    \text{where } M^{ia} &= \det \left( \begin{array}{c|c}
+        A & B \\
+        \hline
+        C & D
     \end{array} \right) \text{by lemma } \\
     \therefore \det M &= \sum_i M_{ia} \Delta_{ia} \\
     &= \sum_i M_{ia} (-1)^{i + a} M^{ia}
@@ -618,7 +618,7 @@ Reasoning as in [Cofactors and Determinants] with $\underline{C}_b = \sum_i M_{i
     \end{cases} \\
     \text{Hence } \sum_i M_{ib} \Delta_{ia} &= \delta_{ab} \det M \\
     \text{And similarly} \sum_a M_{ja} \Delta_{ia} &= \delta_{ij} \det M.
-\end{align*} 
+\end{align*}
 Let $\Delta$ be the *matrix* of cofactors with entries $\Delta_{ia}$, and define the *adjugate* $\widetilde{M} = \operatorname{adj}(M) = \Delta^T$.
 Then the relations above become
 \begin{align*}
@@ -628,7 +628,7 @@ Then the relations above become
     &= \delta_{ab} \det M \\
     M_{ja} \Delta_{ia} &= (\widetilde{M} M)_{ji} \\
     &= \delta_{ij} \det M.
-\end{align*} 
+\end{align*}
 This justifies \@ref(eq:inverse) with
 \begin{align*}
     \widetilde{M} &= \Delta^T \\
@@ -636,10 +636,10 @@ This justifies \@ref(eq:inverse) with
     \text{we have } \widetilde{M}M &= M \widetilde{M} = (\det M) I.
 \end{align*}^[Would probably be guided through this proof in an exam and even then probably wouldn't come up.]
 
-Hence if $\det M \neq 0$ then $M$ is invertible and 
+Hence if $\det M \neq 0$ then $M$ is invertible and
 \begin{align*}
     M^{-1} = \frac{1}{\det M} \widetilde{M}.
-\end{align*} 
+\end{align*}
 
 ::: {.example #inverse}
 Consider \begin{align*}
@@ -647,7 +647,7 @@ Consider \begin{align*}
     1 & 1 & a \\
     a & 1 & 1 \\
     1 & a & 1
-    \end{pmatrix},\ a \in \mathbb{C}, \\
+    \end{pmatrix},\ a \in \mathbb{C},
 \end{align*} previously found in Example \@ref(exm:exchanges) $\det A = (1 - a)^2 (a + 2)$.
 Hence $A^{-1}$ exists if $a \neq 1$, $a \neq - 2$.
 
@@ -671,7 +671,7 @@ Matrix of cofactors is \begin{align*}
     1 & 1 & - (1 + a) \\
     - (1 + a) & 1 & 1
     \end{pmatrix}.
-\end{align*} 
+\end{align*}
 :::
 
 ## System of Linear Equations
@@ -684,7 +684,7 @@ Consider a system of $n$ linear equations in $n$ unknowns $x_i$ written in vecto
     \text{i.e. } A_{11} x_1 + \dots + A_{1n} x_n &= b_1 \\
     &\;\;\vdots \\
     A_{n1} x_1 + \dots + A_{nn} x_n &= b_n
-\end{align*} 
+\end{align*}
 
 There are three possibilities:
 
@@ -692,7 +692,7 @@ i. $\det A \neq 0 \implies A^{-1}$ exists $\implies$ unique solution, $\underlin
 
 ii. $\det A = 0$ and $\underline{b} \notin \operatorname{Im} A \implies$ no solution.
 
-iii. $\det A = 0$ and $\underline{b} \in \operatorname{Im} A \implies \infty$ many solutions. 
+iii. $\det A = 0$ and $\underline{b} \in \operatorname{Im} A \implies \infty$ many solutions.
 
 *Elaboration*: a solution exists iff $A \underline{x}_0 = \underline{b}$ for some $\underline{x}_0 \iff \underline{b} \in \operatorname{Im} A$.
 Then $\underline{x}$ is also a solution iff $\underline{u} = \underline{x} - \underline{x}_0$ satisfies
@@ -700,12 +700,12 @@ Then $\underline{x}$ is also a solution iff $\underline{u} = \underline{x} - \un
     A \underline{u} &= \underline{0} \textit{ homogenous problem}. \\
     \text{Now } \det A \neq 0 &\iff \operatorname{Im} A = \mathbb{R}^n \\
     &\iff \ker A = \{ \underline{0} \}.
-\end{align*} 
+\end{align*}
 So in (i) there is a unique solutions and it can be found using $A^{-1}$.
 \begin{align*}
     \text{But } \det A = 0 &\iff \operatorname{rank} A < n \\
     &\iff \operatorname{null} A > 0
-\end{align*} 
+\end{align*}
 and then either $\underline{b} \notin \operatorname{Im} A$ as in case (ii) or $\underline{b} \in \operatorname{Im} A$ as in case (iii).
 If $\underline{u}_1, \dots, \underline{u}_k$ is a basis for $\ker A$ then general solution of homogenous problem is $\underline{u} = \sum_{i=1}^{k} \lambda_i \underline{u}_i$.
 
@@ -717,7 +717,7 @@ Then $A^{-1}$ exists and we have a solutions for any $c$:
 \begin{align*}
     \underline{x} &= A^{-1} \underline{b} \\
     &= \frac{1}{(1- a)(a + 2)} \begin{pmatrix}2 - c - ca \\c - a \\c - a \end{pmatrix}
-\end{align*} 
+\end{align*}
 
 - $a = 1$,
 \begin{align*}
@@ -727,7 +727,7 @@ Then $A^{-1}$ exists and we have a solutions for any $c$:
     b &\in \operatorname{Im} A \iff c = 1; \\
     \text{particular solution } \underline{x}_0 &= \begin{pmatrix}1 \\0 \\0\end{pmatrix} \\
     \text{general solution } \underline{x} &= \underline{x}_0 + \underline{u} \\
-    &= \begin{pmatrix}1 - \lambda - \mu \\ \lambda \\ \mu \end{pmatrix} \\
+    &= \begin{pmatrix}1 - \lambda - \mu \\ \lambda \\ \mu \end{pmatrix}
 \end{align*} This is case (iii), and forms a plane of solutions.
 For $a = 1, c \neq 1$ we have no solutions - case (ii).
 
@@ -743,7 +743,7 @@ For $a = 1, c \neq 1$ we have no solutions - case (ii).
     \underline{b} &\in \operatorname{Im} A \iff c = 2, \text{ (case (iii))} \\
     \text{particular solution } \underline{x}_0 &= \begin{pmatrix}1 \\0 \\0\end{pmatrix} \\
     \text{general solution } \underline{x} &= \underline{x}_0 + \underline{u} \\
-    &= \begin{pmatrix}1 + \lambda \\ \lambda \\ \lambda \end{pmatrix} \\
+    &= \begin{pmatrix}1 + \lambda \\ \lambda \\ \lambda \end{pmatrix}
 \end{align*} If $c \neq 2$, no solution, case (ii).
 :::
 
@@ -755,50 +755,50 @@ Let $\underline{R}_1, \underline{R}_2, \underline{R}_3$ be rows of $A$ ($3 \time
     A \underline{u} = \underline{0} \iff \begin{cases}
         \underline{R}_1 \cdot \underline{u} = 0 \\
         \underline{R}_2 \cdot \underline{u} = 0 \\
-        \underline{R}_3 \cdot \underline{u} = 0 
+        \underline{R}_3 \cdot \underline{u} = 0
     \end{cases} \text{planes through $\underline{0}$, normals $\underline{R}_i (\neq \underline{0})$}
-\end{align*} 
+\end{align*}
 So solutions of homogenous problem (finding $\ker A$) is given by intersection of these planes.
 
 - $\operatorname{rank}(A) = 3 \implies$ normals are linearly independent and planes intersect in $\underline{0}$.
 
 - $\operatorname{rank}(A) = 2 \implies$ normals span a plane and planes intersect in a line and $\dim \ker A = 1$.
-```{r 05-sheaf, echo = FALSE, fig.cap = "looking *along* line of intersection of planes. LEFT: The line comes out of the image.", fig.align="center", out.height="300"} 
-knitr::include_graphics("figures/05-sheaf.png") 
+```{r 05-sheaf, echo = FALSE, fig.cap = "looking *along* line of intersection of planes. LEFT: The line comes out of the image.", fig.align="center", out.height="300"}
+knitr::include_graphics("figures/05-sheaf.png")
 ```
 
 - $\operatorname{rank}(A) = 1 \implies$ normals are parallel and planes coincide and $\dim \ker A = 2$
-```{r 05-rank-1, echo = FALSE, fig.cap = "Three identical planes", fig.align="center", out.width="500"} 
-knitr::include_graphics("figures/05-rank-1.png") 
+```{r 05-rank-1, echo = FALSE, fig.cap = "Three identical planes", fig.align="center", out.width="500"}
+knitr::include_graphics("figures/05-rank-1.png")
 ```
 
-Now consider instead 
+Now consider instead
 \begin{align*}
     A \underline{x} &= \underline{b} \iff \begin{cases}
         \underline{R}_1 \cdot \underline{x} = b_1 \\
         \underline{R}_2 \cdot \underline{x} = b_2 \\
-        \underline{R}_3 \cdot \underline{x} = b_3 
+        \underline{R}_3 \cdot \underline{x} = b_3
     \end{cases}
 \end{align*} planes with normals $\underline{R}_i$ but not passing through $\underline{0}$ unless $b_i = 0$.
 
 - $\operatorname{rank}(A) = 3 \iff \det A \neq 0$, normals are linearly independent; planes intersect in a point and get unique solution for any $b$.
 
 - $\operatorname{rank}(A) = 2 \implies$ planes may intersect in a line (as in homogenous case) *but* they may not:
-```{r 05-prism, echo = FALSE, fig.cap = "No solutions", fig.align="center", out.height="300"} 
-knitr::include_graphics("figures/05-prism.png") 
+```{r 05-prism, echo = FALSE, fig.cap = "No solutions", fig.align="center", out.height="300"}
+knitr::include_graphics("figures/05-prism.png")
 ```
 
 - $\operatorname{rank}(A) = 1 \implies$ planes may coincide (as in homogenous case) *but* they may not:
-```{r 05-parallel, echo = FALSE, fig.cap = "Three parallel or two identical and another parallel", fig.align="center", out.height="300"} 
-knitr::include_graphics("figures/05-parallel.png") 
+```{r 05-parallel, echo = FALSE, fig.cap = "Three parallel or two identical and another parallel", fig.align="center", out.height="300"}
+knitr::include_graphics("figures/05-parallel.png")
 ```
 
-```{r 05-R3-solutions-1, echo = FALSE, fig.cap = "", fig.align="center", out.height="300"} 
-knitr::include_graphics("figures/05-R3-solutions-1.png") 
+```{r 05-R3-solutions-1, echo = FALSE, fig.cap = "", fig.align="center", out.height="300"}
+knitr::include_graphics("figures/05-R3-solutions-1.png")
 ```
 
-```{r 05-R3-solutions-2, echo = FALSE, fig.cap = "", fig.align="center", out.height="300"} 
-knitr::include_graphics("figures/05-R3-solutions-2.png") 
+```{r 05-R3-solutions-2, echo = FALSE, fig.cap = "", fig.align="center", out.height="300"}
+knitr::include_graphics("figures/05-R3-solutions-2.png")
 ```
 
 ### Gaussian Elimination and Echelon Form
@@ -809,15 +809,15 @@ Gaussian elimination is a direct approach to solving system of equations:
     A_{11} x_1 + \dots + A_{1n} x_n &= b_1 \\
     &\;\;\vdots \\
     A_{m1} x_1 + \dots + A_{mn} x_n &= b_m
-\end{align*} 
+\end{align*}
 
 *Example*
 
-\begin{align*} 
+\begin{align*}
     3 x_1 + 2 x_2 + x_3 &= b_1 (\#eq:gauss-1) \\
     6 x_1 + 3 x_2 + 3 x_3 &= b_2 (\#eq:gauss-2) \\
     6 x_1 + 2 x_2 + 4 x_3 &= b_3 (\#eq:gauss-3)
-\end{align*} 
+\end{align*}
 
 Steps
 
@@ -825,12 +825,12 @@ Steps
 \begin{align*}
     0 - x_2 + x_3 &= b_2 - 2 b_1 (\#eq:gauss-22) \\
     0 - 2 x_2 + 2 x_3 &= b_3 - 2 b_1 (\#eq:gauss-32)
-\end{align*} 
+\end{align*}
 
 2. repeat this using \@ref(eq:gauss-22) to eliminate $x_2$ from \@ref(eq:gauss-32):
 \begin{align*}
     0 + 0 + 0 &= b_3 - 2 b_2 + 2 b_1 (\#eq:gauss-33)
-\end{align*} 
+\end{align*}
 Now consider new system \@ref(eq:gauss-1), \@ref(eq:gauss-22), \@ref(eq:gauss-33).
 
 - $b_3 - 2 b_2 + 2 b_1 \neq 0 \implies$ no solutions
@@ -838,8 +838,8 @@ Now consider new system \@ref(eq:gauss-1), \@ref(eq:gauss-22), \@ref(eq:gauss-33
 - $b_3 - 2 b_2 + 2 b_1 = 0 \implies \infty$ solutions, $x_3$ is arbitrary and then $x_2$ and $x_1$ determined from \@ref(eq:gauss-1), \@ref(eq:gauss-22).
 
 In general case we aim to carry out steps as in example until we obtain an equivalent system
-```{r 05-replace, echo = FALSE, fig.cap = "", fig.align="center", out.width="500"} 
-knitr::include_graphics("figures/05-replace.png") 
+```{r 05-replace, echo = FALSE, fig.cap = "", fig.align="center", out.width="500"}
+knitr::include_graphics("figures/05-replace.png")
 ```
 $M$ is obtained from $A$ by row operations including row exchanges and column exchanges which relabel variables $x_i$.
 

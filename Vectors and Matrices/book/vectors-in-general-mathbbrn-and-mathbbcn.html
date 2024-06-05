@@ -10,16 +10,16 @@
 
   <meta property="og:title" content="3 Vectors in General; \(\mathbb{R}^n\) and \(\mathbb{C}^n\) | Vectors and Matrices 2021 - 2022" />
   <meta property="og:type" content="book" />
-  
-  
+
+
   <meta property="og:description" content="Notes" />
-  
+
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="3 Vectors in General; \(\mathbb{R}^n\) and \(\mathbb{C}^n\) | Vectors and Matrices 2021 - 2022" />
-  
+
   <meta name="twitter:description" content="Notes" />
-  
+
 
 <meta name="author" content="Author" />
 
@@ -29,8 +29,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  
-  
+
+
 <link rel="prev" href="vectors-in-3-dimensions.html"/>
 <link rel="next" href="matrices-and-linear-maps.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
@@ -280,7 +280,7 @@ for any <span class="math inline">\(\underline{x}, \underline{y} \in \mathbb{R}^
 <li><p>Bilinear (linear in each vector)
 <span class="math display">\[\begin{align*}
 (\lambda \underline{x} + \lambda&#39; \underline{x}) \cdot \underline{y} &amp;= \lambda (\underline{x} \cdot \underline{y}) + \lambda&#39; (\underline{x}&#39; \cdot \underline{y}) \\
-(\lambda \underline{y} + \lambda&#39; \underline{y}) \cdot \underline{x} &amp;= \lambda (\underline{y} \cdot \underline{x}) + \lambda&#39; (\underline{y}&#39; \cdot \underline{x}) \\
+(\lambda \underline{y} + \lambda&#39; \underline{y}) \cdot \underline{x} &amp;= \lambda (\underline{y} \cdot \underline{x}) + \lambda&#39; (\underline{y}&#39; \cdot \underline{x})
 \end{align*}\]</span></p></li>
 <li><p>Positive definite
 <span class="math inline">\(\underline{x} \cdot \underline{x} = \sum_i x^2_i \geq 0\)</span> and <span class="math inline">\(= 0 \iff \underline{x} = \underline{0}\)</span>.
@@ -292,7 +292,7 @@ The <em>length</em> or <em>norm</em> of vector <span class="math inline">\(\unde
     \underline{e}_1 &amp;= (1, 0, \dots, 0) \\
     \underline{e}_2 &amp;= (0, 1, \dots, 0) \\
     &amp;\;\;\vdots \\
-    \underline{e}_n &amp;= (0, 0, \dots, 1).    
+    \underline{e}_n &amp;= (0, 0, \dots, 1).
 \end{align*}\]</span>
 We call <span class="math inline">\(\{ \underline{e}_i \}\)</span> the <em>standard basis</em> for <span class="math inline">\(\mathbb{R}^n\)</span>.
 Note it is orthonormal:
@@ -300,7 +300,7 @@ Note it is orthonormal:
     \underline{e}_i \cdot \underline{e}_j = \delta_{ij} = \begin{cases}
         1 &amp; \text{ if } i = j \\
         0 &amp; \text{ if } i \neq j
-    \end{cases} 
+    \end{cases}
 \end{align*}\]</span></p>
 </div>
 <div id="cauchy-schwarz-and-triangle-inequalities" class="section level3" number="3.1.2">
@@ -336,7 +336,7 @@ Equality holds iff discriminant <span class="math inline">\(= 0\)</span> iff <sp
 <h3><span class="header-section-number">3.1.3</span> Comments</h3>
 <p>Inner product on <span class="math inline">\(\mathbb{R}^n\)</span>
 <span class="math display">\[\begin{align*}
-    \underline{a} \cdot \underline{b} = \delta_{ij} a_i b_j \hspace{0.5cm} (\sum \text{ convention and } i, j = 1, \dots, n) \\
+    \underline{a} \cdot \underline{b} = \delta_{ij} a_i b_j \hspace{0.5cm} (\sum \text{ convention and } i, j = 1, \dots, n)
 \end{align*}\]</span>
 Component definition matches geometrical definition for n = 3 <a href="vectors-in-3-dimensions.html#scalar-or-dot-product">Scalar or Dot Product</a>.</p>
 <p>In <span class="math inline">\(\mathbb{R}^3\)</span> we also have a cross product with component definition <span class="math inline">\((\underline{a} \wedge \underline{b})_i = \epsilon_{ijk} a_j b_k\)</span> (geometric definition given in <a href="vectors-in-3-dimensions.html#vector-or-cross-product">Vector or Cross Product</a>)<br />
@@ -345,7 +345,7 @@ Cannot use this to define vector-valued product except in <span class="math inli
 But in <span class="math inline">\(\mathbb{R}^2\)</span> we have <span class="math inline">\(\epsilon_{ij}\)</span> with <span class="math inline">\(\epsilon_{12} = \epsilon_{21} = 1\)</span> and we can use this to define an additional scalar cross product in 2d.</p>
 <p><span class="math display">\[\begin{align*}
     [\underline{a}, \underline{b}] &amp;= \epsilon_{ij} a_i b_j \\
-    &amp;= a_1 b_2 - a_2 b_1 \text{ for } \underline{a}, \underline{b} \in \mathbb{R}^2 \\
+    &amp;= a_1 b_2 - a_2 b_1 \text{ for } \underline{a}, \underline{b} \in \mathbb{R}^2
 \end{align*}\]</span>
 Geometrically, this gives (signed) area of parallelogram <span class="math inline">\([\underline{a}, \underline{b}] = |\underline{a}| |\underline{b}| \sin \theta\)</span>.
 <img src="figures/03-2d-cross.png" width="50%" style="display: block; margin: auto;" />
@@ -383,11 +383,11 @@ Note: a non-empty subset <span class="math inline">\(U \subseteq V\)</span> is a
 <div class="example">
 <p><span id="exm:unlabeled-div-29" class="example"><strong>Example 3.1  </strong></span>In <span class="math inline">\(\mathbb{R}^3\)</span>, a line or plane through <span class="math inline">\(\underline{0}\)</span> is a subspace but if it doesn’t contain <span class="math inline">\(\underline{0}\)</span> it is not a subspace.
 e.g. <span class="math display">\[\begin{align*}
-    \underline{v}_1 = \begin{pmatrix}1 \\0 \\-1\end{pmatrix}, 
+    \underline{v}_1 = \begin{pmatrix}1 \\0 \\-1\end{pmatrix},
     \underline{v}_2 = \begin{pmatrix}1 \\1 \\-2\end{pmatrix},
     \underline{n} = \begin{pmatrix}1 \\1 \\1\end{pmatrix} \\
     \operatorname{span} \{ \underline{v}_1, \underline{v}_2\} = \{ \underline{r} : \underline{n} \cdot \underline{r} = 0 \} \text{ this is a plane and subspace} \\
-    \text{But } \{ \underline{r} : \underline{n} \cdot \underline{r} = 1 \} \text{ this is a plane but not a subspace } [\underline{r}, \underline{r}&#39; \text{ on plane then } (\underline{r} + \underline{r}&#39;) \cdot \underline{n} = 2] \\
+    \text{But } \{ \underline{r} : \underline{n} \cdot \underline{r} = 1 \} \text{ this is a plane but not a subspace } [\underline{r}, \underline{r}&#39; \text{ on plane then } (\underline{r} + \underline{r}&#39;) \cdot \underline{n} = 2]
 \end{align*}\]</span></p>
 </div>
 </div>
@@ -469,11 +469,11 @@ Given ii., the coefficients <span class="math inline">\(v_i\)</span> in i. are u
     \underline{e}_1 &amp;= (1, 0, \dots, 0) \\
     \underline{e}_2 &amp;= (0, 1, \dots, 0) \\
     &amp;\;\;\vdots \\
-    \underline{e}_n &amp;= (0, 0, \dots, 1).    
+    \underline{e}_n &amp;= (0, 0, \dots, 1).
 \end{align*}\]</span> is a basis according to general definition.</p>
 <ol style="list-style-type: lower-roman">
 <li><p><span class="math display">\[\begin{align*}
- \underline{x} = \begin{pmatrix}x_1 \\\vdots \\x_n\end{pmatrix} = x_1 \underline{e}_1 + \dots + x_n \underline{e}_n \\
+ \underline{x} = \begin{pmatrix}x_1 \\\vdots \\x_n\end{pmatrix} = x_1 \underline{e}_1 + \dots + x_n \underline{e}_n
 \end{align*}\]</span></p></li>
 <li><p><span class="math inline">\(\underline{x} = \underline{0} \iff x_1 = x_2 = \dots = x_n = 0\)</span></p></li>
 </ol>
@@ -510,7 +510,7 @@ Note: <span class="math inline">\(\mathbb{R}^n\)</span> has dimension <span clas
 <div class="proof">
 <p><span id="unlabeled-div-40" class="proof"><em>Proof</em>. </span><span class="math display">\[\begin{align*}
     \underline{f}_a &amp;= \sum_i A_{ai} \underline{e}_i \\
-    \text{and } \underline{e}_i &amp;= \sum_i B_{ia} \underline{f}_a \\
+    \text{and } \underline{e}_i &amp;= \sum_i B_{ia} \underline{f}_a
 \end{align*}\]</span> for constants <span class="math inline">\(A_{ai}\)</span> and <span class="math inline">\(B_{ia}\)</span> and we use ranges of indices <span class="math inline">\(i, j = 1, \dots, n\)</span> and <span class="math inline">\(a, b = 1, \dots, m\)</span>.<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>
 <span class="math display">\[\begin{align*}
     \implies \underline{f}_a &amp;= \sum_i A_{ai} \left( \sum_b B_{ib} \underline{f}_b \right) \\
@@ -559,7 +559,7 @@ Taking <em>complex</em> scalars <span class="math inline">\(\lambda, \mu \in \ma
     \text{with } z_j &amp;= x_j + i y_j \hspace{0.5cm} x_j, y_j \in \mathbb{R} \\
     \text{then } \underline{z} &amp;= \sum_j x_j \underline{e}_j + \sum_j y_j \underline{f}_j \text{ is a real linear combination} \\
     \text{where } \underline{e}_j &amp;= \begin{pmatrix}0 &amp; \dots &amp; 1 &amp; \dots &amp; 0\end{pmatrix} \\
-    \underline{f}_j &amp;= \begin{pmatrix}0 &amp; \dots &amp; i &amp; \dots &amp; 0\end{pmatrix} \\
+    \underline{f}_j &amp;= \begin{pmatrix}0 &amp; \dots &amp; i &amp; \dots &amp; 0\end{pmatrix}
 \end{align*}\]</span>
 <span class="math inline">\(\therefore \{\underline{e}_1, \dots, \underline{e}_n, \underline{f}_1, \dots, \underline{f}_n \}\)</span> is a basis for <span class="math inline">\(\mathbb{C}^n\)</span> as a <em>real</em> vector space.
 So the real dimension is <span class="math inline">\(2n\)</span>.<br />
@@ -570,7 +570,7 @@ But <span class="math inline">\(\underline{z} = \sum_j z_j \underline{e}_j\)</sp
 <h3><span class="header-section-number">3.4.2</span> Inner Product</h3>
 <p>Inner product or scalar product on <span class="math inline">\(\mathbb{C}^n\)</span> is defined by
 <span class="math display">\[\begin{align*}
-    (\underline{z}, \underline{w}) &amp;= \sum_j \bar{z}_j w_j = \bar{z}_1 w_1 + \dots + \bar{z}_n w_n \\
+    (\underline{z}, \underline{w}) &amp;= \sum_j \bar{z}_j w_j = \bar{z}_1 w_1 + \dots + \bar{z}_n w_n
 \end{align*}\]</span></p>
 <div id="properties" class="section level4" number="3.4.2.1">
 <h4><span class="header-section-number">3.4.2.1</span> Properties</h4>
@@ -582,7 +582,7 @@ But <span class="math inline">\(\underline{z} = \sum_j z_j \underline{e}_j\)</sp
 <li><p><em>linear/ anti-linear</em>
 <span class="math display">\[\begin{align*}
 (\underline{z}, \lambda \underline{w} + \lambda&#39; \underline{w}&#39;) &amp;= \lambda (\underline{z}, \underline{w}) + \lambda&#39; (\underline{z}, \underline{w}&#39;) \\
-(\mu \underline{z} + \mu&#39; \underline{z}&#39;, \underline{w}) &amp;= \bar{\mu} (\underline{z}, \underline{w}) + \overline{\mu}&#39; (\underline{z}&#39;, \underline{w})    
+(\mu \underline{z} + \mu&#39; \underline{z}&#39;, \underline{w}) &amp;= \bar{\mu} (\underline{z}, \underline{w}) + \overline{\mu}&#39; (\underline{z}&#39;, \underline{w})
 \end{align*}\]</span></p></li>
 <li><p><em>positive definite</em>
 <span class="math display">\[\begin{align*}

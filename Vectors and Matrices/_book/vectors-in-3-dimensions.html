@@ -10,16 +10,16 @@
 
   <meta property="og:title" content="2 Vectors in 3 Dimensions | Vectors and Matrices 2021 - 2022" />
   <meta property="og:type" content="book" />
-  
-  
+
+
   <meta property="og:description" content="Notes" />
-  
+
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="2 Vectors in 3 Dimensions | Vectors and Matrices 2021 - 2022" />
-  
+
   <meta name="twitter:description" content="Notes" />
-  
+
 
 <meta name="author" content="Author" />
 
@@ -29,8 +29,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  
-  
+
+
 <link rel="prev" href="complex-numbers.html"/>
 <link rel="next" href="vectors-in-general-mathbbrn-and-mathbbcn.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
@@ -349,7 +349,7 @@ In general, vectors <span class="math inline">\(\underline{a}\)</span> and <span
 \end{align*}\]</span>
 This is equivalent to choosing Cartesian axes along these directions, <span class="math inline">\(\{ \underline{e}_i \}\)</span> is a <em>basis</em>: any vector can be expressed
 <span class="math display">\[\begin{align*}
-    \underline{a} = \sum_{i} a_i \underline{e}_i = a_1 \underline{e}_1 + a_2 \underline{e}_2 + a_3 \underline{e}_3 
+    \underline{a} = \sum_{i} a_i \underline{e}_i = a_1 \underline{e}_1 + a_2 \underline{e}_2 + a_3 \underline{e}_3
 \end{align*}\]</span>
 and each component is <em>uniquely</em> determined
 <span class="math display">\[\begin{align*}
@@ -407,7 +407,7 @@ Consider <span class="math inline">\(\underline{e}_1, \underline{e}_2, \underlin
 <span class="math display">\[\begin{align*}
 \underline{e}_1 \wedge \underline{e}_2 = \underline{e}_3 = -\underline{e}_2 \wedge \underline{e}_1 \\
 \underline{e}_2 \wedge \underline{e}_3 = \underline{e}_1 = -\underline{e}_3 \wedge \underline{e}_2 \\
-\underline{e}_3 \wedge \underline{e}_1 = \underline{e}_2 = -\underline{e}_1 \wedge \underline{e}_3 \\
+\underline{e}_3 \wedge \underline{e}_1 = \underline{e}_2 = -\underline{e}_1 \wedge \underline{e}_3
 \end{align*}\]</span> (all equalities follow from any one).
 This is called a <em>right-handed</em> orthonormal basis.</li>
 </ol>
@@ -493,7 +493,7 @@ If <span class="math inline">\(\underline{u} \cdot \underline{c} = 0\)</span>, t
 <h3><span class="header-section-number">2.6.2</span> Planes</h3>
 <p>The general point on a plane through <span class="math inline">\(\underline{a}\)</span> with directions <span class="math inline">\(\underline{u}, \underline{v}\)</span> in plane (<span class="math inline">\(\underline{u} \nparallel \underline{v}\)</span>) has position vector
 <span class="math display">\[\begin{align*}
-    \underline{r} = \underline{a} + \lambda \underline{u} + \mu \underline{v}, \text{ where } \lambda, \mu \in \mathbb{R} 
+    \underline{r} = \underline{a} + \lambda \underline{u} + \mu \underline{v}, \text{ where } \lambda, \mu \in \mathbb{R}
 \end{align*}\]</span> in parametric form.
 <img src="figures/2-6-plane.png" width="50%" style="display: block; margin: auto;" /></p>
 <p>An alternative form without parameters is obtained by by dotting with a normal vector
@@ -596,7 +596,7 @@ Indices or suffices <span class="math inline">\(i, j, k, l, p, q \dots\)</span> 
         1 &amp; \text{if } i = j \\
         0 &amp; \text{else}\\
     \end{cases} \\
-    \delta_{ij} &amp;= \delta_{ji} \text{ symmetric} \\ 
+    \delta_{ij} &amp;= \delta_{ji} \text{ symmetric} \\
     \text{Written out as an array} &amp;\text{ or matrix}\\
     \begin{pmatrix}
     \delta_{11} &amp; \delta_{12} &amp; \delta_{13} \\
@@ -624,7 +624,7 @@ Indices or suffices <span class="math inline">\(i, j, k, l, p, q \dots\)</span> 
     \end{cases} \\
     \text{i.e. } \epsilon_{123} &amp;= \epsilon_{231} = \epsilon_{312} = + 1 \\
     \epsilon_{321} &amp;= \epsilon_{213} = \epsilon_{132} = - 1 \\
-    \epsilon_{ijk} &amp;= 0 \text{ if any two index values match} \\
+    \epsilon_{ijk} &amp;= 0 \text{ if any two index values match}
 \end{align*}\]</span>
 <span class="math inline">\(\epsilon_{ijk}\)</span> is <em>totally</em> antisymmetric: exchanging any pairs of indices produces a change in sign.
 Then
@@ -672,7 +672,7 @@ In the summation convention we <em>omit</em> <span class="math inline">\(\sum\)<
 </div>
 <div class="example">
 <p><span id="exm:unlabeled-div-21" class="example"><strong>Example 2.7  </strong></span><span class="math display">\[\begin{align*}
-    \underline{a} \cdot \underline{b} \wedge c &amp;= \epsilon_{ijk} a_i b_j c_k \\
+    \underline{a} \cdot \underline{b} \wedge c &amp;= \epsilon_{ijk} a_i b_j c_k
 \end{align*}\]</span></p>
 </div>
 <div class="example">

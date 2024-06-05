@@ -144,7 +144,7 @@ From Dexter's Notes:
 
 The $k$ in \nameref{thm:three} is $| G : H |$, giving \cref{rem:11-i}.
 `The hard part of this proof is to prove that the left cosets partition G
-and have the same size. 
+and have the same size.
 If you are asked to prove Lagrange’s theorem in exams,
 that is what you actually have to prove.'
 \begin{center}\rule{\linewidth}{0.5pt}\end{center}
@@ -182,12 +182,12 @@ i.e.~$G$ cyclic.
 \end{proof}
 
 \begin{definition}[Euler's totient function]
-    Let $n \in \mathbb{N}$ and $\phi(n) = \left| \left\{ 1 \leq a \leq n : \operatorname{hcf}(a, n) = 1 \right\} \right|$. 
-\end{definition} 
+    Let $n \in \mathbb{N}$ and $\phi(n) = \left| \left\{ 1 \leq a \leq n : \operatorname{hcf}(a, n) = 1 \right\} \right|$.
+\end{definition}
 
 \begin{example}
     $\phi(12) = \left| \left\{ 1, 5, 7, 11 \right\} \right| = 4$.
-\end{example} 
+\end{example}
 
 \begin{theorem}[Fermat-Euler Theorem]
 \protect\hypertarget{thm:four}{}\label{thm:four}Let $n \in \mathbb{N},\ a \in \mathbb{Z}$ and $\operatorname{hcf}(a, n) = 1$.\\
@@ -203,7 +203,7 @@ Let $n \in \mathbb{N}$,
 
 \begin{notation}
     $n \in \mathbb{Z}$ then $\overline{u} \in R_n$ such that $u \equiv \overline{u} \pmod n$.
-\end{notation} 
+\end{notation}
 
 Define $\times_n$ to be multiplication mod $n$.\\
 Claim: $(R_n^*, \times_n)$ is a group.
@@ -212,7 +212,7 @@ Closure:
 \begin{align*}
     \operatorname{hcf}(a, n) &= 1 = \operatorname{hcf}(b, n) \\
     \implies \operatorname{hcf}(ab, n) &= 1 \\
-    \implies \operatorname{hcf}(\overline{ab}, n) &= 1 \\
+    \implies \operatorname{hcf}(\overline{ab}, n) &= 1
 \end{align*}
 
 Identity = 1
@@ -229,7 +229,7 @@ Then $\overline{u} \in R_n^*$ is $a^{-1}$ as $a^{-1}$ has an inverse $a$ which i
 \begin{proof}
 Note $|R_n^*| = \phi(n)$.
 \begin{align*}
-    a &\equiv \overline{a} \pmod n,\ \overline{a} \in R_n^* 
+    a &\equiv \overline{a} \pmod n,\ \overline{a} \in R_n^*
     \intertext{By \nameref{cor:two}}
     \overline{a}^{\phi(n)} &= \overline{a}^{|R_n^*|} = 1 \in R_n^* \\
     \implies a^{\phi(n)} &\equiv 1 \pmod n

@@ -18,13 +18,13 @@ First note composition of functions is associative
   Let $P$ be a regular polygon with $n$ sides and $V$ its set of vertices.
   We can assume
   \begin{align*}
-      V = \{ e^{2\pi i k /n} : 0 \leq k < n \}   
+      V = \{ e^{2\pi i k /n} : 0 \leq k < n \}
   \end{align*} (nth roots of unity in $\mathbb{C}$).
   Then the symmetries of $P$ are the isometries (i.e.~distance preserving maps of $\mathbb{C}$ that map $V$ to $V$).
-  
+
   We will show that:
   for $n \geq 3$ the set of symmetries of $P$, under composition, form a nonabelian group of order $2n$. This group is called the \emph{dihedral group} of order $2n$ and denoted $D_{2n}$.
-\end{definition} 
+\end{definition}
 
 \emph{Warning} - sometimes $D_{2n}$ is denoted $D_n$
 
@@ -88,7 +88,7 @@ If $g(e^{2 \pi i /n}) = e^{-2 \pi i /n}$ then $t \circ g(e^{2 \pi i / n}) = e^{2
 
 Algebraically we write,
 \begin{align*}
-    D_{2n} = \left\langle \underbrace{r,\ t}_\text{generators} | \underbrace{r^n = e,\ t^2 = e,\ trt = r^{-1}}_\text{relations} \right\rangle 
+    D_{2n} = \left\langle \underbrace{r,\ t}_\text{generators} | \underbrace{r^n = e,\ t^2 = e,\ trt = r^{-1}}_\text{relations} \right\rangle
 \end{align*}
 
 Finally, $D_2 \cong C_2$ and $D_4$ is \Cref{exm:nine}.
@@ -104,7 +104,7 @@ A bijection \begin{align*}
     f: X \to X
 \end{align*} is called a \emph{permutation} of $X$.
 Let $\operatorname{Sym} X$ denote the set of all permutations of $X$.
-\end{definition} 
+\end{definition}
 
 \begin{proposition}
 $\operatorname{Sym} X$ is a group under composition of functions. It is called the symmetric group on $X$.
@@ -138,9 +138,9 @@ If $\sigma \in S_n$ write
   G = \begin{pmatrix}
   1 & 2 & \dots & n \\
   \sigma(1) & \sigma(2) & \dots & \sigma(n)
-  \end{pmatrix} \\
+  \end{pmatrix}
 \end{align*}
-\end{notation} 
+\end{notation}
 %
 \begin{example} ~\vspace*{-1.5\baselineskip}
   \begin{align*}
@@ -153,7 +153,7 @@ If $\sigma \in S_n$ write
     2 & 3 & 1 & 4 & 5
     \end{pmatrix} \in S_5
 \end{align*}
-\end{example} 
+\end{example}
 
 \begin{example}
   Composition:
@@ -179,7 +179,7 @@ If $\sigma \in S_n$ write
 or:
 
 {\centering \includegraphics{02-symmetric-graphical}}
-\end{example} 
+\end{example}
 
 \hypertarget{small-n}{%
 \subsubsection{Small n}\label{small-n}}
@@ -198,30 +198,30 @@ or:
   S_3 &= \left\{ \begin{pmatrix}
   1 & 2 & 3 \\
   1 & 2 & 3
-  \end{pmatrix}, 
+  \end{pmatrix},
   \begin{pmatrix}
   1 & 2 & 3 \\
   2 & 3 & 1
-  \end{pmatrix}, 
+  \end{pmatrix},
   \begin{pmatrix}
       1 & 2 & 3 \\
       3 & 1 & 2
-  \end{pmatrix}, 
+  \end{pmatrix},
   \begin{pmatrix}
       1 & 2 & 3 \\
       1 & 3 & 2
-  \end{pmatrix}, 
+  \end{pmatrix},
   \begin{pmatrix}
       1 & 2 & 3 \\
       3 & 2 & 1
-  \end{pmatrix}, 
+  \end{pmatrix},
   \begin{pmatrix}
       1 & 2 & 3 \\
       2 & 1 & 3
   \end{pmatrix} \right\} \\
   & \cong D_6
 \end{align*}
-\end{example} 
+\end{example}
 
 \begin{remark} ~
 \begin{enumerate}
@@ -235,7 +235,7 @@ or:
   \begin{pmatrix}
   1 & 2 & 3 & 4 & \dots & n \\
   2 & 3 & 1 & 4 & \dots & n
-  \end{pmatrix}, 
+  \end{pmatrix},
   \begin{pmatrix}
       1 & 2 & 3 & 4 & \dots & n \\
       1 & 3 & 2 & 4 & \dots & n
@@ -249,7 +249,7 @@ or:
       r = \begin{pmatrix}
       1 & 2 & 3 & 4 \\
       2 & 3 & 4 & 1
-      \end{pmatrix},\ t = 
+      \end{pmatrix},\ t =
       \begin{pmatrix}
       1 & 2 & 3 & 4 \\
       4 & 3 & 2 & 1
@@ -294,7 +294,7 @@ e.g.~\begin{align*}
   $o(\sigma) = k$, $\sigma$ is like the rotations of k points.
   \begin{figure}
     \centering \includegraphics[width=0.5\linewidth]{02-sigma-graphical}
-  \end{figure} 
+  \end{figure}
 \item
   a 2-cycle is called a \emph{transposition}.
 \end{enumerate}
@@ -350,7 +350,7 @@ However this is not necessarily true if two cycles are not disjoint.
 \begin{align*}
     \begin{pmatrix}1 & 2 & 3\end{pmatrix} \begin{pmatrix}2 & 3\end{pmatrix} &= \begin{pmatrix}1 & 2\end{pmatrix} \begin{pmatrix} 3 \end{pmatrix} \\
     &= \begin{pmatrix}1 & 2\end{pmatrix} \text{ suppress 1-cycles.} \\
-    \begin{pmatrix}2 & 3\end{pmatrix} \begin{pmatrix}1 & 2 & 3\end{pmatrix} &= \begin{pmatrix}1 & 3\end{pmatrix} 
+    \begin{pmatrix}2 & 3\end{pmatrix} \begin{pmatrix}1 & 2 & 3\end{pmatrix} &= \begin{pmatrix}1 & 3\end{pmatrix}
 \end{align*}
 \end{example}
 
@@ -498,7 +498,7 @@ Subgroup lattice of $D_6 = \{ e, r, r^2, t, rt, r^2t \}$
     \node(C31)      [left of=C32]  {$\langle r \rangle$};
     \node(C33)      [below right of=A4]       {$\langle rt \rangle$};
     \node(C34)      [right of=C33]       {$\langle r^2t \rangle$};
-    
+
     \node(1)        [below=3cm,at=(A4.south)]   {$\left\{e\right\}$};
     \draw(A4)       -- (C31);
     \draw(A4)       -- (C32);
@@ -508,7 +508,7 @@ Subgroup lattice of $D_6 = \{ e, r, r^2, t, rt, r^2t \}$
     \draw(C32)      --  (1);
     \draw(C33)      --  (1);
     \draw(C34)      --  (1);
-  \end{tikzpicture}   
+  \end{tikzpicture}
 \end{center}
 
 We put the largest subgroups at the top and work our way down.
@@ -564,7 +564,7 @@ The even permutations of $S_n$ ($n \geq 2$) form a subgroup called the \emph{alt
 
   \mathitem
     \begin{align*}
-      \operatorname{sgn}(\sigma) &= 1 = \operatorname{sgn}(\rho) \\ 
+      \operatorname{sgn}(\sigma) &= 1 = \operatorname{sgn}(\rho) \\
       \implies \operatorname{sgn}(\sigma \rho) &= \operatorname{sgn}(\sigma) \operatorname{sgn}(\rho) \\
       &= 1
     \end{align*} by Theorem \ref{thm:two}

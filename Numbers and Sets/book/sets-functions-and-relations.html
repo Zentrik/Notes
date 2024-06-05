@@ -10,16 +10,16 @@
 
   <meta property="og:title" content="4 Sets, Functions and Relations | Numbers and Sets 2021 - 2022" />
   <meta property="og:type" content="book" />
-  
-  
+
+
   <meta property="og:description" content="Notes" />
-  
+
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="4 Sets, Functions and Relations | Numbers and Sets 2021 - 2022" />
-  
+
   <meta name="twitter:description" content="Notes" />
-  
+
 
 <meta name="author" content="Author" />
 
@@ -29,8 +29,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  
-  
+
+
 <link rel="prev" href="the-reals.html"/>
 <link rel="next" href="countability.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
@@ -192,13 +192,13 @@ If <span class="math inline">\(x \in A \cap C\)</span>, then <span class="math i
     \bigcap_{n = 1}^\infty A_n &amp;= A_1 \cap A_2 \cap A_3 \cap \dots \\
     &amp;= \{x : x \in A_n \text{ for all } n \in \mathbb{N}\}. \\
     \text{Similarly } \bigcup_{n = 1}^\infty A_n &amp;= A_1 \cup A_2 \cup A_3 \cup \dots \\
-    &amp;= \{x : x \in A_n \text{ for some } n \in \mathbb{N}\}. \\
+    &amp;= \{x : x \in A_n \text{ for some } n \in \mathbb{N}\}.
 \end{align*}\]</span>
 <em>Warning</em>: <span class="math inline">\(\bigcup_{n = 1}^\infty A_n\)</span> is <em>not</em> the “limit” of anything!</p>
 <p>More generally, given an index set <span class="math inline">\(I\)</span> and a collection of sets <span class="math inline">\(A_i\)</span> indexed by <span class="math inline">\(I\)</span> (we have a <span class="math inline">\(A_i\)</span> for every <span class="math inline">\(i \in I\)</span>), we write
 <span class="math display">\[\begin{align*}
     \bigcap_{i \in I} A_i &amp;= \{x : x \in A_i \; \forall \; i \in I\} \\
-    \text{and } \bigcup_{i \in I} A_i &amp;= \{x : x \in A_i \text{ for some } i \in I\}. \\
+    \text{and } \bigcup_{i \in I} A_i &amp;= \{x : x \in A_i \text{ for some } i \in I\}.
 \end{align*}\]</span></p>
 <p>Given sets <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, we can form their <em>Cartesian product</em> <span class="math inline">\(A \times B = \{(a, b) : a \in A, b \in B\}\)</span> (“<span class="math inline">\(A\)</span> cross <span class="math inline">\(B\)</span>”), which is the set of <em>ordered pairs</em> <span class="math inline">\((a, b)\)</span> with <span class="math inline">\(a \in A, b \in B\)</span>.<br />
 Here <span class="math inline">\((a, b) = (a&#39;, b&#39;) \iff a = a&#39; \text{ and } b = b&#39;\)</span>.<a href="#fn15" class="footnote-ref" id="fnref15"><sup>15</sup></a>
@@ -279,7 +279,7 @@ We obtain <em>Pascal’s triangle</em>.
 Each row starts and ends with a <span class="math inline">\(1\)</span>, and the remaining entities are the sum of the two terms immediately above.</p>
 <div class="proposition">
 <p><span id="prp:ftwo" class="proposition"><strong>Proposition 4.2  </strong></span><span class="math display">\[\begin{align*}
-    \binom{n}{k} &amp;= \frac{n (n - 1) (n - 2) \dots (n - k + 1)}{k (k - 1) (k - 2) \dots 2 \cdot 1} \\ 
+    \binom{n}{k} &amp;= \frac{n (n - 1) (n - 2) \dots (n - k + 1)}{k (k - 1) (k - 2) \dots 2 \cdot 1} \\
     &amp;= \frac{n!}{k! (n - k)!}
 \end{align*}\]</span></p>
 </div>
@@ -430,7 +430,7 @@ a) <span class="math display">\[\begin{align*}
  x &amp;\mapsto \begin{cases}
      x - 1 &amp; \text{if } x \neq 1 \\
      1 &amp; \text{if } x = 1
- \end{cases} 
+ \end{cases}
 \end{align*}\]</span> is surjective but not injective
 <img src="figures/04-function-infinite2.png" width="500" style="display: block; margin: auto;" /></p></li>
 <li><p><span class="math display">\[\begin{align*}
@@ -454,7 +454,7 @@ a) <span class="math display">\[\begin{align*}
 x &amp;\mapsto \begin{cases}
     1 &amp; \text{if } x \in A \\
     0 &amp; \text{if } x \notin A.
-\end{cases}  
+\end{cases}
 \end{align*}\]</span></p></li>
 <li><p>A sequence of reals <span class="math inline">\(x_1, x_2, \dots\)</span> is a function from the natural numbers to the reals
 <span class="math display">\[\begin{align*}
@@ -522,7 +522,7 @@ Hence <span class="math inline">\(f\)</span> is invertible with inverse <span cl
     x &amp;\mapsto x + 1 &amp; x &amp;\mapsto  \begin{cases}
         x - 1 &amp; \text{if } x \neq 1 \\
         1 &amp; \text{if } x = 1
-    \end{cases} 
+    \end{cases}
 \end{align*}\]</span> have <span class="math inline">\(g \circ f = \text{id}_\mathbb{N}\)</span> but <span class="math inline">\(f \circ g \neq \text{id}_\mathbb{N}\)</span> because <span class="math inline">\(f \circ g(1) \neq 1\)</span>.</p>
 <p>Given <span class="math inline">\(f: A \to B\)</span>, when is there a map <span class="math inline">\(g : B \to A\)</span> s.t. <span class="math inline">\(g \circ f = \text{id}_A\)</span>?<br />
 If such a <span class="math inline">\(g\)</span> exists, and <span class="math inline">\(a, a&#39; \in A\)</span> are s.t. <span class="math inline">\(f(a) = f(a&#39;)\)</span>, then <span class="math inline">\(gf(a) = gf(a&#39;)\)</span> so <span class="math inline">\(a = a&#39;\)</span>.

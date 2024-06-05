@@ -22,7 +22,7 @@ iii is called the induction axiom.
 i and ii capture the idea that any two natural numbers are distinct; iii captures our intuitive notion that the list^[$1, 1 + 1, 1+ 1 + 1, \dots$] is complete (i.e. encompasses all natural numbers).^[to see this rigorously, take $P(n)$ = "$n$ is on this list]
 
 Now we can write 2 for $1 + 1$, 3 for $1 + 1 + 1$, etc, and we can define an operation '$+ k$' for any natural number $k$:
-    
+
 $\hspace{1cm}$ for every natural number $n$, we know $n + (k + 1) = (n + k) + 1$;
 
 $\hspace{1cm}$ and so by induction, taking $P(k)$ = "'$+k$' is defined", proved.
@@ -42,7 +42,7 @@ Similarly, we can define multiplication, powers, etc. You may check that the "no
     &3.\ \forall \; a, b, c \in \mathbb{N} & &a + (b + c) = (a + b) + c & &(+ \text{ is associative}); \\
     &4.\ \forall \; a, b, c \in \mathbb{N} & &a (b c) = (a b) c & &(\times \text{ is associative}); \\
     &5.\ \forall \; a, b, c \in \mathbb{N} & &a (b + c) = ab + ac & &(\times \text{ is distributive over }+);
-\end{align} 
+\end{align}
 
 We can define $a < b$ if $a + c = b$ for some $c \in \mathbb{N}$. You may want to check
 
@@ -51,13 +51,13 @@ We can define $a < b$ if $a + c = b$ for some $c \in \mathbb{N}$. You may want t
     &7.\ \forall \; a, b, c & a < b &\implies a c < b c \\
     &8.\ \forall \; a, b, c & a < b \text{ and } b < c &\implies a < c \\
     &9.\ \forall \; a & &\lnot (a < a).
-\end{align} 
+\end{align}
 
 Recall the induction axiom: if $P(1)$ holds and $\forall \; n \in \mathbb{N}, P(n) \implies P(n+1)$, then $P(n)$ holds $\forall \; n \in \mathbb{N}$.
 This is also known as the *(weak) principle of induction (WPI)*. A more useful form is the *Strong Principle of Induction (SPI)*: if
 
 1. $P(1)$ holds and
-2. $\forall \; n \in \mathbb{N}$, we have $P(m) \;\forall \; m \leq n \implies P(n + 1)$, 
+2. $\forall \; n \in \mathbb{N}$, we have $P(m) \;\forall \; m \leq n \implies P(n + 1)$,
 
 then $P(n)$ holds $\forall \; n \in \mathbb{N}$.
 
@@ -82,13 +82,13 @@ But by 2 of SPI, $P(m)$ holds, so contradicting $m \in C$. Hence SPI holds.
 To show that SPI implies WOP, suppose there is no least $n \in \mathbb{N}$ s.t. $P(n)$ holds.
 We want to show that $P(n)$ does not hold for any $n \in \mathbb{N}$, using SPI.
 
-Consider $Q(n) = `\lnot P(n)'$. 
+Consider $Q(n) = `\lnot P(n)'$.
 Certainly $P(1)$ is false (else $1$ would be the minimal element), so $Q(1)$ holds.
 
 Given $n \in \mathbb{N}$, suppose that $Q(k)$ is true $\forall \; k < n$.
 Then $P(k)$ is false $\forall \; k < n$.
 So $P(n)$ is false as otherwise $n$ would be the minimal element for which $P$ holds.
-Hence $Q(n)$ is true, and 2 of SPI holds, so $Q(n)$ is true $\forall \; n \in \mathbb{N}$. 
+Hence $Q(n)$ is true, and 2 of SPI holds, so $Q(n)$ is true $\forall \; n \in \mathbb{N}$.
 Thus $P(n)$ is false $\forall \; n \in \mathbb{N}$.
 :::
 
@@ -102,8 +102,8 @@ We can define $+$ and $\times$ etc on $\mathbb{Z}$ using $\mathbb{N}$, and check
 We also have
 \begin{align*}
     &10.\ \forall \; a \in \mathbb{Z} & a + 0 &= a & &(\text{identity for } +) \\
-    &11.\ \forall \; a \in \mathbb{Z}, & \exists \; b \in \mathbb{Z} \text{ s.t. } a + b &= 0 & &(\text{inverses for } + ) \\
-\end{align*} 
+    &11.\ \forall \; a \in \mathbb{Z}, & \exists \; b \in \mathbb{Z} \text{ s.t. } a + b &= 0 & &(\text{inverses for } + )
+\end{align*}
 
 Define '$a < b$' if $a + c = b$ for some $c \in \mathbb{N}$. Rules 6, 8, 9 continue to hold, but 7 must be modified
 
@@ -114,13 +114,13 @@ The rationals, written $\mathbb{Q}$, consist of all expressions $\frac{a}{b}$ (n
 
 Define $\frac{a}{b} + \frac{c}{d} = \frac{ad + bc}{bd}$, and check it does not matter how we wrote $\frac{a}{b}$ or $\frac{c}{d}$.
 
-We similarly define multiplication, and $`\frac{a}{b} < \frac{c}{d}'$ where $b, d > 0$ if $ad < bc$. 
+We similarly define multiplication, and $`\frac{a}{b} < \frac{c}{d}'$ where $b, d > 0$ if $ad < bc$.
 You can check all preceding rules apply.
 
 In addition
 \begin{align*}
     12.\ \forall \; a \in \mathbb{Q},\ a \neq 0,\ \exists \; b \ \text{ s.t. } ab &= 1 & &(\text{inverses for } \times)
-\end{align*} 
+\end{align*}
 
 *Note*. $\mathbb{N} \subset \mathbb{Z} \subset \mathbb{Q}$.
 
@@ -149,7 +149,7 @@ There are infinitely many primes.
 
 ::: {.proof name="Euclid 300 BC"}
 Suppose there are finitely many primes, say $p_1, \dots, p_k$. Let $N = p_1 \dots p_k + 1$.
-Then $p_1 \nmid N$, else $p_1 \mid (N - p_1 \dots p_k) = 1$. 
+Then $p_1 \nmid N$, else $p_1 \mid (N - p_1 \dots p_k) = 1$.
 Clearly $p_1 \mid 1$ is false.
 Likewise, none of $p_2, p_3 \dots, p_k$ divide $N$, contradicting the fact that $N$ can be written as a product of primes.
 :::
@@ -169,7 +169,7 @@ Proof is later on, just below \@ref(cor:bez).
 
 ## Highest Common Factors
 :::{.definition #hcf}
-Given $a, b \in \mathbb{N}$, a natural number $c$ is the *highest common factor (hcf)*, or *greatest common divisor (gcd)* of $a$ and $b$ if 
+Given $a, b \in \mathbb{N}$, a natural number $c$ is the *highest common factor (hcf)*, or *greatest common divisor (gcd)* of $a$ and $b$ if
 
 i. $c \mid a$ and $c \mid b$ "c is a common divisor of $a$ and $b$"
 ii. $d \mid a$ and $d \mid b \implies d \mid c$ "every common factor of $a$ and $b$ divides $c$"
@@ -178,8 +178,8 @@ We write $c = \operatorname{hcf}(a, b)$ or $c = \operatorname{gcd}(a, b)$, or si
 \begin{align*}
     \text{E.g. the factors of } &12 \text{ are } 1, 2, 3, 4, 6, 12 \\
     &18 \ \phantom{are} \ 1, 2, 3, 6, 9, 18
-\end{align*} 
-So the common factors are $1, 2, 3, 6$, hence $\operatorname{hcf}(12, 18) = 6$. 
+\end{align*}
+So the common factors are $1, 2, 3, 6$, hence $\operatorname{hcf}(12, 18) = 6$.
 But if $a$ and $b$ had common factors $1, 2, 3, 4, 6$ then $a$ and $b$ would have no $\operatorname{hcf}$ (according to ii).
 Therefore, we will need to show that $\operatorname{hcf}(a, b)$ always exists.
 :::
@@ -212,20 +212,20 @@ If $r = k - 1$ then $n = (n - 1) + 1 = qk + (k - 1) + 1 = (q + 1)k$.
     \text{STEP } n + 1& r_{n - 1} = q_{n + 1} r_n + r_{n + 1} & r_{n + 1} = 0 & 12 = 2 \cdot 6 & \\
     \hline
     \text{OUTPUT} & r_n &&&
-\end{array} 
+\end{array}
 Note that the algorithm terminates in $\leq b$ steps, since $b > r_1 > r_2 > \dots \geq 0$.
 
 ::: {.theorem}
 The output of Euclid's algorithm with input $a, b$ is $\operatorname{hcf}(a, b)$.
 :::
 ::: {.proof}
-\ 
+\
 
 i. \begin{align*}
     \text{We can see } &r_n \mid r_{n - 1} \text{ (as } r_{n + 1} = 0 \text{  at STEP } n + 1 \text{)} \\
     \text{so } &r_n \mid r_{n - 2} \ ( \text{STEP } n) \\
     \text{so } &r_n \mid r_i \quad \forall \; i = 1, \dots n - 1 \text{ (by induction)}
-\end{align*} 
+\end{align*}
 Hence $r_n \mid b$ (STEP $2$) and $r_n \mid a$ (STEP $1$).
 
 ii. Given $d$ s.t. $d \mid a$ and $d \mid b$,
@@ -233,7 +233,7 @@ ii. Given $d$ s.t. $d \mid a$ and $d \mid b$,
     \text{we have } &d \mid r_1 \text{ (STEP 1) } \\
     \text{so } &d \mid r_2 \text{ (STEP 1) } \\
     \text{so } &d \mid r_i \; \forall \; i = 1, \dots n \text{ (by induction)}
-\end{align*} 
+\end{align*}
 Therefore, $r_n = \operatorname{hcf}(a, b)$.
 :::
 
@@ -244,7 +244,7 @@ To obtain $\operatorname{hcf}(87, 52)$ we run Euclid:
     52 &= 1(35) + 17 \\
     35 &= 2(17) + 1 \\
     17 &= 17(1)
-\end{align*} 
+\end{align*}
 so $\operatorname{hcf}(87, 52) = 1$.
 
 When $\operatorname{hcf}(87, 52) = 1$, we also say that $a$ and $b$ are *coprime*.
@@ -255,17 +255,17 @@ We can reverse the algorithm:
     &= - 2(52) + 3(35) \\
     &= - 2(52) + 3(87 - 1(52)) \\
     &= -5(52) + 3(87)
-\end{align*} 
+\end{align*}
 :::
 
 ::: {.theorem #seven}
-$\forall \; a, b \in \mathbb{N},\ \exists \; x,y \in \mathbb{Z}$ s.t. $xa + yb = \operatorname{hcf}(a, b)$. 
+$\forall \; a, b \in \mathbb{N},\ \exists \; x,y \in \mathbb{Z}$ s.t. $xa + yb = \operatorname{hcf}(a, b)$.
 "We can write $\operatorname{hcf}(a, b)$ as a linear combination of $a$ and $b$."
 :::
 
 ::: {.proof name="1"}
-Run Euclid's algorithm with input $a$, $b$, to obtain an output $r_n$. At STEP $n$, we have $r_n = xr_{n-1} + yr_{n-2}$ for some $x, y \in \mathbb{Z}$. 
-But $r_{n-1}$ is expressible as $xr_{n-2} + yr_{n-3}$ for some $x, y \in \mathbb{Z}$, from STEP $n-1$, whence $r_n = xr_{n-2} + y r_{n-3}$ for some $x, y \in \mathbb{Z}$. 
+Run Euclid's algorithm with input $a$, $b$, to obtain an output $r_n$. At STEP $n$, we have $r_n = xr_{n-1} + yr_{n-2}$ for some $x, y \in \mathbb{Z}$.
+But $r_{n-1}$ is expressible as $xr_{n-2} + yr_{n-3}$ for some $x, y \in \mathbb{Z}$, from STEP $n-1$, whence $r_n = xr_{n-2} + y r_{n-3}$ for some $x, y \in \mathbb{Z}$.
 Continuing by induction, we have that $\forall \; i = 2, \dots, n-1$, $r_n = xr_i + yr_{i - 1}$ for some $x, y \in \mathbb{Z}$.
 Thus $r_n = xa + yb$ for some $x, y \in \mathbb{Z}$, from STEP 1 and 2.
 :::
@@ -277,7 +277,7 @@ Euclid's algorithm not only proves that $x, y \in \mathbb{Z}$, but it gives us a
 ::: {.proof name="2"}
 Let $h$ be the least positive combination of $a$ and $b$, i.e. the least positive integer of the form $xa + yb$ for some $x, y \in \mathbb{Z}$.
 
-We shall show that $h = \operatorname{hcf}(a, b)$. 
+We shall show that $h = \operatorname{hcf}(a, b)$.
 
 To see (ii) from \@ref(def:hcf), observe that a given $d$ s.t. $d \mid a$ and $d \mid b$, then we have $d \mid ax + by \; \forall \; x, y \in \mathbb{Z}$, so in particular $d \mid h$.
 
@@ -305,7 +305,7 @@ Let $h = \operatorname{hcf}(a, b)$.
 
 Suppose there are $x, y \in \mathbb{Z}$ s.t. $ax + by = c$. Then since $h \mid a$ and $h \mid b$, so $h \mid c$.
 
-Conversely, suppose $h \mid c$. 
+Conversely, suppose $h \mid c$.
 But Theorem \@ref(thm:seven) implies that there exist $x, y \in \mathbb{Z}$ s.t. $h = ax + by$.
 But then $c = \frac{c}{h} h = \frac{c}{h}(ax + by) = a(x \frac{c}{h}) + b(y \frac{c}{h})$.
 :::
@@ -313,7 +313,7 @@ But then $c = \frac{c}{h} h = \frac{c}{h}(ax + by) = a(x \frac{c}{h}) + b(y \fra
 We will now give a proof of proposition \@ref(prp:four).
 
 ::: {.proof}
-Suppose $p \mid ab$ but $p \nmid a$. We will show $p \mid b$. 
+Suppose $p \mid ab$ but $p \nmid a$. We will show $p \mid b$.
 Then since $p$ is prime, $\operatorname{hcf}(a, p) = 1$ (as $p \nmid a$).
 Thus, by Theorem \@ref(thm:seven), $\exists \; x, y \in \mathbb{Z}$ s.t. $xp + ya = 1$.
 
@@ -321,10 +321,10 @@ It follows that $xpb + yab = b$, $p \mid ab$ so $p \mid b$.
 :::
 
 ::: {.remark}
-\ 
+\
 
 1. Similarly, $p \mid a_1 a_2 \dots a_n \implies p \mid a_i$ for some $i = 1, \dots, n$.
-Indeed, Proposition \@ref(prp:four) tells us that if $p \mid a_1 a_2 \dots a_n$, then $p \mid a_1$ or $p \mid a_2 \dots a_n$. 
+Indeed, Proposition \@ref(prp:four) tells us that if $p \mid a_1 a_2 \dots a_n$, then $p \mid a_1$ or $p \mid a_2 \dots a_n$.
 Proceed by induction on the number of terms in the product.
 
 2. We do need $p$ to be prime.
@@ -356,7 +356,7 @@ For example, consider $\mathbb{Z}[\sqrt{-3}]$, meaning all complex numbers of th
 We can add and multiply two elements of $\mathbb{Z}[\sqrt{-3}]$ to get another another element of $\mathbb{Z}[ \sqrt{-3}]$. \
 E.g. $(1 + \sqrt{-3}) \cdot (1 - \sqrt{-3}) = 1 + \sqrt{-3} - \sqrt{-3} + 3 = 4$. \
 In $Z[ \sqrt{-3} ]$, we can define what it means to be "prime", and both $(1 + \sqrt{-3})$ and $(1 - \sqrt{-3})$ happen to be prime in this sense.
-But we can also write $4 = 2 \cdot 2$, so factorisation is not unique. 
+But we can also write $4 = 2 \cdot 2$, so factorisation is not unique.
 :::
 
 ## Some Applications of Theorem \@ref(thm:fta)
@@ -367,7 +367,7 @@ There are no other factors, for example if $7 \mid n$ then we would have a facto
 More generally, the factors of $n = p_1^{a_1} \dots p_k^{a_k}$ are precisely the numbers of the form $p_1^{b_1} \dots p_k^{b_k}$, with $0 \leq b_i \leq a_i \; \forall \; i = 1, \dots, k$.
 
 2. What are the common factors of $2^3 \cdot 3^7 \cdot 5 \cdot 11$ and $2^4 \cdot 3^2 \cdot 11 \cdot 13$? \
-All numbers of the form $2^a \cdot 3^b \cdot 5^c \cdot 11^d \cdot 13^e$, where $c = e = 0$ and $0 \leq a \leq 3,\ 0 \leq b \leq 2,\ 0 \leq d \leq 1$. 
+All numbers of the form $2^a \cdot 3^b \cdot 5^c \cdot 11^d \cdot 13^e$, where $c = e = 0$ and $0 \leq a \leq 3,\ 0 \leq b \leq 2,\ 0 \leq d \leq 1$.
 Thus the hcf is $2^3 \cdot 3^2 \cdot 11$. \
 \
 In general, the hcf of $p_1^{a_1} \dots p_k^{a_k}$ and $p_1^{b_1} \dots p_k^{b_k}$, where $a_i, b_i \geq 0$, is $p_1^{\min \{ a_1, b_1 \}} \dots p_k^{\min \{ a_k, b_k \}}$.
@@ -381,7 +381,7 @@ In general, the lcm of $p_1^{a_1} \dots p_k^{a_k}$ and $p_1^{b_1} \dots p_k^{b_k
 \
 Since $\min \{ a_i, b_i \} + \max \{ a_i, b_i \} = a_i + b_i$, so we have $\operatorname{hcf}(x, y) \cdot \operatorname{lcm}(x, y) = x \cdot y$ for any $x, y$.
 
-4. Another proof of Theorem \@ref(thm:three), due to Erdos (1930): 
+4. Another proof of Theorem \@ref(thm:three), due to Erdos (1930):
 
 ::: {.proof}
 let $p_1, \dots, p_k$ be primes.
@@ -390,7 +390,7 @@ Let $M \in \mathbb{N}$.
 If a number $\leq M$ is of the form $(*)$, then $m^2 \leq M$, i.e. $m \leq \sqrt{M}$.
 So there are at most $\sqrt{M} 2^k$ of the form $(*)$ that are $\leq M$.\
 If $M > \sqrt{M} 2^k$, i.e $M > 4^k$, then there must be a number $\leq M$ which is *not* of the form $(*)$, which must have a prime factor not amongst $p_1, \dots, p_k$.
-::: 
+:::
 
 Proof 1 tells us the kth prime is $< 2^{2^k}$. \
 Proof 2 tells us kth prime is $< 4^k$. \
@@ -398,46 +398,46 @@ In fact, we know kth prime $\sim k \log k$ (Prime Number Theorem).
 
 ## Modular arithmetic
 
-Let $n \geq 2$ be a natural number. 
+Let $n \geq 2$ be a natural number.
 Then the *integers modulo n*, written $\mathbb{Z}_n$ or $\mathbb{Z} / n \mathbb{Z}$, consist of the integers, with two regarded as the same if they differ by a multiple of $n$.
 E.g. In $\mathbb{Z}_7$, 2 is the same as 16.
 If $x$ and $y$ are the same in $\mathbb{Z}_n$, we write "$x \equiv y \mod n$" (is congruent to) or "$x \equiv y\ (n)$" or "$x = y \text{ in } \mathbb{Z}_n$".
 E.g. $2 \equiv 16 \mod 7$
-Thus 
+Thus
 \begin{align*}
     x \equiv y \mod n &\iff n \mid x - y \\
     &\iff x = y + k n \text{ for some } k \in \mathbb{Z}
-\end{align*} 
+\end{align*}
 We can view $\mathbb{Z}_n$ as
-<!--```{r 02-Zn, echo = FALSE, fig.cap = "", fig.align="center", out.width="30%"} 
-knitr::include_graphics("figures/02-Zn.png") 
+<!--```{r 02-Zn, echo = FALSE, fig.cap = "", fig.align="center", out.width="30%"}
+knitr::include_graphics("figures/02-Zn.png")
 ```-->
 
 ```{r, echo=FALSE, engine='tikz', fig.ext=if (knitr:::is_latex_output()) 'pdf' else 'png', fig.align = 'center', cache = TRUE,  out.width="250"}
-\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt
 
 \begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-0.7,xscale=0.7]
 %uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
 
-%Shape: Circle [id:dp9641223727665371] 
+%Shape: Circle [id:dp9641223727665371]
 \draw   (200,150) .. controls (200,89.25) and (249.25,40) .. (310,40) .. controls (370.75,40) and (420,89.25) .. (420,150) .. controls (420,210.75) and (370.75,260) .. (310,260) .. controls (249.25,260) and (200,210.75) .. (200,150) -- cycle ;
-%Shape: Circle [id:dp4867138741225918] 
+%Shape: Circle [id:dp4867138741225918]
 \draw  [fill={rgb, 255:red, 184; green, 184; blue, 184 }  ,fill opacity=1 ] (302.5,40) .. controls (302.5,35.86) and (305.86,32.5) .. (310,32.5) .. controls (314.14,32.5) and (317.5,35.86) .. (317.5,40) .. controls (317.5,44.14) and (314.14,47.5) .. (310,47.5) .. controls (305.86,47.5) and (302.5,44.14) .. (302.5,40) -- cycle ;
-%Shape: Circle [id:dp6885524539067742] 
+%Shape: Circle [id:dp6885524539067742]
 \draw  [fill={rgb, 255:red, 184; green, 184; blue, 184 }  ,fill opacity=1 ] (375,67.5) .. controls (375,63.36) and (378.36,60) .. (382.5,60) .. controls (386.64,60) and (390,63.36) .. (390,67.5) .. controls (390,71.64) and (386.64,75) .. (382.5,75) .. controls (378.36,75) and (375,71.64) .. (375,67.5) -- cycle ;
-%Shape: Circle [id:dp8052849816078498] 
+%Shape: Circle [id:dp8052849816078498]
 \draw  [fill={rgb, 255:red, 184; green, 184; blue, 184 }  ,fill opacity=1 ] (410,127.5) .. controls (410,123.36) and (413.36,120) .. (417.5,120) .. controls (421.64,120) and (425,123.36) .. (425,127.5) .. controls (425,131.64) and (421.64,135) .. (417.5,135) .. controls (413.36,135) and (410,131.64) .. (410,127.5) -- cycle ;
-%Shape: Circle [id:dp7232843669595623] 
+%Shape: Circle [id:dp7232843669595623]
 \draw  [fill={rgb, 255:red, 184; green, 184; blue, 184 }  ,fill opacity=1 ] (400,202.5) .. controls (400,198.36) and (403.36,195) .. (407.5,195) .. controls (411.64,195) and (415,198.36) .. (415,202.5) .. controls (415,206.64) and (411.64,210) .. (407.5,210) .. controls (403.36,210) and (400,206.64) .. (400,202.5) -- cycle ;
-%Shape: Circle [id:dp14614821359588803] 
+%Shape: Circle [id:dp14614821359588803]
 \draw  [fill={rgb, 255:red, 184; green, 184; blue, 184 }  ,fill opacity=1 ] (340,252.5) .. controls (340,248.36) and (343.36,245) .. (347.5,245) .. controls (351.64,245) and (355,248.36) .. (355,252.5) .. controls (355,256.64) and (351.64,260) .. (347.5,260) .. controls (343.36,260) and (340,256.64) .. (340,252.5) -- cycle ;
-%Shape: Circle [id:dp9823043931092899] 
+%Shape: Circle [id:dp9823043931092899]
 \draw  [fill={rgb, 255:red, 184; green, 184; blue, 184 }  ,fill opacity=1 ] (260,252.5) .. controls (260,248.36) and (263.36,245) .. (267.5,245) .. controls (271.64,245) and (275,248.36) .. (275,252.5) .. controls (275,256.64) and (271.64,260) .. (267.5,260) .. controls (263.36,260) and (260,256.64) .. (260,252.5) -- cycle ;
-%Shape: Circle [id:dp9834315290824136] 
+%Shape: Circle [id:dp9834315290824136]
 \draw  [fill={rgb, 255:red, 184; green, 184; blue, 184 }  ,fill opacity=1 ] (205,202.5) .. controls (205,198.36) and (208.36,195) .. (212.5,195) .. controls (216.64,195) and (220,198.36) .. (220,202.5) .. controls (220,206.64) and (216.64,210) .. (212.5,210) .. controls (208.36,210) and (205,206.64) .. (205,202.5) -- cycle ;
-%Shape: Rectangle [id:dp07149613177907699] 
+%Shape: Rectangle [id:dp07149613177907699]
 \draw  [draw opacity=0][fill={rgb, 255:red, 255; green, 255; blue, 255 }  ,fill opacity=1 ] (180,80) -- (250,80) -- (250,160) -- (180,160) -- cycle ;
-%Shape: Circle [id:dp5656720700928188] 
+%Shape: Circle [id:dp5656720700928188]
 \draw  [fill={rgb, 255:red, 184; green, 184; blue, 184 }  ,fill opacity=1 ] (230,67.5) .. controls (230,63.36) and (233.36,60) .. (237.5,60) .. controls (241.64,60) and (245,63.36) .. (245,67.5) .. controls (245,71.64) and (241.64,75) .. (237.5,75) .. controls (233.36,75) and (230,71.64) .. (230,67.5) -- cycle ;
 
 % Text Node
@@ -478,7 +478,7 @@ Solve $7x \equiv 2 \mod 10$.
 We note $3 \cdot 7 \equiv 1 \mod 10$, so $3 \cdot 7 x \equiv 3 \cdot 2 \mod 10$ so $x \equiv 6 \mod 10$.
 :::
 
-Given $a, b \in \mathbb{Z}$, we say that b is an *inverse of a modulo $n$* if $a b \equiv 1 \mod n$. 
+Given $a, b \in \mathbb{Z}$, we say that b is an *inverse of a modulo $n$* if $a b \equiv 1 \mod n$.
 We say $a$ is *invertible modulo $n$*, or is a *unit modulo $n$*, if it has an inverse.
 E.g. in $\mathbb{Z}_{10}$, the inverse of $3$ is $7$, and both $3$ and $7$ are units modulo $10$. \
 But $4$ is *not* a unit modulo $10$ since $4x \not\equiv 1 \mod 10 \; \forall \; x \in \mathbb{Z}$.
@@ -486,7 +486,7 @@ But $4$ is *not* a unit modulo $10$ since $4x \not\equiv 1 \mod 10 \; \forall \;
 ::: {.remark}
 If $a$ is a unit modulo $n$ ...
 
-i. ... its inverse is unique (mod $n$). Suppose $\exists \; b, b'$ s.t. $ab \equiv ab' \equiv 1 \mod n$, then $b \equiv bab \equiv bab' \equiv b' \mod n$. 
+i. ... its inverse is unique (mod $n$). Suppose $\exists \; b, b'$ s.t. $ab \equiv ab' \equiv 1 \mod n$, then $b \equiv bab \equiv bab' \equiv b' \mod n$.
 
 ii. ... we can write $a^{-1}$ for its inverse.
 
@@ -496,7 +496,7 @@ This is *not* true in general: $4 \cdot 3 \equiv 4 \cdot 8 \mod 10$ but $3 \not\
 :::
 
 ::: {.proposition #ten}
-Let $p$ be prime. 
+Let $p$ be prime.
 Then every $a \not\equiv 0 \mod p$ is a unit modulo $p$.
 :::
 
@@ -515,7 +515,7 @@ Then $a$ is a unit modulo $n$ iff $(a, n) = 1$
     (a, n) = 1 &\iff ax + ny = 1 \text{ for some } x,y \in \mathbb{Z} \\
     &\iff ax = 1 - ny \text{ for some } x,y \in \mathbb{Z} \\
     &\iff ax \equiv 1 \mod n \text{ for some } x \in \mathbb{Z}.
-\end{align*} 
+\end{align*}
 :::
 
 ::: {.corollary}
@@ -532,7 +532,7 @@ Conversely, if $d \mid b$, then $n = d \cdot n'$, $a = d \cdot a'$, $b = d \cdot
     &\iff d \cdot a' \cdot x - d \cdot b' = k \cdot d \cdot n' \text{ for some } k \in \mathbb{Z} \\
     &\iff a' x - b' = k n' \text{ for some } k \in \mathbb{Z} \\
     &\iff a'x \equiv b' \mod n'.
-\end{align*} 
+\end{align*}
 Note $(a', b') = 1$. \
 So if $(a, n) = d > 1$, the congruence $ax \equiv b \mod n$ has no solutions unless $d \mid b$, in which case the solutions are exactly those of $\frac{a}{d}x \equiv \frac{b}{d} \mod \frac{n}{d}$.
 
@@ -541,7 +541,7 @@ $7x \equiv 4 \pod {30}$. \
 We have $(7, 30) = 1$, so by Euclid $13 \cdot 7 - 3 \cdot 30 = 1$.
 Hence $13 \cdot 7 \equiv 1 \mod 30$, whence $x \equiv 4 \cdot 13 \mod 30 = 22 \mod 30$.
 
-Suppose $x'$ is also a solution, that is $7x' \equiv 4 \mod 30$. 
+Suppose $x'$ is also a solution, that is $7x' \equiv 4 \mod 30$.
 Then $7x \equiv 7x' \mod 30$, so $x \equiv x' \mod 30$ since $7$ is a unit modulo $30$.
 
 *Short form*:
@@ -552,13 +552,13 @@ Then $7x \equiv 7x' \mod 30$, so $x \equiv x' \mod 30$ since $7$ is a unit modul
 \end{align*}
 :::
 
-::: {.example} 
+::: {.example}
 $10x \equiv 12 \mod 34 \iff 10x = 12 + 34y$
 \begin{align*}
     10x \equiv 12 \mod 34 &\iff 10x = 12 + 34y \text{ for some } y \in \mathbb{Z} \\
     &\iff 5x = 6 + 17y \text{ for some } y \in \mathbb{Z} \\
-    &\iff 5x \equiv 6 \mod 17 
-\end{align*} 
+    &\iff 5x \equiv 6 \mod 17
+\end{align*}
 so now we're back in situation 1, and solve this as before.
 :::
 
@@ -568,20 +568,20 @@ so now we're back in situation 1, and solve this as before.
         x \equiv 1 \mod 4 \\
         x \equiv 2 \mod 3
     \end{cases}.
-\end{align*} 
+\end{align*}
 
 Is the converse true, i.e. does $x \equiv 1 \mod 4$ and $x \equiv 2 \mod 3$ imply $x \equiv 5 \mod 12$? \
-We inspect 
+We inspect
 \begin{align*}
     x &\equiv 1 \mod 4,\ & x &\equiv 1, 5, 9 \mod 12 \\
     x &\equiv 2 \mod 3,\ & x &\equiv 2, 5, 8, 11 \mod 12
-\end{align*} 
+\end{align*}
 What about \begin{align*}
     \begin{cases}
         x \equiv 1 \mod 4 \\
-        x \equiv 2 \mod 6   
+        x \equiv 2 \mod 6
     \end{cases}?
-\end{align*} 
+\end{align*}
 
 ::: {.theorem name="Chinese Remainder Theorem" #twelve}
 Let $m, n$ be coprime, and $a, b \in \mathbb{Z}$.
@@ -603,7 +603,7 @@ Suppose $y$ is also a solution, that is, $y \equiv a \mod m$ and $y \equiv b \mo
     &\iff m \mid y - x \text { and } n \mid y - x \\
     &\iff mn \mid y - x \hspace{0.5cm} \text{since } (m, n) = 1 \\
     &\iff y \equiv x \mod mn
-\end{align*} 
+\end{align*}
 :::
 
 ::: {.remark}
@@ -612,7 +612,7 @@ Theorem \@ref(thm:twelve) can be extended by induction, to more than two moduli:
     x &\equiv a_2 \mod m_2 \\
     &\;\; \vdots \\
     x &\equiv a_k \mod m_k
-\end{align*} 
+\end{align*}
 :::
 
 We denote by $\phi(m)$ the number of integers $a$ s.t. $1 \leq a \leq m$ s.t $(a, m) = 1$, that is, the number of units modulo $m$.
@@ -643,14 +643,14 @@ We are going to be a bit general in this proof so we can take the same arguments
 
 ::: {.proof}
 If $a \not\equiv 0 \mod p$, then $a$ is a unit mod $p$. \
-Thus $ax \equiv ay \mod p$ iff $x \equiv y \mod p$ (multiply by a to go from right to left, and by $a^{-1}$ for converse). 
+Thus $ax \equiv ay \mod p$ iff $x \equiv y \mod p$ (multiply by a to go from right to left, and by $a^{-1}$ for converse).
 Hence the numbers $a, 2a, 3a, \dots, (p - 1)a$ are pairwise incongruent (distinct) modulo $p$ and $\not\equiv 0 \mod p$, so they are $1, 2, 3, \dots p - 1$ in some order.
 
 Hence
 \begin{align*}
     a \cdot 2a \cdot 3a \cdot \dots \cdot (p - 1)a &\equiv 1 \cdot 2 \cdot 3 \dots \cdot (p - 1) \mod p \\
-    a^{p-1} (p - 1)! &\equiv (p - 1)! \mod p. \\
-\end{align*} 
+    a^{p-1} (p - 1)! &\equiv (p - 1)! \mod p.
+\end{align*}
 But $(p - 1)!$ is a unit mod $p$ (since it is a product of units), so we can cancel it to obtain $a^{p-1} \equiv 1 \mod p$.
 :::
 
@@ -667,9 +667,9 @@ Then $a u_1, a u_2, \dots, a u_{\phi(m)}$ are all distinct and invertible modulo
 It follows that
 \begin{align*}
     a u_1 \cdot a u_2 \cdot \dots \cdot a u_{\phi(m)} &\equiv u_1 \cdot u_2 \cdot \dots u_{\phi(m)} \mod m,
-\end{align*} 
+\end{align*}
 that is $a^{\phi(m)} z = z \mod m$ where $z = u_1 \cdot u_2 \cdot \dots u_{\phi(m)}$ is a product of units modulo $m$, therefore it itself is a unit.
-So we may cancel it to obtain $a^{\phi(m)} = 1 \mod m$ 
+So we may cancel it to obtain $a^{\phi(m)} = 1 \mod m$
 :::
 
 ## Results about primes
@@ -680,7 +680,7 @@ What is $(p - 1)!$ modulo $p$.
 \begin{align*}
     \text{Where } p &= 5,\ 4! = 24 \equiv -1 \mod 5 \\
     p &= 7,\ 6! = 720 \equiv -1 \mod 7
-\end{align*} 
+\end{align*}
 :::
 
 ::: {.lemma #fourteen}
@@ -688,20 +688,20 @@ Let $p$ be prime.
 Then $x^2 \equiv 1 \mod p \iff x \equiv \pm 1 \mod p$.
 :::
 
-*Note* Modulo $8$, $1^2 = 3^2 = 5^2 = 7^2 = 1$. 
+*Note* Modulo $8$, $1^2 = 3^2 = 5^2 = 7^2 = 1$.
 This make us think that $p$ being prime is important.
 
 ::: {.proof}
 \begin{align*}
     x^2 \equiv 1 \mod p &\iff x^2 - 1 \equiv 0 \mod p \\
     &\iff (x + 1) (x - 1) \equiv 0 \mod p
-\end{align*} 
+\end{align*}
 Recall Proposition \@ref(prp:four), if $p$ is prime and $p \mid a b$, then $p \mid a$ or $p \mid b$, so if $p$ is prime, then $ab \equiv 0 \mod p \iff a \equiv 0 \mod p$ or $b \equiv 0 \mod p$.
 Hence
 \begin{align*}
     x^2 \equiv 1 \mod p &\iff x + 1 \equiv 0 \mod p \text{ or } x - 1 \equiv 0 \mod p \\
     &\iff x \equiv \pm 1 \mod p
-\end{align*} 
+\end{align*}
 :::
 
 ::: {.remark}
@@ -740,12 +740,12 @@ Suppose $p \equiv 1 \mod 4$.
 By Wilson's Theorem, \@ref(thm:fifteen),
 \begin{align*}
     -1 \equiv (p - 1)! &\equiv 1 \cdot 2 \cdot 3 \cdot \dots \cdot \frac{p - 1}{2} \cdot - \frac{p - 1}{2} \cdot \dots -3 \cdot -2 \cdot -1 \mod p \\
-    &\equiv (-1)^{\frac{p-1}{2}} \left( \left(\frac{p-1}{2} \right)! \right)^2 \mod p \\
+    &\equiv (-1)^{\frac{p-1}{2}} \left( \left(\frac{p-1}{2} \right)! \right)^2 \mod p
 \end{align*}
 But if $p = 4k + 1$ for some $k \in \mathbb{Z}$, then
 \begin{align*}
     -1 \equiv (-1)^{2k} \left( (2k)! \right)^2 \mod p
-\end{align*} 
+\end{align*}
 so $-1$ is a square mod $p$.
 
 Suppose, on the other hand, that $p \equiv -1 \mod 4$, i.e. $p = 4k + 3$ for some $k \in \mathbb{Z}$.
@@ -753,7 +753,7 @@ If $-1$ were a square mod $p$, i.e. if there were $z \in \mathbb{Z}$ s.t. $z^2 \
 \begin{align*}
     1 \equiv z^{p-1} \equiv z^{4k+2} \equiv z^{2(2k + 1)} &\equiv (-1)^{2k + 1} \mod p \\
     &\equiv -1 \mod p,
-\end{align*} 
+\end{align*}
 a contradiction.
 :::
 
@@ -764,8 +764,8 @@ E.g. When $p = 29 = 4 \cdot 7 + 1$, $x = (2 \cdot 7)!$ works.
 
 ## Public Key Cryptography
 Let us agree to write messages as sequences of numbers, e.g. $A \to 00,\ B \to 1, \dots, Z \to 25, ! \to 26, \dots$
-I wish for my IA students to be able to send me encrypted messages in such a way that I can decrypt them easily but the same in not true for any third-party observer. 
-We use the 
+I wish for my IA students to be able to send me encrypted messages in such a way that I can decrypt them easily but the same in not true for any third-party observer.
+We use the
 
 ### RSA Scheme (Rivest, Shamir, Adleman)
 

@@ -1,13 +1,13 @@
 # Vectors in 3 Dimensions
 
-A vector is a quantity with magnitude and direction (e.g. force, electric and magnetic fields) - all examples modelled on *position*. 
+A vector is a quantity with magnitude and direction (e.g. force, electric and magnetic fields) - all examples modelled on *position*.
 We take a geometrical approach to position vectors in 3d space based on standard (Euclidean) notions of points, lines, planes, length, angle etc.
 Chose point $O$ as origin, the points $A$, $B$ have position vectors
 \begin{align*}
     \underline{a} = \overrightarrow{OA},\ \underline{b} = \overrightarrow{OB}
-\end{align*} 
-```{r vector, echo = FALSE, fig.cap = "", fig.align="center"} 
-knitr::include_graphics("figures/02-vector.svg") 
+\end{align*}
+```{r vector, echo = FALSE, fig.cap = "", fig.align="center"}
+knitr::include_graphics("figures/02-vector.svg")
 ```
 lengths denoted by $|\underline{a}| = | \overrightarrow{OA}|$, $\underline{O}$ is the position vector for $O$.
 
@@ -17,17 +17,17 @@ i. *Scalar Multiplication*
 Given $\underline{a}$, position vector for $A$ and a *scalar* $\lambda \in \mathbb{R}$, $\lambda \underline{a}$ is position vector of point $A'$ on $OA$ with
 \begin{align*}
     |\lambda \underline{a}| = |\overrightarrow{OA'}| = |\lambda| |\underline{a}|
-\end{align*} 
+\end{align*}
 as shown
-```{r multiplication, echo = FALSE, fig.cap = "", fig.align="center"} 
-knitr::include_graphics("figures/02-multiplication.svg") 
+```{r multiplication, echo = FALSE, fig.cap = "", fig.align="center"}
+knitr::include_graphics("figures/02-multiplication.svg")
 ```
 Say $\underline{a}$ and $\underline{b}$ are *parallel*, $\underline{a} \parallel \underline{b} \iff \underline{a} = \lambda \underline{b}$ or $\underline{b} = \lambda \underline{a}$.
 Definition allows $\lambda \leq 0$ so $\underline{a} \parallel \underline{0}$ for any $\underline{a}$.
 
 ii. *Addition* Given $\underline{a}, \underline{b}$ position vectors of $A, B$ construct a parallelogram $OACB$
-```{r addition, echo = FALSE, fig.cap = "", fig.align="center"} 
-knitr::include_graphics("figures/02-addition.svg") 
+```{r addition, echo = FALSE, fig.cap = "", fig.align="center"}
+knitr::include_graphics("figures/02-addition.svg")
 ```
 and define $\underline{a} + \underline{b} = \underline{c}$, position vector of point $C$, provided $\underline{a} \nparallel \underline{b}$; if $\underline{a} \parallel \underline{b}$ then we can write $\underline{a} = \alpha \underline{u}$, $\underline{b} = \beta \underline{u}$ for some $\underline{u}$ and then $\underline{a} + \underline{b} = (\alpha + \beta) \underline{u}$.
 
@@ -41,14 +41,14 @@ iii. *Properties* For any vectors $\underline{a}, \underline{b}, \underline{c}$
     \lambda ( \underline{a} + \underline{b}) &= \lambda \underline{a} + \lambda \underline{b} &&\\
     (\lambda + \mu) \underline{a} &= \lambda \underline{a} + \mu \underline{a} &&\\
     \lambda (\mu \underline{a}) &= (\lambda \mu) \underline{a}, & &\lambda, \mu \in \mathbb{R}
-\end{align*} 
+\end{align*}
 All of these can be checked geometrically, e.g. associativity of vector addition using a parallelepiped
 
 iv. *Linear Combinations and Span*
 A *linear combination* of vectors $\underline{a}, \underline{b}, \dots, \underline{c}$ is an expression
 \begin{align*}
     \alpha \underline{a} + \beta \underline{b} + \dots + \gamma \underline{c} \text{ for some } \alpha, \beta, \dots, \gamma \in \mathbb{R}.
-\end{align*} 
+\end{align*}
 The *span* of a set of vectors is $\operatorname{span} \{ \underline{a}, \underline{b}, \dots, \underline{c} \} = \{\alpha \underline{a} + \beta \underline{b} + \dots + \gamma \underline{c} : \alpha, \beta, \dots, \gamma \in \mathbb{R} \}$.
 
 If $a \neq 0$ then $\operatorname{span} \{ \underline{a} \} = \{ \lambda \underline{a} \}$, which is a line through $O$ and $A$.
@@ -56,15 +56,15 @@ If $a \neq 0$ then $\operatorname{span} \{ \underline{a} \} = \{ \lambda \underl
 If $\underline{a} \nparallel \underline{b}$ (this also means $\underline{a}, \underline{b} \neq \underline{0}$) then $\operatorname{span} \{ \underline{a}, \underline{b}\} = \{ \alpha \underline{a} + \beta \underline{b} : \alpha, \beta \in \mathbb{R}\}$, which is a *plane* through $O, A, B$.
 
 ## Scalar or Dot Product
-i. 
+i.
 ::: {.definition}
 Given $\underline{a}$ and $\underline{b}$ let $\theta$ be the angle between them; then
 \begin{align*}
     \underline{a} \cdot \underline{b} = | \underline{a} | | \underline{b} | \cos \theta
-\end{align*} 
+\end{align*}
 *scalar* or *dot product* or *inner product*
-```{r dot, echo = FALSE, fig.cap = "$\\theta$ defined unless $|\\underline{a}|$ or $| \\underline{b}| = 0$ and then $\\underline{a} \\cdot \\underline{b} = 0$", fig.align="center"} 
-knitr::include_graphics("figures/02-dot.svg") 
+```{r dot, echo = FALSE, fig.cap = "$\\theta$ defined unless $|\\underline{a}|$ or $| \\underline{b}| = 0$ and then $\\underline{a} \\cdot \\underline{b} = 0$", fig.align="center"}
+knitr::include_graphics("figures/02-dot.svg")
 ```
 :::
 
@@ -74,20 +74,20 @@ ii. *Properties*
     \underline{a} \cdot \underline{a} = |\underline{a}|^2 &\geq 0 \text{ and } = 0 \iff \underline{a} = \underline{0} \\
     (\lambda \underline{a}) \cdot \underline{b} &= \lambda (\underline{a} \cdot \underline{b}) = \underline{a} \cdot (\lambda \underline{b}) \\
     \underline{a} \cdot ( \underline{b} + \underline{c}) &= \underline{a} \cdot \underline{b} + \underline{a} \cdot \underline{c}
-\end{align*} 
+\end{align*}
 
 iii. *Interpretation*
 For $\underline{a} \neq \underline{0}$, consider $\underline{u} = \frac{\underline{a}}{|\underline{a}|}$
 \begin{align*}
     \underline{u} \cdot \underline{b} = \frac{1}{|\underline{a}|} \underline{a} \cdot \underline{b}
-\end{align*} 
+\end{align*}
 is the *component* of $\underline{b}$ along $\underline{a}$
-```{r interpretation, echo = FALSE, fig.cap = "", fig.align="center"} 
-knitr::include_graphics("figures/02-interpretation.svg") 
+```{r interpretation, echo = FALSE, fig.cap = "", fig.align="center"}
+knitr::include_graphics("figures/02-interpretation.svg")
 ```
 We can *resolve* $\underline{b} = \underline{b}_\parallel + \underline{b}_\perp$.
 $\underline{b}_\parallel = (\underline{b} \cdot \underline{u}),\ \underline{b}_\perp = b - (\underline{b} \cdot \underline{u})$ where $\underline{u} = \frac{\underline{a}}{|\underline{a}|}$.
-Note $\underline{a} \cdot \underline{b} =  \underline{a} \cdot \underline{b}_\parallel$. \ 
+Note $\underline{a} \cdot \underline{b} =  \underline{a} \cdot \underline{b}_\parallel$. \
 In general, vectors $\underline{a}$ and $\underline{b}$ are *orthogonal* or *perpendicular*, written $\underline{a} \perp \underline{b} \iff \underline{a} \cdot \underline{b} = 0$.
 
 ## Orthonormal Bases and Components
@@ -99,41 +99,41 @@ Choose vectors $\underline{e}_1, \underline{e}_2, \underline{e}_3$ that are *ort
         0 & \text{if } i \neq j
     \end{cases}
 \end{align*}
-This is equivalent to choosing Cartesian axes along these directions, $\{ \underline{e}_i \}$ is a *basis*: any vector can be expressed 
+This is equivalent to choosing Cartesian axes along these directions, $\{ \underline{e}_i \}$ is a *basis*: any vector can be expressed
 \begin{align*}
-    \underline{a} = \sum_{i} a_i \underline{e}_i = a_1 \underline{e}_1 + a_2 \underline{e}_2 + a_3 \underline{e}_3 
-\end{align*} 
-and each component is *uniquely* determined 
+    \underline{a} = \sum_{i} a_i \underline{e}_i = a_1 \underline{e}_1 + a_2 \underline{e}_2 + a_3 \underline{e}_3
+\end{align*}
+and each component is *uniquely* determined
 \begin{align*}
     a_i = \underline{e}_i \cdot \underline{a}.
 \end{align*}
 
-```{r 02-bases, echo = FALSE, fig.cap = "", fig.align="center", out.width="50%"} 
-knitr::include_graphics("figures/02-bases.png") 
+```{r 02-bases, echo = FALSE, fig.cap = "", fig.align="center", out.width="50%"}
+knitr::include_graphics("figures/02-bases.png")
 ```
 
-Each $\underline{a}$ can now be identified with a set of components in 
+Each $\underline{a}$ can now be identified with a set of components in
 \begin{align*}
     \begin{pmatrix} a_1 & a_2 & a_3 \end{pmatrix} \text{ or } \begin{pmatrix}
     a_1 \\
     a_2 \\
     a_3
     \end{pmatrix}
-\end{align*} 
+\end{align*}
 
 Note \begin{align*}
     \underline{a} \cdot \underline{b} &= \left( \sum_i a_i \underline{e}_i \right) \cdot \left( \sum_j b_j \underline{e}_j \right) \\
     &= a_1 b_1 + a_2 b_2 + a_3 b_3  \\
     |\underline{a}|^2 &= a_1^2 + a_2^2 + a_3^2 \quad \text{(Pythagoras)}
-\end{align*} 
+\end{align*}
 $\underline{e}_1, \underline{e}_2, \underline{e}_3$ are also often written $\underline{i}, \underline{j}, \underline{k}$.
 
 ## Vector or Cross Product
-i. 
+i.
 ::: {.definition}
 Given $\underline{a}$ and $\underline{b}$, let $\theta$ be the angle between them measured in the sense shown relative to a unit normal $\underline{n}$ to the plane they span;
-```{r cross, echo = FALSE, fig.cap = "", fig.align="center", out.width="50%"} 
-knitr::include_graphics("figures/02-cross.svg") 
+```{r cross, echo = FALSE, fig.cap = "", fig.align="center", out.width="50%"}
+knitr::include_graphics("figures/02-cross.svg")
 ```
 then \begin{align*}
     \underline{a} \wedge \underline{b} = \underline{a} \times \underline{b} = |\underline{a}| | \underline{b}| \sin \theta \, \underline{n}
@@ -149,18 +149,18 @@ ii. *Properties*
     \underline{a} \wedge \underline{b} &= \underline{0} \iff \underline{a} \parallel \underline{b} \\
     \underline{a} \wedge \underline{b} &\perp \underline{a} \text{ and } \underline{b} \\
     \underline{a} \cdot (\underline{a} \wedge \underline{b}) &= \underline{b} \cdot (\underline{a} \wedge \underline{b}) = 0
-\end{align*} 
+\end{align*}
 
 iii. *Interpretations*
 - $\underline{a} \wedge \underline{b}$ is the *vector* area shown:
-```{r vector-area, echo = FALSE, fig.cap = "", fig.align="center", out.width="50%"} 
-knitr::include_graphics("figures/02-vector-area.svg") 
+```{r vector-area, echo = FALSE, fig.cap = "", fig.align="center", out.width="50%"}
+knitr::include_graphics("figures/02-vector-area.svg")
 ```
 $|\underline{a} \wedge \underline{b}|$ is the *scalar* area. The direction of the normal $\underline{n}$ gives orientation of the parallelogram in space.
 
 - Fix $\underline{a}$ and consider $\underline{x} \perp \underline{a}$; then $\underline{x} \mapsto \underline{a} \wedge \underline{x}$ scales $| \underline{x} |$ by a factor $|\underline{a}|$ and rotates $\underline{x}$ by $\pi / 2$ in the plane $\perp \underline{a}$ as shown:
-```{r perp-cross, echo = FALSE, fig.cap = "", fig.align="center", out.width="50%"} 
-knitr::include_graphics("figures/02-perp-cross.svg") 
+```{r perp-cross, echo = FALSE, fig.cap = "", fig.align="center", out.width="50%"}
+knitr::include_graphics("figures/02-perp-cross.svg")
 ```
 
 iv. *Component expressions*
@@ -168,8 +168,8 @@ Consider $\underline{e}_1, \underline{e}_2, \underline{e}_3$  orthonormal basis 
 \begin{align*}
     \underline{e}_1 \wedge \underline{e}_2 = \underline{e}_3 = -\underline{e}_2 \wedge \underline{e}_1 \\
     \underline{e}_2 \wedge \underline{e}_3 = \underline{e}_1 = -\underline{e}_3 \wedge \underline{e}_2 \\
-    \underline{e}_3 \wedge \underline{e}_1 = \underline{e}_2 = -\underline{e}_1 \wedge \underline{e}_3 \\
-\end{align*} (all equalities follow from any one). 
+    \underline{e}_3 \wedge \underline{e}_1 = \underline{e}_2 = -\underline{e}_1 \wedge \underline{e}_3
+\end{align*} (all equalities follow from any one).
 This is called a *right-handed* orthonormal basis.
 
 Now for \begin{align*}
@@ -187,12 +187,12 @@ a. *Scalar Triple Product*
     \underline{a} \cdot (\underline{b} \wedge \underline{c}) &= \underline{b} \cdot (\underline{c} \wedge \underline{a}) = \underline{c} \cdot ( \underline{a} \wedge \underline{b}) \\
     &= - \underline{a} \cdot (\underline{c} \wedge \underline{b}) = - \underline{b} \cdot (\underline{a} \wedge \underline{c}) = - \underline{c} \cdot (\underline{b} \wedge \underline{a}) \\
     &= \left[ \underline{a}, \underline{b}, \underline{c} \right]
-\end{align*} 
+\end{align*}
 :::
 
 Interpretation: $|\underline{c} \cdot \underline{a} \wedge \underline{b}|$ is the volume of a parallelepiped shown
-```{r parallelepiped, echo = FALSE, fig.cap = "", fig.align="center", out.width="50%"} 
-knitr::include_graphics("figures/02-parallelepiped.svg") 
+```{r parallelepiped, echo = FALSE, fig.cap = "", fig.align="center", out.width="50%"}
+knitr::include_graphics("figures/02-parallelepiped.svg")
 ```
 The "signed volume" is $\underline{c} \cdot \underline{a} \wedge \underline{b}$; if
 $\underline{c} \cdot \underline{a} \wedge \underline{b} > 0$ then we say $\underline{a}, \underline{b}, \underline{c}$ is a right-handed set
@@ -211,7 +211,7 @@ To test whether $\underline{a}, \underline{b}, \underline{c}$ are co-planar with
 \begin{align*}
     \underline{c} \cdot \underline{a} \wedge \underline{b} &= 3(-3) + (-3)(-17) + 7(-6) \\
     &= 0;
-\end{align*} 
+\end{align*}
 consistent with $\underline{c} = \underline{b} - 2 \underline{a}$.
 :::
 
@@ -219,7 +219,7 @@ b. *Vector Triple Product*
 \begin{align*}
     \underline{a} \wedge (\underline{b} \wedge \underline{c}) &= (\underline{a} \cdot \underline{c}) \underline{b} - (\underline{a} \cdot \underline{b}) \underline{c} \\
     (\underline{a} \wedge \underline{b}) \wedge \underline{c} &= (\underline{a} \cdot \underline{c}) \underline{b} - (\underline{b} \cdot \underline{c}) \underline{a}
-\end{align*} 
+\end{align*}
 
 Forms of RHS is constrained by definitions above, and we could check explicitly. We will return to these formulae using index notation and summation convention.
 
@@ -229,31 +229,31 @@ Forms of RHS is constrained by definitions above, and we could check explicitly.
 General point on a line through $\underline{a}$ with direction $\underline{u} \neq \underline{0}$ has position vector
 \begin{align*}
     \underline{r} = \underline{a} + \lambda \underline{u},\ \lambda \in \mathbb{R}
-\end{align*} 
+\end{align*}
 in parametric form.
 
-```{r 2-6-line, echo = FALSE, fig.cap = "", fig.align="center", out.width = "50%"} 
-knitr::include_graphics("figures/2-6-line.png") 
+```{r 2-6-line, echo = FALSE, fig.cap = "", fig.align="center", out.width = "50%"}
+knitr::include_graphics("figures/2-6-line.png")
 ```
 
 Alternative form without parameter $\lambda$ obtained by crossing with $\underline{u}$:
 \begin{align*}
     \underline{u} \wedge \underline{r} = \underline{u} \wedge \underline{a}
-\end{align*} 
+\end{align*}
 Conversely $\underline{u} \wedge (\underline{r} - \underline{a}) = \underline{0}$ and this holds $\iff \underline{r} - \underline{a} = \lambda \underline{u}$ for some $\lambda$.
 
-Now consider 
+Now consider
 \begin{align*}
     \underline{u} \wedge \underline{r} &= \underline{c} \text{ where } \underline{u}, \underline{c} \text{ are given vectors and } \underline{u} \neq \underline{0} \\
     \text{Note } \underline{u} \cdot (\underline{u} \wedge \underline{r}) &= \underline{u} \cdot \underline{c} \\
     &= 0
-\end{align*} 
+\end{align*}
 If $\underline{u} \cdot \underline{c} \neq 0$ then we have a contradiction i.e. no solutions.
-If $\underline{u} \cdot \underline{c} = 0$, try a particular solution by considering 
+If $\underline{u} \cdot \underline{c} = 0$, try a particular solution by considering
 \begin{align*}
     \underline{u} \wedge (\underline{u} \wedge \underline{c}) &= \overbrace{(\underline{u} \cdot \underline{c})}^0 \underline{u} - (\underline{u} \cdot \underline{u}) \underline{c} \\
     &= - |\underline{u}|^2 \underline{c}
-\end{align*} 
+\end{align*}
 
 Hence $\underline{a} = - \frac{1}{|\underline{u}|^2} (\underline{u} \wedge \underline{c})$ is a solution. The general solution is \begin{align*}
     \underline{r} = \underline{a} + \lambda \underline{u}
@@ -262,10 +262,10 @@ Hence $\underline{a} = - \frac{1}{|\underline{u}|^2} (\underline{u} \wedge \unde
 ### Planes
 The general point on a plane through $\underline{a}$ with directions $\underline{u}, \underline{v}$ in plane ($\underline{u} \nparallel \underline{v}$) has position vector
 \begin{align*}
-    \underline{r} = \underline{a} + \lambda \underline{u} + \mu \underline{v}, \text{ where } \lambda, \mu \in \mathbb{R} 
+    \underline{r} = \underline{a} + \lambda \underline{u} + \mu \underline{v}, \text{ where } \lambda, \mu \in \mathbb{R}
 \end{align*} in parametric form.
-```{r 2-6-plane, echo = FALSE, fig.cap = "", fig.align="center", out.width = "50%"} 
-knitr::include_graphics("figures/2-6-plane.png") 
+```{r 2-6-plane, echo = FALSE, fig.cap = "", fig.align="center", out.width = "50%"}
+knitr::include_graphics("figures/2-6-plane.png")
 ```
 
 An alternative form without parameters is obtained by by dotting with a normal vector
@@ -279,9 +279,9 @@ This gives
 Note component of $\underline{r}$ along $\underline{n}$ is
 \begin{align*}
     \frac{\underline{n} \cdot \underline{r}}{|\underline{n}|} = \frac{\kappa}{|\underline{n}|}
-\end{align*} 
-```{r 2-6-plane2, echo = FALSE, fig.cap = "Clearly a plane", fig.align="center", out.width = "50%"} 
-knitr::include_graphics("figures/2-6-plane2.png") 
+\end{align*}
+```{r 2-6-plane2, echo = FALSE, fig.cap = "Clearly a plane", fig.align="center", out.width = "50%"}
+knitr::include_graphics("figures/2-6-plane2.png")
 ```
 
 Moreover $|\kappa| / |\underline{n}|$ is perpendicular distance of plane from $\underline{0}$.
@@ -352,7 +352,7 @@ This shows us that (given that \(\underline b\) is non-zero) the solutions to th
 Write vectors $\underline{a}, \underline{b}, \dots$, in terms of components $a_i, b_i, \dots$, wrt. an orthonormal, right-handed basis
 \begin{align*}
     \underline{e}_1, \underline{e}_2, \underline{e}_3.
-\end{align*} 
+\end{align*}
 Indices or suffices $i, j, k, l, p, q \dots$ take values $1, 2, 3$.
 
 Then \begin{align*}
@@ -362,7 +362,7 @@ Then \begin{align*}
     && \underline{a} \cdot \underline{b} &= \sum_i a_i b_i = \sum_j a_j b_j \\
     && \underline{x} &= \underline{a} + (\underline{b} \cdot \underline{c}) \underline{d} \\
     &\iff & x_j &= a_j + \left( \sum_k b_k c_k \right) d_j \text{ for } j = 1, 2, 3 \text{ free index}
-\end{align*} 
+\end{align*}
 
 ::: {.definition name="Kronecker Delta"}
 \begin{align*}
@@ -370,7 +370,7 @@ Then \begin{align*}
         1 & \text{if } i = j \\
         0 & \text{else}\\
     \end{cases} \\
-    \delta_{ij} &= \delta_{ji} \text{ symmetric} \\ 
+    \delta_{ij} &= \delta_{ji} \text{ symmetric} \\
     \text{Written out as an array} &\text{ or matrix}\\
     \begin{pmatrix}
     \delta_{11} & \delta_{12} & \delta_{13} \\
@@ -387,7 +387,7 @@ Then \begin{align*}
     &= \sum_{ij} a_i b_j \underline{e}_i \cdot \underline{e}_j \\
     &= \sum_{ij} a_i b_j \delta_{ij} \\
     &= \sum_i a_i b_i
-\end{align*} 
+\end{align*}
 :::
 
 ::: {.definition name="Levi-Civita Epsilon"}
@@ -399,8 +399,8 @@ Then \begin{align*}
     \end{cases} \\
     \text{i.e. } \epsilon_{123} &= \epsilon_{231} = \epsilon_{312} = + 1 \\
     \epsilon_{321} &= \epsilon_{213} = \epsilon_{132} = - 1 \\
-    \epsilon_{ijk} &= 0 \text{ if any two index values match} \\
-\end{align*} 
+    \epsilon_{ijk} &= 0 \text{ if any two index values match}
+\end{align*}
 $\epsilon_{ijk}$ is *totally* antisymmetric: exchanging any pairs of indices produces a change in sign.
 Then
 \begin{align*}
@@ -416,7 +416,7 @@ Then
     \text{e.g. } (\underline{a} \wedge \underline{b})_3 &= \sum_{ij} \epsilon_{ij3} a_i b_j \\
     &= \epsilon_{123} a_1 b_2 + \epsilon_{213} a_2 b_1 \\
     &= a_1 b_2 - a_2 b_1.
-\end{align*} 
+\end{align*}
 :::
 
 ### Summation Convention
@@ -445,12 +445,12 @@ In the summation convention we *omit* $\sum$ signs for repeated indices: the sum
 ::: {.example}
 \begin{align*}
     (\underline{a} \wedge \underline{b})_i = \epsilon_{ijk} a_j b_k
-\end{align*} 
+\end{align*}
 :::
 
 ::: {.example}
 \begin{align*}
-    \underline{a} \cdot \underline{b} \wedge c &= \epsilon_{ijk} a_i b_j c_k \\
+    \underline{a} \cdot \underline{b} \wedge c &= \epsilon_{ijk} a_i b_j c_k
 \end{align*}
 :::
 
@@ -490,7 +490,7 @@ Proof of the vector triple product identity. Consider
     &= \left[ (\underline{a} \cdot \underline{c}) \underline{b} - (\underline{a} \cdot \underline{b}) \underline{c} \right]_i \\
     \text{True for } i &= 1, 2, 3 \text{ hence} \\
     \underline{a} \wedge (\underline{b} \wedge \underline{c}) &= (\underline{a} \cdot \underline{c}) \underline{b} - (\underline{a} \cdot \underline{b}) \underline{c}
-\end{align*} 
+\end{align*}
 :::
 
 ### $\epsilon \epsilon$ identities
@@ -506,12 +506,12 @@ Now suffices to check e.g. $i = p = 1$ and $j = q = 2$
 \begin{align*}
     LHS &= \epsilon_{123} \epsilon_{123} = 1 \\
     RHS &= \delta_{11} \delta_{22} - \delta_{12} \delta_{21} = 1
-\end{align*} 
+\end{align*}
 or $i = q = 1$ and $j = p = 2$
 \begin{align*}
     LHS &= \epsilon_{123} \epsilon_{213} = 1(-1) = -1 \\
     RHS &= \delta_{12} \delta_{21} - \delta_{11} \delta_{22} = -1
-\end{align*} 
+\end{align*}
 All other index choices work similarly, proof by exhaustion.
 
 2. $\epsilon_{ijk} \epsilon_{pjk} = 2\delta_{ip}$
@@ -520,6 +520,6 @@ All other index choices work similarly, proof by exhaustion.
     \epsilon_{ijk} \epsilon_{pqk} &= \delta_{ip}\delta_{jj} - \delta_{ij} \delta_{jp} \\
     &= 3\delta_{ip} - \delta_{ip} \\
     &= 2 \delta_{ip}
-\end{align*} 
+\end{align*}
 
 3. $\epsilon_{ijk} \epsilon_{ijk} = 6$

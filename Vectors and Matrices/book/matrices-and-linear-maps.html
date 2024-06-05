@@ -10,16 +10,16 @@
 
   <meta property="og:title" content="4 Matrices and Linear Maps | Vectors and Matrices 2021 - 2022" />
   <meta property="og:type" content="book" />
-  
-  
+
+
   <meta property="og:description" content="Notes" />
-  
+
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="4 Matrices and Linear Maps | Vectors and Matrices 2021 - 2022" />
-  
+
   <meta name="twitter:description" content="Notes" />
-  
+
 
 <meta name="author" content="Author" />
 
@@ -29,8 +29,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  
-  
+
+
 <link rel="prev" href="vectors-in-general-mathbbrn-and-mathbbcn.html"/>
 <link rel="next" href="determinants-and-inverses.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
@@ -269,7 +269,7 @@
 <span class="math display">\[\begin{align*}
     T(\lambda \underline{x} + \mu \underline{y}) &amp;= \lambda T(\underline{x}) + \mu T(\underline{y}) \\
     \forall \; \underline{x}, \underline{y} \in V \\
-    \forall \; \lambda, \mu \in \mathbb{R} \text{ or } \mathbb{C} \\
+    \forall \; \lambda, \mu \in \mathbb{R} \text{ or } \mathbb{C}
 \end{align*}\]</span>
 for <span class="math inline">\(V, W\)</span> both real or complex vector spaces.<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a></p>
 </div>
@@ -344,7 +344,7 @@ The result then follows since <span class="math inline">\(\operatorname{null}(T)
     \sum_{i=k+1}^{n} \lambda_i T(\underline{e}_i) &amp;= \underline{0} \\
     \implies T(\sum_{i=k+1}^{n} \lambda_i \underline{e}_i) &amp;= \underline{0} \\
     \implies \sum_{i=k+1}^{n} \lambda_i \underline{e}_i &amp;\in \ker(T) \\
-    \implies \sum_{i=k+1}^{n} \lambda_i \underline{e}_i &amp;= \sum_{i=1}^{k} \mu_i \underline{e}_i \\
+    \implies \sum_{i=k+1}^{n} \lambda_i \underline{e}_i &amp;= \sum_{i=1}^{k} \mu_i \underline{e}_i
 \end{align*}\]</span>
 But <span class="math inline">\(\underline{e}_1, \dots, \underline{e}_n\)</span> are linearly independent in <span class="math inline">\(V\)</span>
 <span class="math display">\[\begin{align*}
@@ -392,7 +392,7 @@ Given <span class="math inline">\(\underline{x}\)</span>, resolve <span class="m
 \end{align*}\]</span></p>
 <p><img src="figures/04-reflection-3d.png" width="600" style="display: block; margin: auto;" /></p>
 <p><span class="math display">\[\begin{align*}
-    \underline{x} &amp;\mapsto \underline{x}&#39; = \underline{x} - 2 (\underline{x} \cdot \underline{n}) \underline{n} \\
+    \underline{x} &amp;\mapsto \underline{x}&#39; = \underline{x} - 2 (\underline{x} \cdot \underline{n}) \underline{n}
 \end{align*}\]</span></p>
 </div>
 <div id="dilations" class="section level3" number="4.2.3">
@@ -433,7 +433,7 @@ Linearity implies <span class="math inline">\(T\)</span> is determined by <span 
     \uparrow &amp;  &amp; \uparrow \\
     \underline{C}_1 &amp; \dots &amp; \underline{C}_n \\
     \downarrow &amp;  &amp; \downarrow
-    \end{pmatrix} = M = 
+    \end{pmatrix} = M =
     \begin{pmatrix}
     \leftarrow &amp; \underline{R}_1 &amp; \rightarrow \\
      &amp; \vdots &amp;  \\
@@ -481,9 +481,9 @@ Linearity implies <span class="math inline">\(T\)</span> is determined by <span 
     3 &amp; 1 &amp; 5 \\
     -1 &amp; 0 &amp; -2 \\
     2 &amp; 1 &amp; 3
-    \end{pmatrix}, 
-    \underline{C}_1 = \begin{pmatrix}3 \\-1 \\2\end{pmatrix}, 
-    \underline{C}_2 = \begin{pmatrix}1 \\0 \\1\end{pmatrix}, 
+    \end{pmatrix},
+    \underline{C}_1 = \begin{pmatrix}3 \\-1 \\2\end{pmatrix},
+    \underline{C}_2 = \begin{pmatrix}1 \\0 \\1\end{pmatrix},
     \underline{C}_3 = \begin{pmatrix}5 \\-2 \\3\end{pmatrix} \\
     \operatorname{T} &amp;= \operatorname{M} \\
     &amp;= \operatorname{span} \{ \underline{C}_1, \underline{C}_2, \underline{C}_3 \} \\
@@ -631,8 +631,8 @@ This is chose to ensure that <span class="math inline">\(T(\underline{x}) = \und
     \text{i.e. } \begin{pmatrix}x_1&#39; \\ \vdots \\ x_m&#39;\end{pmatrix} = \begin{pmatrix}
     M_{11} &amp; \dots &amp; M_{1n} \\
     \vdots &amp;  &amp; \vdots \\
-    M_{m1} &amp; \dots &amp; M_{mn} 
-    \end{pmatrix} 
+    M_{m1} &amp; \dots &amp; M_{mn}
+    \end{pmatrix}
     \begin{pmatrix}x_1 \\ \vdots \\ x_n\end{pmatrix}.
 \end{align*}\]</span></p>
 <p><em>Moral</em>: given choice of bases <span class="math inline">\(\{ \underline{e}_i \}\)</span> and <span class="math inline">\(\{ \underline{f}_a \}\)</span><br />
@@ -667,7 +667,7 @@ The product <span class="math inline">\(AB\)</span> is not defined unless no. of
 <span class="math display">\[\begin{align*}
     [(AB) \underline{x}]_a &amp;= (AB)_{ar} x_r \text{ and compare} \\
     [A(B \underline{x})]_a &amp;= A_{ai}(B \underline{x})_i = A_{ai} (B_{ir} x_r) \\
-    &amp;= (A_{ai} B_{ir}) x_r 
+    &amp;= (A_{ai} B_{ir}) x_r
 \end{align*}\]</span></p>
 <div class="example">
 <p><span id="exm:unlabeled-div-54" class="example"><strong>Example 4.13  </strong></span><span class="math display">\[\begin{align*}
@@ -692,11 +692,11 @@ The product <span class="math inline">\(AB\)</span> is not defined unless no. of
     AB &amp;= \begin{pmatrix}
 &amp; \vdots &amp;  \\
     \longleftarrow &amp; \underline{R}_a (A) &amp; \longrightarrow \\
-&amp; \vdots &amp; 
+&amp; \vdots &amp;
     \end{pmatrix} \begin{pmatrix}
 &amp; \big\uparrow &amp;  \\
     \dots &amp; \underline{C}_r(B) &amp; \dots \\
-&amp; \big\downarrow &amp; 
+&amp; \big\downarrow &amp;
     \end{pmatrix} \\
     (AB)_{ar} &amp;= [\underline{R}_a (A)]_i [\underline{C}_r (B)]_i \\
     &amp;= \underline{R}_a (A) \cdot \underline{C}_r (B) \text{ dot product in $\mathbb{R}^n$ for real matrices.}
@@ -733,7 +733,7 @@ For <span class="math inline">\(n = 2\)</span>
     x_1&#39; &amp;= M_{11} x_1 + M_{12} x_2 \\
     x_2&#39; &amp;= M_{21} x_1 + M_{22} x_2 \\
     \implies M_{22} x_1&#39; - M_{12} x_2&#39; &amp;= (\det M) x_1 \\
-    \text{and } - M_{21} x_1&#39; + M_{11} x_2&#39; &amp;= (\det M) x_2 \\
+    \text{and } - M_{21} x_1&#39; + M_{11} x_2&#39; &amp;= (\det M) x_2
 \end{align*}\]</span>
 So if <span class="math inline">\(\det M = M_{11} M_{22} - M_{12} M_{21} \neq 0\)</span> then <span class="math inline">\(M^{-1} = \frac{1}{\det M} \begin{pmatrix} M_{22} &amp; -M_{12} \\ -M_{21} &amp; M_{11} \end{pmatrix}\)</span>.</p>
 <div class="example">
@@ -822,7 +822,7 @@ Inner product on <span class="math inline">\(\mathbb{R}^n\)</span> is <span clas
 <h5><span class="header-section-number">4.5.4.2.1</span> Properties</h5>
 <p><span class="math display">\[\begin{align*}
     (\alpha A + \beta B)^\dagger &amp;= \overline{\alpha} A^\dagger + \overline{\beta} B^\dagger \\
-    (AB)^\dagger &amp;= B^\dagger A^\dagger \\
+    (AB)^\dagger &amp;= B^\dagger A^\dagger
 \end{align*}\]</span></p>
 <p><em>Note</em>: <span class="math inline">\(\underline{z} = \begin{pmatrix}x_1 \\\vdots \\x_n\end{pmatrix}\)</span> is a column vector or a <span class="math inline">\(n \times 1\)</span> matrix.<br />
 <span class="math inline">\(\implies \underline{z}^\dagger = \begin{pmatrix}x_1 &amp; \dots &amp; x_n\end{pmatrix}\)</span> is a row vector or <span class="math inline">\(1 \times n\)</span> matrix.<br />
@@ -879,7 +879,7 @@ So <span class="math inline">\(M = \underset{\text{symm and traceless}}{T} + \un
     2 &amp; 4 &amp; 0
     \end{pmatrix} \\
     M &amp;= T + A + 3I \\
-    \text{Furthermore } A \underline{x} &amp;= \underline{x} \wedge \underline{a} \text{ where } \underline{a} = \begin{pmatrix}2 &amp; -1 &amp; -1\end{pmatrix}. 
+    \text{Furthermore } A \underline{x} &amp;= \underline{x} \wedge \underline{a} \text{ where } \underline{a} = \begin{pmatrix}2 &amp; -1 &amp; -1\end{pmatrix}.
 \end{align*}\]</span></p>
 </div>
 </div>
@@ -905,12 +905,12 @@ So <span class="math inline">\(M = \underset{\text{symm and traceless}}{T} + \un
     \underbrace{\begin{pmatrix}
      &amp; \vdots &amp;  \\
     \longleftarrow &amp; \underline{C}_i &amp; \longrightarrow \\
-     &amp; \vdots &amp; 
+     &amp; \vdots &amp;
     \end{pmatrix}}_{u^T}
     \underbrace{\begin{pmatrix}
         &amp; \big\uparrow &amp;  \\
        \dots &amp; \underline{C}_j &amp; \dots \\
-        &amp; \big\downarrow &amp; 
+        &amp; \big\downarrow &amp;
     \end{pmatrix}}_{u} &amp;= I \\
     \underline{C}_i \cdot \underline{C}_j = \delta_{ij}
 \end{align*}\]</span></p>
