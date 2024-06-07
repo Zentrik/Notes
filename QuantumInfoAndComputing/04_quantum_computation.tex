@@ -589,11 +589,12 @@ We act on $\ket{\mathrm{per}}$ by $QFT_{2^m}$ to obtain
 \end{align*}
 where $\omega = 2^{\frac{2\pi i}{M}}$ where $M = 2^m$.
 $S$ is a geometric series with $\alpha = \omega^{cr}$.
-If $\frac{M}{r} \not\in \mathbb Z$, $\alpha^A \neq 1$.
+If $\alpha = 1$ then $c \mid \frac{M}{r}$.
+But if $\frac{M}{r} \not\in \mathbb Z$, this cannot be true.
 We claim that a measurement on $QFT_{2^m} \ket{\mathrm{per}}$ yields an integer $c$ which is close to a multiple of $\frac{M}{r}$ with high probability.
 
 Consider $k\frac{2^m}{r}$ for $k = 0, \dots, r-1$.
-Each of these multiples is within $\frac{1}{2}$ of a unique integer; indeed, $2^m = Br + b$ so $r < 2^m$, giving that $k\frac{2^m}{r}$ cannot be a half integer.
+Each of these multiples is within $\frac{1}{2}$ of a unique integer; indeed, $r < N$ and $2^m > N^2$, giving that $k\frac{2^m}{r}$ cannot be a half integer.
 Consider the values of $c$ s.t. $\abs{c - k \frac{2^m}{r}} < \frac{1}{2}$ for $k = 0, \dots, r-1$.
 % Note that $\omega^{cr} = 1$ if $e^{\frac{2\pi i cr}{M}} = 1$.
 \begin{theorem}
